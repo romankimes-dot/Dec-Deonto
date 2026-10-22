@@ -1,0 +1,628 @@
+{
+  "session": "2019-11",
+  "format": "qcm",
+  "questions": [
+    {
+      "id": "2019-11-EC-01",
+      "n": 1,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["lcb_ft"],
+      "points": 1,
+      "question": "Dans le cadre de la lutte anti-blanchiment, les travaux réalisés sur un dossier par un cabinet regroupant trois experts-comptables associés suscitent des soupçons de blanchiment d'argent.",
+      "qcm": {
+        "choices": [
+          "C'est le représentant légal du cabinet d'expertise comptable qui doit établir la déclaration de soupçon",
+          "La déclaration doit être conservée dans le dossier du client pour apporter la preuve des soupçons",
+          "La déclaration de soupçon doit être adressée aux services de Tracfin avec copie au Président du Conseil Régional de l'Ordre des experts-comptables",
+          "Aucune des solutions précédentes"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Dans un cabinet comptant plusieurs experts-comptables associés, qui établit la déclaration de soupçon, à qui est-elle adressée et comment est-elle conservée ?",
+        "expected": [
+          "Le déclarant désigné auprès de Tracfin (un expert-comptable du cabinet, pas nécessairement le représentant légal)",
+          "Adressée à Tracfin uniquement, sans copie à l'Ordre ni au procureur",
+          "Confidentielle : conservée à part, hors du dossier client, pendant cinq ans",
+          "Interdiction de révéler au client l'existence de la déclaration"
+        ],
+        "model_answer": "La déclaration est établie par le déclarant que le cabinet a désigné auprès de Tracfin, qui peut être n'importe lequel des experts-comptables associés et non obligatoirement le représentant légal. Elle est adressée à Tracfin seul, sans copie au conseil régional, et conservée de façon confidentielle, en dehors du dossier du client, pendant cinq ans ; son existence ne doit jamais être portée à la connaissance du client."
+      },
+      "explanation": "Les trois propositions sont fausses : le déclarant est une personne désignée (pas forcément le dirigeant), la déclaration est confidentielle et ne figure pas dans le dossier client, accessible au client ou à des tiers, et l'Ordre n'en est jamais destinataire. Le commissaire aux comptes obéit aux mêmes règles : déclaration par le signataire à Tracfin, sans information de la CRCC ni de la H2A.",
+      "reference": "C. mon. fin. art. L.561-15 s. (déclaration), L.561-18 et L.561-19 (confidentialité), R.561-23 (déclarant) ; NPLAB",
+      "confidence": "medium"
+    },
+    {
+      "id": "2019-11-EC-02",
+      "n": 2,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["publicite_demarchage"],
+      "points": 1,
+      "question": "En matière de communication des experts-comptables sur leur cabinet et sur leurs activités :",
+      "qcm": {
+        "choices": [
+          "L'annonce de l'ouverture d'un nouveau cabinet d'expertise comptable ou d'une Association de Gestion et de Comptabilité (AGC) dans un journal régional n'est pas autorisée",
+          "Un cabinet d'expertise comptable ou une AGC ne peut pas indiquer sur son site internet les références de certains clients pour valoriser l'activité du cabinet ou de l'AGC",
+          "Une société d'expertise comptable peut envoyer des courriers électroniques (e-mails) pour proposer ses services à des entreprises non clientes",
+          "Une société d'expertise comptable ou une AGC peut mettre en avant auprès des clients ses atouts en s'appuyant sur des éléments comparatifs avec d'autres sociétés d'expertise comptable ou AGC"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Quelles sont les règles applicables à la communication et au démarchage des experts-comptables ?",
+        "expected": [
+          "Publicité et démarchage (sollicitation personnalisée) autorisés, y compris par courrier électronique",
+          "Communication délivrée avec décence et retenue, sans porter atteinte à la dignité de la profession, à l'indépendance, au secret professionnel ou à la loyauté envers les confrères",
+          "Interdiction de tout élément comparatif",
+          "Références clients possibles avec l'accord des clients (secret professionnel)"
+        ],
+        "model_answer": "Depuis la levée de l'interdiction du démarchage, l'expert-comptable peut faire de la publicité et solliciter des prospects, y compris par e-mail. Sa communication doit rester décente et loyale, ne pas porter atteinte à la dignité de la profession ni au secret, et ne comporter aucun élément comparatif. L'annonce d'une ouverture de cabinet et la mention de références clients, avec leur accord, sont licites."
+      },
+      "explanation": "Le seul interdit absolu parmi les propositions est la publicité comparative. L'arrêt de la CJUE du 5 avril 2011 a condamné l'interdiction générale du démarchage, et l'ordonnance a été adaptée. Le commissaire aux comptes bénéficie d'une liberté de communication plus restreinte : information du public admise, démarchage et publicité comparative prohibés par son code de déontologie.",
+      "reference": "Ord. 45-2138 art. 12 ; D. 2012-432 art. 152 (actions de promotion) ; CJUE 5 avril 2011, Société fiduciaire nationale d'expertise comptable",
+      "confidence": "medium"
+    },
+    {
+      "id": "2019-11-EC-03",
+      "n": 3,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["incompatibilites_activites", "societes_ec_capital"],
+      "points": 1,
+      "question": "En matière de détention de participations, les experts-comptables et sociétés d'expertise comptable peuvent :",
+      "qcm": {
+        "choices": [
+          "Détenir des participations financières dans des entreprises, uniquement si celles-ci sont inscrites à l'Ordre",
+          "Détenir des participations dans des entreprises non inscrites à l'Ordre exerçant uniquement des activités non commerciales",
+          "Détenir des participations dans des entreprises non inscrites à l'Ordre, quelle que soit la nature de leur activité, commerciale ou autre",
+          "Aucune des solutions précédentes"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Un expert-comptable ou une société d'expertise comptable peut-il détenir des participations dans des entreprises non inscrites à l'Ordre ?",
+        "expected": [
+          "Oui, dans des entreprises de toute nature, y compris commerciales",
+          "Sous réserve que la participation ne porte pas atteinte à l'indépendance ni aux règles déontologiques (pas de mission chez une entité où l'intérêt financier compromettrait l'objectivité)",
+          "La détention d'une participation n'est pas l'exercice d'une activité commerciale, qui reste interdite sauf accessoire"
+        ],
+        "model_answer": "Oui : la détention de participations financières est libre, dans des entreprises inscrites ou non à l'Ordre et quelle que soit leur activité, car un investissement n'est pas l'exercice d'une activité commerciale. L'expert-comptable doit seulement veiller à ce que ces intérêts ne compromettent pas son indépendance, notamment s'il intervient professionnellement dans l'entité concernée."
+      },
+      "explanation": "Le distracteur « activités non commerciales » transpose à tort la restriction qui s'appliquait aux mandats sociaux avant la loi Macron. Il faut distinguer l'activité commerciale, interdite sauf à titre accessoire depuis la loi Pacte, de la simple détention de titres, permise. Chez le commissaire aux comptes, au contraire, tout intérêt financier dans l'entité contrôlée ou son périmètre est une incompatibilité.",
+      "reference": "Ord. 45-2138 art. 22 (incompatibilités) et art. 7 (participations des sociétés d'expertise comptable) ; D. 2012-432 (indépendance)",
+      "confidence": "medium"
+    },
+    {
+      "id": "2019-11-EC-04",
+      "n": 4,
+      "profession": "EC",
+      "theme": "controle_qualite",
+      "tags": ["controle_qualite", "ordre_organisation"],
+      "points": 1,
+      "question": "Sur quelles missions porte le contrôle qualité effectué par l'Ordre des experts-comptables ?",
+      "qcm": {
+        "choices": [
+          "Uniquement les missions effectuées par l'expert-comptable qui font l'objet d'une norme professionnelle spécifique",
+          "Uniquement les missions effectuées par l'expert-comptable qui aboutissent à la délivrance d'une opinion",
+          "Toutes les missions du cabinet y compris les missions de commissariat aux comptes et d'expertise judiciaire",
+          "Toutes les missions effectuées par l'expert-comptable à l'exclusion des missions de commissariat aux comptes et d'expertise judiciaire"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Quel est le champ du contrôle qualité organisé par l'Ordre des experts-comptables, et quelles missions y échappent ?",
+        "expected": [
+          "Toutes les missions et prestations du cabinet d'expertise comptable (normées ou non, avec ou sans assurance)",
+          "Exclusion des mandats de commissariat aux comptes, contrôlés par la H2A",
+          "Exclusion des missions d'expertise judiciaire, exercées sous le contrôle du juge",
+          "Contrôle périodique, conduit par les conseils régionaux avec des contrôleurs experts-comptables"
+        ],
+        "model_answer": "Le contrôle qualité de l'Ordre porte sur l'ensemble de l'activité du cabinet, quelles que soient les missions, à la seule exclusion des mandats de commissariat aux comptes, qui relèvent du contrôle d'activité de la Haute autorité de l'audit, et des expertises judiciaires, exercées sous l'autorité du juge."
+      },
+      "explanation": "Le champ est large pour vérifier l'application de la NPMQ et de la déontologie à tout le cabinet ; les deux exclusions tiennent à l'existence d'un autre contrôle (H2A pour les mandats de commissaire aux comptes, juridictions pour les expertises judiciaires). Les distracteurs limitant le contrôle aux missions normées ou aux missions d'opinion sont des confusions avec le contrôle d'activité des commissaires aux comptes, centré sur les mandats de certification.",
+      "reference": "Ord. 45-2138 art. 31 (attributions des conseils régionaux) ; règlement intérieur de l'Ordre (contrôle de qualité) ; NPMQ",
+      "confidence": "high"
+    },
+    {
+      "id": "2019-11-EC-05",
+      "n": 5,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["missions_legales", "loi_pacte"],
+      "points": 1,
+      "question": "Depuis l'élargissement du périmètre des missions de l'expert-comptable apporté par la loi Macron de 2015, un expert-comptable peut réaliser :",
+      "qcm": {
+        "choices": [
+          "Une mission de rédaction des statuts pour un créateur d'entreprise, même s'il n'effectue aucune autre mission d'ordre comptable ou d'accompagnement déclaratif et administratif",
+          "Une mission d'établissement de la déclaration d'impôt sur le revenu du dirigeant d'une SARL uniquement s'il tient la comptabilité de son entreprise",
+          "Une mission d'établissement des bulletins de paie pour un nouveau client même s'il n'a pas de mission comptable en amont",
+          "Une mission d'établissement d'un contrat de travail pour un nouveau client, même sans autre mission d'ordre comptable ou d'accompagnement déclaratif et administratif"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Qu'a changé la loi Macron de 2015 dans le périmètre des missions de l'expert-comptable, et quelles limites subsistent ?",
+        "expected": [
+          "Les travaux juridiques accessoires sont désormais possibles pour les clients ayant une mission comptable ou une mission d'accompagnement déclaratif et administratif de caractère permanent ou habituel (paie, déclarations)",
+          "La paie et les déclarations sont des missions propres de l'expert-comptable, sans condition de mission comptable préalable",
+          "L'assistance déclarative des personnes physiques (déclaration de revenus du dirigeant) ne dépend pas d'une mission comptable avec sa société",
+          "Reste interdit : un acte ou une consultation juridique isolé, sans mission comptable ou déclarative habituelle"
+        ],
+        "model_answer": "La loi Macron a étendu l'accessoire juridique aux clients pour lesquels l'expert-comptable assure, de façon permanente ou habituelle, une mission d'accompagnement déclaratif et administratif, et non plus seulement une mission comptable. La paie et les déclarations restent des missions à part entière, accessibles sans mission comptable préalable ; en revanche, un contrat de travail ou des statuts rédigés isolément, sans aucune autre mission, demeurent hors périmètre."
+      },
+      "explanation": "La paie est une prestation déclarative et administrative que l'expert-comptable peut toujours réaliser seule : c'est la bonne réponse. Le juridique (statuts, contrat de travail) doit rester l'accessoire d'une mission comptable ou déclarative habituelle, ou s'inscrire dans un accompagnement global de création ; isolé, il est interdit. La déclaration de revenus du dirigeant relève de l'assistance des personnes physiques et n'exige pas la tenue de la comptabilité de sa société.",
+      "reference": "Ord. 45-2138 art. 2 et 22 (rédaction loi 2015-990) ; loi 71-1130 art. 59",
+      "confidence": "medium"
+    },
+    {
+      "id": "2019-11-EC-06",
+      "n": 6,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif"],
+      "points": 1,
+      "question": "Parmi ces différentes missions qui font l'objet d'une norme spécifique, quelle est celle qui n'entre pas dans la catégorie des missions d'assurance ?",
+      "qcm": {
+        "choices": [
+          "La mission d'audit contractuel",
+          "La mission d'attestation particulière",
+          "La mission d'examen d'informations financières prévisionnelles",
+          "La mission de compilation"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Comment le référentiel normatif de l'Ordre classe-t-il les missions, et où se situe la compilation ?",
+        "expected": [
+          "Missions d'assurance sur des comptes complets historiques : présentation, examen limité, audit",
+          "Autres missions d'assurance : attestations particulières (NP 3100), examen d'informations prévisionnelles (NP 3400)",
+          "Missions sans assurance : compilation (NP 4410), procédures convenues (NP 4400)",
+          "Autres prestations hors normes spécifiques"
+        ],
+        "model_answer": "Le référentiel distingue les missions d'assurance sur comptes complets historiques (présentation, examen limité, audit), les autres missions d'assurance (attestations particulières, examen d'informations prévisionnelles) et les missions sans assurance. La compilation appartient à cette dernière catégorie, avec les procédures convenues : l'expert-comptable n'y exprime aucune assurance."
+      },
+      "explanation": "Le piège tient au fait que la compilation porte sur des comptes, comme la présentation ; mais elle se limite à une mise en forme sans diligences d'assurance. L'examen d'informations prévisionnelles, malgré l'incertitude de son objet, procure bien une assurance (modérée) sur les hypothèses et la préparation des informations.",
+      "reference": "Cadre de référence des missions de l'OEC ; NP 4410 (compilation), NP 3100, NP 3400",
+      "confidence": "high"
+    },
+    {
+      "id": "2019-11-EC-07",
+      "n": 7,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "missions_assurance"],
+      "points": 1,
+      "question": "La norme professionnelle portant sur la mission de présentation prévoit que, à l'issue de ses travaux sur les comptes annuels dans le cadre d'une mission de présentation :",
+      "qcm": {
+        "choices": [
+          "L'expert-comptable établit une attestation qui porte sur la régularité et la sincérité des comptes",
+          "L'expert-comptable établit une attestation qui porte sur la cohérence et la vraisemblance des comptes",
+          "L'expert-comptable n'établit aucun rapport lorsqu'il y a par ailleurs un commissaire aux comptes qui intervient sur le dossier",
+          "Aucune des solutions précédentes"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Quel document l'expert-comptable délivre-t-il à l'issue d'une mission de présentation et sur quoi porte-t-il ?",
+        "expected": [
+          "Une attestation de présentation",
+          "Assurance modérée sur la cohérence et la vraisemblance des comptes (pas sur la régularité, la sincérité ou l'image fidèle)",
+          "Trois issues : sans observation, avec observation(s), refus d'attester",
+          "En présence d'un commissaire aux comptes : compte rendu de travaux au lieu de l'attestation, mais toujours un document"
+        ],
+        "model_answer": "À l'issue de la mission de présentation, l'expert-comptable délivre une attestation exprimant une assurance modérée : il n'a pas relevé d'éléments remettant en cause la cohérence et la vraisemblance des comptes. Elle peut être sans observation, avec observations, ou remplacée par un refus d'attester ; si l'entité a un commissaire aux comptes, un compte rendu de travaux se substitue à l'attestation."
+      },
+      "explanation": "Régularité et sincérité relèvent de l'examen limité et de l'audit : les employer dans une attestation de présentation serait une faute de vocabulaire sanctionnée. L'existence d'un commissaire aux comptes modifie la forme du document de fin de mission, pas son existence.",
+      "reference": "NP 2300 (mission de présentation des comptes)",
+      "confidence": "high"
+    },
+    {
+      "id": "2019-11-EC-08",
+      "n": 8,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "missions_assurance"],
+      "points": 1,
+      "question": "La norme professionnelle portant sur les missions d'attestations particulières prévoit que :",
+      "qcm": {
+        "choices": [
+          "L'expert-comptable ne peut faire que des attestations indirectes, c'est-à-dire des attestations qui portent sur des informations établies par le client et vérifiées par l'expert-comptable pour pouvoir être attestées",
+          "Le niveau d'assurance prévu pour toutes attestations particulières est toujours modéré",
+          "Les attestations particulières ne peuvent porter que sur des éléments d'ordre comptable, financier ou économique",
+          "Aucune des solutions précédentes"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Que prévoit la NP 3100 quant aux types d'attestations particulières, à leur niveau d'assurance et à leur objet ?",
+        "expected": [
+          "Deux types : attestation directe (information établie par l'expert-comptable) et attestation indirecte (information établie par l'entité et vérifiée)",
+          "Niveau d'assurance variable selon la nature de l'information et les diligences : raisonnable ou modéré, précisé dans l'attestation",
+          "Objet : toute information autre que des comptes complets historiques, de nature comptable, financière, mais aussi d'autre nature (sociale, environnementale…) dès lors qu'elle est vérifiable",
+          "Lettre de mission spécifique et formulation adaptée"
+        ],
+        "model_answer": "La NP 3100 permet à l'expert-comptable d'émettre des attestations directes, sur des informations qu'il a lui-même établies, ou indirectes, sur des informations préparées par l'entité et qu'il vérifie. Le niveau d'assurance n'est pas uniforme : il dépend des diligences mises en œuvre et doit être indiqué dans l'attestation. L'objet n'est pas limité aux données comptables ou financières, mais à toute information vérifiable autre que des comptes complets historiques."
+      },
+      "explanation": "Chaque proposition contient une restriction que la norme n'impose pas : exclusivité des attestations indirectes, assurance toujours modérée, objet purement comptable ou financier. La réponse attendue est donc « aucune ». Les attestations particulières s'opposent aux comptes complets historiques par leur objet, non par leur nature.",
+      "reference": "NP 3100 (missions d'assurance sur des informations autres que des comptes complets historiques : attestations particulières)",
+      "confidence": "low"
+    },
+    {
+      "id": "2019-11-EC-09",
+      "n": 9,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["ordre_organisation"],
+      "points": 1,
+      "question": "Parmi les différentes missions citées ci-dessous, quelle est celle que n'assure pas le Conseil supérieur de l'Ordre des experts-comptables (devenu Conseil national de l'Ordre) ?",
+      "qcm": {
+        "choices": [
+          "La collecte des cotisations des membres de l'Ordre",
+          "La mise en place et l'actualisation du Code de déontologie de la profession",
+          "L'élaboration des normes professionnelles applicables à l'activité d'expertise comptable",
+          "L'organisation de la formation et le perfectionnement professionnel des membres de l'Ordre"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Quelles sont les attributions du Conseil national de l'Ordre des experts-comptables, et qui édicte le code de déontologie de la profession ?",
+        "expected": [
+          "Représentation de la profession auprès des pouvoirs publics, coordination des conseils régionaux, règlement intérieur",
+          "Élaboration des normes professionnelles (agréées par arrêté du ministre chargé du budget) et du référentiel",
+          "Organisation de la formation et du perfectionnement professionnel ; fixation des cotisations",
+          "Le code de déontologie est édicté par décret en Conseil d'État (intégré au décret 2012-432) : le Conseil national le propose mais ne l'adopte pas"
+        ],
+        "model_answer": "Le Conseil national représente la profession, coordonne les conseils régionaux, élabore les normes professionnelles ensuite agréées par arrêté ministériel, organise la formation et fixe les cotisations. Le code de déontologie, en revanche, n'est pas édicté par l'Ordre : il résulte d'un décret en Conseil d'État, l'Ordre n'ayant qu'un rôle de proposition."
+      },
+      "explanation": "La question oppose les actes de l'Ordre (normes, formation, cotisations) à un texte réglementaire de l'État (code de déontologie, décret 2012-432). Parallèle utile : le code de déontologie des commissaires aux comptes est lui aussi un décret en Conseil d'État, et les normes d'exercice professionnel sont adoptées par la H2A puis homologuées par arrêté, la CNCC n'ayant plus de pouvoir normatif propre.",
+      "reference": "Ord. 45-2138 art. 37 (attributions du Conseil national) et art. 31 (conseils régionaux) ; D. 2012-432 art. 141 s. (code de déontologie)",
+      "confidence": "medium",
+      "update_note": "Le Conseil supérieur a été renommé Conseil national de l'Ordre des experts-comptables par la loi Pacte (2019) ; attributions inchangées."
+    },
+    {
+      "id": "2019-11-EC-10",
+      "n": 10,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["ordre_organisation", "societes_ec_capital"],
+      "points": 1,
+      "question": "Parmi les propositions suivantes, laquelle est correcte ?",
+      "qcm": {
+        "choices": [
+          "Le nombre maximum de comptables salariés auxquels un membre de l'Ordre des Experts-Comptables peut recourir est fixé à dix",
+          "Le nombre maximum de comptables salariés auxquels un membre de l'Ordre des Experts-Comptables peut recourir est fixé à quinze",
+          "Le nombre maximum de comptables salariés auxquels une société membre de l'ordre peut recourir est fixé à quinze fois le nombre de membres de l'ordre associés du cabinet, que ces associés soient actifs ou non actifs en tant qu'experts-comptables au sein du cabinet",
+          "Le nombre maximum de comptables salariés auxquels une association de gestion et de comptabilité peut recourir est fixé à quinze fois le nombre d'experts-comptables et ne prend pas en compte le nombre de salariés autorisés à exercer l'activité d'expertise comptable"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Quelle est la règle dite du taux d'encadrement des comptables salariés dans les cabinets d'expertise comptable et les AGC ?",
+        "expected": [
+          "Un expert-comptable ne peut employer plus de quinze comptables salariés (fonctions comptables, hors personnel administratif)",
+          "Dans une société : quinze par expert-comptable exerçant effectivement dans la structure (les associés non actifs ne comptent pas)",
+          "Dans une AGC : quinze par professionnel habilité, experts-comptables et salariés autorisés à exercer (art. 83 ter et quater) compris"
+        ],
+        "model_answer": "Chaque expert-comptable peut avoir sous son autorité au maximum quinze comptables salariés. Dans une société, le plafond se calcule sur les experts-comptables qui y exercent effectivement, et dans une AGC sur l'ensemble des professionnels habilités, salariés autorisés compris. Le personnel non comptable n'entre pas dans le calcul."
+      },
+      "explanation": "Le chiffre à retenir est quinze. Les distracteurs jouent sur le mode de calcul : les associés qui n'exercent pas dans le cabinet ne peuvent pas « encadrer », et les salariés autorisés des AGC sont assimilés aux experts-comptables pour cette règle. Il n'existe aucune règle d'encadrement équivalente en commissariat aux comptes.",
+      "reference": "Ord. 45-2138 (règle d'encadrement : un expert-comptable pour quinze comptables salariés ; art. 83 ter et quater pour les salariés autorisés des AGC) ; règlement intérieur de l'Ordre",
+      "confidence": "medium"
+    },
+    {
+      "id": "2019-11-CAC-11",
+      "n": 11,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["honoraires_bareme"],
+      "points": 1,
+      "question": "Les honoraires des commissaires aux comptes :",
+      "qcm": {
+        "choices": [
+          "Sont toujours librement fixés",
+          "Peuvent reposer sur un barème figurant dans le code de commerce",
+          "Sont toujours fixés par un barème figurant dans le code de commerce",
+          "Sont basés sur des fourchettes de taux exprimés en €/heure"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Comment sont fixés les honoraires du commissaire aux comptes et quels recours existent en cas de désaccord ?",
+        "expected": [
+          "Barème d'heures du code de commerce pour la certification : fourchette d'heures selon le total bilan + produits",
+          "Taux horaire libre ; honoraires convenus avec l'entité (lettre de mission)",
+          "Dérogation au barème : accord du président de la CRCC ; litiges sur honoraires de certification : H2A",
+          "Prestations hors certification : honoraires libres, hors barème ; plafond de 70 % pour les EIP"
+        ],
+        "model_answer": "Pour la mission de certification, le code de commerce prévoit un barème d'heures par tranche de total bilan et produits, le taux horaire restant libre ; les dérogations sont soumises au président de la compagnie régionale et les litiges à la Haute autorité de l'audit. Les honoraires des prestations autres que la certification sont libres, dans la limite, pour les EIP, de 70 % des honoraires d'audit."
+      },
+      "explanation": "Le barème est un volume d'heures, non un tarif : ni « toujours libres » (règle de l'expert-comptable), ni « toujours barémés » (dérogations, prestations), ni « taux en euros ». Le jury note régulièrement la confusion avec les honoraires de l'expert-comptable, libres et sans barème.",
+      "reference": "C. com. D.821-188 s. (barème d'heures, ex R.823-12 s.) ; règlement (UE) 537/2014 art. 4 (plafond des services non audit) ; code de déontologie des commissaires aux comptes (honoraires)",
+      "confidence": "high",
+      "update_note": "Barème recodifié au 1er janvier 2024 (ex R.823-12 devenu D.821-188) ; dérogations et recours désormais devant le président de la CRCC et la H2A."
+    },
+    {
+      "id": "2019-11-CAC-12",
+      "n": 12,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["cncc_crcc_organisation"],
+      "points": 1,
+      "question": "Peut être élu membre d'un conseil régional d'une CRCC :",
+      "qcm": {
+        "choices": [
+          "Un cabinet inscrit auprès de cette CRCC dont au moins les ¾ des associés sont des commissaires aux comptes personnes physiques",
+          "Une personne physique régulièrement inscrite auprès de cette CRCC et à jour de ses cotisations professionnelles",
+          "Un cabinet inscrit auprès de cette CRCC si, et uniquement si, il se fait représenter par son dirigeant qui est lui-même commissaire aux comptes",
+          "Une personne physique inscrite auprès de cette CRCC, à jour de ses cotisations professionnelles, et exerçant des fonctions de commissaire aux comptes à la date du scrutin"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Quelles sont les conditions d'éligibilité au conseil régional d'une compagnie régionale des commissaires aux comptes ?",
+        "expected": [
+          "Être commissaire aux comptes personne physique inscrit au titre de la compagnie régionale",
+          "Être à jour de ses cotisations",
+          "Pas de condition d'exercice effectif de mandats ni d'ancienneté ; les sociétés ne sont pas éligibles (elles votent)"
+        ],
+        "model_answer": "Peuvent être élus au conseil régional les commissaires aux comptes personnes physiques inscrits au titre de la compagnie et à jour de leurs cotisations. La détention de mandats à la date du scrutin n'est pas exigée, et les sociétés de commissaires aux comptes, bien qu'électrices, ne sont pas éligibles."
+      },
+      "explanation": "Les deux propositions relatives aux cabinets sont fausses, les fonctions électives étant réservées aux personnes physiques ; la condition d'exercice effectif de mandats est inventée. Même principe pour les conseils de l'Ordre des experts-comptables, composés de membres personnes physiques élus.",
+      "reference": "C. com. partie réglementaire relative aux compagnies régionales (ex R.821-x, recodifiée en 2024) ; règlement intérieur de la CNCC",
+      "confidence": "medium",
+      "update_note": "Gouvernance de la CNCC réformée en 2020-2021 et partie réglementaire recodifiée en 2024 : vérifier les conditions d'éligibilité dans la rédaction en vigueur."
+    },
+    {
+      "id": "2019-11-CAC-13",
+      "n": 13,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["cncc_crcc_organisation"],
+      "points": 1,
+      "question": "Le Conseil national des commissaires aux comptes :",
+      "qcm": {
+        "choices": [
+          "Est composé de délégués élus par les conseils régionaux parmi leurs membres",
+          "Est composé de commissaires aux comptes élus lors des assemblées générales des CRCC",
+          "Comprend obligatoirement tous les présidents des CRCC",
+          "Comprend au moins trois délégués par compagnie régionale"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Comment le Conseil national de la Compagnie nationale des commissaires aux comptes est-il composé aujourd'hui ?",
+        "expected": [
+          "Soixante membres élus pour quatre ans au suffrage direct par les commissaires aux comptes inscrits (scrutin de liste), et non plus des délégués des conseils régionaux",
+          "Auxquels s'ajoutent les présidents des compagnies régionales (membres de droit)",
+          "Le Conseil national élit le président de la CNCC et le bureau ; la CNCC est placée sous la tutelle du garde des sceaux"
+        ],
+        "model_answer": "Depuis la réforme de la gouvernance de la CNCC, le Conseil national comprend soixante membres élus pour quatre ans directement par les commissaires aux comptes inscrits, auxquels s'ajoutent les présidents des compagnies régionales. Il n'est donc plus formé de délégués désignés par les conseils régionaux parmi leurs membres."
+      },
+      "explanation": "À la date du sujet, le Conseil national était composé de délégués élus par les conseils régionaux parmi leurs membres (première proposition, alors exacte). La réforme intervenue depuis a instauré une élection directe de soixante membres et la présence des présidents de CRCC, ce qui modifie la réponse. Côté expertise comptable, le Conseil national de l'Ordre est composé d'élus des conseils régionaux.",
+      "reference": "C. com. partie réglementaire relative à l'organisation de la CNCC (ex R.821-x, modifiée par la réforme de gouvernance puis recodifiée en 2024) ; règlement intérieur de la CNCC",
+      "confidence": "low",
+      "update_note": "Réponse modifiée par la réforme de la gouvernance de la CNCC (décret 2020-2021 : 60 membres élus pour 4 ans + présidents de CRCC) ; la composition exacte est à vérifier dans les textes en vigueur. Réponse d'origine en 2019 : délégués élus par les conseils régionaux."
+    },
+    {
+      "id": "2019-11-CAC-14",
+      "n": 14,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["responsabilite_penale", "incompatibilites_liens"],
+      "points": 1,
+      "question": "L'exercice du commissariat aux comptes nonobstant les incompatibilités légales :",
+      "qcm": {
+        "choices": [
+          "Est un délit",
+          "N'est pas un délit",
+          "Est un délit pour lequel il n'y a pas de délai de prescription",
+          "Peut être un délit si le commissaire a causé des dommages"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "question": "Quelles sont les conséquences pénales de l'exercice des fonctions de commissaire aux comptes en situation d'incompatibilité légale ?",
+        "expected": [
+          "Délit du code de commerce : exercice nonobstant les incompatibilités (six mois d'emprisonnement et 7 500 € d'amende)",
+          "Infraction constituée indépendamment de tout dommage",
+          "Prescription de droit commun des délits : six ans ; responsabilité disciplinaire et civile possibles en plus"
+        ],
+        "model_answer": "Exercer ou conserver des fonctions de commissaire aux comptes malgré une incompatibilité légale est un délit puni de six mois d'emprisonnement et de 7 500 € d'amende, constitué sans qu'un dommage soit nécessaire et soumis à la prescription ordinaire des délits. Il s'accompagne généralement de poursuites disciplinaires."
+      },
+      "explanation": "Le code de commerce érige en délits plusieurs manquements propres aux commissaires aux comptes : exercice malgré incompatibilité, informations mensongères et non-révélation, violation du secret (via le code pénal), ainsi que l'entrave commise par les dirigeants. L'existence d'un dommage n'est pas un élément constitutif ; l'imprescriptibilité n'existe pas en matière délictuelle. L'expert-comptable connaît pour sa part le délit d'exercice illégal, mais ses incompatibilités ne sont sanctionnées que disciplinairement.",
+      "reference": "C. com. ex L.820-6 (exercice nonobstant incompatibilités), recodifié L.820-x en 2024 ; ex L.822-10 et L.822-11 (incompatibilités)",
+      "confidence": "high",
+      "update_note": "Article recodifié au 1er janvier 2024 (ordonnance 2023-1142) ; incrimination inchangée."
+    },
+    {
+      "id": "2019-11-CAC-15",
+      "n": 15,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["responsabilite_penale"],
+      "points": 1,
+      "question": "Le commissaire aux comptes qui certifie sans réserve des comptes annuels alors qu'il avait constaté que d'importantes dépréciations d'actifs étaient manifestement infondées, se rend coupable du délit suivant :",
+      "qcm": {
+        "choices": [
+          "Négligence grave",
+          "Faute professionnelle",
+          "Manquement au devoir de conseil",
+          "Confirmation d'informations mensongères"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "De quel délit se rend coupable le commissaire aux comptes qui certifie sans réserve des comptes qu'il sait inexacts ?",
+        "expected": [
+          "Délit de confirmation (ou de communication) d'informations mensongères sur la situation de l'entité",
+          "Élément intentionnel : connaissance du caractère inexact des comptes",
+          "Peine : cinq ans d'emprisonnement et 75 000 € d'amende ; responsabilités civile et disciplinaire cumulables"
+        ],
+        "model_answer": "Il commet le délit de confirmation d'informations mensongères : le code de commerce punit le commissaire aux comptes qui, sciemment, donne ou confirme des informations mensongères sur la situation de l'entité. La certification sans réserve de comptes dont il connaît l'inexactitude en est l'illustration ; la peine encourue est de cinq ans d'emprisonnement et 75 000 € d'amende."
+      },
+      "explanation": "Les trois distracteurs ne sont pas des qualifications pénales : la négligence et la faute professionnelle relèvent de la responsabilité civile ou disciplinaire, et le devoir de conseil est une notion propre à l'expert-comptable, le commissaire aux comptes étant au contraire tenu à la non-immixtion. Le délit suppose la connaissance du caractère mensonger ; une simple erreur d'appréciation n'est pas pénalement punissable.",
+      "reference": "C. com. ex L.820-7 (informations mensongères et non-révélation), recodifié L.820-x en 2024",
+      "confidence": "high",
+      "update_note": "Article recodifié au 1er janvier 2024 ; incrimination inchangée."
+    },
+    {
+      "id": "2019-11-CAC-16",
+      "n": 16,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["responsabilite_civile", "secret_professionnel"],
+      "points": 1,
+      "question": "Un commissaire aux comptes commet le délit de violation du secret professionnel. Un tribunal le condamne à la fois pour ce délit et au titre de sa responsabilité civile. Les dommages et intérêts auxquels le commissaire est condamné :",
+      "qcm": {
+        "choices": [
+          "Sont couverts par son assurance responsabilité civile",
+          "Ne sont pas couverts par son assurance responsabilité civile",
+          "Sont couverts par son assurance responsabilité civile dans la mesure où il n'est pas condamné au titre de sa responsabilité disciplinaire pour les mêmes faits",
+          "Ne sont pas couverts par son assurance responsabilité civile car le service « défense confrères » mis en place par la CNCC les prend en charge"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "question": "Que couvre l'assurance de responsabilité civile obligatoire du commissaire aux comptes lorsqu'une même faute donne lieu à une condamnation pénale et à des dommages-intérêts ?",
+        "expected": [
+          "L'assurance couvre les conséquences pécuniaires de la responsabilité civile : les dommages-intérêts dus aux victimes",
+          "Elle ne couvre jamais l'amende pénale ni les sanctions disciplinaires, peines personnelles",
+          "Limite : exclusion légale de la faute intentionnelle ou dolosive (volonté de causer le dommage), appréciée strictement ; la sanction disciplinaire est sans effet sur la garantie"
+        ],
+        "model_answer": "L'assurance obligatoire garantit la réparation civile des préjudices causés par les fautes du commissaire aux comptes : les dommages-intérêts restent en principe couverts même si les faits sont aussi constitutifs d'un délit, seule l'amende pénale étant exclue. La garantie ne tomberait que si l'assureur établissait une faute intentionnelle au sens du droit des assurances, c'est-à-dire la volonté de provoquer le dommage lui-même ; l'existence d'une sanction disciplinaire est indifférente."
+      },
+      "explanation": "Il faut distinguer la nature des condamnations : la réparation civile est assurable, la peine ne l'est pas. La notion d'intention du code pénal (révéler sciemment) ne se confond pas avec la faute intentionnelle du code des assurances (vouloir le dommage), d'où le maintien de la garantie en principe. La CNCC n'indemnise pas les victimes à la place de l'assureur.",
+      "reference": "C. com. ex R.822-36 (assurance obligatoire), recodifié R.821-x en 2024 ; C. assur. art. L.113-1 ; C. pén. art. 226-13",
+      "confidence": "low",
+      "update_note": "Article réglementaire recodifié au 1er janvier 2024 ; la portée de l'exclusion de la faute intentionnelle dépend de la police et de la jurisprudence."
+    },
+    {
+      "id": "2019-11-CAC-17",
+      "n": 17,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["mandat_duree_cessation", "code_deontologie_structure"],
+      "points": 1,
+      "question": "Le commissaire aux comptes appelé à succéder à un confrère dont le mandat n'a pas été renouvelé :",
+      "qcm": {
+        "choices": [
+          "Doit entrer en contact avec lui",
+          "Doit entrer en contact avec lui si l'entité auditée le lui demande",
+          "Peut entrer en contact avec lui",
+          "Peut entrer en contact avec lui mais seulement après autorisation donnée par le président de la CRCC dont il est membre"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "question": "Quelles obligations de confraternité pèsent sur le commissaire aux comptes appelé à succéder à un confrère non renouvelé, et sur ce confrère ?",
+        "expected": [
+          "Avant d'accepter, le successeur doit prendre contact avec son prédécesseur",
+          "Objet : s'assurer que le changement n'a pas pour cause la volonté de l'entité de se soustraire à ses obligations ou un désaccord sur une position du prédécesseur",
+          "Le prédécesseur, libéré du secret à l'égard de son successeur, lui communique les informations utiles ; vérification que les honoraires du prédécesseur ne sont pas en litige abusif",
+          "Aucune autorisation de la CRCC n'est requise"
+        ],
+        "model_answer": "Le commissaire aux comptes pressenti doit, avant d'accepter, prendre contact avec son prédécesseur afin de s'assurer que le non-renouvellement ne vise pas à éluder des obligations légales ni à contourner une position prise par celui-ci. Le prédécesseur, délié du secret à son égard, lui transmet les informations utiles. Cette démarche ne requiert aucune autorisation de la compagnie régionale."
+      },
+      "explanation": "La prise de contact est une obligation du code de déontologie, liée au principe de confraternité et à l'acceptation de la mission, et non une simple faculté. Elle est complétée par la NEP sur le premier audit. L'expert-comptable connaît une règle voisine : avant de reprendre un dossier, il s'enquiert auprès du confrère que les honoraires de celui-ci ne restent pas impayés et lui demande les informations utiles.",
+      "reference": "Code de déontologie des commissaires aux comptes (annexe 8-1 C. com.), dispositions sur la succession et la confraternité ; C. com. ex L.822-15 (levée du secret à l'égard du successeur) ; NEP 510",
+      "confidence": "medium",
+      "update_note": "Code refondu par le décret 2020-292 (renumérotation) ; obligation de prise de contact maintenue."
+    },
+    {
+      "id": "2019-11-CAC-18",
+      "n": 18,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["responsabilite_civile", "lettre_mission_nep210"],
+      "points": 1,
+      "question": "Le commissaire aux comptes peut-il contractuellement plafonner, dans sa lettre de mission, le montant des dommages-intérêts auxquels il serait susceptible d'être condamné par un tribunal civil en cas de faute dans le cadre de sa mission légale ?",
+      "qcm": {
+        "choices": [
+          "Oui",
+          "Oui s'il obtient l'accord de la compagnie d'assurance",
+          "Oui s'il obtient l'accord de la compagnie d'assurance et du président de sa compagnie régionale",
+          "Non"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Le commissaire aux comptes peut-il limiter contractuellement sa responsabilité civile au titre de la mission légale ? Comparez avec l'expert-comptable.",
+        "expected": [
+          "Non : la responsabilité du commissaire aux comptes à raison de sa mission légale est d'ordre public (régime légal, nature délictuelle) ; toute clause limitative est sans effet",
+          "La lettre de mission fixe les termes de la mission, pas l'étendue de la responsabilité",
+          "L'expert-comptable, lié par un contrat, peut en revanche aménager sa responsabilité (plafond, prescription abrégée dans les limites légales), hors faute lourde et hors consommateurs"
+        ],
+        "model_answer": "Non. La responsabilité du commissaire aux comptes pour les fautes commises dans sa mission légale résulte de la loi et ne peut être aménagée par convention : un plafond inséré dans la lettre de mission serait inopposable, quel que soit l'accord de l'assureur ou de la compagnie régionale. À l'inverse, l'expert-comptable, dont la responsabilité est contractuelle, peut prévoir des clauses limitatives dans les limites du droit commun."
+      },
+      "explanation": "C'est l'une des distinctions EC/CAC les plus testées : mission légale et responsabilité d'ordre public pour le commissaire aux comptes ; mission contractuelle et aménagements possibles pour l'expert-comptable. Les propositions subordonnant la clause à des accords (assureur, CRCC) sont des leurres : aucun accord ne peut valider une clause interdite.",
+      "reference": "C. com. ex L.822-17 (responsabilité civile du commissaire aux comptes), recodifié L.821-x en 2024 ; NEP 210 (lettre de mission) ; C. civ. art. 1231-3 pour l'expert-comptable",
+      "confidence": "high",
+      "update_note": "Article recodifié au 1er janvier 2024 ; règle inchangée."
+    },
+    {
+      "id": "2019-11-CAC-19",
+      "n": 19,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["responsabilite_civile", "responsabilite_penale"],
+      "points": 1,
+      "question": "Un commissaire aux comptes est avisé par le président du conseil d'administration d'une convention réglementée, mais il oublie de la mentionner dans son rapport spécial :",
+      "qcm": {
+        "choices": [
+          "Sa responsabilité pénale peut être engagée",
+          "Sa responsabilité civile peut être engagée",
+          "Sa responsabilité pénale et sa responsabilité civile peuvent être engagées",
+          "Seule sa responsabilité disciplinaire peut être engagée"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Quelles responsabilités encourt le commissaire aux comptes qui omet, par négligence, de mentionner une convention réglementée dans son rapport spécial ?",
+        "expected": [
+          "Responsabilité civile : faute (omission dans le rapport spécial) ouvrant droit à réparation du préjudice en découlant",
+          "Responsabilité disciplinaire possible (manquement aux normes)",
+          "Pas de responsabilité pénale : aucune incrimination ne vise l'omission non intentionnelle ; le délit d'informations mensongères suppose l'intention"
+        ],
+        "model_answer": "L'omission d'une convention réglementée dans le rapport spécial est une faute susceptible d'engager la responsabilité civile du commissaire aux comptes si elle cause un préjudice, et peut donner lieu à des poursuites disciplinaires. Elle n'engage pas sa responsabilité pénale : aucun texte n'incrimine cette omission commise par négligence, et le délit d'informations mensongères exige une intention."
+      },
+      "explanation": "Le raisonnement en trois responsabilités est attendu : civile (faute, préjudice, lien de causalité), disciplinaire (manquement aux obligations professionnelles), pénale (uniquement en présence d'un texte d'incrimination et, ici, d'une intention). L'« oubli » exclut l'élément intentionnel. L'option « seule la responsabilité disciplinaire » méconnaît le droit des victimes à réparation.",
+      "reference": "C. com. art. L.225-40 (rapport spécial sur les conventions réglementées) ; ex L.822-17 (responsabilité civile) et ex L.820-7 (délit intentionnel), recodifiés en 2024 ; NEP 9510",
+      "confidence": "medium",
+      "update_note": "Articles du livre VIII recodifiés au 1er janvier 2024 ; règles inchangées."
+    },
+    {
+      "id": "2019-11-CAC-20",
+      "n": 20,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions", "code_deontologie_structure"],
+      "points": 1,
+      "question": "Un commissaire aux comptes qui ne respecte pas des dispositions du code de déontologie peut être condamné au titre de :",
+      "qcm": {
+        "choices": [
+          "Sa responsabilité civile et de sa responsabilité pénale seulement",
+          "Sa responsabilité civile et de sa responsabilité disciplinaire seulement",
+          "Sa responsabilité disciplinaire seulement",
+          "Sa responsabilité civile, de sa responsabilité pénale et de sa responsabilité disciplinaire"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Quelles responsabilités le non-respect du code de déontologie peut-il faire encourir au commissaire aux comptes ?",
+        "expected": [
+          "Disciplinaire dans tous les cas : le manquement au code est une faute disciplinaire (commission des sanctions de la H2A)",
+          "Civile si le manquement cause un préjudice à l'entité ou à un tiers",
+          "Pénale lorsque le manquement correspond aussi à une infraction (incompatibilités, violation du secret, informations mensongères, non-révélation)",
+          "Les trois responsabilités sont cumulables"
+        ],
+        "model_answer": "La violation du code de déontologie constitue toujours une faute disciplinaire, jugée par la commission des sanctions de la Haute autorité de l'audit. Elle engage en outre la responsabilité civile si elle cause un préjudice, et la responsabilité pénale lorsque le manquement correspond à une infraction, comme l'exercice en situation d'incompatibilité ou la violation du secret. Les trois responsabilités peuvent se cumuler."
+      },
+      "explanation": "La question porte sur le mot « peut » : toutes les voies sont ouvertes, selon la nature du manquement. Le code de déontologie n'est pas en lui-même un texte pénal, mais plusieurs de ses règles (indépendance, secret) sont doublées d'incriminations dans le code de commerce ou le code pénal. Même architecture pour l'expert-comptable, avec les chambres de discipline de l'Ordre comme instance disciplinaire.",
+      "reference": "C. com. L.820-2 s. (commission des sanctions de la H2A), ex L.822-17 (responsabilité civile), ex L.820-6 et L.820-7 (délits), recodifiés en 2024 ; code de déontologie des commissaires aux comptes (annexe 8-1)",
+      "confidence": "medium",
+      "update_note": "Instance disciplinaire : commission des sanctions de la H2A depuis le 1er janvier 2024 (ex-H3C) ; articles recodifiés."
+    }
+  ]
+}
