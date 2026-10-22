@@ -1,0 +1,637 @@
+{
+  "session": "2018-11",
+  "format": "qcm",
+  "questions": [
+    {
+      "id": "2018-11-EC-01",
+      "n": 1,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["incompatibilites_activites"],
+      "points": 1,
+      "question": "Un membre de l'Ordre exerçant la profession d'expert-comptable peut :",
+      "qcm": {
+        "choices": [
+          "Également exercer une activité d'agent d'affaires",
+          "Exercer une activité salariée uniquement chez un autre membre de l'Ordre",
+          "Exercer une activité salariée chez un autre membre de l'Ordre, une AGC ou chez un commissaire aux comptes",
+          "Détenir des fonds pour le compte de ses clients"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Avec quelles activités l'exercice de la profession d'expert-comptable est-il incompatible, et quelle est l'exception admise en matière d'emploi salarié ?",
+        "expected": [
+          "Incompatibilité avec tout emploi salarié, sauf chez un autre membre de l'Ordre, une AGC ou un commissaire aux comptes",
+          "Interdiction des activités commerciales et actes d'intermédiaire (sauf activité accessoire autorisée depuis la loi Pacte)",
+          "Interdiction d'agir comme agent d'affaires",
+          "Interdiction de recevoir, conserver ou délivrer des fonds ou valeurs pour le compte des clients"
+        ],
+        "model_answer": "L'activité d'expertise comptable est incompatible avec toute occupation de nature à porter atteinte à l'indépendance : tout emploi salarié (sauf chez un autre expert-comptable, dans une AGC ou chez un commissaire aux comptes), toute activité commerciale ou d'intermédiaire non accessoire, la qualité d'agent d'affaires et tout mandat de recevoir, conserver ou délivrer des fonds ou valeurs."
+      },
+      "explanation": "L'article 22 de l'ordonnance fixe les incompatibilités de l'expert-comptable. L'exception salariale vise trois employeurs possibles : un membre de l'Ordre, une AGC ou un commissaire aux comptes ; limiter l'exception au seul membre de l'Ordre est donc faux. Depuis la loi Pacte, une activité commerciale accessoire est tolérée si elle ne met pas en péril l'indépendance ni l'exercice de la profession, mais le maniement de fonds et l'activité d'agent d'affaires restent prohibés. Pour le commissaire aux comptes, l'incompatibilité avec tout emploi salarié ne connaît d'exception que chez un commissaire aux comptes ou un expert-comptable.",
+      "reference": "Ord. 45-2138 art. 22 ; loi Pacte 2019-486 (activités commerciales accessoires)",
+      "confidence": "high"
+    },
+    {
+      "id": "2018-11-EC-02",
+      "n": 2,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["societes_ec_capital"],
+      "points": 1,
+      "question": "Pour exercer la profession d'expert-comptable, les membres de l'Ordre peuvent constituer :",
+      "qcm": {
+        "choices": [
+          "Des sociétés en nom collectif (SNC)",
+          "Des sociétés civiles professionnelles (SCP)",
+          "Des sociétés d'exercice libéral (SEL)",
+          "Des sociétés dans lesquelles ils peuvent détenir moins de 50 % des droits de vote"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Sous quelles formes les experts-comptables peuvent-ils constituer une société d'expertise comptable et quelle condition de détention des droits de vote s'applique ?",
+        "expected": [
+          "Toute forme sociale, à l'exception de celles conférant la qualité de commerçant (SNC, sociétés en commandite)",
+          "SEL possibles (SELARL, SELAS, SELAFA…), ainsi que SARL, SAS, SA",
+          "SCP non ouverte à la profession (absence de décret d'application)",
+          "Plus des deux tiers des droits de vote détenus par des experts-comptables ou sociétés inscrites"
+        ],
+        "model_answer": "Les sociétés d'expertise comptable peuvent prendre toute forme, sauf celles qui confèrent à leurs associés la qualité de commerçant (SNC, commandite) ; les sociétés d'exercice libéral sont admises. La SCP n'est pas accessible faute de décret d'application. Dans tous les cas, les experts-comptables (ou sociétés inscrites) doivent détenir plus des deux tiers des droits de vote."
+      },
+      "explanation": "Le piège porte sur la quotité : la règle est « plus des deux tiers des droits de vote » entre les mains de professionnels inscrits, et non une majorité simple ni une minorité. La SNC est exclue car elle confère la qualité de commerçant, incompatible avec la profession. Pour les sociétés de commissaires aux comptes, aucune forme n'est exclue et la condition porte sur la majorité des droits de vote : ne pas transposer une règle à l'autre profession.",
+      "reference": "Ord. 45-2138 art. 7 (sociétés d'expertise comptable) ; loi 90-1258 (SEL) ; loi 66-879 (SCP, sans décret pour la profession)",
+      "confidence": "medium"
+    },
+    {
+      "id": "2018-11-EC-03",
+      "n": 3,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["missions_legales", "incompatibilites_activites"],
+      "points": 1,
+      "question": "Quelle est la mission que l'expert-comptable ne peut pas réaliser ?",
+      "qcm": {
+        "choices": [
+          "Une consultation juridique pour un client potentiel qui souhaite transformer sa SARL en SAS",
+          "La rédaction de statuts dans le cadre de l'accompagnement d'un créateur sur son projet global de création",
+          "L'établissement d'un contrat de travail pour un client pour lequel il assure une mission habituelle d'établissement de la paie",
+          "Une mission de traitement de la paie et des déclarations pour un client qui par ailleurs ne fait pas l'objet d'une mission comptable au sein du cabinet"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "question": "À quelles conditions un expert-comptable peut-il réaliser des travaux d'ordre juridique (consultation, rédaction d'actes) pour un client ?",
+        "expected": [
+          "Travaux juridiques possibles seulement à titre accessoire, sans en faire l'objet principal de l'activité",
+          "Au profit d'entreprises où le cabinet assure une mission comptable ou d'accompagnement déclaratif et administratif de caractère permanent ou habituel, ou si les travaux sont directement liés aux travaux comptables",
+          "Accompagnement global de la création d'entreprise admis (statuts)",
+          "Interdiction d'une consultation juridique isolée pour un prospect sans mission"
+        ],
+        "model_answer": "L'expert-comptable ne peut donner de consultations ou rédiger des actes juridiques qu'à titre accessoire, pour les entreprises dans lesquelles il assure une mission comptable ou d'accompagnement déclaratif et administratif permanente ou habituelle, ou lorsque ces travaux sont directement liés à ses travaux comptables. Une consultation juridique isolée pour un prospect, sans aucune mission, lui est interdite."
+      },
+      "explanation": "La paie et les déclarations relèvent de l'activité propre de l'expert-comptable et ne supposent aucune mission comptable préalable ; elles ouvrent en outre, depuis la loi Macron, la possibilité de travaux juridiques accessoires (contrat de travail). L'accompagnement global du créateur permet la rédaction des statuts. Seule la consultation juridique « sèche » pour un prospect sort du périmètre.",
+      "reference": "Ord. 45-2138 art. 2 et 22 (rédaction loi 2015-990) ; loi 71-1130 art. 59",
+      "confidence": "high"
+    },
+    {
+      "id": "2018-11-EC-04",
+      "n": 4,
+      "profession": "EC",
+      "theme": "controle_qualite",
+      "tags": ["controle_qualite", "referentiel_normatif"],
+      "points": 1,
+      "question": "Dans le cadre de l'application de la norme professionnelle de maîtrise de la qualité (NPMQ), le cabinet d'expertise comptable :",
+      "qcm": {
+        "choices": [
+          "Peut ne pas formaliser par écrit ses procédures si la structure comprend moins de 5 personnes",
+          "A l'obligation de rédiger des procédures pour son service traitant des activités comptables mais n'a pas cette obligation pour son service traitant de la paie",
+          "A l'obligation de demander à son personnel au moins une fois par an une confirmation écrite au regard des règles d'indépendance",
+          "N'a pas à rappeler, dans son manuel de procédures, les règles de déontologie applicables, celles-ci étant évidentes compte tenu de l'application du Code de déontologie à l'ensemble du cabinet"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Quelles obligations la norme de maîtrise de la qualité (NPMQ) impose-t-elle au cabinet en matière de documentation des procédures et d'indépendance du personnel ?",
+        "expected": [
+          "Politiques et procédures documentées, proportionnées à la taille du cabinet mais obligatoires quelle que soit sa taille",
+          "Champ : toutes les missions et prestations du cabinet (y compris paie, social)",
+          "Rappel des règles de déontologie et d'indépendance dans les procédures",
+          "Confirmation écrite au moins annuelle du personnel sur le respect des règles d'indépendance"
+        ],
+        "model_answer": "La NPMQ s'applique à toutes les missions du cabinet et impose des politiques et procédures écrites, adaptées à sa taille mais jamais facultatives, couvrant notamment les règles de déontologie. En matière d'indépendance, le cabinet doit obtenir de son personnel, au moins une fois par an, une confirmation écrite du respect des règles applicables."
+      },
+      "explanation": "La NPMQ, transposition de l'ISQC 1 à l'expertise comptable, s'articule autour de six composantes : responsabilités de la direction, règles de déontologie, acceptation et maintien des missions, ressources humaines, réalisation des missions, suivi. La confirmation annuelle écrite d'indépendance est une exigence explicite. Côté commissariat aux comptes, la NEP relative à la maîtrise de la qualité impose la même confirmation annuelle : c'est un point commun, pas une différence.",
+      "reference": "NPMQ (norme professionnelle de maîtrise de la qualité, OEC) ; ISQC 1",
+      "confidence": "medium"
+    },
+    {
+      "id": "2018-11-EC-05",
+      "n": 5,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["honoraires", "confraternite_reprise_dossier"],
+      "points": 1,
+      "question": "Dans le cadre de l'exercice du droit de rétention, l'expert-comptable :",
+      "qcm": {
+        "choices": [
+          "Peut retenir les documents appartenant au client (factures, notes de frais…) jusqu'à complet paiement des honoraires",
+          "Peut retenir des documents du client car il est en désaccord avec ce dernier sur certains points, alors même qu'il n'y a pas de litige sur le paiement des honoraires",
+          "N'a pas à informer le client de l'exercice de son droit de rétention",
+          "Doit informer le Président du Conseil Régional de l'OEC sur le fait qu'il envisage de procéder à la rétention de documents"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "À quelles conditions l'expert-comptable peut-il exercer un droit de rétention sur des documents ?",
+        "expected": [
+          "Créance d'honoraires certaine, liquide et exigible (pas de rétention pour un simple désaccord)",
+          "Rétention limitée aux travaux et documents établis par l'expert-comptable ; jamais les pièces et livres appartenant au client",
+          "Information préalable du client",
+          "Information du président du conseil régional de l'Ordre"
+        ],
+        "model_answer": "Le droit de rétention ne peut être exercé qu'à l'appui d'une créance d'honoraires certaine, liquide et exigible, et seulement sur les documents que l'expert-comptable a lui-même établis, jamais sur les pièces appartenant au client. Il doit en informer le client et en aviser le président de son conseil régional, qui peut jouer un rôle de conciliation."
+      },
+      "explanation": "Le droit de rétention est un moyen de pression exceptionnel, encadré par le code de déontologie et le règlement intérieur : il suppose un impayé (et non un désaccord technique), ne porte pas sur les documents du client et s'exerce avec transparence envers le client et l'Ordre. Retenir les pièces comptables d'un client pourrait d'ailleurs l'empêcher de satisfaire à ses obligations légales et engagerait la responsabilité du professionnel.",
+      "reference": "D. 2012-432, code de déontologie (devoirs envers les clients, droit de rétention) ; règlement intérieur de l'Ordre",
+      "confidence": "medium"
+    },
+    {
+      "id": "2018-11-EC-06",
+      "n": 6,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["lcb_ft"],
+      "points": 1,
+      "question": "L'application de la norme anti-blanchiment prévoit que :",
+      "qcm": {
+        "choices": [
+          "Seules les missions comptables doivent respecter la norme anti-blanchiment",
+          "L'identification du niveau de vigilance sur un dossier passe par une analyse des risques",
+          "L'expert-comptable peut commencer ses travaux même s'il n'a pas récupéré les éléments d'identification de son nouveau client",
+          "Les présidents de CROEC doivent être informés de l'établissement des déclarations de soupçon dès lors qu'elles adviennent"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Comment l'expert-comptable détermine-t-il le niveau de vigilance applicable à un dossier au titre de la lutte contre le blanchiment, et quelles sont les erreurs à éviter ?",
+        "expected": [
+          "Approche par les risques : classification des risques du cabinet et évaluation du risque de chaque client (nature du client, de la mission, zone géographique, PPE…)",
+          "Niveaux de vigilance : allégée, standard, renforcée",
+          "La norme s'applique à toutes les missions et prestations, pas seulement aux missions comptables",
+          "Identification et vérification de l'identité du client (et du bénéficiaire effectif) avant d'entrer en relation d'affaires",
+          "La déclaration de soupçon est adressée à Tracfin seul, sans information de l'Ordre"
+        ],
+        "model_answer": "La norme anti-blanchiment (NPLAB) repose sur une approche par les risques : le cabinet classe ses risques et évalue chaque relation d'affaires pour fixer le niveau de vigilance (allégée, standard ou renforcée). Elle s'applique à toutes les missions, impose d'identifier le client et son bénéficiaire effectif avant d'entrer en relation, et réserve la déclaration de soupçon à Tracfin, sans copie ni information de l'Ordre."
+      },
+      "explanation": "Les trois distracteurs correspondent à des erreurs fréquentes : champ limité aux missions comptables (faux : toutes les prestations sont visées), début des travaux avant identification (faux : l'identification précède l'entrée en relation, sauf cas de vérification différée strictement encadrés), information de l'Ordre (faux : la déclaration de soupçon est confidentielle et le président du conseil régional n'en est pas destinataire). La règle de confidentialité est identique pour le commissaire aux comptes vis-à-vis de la CRCC.",
+      "reference": "C. mon. fin. art. L.561-4-1 s. (approche par les risques), L.561-5 s. (identification), L.561-15 s. (déclaration) ; NPLAB (norme anti-blanchiment de l'OEC)",
+      "confidence": "high"
+    },
+    {
+      "id": "2018-11-EC-07",
+      "n": 7,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["lettre_mission", "societes_ec_capital"],
+      "points": 1,
+      "question": "Dans une société d'expertise comptable avec plusieurs associés, une lettre de mission portant sur une mission de présentation doit comporter :",
+      "qcm": {
+        "choices": [
+          "La signature sociale de la structure d'exercice et celle du client",
+          "La signature sociale de la structure, celle de l'expert-comptable, responsable de la mission et celle du client",
+          "La signature de l'expert-comptable, responsable de la mission, et celle du client",
+          "Aucune des propositions précédentes"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "question": "Qui signe la lettre de mission lorsqu'une mission de présentation est confiée à une société d'expertise comptable comptant plusieurs associés ?",
+        "expected": [
+          "La lettre de mission est un contrat entre la société d'expertise comptable (structure d'exercice) et le client",
+          "Signature sociale : représentant légal de la société ou associé expert-comptable ayant reçu délégation",
+          "Signature du client",
+          "L'expert-comptable responsable de la mission n'a pas à signer en son nom propre ; le collaborateur jamais"
+        ],
+        "model_answer": "La lettre de mission lie la société d'expertise comptable et son client : elle porte la signature sociale de la structure (par son représentant légal ou un associé expert-comptable délégataire) et celle du client. L'expert-comptable responsable du dossier y est désigné mais n'a pas à signer à titre personnel, et un collaborateur non inscrit ne peut jamais engager le cabinet."
+      },
+      "explanation": "Le contrat écrit est obligatoire pour toute mission ; lorsque l'exercice se fait en société, c'est la personne morale inscrite qui est partie au contrat et qui est responsable, d'où la signature sociale. Le nom de l'expert-comptable responsable de la mission figure dans la lettre pour identifier l'interlocuteur et le signataire des travaux, sans en faire une partie au contrat. Même logique en commissariat aux comptes : le mandat est donné à la société, qui désigne un signataire personne physique.",
+      "reference": "D. 2012-432 art. 151 (contrat écrit / lettre de mission) ; NP 2300 ; NPMQ",
+      "confidence": "medium"
+    },
+    {
+      "id": "2018-11-EC-08",
+      "n": 8,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["personnes_physiques", "lettre_mission"],
+      "points": 1,
+      "question": "En matière d'établissement de déclaration IR pour Monsieur ZEN, dirigeant d'une SARL, cliente du cabinet d'expertise comptable, le cabinet :",
+      "qcm": {
+        "choices": [
+          "Ne peut pas établir la déclaration d'IR du dirigeant, car cela est de la compétence exclusive des avocats fiscalistes",
+          "Peut établir cette déclaration dans le cadre de la mission qu'il a contractée avec la SARL",
+          "Peut établir la mission à condition d'avoir une lettre de mission spécifique avec Monsieur ZEN",
+          "Ne peut faire cette mission que s'il a une mission comptable avec la SARL"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Un cabinet d'expertise comptable peut-il établir la déclaration de revenus du dirigeant d'une société cliente, et à quelle condition ?",
+        "expected": [
+          "Oui : l'expert-comptable peut assister les personnes physiques dans leurs démarches déclaratives à finalité fiscale, sociale et administrative",
+          "Le dirigeant est un client distinct de la société : lettre de mission spécifique conclue avec lui",
+          "Aucune mission comptable avec la société n'est requise"
+        ],
+        "model_answer": "Oui. L'ordonnance autorise l'expert-comptable à accompagner les personnes physiques dans leurs démarches déclaratives fiscales, sociales et administratives. Le dirigeant étant une personne distincte de la SARL, la prestation doit faire l'objet d'une lettre de mission propre, conclue avec lui ; elle ne dépend pas de l'existence d'une mission comptable avec la société."
+      },
+      "explanation": "Depuis 2010, l'article 2 de l'ordonnance ouvre expressément aux experts-comptables l'accompagnement déclaratif des personnes physiques. Le piège est contractuel : chaque client, même lié à une société cliente, doit avoir sa propre lettre de mission, et la mission conclue avec la société ne peut pas couvrir les déclarations personnelles du dirigeant. Il n'existe aucun monopole des avocats sur les déclarations fiscales.",
+      "reference": "Ord. 45-2138 art. 2 (assistance des personnes physiques dans leurs démarches déclaratives) ; D. 2012-432 art. 151 (lettre de mission)",
+      "confidence": "high"
+    },
+    {
+      "id": "2018-11-EC-09",
+      "n": 9,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["delegation_signature", "lcb_ft"],
+      "points": 1,
+      "question": "Dans le cadre de la délégation des travaux, l'expert-comptable, associé du cabinet, peut déléguer à un chef de mission, non expert-comptable :",
+      "qcm": {
+        "choices": [
+          "L'acceptation d'une mission de révision des comptes d'une association",
+          "La supervision technique d'une partie des travaux réalisés par les collaborateurs",
+          "La signature technique du rapport dans le cadre d'une mission d'examen limité",
+          "L'établissement de la déclaration de soupçon"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Quelles tâches l'expert-comptable peut-il déléguer à un chef de mission non inscrit, et lesquelles lui sont réservées ?",
+        "expected": [
+          "Délégable : la réalisation et la supervision technique d'une partie des travaux, sous la responsabilité de l'expert-comptable",
+          "Réservé : l'acceptation (et le maintien) de la mission",
+          "Réservé : la signature des rapports et attestations (prérogative du professionnel inscrit)",
+          "Réservé : la déclaration de soupçon à Tracfin (déclarant désigné, expert-comptable)",
+          "La délégation ne décharge jamais l'expert-comptable de sa responsabilité"
+        ],
+        "model_answer": "L'expert-comptable peut confier à un chef de mission non inscrit l'exécution et la supervision technique d'une partie des travaux, qu'il revoit et dont il reste responsable. Il ne peut en revanche déléguer ni la décision d'accepter une mission, ni la signature des rapports et attestations, ni la déclaration de soupçon, qui relèvent du professionnel inscrit."
+      },
+      "explanation": "La signature des documents issus d'une mission normée est une prérogative de l'expert-comptable inscrit (exercice de la profession) ; la NPMQ réserve l'acceptation des missions à la direction du cabinet ; la NPLAB confie la déclaration à un déclarant désigné, professionnel inscrit. Le commissaire aux comptes connaît la même limite : le signataire du rapport est nécessairement un commissaire aux comptes inscrit.",
+      "reference": "Ord. 45-2138 art. 2 et 20 (exercice illégal) ; NPMQ ; NPLAB ; C. mon. fin. art. R.561-23",
+      "confidence": "medium"
+    },
+    {
+      "id": "2018-11-EC-10",
+      "n": 10,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["formation", "controle_qualite"],
+      "points": 1,
+      "question": "Pour pouvoir maintenir un niveau de compétences élevé dans la réalisation de leurs missions, la réglementation professionnelle prévoit que :",
+      "qcm": {
+        "choices": [
+          "Les experts-comptables procèdent à une évaluation périodique du personnel et notamment de ses compétences",
+          "Les collaborateurs suivent une formation d'au minimum 20 heures par an",
+          "Dans le cadre d'un contrôle de qualité, la formation entrant en ligne de compte par rapport à l'obligation de compétence ne concerne que des formations vérifiables, validées par une attestation de formation",
+          "Aucune des propositions précédentes"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "question": "Quelles obligations la réglementation professionnelle impose-t-elle à l'expert-comptable pour maintenir la compétence du cabinet et la sienne ?",
+        "expected": [
+          "NPMQ : politiques de ressources humaines incluant l'évaluation périodique des performances et compétences du personnel",
+          "Obligation de formation continue de l'expert-comptable (120 heures sur 3 ans, minimum 20 heures par an, alignée sur celle des commissaires aux comptes)",
+          "Actions de formation variées admises (formations suivies ou dispensées, colloques, publications, travaux de recherche…), pas seulement les formations attestées",
+          "Pas d'obligation chiffrée légale pour les collaborateurs, mais obligation du cabinet de maintenir leurs compétences"
+        ],
+        "model_answer": "La NPMQ impose au cabinet des procédures de ressources humaines comprenant l'évaluation périodique des compétences et des performances du personnel. L'expert-comptable est en outre personnellement tenu à une formation continue (120 heures sur trois ans, dont au moins 20 par an), satisfaite par des actions diverses et pas uniquement par des formations attestées ; il n'existe pas de quantum légal propre aux collaborateurs."
+      },
+      "explanation": "La proposition sur l'évaluation du personnel découle directement de la composante « ressources humaines » de la NPMQ. Les autres sont fausses : aucun texte ne fixe 20 heures par an aux collaborateurs, et la formation prise en compte ne se limite pas aux formations attestées (enseignement, publications, groupes de travail comptent). Attention à l'évolution : l'obligation chiffrée de l'expert-comptable a été alignée sur celle du commissaire aux comptes (120 h/3 ans), ce qui a rendu obsolète un ancien distracteur de ce sujet.",
+      "reference": "NPMQ (ressources humaines) ; règlement intérieur de l'Ordre (formation continue) ; pour comparaison, C. com. ex R.822-21 s. (formation des commissaires aux comptes)",
+      "confidence": "medium",
+      "update_note": "Le sujet d'origine comportait une proposition « 120 heures sur 3 ans incluant les heures CAC », supprimée ici car l'obligation de formation de l'expert-comptable a depuis été alignée sur ce quantum : vérifier la version en vigueur du règlement intérieur."
+    },
+    {
+      "id": "2018-11-CAC-11",
+      "n": 11,
+      "profession": "CAC",
+      "theme": "controle_qualite",
+      "tags": ["h2a_supervision", "cncc_crcc_organisation"],
+      "points": 1,
+      "question": "Le H3C (aujourd'hui la Haute autorité de l'audit, H2A) a pour mission :",
+      "qcm": {
+        "choices": [
+          "D'assurer la surveillance de la profession de commissaire aux comptes avec le concours de la CNCC",
+          "D'assurer la surveillance de la profession de commissaire aux comptes et de la profession d'expert-comptable avec le concours de la CNCC et de l'OEC",
+          "D'adopter les normes relatives à la déontologie des commissaires aux comptes",
+          "De statuer comme instance d'appel sur toutes les décisions prises par les commissions régionales de discipline"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Quelles sont les principales missions de la Haute autorité de l'audit (ex-H3C) ?",
+        "expected": [
+          "Inscription des commissaires aux comptes et tenue de la liste (délégation possible à la CNCC)",
+          "Adoption des normes de déontologie, de contrôle interne de qualité et d'exercice professionnel (homologuées par arrêté)",
+          "Définition du cadre et supervision des contrôles d'activité",
+          "Suivi de la formation continue, veille au respect de la déontologie et de l'indépendance",
+          "Pouvoir disciplinaire : enquêtes (rapporteur général) et sanctions (commission des sanctions) ; coopération internationale"
+        ],
+        "model_answer": "Autorité publique indépendante, la Haute autorité de l'audit inscrit les commissaires aux comptes et tient la liste, adopte les normes de déontologie, de contrôle interne de qualité et d'exercice professionnel, définit et supervise les contrôles d'activité, veille à la formation continue et à l'indépendance, et exerce le pouvoir disciplinaire par sa commission des sanctions. Elle ne supervise pas les experts-comptables."
+      },
+      "explanation": "Depuis la réforme de 2016, l'autorité de supervision « adopte » les normes, élaborées par une commission associant la profession, avant homologation par arrêté. Les distracteurs exploitent deux confusions : l'extension de sa compétence aux experts-comptables (faux, ceux-ci relèvent de l'Ordre et de leurs chambres de discipline) et l'existence d'un double degré disciplinaire régional/national (faux : les chambres régionales de discipline des commissaires aux comptes ont disparu en 2016 ; l'appel contre la commission des sanctions est porté devant le Conseil d'État). La formule « surveillance avec le concours de la CNCC » appartient à la rédaction antérieure à 2016.",
+      "reference": "C. com. ex L.821-1 (missions du H3C), recodifié L.820-x en 2024 (Haute autorité de l'audit) ; ex L.821-14 (commission d'élaboration des normes)",
+      "confidence": "medium",
+      "update_note": "Depuis le 1er janvier 2024, le H3C est remplacé par la Haute autorité de l'audit (H2A), dont les missions sont fixées aux articles L.820-x du code de commerce recodifié ; la question est posée pour l'autorité actuelle."
+    },
+    {
+      "id": "2018-11-CAC-12",
+      "n": 12,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions", "h2a_supervision"],
+      "points": 1,
+      "question": "Le délai de prescription de l'action disciplinaire à l'encontre d'un commissaire aux comptes est :",
+      "qcm": {
+        "choices": [
+          "3 ans",
+          "5 ans",
+          "6 ans",
+          "10 ans"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Quel est le délai de prescription de l'action disciplinaire contre un commissaire aux comptes, et devant quelle instance cette action est-elle portée ?",
+        "expected": [
+          "Six ans à compter des faits (ou de leur révélation en cas de dissimulation)",
+          "Enquête par le rapporteur général de la H2A, jugement par la commission des sanctions",
+          "Recours devant le Conseil d'État"
+        ],
+        "model_answer": "L'action disciplinaire se prescrit par six ans à compter de la commission des faits. Elle est instruite par le rapporteur général de la Haute autorité de l'audit et jugée par sa commission des sanctions, dont les décisions peuvent être contestées devant le Conseil d'État."
+      },
+      "explanation": "Le délai de six ans est propre à la discipline des commissaires aux comptes ; il ne faut le confondre ni avec la prescription civile de droit commun (cinq ans) ni avec la prescription des délits (six ans également, mais en matière pénale). Côté experts-comptables, la procédure disciplinaire relève des chambres régionales puis de la chambre nationale de discipline, sans délai de prescription explicite dans l'ordonnance.",
+      "reference": "C. com. ex L.824-4 (prescription de six ans), recodifié L.820-x en 2024 ; L.820-2 s. (commission des sanctions de la H2A)",
+      "confidence": "high",
+      "update_note": "La commission des sanctions relève désormais de la H2A ; article recodifié au 1er janvier 2024."
+    },
+    {
+      "id": "2018-11-CAC-13",
+      "n": 13,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["honoraires_bareme"],
+      "points": 1,
+      "question": "Les honoraires des commissaires aux comptes :",
+      "qcm": {
+        "choices": [
+          "Sont toujours librement fixés",
+          "Peuvent reposer sur un barème figurant dans le Code de commerce",
+          "Sont toujours fixés par un barème figurant dans le Code de commerce",
+          "Sont basés sur des fourchettes de taux exprimés en €/heure"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Comment sont déterminés les honoraires du commissaire aux comptes ?",
+        "expected": [
+          "Barème d'heures fixé par le code de commerce pour la mission de certification : nombre d'heures normal selon des tranches de total bilan + produits",
+          "Montant horaire librement convenu avec l'entité",
+          "Dérogations au barème possibles (décision du président de la CRCC), litiges relevant de la H2A",
+          "Prestations autres que la certification : honoraires hors barème, librement convenus"
+        ],
+        "model_answer": "Pour la certification, le code de commerce prévoit un barème d'heures : à chaque tranche de total du bilan augmenté des produits correspond une fourchette d'heures de travail, le taux horaire restant libre. Il peut y être dérogé avec l'accord du président de la compagnie régionale, et les autres prestations sont rémunérées hors barème. Les honoraires ne sont donc ni totalement libres ni intégralement tarifés."
+      },
+      "explanation": "Le barème porte sur un volume d'heures, pas sur des taux en euros : c'est le piège de la dernière proposition. « Toujours libres » est la règle de l'expert-comptable, « toujours tarifés » ignore les dérogations et les prestations hors certification. Le jury signale régulièrement cette confusion entre honoraires libres (EC) et honoraires encadrés (CAC).",
+      "reference": "C. com. D.821-188 s. (barème d'heures, ex R.823-12 s.) ; code de déontologie des commissaires aux comptes (honoraires)",
+      "confidence": "high",
+      "update_note": "Barème recodifié au 1er janvier 2024 (ex R.823-12 devenu D.821-188) ; le principe est inchangé."
+    },
+    {
+      "id": "2018-11-CAC-14",
+      "n": 14,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["independance_situations_risque", "services_interdits_eip", "prestations_declaration_activite"],
+      "points": 1,
+      "question": "Les textes légaux et réglementaires n'interdisent pas au commissaire aux comptes d'une entité :",
+      "qcm": {
+        "choices": [
+          "Une prestation le mettant en situation d'autorévision s'il a envisagé des mesures de sauvegarde",
+          "Tout acte de gestion sauf ceux qui ne le mettent pas en situation d'autorévision",
+          "La mission de présentation des comptes d'une filiale de cette entité qu'elle consolide par la méthode de l'intégration globale",
+          "La mission de présentation des comptes d'une filiale non consolidée de cette entité"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Quels services le commissaire aux comptes ne peut-il pas fournir à l'entité dont il certifie les comptes (hors EIP), et dans quel périmètre ?",
+        "expected": [
+          "Interdiction des services le plaçant en situation d'autorévision (tenue de comptabilité, établissement des comptes, conception des systèmes d'information financière…)",
+          "Interdiction de toute immixtion dans la gestion (actes de gestion)",
+          "Interdiction des services fournis par le réseau non conformes aux règles",
+          "Périmètre : l'entité certifiée et les entités qu'elle contrôle ou qui la contrôlent / comprises dans sa consolidation",
+          "Hors de ce périmètre (filiale non consolidée), prestation possible sous réserve de l'analyse des risques et des mesures de sauvegarde"
+        ],
+        "model_answer": "Depuis la loi Pacte, il n'existe plus de liste de services interdits pour les entités non EIP, mais trois interdictions de principe demeurent : les services créant une situation d'autorévision, l'immixtion dans la gestion et les prestations du réseau non conformes. Elles s'apprécient pour l'entité certifiée et les entités de son périmètre (contrôlées ou consolidées). Tenir ou présenter les comptes d'une filiale intégrée globalement est donc prohibé ; une mission de présentation chez une filiale non consolidée reste envisageable après analyse des risques et mise en place de sauvegardes."
+      },
+      "explanation": "L'autorévision n'est jamais « sauvegardable » : la prestation est interdite, les mesures de sauvegarde ne concernent que les situations à risque qui n'atteignent pas ce seuil. Les actes de gestion sont tous interdits (principe de non-immixtion). La présentation des comptes d'une filiale consolidée aboutirait à auditer, dans les comptes consolidés, des comptes que le commissaire aux comptes a lui-même établis. Pour une EIP, la liste du règlement européen s'applique en plus (conseil fiscal, assistance aux contrôles fiscaux, paie, évaluation, etc.).",
+      "reference": "C. com. ex L.822-11 (rédaction loi Pacte) et ex L.822-10 (non-immixtion), recodifiés L.821-x en 2024 ; code de déontologie des commissaires aux comptes (annexe 8-1) ; règlement (UE) 537/2014 art. 5 pour les EIP",
+      "confidence": "medium",
+      "update_note": "Depuis la loi Pacte (2019), la liste de services interdits ne vise plus que les EIP ; pour les autres entités, approche par l'autorévision, l'immixtion et le réseau. Articles recodifiés en 2024."
+    },
+    {
+      "id": "2018-11-CAC-15",
+      "n": 15,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["cncc_crcc_organisation"],
+      "points": 1,
+      "question": "À condition d'être à jour de ses cotisations professionnelles, peut être élu membre d'un conseil régional d'une CRCC :",
+      "qcm": {
+        "choices": [
+          "Une société de commissariat aux comptes inscrite auprès de cette CRCC et ayant des mandats au nom du cabinet à la date du scrutin",
+          "Une personne physique inscrite auprès de cette CRCC et exerçant des fonctions de commissaire aux comptes à la date du scrutin",
+          "Une personne physique régulièrement inscrite auprès de cette CRCC à la date du scrutin",
+          "Une personne physique régulièrement inscrite auprès de cette CRCC à la date du scrutin depuis au moins deux années"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Qui peut être élu membre du conseil régional d'une compagnie régionale des commissaires aux comptes ?",
+        "expected": [
+          "Les commissaires aux comptes personnes physiques inscrits sur la liste au titre de cette compagnie régionale",
+          "À jour de leurs cotisations professionnelles",
+          "Sans condition d'ancienneté d'inscription ni de détention de mandats ; les sociétés ne sont pas éligibles"
+        ],
+        "model_answer": "Sont éligibles au conseil régional les commissaires aux comptes personnes physiques régulièrement inscrits au titre de la compagnie régionale et à jour de leurs cotisations. Aucune ancienneté minimale d'inscription ni détention effective de mandats n'est exigée, et les sociétés de commissaires aux comptes ne peuvent pas être élues."
+      },
+      "explanation": "Les sociétés inscrites participent au vote mais ne siègent pas : les mandats électifs sont réservés aux personnes physiques. Les distracteurs ajoutent des conditions inexistantes (exercice effectif de mandats, deux ans d'ancienneté). Même principe à l'Ordre des experts-comptables, où seuls les membres personnes physiques sont élus aux conseils.",
+      "reference": "C. com. partie réglementaire relative à l'organisation des compagnies régionales (ex R.821-x, recodifiée en 2024) ; règlement intérieur de la CNCC",
+      "confidence": "medium",
+      "update_note": "Organisation de la CNCC réformée (gouvernance 2020-2021) et partie réglementaire recodifiée en 2024 : vérifier les conditions d'éligibilité dans la rédaction en vigueur."
+    },
+    {
+      "id": "2018-11-CAC-16",
+      "n": 16,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["formation"],
+      "points": 1,
+      "question": "Le commissaire aux comptes qui n'a pas exercé des fonctions de commissaire aux comptes pendant trois ans et qui n'a pas respecté durant cette période l'obligation de formation continue de 120 heures sur trois ans doit suivre une formation particulière …",
+      "qcm": {
+        "choices": [
+          "Dans les 6 mois qui suivent l'acceptation d'une mission légale",
+          "Dans les 6 mois qui précèdent l'acceptation d'une mission légale",
+          "Dans les 18 mois qui précèdent l'acceptation d'une mission",
+          "Dans les 18 mois qui suivent l'acceptation d'une mission"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Quelle obligation particulière de formation pèse sur le commissaire aux comptes qui reprend une mission après trois ans sans exercice ni formation continue ?",
+        "expected": [
+          "Formation particulière préalable à l'acceptation d'une mission de certification",
+          "Suivie dans les dix-huit mois précédant l'acceptation de la mission",
+          "Obligation de droit commun : 120 heures sur trois ans consécutifs, minimum 20 heures par an"
+        ],
+        "model_answer": "Le commissaire aux comptes qui n'a pas exercé pendant trois ans et n'a pas satisfait à son obligation de formation continue doit, avant d'accepter une nouvelle mission de certification, suivre une formation particulière ; celle-ci doit être accomplie dans les dix-huit mois qui précèdent l'acceptation."
+      },
+      "explanation": "La logique du texte est préventive : la remise à niveau précède la reprise d'activité, ce qui élimine les propositions « suivent ». L'obligation ordinaire est de 120 heures sur trois années consécutives, avec un minimum annuel de 20 heures ; elle est désormais commune aux experts-comptables, mais la formation particulière de reprise est propre aux commissaires aux comptes.",
+      "reference": "C. com. ex R.822-21 s. (formation continue) et ex R.822-23 (formation particulière), recodifiés R.821-x en 2024 ; arrêté relatif à la formation continue des commissaires aux comptes",
+      "confidence": "low",
+      "update_note": "Articles recodifiés au 1er janvier 2024 ; le suivi de la formation peut être délégué par la H2A à la CNCC. Le délai de dix-huit mois est à vérifier dans l'arrêté en vigueur."
+    },
+    {
+      "id": "2018-11-CAC-17",
+      "n": 17,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["secret_professionnel", "responsabilite_penale"],
+      "points": 1,
+      "question": "Le délit de violation du secret professionnel peut être retenu à l'encontre d'un commissaire aux comptes si :",
+      "qcm": {
+        "choices": [
+          "Il a malencontreusement adressé un mail comprenant des informations confidentielles à une personne qui n'en était pas le destinataire",
+          "Il a donné des informations confidentielles au commissaire aux comptes qui lui a succédé",
+          "En tant que commissaire aux comptes d'une société mère il a donné des informations confidentielles au commissaire aux comptes d'une filiale consolidée",
+          "Il a sciemment donné, à des tiers, des informations confidentielles liées à une entité dont il est le commissaire aux comptes"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "À quelles conditions la violation du secret professionnel par un commissaire aux comptes constitue-t-elle un délit, et quelles communications échappent à l'infraction ?",
+        "expected": [
+          "Délit intentionnel : révélation consciente et volontaire d'une information à caractère secret à un tiers",
+          "Une divulgation par négligence n'est pas le délit (mais peut engager la responsabilité civile et disciplinaire)",
+          "Communications légalement autorisées : successeur, commissaires aux comptes du périmètre de consolidation, H2A, AMF, Tracfin, juge",
+          "Peine du code pénal : un an d'emprisonnement et 15 000 € d'amende"
+        ],
+        "model_answer": "Le délit suppose la révélation volontaire, en connaissance de cause, d'une information couverte par le secret à une personne non autorisée à la recevoir. Une divulgation par maladresse ne constitue pas l'infraction pénale, même si elle peut être fautive civilement ou disciplinairement. Les échanges avec le successeur, les commissaires aux comptes du périmètre de consolidation, l'autorité de supervision, l'AMF, Tracfin ou le juge sont des levées légales du secret."
+      },
+      "explanation": "L'élément intentionnel est au cœur de la question : le code pénal sanctionne celui qui révèle « sciemment ». Les propositions sur le successeur et la filiale consolidée décrivent des dérogations expressément prévues par le code de commerce. Même raisonnement pour l'expert-comptable, dont le secret (ordonnance art. 21) est sanctionné par le même article du code pénal.",
+      "reference": "C. pén. art. 226-13 ; C. com. ex L.822-15 (secret et dérogations), recodifié en 2024",
+      "confidence": "high",
+      "update_note": "Article du code de commerce recodifié au 1er janvier 2024 ; règle de fond inchangée."
+    },
+    {
+      "id": "2018-11-CAC-18",
+      "n": 18,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["mandat_duree_cessation", "eip"],
+      "points": 1,
+      "question": "Dans les non-EIP autres que les APG (associations faisant appel public à la générosité) et autres que les filiales importantes d'EIP, lorsque l'EIP et sa filiale ont désigné le même commissaire aux comptes :",
+      "qcm": {
+        "question": "Dans une entité non EIP (autre qu'une association faisant appel public à la générosité ou une filiale importante d'EIP) ayant le même commissaire aux comptes que l'EIP qui la contrôle, quelle affirmation est exacte ?",
+        "choices": [
+          "Le cabinet titulaire du mandat, le signataire au nom du cabinet et le commissaire aux comptes personne physique titulaire peuvent tous exercer plus de six exercices consécutifs",
+          "Le cabinet peut conserver le mandat au-delà de six exercices, mais le signataire doit changer tous les six exercices",
+          "Le cabinet doit être remplacé au terme de dix exercices consécutifs, sauf appel d'offres",
+          "Le commissaire aux comptes personne physique titulaire doit cesser ses fonctions après six exercices et respecter un délai de viduité de trois ans"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "question": "Quelles règles de rotation s'appliquent au commissaire aux comptes d'une entité non EIP, et à quelles entités s'étend la rotation du signataire ?",
+        "expected": [
+          "Non-EIP : aucune rotation obligatoire, ni du cabinet ni du signataire ; mandat de six exercices renouvelable sans limite",
+          "Rotation du signataire (six exercices, viduité de trois ans) : EIP, associations faisant appel public à la générosité, filiales importantes d'EIP ayant le même commissaire aux comptes",
+          "Rotation du cabinet (dix ans, prolongeable) : EIP uniquement"
+        ],
+        "model_answer": "Hors EIP, le mandat de six exercices est renouvelable sans limitation : ni le cabinet, ni le signataire, ni le commissaire aux comptes personne physique ne sont soumis à rotation. La rotation du signataire après six exercices ne vise que les EIP, les associations faisant appel public à la générosité et les filiales importantes d'EIP partageant le même commissaire aux comptes ; la rotation du cabinet (dix ans) ne concerne que les EIP."
+      },
+      "explanation": "Le sujet d'origine faisait valider les trois affirmations ensemble ; la question a été reformulée pour isoler la bonne réponse. Le piège consiste à étendre aux filiales ordinaires les règles des EIP : seule une filiale « importante » d'EIP, auditée par le même commissaire aux comptes, se voit appliquer la rotation du signataire. Aucune règle de rotation n'existe en expertise comptable.",
+      "reference": "C. com. ex L.823-3-1 (rotation du cabinet, EIP) et ex L.822-14 (rotation du signataire), recodifiés L.821-x en 2024 ; règlement (UE) 537/2014 art. 17",
+      "confidence": "medium",
+      "update_note": "Articles recodifiés au 1er janvier 2024 (ordonnance 2023-1142) ; règles de rotation inchangées."
+    },
+    {
+      "id": "2018-11-CAC-19",
+      "n": 19,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["prestations_declaration_activite", "independance_situations_risque"],
+      "points": 1,
+      "question": "Les SACC (services autres que la certification des comptes) que le commissaire aux comptes d'une entité peut rendre à cette entité comprennent :",
+      "qcm": {
+        "choices": [
+          "L'établissement des déclarations fiscales",
+          "Les services liés à la fonction d'audit interne de l'entité auditée",
+          "La mise en place de procédures de contrôle interne",
+          "Des formations au PCG destinées aux employés du service commercial de cette entité"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Quels services autres que la certification le commissaire aux comptes peut-il rendre à l'entité qu'il audite, et lesquels lui sont interdits ?",
+        "expected": [
+          "Interdits car autorévision : établissement des déclarations fiscales et des comptes, conception ou mise en place de procédures de contrôle interne, fonction d'audit interne",
+          "Interdite : toute immixtion dans la gestion",
+          "Possibles : prestations sans incidence sur l'information financière auditée (formation du personnel, attestations, diligences directement liées à la mission), après analyse des risques et mesures de sauvegarde",
+          "Pour une EIP : liste noire du règlement européen et plafond d'honoraires de 70 %"
+        ],
+        "model_answer": "Le commissaire aux comptes ne peut rendre que des services qui ne le placent pas en situation d'autorévision ni d'immixtion : sont donc exclus l'établissement des déclarations fiscales, la conception de procédures de contrôle interne et l'audit interne, qu'il serait ensuite amené à apprécier. Une formation comptable destinée à des salariés sans rôle dans l'information financière est admissible, sous réserve de l'analyse des risques. Pour les EIP, la liste des services interdits du règlement européen s'ajoute à ces principes."
+      },
+      "explanation": "Le raisonnement passe par l'autorévision : déclarations fiscales (bases de l'impôt audité), procédures de contrôle interne (évaluées par l'auditeur), audit interne (sur lequel l'auditeur s'appuie) sont incompatibles. Le distracteur « déclarations fiscales » illustre la confusion EC/CAC : prestation ordinaire pour l'expert-comptable, interdite pour le commissaire aux comptes de l'entité.",
+      "reference": "C. com. ex L.822-11 (rédaction loi Pacte), recodifié L.821-x en 2024 ; code de déontologie des commissaires aux comptes (annexe 8-1) ; règlement (UE) 537/2014 art. 4 et 5",
+      "confidence": "medium",
+      "update_note": "Depuis la loi Pacte, plus de liste de services interdits pour les non-EIP : raisonnement par l'autorévision, l'immixtion et le réseau. Articles recodifiés en 2024."
+    },
+    {
+      "id": "2018-11-CAC-20",
+      "n": 20,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["independance_situations_risque", "h2a_supervision"],
+      "points": 1,
+      "question": "L'article 11 du code de déontologie comprend la disposition suivante : « Le commissaire aux comptes identifie les risques de nature à affecter d'une quelconque façon la formation, l'expression de son opinion ou l'exercice de sa mission ». Ce même article 11 comprend également la disposition suivante : « En cas de doute sérieux ou de difficulté d'interprétation le commissaire aux comptes … »",
+      "qcm": {
+        "choices": [
+          "Saisit, pour avis, le Haut Conseil du commissariat aux comptes (aujourd'hui la Haute autorité de l'audit)",
+          "Saisit, pour avis, le président de la CRCC dont il dépend",
+          "Saisit, pour avis, la commission ad hoc de la CNCC",
+          "L'indique dans son rapport sur les comptes"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "question": "Quelle démarche le code de déontologie impose-t-il au commissaire aux comptes face à une situation à risque, et que fait-il en cas de doute sérieux ?",
+        "expected": [
+          "Identifier les risques de nature à affecter la formation ou l'expression de l'opinion",
+          "Prendre immédiatement les mesures de sauvegarde pour éliminer la cause ou réduire les effets à un niveau acceptable",
+          "En cas de doute sérieux ou de difficulté d'interprétation : saisir pour avis l'autorité de supervision (H3C, désormais H2A)",
+          "Documenter l'analyse et les mesures dans le dossier"
+        ],
+        "model_answer": "Le commissaire aux comptes identifie les risques pesant sur son indépendance et son opinion, prend sans délai les mesures de sauvegarde propres à en supprimer la cause ou à en réduire les effets, et documente sa démarche. Si un doute sérieux ou une difficulté d'interprétation subsiste, il saisit pour avis l'autorité de supervision, la Haute autorité de l'audit depuis 2024."
+      },
+      "explanation": "Les distracteurs renvoient à des interlocuteurs plausibles mais inexacts : le président de la CRCC intervient pour la conciliation, les dérogations au barème ou la répartition entre co-commissaires, pas pour les avis déontologiques ; mentionner le doute dans le rapport n'est pas une réponse déontologique. L'expert-comptable, lui, consulte son conseil régional.",
+      "reference": "Code de déontologie des commissaires aux comptes (annexe 8-1 C. com.), dispositions sur les situations à risque et mesures de sauvegarde (art. 11 dans la version 2010-2017)",
+      "confidence": "medium",
+      "update_note": "Code refondu par le décret 2020-292 (renumérotation) et H3C remplacé par la H2A au 1er janvier 2024."
+    }
+  ]
+}

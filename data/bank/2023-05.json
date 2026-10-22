@@ -1,0 +1,619 @@
+{
+  "session": "2023-05",
+  "format": "qcm",
+  "questions": [
+    {
+      "id": "2023-05-EC-01",
+      "n": 1,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["societes_ec_capital"],
+      "points": 1,
+      "question": "Dans les sociétés d'expertise comptable, les règles de détention du capital et des droits de vote sont les suivantes :",
+      "qcm": {
+        "choices": [
+          "Les personnes physiques ressortissantes de l'UE et de l'EEE et les personnes morales y ayant leur siège et exerçant la profession d'expertise comptable, doivent détenir 50 % du capital au minimum.",
+          "Les personnes physiques ressortissantes de l'UE et de l'EEE et les personnes morales y ayant leur siège et exerçant la profession d'expertise comptable, doivent détenir plus de 2/3 des droits de vote.",
+          "Pour les sociétés mixtes dont l'activité est l'expertise comptable et le commissariat aux comptes, les tiers à la profession peuvent détenir jusqu'à un tiers des droits de vote.",
+          "Les personnes physiques ressortissantes de l'UE et de l'EEE et les personnes morales y ayant leur siège et exerçant la profession d'expertise comptable, doivent détenir plus de 2/3 du capital."
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Quelle condition de détention des droits de vote doit respecter une société d'expertise comptable pour être inscrite au tableau de l'Ordre ?",
+        "expected": [
+          "Plus des deux tiers des droits de vote détenus par des professionnels de l'expertise comptable (personnes physiques UE/EEE ou personnes morales y exerçant légalement), directement ou par une société inscrite",
+          "La règle porte sur les droits de vote, non sur le capital",
+          "Aucun tiers ne doit détenir une fraction des droits de vote mettant en péril l'indépendance"
+        ],
+        "model_answer": "Les experts-comptables (personnes physiques ressortissantes de l'UE ou de l'EEE, ou personnes morales y exerçant légalement la profession) doivent détenir, directement ou par l'intermédiaire d'une société inscrite à l'Ordre, plus des deux tiers des droits de vote de la société. La condition porte sur les droits de vote et non sur le capital, et aucune personne extérieure ne doit détenir une part des droits de vote de nature à compromettre l'indépendance."
+      },
+      "explanation": "L'article 7 de l'ordonnance de 1945, dans sa rédaction issue de l'ordonnance 2014-443, exige plus des deux tiers des droits de vote (et non du capital) aux professionnels. Le distracteur d est le piège le plus fréquent (capital au lieu de droits de vote). Pour les sociétés de commissaires aux comptes, la règle est différente : la majorité des droits de vote doit être détenue par des CAC ou sociétés de CAC (C. com. L.821-16), d'où la fausse piste du « tiers » en société mixte.",
+      "reference": "Ord. 45-2138 art. 7 I 1° et 2° ; C. com. L.821-16 pour le parallèle CAC",
+      "confidence": "high"
+    },
+    {
+      "id": "2023-05-EC-02",
+      "n": 2,
+      "profession": "EC",
+      "theme": "controle_qualite",
+      "tags": ["controle_qualite", "ordre_organisation"],
+      "points": 1,
+      "question": "Le contrôle qualité de l'Ordre des experts-comptables concerne :",
+      "qcm": {
+        "choices": [
+          "la structure d'exercice professionnel.",
+          "la structure d'exercice professionnel et les experts-comptables inscrits au tableau.",
+          "la structure d'exercice professionnel, les experts-comptables inscrits au tableau, les salariés relevant des articles 83 ter et 83 quater.",
+          "les experts-comptables inscrits au tableau, les salariés articles 83 ter et 83 quater, les experts-comptables stagiaires."
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Quel est le champ d'application du contrôle de qualité de l'Ordre des experts-comptables ?",
+        "expected": [
+          "La structure d'exercice professionnel (bureau principal et bureaux secondaires, filiales ou organismes concourant aux missions)",
+          "Chacun des professionnels inscrits au tableau ou à sa suite : experts-comptables, salariés autorisés (art. 83 ter et 83 quater), AGC",
+          "Les stagiaires ne sont pas contrôlés en tant que tels"
+        ],
+        "model_answer": "Le contrôle de qualité porte sur la structure d'exercice professionnel (bureau principal, bureaux secondaires et organismes concourant aux missions) et sur chacun de ses membres inscrits au tableau ou à sa suite : experts-comptables, salariés autorisés à exercer au titre des articles 83 ter et 83 quater, et associations de gestion et de comptabilité. Les experts-comptables stagiaires, qui ne sont pas membres de l'Ordre, n'en font pas l'objet."
+      },
+      "explanation": "Le contrôle de qualité vise toutes les personnes autorisées à exercer l'activité d'expertise comptable et soumises au référentiel normatif : professionnels inscrits et structures. Les stagiaires sont soumis à la surveillance et au contrôle disciplinaire de l'Ordre mais ne réalisent pas de missions sous leur propre responsabilité, d'où leur exclusion. Chez les CAC, le contrôle d'activité est conduit sous l'autorité de la H2A et vise les commissaires inscrits et leurs structures (C. com. L.820-14).",
+      "reference": "D. 2012-432 (contrôle de qualité) ; règlement intérieur de l'Ordre art. 407 ; Ord. 45-2138 art. 4 et 83 quinquies",
+      "confidence": "medium"
+    },
+    {
+      "id": "2023-05-EC-03",
+      "n": 3,
+      "profession": "EC",
+      "theme": "responsabilite",
+      "tags": ["devoir_conseil", "responsabilite_civile"],
+      "points": 1,
+      "question": "Quelle est, en pratique, la déclinaison de l'obligation de conseil ?",
+      "qcm": {
+        "choices": [
+          "Informer, exiger, refuser.",
+          "Mettre en garde, exiger, refuser.",
+          "Informer, mettre en garde, exiger, refuser.",
+          "Informer, mettre en garde, refuser."
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Comment se décline, en pratique, le devoir de conseil de l'expert-comptable ?",
+        "expected": [
+          "Informer le client (obligation d'information, de renseignement)",
+          "Mettre en garde / alerter sur les risques",
+          "Exiger les justificatifs et le respect des obligations légales",
+          "Refuser de prêter son concours à des opérations irrégulières (voire mettre fin à la mission)"
+        ],
+        "model_answer": "Le devoir de conseil, dégagé par la jurisprudence, se décline en quatre temps : informer le client, le mettre en garde contre les risques identifiés, exiger de lui les justificatifs et le respect des règles, et refuser de prêter son concours à des opérations irrégulières, au besoin en se retirant de la mission."
+      },
+      "explanation": "Le devoir de conseil est une obligation accessoire de toute mission comptable, même si la lettre de mission ne le mentionne pas, et son manquement engage la responsabilité civile contractuelle. La déclinaison en quatre verbes (informer, mettre en garde, exiger, refuser) est celle retenue par la doctrine de l'Ordre. Le commissaire aux comptes, lui, n'a pas de devoir de conseil au sens contractuel : il doit au contraire s'abstenir de toute immixtion dans la gestion (C. com. L.821-54).",
+      "reference": "Jurisprudence (Cass. com., devoir de conseil de l'expert-comptable) ; D. 2012-432 art. 155 (devoirs envers les clients) ; C. com. L.821-54 pour le parallèle CAC",
+      "confidence": "medium"
+    },
+    {
+      "id": "2023-05-EC-04",
+      "n": 4,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "incompatibilites_activites", "loi_pacte"],
+      "points": 1,
+      "question": "Dans le schéma du référentiel normatif, où se situent les activités commerciales et actes d'intermédiaires ?",
+      "qcm": {
+        "choices": [
+          "Dans le cadre des missions.",
+          "Dans les missions sans assurance.",
+          "Dans le cadre des activités.",
+          "Dans le cadre des missions d'assurance portant sur des comptes complets historiques."
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Où se situent, dans le référentiel normatif de l'expertise comptable, les activités commerciales accessoires et les actes d'intermédiaire ?",
+        "expected": [
+          "En dehors des missions : dans la partie « activités » du référentiel",
+          "Activités accessoires autorisées par la loi Pacte (ord. art. 22), encadrées par une norme professionnelle",
+          "Elles ne relèvent ni des missions d'assurance, ni des missions sans assurance"
+        ],
+        "model_answer": "Les activités commerciales accessoires et les actes d'intermédiaire, autorisés par la loi Pacte à titre accessoire, ne constituent pas des missions : ils figurent dans la partie « activités » du schéma du référentiel normatif, distincte des missions d'assurance (comptes complets historiques, autres missions d'assurance), des missions sans assurance et des autres prestations."
+      },
+      "explanation": "Le cadre de référence de l'Ordre distingue les missions (d'assurance sur comptes complets historiques, autres missions d'assurance, missions sans assurance, autres prestations) et les activités (activités commerciales accessoires, actes d'intermédiaire, mandats de paiement...). Ces activités restent soumises à des conditions et limites fixées par une norme professionnelle agréée. Les candidats confondent souvent « missions sans assurance » (compilation, procédures convenues) et « activités ».",
+      "reference": "Ord. 45-2138 art. 22 ; référentiel normatif OEC (cadre de référence des missions et activités) ; norme relative aux activités commerciales accessoires",
+      "confidence": "medium"
+    },
+    {
+      "id": "2023-05-EC-05",
+      "n": 5,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["incompatibilites_activites"],
+      "points": 1,
+      "question": "Parmi les fonctions ou activités suivantes, quelle est celle qui est incompatible avec la profession d'expert-comptable ?",
+      "qcm": {
+        "choices": [
+          "Être agent immobilier.",
+          "Être conseiller prud'homal.",
+          "Être correspondant Tracfin.",
+          "Être inscrit à la Compagnie des commissaires aux comptes."
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "question": "L'activité d'agent immobilier est-elle compatible avec la profession d'expert-comptable ? Qu'en est-il des fonctions de conseiller prud'homal, de correspondant Tracfin ou de commissaire aux comptes ?",
+        "expected": [
+          "Agent immobilier : incompatible (activité commerciale et d'intermédiaire, agent d'affaires)",
+          "Conseiller prud'homal : compatible (fonction juridictionnelle non commerciale)",
+          "Correspondant Tracfin : compatible, et même prévu par le dispositif LCB-FT du cabinet",
+          "Inscription sur la liste des CAC : compatible, expressément visée par l'ordonnance"
+        ],
+        "model_answer": "L'activité d'agent immobilier est incompatible : c'est une activité commerciale et d'intermédiaire, interdite par l'article 22 de l'ordonnance sauf à titre strictement accessoire. En revanche, les fonctions de conseiller prud'homal, de correspondant Tracfin (au sein du cabinet) et de commissaire aux comptes sont compatibles avec l'exercice de l'expertise comptable."
+      },
+      "explanation": "L'article 22 de l'ordonnance interdit toute activité commerciale ou acte d'intermédiaire (sauf accessoire et sans atteinte à l'indépendance) et l'activité d'agent d'affaires ; l'agent immobilier cumule ces deux qualifications. Les fonctions de CAC sont expressément autorisées « dans les conditions prévues au livre VIII du code de commerce ». La désignation d'un correspondant et d'un déclarant Tracfin est une obligation d'organisation du cabinet (NPLAB).",
+      "reference": "Ord. 45-2138 art. 22 ; NPLAB ; CMF art. L.561-2 et R.561-23",
+      "confidence": "high"
+    },
+    {
+      "id": "2023-05-EC-06",
+      "n": 6,
+      "profession": "EC",
+      "theme": "responsabilite",
+      "tags": ["responsabilite_civile", "responsabilite_penale", "discipline_sanctions"],
+      "points": 1,
+      "question": "Quelle est la responsabilité qui ne concerne pas les experts-comptables ?",
+      "qcm": {
+        "choices": [
+          "La responsabilité civile quasi-délictuelle.",
+          "La responsabilité pénale.",
+          "La responsabilité administrative.",
+          "La responsabilité disciplinaire."
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Quelles sont les différentes responsabilités encourues par l'expert-comptable ?",
+        "expected": [
+          "Responsabilité civile contractuelle envers le client et délictuelle (quasi-délictuelle) envers les tiers",
+          "Responsabilité pénale (complicité, exercice illégal, violation du secret, blanchiment...)",
+          "Responsabilité disciplinaire devant les chambres de discipline de l'Ordre",
+          "Pas de responsabilité administrative au sens d'un régime propre (hors sanctions LCB-FT prononcées par les instances ordinales)"
+        ],
+        "model_answer": "L'expert-comptable engage sa responsabilité civile (contractuelle envers son client, délictuelle ou quasi-délictuelle envers les tiers), sa responsabilité pénale et sa responsabilité disciplinaire devant les chambres régionale puis nationale de discipline. Il n'existe pas de responsabilité administrative propre à la profession, les manquements LCB-FT étant eux aussi sanctionnés par les instances ordinales."
+      },
+      "explanation": "La responsabilité de l'expert-comptable est triple : civile, pénale, disciplinaire. L'assurance de responsabilité civile est obligatoire (ord. art. 17) et l'action civile se prescrit par cinq ans. La « responsabilité administrative » n'est pas un régime applicable à la profession ; en revanche le CAC encourt des sanctions prononcées par une autorité administrative indépendante (la H2A), ce qui peut expliquer la confusion.",
+      "reference": "Ord. 45-2138 art. 17, 20, 21, 49 à 53 ; C. civ. art. 1231-1 et 1240 ; C. pén. art. 226-13",
+      "confidence": "medium"
+    },
+    {
+      "id": "2023-05-EC-07",
+      "n": 7,
+      "profession": "EC",
+      "theme": "responsabilite",
+      "tags": ["responsabilite_civile", "lettre_mission"],
+      "points": 1,
+      "question": "Une lettre de mission prévoit une clause de limitation de la durée de prescription de l'action en matière de responsabilité civile. Parmi les propositions suivantes, indiquer celle qui est fausse :",
+      "qcm": {
+        "choices": [
+          "La responsabilité civile professionnelle ne peut être mise en jeu que sur une période contractuellement définie à 6 mois à compter du jour où le client a connu ou aurait dû connaître les faits lui permettant de la mettre en cause.",
+          "La responsabilité civile professionnelle ne peut être mise en jeu que sur une période contractuellement définie à 12 mois à compter du jour où le client a connu ou aurait dû connaître les faits lui permettant de la mettre en cause.",
+          "La responsabilité civile professionnelle ne peut être mise en jeu que sur une période contractuellement définie à 3 ans à compter de la date de remise de l'attestation.",
+          "La responsabilité civile professionnelle ne peut être mise en jeu que sur une période contractuellement définie à 2 ans à compter de la date de remise de l'attestation."
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "question": "Une lettre de mission peut-elle réduire le délai de prescription de l'action en responsabilité civile contre l'expert-comptable ? Dans quelles limites ?",
+        "expected": [
+          "Prescription de droit commun : cinq ans à compter du jour où le titulaire a connu ou aurait dû connaître les faits (C. civ. 2224)",
+          "Aménagement contractuel possible (C. civ. 2254) : réduction sans pouvoir descendre en dessous d'un an, allongement sans dépasser dix ans",
+          "Clause interdite dans les contrats avec un consommateur ; clause d'un an fréquente dans les lettres de mission"
+        ],
+        "model_answer": "Oui, entre professionnels : l'article 2254 du code civil autorise les parties à abréger la prescription, sans toutefois la réduire à moins d'un an, ou à l'allonger sans excéder dix ans. Une clause ramenant le délai à six mois serait donc nulle, alors qu'une clause d'un, deux ou trois ans est valable. Le délai de droit commun reste de cinq ans à compter de la connaissance des faits."
+      },
+      "explanation": "Le piège porte sur le plancher légal : la prescription conventionnelle ne peut être inférieure à un an. Les lettres de mission types de l'Ordre contiennent souvent une clause de prescription réduite, inopposable aux consommateurs. Pour le commissaire aux comptes, la prescription est fixée par la loi (trois ans, dix ans en cas de crime, C. com. L.821-38 renvoyant à L.225-254) et ne peut être aménagée contractuellement.",
+      "reference": "C. civ. art. 2224 et 2254 ; C. consom. art. L.218-1 ; C. com. L.821-38 pour le parallèle CAC",
+      "confidence": "high"
+    },
+    {
+      "id": "2023-05-EC-08",
+      "n": 8,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["missions_assurance", "referentiel_normatif"],
+      "points": 1,
+      "question": "La mission de présentation se finalise par une attestation :",
+      "qcm": {
+        "choices": [
+          "exprimant une assurance raisonnable sur la cohérence et la vraisemblance des comptes.",
+          "exprimant une assurance modérée sur la cohérence et la vraisemblance des comptes.",
+          "exprimant une assurance modérée sur la régularité et la sincérité des comptes.",
+          "exprimant une assurance modérée sur la conformité des comptes au référentiel comptable qui leur est applicable."
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Quel niveau d'assurance et quel objet caractérisent l'attestation délivrée à l'issue d'une mission de présentation des comptes ?",
+        "expected": [
+          "Assurance modérée",
+          "Sur la cohérence et la vraisemblance des comptes",
+          "Trois conclusions possibles : sans observation, avec observation(s), refus d'attester"
+        ],
+        "model_answer": "À l'issue d'une mission de présentation (NP 2300), l'expert-comptable délivre une attestation exprimant une assurance modérée sur la cohérence et la vraisemblance des comptes annuels, et non sur leur régularité et sincérité. L'attestation peut être sans observation, avec observation(s), ou se traduire par un refus d'attester."
+      },
+      "explanation": "La présentation est la mission d'assurance de niveau le plus bas sur des comptes complets historiques : assurance modérée, objet limité à la cohérence et à la vraisemblance. La régularité, la sincérité et l'image fidèle relèvent de la certification des comptes par le commissaire aux comptes (assurance raisonnable, C. com. L.821-53). L'examen limité (NP 2400) donne aussi une assurance modérée mais avec une conclusion formulée en termes négatifs sur la conformité au référentiel.",
+      "reference": "NP 2300 (présentation des comptes) ; NP 2400 ; C. com. L.821-53 pour le parallèle CAC",
+      "confidence": "high"
+    },
+    {
+      "id": "2023-05-EC-09",
+      "n": 9,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["incompatibilites_activites", "missions_legales"],
+      "points": 1,
+      "question": "Au sein d'un cabinet d'expertise comptable, quelle est la condition à respecter pour pouvoir réaliser une consultation juridique ?",
+      "qcm": {
+        "choices": [
+          "Il n'y a pas de condition à respecter.",
+          "Le cabinet doit obligatoirement et exclusivement assurer préalablement une mission d'ordre comptable.",
+          "Le cabinet doit assurer une mission d'ordre comptable ou d'accompagnement déclaratif ou administratif de caractère permanent ou habituel ou dans la mesure ou lesdites consultations sont directement liées aux travaux comptables dont il est chargé.",
+          "Il n'est pas possible de réaliser des consultations juridiques car elles sont réservées aux avocats."
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "À quelles conditions un expert-comptable peut-il délivrer une consultation juridique ?",
+        "expected": [
+          "Activité accessoire, ne pouvant constituer l'objet principal de l'activité",
+          "Au profit d'entreprises pour lesquelles le cabinet assure une mission comptable ou d'accompagnement déclaratif et administratif permanente ou habituelle",
+          "Ou consultation directement liée aux travaux comptables confiés",
+          "Dans le cadre de l'article 59 de la loi de 1971"
+        ],
+        "model_answer": "L'expert-comptable peut donner des consultations juridiques, fiscales ou sociales sans en faire l'objet principal de son activité, et seulement pour des entreprises dans lesquelles il assure une mission comptable ou d'accompagnement déclaratif et administratif de caractère permanent ou habituel, ou lorsque ces consultations sont directement liées aux travaux comptables dont il est chargé (ord. art. 22 ; loi de 1971, art. 59)."
+      },
+      "explanation": "La loi Pacte a élargi la condition d'accès au conseil juridique en visant, outre la mission comptable, la mission d'accompagnement déclaratif et administratif. Le distracteur b restreint à tort la condition à une mission comptable exclusive et préalable. Le monopole des avocats (loi de 1971) ne fait pas obstacle à la consultation accessoire des professions réglementées.",
+      "reference": "Ord. 45-2138 art. 22 ; loi 71-1130 art. 59",
+      "confidence": "high"
+    },
+    {
+      "id": "2023-05-EC-10",
+      "n": 10,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["ordre_organisation", "delegation_signature"],
+      "points": 1,
+      "question": "Quel est le taux d'encadrement en expertise comptable ?",
+      "qcm": {
+        "choices": [
+          "1 expert-comptable pour 15 collaborateurs, quelles que soient leurs missions.",
+          "1 expert-comptable pour 15 collaborateurs effectuant des missions comptables.",
+          "1 expert-comptable pour 10 collaborateurs, quelles que soient leurs missions.",
+          "1 expert-comptable pour 10 collaborateurs effectuant des missions comptables."
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Quel est le taux d'encadrement des comptables salariés imposé aux experts-comptables et à leurs structures ?",
+        "expected": [
+          "Un expert-comptable (ou salarié autorisé) pour quinze comptables salariés au maximum",
+          "Seuls les salariés exerçant des fonctions comptables sont comptés ; les stagiaires n'entrent pas dans le calcul",
+          "Ratio fixé par décret (ord. art. 19) ; relevé de 10 à 15 par le décret de 2012"
+        ],
+        "model_answer": "Le nombre de comptables salariés dont un membre de l'Ordre peut utiliser les services est limité à quinze, et le même rapport d'un expert-comptable pour quinze comptables salariés s'applique aux sociétés d'expertise comptable, aux succursales et aux AGC. Seuls les salariés affectés à des travaux comptables sont pris en compte, les experts-comptables stagiaires étant exclus du calcul."
+      },
+      "explanation": "Le taux d'encadrement garantit que les travaux comptables sont effectivement réalisés sous la direction et le contrôle d'un professionnel inscrit, conformément au monopole de l'article 2 de l'ordonnance. Le décret de 2012 a porté le ratio de 10 à 15. Les collaborateurs non comptables (juristes, informaticiens, secrétaires) ne sont pas concernés. Il n'existe pas de ratio équivalent en commissariat aux comptes, où le CAC conserve l'entière responsabilité de ses collaborateurs.",
+      "reference": "Ord. 45-2138 art. 19 ; D. 2012-432 (art. 132 pour les AGC et dispositions parallèles pour les cabinets)",
+      "confidence": "high"
+    },
+    {
+      "id": "2023-05-CAC-11",
+      "n": 11,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["inscription_liste", "h2a_supervision"],
+      "points": 1,
+      "question": "Auprès de quelle instance un commissaire aux comptes doit-il s'inscrire sur la liste des commissaires aux comptes ?",
+      "qcm": {
+        "choices": [
+          "Un tribunal de commerce.",
+          "La Compagnie nationale des commissaires aux comptes.",
+          "Une Compagnie régionale des commissaires aux comptes.",
+          "Le H3C."
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Qui tient la liste des commissaires aux comptes et procède à leur inscription ?",
+        "expected": [
+          "La Haute autorité de l'audit (H2A), qui a remplacé le H3C au 1er janvier 2024",
+          "Possibilité de délégation de l'inscription et de la tenue de la liste à la CNCC par convention homologuée par arrêté du garde des sceaux",
+          "Serment ensuite prêté devant la cour d'appel"
+        ],
+        "model_answer": "L'inscription sur la liste des commissaires aux comptes et la tenue de cette liste relèvent de la Haute autorité de l'audit (ex H3C), qui peut en déléguer la réalisation à la Compagnie nationale des commissaires aux comptes par une convention homologuée par arrêté du garde des sceaux. Une fois inscrit, le commissaire prête serment devant la cour d'appel dont il relève."
+      },
+      "explanation": "Depuis la réforme de l'audit de 2016, les commissions régionales d'inscription ont disparu : la liste est nationale et tenue par l'autorité de supervision. Les compagnies régionales ne font qu'instruire par délégation. Chez les experts-comptables, c'est à l'inverse l'instance ordinale régionale (conseil régional de l'Ordre) qui statue sur l'inscription au tableau (ord. art. 42).",
+      "reference": "C. com. art. L.820-1 I 1° et II, L.821-13 à L.821-16, L.821-23 ; Ord. 45-2138 art. 42 pour le parallèle EC",
+      "confidence": "high",
+      "update_note": "H3C → Haute autorité de l'audit (H2A) depuis le 1er janvier 2024 (ordonnance 2023-1142) ; la réponse d reste exacte en lisant « H3C » comme l'autorité de supervision devenue H2A."
+    },
+    {
+      "id": "2023-05-CAC-12",
+      "n": 12,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["services_interdits_eip", "independance_situations_risque", "code_deontologie_structure"],
+      "points": 1,
+      "question": "Dans le code de déontologie, la suppression des services interdits :",
+      "qcm": {
+        "choices": [
+          "a modifié l'article sur la confraternité.",
+          "a supprimé la notion d'intérêt général.",
+          "a modifié l'article sur l'impartialité.",
+          "a été remplacée par une approche risque-sauvegarde."
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Quelle conséquence la loi Pacte et le décret de 2020 ont-ils eue sur la liste des services interdits du code de déontologie des commissaires aux comptes ?",
+        "expected": [
+          "Suppression de la liste nationale des services interdits pour les entités non EIP",
+          "Remplacement par une approche par les risques et les mesures de sauvegarde (analyse des situations à risque, autorévision, conflits d'intérêts)",
+          "Maintien des services interdits pour les EIP par renvoi à l'article 5 du règlement UE 537/2014"
+        ],
+        "model_answer": "La liste des services interdits de l'ancien article 10 du code de déontologie a été supprimée pour les entités non EIP ; elle est remplacée par une approche fondée sur l'identification des risques (autorévision, conflits d'intérêts, liens) et la mise en œuvre de mesures de sauvegarde, le CAC devant refuser ou interrompre la mission lorsque ces mesures sont insuffisantes. Pour les entités d'intérêt public, les services interdits subsistent par renvoi à l'article 5 du règlement européen 537/2014."
+      },
+      "explanation": "Avant 2020, le code énumérait quatorze situations interdites applicables à toutes les entités. La loi Pacte et le décret 2020-292 ont basculé vers la logique européenne : interdictions limitées aux EIP, et pour les autres entités interdiction d'accepter ou de poursuivre une mission en cas d'autorévision ou d'indépendance compromise sans sauvegarde possible (C. com. L.821-28 IV). La notion d'intérêt général et les articles sur l'impartialité ou la confraternité n'ont pas été remis en cause.",
+      "reference": "Code de déontologie CAC art. 5, 18 et 19 ; C. com. L.821-28 ; règlement UE 537/2014 art. 5 ; normes de déontologie A.821-54 et A.821-55",
+      "confidence": "high"
+    },
+    {
+      "id": "2023-05-CAC-13",
+      "n": 13,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["lcb_ft", "eip", "revelation_procureur"],
+      "points": 1,
+      "question": "Le commissaire aux comptes d'une société dont les titres sont admis à la négociation sur un marché réglementé est exempté :",
+      "qcm": {
+        "choices": [
+          "de déclaration de soupçon à TRACFIN.",
+          "de révélation des faits délictueux.",
+          "d'identification du bénéficiaire effectif.",
+          "d'identification du client."
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "En matière de lutte contre le blanchiment, de quelle obligation le commissaire aux comptes est-il dispensé lorsque son client est une société cotée sur un marché réglementé ?",
+        "expected": [
+          "Dispense d'identification et de vérification du bénéficiaire effectif pour les sociétés cotées sur un marché réglementé soumises à des obligations de publicité",
+          "Maintien de l'identification du client, de la vigilance et de la déclaration de soupçon",
+          "La révélation des faits délictueux au procureur n'est jamais écartée"
+        ],
+        "model_answer": "Lorsque le client est une société dont les titres sont admis sur un marché réglementé (soumise à des obligations de transparence), le commissaire aux comptes est dispensé d'identifier et de vérifier l'identité du bénéficiaire effectif. Il reste tenu d'identifier le client, d'exercer sa vigilance, de déclarer ses soupçons à Tracfin et, en toute hypothèse, de révéler les faits délictueux au procureur de la République."
+      },
+      "explanation": "Le code monétaire et financier allège la vigilance pour les sociétés cotées sur un marché réglementé, dont l'actionnariat fait déjà l'objet d'une publicité : pas d'identification du bénéficiaire effectif. La révélation des faits délictueux (C. com. L.821-10) est une obligation légale d'ordre public distincte de la LCB-FT ; son omission constitue un délit (L.821-9). Le CAC applique la NEP 9605, l'expert-comptable la NPLAB.",
+      "reference": "CMF art. L.561-5, L.561-9 et R.561-8 ; C. com. L.821-9 et L.821-10 ; NEP 9605",
+      "confidence": "medium"
+    },
+    {
+      "id": "2023-05-CAC-14",
+      "n": 14,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["prestations_declaration_activite", "honoraires_bareme", "lettre_mission_nep210"],
+      "points": 1,
+      "question": "Une seule affirmation est fausse dans le cadre de prestations réalisées par le commissaire aux comptes :",
+      "qcm": {
+        "choices": [
+          "Le code de déontologie s'applique aux prestations fournies en dehors de toute mission légale.",
+          "La lettre de mission doit être établie pour chaque prestation.",
+          "Le commissaire aux comptes doit constituer un dossier.",
+          "Le barème d'heures s'applique aux prestations."
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Quelles règles encadrent les prestations fournies par un commissaire aux comptes en dehors de toute mission légale (code de déontologie, lettre de mission, dossier, honoraires) ?",
+        "expected": [
+          "Le titre I du code de déontologie s'applique à toutes les missions et prestations",
+          "Une lettre de mission est établie préalablement pour chaque prestation, précisant engagements et honoraires",
+          "Un dossier est constitué pour chaque personne ou entité et les prestations sont retracées dans la déclaration d'activité",
+          "Le barème d'heures ne vise que la certification des comptes : honoraires des prestations fixés librement par la lettre de mission"
+        ],
+        "model_answer": "Les prestations hors mission légale sont soumises au titre I du code de déontologie, donnent lieu à une lettre de mission préalable précisant les engagements des parties et les honoraires, et à la constitution d'un dossier. En revanche le barème d'heures ne s'applique qu'à la certification des comptes ; les honoraires des prestations sont librement convenus en fonction des diligences."
+      },
+      "explanation": "La loi Pacte a défini la profession de CAC comme l'exercice de missions et la fourniture de prestations (C. com. L.821-3). Les prestations échappent au barème d'heures (D.821-188) mais non aux exigences déontologiques ni au formalisme contractuel. Le distracteur d exploite la confusion entre certification (barème) et prestations (honoraires libres), comme en expertise comptable où aucun barème n'existe.",
+      "reference": "C. com. art. L.821-2 IV, L.821-3, R.821-195, D.821-186 et D.821-188 ; code de déontologie CAC art. 2",
+      "confidence": "high"
+    },
+    {
+      "id": "2023-05-CAC-15",
+      "n": 15,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["agp_associations", "nomination_seuils"],
+      "points": 1,
+      "question": "Parmi les travaux imposés au commissaire aux comptes relatifs à la vérification de la publicité sincère des comptes annuels par des organismes faisant appel à la générosité du public, lequel n'est pas requis ?",
+      "qcm": {
+        "choices": [
+          "Procéder à la vérification de la publication sur le site de la Direction de l'information légale et administrative (DILA).",
+          "Obtenir le récépissé de dépôt des comptes à la DILA.",
+          "Vérifier la conformité des comptes annuels publiés avec ceux joints à son rapport sur les comptes.",
+          "Procéder lui-même à la publication des comptes en cas de carence."
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Quelles diligences le commissaire aux comptes d'un organisme faisant appel à la générosité du public accomplit-il au titre de la publicité des comptes annuels ?",
+        "expected": [
+          "Vérifier que les comptes annuels et le rapport ont été publiés sur le site de la DILA (Journal officiel des associations) dans le délai",
+          "Obtenir le justificatif (récépissé) de dépôt",
+          "Vérifier la concordance des comptes publiés avec ceux certifiés",
+          "En cas de carence : signaler l'irrégularité (rapport, organe compétent), sans se substituer à l'organisme"
+        ],
+        "model_answer": "Le commissaire aux comptes vérifie que l'organisme a publié ses comptes annuels et le rapport du CAC sur le site de la DILA, obtient le justificatif de dépôt et contrôle la conformité des comptes publiés avec ceux qu'il a certifiés. En cas de défaut de publication, il relève l'irrégularité et la signale, mais ne procède jamais lui-même à la publication, qui incombe aux dirigeants."
+      },
+      "explanation": "Les associations et fondations faisant appel à la générosité du public doivent assurer la publicité de leurs comptes annuels (C. com. L.612-4, loi 91-772). Le CAC s'assure de la publicité sincère mais reste dans son rôle de contrôleur : la non-immixtion lui interdit d'accomplir un acte de gestion à la place des dirigeants. L'expert-comptable, lui, peut accomplir les formalités de dépôt pour le compte de son client, ce qui souligne la différence de posture entre les deux professions.",
+      "reference": "C. com. art. L.612-4 et D.612-5 ; loi 91-772 du 7 août 1991 art. 3 bis ; C. com. L.821-54 (non-immixtion) ; NEP 9510",
+      "confidence": "medium"
+    },
+    {
+      "id": "2023-05-CAC-16",
+      "n": 16,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["nomination_seuils", "agp_associations", "mandat_duree_cessation"],
+      "points": 1,
+      "question": "Parmi ces quatre propositions relatives à la nomination d'un commissaire aux comptes, une seule affirmation est vraie :",
+      "qcm": {
+        "choices": [
+          "Si les sociétés contrôlées et la société mère n'ont pas la même date de clôture, il faut tenir compte des derniers comptes annuels arrêtés pour le calcul des seuils cumulés.",
+          "La tête d'un petit groupe n'a plus l'obligation de nommer un commissaire aux comptes si l'ensemble qu'elle forme avec les sociétés contrôlées n'a pas dépassé les seuils pendant l'exercice précédant l'expiration du mandat.",
+          "Le commissaire aux comptes suppléant doit être nommé lorsque le commissaire aux comptes titulaire est une société pluri-associés dont un seul est commissaire aux comptes.",
+          "Une association ayant reçu plus de 153 000 € de subventions publiques doit procéder à la nomination d'un commissaire aux comptes l'exercice suivant celui au cours duquel elle a reçu la ou les subventions."
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "question": "Comment s'apprécient les seuils de nomination du commissaire aux comptes dans un petit groupe lorsque les sociétés n'ont pas la même date de clôture, et quand cesse l'obligation ?",
+        "expected": [
+          "Seuils cumulés (bilan 5 M€, CA HT 10 M€, 50 salariés, deux critères sur trois) calculés sur les derniers comptes annuels arrêtés de chaque société lorsque les dates de clôture diffèrent",
+          "Obligation levée lorsque les seuils ne sont pas dépassés pendant les deux exercices précédant l'expiration du mandat",
+          "Suppléant obligatoire seulement si le titulaire est une personne physique ou une société unipersonnelle",
+          "Association : obligation dès l'exercice au cours duquel le seuil de 153 000 € de subventions est franchi"
+        ],
+        "model_answer": "Lorsque la société mère et les sociétés contrôlées n'ont pas la même date de clôture, les seuils cumulés du petit groupe sont calculés à partir des derniers comptes annuels arrêtés par chacune. L'obligation ne disparaît que si les seuils n'ont pas été dépassés pendant les deux exercices précédant l'expiration du mandat ; un suppléant n'est exigé que si le titulaire est une personne physique ou une société unipersonnelle ; et l'association qui reçoit plus de 153 000 € de subventions doit désigner un CAC au titre de l'exercice de franchissement."
+      },
+      "explanation": "Les trois distracteurs reposent sur des chiffres ou des conditions légèrement faussés : un exercice au lieu de deux pour la cessation de l'obligation (règle fixée par la partie réglementaire propre à chaque forme sociale, ex. D.223-27 pour la SARL), suppléant exigé pour toute société pluripersonnelle alors que la loi ne le prévoit que pour les personnes physiques et sociétés unipersonnelles (L.821-40), et décalage d'un exercice pour l'association subventionnée. Les seuils des sociétés commerciales ont été relevés par le décret 2024-152 (5 M€ / 10 M€ / 50) pour les exercices ouverts à compter du 1er janvier 2024.",
+      "reference": "C. com. art. L.821-40, L.821-43 ; D.221-5, D.223-27 et D.821-? (seuils fixés par le décret 2024-152) ; L.612-4 et D.612-5 (associations)",
+      "confidence": "medium",
+      "update_note": "Seuils des sociétés commerciales relevés par le décret 2024-152 (bilan 5 M€, CA HT 10 M€, 50 salariés ; filiales significatives 2,5 M€ / 5 M€ / 25) pour les exercices ouverts à compter du 1er janvier 2024 ; recodification L.823-x → L.821-x."
+    },
+    {
+      "id": "2023-05-CAC-17",
+      "n": 17,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["nomination_seuils", "mandat_duree_cessation", "honoraires_bareme"],
+      "points": 1,
+      "question": "Afin de couvrir une éventuelle nullité des délibérations prises en l'absence de désignation d'un commissaire aux comptes, la personne ou l'entité pourra confier au commissaire aux comptes une mission complémentaire. Cette mission complémentaire :",
+      "qcm": {
+        "choices": [
+          "est attribuée par l'organe délibérant compétent selon les statuts.",
+          "entre dans le décompte de la durée du mandat.",
+          "peut être refusée par le commissaire aux comptes qui a accepté le mandat.",
+          "ne fera pas l'objet d'une rémunération spécifique."
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Qu'est-ce que la mission complémentaire de certification confiée à un commissaire aux comptes nommé tardivement, et quel est son régime ?",
+        "expected": [
+          "Mission portant sur les comptes des exercices antérieurs approuvés sans CAC, destinée à permettre la confirmation des délibérations entachées de nullité (C. com. L.821-5)",
+          "Mission distincte du mandat légal : n'entre pas dans le décompte des six exercices",
+          "Fait l'objet d'honoraires spécifiques et d'une lettre de mission",
+          "Le CAC est libre de l'accepter ou de la refuser"
+        ],
+        "model_answer": "Lorsqu'une entité a omis de désigner un commissaire aux comptes, les délibérations prises sont nulles ; l'action en nullité s'éteint si elles sont confirmées sur le rapport d'un CAC régulièrement désigné. Le CAC nouvellement nommé peut se voir confier une mission complémentaire sur les exercices antérieurs : distincte du mandat de six exercices, rémunérée spécifiquement, elle n'a pas à être acceptée obligatoirement par le commissaire."
+      },
+      "explanation": "La mission complémentaire n'est pas une mission légale au sens strict mais une intervention contractuelle rattachée à la régularisation prévue par L.821-5. Elle ne modifie pas la durée du mandat et donne lieu à des honoraires distincts. La réponse retenue (liberté de refus) correspond à la doctrine professionnelle ; la proposition a est discutée car la mission est confiée par l'organe compétent sans que les statuts aient à le prévoir.",
+      "reference": "C. com. art. L.821-5 (ex L.820-3-1), L.821-44 ; doctrine CNCC sur la mission complémentaire",
+      "confidence": "low",
+      "update_note": "Recodification 2024 : ex L.820-3-1 (nullité des délibérations) devenu L.821-5."
+    },
+    {
+      "id": "2023-05-CAC-18",
+      "n": 18,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["inscription_liste", "incompatibilites_liens"],
+      "points": 1,
+      "question": "Les fonctions de commissaire aux comptes peuvent être exercées simultanément au sein :",
+      "qcm": {
+        "choices": [
+          "de deux sociétés de commissaires aux comptes si elles sont membres d'un même réseau.",
+          "de deux sociétés de commissaires aux comptes sans condition.",
+          "de trois sociétés de commissaires aux comptes si l'une détient plus de la moitié du capital social de chacune des autres sociétés de commissaires aux comptes.",
+          "de deux sociétés de commissaires aux comptes si leurs associés sont communs pour au moins la moitié d'entre eux."
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Un commissaire aux comptes peut-il exercer sa profession au sein de plusieurs sociétés de commissaires aux comptes ?",
+        "expected": [
+          "Principe : exercice au sein d'une seule société de CAC",
+          "Dérogation 1 : groupe formé par une société et les sociétés qu'elle contrôle (L.233-16 II et III)",
+          "Dérogation 2 : deux sociétés dont la moitié au moins des associés ou actionnaires sont communs"
+        ],
+        "model_answer": "En principe, la profession ne peut être exercée qu'au sein d'une seule société de commissaires aux comptes. Par exception, l'exercice simultané est possible au sein d'un groupe formé par une société et les sociétés qu'elle contrôle, ainsi qu'au sein de deux sociétés dont la moitié au moins des associés ou actionnaires sont communs."
+      },
+      "explanation": "La règle de l'unicité d'exercice (C. com. L.821-25) vise à garantir l'identification du responsable des missions et la cohérence du contrôle de qualité. La proposition c s'approche de la dérogation « groupe » mais la loi raisonne en termes de contrôle (majorité des droits de vote), non de capital, et la réponse attendue est la dérogation expressément formulée (moitié des associés communs). L'appartenance à un réseau ne suffit pas. L'expert-comptable, lui, peut cumuler les formes d'exercice (ord. art. 12).",
+      "reference": "C. com. art. L.821-25 (ex L.822-9) ; L.233-16 ; Ord. 45-2138 art. 12 pour le parallèle EC",
+      "confidence": "medium",
+      "update_note": "Recodification 2024 : ex L.822-9 devenu L.821-25."
+    },
+    {
+      "id": "2023-05-CAC-19",
+      "n": 19,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["demission_revocation", "mandat_duree_cessation"],
+      "points": 1,
+      "question": "Le commissaire aux comptes ne peut démissionner de son mandat que si :",
+      "qcm": {
+        "choices": [
+          "le dirigeant de l'entité décède.",
+          "un motif personnel impérieux le justifie.",
+          "l'entité cesse définitivement son activité.",
+          "l'entité est placée en redressement judiciaire."
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Pour quels motifs légitimes un commissaire aux comptes peut-il démissionner de son mandat ?",
+        "expected": [
+          "Cessation définitive d'activité du commissaire aux comptes",
+          "Motif personnel impérieux, notamment l'état de santé",
+          "Difficultés rencontrées dans l'accomplissement de la mission, impossibles à surmonter",
+          "Événement compromettant le respect des règles professionnelles (indépendance, objectivité)"
+        ],
+        "model_answer": "Le commissaire aux comptes ne peut démissionner que pour un motif légitime : sa cessation définitive d'activité, un motif personnel impérieux (notamment l'état de santé), des difficultés insurmontables dans l'accomplissement de la mission, ou la survenance d'un événement compromettant le respect des règles de la profession, en particulier son indépendance ou son objectivité."
+      },
+      "explanation": "Les motifs légitimes tiennent à la personne du CAC ou aux conditions de sa mission, jamais à des événements affectant l'entité : le décès du dirigeant, la cessation d'activité de l'entité ou son redressement judiciaire ne permettent pas de démissionner (la mission se poursuit, le cas échéant jusqu'à la liquidation). Le distracteur c transpose indûment la cessation d'activité du CAC à celle de l'entité.",
+      "reference": "Code de déontologie CAC art. 28 (ex art. 19) ; C. com. L.821-44",
+      "confidence": "high"
+    },
+    {
+      "id": "2023-05-CAC-20",
+      "n": 20,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["nomination_seuils"],
+      "points": 1,
+      "question": "Quelle est la forme sociale dans laquelle la nomination d'un commissaire aux comptes par décision de justice, à la demande d'un ou plusieurs associés représentant au moins 10 % du capital social, n'est pas possible ?",
+      "qcm": {
+        "choices": [
+          "SARL.",
+          "Société anonyme.",
+          "Société en nom collectif.",
+          "Société en commandite par actions."
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Dans quelles conditions un commissaire aux comptes peut-il être désigné en justice à la demande des associés lorsque les seuils ne sont pas atteints, selon la forme de la société ?",
+        "expected": [
+          "SARL, SA, SCA, SAS : demande en justice par un ou plusieurs associés représentant au moins le dixième du capital",
+          "SNC : tout associé peut demander en justice la nomination, sans condition de détention",
+          "Par ailleurs, associés représentant au moins le tiers du capital : nomination obligatoire pour trois exercices sur demande motivée à la société"
+        ],
+        "model_answer": "Même si les seuils ne sont pas atteints, la nomination d'un commissaire aux comptes peut être demandée en justice par un ou plusieurs associés représentant au moins le dixième du capital dans la SARL, la SA, la SCA et la SAS. Dans la SNC, cette faculté appartient à tout associé, sans condition de seuil de détention. Dans toutes ces sociétés, des associés détenant au moins le tiers du capital peuvent en outre imposer, par demande motivée, la désignation d'un CAC pour trois exercices."
+      },
+      "explanation": "La règle du dixième du capital est commune aux sociétés de capitaux et à la SARL ; la SNC, société de personnes où chaque associé est indéfiniment et solidairement responsable, ouvre la demande judiciaire à tout associé. La loi Pacte a ajouté la nomination obligatoire pour trois exercices à la demande d'associés représentant le tiers du capital. À ne pas confondre avec la désignation judiciaire en cas d'omission de l'assemblée, ouverte à tout membre (C. com. L.821-47).",
+      "reference": "C. com. art. L.221-9 (SNC), L.223-35 (SARL), L.225-218 (SA), L.226-6 (SCA), L.227-9-1 (SAS) ; L.821-47",
+      "confidence": "high"
+    }
+  ]
+}
