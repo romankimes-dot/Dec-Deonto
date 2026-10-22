@@ -1,0 +1,619 @@
+{
+  "session": "2018-05",
+  "format": "qrc",
+  "questions": [
+    {
+      "id": "2018-05-EC-01",
+      "n": 1,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "missions_assurance"],
+      "points": 2,
+      "question": "Quel est le niveau d'assurance donné par l'expert-comptable dans le cadre d'une mission d'audit d'états financiers dans une petite entité ? Quel type de formulation utilise l'expert-comptable pour exprimer son opinion ?",
+      "qcm": {
+        "question": "Dans une mission d'audit d'états financiers réalisée par un expert-comptable dans une petite entité, quel niveau d'assurance est donné et sous quelle forme l'opinion est-elle exprimée ?",
+        "choices": [
+          "Assurance raisonnable ; opinion exprimée sous une forme positive (les comptes sont réguliers et sincères et donnent une image fidèle)",
+          "Assurance modérée ; conclusion exprimée sous une forme négative (absence d'éléments remettant en cause la régularité et la sincérité)",
+          "Assurance absolue ; certification sans réserve identique à celle du commissaire aux comptes",
+          "Assurance modérée ; attestation portant sur la cohérence et la vraisemblance des comptes"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Assurance raisonnable (élevée mais non absolue)",
+          "Opinion exprimée sous forme positive",
+          "Portant sur la régularité, la sincérité et l'image fidèle"
+        ],
+        "model_answer": "L'audit procure une assurance raisonnable, c'est-à-dire élevée mais non absolue. L'expert-comptable exprime une opinion sous forme positive : à son avis, les comptes sont réguliers et sincères et donnent une image fidèle du résultat, de la situation financière et du patrimoine de l'entité."
+      },
+      "explanation": "Le référentiel de l'Ordre distingue trois niveaux d'assurance sur des comptes complets historiques : raisonnable (audit, opinion positive), modérée (examen limité, conclusion négative) et modérée sur la seule cohérence et vraisemblance (présentation). Il n'existe pas d'assurance absolue, ni pour l'expert-comptable ni pour le commissaire aux comptes. Piège classique : l'audit de l'expert-comptable est contractuel ; il « exprime une opinion », il ne « certifie » pas au sens du code de commerce.",
+      "reference": "Cadre de référence des missions de l'OEC ; norme professionnelle relative à la mission d'audit d'états financiers (NP 2100 dans la numérotation du référentiel) ; NP 2300 et NP 2400 pour comparaison",
+      "confidence": "medium"
+    },
+    {
+      "id": "2018-05-EC-02",
+      "n": 2,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "missions_assurance"],
+      "points": 2,
+      "question": "Quel est le niveau d'assurance donné par l'expert-comptable dans le cadre d'une mission d'examen limité ? Quel type de formulation utilise l'expert-comptable pour exprimer son opinion ?",
+      "qcm": {
+        "question": "Dans une mission d'examen limité, quel niveau d'assurance l'expert-comptable donne-t-il et comment formule-t-il sa conclusion ?",
+        "choices": [
+          "Assurance modérée ; conclusion exprimée sous forme négative : « nous n'avons pas relevé d'éléments remettant en cause la régularité et la sincérité des comptes »",
+          "Assurance raisonnable ; opinion exprimée sous forme positive sur la régularité, la sincérité et l'image fidèle",
+          "Assurance modérée ; attestation portant sur la cohérence et la vraisemblance des comptes",
+          "Aucune assurance ; l'expert-comptable remet un simple compte rendu de travaux"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Assurance modérée",
+          "Conclusion exprimée sous forme négative",
+          "Absence d'éléments remettant en cause la régularité, la sincérité et l'image fidèle"
+        ],
+        "model_answer": "L'examen limité procure une assurance modérée. La conclusion est exprimée sous forme négative : l'expert-comptable indique qu'il n'a pas relevé d'éléments le conduisant à remettre en cause la régularité et la sincérité des comptes et l'image fidèle qu'ils donnent."
+      },
+      "explanation": "L'examen limité (NP 2400) repose principalement sur des procédures analytiques et des entretiens ; les diligences étant moins étendues que celles d'un audit, l'assurance est modérée et la conclusion est formulée négativement. À ne pas confondre avec la présentation (NP 2300), également d'assurance modérée mais dont l'attestation porte sur la cohérence et la vraisemblance, ni avec l'audit (opinion positive).",
+      "reference": "NP 2400 (examen limité) ; cadre de référence des missions de l'OEC",
+      "confidence": "high"
+    },
+    {
+      "id": "2018-05-EC-03",
+      "n": 3,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "missions_assurance"],
+      "points": 2,
+      "question": "Quelle formulation normalisée doit être utilisée dans une attestation de mission de présentation sans observation ?",
+      "qcm": {
+        "question": "Quelle est la formulation normalisée de l'attestation délivrée à l'issue d'une mission de présentation, en l'absence d'observation ?",
+        "choices": [
+          "« Nous n'avons pas relevé d'éléments remettant en cause la cohérence et la vraisemblance des comptes annuels pris dans leur ensemble »",
+          "« Nous n'avons pas relevé d'éléments remettant en cause la régularité et la sincérité des comptes annuels »",
+          "« Nous certifions que les comptes annuels sont réguliers et sincères et donnent une image fidèle »",
+          "« Les comptes annuels ont été établis sous la responsabilité de l'expert-comptable conformément au plan comptable général »"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Absence d'éléments remettant en cause",
+          "la cohérence et la vraisemblance",
+          "des comptes annuels pris dans leur ensemble"
+        ],
+        "model_answer": "Sur la base de ses travaux, l'expert-comptable atteste qu'il n'a pas relevé d'éléments remettant en cause la cohérence et la vraisemblance des comptes annuels pris dans leur ensemble. L'attestation rappelle au préalable que les comptes ont été établis sous la responsabilité de la direction et que la mission a été conduite conformément à la norme professionnelle."
+      },
+      "explanation": "La mission de présentation (NP 2300) donne une assurance modérée sur la cohérence et la vraisemblance, jamais sur la régularité et la sincérité (vocabulaire de l'examen limité et de l'audit) et encore moins sur l'image fidèle. Les trois issues possibles sont : attestation sans observation, attestation avec observation(s), refus d'attester. La formulation étant normalisée, le jury attend les mots exacts.",
+      "reference": "NP 2300 (mission de présentation des comptes), modèle d'attestation",
+      "confidence": "high"
+    },
+    {
+      "id": "2018-05-EC-04",
+      "n": 4,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["incompatibilites_activites", "ordre_organisation"],
+      "points": 2,
+      "question": "Quelles sont les obligations d'un expert-comptable qui exerce des mandats sociaux dans des sociétés non inscrites à l'Ordre, vis-à-vis de son conseil régional ?",
+      "qcm": {
+        "question": "Un expert-comptable accepte un mandat social dans une société non inscrite à l'Ordre. Quelles sont ses obligations envers son conseil régional ?",
+        "choices": [
+          "Il doit en informer le conseil régional (déclaration), qui contrôle la compatibilité du mandat avec son indépendance, et tenir cette information à jour",
+          "Il doit obtenir une autorisation préalable du Conseil national de l'Ordre, seul compétent en matière de mandats sociaux",
+          "Aucune : depuis la loi Macron, les mandats sociaux dans des sociétés non inscrites sont libres et ne concernent pas l'Ordre",
+          "Il doit demander son omission du tableau pendant la durée du mandat, le cumul étant interdit"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Déclarer (informer) le mandat au conseil régional de l'Ordre",
+          "Le conseil régional contrôle que le mandat ne porte pas atteinte à l'indépendance",
+          "Respecter les conditions du règlement intérieur et tenir la déclaration à jour (modification, cessation)"
+        ],
+        "model_answer": "L'ordonnance permet d'accepter tout mandat social « sous le contrôle du conseil régional de l'Ordre » : l'expert-comptable doit déclarer ce mandat à son conseil régional dans les conditions prévues par le règlement intérieur, tenir cette déclaration à jour et se soumettre au contrôle du conseil, qui vérifie que le mandat ne porte pas atteinte à son indépendance et peut lui demander d'y mettre fin."
+      },
+      "explanation": "Depuis la loi Macron (2015), l'article 22 de l'ordonnance n'interdit plus les mandats sociaux dans des sociétés commerciales : tout mandat est possible dès lors qu'il n'est pas de nature à porter atteinte à l'indépendance, mais il s'exerce sous le contrôle du conseil régional, d'où l'obligation de déclaration. Piège : il s'agit d'une déclaration au conseil régional (et non d'une autorisation du Conseil national), et le membre reste inscrit au tableau. Pour le commissaire aux comptes, la logique est inverse : la fonction est incompatible avec tout mandat de dirigeant dans une entité contrôlée.",
+      "reference": "Ord. 45-2138 art. 22 (mandats sociaux sous le contrôle du conseil régional) ; règlement intérieur de l'Ordre des experts-comptables",
+      "confidence": "medium",
+      "update_note": "Le « Conseil supérieur » est devenu le Conseil national de l'Ordre (loi Pacte 2019). Les modalités de déclaration relèvent du règlement intérieur, modifié depuis 2018 : vérifier la version en vigueur."
+    },
+    {
+      "id": "2018-05-EC-05",
+      "n": 5,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["honoraires", "lettre_mission"],
+      "points": 2,
+      "question": "Les clauses d'indexation en matière d'honoraires sont-elles autorisées ? Si oui, sous quelles conditions ?",
+      "qcm": {
+        "question": "Un expert-comptable peut-il prévoir une clause d'indexation de ses honoraires ?",
+        "choices": [
+          "Oui, si la clause figure dans la lettre de mission et si l'indice retenu est en relation directe avec l'objet de la convention ou l'activité de l'une des parties (par exemple l'indice Syntec)",
+          "Non : les honoraires de l'expert-comptable résultent d'un barème national et ne peuvent pas être indexés",
+          "Oui, librement, y compris sur le SMIC ou sur l'indice général des prix à la consommation",
+          "Oui, mais uniquement après accord du président du conseil régional de l'Ordre"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Oui, les clauses d'indexation sont autorisées",
+          "Clause prévue dans la lettre de mission (accord écrit du client)",
+          "Indice licite : en relation directe avec l'objet de la convention ou l'activité d'une des parties (ex. indice Syntec)",
+          "Interdiction d'indexer sur le SMIC ou le niveau général des prix"
+        ],
+        "model_answer": "Oui. Les honoraires étant librement convenus, la lettre de mission peut contenir une clause d'indexation, à condition que l'indice choisi soit licite au sens du code monétaire et financier, c'est-à-dire en relation directe avec l'objet de la convention ou l'activité de l'une des parties (indice Syntec par exemple), à l'exclusion du SMIC et du niveau général des prix."
+      },
+      "explanation": "Les honoraires de l'expert-comptable sont libres, fixés d'un commun accord dans la lettre de mission ; ils doivent être équitables et constituer la juste rémunération du travail. Rien n'interdit une révision par indexation, sous réserve des règles de droit commun sur les clauses d'indexation. Distinction avec le commissaire aux comptes, dont les honoraires de certification sont encadrés par un barème d'heures.",
+      "reference": "D. 2012-432, code de déontologie (art. 141 s. : lettre de mission, honoraires) ; C. mon. fin. art. L.112-2 (indices licites)",
+      "confidence": "high"
+    },
+    {
+      "id": "2018-05-EC-06",
+      "n": 6,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "missions_assurance"],
+      "points": 2,
+      "question": "Dans le cadre de la NP 3100 applicable aux missions d'assurance sur des informations autres que des comptes complets historiques (attestations particulières), indiquez sur quels critères est effectuée la distinction entre attestation directe et attestation indirecte ?",
+      "qcm": {
+        "question": "Dans la NP 3100 (attestations particulières), sur quel critère repose la distinction entre attestation directe et attestation indirecte ?",
+        "choices": [
+          "L'auteur de l'information : l'attestation est directe lorsque l'expert-comptable a lui-même établi l'information attestée, indirecte lorsqu'elle a été établie par l'entité (ou un tiers) et vérifiée par lui",
+          "Le destinataire : directe si l'attestation est remise au client, indirecte si elle est remise à un tiers (banque, administration)",
+          "Le niveau d'assurance : directe pour une assurance raisonnable, indirecte pour une assurance modérée",
+          "La présence d'un commissaire aux comptes : directe en son absence, indirecte lorsqu'il intervient dans l'entité"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Critère : origine de l'information attestée (qui l'a établie)",
+          "Attestation directe : information établie par l'expert-comptable lui-même",
+          "Attestation indirecte : information établie par l'entité ou un tiers, vérifiée par l'expert-comptable"
+        ],
+        "model_answer": "La distinction tient à l'origine de l'information attestée. L'attestation est directe lorsque l'expert-comptable atteste une information qu'il a lui-même établie (par exemple à partir des comptes issus de sa mission) ; elle est indirecte lorsque l'information a été préparée par l'entité ou un tiers et que l'expert-comptable la vérifie avant de l'attester."
+      },
+      "explanation": "Les attestations particulières relèvent des « autres missions d'assurance » du référentiel : elles portent sur des informations qui ne constituent pas des comptes complets historiques. Le critère n'est ni le destinataire ni le niveau d'assurance, mais l'auteur de l'information. L'expert-comptable peut émettre les deux types d'attestations ; les diligences et la formulation s'adaptent à la nature de l'information et à l'assurance recherchée.",
+      "reference": "NP 3100 (attestations particulières) ; cadre de référence des missions de l'OEC",
+      "confidence": "medium"
+    },
+    {
+      "id": "2018-05-EC-07",
+      "n": 7,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif"],
+      "points": 1,
+      "question": "Dans le cadre des missions prévues par le référentiel normatif, à quelle catégorie la mission de compilation appartient-elle ?",
+      "qcm": {
+        "question": "À quelle catégorie du référentiel normatif de l'Ordre appartient la mission de compilation ?",
+        "choices": [
+          "Les missions sans assurance",
+          "Les missions d'assurance sur des comptes complets historiques",
+          "Les autres missions d'assurance (informations autres que des comptes complets historiques)",
+          "Les autres prestations, hors référentiel normatif"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Mission sans assurance",
+          "Norme NP 4410"
+        ],
+        "model_answer": "La compilation (NP 4410) est une mission sans assurance : l'expert-comptable met en forme des informations financières sans exprimer d'assurance sur celles-ci. Elle relève de la même catégorie que les procédures convenues (NP 4400)."
+      },
+      "explanation": "Le cadre de référence comporte trois natures de missions normées : missions d'assurance sur comptes complets historiques (présentation, examen limité, audit), autres missions d'assurance (attestations particulières, examen d'informations prévisionnelles) et missions sans assurance (compilation, procédures convenues), auxquelles s'ajoutent les autres prestations. Piège : la compilation porte bien sur des comptes, mais ne donne aucune assurance, à la différence de la présentation.",
+      "reference": "NP 4410 (compilation) ; cadre de référence des missions de l'OEC",
+      "confidence": "high"
+    },
+    {
+      "id": "2018-05-EC-08",
+      "n": 8,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "missions_assurance"],
+      "points": 3,
+      "question": "Les missions de présentation, d'examen limité et d'audit sont des missions d'assurance sur les comptes complets historiques. A quoi correspondent les comptes complets historiques ?",
+      "qcm": {
+        "question": "Que recouvre la notion de « comptes complets historiques » dans le référentiel normatif de l'Ordre ?",
+        "choices": [
+          "Les comptes annuels, consolidés ou intermédiaires formant un jeu complet (bilan, compte de résultat, annexe) selon un référentiel comptable identifié et portant sur une période écoulée",
+          "Les seuls comptes annuels approuvés par l'assemblée et déposés au greffe depuis au moins un exercice",
+          "Les comptes prévisionnels et budgets établis à partir des données des exercices passés",
+          "Les comptes des exercices antérieurs à l'entrée en fonctions de l'expert-comptable, qu'il n'a pas lui-même établis"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "« Complets » : jeu complet d'états financiers (bilan, compte de résultat, annexe) établi selon un référentiel comptable identifié",
+          "« Historiques » : relatifs à une période écoulée (par opposition aux informations prévisionnelles)",
+          "Comptes annuels, comptes consolidés, comptes intermédiaires (situations)"
+        ],
+        "model_answer": "Les comptes complets historiques sont des états financiers formant un ensemble complet au sens du référentiel comptable applicable (bilan, compte de résultat et annexe) et retraçant une période écoulée, par opposition aux informations prévisionnelles ou partielles. Il s'agit des comptes annuels, des comptes consolidés et des comptes intermédiaires."
+      },
+      "explanation": "La notion sert à délimiter la première nature de missions du référentiel. Elle exclut les informations partielles (une rubrique, un chiffre d'affaires, un ratio), qui relèvent des attestations particulières, et les informations prévisionnelles, qui relèvent de la NP 3400. Le caractère complet s'apprécie par rapport au référentiel comptable retenu (PCG, IFRS).",
+      "reference": "Cadre de référence des missions de l'OEC ; NP 2300, NP 2400 ; NP 3100 et NP 3400 pour les informations autres que des comptes complets historiques",
+      "confidence": "high"
+    },
+    {
+      "id": "2018-05-EC-09",
+      "n": 9,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["publicite_demarchage", "confraternite_reprise_dossier"],
+      "points": 1,
+      "question": "Un cabinet peut-il indiquer dans une publicité qu'il est le plus important et le plus performant cabinet de France en matière de conseil et d'expertise comptable ? Justifiez votre réponse.",
+      "qcm": {
+        "question": "Un cabinet d'expertise comptable peut-il affirmer dans une publicité qu'il est « le plus important et le plus performant cabinet de France » ?",
+        "choices": [
+          "Non : la communication des experts-comptables ne peut comporter aucun élément comparatif et doit respecter la loyauté envers les confrères et la dignité de la profession",
+          "Oui : depuis la levée de l'interdiction du démarchage, le contenu de la publicité des experts-comptables est libre",
+          "Oui, à condition que le message ait été préalablement visé par le conseil régional de l'Ordre",
+          "Non : toute publicité est interdite aux experts-comptables, seule l'information sur la plaque et le papier à en-tête est admise"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Non",
+          "La communication ne peut comporter aucun élément comparatif",
+          "Respect de la loyauté envers les confrères, de la dignité et de l'image de la profession ; affirmation invérifiable"
+        ],
+        "model_answer": "Non. Si la publicité et le démarchage sont désormais permis, le code de déontologie impose une communication délivrée avec décence et retenue, sans porter atteinte à la dignité de la profession ni à la loyauté envers les confrères, et exclut tout élément comparatif. Se proclamer « le plus important et le plus performant » est un superlatif comparatif invérifiable, donc prohibé."
+      },
+      "explanation": "L'interdiction absolue du démarchage a disparu à la suite de l'arrêt de la CJUE du 5 avril 2011 ; les actions de promotion restent toutefois encadrées par le code de déontologie : information du public, décence, absence d'atteinte à l'indépendance, au secret, à la dignité et à la loyauté, et absence d'élément comparatif. Le commissaire aux comptes est soumis à des règles voisines (communication autorisée, pas de démarchage ni de publicité comparative), ce qui ne dispense pas de distinguer les deux textes.",
+      "reference": "D. 2012-432 art. 152 (actions de promotion et de communication) ; ord. 45-2138 art. 12",
+      "confidence": "medium"
+    },
+    {
+      "id": "2018-05-EC-10",
+      "n": 10,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["missions_legales", "incompatibilites_activites"],
+      "points": 3,
+      "question": "Un expert-comptable peut-il rédiger un contrat de travail pour un client pour lequel il ne fait que des bulletins de paie ? Justifiez votre réponse.",
+      "qcm": {
+        "question": "Un expert-comptable n'établit que les bulletins de paie d'un client. Peut-il rédiger pour ce client un contrat de travail ?",
+        "choices": [
+          "Oui : depuis la loi Macron, les travaux juridiques accessoires sont possibles au profit des clients bénéficiant d'une mission comptable ou d'accompagnement déclaratif et administratif de caractère habituel, ce qui est le cas de la paie",
+          "Non : la rédaction d'un contrat de travail relève du monopole des avocats, l'expert-comptable ne pouvant qu'établir les bulletins",
+          "Non : les travaux juridiques accessoires supposent une mission comptable (tenue ou présentation des comptes) dans la même entité",
+          "Oui, mais à condition que les prestations juridiques constituent l'objet principal de l'activité du cabinet"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Oui",
+          "Art. 22 de l'ordonnance (loi Macron 2015) : travaux juridiques accessoires pour les clients ayant une mission comptable ou d'accompagnement déclaratif et administratif permanente ou habituelle",
+          "La paie est une mission d'accompagnement déclaratif et administratif",
+          "Condition : ne pas en faire l'objet principal de l'activité ; respect du périmètre du droit (loi de 1971, art. 59 : accessoire direct)"
+        ],
+        "model_answer": "Oui. Depuis la loi Macron de 2015, l'article 22 de l'ordonnance autorise les travaux et consultations d'ordre juridique au profit des entreprises pour lesquelles l'expert-comptable assure une mission comptable ou une mission d'accompagnement déclaratif et administratif de caractère permanent ou habituel ; l'établissement habituel des bulletins de paie entre dans cette seconde catégorie. La rédaction du contrat de travail doit rester accessoire (sans constituer l'objet principal de l'activité) et respecter le périmètre du droit."
+      },
+      "explanation": "Avant 2015, l'accessoire juridique n'était ouvert que si l'expert-comptable était chargé de travaux comptables dans l'entité. La loi Macron a étendu le rattachement aux missions d'accompagnement déclaratif et administratif (paie, déclarations), et la loi de 1971 sur le périmètre du droit autorise les professions réglementées à rédiger des actes qui constituent l'accessoire direct de leur prestation. En revanche, une consultation juridique isolée pour un prospect sans aucune mission reste interdite.",
+      "reference": "Ord. 45-2138 art. 22 (rédaction issue de la loi 2015-990) ; loi 71-1130 art. 59",
+      "confidence": "high"
+    },
+    {
+      "id": "2018-05-CAC-11",
+      "n": 11,
+      "profession": "CAC",
+      "theme": "controle_qualite",
+      "tags": ["secret_professionnel", "controle_activite", "h2a_supervision"],
+      "points": 2,
+      "question": "Au titre de son secret professionnel, le commissaire aux comptes contrôlé par un agent du H3C peut-il refuser de lui donner certaines informations concernant la mission de certification des comptes menée chez un client ? La réponse est-elle identique pour des informations concernant une prestation fournie à ce même client (« SACC non interdit ») ? Justifiez votre réponse.",
+      "qcm": {
+        "question": "Lors d'un contrôle d'activité mené par la Haute autorité de l'audit (ex-H3C), le commissaire aux comptes peut-il opposer son secret professionnel pour refuser des informations sur sa mission de certification, puis sur une prestation (service autre que la certification) fournie au même client ?",
+        "choices": [
+          "Non dans les deux cas : le secret professionnel n'est pas opposable à la H2A, dont le contrôle porte sur l'ensemble de l'activité professionnelle, certification comme prestations",
+          "Oui dans les deux cas : le secret professionnel est absolu et seul le juge pénal peut en délier le commissaire aux comptes",
+          "Non pour la certification, oui pour la prestation : le contrôle d'activité ne couvre que la mission légale",
+          "Oui pour la certification, non pour la prestation : les services autres que la certification ne sont pas couverts par le secret"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Non : le secret professionnel n'est pas opposable à l'autorité de contrôle (H3C, aujourd'hui H2A)",
+          "Obligation de coopérer et de donner accès à tous documents et informations ; l'entrave au contrôle est sanctionnable",
+          "Réponse identique pour la prestation : le contrôle porte sur l'ensemble de l'activité professionnelle, y compris les services autres que la certification"
+        ],
+        "model_answer": "Non. Le secret professionnel du commissaire aux comptes ne peut être opposé aux contrôleurs de l'autorité de supervision, qui ont accès à tous les documents et informations nécessaires ; refuser de coopérer constituerait un manquement sanctionnable. La réponse est la même pour une prestation fournie au client : le contrôle d'activité porte sur l'ensemble de l'exercice professionnel, et non sur la seule certification."
+      },
+      "explanation": "Le secret professionnel du commissaire aux comptes est pénalement protégé, mais la loi en organise des levées : autorité de supervision, AMF, Tracfin, juge, commissaires aux comptes du périmètre de consolidation, successeur. Le contrôle d'activité (contrôle qualité) vise à vérifier le respect des normes, de la déontologie et du contrôle interne de qualité sur toute l'activité, prestations comprises. Piège EC/CAC : l'expert-comptable ne peut pas davantage opposer son secret au contrôle qualité de l'Ordre.",
+      "reference": "C. com. ex L.822-15 (secret professionnel, non opposable au H3C) et ex L.821-9 s. (contrôles), dispositions recodifiées en 2024 dans le livre VIII (L.820-x / L.821-x)",
+      "confidence": "medium",
+      "update_note": "Depuis le 1er janvier 2024, le H3C est remplacé par la Haute autorité de l'audit (H2A) ; les articles ont été renumérotés par l'ordonnance 2023-1142 (ex L.822-15 et ex L.821-9 s.)."
+    },
+    {
+      "id": "2018-05-CAC-12",
+      "n": 12,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["lcb_ft", "controle_activite", "h2a_supervision"],
+      "points": 1,
+      "question": "Que doit faire l'agent du H3C qui, à l'occasion d'un contrôle de l'exercice professionnel d'un commissaire aux comptes, constate des faits susceptibles d'être liés au blanchiment de capitaux ?",
+      "qcm": {
+        "question": "Au cours d'un contrôle d'activité, un contrôleur de la Haute autorité de l'audit (ex-H3C) constate des faits susceptibles d'être liés au blanchiment de capitaux. Que doit-il faire ?",
+        "choices": [
+          "En informer Tracfin, par l'intermédiaire de l'autorité : les autorités de contrôle doivent signaler à Tracfin les faits susceptibles d'être liés au blanchiment découverts lors de leurs contrôles",
+          "Dénoncer directement les faits au procureur de la République, comme le ferait le commissaire aux comptes au titre de la révélation des faits délictueux",
+          "Rien : seul le commissaire aux comptes contrôlé est assujetti aux obligations de lutte contre le blanchiment",
+          "Adresser une déclaration de soupçon au président de la CNCC, qui décide de sa transmission à Tracfin"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Informer Tracfin (information des autorités de contrôle, code monétaire et financier)",
+          "Via la Haute autorité (ex-H3C), autorité de contrôle du commissaire aux comptes",
+          "Le cas échéant, l'autorité apprécie aussi si le commissaire aux comptes a manqué à ses propres obligations LCB-FT (suites disciplinaires)"
+        ],
+        "model_answer": "L'autorité de contrôle qui, dans l'exercice de ses missions, découvre des faits susceptibles d'être liés au blanchiment de capitaux ou au financement du terrorisme doit en informer Tracfin : le contrôleur fait donc remonter l'information à la Haute autorité, qui saisit Tracfin. L'autorité peut par ailleurs examiner si le commissaire aux comptes contrôlé a lui-même respecté ses obligations de vigilance et de déclaration."
+      },
+      "explanation": "Il ne faut pas confondre la déclaration de soupçon, qui incombe au professionnel assujetti (le commissaire aux comptes signataire), et l'information de Tracfin par les autorités de contrôle et ordres professionnels (H2A, Ordre des experts-comptables), prévue par le code monétaire et financier. Le contrôleur n'a pas qualité pour révéler des faits au procureur : la révélation des faits délictueux est une obligation propre au commissaire aux comptes dans sa mission de certification.",
+      "reference": "C. mon. fin. art. L.561-28 (information de Tracfin par les autorités de contrôle) ; NEP 9605 pour les obligations propres du commissaire aux comptes",
+      "confidence": "medium",
+      "update_note": "H3C remplacé par la H2A depuis le 1er janvier 2024 ; la règle d'information de Tracfin par les autorités de contrôle est inchangée."
+    },
+    {
+      "id": "2018-05-CAC-13",
+      "n": 13,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["inscription_liste", "cncc_crcc_organisation"],
+      "points": 2,
+      "question": "Quelles sont les trois conditions que doit remplir une société pour être inscrite sur la liste des commissaires aux comptes ?",
+      "qcm": {
+        "question": "Quelles conditions une société doit-elle remplir pour être inscrite sur la liste des commissaires aux comptes ?",
+        "choices": [
+          "La majorité des droits de vote est détenue par des commissaires aux comptes ou sociétés de commissaires aux comptes inscrits (ou contrôleurs légaux de l'UE) ; les trois quarts au moins des membres des organes de gestion, d'administration, de direction ou de surveillance ont cette qualité ; les représentants légaux sont commissaires aux comptes",
+          "Plus des deux tiers des droits de vote détenus par des commissaires aux comptes ; forme sociale ne conférant pas la qualité de commerçant ; inscription préalable au tableau de l'Ordre des experts-comptables",
+          "Capital intégralement détenu par des commissaires aux comptes personnes physiques ; siège dans le ressort d'une cour d'appel ; agrément préalable de la CNCC",
+          "Majorité du capital détenue par des commissaires aux comptes ; désignation d'un associé responsable du contrôle qualité ; souscription d'une assurance couvrant les sanctions pénales"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Majorité des droits de vote détenue par des commissaires aux comptes, sociétés de commissaires aux comptes inscrites ou contrôleurs légaux agréés dans l'UE",
+          "Trois quarts au moins des membres des organes de gestion, d'administration, de direction ou de surveillance sont des commissaires aux comptes (ou sociétés inscrites)",
+          "Les dirigeants/représentants légaux (gérant, président, directeur général…) sont des commissaires aux comptes"
+        ],
+        "model_answer": "La société, quelle que soit sa forme, doit remplir trois conditions : la majorité des droits de vote est détenue par des commissaires aux comptes ou sociétés de commissaires aux comptes inscrits (ou des contrôleurs légaux agréés dans un autre État membre) ; les trois quarts au moins des membres de ses organes de gestion, d'administration, de direction ou de surveillance sont des commissaires aux comptes ; ses représentants légaux sont eux-mêmes commissaires aux comptes."
+      },
+      "explanation": "Les conditions d'inscription des sociétés ont été alignées sur la directive audit par l'ordonnance 2016-315 (détention de la majorité des droits de vote, et non plus des trois quarts du capital). Piège EC/CAC : pour les sociétés d'expertise comptable, le seuil est de plus des deux tiers des droits de vote détenus par des experts-comptables, et les formes conférant la qualité de commerçant sont exclues, ce qui n'est pas le cas en commissariat aux comptes.",
+      "reference": "C. com. ex L.822-1-3 (conditions d'inscription des sociétés), recodifié en 2024 (L.821-x) ; directive 2006/43/CE art. 3 modifiée",
+      "confidence": "low",
+      "update_note": "Numérotation recodifiée au 1er janvier 2024 (ordonnance 2023-1142) ; la liste est désormais tenue par la H2A (délégation possible à la CNCC). Vérifier la rédaction exacte des quotités (majorité des droits de vote / trois quarts des organes)."
+    },
+    {
+      "id": "2018-05-CAC-14",
+      "n": 14,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["responsabilite_penale", "responsabilite_civile"],
+      "points": 2,
+      "question": "Un commissaire aux comptes commet le délit de non révélation de faits délictueux. Il est condamné à une amende de 5 000 € par le tribunal correctionnel. Cette somme peut-elle être prise en charge par l'assurance responsabilité professionnelle que le commissaire aux comptes a obligatoirement souscrite conformément à l'article R. 822-36 du code de commerce ? Justifiez votre réponse.",
+      "qcm": {
+        "question": "Un commissaire aux comptes est condamné à une amende de 5 000 € pour non-révélation de faits délictueux. Son assurance de responsabilité civile professionnelle obligatoire peut-elle prendre en charge cette amende ?",
+        "choices": [
+          "Non : l'assurance obligatoire couvre les conséquences pécuniaires de la responsabilité civile ; une amende pénale est une peine personnelle, non assurable",
+          "Oui : l'assurance obligatoire couvre toutes les condamnations prononcées à raison de la mission légale",
+          "Oui, si la police d'assurance prévoit expressément la garantie des sanctions pénales",
+          "Non, mais la CNCC prend en charge l'amende au titre de la solidarité professionnelle"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Non",
+          "L'assurance obligatoire garantit la responsabilité civile (dommages causés aux tiers)",
+          "Une amende pénale est une peine personnelle, inassurable (ordre public)"
+        ],
+        "model_answer": "Non. L'assurance obligatoire du commissaire aux comptes couvre les conséquences pécuniaires de sa responsabilité civile, c'est-à-dire la réparation des préjudices causés par ses fautes. Une amende pénale est une peine, personnelle par nature et d'ordre public : elle ne peut être ni assurée ni supportée par un tiers. Il en va de même des sanctions pécuniaires disciplinaires."
+      },
+      "explanation": "Il faut distinguer les trois responsabilités : civile (réparation, assurable), pénale (peine personnelle, inassurable) et disciplinaire (sanction, inassurable). La même règle vaut pour l'expert-comptable, dont l'assurance de responsabilité civile est également obligatoire. La non-révélation de faits délictueux est un délit propre au commissaire aux comptes dans sa mission de certification.",
+      "reference": "C. com. ex R.822-36 (assurance obligatoire), recodifié R.821-x en 2024 ; ex L.820-7 (délit de non-révélation) ; C. assur. art. L.113-1 (exclusion des fautes intentionnelles)",
+      "confidence": "high",
+      "update_note": "L'article R.822-36 cité par le sujet a été recodifié au 1er janvier 2024 (partie réglementaire R.821-x) ; la règle de fond est inchangée."
+    },
+    {
+      "id": "2018-05-CAC-15",
+      "n": 15,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["revelation_procureur", "responsabilite_penale"],
+      "points": 2,
+      "question": "Le commissaire aux comptes doit-il révéler au procureur de la République le vol d'un bien de très grande valeur commis par le dirigeant au détriment de la société mais que ce dernier a par la suite remboursé ? Justifiez votre réponse.",
+      "qcm": {
+        "question": "Le dirigeant a détourné un bien de grande valeur de la société, puis l'a remboursé. Le commissaire aux comptes doit-il révéler ce fait au procureur de la République ?",
+        "choices": [
+          "Oui : le fait est délictueux, significatif et délibéré ; le remboursement ultérieur n'efface ni l'infraction consommée ni l'obligation de révélation",
+          "Non : le préjudice ayant été réparé, il n'existe plus de fait délictueux à révéler",
+          "Non : la révélation ne concerne que les infractions ayant une incidence sur les comptes certifiés, ce qui n'est plus le cas après remboursement",
+          "Oui, mais seulement après avoir déclenché la procédure d'alerte, préalable obligatoire à toute révélation"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Oui",
+          "Fait délictueux (vol / abus de biens sociaux) significatif et délibéré, dont le commissaire aux comptes a connaissance",
+          "Le remboursement ultérieur n'efface pas l'infraction consommée",
+          "La non-révélation est elle-même un délit"
+        ],
+        "model_answer": "Oui. Le commissaire aux comptes doit révéler au procureur les faits délictueux dont il a connaissance dans l'exercice de sa mission, dès lors qu'ils sont significatifs et délibérés. Le détournement d'un bien de grande valeur par le dirigeant remplit ces critères ; l'infraction est consommée au jour des faits et le remboursement postérieur ne l'efface pas. S'abstenir exposerait le commissaire aux comptes au délit de non-révélation."
+      },
+      "explanation": "L'obligation de révélation est attachée à la mission de certification (elle ne s'applique pas à une simple prestation). Le commissaire aux comptes n'a pas à qualifier précisément l'infraction ni à apprécier l'opportunité des poursuites ; la réparation ou le repentir du dirigeant sont sans effet sur l'obligation. Distinction avec l'expert-comptable, qui n'a aucune obligation de révélation au parquet, mais qui est tenu, comme le commissaire aux comptes, à la déclaration de soupçon à Tracfin.",
+      "reference": "C. com. L.821-10 (ex L.823-12, révélation des faits délictueux) ; ex L.820-7 (délit de non-révélation) ; NEP 240",
+      "confidence": "high",
+      "update_note": "Article recodifié au 1er janvier 2024 : L.823-12 est devenu L.821-10."
+    },
+    {
+      "id": "2018-05-CAC-16",
+      "n": 16,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["secret_professionnel"],
+      "points": 2,
+      "question": "Y a-t-il secret professionnel entre les commissaires aux comptes de la société mère et le commissaire aux comptes de la filiale non consolidée ? Justifiez votre réponse.",
+      "qcm": {
+        "question": "Le secret professionnel s'applique-t-il entre les commissaires aux comptes d'une société mère et celui d'une filiale non consolidée ?",
+        "choices": [
+          "Oui : la levée du secret ne joue qu'entre les commissaires aux comptes de l'entité consolidante et ceux des entités comprises dans la consolidation",
+          "Non : les commissaires aux comptes des sociétés d'un même groupe sont toujours libérés du secret les uns à l'égard des autres",
+          "Non : le secret professionnel ne s'applique jamais entre confrères inscrits sur la liste",
+          "Oui, sauf autorisation écrite du dirigeant de la société mère, qui peut délier les commissaires aux comptes du secret"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Oui, le secret s'applique",
+          "La levée légale du secret est limitée aux commissaires aux comptes de l'entité consolidante et des entités comprises dans la consolidation",
+          "Une filiale non consolidée est hors de ce périmètre"
+        ],
+        "model_answer": "Oui. La loi ne libère du secret professionnel, les uns à l'égard des autres, que les commissaires aux comptes de la personne qui établit des comptes consolidés et ceux des entités comprises dans la consolidation. Une filiale non consolidée se trouve hors de ce périmètre : son commissaire aux comptes et ceux de la société mère restent tenus au secret entre eux."
+      },
+      "explanation": "Les dérogations au secret sont d'interprétation stricte : périmètre de consolidation, successeur, autorité de supervision, AMF, Tracfin, juge. Ni le client ni un dirigeant ne peuvent délier le commissaire aux comptes. Même logique pour l'expert-comptable, dont le client ne peut pas non plus lever le secret.",
+      "reference": "C. com. ex L.822-15 al. 2 (levée du secret dans le périmètre de consolidation), recodifié en 2024 ; C. pén. art. 226-13",
+      "confidence": "high",
+      "update_note": "Article recodifié au 1er janvier 2024 (ex L.822-15) ; règle de fond inchangée."
+    },
+    {
+      "id": "2018-05-CAC-17",
+      "n": 17,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["secret_professionnel", "delit_entrave", "non_immixtion"],
+      "points": 2,
+      "question": "Le commissaire aux comptes de la société filiale consolidée détenue à plus de 50% demande à examiner les dossiers de travail des commissaires aux comptes de la société mère afin d'apprécier la réalité des frais de gestion facturés par la mère à la fille. Les commissaires aux comptes de la société mère refusent à juste titre car il s'agirait d'une violation du secret professionnel. Que peut faire le commissaire aux comptes de la filiale pour obtenir les informations qui lui manquent ?",
+      "qcm": {
+        "question": "Le commissaire aux comptes d'une filiale consolidée ne parvient pas à vérifier les frais de gestion facturés par la société mère. Que peut-il faire pour obtenir les informations manquantes ?",
+        "choices": [
+          "Exercer directement ses pouvoirs d'investigation auprès de la société mère, qui contrôle la filiale, et échanger des renseignements avec les commissaires aux comptes de la mère au titre de la levée du secret dans le périmètre de consolidation",
+          "Saisir le président de la CRCC afin qu'il enjoigne aux commissaires aux comptes de la mère de lui remettre leurs dossiers de travail",
+          "Rien : ses pouvoirs s'arrêtent à la personne dont il certifie les comptes ; il doit formuler une réserve pour limitation",
+          "Demander en référé la désignation d'un expert de gestion, seule voie d'accès aux documents d'une société mère"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Étendre ses investigations à la société mère : le droit d'investigation s'exerce auprès des personnes qui contrôlent l'entité ou sont contrôlées par elle",
+          "Demander à la direction de la filiale (et à la mère) les justificatifs : convention, clés de répartition, prestations rendues",
+          "Échanger des renseignements avec les commissaires aux comptes de la mère (levée du secret dans le périmètre de consolidation), sans exiger leurs dossiers de travail",
+          "En cas de refus persistant : obstacle aux vérifications (délit d'entrave) et conséquences sur l'opinion"
+        ],
+        "model_answer": "Le commissaire aux comptes de la filiale peut conduire lui-même ses investigations auprès de la société mère, la loi lui permettant d'enquêter auprès des personnes qui contrôlent l'entité dont il certifie les comptes : il demande les conventions, justificatifs et modalités de calcul des frais facturés. Il peut aussi obtenir des renseignements des commissaires aux comptes de la mère, libérés du secret à son égard dans le périmètre de consolidation, sans toutefois pouvoir exiger leurs dossiers de travail. Un refus de la mère constituerait un obstacle à ses vérifications."
+      },
+      "explanation": "Le secret est levé entre commissaires aux comptes du périmètre de consolidation pour l'échange d'informations, mais les dossiers de travail restent la propriété de chaque commissaire aux comptes. L'outil principal est le droit d'investigation étendu aux sociétés contrôlantes et contrôlées, assorti du délit d'entrave. Il ne faut pas confondre cette situation avec celle d'une filiale non consolidée, où le secret s'applique pleinement entre confrères.",
+      "reference": "C. com. ex L.823-14 (investigations auprès des personnes contrôlant ou contrôlées), ex L.822-15 (secret), ex L.820-4 (entrave), recodifiés en 2024 ; NEP 600",
+      "confidence": "medium",
+      "update_note": "Numérotation recodifiée au 1er janvier 2024 (ordonnance 2023-1142) ; règles de fond inchangées."
+    },
+    {
+      "id": "2018-05-CAC-18",
+      "n": 18,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["independance_situations_risque", "h2a_supervision", "code_deontologie_structure"],
+      "points": 2,
+      "question": "L'article 11 du code de déontologie comprend la disposition suivante : « Lorsqu'il se trouve exposé à des situations à risque, le commissaire aux comptes prend immédiatement les mesures de sauvegarde appropriées en vue, soit d'en éliminer la cause, soit d'en réduire les effets à un niveau qui permette l'acceptation ou la poursuite de la mission en conformité avec les exigences légales, réglementaires, et celles du présent code ». Que prévoit ce même article 11 quand le commissaire aux comptes ressent un doute sérieux sur la pertinence des mesures de sauvegarde à prendre ?",
+      "qcm": {
+        "question": "Selon le code de déontologie, que fait le commissaire aux comptes en cas de doute sérieux ou de difficulté d'interprétation sur les mesures de sauvegarde à prendre face à une situation à risque ?",
+        "choices": [
+          "Il saisit, pour avis, l'autorité de supervision (Haut Conseil, devenu Haute autorité de l'audit)",
+          "Il saisit, pour avis, le président de la compagnie régionale dont il relève",
+          "Il doit refuser la mission ou en démissionner sans délai",
+          "Il consulte la commission d'éthique de la CNCC et mentionne le doute dans son rapport sur les comptes"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Saisine pour avis du Haut Conseil (H3C), aujourd'hui la Haute autorité de l'audit (H2A)",
+          "Mesure prévue en cas de doute sérieux ou de difficulté d'interprétation"
+        ],
+        "model_answer": "En cas de doute sérieux ou de difficulté d'interprétation, le code prévoit que le commissaire aux comptes saisit, pour avis, l'autorité de supervision de la profession : le Haut Conseil du commissariat aux comptes à la date du sujet, la Haute autorité de l'audit depuis 2024."
+      },
+      "explanation": "Le code organise une démarche en trois temps : identification des situations à risque (autorévision, intérêt personnel, familiarité, intimidation…), mesures de sauvegarde, puis, si le doute persiste, saisine pour avis de l'autorité de supervision. Piège EC/CAC : l'expert-comptable, lui, s'adresse à son conseil régional de l'Ordre ; le commissaire aux comptes ne saisit pas le président de la CRCC sur ce point.",
+      "reference": "Code de déontologie des commissaires aux comptes (annexe 8-1 C. com.), article relatif aux situations à risque et mesures de sauvegarde (art. 11 dans la version 2010-2017)",
+      "confidence": "medium",
+      "update_note": "Le code a été refondu par le décret 2020-292 (numérotation modifiée) et le H3C a été remplacé par la H2A au 1er janvier 2024 : la saisine pour avis s'adresse désormais à la Haute autorité de l'audit."
+    },
+    {
+      "id": "2018-05-CAC-19",
+      "n": 19,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["independance_situations_risque", "prestations_declaration_activite"],
+      "points": 2,
+      "question": "L'article 5-II du code de déontologie comprend la disposition suivante : « L'indépendance du commissaire aux comptes s'apprécie en réalité et en apparence (…). Elle garantit qu'il émet des conclusions exemptes de tout parti pris, conflit d'intérêts, risque d'autorévision ou influence liée à des liens personnels, financiers ou professionnels ». Donnez une définition d'une situation d'autorévision et précisez le risque qu'elle entraîne.",
+      "qcm": {
+        "question": "Qu'est-ce qu'une situation d'autorévision pour le commissaire aux comptes, et quel risque entraîne-t-elle ?",
+        "choices": [
+          "Situation dans laquelle le commissaire aux comptes serait conduit, lors de la certification, à se prononcer sur des éléments (documents, évaluations, procédures) qu'il a lui-même ou que son réseau a établis ; risque de perte d'objectivité, nul ne pouvant critiquer son propre travail",
+          "Situation dans laquelle le commissaire aux comptes relit ses propres dossiers de travail avant de signer ; risque de retard dans l'émission du rapport",
+          "Situation dans laquelle le commissaire aux comptes est contrôlé par un confrère lors du contrôle d'activité ; risque de divulgation du secret professionnel",
+          "Situation dans laquelle le commissaire aux comptes est renouvelé dans son mandat ; risque de familiarité excessive avec l'entité"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Définition : le commissaire aux comptes serait amené, dans sa mission de certification, à se prononcer sur des travaux, documents, évaluations ou procédures qu'il a lui-même (ou son réseau) réalisés ou établis pour l'entité",
+          "Risque : perte d'objectivité et d'impartialité, atteinte à l'indépendance (il ne peut pas remettre en cause son propre travail)"
+        ],
+        "model_answer": "Il y a autorévision lorsque le commissaire aux comptes serait conduit, dans le cadre de la certification, à apprécier des éléments qu'il a lui-même établis ou fournis à l'entité, directement ou par son réseau : comptes, évaluations, procédures, systèmes. Le risque est une perte d'objectivité et d'impartialité, donc d'indépendance, le commissaire aux comptes ne pouvant pas valablement critiquer son propre travail."
+      },
+      "explanation": "L'autorévision est l'une des situations à risque typiques du code, avec l'intérêt personnel, la familiarité, la représentation et l'intimidation. Elle fonde l'interdiction de la tenue de comptabilité, de l'établissement des comptes ou de la conception des systèmes financiers de l'entité auditée, pour les EIP (liste du règlement européen) comme pour les autres entités (approche par les risques depuis la loi Pacte). L'expert-comptable connaît une problématique voisine lorsqu'il est à la fois producteur et attestataire d'une information.",
+      "reference": "Code de déontologie des commissaires aux comptes (annexe 8-1 C. com.), dispositions relatives à l'indépendance et aux situations à risque ; règlement (UE) 537/2014 art. 5",
+      "confidence": "high",
+      "update_note": "Code refondu en 2020 (décret 2020-292) : la définition de l'indépendance et le risque d'autorévision y figurent avec une numérotation différente de celle du sujet."
+    },
+    {
+      "id": "2018-05-CAC-20",
+      "n": 20,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["incompatibilites_liens", "independance_situations_risque"],
+      "points": 3,
+      "question": "L'article 25 du code de déontologie rend incompatible avec l'exercice de la mission de commissaire aux comptes « tout lien personnel entre, d'une part, une personne occupant une fonction sensible au sein de la personne ou entité dont les comptes sont certifiés et, d'autre part : le commissaire aux comptes ; l'un des membres de la direction de la société de commissaires aux comptes ». Définissez le « lien personnel ».",
+      "qcm": {
+        "question": "Au sens du code de déontologie des commissaires aux comptes, qu'est-ce qu'un « lien personnel » avec une personne occupant une fonction sensible dans l'entité contrôlée ?",
+        "choices": [
+          "Un lien familial (conjoint, partenaire de PACS, concubin, parents et alliés en ligne directe et jusqu'au deuxième degré en ligne collatérale) et, plus largement, toute relation personnelle étroite susceptible d'affecter l'indépendance, en réalité ou en apparence",
+          "Uniquement le mariage ou le PACS entre le commissaire aux comptes et la personne occupant la fonction sensible",
+          "Tout lien d'affaires ou financier, tel que la détention de titres de l'entité ou un prêt consenti par celle-ci",
+          "Tout lien professionnel, tel que l'exercice antérieur de fonctions de salarié ou de dirigeant dans l'entité"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Liens familiaux : conjoint, partenaire de PACS, concubin",
+          "Parents et alliés en ligne directe (ascendants, descendants) et en ligne collatérale jusqu'au deuxième degré (frères et sœurs) et leurs conjoints",
+          "Plus largement, toute relation personnelle étroite (amitié) de nature à affecter l'indépendance en réalité ou en apparence",
+          "Fonction sensible : dirigeants, administrateurs, responsables financiers ou comptables, salariés chargés de l'information financière"
+        ],
+        "model_answer": "Le lien personnel recouvre d'abord les liens familiaux : lien avec le conjoint, le partenaire de PACS ou le concubin, et avec les parents et alliés en ligne directe ou, en ligne collatérale, jusqu'au deuxième degré. Il s'entend plus largement de toute relation personnelle étroite, notamment d'amitié, de nature à affecter l'indépendance du commissaire aux comptes, en réalité ou en apparence."
+      },
+      "explanation": "Le code distingue trois familles de liens incompatibles ou à risque : personnels, financiers et professionnels. Le lien personnel, qui a remplacé la notion de lien familial en 2017, vise non seulement la parenté et l'alliance mais aussi les relations d'amitié ou de proximité. Il est apprécié à l'égard des personnes occupant des fonctions sensibles (dirigeants, responsables financiers) et s'étend aux membres de l'équipe et de la direction de la société de commissaires aux comptes.",
+      "reference": "Code de déontologie des commissaires aux comptes (annexe 8-1 C. com.), dispositions sur les liens personnels (art. 25 dans la version 2017 ; renumérotées par le décret 2020-292)",
+      "confidence": "low",
+      "update_note": "Code refondu en 2020 : vérifier la rédaction actuelle de la définition (degrés de parenté et d'alliance retenus)."
+    }
+  ]
+}

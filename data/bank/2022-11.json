@@ -1,0 +1,604 @@
+{
+  "session": "2022-11",
+  "format": "qrc",
+  "questions": [
+    {
+      "id": "2022-11-EC-01",
+      "n": 1,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["lettre_mission", "delegation_signature", "societes_ec_capital"],
+      "points": 2,
+      "question": "Dans une société d'expertise comptable, quelles sont les personnes qui ont le droit de signer les lettres de mission portant sur des missions de présentation des comptes ?",
+      "qcm": {
+        "choices": [
+          "Tout dirigeant mandataire social de la société, même non expert-comptable, dès lors qu'il engage juridiquement la société",
+          "Uniquement les experts-comptables inscrits au tableau exerçant au sein de la société (associés, dirigeants ou salariés), qui signent personnellement avec le visa ou la signature sociale",
+          "Tout collaborateur titulaire du DSCG ayant reçu une délégation écrite du gérant",
+          "Les experts-comptables inscrits ainsi que les experts-comptables stagiaires de la société"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Seuls les experts-comptables inscrits au tableau exerçant dans la société (associés, mandataires sociaux ou salariés)",
+          "Signature personnelle de l'expert-comptable assortie du visa ou de la signature sociale",
+          "Exclusion des dirigeants non inscrits, des collaborateurs et des stagiaires"
+        ],
+        "model_answer": "La mission de présentation relève de la prérogative d'exercice ; la lettre de mission ne peut donc être signée que par un expert-comptable inscrit au tableau exerçant au sein de la société (associé, mandataire social ou salarié), sa signature personnelle étant accompagnée du visa ou de la signature sociale. Un dirigeant non inscrit, un collaborateur ou un stagiaire ne peuvent pas la signer."
+      },
+      "explanation": "L'ordonnance de 1945 impose que les travaux de la société d'expertise comptable soient assortis de la signature personnelle de l'expert-comptable et du visa ou de la signature sociale (art. 12). La lettre de mission d'une mission comptable, qui engage la responsabilité personnelle du professionnel, obéit à la même logique : seul un membre de l'Ordre peut la signer. Piège classique : les salariés visés aux articles 83 ter et 83 quater ne concernent que les associations de gestion et de comptabilité, pas les sociétés d'expertise comptable ; et en commissariat aux comptes, la règle parallèle veut que la mission soit exercée au nom de la société par les CAC personnes physiques associés, actionnaires ou dirigeants (C. com. L.821-25).",
+      "reference": "Ord. 45-2138 art. 2, 3, 7 et 12 ; D. 2012-432 art. 151 (lettre de mission) ; NP 2300",
+      "confidence": "medium"
+    },
+    {
+      "id": "2022-11-EC-02",
+      "n": 2,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["incompatibilites_activites", "missions_legales"],
+      "points": 3,
+      "question": "Au sein d'un cabinet d'expertise comptable, quelles sont les conditions à respecter pour pouvoir réaliser une consultation juridique ?",
+      "qcm": {
+        "choices": [
+          "Aucune condition particulière : l'expert-comptable dispose du même droit de consultation juridique que l'avocat",
+          "La consultation est possible uniquement si le cabinet est inscrit sur la liste des commissaires aux comptes",
+          "La consultation doit rester accessoire (ne pas être l'objet principal de l'activité) et concerner une entreprise dans laquelle le cabinet assure une mission comptable ou d'accompagnement déclaratif permanente ou habituelle, ou être directement liée aux travaux comptables confiés",
+          "La consultation est possible pour tout client dès lors qu'elle est facturée séparément et donne lieu à une lettre de mission distincte"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Activité accessoire : ne peut constituer l'objet principal de l'activité",
+          "Client pour lequel le cabinet assure une mission comptable ou d'accompagnement déclaratif et administratif permanente ou habituelle",
+          "Ou consultation directement liée aux travaux comptables dont le cabinet est chargé",
+          "Respect de la loi de 1971 (art. 59) : compétence appropriée, secret professionnel, déontologie"
+        ],
+        "model_answer": "L'expert-comptable peut donner des consultations juridiques, fiscales ou sociales à condition qu'elles ne constituent pas l'objet principal de son activité et qu'elles soient délivrées soit à des entreprises pour lesquelles il assure une mission comptable ou d'accompagnement déclaratif et administratif de caractère permanent ou habituel, soit lorsqu'elles sont directement liées aux travaux comptables qui lui sont confiés. Il agit dans le cadre de l'article 59 de la loi du 31 décembre 1971, avec la compétence requise et dans le respect de sa déontologie."
+      },
+      "explanation": "L'article 22 de l'ordonnance (alinéa 2° de la liste des activités accessoires, tel que remanié par la loi Pacte) encadre strictement le conseil juridique de l'expert-comptable : accessoire, et réservé aux clients comptables ou lié aux travaux comptables. La loi de 1971 (art. 59) autorise les professions réglementées à donner des consultations juridiques relevant de leur activité principale. À ne pas confondre avec le commissaire aux comptes, qui respecte également les monopoles des autres professions (code de déontologie CAC art. 17) mais ne peut jamais fournir de conseil juridique à une EIP dont il certifie les comptes (services interdits).",
+      "reference": "Ord. 45-2138 art. 22 ; loi 71-1130 du 31 décembre 1971 art. 59",
+      "confidence": "high"
+    },
+    {
+      "id": "2022-11-EC-03",
+      "n": 3,
+      "profession": "EC",
+      "theme": "controle_qualite",
+      "tags": ["controle_qualite", "referentiel_normatif"],
+      "points": 2,
+      "question": "Quelle est la distinction entre revue de dossiers et revue indépendante d'une mission ?",
+      "qcm": {
+        "choices": [
+          "La revue indépendante est réalisée par le contrôleur qualité de l'Ordre, la revue de dossiers par un associé du cabinet",
+          "La revue indépendante intervient avant la délivrance du rapport, sur une mission sélectionnée, par une personne n'ayant pas participé à la mission ; la revue de dossiers est un contrôle a posteriori, par sondage, de dossiers achevés dans le cadre de la surveillance du système de maîtrise de la qualité",
+          "La revue de dossiers est obligatoire pour toutes les missions, la revue indépendante seulement pour les missions d'audit légal",
+          "Les deux notions sont synonymes : il s'agit du contrôle du dossier par un second expert-comptable avant signature"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Revue indépendante : avant l'émission du rapport, sur une mission sélectionnée selon des critères (risque, enjeux), par une personne compétente n'ayant pas participé à la mission, pour évaluer les jugements significatifs et les conclusions",
+          "Revue de dossiers : après l'achèvement de la mission, par sondage, pour vérifier le respect des normes, des procédures du cabinet et la pertinence du rapport (surveillance du système de qualité)"
+        ],
+        "model_answer": "La revue indépendante est un contrôle réalisé avant la signature du rapport, sur certaines missions sélectionnées, par une personne qui n'a pas participé à la mission et qui apprécie les jugements significatifs et les conclusions retenues. La revue de dossiers est un contrôle a posteriori, par sondage sur des dossiers terminés, qui s'inscrit dans la surveillance du système de maîtrise de la qualité du cabinet pour vérifier l'application des normes et des procédures."
+      },
+      "explanation": "La NPMQ distingue deux dispositifs : la revue indépendante (contrôle préalable à l'émission du rapport, orientée sur les jugements et conclusions) et la surveillance du système, qui comprend l'inspection périodique de dossiers achevés. Le critère de distinction est double : le moment (avant / après la délivrance du rapport) et l'objet (une mission donnée / le fonctionnement du système). Côté CAC, la revue indépendante des opinions est aussi prévue par les règles d'organisation interne du cabinet (dispositif de contrôle de qualité interne, C. com. R.820-45 2°), et les personnes qui y procèdent sont soumises au secret professionnel (C. com. L.821-35).",
+      "reference": "NPMQ (norme professionnelle de maîtrise de la qualité, agréée par arrêté) ; C. com. L.821-35 pour le parallèle CAC",
+      "confidence": "medium"
+    },
+    {
+      "id": "2022-11-EC-04",
+      "n": 4,
+      "profession": "EC",
+      "theme": "controle_qualite",
+      "tags": ["controle_qualite", "referentiel_normatif"],
+      "points": 2,
+      "question": "Citez deux critères à prendre en compte afin d'affecter le personnel aux missions d'expertise comptable.",
+      "qcm": {
+        "choices": [
+          "L'ancienneté dans le cabinet et le niveau de rémunération du collaborateur",
+          "La compétence et l'expérience du collaborateur au regard de la mission, et sa disponibilité (charge de travail) compte tenu des délais",
+          "Le domicile du collaborateur et sa proximité géographique avec le client",
+          "Le souhait du client de choisir nominativement les intervenants"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Compétences et expérience adaptées à la nature et à la complexité de la mission (connaissance du secteur, des normes)",
+          "Disponibilité et charge de travail au regard du calendrier",
+          "Indépendance / absence de conflit d'intérêts, continuité de l'équipe, besoins de formation"
+        ],
+        "model_answer": "Le cabinet affecte le personnel en fonction, notamment, des compétences et de l'expérience requises par la mission (nature, complexité, secteur d'activité) et de la disponibilité des collaborateurs compte tenu des délais. Il tient aussi compte de l'indépendance des intervenants et de l'opportunité d'assurer la continuité de l'équipe ou de former les collaborateurs."
+      },
+      "explanation": "La NPMQ impose au cabinet de s'assurer que les missions sont confiées à des personnes disposant des compétences, des capacités et du temps nécessaires. Les critères usuels sont la compétence technique, l'expérience, la connaissance du secteur, la disponibilité, l'indépendance et les besoins de supervision. Le même principe existe en commissariat aux comptes (ressources humaines adéquates à vérifier et consigner avant d'accepter une mission, C. com. L.821-4 II).",
+      "reference": "NPMQ (ressources humaines, affectation des équipes) ; C. com. L.821-4 II pour le parallèle CAC",
+      "confidence": "medium"
+    },
+    {
+      "id": "2022-11-EC-05",
+      "n": 5,
+      "profession": "EC",
+      "theme": "controle_qualite",
+      "tags": ["controle_qualite", "referentiel_normatif"],
+      "points": 3,
+      "question": "Quels sont les objectifs de la supervision dans le cadre d'une mission d'expertise comptable ?",
+      "qcm": {
+        "choices": [
+          "Vérifier uniquement que le budget d'heures de la mission n'est pas dépassé",
+          "Suivre l'avancement des travaux, s'assurer que les collaborateurs ont compris les instructions et disposent des compétences, identifier les points nécessitant consultation ou jugement, et vérifier que les travaux sont conformes à l'approche prévue et aux normes",
+          "Remplacer la revue indépendante lorsque la mission présente un risque élevé",
+          "Contrôler que le client a transmis l'ensemble des pièces avant la clôture"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Suivre l'avancement de la mission et le respect du calendrier",
+          "S'assurer de la compétence des collaborateurs et de leur compréhension des instructions",
+          "Identifier les questions importantes nécessitant une consultation ou l'exercice du jugement du responsable",
+          "Vérifier que les travaux réalisés sont conformes à la démarche prévue et aux normes, et que la documentation est suffisante"
+        ],
+        "model_answer": "La supervision a pour objectifs de suivre l'avancement des travaux, de vérifier que les collaborateurs disposent des compétences requises et ont compris les instructions, d'identifier les points significatifs nécessitant une consultation ou un jugement, et de s'assurer que les travaux sont conformes à l'approche planifiée, aux normes professionnelles et correctement documentés."
+      },
+      "explanation": "La supervision est une composante de la réalisation de la mission dans la NPMQ : le responsable de mission reste personnellement responsable des travaux délégués (ordonnance art. 12). Elle se distingue de la revue des travaux (contrôle des feuilles de travail) et de la revue indépendante (contrôle externe à l'équipe avant signature). Pour le CAC, la logique est identique : il ne peut déléguer ses pouvoirs et conserve l'entière responsabilité de la mission (code de déontologie CAC art. 10).",
+      "reference": "NPMQ (réalisation des missions : direction, supervision, revue) ; Ord. 45-2138 art. 12",
+      "confidence": "medium"
+    },
+    {
+      "id": "2022-11-EC-06",
+      "n": 6,
+      "profession": "EC",
+      "theme": "controle_qualite",
+      "tags": ["controle_qualite", "ordre_organisation"],
+      "points": 2,
+      "question": "Citez deux conclusions possibles formulées à la suite d'un contrôle qualité.",
+      "qcm": {
+        "choices": [
+          "Certification sans réserve ou certification avec réserve du cabinet",
+          "Lettre de conclusion sans observation, ou avec observations et recommandations, éventuellement assortie d'un nouveau contrôle dans un délai donné ou d'une saisine disciplinaire",
+          "Agrément ou retrait d'agrément du cabinet par le commissaire du gouvernement",
+          "Avertissement, blâme ou radiation prononcés directement par le contrôleur qualité"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Conclusion sans observation (ou avec simples recommandations)",
+          "Conclusion avec observations, éventuellement assortie d'un nouveau contrôle (contrôle de suivi) dans un délai déterminé",
+          "Transmission au président du conseil régional en vue d'une éventuelle saisine de la chambre régionale de discipline en cas de manquements graves"
+        ],
+        "model_answer": "À l'issue du contrôle, le conseil régional adresse au professionnel une lettre de conclusion qui peut être sans observation, ou comporter des observations et recommandations, le cas échéant avec un nouveau contrôle dans un délai fixé. En cas de manquements graves, le dossier peut être transmis en vue d'une saisine de la chambre régionale de discipline."
+      },
+      "explanation": "Le contrôle de qualité de l'Ordre n'est pas une procédure disciplinaire : le contrôleur établit un rapport, le conseil régional en tire une conclusion (sans observation, avec observations, nouveau contrôle). Ce n'est que si des manquements graves sont relevés que le président du conseil régional peut saisir la chambre de discipline. À distinguer du contrôle d'activité des CAC, conduit sous l'autorité de la H2A, qui peut déboucher sur des recommandations de la formation d'examen des contrôles ou sur la saisine du rapporteur général (C. com. R.820-47, L.821-73).",
+      "reference": "D. 2012-432 (contrôle de qualité) ; règlement intérieur de l'Ordre (art. 400 s.) ; C. com. R.820-47 pour le parallèle CAC",
+      "confidence": "low"
+    },
+    {
+      "id": "2022-11-EC-07",
+      "n": 7,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["lettre_mission", "honoraires"],
+      "points": 1,
+      "question": "Le client n'ayant pas respecté le délai prévu pour la résiliation d'une lettre de mission doit-il rémunérer les travaux déjà effectués par le cabinet d'expertise comptable ?",
+      "qcm": {
+        "choices": [
+          "Non : la rupture irrégulière du contrat par le client fait perdre au cabinet tout droit à honoraires",
+          "Oui : les travaux déjà réalisés doivent être rémunérés, sans préjudice d'une éventuelle indemnité de rupture prévue par la lettre de mission",
+          "Non, sauf si le cabinet exerce son droit de rétention sur les documents comptables jusqu'au paiement",
+          "Oui, mais uniquement si l'Ordre a préalablement constaté le manquement du client"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Oui, les travaux effectués restent dus",
+          "Possibilité en outre d'une indemnité de rupture (clause pénale) si la lettre de mission la prévoit",
+          "Le non-paiement n'autorise pas la rétention des documents appartenant au client"
+        ],
+        "model_answer": "Oui. Les honoraires correspondant aux travaux déjà effectués restent dus par le client, quelle que soit la régularité de la résiliation ; le cabinet peut en outre réclamer l'indemnité de rupture éventuellement stipulée dans la lettre de mission. En revanche, il ne peut retenir les documents du client pour obtenir le paiement."
+      },
+      "explanation": "Le contrat d'expertise comptable est un contrat à exécution successive : les prestations réalisées sont rémunérées même en cas de rupture anticipée. La lettre de mission (obligatoire, D. 2012-432 art. 151) fixe les conditions de résiliation et peut prévoir une clause pénale, révisable par le juge. Le code de déontologie interdit par ailleurs au professionnel de conserver les documents du client en garantie du paiement.",
+      "reference": "Ord. 45-2138 art. 24 ; D. 2012-432 art. 151 et s. (lettre de mission, honoraires, restitution des documents) ; C. civ. art. 1231-5",
+      "confidence": "high"
+    },
+    {
+      "id": "2022-11-EC-08",
+      "n": 8,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["lettre_mission", "personnes_physiques"],
+      "points": 1,
+      "question": "Est-ce que la structure d'exercice doit informer son client chaque année de la possibilité de ne pas reconduire le contrat ?",
+      "qcm": {
+        "choices": [
+          "Oui, pour tous les clients : le code de déontologie impose une information annuelle sur la faculté de non-reconduction",
+          "Non, jamais : la lettre de mission à tacite reconduction se renouvelle sans formalité",
+          "Oui, mais seulement lorsque le client est un consommateur ou un non-professionnel (loi Chatel, C. consom. L.215-1) ; pas d'obligation légale pour les clients professionnels",
+          "Oui, et à défaut la lettre de mission devient caduque et les honoraires de l'exercice ne sont plus dus"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Obligation d'information annuelle prévue par le code de la consommation (loi Chatel) pour les contrats à tacite reconduction conclus avec des consommateurs ou des non-professionnels",
+          "Pas d'obligation légale à l'égard des clients professionnels (entreprises), sauf clause contractuelle",
+          "Sanction : le client consommateur peut résilier à tout moment sans pénalité"
+        ],
+        "model_answer": "Seulement lorsque le client est un consommateur ou un non-professionnel : la loi Chatel (C. consom. L.215-1) impose alors d'informer par écrit, avant la date limite de non-reconduction, de la possibilité de ne pas reconduire le contrat à tacite reconduction. Pour un client professionnel, aucune information annuelle n'est imposée par la loi ; la lettre de mission fixe librement les conditions de reconduction et de dénonciation."
+      },
+      "explanation": "La plupart des lettres de mission sont conclues pour un an avec tacite reconduction. L'obligation d'information annuelle sur la faculté de non-reconduction ne résulte pas de la déontologie mais du droit de la consommation, qui ne protège que les consommateurs et non-professionnels (par exemple un particulier ou une association sans activité professionnelle). Le piège est de généraliser cette obligation à tous les clients.",
+      "reference": "C. consom. art. L.215-1 à L.215-3 ; D. 2012-432 art. 151 (lettre de mission)",
+      "confidence": "medium"
+    },
+    {
+      "id": "2022-11-EC-09",
+      "n": 9,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "missions_assurance"],
+      "points": 2,
+      "question": "Quelles sont les deux normes de portée générale applicables à une mission de compilation ?",
+      "qcm": {
+        "choices": [
+          "La NP 2300 (présentation) et la NP 2400 (examen limité)",
+          "La NPMQ (maîtrise de la qualité) et la NPLAB (lutte contre le blanchiment), applicables à toutes les missions, en plus de la NP 4410 propre à la compilation",
+          "La NEP 9605 et la NEP 210, communes aux experts-comptables et aux commissaires aux comptes",
+          "La NP 3100 (attestations particulières) et la NP 4400 (procédures convenues)"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Norme professionnelle de maîtrise de la qualité (NPMQ)",
+          "Norme professionnelle relative aux obligations de lutte contre le blanchiment et le financement du terrorisme (NPLAB)",
+          "Outre le code de déontologie, texte réglementaire applicable à toute mission"
+        ],
+        "model_answer": "Les deux normes d'application générale sont la norme de maîtrise de la qualité (NPMQ) et la norme relative aux obligations de lutte contre le blanchiment des capitaux et le financement du terrorisme (NPLAB). Elles s'appliquent à toutes les missions, y compris la compilation (NP 4410), aux côtés du code de déontologie.",
+        "question": "Quelles sont les deux normes de portée générale applicables à une mission de compilation ?"
+      },
+      "explanation": "Le référentiel normatif de l'Ordre distingue les normes propres à chaque mission (NP 2300, 2400, 3100, 3400, 4400, 4410...) des textes d'application générale : le code de déontologie (intégré au décret de 2012), la NPMQ et la NPLAB. La compilation est une mission sans assurance (NP 4410), mais elle reste soumise aux obligations de qualité et de vigilance LCB-FT. Côté CAC, l'équivalent LCB-FT est la NEP 9605.",
+      "reference": "Référentiel normatif OEC (cadre de référence) ; NPMQ ; NPLAB ; NP 4410 ; D. 2012-432 art. 141 s.",
+      "confidence": "high"
+    },
+    {
+      "id": "2022-11-EC-10",
+      "n": 10,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "missions_assurance"],
+      "points": 2,
+      "question": "Quels sont les niveaux d'assurance envisageables pour une mission d'attestation particulière ?",
+      "qcm": {
+        "choices": [
+          "Uniquement une assurance modérée, comme pour la présentation des comptes",
+          "Une assurance raisonnable ou une assurance modérée, selon la nature des diligences convenues et de l'information attestée",
+          "Aucune assurance : l'attestation particulière est une mission sans assurance comme la compilation",
+          "Une assurance absolue, l'expert-comptable certifiant l'exactitude de l'information"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Assurance raisonnable (élevée mais non absolue)",
+          "Assurance modérée (limitée)",
+          "Choix selon l'information attestée et les diligences mises en œuvre, précisé dans la lettre de mission et l'attestation"
+        ],
+        "model_answer": "La mission d'attestation particulière (NP 3100) peut être réalisée avec un niveau d'assurance raisonnable ou avec un niveau d'assurance modérée, selon la nature de l'information attestée et l'étendue des diligences convenues. Le niveau retenu est indiqué dans la lettre de mission et dans l'attestation."
+      },
+      "explanation": "Les attestations particulières relèvent des « autres missions d'assurance » du référentiel : l'expert-comptable se prononce sur une information autre que des comptes complets historiques. La norme laisse le choix entre assurance raisonnable et assurance modérée. Il ne faut pas confondre avec la présentation (assurance modérée seulement) ni avec la compilation ou les procédures convenues (aucune assurance).",
+      "reference": "NP 3100 (attestations particulières) ; référentiel normatif OEC",
+      "confidence": "medium"
+    },
+    {
+      "id": "2022-11-CAC-11",
+      "n": 11,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions", "h2a_supervision"],
+      "points": 2,
+      "question": "Citez quatre sanctions disciplinaires pouvant être infligées à un commissaire aux comptes, personne physique.",
+      "qcm": {
+        "choices": [
+          "Réprimande, blâme avec inscription au dossier, suspension avec sursis, radiation du tableau",
+          "Avertissement, blâme, interdiction temporaire d'exercer (trois ans au plus), radiation de la liste",
+          "Avertissement, amende pénale, fermeture du cabinet, interdiction de gérer",
+          "Rappel à l'ordre, blâme, suspension de six mois, exclusion de la compagnie régionale"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Avertissement",
+          "Blâme",
+          "Interdiction d'exercer tout ou partie des missions ou d'en accepter de nouvelles pour trois ans au plus",
+          "Radiation de la liste",
+          "Retrait de l'honorariat ; sanctions complémentaires : sanction pécuniaire (250 000 € max pour une personne physique), interdiction de fonctions de direction, publication, inéligibilité"
+        ],
+        "model_answer": "Les sanctions principales sont l'avertissement, le blâme, l'interdiction temporaire d'exercer tout ou partie des missions (ou d'en accepter de nouvelles) pour une durée maximale de trois ans, la radiation de la liste et le retrait de l'honorariat. Peuvent s'y ajouter une sanction pécuniaire (jusqu'à 250 000 € pour une personne physique), l'interdiction d'exercer des fonctions de direction, la publication d'une déclaration et l'inéligibilité aux organismes professionnels."
+      },
+      "explanation": "Les sanctions sont prononcées par la commission des sanctions de la H2A (C. com. L.821-71). Confusion fréquente avec l'échelle des peines des experts-comptables (ord. 1945 art. 53 : réprimande, blâme avec inscription au dossier, suspension avec ou sans sursis, radiation), prononcées par les chambres régionales de discipline. Notez que la sanction pécuniaire n'existe pour l'expert-comptable qu'en matière de LCB-FT.",
+      "reference": "C. com. art. L.821-70 et L.821-71 (ex L.824-1 et L.824-2) ; L.820-2 (commission des sanctions)",
+      "confidence": "high",
+      "update_note": "Depuis le 1er janvier 2024 (ordonnance 2023-1142), les sanctions sont prononcées par la commission des sanctions de la Haute autorité de l'audit (H2A), qui remplace le H3C ; les articles L.824-1 et s. sont devenus L.821-70 et s."
+    },
+    {
+      "id": "2022-11-CAC-12",
+      "n": 12,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["demission_revocation", "mandat_duree_cessation", "code_deontologie_structure"],
+      "points": 2,
+      "question": "Citez les quatre motifs légitimes de démission prévus par le code de déontologie pour un commissaire aux comptes, personne physique.",
+      "qcm": {
+        "choices": [
+          "Cessation définitive d'activité ; motif personnel impérieux (notamment l'état de santé) ; difficultés rencontrées dans l'accomplissement de la mission auxquelles il est impossible de remédier ; survenance d'un événement compromettant le respect des règles de la profession (indépendance, objectivité)",
+          "Cessation d'activité de l'entité contrôlée ; décès du dirigeant ; ouverture d'un redressement judiciaire ; désaccord sur les honoraires",
+          "Non-paiement des honoraires ; désaccord comptable avec la direction ; surcharge de travail ; changement de compagnie régionale",
+          "Perte d'un client important ; déménagement du cabinet ; refus de certification ; nomination d'un co-commissaire"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "La cessation définitive d'activité du commissaire aux comptes",
+          "Un motif personnel impérieux, notamment l'état de santé",
+          "Les difficultés rencontrées dans l'accomplissement de la mission, lorsqu'il n'est pas possible d'y remédier",
+          "La survenance d'un événement de nature à compromettre le respect des règles de la profession, notamment l'indépendance ou l'objectivité"
+        ],
+        "model_answer": "Le commissaire aux comptes exerce sa mission jusqu'à son terme mais peut démissionner pour un motif légitime : la cessation définitive de son activité ; un motif personnel impérieux (notamment l'état de santé) ; des difficultés rencontrées dans l'accomplissement de la mission auxquelles il est impossible de remédier ; la survenance d'un événement compromettant le respect des règles professionnelles, notamment son indépendance ou son objectivité. Il joint à son dossier les éléments justifiant la démission et en informe la H2A."
+      },
+      "explanation": "La démission est encadrée parce que le mandat de six exercices est d'ordre public : le CAC ne choisit pas librement d'y mettre fin. Les motifs tiennent à la personne du CAC ou aux conditions d'exercice de la mission, jamais à la situation de l'entité (sa cessation d'activité ou son redressement judiciaire ne sont pas des motifs légitimes). Depuis le code 2020, le CAC démissionnaire doit informer la H2A (ex H3C) et, le cas échéant, l'AMF ou l'ACPR.",
+      "reference": "Code de déontologie CAC (annexe 8-1 C. com.) art. 28 (ex art. 19) ; C. com. L.821-44",
+      "confidence": "high",
+      "update_note": "Numérotation : art. 28 du code de déontologie issu du décret 2020-292, modifié par le décret 2026-176 ; le CAC informe désormais la H2A (ex H3C) des motifs de sa démission."
+    },
+    {
+      "id": "2022-11-CAC-13",
+      "n": 13,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["co_commissariat", "cncc_crcc_organisation"],
+      "points": 2,
+      "question": "Qui concilie deux commissaires aux comptes partageant une même mission légale de certification lorsqu'ils ne parviennent pas à s'entendre sur leur contribution respective ?",
+      "qcm": {
+        "choices": [
+          "Le président de la Haute autorité de l'audit",
+          "Le président de la compagnie régionale des commissaires aux comptes (ou les présidents de leurs compagnies respectives s'ils relèvent de compagnies distinctes)",
+          "Le président du tribunal de commerce statuant en référé",
+          "Le président du conseil régional de l'Ordre des experts-comptables"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Le président de la compagnie régionale des CAC",
+          "Si les CAC appartiennent à des compagnies régionales distinctes : les présidents de leur compagnie respective"
+        ],
+        "model_answer": "Les co-commissaires saisissent le président de leur compagnie régionale ou, s'ils relèvent de compagnies régionales distinctes, les présidents de leurs compagnies respectives, qui tentent de les concilier sur la répartition de leurs contributions."
+      },
+      "explanation": "Le co-commissariat (obligatoire pour les entités publiant des comptes consolidés, C. com. L.821-41) suppose une répartition équilibrée des diligences, définie par la NEP sur l'audit réalisé par plusieurs CAC. En cas de désaccord sur les contributions, le code de déontologie organise une conciliation par le président de la CRCC, expression du principe de confraternité (art. 8). Ni la H2A ni le juge n'interviennent à ce stade.",
+      "reference": "Code de déontologie CAC art. 24 (ex art. 17) et art. 8 ; C. com. L.821-41 et L.821-62 ; NEP 100",
+      "confidence": "high"
+    },
+    {
+      "id": "2022-11-CAC-14",
+      "n": 14,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["demission_revocation", "revelation_procureur", "lcb_ft"],
+      "points": 3,
+      "question": "Citez au moins trois obstacles à la démission d'un commissaire aux comptes, personne physique.",
+      "qcm": {
+        "choices": [
+          "Le CAC ne peut démissionner pour se soustraire à la révélation de faits délictueux, à l'émission de son opinion, à la déclaration de soupçon à Tracfin ou à la procédure d'alerte, ni dans des conditions préjudiciables à l'entité",
+          "Le CAC ne peut démissionner avant la fin du troisième exercice de son mandat ni sans l'accord de l'assemblée générale",
+          "Le CAC ne peut démissionner qu'avec l'autorisation préalable de la H2A et du comité d'audit",
+          "Le CAC ne peut démissionner tant que ses honoraires n'ont pas été intégralement réglés"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Ne pas démissionner pour se soustraire à la révélation de faits délictueux au procureur de la République",
+          "Ne pas démissionner pour se soustraire à l'émission de son opinion sur les comptes",
+          "Ne pas démissionner pour se soustraire à la déclaration de soupçon (Tracfin) ni à la procédure d'alerte",
+          "Ne pas démissionner dans des conditions génératrices de préjudice pour l'entité ; pouvoir justifier de l'analyse de la situation"
+        ],
+        "model_answer": "Le commissaire aux comptes ne peut démissionner pour échapper à ses obligations légales : révélation des faits délictueux au procureur, émission de son opinion sur les comptes, déclaration de soupçon à Tracfin, mise en œuvre de la procédure d'alerte. Il ne peut pas non plus démissionner dans des conditions préjudiciables à l'entité et doit pouvoir justifier qu'il a analysé la situation."
+      },
+      "explanation": "Le code de déontologie liste les obligations auxquelles la démission ne permet pas d'échapper, car elles relèvent de l'intérêt général attaché à la mission. Ces obstacles sont propres au commissaire aux comptes : l'expert-comptable, lié par contrat, peut rompre sa lettre de mission dans les conditions prévues, sous réserve de ne pas le faire à contretemps et de respecter ses obligations LCB-FT.",
+      "reference": "Code de déontologie CAC art. 28 II et III (ex art. 19) ; C. com. L.821-10 ; CMF L.561-15",
+      "confidence": "high",
+      "update_note": "Depuis le décret 2026-176, l'article 28 du code de déontologie distingue les obstacles communs (révélation, opinion) et ceux propres au CAC (déclaration de soupçon, alerte, art. 12 du règlement UE 537/2014)."
+    },
+    {
+      "id": "2022-11-CAC-15",
+      "n": 15,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["honoraires_bareme", "cncc_crcc_organisation", "h2a_supervision"],
+      "points": 1,
+      "question": "Devant qui est porté le recours contre une décision du président de la compagnie régionale dans le cadre de la demande de dérogation au barème d'heures ?",
+      "qcm": {
+        "choices": [
+          "Devant le président de la Compagnie nationale des commissaires aux comptes, dans les dix jours de la notification",
+          "Devant la commission des sanctions de la Haute autorité de l'audit",
+          "Devant le tribunal de commerce du siège de l'entité contrôlée",
+          "Devant le président du conseil régional de l'Ordre des experts-comptables"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Recours devant le président de la Compagnie nationale des commissaires aux comptes (délai de dix jours)",
+          "Puis recours possible devant le bureau de la Haute autorité de l'audit (délai d'un mois), dont la décision peut être contestée devant le tribunal administratif"
+        ],
+        "model_answer": "La décision du président de la compagnie régionale peut faire l'objet, dans les dix jours de sa notification, d'un recours devant le président de la Compagnie nationale des commissaires aux comptes. La décision de ce dernier peut elle-même être déférée, dans le mois, au bureau de la Haute autorité de l'audit, dont la décision relève du tribunal administratif."
+      },
+      "explanation": "Le barème d'heures (D.821-188) fixe une fourchette d'heures en fonction du bilan et des produits. Si ce nombre paraît excessif ou insuffisant, la partie la plus diligente demande une dérogation au président de la CRCC avant la réalisation de la mission. La chaîne de recours est à trois niveaux : président de la CNCC, puis bureau de la H2A, puis tribunal administratif. Ce dispositif n'a pas d'équivalent chez l'expert-comptable, dont les honoraires sont libres et sans barème.",
+      "reference": "C. com. art. D.821-188 à D.821-191 (ex R.823-12 à R.823-15) ; L.820-2 III 2° (bureau de la H2A)",
+      "confidence": "high",
+      "update_note": "Recodification 2024 : ex R.823-14 devenu D.821-190 ; le recours de second niveau est porté devant le bureau de la H2A (ex Haut Conseil) et sa décision relève du tribunal administratif."
+    },
+    {
+      "id": "2022-11-CAC-16",
+      "n": 16,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["honoraires_bareme", "h2a_supervision"],
+      "points": 1,
+      "question": "Devant qui est portée la décision de la formation restreinte du H3C en cas de désaccord sur les honoraires ?",
+      "qcm": {
+        "choices": [
+          "Devant le Conseil d'État, comme pour toutes les décisions disciplinaires",
+          "Devant la cour d'appel de Paris (régime antérieur à 2024) ; depuis la réforme de 2024, la H2A ne tranche plus les litiges d'honoraires, qui relèvent, après échec de la conciliation du président de la CRCC, de la juridiction de droit commun",
+          "Devant la chambre nationale de discipline",
+          "Devant le président de la Compagnie nationale des commissaires aux comptes"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Sous l'empire des textes antérieurs à 2024 : recours contre la décision de la formation restreinte du H3C devant la cour d'appel de Paris",
+          "Depuis le 1er janvier 2024 : plus de formation restreinte compétente ; conciliation par le président de la CRCC (trois mois) puis juridiction de droit commun"
+        ],
+        "model_answer": "À la date du sujet, la décision rendue par la formation restreinte du H3C sur un litige d'honoraires pouvait être contestée devant la cour d'appel de Paris. Depuis la recodification de 2024, la H2A n'est plus compétente pour trancher ces litiges : en cas de désaccord sur la rémunération de la mission de certification, le président de la compagnie régionale tente une conciliation dans un délai de trois mois et, à défaut, le litige relève des juridictions de droit commun."
+      },
+      "explanation": "La loi Pacte avait confié au H3C statuant en formation restreinte les litiges relatifs à la rémunération des CAC, après disparition des chambres régionales de discipline. L'ordonnance 2023-1142 a réorganisé la H2A (collège, bureau, formation d'examen des contrôles, commission des sanctions) sans reprendre cette compétence contentieuse : seule subsiste la conciliation par le président de la CRCC (R.821-196). Ne pas confondre avec la dérogation au barème d'heures, dont le recours de dernier niveau relève du bureau de la H2A puis du tribunal administratif.",
+      "reference": "C. com. art. R.821-196 (ex R.823-18) ; ex L.823-18-1 et ex L.821-1 (H3C formation restreinte, abrogés) ; L.820-2",
+      "confidence": "low",
+      "update_note": "La formation restreinte du H3C a disparu avec la H2A (ordonnance 2023-1142, en vigueur le 1er janvier 2024) ; la voie de recours antérieure (cour d'appel de Paris) est indiquée sous réserve de vérification."
+    },
+    {
+      "id": "2022-11-CAC-17",
+      "n": 17,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["publicite_demarchage", "code_deontologie_structure"],
+      "points": 2,
+      "question": "Dans quel cadre le commissaire aux comptes peut-il recourir à la publicité ?",
+      "qcm": {
+        "choices": [
+          "La publicité est totalement interdite au commissaire aux comptes, seule la participation à des colloques étant tolérée",
+          "La publicité est permise dans la mesure où elle procure au public une nécessaire information, sans porter atteinte à l'indépendance, à la dignité et à l'honneur de la profession, au secret professionnel ni à la loyauté, et sans élément comparatif ; la sollicitation personnalisée n'est possible que par envoi postal ou courriel",
+          "La publicité est libre, y compris comparative, depuis la loi Pacte, sous réserve d'en informer la H2A",
+          "La publicité est réservée aux sociétés de commissaires aux comptes appartenant à un réseau"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Publicité permise si elle procure au public une nécessaire information",
+          "Moyens mis en œuvre sans porter atteinte à l'indépendance, à la dignité et à l'honneur de la profession, aux règles du secret professionnel et à la loyauté envers les clients et les confrères",
+          "Exempte de tout élément comparatif ; expression décente, sans compromettre l'image de la profession ; usage du titre suivi de la compagnie régionale",
+          "Sollicitation personnalisée autorisée uniquement par envoi postal ou courriel à un destinataire déterminé, avec information sincère et mention des modalités d'honoraires ; toute autre forme de démarchage interdite"
+        ],
+        "model_answer": "La publicité est permise au commissaire aux comptes dans la mesure où elle procure au public une nécessaire information ; elle doit être mise en œuvre sans porter atteinte à l'indépendance, à la dignité et à l'honneur de la profession, au secret professionnel et à la loyauté envers les clients et les confrères, et être exempte de tout élément comparatif. La sollicitation personnalisée n'est admise que par courrier postal ou électronique adressé à une personne déterminée, avec une information sincère et l'indication des modalités d'honoraires ; toute autre forme de démarchage est interdite."
+      },
+      "explanation": "Le titre I du code de déontologie (applicable à toutes les missions et prestations) consacre une section à la publicité, à la sollicitation personnalisée et aux services en ligne (art. 15 et 16). Le démarchage non sollicité, autrefois totalement prohibé (ancien art. 36), est désormais admis sous la seule forme de la sollicitation personnalisée écrite. L'expert-comptable connaît un régime voisin (actions de promotion et démarchage autorisés depuis 2014, D. 2012-432 art. 152), mais les deux textes diffèrent dans leur formulation.",
+      "reference": "Code de déontologie CAC art. 15 et 16 (ex art. 36 et 37) ; D. 2012-432 art. 152 pour le parallèle EC",
+      "confidence": "high",
+      "update_note": "Depuis le décret 2020-292, le code admet la sollicitation personnalisée (postale ou électronique) et encadre les services en ligne ; la version 2026 (décret 2026-176) étend ces règles aux organismes tiers indépendants."
+    },
+    {
+      "id": "2022-11-CAC-18",
+      "n": 18,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["prestations_declaration_activite", "lettre_mission_nep210"],
+      "points": 3,
+      "question": "Que doit comporter la déclaration d'activité établie en cas de prestation fournie en dehors de toute mission légale ?",
+      "qcm": {
+        "choices": [
+          "Uniquement le montant global des honoraires perçus, sans identification des clients, afin de préserver le secret professionnel",
+          "Pour les missions et prestations autres que la certification : la liste des personnes ou entités concernées, la nature des prestations effectuées et le montant total des honoraires facturés, déclaration adressée à la compagnie régionale",
+          "Le programme de travail détaillé et le nombre d'heures, comme pour la certification des comptes",
+          "Une attestation d'indépendance visée par la H2A avant le début de la prestation"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Identification des personnes ou entités pour lesquelles les prestations sont fournies",
+          "Nature des missions ou prestations effectuées (hors certification)",
+          "Montant total des honoraires facturés à ce titre",
+          "Déclaration annuelle adressée par voie électronique à la compagnie régionale, qui la transmet à la CNCC puis à la H2A"
+        ],
+        "model_answer": "Dans sa déclaration d'activité annuelle, le commissaire aux comptes mentionne, pour les missions et prestations autres que la certification des comptes, la liste des personnes ou entités concernées, la nature des prestations effectuées et le montant total des honoraires facturés. Cette déclaration est adressée par voie électronique à la compagnie régionale, qui la transmet à la Compagnie nationale, laquelle en adresse copie à la H2A."
+      },
+      "explanation": "Depuis la loi Pacte, le CAC peut fournir des prestations à des entités dont il ne certifie pas les comptes ; ces prestations restent soumises au code de déontologie et doivent faire l'objet d'une lettre de mission (R.821-195). Elles sont retracées dans la déclaration d'activité annuelle à la CRCC (D.821-186 VI), qui permet le suivi de l'activité par la profession et la H2A. Le barème d'heures ne s'applique pas à ces prestations, dont les honoraires sont fixés par la lettre de mission.",
+      "reference": "C. com. art. D.821-186 VI (ex R.823-10) ; R.821-195 (lettre de mission) ; L.821-2 IV",
+      "confidence": "low",
+      "update_note": "Les dispositions du titre I du code de déontologie de 2020 relatives à la conduite des prestations (anciens art. 10-1 et 11) ont été abrogées par le décret 2026-176 ; la réponse s'appuie sur la déclaration d'activité annuelle prévue par la partie réglementaire du code de commerce. Point à vérifier."
+    },
+    {
+      "id": "2022-11-CAC-19",
+      "n": 19,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["incompatibilites_liens", "independance_situations_risque"],
+      "points": 2,
+      "question": "Un commissaire aux comptes non inscrit à l'ordre des experts-comptables peut-il exercer des activités commerciales accessoires ? Justifier la réponse.",
+      "qcm": {
+        "choices": [
+          "Oui : depuis la loi Pacte, tout commissaire aux comptes peut exercer des activités commerciales accessoires dans la limite de 10 % de son chiffre d'affaires",
+          "Non : la profession de CAC est incompatible avec toute activité commerciale, l'exception des activités commerciales accessoires ne visant que celles accessoires à la profession d'expert-comptable (art. 22 de l'ordonnance de 1945) ou celles exercées par une société pluri-professionnelle d'exercice",
+          "Oui, à condition d'en informer la compagnie régionale et de ne pas en faire la publicité",
+          "Non, sauf autorisation individuelle de la H2A accordée pour deux exercices"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Non",
+          "Incompatibilité de principe avec toute activité commerciale, directe ou par personne interposée (C. com. L.821-27 3°)",
+          "Exception limitée aux activités commerciales accessoires à la profession d'expert-comptable (ord. 1945 art. 22) et à celles des sociétés pluri-professionnelles d'exercice",
+          "Un CAC non inscrit à l'Ordre ne peut donc pas s'en prévaloir"
+        ],
+        "model_answer": "Non. La profession de commissaire aux comptes est incompatible avec toute activité commerciale, exercée directement ou par personne interposée. L'exception introduite par la loi Pacte ne vise que les activités commerciales accessoires à la profession d'expert-comptable, exercées dans les conditions de l'article 22 de l'ordonnance de 1945 (et celles des sociétés pluri-professionnelles d'exercice) ; un CAC qui n'est pas inscrit au tableau de l'Ordre ne peut donc pas en bénéficier."
+      },
+      "explanation": "La loi Pacte a ouvert aux experts-comptables les activités commerciales accessoires, puis a dû aligner le statut des CAC également experts-comptables pour éviter qu'ils y perdent leur inscription. L'exception est donc dérivée du statut d'expert-comptable, et non d'un droit propre du CAC. C'est une illustration typique de la confusion EC/CAC relevée par le jury : la même règle (activités commerciales accessoires) n'a pas le même champ selon la profession.",
+      "reference": "C. com. art. L.821-27 3° (ex L.822-10) ; Ord. 45-2138 art. 22 ; loi 90-1258 art. 31-5",
+      "confidence": "high",
+      "update_note": "Recodification 2024 : ex L.822-10 devenu L.821-27."
+    },
+    {
+      "id": "2022-11-CAC-20",
+      "n": 20,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["code_deontologie_structure", "independance_situations_risque"],
+      "points": 2,
+      "question": "Citez quatre principes fondamentaux de comportement qui s'appliquent à toutes les missions et prestations réalisées par un commissaire aux comptes.",
+      "qcm": {
+        "choices": [
+          "Intégrité, impartialité, indépendance et prévention des conflits d'intérêts, esprit critique, compétence et diligence, confraternité, secret professionnel et discrétion",
+          "Science, conscience, indépendance, probité, dignité, délicatesse (devoirs généraux de l'expert-comptable)",
+          "Non-immixtion dans la gestion, permanence de la mission, révélation des faits délictueux, co-commissariat",
+          "Régularité, sincérité, image fidèle et continuité d'exploitation"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Intégrité",
+          "Impartialité",
+          "Indépendance et prévention des conflits d'intérêts",
+          "Esprit critique",
+          "Compétence et diligence (conscience professionnelle)",
+          "Confraternité ; secret professionnel et discrétion"
+        ],
+        "model_answer": "Le titre I du code de déontologie énonce les principes fondamentaux de comportement applicables à toute mission ou prestation : intégrité, impartialité, indépendance et prévention des conflits d'intérêts, esprit critique, compétence et diligence, confraternité, secret professionnel et discrétion."
+      },
+      "explanation": "Depuis le décret 2020-292, le code de déontologie est divisé en un titre I (dispositions générales applicables à l'ensemble de la profession dès l'inscription sur la liste) et un titre II (dispositions particulières à la certification des comptes et, depuis 2024, des informations en matière de durabilité). Les principes du titre I sont détaillés par la norme de déontologie codifiée à l'article A.821-54. À ne pas confondre avec les devoirs généraux de l'expert-comptable (science, conscience, indépendance, probité, dignité) posés par le décret de 2012.",
+      "reference": "Code de déontologie CAC (annexe 8-1 C. com.) art. 2 à 9 ; C. com. A.821-54 ; D. 2012-432 art. 142 pour le parallèle EC",
+      "confidence": "high",
+      "update_note": "Depuis le décret 2026-176, les principes du titre I s'appliquent aussi, pour l'essentiel, aux organismes tiers indépendants et aux auditeurs des informations en matière de durabilité."
+    }
+  ]
+}
