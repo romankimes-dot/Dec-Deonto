@@ -1,0 +1,608 @@
+{
+  "session": "2023-11",
+  "format": "qrc",
+  "questions": [
+    {
+      "id": "2023-11-EC-01",
+      "n": 1,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "ordre_organisation"],
+      "points": 2,
+      "question": "Quelle autorité agrée les normes professionnelles applicables aux experts-comptables ?",
+      "qcm": {
+        "choices": [
+          "Le garde des sceaux, ministre de la justice, par arrêté d'homologation après avis de la H2A",
+          "Le ministre chargé de l'économie (budget), par arrêté d'agrément, les normes étant élaborées par le Conseil national de l'Ordre",
+          "Le Conseil national de l'Ordre des experts-comptables, par délibération, sans intervention ministérielle",
+          "La Haute autorité de l'audit, après avis de la commission de normalisation"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Normes élaborées par le Conseil national (ex Conseil supérieur) de l'Ordre",
+          "Agréées par arrêté du ministre chargé de l'économie (ministre du budget)",
+          "Distinction avec les NEP des CAC, adoptées par la H2A et homologuées par le garde des sceaux"
+        ],
+        "model_answer": "Les normes professionnelles de l'expertise comptable sont élaborées par le Conseil national de l'Ordre et agréées par arrêté du ministre chargé de l'économie (en pratique le ministre chargé du budget). Elles se distinguent des normes d'exercice professionnel des commissaires aux comptes, adoptées par la Haute autorité de l'audit et homologuées par arrêté du garde des sceaux."
+      },
+      "explanation": "La tutelle de l'Ordre est exercée par le ministre chargé de l'économie et du budget (commissaire du gouvernement), ce qui explique que l'agrément des normes relève d'un arrêté de ce ministre (voir par exemple ord. art. 22 pour les normes relatives aux activités accessoires). Les CAC relèvent du ministère de la justice : leurs normes sont adoptées par la H2A puis homologuées par le garde des sceaux (C. com. L.820-23 et L.821-11). C'est l'une des confusions EC/CAC les plus fréquentes.",
+      "reference": "Ord. 45-2138 art. 22 et 60 ; arrêtés d'agrément des normes professionnelles ; C. com. L.820-23 pour le parallèle CAC",
+      "confidence": "medium"
+    },
+    {
+      "id": "2023-11-EC-02",
+      "n": 2,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "lcb_ft", "controle_qualite"],
+      "points": 2,
+      "question": "Quelles sont les normes professionnelles d'application générale ?",
+      "qcm": {
+        "choices": [
+          "La NP 2300 et la NP 2400, applicables à tous les comptes annuels",
+          "La norme de maîtrise de la qualité (NPMQ) et la norme relative à la lutte contre le blanchiment (NPLAB)",
+          "Les NEP homologuées par le garde des sceaux, communes aux experts-comptables et aux commissaires aux comptes",
+          "La norme de compilation (NP 4410) et la norme de procédures convenues (NP 4400)"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "NPMQ : norme professionnelle de maîtrise de la qualité",
+          "NPLAB : norme professionnelle relative aux obligations de lutte contre le blanchiment des capitaux et le financement du terrorisme",
+          "Applicables à toutes les missions, avec le code de déontologie"
+        ],
+        "model_answer": "Deux normes s'appliquent quelle que soit la mission réalisée : la norme professionnelle de maîtrise de la qualité (NPMQ) et la norme professionnelle relative aux obligations de lutte contre le blanchiment des capitaux et le financement du terrorisme (NPLAB). Elles complètent le code de déontologie, texte réglementaire lui aussi d'application générale."
+      },
+      "explanation": "Le référentiel normatif est organisé en un socle commun (déontologie, qualité, LCB-FT) et des normes spécifiques à chaque type de mission (NP 2300, 2400, 3100, 3400, 4400, 4410, norme sur les activités commerciales accessoires...). Pour les CAC, le socle correspond au code de déontologie, aux normes de déontologie (A.821-54 et 55), à la norme de contrôle qualité interne et à la NEP 9605 (LCB-FT).",
+      "reference": "Référentiel normatif OEC ; NPMQ ; NPLAB ; D. 2012-432 art. 141 s.",
+      "confidence": "high"
+    },
+    {
+      "id": "2023-11-EC-03",
+      "n": 3,
+      "profession": "EC",
+      "theme": "controle_qualite",
+      "tags": ["controle_qualite", "referentiel_normatif"],
+      "points": 1,
+      "question": "Quels éléments doit comporter la revue indépendante d'une mission ? Citez en deux.",
+      "qcm": {
+        "choices": [
+          "Un entretien avec le client et la vérification des honoraires facturés",
+          "L'examen, par une personne n'ayant pas participé à la mission, des jugements significatifs et des conclusions, et la revue du rapport et des documents de synthèse avant leur délivrance",
+          "Le recomptage de l'ensemble des écritures et la vérification des déclarations fiscales",
+          "L'inspection par sondage de dossiers achevés sur les trois derniers exercices"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Discussion des points significatifs avec le responsable de la mission",
+          "Revue des comptes ou de l'information objet de la mission et du projet de rapport",
+          "Revue de la documentation sélectionnée relative aux jugements significatifs et aux conclusions",
+          "Évaluation des conclusions et du caractère approprié du rapport ; réalisation avant la signature par une personne extérieure à l'équipe"
+        ],
+        "model_answer": "La revue indépendante, réalisée avant la délivrance du rapport par une personne compétente n'ayant pas participé à la mission, comporte notamment une discussion des points significatifs avec le responsable de mission, l'examen du projet de rapport et des documents de synthèse, et la revue de la documentation relative aux jugements significatifs afin d'évaluer les conclusions retenues."
+      },
+      "explanation": "La NPMQ réserve la revue indépendante aux missions présentant des risques particuliers, selon des critères définis par le cabinet. Elle porte sur l'évaluation objective des jugements et de la pertinence du rapport, non sur la refonte des travaux. Elle ne se confond ni avec la supervision ni avec l'inspection a posteriori des dossiers (surveillance du système).",
+      "reference": "NPMQ (revue indépendante) ; code de déontologie CAC et C. com. L.821-35 pour le parallèle CAC",
+      "confidence": "medium"
+    },
+    {
+      "id": "2023-11-EC-04",
+      "n": 4,
+      "profession": "EC",
+      "theme": "controle_qualite",
+      "tags": ["controle_qualite", "referentiel_normatif"],
+      "points": 2,
+      "question": "Citez quatre éléments à examiner dans le cadre d'une revue de dossiers.",
+      "qcm": {
+        "choices": [
+          "Le respect des normes professionnelles et des textes légaux, le respect des procédures internes du cabinet, le caractère approprié du rapport délivré, la documentation suffisante du dossier (lettre de mission, acceptation, supervision)",
+          "La satisfaction du client, le délai de paiement des honoraires, le taux de marge de la mission, la fidélisation",
+          "La conformité fiscale de l'entreprise cliente, ses ratios financiers, son endettement et sa trésorerie",
+          "Le contrat de travail des collaborateurs, leur temps de présence, leurs congés et leur formation"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Respect des normes professionnelles et des obligations légales et réglementaires",
+          "Respect du code de déontologie (indépendance, acceptation et maintien de la mission)",
+          "Respect des procédures internes du cabinet (lettre de mission, planification, supervision, revue)",
+          "Caractère approprié du rapport ou de l'attestation délivrée et documentation suffisante du dossier"
+        ],
+        "model_answer": "La revue (inspection) de dossiers achevés vérifie notamment le respect des normes professionnelles et des textes applicables, le respect des règles déontologiques (indépendance, acceptation et maintien de la mission), l'application des procédures du cabinet (lettre de mission, planification, supervision, revue des travaux) et le caractère approprié du rapport au regard de la documentation du dossier."
+      },
+      "explanation": "L'inspection de dossiers est l'un des moyens de la surveillance du système de maîtrise de la qualité : elle intervient après la délivrance du rapport, par sondage, et vise à vérifier que les politiques et procédures du cabinet sont appliquées. Les constats alimentent les actions correctives. En contrôle de qualité de l'Ordre, le contrôleur procède de manière comparable lors du contrôle technique.",
+      "reference": "NPMQ (surveillance du système de qualité, inspection de dossiers) ; règlement intérieur de l'Ordre (contrôle de qualité)",
+      "confidence": "medium"
+    },
+    {
+      "id": "2023-11-EC-05",
+      "n": 5,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["ordre_organisation"],
+      "points": 2,
+      "question": "Quelle est la durée consécutive maximale de présidence d'un même conseil régional de l'ordre des experts-comptables ?",
+      "qcm": {
+        "choices": [
+          "Deux mandats consécutifs, soit huit ans au maximum",
+          "Un seul mandat de quatre ans, non renouvelable",
+          "Aucune limite : le président est rééligible sans restriction",
+          "Trois mandats consécutifs de deux ans, soit six ans"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Président élu par le conseil régional en son sein, pour la durée du mandat du conseil (quatre ans)",
+          "Pas plus de deux mandats consécutifs de président",
+          "Soit huit années consécutives au maximum"
+        ],
+        "model_answer": "Les conseils régionaux sont élus pour quatre ans et leur président, élu par le conseil en son sein, ne peut exercer plus de deux mandats consécutifs : la durée consécutive maximale de présidence d'un même conseil régional est donc de huit ans."
+      },
+      "explanation": "L'organisation des conseils de l'Ordre est fixée par le décret du 30 mars 2012 (modifié par le décret 2019-1193 pour les élections) : mandats de quatre ans et limitation du nombre de mandats consécutifs pour prévenir la permanence d'une même équipe. Chez les CAC, les présidents des compagnies régionales sont également élus par les conseils régionaux pour des mandats limités. Le chiffre exact dépend de la lecture du décret et doit être vérifié.",
+      "reference": "D. 2012-432 art. 1 s. (conseils régionaux, élections) modifié par D. 2019-1193 ; Ord. 45-2138 art. 28 et 29",
+      "confidence": "low"
+    },
+    {
+      "id": "2023-11-EC-06",
+      "n": 6,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["inscription_tableau", "ordre_organisation"],
+      "points": 2,
+      "question": "Quel est le rôle du commissaire du gouvernement lors d'une demande d'inscription au tableau de l'ordre ?",
+      "qcm": {
+        "choices": [
+          "Il statue lui-même sur la demande d'inscription, le conseil régional n'ayant qu'un avis consultatif",
+          "Il est destinataire de la décision du conseil régional (notifiée dans les dix jours francs) et peut, dans le mois, déférer une décision d'inscription au comité national du tableau",
+          "Il prête le serment au candidat et lui délivre la carte professionnelle",
+          "Il n'intervient qu'en cas de refus d'inscription, pour saisir le Conseil d'État"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Le conseil régional statue dans les trois mois ; sa décision est notifiée au candidat et au commissaire régional du gouvernement dans les dix jours francs",
+          "Le commissaire du gouvernement peut, dans le mois, déférer la décision d'inscription au comité national du tableau (l'intéressé ne pouvant le faire qu'en cas de refus)",
+          "Il veille ainsi au respect des conditions légales d'inscription (moralité, diplôme, etc.) au nom de la tutelle"
+        ],
+        "model_answer": "Le commissaire régional du gouvernement n'instruit pas la demande mais contrôle la décision : la décision du conseil régional lui est notifiée dans les dix jours francs et, lorsqu'il estime qu'une inscription a été accordée à tort, il peut la déférer dans le mois au comité national du tableau. Le candidat, lui, ne peut faire appel qu'en cas de refus."
+      },
+      "explanation": "L'article 42 de l'ordonnance organise une voie d'appel symétrique devant le comité national du tableau : le candidat en cas de refus, le commissaire du gouvernement en cas d'admission. Le comité national statue dans les six mois, faute de quoi l'inscription est de droit (art. 44). Ce contrôle de tutelle n'a pas d'équivalent chez les CAC, dont l'inscription relève de la H2A avec recours devant le juge.",
+      "reference": "Ord. 45-2138 art. 42, 43, 44 et 56 ; D. 2012-432 (comité national du tableau)",
+      "confidence": "high"
+    },
+    {
+      "id": "2023-11-EC-07",
+      "n": 7,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["lettre_mission", "honoraires", "responsabilite_civile"],
+      "points": 2,
+      "question": "Quelles sont les conditions de validité des pénalités en cas de rupture d'une lettre de mission avant son terme, sans justification, par le client d'un expert-comptable ?",
+      "qcm": {
+        "choices": [
+          "Elles sont toujours valables dès lors qu'elles ont été mentionnées oralement au client lors de la signature",
+          "Elles doivent être prévues par écrit dans la lettre de mission acceptée par le client, rester proportionnées au préjudice (clause pénale révisable par le juge) et ne pas entraver la liberté du client de changer de professionnel",
+          "Elles sont interdites par le code de déontologie, l'expert-comptable ne pouvant percevoir que les honoraires des travaux effectués",
+          "Elles doivent être validées préalablement par le conseil régional de l'Ordre"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Clause écrite dans la lettre de mission, portée à la connaissance du client et acceptée par lui",
+          "Montant raisonnable, en rapport avec le préjudice (clause pénale modérable par le juge, C. civ. 1231-5)",
+          "Ne pas porter atteinte au libre choix du client ni constituer une entrave à la confraternité ; rupture sans juste motif du client",
+          "Respect des règles de protection du consommateur le cas échéant"
+        ],
+        "model_answer": "La pénalité de rupture anticipée n'est valable que si elle est stipulée par écrit dans la lettre de mission signée par le client, si la rupture n'est pas justifiée par un manquement du professionnel, et si son montant reste proportionné au préjudice subi : il s'agit d'une clause pénale que le juge peut modérer ou augmenter si elle est manifestement excessive ou dérisoire. Elle ne doit pas, en pratique, priver le client de sa liberté de changer de professionnel."
+      },
+      "explanation": "La lettre de mission est le support contractuel obligatoire (D. 2012-432 art. 151) et le code de déontologie exige des honoraires équitables et une relation loyale. Une indemnité de résiliation est un mécanisme de droit commun des contrats, soumis au régime de la clause pénale. Pour le CAC, la question ne se pose pas dans les mêmes termes : le mandat légal ne peut être rompu par l'entité que par récusation ou relèvement judiciaire.",
+      "reference": "Ord. 45-2138 art. 24 ; D. 2012-432 art. 151 et 157 s. ; C. civ. art. 1231-5 ; C. com. L.821-49 et L.821-50 pour le parallèle CAC",
+      "confidence": "medium"
+    },
+    {
+      "id": "2023-11-EC-08",
+      "n": 8,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["inscription_tableau", "ordre_organisation"],
+      "points": 3,
+      "question": "Combien de sections comporte le tableau de l'ordre des experts-comptables ? Citez-les.",
+      "qcm": {
+        "choices": [
+          "Deux sections : les experts-comptables et les sociétés d'expertise comptable",
+          "Plusieurs sections distinguant notamment les experts-comptables personnes physiques, les sociétés d'expertise comptable, les sociétés de participations d'expertise comptable, les succursales, les AGC et leurs salariés autorisés (art. 83 ter et 83 quater), les sociétés pluri-professionnelles d'exercice, ainsi que les listes annexes (stagiaires, experts-comptables en entreprise, honoraires)",
+          "Trois sections : experts-comptables, commissaires aux comptes et comptables agréés",
+          "Une section unique, le tableau étant un simple registre alphabétique tenu par le Conseil national"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Experts-comptables personnes physiques",
+          "Sociétés d'expertise comptable et sociétés de participations d'expertise comptable",
+          "Succursales d'expertise comptable",
+          "Associations de gestion et de comptabilité et leurs salariés autorisés (art. 83 ter et 83 quater)",
+          "Sociétés pluri-professionnelles d'exercice ; listes annexes : experts-comptables stagiaires, experts-comptables en entreprise, membres honoraires"
+        ],
+        "model_answer": "Le tableau, dressé par chaque conseil régional, est divisé en sections correspondant aux catégories de personnes admises à exercer tout ou partie de la profession : experts-comptables personnes physiques, sociétés d'expertise comptable (et sociétés de participations), succursales, associations de gestion et de comptabilité, salariés autorisés des AGC (art. 83 ter et 83 quater), sociétés pluri-professionnelles d'exercice. S'y ajoutent les inscriptions à la suite du tableau (experts-comptables stagiaires, experts-comptables en entreprise, membres honoraires). Le nombre exact de sections résulte du décret de 2012."
+      },
+      "explanation": "L'ordonnance (art. 40) prévoit que le conseil régional dresse le tableau des personnes physiques et morales et des succursales admises à exercer ; le décret de 2012 en fixe la structure par sections. Les stagiaires sont inscrits « à la suite » du tableau et ne sont pas membres de l'Ordre, de même que les AGC, succursales, SPE et experts-comptables en entreprise. Le détail et le nombre des sections doivent être vérifiés dans le décret.",
+      "reference": "Ord. 45-2138 art. 7, 7 ter, 7 quinquies, 7 sexies, 13, 40, 41 et 83 quinquies ; D. 2012-432 (tableau)",
+      "confidence": "low"
+    },
+    {
+      "id": "2023-11-EC-09",
+      "n": 9,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["incompatibilites_activites"],
+      "points": 2,
+      "question": "Citez quatre types d'activités interdites aux experts-comptables.",
+      "qcm": {
+        "choices": [
+          "Emploi salarié hors cabinet, activité commerciale ou acte d'intermédiaire non accessoire, mandat de recevoir ou détenir des fonds, activité d'agent d'affaires, représentation en justice, travaux comptables pour des entreprises où ils ont des intérêts substantiels",
+          "Enseignement, fonctions d'arbitre, missions d'expertise judiciaire, mandats sociaux",
+          "Commissariat aux comptes, consultations fiscales, accompagnement à la création d'entreprise, assistance déclarative",
+          "Participation à des colloques, publication d'articles, démarchage, publicité"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Tout emploi salarié (sauf chez un membre de l'Ordre, un CAC, une AGC, une succursale ou une SPE)",
+          "Toute activité commerciale ou acte d'intermédiaire, sauf à titre accessoire et sans atteinte à l'indépendance",
+          "Tout mandat de recevoir, conserver ou délivrer des fonds (sauf mandats de paiement accessoires)",
+          "Agir en tant qu'agent d'affaires ; représenter devant les tribunaux ; effectuer des travaux comptables pour des entreprises où ils détiennent des intérêts substantiels"
+        ],
+        "model_answer": "L'article 22 de l'ordonnance interdit à l'expert-comptable : tout emploi salarié (sauf chez un confrère, un CAC, une AGC, une succursale ou une société pluri-professionnelle) ; toute activité commerciale ou acte d'intermédiaire non accessoire ; tout mandat de recevoir, conserver ou délivrer des fonds hors mandats de paiement accessoires ; l'activité d'agent d'affaires, la représentation devant les tribunaux et les travaux comptables pour des entreprises dans lesquelles il détient des intérêts substantiels."
+      },
+      "explanation": "Ces interdictions protègent l'indépendance et le caractère libéral de la profession. La loi Pacte en a assoupli deux : activités commerciales accessoires et mandats de paiement ou recouvrement amiable par le compte du client. Le CAC connaît une liste proche (C. com. L.821-27 : atteinte à l'indépendance, emploi salarié sauf chez un CAC ou un expert-comptable, activité commerciale sauf accessoire à l'expertise comptable), d'où des confusions fréquentes.",
+      "reference": "Ord. 45-2138 art. 22 ; C. com. L.821-27 pour le parallèle CAC",
+      "confidence": "high"
+    },
+    {
+      "id": "2023-11-EC-10",
+      "n": 10,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["publicite_demarchage", "confraternite_reprise_dossier", "honoraires"],
+      "points": 2,
+      "question": "Un jeune diplômé d'expertise comptable a décidé de créer son cabinet sans rachat de droit de présentation de clientèle. Il s'installe dans des locaux situés en zone d'activité d'une ville moyenne. Afin de se faire connaitre, il diffuse des prospectus dans les boites aux lettres des entreprises installées sur la zone, mentionnant que 150 entreprises lui font déjà confiance et que par ailleurs il est 10 % en dessous des tarifs des autres professionnels. Cette pratique est-elle conforme aux règles déontologiques ? Pour quelle(s) raison(s) ?",
+      "qcm": {
+        "choices": [
+          "Non, car toute forme de démarchage est interdite à l'expert-comptable",
+          "Non : le démarchage est admis depuis 2014, mais le message est mensonger (150 clients inexistants) et comparatif sur les prix, ce qui contrevient à la loyauté, à l'honneur et à la confraternité",
+          "Oui : la publicité et le démarchage sont libres et les honoraires sont librement fixés",
+          "Oui, à condition que les prospectus aient été visés par le conseil régional de l'Ordre"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "La distribution de prospectus (démarchage, action de promotion) n'est plus interdite en soi depuis la réforme de 2014",
+          "Mais la communication doit procurer une information sincère : l'affirmation de 150 clients est mensongère (manquement à la probité, à l'honneur, à la loyauté)",
+          "La référence aux tarifs des confrères (-10 %) constitue une publicité comparative et un dénigrement contraires à la confraternité et à la dignité ; les honoraires doivent être équitables",
+          "Pratique non conforme, susceptible de poursuites disciplinaires"
+        ],
+        "model_answer": "La pratique n'est pas conforme. Le démarchage et les actions de promotion sont admis depuis 2014 à condition de procurer au public une information utile et sincère, sans porter atteinte à la dignité, à l'honneur, à la loyauté envers les clients et les confrères. Or le message est mensonger (150 entreprises clientes alors que le cabinet débute) et comporte une comparaison tarifaire dénigrant les confrères, contraire à la confraternité et à la dignité de la profession ; il expose son auteur à des poursuites disciplinaires."
+      },
+      "explanation": "Depuis l'arrêt de la CJUE de 2011 et la modification de l'ordonnance et du décret (2014), l'expert-comptable peut démarcher, mais dans les limites du code de déontologie : information sincère, discrétion, absence d'atteinte à l'image de la profession, respect de la confraternité. Le CAC est soumis à un régime encore plus restrictif (sollicitation personnalisée uniquement par courrier ou courriel, exempte de tout élément comparatif ou dénigrant, code de déontologie art. 16).",
+      "reference": "Ord. 45-2138 art. 23 et 24 ; D. 2012-432 art. 142, 152 et 161 s. (devoirs généraux, promotion, confraternité) ; code de déontologie CAC art. 15 et 16 pour le parallèle",
+      "confidence": "medium"
+    },
+    {
+      "id": "2023-11-CAC-11",
+      "n": 11,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["inscription_liste", "cncc_crcc_organisation"],
+      "points": 2,
+      "question": "Quelles sont les modalités de prestation de serment d'un commissaire aux comptes ?",
+      "qcm": {
+        "choices": [
+          "Devant le conseil régional de l'Ordre des experts-comptables, en même temps que l'inscription au tableau",
+          "Devant la cour d'appel dont il relève, après son inscription sur la liste : serment de remplir les devoirs de sa profession avec honneur, probité et indépendance, de respecter et faire respecter les lois",
+          "Devant le président de la Haute autorité de l'audit, par écrit",
+          "Devant le tribunal de commerce du lieu de son cabinet, par déclaration au greffe"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Serment prêté devant la cour d'appel dont le CAC relève",
+          "Après inscription sur la liste tenue par la H2A, avant tout exercice (l'usage du titre sans serment est pénalement sanctionné)",
+          "Formule : remplir les devoirs de sa profession avec honneur, probité et indépendance, respecter et faire respecter les lois"
+        ],
+        "model_answer": "Tout commissaire aux comptes nouvellement inscrit doit prêter, devant la cour d'appel dont il relève, le serment de remplir les devoirs de sa profession avec honneur, probité et indépendance, et de respecter et faire respecter les lois. Il ne peut exercer ni faire usage du titre avant d'avoir prêté serment."
+      },
+      "explanation": "Le serment rattache le commissaire aux comptes à l'institution judiciaire, cohérent avec sa mission d'intérêt général et sa tutelle par le ministère de la justice. L'expert-comptable, lui, ne prête plus serment depuis la suppression de l'ancien article 47 de l'ordonnance : son inscription au tableau suffit. L'usage du titre de CAC sans inscription et serment est un délit (C. com. L.821-7).",
+      "reference": "C. com. art. L.821-23 (ex L.822-1-? / R.822-?) et L.821-7 ; normes de déontologie A.821-54 § 02",
+      "confidence": "high",
+      "update_note": "Recodification 2024 : le serment figure désormais à l'article L.821-23 du code de commerce."
+    },
+    {
+      "id": "2023-11-CAC-12",
+      "n": 12,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions", "h2a_supervision"],
+      "points": 2,
+      "question": "Qui enquête dans le cadre d'une procédure disciplinaire contre un commissaire aux comptes ?",
+      "qcm": {
+        "choices": [
+          "Le syndic de la compagnie régionale, sous le contrôle du procureur général",
+          "Le rapporteur général de la Haute autorité de l'audit, à la tête d'un service d'enquêteurs qu'il habilite",
+          "Un rapporteur désigné par le président de la chambre régionale de discipline",
+          "Les contrôleurs de la Compagnie nationale, dans le cadre du contrôle d'activité"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Le rapporteur général de la H2A, qui dirige un service d'enquête composé d'enquêteurs qu'il habilite",
+          "Saisi par le président de la H2A, le procureur général, l'AMF, l'ACPR, la Cour des comptes, le président de la CNCC ou d'une CRCC, ou par signalement",
+          "Il notifie les griefs et saisit la commission des sanctions ; prescription de six ans"
+        ],
+        "model_answer": "L'enquête est conduite par le rapporteur général de la Haute autorité de l'audit, qui dirige un service composé d'enquêteurs habilités par lui et désignés de façon à éviter tout conflit d'intérêts. Saisi notamment par le président de la H2A, le procureur général, l'AMF, l'ACPR ou les présidents de la CNCC et des CRCC, il instruit les faits, notifie les griefs et renvoie, le cas échéant, l'affaire devant la commission des sanctions."
+      },
+      "explanation": "Depuis la réforme de 2016, l'enquête et le jugement disciplinaires sont séparés au sein de l'autorité de supervision : rapporteur général (enquête, art. L.820-6 et L.821-73) et commission des sanctions (jugement, art. L.820-2). Les faits de plus de six ans sont prescrits. Chez les experts-comptables, l'instruction relève d'un rapporteur nommé par le magistrat chargé des poursuites rattaché à la chambre de discipline (ord. art. 49 et 50, loi 2022-172).",
+      "reference": "C. com. art. L.820-6, L.821-73 et s. ; L.820-2 ; Ord. 45-2138 art. 49 et 50 pour le parallèle EC",
+      "confidence": "high",
+      "update_note": "H3C → H2A au 1er janvier 2024 ; ex L.824-4 et s. devenus L.821-73 et s."
+    },
+    {
+      "id": "2023-11-CAC-13",
+      "n": 13,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions", "h2a_supervision"],
+      "points": 2,
+      "question": "Citez quatre des sanctions disciplinaires qui peuvent être prononcées par le H3C à l'encontre un commissaire aux comptes, personne physique.",
+      "qcm": {
+        "choices": [
+          "Avertissement, blâme, interdiction temporaire d'exercer (trois ans au plus), radiation de la liste, retrait de l'honorariat, sanction pécuniaire jusqu'à 250 000 €",
+          "Réprimande, blâme avec inscription au dossier, suspension avec sursis, radiation du tableau",
+          "Amende civile, interdiction de gérer, faillite personnelle, emprisonnement",
+          "Rappel à la loi, mise en demeure, astreinte, fermeture temporaire du cabinet"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Avertissement",
+          "Blâme",
+          "Interdiction d'exercer tout ou partie des missions ou d'en accepter de nouvelles, pour trois ans au plus (sursis possible)",
+          "Radiation de la liste",
+          "Retrait de l'honorariat ; sanctions complémentaires : sanction pécuniaire (250 000 € maximum pour une personne physique), interdiction de fonctions d'administration ou de direction, publication, inéligibilité"
+        ],
+        "model_answer": "La commission des sanctions de la H2A peut prononcer contre un commissaire aux comptes personne physique l'avertissement, le blâme, l'interdiction temporaire d'exercer tout ou partie des missions (trois ans au plus, éventuellement avec sursis), la radiation de la liste ou le retrait de l'honorariat ; elle peut y ajouter une sanction pécuniaire pouvant atteindre 250 000 €, une interdiction de fonctions de direction, la publication d'une déclaration ou l'inéligibilité aux organismes professionnels."
+      },
+      "explanation": "L'échelle des sanctions des CAC (C. com. L.821-71) diffère de celle des experts-comptables (ord. art. 53 : réprimande, blâme, suspension, radiation), proposition b conçue comme distracteur. La sanction pécuniaire est propre au régime des CAC (hors LCB-FT pour les EC). La prescription est de six ans et le recours contre la décision de la commission des sanctions est porté devant le Conseil d'État.",
+      "reference": "C. com. art. L.821-71 (ex L.824-2) ; L.820-2 V",
+      "confidence": "high",
+      "update_note": "Le H3C est devenu la Haute autorité de l'audit (H2A) le 1er janvier 2024 ; les sanctions sont prononcées par sa commission des sanctions (ex L.824-2 devenu L.821-71)."
+    },
+    {
+      "id": "2023-11-CAC-14",
+      "n": 14,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["nep", "non_immixtion"],
+      "points": 2,
+      "question": "Quelle est la nature de l'assurance formulée par le commissaire aux comptes dans le cadre de la certification des comptes, en quoi consiste-t-elle ?",
+      "qcm": {
+        "choices": [
+          "Une assurance modérée sur la cohérence et la vraisemblance des comptes",
+          "Une assurance raisonnable, c'est-à-dire élevée mais non absolue, que les comptes ne comportent pas d'anomalies significatives, exprimée par une opinion sur leur régularité, leur sincérité et leur image fidèle",
+          "Une assurance absolue garantissant l'exactitude des comptes et la viabilité de l'entité",
+          "Une assurance limitée exprimée sous forme négative, comme dans l'examen limité"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Assurance raisonnable : niveau élevé mais non absolu",
+          "Obtenue par des éléments probants suffisants et appropriés permettant de conclure que les comptes ne comportent pas d'anomalies significatives (approche par les risques, sondages)",
+          "Se traduit par une opinion : certification sans réserve, avec réserve, refus ou impossibilité de certifier, sur la régularité, la sincérité et l'image fidèle"
+        ],
+        "model_answer": "Le commissaire aux comptes exprime une assurance raisonnable, c'est-à-dire élevée mais non absolue, que les comptes pris dans leur ensemble ne comportent pas d'anomalies significatives. Elle repose sur la collecte d'éléments probants suffisants et appropriés selon une approche par les risques et se traduit par une opinion (certification sans réserve, avec réserve, refus ou impossibilité de certifier) sur la régularité, la sincérité et l'image fidèle des comptes."
+      },
+      "explanation": "L'assurance ne peut être absolue en raison des limites inhérentes à l'audit : sondages, jugement professionnel, possibilité de fraude et de collusion. C'est pourquoi la mission ne consiste pas à garantir la viabilité ou la qualité de la gestion (C. com. L.821-55). L'expert-comptable délivre, en présentation ou en examen limité, une assurance modérée seulement.",
+      "reference": "C. com. art. L.821-53, L.821-55, R.821-180 ; NEP 200 ; NP 2300 et 2400 pour le parallèle EC",
+      "confidence": "high"
+    },
+    {
+      "id": "2023-11-CAC-15",
+      "n": 15,
+      "profession": "CAC",
+      "theme": "controle_qualite",
+      "tags": ["controle_activite", "h2a_supervision"],
+      "points": 2,
+      "question": "Pouvez-vous citer les quatre différentes modalités du contrôle d'activité professionnelle réalisé auprès des commissaires aux comptes par le H3C ?",
+      "qcm": {
+        "choices": [
+          "Contrôle structurel, contrôle technique, amélioration de la performance, contrôle de suivi",
+          "Contrôles périodiques (tous les six ans, trois ans pour les CAC d'EIP), contrôles occasionnels ou ciblés à la suite d'un signalement, contrôles thématiques, contrôles de suivi des recommandations",
+          "Contrôle sur pièces par la CNCC, audit par l'AMF, inspection par l'ACPR, enquête du procureur",
+          "Contrôle de qualité de l'Ordre, contrôle fiscal, contrôle URSSAF, contrôle Tracfin"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Contrôles périodiques selon une analyse des risques : au moins tous les six ans (trois ans pour les CAC d'EIP)",
+          "Contrôles occasionnels ou ciblés, déclenchés par un signalement ou un événement",
+          "Contrôles thématiques portant sur un sujet déterminé",
+          "Contrôles de suivi de la mise en œuvre des recommandations ; réalisés par les contrôleurs de la H2A ou, pour les non-EIP, par délégation à la CNCC, avec le concours éventuel de l'AMF ou de l'ACPR"
+        ],
+        "model_answer": "Les contrôles d'activité comprennent des contrôles périodiques (au moins tous les six ans, ramenés à trois ans pour les CAC d'entités d'intérêt public), des contrôles occasionnels ou ciblés à la suite d'un signalement, des contrôles thématiques et des contrôles de suivi des recommandations. Ils sont réalisés par les contrôleurs de la Haute autorité de l'audit, ou par délégation à la CNCC pour les CAC sans mandat EIP, le cas échéant avec le concours de l'AMF ou de l'ACPR."
+      },
+      "explanation": "Le cadre et les orientations des contrôles sont définis par la H2A (C. com. L.820-1 I 5°), leur périodicité par la partie réglementaire (R.820-49) et leur contenu par R.820-45 (missions sélectionnées, système de contrôle qualité interne, autres missions et prestations). Les quatre modalités citées reprennent la typologie usuelle de l'autorité de supervision mais ne figurent pas sous cette forme dans le code : à vérifier. Le contrôle de qualité de l'Ordre (structurel/technique) relève d'une logique différente.",
+      "reference": "C. com. art. L.820-1, L.820-14, R.820-45 à R.820-49 ; règlement UE 537/2014 art. 26",
+      "confidence": "low",
+      "update_note": "H3C → H2A au 1er janvier 2024 ; périodicité et contenu désormais aux articles R.820-45 à R.820-49 (ex R.821-26 et s.)."
+    },
+    {
+      "id": "2023-11-CAC-16",
+      "n": 16,
+      "profession": "CAC",
+      "theme": "controle_qualite",
+      "tags": ["controle_activite", "h2a_supervision", "secret_professionnel"],
+      "points": 2,
+      "question": "Dans le cadre de leurs contrôles, que peuvent demander ou faire les agents du H3C auprès du commissaire aux comptes ou de toute autre personne ?",
+      "qcm": {
+        "choices": [
+          "Obtenir du contrôlé tout document ou information concernant ses missions et prestations et en exiger copie, obtenir des informations de toute autre personne, procéder à des contrôles sur place et recourir à des experts, sans que le secret professionnel puisse leur être opposé",
+          "Uniquement consulter les dossiers au siège de la Compagnie nationale, sur convocation du contrôlé",
+          "Perquisitionner le cabinet et saisir les documents sous le contrôle du juge des libertés",
+          "Interroger le contrôlé par écrit, celui-ci pouvant opposer le secret professionnel pour les dossiers clients"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Obtenir de la personne contrôlée tout document ou information, sous quelque forme que ce soit, sur ses missions de certification et ses autres prestations, et en exiger copie",
+          "Obtenir de toute autre personne des informations liées à ces missions ou prestations",
+          "Procéder à des contrôles sur place",
+          "Recourir à des experts ; le contrôlé ne peut opposer le secret professionnel"
+        ],
+        "model_answer": "Les contrôleurs peuvent obtenir du commissaire aux comptes tout document ou information concernant ses missions de certification et ses autres prestations et en exiger copie, recueillir auprès de toute autre personne des informations liées à ces missions, procéder à des contrôles sur place et recourir à des experts pour leurs vérifications. Le contrôlé doit fournir tous les renseignements demandés sans pouvoir opposer le secret professionnel."
+      },
+      "explanation": "Les pouvoirs des contrôleurs sont fixés par la loi (C. com. L.820-17) et s'exercent dans le cadre de contrôles administratifs, non de perquisitions judiciaires. L'obstruction aux contrôles est elle-même sanctionnable (L.821-70 II 3°). Le secret professionnel du CAC cède devant l'autorité de supervision, comme celui de l'expert-comptable cède devant le contrôle de qualité de l'Ordre.",
+      "reference": "C. com. art. L.820-17 (ex L.821-12-?) et R.820-46 ; L.821-70 II 3°",
+      "confidence": "high",
+      "update_note": "H3C → H2A ; pouvoirs des contrôleurs désormais codifiés à l'article L.820-17."
+    },
+    {
+      "id": "2023-11-CAC-17",
+      "n": 17,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["eip", "independance_situations_risque", "services_interdits_eip"],
+      "points": 2,
+      "question": "Citez quatre des missions du comité spécialisé (comité d'audit) prévu par le code de commerce.",
+      "qcm": {
+        "choices": [
+          "Arrêter les comptes, nommer le commissaire aux comptes, fixer ses honoraires et approuver son rapport",
+          "Suivre le processus d'élaboration de l'information financière et de durabilité, suivre l'efficacité du contrôle interne et de la gestion des risques, émettre une recommandation sur les CAC proposés à la désignation, suivre la réalisation de leur mission, s'assurer de leur indépendance et approuver les services autres que la certification",
+          "Certifier les comptes consolidés, réviser le rapport de gestion, convoquer l'assemblée générale et répartir les dividendes",
+          "Contrôler les rémunérations des dirigeants, approuver les conventions réglementées et désigner les administrateurs indépendants"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Suivre le processus d'élaboration de l'information financière (et de durabilité) et formuler des recommandations",
+          "Suivre l'efficacité des systèmes de contrôle interne, de gestion des risques et, le cas échéant, de l'audit interne",
+          "Émettre une recommandation sur les CAC proposés à la désignation ou au renouvellement",
+          "Suivre la réalisation de la mission des CAC, s'assurer de leur indépendance, approuver (EIP) les services autres que la certification, rendre compte à l'organe d'administration ou de surveillance"
+        ],
+        "model_answer": "Le comité spécialisé, composé de membres non dirigeants de l'organe d'administration ou de surveillance, suit le processus d'élaboration de l'information financière et de durabilité, suit l'efficacité du contrôle interne, de la gestion des risques et de l'audit interne, émet une recommandation sur les commissaires aux comptes proposés à la désignation, suit la réalisation de leur mission, s'assure de leur indépendance, approuve dans les EIP les services autres que la certification et rend compte régulièrement à l'organe collégial."
+      },
+      "explanation": "Le comité d'audit est obligatoire dans les entités d'intérêt public et les sociétés de financement (C. com. L.821-67), avec des exemptions (L.821-68). Un membre au moins doit être indépendant et compétent en matière financière ou comptable. Il ne se substitue ni au conseil (qui arrête les comptes) ni à l'assemblée (qui nomme les CAC) ; il reçoit du CAC le rapport complémentaire prévu par le règlement UE 537/2014.",
+      "reference": "C. com. art. L.821-67 à L.821-69 (ex L.823-19 à L.823-21) ; L.821-30 ; L.821-63 ; règlement UE 537/2014 art. 11 et 16",
+      "confidence": "high",
+      "update_note": "Recodification 2024 (ex L.823-19 devenu L.821-67) ; les missions du comité ont été étendues au suivi de l'information en matière de durabilité (CSRD)."
+    },
+    {
+      "id": "2023-11-CAC-18",
+      "n": 18,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["formation"],
+      "points": 2,
+      "question": "Citez quatre des actions de formation éligibles à l'obligation de formation professionnelle des commissaires aux comptes.",
+      "qcm": {
+        "choices": [
+          "Participation à des séminaires de formation, à l'autoformation encadrée ou à des formations à distance ; assistance à des colloques ou conférences ; conception ou animation de formations ; rédaction et publication de travaux techniques ; participation à des travaux techniques ; formation particulière après trois ans sans mission",
+          "Lecture de la presse professionnelle, veille réglementaire personnelle, abonnement à des bases documentaires et participation aux assemblées de la compagnie régionale",
+          "Stage de trois ans chez un commissaire aux comptes, obtention du DEC, réussite du certificat d'aptitude",
+          "Heures de supervision des collaborateurs, revue indépendante des dossiers et participation au contrôle d'activité"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Participation à des séminaires de formation, programmes d'autoformation encadrée, formations ou enseignements à distance",
+          "Assistance à des colloques ou conférences (45 heures maximum sur trois ans)",
+          "Conception ou animation de formations, colloques ou enseignements (20 heures par an maximum)",
+          "Rédaction et publication de travaux techniques (30 heures sur trois ans) ; participation à des travaux techniques (20 heures par an) ; formation particulière après trois ans sans mission"
+        ],
+        "model_answer": "L'obligation de 120 heures sur trois années consécutives (dont 20 heures au moins chaque année) peut être satisfaite par la participation à des séminaires, à l'autoformation encadrée ou à des formations à distance, par l'assistance à des colloques ou conférences, par la conception ou l'animation de formations ou d'enseignements, par la rédaction et la publication de travaux techniques, par la participation à des travaux techniques, ou encore par la formation particulière imposée après trois ans sans mission. Plusieurs de ces actions sont plafonnées."
+      },
+      "explanation": "La formation continue est une obligation légale (C. com. L.821-24) dont la H2A définit les orientations et suit le respect, avec délégation possible à la CNCC ; la déclaration annuelle est faite au plus tard le 31 mars. Son non-respect peut être sanctionné par la procédure simplifiée depuis 2024. L'expert-comptable a une obligation parallèle de 120 heures sur trois ans fixée par le règlement intérieur de l'Ordre, mais le jury attend ici la liste propre aux CAC.",
+      "reference": "C. com. art. L.821-24 ; A.821-45 à A.821-47 (ex A.822-28-1 et s.) ; L.820-1 I 3°",
+      "confidence": "high",
+      "update_note": "Recodification : ex A.822-28-1 et s. devenus A.821-45 et s. (arrêté du 28 décembre 2023) ; la H2A peut recourir à la procédure simplifiée de sanction pour les manquements à la formation depuis le 1er janvier 2024."
+    },
+    {
+      "id": "2023-11-CAC-19",
+      "n": 19,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["nep", "non_immixtion", "independance_situations_risque"],
+      "points": 2,
+      "question": "Quels sont les principes relatifs à l'utilisation des travaux de l'expert-comptable par le commissaire aux comptes ?",
+      "qcm": {
+        "choices": [
+          "Le CAC peut se fonder sur l'attestation de présentation de l'expert-comptable, qui constitue un élément probant suffisant dispensant de contrôles propres",
+          "Le CAC prend connaissance de la nature et de l'étendue de l'intervention de l'expert-comptable, apprécie la qualité de ses travaux par des procédures propres, peut les utiliser comme éléments probants mais conserve l'entière responsabilité de son opinion",
+          "Le CAC ne peut en aucun cas utiliser les travaux de l'expert-comptable, qui n'est pas indépendant de l'entité",
+          "Le CAC doit obtenir l'autorisation du conseil régional de l'Ordre avant de consulter les dossiers de l'expert-comptable"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Prise de connaissance de la nature et de l'étendue de l'intervention de l'expert-comptable (tenue, présentation, examen limité) et du cadre de sa mission",
+          "Appréciation de la pertinence des travaux au regard des objectifs de l'audit et de leur qualité (contrôle de l'information produite, procédures du CAC)",
+          "Les travaux de l'EC ne constituent qu'une source d'éléments probants : le CAC conserve l'entière responsabilité de son opinion et ne peut déléguer son jugement",
+          "Respect de l'indépendance et de la non-immixtion : l'EC intervient pour le compte de l'entité et n'est pas indépendant au sens du CAC ; échanges dans le respect du secret professionnel"
+        ],
+        "model_answer": "Le commissaire aux comptes peut tenir compte des travaux de l'expert-comptable intervenant dans l'entité : il prend connaissance de la nature et de l'étendue de sa mission, apprécie la qualité de ses travaux par des procédures qui lui sont propres et détermine dans quelle mesure ils constituent des éléments probants. Il n'en demeure pas moins seul responsable de son opinion, ne peut se contenter de l'attestation de l'expert-comptable et doit conserver son indépendance et son esprit critique."
+      },
+      "explanation": "La norme d'exercice professionnel consacrée à l'utilisation des travaux d'un expert-comptable intervenant dans l'entité (NEP 630) organise cette articulation : l'expert-comptable travaille pour l'entité et sous contrat, le CAC exerce une mission légale indépendante. Les travaux de l'un peuvent alléger ceux de l'autre, mais la responsabilité de l'opinion d'audit ne se partage pas. Rappel : l'expert-comptable et le CAC d'une même entité ne peuvent pas être la même personne ni appartenir à la même structure (autorévision).",
+      "reference": "NEP 630 (utilisation des travaux d'un expert-comptable intervenant dans l'entité) ; NEP 500 ; code de déontologie CAC art. 5 et 10",
+      "confidence": "medium"
+    },
+    {
+      "id": "2023-11-CAC-20",
+      "n": 20,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["nomination_seuils", "eip", "agp_associations"],
+      "points": 2,
+      "question": "Citez quatre entités où la nomination du commissaire aux comptes ne dépend pas d'un seuil.",
+      "qcm": {
+        "choices": [
+          "Toutes les SA, toutes les SAS, toutes les SARL et toutes les associations",
+          "Les entités d'intérêt public (sociétés cotées sur un marché réglementé, établissements de crédit, entreprises d'assurance, mutuelles), les sociétés de financement, les OPCVM et SICAV, les partis politiques, les fondations reconnues d'utilité publique",
+          "Les commerçants personnes physiques, les micro-entrepreneurs, les sociétés civiles immobilières et les GIE",
+          "Les syndicats de copropriétaires, les comités sociaux et économiques, les indivisions et les tontines"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Entités d'intérêt public : sociétés dont les titres sont admis sur un marché réglementé, établissements de crédit, entreprises d'assurance et de réassurance, institutions de prévoyance, mutuelles",
+          "Sociétés de financement et organismes de placement collectif (SICAV, FCP, SCPI...)",
+          "Partis et groupements politiques bénéficiant du financement public",
+          "Fondations reconnues d'utilité publique, fonds de dotation (au-delà d'un seuil modeste de ressources), certaines personnes morales de droit public ou coopératives"
+        ],
+        "model_answer": "Certaines entités doivent désigner un commissaire aux comptes quelle que soit leur taille : les entités d'intérêt public (sociétés cotées sur un marché réglementé, établissements de crédit, entreprises d'assurance, mutuelles, institutions de prévoyance), les sociétés de financement, les organismes de placement collectif (SICAV, fonds), les partis politiques et les fondations reconnues d'utilité publique."
+      },
+      "explanation": "Depuis la loi Pacte, toutes les sociétés commerciales (y compris les SA) relèvent des seuils harmonisés (5 M€ / 10 M€ / 50 depuis 2024) ; l'obligation sans seuil subsiste pour les entités dont l'activité ou le statut justifie un contrôle légal permanent, en premier lieu les EIP définies par C. com. L.821-2 II. Les associations, syndicats et organismes de formation relèvent au contraire de seuils spécifiques (subventions, dons, ressources).",
+      "reference": "C. com. art. L.821-2 II, L.821-42 ; CMF art. L.214-7-2, L.214-24-31, L.511-38, L.612-43 ; loi 88-227 art. 11-7 (partis) ; loi 87-571 art. 19 (fondations RUP)",
+      "confidence": "medium"
+    }
+  ]
+}
