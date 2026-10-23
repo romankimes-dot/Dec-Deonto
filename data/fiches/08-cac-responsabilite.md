@@ -54,13 +54,13 @@
 ### Délits spécifiques
 | Délit | Contenu | Peine |
 |---|---|---|
-| **Informations mensongères** (ex L.820-7) | **Donner ou confirmer** des informations mensongères sur la situation de l'entité. Exemple : **certifier sans réserve** des comptes alors qu'il sait que des dépréciations sont **manifestement infondées** | **5 ans** et **75 000 €** |
-| **Non-révélation de faits délictueux** au procureur (ex L.820-7) | Omettre **sciemment** de révéler | **5 ans** et **75 000 €** |
-| **Exercice malgré une incompatibilité** (ex L.820-6) | Accepter, exercer ou conserver des fonctions **nonobstant les incompatibilités légales** : c'est **un délit** | **1 an** et **15 000 €** (à vérifier) |
-| **Usurpation du titre** ou exercice sans inscription (ex L.820-5) | Usage du titre de CAC **sans être inscrit** | **1 an** et **15 000 €** |
-| **Violation du secret professionnel** | C. pén. **226-13**. Divulgation **sciemment** faite à des tiers | **1 an** et **15 000 €** |
+| **Informations mensongères** (L.821-9, ex L.820-7) | **Donner ou confirmer** des informations mensongères sur la situation de l'entité. Exemple : **certifier sans réserve** des comptes alors qu'il sait que des dépréciations sont **manifestement infondées** | **5 ans** et **75 000 €** |
+| **Non-révélation de faits délictueux** au procureur (L.821-9, ex L.820-7) | Omettre **sciemment** de révéler | **5 ans** et **75 000 €** |
+| **Exercice malgré une incompatibilité** (L.821-8, ex L.820-6) | Exercer la profession **nonobstant les incompatibilités légales**, en son nom ou comme associé d'une société de CAC : c'est **un délit** | **6 mois** et **7 500 €** |
+| **Usurpation du titre** ou exercice sans inscription (L.821-7, ex L.820-5) | Usage du titre de CAC **sans être inscrit** | **1 an** et **15 000 €** |
+| **Violation du secret professionnel** | C. pén. **226-13** (rendu applicable par L.821-7). Révélation **intentionnelle** : l'intention résulte de C. pén. 121-3, le texte de 226-13 ne dit pas « sciemment » | **1 an** et **15 000 €** |
 
-- Le **délit d'entrave** (ex L.820-4, **5 ans** et **75 000 €**) est commis **contre** le CAC par les dirigeants. Le CAC doit le **révéler**.
+- Le **délit d'entrave** (L.821-6 3°, ex L.820-4, **5 ans** et **75 000 €**) est commis **contre** le CAC par les dirigeants. Le CAC doit le **révéler**.
 - Le CAC peut aussi être **complice** des délits des dirigeants (présentation de comptes infidèles, ABS) ou **auteur** de faux, de blanchiment…
 - Les délits « négligence grave », « faute professionnelle » ou « manquement au devoir de conseil » **n'existent pas**.
 
@@ -70,19 +70,19 @@
 1. Tout **manquement aux conditions légales d'exercice** de la profession.
 2. Toute **négligence grave** et tout **fait contraire à la probité ou à l'honneur**.
 
-### Personnes sanctionnables par la commission des sanctions (L.820-2)
+### Personnes sanctionnables par la commission des sanctions (L.820-2, L.821-70 et L.821-79)
 - Les **commissaires aux comptes**, personnes physiques et sociétés, ainsi que les **auditeurs de durabilité**.
 - Les **contrôleurs et entités d'audit de pays tiers** inscrits.
 - Les **membres des comités spécialisés** (comités d'audit, L.821-67 à L.821-69).
 - Les **associés, dirigeants et salariés** de la société de CAC qui ont participé aux manquements.
-- Certaines **EIP** et leurs **dirigeants** pour les manquements au règlement UE (désignation, rotation, services) (à vérifier).
+- Les **EIP** et leurs **dirigeants** pour les manquements relatifs aux **services** fournis par le CAC, à sa **désignation**, à la **durée du mandat** et aux **honoraires** (L.821-70 II 2°).
 - **L'expert-comptable n'en relève pas** : il dépend des chambres de l'Ordre.
 
 ### Instances
 | Organe | Rôle |
 |---|---|
-| **Rapporteur général** de la H2A | Dirige le **service des enquêtes**. Il **enquête**, puis **transmet son rapport** au collège |
-| **Collège** de la H2A | Décide d'**engager des poursuites** et **notifie les griefs**, ou **classe** ; peut proposer une **composition administrative** |
+| **Rapporteur général** de la H2A | Dirige le **service des enquêtes**. Il **enquête**, recueille les observations écrites de l'intéressé, puis **adresse son rapport** à la H2A |
+| **Collège** de la H2A | Décide d'**engager des poursuites** et **arrête les griefs**, que le **président de la H2A notifie** avant de **transmettre le dossier** à la commission des sanctions ; ou **classe** ; peut proposer une **composition administrative** |
 | **Commission des sanctions** | **Juge** et **prononce les sanctions**. Elle est **séparée** du collège (séparation des fonctions de poursuite et de jugement) |
 | **Conseil d'État** | **Recours** contre les décisions de la commission des sanctions |
 
@@ -104,7 +104,7 @@
 ### Les 5 étapes, jusqu'au recours
 1. **Saisine du rapporteur général**, puis **enquête** : auditions, demandes de documents, **secret non opposable**.
 2. **Rapport d'enquête** transmis au **collège**.
-3. Le **collège** décide d'engager une procédure et **notifie les griefs** à la personne poursuivie, qui a **accès au dossier** et présente ses **observations**.
+3. La H2A (**collège**) décide d'engager une procédure et **arrête les griefs** ; son **président** les **notifie** à la personne poursuivie, qui a **accès au dossier** et présente ses **observations**, puis **transmet le dossier** à la commission des sanctions.
 4. **Commission des sanctions** : **audience** (en principe publique), puis **décision motivée**.
 5. **Recours** de pleine juridiction devant le **Conseil d'État**.
 
@@ -135,7 +135,7 @@
 - **Publication**.
 
 ### Prescription disciplinaire
-- **6 ans** à compter des faits. Elle est **interrompue** par un acte d'enquête ou de poursuite.
+- **6 ans** à compter des faits. Elle est seulement **interrompue** par un acte tendant à leur **recherche**, à leur **constatation** ou à leur **sanction** ; le point de départ n'est pas reporté à la révélation des faits (L.821-73 dernier alinéa).
 
 ## 5. Responsabilité administrative
 - Les sanctions de la H2A sont des **sanctions administratives** : elles sont prononcées par une autorité publique indépendante et contrôlées par le **Conseil d'État**.
@@ -161,7 +161,5 @@
 - **Révélation au procureur** : son omission est un **délit** pour le CAC ; il n'y a pas d'obligation équivalente pour l'EC.
 
 ## À vérifier
-- **Liste exacte des personnes sanctionnables** selon L.820-2 dans sa version H2A (annale 2026-05 Q15).
 - **Champ et sanctions de la procédure simplifiée**.
-- **Nouvelle numérotation** des délits pénaux (ex L.820-4 à L.820-7) après l'ordonnance 2023-1142, et **peine exacte** de l'exercice malgré une incompatibilité.
 - **Couverture d'assurance** des dommages-intérêts en cas de violation du secret (annale 2019-11 Q16 : réponse « non couverts » présumée).

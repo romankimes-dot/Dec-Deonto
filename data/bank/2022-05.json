@@ -13,10 +13,10 @@
       "qcm": {
         "question": "Au sens de la réglementation LCB-FT, un maire et un député sont-ils des personnes politiquement exposées (PPE) ?",
         "choices": [
-          "Le député est une PPE (membre d'une assemblée parlementaire nationale) ; le maire ne l'est pas en tant que tel, les élus locaux ne figurant pas dans la liste réglementaire",
-          "Tous deux sont des PPE car ils exercent un mandat électif",
+          "Le député est une PPE (parlementaire national) ; le maire ne l'est pas en tant que tel",
+          "Tous deux sont des PPE dès lors qu'ils exercent un mandat électif sur le territoire français",
           "Aucun des deux : seules les personnes exerçant des fonctions à l'étranger sont des PPE",
-          "Le maire est une PPE car il engage des fonds publics ; le député ne l'est pas"
+          "Le maire est une PPE car il engage des fonds publics communaux ; le député ne l'est pas"
         ],
         "answer": 0
       },
@@ -44,10 +44,10 @@
       "qcm": {
         "question": "À l'issue d'un contrôle qualité LCB-FT mené par l'Ordre des experts-comptables, la conclusion peut être :",
         "choices": [
-          "Une conclusion sans observation, avec simples observations, ou avec observations entraînant un nouveau contrôle sur site à l'issue d'un an, le comité LBC-FT pouvant en outre saisir l'instance disciplinaire",
-          "Certification sans réserve, avec réserve ou refus de certifier",
-          "Attestation sans observation, avec observation ou refus d'attester",
-          "Classement sans suite, déclaration de soupçon à Tracfin ou transmission au procureur"
+          "Sans observation, avec observations, ou avec observations et nouveau contrôle à un an",
+          "Certification sans réserve, avec réserve ou refus de certifier, prononcée par le comité LBC-FT",
+          "Attestation sans observation, avec observation ou refus d'attester, délivrée par le Conseil national",
+          "Classement sans suite, déclaration de soupçon à Tracfin ou transmission au procureur de la République"
         ],
         "answer": 0
       },
@@ -77,9 +77,9 @@
       "qcm": {
         "question": "Quelles sont les étapes successives du devoir de conseil de l'expert-comptable ?",
         "choices": [
-          "Se renseigner sur la situation du client, l'informer, le mettre en garde sur les risques, lui recommander la solution adaptée, et conserver la preuve écrite de ces diligences",
-          "Certifier les comptes, révéler les faits délictueux, déclencher la procédure d'alerte",
-          "Établir la lettre de mission, tenir la comptabilité, attester les comptes",
+          "Se renseigner sur la situation du client, l'informer, le mettre en garde, lui recommander la solution adaptée et conserver la preuve écrite",
+          "Certifier les comptes, révéler les faits délictueux au procureur, déclencher la procédure d'alerte auprès du président du tribunal et saisir la H2A",
+          "Établir la lettre de mission, tenir la comptabilité, attester les comptes et facturer les honoraires au client",
           "Conseiller uniquement sur demande expresse du client, le devoir de conseil n'existant pas sans mission comptable"
         ],
         "answer": 0
@@ -109,10 +109,10 @@
       "qcm": {
         "question": "Lors de la reprise d'un dossier, l'expert-comptable sortant est-il délié du secret professionnel à l'égard du confrère successeur ?",
         "choices": [
-          "Non : aucune levée légale n'existe entre confrères ; il se borne à restituer au client ses documents et à informer le successeur des honoraires restant dus",
+          "Non : aucune levée légale n'existe entre confrères ; il restitue au client ses documents",
           "Oui : la loi lève le secret entre prédécesseur et successeur, comme pour les commissaires aux comptes",
-          "Oui, dès lors que le client a signé une autorisation de transmission du dossier",
-          "Non, sauf autorisation du président du conseil régional"
+          "Oui, dès que le successeur lui a adressé la lettre d'information préalable prévue par le code de déontologie",
+          "Non, sauf autorisation du président du conseil régional ou du Conseil national"
         ],
         "answer": 0
       },
@@ -121,13 +121,14 @@
           "Non : le secret de l'EC ne connaît pas de levée légale entre prédécesseur et successeur",
           "Le sortant restitue au client (non au confrère) les documents qui lui appartiennent ; le client les transmet",
           "Le sortant peut indiquer au successeur les honoraires restant dus et, le cas échéant, les raisons d'ordre déontologique de ne pas accepter",
-          "Contraste avec le CAC : la loi lève le secret entre CAC successifs"
+          "Contraste avec le CAC : le successeur prend connaissance du dossier de travail de son prédécesseur (NEP 510)"
         ],
-        "model_answer": "Non. Aucun texte ne délie l'expert-comptable sortant du secret professionnel au profit de son successeur, à la différence du commissaire aux comptes. Il restitue au client les documents qui lui appartiennent, le client les remettant lui-même au nouveau professionnel, et peut seulement informer le confrère des honoraires restant dus. Le secret couvre tout ce qu'il a appris dans l'exercice de sa mission."
+        "model_answer": "Non. Aucun texte ne délie l'expert-comptable sortant du secret professionnel au profit de son successeur, alors que la NEP 510 prévoit que le commissaire aux comptes successeur prend connaissance du dossier de travail de son prédécesseur. Il restitue au client les documents qui lui appartiennent, le client les remettant lui-même au nouveau professionnel, et peut seulement informer le confrère des honoraires restant dus. Le secret couvre tout ce qu'il a appris dans l'exercice de sa mission."
       },
-      "explanation": "Le secret de l'EC est général et absolu, avec des levées légales limitées (justice, contrôle qualité, AMF, Tracfin) qui n'incluent pas le confrère successeur. Le code de commerce prévoit en revanche expressément que les CAC successifs sont déliés entre eux : c'est la confusion EC/CAC que le jury vise.",
-      "reference": "Ord. 45-2138 art. 21 ; D. 2012-432 art. 147 et 161 s. ; C. pén. art. 226-13 ; pour le CAC : C. com. ex art. L.822-15 (recodifié L.821-x)",
-      "confidence": "medium"
+      "explanation": "Le secret de l'EC est général et absolu, avec des levées légales limitées (justice, contrôle qualité, AMF, Tracfin) qui n'incluent pas le confrère successeur ; le code de déontologie se borne à demander au prédécesseur de favoriser, avec l'accord du client, la transmission du dossier (art. 163). Chez le CAC, la NEP 510 prévoit que le successeur prend connaissance du dossier de travail de son prédécesseur et l'art. 26 du code de déontologie CAC organise leur prise de contact : c'est la confusion EC/CAC que le jury vise.",
+      "reference": "Ord. 45-2138 art. 21 ; D. 2012-432 art. 147 et 163 ; C. pén. art. 226-13 ; pour le CAC : C. com. L.821-35, NEP 510 § 06 (A.821-87) et code de déontologie CAC art. 26",
+      "confidence": "medium",
+      "update_note": "Recodification du livre VIII au 1er janvier 2024 : l'ancien L.822-15 (secret du CAC) est devenu L.821-35, qui ne prévoit aucune levée du secret au profit du CAC successeur."
     },
     {
       "id": "2022-05-EC-05",
@@ -140,10 +141,10 @@
       "qcm": {
         "question": "L'expert-comptable sortant doit-il informer le confrère qui reprend le dossier qu'il a adressé une déclaration de soupçon à Tracfin ?",
         "choices": [
-          "Non : il lui est interdit de révéler l'existence et le contenu d'une déclaration de soupçon, sous peine de sanctions pénales",
+          "Non : il lui est interdit de révéler l'existence d'une déclaration de soupçon",
           "Oui : la confraternité impose de prévenir le successeur du risque de blanchiment",
-          "Oui, mais uniquement si le successeur appartient au même réseau",
-          "Non, sauf si Tracfin a accusé réception de la déclaration"
+          "Oui, mais uniquement si le successeur est inscrit au même conseil régional de l'Ordre",
+          "Non, sauf si Tracfin a accusé réception de la déclaration par courrier"
         ],
         "answer": 0
       },
@@ -156,7 +157,7 @@
         ],
         "model_answer": "Non. L'existence et le contenu d'une déclaration de soupçon sont strictement confidentiels : l'expert-comptable ne peut les révéler ni au client ni à un confrère, la divulgation étant pénalement sanctionnée. Les seules exceptions du code monétaire et financier (information de l'autorité de contrôle, échange entre professionnels intervenant simultanément pour un même client et une même opération) ne couvrent pas la transmission au successeur, qui devra exercer sa propre vigilance."
       },
-      "explanation": "Le secret de la déclaration de soupçon protège l'efficacité du dispositif et le déclarant lui-même (irresponsabilité). La confraternité ne saurait justifier une divulgation interdite par la loi. La règle est identique pour le CAC successeur, malgré la levée du secret professionnel entre CAC.",
+      "explanation": "Le secret de la déclaration de soupçon protège l'efficacité du dispositif et le déclarant lui-même (irresponsabilité). La confraternité ne saurait justifier une divulgation interdite par la loi. La règle est identique pour le CAC successeur, même s'il prend connaissance du dossier de travail de son prédécesseur (NEP 510).",
       "reference": "CMF art. L.561-18 (confidentialité), L.561-21 (échanges entre professionnels), L.574-1 (sanction pénale) ; NPLAB",
       "confidence": "high"
     },
@@ -171,10 +172,10 @@
       "qcm": {
         "question": "Le non-paiement par un expert-comptable des cotisations dues à sa caisse de retraite (CAVEC) peut-il donner lieu à une sanction disciplinaire ?",
         "choices": [
-          "Oui : le non-paiement des cotisations CAVEC, obligatoires (ord. art. 27 bis), pendant deux ans sur les dix dernières années et sans motif valable, entraîne la radiation d'office du tableau prononcée par le conseil régional",
-          "Non : seuls les manquements commis dans l'exécution des missions sont disciplinairement sanctionnables",
+          "Oui : le non-paiement des cotisations CAVEC pendant deux ans sur les dix dernières années, sans motif valable, entraîne la radiation d'office",
+          "Non : seuls les manquements commis dans l'exécution des missions confiées par les clients sont disciplinairement sanctionnables",
           "Non : la CAVEC dispose de ses propres sanctions et la chambre de discipline n'est compétente que pour les cotisations ordinales",
-          "Oui, mais seulement par la commission des sanctions de la H2A"
+          "Oui, mais seulement par la commission des sanctions de la H2A, après avis du Conseil national de l'Ordre"
         ],
         "answer": 0
       },
@@ -203,7 +204,7 @@
       "qcm": {
         "question": "Quelle a été la principale évolution du mode de scrutin pour l'élection du Conseil national de l'Ordre des experts-comptables en 2020 ?",
         "choices": [
-          "Le passage à une élection au suffrage direct par l'ensemble des membres de l'Ordre, par vote électronique, au lieu d'une élection par les conseils régionaux",
+          "Le passage à une élection au suffrage direct par l'ensemble des membres de l'Ordre",
           "La désignation des membres par le ministre chargé du budget sur proposition du commissaire du gouvernement",
           "L'élection par les présidents des compagnies régionales des commissaires aux comptes",
           "La suppression des élections au profit d'un tirage au sort parmi les inscrits"
@@ -213,15 +214,15 @@
       "qrc": {
         "expected": [
           "Élection au suffrage direct par l'ensemble des experts-comptables inscrits au tableau (auparavant élection indirecte par les membres des conseils régionaux)",
-          "Vote électronique",
-          "Scrutin de liste avec exigence de parité",
-          "Réforme concomitante : Conseil supérieur devenu Conseil national (loi Pacte)"
+          "Réforme issue de la loi Pacte (ord. art. 33), modalités fixées par décret",
+          "Inchangés : vote électronique (depuis 2012) et scrutin de liste paritaire (depuis 2016)",
+          "Réforme distincte : Conseil supérieur renommé Conseil national par la loi 2022-172 du 14 février 2022"
         ],
-        "model_answer": "En 2020, le Conseil national a pour la première fois été élu au suffrage direct par l'ensemble des membres de l'Ordre, par vote électronique et au scrutin de liste paritaire, alors que ses membres étaient auparavant élus de manière indirecte par les conseils régionaux. La loi Pacte avait parallèlement renommé le Conseil supérieur en Conseil national."
+        "model_answer": "En 2020, les membres élus du Conseil supérieur ont pour la première fois été élus au suffrage direct par l'ensemble des membres de l'Ordre, au scrutin de liste, alors qu'ils étaient auparavant élus par les membres des conseils régionaux ; cette réforme résulte de la loi Pacte. Le vote électronique et la parité des listes existaient déjà. Le Conseil supérieur a ensuite été renommé Conseil national par la loi du 14 février 2022."
       },
       "explanation": "La réforme vise à renforcer la légitimité démocratique de l'instance nationale, désormais désignée par tous les inscrits et non par les élus régionaux. Les CAC élisent de leur côté leurs instances par compagnie régionale ; aucune autorité de tutelle ne désigne les membres élus des ordres.",
-      "reference": "Ord. 45-2138 art. 29 et 37 (modifiés par la loi Pacte) ; D. 2012-432 (dispositions électorales modifiées en 2019-2020)",
-      "confidence": "medium"
+      "reference": "Ord. 45-2138 art. 33 et 34 (modifiés par la loi 2019-486) ; D. 2012-432 art. 3, 4 et 6",
+      "confidence": "high"
     },
     {
       "id": "2022-05-EC-08",
@@ -234,24 +235,24 @@
       "qcm": {
         "question": "Qu'est-ce que le mandat implicite de l'expert-comptable, instauré par la loi Pacte ?",
         "choices": [
-          "La présomption selon laquelle l'expert-comptable chargé d'une mission est mandaté par son client pour accomplir les démarches déclaratives fiscales, sociales et administratives qui en découlent, sans mandat écrit distinct",
+          "La présomption simple que l'expert-comptable a reçu mandat de représenter son client devant l'administration fiscale et les organismes sociaux",
           "L'autorisation donnée à l'expert-comptable de régler les dettes de son client et de recouvrer ses créances sans accord de celui-ci",
-          "La faculté pour le commissaire aux comptes de certifier les comptes sans nomination par l'assemblée",
-          "La reconduction tacite de la lettre de mission à l'issue de chaque exercice"
+          "La faculté pour le commissaire aux comptes de certifier les comptes sans avoir été nommé par l'assemblée générale",
+          "La reconduction tacite de la lettre de mission à l'issue de chaque exercice, sauf dénonciation par le client"
         ],
         "answer": 0
       },
       "qrc": {
         "expected": [
           "Issu de la loi Pacte (art. 22 de l'ordonnance)",
-          "L'EC chargé d'une mission est réputé mandaté par son client pour effectuer les démarches déclaratives (fiscales, sociales, administratives, télédéclarations) qui en sont le prolongement",
-          "Sans mandat écrit distinct, dans la limite de la mission définie par la lettre de mission",
+          "Présomption simple : l'EC est réputé avoir reçu mandat des personnes qu'il représente devant l'administration fiscale et les organismes de sécurité sociale",
+          "Sans mandat écrit distinct, dans le cadre des missions des art. 2 et 22 (1° et 2°) ; mandat écrit toujours exigé pour l'accès au compte fiscal d'un particulier",
           "Ne couvre pas le paiement de dettes ni le recouvrement de créances, qui exigent un mandat exprès"
         ],
-        "model_answer": "Le mandat implicite, créé par la loi Pacte, est la présomption légale selon laquelle l'expert-comptable chargé d'une mission est mandaté par son client pour accomplir, auprès des administrations, les démarches déclaratives fiscales, sociales et administratives qui découlent de cette mission, sans avoir à produire un mandat écrit distinct. Il ne s'étend pas aux opérations de paiement ou de recouvrement, qui requièrent un mandat exprès."
+        "model_answer": "Le mandat implicite, créé par la loi Pacte, est la présomption simple selon laquelle l'expert-comptable a reçu mandat des personnes qu'il représente devant l'administration fiscale et les organismes de sécurité sociale, pour les missions de l'article 2 et des 1° et 2° de l'article 22, sans avoir à produire de mandat écrit distinct. Un mandat justifié reste exigé pour accéder au compte fiscal d'un particulier, et la présomption ne s'étend pas aux opérations de paiement ou de recouvrement, qui requièrent un mandat exprès."
       },
       "explanation": "Avant la loi Pacte, chaque télédéclaration supposait en principe un mandat spécifique ; le mandat implicite sécurise la pratique dans le périmètre de la lettre de mission. Il ne doit pas être confondu avec le mandat de paiement ou de recouvrement, également ouvert par la loi Pacte mais soumis à un accord exprès et à des conditions strictes de maniement de fonds.",
-      "reference": "Ord. 45-2138 art. 22 (modifié par la loi 2019-486) ; D. 2012-432 art. 151 (lettre de mission)",
+      "reference": "Ord. 45-2138 art. 22 (modifié par la loi 2019-486) ; D. 2012-432 art. 151",
       "confidence": "medium"
     },
     {
@@ -265,8 +266,8 @@
       "qcm": {
         "question": "La responsabilité civile de l'expert-comptable suppose la réunion de :",
         "choices": [
-          "Une faute (manquement contractuel ou délictuel), un préjudice certain et un lien de causalité entre les deux",
-          "Un élément légal, un élément matériel et un élément intentionnel",
+          "Une faute, un préjudice certain et un lien de causalité entre les deux",
+          "Un élément légal, un élément matériel et un élément moral de l'infraction",
           "Une plainte du client, une sanction disciplinaire préalable et une condamnation pénale",
           "Un dépassement des seuils, une absence de lettre de mission et un refus d'attester"
         ],
@@ -282,8 +283,9 @@
         "model_answer": "La responsabilité civile de l'expert-comptable, contractuelle envers le client et délictuelle envers les tiers, suppose une faute (inexécution ou mauvaise exécution de la mission, manquement au devoir de conseil, l'obligation étant en principe de moyens), un préjudice certain et un lien de causalité entre les deux. L'action se prescrit par cinq ans et l'EC doit être assuré."
       },
       "explanation": "Les trois conditions du droit commun s'appliquent ; la faute s'apprécie au regard de la mission définie dans la lettre de mission et des normes professionnelles. Le triptyque légal, matériel, moral est celui de la responsabilité pénale, distracteur classique. Le CAC répond selon les mêmes critères, sur un fondement légal spécifique (fautes et négligences dans l'exercice des fonctions).",
-      "reference": "C. civ. art. 1231-1 (responsabilité contractuelle), 1240 (délictuelle), 2224 (prescription) ; ord. 45-2138 art. 17 (assurance) ; pour le CAC : C. com. ex art. L.822-17 (recodifié L.821-x)",
-      "confidence": "high"
+      "reference": "C. civ. art. 1231-1 (responsabilité contractuelle), 1240 (délictuelle), 2224 (prescription) ; ord. 45-2138 art. 17 (assurance) ; pour le CAC : C. com. L.821-37 (ex L.822-17)",
+      "confidence": "high",
+      "update_note": "Recodification du livre VIII au 1er janvier 2024 : l'ancien art. L.822-17 est devenu l'art. L.821-37 du code de commerce."
     },
     {
       "id": "2022-05-EC-10",
@@ -296,10 +298,10 @@
       "qcm": {
         "question": "Laquelle de ces situations impose la mise à jour de la lettre de mission de l'expert-comptable ?",
         "choices": [
-          "Une modification significative de la nature ou de l'étendue de la mission, ou un changement important dans la situation du client",
-          "Le simple renouvellement annuel de la mission sans changement",
+          "Une modification significative de la nature ou de l'étendue de la mission",
+          "Le simple renouvellement annuel de la mission, sans changement de son périmètre",
           "La nomination d'un commissaire aux comptes suppléant chez le client",
-          "Le changement de président du conseil régional de l'Ordre"
+          "Le changement de président du conseil régional de l'Ordre dont relève le cabinet"
         ],
         "answer": 0
       },
@@ -327,10 +329,10 @@
       "qcm": {
         "question": "Un commissaire aux comptes peut-il déléguer à un confrère d'une autre structure la réalisation de ses missions de certification, en ne conservant que la signature des rapports ?",
         "choices": [
-          "Non : le mandat est personnel ; le CAC nommé doit accomplir la mission sous sa responsabilité avec ses propres collaborateurs ou experts, et signer un rapport fondé sur des travaux qu'il n'a pas dirigés serait une faute",
+          "Non : le mandat est personnel ; le CAC doit accomplir la mission sous sa responsabilité, avec ses collaborateurs ou experts",
           "Oui : la délégation est libre entre commissaires aux comptes inscrits, à condition d'en informer la compagnie régionale",
-          "Oui, si l'assemblée générale de chaque entité autorise la délégation",
-          "Non, sauf si Maxime est nommé commissaire aux comptes suppléant"
+          "Oui, si l'assemblée générale de chaque entité concernée autorise expressément la délégation par écrit",
+          "Non, sauf si le confrère est nommé commissaire aux comptes suppléant de l'entité concernée"
         ],
         "answer": 0
       },
@@ -344,7 +346,7 @@
         "model_answer": "Non. Le mandat de commissaire aux comptes est personnel : nommée par l'assemblée, Julie doit accomplir la mission sous sa direction et sa responsabilité, le cas échéant avec des collaborateurs ou experts de sa structure, mais ne peut en transférer l'exécution à un confrère d'une autre structure. Signer des rapports sur des travaux qu'elle n'aurait ni dirigés ni supervisés constituerait une faute disciplinaire et exposerait sa responsabilité."
       },
       "explanation": "La sous-traitance intégrale d'un mandat contredit le caractère personnel de la nomination et les exigences de compétence, de supervision et de documentation des NEP. Seuls des travaux ponctuels peuvent être confiés à des experts sous la responsabilité du CAC. Le suppléant ne remplace le titulaire qu'en cas d'empêchement.",
-      "reference": "C. com. ex art. L.823-13 (recours à des experts et collaborateurs sous la responsabilité du CAC), recodifié L.821-x ; code de déontologie des CAC (compétence, exercice de la mission) ; NEP 220 (supervision) ; NEP 620 (experts)",
+      "reference": "C. com. L.821-60 (recours à des experts et collaborateurs sous la responsabilité du CAC, ex L.823-13) ; code de déontologie des CAC art. 10 (« Il ne peut leur déléguer ses pouvoirs ») et art. 7 ; NEP 220 (supervision) ; NEP 620 (experts)",
       "confidence": "high"
     },
     {
@@ -358,10 +360,10 @@
       "qcm": {
         "question": "Dans un co-commissariat, un cabinet sans compétence dans le secteur ni en consolidation prévoit d'assumer 10 % des travaux et honoraires et de se limiter à une revue des travaux de l'autre cabinet. Peut-il accepter la mission ?",
         "choices": [
-          "Non : la répartition doit être équilibrée (NEP 100) et le CAC doit disposer de la compétence nécessaire ; une revue critique ne remplace pas une participation effective aux travaux",
-          "Oui : la NEP 100 autorise toute répartition dès lors qu'elle est écrite et acceptée par les deux cabinets",
-          "Oui, car l'examen contradictoire des travaux suffit à engager la responsabilité solidaire des deux cabinets",
-          "Non, car le co-commissariat n'est pas autorisé dans le secteur sanitaire et social"
+          "Non : la répartition doit être équilibrée (NEP 100) et le CAC doit avoir la compétence requise ; une simple revue ne suffit pas",
+          "Oui : la NEP 100 autorise toute répartition dès lors qu'elle est écrite, acceptée par les deux cabinets et communiquée à l'entité",
+          "Oui, car l'examen contradictoire des travaux suffit à engager la responsabilité solidaire des deux cabinets vis-à-vis de l'entité",
+          "Non, car le co-commissariat est interdit aux cabinets intervenant dans le secteur sanitaire et social"
         ],
         "answer": 0
       },
@@ -376,7 +378,7 @@
         "model_answer": "Non. La NEP 100 exige une répartition équilibrée des travaux entre les co-commissaires, fondée sur des critères quantitatifs et qualitatifs, et un examen contradictoire réciproque : une répartition 90/10 avec simple revue des travaux de l'autre cabinet ne répond pas à cette exigence. En outre, le code de déontologie impose au CAC de ne pas accepter une mission pour laquelle il ne dispose pas des compétences nécessaires ; le cabinet Damien doit donc soit acquérir la compétence et obtenir une répartition équilibrée, soit refuser."
       },
       "explanation": "Le co-commissariat obligatoire pour les comptes consolidés repose sur une double appréciation réelle, pas sur une caution. La répartition peut ne pas être strictement égale mais doit rester équilibrée ; la loyauté du cabinet Damien n'efface pas son incompétence sectorielle. En cas de désaccord sur la répartition, le président de la CRCC concilie.",
-      "reference": "C. com. ex art. L.823-15 (co-commissariat, examen contradictoire), recodifié L.821-x ; NEP 100 ; code de déontologie des CAC (compétence, acceptation de la mission)",
+      "reference": "C. com. L.821-41 (deux CAC pour les comptes consolidés) et L.821-62 (examen contradictoire, ex L.823-15) ; NEP 100 (A.821-65, § 07 : répartition équilibrée) ; code de déontologie CAC art. 7 (compétence) et art. 21 (acceptation de la mission)",
       "confidence": "high"
     },
     {
@@ -390,10 +392,10 @@
       "qcm": {
         "question": "Selon la NEP 200, les limites inhérentes à l'audit des comptes tiennent notamment :",
         "choices": [
-          "À l'utilisation des techniques de sondages, aux limites inhérentes au contrôle interne et au fait que la plupart des éléments collectés conduisent davantage à des présomptions qu'à des certitudes",
-          "Au barème d'heures, au secret professionnel et à la non-immixtion dans la gestion",
-          "Au coût de l'audit, au délai légal de dépôt des comptes et à la taille de l'équipe",
-          "À l'absence de lettre de mission, à la rotation des associés et à l'interdiction des services non audit"
+          "Aux sondages, aux limites du contrôle interne et au fait que les éléments collectés donnent des présomptions plutôt que des certitudes",
+          "Au barème d'heures, au secret professionnel, à la non-immixtion dans la gestion et à l'obligation de révéler les faits délictueux",
+          "Au coût de l'audit, au délai légal de dépôt des comptes, à la taille de l'équipe et à la date de tenue de l'assemblée générale annuelle",
+          "À l'absence de lettre de mission, à la rotation des associés dans les EIP et à l'interdiction des services non audit"
         ],
         "answer": 0
       },
@@ -422,10 +424,10 @@
       "qcm": {
         "question": "Comment distinguer le plan de mission du programme de travail du commissaire aux comptes ?",
         "choices": [
-          "Le plan de mission décrit l'approche générale des travaux (étendue, calendrier, orientations, risques, seuils) ; le programme de travail détaille la nature et l'étendue des diligences nécessaires à sa mise en œuvre, avec le nombre d'heures et les intervenants",
-          "Le plan de mission est signé par l'entité, le programme de travail par la compagnie régionale",
-          "Le plan de mission fixe les honoraires ; le programme de travail est la lettre de mission",
-          "Le plan de mission concerne les comptes consolidés, le programme de travail les comptes annuels"
+          "Le plan de mission décrit l'approche générale (étendue, calendrier, risques) ; le programme de travail détaille les diligences à réaliser, avec heures et intervenants",
+          "Le plan de mission est signé par l'entité contrôlée, tandis que le programme de travail est visé par la compagnie régionale avant le début de la mission",
+          "Le plan de mission fixe le montant des honoraires et la durée du mandat ; le programme de travail n'est autre que la lettre de mission signée avec l'entité",
+          "Le plan de mission ne concerne que les comptes consolidés, alors que le programme de travail est établi uniquement pour les comptes annuels"
         ],
         "answer": 0
       },
@@ -438,9 +440,9 @@
         "model_answer": "Le plan de mission décrit l'approche générale des travaux : étendue et calendrier de la mission, orientations retenues, zones de risque, seuils de signification, répartition entre co-commissaires et recours à des experts. Le programme de travail en est la déclinaison opérationnelle : il définit la nature et l'étendue des diligences nécessaires à la mise en œuvre du plan, ainsi que les heures et les intervenants. Tous deux sont actualisés en cours de mission et conservés au dossier."
       },
       "explanation": "Le plan de mission est stratégique, le programme de travail est tactique ; leur existence conditionne la justification des heures au regard du barème. L'EC n'a pas d'obligation réglementaire équivalente mais documente ses travaux au titre de la NPMQ et des normes de mission.",
-      "reference": "C. com. ex art. R.823-11 (renuméroté R.821-x / D.821-x en 2024) ; NEP 300 (planification de l'audit)",
+      "reference": "C. com. D.821-187 (ex R.823-11) et D.821-186 ; NEP 300 (A.821-69, planification de l'audit)",
       "confidence": "high",
-      "update_note": "L'article R.823-11 a été renuméroté lors de la recodification de la partie réglementaire du livre VIII (2024) ; le contenu est inchangé."
+      "update_note": "L'article R.823-11 est devenu D.821-187 (décret 2023-1394) : plan de mission et programme de travail annuels, établis par écrit et versés au dossier ; le texte vise aussi la certification des informations en matière de durabilité."
     },
     {
       "id": "2022-05-CAC-15",
@@ -453,26 +455,26 @@
       "qcm": {
         "question": "Selon le code de déontologie des commissaires aux comptes, exercent des fonctions sensibles au sein de l'entité certifiée :",
         "choices": [
-          "Les mandataires sociaux et dirigeants, les personnes chargées de tenir les comptes ou d'élaborer les états financiers, et les cadres en mesure d'exercer une influence sur l'établissement des comptes",
-          "Les salariés du service commercial, les actionnaires minoritaires et les fournisseurs",
-          "Les membres du comité social et économique, les délégués syndicaux et le médecin du travail",
-          "Les avocats de l'entité, son expert-comptable et son banquier"
+          "Les mandataires sociaux, les préposés tenant les comptes ou élaborant les états financiers et les cadres dirigeants pouvant influer sur ces états",
+          "Les salariés du service commercial, les actionnaires minoritaires et les fournisseurs principaux de l'entité certifiée",
+          "Les membres du comité social et économique, les délégués syndicaux, le médecin du travail et les représentants du personnel",
+          "Les avocats de l'entité, son expert-comptable, son banquier et ses assureurs, en leur qualité de conseils externes"
         ],
         "answer": 0
       },
       "qrc": {
         "expected": [
-          "Les personnes ayant la qualité de mandataire social ou de dirigeant (membres des organes d'administration, de direction ou de surveillance)",
-          "Les personnes chargées de tenir les comptes ou d'élaborer les états financiers et documents de gestion (direction financière, comptabilité)",
-          "Les cadres dirigeants ou personnes en position d'exercer une influence directe sur l'établissement des comptes (ou membres du comité d'audit)",
-          "Enjeu : liens personnels (familiaux) et viduité avant d'accepter un poste dans l'entité"
+          "Toute personne ayant la qualité de mandataire social",
+          "Tout préposé chargé de tenir les comptes ou d'élaborer les états financiers et les documents de gestion (ou les informations en matière de durabilité)",
+          "Tout cadre dirigeant pouvant exercer une influence sur l'établissement de ces états et documents",
+          "Enjeu : un lien personnel (art. 32 I) entre l'une de ces personnes et le CAC ou un membre de la direction de sa société est incompatible avec la mission"
         ],
-        "model_answer": "Sont réputés exercer des fonctions sensibles les mandataires sociaux et dirigeants de l'entité, les personnes chargées de tenir sa comptabilité ou d'établir ses états financiers, et les cadres ou personnes en position d'exercer une influence directe sur l'établissement des comptes. Un lien personnel ou familial du CAC avec l'une d'elles constitue une situation à risque, et le CAC ne peut occuper une telle fonction dans l'entité avant un délai de viduité."
+        "model_answer": "Sont réputés exercer des fonctions sensibles : toute personne ayant la qualité de mandataire social ; tout préposé chargé de tenir les comptes ou d'élaborer les états financiers et les documents de gestion ; tout cadre dirigeant pouvant exercer une influence sur l'établissement de ces états et documents. Un lien personnel entre l'une de ces personnes et le commissaire aux comptes ou un membre de la direction de sa société est incompatible avec la mission (art. 32 II)."
       },
-      "explanation": "La notion de fonctions sensibles sert à identifier les liens personnels incompatibles et à encadrer le passage du CAC ou de ses associés dans l'entité (viduité). Les distracteurs visent des tiers ou des représentants du personnel sans influence sur les comptes.",
-      "reference": "Code de déontologie des CAC, annexe 8-1, Titre II (liens personnels, fonctions sensibles ; art. 31 dans la version 2020) ; C. com. ex art. L.822-12 (viduité), recodifié L.821-x",
-      "confidence": "medium",
-      "update_note": "Numérotation de l'article susceptible d'avoir évolué avec la mise à jour 2024 du code de déontologie."
+      "explanation": "La notion de fonctions sensibles sert à identifier les liens personnels incompatibles (art. 32) : incompatibilité absolue pour le CAC et la direction de sa société, appréciation au regard d'un tiers objectif, raisonnable et informé pour les associés, salariés et membres du réseau. Les délais de viduité (L.821-32 et L.821-33) relèvent d'une autre règle. Les distracteurs visent des tiers ou des représentants du personnel sans influence sur les comptes.",
+      "reference": "Code de déontologie des CAC, annexe 8-1, Titre II, art. 31 (fonctions sensibles) et 32 (liens personnels) ; C. com. L.821-32 et L.821-33 (viduité)",
+      "confidence": "high",
+      "update_note": "Numérotation inchangée : les fonctions sensibles figurent toujours à l'article 31, étendu aux informations en matière de durabilité."
     },
     {
       "id": "2022-05-CAC-16",
@@ -485,10 +487,10 @@
       "qcm": {
         "question": "La responsabilité pénale du commissaire aux comptes suppose la réunion de trois éléments :",
         "choices": [
-          "Un élément légal (texte d'incrimination), un élément matériel (acte ou omission) et un élément moral (intention ou, selon le cas, imprudence)",
-          "Une faute, un préjudice et un lien de causalité",
-          "Une plainte de l'entité, une sanction de la H2A et un rapport de la CNCC",
-          "Un mandat en cours, un dépassement des seuils et une absence de lettre de mission"
+          "Un élément légal, un élément matériel (acte ou omission) et un élément moral (intention ou imprudence)",
+          "Une faute, un préjudice et un lien de causalité entre la faute et le préjudice subi par l'entité contrôlée",
+          "Une plainte de l'entité, une sanction de la H2A et un rapport de la CNCC transmis au procureur de la République",
+          "Un mandat en cours, un dépassement des seuils légaux et une absence de lettre de mission signée par l'entité"
         ],
         "answer": 0
       },
@@ -501,8 +503,9 @@
         "model_answer": "La responsabilité pénale suppose un élément légal, c'est-à-dire un texte incriminant le comportement (par exemple non-révélation de faits délictueux, confirmation d'informations mensongères, violation du secret ou des incompatibilités), un élément matériel, l'acte ou l'omission reproché, et un élément moral, l'intention coupable ou, pour certaines infractions, l'imprudence."
       },
       "explanation": "Le triptyque légal, matériel, moral est celui de toute infraction ; il se distingue des trois conditions de la responsabilité civile (faute, préjudice, causalité), distracteur classique. Les infractions propres au CAC sont dans le code de commerce ; l'EC n'est pas exposé à la non-révélation, qui ne pèse que sur le CAC.",
-      "reference": "C. pén. art. 111-3 et 121-3 ; C. com. ex art. L.820-6 et L.820-7 (infractions propres aux CAC), recodifiés L.820-x en 2024",
-      "confidence": "high"
+      "reference": "C. pén. art. 111-3 et 121-3 ; C. com. L.821-7 (usurpation, exercice illégal, secret), L.821-8 (incompatibilités) et L.821-9 (informations mensongères, non-révélation), ex L.820-5 à L.820-7",
+      "confidence": "high",
+      "update_note": "Infractions propres aux CAC recodifiées au 1er janvier 2024 : ex L.820-5, L.820-6 et L.820-7 devenus L.821-7, L.821-8 et L.821-9."
     },
     {
       "id": "2022-05-CAC-17",
@@ -515,10 +518,10 @@
       "qcm": {
         "question": "Selon le code de commerce, constitue une faute disciplinaire du commissaire aux comptes :",
         "choices": [
-          "Tout manquement aux conditions légales d'exercice de la profession, ainsi que toute négligence grave et tout fait contraire à la probité ou à l'honneur",
-          "Uniquement le défaut de formation continue et le non-paiement des cotisations",
-          "Uniquement les infractions pénales définitivement jugées",
-          "Toute divergence d'appréciation avec l'entité sur l'application des règles comptables"
+          "Tout manquement aux conditions légales d'exercice, toute négligence grave et tout fait contraire à la probité ou à l'honneur",
+          "Uniquement le défaut de formation continue et le non-paiement des cotisations à la compagnie régionale ou à la H2A",
+          "Uniquement les infractions pénales définitivement jugées par une juridiction répressive française, à l'exclusion des fautes civiles",
+          "Toute divergence d'appréciation avec l'entité sur l'application des règles comptables ou des normes d'exercice"
         ],
         "answer": 0
       },
@@ -547,10 +550,10 @@
       "qcm": {
         "question": "Après un refus de certifier pour désaccord et une révélation au procureur, l'assemblée approuve les comptes. Que doit faire le commissaire aux comptes ?",
         "choices": [
-          "Rien de plus : ses obligations sont remplies ; il poursuit son mandat sans démissionner, en tirant les conséquences sur l'exercice suivant, tandis que le parquet peut poursuivre les dirigeants pour présentation de comptes infidèles",
-          "Démissionner immédiatement, l'approbation des comptes valant désaveu de sa mission",
-          "Retirer sa révélation auprès du procureur, l'assemblée ayant régularisé la situation",
-          "Saisir le tribunal de commerce pour faire annuler l'assemblée générale"
+          "Rien de plus : ses obligations sont remplies ; il poursuit son mandat sans démissionner, et le parquet peut poursuivre les dirigeants pour comptes infidèles",
+          "Démissionner immédiatement, l'approbation des comptes par l'assemblée valant désaveu de sa mission et rendant impossible la poursuite du mandat jusqu'à son terme",
+          "Retirer sa révélation auprès du procureur, l'assemblée ayant régularisé la situation en approuvant les comptes malgré son refus de certifier",
+          "Saisir le tribunal de commerce pour faire annuler l'assemblée générale, puis demander la désignation d'un mandataire ad hoc"
         ],
         "answer": 0
       },
@@ -564,9 +567,9 @@
         "model_answer": "Après le vote, le commissaire aux comptes n'a rien de plus à faire : son refus de certifier et sa révélation au procureur ont épuisé ses obligations et ne sont pas remis en cause par l'approbation. Il ne doit pas démissionner, le désaccord n'étant pas un motif légitime, et poursuit son mandat en tirant les conséquences du désaccord sur l'exercice suivant. La suite possible est l'ouverture d'une enquête par le parquet et des poursuites contre les dirigeants pour présentation de comptes infidèles, l'approbation par l'assemblée ne les exonérant pas."
       },
       "explanation": "L'assemblée est souveraine pour approuver les comptes mais ne peut ni purger une infraction ni contraindre le CAC à modifier son opinion. Le CAC, protégé par l'irresponsabilité attachée à la révélation de bonne foi, ne doit pas se retirer : la démission destinée à se soustraire à une obligation légale est interdite. La révélation est irrévocable.",
-      "reference": "C. com. ex art. L.823-12 (révélation, L.821-10 recodifié selon le schéma de référence), ex art. L.823-9 (certification), ex art. L.242-6 (comptes infidèles) ; code de déontologie des CAC (démission et motifs légitimes) ; NEP 700 (rapport)",
+      "reference": "C. com. L.821-10 (ex L.823-12, révélation), L.821-53 (ex L.823-9, certification), L.242-6 2° (comptes infidèles) ; code de déontologie CAC (annexe 8-1) art. 28 (démission et motifs légitimes) ; NEP 700 (rapport)",
       "confidence": "medium",
-      "update_note": "Recodification 2024 : l'article relatif à la révélation des faits délictueux a été renuméroté (L.821-x) ; règle de fond inchangée."
+      "update_note": "Recodification au 1er janvier 2024 : révélation des faits délictueux à L.821-10 (ex L.823-12), certification à L.821-53 (ex L.823-9) ; L.242-6 n'a pas changé de numéro ; règle de fond inchangée."
     },
     {
       "id": "2022-05-CAC-19",
@@ -579,10 +582,10 @@
       "qcm": {
         "question": "Les dirigeants refusent de communiquer au commissaire aux comptes des pièces utiles à sa mission. Il doit :",
         "choices": [
-          "Réitérer sa demande par écrit, puis, le refus constituant un délit d'entrave, le révéler au procureur de la République et en tirer les conséquences dans son rapport (limitation, réserve ou impossibilité de certifier)",
-          "Saisir le président de la compagnie régionale pour qu'il ordonne la communication",
-          "Démissionner pour difficulté dans l'accomplissement de la mission",
-          "Certifier les comptes avec une observation signalant les pièces manquantes"
+          "Réitérer sa demande par écrit, révéler le délit d'entrave au procureur et en tirer les conséquences dans son rapport (réserve ou impossibilité de certifier)",
+          "Saisir le président de la compagnie régionale pour qu'il enjoigne aux dirigeants de communiquer les pièces, puis informer l'assemblée générale par lettre recommandée",
+          "Démissionner pour difficulté dans l'accomplissement de la mission, après en avoir informé la H2A et le président de la compagnie régionale",
+          "Certifier les comptes sans réserve avec une observation signalant les pièces manquantes, sans en informer le procureur"
         ],
         "answer": 0
       },
@@ -596,7 +599,7 @@
         "model_answer": "Le refus de communiquer des pièces utiles constitue un délit d'entrave à la mission du commissaire aux comptes. Après avoir réitéré sa demande par écrit, le CAC doit révéler ce fait délictueux au procureur de la République et en tirer les conséquences dans son rapport, la limitation de ses travaux conduisant selon son importance à une réserve ou à une impossibilité de certifier. Il ne peut démissionner pour se soustraire à ces obligations."
       },
       "explanation": "L'entrave est une infraction spécifique qui protège le droit d'investigation permanent du CAC ; elle doit être révélée comme tout fait délictueux. Ni le président de la CRCC ni une simple observation ne sont des réponses adéquates. L'EC confronté à un refus de pièces n'a pas de délit d'entrave à sa disposition : il adapte ou refuse sa mission.",
-      "reference": "C. com. ex art. L.820-4 (délit d'entrave), ex art. L.823-13 (droit d'investigation), ex art. L.823-12 (révélation), recodifiés L.820-x / L.821-x en 2024 ; NEP 700 et NEP 705",
+      "reference": "C. com. L.821-6 3° (délit d'entrave, ex L.820-4), L.821-60 (droit d'investigation, ex L.823-13), L.821-10 (révélation, ex L.823-12) ; NEP 700 et NEP 705",
       "confidence": "high",
       "update_note": "Renumérotation des articles par l'ordonnance 2023-1142 ; infraction et obligations inchangées."
     },
@@ -611,10 +614,10 @@
       "qcm": {
         "question": "Un commissaire aux comptes estime que sa mission requiert moins d'heures que le minimum du barème. Il doit :",
         "choices": [
-          "Solliciter une dérogation motivée auprès du président de la compagnie régionale, après information de l'entité",
-          "Appliquer librement le nombre d'heures qu'il juge nécessaire, le barème n'étant qu'indicatif",
-          "Demander l'autorisation de l'assemblée générale de l'entité",
-          "Saisir la H2A d'une demande d'avis préalable"
+          "Demander une dérogation motivée au président de la compagnie régionale",
+          "Appliquer librement le nombre d'heures qu'il juge nécessaire, le barème étant indicatif",
+          "Demander l'autorisation préalable de l'assemblée générale de l'entité",
+          "Saisir la H2A d'une demande d'avis préalable sur le nombre d'heures"
         ],
         "answer": 0
       },
@@ -622,15 +625,15 @@
         "expected": [
           "Le barème d'heures fixe des minima et maxima par tranche (total bilan + produits d'exploitation et financiers)",
           "Pour descendre sous le minimum, le CAC doit obtenir une dérogation du président de la compagnie régionale",
-          "Demande motivée, formulée après information des dirigeants de l'entité ; recours possible devant la H2A",
+          "Demande indiquant le nombre d'heures estimé et ses motifs, présentée avant la mission par la partie la plus diligente, l'autre partie donnant son avis ; recours devant le président de la CNCC puis le bureau de la H2A",
           "Sans dérogation, le CAC doit respecter le minimum du barème"
         ],
-        "model_answer": "Le barème d'heures n'est pas indicatif : pour effectuer un nombre d'heures inférieur au minimum de la tranche applicable, le commissaire aux comptes doit obtenir une dérogation du président de la compagnie régionale, par une demande motivée formulée après information des dirigeants de l'entité. La décision peut faire l'objet d'un recours devant la H2A."
+        "model_answer": "Le barème d'heures n'est pas indicatif : pour effectuer un nombre d'heures inférieur au minimum de la tranche applicable, le commissaire aux comptes doit saisir, avant la mission, le président de la compagnie régionale d'une demande de dérogation motivée, l'entité faisant connaître son avis. La décision peut être contestée devant le président de la CNCC, puis devant le bureau de la H2A."
       },
-      "explanation": "Le barème garantit un volume minimal de diligences ; la dérogation, à la baisse comme à la hausse, relève du président de la CRCC sous le contrôle du régulateur, et non de l'entité, qui ne doit pas pouvoir peser sur l'étendue des travaux. Aucun barème n'existe pour l'EC, dont les honoraires sont libres.",
-      "reference": "C. com. D.821-188 s. (barème d'heures et dérogation, ex art. R.823-12 à R.823-15)",
+      "explanation": "Le barème garantit un volume normal de diligences ; la dérogation, à la baisse comme à la hausse, est demandée par la partie la plus diligente et tranchée par le président de la CRCC, avec recours devant le président de la CNCC puis le bureau de la H2A : ni l'assemblée ni le régulateur n'interviennent en première intention. Aucun barème n'existe pour l'EC, dont les honoraires sont libres.",
+      "reference": "C. com. D.821-188 à D.821-191 (barème d'heures et dérogation, ex art. R.823-12 s.) ; L.820-2 III 2°",
       "confidence": "high",
-      "update_note": "Articles R.823-12 s. renumérotés D.821-188 s. par le décret d'application de l'ordonnance 2023-1142 ; H3C → H2A pour le recours."
+      "update_note": "Articles R.823-12 s. renumérotés D.821-188 s. par le décret 2023-1394 ; le recours contre la décision du président de la CRCC est porté devant le président de la CNCC, puis devant le bureau de la H2A (D.821-190)."
     }
   ]
 }

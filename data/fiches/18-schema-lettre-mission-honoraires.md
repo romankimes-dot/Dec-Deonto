@@ -7,7 +7,7 @@ questions: EC:lettre_mission EC:honoraires CAC:honoraires_bareme CAC:lettre_miss
 ## Lettre de mission
 
 ```vs
-Obligatoire ? | **Oui**, pour toute mission (code de déontologie, art. 151) ; une lettre peut couvrir plusieurs missions | **Oui** (NEP 210), pour chaque mandat et pour chaque prestation
+Obligatoire ? | **Oui**, pour toute mission (code de déontologie, art. 151) ; une lettre peut couvrir plusieurs missions | **Oui** : NEP 210 pour la certification (première année du mandat, révisée si besoin) ; R.821-195 pour les autres missions et les prestations
 Contenu clé | Parties, **nature et étendue**, durée, **honoraires**, **répartition des obligations**, résiliation, **conditions générales** (partie intégrante) | Objectif et étendue de l'audit, **responsabilités** du CAC et de la direction, équipe, calendrier, **honoraires**
 Signataires | Le **client** et l'**EC** ; en société : **signature sociale** et **EC responsable** de la mission | Le **CAC** et le **représentant** de l'entité
 Durée de la mission | Fixée par la lettre de mission | Fixée par la **loi** : **6 exercices** (3 en ALPE)
@@ -21,12 +21,12 @@ Limiter sa responsabilité ? | **Oui** : plafond possible, prescription réduite
 
 ```vs
 Principe | **Libres**, convenus dans la lettre de mission ; **aucun barème** (ce serait une entente) | **Barème d'heures** pour la certification (hors ALPE) ; **taux horaire libre**
-Honoraires au succès | **Interdits** pour les missions du **monopole** (comptabilité) ; **possibles** pour les autres | **Interdits** (honoraires subordonnés au résultat)
+Honoraires au succès | **Interdits** pour les missions du **monopole** (comptabilité) et celles qui participent à l'**assiette fiscale ou sociale** ; **possibles** pour les autres | **Interdits** (honoraires subordonnés au résultat)
 Indexation | Possible si une **clause** la prévoit et que l'indice est **lié** à l'activité | —
 Mission gratuite | Possible si ce n'est **pas** une concurrence déloyale ; lettre de mission qui précise la **gratuité**, même qualité | —
 Litige | Conciliation ou arbitrage du **président du CROEC** | Certification : conciliation du **président de la CRCC** (3 mois), puis le **juge** ; prestations : **tribunal** de droit commun
 Dérogation au nombre d'heures | — | Président de la **CRCC**, puis président de la **CNCC**, puis **bureau de la H2A**, puis **tribunal administratif**
-Non-paiement | **Droit de rétention** sur les **travaux** réalisés, **jamais** sur les documents du client | —
+Non-paiement | **Droit de rétention** sur les **travaux** réalisés, **jamais** sur les documents du client ; **information** du président du CROEC | —
 ```
 
 ## Reprise d'un dossier (EC successeur)
@@ -34,12 +34,12 @@ Non-paiement | **Droit de rétention** sur les **travaux** réalisés, **jamais*
 ```etapes
 Informer | Lettre **écrite** au prédécesseur (« lettre de l'art. 163 »)
 Vérifier | Que le client ne cherche pas à **éluder** des règles ou le paiement d'honoraires
-Honoraires dus | **S'efforcer** d'obtenir la justification de leur paiement
-Contestation | Mission acceptable ; **conciliation ou arbitrage** du président du CROEC proposé
+Honoraires dus | **S'efforcer** d'obtenir la justification de leur paiement ; à défaut, en **référer au président du CROEC** et faire des **réserves** auprès du client
+Contestation | Mission acceptable ; le successeur **suggère par écrit** au client la **conciliation ou l'arbitrage** du président du CROEC
 ```
 
 - {!} Ni **autorisation** du président du CROEC, ni **indemnité** au prédécesseur.
-- {!} {CAC} Le CAC successeur **doit prendre contact** avec son prédécesseur, qui est **délié du secret** envers lui. Chez l'EC, le secret **n'est pas levé** envers le successeur.
+- {!} {CAC} Le CAC successeur **doit s'assurer auprès de son prédécesseur** que le non-renouvellement ne vise pas à contourner la loi (code de déontologie art. 26) ; le prédécesseur lui donne **accès aux documents** (L.821-44), sans levée du secret écrite à L.821-35. Chez l'EC, le secret **n'est pas levé** envers le successeur.
 
 ## Résiliation par le client (EC)
 

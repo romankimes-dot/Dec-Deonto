@@ -1,7 +1,7 @@
 // Service worker : fonctionnement hors ligne.
 // Stratégie : précache de l'app et des données à l'installation, puis
 // "stale-while-revalidate" (réponse immédiate depuis le cache, mise à jour en arrière-plan).
-const VERSION = 'dec1-v5';
+const VERSION = 'dec1-v6';
 const CORE = [
   './',
   './index.html',
@@ -14,6 +14,7 @@ const CORE = [
   './js/exam.js',
   './js/gamify.js',
   './js/scene.js',
+  './js/plan.js',
   './js/catalog-data.js',
   './data/questions.json',
   './data/fiches/index.json',

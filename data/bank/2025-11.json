@@ -28,7 +28,7 @@
         ],
         "model_answer": "Non. La représentation des parties devant les juridictions relève du monopole des avocats, que l'expert-comptable doit respecter. Il peut en revanche exercer certaines activités accessoires autorisées, comme le conseil en gestion de patrimoine à titre accessoire ou la fonction de tiers payant d'un député européen, et assister son client."
       },
-      "explanation": "L'article 22 de l'ordonnance interdit expressément aux membres de l'Ordre « d'assumer une mission de représentation devant les tribunaux de l'ordre judiciaire ou administratif ». Il autorise, depuis la loi Pacte, des activités commerciales et actes d'intermédiaire accessoires dans les limites d'une norme professionnelle ; le tiers payant d'un député européen est prévu par les textes. La représentation en justice est un monopole de l'avocat (loi 71-1130). Nuance : l'assistance devant certaines juridictions est admise par la doctrine ordinale ; la frontière assistance / représentation est le cœur de la question.",
+      "explanation": "L'article 22 de l'ordonnance interdit expressément aux membres de l'Ordre « d'assumer une mission de représentation devant les tribunaux de l'ordre judiciaire ou administratif ». Il autorise, depuis la loi du 23 juillet 2010, des activités commerciales et actes d'intermédiaire accessoires dans les limites d'une norme professionnelle ; le tiers payant d'un député européen est prévu par les textes. La représentation en justice est un monopole de l'avocat (loi 71-1130). Nuance : l'assistance devant certaines juridictions est admise par la doctrine ordinale ; la frontière assistance / représentation est le cœur de la question.",
       "reference": "Ord. 45-2138 art. 2 et 22 ; loi n° 71-1130 du 31 déc. 1971 art. 4",
       "confidence": "high"
     },
@@ -60,7 +60,7 @@
       },
       "explanation": "Depuis 2014, la sollicitation est permise aux EC, y compris via des plateformes de mise en relation : le guide ordinal des plateformes encadre le recueil des avis clients et interdit seulement le classement des experts-comptables lié à leur rémunération. La mention de l'appartenance à un réseau est autorisée (art. 154 8°), mais pas le superlatif comparatif.",
       "reference": "D. 2012-432 art. 152 et 154 ; guide ordinal de bonnes pratiques des plateformes en ligne",
-      "confidence": "high"
+      "confidence": "medium"
     },
     {
       "id": "2025-11-EC-03",
@@ -122,7 +122,7 @@
       "explanation": "Le secret (ord. art. 21, C. pén. 226-13) ne cède que devant une disposition législative contraire. Le CMF lève le secret à l'égard de l'AMF ; les contrôleurs qualité sont eux-mêmes tenus au secret. Pour la CNIL, aucun texte ne lève le secret de l'expert-comptable, et la loi Informatique et libertés dispense de répondre les personnes interrogées astreintes au secret professionnel.",
       "reference": "Ord. 45-2138 art. 21 ; C. pén. 226-13 et 226-14 ; CMF L.621-9-3 ; loi 78-17 art. 18 et 19",
       "confidence": "medium",
-      "update_note": "Relecture : la justification CNIL est fragile — lors des contrôles sur place, l'art. 19 de la loi 78-17 ne réserve que le secret avocat-client, le secret des sources et le secret médical ; la réponse d) reste la seule plausible au regard des levées classiques (audition pénale, contrôle qualité, AMF), mais la nuance mérite vérification."
+      "update_note": "Relecture : la justification CNIL est nuancée. L'art. 18 de la loi 78-17 dispense de fournir les renseignements demandés les personnes interrogées astreintes au secret professionnel, mais l'art. 19 III précise que, lors des contrôles, le secret ne peut être opposé aux agents de la CNIL sauf secret avocat-client, secret des sources et secret médical. La réponse d) reste celle du sujet officiel au regard des levées classiques (audition pénale, contrôle qualité, AMF)."
     },
     {
       "id": "2025-11-EC-05",
@@ -250,7 +250,12 @@
       "points": 1,
       "question": "Un expert-comptable peut-il faire usage de son droit de rétention sur les comptes annuels d'un client, si l'indemnité de rupture prévue par la lettre de mission ne lui a pas été réglée ?",
       "qcm": {
-        "choices": ["Oui.", "Oui, si cela était convenu dans la lettre de mission.", "Non.", "Cela dépend des circonstances de départ du client."],
+        "choices": [
+          "Oui.",
+          "Oui, si cela était convenu dans la lettre de mission.",
+          "Non.",
+          "Cela dépend des circonstances de départ du client."
+        ],
         "answer": 2
       },
       "qrc": {
@@ -263,7 +268,7 @@
         ],
         "model_answer": "Non. Le droit de rétention ne garantit que le paiement des honoraires correspondant aux travaux réalisés et ne porte que sur ces travaux, jamais sur les documents remis par le client. Une indemnité de rupture n'est pas la contrepartie de travaux et ne peut justifier une rétention. L'expert-comptable doit en outre informer le président du conseil régional avant toute rétention."
       },
-      "explanation": "La rétention est admise pour les travaux non payés (ord. art. 24 et code de déontologie art. 168 : information préalable du président du conseil régional). L'indemnité de rupture se recouvre par la conciliation, l'arbitrage du président du conseil régional ou le juge.",
+      "explanation": "La rétention n'est admise que sur les travaux effectués, faute de paiement des honoraires correspondants (code de déontologie art. 168, qui impose d'informer préalablement le président du conseil régional). Une indemnité de rupture n'est pas un honoraire rémunérant un travail fourni (ord. art. 24) : elle se recouvre par la conciliation ou l'arbitrage du président du conseil régional, ou devant le juge.",
       "reference": "Ord. 45-2138 art. 24 ; D. 2012-432 art. 159, 160 et 168",
       "confidence": "high"
     },
@@ -482,7 +487,7 @@
         "model_answer": "La commission des sanctions juge les commissaires aux comptes, mais aussi leurs associés, salariés et proches pour les liens incompatibles, les EIP et leurs dirigeants et organes pour les règles d'indépendance et de désignation, les personnes faisant obstacle aux contrôles, les contrôleurs de pays tiers et les auditeurs de durabilité. L'expert-comptable relève, en tant que tel, des chambres de discipline de l'Ordre."
       },
       "explanation": "Un EC qui est aussi CAC relève de la H2A pour son activité de CAC et de l'Ordre pour son activité d'EC. Les membres des comités spécialisés relèvent de la H2A au titre des manquements des EIP (approbation des SACC, sélection du CAC…).",
-      "reference": "C. com. L.820-2 V, L.821-19 IV, L.821-70, L.821-72",
+      "reference": "C. com. L.820-2 V, L.821-19 IV, L.821-70, L.821-72, L.821-79",
       "confidence": "high"
     },
     {
@@ -547,7 +552,12 @@
       "points": 1,
       "question": "Quel chiffre ne concerne pas le conseil national de la Compagnie nationale des commissaires aux comptes ?",
       "qcm": {
-        "choices": ["Soixante.", "Dix-sept.", "Quatre.", "Vingt-deux."],
+        "choices": [
+          "Soixante.",
+          "Dix-sept.",
+          "Quatre.",
+          "Vingt-deux."
+        ],
         "answer": 3
       },
       "qrc": {
@@ -560,8 +570,8 @@
         ],
         "model_answer": "Le Conseil national compte soixante membres désignés pour quatre ans, comprenant les présidents des dix-sept compagnies régionales et des commissaires aux comptes élus, répartis à parité entre un collège EIP et un collège non-EIP."
       },
-      "explanation": "D.821-14 (ex-R.821-37) : 60 membres désignés pour 4 ans, comprenant l'ensemble des présidents de compagnies régionales (17 compagnies régionales depuis les regroupements récents) et des CAC élus, 30 sièges par collège. Le chiffre « 22 » ne correspond à aucun élément de composition.",
-      "reference": "C. com. D.821-13 et D.821-14 ; décret 2020-667",
+      "explanation": "D.821-14 (ex-R.821-37) : 60 membres désignés pour 4 ans, comprenant l'ensemble des présidents de compagnies régionales (17 compagnies régionales depuis les regroupements de 2020) et des CAC élus, 30 sièges par collège. Le chiffre « 22 » concerne le conseil régional (22 membres lorsque la compagnie compte au moins 900 membres personnes physiques, D.821-29), non le conseil national.",
+      "reference": "C. com. L.821-12, D.821-13, D.821-14 et D.821-29 ; décret 2020-667",
       "confidence": "high"
     },
     {

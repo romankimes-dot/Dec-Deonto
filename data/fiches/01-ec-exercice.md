@@ -38,7 +38,7 @@
 - Il est placé auprès du **Conseil national** et de **chaque CROEC** et représente la **tutelle** (ministre chargé de l'économie).
 - Il **assiste aux séances**, **reçoit les décisions** et peut les **contester**.
 - **Inscription au tableau** : la décision du CROEC lui est notifiée. Il peut **former un recours** contre une inscription ou un refus d'inscription devant le **comité national du tableau**.
-- **Discipline** : il peut **saisir** la chambre régionale et **faire appel** de ses décisions. Il n'est pas membre de la chambre.
+- **Discipline** : il peut être **à l'origine d'une plainte** devant la chambre régionale, en reçoit communication et peut **faire appel** de ses décisions. Il n'est pas membre de la chambre ; les poursuites relèvent du **magistrat chargé des poursuites** (ord. art. 49).
 
 ## 3. Inscription au tableau
 
@@ -56,11 +56,11 @@
 - Il est **tenu par chaque CROEC** et comporte **3 sections suivies de 11 listes** (D. 2012-432 art. 114). Les sections :
   1. experts-comptables **personnes physiques** ;
   2. **sociétés d'expertise comptable** ;
-  3. **sociétés de participations d'expertise comptable** (SPE / SPFPL).
+  3. **sociétés de participations d'expertise comptable** (SPE). Les **SPFPL** figurent seulement sur une **liste** et n'ont pas le droit d'exercer.
 - Les **listes** : notamment les **stagiaires**, les **honoraires**, les salariés d'AGC autorisés (**art. 83 ter et 83 quater**)…
 
 ### Experts-comptables stagiaires
-- Ils sont inscrits au **registre du stage** tenu par le CROEC. Le stage dure **3 ans**.
+- Ils sont inscrits **au tableau**, sur la **liste des experts-comptables stagiaires** (D. 2012-432 art. 67 et 114 4°). Le stage dure **3 ans**.
 - Ils sont **soumis à la discipline** : une chambre de discipline **peut sanctionner un stagiaire**, qui est tenu au respect des règles professionnelles.
 
 ## 4. Modes d'exercice
@@ -92,7 +92,7 @@
 - Toute activité qui porte atteinte à l'**indépendance**.
 
 ### Compatibles / autorisées
-- Les **activités commerciales et actes d'intermédiaire à titre accessoire**, s'ils ne mettent en péril ni l'exercice de la profession ni l'indépendance (loi Macron 2015, puis loi Pacte).
+- Les **activités commerciales et actes d'intermédiaire à titre accessoire**, s'ils ne mettent en péril ni l'exercice de la profession ni l'indépendance (ord. art. 22, depuis la **loi 2010-853 du 23 juillet 2010** ; conditions fixées par une norme professionnelle).
 - **Conseiller en investissements financiers**, **CGP à titre accessoire**, **tiers payeur** (assistants de députés européens).
 - **Conseiller prud'homal**, **juge consulaire**, enseignement, expert judiciaire.
 - **Commissaire aux comptes** : il faut être inscrit sur la liste, et la mixité est possible.
@@ -167,8 +167,8 @@
 ## 8. Honoraires
 - **Libres**, convenus avec le client dans la lettre de mission. **Aucun barème** : un barème serait une entente anticoncurrentielle.
 - **Honoraires au succès** (complémentaires) :
-  - **interdits** pour les missions relevant de la **prérogative d'exercice exclusive** (monopole, art. 2) ;
-  - **possibles** pour les autres missions (financement, cession ou acquisition, recouvrement…).
+  - **interdits** pour les missions relevant de la **prérogative d'exercice exclusive** (monopole, deux premiers alinéas de l'art. 2) et pour celles qui participent à la **détermination de l'assiette fiscale ou sociale** du client (ord. art. 24) ;
+  - **possibles** pour les autres missions (financement, cession ou acquisition, recouvrement…), sans compromettre l'indépendance.
 - **Indexation** : possible si une **clause** la prévoit et si l'indice est **en relation directe** avec l'objet du contrat ou l'activité des parties (C. mon. fin. L.112-2). Les indices généraux sont interdits.
 - **Mission à titre gracieux** : elle est possible si elle ne constitue **pas un procédé de concurrence déloyale**. Il faut une **lettre de mission** qui précise la **gratuité**, et la mission doit être réalisée **avec la même qualité** que les autres.
 
@@ -185,8 +185,8 @@
 ### Les 3 natures de missions et les normes
 | Nature | Mission | Norme | Assurance | Conclusion |
 |---|---|---|---|---|
-| **Assurance sur comptes complets historiques** | **Audit** | NP 2100 | **Raisonnable** | **Opinion positive** : régularité, sincérité, image fidèle |
-| | **Examen limité** | **NP 2400** | **Modérée** | **Conclusion négative** : « nous n'avons pas relevé d'anomalies significatives » |
+| **Assurance sur comptes complets historiques** | **Audit** | **Normes ISA** (pas de « NP 2100 ») ; **NP 2910** pour une petite entité | **Raisonnable** | **Opinion positive** : conformité des états financiers au référentiel comptable (image fidèle) |
+| | **Examen limité** | **NP 2400** | **Modérée** | **Conclusion négative** : « nous n'avons pas relevé d'éléments qui nous conduisent à considérer que les comptes ne sont pas établis, dans tous leurs aspects significatifs, conformément au référentiel comptable » |
 | | **Présentation** | **NP 2300** | **Modérée** | **Attestation** sur la **cohérence et la vraisemblance** |
 | **Autres missions d'assurance** | **Attestations particulières** | **NP 3100** | **Raisonnable ou modérée** | Attestation |
 | | **Examen d'informations financières prévisionnelles** | **NP 3400** | Modérée sur les hypothèses | Rapport |
@@ -195,7 +195,7 @@
 | **Autres prestations** | Conseil, social, fiscal, juridique, **comptes prévisionnels**, accompagnement… | Normes générales | Aucune | — |
 
 - **Comptes complets historiques** : ensemble **bilan, compte de résultat et annexe** établis selon un référentiel comptable, portant sur une **période écoulée**. Cela vise les comptes annuels, les **comptes intermédiaires** et les situations complètes.
-- **Présentation exclue** pour les comptes **consolidés** (à vérifier).
+- **Présentation exclue** pour les comptes **consolidés** : « elle n'est pas applicable aux comptes consolidés » (cadre de référence).
 
 ### Présentation (NP 2300)
 - **Contrôles par épreuves** sur la qualité des enregistrements : l'EC vérifie l'**existence des pièces justificatives**, la **correcte imputation**, l'**exactitude des montants** et le **rattachement à la bonne période**.
@@ -214,7 +214,7 @@
 4. Défavorable.
 5. Impossibilité de formuler une conclusion.
 
-### Audit (NP 2100) : opinions
+### Audit (normes ISA ; NP 2910 pour une petite entité) : opinions
 - Sans réserve, avec réserve, défavorable, impossibilité.
 - Formulation **positive**.
 - L'audit d'une **petite entité** suit les mêmes règles : **assurance raisonnable** et opinion positive.
@@ -230,11 +230,11 @@
 |---|---|
 | **Comptes de campagne** : mise en état d'examen | C. électoral **L.52-12** |
 | **Assistance du CSE** (expertise légale) | Code du travail |
-| **Présentation des comptes du CSE** (selon ses ressources) | Code du travail |
+| **Présentation des comptes du CSE** de taille intermédiaire (ressources au-dessus du seuil de L.2315-65 sans dépasser ceux qui imposent un CAC) | C. trav. **L.2315-76** |
 | Attestations exigées par des textes (aides publiques…) | Divers |
 
 - La « **présentation des comptes des études notariales** » **n'est pas** une mission légale.
-- **Comptes de campagne** : l'EC met le compte « **en état d'examen** » et s'assure de la présence des justificatifs. Ce n'est pas une mission d'assurance. Elle se range parmi les **autres prestations** ou une mission spécifique (à vérifier). Elle est soumise aux **normes générales** : code de déontologie, NPMQ et NPLAB.
+- **Comptes de campagne** : l'EC met le compte « **en état d'examen** » et s'assure de la présence des justificatifs. Ce n'est pas une mission d'assurance : le cadre de référence la range parmi les **missions sans assurance prévues par la loi ou le règlement**, qui ne font l'objet d'**aucune norme spécifique**. Elle est soumise aux **normes générales** : code de déontologie, NPMQ et NPLAB.
 
 ## 10. Devoir de conseil
 - Il s'agit d'une **obligation de moyens**, qui s'apprécie au regard de la mission confiée.
@@ -279,14 +279,10 @@
 - **Honoraires** : ceux de l'EC sont **libres, sans barème** ; ceux du CAC en certification suivent un **barème d'heures** (D.821-188), mais le **taux horaire est libre**.
 - **Révélation des faits délictueux** : obligation pour le **CAC seul** ; l'EC n'a qu'un devoir de conseil et peut aller jusqu'au refus ou à l'interruption.
 - **Devoir de conseil** : il est propre à l'EC ; le CAC est tenu à la **non-immixtion**.
-- **Missions d'assurance** : l'audit contractuel de l'EC (NP 2100) donne une assurance **raisonnable**, comme la certification du CAC, mais ce n'est **pas** une mission légale de certification.
+- **Missions d'assurance** : l'audit contractuel de l'EC (normes ISA) donne une assurance **raisonnable**, comme la certification du CAC, mais ce n'est **pas** une mission légale de certification.
 - **Activités commerciales accessoires** : elles sont ouvertes à l'**EC** ; un CAC qui n'est pas EC n'y a pas accès.
 
 ## À vérifier
 - **Conditions d'inscription** : une condition de **nationalité** subsiste-t-elle ?
-- **Dirigeants des sociétés d'EC** : faut-il que tous soient EC, ou au moins un ? Cela détermine la réponse à l'annale 2024-05 Q8.
 - **Signatures de la lettre de mission en société** : faut-il la signature sociale **et** celle de l'EC responsable, ou seulement celle de l'EC ? Annales 2018-11 Q7 et 2022-11 Q1.
-- **Comptes de campagne** : catégorie exacte dans le cadre de référence (autre prestation ou mission sans assurance). Annales 2024-11 Q9 et 2026-05 Q8.
-- **Numéro de la norme d'audit contractuel** (NP 2100 ou NP 2200) et exclusion des comptes consolidés en présentation.
-- **Honoraires au succès** : quelle mission de la liste de l'annale 2025-11 Q5 est interdite (recouvrement de créances ?) et sur quel fondement.
-- **Formation continue EC** : quantum exact (120 h / 3 ans, 20 h par an ou 40 h par an en moyenne) et texte (norme formation du CNOEC).
+- **Formation continue EC** : quantum exact (120 h / 3 ans, 20 h par an ou 40 h par an en moyenne) et texte (norme formation du CNOEC) ; ce quantum ne figure ni dans le règlement intérieur de 2024 ni dans le référentiel normatif 2022.

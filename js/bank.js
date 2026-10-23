@@ -47,7 +47,7 @@ export function splitFrontMatter(md) {
 
 const escHtml = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 // Pastilles : {EC}, {CAC}, {!} (piège), {?} (à vérifier)
-const PILLS = { EC: '<span class="pill ec">EC</span>', CAC: '<span class="pill cac">CAC</span>', '!': '<span class="pill trap">piège</span>', '?': '<span class="pill check">à vérifier</span>' };
+const PILLS = { EC: '<span class="fpill ec">EC</span>', CAC: '<span class="fpill cac">CAC</span>', '!': '<span class="fpill trap">piège</span>', '?': '<span class="fpill check">à vérifier</span>' };
 const inline = (s) => escHtml(s)
   .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
   .replace(/`(.+?)`/g, '<code>$1</code>')

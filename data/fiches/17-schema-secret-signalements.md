@@ -20,7 +20,7 @@ questions: EC:secret_professionnel CAC:secret_professionnel EC:lcb_ft CAC:lcb_ft
       = **Refuser son concours**, voire **interrompre** la mission
   ? Un **soupçon de blanchiment** ou de financement du terrorisme
     = **Déclaration de soupçon à Tracfin**, si possible **avant** l'opération
-    = {EC} Par le **déclarant** désigné (un EC de la structure) ; **pas de copie** au CROEC
+    = {EC} Par l'**EC en charge de la mission**, personnellement ; **pas de copie** au CROEC
     = {CAC} Par le **CAC signataire** (NEP 9605)
     ! Interdit d'en informer le client ou le confrère successeur
     ! Le CAC ne **démissionne** pas pour éviter la déclaration
@@ -36,7 +36,7 @@ Le client peut-il délier ? | **Non** : le secret est d'**ordre public** | **Non
 Contrôleurs | **Contrôle de qualité** de l'Ordre | **H2A** (contrôleurs et enquêteurs), CNCC par délégation, pour les missions **et** les prestations
 Autorités | **AMF** ; **Tracfin** ; administration fiscale (droit de communication, dans ses limites) | **AMF**, **ACPR**, **Tracfin**
 Justice | Audition ou témoignage en matière **pénale** ; défense de l'EC poursuivi | **Procureur** (révélation), juge d'instruction
-Entre professionnels | **Non levé** envers le **successeur** : l'EC restitue seulement les documents du client | Levé entre CAC de la **consolidante** et des **consolidées** (dans les deux sens), entre **co-commissaires**, envers le **successeur**
+Entre professionnels | **Non levé** envers le **successeur** : l'EC restitue seulement les documents du client | Levé entre CAC de la **consolidante** et des **consolidées** (dans les deux sens), entre **co-commissaires** ; le **successeur** accède aux documents (L.821-44), sans levée écrite à L.821-35
 Opposable | À la **CNIL** | À une filiale **non consolidée**
 ```
 
@@ -45,8 +45,8 @@ Opposable | À la **CNIL** | À une filiale **non consolidée**
 ```vs
 Norme | **NPLAB** | **NEP 9605**
 Niveaux de vigilance | **Deux** : standard et renforcée | Simplifiée, standard et renforcée (C. mon. fin.)
-Qui déclare à Tracfin ? | Le **déclarant** désigné (EC), distinct ou non du **correspondant** Tracfin | Le **CAC signataire**
-Blanchiment découvert lors d'un contrôle | Le contrôleur informe le **président du CROEC** ; l'**Ordre** informe Tracfin | Les **contrôleurs** informent **eux-mêmes** Tracfin
+Qui déclare à Tracfin ? | L'**EC en charge de la mission**, personnellement ; le **correspondant** Tracfin (pas forcément EC) ne déclare pas | Le **CAC signataire**
+Blanchiment découvert lors d'un contrôle | Le contrôleur informe le **comité LBC-FT** de l'Ordre ; l'**Ordre** informe Tracfin | Les **contrôleurs** informent **eux-mêmes** Tracfin
 ```
 
 ## Vigilance : les étapes

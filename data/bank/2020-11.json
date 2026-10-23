@@ -41,10 +41,7 @@
       "n": 2,
       "profession": "EC",
       "theme": "deontologie",
-      "tags": [
-        "confraternite_reprise_dossier",
-        "honoraires"
-      ],
+      "tags": ["confraternite_reprise_dossier", "honoraires"],
       "points": 1,
       "question": "Dans le cadre de la reprise d'un dossier auprès d'un confrère pour une mission identique, l'expert-comptable :",
       "qcm": {
@@ -60,14 +57,14 @@
         "question": "Quelles obligations déontologiques pèsent sur l'expert-comptable qui reprend le dossier d'un confrère pour une mission identique ?",
         "expected": [
           "Informer préalablement le confrère prédécesseur de la reprise",
-          "S'efforcer d'obtenir la justification du paiement des honoraires dus au prédécesseur avant de commencer",
+          "S'efforcer d'obtenir la justification du paiement des honoraires dus au prédécesseur avant de commencer ; à défaut, en référer au président du conseil régional et faire des réserves auprès du client",
           "Aucune autorisation du président du conseil régional n'est requise",
-          "Aucune indemnité due au prédécesseur ; en cas de difficulté, conciliation possible devant le président du conseil régional"
+          "Aucune indemnité due au prédécesseur ; en cas de contestation des honoraires, suggérer par écrit au client la conciliation ou l'arbitrage de l'Ordre"
         ],
-        "model_answer": "Le successeur doit, avant d'accepter la mission, en informer son prédécesseur et s'efforcer d'obtenir la justification du règlement des honoraires qui lui restent dus. Il n'a besoin d'aucune autorisation ordinale et ne doit aucune indemnité ; le prédécesseur ne peut toutefois retenir les documents du client et un différend peut être soumis au président du conseil régional en conciliation."
+        "model_answer": "Le successeur doit, avant d'accepter la mission, en informer son prédécesseur, s'assurer que le changement ne vise pas à éluder les lois et règlements et s'efforcer d'obtenir la justification du règlement des honoraires dus ; à défaut, il en réfère au président du conseil régional et fait des réserves auprès du client. Il n'a besoin d'aucune autorisation ordinale et ne doit aucune indemnité ; si le client conteste les honoraires, il lui suggère par écrit la conciliation ou l'arbitrage de l'Ordre."
       },
       "explanation": "La règle de confraternité impose une information préalable du confrère et un effort pour que les honoraires antérieurs soient réglés ; elle ne va pas jusqu'à une obligation de résultat ni à une indemnité. Aucune autorisation du conseil régional n'est nécessaire, ce qui distingue l'EC du CAC, dont la succession de mandats passe par la nomination en assemblée et l'information du prédécesseur (code de déontologie des CAC).",
-      "reference": "D. 2012-432 art. 161 à 163 (devoirs envers les confrères, reprise de dossier) ; ord. 45-2138 art. 31 (conciliation)",
+      "reference": "D. 2012-432 art. 163 (remplacement d'un confrère), 159 et 160 (conciliation, arbitrage), 161 (confraternité) ; ord. 45-2138 art. 31 4°",
       "confidence": "high"
     },
     {
@@ -75,10 +72,7 @@
       "n": 3,
       "profession": "EC",
       "theme": "controle_qualite",
-      "tags": [
-        "controle_qualite",
-        "ordre_organisation"
-      ],
+      "tags": ["controle_qualite", "ordre_organisation"],
       "points": 1,
       "question": "Le contrôle qualité de l'Ordre des experts-comptables concerne :",
       "qcm": {
@@ -98,10 +92,10 @@
           "Les salariés autorisés à exercer au titre des articles 83 ter et 83 quater",
           "Pas les experts-comptables stagiaires"
         ],
-        "model_answer": "Le contrôle de qualité s'applique à l'ensemble des membres de l'Ordre : structures d'exercice professionnel, experts-comptables personnes physiques, ainsi que les salariés autorisés à exercer la profession au titre des articles 83 ter et 83 quater de l'ordonnance. Les experts-comptables stagiaires, qui ne sont pas inscrits au tableau, n'y sont pas soumis."
+        "model_answer": "Le contrôle de qualité s'applique à l'ensemble des membres de l'Ordre : structures d'exercice professionnel, experts-comptables personnes physiques, ainsi que les salariés autorisés à exercer la profession au titre des articles 83 ter et 83 quater de l'ordonnance. Les experts-comptables stagiaires, bien qu'inscrits au tableau en cette qualité (D. 2012-432 art. 67), ne sont pas visés par ce contrôle."
       },
       "explanation": "Le contrôle qualité ordinal vise toutes les personnes inscrites au tableau et exerçant la profession, y compris les salariés autorisés à exercer au titre des articles 83 ter et 83 quater (salariés d'associations de gestion et de comptabilité). Les stagiaires relèvent du régime du stage, non du contrôle qualité. Ne pas confondre avec le contrôle d'activité des CAC, mené sous l'autorité de la H2A.",
-      "reference": "Ord. 45-2138 art. 83 ter et 83 quater ; règlement du contrôle de qualité de l'OEC (approuvé par arrêté)",
+      "reference": "D. 2012-432 art. 170 ; règlement intérieur de l'Ordre art. 407 et 409 (stagiaires exclus) ; Ord. 45-2138 art. 83 ter, 83 quater et 83 quinquies",
       "confidence": "high"
     },
     {
@@ -109,10 +103,7 @@
       "n": 4,
       "profession": "EC",
       "theme": "exercice",
-      "tags": [
-        "delegation_signature",
-        "societes_ec_capital"
-      ],
+      "tags": ["delegation_signature", "societes_ec_capital"],
       "points": 1,
       "question": "Dans une société d'expertise comptable avec plusieurs associés :",
       "qcm": {
@@ -134,7 +125,7 @@
         "model_answer": "L'attestation porte à la fois la signature sociale de la société d'expertise comptable, qui est contractuellement engagée, et la signature technique de l'expert-comptable inscrit, personne physique, responsable de la mission. La signature technique ne peut être déléguée à un non-inscrit."
       },
       "explanation": "Les travaux d'une société d'expertise comptable engagent la société (signature sociale) mais doivent être assumés par un professionnel inscrit personnellement responsable (signature technique). Un seul des deux ne suffit pas. Cette double signature a son équivalent chez le CAC : le rapport d'une société de commissaires aux comptes est signé par la société et par le CAC personne physique signataire.",
-      "reference": "Ord. 45-2138 art. 12 ; D. 2012-432 (dispositions relatives à la signature des travaux) ; NP 2300 (contenu et signature de l'attestation)",
+      "reference": "Ord. 45-2138 art. 12 al. 3 (signature personnelle de l'expert-comptable et visa ou signature sociale) ; NP 2300 (contenu et signature de l'attestation)",
       "confidence": "medium"
     },
     {
@@ -142,10 +133,7 @@
       "n": 5,
       "profession": "EC",
       "theme": "exercice",
-      "tags": [
-        "missions_legales",
-        "missions_assurance"
-      ],
+      "tags": ["missions_legales", "missions_assurance"],
       "points": 1,
       "question": "Parmi les missions suivantes, laquelle n'est pas qualifiée de mission légale car ne répondant pas à une disposition d'un texte législatif ou réglementaire ?",
       "qcm": {
@@ -168,8 +156,8 @@
         ],
         "model_answer": "Une mission légale est une mission dont un texte législatif ou réglementaire prévoit expressément l'intervention d'un expert-comptable : mise en état d'examen des comptes de campagne, présentation des comptes annuels du CSE, assistance du CSE, examen de conformité fiscale. La présentation des comptes d'une étude notariale est en revanche une mission contractuelle ordinaire."
       },
-      "explanation": "Les comptes de campagne doivent être présentés par un membre de l'Ordre (code électoral), le CSE dépassant certains seuils confie la présentation de ses comptes à un expert-comptable, et le code du travail organise l'assistance du CSE par un expert-comptable pour ses consultations. Rien de tel pour les études notariales, dont le contrôle de la comptabilité relève de l'inspection professionnelle du notariat : l'EC n'y intervient que contractuellement.",
-      "reference": "C. élect. art. L.52-12 ; C. trav. art. L.2315-69 et L.2315-78 s. ; cadre de référence des missions (missions légales)",
+      "explanation": "Les comptes de campagne doivent être présentés par un membre de l'Ordre (code électoral), le CSE dont les ressources dépassent le seuil de la comptabilité ultra-simplifiée sans atteindre les seuils de nomination d'un CAC confie la présentation de ses comptes annuels à un expert-comptable (C. trav. L.2315-76), et le code du travail organise l'assistance du CSE par un expert-comptable pour ses consultations. Rien de tel pour les études notariales, dont le contrôle de la comptabilité relève de l'inspection professionnelle du notariat : l'EC n'y intervient que contractuellement.",
+      "reference": "C. élect. art. L.52-12 ; C. trav. art. L.2315-76 (présentation des comptes du CSE) et L.2315-78 s. (expertise) ; cadre de référence des missions (missions sans assurance prévues par la loi ou le règlement)",
       "confidence": "medium"
     },
     {
@@ -177,9 +165,7 @@
       "n": 6,
       "profession": "EC",
       "theme": "deontologie",
-      "tags": [
-        "incompatibilites_activites"
-      ],
+      "tags": ["incompatibilites_activites"],
       "points": 1,
       "question": "Un expert-comptable en exercice ne peut pas exercer l'une des fonctions suivantes : laquelle ?",
       "qcm": {
@@ -197,25 +183,22 @@
           "Non : activité commerciale et d'agent d'affaires, réglementée par la loi Hoguet",
           "Interdiction des actes de commerce, mandats commerciaux, activité d'agent d'affaires",
           "Interdiction de détenir ou manier des fonds pour le compte des clients (hors mandat de paiement/recouvrement encadré)",
-          "Exception loi Pacte : activités commerciales et actes d'intermédiaire accessoires, sans atteinte à l'indépendance",
+          "Exception : activités commerciales et actes d'intermédiaire accessoires, sans atteinte à l'indépendance (loi du 23 juillet 2010, norme professionnelle de 2021)",
           "Mandats électifs ou juridictionnels (prud'hommes) compatibles"
         ],
-        "model_answer": "Non. L'activité d'agent immobilier est une activité commerciale d'intermédiaire exercée à titre principal, incompatible avec la qualité d'expert-comptable, à qui l'ordonnance interdit les actes de commerce, les mandats commerciaux et l'activité d'agent d'affaires. Seules des activités commerciales ou d'intermédiaire accessoires, compatibles avec l'indépendance et la déontologie, sont admises depuis la loi Pacte ; les fonctions de conseiller prud'homal restent compatibles."
+        "model_answer": "Non. L'activité d'agent immobilier est une activité commerciale d'intermédiaire exercée à titre principal, incompatible avec la qualité d'expert-comptable, à qui l'ordonnance interdit les actes de commerce non accessoires et l'activité d'agent d'affaires. Seules des activités commerciales ou d'intermédiaire accessoires, compatibles avec l'indépendance et la déontologie, sont admises depuis la loi du 23 juillet 2010 ; les fonctions de conseiller prud'homal restent compatibles."
       },
-      "explanation": "L'ordonnance interdit à l'EC les actes de commerce et l'activité d'agent d'affaires ; la loi Pacte n'a ouvert qu'une dérogation pour des activités commerciales ou d'intermédiaire accessoires. L'agent immobilier exerce une activité commerciale réglementée à titre principal, donc incompatible. Les fonctions de conseiller prud'homal sont un mandat juridictionnel compatible. Pour le CAC, la liste des incompatibilités est plus large encore (tout emploi salarié sauf chez un confrère ou un EC, toute activité commerciale).",
-      "reference": "Ord. 45-2138 art. 22 (modifié par la loi Pacte 2019-486) ; D. 2012-432 art. 141 s. ; loi 70-9 du 2 janvier 1970 (loi Hoguet)",
+      "explanation": "L'ordonnance interdit à l'EC les actes de commerce et l'activité d'agent d'affaires ; la loi du 23 juillet 2010 n'a ouvert qu'une dérogation pour des activités commerciales ou d'intermédiaire accessoires, encadrées par la norme professionnelle agréée le 12 mars 2021 (qui maintient l'interdiction de l'activité d'agent d'affaires). L'agent immobilier exerce une activité commerciale réglementée à titre principal, donc incompatible. Les fonctions de conseiller prud'homal sont un mandat juridictionnel compatible. Pour le CAC, la liste des incompatibilités est plus large encore (tout emploi salarié sauf chez un confrère ou un EC, toute activité commerciale non accessoire à l'expertise comptable).",
+      "reference": "Ord. 45-2138 art. 22 (rédaction loi 2010-853) ; norme professionnelle relative aux activités commerciales et aux actes d'intermédiaire (arrêté du 12 mars 2021) ; loi 70-9 du 2 janvier 1970 (loi Hoguet)",
       "confidence": "medium",
-      "update_note": "Depuis la loi Pacte (2019), l'article 22 autorise à titre accessoire des activités commerciales et des actes d'intermédiaire, ce qui ne remet pas en cause l'interdiction d'une activité commerciale réglementée exercée à titre principal comme l'agence immobilière."
+      "update_note": "Depuis la loi du 23 juillet 2010, l'article 22 autorise à titre accessoire des activités commerciales et des actes d'intermédiaire, dans les limites de la norme professionnelle agréée par arrêté du 12 mars 2021 ; cela ne remet pas en cause l'interdiction d'une activité commerciale réglementée exercée à titre principal comme l'agence immobilière."
     },
     {
       "id": "2020-11-EC-07",
       "n": 7,
       "profession": "EC",
       "theme": "exercice",
-      "tags": [
-        "missions_assurance",
-        "referentiel_normatif"
-      ],
+      "tags": ["missions_assurance", "referentiel_normatif"],
       "points": 1,
       "question": "L'objectif de cette mission est d'attester de la vraisemblance et de la cohérence de comptes intermédiaires. Quelle est cette mission ?",
       "qcm": {
@@ -237,7 +220,7 @@
         ],
         "model_answer": "Il s'agit de la mission de présentation des comptes (NP 2300), qui procure une assurance modérée sur la cohérence et la vraisemblance des comptes, annuels ou intermédiaires. Elle débouche sur une attestation sans observation, avec observation(s) ou sur un refus d'attester."
       },
-      "explanation": "Les mots-clés cohérence et vraisemblance caractérisent la présentation (NP 2300). L'examen limité (NP 2400) procure aussi une assurance modérée mais sur la régularité et la sincérité, avec une conclusion négative ; la compilation et les procédures convenues sont sans assurance. Le fait que les comptes soient intermédiaires ne change pas la nature de la mission.",
+      "explanation": "Les mots-clés cohérence et vraisemblance caractérisent la présentation (NP 2300). L'examen limité (NP 2400) procure aussi une assurance modérée, mais sur la conformité des comptes au référentiel comptable applicable ; la compilation et les procédures convenues sont sans assurance. Le fait que les comptes soient intermédiaires ne change pas la nature de la mission.",
       "reference": "NP 2300 (mission de présentation des comptes) ; NP 2400 (examen limité) ; cadre de référence des missions",
       "confidence": "high"
     },
@@ -380,10 +363,7 @@
       "n": 12,
       "profession": "CAC",
       "theme": "responsabilite",
-      "tags": [
-        "responsabilite_penale",
-        "inscription_liste"
-      ],
+      "tags": ["responsabilite_penale", "inscription_liste"],
       "points": 1,
       "question": "L'usage du titre de commissaire aux comptes par une personne physique qui n'est pas inscrite sur la liste des commissaires aux comptes est réprimé par :",
       "qcm": {
@@ -406,20 +386,16 @@
         "model_answer": "L'usage du titre par une personne non inscrite constitue un délit pénal d'usurpation de titre, défini par la loi dans le code de commerce et puni d'emprisonnement et d'amende. Une personne non inscrite ne relevant ni du code de déontologie ni de la commission des sanctions de la H2A, seule la voie pénale est ouverte, la CNCC pouvant se porter partie civile."
       },
       "explanation": "Le code de déontologie et les organes professionnels (H2A, CNCC) ne régissent que les inscrits. L'usurpation de titre et l'exercice illégal sont des infractions pénales prévues par la loi. Même logique pour l'EC : l'exercice illégal et l'usurpation du titre d'expert-comptable sont réprimés par l'ordonnance de 1945 (art. 20) et le code pénal.",
-      "reference": "C. com. ex art. L.820-5 (usurpation du titre et exercice illégal ; L.820-6 visait les incompatibilités), recodifié en 2024 ; C. pén. art. 433-17 ; pour l'EC : ord. 45-2138 art. 20",
+      "reference": "C. com. L.821-7 1° (ex L.820-5, usage du titre sans inscription, un an et 15 000 €) ; C. pén. art. 433-17 ; pour l'EC : ord. 45-2138 art. 20",
       "confidence": "high",
-      "update_note": "H3C remplacé par la Haute autorité de l'audit (H2A) au 1er janvier 2024 ; les dispositions pénales ont été renumérotées par l'ordonnance 2023-1142."
+      "update_note": "H3C remplacé par la Haute autorité de l'audit (H2A) au 1er janvier 2024 ; l'usurpation du titre et l'exercice illégal figurent désormais à L.821-7 (ex L.820-5)."
     },
     {
       "id": "2020-11-CAC-13",
       "n": 13,
       "profession": "CAC",
       "theme": "exercice",
-      "tags": [
-        "inscription_liste",
-        "h2a_supervision",
-        "cncc_crcc_organisation"
-      ],
+      "tags": ["inscription_liste", "h2a_supervision", "cncc_crcc_organisation"],
       "points": 1,
       "question": "Les fonctions de commissaire aux comptes sont exercées par des personnes physiques ou par des sociétés inscrites sur la liste établie par :",
       "qcm": {
@@ -442,9 +418,9 @@
         "model_answer": "Depuis la réforme de 2016, la liste des commissaires aux comptes est établie par la Haute autorité de l'audit (H2A, qui a succédé au H3C), qui peut déléguer par convention à la CNCC la gestion de l'inscription. L'inscription n'est plus prononcée par des commissions régionales près les cours d'appel ; la cour d'appel ne reçoit plus que la prestation de serment."
       },
       "explanation": "Avant 2016 l'inscription relevait des commissions régionales près les cours d'appel ; depuis l'ordonnance 2016-315, c'est le régulateur (H3C puis H2A) qui tient la liste, avec faculté de délégation à la CNCC. La proposition conjointement est fausse : la CNCC n'agit que sur délégation. Pour l'EC, l'inscription au tableau relève des conseils régionaux de l'Ordre.",
-      "reference": "C. com. ex art. L.822-1 et L.821-1 II (délégation à la CNCC) ; depuis 2024 : art. L.820-x (missions de la H2A) et L.821-13 s. (liste et inscription)",
+      "reference": "C. com. art. L.820-1 I 1° et II (inscription par la H2A et faculté de délégation à la CNCC, ex L.822-1 et L.821-1 II), L.821-13 et L.821-23",
       "confidence": "high",
-      "update_note": "H3C → H2A au 1er janvier 2024 (ordonnance 2023-1142) ; la faculté de délégation de l'inscription à la CNCC est maintenue."
+      "update_note": "H3C → H2A au 1er janvier 2024 (ordonnance 2023-1142) ; la faculté de délégation de l'inscription à la CNCC est maintenue (L.820-1 II), mais le H3C a résilié la convention de délégation à effet du 5 novembre 2020 : l'inscription est depuis réalisée directement par le régulateur."
     },
     {
       "id": "2020-11-CAC-14",
@@ -486,10 +462,7 @@
       "n": 15,
       "profession": "CAC",
       "theme": "exercice",
-      "tags": [
-        "non_immixtion",
-        "nep"
-      ],
+      "tags": ["non_immixtion", "nep"],
       "points": 1,
       "question": "Le devoir de conseil du commissaire aux comptes envers l'entité auditée est :",
       "qcm": {
@@ -512,7 +485,7 @@
         "model_answer": "Non. Le CAC n'a pas de devoir de conseil : sa mission de certification est encadrée par le principe de non-immixtion dans la gestion. Il a en revanche des obligations d'information et de communication (irrégularités, procédure d'alerte, communication aux organes). Il peut fournir certains services autres que la certification dans le respect de l'indépendance, mais il s'agit d'une faculté encadrée, non d'un devoir. Le devoir de conseil est une obligation de l'expert-comptable."
       },
       "explanation": "Le devoir de conseil est consubstantiel au contrat de l'expert-comptable (jurisprudence constante). Le CAC, contrôleur légal, ne conseille pas la gestion ; il informe et alerte. Les propositions A et D décrivent la possibilité de fournir des services non audit (SACC), ce qui n'est pas un devoir de conseil. C'est une confusion EC/CAC classique.",
-      "reference": "C. com. ex art. L.823-10 (non-immixtion), recodifié L.821-x ; code de déontologie des CAC (annexe 8-1), Titre II ; pour l'EC : D. 2012-432 art. 155 et jurisprudence sur le devoir de conseil",
+      "reference": "C. com. L.821-54 I (non-immixtion, ex L.823-10) ; code de déontologie des CAC (annexe 8-1), Titre II ; pour l'EC : D. 2012-432 art. 155 (devoir d'information et de conseil) et jurisprudence",
       "confidence": "medium"
     },
     {
@@ -520,9 +493,7 @@
       "n": 16,
       "profession": "CAC",
       "theme": "exercice",
-      "tags": [
-        "non_immixtion"
-      ],
+      "tags": ["non_immixtion"],
       "points": 1,
       "question": "Le principe de non-immixtion dans la gestion interdit au commissaire aux comptes de :",
       "qcm": {
@@ -544,8 +515,8 @@
         ],
         "model_answer": "Le CAC vérifie et certifie sans s'immiscer dans la gestion : il ne porte pas de jugement d'opportunité sur les choix de gestion et ne participe pas aux décisions. Le principe ne l'empêche ni d'obtenir tous documents utiles, dont la comptabilité de gestion, ni d'apprécier la continuité d'exploitation dans le cadre de l'alerte, ni de relever les irrégularités et fraudes."
       },
-      "explanation": "La non-immixtion vise le jugement sur la gestion, pas l'accès à l'information ni l'appréciation de la pérennité, qui fonde la procédure d'alerte. Relever les fraudes, même non significatives, relève du contrôle de la régularité. La révélation au procureur ne concerne que les faits délictueux significatifs et délibérés, ce qui est une autre question.",
-      "reference": "C. com. ex art. L.823-10 (recodifié L.821-x) ; ex art. L.234-1 s. (alerte) ; NEP 240 ; NEP 570",
+      "explanation": "La non-immixtion vise le jugement sur la gestion, pas l'accès à l'information ni l'appréciation de la pérennité, qui fonde la procédure d'alerte. Relever les fraudes, même non significatives, relève du contrôle de la régularité. La révélation au procureur (L.821-10) porte sur les faits délictueux dont le CAC a eu connaissance à l'occasion de sa mission ou prestation, ce qui est une autre question.",
+      "reference": "C. com. L.821-54 I (non-immixtion, ex L.823-10) ; L.821-60 (droit d'investigation) ; L.234-1 s. (alerte) ; L.821-10 ; NEP 240 ; NEP 570",
       "confidence": "high"
     },
     {
@@ -553,10 +524,7 @@
       "n": 17,
       "profession": "CAC",
       "theme": "responsabilite",
-      "tags": [
-        "discipline_sanctions",
-        "h2a_supervision"
-      ],
+      "tags": ["discipline_sanctions", "h2a_supervision"],
       "points": 1,
       "question": "Les sanctions disciplinaires applicables au commissaire aux comptes figurent dans :",
       "qcm": {
@@ -572,12 +540,12 @@
         "question": "Quel texte fixe l'échelle des sanctions disciplinaires applicables aux commissaires aux comptes et quelles sont ces sanctions ?",
         "expected": [
           "Le code de commerce (livre VIII), non le code de déontologie",
-          "Avertissement, blâme, interdiction temporaire d'exercer (jusqu'à 5 ans), radiation",
+          "Avertissement, blâme, interdiction temporaire d'exercer tout ou partie des missions (trois ans au plus), radiation, retrait de l'honorariat",
           "Sanction pécuniaire (plafonds distincts personnes physiques / morales)",
-          "Interdiction temporaire d'exercer des fonctions d'administrateur ou de surveillance ; publication",
+          "Interdiction temporaire d'exercer des fonctions d'administration ou de direction ; publication",
           "Prononcées par la commission des sanctions de la H2A"
         ],
-        "model_answer": "L'échelle des sanctions figure dans le code de commerce. Elle comprend l'avertissement, le blâme, l'interdiction temporaire d'exercer (au plus cinq ans), la radiation, une sanction pécuniaire plafonnée, l'interdiction temporaire d'exercer des fonctions d'administration ou de surveillance et la publication de la décision. Elles sont prononcées par la commission des sanctions de la H2A."
+        "model_answer": "L'échelle des sanctions figure dans le code de commerce. Elle comprend l'avertissement, le blâme, l'interdiction temporaire d'exercer tout ou partie des missions (au plus trois ans), la radiation, le retrait de l'honorariat, une sanction pécuniaire plafonnée, l'interdiction temporaire d'exercer des fonctions d'administration ou de direction et la publication d'une déclaration. Elles sont prononcées par la commission des sanctions de la H2A."
       },
       "explanation": "Le code de déontologie fixe les devoirs, pas les peines ; celles-ci sont légales. Depuis 2016 la discipline est confiée au régulateur (formation restreinte du H3C, puis commission des sanctions de la H2A). Pour l'EC, l'échelle est dans l'ordonnance de 1945 (art. 53) et les instances sont les chambres de discipline de l'Ordre.",
       "reference": "C. com. art. L.821-71 (sanctions, ex L.824-2) et L.821-70 (faute disciplinaire, ex L.824-1) ; L.820-2 (commission des sanctions) ; pour l'EC : ord. 45-2138 art. 53",
@@ -589,10 +557,7 @@
       "n": 18,
       "profession": "CAC",
       "theme": "responsabilite",
-      "tags": [
-        "discipline_sanctions",
-        "h2a_supervision"
-      ],
+      "tags": ["discipline_sanctions", "h2a_supervision"],
       "points": 1,
       "question": "Le H3C dispose d'un service chargé de procéder aux enquêtes préalables à l'ouverture des procédures disciplinaires. Ce service est :",
       "qcm": {
@@ -607,17 +572,17 @@
       "qrc": {
         "question": "Qui dirige les enquêtes préalables à l'ouverture d'une procédure disciplinaire à l'encontre d'un commissaire aux comptes, et quel est son rôle ?",
         "expected": [
-          "Le rapporteur général de la H2A, à la tête d'un service d'enquête",
+          "Le rapporteur général de la H2A, à la tête d'un service d'enquête composé d'enquêteurs qu'il habilite",
           "Indépendant du collège et de la commission des sanctions (séparation instruction / jugement)",
-          "Procède aux enquêtes, notifie les griefs et saisit la commission des sanctions",
-          "Peut recourir à des enquêteurs et obtenir tout document"
+          "Procède à l'enquête et établit un rapport d'enquête ; les griefs sont arrêtés par la H2A et notifiés par son président, qui saisit la commission des sanctions",
+          "Peut obtenir tout document, convoquer et entendre toute personne, accéder aux locaux, faire appel à des experts"
         ],
-        "model_answer": "Les enquêtes sont conduites par le rapporteur général de la H2A, qui dirige un service d'enquête distinct du collège et de la commission des sanctions afin de séparer poursuite et jugement. Il mène l'enquête, notifie les griefs et, le cas échéant, saisit la commission des sanctions."
+        "model_answer": "Les enquêtes sont conduites par le rapporteur général de la H2A, qui dirige un service d'enquête distinct du collège et de la commission des sanctions afin de séparer poursuite et jugement. Il mène l'enquête et établit un rapport ; si les faits le justifient, la H2A arrête les griefs, que son président notifie avant de saisir la commission des sanctions."
       },
-      "explanation": "La réforme de 2016 a créé la fonction de rapporteur général pour garantir la séparation entre instruction et jugement. Ni le président ni un membre du collège n'enquêtent. Pour l'EC, il n'y a pas de rapporteur général : la chambre régionale de discipline est saisie par le président du conseil régional, le commissaire du gouvernement ou sur plainte.",
-      "reference": "C. com. ex art. L.821-3-1 (rapporteur général), recodifié L.820-x en 2024 ; ex art. L.824-4 s. (procédure), recodifiés L.821-70 s.",
+      "explanation": "La réforme de 2016 a créé la fonction de rapporteur général pour garantir la séparation entre instruction et jugement. Ni le président ni un membre du collège n'enquêtent ; le collège intervient ensuite pour arrêter les griefs. Pour l'EC, il n'y a pas de rapporteur général : la plainte est adressée à la chambre régionale de discipline, auprès de laquelle un magistrat chargé des poursuites nomme un rapporteur qui instruit, puis décide de notifier les griefs.",
+      "reference": "C. com. L.820-6 (rapporteur général, ex L.821-3-1) ; L.821-73 à L.821-77 (saisine, enquête, griefs, ex L.824-4 s.) ; pour l'EC : ord. 45-2138 art. 49 ; D. 2012-432 art. 179",
       "confidence": "high",
-      "update_note": "H3C → H2A au 1er janvier 2024 ; la fonction de rapporteur général est maintenue auprès de la H2A, qui saisit désormais une commission des sanctions distincte du collège."
+      "update_note": "H3C → H2A au 1er janvier 2024 ; la fonction de rapporteur général est maintenue (L.820-6) ; les griefs sont arrêtés par la H2A et notifiés par son président, qui transmet le dossier à une commission des sanctions distincte du collège (L.821-77)."
     },
     {
       "id": "2020-11-CAC-19",
@@ -656,10 +621,7 @@
       "n": 20,
       "profession": "CAC",
       "theme": "deontologie",
-      "tags": [
-        "lcb_ft",
-        "nep"
-      ],
+      "tags": ["lcb_ft", "nep"],
       "points": 1,
       "question": "Dans un cabinet de commissaires aux comptes, la/les personne(s) chargée(s) dans les cas les plus courants de la déclaration à Tracfin est/sont :",
       "qcm": {
@@ -674,15 +636,15 @@
       "qrc": {
         "question": "Qui effectue la déclaration de soupçon à Tracfin au sein d'un cabinet de commissariat aux comptes ?",
         "expected": [
-          "Le commissaire aux comptes signataire du mandat, personne physique",
-          "Il peut désigner un correspondant/déclarant mais la responsabilité reste personnelle",
-          "Pas de déclaration conjointe ni par le dirigeant du cabinet",
-          "NEP 9605 ; déclaration confidentielle, pas de copie à la CRCC"
+          "Le commissaire aux comptes signataire s'acquitte personnellement de la déclaration, quel que soit son mode d'exercice",
+          "En cas de pluralité de signataires, chacun établit une déclaration",
+          "Exception : dans une société de CAC, le dirigeant peut, en cas d'urgence, déclarer lui-même, déclaration confirmée au plus vite par le ou les signataires",
+          "NEP 9605 ; déclaration confidentielle (L.561-18)"
         ],
-        "model_answer": "La déclaration de soupçon est effectuée par le commissaire aux comptes signataire, personne physique responsable du mandat, conformément à la NEP 9605. Le cabinet peut organiser une fonction de correspondant Tracfin, mais la décision et la responsabilité de déclarer restent personnelles au signataire ; elle n'est ni conjointe ni transférée au dirigeant."
+        "model_answer": "La déclaration de soupçon est effectuée personnellement par le commissaire aux comptes signataire, quelles que soient les modalités de son exercice ; s'il y a plusieurs signataires, chacun établit sa déclaration. Ce n'est qu'à titre exceptionnel, notamment en cas d'urgence, que le dirigeant d'une société de commissaires aux comptes peut déclarer lui-même, la déclaration devant alors être confirmée au plus vite par le ou les signataires."
       },
-      "explanation": "Le CAC personne physique signataire est l'assujetti au sens du code monétaire et financier ; la NEP 9605 lui confie la déclaration. Chez l'EC, la déclaration est également faite par le professionnel en charge du dossier, sans copie à l'Ordre. La déclaration est strictement confidentielle, y compris vis-à-vis du client et des confrères.",
-      "reference": "NEP 9605 (obligations du CAC relatives à la LCB-FT) ; CMF art. L.561-2 (12° bis), L.561-15 et L.561-18",
+      "explanation": "Le CAC (CMF L.561-2 12° bis) relève des professions qui s'acquittent personnellement de la déclaration (R.561-23 IV), règle reprise par la NEP 9605 (§ 61) ; la déclaration conjointe ou par principe par le dirigeant est donc exclue, sous la seule réserve de l'urgence (§ 62). L'expert-comptable (12°) est soumis à la même règle de déclaration personnelle. La déclaration est strictement confidentielle, y compris vis-à-vis du client et des confrères (L.561-18).",
+      "reference": "NEP 9605 (C. com. A.821-98 § 61 et 62) ; CMF art. L.561-2 (12° bis), L.561-15, L.561-18 et R.561-23 III et IV",
       "confidence": "high"
     }
   ]

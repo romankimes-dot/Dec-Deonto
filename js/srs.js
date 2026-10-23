@@ -47,7 +47,7 @@ export function mastery(card) {
 
 // Construit la file du jour : cartes dues (les plus anciennes d'abord), puis nouvelles cartes.
 // `cards` : map id -> card ; `questions` : liste ordonnée des questions candidates (déjà priorisées).
-export function buildQueue(questions, cards, { newLimit = 20, now = Date.now() } = {}) {
+export function buildQueue(questions, cards, { newLimit = 20, now = Date.now(), priority = null } = {}) {
   const due = [];
   const fresh = [];
   for (const q of questions) {
@@ -56,15 +56,35 @@ export function buildQueue(questions, cards, { newLimit = 20, now = Date.now() }
     else if (isDue(c, now)) due.push(q);
   }
   due.sort((a, b) => cards[a.id].due - cards[b.id].due);
-  // Alterner EC / CAC dans les nouvelles cartes pour équilibrer la session
-  const ec = fresh.filter((q) => q.profession === 'EC');
-  const cac = fresh.filter((q) => q.profession === 'CAC');
-  const alt = [];
-  while (alt.length < newLimit && (ec.length || cac.length)) {
-    if (cac.length) alt.push(cac.shift()); // CAC en premier : partie la moins bien réussie
-    if (alt.length < newLimit && ec.length) alt.push(ec.shift());
+  let alt = [];
+  if (priority && priority.length) {
+    // Parcours guidé : les nouvelles cartes suivent l'ordre du parcours (étape en cours d'abord),
+    // puis le reste de la banque en alternant EC / CAC.
+    const byId = new Map(fresh.map((q) => [q.id, q]));
+    const seen = new Set();
+    for (const id of priority) {
+      if (alt.length >= newLimit) break;
+      const q = byId.get(id);
+      if (q && !seen.has(id)) { alt.push(q); seen.add(id); }
+    }
+    const rest = fresh.filter((q) => !seen.has(q.id));
+    alt = alt.concat(alternate(rest, newLimit - alt.length));
+  } else {
+    alt = alternate(fresh, newLimit);
   }
   return { due, fresh: alt, queue: [...due, ...alt] };
+}
+
+// Alterne CAC / EC (CAC en premier : partie la moins bien réussie).
+function alternate(list, limit) {
+  const ec = list.filter((q) => q.profession === 'EC');
+  const cac = list.filter((q) => q.profession === 'CAC');
+  const out = [];
+  while (out.length < limit && (ec.length || cac.length)) {
+    if (cac.length) out.push(cac.shift());
+    if (out.length < limit && ec.length) out.push(ec.shift());
+  }
+  return out;
 }
 
 // Tirage d'un examen blanc : 10 EC + 10 CAC, en privilégiant les questions jamais vues en examen

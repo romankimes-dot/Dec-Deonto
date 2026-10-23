@@ -12,10 +12,10 @@
       "question": "Quelles sont les conditions pour être candidat aux fonctions de contrôleur qualité de l'ordre des experts-comptables ?",
       "qcm": {
         "choices": [
-          "Être membre de l'Ordre inscrit au tableau depuis au moins cinq ans, n'avoir fait l'objet d'aucune sanction disciplinaire, avoir eu un contrôle de qualité n'ayant pas entraîné de nouveau contrôle à un an et suivre le stage de formation de l'Ordre ; désignation par le conseil régional pour trois ans renouvelables",
+          "Être inscrit au tableau depuis cinq ans minimum, sans sanction disciplinaire, et suivre la formation de l'Ordre",
           "Être magistrat de la cour d'appel désigné par son premier président, comme pour les chambres de discipline",
           "Être salarié du Conseil national de l'Ordre, titulaire du DSCG et avoir cinq ans d'expérience en cabinet",
-          "Être commissaire aux comptes inscrit sur la liste de la H2A depuis au moins dix ans"
+          "Être commissaire aux comptes inscrit sur la liste de la H2A depuis au moins dix ans, sans mandat en EIP"
         ],
         "answer": 0
       },
@@ -44,10 +44,10 @@
       "question": "Quelles sont les deux phases, complémentaires l'une de l'autre, qui sont mises en œuvre lors du contrôle de qualité ?",
       "qcm": {
         "choices": [
-          "Le contrôle sur pièces par la CNCC et le contrôle sur place par la H2A",
-          "Le contrôle structurel (organisation et fonctionnement de la structure d'exercice, procédures) et le contrôle technique (examen par sondage de dossiers de missions au regard des normes)",
-          "La revue indépendante et la supervision des collaborateurs",
-          "L'enquête du rapporteur et le jugement par la chambre régionale de discipline"
+          "Le contrôle sur pièces par la CNCC et le contrôle sur place par la H2A sur le même cabinet",
+          "Le contrôle structurel de l'organisation et le contrôle technique par sondage de dossiers",
+          "La revue indépendante avant le rapport et la supervision des collaborateurs pendant la mission",
+          "L'enquête du rapporteur et le jugement par la chambre régionale de discipline de l'Ordre"
         ],
         "answer": 1
       },
@@ -60,7 +60,7 @@
         "model_answer": "Le contrôle de qualité comporte un contrôle structurel, qui porte sur l'organisation et le fonctionnement de la structure d'exercice (procédures, respect des obligations professionnelles, dispositif de qualité et de LCB-FT), et un contrôle technique, qui apprécie par sondage sur des dossiers sélectionnés l'application des normes et des diligences professionnelles."
       },
       "explanation": "Le contrôle structurel s'adresse au responsable de la structure, le contrôle technique à chaque professionnel contrôlé. Un échange sur l'amélioration de la performance peut s'y ajouter mais ne constitue pas une phase de contrôle. Cette architecture ressemble à celle du contrôle d'activité des CAC, qui porte à la fois sur le système de contrôle qualité interne et sur des missions sélectionnées (C. com. R.820-45).",
-      "reference": "D. 2012-432 (contrôle de qualité) ; règlement intérieur de l'Ordre ; C. com. R.820-45 pour le parallèle CAC",
+      "reference": "Règlement intérieur de l'Ordre art. 404 à 406 ; C. com. R.820-45 pour le parallèle CAC",
       "confidence": "high"
     },
     {
@@ -74,7 +74,7 @@
       "qcm": {
         "choices": [
           "Oui : depuis la loi Pacte, des honoraires complémentaires liés à un objectif sont possibles pour toutes les missions",
-          "Non : les honoraires complémentaires liés à la réalisation d'un objectif sont exclus pour les missions comptables relevant de la prérogative d'exercice (art. 2 al. 1 et 2 de l'ordonnance) et pour celles participant à la détermination de l'assiette fiscale ou sociale du client",
+          "Non : exclus pour les missions relevant de la prérogative d'exercice et celles déterminant l'assiette fiscale ou sociale",
           "Oui, à condition que le pourcentage soit fixé dans la lettre de mission et n'excède pas 10 % des honoraires de diligence",
           "Non, car toute rémunération variable est interdite à l'expert-comptable, y compris pour les missions de conseil"
         ],
@@ -102,10 +102,10 @@
       "question": "Les actions et droits de vote du cabinet (forme juridique SAS) SACOMPTE se répartissent comme suit : Madame A, expert-comptable inscrite au tableau de l'ordre, 25 % ; Madame B, expert-comptable inscrite au tableau de l'ordre, 35 % ; Monsieur C, expert-comptable inscrit au tableau de l'ordre, 30 % ; Monsieur D, informaticien, non expert-comptable, 10 %. À l'occasion de son départ à la retraite, madame B envisage de céder ses actions à madame E, collaboratrice du cabinet non expert-comptable. Que pensez-vous de ce projet de cession ?",
       "qcm": {
         "choices": [
-          "La cession est possible : la SAS est une forme libre et le capital peut être ouvert sans limite aux non-professionnels",
-          "La cession est impossible en l'état : les experts-comptables ne détiendraient plus que 55 % des droits de vote, en deçà des deux tiers exigés ; la société serait mise en demeure de régulariser dans un délai maximal de deux ans sous peine de radiation",
-          "La cession est possible à condition que madame E s'inscrive comme expert-comptable stagiaire",
-          "La cession est possible car la règle des deux tiers ne s'applique qu'au capital, non aux droits de vote"
+          "La cession est possible : la SAS étant une forme libre, le capital peut être ouvert aux non-professionnels sans limite de détention ni agrément",
+          "La cession est impossible en l'état : les experts-comptables ne détiendraient plus que 55 % des droits de vote, en deçà des deux tiers exigés",
+          "La cession est possible à condition que madame E s'inscrive comme expert-comptable stagiaire et que les statuts soient modifiés",
+          "La cession est possible car la règle des deux tiers ne s'applique qu'au capital et non aux droits de vote de la société"
         ],
         "answer": 1
       },
@@ -132,10 +132,10 @@
       "question": "Quelle est la composition de la chambre nationale de discipline ?",
       "qcm": {
         "choices": [
-          "Un magistrat de la Cour de cassation, quatre personnalités qualifiées et un représentant du garde des sceaux",
-          "Un président magistrat choisi parmi les présidents de chambre de la cour d'appel de Paris (en activité ou honoraires), désigné par le garde des sceaux ; deux fonctionnaires désignés par le ministre chargé de l'économie ; deux membres élus du Conseil national de l'Ordre ; un magistrat chargé des poursuites lui est rattaché",
-          "Le président du Conseil national de l'Ordre, quatre présidents de conseils régionaux et le commissaire du gouvernement",
-          "Un conseiller d'État président, deux experts-comptables et deux commissaires aux comptes"
+          "Un président magistrat de la Cour de cassation désigné par le premier président, quatre personnalités qualifiées et un représentant du garde des sceaux",
+          "Un président magistrat désigné par le garde des sceaux (cour d'appel de Paris), deux fonctionnaires désignés par le ministre de l'économie et deux membres élus du Conseil national",
+          "Le président du Conseil national de l'Ordre, quatre présidents de conseils régionaux élus par leurs pairs et le commissaire du gouvernement près l'Ordre, désignés pour trois ans renouvelables",
+          "Un conseiller d'État président, deux experts-comptables élus par le Conseil national et deux commissaires aux comptes désignés par la CNCC"
         ],
         "answer": 1
       },
@@ -163,10 +163,10 @@
       "question": "Un expert-comptable indépendant inscrit à l'ordre souhaite nouer un contrat de sous-traitance pour la tenue de la comptabilité de ses clients avec une personne physique titulaire du DSCG mais non diplômée d'expertise comptable. Est-ce possible ? Justifiez votre réponse.",
       "qcm": {
         "choices": [
-          "Oui : le DSCG confère le droit de tenir des comptabilités pour autrui sous la responsabilité d'un expert-comptable donneur d'ordre",
-          "Non : la tenue de comptabilité pour des tiers relève de la prérogative d'exercice réservée aux professionnels inscrits au tableau ; le sous-traitant non inscrit commettrait un exercice illégal et l'expert-comptable s'en rendrait complice. La sous-traitance n'est possible qu'avec un confrère inscrit ; le titulaire du DSCG ne peut intervenir que comme salarié ou stagiaire",
-          "Oui, à condition que le sous-traitant souscrive une assurance de responsabilité civile professionnelle",
-          "Non, car toute sous-traitance est interdite aux experts-comptables par le code de déontologie"
+          "Oui : le DSCG confère le droit de tenir des comptabilités pour autrui, sous la responsabilité de l'expert-comptable donneur d'ordre qui supervise les travaux, sans condition d'inscription à l'Ordre",
+          "Non : la tenue de comptabilité pour des tiers est une prérogative d'exercice réservée aux inscrits au tableau ; le sous-traitant non inscrit commettrait un exercice illégal",
+          "Oui, à condition que le sous-traitant souscrive une assurance de responsabilité civile professionnelle et que la lettre de mission le mentionne expressément",
+          "Non, car toute sous-traitance de travaux comptables est interdite aux experts-comptables par le code de déontologie, même entre confrères inscrits"
         ],
         "answer": 1
       },
@@ -208,8 +208,8 @@
         ],
         "model_answer": "À l'issue de la mission de présentation, l'expert-comptable délivre une attestation exprimant une assurance modérée sur la cohérence et la vraisemblance des comptes, qui peut être sans observation, avec observation(s), ou se traduire par un refus d'attester lorsque les anomalies ou limitations rencontrées ne permettent pas d'exprimer cette assurance."
       },
-      "explanation": "La NP 2300 encadre strictement la forme de l'attestation ; les observations attirent l'attention sans remettre en cause la conclusion, le refus intervient en cas de désaccord ou de limitation significatifs non résolus. Le vocabulaire diffère de celui de la certification du CAC (sans réserve, avec réserve, refus, impossibilité de certifier, C. com. R.821-180) et de celui de l'examen limité (conclusion formulée négativement).",
-      "reference": "NP 2300 (présentation des comptes) ; C. com. R.821-180 pour le parallèle CAC",
+      "explanation": "La NP 2300 encadre strictement la forme de l'attestation ; les observations attirent l'attention sans remettre en cause la conclusion, le refus intervient en cas de désaccord ou de limitation significatifs non résolus. Le vocabulaire diffère de celui de la certification du CAC (sans réserve, avec réserve, refus, impossibilité de certifier, C. com. R.821-180) et de celui de l'examen limité (favorable sans observation, favorable avec observation(s), avec réserve(s), défavorable, impossibilité de conclure : NP 2400 § 22).",
+      "reference": "NP 2300 § 18 à 21 ; NP 2400 § 22 ; C. com. R.821-180 pour le parallèle CAC",
       "confidence": "high"
     },
     {
@@ -222,10 +222,10 @@
       "question": "Une lettre de mission relative à une mission d'assurance sur les comptes complets historiques peut-elle être signée par un dirigeant mandataire social non-expert-comptable d'une société d'expertise comptable inscrite à l'ordre des experts-comptables ? Justifiez votre réponse.",
       "qcm": {
         "choices": [
-          "Oui : le représentant légal engage la société et la lettre de mission est un simple contrat commercial",
-          "Non : la mission relève de la prérogative d'exercice et sa lettre de mission, comme les travaux, doit être signée par un expert-comptable inscrit exerçant dans la société ; en outre les représentants légaux d'une société d'expertise comptable doivent eux-mêmes être des professionnels inscrits",
-          "Oui, si un expert-comptable de la société contresigne ensuite le rapport final",
-          "Non, car seule la personne physique titulaire du mandat peut signer, la société ne pouvant être inscrite"
+          "Oui : le représentant légal engage la société et la lettre de mission est un simple contrat commercial, sans lien avec la qualité d'inscrit",
+          "Non : la mission relève de la prérogative d'exercice et sa lettre de mission doit être signée par un expert-comptable inscrit exerçant dans la société",
+          "Oui, si un expert-comptable de la société contresigne ensuite le rapport final et que la lettre de mission est datée avant le début des travaux",
+          "Non, car seule la personne physique titulaire du mandat peut signer, la société d'expertise comptable ne pouvant elle-même être inscrite à l'Ordre"
         ],
         "answer": 1
       },
@@ -252,10 +252,10 @@
       "question": "Quelles sont les différentes étapes du devoir de conseil ?",
       "qcm": {
         "choices": [
-          "Planifier, exécuter, documenter, signer",
-          "S'informer sur la situation du client, l'informer, le mettre en garde contre les risques, exiger le respect des règles et des justificatifs, refuser de prêter son concours et, au besoin, se retirer",
-          "Accepter la mission, établir la lettre de mission, facturer, archiver",
-          "Identifier le client, vérifier son identité, déclarer à Tracfin, conserver les documents"
+          "Planifier la mission, exécuter les diligences prévues, documenter le dossier, puis signer le rapport de mission",
+          "S'informer sur la situation du client, l'informer, le mettre en garde, exiger les justificatifs, refuser son concours, se retirer",
+          "Accepter la mission, établir la lettre de mission, facturer les honoraires, puis archiver le dossier du client",
+          "Identifier le client, vérifier son identité, déclarer ses soupçons à Tracfin, conserver les documents pendant cinq ans"
         ],
         "answer": 1
       },
@@ -282,9 +282,9 @@
       "question": "Un expert-comptable est contacté par un client qui souhaite changer d'expert-comptable. Indiquez la procédure à suivre par l'expert-comptable pressenti vis-à-vis de son confrère avant d'accepter la mission.",
       "qcm": {
         "choices": [
-          "Il peut accepter immédiatement, le libre choix du client excluant toute formalité envers le prédécesseur",
-          "Il doit, avant d'accepter, s'assurer que le client a informé son prédécesseur de son changement, informer lui-même par écrit le confrère de sa saisine, s'enquérir des motifs du changement (notamment qu'il ne vise pas à éluder la loi) et de la situation des honoraires dus, et organiser la transmission des documents ; le prédécesseur ne peut s'opposer au changement ni retenir les documents du client",
-          "Il doit obtenir l'autorisation écrite du confrère prédécesseur et du conseil régional de l'Ordre",
+          "Il peut accepter immédiatement, le libre choix du client excluant toute formalité envers le prédécesseur ou le conseil régional",
+          "Il doit informer par écrit le confrère de sa saisine, s'enquérir des motifs du changement et de la situation des honoraires dus",
+          "Il doit obtenir l'autorisation écrite du confrère prédécesseur et du conseil régional de l'Ordre avant toute prise de contact",
           "Il doit attendre l'expiration de la lettre de mission du confrère et le paiement intégral de ses honoraires avant toute intervention"
         ],
         "answer": 1
@@ -292,14 +292,14 @@
       "qrc": {
         "expected": [
           "Vérifier que le client a notifié au prédécesseur sa décision de changer de professionnel (rupture régulière de la lettre de mission)",
-          "Informer par écrit le confrère prédécesseur avant d'accepter la mission (courtoisie et confraternité)",
-          "S'enquérir auprès de lui des motifs du changement (s'assurer qu'il ne s'agit pas d'éluder des obligations légales) et de la situation des honoraires restant dus",
-          "Organiser la transmission des documents et informations nécessaires à la continuité ; le prédécesseur ne peut ni s'opposer ni exercer de rétention sur les documents du client"
+          "Informer le confrère prédécesseur avant d'accepter la mission (obligation de l'art. 163)",
+          "S'assurer que le changement n'a pas pour but d'éluder les lois et règlements ou les devoirs professionnels ; s'efforcer d'obtenir la justification du paiement des honoraires dus, à défaut en référer au président du conseil régional et faire des réserves",
+          "Organiser la transmission du dossier, que le prédécesseur favorise avec l'accord du client"
         ],
         "model_answer": "Avant d'accepter, l'expert-comptable pressenti s'assure que le client a informé son prédécesseur de son intention de changer de professionnel, puis informe lui-même par écrit ce confrère de la demande dont il est saisi. Il lui demande si des honoraires restent dus et s'enquiert des circonstances du changement afin de vérifier que celui-ci n'a pas pour objet d'éluder des obligations légales ; il organise enfin avec lui la transmission des documents et informations utiles. Le prédécesseur doit répondre et ne peut ni s'opposer au changement ni retenir les documents appartenant au client."
       },
-      "explanation": "La reprise d'un dossier est régie par les devoirs de confraternité du code de déontologie : information préalable du confrère, loyauté, interdiction de tout détournement de clientèle. Le non-paiement d'honoraires n'est pas un motif de refus de la mission mais une information à connaître, le successeur pouvant inciter le client à régulariser. Le parallèle CAC est la succession entre confrères (code de déontologie CAC art. 26) : le successeur s'assure que le non-renouvellement n'a pas pour but de contourner les obligations légales.",
-      "reference": "D. 2012-432 art. 141 s. (confraternité, art. 161 à 165 environ : information du prédécesseur, reprise de dossier) ; code de déontologie CAC art. 26 pour le parallèle",
+      "explanation": "La reprise d'un dossier est régie par l'article 163 du code de déontologie : information préalable du confrère, vérification que le changement ne vise pas à éluder la loi, effort pour obtenir la justification du paiement des honoraires conventionnels (à défaut, référé au président du conseil régional et réserves auprès du client) et suggestion écrite de conciliation si le client les conteste. Le non-paiement n'interdit donc pas d'accepter, mais impose ces diligences. Le parallèle CAC est la succession entre confrères (code de déontologie CAC art. 26) : le successeur s'assure que le non-renouvellement n'a pas pour but de contourner les obligations légales.",
+      "reference": "D. 2012-432 art. 163 (remplacement d'un confrère), 159 et 160 (conciliation, arbitrage), 161 et 164 (confraternité, liberté de choix du client) ; code de déontologie CAC art. 26 pour le parallèle",
       "confidence": "medium"
     },
     {
@@ -312,10 +312,10 @@
       "question": "Que signifie le terme « mission » au sens de l'article L.821-2 III du code commerce ?",
       "qcm": {
         "choices": [
-          "Uniquement la certification des comptes annuels et consolidés de l'entité dont le CAC est le contrôleur légal",
-          "La mission de certification des comptes, la mission de certification des informations en matière de durabilité et toute autre mission confiée au commissaire aux comptes par la loi ou le règlement (par exemple commissariat aux apports, à la fusion ou à la transformation)",
-          "Tout service ou attestation fourni par un commissaire aux comptes, qu'il soit ou non prévu par la loi",
-          "Les seules interventions réalisées auprès d'entités d'intérêt public"
+          "Uniquement la certification des comptes annuels et consolidés de l'entité dont le CAC est le contrôleur légal, à l'exclusion de toute autre intervention légale",
+          "La mission de certification des comptes, la certification des informations de durabilité et toute autre mission confiée au CAC par la loi ou le règlement",
+          "Tout service, attestation ou conseil fourni par un commissaire aux comptes, qu'il soit ou non prévu par la loi ou le règlement",
+          "Les seules interventions réalisées par le commissaire aux comptes auprès d'entités d'intérêt public, à l'exclusion des autres entités"
         ],
         "answer": 1
       },
@@ -327,7 +327,7 @@
         ],
         "model_answer": "Au sens de l'article L.821-2 III, le terme « mission » désigne la mission de certification des comptes, la mission de certification des informations en matière de durabilité et toute autre mission confiée au commissaire aux comptes par la loi ou le règlement, qu'elle soit exercée auprès d'une entité dont il certifie les comptes ou non (par exemple le commissariat aux apports, à la fusion ou à la transformation)."
       },
-      "explanation": "La loi Pacte a défini la profession de CAC comme l'exercice de missions et la fourniture de prestations (C. com. L.821-3). La distinction commande le régime applicable : titre II du code de déontologie, barème d'heures et obligations légales (révélation, alerte) pour la certification ; titre I seul, lettre de mission et honoraires libres pour les prestations. L'ordonnance de 2023 a ajouté la certification de durabilité parmi les missions.",
+      "explanation": "La loi Pacte a défini la profession de CAC comme l'exercice de missions et la fourniture de prestations (aujourd'hui C. com. L.821-3). La distinction commande le régime applicable : titre II du code de déontologie et barème d'heures pour la certification ; lettre de mission obligatoire pour les autres missions et pour les prestations (R.821-195), hors barème. En revanche, le signalement des irrégularités et la révélation des faits délictueux s'appliquent aux missions comme aux prestations (L.821-10). L'ordonnance de 2023 a ajouté la certification de durabilité parmi les missions.",
       "reference": "C. com. art. L.821-2 III (ex L.820-1-1 et R.820-1-1) et L.821-3 ; code de déontologie CAC art. 1 III",
       "confidence": "high",
       "update_note": "Définition issue de la loi Pacte (ex L.820-1-1), recodifiée à L.821-2 en 2024 et étendue à la certification des informations en matière de durabilité."
@@ -342,10 +342,10 @@
       "question": "À qui et dans quel cadre s'appliquent les deux normes de déontologie ?",
       "qcm": {
         "choices": [
-          "Aux seuls commissaires aux comptes d'entités d'intérêt public, dans le cadre de la certification des comptes",
-          "À tout commissaire aux comptes inscrit intervenant ès qualités, quelle que soit la mission exercée ou la prestation fournie, qu'il s'agisse d'une société ou d'une personne physique exerçant en nom propre ou au sein d'une société",
-          "Aux experts-comptables et aux commissaires aux comptes, pour l'ensemble de leurs activités",
-          "Aux sociétés de commissaires aux comptes uniquement, pour l'organisation de leur contrôle qualité interne"
+          "Aux seuls commissaires aux comptes d'entités d'intérêt public, dans le cadre de la certification des comptes, y compris consolidés",
+          "À tout commissaire aux comptes inscrit intervenant ès qualités, quelle que soit la mission ou la prestation, personne physique ou société",
+          "Aux experts-comptables et aux commissaires aux comptes, pour l'ensemble de leurs activités, qu'ils agissent ès qualités ou non",
+          "Aux sociétés de commissaires aux comptes uniquement, pour l'organisation de leur contrôle qualité interne et de leurs mandats"
         ],
         "answer": 1
       },
@@ -372,10 +372,10 @@
       "question": "Dans quelles circonstances s'appliquent les principes fondamentaux de comportement précisés par la norme de déontologie codifiée à l'article A 821-54 du code de commerce ?",
       "qcm": {
         "choices": [
-          "Uniquement pendant l'exécution d'une mission de certification des comptes",
-          "Expressément dans l'exercice de la profession (toute mission ou prestation), mais le CAC les prend aussi en considération en toute circonstance, y compris lorsqu'il n'exerce aucune mission ni prestation, afin de s'abstenir de tout agissement contraire à l'honneur ou à la probité",
-          "Uniquement dans la vie professionnelle, la vie personnelle du CAC échappant à toute exigence déontologique",
-          "Uniquement lors des contrôles de la H2A et des procédures disciplinaires"
+          "Uniquement pendant l'exécution d'une mission de certification des comptes, à l'exclusion des prestations et des missions légales hors certification",
+          "Dans l'exercice de la profession, pour toute mission ou prestation, mais aussi en toute circonstance, y compris hors mission, afin d'éviter tout agissement contraire à l'honneur",
+          "Uniquement dans la vie professionnelle, la vie personnelle du commissaire aux comptes échappant à toute exigence déontologique, même en cas de fait contraire à la probité",
+          "Uniquement lors des contrôles de la H2A et des procédures disciplinaires, c'est-à-dire lorsque le commissaire aux comptes est mis en cause"
         ],
         "answer": 1
       },
@@ -387,7 +387,7 @@
         ],
         "model_answer": "Les principes fondamentaux de comportement s'appliquent expressément dans l'exercice de la profession, c'est-à-dire pour toute mission ou prestation ; mais le commissaire aux comptes les prend également en considération en toute circonstance, y compris lorsqu'il n'exerce aucune mission ni prestation, afin de s'abstenir, même dans sa vie personnelle, de tout agissement contraire à l'honneur ou à la probité, conformément à son serment."
       },
-      "explanation": "La norme (§ 04 et 05) rappelle que le statut de CAC et son serment engagent la personne au-delà de son activité : un fait contraire à la probité commis hors mission constitue une faute disciplinaire (C. com. L.821-70 : tout fait contraire à la probité ou à l'honneur). Le même raisonnement vaut pour l'expert-comptable, dont les devoirs de probité et de dignité s'étendent à la vie privée (D. 2012-432 art. 142).",
+      "explanation": "La norme (§ 04 et 05) rappelle que le statut de CAC et son serment engagent la personne au-delà de son activité : un fait contraire à la probité commis hors mission constitue une faute disciplinaire (C. com. L.821-70 I : tout fait contraire à la probité ou à l'honneur). Le même raisonnement vaut pour l'expert-comptable, qui doit s'abstenir « en toutes circonstances » d'agissements contraires à la probité, à l'honneur et à la dignité (D. 2012-432 art. 145).",
       "reference": "C. com. art. A.821-54 § 02 à 05 ; L.821-70 I ; L.821-23 (serment)",
       "confidence": "high"
     },
@@ -401,10 +401,10 @@
       "question": "Que signifie le terme « prestation » au sens de l'article L.821-2 IV du code commerce ?",
       "qcm": {
         "choices": [
-          "Les missions confiées au CAC par la loi auprès d'entités dont il ne certifie pas les comptes",
-          "La fourniture de services et d'attestations qui ne relèvent pas d'une mission (par exemple un audit contractuel ou une revue de conformité à un référentiel), à une entité dont le CAC certifie ou non les comptes",
-          "Les seules diligences directement liées à la mission de certification",
-          "Les travaux réalisés par le CAC pour le compte de la Compagnie nationale ou de la H2A"
+          "Les missions confiées au CAC par la loi ou le règlement, lorsqu'elles sont exercées auprès d'entités dont il ne certifie pas les comptes",
+          "La fourniture de services et d'attestations qui ne relèvent pas d'une mission, à une entité dont le CAC certifie ou non les comptes",
+          "Les seules diligences directement liées à la mission de certification, réalisées uniquement auprès de l'entité contrôlée",
+          "Les travaux réalisés par le CAC pour le compte de la Compagnie nationale ou de la H2A, notamment lors des contrôles"
         ],
         "answer": 1
       },
@@ -431,10 +431,10 @@
       "question": "Quelles sont les qualités requises pour être considéré comme un tiers objectif, raisonnable et informé au sens des normes de déontologie ?",
       "qcm": {
         "choices": [
-          "Être un commissaire aux comptes inscrit depuis au moins dix ans et membre de la commission des sanctions",
-          "Être extérieur à la situation sans y avoir d'intérêt personnel tout en s'y intéressant, posséder les connaissances suffisantes pour apprécier les faits et circonstances, et être en mesure d'apprécier si ceux-ci font objectivement naître un doute raisonnable sur le respect de l'impartialité et de l'indépendance du CAC",
-          "Être actionnaire minoritaire de l'entité contrôlée et membre de son comité d'audit",
-          "Être un magistrat de la cour d'appel chargé de recevoir le serment des CAC"
+          "Être un commissaire aux comptes inscrit depuis au moins dix ans et ancien membre de la commission des sanctions de la H2A, désigné par le collège",
+          "Être extérieur à la situation sans intérêt personnel, connaître assez les faits pour juger s'ils font naître un doute raisonnable sur l'indépendance",
+          "Être actionnaire minoritaire de l'entité contrôlée et membre de son comité d'audit, désigné par l'assemblée générale pour apprécier la situation de l'entité",
+          "Être un magistrat de la cour d'appel chargé de recevoir le serment des CAC, désigné par le premier président"
         ],
         "answer": 1
       },
@@ -460,10 +460,10 @@
       "question": "Que recouvre la confraternité au sens de la norme de déontologie codifiée à l'article A 821-54 du code de commerce ?",
       "qcm": {
         "choices": [
-          "L'obligation de partager ses honoraires avec les confrères membres de la même compagnie régionale",
-          "Le respect mutuel entre commissaires aux comptes : s'abstenir de tout propos déloyal, de toute manœuvre malveillante ou acte motivé par l'intention de nuire (notamment en cas de co-intervention ou de succession), recourir à la conciliation du président de la compagnie régionale en cas de différend, et éviter tout acte ou propos susceptible de discréditer la profession (publicité, sollicitation)",
-          "L'interdiction de succéder à un confrère sans son accord écrit préalable",
-          "L'obligation d'adhérer à un réseau et de participer aux travaux de la Compagnie nationale"
+          "L'obligation de partager ses honoraires avec les confrères membres de la même compagnie régionale et de leur reverser une quote-part de chaque nouveau mandat",
+          "Le respect mutuel entre commissaires aux comptes : ne tenir aucun propos déloyal ni acte visant à nuire à un confrère, notamment en cas de co-intervention",
+          "L'interdiction de succéder à un confrère sans son accord écrit préalable, accord que l'entité ne peut en aucun cas suppléer par une décision de son assemblée",
+          "L'obligation d'adhérer à un réseau et de participer aux travaux de la Compagnie nationale et aux commissions de la compagnie régionale"
         ],
         "answer": 1
       },
@@ -490,10 +490,10 @@
       "question": "En quoi consiste l'esprit critique du commissaire aux comptes ?",
       "qcm": {
         "choices": [
-          "À refuser systématiquement les explications de la direction et à privilégier les contrôles de substance",
-          "À considérer la source des informations collectées et leur pertinence, à rester ouvert et réceptif aux informations ou arguments contraires pouvant conduire à d'autres travaux ou à revoir ses conclusions, et à apprécier le caractère suffisant, approprié et cohérent des informations pour fonder ses conclusions, tout au long de la mission et en s'appuyant sur sa connaissance de l'entité",
-          "À exprimer des réserves dans son rapport dès qu'un désaccord apparaît avec la direction",
-          "À contrôler l'opportunité des décisions de gestion prises par les dirigeants"
+          "À refuser systématiquement les explications de la direction et à privilégier, tout au long de la mission, les contrôles de substance sur les tests de procédures de contrôle interne",
+          "À apprécier la source et la pertinence des informations, rester ouvert aux arguments contraires et juger si les éléments recueillis suffisent à fonder ses conclusions",
+          "À exprimer des réserves dans son rapport dès qu'un désaccord apparaît avec la direction, sans attendre la fin de ses travaux ni les explications de celle-ci",
+          "À contrôler l'opportunité des décisions de gestion prises par les dirigeants et à les contester lorsqu'elles lui paraissent contraires à l'intérêt social"
         ],
         "answer": 1
       },
@@ -506,8 +506,8 @@
         ],
         "model_answer": "L'esprit critique, principe posé par l'article 6 du code de déontologie, conduit le commissaire aux comptes à considérer la source des informations qu'il collecte et à apprécier leur pertinence, à rester ouvert et réceptif aux informations, avis ou arguments qui pourraient contredire ces informations et l'amener à réaliser d'autres travaux ou à revoir ses conclusions, et à apprécier le caractère suffisant, approprié et cohérent des éléments recueillis. Il l'exerce tout au long de la mission, en s'appuyant sur sa connaissance de l'entité et de son environnement ; renforcé par les autres principes, il conforte son jugement professionnel."
       },
-      "explanation": "L'esprit critique a été érigé en principe fondamental de comportement par le code de 2020 ; il prolonge l'attitude requise par la NEP 200 (scepticisme professionnel face au risque de fraude) et par le code lui-même, qui impose une évaluation critique des éléments probants (art. 23). Il ne signifie ni défiance systématique ni immixtion dans la gestion. L'expert-comptable applique un principe voisin de prudence et de jugement professionnel, sans formulation normative équivalente.",
-      "reference": "C. com. art. A.821-54 § 24 à 26 ; code de déontologie CAC art. 6 et 23 ; NEP 200",
+      "explanation": "L'esprit critique a été érigé en principe fondamental de comportement par le code de 2020 ; il prolonge l'attitude requise par la NEP 200 (A.821-63 § 06 : esprit critique tout au long de l'audit) et par la NEP 240 face au risque de fraude, ainsi que par le code lui-même, qui impose une évaluation critique des éléments probants (art. 23). Il ne signifie ni défiance systématique ni immixtion dans la gestion. L'expert-comptable applique un principe voisin de prudence et de jugement professionnel, sans formulation normative équivalente.",
+      "reference": "C. com. art. A.821-54 § 24 à 26 ; code de déontologie CAC art. 6 et 23 ; NEP 200 (A.821-63) et NEP 240 (A.821-80)",
       "confidence": "high"
     },
     {
@@ -521,9 +521,9 @@
       "qcm": {
         "choices": [
           "Le risque que les comptes de l'entité comportent des anomalies significatives dues à des erreurs ou à des fraudes",
-          "Le fait, pour le commissaire aux comptes, d'être placé en risque de ne pas pouvoir réaliser la mission ou la prestation de façon indépendante et impartiale, la cause et les effets de cette situation variant selon les faits et circonstances",
-          "Le risque de ne pas atteindre le nombre d'heures du barème",
-          "La situation d'une entité en difficulté justifiant le déclenchement de la procédure d'alerte"
+          "Le fait d'être placé en risque de ne pas pouvoir réaliser la mission ou la prestation de façon indépendante et impartiale",
+          "Le risque de ne pas atteindre, pour un mandat donné, le nombre d'heures minimal prévu par le barème légal de la mission",
+          "La situation d'une entité en difficulté justifiant le déclenchement de la procédure d'alerte par le commissaire aux comptes"
         ],
         "answer": 1
       },
@@ -549,10 +549,10 @@
       "question": "Citez les situations à risques visées par le code de déontologie qui peuvent nécessiter des mesures de sauvegarde appropriées.",
       "qcm": {
         "choices": [
-          "Les risques d'atteinte à l'intégrité, à l'impartialité et à l'indépendance ; les risques de conflits d'intérêts et d'autorévision ; les risques résultant de liens personnels, professionnels ou financiers ; les risques et contraintes liés à l'appartenance à un réseau ; la dépendance financière ; les fusions ou acquisitions intéressant l'entité",
-          "Les risques d'anomalies significatives, de continuité d'exploitation et de fraude dans les comptes",
-          "Les risques de retard dans la remise du rapport, de dépassement du budget d'heures et de non-paiement des honoraires",
-          "Les risques fiscaux, sociaux et environnementaux de l'entité contrôlée"
+          "Les atteintes à l'intégrité, l'impartialité, l'indépendance, conflits d'intérêts, autorévision, liens personnels, professionnels ou financiers, réseau, dépendance financière, fusions",
+          "Les risques d'anomalies significatives, de continuité d'exploitation et de fraude dans les comptes, appréciés selon l'approche par les risques d'audit",
+          "Les risques de retard dans la remise du rapport, de dépassement du budget d'heures, de non-paiement des honoraires et de perte de la clientèle au profit d'un confrère",
+          "Les risques fiscaux, sociaux, environnementaux et de réputation de l'entité contrôlée, appréciés au regard de sa taille et de son secteur d'activité"
         ],
         "answer": 0
       },
@@ -565,10 +565,10 @@
         ],
         "model_answer": "Le code de déontologie impose au commissaire aux comptes d'identifier les risques de nature à affecter la formation ou l'expression de son opinion : atteintes à l'intégrité, à l'impartialité et à l'indépendance, conflits d'intérêts, autorévision, liens personnels, professionnels ou financiers, risques et contraintes résultant de l'appartenance à un réseau (notamment la fourniture de services par le réseau), dépendance financière liée aux honoraires, ainsi que les risques nés d'une fusion ou acquisition intéressant l'entité. Il prend alors les mesures de sauvegarde appropriées ou renonce à la mission."
       },
-      "explanation": "L'approche par les risques (art. 19, ex art. 11) a remplacé la liste des services interdits pour les entités non EIP ; elle est complétée par les articles sur la dépendance financière (art. 36) et les fusions-acquisitions (art. 20). Les liens personnels, financiers et professionnels font en outre l'objet d'incompatibilités absolues (art. 32 à 34) lorsqu'ils concernent le CAC lui-même ou la direction de sa société, et d'une appréciation au regard du tiers objectif, raisonnable et informé pour les autres intervenants.",
+      "explanation": "L'approche par les risques (art. 19) a remplacé la liste des services interdits pour les entités non EIP ; elle est complétée par les articles sur la dépendance financière (art. 36) et les fusions-acquisitions (art. 20). Les liens personnels, financiers et professionnels font en outre l'objet d'incompatibilités absolues (art. 32 à 34) lorsqu'ils concernent le CAC lui-même ou la direction de sa société, et d'une appréciation au regard du tiers objectif, raisonnable et informé pour les autres intervenants.",
       "reference": "Code de déontologie CAC art. 5, 19, 20, 29, 30, 32 à 36 ; C. com. L.821-28 IV et L.821-31 ; A.821-55 § 28",
       "confidence": "high",
-      "update_note": "Numérotation du code de déontologie issue du décret 2020-292 et actualisée par le décret 2026-176 (art. 19 : identification et traitement des risques, ex art. 11)."
+      "update_note": "Numérotation issue du décret 2020-292 (art. 19 : identification et traitement des risques) ; rédaction en vigueur modifiée en dernier lieu par le décret 2026-176, qui l'étend aux organismes tiers indépendants et aux auditeurs de durabilité."
     },
     {
       "id": "2024-05-CAC-20",
@@ -581,9 +581,9 @@
       "qcm": {
         "choices": [
           "Oui : toute personne morale peut être inscrite sur la liste dès lors que ses dirigeants sont commissaires aux comptes",
-          "Non : la profession est exercée par des personnes physiques ou par des sociétés inscrites sur la liste de la H2A ; l'association n'est pas une société et ne peut être inscrite",
+          "Non : la profession est exercée par des personnes physiques ou des sociétés inscrites sur la liste ; l'association n'est pas une société",
           "Oui, mais uniquement sous la forme d'une association de gestion et de comptabilité inscrite au tableau de l'Ordre",
-          "Non, sauf pour les mandats détenus auprès d'associations ou de fondations"
+          "Non, sauf pour les mandats détenus auprès d'associations ou de fondations, qui peuvent être confiés à une association inscrite sur la liste"
         ],
         "answer": 1
       },
@@ -596,7 +596,7 @@
         ],
         "model_answer": "Non. Le code de commerce réserve l'exercice de la profession de commissaire aux comptes aux personnes physiques et aux sociétés inscrites sur la liste tenue par la Haute autorité de l'audit, quelle que soit leur forme sociale (y compris les sociétés pluri-professionnelles d'exercice). Une association n'est pas une société et ne peut satisfaire aux conditions d'inscription relatives aux droits de vote et aux dirigeants ; elle ne peut donc pas être commissaire aux comptes. À l'inverse, l'activité d'expertise comptable peut être exercée au sein d'associations de gestion et de comptabilité."
       },
-      "explanation": "Les conditions d'inscription des sociétés de CAC (L.821-16) supposent un capital et des droits de vote détenus majoritairement par des CAC et des dirigeants CAC, notions sans objet pour une association de la loi de 1901. La confusion vient de l'expertise comptable, où la loi de 2004 a admis les AGC, non membres de l'Ordre mais inscrites au tableau (ord. art. 7 ter). Un CAC peut en revanche exercer en nom propre, en société (SARL, SAS, SA, SCP, SEL...) ou en SPE.",
+      "explanation": "Les conditions d'inscription des sociétés de CAC (L.821-16) supposent une majorité des droits de vote détenue par des CAC et des dirigeants CAC, notions sans objet pour une association de la loi de 1901. La confusion vient de l'expertise comptable, où la loi de 2004 a admis les AGC, non membres de l'Ordre mais inscrites au tableau (ord. art. 7 ter). Un CAC peut en revanche exercer en nom propre, en société (SARL, SAS, SA, SCP, SEL...) ou en SPE.",
       "reference": "C. com. art. L.821-13, L.821-16, L.821-25 ; Ord. 45-2138 art. 7 ter pour le parallèle EC",
       "confidence": "high",
       "update_note": "Recodification 2024 : ex L.822-1 et L.822-1-3 devenus L.821-13 et L.821-16."

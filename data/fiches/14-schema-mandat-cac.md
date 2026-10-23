@@ -14,7 +14,7 @@ questions: CAC:nomination_seuils CAC:mandat_duree_cessation CAC:demission_revoca
       = **5 M€** de total bilan · **10 M€** de CA HT · **50 salariés** → nomination obligatoire, mandat de **6 exercices**
       ? Sinon : est-elle tête d'un **petit groupe** qui dépasse ensemble ces seuils ?
         = Oui : la tête nomme un CAC ; les **filiales significatives** aussi (2 sur 3 : **2,5 M€** · **5 M€** · **25 salariés**) ; option **ALPE** de **3 exercices**
-        = Non : nomination **volontaire** possible, ou **en justice** à la demande d'associés (10 % du capital en SARL, SAS, SNC)
+        = Non : nomination **volontaire** possible, ou **en justice** à la demande d'associés (**tout associé** en SNC ; **10 % du capital** en SARL, SAS, SA, SCA)
 ```
 
 - Seuils du **décret 2024-152** (exercices ouverts à compter du 01/01/2024). Avant : 4 M€ et 8 M€.
@@ -44,7 +44,7 @@ EIP : cabinet | **10 ans**, jusqu'à **16 ans** après appel d'offres, **24 ans*
     ! Pas de démission **à contretemps** ; le CAC informe l'entité et la **H2A**
   ? **Relèvement** de fonctions
     = **Décision de justice**, pour **faute** ou **empêchement**
-    = Demandé par la direction, des actionnaires (5 %), le CSE, le ministère public, l'AMF (EIP), la H2A
+    = Demandé par l'administration ou la direction, des actionnaires (5 %), le CSE, le ministère public, l'AMF (sociétés cotées) ; **pas la H2A**
     ! **Pas de révocation ad nutum** par l'assemblée
 ```
 
@@ -53,7 +53,7 @@ EIP : cabinet | **10 ans**, jusqu'à **16 ans** après appel d'offres, **24 ans*
 | Règle | Chiffre ou instance |
 |---|---|
 | Co-commissariat (comptes consolidés) | **2 CAC**, pas du même réseau, répartition **équilibrée** (une répartition 90 / 10 est refusée) |
-| Désaccord sur la répartition | **Président de la CRCC** (conciliation) |
+| Désaccord sur la répartition | **Président de la CRCC** ; si compagnies distinctes, président de la compagnie de chacun |
 | Barème d'heures (certification, hors ALPE) | Fourchettes selon bilan + produits ; **taux horaire libre** |
 | Dérogation au barème | **Président de la CRCC**, puis **président de la CNCC**, puis **bureau de la H2A**, puis **tribunal administratif** |
 | Litige sur le montant des honoraires | **Président de la CRCC** (conciliation en 3 mois), puis le **juge** |

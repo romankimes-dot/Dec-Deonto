@@ -13,22 +13,22 @@
       "qcm": {
         "question": "Un expert-comptable souhaite faire de la promotion et du démarchage par internet. Quelle affirmation est exacte ?",
         "choices": [
-          "Le démarchage est interdit à l'expert-comptable, seule l'information institutionnelle du cabinet est tolérée",
-          "La promotion et le démarchage sont autorisés s'ils procurent au public une information utile, sont mis en œuvre avec discrétion, sans atteinte à l'indépendance, à la dignité, au secret professionnel ni à la loyauté envers confrères et clients, et dans le respect du droit du commerce électronique",
-          "Le démarchage n'est autorisé qu'auprès des entreprises ayant déjà un commissaire aux comptes",
-          "La publicité est libre sans aucune contrainte, comme pour toute entreprise commerciale"
+          "Le démarchage est interdit à l'expert-comptable, seule l'information institutionnelle du cabinet étant tolérée sur son site",
+          "La promotion et le démarchage sont admis s'ils procurent une information utile et ne portent atteinte ni à la dignité ni à la loyauté",
+          "Le démarchage n'est autorisé qu'auprès des entreprises ayant déjà un commissaire aux comptes ou une mission d'audit",
+          "La publicité est libre sans aucune contrainte déontologique, comme pour toute autre entreprise commerciale"
         ],
         "answer": 1
       },
       "qrc": {
         "expected": [
           "Promotion et démarchage licites (ordonnance et code de déontologie), y compris par internet",
-          "Les actions doivent procurer au public une information nécessaire et objective sur le cabinet et ses services",
+          "Les actions doivent procurer au public une information utile sur le cabinet et ses services",
           "Mise en œuvre avec discrétion : pas d'atteinte à l'indépendance, à la dignité, à l'honneur de la profession, au secret professionnel, à la loyauté envers clients et confrères",
-          "Pas d'expression susceptible de compromettre l'image de la profession, pas de dénigrement ni de comparaison avec des confrères",
+          "Expression décente, sans inexactitude ni élément comparatif, sans dénigrement des confrères",
           "Respect des règles du commerce électronique et de la protection des données (identification de l'émetteur, consentement préalable pour la prospection par courriel, droit d'opposition)"
         ],
-        "model_answer": "Depuis la réforme de 2010-2012, l'expert-comptable peut faire des actions de promotion et de démarchage, y compris en ligne, à condition qu'elles procurent au public une information utile et objective, soient mises en œuvre avec discrétion et ne portent atteinte ni à l'indépendance, ni à la dignité et à l'honneur de la profession, ni au secret professionnel, ni à la loyauté envers clients et confrères (pas de dénigrement ni de comparaison). Il respecte en outre le droit du commerce électronique et de la protection des données : identification claire de l'émetteur, consentement préalable à la prospection par courriel, droit d'opposition."
+        "model_answer": "Depuis le décret du 18 août 2014, l'expert-comptable peut faire des actions de promotion et de démarchage, y compris en ligne, à condition qu'elles procurent au public une information utile, soient mises en œuvre avec discrétion et ne portent atteinte ni à l'indépendance, ni à la dignité et à l'honneur de la profession, ni au secret professionnel, ni à la loyauté envers clients et confrères ; l'expression doit être décente, exacte et exempte de tout élément comparatif. Il respecte en outre le droit du commerce électronique et de la protection des données : identification claire de l'émetteur, consentement préalable à la prospection par courriel, droit d'opposition."
       },
       "explanation": "L'interdiction du démarchage a été levée après la condamnation de la France par la CJUE (2011) ; le code de déontologie encadre désormais la promotion par des exigences de contenu et de forme. Le CAC est soumis à un encadrement comparable : depuis 2020, son code de déontologie admet la sollicitation personnalisée et la proposition de services en ligne, à condition de procurer une information sincère, sans élément comparatif ni dénigrant, et de préciser les modalités de détermination des honoraires. Le distracteur sur l'entreprise déjà dotée d'un CAC est une pure confusion.",
       "reference": "Ord. 45-2138 art. 23 ; D. 2012-432 art. 152 (promotion et démarchage) ; loi 2004-575 (LCEN) art. 22 ; CJUE 5 avril 2011, aff. C-119/09",
@@ -45,7 +45,7 @@
       "qcm": {
         "question": "Quelle est la différence entre la conciliation et l'arbitrage proposés par le président du conseil régional de l'Ordre des experts-comptables ?",
         "choices": [
-          "La conciliation vise un accord amiable entre les parties sans décision imposée ; l'arbitrage aboutit à une sentence qui tranche le litige et s'impose aux parties",
+          "La conciliation vise un accord amiable sans décision imposée ; l'arbitrage aboutit à une sentence qui s'impose aux parties",
           "La conciliation est réservée aux litiges entre confrères, l'arbitrage aux litiges avec les clients",
           "La conciliation est obligatoire avant toute action en justice, l'arbitrage est interdit aux professions réglementées",
           "La conciliation est rendue par la chambre de discipline, l'arbitrage par le commissaire du gouvernement"
@@ -75,10 +75,10 @@
       "qcm": {
         "question": "Un expert-comptable est atteint d'une grave maladie l'empêchant de gérer son cabinet. Le conseil régional peut lui proposer :",
         "choices": [
-          "La désignation par le président du conseil régional, à sa demande ou avec son accord, d'un expert-comptable chargé d'assurer son remplacement provisoire",
-          "La radiation d'office du tableau avec interdiction définitive d'exercer",
+          "La désignation d'un confrère chargé d'assurer son remplacement provisoire, avec son accord",
+          "La radiation d'office du tableau, avec interdiction définitive d'exercer la profession en France",
           "La nomination d'un commissaire aux comptes chargé de certifier les comptes du cabinet",
-          "La saisine de la chambre régionale de discipline pour suspension"
+          "La saisine de la chambre régionale de discipline en vue d'une suspension de son activité"
         ],
         "answer": 0
       },
@@ -107,24 +107,24 @@
       "qcm": {
         "question": "En matière de LCB-FT, la chambre de discipline de l'Ordre des experts-comptables peut prononcer, en plus des sanctions disciplinaires ordinaires :",
         "choices": [
-          "Une sanction pécuniaire, une interdiction temporaire d'exercer certaines activités ou fonctions, et la publication de la décision",
-          "Une peine d'emprisonnement et la confiscation des fonds blanchis",
-          "Le retrait de l'agrément délivré par Tracfin",
-          "Le transfert du dossier à la commission des sanctions de la H2A"
+          "Une sanction pécuniaire, une interdiction temporaire de fonctions dirigeantes et la publication de la décision",
+          "Une peine d'emprisonnement ferme et la confiscation des fonds présumés blanchis par le client",
+          "Le retrait de l'agrément délivré par Tracfin et l'interdiction de toute déclaration de soupçon",
+          "Le transfert du dossier à la commission des sanctions de la H2A, seule compétente en matière de LCB-FT"
         ],
         "answer": 0
       },
       "qrc": {
         "expected": [
-          "Sanction pécuniaire (amende disciplinaire plafonnée, proportionnée à la gravité et à la situation financière)",
-          "Interdiction temporaire d'exercer certaines activités ou d'exercer des fonctions dirigeantes",
-          "Publication ou diffusion de la décision",
-          "Ces sanctions s'ajoutent à l'échelle ordinaire (réprimande, blâme, suspension, radiation) et peuvent être cumulées"
+          "Sanction pécuniaire d'au plus un million d'euros (ou le double de l'avantage retiré s'il peut être déterminé)",
+          "Interdiction temporaire d'exercice de responsabilités dirigeantes ; injonction de mettre fin au comportement",
+          "Publication de la décision de sanction",
+          "Ces sanctions (CMF L.561-36-3, rendu applicable par l'ord. art. 53 bis) s'ajoutent à l'échelle ordinaire de l'article 53"
         ],
-        "model_answer": "Pour les manquements aux obligations LCB-FT, la chambre de discipline peut prononcer, en plus ou à la place des sanctions ordinaires, une sanction pécuniaire plafonnée par le code monétaire et financier, une interdiction temporaire d'exercer certaines activités ou fonctions, et ordonner la publication de la décision. Ces sanctions ont été introduites pour transposer les directives anti-blanchiment."
+        "model_answer": "Pour les manquements aux obligations LCB-FT, l'article 53 bis de l'ordonnance rend applicables les mesures de l'article L.561-36-3 du code monétaire et financier : injonction de mettre fin au comportement, interdiction temporaire d'exercice de responsabilités dirigeantes et sanction pécuniaire d'au plus un million d'euros, la décision étant rendue publique. Elles s'ajoutent aux peines de l'article 53 et sont prononcées par la chambre régionale de discipline."
       },
-      "explanation": "Le droit commun disciplinaire de l'EC ne connaît pas de sanction pécuniaire ; la transposition des directives LCB-FT a imposé des sanctions effectives, proportionnées et dissuasives, d'où ce régime spécial. Les peines d'emprisonnement et la confiscation relèvent du juge pénal ; Tracfin ne délivre aucun agrément ; la H2A n'est pas compétente pour les EC.",
-      "reference": "Ord. 45-2138 art. 53 (sanctions, complété pour la LCB-FT) ; CMF art. L.561-36-3 (sanctions des autorités de contrôle professionnelles)",
+      "explanation": "Le droit commun disciplinaire de l'EC (ord. art. 53) ne connaît pas de sanction pécuniaire ; l'article 53 bis renvoie, pour la LCB-FT, à l'article L.561-36-3 du CMF, et la chambre régionale de discipline connaît de ces manquements (D. 2012-432 art. 174). Les peines d'emprisonnement et la confiscation relèvent du juge pénal ; Tracfin ne délivre aucun agrément ; la H2A n'est pas compétente pour les EC.",
+      "reference": "Ord. 45-2138 art. 53 et 53 bis ; CMF art. L.561-36 I 10° et L.561-36-3 ; D. 2012-432 art. 174 et 179",
       "confidence": "medium"
     },
     {
@@ -138,24 +138,24 @@
       "qcm": {
         "question": "Un expert-comptable stagiaire peut-il être sanctionné disciplinairement par la chambre régionale de discipline de l'Ordre ?",
         "choices": [
-          "Oui : inscrit auprès du conseil régional, il est soumis au code de déontologie et au règlement du stage, et relève de la chambre de discipline, les sanctions pouvant aller jusqu'à la radiation de la liste des stagiaires",
+          "Oui : quoique non membre de l'Ordre, il est soumis à son contrôle disciplinaire et au code de déontologie",
           "Non : seuls les membres de l'Ordre inscrits au tableau sont justiciables de la chambre de discipline",
-          "Non : le stagiaire relève exclusivement de la commission des sanctions de la H2A",
-          "Oui, mais uniquement si son maître de stage est lui-même poursuivi"
+          "Non : le stagiaire relève exclusivement de la commission des sanctions de la H2A, comme le stagiaire CAC",
+          "Oui, mais uniquement si son maître de stage est lui-même poursuivi devant la chambre de discipline"
         ],
         "answer": 0
       },
       "qrc": {
         "expected": [
           "Oui",
-          "Le stagiaire est inscrit auprès du conseil régional et soumis au code de déontologie et au règlement du stage",
-          "Il relève de la chambre régionale de discipline, saisie notamment par le président du conseil régional ou le comité du stage",
-          "Sanctions adaptées : réprimande, blâme, suspension ou radiation de la liste des stagiaires"
+          "Le stagiaire n'est pas membre de l'Ordre mais est soumis à sa surveillance et à son contrôle disciplinaire (ord. art. 4) et au code de déontologie (D. art. 141)",
+          "Il relève de la chambre régionale de discipline, saisie par plainte de toute personne ayant intérêt à agir et instruite par le magistrat chargé des poursuites",
+          "Mêmes peines que les membres de l'Ordre (D. art. 76) ; une radiation disciplinaire interdit définitivement toute inscription au stage"
         ],
-        "model_answer": "Oui. L'expert-comptable stagiaire, inscrit auprès du conseil régional, est tenu au respect du code de déontologie et du règlement du stage ; ses manquements relèvent de la chambre régionale de discipline, qui peut prononcer des sanctions adaptées allant de la réprimande à la radiation de la liste des stagiaires."
+        "model_answer": "Oui. L'expert-comptable stagiaire n'est pas membre de l'Ordre, mais il est soumis à sa surveillance et à son contrôle disciplinaire ainsi qu'au code de déontologie ; ses manquements relèvent de la chambre régionale de discipline, qui peut lui appliquer les peines prévues pour les membres de l'Ordre. Une radiation disciplinaire lui interdit définitivement d'être inscrit au stage."
       },
-      "explanation": "Le stagiaire n'est pas membre de l'Ordre mais il est rattaché à l'institution ordinale et soumis à sa déontologie ; la discipline ordinale lui est donc applicable, avec une échelle de sanctions adaptée. La H2A n'est compétente que pour les CAC et personnes assimilées. Ne pas confondre avec le contrôle qualité, qui ne vise pas les stagiaires.",
-      "reference": "Ord. 45-2138 art. 53 et 83 ; D. 2012-432 (dispositions sur le stage et la discipline) ; règlement du stage d'expertise comptable",
+      "explanation": "L'article 4 de l'ordonnance prévoit que les stagiaires ne sont pas membres de l'Ordre mais restent soumis à sa surveillance et à son contrôle disciplinaire ; l'article 76 du décret de 2012 leur rend applicables les sanctions prévues pour les membres. La H2A n'est compétente que pour les CAC et personnes assimilées. Ne pas confondre avec le contrôle qualité, qui ne vise pas les stagiaires.",
+      "reference": "Ord. 45-2138 art. 4 et 53 ; D. 2012-432 art. 76, 141 et 179",
       "confidence": "medium"
     },
     {
@@ -178,15 +178,16 @@
       },
       "qrc": {
         "expected": [
-          "Appel devant la chambre nationale de discipline (siégeant auprès du Conseil national, présidée par un conseiller d'État)",
-          "Appel ouvert à l'intéressé, au commissaire du gouvernement, au président du conseil régional",
+          "Appel devant la chambre nationale de discipline (auprès du Conseil national, présidée par un magistrat, président de chambre à la cour d'appel de Paris), dans le délai d'un mois",
+          "Appel ouvert à l'intéressé, au plaignant, au magistrat chargé des poursuites, au président du conseil régional et au commissaire du Gouvernement",
           "Puis recours en cassation devant le Conseil d'État (la chambre nationale est une juridiction administrative)"
         ],
-        "model_answer": "L'expert-comptable sanctionné peut faire appel devant la chambre nationale de discipline, juridiction administrative présidée par un conseiller d'État ; l'appel est aussi ouvert au commissaire du gouvernement et au président du conseil régional. La décision de la chambre nationale peut ensuite faire l'objet d'un recours en cassation devant le Conseil d'État."
+        "model_answer": "L'expert-comptable sanctionné peut faire appel, dans le délai d'un mois, devant la chambre nationale de discipline, présidée par un magistrat désigné parmi les présidents de chambre de la cour d'appel de Paris ; l'appel est aussi ouvert au plaignant, au magistrat chargé des poursuites, au président du conseil régional et au commissaire du Gouvernement. La décision de la chambre nationale peut ensuite faire l'objet d'un recours en cassation devant le Conseil d'État."
       },
       "explanation": "Les chambres de discipline de l'Ordre sont des juridictions administratives spécialisées, d'où le contrôle final du Conseil d'État et non de la Cour de cassation. Le CAC suit un autre circuit : commission des sanctions de la H2A puis recours de plein contentieux devant le Conseil d'État, sans degré d'appel professionnel.",
-      "reference": "Ord. 45-2138 art. 50 (chambre nationale de discipline) ; D. 2012-432 (procédure d'appel) ; C. just. adm. art. R.821-1 (cassation)",
-      "confidence": "high"
+      "reference": "Ord. 45-2138 art. 50 et 53 (dernier alinéa : recours devant le Conseil d'État) ; D. 2012-432 art. 192 II ; CJA art. L.331-1 et R.821-1",
+      "confidence": "high",
+      "update_note": "Depuis la loi 2022-172, la chambre nationale est présidée par un magistrat (président de chambre de la cour d'appel de Paris, en activité ou honoraire) et un magistrat chargé des poursuites dispose aussi du droit d'appel."
     },
     {
       "id": "2021-11-EC-07",
@@ -215,7 +216,7 @@
         ],
         "model_answer": "Non. Le secret professionnel de l'expert-comptable est général et absolu ; institué dans l'intérêt général et sanctionné pénalement, il n'est pas à la disposition du client, qui ne peut en délier le professionnel. Seules les levées prévues par la loi s'appliquent (témoignage en justice, contrôle qualité, AMF, Tracfin). L'EC peut en revanche rendre compte de sa mission à son client et lui restituer ses documents."
       },
-      "explanation": "Le secret protège l'institution et non seulement le client, d'où son caractère absolu en jurisprudence. Il n'existe pas de levée par autorisation ordinale. Le CAC obéit au même principe, mais la loi lui ouvre des levées spécifiques (entre CAC d'un groupe, avec le successeur, vis-à-vis de la H2A) que l'EC ne connaît pas.",
+      "explanation": "Le secret protège l'institution et non seulement le client, d'où son caractère absolu en jurisprudence. Il n'existe pas de levée par autorisation ordinale. Le CAC obéit au même principe, mais la loi lui ouvre des levées spécifiques (entre CAC d'un même groupe ou d'une même entité pour les comptes et la durabilité, envers le président du tribunal dans la procédure d'alerte, envers la Commission des comptes de campagne) que l'EC ne connaît pas.",
       "reference": "Ord. 45-2138 art. 21 ; D. 2012-432 art. 147 ; C. pén. art. 226-13 et 226-14 ; CMF art. L.561-22 (Tracfin)",
       "confidence": "high"
     },
@@ -230,10 +231,10 @@
       "qcm": {
         "question": "Le serment prêté par l'expert-comptable lors de son inscription au tableau porte sur :",
         "choices": [
-          "L'exercice de la profession avec conscience et probité, et le respect des lois dans ses travaux ainsi que leur respect par autrui",
-          "L'indépendance à l'égard de l'entité contrôlée et la révélation des faits délictueux",
-          "La fidélité au Conseil national et le paiement des cotisations ordinales",
-          "La dignité, la confraternité et l'obligation de formation continue"
+          "L'exercice de la profession avec conscience et probité et le respect des lois",
+          "L'indépendance à l'égard de l'entité contrôlée et la révélation des faits délictueux au procureur",
+          "La fidélité au Conseil national et le paiement des cotisations ordinales à l'échéance",
+          "La dignité, la confraternité et l'obligation de suivre la formation continue"
         ],
         "answer": 0
       },
@@ -242,12 +243,12 @@
           "Conscience professionnelle",
           "Probité",
           "Respect des lois dans ses travaux et faire respecter les lois (légalité)",
-          "Serment prêté devant le conseil régional après inscription"
+          "Serment prêté devant le conseil régional dans les six mois de l'inscription au tableau"
         ],
         "model_answer": "Le serment engage l'expert-comptable à exercer sa profession avec conscience et probité, et à respecter et faire respecter les lois dans ses travaux. Il est prêté devant le conseil régional de l'Ordre après l'inscription au tableau."
       },
       "explanation": "Trois idées : conscience, probité, légalité. Le serment du CAC, prêté devant la cour d'appel, a une formulation différente et évoque l'exercice de la profession avec honneur, probité et indépendance et le respect des lois. Le distracteur sur la révélation des faits délictueux est propre au CAC.",
-      "reference": "D. 2012-432 (serment, dispositions sur l'inscription au tableau) ; pour le CAC : C. com. partie réglementaire sur la prestation de serment (ex art. R.822-8)",
+      "reference": "D. 2012-432 art. 143 ; pour le CAC : C. com. R.821-60",
       "confidence": "medium"
     },
     {
@@ -261,9 +262,9 @@
       "qcm": {
         "question": "Lors d'un contrôle qualité, le contrôleur relève sur un dossier du confrère contrôlé des indices de blanchiment. Il doit :",
         "choices": [
-          "En informer le conseil régional (son président), l'Ordre étant tenu, comme autorité de contrôle, d'en informer Tracfin",
-          "Adresser lui-même une déclaration de soupçon à Tracfin en qualité de contrôleur",
-          "Prévenir le client du confrère afin qu'il régularise sa situation",
+          "En informer par courrier confidentiel le comité LBC-FT de l'Ordre, qui saisira Tracfin",
+          "Adresser lui-même une déclaration de soupçon à Tracfin en qualité de contrôleur qualité de l'Ordre",
+          "Prévenir le client du confrère afin qu'il régularise sa situation avant la clôture du contrôle",
           "Ne rien faire, le secret professionnel du contrôle qualité lui interdisant toute communication"
         ],
         "answer": 0
@@ -271,15 +272,15 @@
       "qrc": {
         "expected": [
           "Ne pas déclarer lui-même : le contrôleur n'est pas le professionnel assujetti pour ce dossier",
-          "Signaler les faits au conseil régional de l'Ordre (président), autorité de contrôle LCB-FT des experts-comptables",
+          "Informer par courrier confidentiel le comité LBC-FT de l'Ordre, en indiquant le nom du professionnel et les éléments utiles",
           "L'Ordre, en tant qu'autorité de contrôle, informe Tracfin des faits découverts à l'occasion du contrôle",
-          "Vérifier si le confrère a mis en œuvre ses obligations (vigilance, déclaration) et consigner le point dans le rapport de contrôle ; ne jamais alerter le client"
+          "Vérifier si le confrère a respecté ses obligations (vigilance, déclaration de soupçon) ; ne jamais alerter le client"
         ],
-        "model_answer": "Le contrôleur ne fait pas lui-même de déclaration de soupçon : il signale les éléments au conseil régional, autorité de contrôle LCB-FT des experts-comptables, qui est tenu d'informer Tracfin des faits susceptibles de relever du blanchiment découverts à l'occasion de ses contrôles. Il examine également si le confrère a respecté ses obligations de vigilance et de déclaration, et ne doit en aucun cas alerter le client."
+        "model_answer": "Le contrôleur ne fait pas lui-même de déclaration de soupçon : il informe par courrier confidentiel le comité LBC-FT de l'Ordre, en indiquant le nom du professionnel concerné et les éléments permettant d'apprécier la pertinence d'une déclaration. L'Ordre, autorité de contrôle LCB-FT des experts-comptables, est tenu d'informer Tracfin des faits découverts à l'occasion de ses contrôles. Le contrôleur vérifie aussi le respect par le confrère de ses obligations de vigilance et de déclaration, et n'alerte jamais le client."
       },
-      "explanation": "Le code monétaire et financier charge les autorités de contrôle (dont l'Ordre) d'informer Tracfin des faits qu'elles découvrent ; le contrôleur, tenu au secret du contrôle, remonte l'information par la voie ordinale. La déclaration de soupçon reste l'acte du professionnel en charge du dossier. La même logique vaut pour les contrôleurs de la H2A vis-à-vis des CAC.",
-      "reference": "CMF art. L.561-36 (autorités de contrôle) et L.561-28 (information de Tracfin par les autorités de contrôle) ; NPLAB ; règlement du contrôle de qualité de l'OEC",
-      "confidence": "medium"
+      "explanation": "Le règlement intérieur prévoit que le contrôleur qui relève des éléments de nature à déclencher une déclaration de soupçon en informe par courrier confidentiel le comité LBC-FT institué auprès du Conseil national. Le code monétaire et financier fait de l'Ordre l'autorité de contrôle LCB-FT des experts-comptables et l'oblige à informer Tracfin des faits découverts dans sa mission. La déclaration de soupçon reste l'acte du professionnel en charge du dossier. Côté CAC, le rapporteur général de la H2A informe Tracfin dans le même cas (L.821-75).",
+      "reference": "Règlement intérieur de l'Ordre art. 406 et 234-1 ; CMF art. L.561-36 I 10° (Ordre, autorité de contrôle) et L.561-28 II (information de Tracfin) ; C. com. L.821-75 pour le parallèle CAC",
+      "confidence": "high"
     },
     {
       "id": "2021-11-EC-10",
@@ -292,10 +293,10 @@
       "qcm": {
         "question": "Dans une mission de présentation, comment l'expert-comptable communique-t-il ses recommandations à la direction, en complément de l'attestation ?",
         "choices": [
-          "Par un document distinct de l'attestation (lettre de recommandations ou compte rendu de mission), éventuellement complété d'un entretien de fin de mission",
-          "En insérant un paragraphe de recommandations dans l'attestation elle-même",
-          "Par un rapport spécial adressé à l'assemblée des associés",
-          "Par une communication au comité social et économique de l'entreprise"
+          "Par un écrit distinct de l'attestation (lettre de recommandations ou compte rendu de mission)",
+          "En insérant un paragraphe de recommandations dans le corps de l'attestation elle-même",
+          "Par un rapport spécial adressé à l'assemblée des associés à l'issue de la mission",
+          "Par une communication au comité social et économique de l'entreprise cliente"
         ],
         "answer": 0
       },
@@ -323,10 +324,10 @@
       "qcm": {
         "question": "Dans la procédure de dérogation au barème d'heures, les intervenants successifs sont :",
         "choices": [
-          "Le président de la compagnie régionale (saisi par la partie la plus diligente), puis, sur recours, le président de la CNCC, puis le bureau de la H2A, et enfin le tribunal administratif",
-          "Le commissaire aux comptes, l'assemblée générale, le tribunal de commerce, puis la cour d'appel",
+          "Le président de la compagnie régionale, puis le président de la CNCC, le bureau de la H2A et le tribunal administratif",
+          "Le commissaire aux comptes, l'assemblée générale de l'entité, le tribunal de commerce, puis la cour d'appel",
           "Le président de la CNCC, le commissaire du gouvernement, le ministre de la Justice, puis le Conseil d'État",
-          "Le comité d'audit, le conseil d'administration, l'AMF, puis la H2A"
+          "Le comité d'audit, le conseil d'administration, l'AMF, puis la commission des sanctions de la H2A, qui statue en dernier ressort"
         ],
         "answer": 0
       },
@@ -388,10 +389,10 @@
       "qcm": {
         "question": "Depuis sa refonte en 2020, le code de déontologie des commissaires aux comptes est organisé en deux titres :",
         "choices": [
-          "Un titre I applicable à toutes les missions et prestations, et un titre II de dispositions complémentaires pour la mission de certification des comptes",
-          "Un titre I pour les entités d'intérêt public et un titre II pour les autres entités",
-          "Un titre I pour les personnes physiques et un titre II pour les sociétés de commissaires aux comptes",
-          "Un titre I sur l'indépendance et un titre II sur les sanctions disciplinaires"
+          "Un titre I applicable à toutes les missions et prestations, un titre II complémentaire pour la certification des comptes",
+          "Un titre I pour les entités d'intérêt public et un titre II pour les autres entités, avec des règles distinctes d'indépendance",
+          "Un titre I pour les personnes physiques et un titre II pour les sociétés de commissaires aux comptes et leurs associés",
+          "Un titre I sur l'indépendance et un titre II sur les sanctions disciplinaires et la procédure devant la commission"
         ],
         "answer": 0
       },
@@ -403,8 +404,9 @@
         "model_answer": "Le code comprend un titre I, socle commun applicable à toutes les missions et prestations du commissaire aux comptes, et un titre II regroupant les dispositions complémentaires applicables au commissaire aux comptes dans l'exercice de son activité pour l'entité dont il certifie les comptes."
       },
       "explanation": "La refonte de 2020 tire les conséquences de la loi Pacte, qui a ouvert au CAC des prestations hors certification : un socle commun s'applique à tout, et des exigences renforcées ne visent que la certification. Le code ne contient aucune sanction, celles-ci étant dans le code de commerce.",
-      "reference": "Code de déontologie des CAC, annexe 8-1 du livre VIII du code de commerce (décret 2020-292, mis à jour 2024) ; C. com. A.821-54 s. (normes de déontologie homologuées)",
-      "confidence": "high"
+      "reference": "Code de déontologie des CAC, annexe 8-1 du livre VIII (partie réglementaire) du code de commerce, art. 2 (décret 2020-292, modifié en dernier lieu par le décret 2026-176) ; C. com. A.821-54 et A.821-55 (normes de déontologie homologuées)",
+      "confidence": "high",
+      "update_note": "Rédaction actuelle (décret 2026-176) : le titre II vise la certification des comptes et des informations en matière de durabilité, et le code s'applique aussi, dans cette mission, aux organismes tiers indépendants et aux auditeurs de durabilité (art. 1er et 2)."
     },
     {
       "id": "2021-11-CAC-14",
@@ -417,10 +419,10 @@
       "qcm": {
         "question": "En cas de litige sur les honoraires du commissaire aux comptes, les organes successivement compétents sont :",
         "choices": [
-          "Le président de la compagnie régionale (conciliation en trois mois), puis, en cas d'échec, le juge ; la H2A ne tranche plus ces litiges depuis 2024",
-          "Le président du conseil régional de l'Ordre, la chambre nationale de discipline, le Conseil d'État",
-          "Le comité d'audit, l'assemblée générale, le tribunal administratif",
-          "Le commissaire du gouvernement, le garde des Sceaux, la Cour de cassation"
+          "Le président de la compagnie régionale (conciliation en trois mois), puis le juge ; la H2A ne tranche plus ces litiges",
+          "Le président du conseil régional de l'Ordre, la chambre nationale de discipline, puis le Conseil d'État",
+          "Le comité d'audit, puis l'assemblée générale, puis le tribunal administratif statuant en premier ressort, avec appel devant la cour administrative",
+          "Le commissaire du gouvernement, le garde des Sceaux, puis la Cour de cassation statuant en dernier ressort"
         ],
         "answer": 0
       },
@@ -449,10 +451,10 @@
       "qcm": {
         "question": "Qui peut saisir le rapporteur général de la H2A (ex-H3C) en vue d'une procédure disciplinaire contre un commissaire aux comptes ?",
         "choices": [
-          "Le premier président de la Cour des comptes ou le président d'une chambre régionale des comptes, le procureur général près la cour d'appel, les présidents de l'AMF, de l'ACPR et de la H2A, le président de la CNCC ou d'une CRCC",
-          "Uniquement l'entité contrôlée, par décision de son assemblée générale",
-          "Le président du Conseil national de l'Ordre des experts-comptables et le commissaire du gouvernement",
-          "Tout actionnaire détenant au moins 5 % du capital de l'entité contrôlée"
+          "Le premier président de la Cour des comptes, le procureur général près la cour d'appel, les présidents de l'AMF, de l'ACPR et de la CNCC",
+          "Uniquement l'entité contrôlée, par décision de son assemblée générale, ou le président du tribunal de commerce du siège de l'entité",
+          "Le président du Conseil national de l'Ordre des experts-comptables, le commissaire du gouvernement et le garde des sceaux, ministre de la Justice",
+          "Tout actionnaire détenant au moins 5 % du capital de l'entité contrôlée, ainsi que le comité d'audit ou le comité social et économique de celle-ci"
         ],
         "answer": 0
       },
@@ -482,18 +484,18 @@
       "qcm": {
         "question": "Existe-t-il dans le code de déontologie des commissaires aux comptes un socle commun applicable quelle que soit la mission ou prestation ?",
         "choices": [
-          "Oui : le titre I pose les principes fondamentaux de comportement (intégrité, impartialité, indépendance, compétence, confraternité, discrétion) applicables à toutes les missions et prestations",
+          "Oui : le titre I pose des principes fondamentaux de comportement applicables à toute mission ou prestation",
           "Non : chaque mission relève d'une norme d'exercice professionnel spécifique qui définit sa propre déontologie",
-          "Non : le code ne s'applique qu'à la mission de certification des comptes",
-          "Oui, mais uniquement pour les commissaires aux comptes d'entités d'intérêt public"
+          "Non : le code ne s'applique qu'à la mission de certification des comptes, les prestations relevant des seules NEP",
+          "Oui, mais uniquement pour les commissaires aux comptes d'entités d'intérêt public, à titre de socle commun"
         ],
         "answer": 0
       },
       "qrc": {
         "expected": [
           "Oui",
-          "Le titre I est applicable à toutes les missions et prestations",
-          "Il contient les principes fondamentaux de comportement : intégrité, impartialité, indépendance et prévention des conflits d'intérêts, compétence, confraternité, discrétion et secret, ainsi que les règles d'exercice (honoraires, publicité, lettre de mission)"
+          "Le titre I est applicable à toutes les missions et prestations, dès l'inscription sur la liste (art. 2)",
+          "Il contient les principes fondamentaux de comportement (intégrité, impartialité, indépendance et prévention des conflits d'intérêts, esprit critique, compétence et diligence, confraternité, secret et discrétion) et des règles générales : collaborateurs et experts, honoraires, publicité et sollicitation, monopoles des autres professions"
         ],
         "model_answer": "Oui. Le titre I du code constitue un socle commun applicable à tous les commissaires aux comptes, quelle que soit la mission ou prestation exercée : il énonce les principes fondamentaux de comportement (intégrité, impartialité, indépendance, compétence, confraternité, discrétion) et les règles générales d'exercice. Le titre II n'ajoute des exigences que pour la certification."
       },
@@ -513,7 +515,7 @@
         "question": "Lequel de ces thèmes ne figure PAS parmi les dispositions complémentaires du titre II du code de déontologie, propres à la mission de certification ?",
         "choices": [
           "L'échelle des sanctions disciplinaires et la procédure devant la commission des sanctions",
-          "L'indépendance, les situations à risque et les mesures de sauvegarde",
+          "L'indépendance, les situations à risque, les mesures de sauvegarde et les services interdits aux EIP",
           "Les liens personnels, financiers et professionnels et l'appartenance à un réseau",
           "L'acceptation, la conduite et le maintien de la mission, ainsi que les honoraires"
         ],
@@ -545,10 +547,10 @@
       "qcm": {
         "question": "Dans le code de déontologie des commissaires aux comptes, que désignent respectivement les termes mission et prestation ?",
         "choices": [
-          "La mission est la certification des comptes, la certification des informations en matière de durabilité ou toute autre mission confiée par la loi ou le règlement ; la prestation est la fourniture de services et d'attestations ne relevant pas d'une mission",
-          "La mission désigne tout travail rémunéré ; la prestation désigne les travaux effectués gratuitement",
-          "La mission vise les entités d'intérêt public ; la prestation vise les autres entités",
-          "La mission est confiée par l'assemblée ; la prestation est confiée par le comité d'audit"
+          "La mission est celle confiée par la loi ou le règlement, dont la certification ; la prestation est la fourniture de services et d'attestations hors mission",
+          "La mission désigne tout travail rémunéré, quel qu'en soit l'objet ; la prestation désigne les travaux effectués gratuitement pour le compte d'un client",
+          "La mission vise les travaux réalisés pour les entités d'intérêt public ; la prestation vise ceux réalisés pour toutes les autres entités",
+          "La mission est confiée par l'assemblée générale ; la prestation est confiée par le comité d'audit ou par le conseil d'administration"
         ],
         "answer": 0
       },
@@ -591,10 +593,10 @@
         ],
         "model_answer": "La déclaration d'activité adressée à la compagnie régionale indique l'identité de l'entité bénéficiaire, la nature de la prestation ou mission réalisée et le montant des honoraires correspondants."
       },
-      "explanation": "Cette déclaration permet à la profession et au régulateur de suivre l'activité hors certification ouverte par la loi Pacte et de contrôler le respect des règles d'indépendance et de déontologie. Elle est distincte de la déclaration annuelle d'activité (mandats, heures) adressée par tout CAC. L'EC n'a pas d'obligation équivalente.",
-      "reference": "C. com. art. D.821-186 (déclaration d'activité, ex R.823-10) ; code de déontologie des CAC",
-      "confidence": "medium",
-      "update_note": "Renumérotation réglementaire en 2024 : la déclaration d'activité figure à l'article D.821-186 (cité par le sujet de novembre 2024). Relecture : les trois mentions retenues (entité, nature, honoraires) concordent avec la fiche 2022-11-CAC-18 ; l'éventuelle mention de la date de réalisation reste à vérifier."
+      "explanation": "La déclaration d'activité est établie chaque année par le CAC et adressée par voie électronique à la compagnie régionale, qui la transmet à la Compagnie nationale, laquelle en communique une copie à la H2A. Pour les missions autres que la certification et pour les prestations, elle mentionne la liste des personnes ou entités, la nature des missions ou prestations et le montant total des honoraires facturés (D.821-186 VI 4°). Il ne s'agit pas d'une déclaration distincte : ces mentions figurent dans la même déclaration annuelle que les mandats de certification et les heures (D.821-186 VI 1° à 3°).",
+      "reference": "C. com. art. D.821-186 VI 4° (déclaration d'activité, ex R.823-10)",
+      "confidence": "high",
+      "update_note": "Renumérotation réglementaire en 2024 : la déclaration d'activité figure à l'article D.821-186 VI (cité par le sujet de novembre 2024). Relecture : les trois mentions (entités, nature des missions ou prestations, montant total des honoraires facturés) sont celles du VI 4° ; aucune date de réalisation n'est exigée."
     },
     {
       "id": "2021-11-CAC-20",
@@ -607,10 +609,10 @@
       "qcm": {
         "question": "Lequel de ces services est interdit au commissaire aux comptes d'une entité d'intérêt public par le règlement européen 537/2014 ?",
         "choices": [
-          "La tenue de la comptabilité et l'établissement des documents comptables et états financiers",
-          "L'attestation sur des informations extraites des comptes demandée par un tiers",
-          "La certification des comptes consolidés du groupe",
-          "La revue limitée des comptes semestriels"
+          "La tenue de la comptabilité et l'établissement des comptes et états financiers",
+          "L'attestation, demandée par un tiers, sur des informations extraites des comptes de l'entité",
+          "La certification des comptes consolidés du groupe et des comptes annuels des filiales",
+          "La revue limitée des comptes semestriels publiés par l'entité, à la demande de son conseil"
         ],
         "answer": 0
       },
@@ -625,7 +627,7 @@
         "model_answer": "Sont interdits au CAC d'une EIP, notamment : les services fiscaux, la tenue de la comptabilité et l'établissement des comptes, les services de paie, les services liés à la gestion ou à la prise de décision, l'audit interne, les services d'évaluation, les services juridiques, la conception de systèmes de contrôle interne ou d'information financière, les services de financement ou de promotion de titres, et les services de ressources humaines."
       },
       "explanation": "La liste noire européenne vise les services qui créent autorévision, intérêt personnel ou immixtion. Elle s'impose au CAC et à son réseau pour l'EIP, sa mère et ses filiales dans l'Union. Les travaux qui prolongent la certification (revue limitée, consolidation, attestations liées) restent possibles, sous plafond de 70 % des honoraires d'audit pour les services non audit autorisés.",
-      "reference": "Règlement UE 537/2014 art. 4 et 5 ; C. com. ex art. L.822-11-1 (recodifié L.821-x) ; code de déontologie des CAC",
+      "reference": "Règlement UE 537/2014 art. 4 §2 et 5 §1 ; C. com. L.821-28 II (ex L.822-11) ; code de déontologie des CAC art. 18",
       "confidence": "high"
     }
   ]

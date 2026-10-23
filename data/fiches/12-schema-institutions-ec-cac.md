@@ -43,10 +43,10 @@ Doute déontologique | Consulter le **CROEC** | Saisir la **H2A** pour avis
 
 ## Pièges qui reviennent
 
-- {!} Le **commissaire du gouvernement** n'est **pas membre** des chambres de discipline : il **saisit** et **fait appel**.
+- {!} Le **commissaire du gouvernement** n'est **pas membre** des chambres de discipline : il peut être **à l'origine d'une plainte** et **fait appel** ; les poursuites relèvent du **magistrat chargé des poursuites**.
 - {!} Le Conseil national de l'Ordre **ne collecte pas** lui-même les cotisations : ce sont les **CROEC**.
 - {!} Les **sociétés** ne sont **ni électrices ni éligibles** aux conseils des CRCC.
-- {!} **Peuvent demander l'élaboration d'une NEP** : le garde des Sceaux, les présidents de l'AMF et de l'ACPR, la CNCC. **Pas la CRCC**.
+- {!} **Peuvent demander l'élaboration d'une NEP** : le garde des Sceaux, l'AMF, l'ACPR, l'Autorité des normes comptables, le Conseil de normalisation des comptes publics, la CNCC. **Pas la CRCC**.
 - {!} Membres du Conseil national de l'Ordre : élus au **suffrage direct** par les EC depuis **2020**.
 - {!} Présidence d'un conseil de l'Ordre : **4 années consécutives** au plus, puis **2 ans** d'interruption.
 - {!} Le renommage en **Conseil national** vient de la loi **2022-172**, pas de la loi Pacte.

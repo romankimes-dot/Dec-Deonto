@@ -13,7 +13,7 @@
       "qcm": {
         "question": "Selon la NPLAB, la classification des risques de blanchiment du cabinet d'expertise comptable repose au moins sur les critères suivants :",
         "choices": [
-          "La nature des missions et prestations, les caractéristiques des clients, la zone géographique et le mode d'entrée en relation ou canal de distribution",
+          "Les caractéristiques des clients, leur activité, leur localisation et les missions proposées par la structure",
           "Le montant des honoraires, la forme juridique du client, l'ancienneté de la relation et la taille du cabinet",
           "Les seuils de nomination du commissaire aux comptes : total du bilan, chiffre d'affaires et effectif, complétés par le secteur d'activité",
           "La notation Banque de France du client, son endettement, sa rentabilité et son actionnariat"
@@ -22,15 +22,15 @@
       },
       "qrc": {
         "expected": [
-          "Nature des missions, prestations ou produits proposés",
-          "Caractéristiques des clients (personne physique/morale, secteur, structure, bénéficiaires effectifs)",
-          "Zone géographique du client et de ses opérations (pays à risque)",
-          "Conditions de la relation : mode d'entrée en relation (à distance, par intermédiaire), canal de distribution"
+          "Caractéristiques des clients (et des personnes agissant pour leur compte, bénéficiaires effectifs)",
+          "Activité des clients (produits ou services, conditions de transaction, canaux de distribution, espèces…)",
+          "Localisation des clients au sens large (établissements, fournisseurs, clients : origine et destination des fonds, pays à risque)",
+          "Missions proposées par la structure"
         ],
-        "model_answer": "La classification des risques du cabinet est établie en fonction de la nature des missions ou prestations réalisées, des caractéristiques des clients, de la localisation géographique des clients et de leurs opérations, et des conditions de la relation d'affaires (mode d'entrée en relation, canal de distribution). Elle fonde l'intensité de la vigilance, la NPLAB prévoyant deux niveaux : standard et renforcée."
+        "model_answer": "Selon la NPLAB, la classification des risques de la structure s'opère au moins selon quatre critères : les caractéristiques des clients, l'activité des clients, la localisation des clients (y compris le territoire d'origine ou de destination des fonds) et les missions proposées par la structure. Elle fonde l'intensité de la vigilance, la NPLAB prévoyant deux niveaux : standard et renforcée."
       },
-      "explanation": "Ces quatre axes reprennent les facteurs de risque du code monétaire et financier (produits et services, conditions de transaction, canaux, caractéristiques des clients, pays). La classification est propre au cabinet et doit être documentée et actualisée. Les distracteurs reprennent des critères financiers ou les seuils CAC qui n'ont rien à voir avec l'approche par les risques LCB-FT.",
-      "reference": "NPLAB (classification des risques) ; CMF art. L.561-4-1 et R.561-38 s. ; analyse nationale des risques",
+      "explanation": "Le paragraphe 19 de la NPLAB retient ces quatre critères ; les produits ou services, les conditions de transaction et les canaux de distribution ne sont pas des critères autonomes mais des facteurs du critère « activité des clients » (A19.2). La classification est propre au cabinet, documentée et actualisée, et peut s'appuyer sur l'analyse sectorielle de la profession (ARPEC). Les distracteurs reprennent des critères financiers ou les seuils CAC qui n'ont rien à voir avec l'approche par les risques LCB-FT.",
+      "reference": "NPLAB § 18 à 21 et A19 à A19.4 ; CMF art. L.561-4-1",
       "confidence": "high"
     },
     {
@@ -44,10 +44,10 @@
       "qcm": {
         "question": "Selon la NP 3100, une attestation particulière délivrée par l'expert-comptable peut procurer :",
         "choices": [
-          "Une assurance raisonnable uniquement, comme un audit",
+          "Une assurance raisonnable uniquement, comme dans une mission d'audit",
           "Une assurance raisonnable ou une assurance modérée, selon les diligences convenues",
           "Une assurance modérée ou aucune assurance, selon qu'elle porte ou non sur des comptes",
-          "Une assurance absolue lorsqu'elle est destinée à un tiers"
+          "Une assurance absolue lorsqu'elle est destinée à un tiers financeur"
         ],
         "answer": 1
       },
@@ -74,7 +74,7 @@
         "question": "Dans une société d'expertise comptable inscrite au tableau, la loi exige que :",
         "choices": [
           "Les experts-comptables détiennent la majorité du capital et la totalité des droits de vote",
-          "Plus des deux tiers des droits de vote soient détenus, directement ou indirectement, par des experts-comptables ou sociétés d'expertise comptable inscrites, sans exigence de majorité du capital",
+          "Plus des deux tiers des droits de vote soient détenus par des experts-comptables ou sociétés d'expertise comptable inscrites",
           "Les trois quarts du capital et des droits de vote soient détenus par des commissaires aux comptes ou experts-comptables",
           "La totalité du capital soit détenue par des professionnels inscrits, les tiers ne pouvant être qu'administrateurs"
         ],
@@ -84,14 +84,14 @@
         "expected": [
           "Plus des deux tiers des droits de vote détenus par des experts-comptables (ou sociétés d'EC inscrites, ou professionnels de l'UE équivalents)",
           "Détention directe ou indirecte admise",
-          "Plus d'exigence de majorité du capital depuis la loi Macron : le reste du capital et des droits de vote est ouvert aux tiers",
-          "Dirigeants (gérants, président, directeur général) membres de l'Ordre ; interdiction de l'offre au public de titres",
+          "Plus d'exigence de majorité du capital depuis l'ordonnance 2014-443 : le reste du capital et des droits de vote est ouvert aux tiers",
+          "Représentants légaux experts-comptables ; seuls peuvent être offerts au public des titres sans accès au capital",
           "Forme sociale libre sauf celles conférant la qualité de commerçant"
         ],
-        "model_answer": "Plus des deux tiers des droits de vote doivent être détenus, directement ou indirectement, par des experts-comptables inscrits ou des sociétés d'expertise comptable inscrites (ou professionnels de l'Union européenne équivalents). Aucune majorité du capital n'est plus exigée depuis la loi Macron, le solde pouvant être détenu par des tiers ; les dirigeants doivent être membres de l'Ordre et l'offre au public de titres est interdite."
+        "model_answer": "Plus des deux tiers des droits de vote doivent être détenus, directement ou indirectement, par des experts-comptables inscrits ou des sociétés d'expertise comptable inscrites (ou professionnels de l'Union européenne équivalents). Aucune majorité du capital n'est plus exigée depuis l'ordonnance du 30 avril 2014, le solde pouvant être détenu par des tiers ; les représentants légaux doivent être des experts-comptables et seuls des titres excluant l'accès au capital peuvent être offerts au public."
       },
-      "explanation": "La loi Macron de 2015 a supprimé l'exigence de majorité du capital pour ne conserver que le verrou des deux tiers des droits de vote. Le piège classique est le parallèle avec les sociétés de CAC, où la condition est différente (majorité des droits de vote aux CAC, règles de l'article sur les sociétés de CAC) et avec les anciennes règles (majorité du capital).",
-      "reference": "Ord. 45-2138 art. 7 (modifié par la loi 2015-990) ; art. 7 ter (AGC) ; D. 2012-432 (inscription des sociétés)",
+      "explanation": "L'ordonnance 2014-443 du 30 avril 2014 a supprimé l'exigence de détention de plus de la moitié du capital pour ne conserver que le verrou des deux tiers des droits de vote. Le piège classique est le parallèle avec les sociétés de CAC, où la condition est différente (majorité des droits de vote aux CAC, C. com. L.821-16), et avec l'ancienne règle (majorité du capital).",
+      "reference": "Ord. 45-2138 art. 7 (modifié par l'ord. 2014-443 du 30 avril 2014, puis l'ord. 2023-77) ; art. 7 ter (AGC) ; C. com. L.821-16 pour le parallèle CAC",
       "confidence": "medium"
     },
     {
@@ -105,10 +105,10 @@
       "qcm": {
         "question": "Parmi les infractions suivantes, laquelle peut être reprochée à l'expert-comptable en qualité d'auteur principal (et non de complice) ?",
         "choices": [
-          "La violation du secret professionnel",
-          "La présentation de comptes annuels infidèles de la société cliente",
-          "La non-révélation de faits délictueux au procureur de la République",
-          "L'abus de biens sociaux commis par le dirigeant du client"
+          "La violation du secret professionnel à l'égard du client",
+          "La présentation de comptes infidèles de la société cliente",
+          "La non-révélation de faits délictueux au procureur",
+          "L'abus de biens sociaux commis par le dirigeant"
         ],
         "answer": 0
       },
@@ -137,9 +137,9 @@
         "question": "Laquelle de ces évolutions a été apportée à l'ordonnance de 1945 par la loi Pacte du 22 mai 2019 ?",
         "choices": [
           "La suppression de l'exigence des deux tiers des droits de vote dans les sociétés d'expertise comptable",
-          "L'instauration d'une présomption simple de mandat (mandat implicite) pour les démarches auprès de l'administration fiscale et des organismes sociaux, et la possibilité de recouvrer les créances et de payer les dettes des clients par leur compte bancaire",
+          "L'instauration d'une présomption de mandat pour les démarches auprès de l'administration fiscale et des organismes sociaux",
           "Le relèvement des seuils de nomination obligatoire du commissaire aux comptes dans les sociétés commerciales",
-          "L'ouverture aux experts-comptables de la certification des comptes des petites entreprises"
+          "L'ouverture aux experts-comptables de la certification des comptes des petites entreprises non cotées"
         ],
         "answer": 1
       },
@@ -170,23 +170,24 @@
         "question": "La chambre régionale de discipline de l'Ordre des experts-comptables est composée (outre le commissaire du gouvernement) :",
         "choices": [
           "D'un président magistrat désigné par le premier président de la cour d'appel et de deux membres élus du conseil régional",
-          "Du président du conseil régional et de quatre experts-comptables tirés au sort",
-          "D'un conseiller d'État et de deux représentants du ministre chargé du budget",
-          "De trois membres du collège de la H2A et du président de la CRCC"
+          "Du président du conseil régional et de quatre experts-comptables tirés au sort parmi les inscrits",
+          "D'un conseiller d'État et de deux représentants du ministre chargé du budget, désignés par arrêté",
+          "De trois membres du collège de la H2A et du président de la compagnie régionale des commissaires aux comptes de la circonscription"
         ],
         "answer": 0
       },
       "qrc": {
         "expected": [
-          "Un président : magistrat de l'ordre judiciaire désigné par le premier président de la cour d'appel",
+          "Un président : magistrat désigné par le premier président de la cour d'appel, parmi les magistrats en activité ou honoraires des cours d'appel de la circonscription",
           "Deux membres titulaires (et suppléants) élus par le conseil régional parmi ses membres",
-          "Le commissaire du gouvernement assiste sans voix délibérative"
+          "Un magistrat chargé des poursuites, rattaché à la chambre, nomme un rapporteur et ne participe pas au délibéré"
         ],
-        "model_answer": "La chambre régionale de discipline est présidée par un magistrat de l'ordre judiciaire désigné par le premier président de la cour d'appel, assisté de deux membres (et suppléants) élus par le conseil régional parmi ses membres. Le commissaire du gouvernement y exerce les fonctions du ministère public sans voix délibérative."
+        "model_answer": "La chambre régionale de discipline est présidée par un magistrat désigné par le premier président de la cour d'appel, assisté de deux membres (et suppléants) élus par le conseil régional parmi ses membres. Un magistrat chargé des poursuites, désigné de la même manière, lui est rattaché : il nomme un rapporteur qui instruit les affaires et ne participe pas aux délibérations."
       },
-      "explanation": "La discipline ordinale de l'EC mêle un magistrat et des pairs élus, avec appel devant la chambre nationale présidée par un conseiller d'État, puis recours devant le Conseil d'État. Le CAC, lui, relève depuis 2016 du régulateur (commission des sanctions de la H2A), d'où le distracteur fondé sur la H2A.",
-      "reference": "Ord. 45-2138 art. 49 et 50 (chambres régionale et nationale de discipline) ; D. 2012-432 (procédure disciplinaire)",
-      "confidence": "high"
+      "explanation": "La discipline ordinale de l'EC mêle un magistrat et des pairs élus, avec appel devant la chambre nationale de discipline, présidée par un magistrat désigné par le garde des sceaux parmi les présidents de chambre de la cour d'appel de Paris, puis recours devant le Conseil d'État. Depuis la loi 2022-172, les fonctions de poursuite (magistrat chargé des poursuites, rapporteur) sont séparées du jugement. Le CAC, lui, relève de la commission des sanctions de la H2A, d'où le distracteur fondé sur la H2A.",
+      "reference": "Ord. 45-2138 art. 49 et 50 (rédaction issue de la loi 2022-172, en vigueur le 14 août 2022) ; D. 2012-432 art. 174 s. (procédure disciplinaire)",
+      "confidence": "high",
+      "update_note": "La loi 2022-172 du 14 février 2022 a rattaché à chaque chambre un magistrat chargé des poursuites qui nomme un rapporteur ; les magistrats peuvent être en activité ou honoraires."
     },
     {
       "id": "2021-05-EC-07",
@@ -199,9 +200,9 @@
       "qcm": {
         "question": "Dans le cadre de référence des missions de l'expert-comptable, les trois textes applicables à toutes les missions sont :",
         "choices": [
-          "Le code de déontologie, la norme de maîtrise de la qualité (NPMQ) et la norme anti-blanchiment (NPLAB)",
-          "Le code de déontologie, la NP 2300 et la NEP 9605",
-          "L'ordonnance de 1945, la norme de présentation et la norme d'audit",
+          "Le code de déontologie, la norme de maîtrise de la qualité et la norme anti-blanchiment",
+          "Le code de déontologie, la norme de présentation NP 2300 et la NEP 9605",
+          "L'ordonnance de 1945, la norme de présentation et la norme d'audit de la CNCC",
           "La NPMQ, la norme sur les procédures convenues et le règlement du contrôle qualité"
         ],
         "answer": 0
@@ -239,7 +240,7 @@
       "qrc": {
         "expected": [
           "Mise en état d'examen des comptes de campagne (code électoral)",
-          "Présentation des comptes annuels du CSE dépassant les seuils (code du travail)",
+          "Présentation des comptes annuels du CSE de taille intermédiaire (C. trav. L.2315-76)",
           "Assistance du CSE pour ses consultations récurrentes ou ponctuelles (code du travail)",
           "Examen de conformité fiscale (ECF) ; visa fiscal des professionnels conventionnés",
           "Attestations prévues par des textes (ex. attestation des comptes d'une entité en vue d'une procédure amiable)"
@@ -247,7 +248,7 @@
         "model_answer": "Sont des missions légales, parce qu'un texte prévoit l'intervention de l'expert-comptable : la mise en état d'examen des comptes de campagne, la présentation des comptes annuels du comité social et économique, l'assistance du CSE pour ses consultations, l'examen de conformité fiscale ou le visa fiscal. La certification des comptes et des informations de durabilité, comme le commissariat aux apports, relèvent du commissaire aux comptes."
       },
       "explanation": "Mission légale signifie prévue par un texte, pas mission légale de contrôle. Les distracteurs sont des missions légales du CAC : certification, commissariat aux apports (ou expert inscrit sur une liste judiciaire), certification de durabilité (CAC ou OTI). Le jury relève souvent cette confusion.",
-      "reference": "C. élect. art. L.52-12 ; C. trav. art. L.2315-69 et L.2315-78 s. ; CGI art. 1649 quater L (visa fiscal) ; décret 2021-25 (examen de conformité fiscale)",
+      "reference": "C. élect. art. L.52-12 ; C. trav. art. L.2315-76 et L.2315-78 s. ; CGI art. 1649 quater L (visa fiscal) ; décret 2021-25 (examen de conformité fiscale)",
       "confidence": "medium"
     },
     {
@@ -261,10 +262,10 @@
       "qcm": {
         "question": "Un expert-comptable peut-il accepter, comme seule mission pour un nouveau client, un accompagnement dans la transition numérique de l'entreprise ?",
         "choices": [
-          "Non : les missions de conseil ne peuvent être réalisées que pour les clients dont l'EC tient ou présente les comptes",
-          "Oui : depuis la loi Macron, les missions de conseil en organisation ne sont plus subordonnées à une mission comptable, sous réserve de la déontologie et de la lettre de mission",
-          "Non : cette mission relève des services interdits par le règlement européen de 2014",
-          "Oui, mais uniquement si la mission est confiée par le commissaire aux comptes de l'entreprise"
+          "Non : les missions de conseil ne peuvent être réalisées que pour les clients dont l'EC tient ou présente les comptes annuels",
+          "Oui : depuis la loi Macron, les missions de conseil en organisation ne sont plus subordonnées à une mission comptable",
+          "Non : cette mission relève des services interdits par le règlement européen de 2014 pour les entités d'intérêt public",
+          "Oui, mais uniquement si la mission est confiée par le commissaire aux comptes de l'entreprise, qui en assure le suivi"
         ],
         "answer": 1
       },
@@ -292,10 +293,10 @@
       "qcm": {
         "question": "Dans une mission de présentation (NP 2300), les contrôles par épreuves sur la qualité des enregistrements comptables consistent à :",
         "choices": [
-          "Vérifier, sur un échantillon de pièces et d'écritures, que les opérations sont justifiées, correctement imputées et enregistrées sur la bonne période",
-          "Procéder à une circularisation des tiers et à une observation physique des stocks",
-          "Évaluer le contrôle interne et tester les contrôles clés de l'entité",
-          "Recalculer l'intégralité des écritures pour obtenir une assurance raisonnable"
+          "Vérifier par sondage que les écritures sont justifiées, bien imputées et enregistrées sur la bonne période",
+          "Procéder à une circularisation des tiers et à une observation physique des stocks en fin d'exercice",
+          "Évaluer le contrôle interne de l'entité et tester ses contrôles clés sur l'ensemble de la période",
+          "Recalculer l'intégralité des écritures de l'exercice afin d'obtenir une assurance raisonnable"
         ],
         "answer": 0
       },
@@ -309,8 +310,8 @@
         ],
         "model_answer": "Il s'agit de sondages portant sur un échantillon de pièces justificatives et d'écritures afin de vérifier que les opérations sont justifiées par une pièce, correctement imputées (compte, montant, sens) et enregistrées sur la bonne période. Ces contrôles, qui ne visent pas l'exhaustivité, permettent d'apprécier la qualité de la tenue et complètent les contrôles de cohérence et de vraisemblance."
       },
-      "explanation": "La présentation ne comporte ni évaluation du contrôle interne, ni procédures d'audit externes (circularisation, inventaire physique), ni recalcul exhaustif ; ces techniques relèvent de l'audit (NP 2100 ou NEP). Les contrôles par épreuves sont un niveau intermédiaire adapté à une assurance modérée sur la cohérence et la vraisemblance.",
-      "reference": "NP 2300 (mission de présentation des comptes), paragraphes relatifs aux travaux de contrôle",
+      "explanation": "La présentation ne comporte ni évaluation du contrôle interne (NP 2300 § 10), ni contrôle de la réalité et de l'exhaustivité des opérations ou des inventaires physiques (§ A4), ni recalcul exhaustif ; ces techniques relèvent de l'audit (normes ISA ou NP 2910 pour l'expert-comptable, NEP pour le CAC). Les contrôles par épreuves du § 11, prévus lorsque la comptabilité est tenue par l'entité, sont un niveau intermédiaire adapté à une assurance modérée sur la cohérence et la vraisemblance.",
+      "reference": "NP 2300 § 10, 11 et A4",
       "confidence": "medium"
     },
     {
@@ -324,10 +325,10 @@
       "qcm": {
         "question": "Pour l'élection du conseil régional d'une compagnie régionale des commissaires aux comptes, sont électeurs :",
         "choices": [
-          "Les commissaires aux comptes personnes physiques inscrits dans le ressort de la compagnie, à condition d'être à jour de leurs cotisations",
-          "Les seuls commissaires aux comptes détenant au moins un mandat de certification en cours",
-          "Les sociétés de commissaires aux comptes uniquement, par l'intermédiaire de leur représentant légal",
-          "Tous les inscrits, personnes physiques et morales, à condition d'avoir prêté serment depuis plus de trois ans"
+          "Les commissaires aux comptes personnes physiques inscrits dans le ressort de la compagnie, à jour de leurs cotisations",
+          "Les seuls commissaires aux comptes détenant au moins un mandat de certification en cours dans le ressort",
+          "Les sociétés de commissaires aux comptes uniquement, par l'intermédiaire de leur représentant légal inscrit",
+          "Tous les inscrits, personnes physiques et morales, à condition d'avoir prêté serment depuis plus de trois ans et d'exercer au moins un mandat"
         ],
         "answer": 0
       },
@@ -387,24 +388,25 @@
         "question": "S'agissant de la lettre de mission du commissaire aux comptes pour la certification des comptes :",
         "choices": [
           "Elle est facultative puisque la mission est définie par la loi et que le CAC est nommé par l'assemblée",
-          "Elle est obligatoire selon la NEP 210, afin de définir les termes et conditions de la mission et d'éviter tout malentendu entre le CAC et l'entité",
+          "Elle est obligatoire selon la NEP 210, afin de définir les termes et conditions de la mission",
           "Elle est obligatoire uniquement pour les entités d'intérêt public, à la demande du comité d'audit",
-          "Elle est remplacée par la lettre d'affirmation signée par la direction"
+          "Elle est remplacée par la lettre d'affirmation prévue par la NEP 580, signée par la direction en fin de mission"
         ],
         "answer": 1
       },
       "qrc": {
         "expected": [
-          "Oui, la NEP 210 impose l'établissement d'une lettre de mission avant la mise en œuvre des travaux",
-          "Justification 1 : définir les termes et conditions de l'intervention (nature et étendue des travaux, obligations respectives, calendrier, honoraires, intervenants)",
-          "Justification 2 : s'assurer d'une compréhension commune et éviter tout malentendu avec l'entité",
-          "Mise à jour lorsque des changements le justifient ; en co-commissariat, lettre commune ou coordonnée"
+          "Oui, la NEP 210 impose au CAC d'établir une lettre de mission la première année de son mandat, communiquée avant la mise en œuvre de ses travaux",
+          "Elle définit les modalités de la mission (objectif et étendue, calendrier, signataires, répartition entre co-commissaires, recours à des experts, budget d'honoraires)",
+          "Elle rappelle les obligations de l'entité (communication des documents, libre accès) ; le CAC demande l'accord de l'entité sur son contenu",
+          "Révision en cas de modification importante des modalités ; en co-commissariat, lettre conjointe ou lettres individuelles après échange"
         ],
-        "model_answer": "Oui : la NEP 210 impose au commissaire aux comptes d'établir une lettre de mission au début de son intervention. Elle a pour objet de définir les termes et conditions de la mission (nature et étendue des travaux, obligations respectives, calendrier, honoraires, intervenants) et d'assurer une compréhension commune entre le CAC et l'entité pour éviter tout malentendu. Elle est actualisée en cas de changement significatif."
+        "model_answer": "Oui : la NEP 210 impose au commissaire aux comptes d'établir une lettre de mission la première année de son mandat et de la communiquer à l'entité avant de commencer ses travaux. Elle définit les modalités de la mission (objectif et étendue des travaux, calendrier, signataires, recours à des experts, budget d'honoraires) et rappelle les obligations de l'entité, le CAC demandant l'accord de celle-ci sur son contenu. Elle est révisée en cas de modification importante des modalités de la mission."
       },
       "explanation": "Même si la mission est d'origine légale, la NEP 210 impose la lettre de mission pour fixer les modalités pratiques et les obligations de l'entité. Ne pas confondre avec la lettre d'affirmation (NEP 580), obtenue en fin de mission. Chez l'EC, la lettre de mission est également obligatoire mais sa source est le code de déontologie, car la mission y est contractuelle.",
-      "reference": "NEP 210 (lettre de mission du commissaire aux comptes) ; NEP 580 (déclarations de la direction) ; pour l'EC : D. 2012-432 art. 151",
-      "confidence": "high"
+      "reference": "NEP 210 (A.821-62, lettre de mission) ; NEP 580 (A.821-79, déclarations de la direction) ; pour l'EC : D. 2012-432 art. 151",
+      "confidence": "high",
+      "update_note": "NEP 210 révisée (A.821-62) : lettre établie la première année du mandat, accord de l'entité demandé sur son contenu, révision en cas de modification importante des modalités de la mission."
     },
     {
       "id": "2021-05-CAC-14",
@@ -418,9 +420,9 @@
         "question": "En cas d'absorption d'une société de commissaires aux comptes par une autre société de commissaires aux comptes, les mandats de l'absorbée :",
         "choices": [
           "Prennent fin de plein droit et une nouvelle nomination doit intervenir à la prochaine assemblée",
-          "Sont poursuivis par la société absorbante jusqu'à leur terme, l'entité contrôlée pouvant toutefois décider de ne pas les maintenir",
-          "Sont transférés au commissaire aux comptes suppléant de l'absorbée",
-          "Sont attribués par le président de la compagnie régionale à un autre cabinet"
+          "Sont poursuivis par la société absorbante jusqu'à leur terme, l'entité pouvant décider de ne pas les maintenir",
+          "Sont transférés au commissaire aux comptes suppléant de l'absorbée, qui les exerce jusqu'à leur terme",
+          "Sont attribués par le président de la compagnie régionale à un autre cabinet après avis de l'entité"
         ],
         "answer": 1
       },
@@ -450,9 +452,9 @@
         "question": "Laquelle de ces entités est une entité d'intérêt public (EIP) au sens du code de commerce ?",
         "choices": [
           "Une société anonyme non cotée dépassant les seuils de nomination du commissaire aux comptes",
-          "Une entreprise d'assurance régie par le code des assurances",
+          "Une entreprise d'assurance ou de réassurance soumise au contrôle de l'ACPR",
           "Une association recevant plus de 153 000 euros de subventions publiques",
-          "Une société dont les titres sont négociés sur Euronext Growth (système multilatéral de négociation)"
+          "Une société cotée sur Euronext Growth (système multilatéral de négociation)"
         ],
         "answer": 1
       },
@@ -467,9 +469,9 @@
         "model_answer": "Sont des EIP, notamment, les sociétés dont les titres sont admis sur un marché réglementé, les établissements de crédit, les entreprises d'assurance et de réassurance, les institutions de prévoyance et mutuelles dépassant certains seuils, ainsi que les fonds de retraite professionnelle supplémentaire."
       },
       "explanation": "La qualité d'EIP tient à la nature de l'entité (cotation sur marché réglementé, activité bancaire ou assurantielle), pas à sa taille ni au dépassement des seuils CAC. Euronext Growth n'est pas un marché réglementé. Les associations subventionnées ont un CAC obligatoire mais ne sont pas des EIP.",
-      "reference": "C. com. art. L.820-1 (définition des EIP, ex art. L.820-1 III) ; règlement UE 537/2014 ; directive 2006/43/CE art. 2",
+      "reference": "C. com. art. L.821-2 II (définition des EIP, ex L.820-1 III) ; règlement UE 537/2014 ; directive 2006/43/CE art. 2",
       "confidence": "high",
-      "update_note": "La définition des EIP figure désormais à l'article L.820-1 recodifié (ordonnance 2023-1142) ; liste inchangée sur le fond."
+      "update_note": "La définition des EIP figure désormais au II de l'article L.821-2 recodifié (ordonnance 2023-1142) ; liste inchangée sur le fond."
     },
     {
       "id": "2021-05-CAC-16",
@@ -482,27 +484,27 @@
       "qcm": {
         "question": "Lequel de ces éléments constitue, selon le code de déontologie des commissaires aux comptes, un indice d'appartenance à un réseau ?",
         "choices": [
-          "Le partage de ressources, d'une méthodologie ou d'une dénomination commune et la mise en commun de résultats",
-          "L'inscription des associés dans la même compagnie régionale",
-          "Le recours au même assureur de responsabilité civile professionnelle",
-          "La participation aux mêmes formations continues organisées par la CNCC"
+          "Une dénomination commune, une clientèle habituelle commune et un partage des résultats",
+          "L'inscription des associés dans la même compagnie régionale et leur participation aux mêmes instances de la CNCC",
+          "Le recours au même assureur de responsabilité civile professionnelle et au même courtier d'assurance",
+          "La participation aux mêmes formations continues organisées par la CNCC ou par la compagnie régionale"
         ],
         "answer": 0
       },
       "qrc": {
         "expected": [
-          "Direction, coordination ou contrôle commun, au niveau national ou international",
-          "Mise en commun des résultats ou des honoraires, ou partage de revenus",
-          "Partage de ressources : moyens techniques, personnel, méthodologie, procédures de contrôle qualité",
-          "Utilisation d'une dénomination ou d'un signe distinctif commun",
-          "Relations commerciales communes développées de façon habituelle (clientèle commune, démarchage conjoint)"
+          "Direction ou coordination communes au niveau national ou international",
+          "Mécanisme de partage des revenus ou des résultats, ou de transferts de rémunération ou de coûts ; commissions rétribuant des apports d'affaires",
+          "Dénomination ou signe distinctif communs ; clientèle habituelle commune",
+          "Documents destinés au public présentant le réseau et faisant mention de compétences pluridisciplinaires",
+          "Élaboration ou développement d'outils techniques communs (sauf association technique dédiée)"
         ],
-        "model_answer": "Révèlent l'appartenance à un réseau, notamment, une direction ou coordination commune, la mise en commun de résultats ou d'honoraires, le partage de ressources significatives (personnel, méthodologie, moyens techniques, contrôle qualité), l'usage d'une dénomination ou d'un signe distinctif commun, et l'existence de relations commerciales communes habituelles."
+        "model_answer": "Constituent des indices d'appartenance à un réseau : une direction ou une coordination communes, tout mécanisme de partage des revenus ou des résultats, la possibilité de commissions d'apport d'affaires, une dénomination ou un signe distinctif communs, une clientèle habituelle commune, des documents publics présentant des compétences pluridisciplinaires, et des outils techniques communs (hors association technique ayant ce seul objet)."
       },
       "explanation": "L'appartenance à un réseau se déduit d'un faisceau d'indices économiques et organisationnels, non de l'appartenance aux mêmes institutions professionnelles. Elle importe car les services rendus par les membres du réseau à l'entité contrôlée sont pris en compte pour apprécier l'indépendance, et sont interdits chez les EIP pour les services de la liste.",
-      "reference": "Code de déontologie des CAC (annexe 8-1), dispositions relatives au réseau (ex art. 22, art. 29 dans la version 2020) ; C. com. art. L.820-1 (définition du réseau)",
-      "confidence": "medium",
-      "update_note": "Le code de déontologie a été mis à jour en 2024 après la recodification ; la numérotation de l'article relatif au réseau peut avoir changé."
+      "reference": "Code de déontologie des CAC (annexe 8-1), titre II, section 3, art. 29 (indices a à g) et 30 ; C. com. L.821-4 I",
+      "confidence": "high",
+      "update_note": "L'article relatif au réseau est toujours l'article 29 ; depuis le décret 2026-176, il vise un réseau n'ayant pas pour activité exclusive « la certification des comptes ou des informations en matière de durabilité » et prévoit la saisine pour avis de la H2A en cas de doute."
     },
     {
       "id": "2021-05-CAC-17",
@@ -515,10 +517,10 @@
       "qcm": {
         "question": "Selon le code de déontologie des commissaires aux comptes, l'importance des diligences qui détermine la rémunération s'apprécie notamment au regard :",
         "choices": [
-          "De la taille, de la nature et de la complexité des activités de l'entité, et des particularités de la mission ou prestation",
-          "Du résultat net de l'entité et du dividende distribué",
-          "Du nombre de mandats détenus par le cabinet et de son chiffre d'affaires",
-          "De la capacité financière de l'entité et de l'accord du comité d'audit"
+          "De la taille, de la nature et de la complexité des activités de l'entité, et des particularités de la mission",
+          "Du résultat net de l'entité et du dividende distribué aux actionnaires au titre de l'exercice",
+          "Du nombre de mandats détenus par le cabinet et de son chiffre d'affaires global, en pourcentage du total des honoraires",
+          "De la capacité financière de l'entité et de l'accord préalable de son comité d'audit sur le montant"
         ],
         "answer": 0
       },
@@ -532,9 +534,9 @@
         "model_answer": "L'importance des diligences s'apprécie en fonction de la taille de l'entité, de la nature de ses activités, de leur complexité et des particularités de la mission ou prestation. Les honoraires ne peuvent dépendre du résultat ni d'un lien de dépendance financière."
       },
       "explanation": "Le principe est que les honoraires reflètent les diligences, pas la richesse du client ni le succès de l'opération : les honoraires conditionnés à un résultat sont interdits, ce qui est aussi vrai pour les missions comptables de l'EC. Pour la certification, le barème légal d'heures encadre en outre le volume de travail.",
-      "reference": "Code de déontologie des CAC (annexe 8-1), Titre I, dispositions relatives aux honoraires (art. 12 dans la version 2020) ; C. com. D.821-188 (barème d'heures, ex R.823-12)",
-      "confidence": "medium",
-      "update_note": "Numérotation de l'article susceptible d'avoir évolué avec la mise à jour 2024 du code de déontologie."
+      "reference": "Code de déontologie des CAC (annexe 8-1), Titre I, section 3, art. 12 (honoraires : principe général) ; C. com. D.821-188 (barème d'heures, ex R.823-12)",
+      "confidence": "high",
+      "update_note": "Numérotation inchangée : le principe figure toujours à l'article 12 du code (version issue du décret 2026-176, qui l'étend aux organismes tiers indépendants)."
     },
     {
       "id": "2021-05-CAC-18",
@@ -547,9 +549,9 @@
       "qcm": {
         "question": "Deux co-commissaires aux comptes ne parviennent pas à s'accorder sur la répartition de leurs travaux. Ils doivent en premier lieu :",
         "choices": [
-          "Saisir le président de la compagnie régionale des commissaires aux comptes en vue d'une conciliation",
+          "Saisir le président de la compagnie régionale pour tenter une conciliation",
           "Demander à l'assemblée générale de l'entité de trancher la répartition",
-          "Saisir directement la commission des sanctions de la H2A",
+          "Saisir directement la commission des sanctions de la H2A pour trancher le différend",
           "Démissionner tous deux pour difficulté dans l'accomplissement de la mission"
         ],
         "answer": 0
@@ -563,7 +565,7 @@
         "model_answer": "Ils doivent d'abord saisir le président de la compagnie régionale des commissaires aux comptes, chargé de tenter une conciliation sur la répartition de leurs travaux et de leurs honoraires. La répartition doit demeurer équilibrée et les travaux de chacun font l'objet d'un examen contradictoire conformément à la NEP 100."
       },
       "explanation": "Le président de la CRCC est l'organe de conciliation naturel des différends entre confrères, comme pour les litiges d'honoraires. L'entité contrôlée n'a pas à arbitrer entre ses commissaires, et la H2A n'intervient qu'en cas de manquement, pas pour organiser la mission. Chez l'EC, le président du conseil régional joue un rôle de conciliation comparable.",
-      "reference": "C. com. partie réglementaire sur le co-commissariat (ex art. R.823-18, renuméroté en 2024) ; NEP 100 (audit des comptes réalisé par plusieurs commissaires aux comptes)",
+      "reference": "Code de déontologie CAC (annexe 8-1 C. com.) art. 24 I et art. 8 ; C. com. D.821-41 (conciliation par le président de la CRCC) ; L.821-62 ; NEP 100 (A.821-65)",
       "confidence": "high"
     },
     {
@@ -577,10 +579,10 @@
       "qcm": {
         "question": "Un commissaire aux comptes exposé à une situation à risque ne peut mettre en œuvre de mesures de sauvegarde suffisantes. Il doit :",
         "choices": [
-          "Refuser la mission ou, si elle est en cours, y mettre fin en démissionnant pour motif légitime",
-          "Poursuivre la mission en mentionnant la situation dans son rapport",
-          "Solliciter une dérogation auprès du président de la compagnie régionale",
-          "Transférer la mission à un membre de son réseau non exposé au risque"
+          "Refuser la mission ou, si elle est en cours, y mettre fin en démissionnant",
+          "Poursuivre la mission en mentionnant la situation dans son rapport sur les comptes",
+          "Solliciter une dérogation auprès du président de la compagnie régionale ou de la H2A",
+          "Transférer la mission à un membre de son réseau non exposé au risque, avec l'accord de l'entité"
         ],
         "answer": 0
       },
@@ -593,7 +595,7 @@
         "model_answer": "Il doit refuser la mission ou la prestation ou, si elle est déjà engagée, y mettre fin : l'impossibilité de prendre des mesures de sauvegarde suffisantes constitue un motif légitime de démission. L'analyse de la situation et des mesures envisagées doit être documentée dans le dossier."
       },
       "explanation": "L'indépendance est une condition de la mission : sans sauvegarde possible, la seule issue est le refus ou la cessation. Il n'existe pas de dérogation ordinale (à ne pas confondre avec la dérogation au barème d'heures) et la situation ne peut être purgée par une simple mention dans le rapport. Le transfert à un membre du réseau ne règle rien puisque le réseau est pris en compte dans l'analyse.",
-      "reference": "Code de déontologie des CAC (annexe 8-1), art. 5 (situations à risque et mesures de sauvegarde) ; C. com. dispositions sur la démission pour motif légitime (ex art. L.823-7 et R.823-5, recodifiés en 2024)",
+      "reference": "Code de déontologie des CAC (annexe 8-1) art. 5 III (fin de la mission si sauvegardes insuffisantes) et art. 28 (démission : motif légitime I d, justification au dossier, information de la H2A IV) ; C. com. A.821-55 § 30 et 34",
       "confidence": "high"
     },
     {
@@ -605,27 +607,27 @@
       "points": 2,
       "question": "Depuis la loi Pacte du 22 mai 2019 il n'existe plus de liste de services interdits applicables au commissaire aux comptes qui exerce une mission de certification des comptes (3 ou 6 exercices) auprès d'une entité non-EIP. Néanmoins la loi Pacte a instauré, vis-à-vis du commissaire aux comptes d'une entité non-EIP, deux situations d'interdiction d'acceptation ou de poursuite de la mission. Quelles sont ces deux situations ?",
       "qcm": {
-        "question": "Pour le commissaire aux comptes d'une entité non-EIP, la loi Pacte interdit de fournir des services autres que la certification lorsque ceux-ci :",
+        "question": "Pour le commissaire aux comptes d'une entité non-EIP, la loi Pacte interdit d'accepter ou de poursuivre la mission de certification lorsque :",
         "choices": [
-          "Placent le commissaire aux comptes en situation d'autorévision ou constituent une immixtion dans la gestion",
-          "Figurent sur la liste des services interdits du règlement européen de 2014",
-          "Représentent plus de 70 % des honoraires de certification",
-          "Sont de nature fiscale ou juridique, quelle qu'en soit la nature"
+          "Il existe un risque d'autorévision, ou son indépendance est compromise sans mesure de sauvegarde possible",
+          "Les services fournis figurent sur la liste des services interdits du règlement européen de 2014 sur l'audit des EIP",
+          "Les services autres que la certification dépassent 70 % des honoraires de certification",
+          "Il fournit des services de nature fiscale ou juridique, quelle qu'en soit l'ampleur"
         ],
         "answer": 0
       },
       "qrc": {
         "expected": [
-          "Situation d'autorévision : le CAC serait conduit à contrôler ses propres travaux ou ceux de son réseau",
-          "Immixtion dans la gestion : services conduisant à prendre des décisions ou à participer à la gestion de l'entité",
-          "Approche par les risques et mesures de sauvegarde pour les autres services (code de déontologie)"
+          "Risque d'autorévision : le CAC serait conduit à se prononcer sur des éléments résultant de prestations fournies par lui-même ou par son réseau",
+          "Indépendance compromise sans que des mesures de sauvegarde appropriées puissent être mises en œuvre",
+          "Pour les autres situations à risque : démarche risques et sauvegardes du code de déontologie (art. 19)"
         ],
-        "model_answer": "Chez une entité non-EIP, le commissaire aux comptes ne peut accepter ou poursuivre la mission s'il fournit des services le plaçant en situation d'autorévision, c'est-à-dire de contrôle de ses propres travaux, ou constituant une immixtion dans la gestion de l'entité. Pour les autres services, il applique l'approche par les risques et les mesures de sauvegarde du code de déontologie."
+        "model_answer": "Chez une entité non-EIP, le commissaire aux comptes ne peut accepter ou poursuivre sa mission de certification lorsqu'il existe un risque d'autorévision, ou lorsque son indépendance est compromise et que des mesures de sauvegarde appropriées ne peuvent être mises en œuvre (C. com. L.821-28 IV). Pour les autres situations à risque, il applique la démarche risques et sauvegardes du code de déontologie."
       },
-      "explanation": "La loi Pacte a remplacé, pour les non-EIP, la liste de services interdits par deux interdictions de principe (autorévision, immixtion) assorties de l'approche par les risques. La liste du règlement européen et le plafond d'honoraires de 70 % ne concernent que les EIP ; c'est le distracteur attendu. Le CAC doit en outre tenir compte des services rendus par son réseau.",
-      "reference": "C. com. ex art. L.822-11 II (version loi Pacte), recodifié L.821-28 s. en 2024 ; code de déontologie des CAC (annexe 8-1), Titre II ; règlement UE 537/2014 art. 4 et 5 (EIP)",
-      "confidence": "medium",
-      "update_note": "Les interdictions issues de la loi Pacte ont été reprises dans les articles L.821-x lors de la recodification de 2024 ; vérifier la rédaction exacte et la numérotation."
+      "explanation": "La loi Pacte a remplacé, pour les non-EIP, la liste de services interdits par deux interdictions d'accepter ou de poursuivre la mission (risque d'autorévision ; indépendance compromise sans sauvegarde possible), reprises à l'article L.821-28 IV. La liste du règlement européen et le plafond d'honoraires de 70 % ne concernent que les EIP ; c'est le distracteur attendu. L'immixtion dans la gestion, interdite par ailleurs (L.821-54), n'est pas l'une de ces deux situations. Le CAC doit en outre tenir compte des services rendus par son réseau (art. 19 du code).",
+      "reference": "C. com. art. L.821-28 IV (ex L.822-11 II, version loi Pacte) ; code de déontologie des CAC (annexe 8-1) art. 5 et 19 ; règlement UE 537/2014 art. 4 et 5 (EIP)",
+      "confidence": "high",
+      "update_note": "Recodification 2024 : les deux interdictions issues de la loi Pacte figurent désormais à l'article L.821-28 IV, étendu à la certification des informations en matière de durabilité."
     }
   ]
 }
