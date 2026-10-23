@@ -69,6 +69,64 @@ def check_question(q: dict, session: str) -> None:
         err(pre + "question vide")
 
 
+FENCES = {"vs", "echelle", "frise", "etapes", "arbre"}
+
+
+def front_matter(text: str) -> tuple[dict, str]:
+    """Entête « --- / clé: valeur / --- » en tête de fiche (même format que js/bank.js)."""
+    m = re.match(r"---\n(.*?)\n---\n?", text.replace("\r", ""), re.S)
+    if not m:
+        return {}, text
+    meta = {}
+    for line in m.group(1).splitlines():
+        kv = re.match(r"(\w+)\s*:\s*(.*)$", line.strip())
+        if kv:
+            meta[kv.group(1)] = kv.group(2).strip()
+    return meta, text.replace("\r", "")[m.end():]
+
+
+def resolve_questions(spec: str, questions: list, fname: str) -> list[str]:
+    """Sélecteurs séparés par des espaces : un id (2019-05-CAC-12) ou PROF:tag (EC:lcb_ft, CAC:eip, *:formation)."""
+    out: list[str] = []
+    by_id = {q["id"] for q in questions}
+    for tok in spec.split():
+        if ":" in tok:
+            prof, tag = tok.split(":", 1)
+            if tag not in TAGS:
+                err(f"fiche {fname}: tag inconnu '{tag}'")
+                continue
+            if prof not in ("EC", "CAC", "*"):
+                err(f"fiche {fname}: profession inconnue '{prof}'")
+                continue
+            hits = [q["id"] for q in questions if tag in q["tags"] and (prof == "*" or q["profession"] == prof)]
+            if not hits:
+                err(f"fiche {fname}: aucune question pour '{tok}'")
+            out += hits
+        elif tok in by_id:
+            out.append(tok)
+        else:
+            err(f"fiche {fname}: question inconnue '{tok}'")
+    seen = set()
+    return [i for i in out if not (i in seen or seen.add(i))]
+
+
+def check_blocks(body: str, fname: str) -> None:
+    """Blocs ``` fermés et de type connu."""
+    open_type = None
+    for line in body.splitlines():
+        m = re.match(r"```(\w*)\s*$", line)
+        if not m:
+            continue
+        if open_type is None:
+            if m.group(1) not in FENCES:
+                err(f"fiche {fname}: bloc inconnu '{m.group(1)}'")
+            open_type = m.group(1) or "?"
+        else:
+            open_type = None
+    if open_type is not None:
+        err(f"fiche {fname}: bloc ```{open_type} non fermé")
+
+
 def main() -> int:
     check = "--check" in sys.argv
     files = sorted(BANK.glob("*.json"))
@@ -108,8 +166,16 @@ def main() -> int:
     fiches = []
     if FICHES.exists():
         for f in sorted(FICHES.glob("*.md")):
-            first = next((l for l in f.read_text(encoding="utf-8").splitlines() if l.startswith("# ")), f.stem)
-            fiches.append({"file": f.name, "title": first.lstrip("# ").strip()})
+            text = f.read_text(encoding="utf-8")
+            meta, body = front_matter(text)
+            first = next((l for l in body.splitlines() if l.startswith("# ")), f.stem)
+            entry = {"file": f.name, "title": first.lstrip("# ").strip()}
+            if meta.get("type"):
+                entry["kind"] = meta["type"]
+            if meta.get("questions"):
+                entry["questions"] = resolve_questions(meta["questions"], questions, f.name)
+            check_blocks(body, f.name)
+            fiches.append(entry)
 
     out = {
         "generatedAt": None,

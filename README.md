@@ -31,7 +31,7 @@ Programme officiel (arrêté du 13 février 2019) : exercice de la profession ·
 - **Réviser** : répétition espacée (SM-2 simplifié). Cartes dues + nouvelles cartes (CAC en premier). Format QCM, QRC ou mixte.
 - **Entraîner** : série ciblée par profession, thème, sujet ; ou « mes 20 questions les plus ratées ».
 - **Examen** : 10 EC + 10 CAC, 60 min chrono, QCM ou QRC avec auto-correction, note /20, détail par thème.
-- **Fiches** : synthèses par thème (chiffres, instances, listes).
+- **Fiches** : synthèses par thème (chiffres, instances, listes) et 12 **schémas** (cadre normatif, niveaux d'assurance, comparatifs EC / CAC, frises, arbres de décision). Chaque schéma lance une série sur les questions qu'il résume, et chaque explication renvoie au schéma correspondant.
 - **Stats** : maîtrise par thème × profession, points faibles, historique des examens.
 - **Carrière** : 8 grades, du stagiaire de 1re année à l'expert-comptable installé. Le bureau évolue et se remplit des objets gagnés.
 - **Collection** : 209 badges en 7 familles (couverture, séries, maîtrise, repassage, anecdotes de carrière, chiffres et pièges, cachés). Catalogue complet dans `BADGES.md`.
@@ -55,6 +55,6 @@ python3 -m http.server 8080   # puis http://localhost:8080
 ```
 
 - `data/bank/<session>.json` : une session = 20 questions (schéma dans `data/SCHEMA.md`).
-- `data/fiches/*.md` : fiches de synthèse.
+- `data/fiches/*.md` : fiches de synthèse. Une fiche-schéma commence par une entête `---` / `type: visuel` / `questions: EC:tag CAC:tag 2019-05-CAC-12` / `---` (sélecteurs `PROF:tag` ou identifiants, vérifiés au build) et peut contenir des blocs ```` ```vs ```` (comparatif « critère | EC | CAC », première ligne `= | A | B` pour d'autres intitulés), ```` ```echelle ````, ```` ```frise ````, ```` ```etapes ```` (« repère | texte ») et ```` ```arbre ```` (indentation de 2 espaces ; préfixes `?` question, `=` conclusion, `!` interdit). Pastilles : `{EC}`, `{CAC}`, `{!}` piège, `{?}` à vérifier.
 - `scripts/fetch_annales.sh` : re-télécharge les sujets officiels et les rapports de jury.
 - Déploiement : GitHub Pages publie directement la branche `main` (https://romankimes-dot.github.io/Dec-Deonto/). Le workflow `.github/workflows/verifications.yml` ne fait que les vérifications (tests, banque, badges).
