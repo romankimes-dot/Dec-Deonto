@@ -159,7 +159,7 @@
       "qcm": {
         "choices": [
           "Certification sans réserve ou certification avec réserve du cabinet",
-          "Lettre de conclusion sans observation, ou avec observations et recommandations, éventuellement assortie d'un nouveau contrôle dans un délai donné ou d'une saisine disciplinaire",
+          "Lettre de conclusion du président du conseil régional sans observation, avec simples observations, ou avec observations et nouveau contrôle sur place à l'issue d'un an ; saisine possible de la chambre de discipline en cas de nouveaux manquements",
           "Agrément ou retrait d'agrément du cabinet par le commissaire du gouvernement",
           "Avertissement, blâme ou radiation prononcés directement par le contrôleur qualité"
         ],
@@ -167,15 +167,17 @@
       },
       "qrc": {
         "expected": [
-          "Conclusion sans observation (ou avec simples recommandations)",
-          "Conclusion avec observations, éventuellement assortie d'un nouveau contrôle (contrôle de suivi) dans un délai déterminé",
-          "Transmission au président du conseil régional en vue d'une éventuelle saisine de la chambre régionale de discipline en cas de manquements graves"
+          "Lettre de conclusion du président du conseil régional sans observation",
+          "Lettre avec simples observations, éventuellement assortie d'une convocation dans le bureau du président",
+          "Lettre avec observations et décision d'un nouveau contrôle sur place à l'issue d'un an, avec formation spécifique obligatoire possible aux frais du contrôlé",
+          "En cas de nouveaux manquements : saisine possible de la chambre de discipline (ord. art. 31)"
         ],
-        "model_answer": "À l'issue du contrôle, le conseil régional adresse au professionnel une lettre de conclusion qui peut être sans observation, ou comporter des observations et recommandations, le cas échéant avec un nouveau contrôle dans un délai fixé. En cas de manquements graves, le dossier peut être transmis en vue d'une saisine de la chambre régionale de discipline."
+        "model_answer": "Au vu du rapport du contrôleur, le président du conseil régional conclut le contrôle par une lettre sans observation, avec simples observations (éventuellement assortie d'une convocation dans son bureau) ou avec observations et décision d'un nouveau contrôle sur place à l'issue d'un an, pouvant imposer une formation spécifique. En cas de nouveaux manquements, la chambre de discipline peut être saisie."
       },
-      "explanation": "Le contrôle de qualité de l'Ordre n'est pas une procédure disciplinaire : le contrôleur établit un rapport, le conseil régional en tire une conclusion (sans observation, avec observations, nouveau contrôle). Ce n'est que si des manquements graves sont relevés que le président du conseil régional peut saisir la chambre de discipline. À distinguer du contrôle d'activité des CAC, conduit sous l'autorité de la H2A, qui peut déboucher sur des recommandations de la formation d'examen des contrôles ou sur la saisine du rapporteur général (C. com. R.820-47, L.821-73).",
-      "reference": "D. 2012-432 (contrôle de qualité) ; règlement intérieur de l'Ordre (art. 400 s.) ; C. com. R.820-47 pour le parallèle CAC",
-      "confidence": "low"
+      "explanation": "Le contrôle de qualité de l'Ordre n'est pas une procédure disciplinaire : le contrôleur établit une note de synthèse puis un rapport, et le président du conseil régional en tire la conclusion (RI art. 427 à 430). La chambre de discipline n'intervient qu'en cas de nouveaux manquements. À distinguer du contrôle d'activité des CAC, conduit sous l'autorité de la H2A, qui peut déboucher sur des recommandations de la formation d'examen des contrôles ou sur la saisine du rapporteur général (C. com. R.820-47, L.821-73).",
+      "reference": "Règlement intérieur de l'Ordre (arrêté du 6 mars 2024), art. 427 à 430 ; ord. 45-2138 art. 31 ; C. com. R.820-47 pour le parallèle CAC",
+      "confidence": "high",
+      "update_note": "Conclusions fixées par l'art. 430 du RI agréé par arrêté du 6 mars 2024."
     },
     {
       "id": "2022-11-EC-07",
@@ -470,9 +472,9 @@
         "model_answer": "À la date du sujet, la décision rendue par la formation restreinte du H3C sur un litige d'honoraires pouvait être contestée devant la cour d'appel de Paris. Depuis la recodification de 2024, la H2A n'est plus compétente pour trancher ces litiges : en cas de désaccord sur la rémunération de la mission de certification, le président de la compagnie régionale tente une conciliation dans un délai de trois mois et, à défaut, le litige relève des juridictions de droit commun."
       },
       "explanation": "La loi Pacte avait confié au H3C statuant en formation restreinte les litiges relatifs à la rémunération des CAC, après disparition des chambres régionales de discipline. L'ordonnance 2023-1142 a réorganisé la H2A (collège, bureau, formation d'examen des contrôles, commission des sanctions) sans reprendre cette compétence contentieuse : seule subsiste la conciliation par le président de la CRCC (R.821-196). Ne pas confondre avec la dérogation au barème d'heures, dont le recours de dernier niveau relève du bureau de la H2A puis du tribunal administratif.",
-      "reference": "C. com. art. R.821-196 (ex R.823-18) ; ex L.823-18-1 et ex L.821-1 (H3C formation restreinte, abrogés) ; L.820-2",
-      "confidence": "low",
-      "update_note": "La formation restreinte du H3C a disparu avec la H2A (ordonnance 2023-1142, en vigueur le 1er janvier 2024) ; la voie de recours antérieure (cour d'appel de Paris) est indiquée sous réserve de vérification."
+      "reference": "C. com. R.821-196 (ex R.823-18) ; L.820-1 et L.820-2 (missions et formations de la H2A) ; A.821-65 (NEP 100 § 22) ; ex L.823-18-1 et ex L.821-1 (abrogés)",
+      "confidence": "medium",
+      "update_note": "La formation restreinte du H3C a disparu avec la H2A (ordonnance 2023-1142, 1er janvier 2024). L'absence de compétence de la H2A est confirmée par R.821-196 (seule conciliation, trois mois) et par L.820-1/L.820-2 ; la voie de recours antérieure (cour d'appel de Paris) n'a pas été vérifiée dans les textes abrogés."
     },
     {
       "id": "2022-11-CAC-17",
@@ -533,8 +535,8 @@
       },
       "explanation": "Depuis la loi Pacte, le CAC peut fournir des prestations à des entités dont il ne certifie pas les comptes ; ces prestations restent soumises au code de déontologie et doivent faire l'objet d'une lettre de mission (R.821-195). Elles sont retracées dans la déclaration d'activité annuelle à la CRCC (D.821-186 VI), qui permet le suivi de l'activité par la profession et la H2A. Le barème d'heures ne s'applique pas à ces prestations, dont les honoraires sont fixés par la lettre de mission.",
       "reference": "C. com. art. D.821-186 VI (ex R.823-10) ; R.821-195 (lettre de mission) ; L.821-2 IV",
-      "confidence": "low",
-      "update_note": "Les dispositions du titre I du code de déontologie de 2020 relatives à la conduite des prestations (anciens art. 10-1 et 11) ont été abrogées par le décret 2026-176 ; la réponse s'appuie sur la déclaration d'activité annuelle prévue par la partie réglementaire du code de commerce. Point à vérifier."
+      "confidence": "high",
+      "update_note": "Abrogation des art. 10-1 et 11 du code de déontologie par le décret 2026-176 vérifiée ; contenu de la déclaration d'activité vérifié à D.821-186 VI 4° (liste des personnes ou entités, nature des missions ou prestations, montant total des honoraires)."
     },
     {
       "id": "2022-11-CAC-19",

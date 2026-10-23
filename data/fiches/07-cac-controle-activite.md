@@ -15,7 +15,7 @@
   - **coopération** (CEAOB européen, autorités de pays tiers).
 - **Délégations actuelles à la CNCC**, sous la supervision de la H2A :
   - suivi de la **formation continue** ;
-  - **contrôles d'activité des CAC qui n'ont pas de mandat d'EIP**, par **conventions de délégation homologuées par arrêté** (2017, 19/05/2023, nouvelle convention homologuée le **6/07/2026**).
+  - **contrôles d'activité des CAC qui n'ont pas de mandat d'EIP**, par **conventions de délégation homologuées par arrêté** (2017, 19/05/2023, nouvelle convention homologuée par arrêté du **2 juillet 2026**).
 - L'**inscription et la tenue de la liste** restent assurées par la **H2A elle-même**.
 - **Services internes** : direction des contrôles (**contrôleurs salariés** de la H2A) ; **rapporteur général** et **service des enquêtes** ; commission des sanctions (fiche 08).
 
@@ -30,8 +30,8 @@
 ### Qui contrôle ?
 | Population | Contrôleur | Périodicité |
 |---|---|---|
-| CAC titulaires de **mandats d'EIP** | **Contrôleurs de la H2A** (agents de la H2A), **sans délégation** | **Tous les 3 ans** (**6 ans** pour les EIP qui ne sont pas de grande taille, au sens du règlement UE art. 26) |
-| CAC **sans mandat d'EIP** | **Délégués à la CNCC** par la H2A (convention homologuée par arrêté, la dernière le 6/07/2026). Ce n'est **pas un simple concours**. Les contrôles sont menés par des **CAC contrôleurs** de la CNCC et des CRCC, selon le cahier des charges et sous la **supervision de la H2A** | **Au moins tous les 6 ans** |
+| CAC titulaires de **mandats d'EIP** | **Contrôleurs de la H2A** (agents de la H2A), **sans délégation** | **Tous les 3 ans** pour les CAC des EIP visées au **i) de l'art. 26 § 2** du règlement UE (les plus grandes) ; sinon **au moins tous les 6 ans** (R.820-49) |
+| CAC **sans mandat d'EIP** | **Délégués à la CNCC** par la H2A (convention homologuée par arrêté, la dernière le 2 juillet 2026). Ce n'est **pas un simple concours**. Les contrôles sont menés par des **CAC contrôleurs** de la CNCC et des CRCC, selon le cahier des charges et sous la **supervision de la H2A** | **Au moins tous les 6 ans** |
 
 - Le contrôle porte sur la **structure** (société de CAC), sur les **CAC personnes physiques** et sur leurs **mandats**. Il s'étend à la **LCB-FT**, puisque la H2A est l'autorité de contrôle des CAC au sens du C. mon. fin.
 
@@ -69,7 +69,7 @@
    - **recommandations** et **suivi** ;
    - **injonction ou mise en demeure** (à vérifier) ;
    - **transmission au rapporteur général**, qui peut ouvrir une **enquête**, puis **saisine du collège** et **poursuites** devant la **commission des sanctions**.
-- Si l'agent constate des **faits susceptibles de blanchiment** : la **H2A en informe Tracfin**.
+- Si les contrôleurs constatent des **faits susceptibles de blanchiment** : ils en **informent eux-mêmes Tracfin** (L.820-18).
 
 ## 3. Revue indépendante (EIP)
 - Elle est imposée par le **règlement UE 537/2014 art. 8**. Les travaux de **certification des comptes d'une EIP** font l'objet d'une **revue indépendante avant la signature du rapport**.
@@ -116,11 +116,10 @@
 - **Champ** : le contrôle de qualité de l'Ordre **exclut le CAC** ; le contrôle H2A ne vise **que l'activité de CAC** (et de durabilité).
 - **Revue indépendante** : pour l'EC, c'est une **règle interne de la NPMQ** ; pour le CAC, une **obligation légale** pour les EIP (règlement UE).
 - **Suites** : chez l'EC, transmission au **président du CROEC**, puis éventuelle **chambre régionale de discipline** ; chez le CAC, transmission au **rapporteur général**, puis au **collège**, puis à la **commission des sanctions**.
-- **Blanchiment découvert pendant un contrôle** : c'est la **H2A** qui informe Tracfin pour le CAC, et l'**Ordre** pour l'EC.
+- **Blanchiment découvert pendant un contrôle** : chez le CAC, ce sont **les contrôleurs** qui informent Tracfin ; chez l'EC, l'information passe par l'**Ordre**.
 
 ## À vérifier
 - **Les quatre modalités officielles** du contrôle d'activité (annale 2023-11 Q15) : la fiche retient périodique, occasionnel, thématique et suivi.
-- **Périodicité EIP** : 3 ans pour toutes les EIP, ou 6 ans pour les plus petites ?
 - **Liste réglementaire des vérifications** du contrôleur (annale 2019-05 Q18 ; R.821-x).
 - **Mesures post-contrôle** dont dispose la H2A (recommandations, injonctions, mises en demeure).
 - **Normes de qualité applicables** (ISQM 1 / 2 homologuées ?).

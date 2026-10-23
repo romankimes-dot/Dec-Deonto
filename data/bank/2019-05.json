@@ -318,7 +318,7 @@
       "qcm": {
         "question": "Qui élabore les projets de normes de déontologie, de contrôle interne de qualité et d'exercice professionnel des commissaires aux comptes ?",
         "choices": [
-          "Une commission paritaire composée de membres de l'autorité de supervision (H3C, aujourd'hui H2A) et de commissaires aux comptes désignés par la CNCC, présidée par l'autorité",
+          "Une commission de normalisation placée auprès de la H2A, présidée par un membre du collège de la H2A et composée de deux commissaires aux comptes (désignés sur proposition de la CNCC) et d'une personnalité qualifiée en matière économique et financière",
           "Le Conseil national de la CNCC seul, l'autorité de supervision se bornant à homologuer",
           "Une commission mixte réunissant le Conseil national de l'Ordre des experts-comptables et la CNCC",
           "Le garde des sceaux, après avis de l'Autorité des normes comptables"
@@ -327,17 +327,18 @@
       },
       "qrc": {
         "expected": [
-          "Commission instituée auprès de l'autorité de supervision (H3C, désormais H2A)",
-          "Composition paritaire : membres de l'autorité et commissaires aux comptes désignés par la CNCC",
-          "Présidence assurée par l'autorité de supervision (président ou représentant)",
-          "Les normes sont ensuite adoptées par l'autorité et homologuées par arrêté du garde des sceaux"
+          "Commission de normalisation placée auprès de la Haute autorité de l'audit (L.820-4 I 2°)",
+          "Présidée par un membre du collège de la H2A, élu par le collège",
+          "Composée en outre de deux commissaires aux comptes, désignés sur proposition de la CNCC, et d'une personnalité qualifiée en matière économique et financière",
+          "Membres désignés par le collège pour trois ans, renouvelables une fois",
+          "Projet adopté par la formation plénière du collège après avis de la CNCC, puis homologué par arrêté du garde des sceaux (L.820-23)"
         ],
-        "model_answer": "Les projets de normes sont élaborés par une commission placée auprès de l'autorité de supervision, composée à parité de membres de cette autorité et de commissaires aux comptes désignés par la CNCC, et présidée par l'autorité. Les normes sont ensuite adoptées par la Haute autorité de l'audit et homologuées par arrêté du garde des sceaux."
+        "model_answer": "Les projets sont élaborés par une commission de normalisation placée auprès de la H2A, présidée par un membre du collège et composée de deux commissaires aux comptes désignés sur proposition de la CNCC et d'une personnalité qualifiée en matière économique et financière, nommés pour trois ans renouvelables une fois. Le collège adopte la norme après avis de la CNCC et la transmet pour homologation au garde des sceaux."
       },
-      "explanation": "La réforme de 2016 a transféré à l'autorité publique le pouvoir d'adopter les normes, tout en associant la profession à leur élaboration par une commission paritaire. Piège EC/CAC : les normes de l'expert-comptable sont élaborées par le Conseil national de l'Ordre et agréées par arrêté du ministre chargé du budget ; l'Ordre n'intervient pas dans les normes de commissariat aux comptes.",
-      "reference": "C. com. ex L.821-14 (commission d'élaboration des normes), recodifié L.820-x en 2024 ; A.821-x (normes homologuées)",
-      "confidence": "low",
-      "update_note": "H3C remplacé par la H2A au 1er janvier 2024 ; la composition exacte de la commission (nombre de membres, participation des auditeurs de durabilité) est à vérifier dans la rédaction recodifiée."
+      "explanation": "La réforme de 2016 avait créé une commission paritaire auprès du H3C. Depuis l'ordonnance 2023-1142 et la loi 2025-391, deux commissions de normalisation, de même président, sont placées auprès de la H2A : l'une pour la durabilité, l'autre pour la déontologie, le contrôle interne de qualité, l'exercice des autres missions et les prestations. Piège EC/CAC : les normes de l'EC sont élaborées par le Conseil national de l'Ordre et agréées par le ministre chargé de l'économie ; l'Ordre n'intervient pas dans les normes de commissariat aux comptes.",
+      "reference": "C. com. L.820-1 I 2°, L.820-4 (rédaction loi 2025-391), L.820-23 ; normes homologuées A.821-54 s.",
+      "confidence": "high",
+      "update_note": "H3C → H2A au 1er janvier 2024 ; la commission paritaire (ancien L.821-14) est remplacée par deux commissions de normalisation (L.820-4, modifié par la loi 2025-391 du 30 avril 2025)."
     },
     {
       "id": "2019-05-CAC-12",
@@ -359,16 +360,16 @@
       },
       "qrc": {
         "expected": [
-          "Déléguée à la CNCC : le suivi du respect des obligations de formation continue (y compris la formation particulière)",
-          "Déléguée à la CNCC : la réalisation des contrôles d'activité des commissaires aux comptes n'exerçant pas de mission auprès d'EIP, dans le cadre et selon les orientations définis par l'autorité, qui en supervise la réalisation",
-          "Non déléguée : l'inscription et la tenue de la liste, conservées par l'autorité de supervision ; les contrôles des CAC d'EIP ne sont jamais délégables"
+          "Déléguée à la CNCC : le suivi du respect des obligations de formation continue (convention homologuée par arrêté du 19 mai 2023)",
+          "Déléguée à la CNCC : la réalisation des contrôles d'activité des CAC sans mission EIP (arrêté du 19 mai 2023, puis convention du 6 mai 2026 homologuée par arrêté du 2 juillet 2026)",
+          "Non déléguée aujourd'hui : l'inscription et la tenue de la liste, déléguées de 2017 à novembre 2020 puis reprises par le H3C ; les contrôles des CAC d'EIP ne sont jamais délégables (L.820-14)"
         ],
-        "model_answer": "Le H3C a décidé le 21 juillet 2016 de déléguer à la CNCC deux missions, par conventions homologuées par arrêté du garde des sceaux (2017, renouvelées en 2023) : le suivi du respect des obligations de formation continue et la réalisation des contrôles d'activité des commissaires aux comptes non EIP. Il a conservé l'inscription et la tenue de la liste ; les contrôles des CAC d'EIP relèvent toujours de ses propres contrôleurs."
+        "model_answer": "Aujourd'hui, deux missions sont déléguées à la CNCC par conventions homologuées par arrêté : le suivi du respect de la formation continue et la réalisation des contrôles d'activité des commissaires aux comptes non EIP. L'inscription et la tenue de la liste, déléguées entre 2017 et novembre 2020, sont de nouveau assurées directement par l'autorité ; les contrôles des CAC d'EIP relèvent toujours de ses propres contrôleurs."
       },
-      "explanation": "La délégation est une faculté, exercée par convention homologuée entre l'autorité et la CNCC : le H3C, puis la H2A, a délégué la formation continue et les contrôles non-EIP, tout en définissant le cadre et les orientations des contrôles et en supervisant leur réalisation. Les contrôles des cabinets ayant des mandats EIP ne peuvent pas être délégués (exigence européenne). Rien de comparable chez les experts-comptables, où l'Ordre exerce lui-même le contrôle qualité.",
-      "reference": "C. com. ex L.821-1 II et ex L.821-9 al. 2 (délégations à la CNCC), recodifiés L.820-x en 2024 ; arrêtés du 25 avril 2017 et du 19 mai 2023 portant homologation des conventions de délégation (contrôles non-EIP ; formation continue) ; arrêté du 6 juillet 2026 (nouvelle convention H2A-CNCC sur les contrôles non-EIP)",
+      "explanation": "La délégation est une faculté (L.820-1 II), exercée par convention homologuée par arrêté du garde des sceaux. À la date du sujet (2019), les trois missions étaient déléguées ; le H3C a résilié la délégation de l'inscription à compter du 5 novembre 2020. Les contrôles des cabinets ayant des mandats EIP ne peuvent pas être délégués (L.820-14). Rien de comparable chez les experts-comptables, où l'Ordre organise lui-même le contrôle de qualité.",
+      "reference": "C. com. L.820-1 II, L.820-14 ; arrêtés du 19 mai 2023 (JO 26 mai 2023) homologuant les conventions de délégation (contrôles non-EIP ; formation continue) ; arrêté du 2 juillet 2026 homologuant la convention du 6 mai 2026 (contrôles non-EIP) ; communiqué du H3C du 5 mai 2020 (fin de la délégation de l'inscription)",
       "confidence": "medium",
-      "update_note": "Relecture : réponse corrigée. Les conventions homologuées en 2017 puis en 2023 (JO du 26 mai 2023) délèguent à la CNCC la formation continue et les contrôles non-EIP, et non l'inscription ; la délégation des contrôles non-EIP a été reconduite par la H2A (convention homologuée par arrêté du 6 juillet 2026). Le maintien de l'inscription par l'autorité est déduit de l'absence de convention sur ce point."
+      "update_note": "Délégation de l'inscription résiliée par le H3C au 5 novembre 2020 (réponse à la date du sujet : les trois missions). Nouvelle convention H2A-CNCC sur les contrôles non-EIP homologuée par arrêté du 2 juillet 2026 (et non du 6 juillet)."
     },
     {
       "id": "2019-05-CAC-13",
@@ -413,7 +414,7 @@
       "qcm": {
         "question": "Une société de commissaires aux comptes est absorbée par une autre société de commissaires aux comptes. Que deviennent les mandats de la société absorbée ?",
         "choices": [
-          "Ils sont transmis à la société absorbante par l'effet de la transmission universelle du patrimoine et se poursuivent jusqu'à leur terme, sous réserve de l'inscription de l'absorbante et de l'information des entités concernées",
+          "Ils sont poursuivis par la société absorbante jusqu'à leur date d'expiration, l'assemblée ou l'organe compétent de l'entité contrôlée pouvant, à sa première réunion après l'absorption, délibérer sur leur maintien après avoir entendu le commissaire aux comptes",
           "Ils prennent fin de plein droit et chaque entité doit désigner un nouveau commissaire aux comptes pour un mandat de six exercices",
           "Ils sont transmis au signataire personne physique, qui les poursuit à titre individuel",
           "Ils sont suspendus jusqu'à décision de la H2A autorisant le transfert"
@@ -422,17 +423,17 @@
       },
       "qrc": {
         "expected": [
-          "Transmission universelle du patrimoine de l'absorbée à l'absorbante : les mandats se poursuivent jusqu'à leur terme",
-          "Condition : la société absorbante est inscrite sur la liste",
-          "Information des entités contrôlées (et de la compagnie régionale / H2A) ; continuité du signataire si possible",
-          "Pour les EIP, la durée des mandats transmis se décompte depuis la nomination initiale (rotation)"
+          "La société absorbante poursuit les mandats de l'absorbée jusqu'à leur date d'expiration (L.821-48 al. 1)",
+          "Par dérogation, l'assemblée ou l'organe compétent de l'entité peut, lors de sa première réunion postérieure à l'absorption, délibérer sur le maintien du mandat",
+          "Le commissaire aux comptes est préalablement entendu",
+          "L'absorbante doit être inscrite et vérifier l'absence d'incompatibilité"
         ],
-        "model_answer": "La fusion entraîne la transmission universelle du patrimoine de la société absorbée : ses mandats sont repris par la société absorbante, inscrite sur la liste, qui les poursuit jusqu'à leur terme normal. Les entités contrôlées en sont informées, et les règles de rotation se calculent en tenant compte de l'ancienneté du mandat transmis."
+        "model_answer": "Les mandats ne prennent pas fin : la société absorbante les poursuit jusqu'à leur date d'expiration. Toutefois, par dérogation aux règles de durée du mandat, l'assemblée générale ou l'organe compétent de chaque entité contrôlée peut, lors de sa première réunion qui suit l'absorption, délibérer sur le maintien du mandat après avoir entendu le commissaire aux comptes."
       },
-      "explanation": "La question oppose le caractère intuitu personae du mandat à la transmission universelle du patrimoine propre aux fusions ; la pratique retient la continuité des mandats au profit de l'absorbante inscrite, ce qui évite de rompre des mandats en cours. En revanche, un commissaire aux comptes personne physique qui cesse son activité ne transmet pas ses mandats : l'entité doit procéder à une nouvelle nomination.",
-      "reference": "C. com. art. L.236-3 (transmission universelle du patrimoine) ; doctrine CNCC sur les fusions de sociétés de commissaires aux comptes ; C. com. ex L.823-3 (durée du mandat), recodifié en 2024",
-      "confidence": "low",
-      "update_note": "Position doctrinale à confirmer (CNCC) ; numérotation du livre VIII recodifiée en 2024."
+      "explanation": "La loi règle expressément la question (L.821-48) : continuité des mandats au profit de l'absorbante, sans nouvelle nomination, mais faculté pour l'entité de remettre en cause le mandat à la première réunion de son organe compétent. Le fondement est cette disposition spéciale, non la seule transmission universelle du patrimoine. Question reposée en mai 2026 (Q11).",
+      "reference": "C. com. L.821-48 ; L.821-44 (durée du mandat)",
+      "confidence": "high",
+      "update_note": "Règle légale figurant à L.821-48 depuis la recodification du 1er janvier 2024."
     },
     {
       "id": "2019-05-CAC-15",
@@ -454,15 +455,15 @@
       },
       "qrc": {
         "expected": [
-          "Premier exercice audité : mention que les comptes de l'exercice précédent (comparatifs et bilan d'ouverture) n'ont pas été audités",
-          "Mention dans le rapport sur les comptes annuels (NEP 510)",
-          "Travaux spécifiques sur le bilan d'ouverture ; réserve seulement si les diligences sont impossibles et l'incidence significative"
+          "Premier exercice certifié : mention, à la fin de l'introduction du rapport, que les comptes de l'exercice précédent n'ont pas fait l'objet d'une certification (NEP 510 § 15)",
+          "Procédures spécifiques sur le bilan d'ouverture (NEP 510 § 09 à 11)",
+          "Réserve seulement si les procédures sont impossibles et l'incidence significative (§ 12 à 14)"
         ],
-        "model_answer": "S'agissant d'un premier audit, le commissaire aux comptes indique dans son rapport que les comptes de l'exercice précédent, présentés à titre de comparatifs, n'ont pas fait l'objet d'un audit. Cette mention ne vaut pas réserve : il met en œuvre des diligences sur le bilan d'ouverture et ne formule de réserve que s'il ne peut obtenir d'éléments suffisants sur un point significatif."
+        "model_answer": "S'agissant d'un premier audit, le commissaire aux comptes indique, à la fin de l'introduction de son rapport, que les comptes de l'exercice précédent n'ont pas fait l'objet d'une certification par un commissaire aux comptes. Cette mention ne vaut pas réserve : il met en œuvre des procédures sur le bilan d'ouverture et n'apprécie l'incidence sur son opinion que s'il ne peut obtenir d'éléments suffisants sur un point significatif."
       },
       "explanation": "La nomination en cours d'exercice ne fait pas obstacle à la certification de l'exercice entier ; la question porte sur l'information du lecteur quant au caractère non audité des comparatifs. Le distracteur relatif au prédécesseur est exclu par l'énoncé (aucun commissaire aux comptes antérieur). Sur les seuils de nomination, se référer aux chiffres applicables depuis 2024.",
-      "reference": "NEP 510 (contrôle du bilan d'ouverture à l'occasion du premier exercice certifié) ; NEP 700 (rapport sur les comptes annuels)",
-      "confidence": "medium"
+      "reference": "NEP 510 (C. com. A.821-87) § 09 à 15 ; NEP 710 (A.821-88) ; NEP 700 (A.821-92)",
+      "confidence": "high"
     },
     {
       "id": "2019-05-CAC-16",
@@ -572,7 +573,7 @@
       "qcm": {
         "question": "Quelle formalité le commissaire aux comptes doit-il accomplir auprès de sa compagnie régionale lorsqu'il obtient un nouveau mandat de certification ?",
         "choices": [
-          "Déclarer le nouveau mandat à la compagnie régionale, qui tient à jour la liste de ses mandats, et le faire figurer dans sa déclaration annuelle d'activité (mandats, honoraires, heures)",
+          "Notifier sa nomination au conseil régional de sa compagnie dans les huit jours, par lettre recommandée avec avis de réception ou par voie électronique ; la mission figure ensuite dans sa déclaration annuelle d'activité",
           "Demander à la compagnie régionale l'autorisation préalable d'accepter le mandat",
           "Déposer la lettre de mission signée au greffe de la compagnie régionale sous huit jours",
           "Aucune formalité, la nomination étant publiée au registre du commerce"
@@ -581,16 +582,17 @@
       },
       "qrc": {
         "expected": [
-          "Déclaration du nouveau mandat à la compagnie régionale (information de la CRCC)",
-          "Mise à jour de la déclaration d'activité (liste des mandats, honoraires, heures), remise chaque année",
-          "Pas d'autorisation préalable : la CRCC est informée, elle n'autorise pas"
+          "Notification de la nomination au conseil régional de la compagnie dont il est membre (D.821-173)",
+          "Dans un délai de huit jours, par LRAR ou par voie électronique (accusé de réception du conseil régional, qui informe le Conseil national)",
+          "Pas d'autorisation préalable ; déclaration renouvelée en cas de transfert hors du ressort",
+          "Mission reprise ensuite dans la déclaration annuelle d'activité (D.821-186 VI)"
         ],
-        "model_answer": "Le commissaire aux comptes doit déclarer son nouveau mandat à la compagnie régionale dont il relève, qui tient la liste des mandats de ses membres, et le reporter dans la déclaration annuelle d'activité adressée à la compagnie (mandats détenus, honoraires, heures de travail). Aucune autorisation préalable n'est requise."
+        "model_answer": "Il doit notifier sa nomination au conseil régional de la compagnie dont il est membre dans un délai de huit jours, par lettre recommandée avec demande d'avis de réception ou par voie électronique ; le conseil régional en informe le Conseil national. Il ne s'agit pas d'une autorisation. Le mandat figure ensuite dans la déclaration annuelle d'activité adressée à la compagnie régionale."
       },
-      "explanation": "La déclaration des mandats permet à la compagnie et à l'autorité de supervision de programmer les contrôles d'activité et de vérifier le respect des règles d'indépendance et du barème. Il ne faut pas confondre cette information avec une autorisation ; l'acceptation d'un mandat relève de la seule responsabilité du commissaire aux comptes. L'expert-comptable n'a pas d'obligation équivalente de déclaration de ses missions à l'Ordre.",
-      "reference": "C. com. D.821-186 (déclaration d'activité auprès de la compagnie régionale, ex R.823-10) ; règlement intérieur de la CNCC",
-      "confidence": "low",
-      "update_note": "Partie réglementaire recodifiée au 1er janvier 2024 (déclaration d'activité : D.821-186). Relecture : l'existence d'une déclaration ponctuelle de chaque nouveau mandat (et son délai), distincte de la déclaration annuelle d'activité, n'a pas pu être vérifiée."
+      "explanation": "La notification dans les huit jours (D.821-173) permet à la profession et à la H2A de suivre les mandats, de programmer les contrôles et de vérifier l'indépendance ; elle s'ajoute à la déclaration annuelle d'activité (D.821-186 VI). Ce n'est pas une autorisation : l'acceptation relève de la seule responsabilité du commissaire aux comptes, qui tient lui-même la liste de ses mandats (D.821-186 I).",
+      "reference": "C. com. D.821-173 (notification de la nomination) ; D.821-186 I et VI (liste des mandats, déclaration d'activité)",
+      "confidence": "high",
+      "update_note": "Partie réglementaire recodifiée au 1er janvier 2024 : notification des nominations à l'article D.821-173."
     },
     {
       "id": "2019-05-CAC-20",

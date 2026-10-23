@@ -23,6 +23,7 @@ questions: CAC:nomination_seuils CAC:mandat_duree_cessation CAC:demission_revoca
 
 ```frise
 Nomination | Par l'assemblée ; **suppléant** obligatoire si le titulaire est une personne physique ou une société unipersonnelle
+8 jours | Le CAC **notifie** sa nomination au **conseil régional** de sa compagnie
 30 jours | Délai pour demander en justice la **récusation**, pour juste motif
 Exercice de nomination | La mission porte sur les comptes de l'**exercice au cours duquel** le CAC est nommé
 6 exercices | Fin du mandat après l'assemblée qui statue sur les comptes du **6e exercice** (**3** en ALPE)
@@ -54,5 +55,6 @@ EIP : cabinet | **10 ans**, jusqu'à **16 ans** après appel d'offres, **24 ans*
 | Co-commissariat (comptes consolidés) | **2 CAC**, pas du même réseau, répartition **équilibrée** (une répartition 90 / 10 est refusée) |
 | Désaccord sur la répartition | **Président de la CRCC** (conciliation) |
 | Barème d'heures (certification, hors ALPE) | Fourchettes selon bilan + produits ; **taux horaire libre** |
-| Dérogation au barème | **Président de la CRCC**, recours devant la **H2A** |
+| Dérogation au barème | **Président de la CRCC**, puis **président de la CNCC**, puis **bureau de la H2A**, puis **tribunal administratif** |
+| Litige sur le montant des honoraires | **Président de la CRCC** (conciliation en 3 mois), puis le **juge** |
 | SACC d'une EIP | Plafond de **70 %** de la moyenne des honoraires d'audit sur **3 ans** |

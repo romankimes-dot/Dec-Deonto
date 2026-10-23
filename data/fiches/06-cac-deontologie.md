@@ -82,7 +82,7 @@
 - Sont **incompatibles** les **liens personnels** entre une personne qui occupe une **fonction sensible** dans l'entité et :
   - le **CAC** ;
   - un **membre de la direction** de la société de CAC.
-- Les **liens personnels** sont les **liens familiaux** (conjoint, partenaire de PACS, concubin, ascendants, descendants, collatéraux proches et alliés) et les **liens d'amitié** ou de **communauté d'intérêts** (à vérifier).
+- **Lien personnel** (code de déontologie, art. 32 I) : le lien entre **ascendant et descendant au 1er degré**, entre **collatéraux au 1er degré** (frères et sœurs), et entre **conjoints, partenaires de PACS ou concubins**. Les liens d'amitié ne sont pas visés par cette définition.
 
 ### Fonctions sensibles (art. 31) : 3 catégories
 1. **Membres des organes** d'administration, de direction ou de surveillance, et **dirigeants**.
@@ -221,7 +221,7 @@
 - **Décret n° 2026-176 du 11/03/2026** : son incidence sur la publicité et la sollicitation des CAC.
 - **Intitulé exact et champ** des deux **normes de déontologie** (A.821-54 s.) (annale 2024-05 Q12).
 - **Les cinq « dispositions complémentaires »** du titre II (annale 2021-11 Q17).
-- **Définition réglementaire du « lien personnel »** (annale 2018-05 Q20) et **les 3 catégories de fonctions sensibles** de l'art. 31.
+- **Les 3 catégories de fonctions sensibles** de l'art. 31.
 - **Délais des interdictions temporaires** (dirigeant après la fin du mandat ; CAC après la fin des fonctions de dirigeant ou salarié) et distinction EIP / non-EIP.
 - **Version actuelle de L.821-3** (après l'ordonnance 2023-1142) sur les services interdits aux non-EIP (annale 2026-05 Q17).
 - **Instance à saisir** en cas de doute sur l'appartenance à un réseau : H2A ou CNCC (annale 2024-11 Q14).

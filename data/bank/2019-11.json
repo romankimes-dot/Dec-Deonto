@@ -238,17 +238,17 @@
       "qrc": {
         "question": "Que prévoit la NP 3100 quant aux types d'attestations particulières, à leur niveau d'assurance et à leur objet ?",
         "expected": [
-          "Deux types : attestation directe (information établie par l'expert-comptable) et attestation indirecte (information établie par l'entité et vérifiée)",
-          "Niveau d'assurance variable selon la nature de l'information et les diligences : raisonnable ou modéré, précisé dans l'attestation",
-          "Objet : toute information autre que des comptes complets historiques, de nature comptable, financière, mais aussi d'autre nature (sociale, environnementale…) dès lors qu'elle est vérifiable",
+          "Deux types : attestation directe (l'expert-comptable a contribué à l'élaboration de l'information) et attestation indirecte (information élaborée par l'entité et vérifiée)",
+          "Niveau d'assurance modéré ou raisonnable selon la mission convenue, précisé dans l'attestation (§ 10)",
+          "Objet : informations de nature comptable ou financière, juridique ou sociale, ou de toute autre nature (absentéisme, gaz à effet de serre…) (§ 9)",
           "Lettre de mission spécifique et formulation adaptée"
         ],
-        "model_answer": "La NP 3100 permet à l'expert-comptable d'émettre des attestations directes, sur des informations qu'il a lui-même établies, ou indirectes, sur des informations préparées par l'entité et qu'il vérifie. Le niveau d'assurance n'est pas uniforme : il dépend des diligences mises en œuvre et doit être indiqué dans l'attestation. L'objet n'est pas limité aux données comptables ou financières, mais à toute information vérifiable autre que des comptes complets historiques."
+        "model_answer": "La NP 3100 permet des attestations directes, lorsque l'expert-comptable a contribué à l'élaboration de l'information, ou indirectes, lorsqu'elle a été élaborée par l'entité et qu'il la vérifie. L'assurance peut être modérée ou raisonnable selon la mission convenue. L'objet n'est pas limité aux données comptables ou financières : il peut s'agir d'informations juridiques, sociales ou de toute autre nature."
       },
       "explanation": "Chaque proposition contient une restriction que la norme n'impose pas : exclusivité des attestations indirectes, assurance toujours modérée, objet purement comptable ou financier. La réponse attendue est donc « aucune ». Les attestations particulières s'opposent aux comptes complets historiques par leur objet, non par leur nature.",
-      "reference": "NP 3100 (missions d'assurance sur des informations autres que des comptes complets historiques : attestations particulières)",
-      "confidence": "low",
-      "update_note": "Relecture : la possibilité d'une assurance raisonnable ou modérée en NP 3100 est confirmée (choix convenu entre les parties), ce qui rend fausse la proposition b ; restent à vérifier dans la norme l'absence de restriction de l'objet (proposition c) et la définition exacte des attestations directes et indirectes."
+      "reference": "NP 3100 agréée par arrêté du 13 avril 2022 (annexe 2), § 9 et § 10",
+      "confidence": "high",
+      "update_note": "Les trois restrictions sont contredites par la NP 3100 en vigueur (arrêté du 13 avril 2022) : attestations directes et indirectes (§ 9), assurance modérée ou raisonnable (§ 10), informations de toute nature (§ 9)."
     },
     {
       "id": "2019-11-EC-09",
@@ -265,22 +265,22 @@
           "L'élaboration des normes professionnelles applicables à l'activité d'expertise comptable",
           "L'organisation de la formation et le perfectionnement professionnel des membres de l'Ordre"
         ],
-        "answer": 1
+        "answer": 0
       },
       "qrc": {
         "question": "Quelles sont les attributions du Conseil national de l'Ordre des experts-comptables, et qui édicte le code de déontologie de la profession ?",
         "expected": [
-          "Représentation de la profession auprès des pouvoirs publics, coordination des conseils régionaux, règlement intérieur",
-          "Élaboration des normes professionnelles (agréées par arrêté du ministre chargé du budget) et du référentiel",
-          "Organisation de la formation et du perfectionnement professionnel (les cotisations des membres sont fixées et recouvrées par les conseils régionaux, ord. art. 31 7°)",
-          "Le code de déontologie est édicté par décret en Conseil d'État (intégré au décret 2012-432) : le Conseil national le propose mais ne l'adopte pas"
+          "Conseil national : préparation du code de déontologie (édicté par décret en Conseil d'État) et contrôle de son respect ; règlement intérieur (D. 2012-432 art. 29 1°)",
+          "Élaboration des règles professionnelles, soumises à l'agrément du ministre chargé de l'économie (art. 29 3°)",
+          "Faculté d'organiser la formation et le perfectionnement professionnel ; représentation de l'Ordre et coordination des conseils régionaux",
+          "Les cotisations des membres sont fixées et recouvrées par les seuls conseils régionaux (ord. art. 31 7°) ; le Conseil national ne fixe que des redevances imposées aux conseils régionaux"
         ],
-        "model_answer": "Le Conseil national représente la profession, coordonne les conseils régionaux, élabore les normes professionnelles ensuite agréées par arrêté ministériel et organise la formation. Le code de déontologie, en revanche, n'est pas édicté par l'Ordre : il résulte d'un décret en Conseil d'État, l'Ordre n'ayant qu'un rôle de proposition."
+        "model_answer": "Le Conseil national prépare le code de déontologie, édicté par décret en Conseil d'État, et en fait respecter les prescriptions ; il élabore les normes professionnelles agréées par le ministre chargé de l'économie et peut organiser la formation. En revanche, la fixation et le recouvrement des cotisations des membres relèvent du seul conseil régional."
       },
-      "explanation": "La question oppose les actes de l'Ordre (normes, formation) à un texte réglementaire de l'État (code de déontologie, décret 2012-432). Parallèle utile : le code de déontologie des commissaires aux comptes est lui aussi un décret en Conseil d'État, et les normes d'exercice professionnel sont adoptées par la H2A puis homologuées par arrêté, la CNCC n'ayant plus de pouvoir normatif propre.",
-      "reference": "Ord. 45-2138 art. 31 (conseils régionaux, dont 7° : fixation et recouvrement des cotisations), art. 37 (1° à 7° abrogés) et art. 84 bis ; D. 2012-432 (attributions du Conseil national ; art. 141 s. : code de déontologie)",
-      "confidence": "low",
-      "update_note": "Le Conseil supérieur a été renommé Conseil national de l'Ordre des experts-comptables par la loi Pacte (2019) ; attributions inchangées. Relecture : l'article 31 7° de l'ordonnance donne au seul conseil régional qualité pour « fixer et recouvrer » les cotisations des membres ; la proposition « collecte des cotisations » pourrait donc aussi être tenue pour exacte, réponse b maintenue sous réserve du corrigé officiel."
+      "explanation": "Le piège porte sur le code de déontologie : le Conseil national ne l'édicte pas (décret en Conseil d'État) mais il le prépare et en assure le respect (D. 2012-432 art. 29 1°), ce qui correspond à la proposition b. La collecte des cotisations est au contraire une attribution exclusive des conseils régionaux (ord. art. 31 : le conseil régional « a seul qualité » pour les fixer et les recouvrer). Parallèle CAC : le code de déontologie est aussi un décret en Conseil d'État (L.821-36) et les normes sont adoptées par la H2A puis homologuées par arrêté.",
+      "reference": "Ord. 45-2138 art. 31 7° ; D. 2012-432 art. 27 et art. 29 (missions du Conseil national)",
+      "confidence": "medium",
+      "update_note": "Le Conseil supérieur a été renommé Conseil national par la loi 2022-172 du 14 février 2022 (et non par la loi Pacte). Réponse modifiée de b en a sur le fondement des textes (art. 29 1° « préparer le code de déontologie », rédaction identique en 2019) ; corrigé officiel non consulté."
     },
     {
       "id": "2019-11-EC-10",
@@ -395,16 +395,17 @@
       "qrc": {
         "question": "Comment le Conseil national de la Compagnie nationale des commissaires aux comptes est-il composé aujourd'hui ?",
         "expected": [
-          "Soixante membres élus pour quatre ans au suffrage direct par les commissaires aux comptes inscrits (scrutin de liste), et non plus des délégués des conseils régionaux",
-          "Auxquels s'ajoutent les présidents des compagnies régionales (membres de droit)",
-          "Le Conseil national élit le président de la CNCC et le bureau ; la CNCC est placée sous la tutelle du garde des sceaux"
+          "Soixante membres désignés pour quatre ans, comprenant l'ensemble des présidents de compagnies régionales et des commissaires aux comptes élus",
+          "Moitié de CAC exerçant des missions auprès d'EIP, moitié de CAC sans mission EIP (deux collèges de trente sièges)",
+          "Élus au scrutin de liste par deux collèges de CAC personnes physiques à jour de leurs cotisations, et non plus délégués des conseils régionaux",
+          "Le Conseil national élit le président de la CNCC"
         ],
-        "model_answer": "Depuis la réforme de la gouvernance de la CNCC, le Conseil national comprend soixante membres élus pour quatre ans directement par les commissaires aux comptes inscrits, auxquels s'ajoutent les présidents des compagnies régionales. Il n'est donc plus formé de délégués désignés par les conseils régionaux parmi leurs membres."
+        "model_answer": "Le Conseil national compte soixante membres désignés pour quatre ans : tous les présidents de compagnies régionales et des commissaires aux comptes élus au scrutin de liste par deux collèges (CAC exerçant des missions EIP / CAC n'en exerçant pas), chaque collège disposant de trente sièges, présidents compris. Il n'est donc plus composé de délégués élus par les conseils régionaux."
       },
-      "explanation": "À la date du sujet, le Conseil national était composé de délégués élus par les conseils régionaux parmi leurs membres (première proposition, alors exacte). La réforme intervenue depuis a instauré une élection directe de soixante membres et la présence des présidents de CRCC, ce qui modifie la réponse. Côté expertise comptable, le Conseil national de l'Ordre est composé d'élus des conseils régionaux.",
-      "reference": "C. com. partie réglementaire relative à l'organisation de la CNCC (ex R.821-x, modifiée par la réforme de gouvernance puis recodifiée en 2024) ; règlement intérieur de la CNCC",
-      "confidence": "low",
-      "update_note": "Réponse modifiée par la réforme de la gouvernance de la CNCC (décret 2020-2021 : 60 membres élus pour 4 ans + présidents de CRCC) ; la composition exacte est à vérifier dans les textes en vigueur. Réponse d'origine en 2019 : délégués élus par les conseils régionaux. Relecture : la qualité de membres de droit des présidents de CRCC au Conseil national n'a pas pu être confirmée dans la partie réglementaire recodifiée ; si elle était inexacte, aucune proposition ne correspondrait au droit actuel."
+      "explanation": "À la date du sujet, le Conseil national était composé de délégués élus par les conseils régionaux parmi leurs membres (première proposition, alors exacte). La réforme de la gouvernance a instauré l'élection par deux collèges nationaux et la présence de droit des présidents de CRCC, inclus dans les soixante sièges. Côté expertise comptable, le Conseil national de l'Ordre comprend aussi les présidents des conseils régionaux et des membres élus au scrutin de liste (ord. art. 33).",
+      "reference": "C. com. D.821-14 (composition et élection du Conseil national), D.821-27 ; ord. 45-2138 art. 33 pour le parallèle EC",
+      "confidence": "high",
+      "update_note": "Composition actuelle fixée par D.821-14 (partie réglementaire recodifiée au 1er janvier 2024) : les présidents de CRCC sont inclus dans les soixante membres. Réponse d'origine (2019) : délégués élus par les conseils régionaux."
     },
     {
       "id": "2019-11-CAC-14",
@@ -495,9 +496,9 @@
         "model_answer": "L'assurance obligatoire garantit la réparation civile des préjudices causés par les fautes du commissaire aux comptes : les dommages-intérêts restent en principe couverts même si les faits sont aussi constitutifs d'un délit, seule l'amende pénale étant exclue. La garantie ne tomberait que si l'assureur établissait une faute intentionnelle au sens du droit des assurances, c'est-à-dire la volonté de provoquer le dommage lui-même ; l'existence d'une sanction disciplinaire est indifférente."
       },
       "explanation": "Il faut distinguer la nature des condamnations : la réparation civile est assurable, la peine ne l'est pas. La notion d'intention du code pénal (révéler sciemment) ne se confond pas avec la faute intentionnelle du code des assurances (vouloir le dommage), d'où le maintien de la garantie en principe. La CNCC n'indemnise pas les victimes à la place de l'assureur.",
-      "reference": "C. com. ex R.822-36 (assurance obligatoire), recodifié R.821-x en 2024 ; C. assur. art. L.113-1 ; C. pén. art. 226-13",
-      "confidence": "low",
-      "update_note": "Article réglementaire recodifié au 1er janvier 2024 ; la portée de l'exclusion de la faute intentionnelle dépend de la police et de la jurisprudence."
+      "reference": "C. com. L.821-37 (responsabilité civile), R.821-85 (assurance obligatoire, ex R.822-36), A.821-56 s. ; C. assur. art. L.113-1 ; C. pén. art. 226-13",
+      "confidence": "medium",
+      "update_note": "Obligation d'assurance à l'article R.821-85 depuis la recodification de 2024. L.113-1 C. assur. n'exclut que la faute intentionnelle ou dolosive ; son application à une violation délibérée du secret relève de la jurisprudence et de la police (non vérifié)."
     },
     {
       "id": "2019-11-CAC-17",
@@ -621,9 +622,9 @@
         "model_answer": "La violation du code de déontologie constitue toujours une faute disciplinaire, jugée par la commission des sanctions de la Haute autorité de l'audit. Elle engage en outre la responsabilité civile si elle cause un préjudice, et la responsabilité pénale lorsque le manquement correspond à une infraction, comme l'exercice en situation d'incompatibilité ou la violation du secret. Les trois responsabilités peuvent se cumuler."
       },
       "explanation": "La question porte sur le mot « peut » : toutes les voies sont ouvertes, selon la nature du manquement. Le code de déontologie n'est pas en lui-même un texte pénal, mais plusieurs de ses règles (indépendance, secret) sont doublées d'incriminations dans le code de commerce ou le code pénal. Même architecture pour l'expert-comptable, avec les chambres de discipline de l'Ordre comme instance disciplinaire.",
-      "reference": "C. com. L.820-2 s. (commission des sanctions de la H2A), ex L.822-17 (responsabilité civile), ex L.820-6 et L.820-7 (délits), recodifiés en 2024 ; code de déontologie des commissaires aux comptes (annexe 8-1)",
-      "confidence": "medium",
-      "update_note": "Instance disciplinaire : commission des sanctions de la H2A depuis le 1er janvier 2024 (ex-H3C) ; articles recodifiés."
+      "reference": "C. com. L.821-37 (responsabilité civile, ex L.822-17), L.821-70 et L.821-71 (discipline), L.821-8 et L.821-9 (délits) ; C. pén. art. 226-13 ; code de déontologie des CAC (annexe 8-1)",
+      "confidence": "high",
+      "update_note": "Instance disciplinaire : commission des sanctions de la H2A (L.820-2, L.821-79) depuis le 1er janvier 2024 ; articles recodifiés."
     }
   ]
 }

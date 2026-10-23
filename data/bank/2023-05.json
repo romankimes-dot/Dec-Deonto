@@ -487,9 +487,9 @@
         "model_answer": "Lorsque la société mère et les sociétés contrôlées n'ont pas la même date de clôture, les seuils cumulés du petit groupe sont calculés à partir des derniers comptes annuels arrêtés par chacune. L'obligation ne disparaît que si les seuils n'ont pas été dépassés pendant les deux exercices précédant l'expiration du mandat ; un suppléant n'est exigé que si le titulaire est une personne physique ou une société unipersonnelle ; et l'association qui reçoit plus de 153 000 € de subventions doit désigner un CAC au titre de l'exercice de franchissement."
       },
       "explanation": "Les trois distracteurs reposent sur des chiffres ou des conditions légèrement faussés : un exercice au lieu de deux pour la cessation de l'obligation (règle fixée par la partie réglementaire propre à chaque forme sociale, ex. D.223-27 pour la SARL), suppléant exigé pour toute société pluripersonnelle alors que la loi ne le prévoit que pour les personnes physiques et sociétés unipersonnelles (L.821-40), et décalage d'un exercice pour l'association subventionnée. Les seuils des sociétés commerciales ont été relevés par le décret 2024-152 (5 M€ / 10 M€ / 50) pour les exercices ouverts à compter du 1er janvier 2024.",
-      "reference": "C. com. art. L.821-40, L.821-43 ; D.221-5, D.223-27 et D.821-? (seuils fixés par le décret 2024-152) ; L.612-4 et D.612-5 (associations)",
+      "reference": "C. com. L.821-40 (suppléant), L.821-43 et D.821-171 (petits groupes : seuils de D.221-5, cessation après deux exercices), D.821-172 (filiales significatives) ; L.612-4 et D.612-5 (associations)",
       "confidence": "medium",
-      "update_note": "Seuils des sociétés commerciales relevés par le décret 2024-152 (bilan 5 M€, CA HT 10 M€, 50 salariés ; filiales significatives 2,5 M€ / 5 M€ / 25) pour les exercices ouverts à compter du 1er janvier 2024 ; recodification L.823-x → L.821-x."
+      "update_note": "Seuils des sociétés commerciales (D.221-5, décret 2024-152 : 5 M€ / 10 M€ / 50) et règle des deux exercices (D.821-171) vérifiés ; la proposition a (derniers comptes arrêtés en cas de dates de clôture différentes) ne figure pas expressément dans les textes consultés et repose sur la doctrine. Recodification L.823-x → L.821-x."
     },
     {
       "id": "2023-05-CAC-17",
@@ -551,8 +551,8 @@
       },
       "explanation": "La règle de l'unicité d'exercice (C. com. L.821-25) vise à garantir l'identification du responsable des missions et la cohérence du contrôle de qualité. La proposition c s'approche de la dérogation « groupe » mais la loi raisonne en termes de contrôle (majorité des droits de vote), non de capital, et la réponse attendue est la dérogation expressément formulée (moitié des associés communs). L'appartenance à un réseau ne suffit pas. L'expert-comptable, lui, peut cumuler les formes d'exercice (ord. art. 12).",
       "reference": "C. com. art. L.821-25 (ex L.822-9) ; L.233-16 ; Ord. 45-2138 art. 12 pour le parallèle EC",
-      "confidence": "medium",
-      "update_note": "Recodification 2024 : ex L.822-9 devenu L.821-25."
+      "confidence": "high",
+      "update_note": "Recodification 2024 : ex L.822-9 devenu L.821-25 (dernière modification par la loi 2025-391, sans incidence sur la règle)."
     },
     {
       "id": "2023-05-CAC-19",

@@ -137,7 +137,7 @@
         "question": "Laquelle de ces évolutions a été apportée à l'ordonnance de 1945 par la loi Pacte du 22 mai 2019 ?",
         "choices": [
           "La suppression de l'exigence des deux tiers des droits de vote dans les sociétés d'expertise comptable",
-          "La possibilité d'exercer, à titre accessoire, des activités commerciales et des actes d'intermédiaire, et l'instauration du mandat implicite pour les démarches déclaratives",
+          "L'instauration d'une présomption simple de mandat (mandat implicite) pour les démarches auprès de l'administration fiscale et des organismes sociaux, et la possibilité de recouvrer les créances et de payer les dettes des clients par leur compte bancaire",
           "Le relèvement des seuils de nomination obligatoire du commissaire aux comptes dans les sociétés commerciales",
           "L'ouverture aux experts-comptables de la certification des comptes des petites entreprises"
         ],
@@ -145,18 +145,18 @@
       },
       "qrc": {
         "expected": [
-          "Activités commerciales et actes d'intermédiaire autorisés à titre accessoire (art. 22)",
-          "Mandat implicite pour les démarches déclaratives, mandat de paiement de dettes et de recouvrement amiable de créances",
-          "Honoraires de succès admis pour certaines missions hors prérogative d'exercice (art. 24)",
-          "Conseil supérieur renommé Conseil national de l'Ordre",
-          "Création du statut d'expert-comptable en entreprise"
+          "Présomption simple de mandat (mandat implicite) pour représenter le client devant l'administration fiscale et les organismes de sécurité sociale (art. 22)",
+          "Recouvrement amiable des créances et paiement des dettes du client par son compte bancaire, à titre accessoire et sur mandat (art. 22)",
+          "Honoraires complémentaires liés à un objectif (succès), sauf pour les missions des deux premiers alinéas de l'art. 2 et celles concourant à l'assiette fiscale ou sociale (art. 24)",
+          "Création de l'expert-comptable en entreprise, inscrit au tableau sans être membre de l'Ordre (art. 13)",
+          "Extension des travaux accessoires aux domaines environnemental et numérique (art. 22)"
         ],
-        "model_answer": "La loi Pacte a notamment autorisé l'EC à exercer à titre accessoire des activités commerciales et des actes d'intermédiaire, instauré le mandat implicite pour les démarches déclaratives ainsi que les mandats de paiement et de recouvrement amiable, admis les honoraires de succès pour certaines missions ne relevant pas de la prérogative d'exercice, renommé le Conseil supérieur en Conseil national et créé le statut d'expert-comptable en entreprise."
+        "model_answer": "La loi Pacte a notamment instauré une présomption simple de mandat (mandat implicite) pour les démarches fiscales et sociales, permis le recouvrement amiable des créances et le paiement des dettes des clients par leur compte bancaire, admis des honoraires complémentaires de succès hors missions comptables et assiette fiscale ou sociale, et créé le statut d'expert-comptable en entreprise."
       },
-      "explanation": "La loi Pacte a surtout touché le périmètre d'activité de l'EC (art. 22 et 24 de l'ordonnance), pas le capital des sociétés. Le relèvement des seuils CAC et l'audit légal des petites entreprises sont aussi dans la loi Pacte mais concernent le code de commerce et le commissariat aux comptes, pas l'ordonnance de 1945 : c'est la confusion à éviter.",
-      "reference": "Loi 2019-486 du 22 mai 2019 (art. 32 s.) ; ord. 45-2138 art. 22, 24, 29 et 83 ter s.",
-      "confidence": "low",
-      "update_note": "Relecture : la réponse QCM (activités commerciales accessoires et mandat implicite) est sûre ; en revanche, l'attribution à la loi Pacte des honoraires de succès (art. 24, qui pourraient résulter de la réforme de 2014) et du statut d'expert-comptable en entreprise est à vérifier avant de les présenter comme des apports de cette loi."
+      "explanation": "La loi Pacte (art. 34 à 37) a touché le périmètre d'activité de l'EC (art. 22), ses honoraires (art. 24) et son statut (art. 13), pas le capital des sociétés. Les activités commerciales accessoires figuraient déjà à l'art. 22 avant 2019, et le Conseil supérieur n'a été renommé Conseil national qu'en 2022 (loi 2022-172). Le relèvement des seuils CAC et l'audit légal des petites entreprises relèvent aussi de la loi Pacte, mais du code de commerce : c'est la confusion à éviter.",
+      "reference": "Loi 2019-486 du 22 mai 2019, art. 34 à 37 ; ord. 45-2138 art. 13, 22 et 24 (versions du 24 mai 2019)",
+      "confidence": "high",
+      "update_note": "Historique des versions vérifié : les activités commerciales accessoires étaient déjà prévues à l'art. 22 avant la loi Pacte (version du 2 avril 2016) et le changement de nom du Conseil supérieur résulte de la loi 2022-172 du 14 février 2022 ; ces deux éléments ne sont pas des apports de la loi Pacte."
     },
     {
       "id": "2021-05-EC-06",
@@ -339,10 +339,10 @@
         ],
         "model_answer": "Sont électeurs les commissaires aux comptes personnes physiques membres de la compagnie régionale, c'est-à-dire inscrits sur la liste et rattachés à son ressort, à condition d'être à jour de leurs cotisations. La détention d'un mandat en cours n'est pas exigée."
       },
-      "explanation": "Le corps électoral de la CRCC est constitué des personnes physiques inscrites, la condition tenant au paiement des cotisations. La règle est analogue chez l'EC pour les élections ordinales (membres inscrits au tableau à jour de cotisations). Attention : le statut des sociétés de CAC dans le vote est un point à vérifier dans la partie réglementaire du code.",
-      "reference": "C. com. partie réglementaire relative aux compagnies régionales (ex art. R.821-37 s., renumérotés R.821-x en 2024) ; règlement intérieur de la CNCC",
-      "confidence": "low",
-      "update_note": "Renumérotation de la partie réglementaire par le décret d'application de l'ordonnance 2023-1142 ; vérifier le libellé actuel sur la qualité d'électeur des sociétés de CAC."
+      "explanation": "Le corps électoral de la CRCC est constitué des personnes physiques membres de la compagnie, la seule condition tenant au paiement des cotisations professionnelles (D.821-31 II) ; les sociétés de CAC ne votent pas. L'éligibilité suppose en outre d'exercer la profession au 30 juin de l'année d'expiration des mandats, et la présidence d'exercer au moins une mission de certification. La détention d'un mandat n'est pas une condition de l'électorat.",
+      "reference": "C. com. D.821-31 II (électeurs et éligibles) ; D.821-29 (composition du conseil régional)",
+      "confidence": "high",
+      "update_note": "Partie réglementaire recodifiée au 1er janvier 2024 : électorat fixé par D.821-31 II (personnes physiques membres, à jour de leurs cotisations)."
     },
     {
       "id": "2021-05-CAC-12",
@@ -364,15 +364,16 @@
       },
       "qrc": {
         "expected": [
-          "Les présidents des compagnies régionales des commissaires aux comptes, membres de droit",
-          "Mandat de quatre ans ; les membres élus le sont par les compagnies régionales"
+          "Les présidents des compagnies régionales, membres de droit, compris dans les soixante membres",
+          "Les autres membres sont des CAC élus au scrutin de liste par deux collèges nationaux de CAC personnes physiques à jour de leurs cotisations (EIP / non-EIP)",
+          "Mandat de quatre ans"
         ],
-        "model_answer": "Aux côtés des commissaires aux comptes élus par les compagnies régionales siègent, comme membres de droit, les présidents des compagnies régionales. Le Conseil national élit en son sein son président et son bureau."
+        "model_answer": "Les autres membres sont l'ensemble des présidents des compagnies régionales. Les commissaires aux comptes élus le sont au scrutin de liste par deux collèges, celui des CAC exerçant des missions EIP et celui des CAC n'en exerçant pas, chacun disposant de trente sièges dont sont déduits les présidents de CRCC qui en relèvent."
       },
       "explanation": "La CNCC est une institution professionnelle de droit privé dotée de la personnalité morale, sans représentant de l'État ni du régulateur en son sein ; la tutelle s'exerce de l'extérieur par le garde des Sceaux et la H2A. Les distracteurs insèrent des membres extérieurs comme chez l'Ordre des EC, où le commissaire du gouvernement siège aux conseils sans voix délibérative.",
-      "reference": "C. com. partie réglementaire relative à la Compagnie nationale (ex art. R.821-22 s., renumérotés en 2024) ; règlement intérieur de la CNCC",
-      "confidence": "low",
-      "update_note": "Composition et numérotation réglementaire modifiées par les décrets de 2024 : vérifier le nombre de membres et la qualité de membre de droit des présidents de CRCC."
+      "reference": "C. com. D.821-14 ; D.821-27",
+      "confidence": "high",
+      "update_note": "Composition fixée par D.821-14 (recodification 2024) : soixante membres pour quatre ans, présidents de CRCC inclus ; élection par deux collèges nationaux."
     },
     {
       "id": "2021-05-CAC-13",
@@ -425,17 +426,17 @@
       },
       "qrc": {
         "expected": [
-          "Les mandats sont poursuivis par la société absorbante jusqu'à leur terme (transmission universelle du patrimoine)",
+          "Les mandats sont poursuivis par la société absorbante jusqu'à leur date d'expiration (L.821-48)",
           "Condition : la société absorbante est elle-même inscrite sur la liste",
-          "L'entité contrôlée doit en être informée et son organe compétent peut décider de ne pas poursuivre le mandat",
+          "L'assemblée ou l'organe compétent peut, à sa première réunion après l'absorption, délibérer sur le maintien du mandat, après avoir entendu le CAC",
           "Le signataire personne physique doit rester inscrit et indépendant ; vérification des incompatibilités chez l'absorbante"
         ],
         "model_answer": "Les mandats de la société absorbée sont poursuivis par la société absorbante, elle-même inscrite, jusqu'à leur expiration, par l'effet de la transmission universelle du patrimoine. Les entités contrôlées doivent en être informées et leur assemblée peut décider de ne pas maintenir le mandat ; l'absorbante doit en outre vérifier qu'aucune incompatibilité ne résulte du regroupement."
       },
       "explanation": "La fusion ne met pas fin aux mandats : ils se poursuivent chez l'absorbante, sous réserve de la faculté de l'entité contrôlée de ne pas les maintenir. Il n'y a ni nouvelle nomination automatique, ni transfert au suppléant (dont le rôle, désormais marginal, ne vaut qu'en cas d'empêchement), ni intervention du président de la CRCC.",
-      "reference": "C. com. partie réglementaire relative aux sociétés de commissaires aux comptes et à la poursuite des mandats en cas de fusion (ex art. R.822-x, renumérotés R.821-x en 2024) ; code de déontologie des CAC (acceptation et maintien de la mission)",
-      "confidence": "low",
-      "update_note": "Renumérotation réglementaire en 2024 ; vérifier la rédaction actuelle de la faculté offerte à l'entité contrôlée de ne pas poursuivre le mandat. Relecture : la poursuite des mandats par l'absorbante est certaine (question reposée en mai 2026), mais la faculté de l'entité de ne pas maintenir le mandat n'est pas confirmée par un texte identifié (la fiche 2019-05-CAC-14 ne la mentionne pas) ; or elle figure dans la proposition B donnée comme juste."
+      "reference": "C. com. L.821-48 ; code de déontologie des CAC (annexe 8-1) art. 25 (poursuite du mandat)",
+      "confidence": "high",
+      "update_note": "La faculté de l'entité est prévue par la loi : L.821-48 al. 2 (délibération sur le maintien du mandat lors de la première réunion postérieure à l'absorption, après audition du CAC)."
     },
     {
       "id": "2021-05-CAC-15",

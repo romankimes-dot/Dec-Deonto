@@ -499,7 +499,7 @@
         "choices": [
           "Oui, sans restriction, la profession comprenant désormais la fourniture de prestations",
           "Oui, si la société n'est pas une EIP et si le comité d'audit l'autorise",
-          "Non : la paie est un service interdit pour une EIP, et pour une non-EIP l'établissement de la paie de l'entité certifiée crée un risque d'autorévision et d'immixtion dans la gestion qu'aucune sauvegarde ne permet de réduire",
+          "Non : la paie est un service interdit au CAC d'une EIP (règl. 537/2014 art. 5 § 1 d ; L.821-28 II) et, pour une autre entité, établir la paie qu'il devra auditer crée un risque d'autorévision qui interdit la mission faute de sauvegarde appropriée (L.821-28 IV)",
           "Non, sauf s'il est également inscrit à l'Ordre des experts-comptables"
         ],
         "answer": 2
@@ -507,16 +507,16 @@
       "qrc": {
         "expected": [
           "Non",
-          "L.821-3 : la profession comprend les missions et la fourniture de prestations, dans le respect des règles d'indépendance",
-          "EIP : services de paie interdits (règl. UE 537/2014 art. 5 ; L.821-28)",
-          "Non-EIP : risque d'autorévision (paie = éléments des comptes) et d'immixtion ; interdiction lorsque les sauvegardes sont insuffisantes (L.821-28 IV)"
+          "L.821-3 : la profession comprend les missions et la fourniture de prestations, sous réserve des règles d'indépendance",
+          "EIP : services de paie interdits, y compris au réseau (règl. UE 537/2014 art. 5 § 1 d ; L.821-28 II)",
+          "Non-EIP : risque d'autorévision (la paie alimente les comptes certifiés) ; interdiction d'accepter ou de poursuivre la mission si aucune sauvegarde appropriée ne peut être mise en œuvre (L.821-28 IV ; code art. 5 II et 19)"
         ],
-        "model_answer": "Non. Si la profession de CAC comprend désormais la fourniture de prestations, celles-ci restent soumises aux règles d'indépendance. Pour une EIP, la paie figure parmi les services interdits ; pour une non-EIP, établir les bulletins de paie de l'entité certifiée conduirait le CAC à auditer ses propres travaux (autorévision) et à s'immiscer dans la gestion, situation qu'aucune mesure de sauvegarde ne permet de traiter."
+        "model_answer": "Non. Si la profession de CAC comprend la fourniture de prestations (L.821-3), celles-ci restent soumises aux règles d'indépendance. Pour une EIP, la paie figure parmi les services interdits par le règlement européen. Pour une autre entité, produire les bulletins de paie conduirait le CAC à auditer ses propres travaux : ce risque d'autorévision lui interdit d'accepter ou de poursuivre la mission de certification s'il ne peut le ramener à un niveau acceptable par des mesures de sauvegarde, ce qui paraît difficilement envisageable pour une prestation portant sur des éléments des comptes."
       },
       "explanation": "Depuis 2024, L.821-3 définit la profession comme l'exercice de missions et la fourniture de prestations. Pour la non-EIP, L.821-28 IV interdit d'accepter ou de poursuivre une mission en cas de risque d'autorévision sans sauvegarde appropriée. Les « modifications » visées par le sujet sont celles de l'ordonnance 2023-1142 (L.821-3 en vigueur depuis le 1er janvier 2024, reprenant les anciens L.820-1-1 et L.820-2).",
-      "reference": "C. com. L.821-3, L.821-28 ; règl. (UE) 537/2014 art. 5 ; code de déontologie CAC art. 5 et 19",
-      "confidence": "low",
-      "update_note": "Relecture : aucune modification de L.821-3 postérieure à l'ordonnance 2023-1142 n'a été trouvée (version en vigueur depuis le 1er janvier 2024). Réponse « non » maintenue, mais l'affirmation qu'« aucune sauvegarde » n'est possible pour une non-EIP est discutable : hors EIP, il n'existe plus de liste de services interdits (L.821-28 IV : approche risques/sauvegardes) et la paie (art. 5 d du règlement 537/2014) ne figure pas parmi les services réputés non sauvegardables (points b, c et e)."
+      "reference": "C. com. L.821-2, L.821-3, L.821-28 II et IV ; règl. (UE) 537/2014 art. 5 § 1 d ; code de déontologie CAC art. 5 et 19",
+      "confidence": "medium",
+      "update_note": "L.821-3 en vigueur depuis le 1er janvier 2024 (aucune modification ultérieure). Formulation nuancée : hors EIP, la loi raisonne en risques et sauvegardes (L.821-28 IV) et ne qualifie pas expressément la paie de service non sauvegardable."
     },
     {
       "id": "2026-05-CAC-18",

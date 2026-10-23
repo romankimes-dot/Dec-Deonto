@@ -255,7 +255,7 @@ export const ANECDOTES = [
   "id": "A21",
   "part": "diplome",
   "title": "Première cotisation ordinale",
-  "text": "Payée. La CAVEC aussi : deux ans d'impayés suffisent pour finir devant la chambre.",
+  "text": "Payée. La CAVEC aussi : deux ans d'impayés sur dix, et c'est la radiation d'office.",
   "ids": [
    "2022-05-EC-06",
    "2026-05-EC-10"
@@ -428,7 +428,7 @@ export const ANECDOTES = [
   "id": "A35",
   "part": "installation",
   "title": "Premier contrôle qualité réussi",
-  "text": "Examen de l'organisation, puis revue des dossiers. Conclusion : satisfaisant.",
+  "text": "Examen de l'organisation, puis revue des dossiers. Conclusion : sans observation.",
   "ids": [
    "2019-11-EC-04",
    "2020-11-EC-03",

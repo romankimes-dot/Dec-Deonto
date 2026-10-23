@@ -348,10 +348,7 @@
       "n": 11,
       "profession": "CAC",
       "theme": "deontologie",
-      "tags": [
-        "secret_professionnel",
-        "code_deontologie_structure"
-      ],
+      "tags": ["secret_professionnel", "code_deontologie_structure"],
       "points": 1,
       "question": "Le secret professionnel du commissaire aux comptes est une obligation :",
       "qcm": {
@@ -374,9 +371,9 @@
         "model_answer": "Le secret professionnel du CAC a une double source : légale, par le code de commerce et le code pénal qui le sanctionne, et réglementaire, par le code de déontologie pris par décret. Il s'étend aux collaborateurs et experts et ne connaît que les levées prévues par la loi (CAC d'une société mère et de ses filiales, successeur, H2A, AMF, Tracfin, témoignage en justice)."
       },
       "explanation": "La loi pose le principe et le code pénal le sanctionne ; le code de déontologie, texte réglementaire, en précise la portée et y ajoute un devoir de discrétion. Les NEP ne créent pas l'obligation. Côté EC, la structure est identique (ordonnance de 1945 et code pénal, plus code de déontologie intégré au décret de 2012).",
-      "reference": "C. com. ex art. L.822-15 (recodifié en 2024 dans le chapitre L.821) ; code de déontologie des CAC (annexe 8-1), principes de discrétion et de secret ; C. pén. art. 226-13",
-      "confidence": "medium",
-      "update_note": "Recodification du livre VIII par l'ordonnance 2023-1142 (1er janvier 2024) : l'ancien article L.822-15 est désormais dans les articles L.821-x ; le fond est inchangé."
+      "reference": "C. com. L.821-35 (ex L.822-15) ; code de déontologie des CAC (annexe 8-1) art. 9 ; C. pén. art. 226-13",
+      "confidence": "high",
+      "update_note": "Recodification 2024 : secret à l'article L.821-35 (déliements : président du tribunal en procédure d'alerte, CAC des entités consolidées et des petits groupes, auditeurs de durabilité, CNCCFP) ; non-opposabilité aux contrôleurs de la H2A : L.820-17."
     },
     {
       "id": "2020-11-CAC-12",
@@ -627,11 +624,7 @@
       "n": 19,
       "profession": "CAC",
       "theme": "controle_qualite",
-      "tags": [
-        "controle_activite",
-        "h2a_supervision",
-        "cncc_crcc_organisation"
-      ],
+      "tags": ["controle_activite", "h2a_supervision", "cncc_crcc_organisation"],
       "points": 1,
       "question": "Les contrôles de l'activité professionnelle (communément appelés contrôles qualité) de commissaires aux comptes n'exerçant pas de missions auprès d'entités d'intérêt public :",
       "qcm": {
@@ -646,17 +639,17 @@
       "qrc": {
         "question": "Qui réalise les contrôles d'activité des commissaires aux comptes ne détenant pas de mandat auprès d'entités d'intérêt public, et selon quelle périodicité ?",
         "expected": [
-          "Contrôles relevant de la H2A",
-          "Pour les non-EIP, contrôles délégués à la CNCC par convention homologuée par arrêté (conventions 2017, 2023, 2026)",
-          "Pour les EIP, contrôles réservés aux contrôleurs de la H2A",
-          "Périodicité : six ans (non-EIP), trois ans (EIP)"
+          "Contrôles relevant de la H2A (L.820-1 I 5°)",
+          "Pour les non-EIP : contrôleurs de la H2A ou délégation à la CNCC par convention homologuée par arrêté (arrêté du 19 mai 2023 ; convention du 6 mai 2026 homologuée par arrêté du 2 juillet 2026)",
+          "Pour les EIP : contrôleurs de la H2A ; concours possible de l'AMF ou de l'ACPR",
+          "Périodicité : au moins tous les six ans ; trois ans pour les CAC d'EIP visées au i) de l'art. 26 § 2 du règlement 537/2014 (R.820-49)"
         ],
         "model_answer": "Les contrôles d'activité relèvent de la H2A. Pour les CAC sans mandat EIP, ils sont délégués à la CNCC par une convention homologuée par arrêté, sous la supervision de la H2A. Les cabinets EIP sont contrôlés par la H2A elle-même. Périodicité : six ans (non-EIP), trois ans (EIP)."
       },
       "explanation": "Le code de commerce permet à la H2A de déléguer à la CNCC les contrôles des CAC n'ayant pas de mandat EIP ; cette délégation est effective par conventions homologuées par arrêté (2017, 2023, nouvelle convention homologuée en juillet 2026). Les EIP restent contrôlées directement par le régulateur. Les finances publiques n'ont aucun rôle. À distinguer du contrôle qualité de l'EC, organisé par l'Ordre lui-même.",
-      "reference": "C. com. L.820-x et L.821-x recodifiés (contrôles d'activité, délégation à la CNCC) ; arrêtés d'homologation du 19/05/2023 et du 6/07/2026",
-      "confidence": "medium",
-      "update_note": "H3C → H2A au 1er janvier 2024. Relecture : réponse corrigée de B (concours) en D (délégation) ; la délégation des contrôles non-EIP à la CNCC est attestée par les conventions homologuées (JO 26/05/2023, homologation du 6/07/2026), cohérent avec 2023-11-CAC-15."
+      "reference": "C. com. L.820-1 II 3°, L.820-14, R.820-49 ; arrêtés d'homologation du 19 mai 2023 et du 2 juillet 2026",
+      "confidence": "high",
+      "update_note": "H3C → H2A au 1er janvier 2024. L.820-14 : contrôles non-EIP réalisés par la H2A ou délégués à la CNCC ; concours de l'AMF ou de l'ACPR (et non de la CNCC). Convention de 2023 vérifiée au JO ; nouvelle convention homologuée par arrêté du 2 juillet 2026 (et non du 6 juillet)."
     },
     {
       "id": "2020-11-CAC-20",

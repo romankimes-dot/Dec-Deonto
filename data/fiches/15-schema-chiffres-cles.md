@@ -14,10 +14,14 @@ Le jury n'exige ni les numéros d'articles ni le quantum des sanctions. Les **se
 | **3 exercices** | Mandat ALPE (petites entreprises, petits groupes) | {CAC} |
 | **10 / 16 / 24 ans** | Rotation du cabinet d'une EIP (base / appel d'offres / co-commissariat) | {CAC} |
 | **6 ans + 3 ans** | Rotation du signataire d'une EIP, puis viduité | {CAC} |
-| **3 ans / 6 ans** | Contrôle d'activité : EIP / non-EIP | {CAC} |
+| **3 ans / 6 ans** | Contrôle d'activité : CAC des grandes EIP / autres CAC | {CAC} |
 | **≈ 6 ans** | Cycle du contrôle de qualité de l'Ordre | {EC} |
 | **30 jours** | Délai pour demander la récusation d'un CAC | {CAC} |
+| **8 jours** | Notification de sa nomination par le CAC au conseil régional | {CAC} |
+| **4 ans consécutifs** | Présidence d'un même conseil de l'Ordre, puis 2 ans d'interruption | {EC} |
+| **2 ans sur 10** | Cotisations impayées : radiation d'office du tableau | {EC} |
 | **3 ans** | Stage d'expertise comptable | {EC} |
+| **40 h en 18 mois** | Formation particulière avant d'accepter une mission, si le CAC n'a pas exercé pendant 3 ans | {CAC} |
 | **3 ans** | Interdiction temporaire d'exercer au plus (H2A, depuis 2024) | {CAC} |
 | **5 ans** | Conservation des documents LCB-FT après la fin de la relation | {EC} {CAC} |
 

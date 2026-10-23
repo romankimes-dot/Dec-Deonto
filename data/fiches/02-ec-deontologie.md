@@ -211,7 +211,6 @@
 - **Liste exacte des levées du secret** de l'EC : la formule « audition pénale en qualité de témoin ou de suspect libre » est donnée comme levée par SCHEMA.md. L'opposabilité à la **CNIL** est déduite de l'annale 2025-11 Q4.
 - **Cas où la lettre de l'art. 163 n'est pas obligatoire** (annale 2024-11 Q7).
 - **Qui est déclarant Tracfin** dans une société d'EC à plusieurs associés (annale 2019-11 Q1) : le représentant légal, ou un EC désigné ?
-- **Conclusions possibles d'un contrôle de qualité LCB-FT** (annale 2022-05 Q2) : voir fiche 03.
 - **Sanctions LCB-FT** : montants maximaux et article de rattachement (ord. art. 53 ou C. mon. fin. L.561-36-x).
 - **Durée de conservation** des documents LCB-FT : **5 ans** à compter de la fin de la relation.
 - **Référencement par une société commerciale non inscrite, notation par les clients, parrainage** : quelle pratique est interdite (annale 2025-11 Q2) ? La fiche retient le **comparatif** (« premier réseau »).

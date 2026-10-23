@@ -9,11 +9,11 @@ questions: EC:secret_professionnel CAC:secret_professionnel EC:lcb_ft CAC:lcb_ft
 ```arbre
 ? Qu'avez-vous découvert ?
   ? Un **fait délictueux** chez le client
-    ? {CAC} Dans le cadre de sa **mission** (certification, mission légale) ?
+    ? {CAC} À l'occasion de sa **mission ou prestation** (L.821-10)
       = **Révéler au procureur de la République**, même si le fait est **régularisé** (un vol remboursé reste à révéler)
       ! Ne pas révéler sciemment : **délit** (5 ans, 75 000 €)
       = La révélation de **bonne foi** n'engage pas sa responsabilité
-    ! {CAC} Simple **prestation** chez une entité dont il n'est pas CAC : **pas** d'obligation de révélation
+      ! Vaut **aussi** pour une **prestation** chez une entité dont il n'est pas CAC
     ? {EC} Expert-comptable
       = **Pas** d'obligation de révélation au procureur
       = **Devoir de conseil** : informer, mettre en garde, exiger
@@ -46,7 +46,7 @@ Opposable | À la **CNIL** | À une filiale **non consolidée**
 Norme | **NPLAB** | **NEP 9605**
 Niveaux de vigilance | **Deux** : standard et renforcée | Simplifiée, standard et renforcée (C. mon. fin.)
 Qui déclare à Tracfin ? | Le **déclarant** désigné (EC), distinct ou non du **correspondant** Tracfin | Le **CAC signataire**
-Blanchiment découvert lors d'un contrôle | Le contrôleur informe le **président du CROEC** ; l'**Ordre** informe Tracfin | La **H2A** informe Tracfin
+Blanchiment découvert lors d'un contrôle | Le contrôleur informe le **président du CROEC** ; l'**Ordre** informe Tracfin | Les **contrôleurs** informent **eux-mêmes** Tracfin
 ```
 
 ## Vigilance : les étapes

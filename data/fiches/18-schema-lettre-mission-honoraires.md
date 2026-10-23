@@ -24,7 +24,8 @@ Principe | **Libres**, convenus dans la lettre de mission ; **aucun barème** (c
 Honoraires au succès | **Interdits** pour les missions du **monopole** (comptabilité) ; **possibles** pour les autres | **Interdits** (honoraires subordonnés au résultat)
 Indexation | Possible si une **clause** la prévoit et que l'indice est **lié** à l'activité | —
 Mission gratuite | Possible si ce n'est **pas** une concurrence déloyale ; lettre de mission qui précise la **gratuité**, même qualité | —
-Litige | Conciliation ou arbitrage du **président du CROEC** | Certification : **président de la CRCC**, puis **H2A** ; prestations : **tribunal** de droit commun
+Litige | Conciliation ou arbitrage du **président du CROEC** | Certification : conciliation du **président de la CRCC** (3 mois), puis le **juge** ; prestations : **tribunal** de droit commun
+Dérogation au nombre d'heures | — | Président de la **CRCC**, puis président de la **CNCC**, puis **bureau de la H2A**, puis **tribunal administratif**
 Non-paiement | **Droit de rétention** sur les **travaux** réalisés, **jamais** sur les documents du client | —
 ```
 

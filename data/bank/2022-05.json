@@ -44,7 +44,7 @@
       "qcm": {
         "question": "À l'issue d'un contrôle qualité LCB-FT mené par l'Ordre des experts-comptables, la conclusion peut être :",
         "choices": [
-          "Satisfaisante, satisfaisante avec recommandations ou observations, ou non satisfaisante avec contrôle complémentaire ou saisine de la chambre de discipline",
+          "Une conclusion sans observation, avec simples observations, ou avec observations entraînant un nouveau contrôle sur site à l'issue d'un an, le comité LBC-FT pouvant en outre saisir l'instance disciplinaire",
           "Certification sans réserve, avec réserve ou refus de certifier",
           "Attestation sans observation, avec observation ou refus d'attester",
           "Classement sans suite, déclaration de soupçon à Tracfin ou transmission au procureur"
@@ -53,15 +53,18 @@
       },
       "qrc": {
         "expected": [
-          "Conclusion satisfaisante : dispositif LCB-FT conforme",
-          "Conclusion satisfaisante assortie d'observations ou de recommandations à mettre en œuvre",
-          "Conclusion non satisfaisante : nouveau contrôle (contrôle complémentaire) dans un délai rapproché et/ou transmission au président du conseil régional pouvant conduire à la saisine de la chambre de discipline"
+          "Contrôle conclu par le comité LBC-FT placé auprès du Conseil national (RI art. 472)",
+          "Conclusion sans observation",
+          "Conclusion avec simples observations, éventuellement assortie d'une convocation devant des membres du comité",
+          "Conclusion avec observations entraînant un nouveau contrôle sur site à l'issue d'un an, avec formation LCB-FT obligatoire possible aux frais du professionnel",
+          "Selon la gravité des manquements : saisine de l'instance disciplinaire (CMF L.561-36) ou extension du contrôle à la structure"
         ],
-        "model_answer": "Le contrôle LCB-FT se conclut soit par une conclusion satisfaisante, soit par une conclusion satisfaisante avec observations ou recommandations, soit par une conclusion non satisfaisante, qui entraîne un contrôle complémentaire ultérieur et peut conduire le président du conseil régional à saisir la chambre régionale de discipline."
+        "model_answer": "Le comité LBC-FT conclut le contrôle sur site soit sans observation, soit avec simples observations (éventuellement avec convocation), soit avec observations entraînant un nouveau contrôle sur site à l'issue d'un an, le professionnel pouvant être obligé de suivre une formation LCB-FT à ses frais. Selon la gravité des manquements, le comité peut saisir l'instance disciplinaire."
       },
-      "explanation": "Le contrôle qualité ordinal, y compris son volet LCB-FT, n'est pas une procédure disciplinaire mais peut y conduire en cas de manquements graves. Les distracteurs sont les conclusions des missions du CAC (certification) et de l'EC (attestation de présentation), ainsi que des mesures propres à Tracfin et au parquet.",
-      "reference": "Règlement du contrôle de qualité de l'OEC ; CMF art. L.561-36 (contrôle par l'Ordre) ; NPLAB",
-      "confidence": "low"
+      "explanation": "Le contrôle LCB-FT de l'Ordre est organisé par le titre IV bis du règlement intérieur sous la direction du comité LBC-FT près le Conseil national, selon une approche par les risques : contrôle sur site, hors site, ou intégré au contrôle de qualité pour les professionnels faiblement exposés. Pour un contrôle hors site, la dernière conclusion est assortie d'un contrôle sur site dans l'année (art. 478). Ce n'est pas une procédure disciplinaire mais il peut y conduire. Les distracteurs sont les opinions du CAC, les conclusions de l'attestation de présentation et des mesures propres à Tracfin ou au parquet.",
+      "reference": "Règlement intérieur de l'Ordre (arrêté du 6 mars 2024), art. 460 à 478, notamment art. 472 et 478 ; ord. 45-2138 art. 1er ; CMF L.561-36",
+      "confidence": "high",
+      "update_note": "Conclusions fixées par le RI agréé par arrêté du 6 mars 2024 : c'est le comité LBC-FT, et non le président du conseil régional, qui conclut le contrôle et peut saisir l'instance disciplinaire."
     },
     {
       "id": "2022-05-EC-03",
@@ -168,7 +171,7 @@
       "qcm": {
         "question": "Le non-paiement par un expert-comptable des cotisations dues à sa caisse de retraite (CAVEC) peut-il donner lieu à une sanction disciplinaire ?",
         "choices": [
-          "Oui : le manquement à une obligation légale, contraire à la probité et à l'honneur de la profession, constitue une faute disciplinaire susceptible d'être poursuivie devant la chambre de discipline",
+          "Oui : le non-paiement des cotisations CAVEC, obligatoires (ord. art. 27 bis), pendant deux ans sur les dix dernières années et sans motif valable, entraîne la radiation d'office du tableau prononcée par le conseil régional",
           "Non : seuls les manquements commis dans l'exécution des missions sont disciplinairement sanctionnables",
           "Non : la CAVEC dispose de ses propres sanctions et la chambre de discipline n'est compétente que pour les cotisations ordinales",
           "Oui, mais seulement par la commission des sanctions de la H2A"
@@ -177,17 +180,17 @@
       },
       "qrc": {
         "expected": [
-          "Oui",
-          "La faute disciplinaire couvre tout manquement aux lois et règlements et tout fait contraire à la probité, à l'honneur ou à la dignité de la profession, même hors mission",
-          "Le non-paiement des cotisations à la caisse de retraite est un manquement à une obligation légale incompatible avec l'exemplarité attendue d'un professionnel qui conseille en matière sociale",
-          "Procédure : signalement par la caisse au conseil régional ; saisine de la chambre régionale de discipline"
+          "L'inscription au tableau oblige à cotiser à la CAVEC ; le défaut de paiement est sanctionné dans les conditions du décret (ord. art. 27 bis)",
+          "Radiation d'office du tableau si, pendant deux ans consécutifs ou non au cours des dix dernières années et sans motif valable, les cotisations professionnelles ou de sécurité sociale (dont CAVEC) n'ont pas été payées (D. 2012-432 art. 125)",
+          "Procédure : deux mises en demeure par LRAR, observations écrites ou orales, décision du conseil régional au plus tôt trente jours après",
+          "Recours suspensif devant le comité national du tableau ; réinscription subordonnée au paiement des sommes dues"
         ],
-        "model_answer": "Oui. La discipline ordinale sanctionne tout manquement aux obligations légales et tout fait contraire à la probité, à l'honneur ou à la dignité de la profession, y compris en dehors de l'exécution des missions. Le défaut de paiement des cotisations à la CAVEC, obligation légale que le professionnel fait respecter chez ses clients, peut donc être poursuivi devant la chambre régionale de discipline, indépendamment des mesures de recouvrement de la caisse."
+        "model_answer": "Oui, une sanction est encourue, selon une procédure propre : l'expert-comptable qui, pendant deux ans consécutifs ou non au cours des dix dernières années et sans motif valable, n'a pas payé ses cotisations CAVEC est radié d'office du tableau par le conseil régional, après deux mises en demeure. Le recours devant le comité national du tableau est suspensif et la réinscription suppose le paiement des sommes dues."
       },
-      "explanation": "La faute disciplinaire est définie largement et ne se limite ni aux missions ni aux cotisations ordinales : la jurisprudence disciplinaire retient le défaut de paiement des charges sociales personnelles comme contraire à la probité. La H2A n'est jamais compétente pour les experts-comptables.",
-      "reference": "Ord. 45-2138 art. 53 ; D. 2012-432 art. 141 s. (devoirs généraux : respect des lois, probité, dignité) ; jurisprudence de la chambre nationale de discipline",
-      "confidence": "low",
-      "update_note": "Relecture : la réponse « oui » est cohérente, mais le sujet de mai 2026 (Q10) vise un texte précis (cotisations CAVEC impayées sans motif valable pendant au moins deux ans au cours des dix dernières années) qui prévoit une sanction déterminée ; la référence exacte et la sanction encourue sont à identifier et à ajouter."
+      "explanation": "L'ordonnance renvoie au décret la sanction du défaut de cotisation à la caisse de retraite (art. 27 bis) ; le décret prévoit la radiation d'office du tableau (art. 125), prononcée par le conseil régional et distincte de la procédure devant la chambre régionale de discipline, réservée notamment aux atteintes à la probité et à l'honneur. C'est la réponse attendue au sujet de mai 2026 (Q10). La H2A n'est jamais compétente pour les experts-comptables.",
+      "reference": "Ord. 45-2138 art. 27 bis ; D. 2012-432 art. 125 (rédaction issue du décret 2025-506)",
+      "confidence": "medium",
+      "update_note": "Art. 125 réécrit au 1er janvier 2023 (radiation d'office, auparavant « réputée démissionnaire ») puis au 12 juin 2025 (décret 2025-506 : observations écrites et orales). La qualification de « sanction disciplinaire » au sens strict est discutable : la mesure relève du conseil régional, non de la chambre de discipline."
     },
     {
       "id": "2022-05-EC-07",
@@ -387,7 +390,7 @@
       "qcm": {
         "question": "Selon la NEP 200, les limites inhérentes à l'audit des comptes tiennent notamment :",
         "choices": [
-          "À l'utilisation des techniques de sondages, aux limites inhérentes au contrôle interne et au caractère persuasif plutôt que concluant des éléments collectés, qui appelle le jugement professionnel",
+          "À l'utilisation des techniques de sondages, aux limites inhérentes au contrôle interne et au fait que la plupart des éléments collectés conduisent davantage à des présomptions qu'à des certitudes",
           "Au barème d'heures, au secret professionnel et à la non-immixtion dans la gestion",
           "Au coût de l'audit, au délai légal de dépôt des comptes et à la taille de l'équipe",
           "À l'absence de lettre de mission, à la rotation des associés et à l'interdiction des services non audit"
@@ -396,16 +399,17 @@
       },
       "qrc": {
         "expected": [
-          "Utilisation des techniques de sondages : l'auditeur ne contrôle pas l'exhaustivité des opérations",
-          "Limites inhérentes au contrôle interne : collusion, contournement par la direction, erreur humaine",
-          "Nature des éléments collectés : davantage persuasifs que concluants, d'où le recours au jugement professionnel",
-          "Conséquence : assurance raisonnable, non absolue, et risque d'audit"
+          "Utilisation des techniques de sondages",
+          "Limites inhérentes au contrôle interne",
+          "Éléments collectés conduisant davantage à des présomptions qu'à des certitudes",
+          "Conséquence : assurance élevée mais non absolue, qualifiée d'« assurance raisonnable » (NEP 200 § 08)"
         ],
-        "model_answer": "La NEP 200 reconnaît que l'audit comporte des limites tenant à l'utilisation des sondages, aux limites inhérentes à tout contrôle interne (collusion, contournement par la direction) et au fait que la plupart des éléments collectés sont persuasifs plutôt que concluants, ce qui implique le recours au jugement professionnel. C'est pourquoi la certification ne procure qu'une assurance raisonnable et non absolue."
+        "model_answer": "La NEP 200 indique que les limites de l'audit résultent notamment de l'utilisation des techniques de sondages, des limites inhérentes au contrôle interne et du fait que la plupart des éléments collectés conduisent davantage à des présomptions qu'à des certitudes. C'est pourquoi l'assurance obtenue, élevée mais non absolue, est qualifiée d'assurance raisonnable."
       },
       "explanation": "Ces limites expliquent la notion d'assurance raisonnable et le risque d'audit : un audit conforme aux NEP peut ne pas détecter toutes les anomalies significatives. Les distracteurs énumèrent des règles déontologiques ou organisationnelles qui ne sont pas des limites techniques de l'audit.",
-      "reference": "NEP 200 (principes applicables à l'audit des comptes), paragraphes sur l'assurance raisonnable et les limites de l'audit",
-      "confidence": "medium"
+      "reference": "NEP 200 (C. com. A.821-63), § 08 et 09",
+      "confidence": "high",
+      "update_note": "NEP reproduites dans la partie Arrêtés du code de commerce (A.821-63 pour la NEP 200)."
     },
     {
       "id": "2022-05-CAC-14",
@@ -511,7 +515,7 @@
       "qcm": {
         "question": "Selon le code de commerce, constitue une faute disciplinaire du commissaire aux comptes :",
         "choices": [
-          "Tout manquement aux conditions légales d'exercice et aux règles professionnelles (lois, règlements, NEP, code de déontologie), toute négligence grave, et tout fait contraire à la probité, à l'honneur ou à l'indépendance",
+          "Tout manquement aux conditions légales d'exercice de la profession, ainsi que toute négligence grave et tout fait contraire à la probité ou à l'honneur",
           "Uniquement le défaut de formation continue et le non-paiement des cotisations",
           "Uniquement les infractions pénales définitivement jugées",
           "Toute divergence d'appréciation avec l'entité sur l'application des règles comptables"
@@ -520,16 +524,17 @@
       },
       "qrc": {
         "expected": [
-          "Les manquements aux conditions légales d'exercice de la profession et aux règles professionnelles : lois, règlements, normes d'exercice professionnel, code de déontologie",
-          "La négligence grave",
-          "Tout fait contraire à la probité, à l'honneur ou à l'indépendance, même en dehors de l'activité professionnelle"
+          "1° Tout manquement aux conditions légales d'exercice de la profession",
+          "2° Toute négligence grave",
+          "2° (suite) Tout fait contraire à la probité ou à l'honneur",
+          "Sanctions : L.821-71 (avertissement, blâme, interdiction temporaire de trois ans au plus, radiation, retrait de l'honorariat, sanctions complémentaires et pécuniaires)"
         ],
-        "model_answer": "Constituent une faute disciplinaire du commissaire aux comptes les manquements aux conditions légales d'exercice et aux règles professionnelles (lois, règlements, normes d'exercice professionnel, code de déontologie), la négligence grave, et tout fait contraire à la probité, à l'honneur ou à l'indépendance, y compris en dehors de l'exercice professionnel."
+        "model_answer": "Constituent une faute disciplinaire du CAC tout manquement aux conditions légales d'exercice de la profession, toute négligence grave et tout fait contraire à la probité ou à l'honneur (L.821-70 I). Ces fautes exposent aux sanctions de L.821-71, prononcées par la commission des sanctions de la H2A."
       },
-      "explanation": "La définition est large : elle couvre les manquements techniques, l'incurie et les comportements indignes, sans exiger d'infraction pénale. Une simple divergence d'appréciation n'est pas une faute. L'EC connaît une définition similaire dans l'ordonnance de 1945 mais ses sanctions sont prononcées par les chambres de discipline ordinales.",
-      "reference": "C. com. art. L.821-70 (faute disciplinaire, ex L.824-1) ; pour l'EC : ord. 45-2138 art. 53",
-      "confidence": "low",
-      "update_note": "L'article L.824-1 est devenu l'article L.821-70 avec l'ordonnance 2023-1142 ; définition inchangée sur le fond. Relecture : le découpage de la réponse est à vérifier sur le texte. Dans le souvenir du relecteur, le 1° vise les manquements aux conditions légales d'exercice ; le 2° la négligence grave et les faits contraires à la probité ou à l'honneur, même hors de l'exercice professionnel ; le 3° les manquements aux règles professionnelles (lois, règlements, NEP, code de déontologie). La mention de l'« indépendance » dans le fait contraire paraît reprise de l'ancien texte antérieur à 2016."
+      "explanation": "La définition est large : elle couvre les manquements aux conditions d'exercice, l'incurie et les comportements indignes, sans exiger d'infraction pénale. Le texte actuel ne vise plus expressément l'indépendance ni une catégorie distincte de manquements aux règles professionnelles : l'énumération en trois points de l'ancien L.824-1 est ramenée à deux. Une simple divergence d'appréciation n'est pas une faute. L'EC relève de l'ordonnance de 1945 et des chambres de discipline ordinales.",
+      "reference": "C. com. L.821-70 I (ex L.824-1), L.821-71 ; pour l'EC : ord. 45-2138 art. 53",
+      "confidence": "high",
+      "update_note": "Recodification 2024 : L.821-70 I ne retient plus que deux catégories (1° manquement aux conditions légales d'exercice ; 2° négligence grave et fait contraire à la probité ou à l'honneur) ; le II vise d'autres personnes (associés, EIP, dirigeants…) passibles des sanctions de L.821-72."
     },
     {
       "id": "2022-05-CAC-18",

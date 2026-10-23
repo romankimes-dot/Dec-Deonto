@@ -7,14 +7,14 @@
 | **Ordonnance n° 45-2138 du 19 septembre 1945** | Institue l'**Ordre** et réglemente le titre et la profession (monopole art. 2, interdictions art. 22, secret art. 21, discipline art. 49 à 53) |
 | **Décret n° 2012-432 du 30 mars 2012** | Exercice de l'activité ; contient le **code de déontologie** (art. **141 à 169**) |
 | **Loi Macron n° 2015-990** | Ouvre le périmètre : missions sociales et fiscales sans mission comptable, accompagnement des personnes physiques, création d'entreprise |
-| **Loi Pacte n° 2019-486 du 22 mai 2019** | Conseil supérieur → **Conseil national**, recouvrement amiable de créances et paiement de dettes pour le compte des clients |
-| **Loi n° 2022-172 du 14 février 2022** | Statut de l'**entrepreneur individuel** (séparation des patrimoines), ouvert à l'EC |
+| **Loi Pacte n° 2019-486 du 22 mai 2019** | **Mandat implicite** (présomption de mandat), recouvrement amiable de créances et paiement de dettes pour le compte des clients, honoraires de succès hors missions comptables, expert-comptable en entreprise |
+| **Loi n° 2022-172 du 14 février 2022** | Statut de l'**entrepreneur individuel** (séparation des patrimoines), ouvert à l'EC ; Conseil supérieur renommé **Conseil national** |
 | **Normes professionnelles (NP)** | Élaborées par le Conseil national, **agréées par arrêté du ministre chargé de l'économie** |
 
 ## 2. L'Ordre des experts-comptables
 
 ### Conseil national de l'Ordre (CNOEC)
-- Ancien nom : **Conseil supérieur** (CSOEC). Siège à Paris.
+- Ancien nom : **Conseil supérieur** (CSOEC), renommé par la **loi 2022-172 du 14 février 2022**. Siège à Paris.
 - Rôles :
   - **représente la profession** auprès des pouvoirs publics ;
   - **élabore les normes professionnelles** et les soumet à l'agrément ;
@@ -28,11 +28,11 @@
 
 ### Conseils régionaux (CROEC)
 - Un conseil par circonscription régionale. Il **tient le tableau**, statue sur les **inscriptions**, appelle les **cotisations**, **représente l'Ordre** dans la région, réalise le **contrôle de qualité** et met en œuvre la **conciliation et l'arbitrage**.
-- Membres élus pour **4 ans**. Le **président** est élu par le conseil, et sa présidence est limitée dans le temps (voir « À vérifier »).
+- Membres élus pour **4 ans**. Le bureau est élu pour **2 ans** par le conseil. Une même personne ne peut présider le même conseil plus de **4 années consécutives** ; l'interruption doit durer **2 ans** au moins (D. 2012-432 art. 10).
 - Le président du CROEC peut agir comme :
   - **conciliateur** : il cherche un **accord amiable** entre les parties, sans décision qui s'impose à elles ;
   - **arbitre** : il rend une **sentence** que les parties se sont engagées à respecter.
-- Si un confrère est **empêché** (maladie grave, par exemple), le conseil régional peut désigner un **confrère suppléant / administrateur provisoire** chargé de gérer le cabinet.
+- **Décès ou incapacité temporaire** d'un confrère : le **président du conseil régional** peut désigner un expert-comptable chargé de son **remplacement provisoire**, à la demande du professionnel ou avec son accord (ou celui de ses héritiers). C'est une mission de confraternité, en principe gratuite (D. 2012-432 art. 166).
 
 ### Commissaire du gouvernement
 - Il est placé auprès du **Conseil national** et de **chaque CROEC** et représente la **tutelle** (ministre chargé de l'économie).
@@ -53,11 +53,11 @@
 - Thèmes : exercer avec **conscience et probité**, **respecter et faire respecter les lois** dans ses travaux.
 
 ### Le tableau
-- Il est **tenu par chaque CROEC** et comporte plusieurs **sections** :
+- Il est **tenu par chaque CROEC** et comporte **3 sections suivies de 11 listes** (D. 2012-432 art. 114). Les sections :
   1. experts-comptables **personnes physiques** ;
   2. **sociétés d'expertise comptable** ;
   3. **sociétés de participations d'expertise comptable** (SPE / SPFPL).
-- Les **AGC**, les **succursales** et les salariés autorisés (**art. 83 ter et 83 quater**) relèvent de listes ou d'annexes propres.
+- Les **listes** : notamment les **stagiaires**, les **honoraires**, les salariés d'AGC autorisés (**art. 83 ter et 83 quater**)…
 
 ### Experts-comptables stagiaires
 - Ils sont inscrits au **registre du stage** tenu par le CROEC. Le stage dure **3 ans**.
@@ -251,10 +251,11 @@
   - en cas de soupçon de blanchiment, faire une **déclaration à Tracfin**.
 
 ## 11. Loi Pacte (2019) : apports pour les EC
-- Conseil supérieur renommé **Conseil national**.
+- **Mandat implicite** (présomption simple de mandat pour les démarches fiscales et sociales).
 - **Élection au suffrage direct** des membres du Conseil national.
 - Possibilité de **recouvrement amiable de créances** et de **paiement de dettes** pour le compte des clients.
-- Assouplissement des **activités commerciales accessoires**.
+- **Honoraires de succès** hors missions comptables, et statut d'**expert-comptable en entreprise**.
+- Attention : les **activités commerciales accessoires** existaient déjà avant la loi Pacte, et le renommage en **Conseil national** vient de la loi **2022-172**.
 - Pour le CAC : relèvement des **seuils**, mission **ALPE**, suppression de la liste des services interdits hors EIP (voir fiches 05 et 06).
 
 ## 12. Textes internationaux
@@ -282,14 +283,10 @@
 - **Activités commerciales accessoires** : elles sont ouvertes à l'**EC** ; un CAC qui n'est pas EC n'y a pas accès.
 
 ## À vérifier
-- **Agrément des NP** : ministre chargé de l'économie, ou ministre chargé du budget comme l'indique SCHEMA.md ? Et l'avis de qui ?
-- **Présidence d'un CROEC** : durée consécutive maximale. Est-ce **2 mandats** ou **4 / 6 ans** ? Je ne suis pas sûr ; annale 2023-11 Q5.
-- **Sections du tableau** : nombre exact et intitulés. Les AGC sont-elles une section ou un tableau distinct ?
 - **Conditions d'inscription** : une condition de **nationalité** subsiste-t-elle ?
 - **Dirigeants des sociétés d'EC** : faut-il que tous soient EC, ou au moins un ? Cela détermine la réponse à l'annale 2024-05 Q8.
 - **Signatures de la lettre de mission en société** : faut-il la signature sociale **et** celle de l'EC responsable, ou seulement celle de l'EC ? Annales 2018-11 Q7 et 2022-11 Q1.
 - **Comptes de campagne** : catégorie exacte dans le cadre de référence (autre prestation ou mission sans assurance). Annales 2024-11 Q9 et 2026-05 Q8.
 - **Numéro de la norme d'audit contractuel** (NP 2100 ou NP 2200) et exclusion des comptes consolidés en présentation.
 - **Honoraires au succès** : quelle mission de la liste de l'annale 2025-11 Q5 est interdite (recouvrement de créances ?) et sur quel fondement.
-- **Suppléant / administrateur provisoire** en cas de maladie grave d'un confrère : nom exact de la procédure (annale 2021-11 Q3).
 - **Formation continue EC** : quantum exact (120 h / 3 ans, 20 h par an ou 40 h par an en moyenne) et texte (norme formation du CNOEC).

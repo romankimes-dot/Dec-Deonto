@@ -66,10 +66,9 @@
 
 ## 4. Responsabilité disciplinaire
 
-### Faits sanctionnables (ex L.824-1 : 3 catégories)
-1. Les **manquements aux dispositions légales et réglementaires** (y compris le règlement UE 537/2014).
-2. Les **manquements au code de déontologie**, aux **normes** (NEP) et aux bonnes pratiques.
-3. Les **faits contraires à l'honneur ou à la probité**, même étrangers à l'exercice professionnel.
+### Faute disciplinaire (L.821-70 I : 2 catégories)
+1. Tout **manquement aux conditions légales d'exercice** de la profession.
+2. Toute **négligence grave** et tout **fait contraire à la probité ou à l'honneur**.
 
 ### Personnes sanctionnables par la commission des sanctions (L.820-2)
 - Les **commissaires aux comptes**, personnes physiques et sociétés, ainsi que les **auditeurs de durabilité**.
@@ -88,19 +87,19 @@
 | **Conseil d'État** | **Recours** contre les décisions de la commission des sanctions |
 
 ### Composition de la commission des sanctions
-- Un **conseiller d'État**, **président**.
-- Un **conseiller à la Cour de cassation**.
-- Un **magistrat de la Cour des comptes**.
-- **Trois personnalités qualifiées** en matière juridique, économique ou financière (à vérifier).
-- **Aucun CAC en exercice** n'y siège.
+(L.820-2 V)
+- Un **magistrat de la Cour de cassation** (conseiller ou président de chambre), **président**.
+- **Quatre personnes qualifiées** : une **ayant exercé la profession de CAC**, une qualifiée en **durabilité**, deux qualifiées en matière **juridique, économique ou financière**.
+- Nommés par **décret** pour **6 ans**, renouvelables une fois ; incompatibilité avec le **collège**.
 
-### Saisine du rapporteur général
-- Le **garde des Sceaux** (ministre de la Justice).
+### Saisine du rapporteur général (L.821-73)
+- Le **premier président de la Cour des comptes** ou le président d'une **chambre régionale des comptes**.
 - Le **procureur général** près la cour d'appel.
 - Le **président de l'AMF** et le **président de l'ACPR**.
-- Le **président de la CNCC** et les **présidents des CRCC**.
-- Le **collège** de la H2A, notamment après un contrôle.
-- **Autosaisine** sur signalement ou plainte.
+- Le **président de la H2A**.
+- Le **président de la CNCC** ou d'une **CRCC**.
+- **Autosaisine** sur les signalements reçus.
+- Le **garde des Sceaux** ne figure **pas** dans la liste.
 
 ### Les 5 étapes, jusqu'au recours
 1. **Saisine du rapporteur général**, puis **enquête** : auditions, demandes de documents, **secret non opposable**.
@@ -124,7 +123,7 @@
 3. **Interdiction temporaire d'exercer** la fonction de CAC, **3 ans au plus** depuis le **1er janvier 2024** (**L.821-71** ; décision H2A CS 2025-13). Elle était de **5 ans** auparavant (H3C). Elle peut être assortie du sursis.
 4. **Radiation** de la liste.
 5. **Retrait de l'honorariat**.
-6. **Interdiction temporaire d'exercer des fonctions d'administration ou de direction** dans une société de CAC ou une EIP (**3 ans au plus**, à vérifier).
+6. **Interdiction temporaire d'exercer des fonctions d'administration ou de direction** dans une société de CAC ou une EIP (**3 ans au plus**).
 7. **Sanction pécuniaire** : **250 000 € au plus**, éventuellement cumulée.
 8. **Publication** de la décision et **déclaration publique** de la nature du manquement.
 
@@ -132,7 +131,7 @@
 
 ### Sanctions : personnes morales (sociétés de CAC)
 - **Avertissement**, **blâme**, **interdiction temporaire d'exercer** (**3 ans au plus** depuis le 01/01/2024, 5 ans avant), **radiation**.
-- **Sanction pécuniaire** : **1 M€ au plus**, ou un pourcentage du chiffre d'affaires selon les cas (à vérifier).
+- **Sanction pécuniaire** : le plus élevé de **1 M€** ou, pour une faute commise en mission de certification, de la **moyenne annuelle des honoraires** facturés à l'entité sur 3 exercices (L.821-71).
 - **Publication**.
 
 ### Prescription disciplinaire
@@ -162,11 +161,7 @@
 - **Révélation au procureur** : son omission est un **délit** pour le CAC ; il n'y a pas d'obligation équivalente pour l'EC.
 
 ## À vérifier
-- **Composition exacte** de la commission des sanctions sous la H2A : nombre et qualité des personnalités qualifiées, présence d'un membre de la Cour des comptes (annale 2025-05 Q20).
 - **Liste exacte des personnes sanctionnables** selon L.820-2 dans sa version H2A (annale 2026-05 Q15).
-- **Liste exacte des autorités** pouvant saisir le rapporteur général (annale 2021-11 Q15).
-- **Interdiction temporaire d'exercer : 3 ans au plus** (L.821-71). Ce point a été confirmé par relecture et le piège « 5 ans » vient de l'ancien régime H3C.
-- **Plafonds** : 250 000 € pour une personne physique ; 1 M€ ou un pourcentage du CA pour une personne morale ; durée maximale de l'interdiction de fonctions de direction.
 - **Champ et sanctions de la procédure simplifiée**.
 - **Nouvelle numérotation** des délits pénaux (ex L.820-4 à L.820-7) après l'ordonnance 2023-1142, et **peine exacte** de l'exercice malgré une incompatibilité.
 - **Couverture d'assurance** des dommages-intérêts en cas de violation du secret (annale 2019-11 Q16 : réponse « non couverts » présumée).
