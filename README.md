@@ -21,7 +21,7 @@ Programme officiel (arrêté du 13 février 2019) : exercice de la profession ·
 
 ## Utilisation sur téléphone
 
-1. Ouvrir l'URL GitHub Pages du dépôt dans Safari (iPhone) ou Chrome (Android).
+1. Ouvrir https://romankimes-dot.github.io/Dec-Deonto/ dans Safari (iPhone) ou Chrome (Android).
 2. « Partager » → « Sur l'écran d'accueil » (iPhone) ou « Installer l'application » (Android).
 3. Au premier lancement en ligne, l'app met tout en cache (questions, fiches). Elle fonctionne ensuite **sans réseau**.
 4. La progression est stockée **sur le téléphone** uniquement. Réglages → Exporter pour la sauvegarder.
@@ -57,4 +57,4 @@ python3 -m http.server 8080   # puis http://localhost:8080
 - `data/bank/<session>.json` : une session = 20 questions (schéma dans `data/SCHEMA.md`).
 - `data/fiches/*.md` : fiches de synthèse.
 - `scripts/fetch_annales.sh` : re-télécharge les sujets officiels et les rapports de jury.
-- Déploiement : GitHub Pages via `.github/workflows/pages.yml` (Settings → Pages → Source : GitHub Actions) à chaque push sur `main`.
+- Déploiement : GitHub Pages publie directement la branche `main` (https://romankimes-dot.github.io/Dec-Deonto/). Le workflow `.github/workflows/verifications.yml` ne fait que les vérifications (tests, banque, badges).

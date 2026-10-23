@@ -1,0 +1,26 @@
+name: Vérifications
+
+# Le site est publié par GitHub Pages directement depuis la branche main.
+# Ce workflow ne fait que vérifier le code et la banque de questions.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Tests et validation de la banque
+        run: |
+          for f in js/*.js sw.js; do node --check $f || exit 1; done
+          node --test 'tests/**/*.test.js'
+          python3 -I scripts/build_bank.py --check
+          python3 -I scripts/build_badges.py --check
