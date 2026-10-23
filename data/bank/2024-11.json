@@ -31,7 +31,7 @@
       },
       "explanation": "La loi 2022-172 crée un statut unique d'entrepreneur individuel applicable à toute activité professionnelle indépendante, y compris libérale réglementée : rien dans l'ordonnance de 1945 n'y fait obstacle, l'exercice individuel restant ouvert à l'expert-comptable inscrit au tableau. Le patrimoine professionnel est séparé de plein droit (plus besoin de déclaration d'affectation, l'EIRL étant mise en extinction). Piège : cette protection ne réduit pas la responsabilité civile professionnelle, qui reste couverte par l'assurance obligatoire.",
       "reference": "Loi n° 2022-172 du 14 févr. 2022 ; C. com. L.526-22 s. ; Ord. 45-2138 art. 3 et 7",
-      "confidence": "medium"
+      "confidence": "high"
     },
     {
       "id": "2024-11-EC-02",
@@ -116,13 +116,15 @@
           "Le professionnel sanctionné (l'intéressé)",
           "Le plaignant",
           "Le commissaire du Gouvernement",
-          "Par appel incident : le président du conseil régional, le président de la commission nationale d'inscription, les commissaires du Gouvernement près ces instances"
+          "Le magistrat chargé des poursuites",
+          "Le président du conseil régional (ou de la commission nationale d'inscription) ; appel incident possible dans les 15 jours"
         ],
-        "model_answer": "L'appel, porté devant la chambre nationale de discipline dans le délai d'un mois, peut être formé par l'intéressé, le plaignant et le commissaire du Gouvernement. Un appel incident est ouvert dans les quinze jours au président du conseil régional, au président de la commission nationale d'inscription et aux commissaires du Gouvernement près ces instances."
+        "model_answer": "L'appel, porté devant la chambre nationale de discipline dans le délai d'un mois par lettre recommandée avec AR, peut être formé par l'intéressé, la personne ou l'autorité à l'origine de la plainte, le magistrat chargé des poursuites, le président du conseil régional (ou de la commission nationale d'inscription) et le commissaire du Gouvernement. Chacun d'eux dispose en outre de quinze jours pour former un appel incident."
       },
-      "explanation": "L'article 192 du décret de 2012 fixe un délai d'appel d'un mois devant la chambre nationale de discipline, par lettre recommandée avec AR. L'appel incident (15 jours après notification) élargit la liste. Piège EC/CAC : en matière CAC, il n'y a pas d'appel mais un recours devant le Conseil d'État contre les décisions de la commission des sanctions de la H2A.",
-      "reference": "Ord. 45-2138 art. 50 ; D. 2012-432 art. 192",
-      "confidence": "high"
+      "explanation": "L'article 192 II du décret de 2012 fixe un délai d'appel d'un mois devant la chambre nationale de discipline, par lettre recommandée avec AR, et énumère les personnes ayant qualité pour faire appel ; chacune peut former un appel incident dans les quinze jours de la notification de l'appel d'une autre. Le président du conseil régional dispose donc d'un appel principal, pas seulement incident. Piège EC/CAC : en matière CAC, il n'y a pas d'appel mais un recours devant le Conseil d'État contre les décisions de la commission des sanctions de la H2A.",
+      "reference": "Ord. 45-2138 art. 50 ; D. 2012-432 art. 192 II",
+      "confidence": "high",
+      "update_note": "Relecture : liste corrigée selon l'art. 192 II en vigueur (magistrat chargé des poursuites ajouté ; président du conseil régional titulaire d'un appel principal)."
     },
     {
       "id": "2024-11-EC-05",
@@ -213,7 +215,8 @@
       },
       "explanation": "L'article 163 impose, en cas de remplacement, d'informer le prédécesseur avant d'accepter, de vérifier que le changement n'a pas pour but d'éluder la loi, de s'enquérir du paiement de ses honoraires et, à défaut, d'en référer au président du conseil régional. Les exceptions résultent du champ du texte (remplacement) et de la pratique ordinale ; leur liste exacte n'est pas fixée par le décret. Le paiement des honoraires du prédécesseur n'est pas une exception mais une diligence.",
       "reference": "D. 2012-432 art. 163 ; doctrine ordinale (CNOEC, conseils régionaux)",
-      "confidence": "low"
+      "confidence": "low",
+      "update_note": "Relecture : l'art. 163 (texte vérifié, décret 2012-432 à jour) ne prévoit aucune exception expresse ; la réponse, déduite du champ du texte (remplacement d'un confrère), est plausible mais l'item « missions légales ponctuelles » n'a pu être rattaché à aucune source et devrait être vérifié."
     },
     {
       "id": "2024-11-EC-08",
@@ -332,9 +335,9 @@
         ],
         "model_answer": "Oui. La mission ALPE est une mission de certification des comptes dont seule la durée du mandat est réduite à trois exercices ; elle n'est pas visée par les exclusions des articles R.821-193 et R.821-194. Le barème D.821-188 s'applique donc, sous réserve de la procédure de dérogation devant le président de la CRCC."
       },
-      "explanation": "Le barème d'heures s'applique aux missions de certification des comptes, sauf exclusions limitatives : comptes consolidés, entités dont bilan + produits dépassent 122 M€, sociétés cotées, banques, assurances, associations et fondations, syndicats, CSE… et la certification des informations en matière de durabilité. La mission ALPE n'y figure pas. Point à vérifier : certaines sources présentent le barème comme seulement indicatif pour l'ALPE.",
+      "explanation": "Le barème d'heures s'applique aux missions de certification des comptes, sauf exclusions limitatives : comptes consolidés, entités dont bilan + produits dépassent 122 M€, sociétés cotées, banques, assurances, associations et fondations, syndicats, CSE… et la certification des informations en matière de durabilité. La mission ALPE n'y figure pas, ce que confirme la CNCC (fiche « Dérogation au barème », mai 2025 : procédure applicable aux missions de contrôle légal « y compris la mission ALPE »).",
       "reference": "C. com. L.821-46, L.821-57, D.821-188 à D.821-190, R.821-193, R.821-194 (ex-R.823-12 s.)",
-      "confidence": "medium",
+      "confidence": "high",
       "update_note": "Barème recodifié de R.823-12 vers D.821-188 depuis le 1er janvier 2024 ; mission ALPE ex-L.823-3-2."
     },
     {
@@ -420,7 +423,7 @@
       "explanation": "L'article 29 du code de déontologie impose au CAC de pouvoir justifier, avant d'accepter une mission de certification et pendant le mandat, qu'il appartient ou non à un réseau, à l'aide d'indices (direction commune, partage de résultats, dénomination commune, clientèle commune…) ; en cas de doute il saisit l'autorité de supervision. Piège : la CNCC donne des avis doctrinaux mais n'est pas l'instance visée.",
       "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 29 ; C. com. L.821-4",
       "confidence": "high",
-      "update_note": "Le texte vise historiquement le Haut Conseil du commissariat aux comptes, remplacé par la H2A au 1er janvier 2024."
+      "update_note": "Le texte visait historiquement le Haut Conseil du commissariat aux comptes ; depuis le décret 2026-176 (en vigueur le 14 mars 2026), l'article 29 dispose expressément que le CAC « saisit pour avis la Haute autorité de l'audit »."
     },
     {
       "id": "2024-11-CAC-15",
@@ -450,7 +453,8 @@
       },
       "explanation": "Depuis la loi Pacte, l'article L.225-135 ne vise le rapport du CAC que « s'il en existe », mais l'intervention d'un CAC désigné ad hoc sur le prix d'émission demeure (L.225-136, L.225-138, R.225-114 s.). Point à vérifier : l'étendue exacte de la mission ad hoc selon le type d'émission et la forme sociale (SAS).",
       "reference": "C. com. L.225-135, L.225-136, L.225-138, R.225-114 s.",
-      "confidence": "low"
+      "confidence": "low",
+      "update_note": "Relecture : réponse « non » maintenue, mais à nuancer : si chaque actionnaire renonce individuellement à son DPS (L.225-132), il n'y a pas suppression du DPS et donc pas d'intervention du CAC ; le jury a pu attendre cette distinction."
     },
     {
       "id": "2024-11-CAC-16",
@@ -509,7 +513,7 @@
       "explanation": "Articles 15 (publicité) et 16 (sollicitation personnalisée et services en ligne) du titre I du code de déontologie CAC. La différence avec les EC (art. 152) porte surtout sur les modes de sollicitation : le CAC ne peut ni démarcher physiquement ni téléphoner.",
       "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 15 et 16",
       "confidence": "high",
-      "update_note": "Le décret 2026-176 du 11 mars 2026 a adapté le code à la durabilité et touché aux règles de sollicitation : vérifier la rédaction en vigueur."
+      "update_note": "Décret 2026-176 du 11 mars 2026 (en vigueur le 14 mars 2026) : art. 15 et 16 étendus aux OTI et auditeurs de durabilité ; la publicité reste exempte de tout élément comparatif ; la sollicitation personnalisée ne peut se faire que par envoi postal ou courriel nominatif, « toute autre forme de démarchage est interdite » ; encarts, liens et bannières publicitaires étrangers à la profession interdits sur tout support numérique."
     },
     {
       "id": "2024-11-CAC-18",

@@ -28,9 +28,9 @@
         ],
         "model_answer": "Non. La représentation des parties devant les juridictions relève du monopole des avocats, que l'expert-comptable doit respecter. Il peut en revanche exercer certaines activités accessoires autorisées, comme le conseil en gestion de patrimoine à titre accessoire ou la fonction de tiers payant d'un député européen, et assister son client."
       },
-      "explanation": "L'article 22 de l'ordonnance autorise, depuis la loi Pacte, des activités commerciales et actes d'intermédiaire accessoires dans les limites d'une norme professionnelle ; le tiers payant d'un député européen est prévu par les textes. La représentation en justice est un monopole de l'avocat (loi 71-1130). Nuance : l'assistance devant certaines juridictions est admise par la doctrine ordinale ; la frontière assistance / représentation est le cœur de la question.",
+      "explanation": "L'article 22 de l'ordonnance interdit expressément aux membres de l'Ordre « d'assumer une mission de représentation devant les tribunaux de l'ordre judiciaire ou administratif ». Il autorise, depuis la loi Pacte, des activités commerciales et actes d'intermédiaire accessoires dans les limites d'une norme professionnelle ; le tiers payant d'un député européen est prévu par les textes. La représentation en justice est un monopole de l'avocat (loi 71-1130). Nuance : l'assistance devant certaines juridictions est admise par la doctrine ordinale ; la frontière assistance / représentation est le cœur de la question.",
       "reference": "Ord. 45-2138 art. 2 et 22 ; loi n° 71-1130 du 31 déc. 1971 art. 4",
-      "confidence": "medium"
+      "confidence": "high"
     },
     {
       "id": "2025-11-EC-02",
@@ -60,7 +60,7 @@
       },
       "explanation": "Depuis 2014, la sollicitation est permise aux EC, y compris via des plateformes de mise en relation : le guide ordinal des plateformes encadre le recueil des avis clients et interdit seulement le classement des experts-comptables lié à leur rémunération. La mention de l'appartenance à un réseau est autorisée (art. 154 8°), mais pas le superlatif comparatif.",
       "reference": "D. 2012-432 art. 152 et 154 ; guide ordinal de bonnes pratiques des plateformes en ligne",
-      "confidence": "medium"
+      "confidence": "high"
     },
     {
       "id": "2025-11-EC-03",
@@ -119,9 +119,10 @@
         ],
         "model_answer": "Le secret de l'expert-comptable est levé notamment lors d'une audition ou d'un témoignage en matière pénale, lors du contrôle de qualité de l'Ordre et à l'égard de l'AMF ainsi que de Tracfin. Il reste opposable aux agents de la CNIL, faute de texte le levant."
       },
-      "explanation": "Le secret (ord. art. 21, C. pén. 226-13) ne cède que devant une disposition législative contraire. Le CMF lève le secret à l'égard de l'AMF ; les contrôleurs qualité sont eux-mêmes tenus au secret. Pour la CNIL, la loi Informatique et libertés réserve expressément le secret professionnel applicable aux relations entre un professionnel et ses clients.",
-      "reference": "Ord. 45-2138 art. 21 ; C. pén. 226-13 et 226-14 ; CMF L.621-9-3 ; loi 78-17 art. 19",
-      "confidence": "medium"
+      "explanation": "Le secret (ord. art. 21, C. pén. 226-13) ne cède que devant une disposition législative contraire. Le CMF lève le secret à l'égard de l'AMF ; les contrôleurs qualité sont eux-mêmes tenus au secret. Pour la CNIL, aucun texte ne lève le secret de l'expert-comptable, et la loi Informatique et libertés dispense de répondre les personnes interrogées astreintes au secret professionnel.",
+      "reference": "Ord. 45-2138 art. 21 ; C. pén. 226-13 et 226-14 ; CMF L.621-9-3 ; loi 78-17 art. 18 et 19",
+      "confidence": "medium",
+      "update_note": "Relecture : la justification CNIL est fragile — lors des contrôles sur place, l'art. 19 de la loi 78-17 ne réserve que le secret avocat-client, le secret des sources et le secret médical ; la réponse d) reste la seule plausible au regard des levées classiques (audition pénale, contrôle qualité, AMF), mais la nuance mérite vérification."
     },
     {
       "id": "2025-11-EC-05",
@@ -210,9 +211,10 @@
         ],
         "model_answer": "Le contrôle de qualité est réalisé par des experts-comptables en exercice, volontaires, ayant fait acte de candidature pour être contrôleurs, puis formés et missionnés dans le cadre organisé par l'Ordre. Ils examinent l'organisation du cabinet et, par sondages, les dossiers de travail, et sont tenus au secret professionnel."
       },
-      "explanation": "Réponse retenue sur la base de la pratique ordinale (contrôleurs volontaires, conditions d'ancienneté d'inscription). Le décret de 1986 évoquait des contrôleurs désignés par les conseils régionaux, ce qui rend la proposition a) également plausible : point à vérifier dans le règlement intérieur de l'Ordre. Côté CAC, les contrôles d'activité sont réalisés par des contrôleurs de la H2A (ou de la CNCC par délégation pour les non-EIP).",
-      "reference": "Ord. 45-2138 ; D. 2012-432 ; règlement intérieur de l'Ordre (contrôle de qualité)",
-      "confidence": "low"
+      "explanation": "Règlement intérieur de l'Ordre : les professionnels « font acte de candidature » auprès du conseil régional ou de la commission nationale d'inscription (art. 411), qui choisissent les contrôleurs au vu des candidatures et dressent des listes pour trois ans (art. 412) ; conditions : aucune sanction disciplinaire, stage de formation, inscription au tableau depuis au moins cinq ans (art. 413), d'où la fausseté de c). La proposition a) n'est que partiellement exacte (la désignation suit la candidature et peut émaner de la commission nationale d'inscription) ; b) est la réponse la plus complète. Côté CAC, les contrôles d'activité sont réalisés par des contrôleurs de la H2A (ou de la CNCC par délégation pour les non-EIP).",
+      "reference": "Règlement intérieur de l'Ordre des experts-comptables art. 410 à 416 (agréé par arrêté)",
+      "confidence": "medium",
+      "update_note": "Relecture : réponse b) confirmée par l'art. 411 du règlement intérieur (« font acte de candidature ») ; a) reste partiellement exacte (art. 412 : les conseils régionaux choisissent et désignent les contrôleurs parmi les candidats), d'où une confiance moyenne."
     },
     {
       "id": "2025-11-EC-08",
@@ -263,7 +265,7 @@
       },
       "explanation": "La rétention est admise pour les travaux non payés (ord. art. 24 et code de déontologie art. 168 : information préalable du président du conseil régional). L'indemnité de rupture se recouvre par la conciliation, l'arbitrage du président du conseil régional ou le juge.",
       "reference": "Ord. 45-2138 art. 24 ; D. 2012-432 art. 159, 160 et 168",
-      "confidence": "medium"
+      "confidence": "high"
     },
     {
       "id": "2025-11-EC-10",
@@ -317,16 +319,17 @@
         "question": "Quelles sont les grandes rubriques du titre I du code de déontologie des CAC ?",
         "expected": [
           "Section 1 : principes fondamentaux de comportement",
-          "Section 2 : conduite de la mission (collaborateurs et experts, fin de mission)",
+          "Section 2 : conduite de la mission ou de la prestation (recours à des collaborateurs et experts)",
           "Section 3 : honoraires (proportionnés ; rémunération proportionnelle ou conditionnelle interdite ; cadeaux)",
           "Section 4 : publicité, sollicitation personnalisée et services en ligne",
           "Section 5 : monopoles des autres professions"
         ],
-        "model_answer": "Le titre I, applicable à toutes les missions et prestations, traite des principes fondamentaux de comportement, de la conduite de la mission (recours à des collaborateurs et experts, fin de mission), des honoraires, de la publicité et de la sollicitation, et du respect des monopoles des autres professions. Il interdit les honoraires proportionnels ou conditionnels."
+        "model_answer": "Le titre I, applicable à toutes les missions et prestations, traite des principes fondamentaux de comportement, de la conduite de la mission (recours à des collaborateurs et experts), des honoraires, de la publicité et de la sollicitation, et du respect des monopoles des autres professions. Il interdit les honoraires proportionnels ou conditionnels."
       },
       "explanation": "L'article 13 du code interdit toute rémunération proportionnelle ou conditionnelle. Confusion EC/CAC : l'expert-comptable peut, depuis la loi Pacte, percevoir des honoraires complémentaires de résultat pour certaines missions.",
       "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 3 à 17, notamment art. 10, 13, 17",
-      "confidence": "high"
+      "confidence": "high",
+      "update_note": "Décret 2026-176 (en vigueur le 14 mars 2026) : l'article 11 (fin de la mission ou de la prestation) est abrogé et un article 8-1 (relations entre professionnels de l'audit de durabilité) est ajouté à la section 1."
     },
     {
       "id": "2025-11-CAC-12",
@@ -386,9 +389,9 @@
         ],
         "model_answer": "La partie la plus diligente saisit, avant la mission, le président de la CRCC, qui statue dans les quinze jours. Sa décision peut être contestée dans les dix jours devant le président de la CNCC, puis dans le mois devant le bureau de la H2A. La procédure n'est pas requise si les parties s'accordent ; en cas d'alerte, les heures peuvent être majorées d'un tiers au plus."
       },
-      "explanation": "Proposition b) erronée dans la rédaction actuelle de D.821-190 : le recours contre la décision du président de la CRCC est d'abord porté devant le président de la CNCC, le bureau de la H2A n'intervenant qu'en second recours. Nuance : L.820-2 III attribue au bureau le recours contre les décisions des présidents de CRCC ; le jury a pu viser une autre proposition. Les autres propositions reprennent D.821-189, D.821-190 et R.821-192.",
+      "explanation": "Proposition b) erronée dans la rédaction actuelle de D.821-190 : le recours contre la décision du président de la CRCC est d'abord porté devant le président de la CNCC, le bureau de la H2A n'intervenant qu'en second recours. L.820-2 III mentionne la compétence du bureau, mais D.821-190 organise un recours préalable devant le président de la CNCC (confirmé par la fiche CNCC de mai 2025). Les autres propositions sont exactes : saisine par la partie la plus diligente (D.821-190), majoration d'un tiers au plus en cas d'alerte (D.821-189), vacation horaire fixée d'un commun accord (R.821-192).",
       "reference": "C. com. L.820-2 III, D.821-188 à D.821-191, R.821-192",
-      "confidence": "medium",
+      "confidence": "high",
       "update_note": "Procédure recodifiée en 2024 (ex-R.823-12 à R.823-15) ; l'ancien recours devant la chambre régionale de discipline a disparu."
     },
     {
@@ -421,7 +424,8 @@
       },
       "explanation": "Article 16 du code de déontologie CAC. Différence avec l'EC, pour qui le code (art. 152) ne prohibe pas en tant que tel le démarchage téléphonique, sous réserve de discrétion.",
       "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 16",
-      "confidence": "high"
+      "confidence": "high",
+      "update_note": "Rédaction de l'art. 16 issue du décret 2026-176 : sollicitation uniquement par envoi postal ou courriel nominatif, « toute autre forme de démarchage est interdite » ; règles étendues aux OTI et auditeurs de durabilité."
     },
     {
       "id": "2025-11-CAC-15",
@@ -448,7 +452,7 @@
       "explanation": "L.821-71. L'emprisonnement relève de la responsabilité pénale (ex. non-révélation de faits délictueux, informations mensongères : 5 ans et 75 000 €). Confusion EC/CAC : les EC encourent réprimande, blâme avec inscription au dossier, suspension, radiation.",
       "reference": "C. com. L.821-71 (ex-L.824-2), L.821-9",
       "confidence": "high",
-      "update_note": "Le texte consulté (brochure CNCC sept. 2024) fixe l'interdiction temporaire à 3 ans au plus, et non 5 ans comme indiqué dans le schéma de la banque."
+      "update_note": "Relecture : durée maximale de 3 ans confirmée (L.821-71 I 3° et II 2°, brochure CNCC sept. 2024 ; conforme à l'art. 30 bis de la directive 2006/43/CE) ; la mention « 5 ans » de data/SCHEMA.md est erronée (le délai de 5 ans de L.821-71 concerne la réitération pour la sanction pécuniaire)."
     },
     {
       "id": "2025-11-CAC-16",
@@ -496,7 +500,7 @@
       "qrc": {
         "question": "Que recouvre le principe d'intégrité (article 3 du code de déontologie des CAC) ?",
         "expected": ["Honnêteté", "Droiture", "S'abstenir de tout agissement contraire à l'honneur et à la probité"],
-        "model_answer": "Le commissaire aux comptes exerce sa profession avec honnêteté et droiture et s'abstient, en toutes circonstances, de tout agissement contraire à l'honneur et à la probité."
+        "model_answer": "Le commissaire aux comptes (et, depuis 2026, l'auditeur des informations en matière de durabilité) agit avec honnêteté et droiture et s'abstient, en toutes circonstances, de tout agissement contraire à l'honneur et à la probité."
       },
       "explanation": "La sincérité qualifie les comptes (« réguliers et sincères ») ou l'information donnée dans une sollicitation, pas l'intégrité du CAC. Le serment du CAC vise « honneur, probité et indépendance » ; celui de l'EC « conscience et probité ».",
       "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 3",
@@ -556,9 +560,9 @@
         ],
         "model_answer": "Le Conseil national compte soixante membres désignés pour quatre ans, comprenant les présidents des dix-sept compagnies régionales et des commissaires aux comptes élus, répartis à parité entre un collège EIP et un collège non-EIP."
       },
-      "explanation": "D.821-14 (ex-R.821-37) : 60 membres, 4 ans, présidents de CRCC inclus. Le nombre de 17 CRCC résulte des regroupements récents ; le chiffre « 22 » ne correspond à aucun élément de composition connu. Point à vérifier si le nombre de CRCC évolue.",
+      "explanation": "D.821-14 (ex-R.821-37) : 60 membres désignés pour 4 ans, comprenant l'ensemble des présidents de compagnies régionales (17 compagnies régionales depuis les regroupements récents) et des CAC élus, 30 sièges par collège. Le chiffre « 22 » ne correspond à aucun élément de composition.",
       "reference": "C. com. D.821-13 et D.821-14 ; décret 2020-667",
-      "confidence": "medium"
+      "confidence": "high"
     },
     {
       "id": "2025-11-CAC-20",

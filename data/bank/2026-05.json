@@ -28,7 +28,7 @@
         "model_answer": "L'expert-comptable prête serment devant le conseil régional de l'Ordre, dans les six mois de son inscription au tableau, en jurant d'exercer sa profession avec conscience et probité et de respecter et faire respecter les lois dans ses travaux."
       },
       "explanation": "Confusion EC/CAC classique : le commissaire aux comptes prête serment devant le premier président de la cour d'appel du ressort de sa compagnie régionale, en jurant d'exercer « avec honneur, probité et indépendance ».",
-      "reference": "Ord. 45-2138 art. 47 ; D. 2012-432 art. 143 ; à comparer avec C. com. R.821-60",
+      "reference": "D. 2012-432 art. 143 ; à comparer avec C. com. R.821-60",
       "confidence": "high"
     },
     {
@@ -285,7 +285,7 @@
       "qcm": {
         "choices": [
           "Un blâme avec inscription au dossier",
-          "Il est réputé démissionnaire et radié du tableau après deux appels infructueux",
+          "Il est radié d'office du tableau après deux mises en demeure restées infructueuses",
           "Une suspension de trois mois avec sursis",
           "Une simple majoration de retard, sans conséquence ordinale"
         ],
@@ -293,16 +293,17 @@
       },
       "qrc": {
         "expected": [
-          "Réputé démissionnaire",
-          "Radiation du tableau (radiation d'office, administrative)",
-          "Après deux appels infructueux à un mois d'intervalle, le second par LRAR reproduisant le texte",
-          "Même règle : cotisations ordinales impayées, défaut d'assurance RC continue"
+          "Radiation d'office du tableau (mesure administrative, non disciplinaire)",
+          "Après deux mises en demeure infructueuses par LRAR reproduisant le texte, la seconde envoyée 1 à 3 mois après la première",
+          "Décision du conseil régional, au plus tôt 30 jours après réception de la seconde mise en demeure",
+          "Même règle : cotisations ordinales impayées ; radiation d'office aussi en cas de défaut d'assurance RC continue"
         ],
-        "model_answer": "Il est réputé démissionnaire et radié du tableau, après deux appels infructueux adressés à un mois d'intervalle, le second par lettre recommandée reproduisant le texte. La même règle s'applique au non-paiement des cotisations ordinales et à l'absence d'assurance de responsabilité civile."
+        "model_answer": "Il est radié d'office du tableau par le conseil régional, après deux mises en demeure par lettre recommandée restées infructueuses (la seconde envoyée entre un et trois mois après la première), la radiation intervenant au plus tôt trente jours après réception de la seconde. La même règle s'applique au non-paiement des cotisations ordinales."
       },
-      "explanation": "Article 125 du décret de 2012 : les cotisations de sécurité sociale personnelles (dont la CAVEC) sont visées. Il s'agit d'une radiation d'office administrative, distincte de la radiation disciplinaire prononcée par la chambre régionale de discipline (qui emporte interdiction définitive d'exercer).",
-      "reference": "D. 2012-432 art. 125",
-      "confidence": "high"
+      "explanation": "Article 125 du décret de 2012 : les cotisations de sécurité sociale personnelles (dont la CAVEC) sont visées. Il s'agit d'une radiation d'office administrative, distincte de la radiation disciplinaire prononcée par la chambre régionale de discipline (qui emporte interdiction définitive d'exercer). L'ancienne formule « réputé démissionnaire » ne figure plus dans le texte.",
+      "reference": "D. 2012-432 art. 125 (modifié par D. 2022-1732)",
+      "confidence": "high",
+      "update_note": "Relecture : procédure corrigée selon l'art. 125 en vigueur (radiation d'office ; deux mises en demeure LRAR à 1-3 mois d'intervalle ; décision au plus tôt 30 jours après la seconde)."
     },
     {
       "id": "2026-05-CAC-11",
@@ -420,8 +421,8 @@
       },
       "explanation": "Lecture retenue : sanctions de L.821-71 (I 3° et II 2°). Lecture alternative possible : les délais de « viduité » (un CAC ne peut devenir dirigeant de l'entité contrôlée moins de trois ans après la fin de sa mission, L.821-32 ; un ancien dirigeant ou salarié ne peut en devenir CAC moins de cinq ans après, L.821-33). La suspension relève du vocabulaire EC.",
       "reference": "C. com. L.821-71 (ex-L.824-2) ; voir aussi L.821-32 et L.821-33",
-      "confidence": "medium",
-      "update_note": "Le texte consulté fixe la durée maximale à 3 ans ; le schéma de la banque mentionne 5 ans."
+      "confidence": "high",
+      "update_note": "Relecture : durée maximale de 3 ans confirmée par L.821-71 I 3° et II 2° (brochure CNCC sept. 2024) ; L.821-84 (dernier alinéa, information du CEAOB) qualifie lui-même ces deux mesures d'« interdictions temporaires ». La mention « 5 ans » de data/SCHEMA.md est erronée."
     },
     {
       "id": "2026-05-CAC-15",
@@ -453,7 +454,7 @@
       },
       "explanation": "L.821-70 I et II, L.821-19 IV, et les dispositions sur les auditeurs de durabilité (L.822-x). L'expert-comptable (ou le stagiaire EC) relève, pour son activité d'expertise comptable, des chambres de discipline de l'Ordre.",
       "reference": "C. com. L.820-2 V, L.821-19 IV, L.821-70, L.821-72",
-      "confidence": "medium"
+      "confidence": "high"
     },
     {
       "id": "2026-05-CAC-16",
@@ -483,7 +484,8 @@
       },
       "explanation": "Le mandat expire après la délibération sur les comptes du sixième exercice (L.821-44), ce qui implique que le premier exercice certifié est celui en cours lors de la nomination. La lettre de mission (NEP 210) organise la mission mais n'en est pas la source. Réponse fondée sur la doctrine CNCC, non vérifiée dans le texte.",
       "reference": "C. com. L.821-40, L.821-44 ; NEP 210 ; doctrine CNCC",
-      "confidence": "low"
+      "confidence": "low",
+      "update_note": "Relecture : aucun texte ne fixe expressément la date de début de la mission ; L.821-44 (fin du mandat après l'assemblée statuant sur le sixième exercice) étaye la réponse, mais la doctrine CNCC sur la nomination intervenant entre la clôture et l'approbation d'un exercice n'a pas été vérifiée."
     },
     {
       "id": "2026-05-CAC-17",
@@ -511,10 +513,10 @@
         ],
         "model_answer": "Non. Si la profession de CAC comprend désormais la fourniture de prestations, celles-ci restent soumises aux règles d'indépendance. Pour une EIP, la paie figure parmi les services interdits ; pour une non-EIP, établir les bulletins de paie de l'entité certifiée conduirait le CAC à auditer ses propres travaux (autorévision) et à s'immiscer dans la gestion, situation qu'aucune mesure de sauvegarde ne permet de traiter."
       },
-      "explanation": "Depuis 2024, L.821-3 définit la profession comme l'exercice de missions et la fourniture de prestations. Pour la non-EIP, L.821-28 IV interdit d'accepter ou de poursuivre une mission en cas de risque d'autorévision sans sauvegarde appropriée. Point non vérifié : la question évoque des « modifications » de L.821-3 postérieures, dont la teneur exacte (loi 2025-2026 ?) n'a pas pu être confirmée.",
+      "explanation": "Depuis 2024, L.821-3 définit la profession comme l'exercice de missions et la fourniture de prestations. Pour la non-EIP, L.821-28 IV interdit d'accepter ou de poursuivre une mission en cas de risque d'autorévision sans sauvegarde appropriée. Les « modifications » visées par le sujet sont celles de l'ordonnance 2023-1142 (L.821-3 en vigueur depuis le 1er janvier 2024, reprenant les anciens L.820-1-1 et L.820-2).",
       "reference": "C. com. L.821-3, L.821-28 ; règl. (UE) 537/2014 art. 5 ; code de déontologie CAC art. 5 et 19",
       "confidence": "low",
-      "update_note": "L'article L.821-3 aurait été modifié après 2024 : vérifier la version en vigueur au 1er novembre 2026."
+      "update_note": "Relecture : aucune modification de L.821-3 postérieure à l'ordonnance 2023-1142 n'a été trouvée (version en vigueur depuis le 1er janvier 2024). Réponse « non » maintenue, mais l'affirmation qu'« aucune sauvegarde » n'est possible pour une non-EIP est discutable : hors EIP, il n'existe plus de liste de services interdits (L.821-28 IV : approche risques/sauvegardes) et la paie (art. 5 d du règlement 537/2014) ne figure pas parmi les services réputés non sauvegardables (points b, c et e)."
     },
     {
       "id": "2026-05-CAC-18",
@@ -527,7 +529,7 @@
       "qcm": {
         "choices": [
           "Le fait d'exercer avec au moins un autre commissaire aux comptes dans une même société",
-          "L'appartenance à un réseau national ou international qui n'a pas pour activité exclusive le contrôle légal des comptes et dont les membres ont un intérêt économique commun",
+          "L'appartenance à un réseau national ou international qui n'a pas pour activité exclusive la certification des comptes (ou des informations en matière de durabilité) et dont les membres ont un intérêt économique commun",
           "L'adhésion à une compagnie régionale",
           "Le co-commissariat aux comptes"
         ],
@@ -536,15 +538,16 @@
       "qrc": {
         "expected": [
           "Réseau national ou international",
-          "N'ayant pas pour activité exclusive le contrôle légal des comptes",
+          "N'ayant pas pour activité exclusive la certification des comptes ou des informations en matière de durabilité",
           "Dont les membres ont un intérêt économique commun",
           "Indices : direction commune, partage de revenus, commissions d'apport, dénomination commune, clientèle commune, documents communs… ; doute → H2A"
         ],
-        "model_answer": "Le réseau se caractérise par l'existence d'un intérêt économique commun entre ses membres, au sein d'une structure nationale ou internationale qui n'a pas pour activité exclusive le contrôle légal des comptes. Des indices (direction commune, partage de résultats, dénomination commune, clientèle commune…) permettent de l'établir ; en cas de doute, le CAC saisit la H2A."
+        "model_answer": "Le réseau se caractérise par l'existence d'un intérêt économique commun entre ses membres, au sein d'une structure nationale ou internationale qui n'a pas pour activité exclusive la certification des comptes ou des informations en matière de durabilité. Des indices (direction commune, partage de résultats, dénomination commune, clientèle commune…) permettent de l'établir ; en cas de doute, le CAC saisit la H2A."
       },
       "explanation": "Article 29 du code de déontologie (titre II, section 3) et L.821-4 : le CAC affilié informe l'entité de son appartenance au réseau et des services fournis par celui-ci. L'appartenance étend les règles d'indépendance aux autres membres du réseau.",
       "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 29 et 30 ; C. com. L.821-4",
-      "confidence": "high"
+      "confidence": "high",
+      "update_note": "Rédaction de l'art. 29 issue du décret 2026-176 (en vigueur le 14 mars 2026) : « certification des comptes ou des informations en matière de durabilité » au lieu de « contrôle légal des comptes » ; règle étendue aux OTI ; saisine pour avis de la H2A en cas de doute."
     },
     {
       "id": "2026-05-CAC-19",
@@ -603,9 +606,9 @@
         ],
         "model_answer": "Le commissaire aux comptes peut se faire assister ou représenter par des collaborateurs ou experts de son choix, sous sa responsabilité, sans leur déléguer ses pouvoirs. Il les fait connaître nommément à l'entité contrôlée, s'assure de leur compétence et de leur respect des règles déontologiques, en particulier de leur indépendance. Ils disposent des mêmes droits d'investigation et sont tenus au secret professionnel."
       },
-      "explanation": "Article 10 du code de déontologie CAC et article du code de commerce relatif aux pouvoirs d'investigation (ex-L.823-13). Côté EC, la délégation de signature est encadrée différemment (salariés EC, art. 83 ter et quater).",
+      "explanation": "Article 10 du code de déontologie CAC (pas de délégation de pouvoirs, entière responsabilité, collaborateurs et experts respectant les règles de la profession et indépendants) et L.821-60 (ex-L.823-13 : experts ou collaborateurs « qu'ils font connaître nommément », mêmes droits d'investigation). Côté EC, la délégation de signature est encadrée différemment (salariés EC, art. 83 ter et quater).",
       "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 10 ; C. com. L.821-60 (ex-L.823-13) ; L.821-35",
-      "confidence": "medium"
+      "confidence": "high"
     }
   ]
 }

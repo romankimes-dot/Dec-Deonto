@@ -250,13 +250,14 @@
       "qrc": {
         "expected": [
           "Informer le président du conseil régional de l'Ordre",
-          "L'Ordre peut saisir le tribunal par citation directe ou se constituer partie civile (art. 20 ord.)"
+          "Les conseils de l'Ordre peuvent saisir le tribunal par citation directe ; seul le Conseil national peut se constituer partie civile (art. 20 et 31 ord.)"
         ],
-        "model_answer": "Il doit en informer le conseil régional de l'Ordre (son président), garant du respect du monopole, qui pourra saisir le tribunal par citation directe ou se constituer partie civile."
+        "model_answer": "Il doit en informer le conseil régional de l'Ordre (son président), chargé de surveiller l'exercice de la profession dans sa circonscription, qui pourra saisir le tribunal correctionnel par citation directe ; la constitution de partie civile est réservée au Conseil national."
       },
       "explanation": "L'exercice illégal de l'expertise comptable est un délit (ord. art. 20) ; les conseils de l'Ordre peuvent agir par citation directe. Le devoir envers l'Ordre et la défense de la profession justifient le signalement. Piège : l'EC n'a pas l'obligation de révélation au procureur propre au CAC.",
       "reference": "Ord. 45-2138 art. 20 et 31 ; D. 2012-432 (devoirs envers l'Ordre)",
-      "confidence": "medium"
+      "confidence": "medium",
+      "update_note": "Relecture : corrigé — l'art. 31 de l'ordonnance interdit au conseil régional de se constituer partie civile, ce droit étant réservé au Conseil national (art. 20)."
     },
     {
       "id": "2025-05-EC-10",
@@ -286,7 +287,8 @@
       },
       "explanation": "La lettre de mission est obligatoire pour toute mission (art. 151), même gratuite ; la gratuité ne réduit pas la responsabilité civile. Le remplacement provisoire d'un confrère (art. 166) est par principe une mission de confraternité gratuite. Réponse fondée sur la doctrine ordinale ; à vérifier.",
       "reference": "Ord. 45-2138 art. 24 ; D. 2012-432 art. 151, 152, 158, 166",
-      "confidence": "low"
+      "confidence": "low",
+      "update_note": "Relecture : aucun texte ni avis ordinal propre à la mission gracieuse n'a été trouvé ; réponse cohérente avec les art. 151 (contrat écrit pour toute mission), 158 (honoraires libres) et 166 (remplacement gratuit) du code, maintenue sous réserve."
     },
     {
       "id": "2025-05-CAC-11",
@@ -455,14 +457,14 @@
           "Indépendance et prévention des conflits d'intérêts",
           "Esprit critique",
           "Compétence et diligence",
-          "Confraternité ; secret professionnel et discrétion"
+          "Confraternité ; relations réciproques entre professionnels de l'audit de durabilité (art. 8-1, depuis mars 2026) ; secret professionnel et discrétion"
         ],
-        "model_answer": "Intégrité ; impartialité ; indépendance et prévention des conflits d'intérêts ; esprit critique ; compétence et diligence ; confraternité ; secret professionnel et discrétion."
+        "model_answer": "Intégrité ; impartialité ; indépendance et prévention des conflits d'intérêts ; esprit critique ; compétence et diligence ; confraternité ; relations réciproques entre professionnels chargés de l'audit des informations en matière de durabilité (art. 8-1, depuis mars 2026) ; secret professionnel et discrétion."
       },
-      "explanation": "Articles 3 à 9 du code de déontologie (version 2020). Le distracteur « intégrité, objectivité, compétence, confidentialité, comportement professionnel » reprend le code IESBA ; « conscience professionnelle, indépendance d'esprit » renvoie au code des EC (art. 145).",
+      "explanation": "Articles 3 à 9 du code de déontologie, complétés par l'article 8-1 issu du décret 2026-176. Le distracteur « intégrité, objectivité, compétence, confidentialité, comportement professionnel » reprend le code IESBA ; « conscience professionnelle, indépendance d'esprit » renvoie au code des EC (art. 145).",
       "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 3 à 9",
       "confidence": "high",
-      "update_note": "Les normes de déontologie homologuées (A.821-54 s.) précisent l'application de ces principes."
+      "update_note": "Les normes de déontologie homologuées (A.821-54 s.) précisent l'application de ces principes. Le décret 2026-176 (en vigueur le 14 mars 2026) a inséré dans la section 1 un article 8-1 (relations réciproques entre CAC, OTI et auditeurs de durabilité) et étendu l'intégrité (art. 3) à l'auditeur de durabilité."
     },
     {
       "id": "2025-05-CAC-17",
@@ -504,7 +506,7 @@
       "qcm": {
         "choices": [
           "Non : la révélation n'est due que dans le cadre d'une mission de certification",
-          "Oui : depuis la recodification de 2024, l'article L.821-10 vise les faits délictueux connus à l'occasion de sa « mission ou prestation »",
+          "Oui : l'article L.821-10 vise les faits délictueux dont le CAC a eu connaissance à l'occasion de sa « mission ou prestation »",
           "Non : il doit seulement faire une déclaration de soupçon à Tracfin",
           "Oui, mais uniquement s'il s'agit d'un fait de blanchiment"
         ],
@@ -513,16 +515,16 @@
       "qrc": {
         "expected": [
           "L.821-10 (ex-L.823-12) : révélation au procureur des faits délictueux connus à l'occasion de sa mission ou prestation",
-          "La recodification vise expressément les prestations",
+          "Le texte vise expressément les prestations, y compris hors mandat de certification",
           "Responsabilité non engagée par la révélation ; non-révélation pénalement sanctionnée (L.821-9)",
           "Les obligations LCB-FT visent le CAC chargé de la certification"
         ],
-        "model_answer": "Selon la rédaction actuelle de l'article L.821-10, issue de l'ordonnance de 2023, le commissaire aux comptes révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou de sa prestation. L'obligation s'applique donc aussi à une prestation réalisée hors mandat de certification. Le non-respect de cette obligation est pénalement sanctionné."
+        "model_answer": "Oui. Selon l'article L.821-10, le commissaire aux comptes révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou de sa prestation. L'obligation s'applique donc aussi à une prestation réalisée hors mandat de certification. Le non-respect de cette obligation est pénalement sanctionné."
       },
-      "explanation": "Le texte recodifié vise « sa mission ou prestation » ; l'ancienne lecture limitait la révélation à la mission légale, ce que reprennent encore certains supports. La question de la portée exacte (doctrine CNCC, guide de la révélation) reste à vérifier, d'où la confiance basse. À l'inverse, l'expert-comptable n'a aucune obligation de révélation au procureur.",
+      "explanation": "L'article L.821-10, alinéa 2, dispose que le CAC « révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation » ; la profession comprenant désormais missions et prestations (L.821-2 et L.821-3), l'obligation ne se limite plus à la certification. L.821-9 punit de 5 ans et 75 000 € toute personne exerçant la profession de CAC qui ne révèle pas ces faits. Piège : les obligations LCB-FT (Tracfin) restent attachées au CAC chargé de la certification ; l'expert-comptable n'a aucune obligation de révélation au procureur.",
       "reference": "C. com. L.821-10 (ex-L.823-12), L.821-9 (ex-L.820-7)",
-      "confidence": "low",
-      "update_note": "Le schéma de la banque indique que la révélation ne s'applique pas à une simple prestation ; le texte de L.821-10 consulté (brochure CNCC sept. 2024) vise pourtant « sa mission ou prestation ». À trancher par l'utilisateur."
+      "confidence": "high",
+      "update_note": "Relecture : point tranché par le texte de L.821-10 (brochure CNCC « Code de commerce, partie législative », sept. 2024) : « à l'occasion de sa mission ou prestation ». L'affirmation contraire de data/SCHEMA.md (révélation limitée à la certification) est erronée."
     },
     {
       "id": "2025-05-CAC-19",
@@ -582,7 +584,7 @@
         ],
         "model_answer": "La commission des sanctions comprend cinq membres : un magistrat de la Cour de cassation, qui la préside, et quatre personnes qualifiées (une ayant exercé la profession de CAC, une qualifiée en certification de durabilité, deux qualifiées en matière juridique, économique ou financière). Ils sont nommés par décret pour six ans renouvelables une fois et ne peuvent siéger au collège."
       },
-      "explanation": "La séparation entre poursuite (collège, rapporteur général) et jugement (commission des sanctions) est une nouveauté de l'ordonnance 2023-1142. Le distracteur « président de chambre de la cour d'appel de Paris, conseiller référendaire à la Cour des comptes… » décrit la chambre nationale de discipline des EC ; celui avec l'AMF et l'ACPR décrit des membres du collège.",
+      "explanation": "Composition fixée par L.820-2 V ; la commission succède à la formation restreinte du H3C (la séparation entre poursuite et jugement existait depuis 2016) et intègre désormais une compétence en durabilité. Le distracteur « président de chambre de la cour d'appel de Paris, conseiller référendaire à la Cour des comptes… » décrit la chambre nationale de discipline des EC ; celui avec l'AMF et l'ACPR décrit des membres du collège.",
       "reference": "C. com. L.820-2 V",
       "confidence": "high",
       "update_note": "Instance créée au 1er janvier 2024 (H2A) ; auparavant formation restreinte du H3C."
