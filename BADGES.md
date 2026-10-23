@@ -1,7 +1,6 @@
 # Catalogue des badges et de la carrière — DEC Épreuve 1
 
-> **Statut : proposition à valider.** Aucun code de gamification n'est écrit tant que ce document n'est pas validé.
-> Les points ouverts sont listés à la fin (section « Décisions à prendre »).
+> **Statut : validé le 23 octobre 2026, implémenté.** Les données des anecdotes (section 6) et des badges de questions (section 7) sont générées depuis ce fichier par `scripts/build_badges.py` : modifier ce document puis relancer le script.
 
 ## 0. Ce qui existe aujourd'hui (analyse)
 
@@ -9,23 +8,22 @@
 
 | | |
 |---|---|
-| Volume actuel | 240 questions rédigées (12 sessions, mai 2018 → mai 2024) |
-| Volume final | 320 questions (16 sessions) : nov. 2024, mai 2025, nov. 2025 et mai 2026 sont en cours de rédaction |
+| Volume | 320 questions (16 sessions, mai 2018 → mai 2026) |
 | Structure d'une question | id `AAAA-MM-EC-nn` ou `AAAA-MM-CAC-nn`, profession, thème, 1 à 3 tags, barème, version QCM (4 propositions), version QRC (éléments attendus + réponse type), explication, référence, confiance |
 | Thèmes (programme officiel) | exercice · déontologie · contrôle de qualité · responsabilité |
-| Sous-thèmes | les 44 tags du vocabulaire fermé (`data/SCHEMA.md`) |
+| Sous-thèmes | les 46 tags du vocabulaire fermé utilisés dans la banque (`data/SCHEMA.md`) |
 | Distinction EC / CAC | 10 + 10 par session, toujours |
-| Transversal | pas de champ dédié. Deux notions existent des deux côtés : **LAB** (tag `lcb_ft`, 19 questions EC + CAC) et **secret professionnel** (tag `secret_professionnel`, 12 questions) |
+| Transversal | pas de champ dédié. Deux notions existent des deux côtés : **LAB** (tag `lcb_ft`, 24 questions EC + CAC) et **secret professionnel** (tag `secret_professionnel`, 17 questions), soit 38 questions transversales |
 | Difficulté | pas de champ dédié. Proxy proposé : question « chiffrée » (liste en famille 6), réponse de confiance `low`, ou taux d'échec personnel ≥ 50 % |
 
-Répartition actuelle (240 questions) :
+Répartition (320 questions) :
 
 | | Exercice | Déontologie | Contrôle qualité | Responsabilité |
 |---|---|---|---|---|
-| EC | 64 | 26 | 15 | 15 |
-| CAC | 57 | 36 | 8 | 19 |
+| EC | 79 | 43 | 16 | 22 |
+| CAC | 75 | 48 | 11 | 26 |
 
-Sous-thèmes les plus fréquents : référentiel normatif (32), H2A (24), indépendance et situations à risque (23), missions d'assurance (22), CNCC/CRCC (22), Ordre (21), LAB (19), structure du code de déontologie CAC (19), contrôle qualité (17), discipline (17).
+Sous-thèmes les plus fréquents : référentiel normatif (40), H2A (31), discipline (31), missions d'assurance (27), Ordre (25), indépendance et situations à risque (25), LAB (24), structure du code de déontologie CAC (24), CNCC/CRCC (23), lettre de mission (19).
 
 ### Historique des réponses disponible
 
@@ -92,8 +90,8 @@ Les illustrations sont des icônes SVG originales (même trait, même palette qu
 | **Tracfin n'a qu'à bien se tenir** | Toutes les questions de lutte anti-blanchiment, EC et CAC. | 100 % des questions tag `lcb_ft` vues | rare | Loupe posée sur un dossier |
 | **Coffre-fort** | Toutes les questions de secret professionnel. | 100 % des questions tag `secret_professionnel` vues | rare | Petit coffre sous le bureau |
 | **Couverture de thème** × 8 | Un badge par couple profession × thème (« Exercice EC vu », « Responsabilité CAC vue »…). | 100 % des questions du couple vues | commun | Intercalaire coloré dans l'étagère |
-| **Sous-thème vu** × 44 | Un autocollant par sous-thème (lettre de mission, barème, réseau…). | 100 % des questions du tag vues | commun | Autocollant sur le tableau de liège |
-| **Collectionneur d'autocollants** | Tous les sous-thèmes, sans exception. | les 44 badges « sous-thème vu » | épique | Tableau de liège couvert |
+| **Sous-thème vu** × 46 | Un autocollant par sous-thème (lettre de mission, barème, réseau…). | 100 % des questions du tag vues | commun | Autocollant sur le tableau de liège |
+| **Collectionneur d'autocollants** | Tous les sous-thèmes, sans exception. | les 46 badges « sous-thème vu » | épique | Tableau de liège couvert |
 
 ## 3. Famille 2 — Séries de bonnes réponses d'affilée
 
@@ -145,28 +143,26 @@ La **plante verte** du bureau grandit avec le record : pousse (3), plante (10), 
 
 Chaque anecdote se débloque quand **toutes** les questions listées sont réussies au moins une fois (avec « au moins N parmi » quand la liste est longue). Elle s'affiche comme une **carte-souvenir datée** du jour du déblocage, avec un texte court réaliste.
 
-Les ids marqués ★ appartiennent aux 4 sessions en cours de rédaction (nov. 2024 → mai 2026). Leurs numéros suivent le sujet officiel et ne changeront pas.
-
 ### 6.1 Le stage (EC)
 
 | # | Anecdote | Carte-souvenir | Questions rattachées | Rareté |
 |---|---|---|---|---|
-| A1 | **Premier jour de stage** | « Inscrit au tableau comme expert-comptable stagiaire. On me prévient : même stagiaire, la chambre de discipline me connaît. » | 2021-11-EC-05, 2024-11-EC-02★ | commun |
+| A1 | **Premier jour de stage** | « Inscrit au tableau comme expert-comptable stagiaire. On me prévient : même stagiaire, la chambre de discipline me connaît. » | 2021-11-EC-05, 2024-11-EC-02 | commun |
 | A2 | **Première fiche de paie** | « 47 lignes, une seule erreur : le taux de prévoyance. Et un client qui demande si je peux aussi rédiger le contrat de travail. » | 2018-05-EC-10, 2018-11-EC-03, 2019-11-EC-05 | commun |
 | A3 | **Première déclaration de revenus du dirigeant** | « Lettre de mission séparée signée par le gérant à titre personnel. » | 2018-11-EC-08 | commun |
 | A4 | **Premiers contrôles par épreuves** | « J'ai pointé la banque, rapproché les ventes et testé trois charges. La présentation a des diligences, elle aussi. » | 2021-05-EC-10, 2019-05-EC-03 | commun |
-| A5 | **Première attestation de présentation** | « "Cohérence et vraisemblance". J'ai appris la formule par cœur. » | 2018-05-EC-03, 2019-11-EC-07, 2023-05-EC-08, 2024-05-EC-07, 2025-05-EC-04★ | rare |
-| A6 | **Premier compte rendu de travaux** | « Le client a un CAC : pas d'attestation, un compte rendu. » | 2019-05-EC-04, 2025-11-EC-03★ | commun |
+| A5 | **Première attestation de présentation** | « "Cohérence et vraisemblance". J'ai appris la formule par cœur. » | 2018-05-EC-03, 2019-11-EC-07, 2023-05-EC-08, 2024-05-EC-07, 2025-05-EC-04 | rare |
+| A6 | **Premier compte rendu de travaux** | « Le client a un CAC : pas d'attestation, un compte rendu. » | 2019-05-EC-04, 2025-11-EC-03 | commun |
 | A7 | **Première revue par l'associé** | « Supervision, revue de dossier : 14 annotations au crayon vert. » | 2022-11-EC-03, 2022-11-EC-05, 2023-11-EC-04 | commun |
 | A8 | **Première lettre de mission rédigée** | « Signée par le client et par l'expert-comptable responsable. Pas par moi. » | 2018-11-EC-07, 2022-11-EC-01, 2022-05-EC-10, 2020-11-EC-08 | rare |
-| A9 | **Premier KYC** | « Bénéficiaire effectif : plus de 25 %. J'ai remonté trois holdings. » | 2019-05-EC-09, 2019-05-EC-10, 2026-05-CAC-12★ | rare |
+| A9 | **Premier KYC** | « Bénéficiaire effectif : plus de 25 %. J'ai remonté trois holdings. » | 2019-05-EC-09, 2019-05-EC-10, 2026-05-CAC-12 | rare |
 | A10 | **Premier client PPE** | « Le client est maire. Vigilance renforcée, et l'associé valide l'entrée en relation. » | 2022-05-EC-01 | rare |
-| A11 | **Première opération atypique** | « Un virement sans justification économique. Examen renforcé, note au dossier. » | 2026-05-EC-09★, 2018-11-EC-06 | rare |
+| A11 | **Première opération atypique** | « Un virement sans justification économique. Examen renforcé, note au dossier. » | 2026-05-EC-09, 2018-11-EC-06 | rare |
 | A12 | **Première déclaration de soupçon (en formation)** | « Le déclarant écrit à Tracfin. Personne d'autre n'en saura rien, pas même le confrère qui reprend le dossier. » | 2019-11-EC-01, 2019-05-EC-05, 2022-05-EC-05, 2020-11-CAC-20 | épique |
-| A13 | **Journées de formation des stagiaires** | « Neuf journées sur l'audit. Les heures de formation s'ajoutent aux travaux, elles ne les remplacent pas. » | 2018-11-EC-10, 2023-11-CAC-18, 2024-11-CAC-19★ | commun |
+| A13 | **Journées de formation des stagiaires** | « Neuf journées sur l'audit. Les heures de formation s'ajoutent aux travaux, elles ne les remplacent pas. » | 2018-11-EC-10, 2023-11-CAC-18, 2024-11-CAC-19 | commun |
 | A14 | **Premier client qui refuse un conseil** | « Informer, mettre en garde, exiger, refuser. Le mail de mise en garde est parti à 18 h 02. » | 2022-05-EC-03, 2023-05-EC-03, 2024-05-EC-09 | rare |
-| A15 | **Premier dossier repris à un confrère** | « Lettre au prédécesseur avant d'accepter. Il me répond que ses honoraires sont réglés. Ouf. » | 2020-11-EC-02, 2024-05-EC-10, 2026-05-EC-06★, 2024-11-EC-07★ | rare |
-| A16 | **Premier client qui part** | « Il veut ses pièces. Je n'ai pas le droit de les retenir pour une indemnité de rupture. » | 2018-11-EC-05, 2025-11-EC-09★ | rare |
+| A15 | **Premier dossier repris à un confrère** | « Lettre au prédécesseur avant d'accepter. Il me répond que ses honoraires sont réglés. Ouf. » | 2020-11-EC-02, 2024-05-EC-10, 2026-05-EC-06, 2024-11-EC-07 | rare |
+| A16 | **Premier client qui part** | « Il veut ses pièces. Je n'ai pas le droit de les retenir pour une indemnité de rupture. » | 2018-11-EC-05, 2025-11-EC-09 | rare |
 | A17 | **Premier client qui résilie en cours d'année** | « Les travaux faits sont dus. L'indemnité, seulement si la lettre de mission la prévoit. » | 2022-11-EC-07, 2023-11-EC-07, 2022-11-EC-08 | commun |
 
 ### 6.2 Le diplôme et l'inscription (EC)
@@ -174,23 +170,23 @@ Les ids marqués ★ appartiennent aux 4 sessions en cours de rédaction (nov. 2
 | # | Anecdote | Carte-souvenir | Questions rattachées | Rareté |
 |---|---|---|---|---|
 | A18 | **Le DEC en poche** | « Épreuve 1 validée. Je sais enfin pourquoi la partie CAC fait baisser la moyenne. » | se débloque avec le badge **Bloc EC maîtrisé** + **Bloc CAC maîtrisé** | légendaire |
-| A19 | **Dossier d'inscription au tableau** | « Diplôme, moralité, pas d'incompatibilité. Le commissaire du gouvernement a émis son avis. » | 2024-11-EC-03★, 2023-11-EC-06, 2023-11-EC-08 | rare |
-| A20 | **Prestation de serment d'expert-comptable** | « Devant le conseil régional de l'Ordre. Conscience et probité. » | 2021-11-EC-08, 2026-05-EC-01★ | épique |
-| A21 | **Première cotisation ordinale** | « Payée. La CAVEC aussi : deux ans d'impayés suffisent pour finir devant la chambre. » | 2022-05-EC-06, 2026-05-EC-10★ | commun |
+| A19 | **Dossier d'inscription au tableau** | « Diplôme, moralité, pas d'incompatibilité. Le commissaire du gouvernement a émis son avis. » | 2024-11-EC-03, 2023-11-EC-06, 2023-11-EC-08 | rare |
+| A20 | **Prestation de serment d'expert-comptable** | « Devant le conseil régional de l'Ordre. Conscience et probité. » | 2021-11-EC-08, 2026-05-EC-01 | épique |
+| A21 | **Première cotisation ordinale** | « Payée. La CAVEC aussi : deux ans d'impayés suffisent pour finir devant la chambre. » | 2022-05-EC-06, 2026-05-EC-10 | commun |
 
 ### 6.3 L'installation (EC)
 
 | # | Anecdote | Carte-souvenir | Questions rattachées | Rareté |
 |---|---|---|---|---|
-| A22 | **Statut choisi** | « Entrepreneur individuel : patrimoine personnel protégé. » | 2024-11-EC-01★ | commun |
-| A23 | **Création de la société d'expertise comptable** | « Plus des deux tiers des droits de vote aux experts-comptables. Pas de SNC. » | 2018-11-EC-02, 2021-05-EC-03, 2023-05-EC-01, 2024-05-EC-04, 2026-05-EC-05★ | épique |
+| A22 | **Statut choisi** | « Entrepreneur individuel : patrimoine personnel protégé. » | 2024-11-EC-01 | commun |
+| A23 | **Création de la société d'expertise comptable** | « Plus des deux tiers des droits de vote aux experts-comptables. Pas de SNC. » | 2018-11-EC-02, 2021-05-EC-03, 2023-05-EC-01, 2024-05-EC-04, 2026-05-EC-05 | épique |
 | A24 | **La plaque sur la porte** | « Nom, titre, Ordre. Pas de "meilleur cabinet de la région". » | 2018-05-EC-09, 2023-11-EC-10, 2019-11-EC-02 | rare |
-| A25 | **Premier post sur les réseaux** | « Interdit : "Votre comptable ne vous satisfait pas ?". Autorisé : une information sincère. » | 2021-11-EC-01, 2024-11-EC-06★, 2025-05-EC-03★, 2025-11-EC-02★ | rare |
+| A25 | **Premier post sur les réseaux** | « Interdit : "Votre comptable ne vous satisfait pas ?". Autorisé : une information sincère. » | 2021-11-EC-01, 2024-11-EC-06, 2025-05-EC-03, 2025-11-EC-02 | rare |
 | A26 | **Premier client signé** | « Le formulaire d'entrée en relation est complet. La lettre de mission aussi. » | 2022-05-EC-10, 2022-05-EC-08, 2020-11-EC-01 | commun |
-| A27 | **Premiers honoraires encaissés** | « Pas de barème, une indexation prévue au contrat. Le virement est arrivé. » | 2024-11-EC-10★, 2018-05-EC-05 | commun |
-| A28 | **Success fee refusé** | « Pas d'honoraires au succès sur la comptabilité. Sur la levée de fonds, on en reparle. » | 2024-05-EC-03, 2025-11-EC-05★ | rare |
-| A29 | **Mission gracieuse pour l'association du quartier** | « Possible, avec une lettre de mission. » | 2025-05-EC-10★ | commun |
-| A30 | **Premier compte de campagne** | « Le candidat a perdu. Le compte, lui, est en état d'examen. » | 2020-11-EC-05, 2024-11-EC-09★, 2026-05-EC-08★ | rare |
+| A27 | **Premiers honoraires encaissés** | « Pas de barème, une indexation prévue au contrat. Le virement est arrivé. » | 2024-11-EC-10, 2018-05-EC-05 | commun |
+| A28 | **Success fee refusé** | « Pas d'honoraires au succès sur la comptabilité. Sur la levée de fonds, on en reparle. » | 2024-05-EC-03, 2025-11-EC-05 | rare |
+| A29 | **Mission gracieuse pour l'association du quartier** | « Possible, avec une lettre de mission. » | 2025-05-EC-10 | commun |
+| A30 | **Premier compte de campagne** | « Le candidat a perdu. Le compte, lui, est en état d'examen. » | 2020-11-EC-05, 2024-11-EC-09, 2026-05-EC-08 | rare |
 | A31 | **Première consultation juridique** | « Accessoire à une mission comptable permanente. L'avocat d'en face n'a rien dit. » | 2022-11-EC-02, 2023-05-EC-09 | commun |
 | A32 | **Premier mandat social** | « Administrateur d'une association. Déclaré au conseil régional. » | 2018-05-EC-04, 2019-05-EC-07 | commun |
 | A33 | **Premier stagiaire encadré** | « Un expert-comptable pour quinze collaborateurs. Mon premier stagiaire arrive lundi. » | 2019-11-EC-10, 2023-05-EC-10 | rare |
@@ -198,9 +194,9 @@ Les ids marqués ★ appartiennent aux 4 sessions en cours de rédaction (nov. 2
 | A35 | **Premier contrôle qualité réussi** | « Examen de l'organisation, puis revue des dossiers. Conclusion : satisfaisant. » | 2019-11-EC-04, 2020-11-EC-03, 2023-05-EC-02, 2022-11-EC-06, 2024-05-EC-02 | épique |
 | A36 | **Contrôle qualité LAB** | « Le contrôleur a ouvert le dossier du client PPE en premier. » | 2022-05-EC-02, 2021-11-EC-09 | rare |
 | A37 | **Devenu contrôleur qualité** | « Candidature acceptée. À mon tour de poser les questions. » | 2024-05-EC-01 | épique |
-| A38 | **Convocation devant la chambre régionale** | « Classement sans suite. Mais je connais maintenant la composition par cœur. » | 2021-05-EC-06, 2024-05-EC-05, 2021-11-EC-06, 2025-05-EC-06★, 2024-11-EC-04★ | rare |
-| A39 | **Secret professionnel tenu** | « Le client voulait que je parle à son banquier. Il ne peut pas me délier. » | 2021-11-EC-07, 2025-11-EC-04★, 2022-05-EC-04 | rare |
-| A40 | **Faits délictueux découverts** | « Ce n'est pas au procureur que l'expert-comptable écrit d'abord. » | 2026-05-EC-03★ | rare |
+| A38 | **Convocation devant la chambre régionale** | « Classement sans suite. Mais je connais maintenant la composition par cœur. » | 2021-05-EC-06, 2024-05-EC-05, 2021-11-EC-06, 2025-05-EC-06, 2024-11-EC-04 | rare |
+| A39 | **Secret professionnel tenu** | « Le client voulait que je parle à son banquier. Il ne peut pas me délier. » | 2021-11-EC-07, 2025-11-EC-04, 2022-05-EC-04 | rare |
+| A40 | **Faits délictueux découverts** | « Ce n'est pas au procureur que l'expert-comptable écrit d'abord. » | 2026-05-EC-03 | rare |
 | A41 | **Élu au conseil régional** | « Scrutin de liste depuis 2020. Six ans de présidence au maximum. » | 2022-05-EC-07, 2023-11-EC-05 | épique |
 | A42 | **Conciliation au conseil régional** | « Un différend d'honoraires réglé autour d'un café, pas d'un arbitre. » | 2021-11-EC-02 | commun |
 | A43 | **Un confrère malade** | « Le conseil régional organise la suppléance. On se relaie sur ses dossiers. » | 2021-11-EC-03 | rare |
@@ -209,27 +205,27 @@ Les ids marqués ★ appartiennent aux 4 sessions en cours de rédaction (nov. 2
 
 | # | Anecdote | Carte-souvenir | Questions rattachées | Rareté |
 |---|---|---|---|---|
-| A44 | **Inscription sur la liste H2A** | « Dossier déposé sur le portail de la Haute autorité de l'audit. » | 2023-05-CAC-11, 2020-11-CAC-13, 2024-11-CAC-12★ | rare |
+| A44 | **Inscription sur la liste H2A** | « Dossier déposé sur le portail de la Haute autorité de l'audit. » | 2023-05-CAC-11, 2020-11-CAC-13, 2024-11-CAC-12 | rare |
 | A45 | **Serment devant la cour d'appel** | « "Honneur, probité et indépendance". Avant ça, aucun mandat possible. » | 2023-11-CAC-11 | épique |
 | A46 | **Création de la société de CAC** | « Pas d'association : une société inscrite sur la liste. » | 2018-05-CAC-13, 2024-05-CAC-20, 2023-05-CAC-18 | rare |
-| A47 | **Premier mandat** | « Six exercices. Les seuils de 2024 sont dépassés : 10 M€ de chiffre d'affaires et 50 salariés. » | 2025-05-CAC-11★, 2023-05-CAC-16, 2019-05-CAC-15, 2026-05-CAC-16★ | épique |
+| A47 | **Premier mandat** | « Six exercices. Les seuils de 2024 sont dépassés : 10 M€ de chiffre d'affaires et 50 salariés. » | 2025-05-CAC-11, 2023-05-CAC-16, 2019-05-CAC-15, 2026-05-CAC-16 | épique |
 | A48 | **Première lettre de mission CAC** | « La NEP 210 l'exige, même pour une mission légale. » | 2021-05-CAC-13 | commun |
-| A49 | **Premier mandat associatif** | « Plus de 153 000 € de dons : contrôle du compte d'emploi des ressources. » | 2023-05-CAC-15, 2025-05-CAC-17★, 2025-05-CAC-14★, 2024-11-CAC-13★ | rare |
-| A50 | **Déclaration à la CRCC** | « Mandat et prestations déclarés. Honoraires compris. » | 2019-05-CAC-19, 2021-11-CAC-19, 2022-11-CAC-18, 2024-11-CAC-20★ | commun |
-| A51 | **Premier refus de mission pour indépendance** | « Son conjoint est directeur financier de l'entité. Lien personnel : refus. » | 2018-05-CAC-20, 2022-05-CAC-15, 2021-05-CAC-19, 2019-05-CAC-20, 2026-05-CAC-17★ | épique |
-| A52 | **Première dérogation au barème** | « Le président de la CRCC a dit oui. Recours possible devant la H2A sinon. » | 2021-11-CAC-11, 2022-05-CAC-20, 2022-11-CAC-15, 2024-11-CAC-11★, 2025-11-CAC-13★ | rare |
+| A49 | **Premier mandat associatif** | « Plus de 153 000 € de dons : contrôle du compte d'emploi des ressources. » | 2023-05-CAC-15, 2025-05-CAC-17, 2025-05-CAC-14, 2024-11-CAC-13 | rare |
+| A50 | **Déclaration à la CRCC** | « Mandat et prestations déclarés. Honoraires compris. » | 2019-05-CAC-19, 2021-11-CAC-19, 2022-11-CAC-18, 2024-11-CAC-20 | commun |
+| A51 | **Premier refus de mission pour indépendance** | « Son conjoint est directeur financier de l'entité. Lien personnel : refus. » | 2018-05-CAC-20, 2022-05-CAC-15, 2021-05-CAC-19, 2019-05-CAC-20, 2026-05-CAC-17 | épique |
+| A52 | **Première dérogation au barème** | « Le président de la CRCC a dit oui. Recours possible devant la H2A sinon. » | 2021-11-CAC-11, 2022-05-CAC-20, 2022-11-CAC-15, 2024-11-CAC-11, 2025-11-CAC-13 | rare |
 | A53 | **Premier co-commissariat** | « Répartition équilibrée des travaux. En cas de désaccord, le président de la CRCC concilie. » | 2021-05-CAC-18, 2022-11-CAC-13, 2022-05-CAC-12 | rare |
-| A54 | **Premier bilan certifié** | « Réguliers et sincères, image fidèle. Assurance raisonnable. Signé. » | 2026-05-CAC-13★, 2023-11-CAC-14, 2022-05-CAC-13 | épique |
-| A55 | **Première révélation au procureur** | « Le dirigeant avait remboursé. La révélation reste due. » | 2018-05-CAC-15, 2022-05-CAC-18, 2025-05-CAC-18★ | épique |
+| A54 | **Premier bilan certifié** | « Réguliers et sincères, image fidèle. Assurance raisonnable. Signé. » | 2026-05-CAC-13, 2023-11-CAC-14, 2022-05-CAC-13 | épique |
+| A55 | **Première révélation au procureur** | « Le dirigeant avait remboursé. La révélation reste due. » | 2018-05-CAC-15, 2022-05-CAC-18, 2025-05-CAC-18 | épique |
 | A56 | **Délit d'entrave évité** | « Les pièces sont arrivées le lendemain de mon courrier. » | 2022-05-CAC-19, 2019-05-CAC-16 | rare |
 | A57 | **Premier contrôle H2A** | « Le contrôleur a tout pu consulter. Le secret ne lui est pas opposable. » | 2018-05-CAC-11, 2019-05-CAC-18, 2023-11-CAC-15, 2023-11-CAC-16 | épique |
 | A58 | **Premier mandat EIP** | « Comité d'audit, rotation, services interdits : la liste européenne est sur mon bureau. » | 2021-05-CAC-15, 2021-11-CAC-20, 2023-11-CAC-17 | légendaire |
-| A59 | **Entrée dans un réseau** | « Intérêt économique commun : on est un réseau. Doute ? On saisit la H2A. » | 2021-05-CAC-16, 2026-05-CAC-18★, 2024-11-CAC-14★ | rare |
-| A60 | **Fusion de cabinets** | « Les mandats de l'absorbée passent à l'absorbante. » | 2019-05-CAC-14, 2021-05-CAC-14, 2026-05-CAC-11★ | rare |
+| A59 | **Entrée dans un réseau** | « Intérêt économique commun : on est un réseau. Doute ? On saisit la H2A. » | 2021-05-CAC-16, 2026-05-CAC-18, 2024-11-CAC-14 | rare |
+| A60 | **Fusion de cabinets** | « Les mandats de l'absorbée passent à l'absorbante. » | 2019-05-CAC-14, 2021-05-CAC-14, 2026-05-CAC-11 | rare |
 | A61 | **Démission motivée** | « Motif légitime, pas pour éviter une révélation. » | 2022-11-CAC-12, 2022-11-CAC-14, 2023-05-CAC-19 | rare |
-| A62 | **Frisson à la commission des sanctions** | « Ce n'était pas moi. Mais j'ai révisé la composition. » | 2025-05-CAC-20★, 2025-11-CAC-16★, 2026-05-CAC-15★ | épique |
-| A63 | **Première mission durabilité** | « Informations CSRD : assurance limitée. » | 2024-11-CAC-16★ | rare |
-| A64 | **Premier mandat ALPE** | « Trois exercices, un rapport sur les risques. » | 2024-11-CAC-11★ | rare |
+| A62 | **Frisson à la commission des sanctions** | « Ce n'était pas moi. Mais j'ai révisé la composition. » | 2025-05-CAC-20, 2025-11-CAC-16, 2026-05-CAC-15 | épique |
+| A63 | **Première mission durabilité** | « Informations CSRD : assurance limitée. » | 2024-11-CAC-16 | rare |
+| A64 | **Premier mandat ALPE** | « Trois exercices, un rapport sur les risques. » | 2024-11-CAC-11 | rare |
 
 **Total : 64 anecdotes**, couvrant les 4 thèmes des deux professions. Le rattachement est revu automatiquement à chaque évolution de la banque : un script de contrôle signale toute anecdote dont un id n'existe plus.
 
@@ -239,19 +235,19 @@ Condition : réussir **toutes** les questions de la liste au moins une fois, pui
 
 | Badge | Description | Questions | Rareté |
 |---|---|---|---|
-| **Seuils en tête** | 5 M€, 10 M€, 50 salariés, et les petits groupes. | 2025-05-CAC-11★, 2023-05-CAC-16, 2023-11-CAC-20, 2023-05-CAC-20 | rare |
-| **Le gardien des délais** | Prescriptions, délais de formation, durées de mandat. | 2018-11-CAC-12, 2018-11-CAC-16, 2018-11-CAC-18, 2019-05-EC-02, 2023-05-EC-07, 2026-05-CAC-16★ | épique |
-| **153 000 €** | Le chiffre que tout le monde retient, et ceux qu'on oublie. | 2025-05-CAC-17★, 2025-05-CAC-14★, 2024-11-CAC-13★, 2023-05-CAC-15 | rare |
+| **Seuils en tête** | 5 M€, 10 M€, 50 salariés, et les petits groupes. | 2025-05-CAC-11, 2023-05-CAC-16, 2023-11-CAC-20, 2023-05-CAC-20 | rare |
+| **Le gardien des délais** | Prescriptions, délais de formation, durées de mandat. | 2018-11-CAC-12, 2018-11-CAC-16, 2018-11-CAC-18, 2019-05-EC-02, 2023-05-EC-07, 2026-05-CAC-16 | épique |
+| **153 000 €** | Le chiffre que tout le monde retient, et ceux qu'on oublie. | 2025-05-CAC-17, 2025-05-CAC-14, 2024-11-CAC-13, 2023-05-CAC-15 | rare |
 | **Un pour quinze** | Le taux d'encadrement, sans hésitation. | 2019-11-EC-10, 2023-05-EC-10 | commun |
 | **Les deux tiers** | Capital et droits de vote des sociétés d'expertise comptable. | 2021-05-EC-03, 2023-05-EC-01, 2024-05-EC-04 | rare |
-| **Soixante membres** | La composition du Conseil national de la CNCC. | 2019-11-CAC-13, 2021-05-CAC-12, 2025-11-CAC-19★ | épique |
-| **120 heures** | Formation continue CAC : quantum et actions éligibles. | 2024-11-CAC-18★, 2024-11-CAC-19★, 2023-11-CAC-18 | rare |
-| **Le juge des sanctions** | Toutes les listes de sanctions, EC et CAC. | 2025-05-EC-01★, 2026-05-EC-02★, 2025-11-EC-10★, 2022-11-CAC-11, 2023-11-CAC-13, 2025-11-CAC-15★ | épique |
-| **Niveau d'assurance** | Raisonnable, modérée, aucune : jamais confondues. | 2018-05-EC-01, 2018-05-EC-02, 2019-05-EC-01, 2021-05-EC-02, 2022-11-EC-10, 2023-11-CAC-14, 2024-11-CAC-16★ | épique |
-| **Le cadre de référence** | Les trois natures de missions et les textes communs. | 2021-05-EC-07, 2025-05-EC-02★, 2023-11-EC-02, 2020-11-EC-09, 2018-05-EC-07 | rare |
-| **Ni EC ni CAC** | Les questions où les règles des deux professions divergent. | 2022-11-CAC-19, 2024-05-CAC-20, 2022-11-CAC-17, 2025-05-CAC-12★, 2020-11-CAC-15 | épique |
-| **Barème d'heures** | Dérogation, recours, prestations hors barème. | 2021-11-CAC-11, 2022-11-CAC-15, 2023-05-CAC-14, 2024-11-CAC-11★ | rare |
-| **Les cinq étapes** | Procédure disciplinaire CAC de bout en bout. | 2021-11-CAC-12, 2021-11-CAC-15, 2023-11-CAC-12, 2026-05-CAC-19★ | épique |
+| **Soixante membres** | La composition du Conseil national de la CNCC. | 2019-11-CAC-13, 2021-05-CAC-12, 2025-11-CAC-19 | épique |
+| **120 heures** | Formation continue CAC : quantum et actions éligibles. | 2024-11-CAC-18, 2024-11-CAC-19, 2023-11-CAC-18 | rare |
+| **Le juge des sanctions** | Toutes les listes de sanctions, EC et CAC. | 2025-05-EC-01, 2026-05-EC-02, 2025-11-EC-10, 2022-11-CAC-11, 2023-11-CAC-13, 2025-11-CAC-15 | épique |
+| **Niveau d'assurance** | Raisonnable, modérée, aucune : jamais confondues. | 2018-05-EC-01, 2018-05-EC-02, 2019-05-EC-01, 2021-05-EC-02, 2022-11-EC-10, 2023-11-CAC-14, 2024-11-CAC-16 | épique |
+| **Le cadre de référence** | Les trois natures de missions et les textes communs. | 2021-05-EC-07, 2025-05-EC-02, 2023-11-EC-02, 2020-11-EC-09, 2018-05-EC-07 | rare |
+| **Ni EC ni CAC** | Les questions où les règles des deux professions divergent. | 2022-11-CAC-19, 2024-05-CAC-20, 2022-11-CAC-17, 2025-05-CAC-12, 2020-11-CAC-15 | épique |
+| **Barème d'heures** | Dérogation, recours, prestations hors barème. | 2021-11-CAC-11, 2022-11-CAC-15, 2023-05-CAC-14, 2024-11-CAC-11 | rare |
+| **Les cinq étapes** | Procédure disciplinaire CAC de bout en bout. | 2021-11-CAC-12, 2021-11-CAC-15, 2023-11-CAC-12, 2026-05-CAC-19 | épique |
 
 ## 8. Famille 7 — Badges cachés et insolites
 
@@ -330,10 +326,10 @@ La carrière suit le parcours réel (section 0). Un grade se débloque par une *
 - `scripts/check_badges.py` : vérifie que chaque id cité ici existe dans la banque.
 - Commits atomiques : modèle de données, moteur, catalogue, rétroactif, collection, scènes, carrière, animations.
 
-## 12. Décisions à prendre
+## 12. Décisions validées (23 octobre 2026)
 
-1. **« Robe de CAC »** : les commissaires aux comptes ne portent pas de robe, même lors du serment à la cour d'appel. Je propose une **carte professionnelle CAC** et une **mallette d'audit** à la place. À valider.
-2. **« Sessions différentes »** = jours calendaires différents. À valider.
-3. **Réussite en QRC** = auto-évaluation « Bien » ou « Facile ». C'est déclaratif : à valider.
-4. **Ordre des grades 6 et 7** : le CAC peut venir avant ou après l'inscription au tableau. Je propose EC d'abord.
-5. **Badges par sous-thème (44)** : les garder tous, ou les regrouper en 12 familles de sous-thèmes pour alléger la collection.
+1. Pas de robe de CAC : **carte professionnelle CAC** et **mallette d'audit**.
+2. « Sessions différentes » = **jours calendaires différents** (heure locale du téléphone).
+3. Réussite en QRC = auto-évaluation « Bien » ou « Facile » (révision), « Je savais » (entraînement), au moins la moitié des points (examen blanc).
+4. Grade 6 (inscription au tableau EC) avant grade 7 (commissaire aux comptes).
+5. Les 46 badges de sous-thème sont conservés ; la collection les affiche regroupés.
