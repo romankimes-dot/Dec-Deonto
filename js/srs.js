@@ -7,7 +7,10 @@ export function newCard(now = Date.now()) {
   return { ease: 2.5, interval: 0, reps: 0, lapses: 0, due: now, last: null };
 }
 
-export function review(card, grade, now = Date.now()) {
+// `examAt` (timestamp de l'épreuve) : avant l'examen, l'échéance est avancée pour que la carte revienne
+// au plus tard entre J-3 et J-1 (`spread` 0..2 étale ces dernières révisions). L'intervalle SM-2 reste intact
+// (il mesure la solidité du souvenir). Après l'examen : SM-2 normal.
+export function review(card, grade, now = Date.now(), { examAt = null, spread = 0 } = {}) {
   const c = { ...card };
   c.last = now;
   if (grade === 0) {
@@ -29,8 +32,21 @@ export function review(card, grade, now = Date.now()) {
   if (grade === 1) c.ease = Math.max(1.3, c.ease - 0.15);
   if (grade === 3) c.ease = Math.min(3.0, c.ease + 0.15);
   c.reps += 1;
-  c.due = now + c.interval * DAY;
+  c.due = now + capToExam(c.interval, now, examAt, spread) * DAY;
   return c;
+}
+
+// Plus grand intervalle (en jours) qui fait revenir la carte avant l'épreuve.
+export function capToExam(interval, now, examAt, spread = 0) {
+  if (!examAt || now >= examAt) return interval;
+  const left = Math.floor((examAt - now) / DAY);
+  return Math.max(1, Math.min(interval, left - 1 - Math.max(0, Math.min(2, spread))));
+}
+
+// Étalement stable 0..2 à partir de l'identifiant (pour ne pas tout revoir la veille).
+export function spreadOf(id) {
+  let h = 0; for (const ch of String(id)) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return h % 3;
 }
 
 export function isDue(card, now = Date.now()) {
@@ -47,7 +63,8 @@ export function mastery(card) {
 
 // Construit la file du jour : cartes dues (les plus anciennes d'abord), puis nouvelles cartes.
 // `cards` : map id -> card ; `questions` : liste ordonnée des questions candidates (déjà priorisées).
-export function buildQueue(questions, cards, { newLimit = 20, now = Date.now(), priority = null } = {}) {
+// `weight(q)` : facultatif, les nouvelles cartes de poids élevé passent d'abord (notions souvent posées).
+export function buildQueue(questions, cards, { newLimit = 20, now = Date.now(), priority = null, weight = null } = {}) {
   const due = [];
   const fresh = [];
   for (const q of questions) {
@@ -56,6 +73,7 @@ export function buildQueue(questions, cards, { newLimit = 20, now = Date.now(), 
     else if (isDue(c, now)) due.push(q);
   }
   due.sort((a, b) => cards[a.id].due - cards[b.id].due);
+  const byWeight = (list) => (weight ? list.map((q, i) => ({ q, i, w: weight(q) })).sort((a, b) => b.w - a.w || a.i - b.i).map((x) => x.q) : list);
   let alt = [];
   if (priority && priority.length) {
     // Parcours guidé : les nouvelles cartes suivent l'ordre du parcours (étape en cours d'abord),
@@ -67,10 +85,10 @@ export function buildQueue(questions, cards, { newLimit = 20, now = Date.now(), 
       const q = byId.get(id);
       if (q && !seen.has(id)) { alt.push(q); seen.add(id); }
     }
-    const rest = fresh.filter((q) => !seen.has(q.id));
+    const rest = byWeight(fresh.filter((q) => !seen.has(q.id)));
     alt = alt.concat(alternate(rest, newLimit - alt.length));
   } else {
-    alt = alternate(fresh, newLimit);
+    alt = alternate(byWeight(fresh), newLimit);
   }
   return { due, fresh: alt, queue: [...due, ...alt] };
 }
@@ -107,4 +125,39 @@ export function scoreExam(answers, mode) {
   const max = answers.reduce((s, a) => s + a.max, 0) || 1;
   const note = mode === 'qcm' ? total : (total / max) * 20;
   return Math.round(note * 100) / 100;
+}
+
+// Note proposée après une réponse. conf : 2 = sûr, 1 = hésitant, 0 = au hasard / je ne sais pas, null = non demandé.
+// QCM : `ok`. QRC : `ratio` = part des éléments attendus cochés. Une bonne réponse au hasard ne prouve rien : « Encore ».
+export function suggestGrade({ mode, ok = false, ratio = 0, conf = null }) {
+  if (mode === 'qrc') {
+    if (ratio >= 1) return conf === 0 || conf === 1 ? 1 : 2;
+    if (ratio >= 0.5) return conf === 0 ? 0 : 1;
+    return 0;
+  }
+  if (!ok || conf === 0) return 0;
+  return conf === 1 ? 1 : 2;
+}
+
+// Erreur commise avec certitude : celle que la correction fixe le mieux (effet d'hypercorrection).
+export const confidentError = (ok, conf) => conf === 2 && !ok;
+
+// Points d'une QRC d'après les éléments attendus cochés, arrondis au demi-point.
+export const qrcPoints = (max, ratio) => Math.round(max * Math.max(0, Math.min(1, ratio)) * 2) / 2;
+
+// Calibration : taux de réussite par niveau de certitude déclaré. attempts : [{ ok, conf }].
+export function calibration(attempts) {
+  const out = { 2: { n: 0, ok: 0 }, 1: { n: 0, ok: 0 }, 0: { n: 0, ok: 0 } };
+  for (const a of attempts) if (a.conf === 0 || a.conf === 1 || a.conf === 2) { out[a.conf].n++; if (a.ok) out[a.conf].ok++; }
+  return out;
+}
+
+// Questions ratées avec certitude, tant qu'elles n'ont pas été réussies avec certitude depuis.
+export function confidentErrors(attempts) {
+  const st = new Map();
+  for (const a of attempts) {
+    if (confidentError(a.ok, a.conf)) st.set(a.id, true);
+    else if (a.ok && a.conf === 2 && st.has(a.id)) st.delete(a.id);
+  }
+  return [...st.keys()];
 }

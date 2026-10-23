@@ -2,7 +2,7 @@
 // Précache atomique de l'app et des données à l'installation (fichiers relus sur le réseau, jamais depuis le
 // cache HTTP, pour qu'une version ne mélange pas d'anciens et de nouveaux fichiers). Ensuite : réseau d'abord
 // (revalidation à chaque chargement, repli sur le cache au-delà de 4 s ou hors ligne).
-const VERSION = 'dec1-v7';
+const VERSION = 'dec1-v8';
 const CORE = [
   './',
   './index.html',
@@ -17,6 +17,10 @@ const CORE = [
   './js/scene.js',
   './js/plan.js',
   './js/catalog-data.js',
+  './js/cluster.js',
+  './js/drill.js',
+  './js/games.js',
+  './js/palais.js',
   './data/questions.json',
   './data/fiches/index.json',
   './icons/icon-192.png',

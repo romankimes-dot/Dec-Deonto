@@ -277,3 +277,47 @@ header.top .sub { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orien
 .toc button { display: block; width: 100%; text-align: left; margin-top: 6px; }
 .fiche h3 { scroll-margin-top: 76px; }
 .choices.review .choice { cursor: default; }
+/* Certitude, rappel avant les propositions, erreur avec certitude */
+.badge.rec { color: var(--primary); border-color: var(--primary); }
+.cert { margin-top: 12px; }
+.cert .muted { margin-bottom: 6px; }
+.btnrow3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.btnrow3 button.btn { padding: 8px 4px; font-size: 15px; }
+.recall { border: 1px dashed var(--line); border-radius: 12px; padding: 12px; margin-bottom: 8px; }
+.recall p { margin: 0 0 8px; }
+.hc { border-left: 4px solid var(--warn); background: var(--warn-bg); padding: 8px 12px; border-radius: 8px; margin-top: 10px; font-size: 15px; }
+/* Jeux */
+.gamegrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.gamegrid button.btn { flex-direction: column; gap: 2px; font-size: 14px; padding: 10px 6px; }
+.gamegrid button.btn:last-child:nth-child(odd) { grid-column: span 2; flex-direction: row; }
+.gico { font-size: 22px; line-height: 1; }
+.combo { color: var(--warn); font-weight: 800; }
+.crit { font-size: 14px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .02em; margin-top: 6px; }
+.stem { font-size: 15px; color: var(--muted); margin: 6px 0 10px; white-space: pre-line; }
+.prop { font-size: 18px; font-weight: 600; border: 2px solid var(--line); border-radius: 12px; padding: 12px; }
+.swipe { touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.btnrow.duel button.btn { min-height: 56px; }
+.btnrow.duel .side0 { border-color: var(--ec); color: var(--ec); }
+.btnrow.duel .side1 { border-color: var(--cac); color: var(--cac); }
+.btnrow.duel .ko { border-color: var(--ko); color: var(--ko); }
+.btnrow.duel .okb { border-color: var(--ok); color: var(--ok); }
+.timebar { height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; margin-top: 12px; }
+.timebar > div { height: 100%; background: var(--warn); width: 100%; animation: timebar linear forwards; }
+@keyframes timebar { from { width: 100%; } to { width: 0; } }
+.gfb { font-weight: 700; padding: 8px 12px; border-radius: 8px; margin: 6px 0 10px; }
+.gfb.ok { background: var(--ok-bg); color: var(--ok); }
+.gfb.ko { background: var(--ko-bg); color: var(--ko); }
+.vs-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0; font-size: 15px; }
+.vs-cell { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; }
+.vs-cell.on { border: 2px solid var(--primary); background: var(--bg); }
+.errlist { padding-left: 18px; margin: 6px 0; font-size: 15px; }
+.errlist li { margin: 6px 0; }
+.path { list-style: none; padding: 0; margin: 8px 0; }
+.path li { padding: 6px 10px; border-left: 3px solid var(--primary); margin: 4px 0; background: var(--bg); border-radius: 0 8px 8px 0; font-size: 15px; }
+.path li + li { margin-left: 12px; }
+.path li + li + li { margin-left: 24px; }
+.path li + li + li + li { margin-left: 36px; }
+/* Palais de mémoire */
+.loci { list-style: none; padding: 0; margin: 10px 0; }
+.loci li { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+.loci .loc { font-size: 26px; line-height: 1; min-width: 32px; text-align: center; }

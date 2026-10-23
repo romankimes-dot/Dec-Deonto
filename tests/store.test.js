@@ -117,3 +117,18 @@ test('le service worker précharge tous les modules importés par l’applicatio
   const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
   for (const f of readdirSync(new URL('../js/', import.meta.url)).filter((n) => n.endsWith('.js'))) assert.ok(sw.includes(`'./js/${f}'`), `${f} absent du précache`);
 });
+
+test('jeux : état par défaut, conservé au rechargement, validé à l’import', () => {
+  fresh();
+  const s = store.defaultState();
+  assert.deepEqual(s.drills, {});
+  assert.deepEqual(s.games, { best: {} });
+  assert.equal(s.settings.confidence, true);
+  s.drills['duel:x'] = { box: 2, due: 1, ok: 2, n: 2, last: 1 };
+  store.save(s);
+  assert.equal(store.load().drills['duel:x'].box, 2);
+  assert.throws(() => store.importJSON(JSON.stringify({ cards: {}, drills: [] })), /drills/);
+  const old = store.importJSON(JSON.stringify({ cards: {} }));
+  assert.deepEqual(old.drills, {});
+  assert.deepEqual(old.games, { best: {} });
+});
