@@ -115,6 +115,54 @@ th { background: var(--bg); }
 .fiche h4 { font-size: 16px; margin-top: 14px; }
 .fiche li { margin: 4px 0; }
 .fiche strong { color: var(--primary); }
+/* Fiches visuelles */
+.table-wrap { overflow-x: auto; margin: 8px 0; }
+.table-wrap table { margin: 0; display: table; min-width: 100%; }
+.table-wrap td:first-child { font-weight: 600; }
+.pill { display: inline-block; font-size: 11px; font-weight: 800; line-height: 1; padding: 3px 6px; border-radius: 999px; vertical-align: 1px; color: #fff; }
+.pill.ec { background: var(--ec); }
+.pill.cac { background: var(--cac); }
+.pill.trap { background: var(--ko); }
+.pill.check { background: var(--warn); }
+.vs { margin: 10px 0; font-size: 14px; }
+.vs-head { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 4px 0; }
+.vs-head span { font-weight: 800; font-size: 13px; text-align: center; padding: 6px; border-radius: 8px; color: #fff; }
+.vs-head .vs-a { background: var(--ec); }
+.vs-head .vs-b { background: var(--cac); }
+:root[data-theme="dark"] .pill, :root[data-theme="dark"] .vs-head span { color: #0b1220; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pill, :root:not([data-theme="light"]) .vs-head span { color: #0b1220; } }
+.vs-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px; }
+.vs-row .vs-k { grid-column: 1 / -1; font-weight: 700; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; margin-top: 4px; }
+.vs-row .vs-a, .vs-row .vs-b { padding: 8px 10px; border-radius: 10px; background: var(--bg); border-left: 4px solid var(--ec); }
+.vs-row .vs-b { border-left-color: var(--cac); }
+.echelle { margin: 10px 0; display: grid; gap: 8px; }
+.ech-row { display: grid; gap: 4px; }
+.ech-bar { width: var(--w); min-width: 90px; padding: 10px 8px; border-radius: 8px; background: var(--primary); color: var(--primary-ink); font-weight: 800; font-size: 13px; }
+.ech-txt { font-size: 14px; padding: 0 2px 6px; }
+.frise, .etapes { list-style: none; padding: 0; margin: 10px 0; position: relative; }
+.frise li, .etapes li { position: relative; padding: 0 0 14px 26px; font-size: 14px; }
+.frise li::before, .etapes li::before { content: ''; position: absolute; left: 7px; top: 4px; bottom: -4px; width: 2px; background: var(--line); }
+.frise li:last-child::before, .etapes li:last-child::before { display: none; }
+.frise li::after { content: ''; position: absolute; left: 2px; top: 3px; width: 12px; height: 12px; border-radius: 50%; background: var(--primary); }
+.fr-k { display: block; font-weight: 800; color: var(--primary); }
+.etapes { counter-reset: et; }
+.etapes li { counter-increment: et; }
+.etapes li::after { content: counter(et); position: absolute; left: -2px; top: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--primary); color: var(--primary-ink); font-size: 12px; font-weight: 800; text-align: center; line-height: 20px; }
+.et-k { font-weight: 800; margin-right: 6px; }
+.arbre { margin: 10px 0; font-size: 14px; overflow-x: auto; }
+.arbre ul { list-style: none; margin: 0; padding-left: 18px; position: relative; }
+.arbre > ul { padding-left: 0; }
+.arbre li { position: relative; padding: 4px 0 4px 14px; }
+.arbre > ul > li { padding-left: 0; }
+.arbre ul ul li::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; border-left: 2px solid var(--line); }
+.arbre ul ul li:last-child::before { bottom: auto; height: 18px; }
+.arbre ul ul li::after { content: ''; position: absolute; left: 0; top: 18px; width: 12px; border-top: 2px solid var(--line); }
+.arbre .node { display: inline-block; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); }
+.arbre .node.q { border-color: var(--primary); font-weight: 700; }
+.arbre .node.ok { background: var(--ok-bg); border-color: var(--ok); }
+.arbre .node.ko { background: var(--ko-bg); border-color: var(--ko); }
+.fiche-kind { font-size: 13px; color: var(--muted); margin: 14px 0 6px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+.related { margin-top: 8px; }
 .mastery { display: grid; grid-template-columns: 1fr repeat(2, 90px); gap: 6px; align-items: center; font-size: 14px; }
 .mastery .bar { height: 10px; border-radius: 99px; background: var(--line); overflow: hidden; display: flex; }
 .mastery .bar i { display: block; height: 100%; }

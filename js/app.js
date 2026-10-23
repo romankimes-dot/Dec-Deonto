@@ -139,7 +139,7 @@ function qHeader(q) {
 }
 function qExplain(q) {
   return `<div class="explain"><strong>Explication.</strong> ${esc(q.explanation)}${q.update_note ? `<div class="muted" style="margin-top:6px">⚠︎ ${esc(q.update_note)}</div>` : ''}</div>
-    <div class="ref">Réf. : ${esc(q.reference)}</div>`;
+    <div class="ref">Réf. : ${esc(q.reference)}</div>${relatedFiches(q.id).map((f) => `<button class="btn sm related" data-open-fiche="${esc(f.file)}">📊 Schéma : ${esc(f.title.replace(/^Schéma\s*\d+\s*[–-]\s*/, ''))}</button>`).join('')}`;
 }
 function renderQcm(q, container, onAnswered) {
   const order = shuffle([0, 1, 2, 3], q.id);
@@ -423,16 +423,27 @@ function renderExamResult() {
 
 views.fiches = () => {
   if (state.ficheOpen) {
+    const meta = state.fiches.find((f) => f.file === state.ficheOpen) || {};
+    const n = (meta.questions || []).length;
+    const trainBtn = (id) => n ? `<button class="btn primary" id="${id}">🎯 S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : '';
     setTimeout(async () => {
       $('#back').onclick = () => { state.ficheOpen = null; render(); };
+      document.querySelectorAll('#fiche-train, #fiche-train2').forEach((b) => { b.onclick = () => trainOn(shuffle(meta.questions, Date.now()).slice(0, 20), meta.title); });
       try { $('#fiche').innerHTML = renderMarkdown(await loadFiche(state.ficheOpen)); } catch { $('#fiche').textContent = 'Fiche indisponible hors ligne (ouvrez-la une fois en ligne).'; }
     }, 0);
-    return `<button class="btn sm" id="back">← Fiches</button><div class="card fiche" id="fiche" style="margin-top:10px">Chargement…</div>`;
+    return `<button class="btn sm" id="back">← Fiches</button>${n ? `<div style="margin-top:10px">${trainBtn('fiche-train')}</div>` : ''}<div class="card fiche" id="fiche" style="margin-top:10px">Chargement…</div>${trainBtn('fiche-train2')}`;
   }
-  setTimeout(() => { document.querySelectorAll('[data-fiche]').forEach((b) => { b.onclick = () => { state.ficheOpen = b.dataset.fiche; render(); window.scrollTo(0, 0); }; }); }, 0);
+  setTimeout(() => { document.querySelectorAll('[data-fiche]').forEach((b) => { b.onclick = () => openFiche(b.dataset.fiche); }); }, 0);
   if (!state.fiches.length) return `<div class="card"><h2>Fiches</h2><p class="muted">Aucune fiche disponible pour l’instant.</p></div>`;
-  return `<div class="card"><h2>Fiches de synthèse</h2><p class="muted">Chiffres, instances, listes : ce qu’il faut savoir restituer de mémoire.</p><div class="list">${state.fiches.map((f) => `<button class="btn" data-fiche="${esc(f.file)}"><span>${esc(f.title)}</span><span>›</span></button>`).join('')}</div></div>`;
+  const item = (f) => `<button class="btn" data-fiche="${esc(f.file)}"><span>${esc(f.title)}</span><span>${f.questions ? `<span class="muted">${f.questions.length} Q</span> ` : ''}›</span></button>`;
+  const visuels = state.fiches.filter((f) => f.kind === 'visuel');
+  const synth = state.fiches.filter((f) => f.kind !== 'visuel');
+  return `${visuels.length ? `<div class="card"><h2>Schémas et tableaux</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision. Chaque schéma lance une série sur les questions qu’il résume.</p><div class="list">${visuels.map(item).join('')}</div></div>` : ''}
+    <div class="card"><h2>Fiches de synthèse</h2><p class="muted">Chiffres, instances, listes : ce qu’il faut savoir restituer de mémoire.</p><div class="list">${synth.map(item).join('')}</div></div>`;
 };
+function openFiche(file) { state.ficheOpen = file; go('fiches'); }
+// Schémas qui résument une question (lien affiché sous l'explication)
+function relatedFiches(id) { return state.fiches.filter((f) => f.kind === 'visuel' && f.questions?.includes(id)); }
 
 views.stats = () => {
   const qs = state.bank.questions; const cards = state.progress.cards;
@@ -620,6 +631,7 @@ async function init() {
   nav.innerHTML = NAV.map(([v, ico, label]) => `<button data-view="${v}"><span class="ico">${ico}</span>${label}</button>`).join('');
   nav.querySelectorAll('button').forEach((b) => { b.onclick = () => go(b.dataset.view); });
   $('#settingsBtn').onclick = () => go('settings');
+  $('#main').addEventListener('click', (e) => { const b = e.target.closest('[data-open-fiche]'); if (b) openFiche(b.dataset.openFiche); });
   try {
     state.bank = await loadBank();
     state.bank.questions.forEach((q) => { state.byId[q.id] = q; });
