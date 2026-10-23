@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "test": "for f in js/*.js sw.js; do node --check $f || exit 1; done && node --test 'tests/**/*.test.js'",
-    "build": "python3 -I scripts/build_bank.py",
-    "check": "python3 -I scripts/build_bank.py --check",
+    "build": "python3 -I scripts/build_bank.py && python3 -I scripts/build_badges.py",
+    "check": "python3 -I scripts/build_bank.py --check && python3 -I scripts/build_badges.py --check",
     "serve": "python3 -m http.server 8080"
   }
 }

@@ -27,6 +27,7 @@ jobs:
           for f in js/*.js sw.js; do node --check $f || exit 1; done
           node --test 'tests/**/*.test.js'
           python3 -I scripts/build_bank.py --check
+          python3 -I scripts/build_badges.py --check
       - name: Préparer le site
         run: |
           mkdir -p _site
