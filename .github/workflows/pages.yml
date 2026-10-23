@@ -24,6 +24,7 @@ jobs:
           node-version: '22'
       - name: Tests et validation de la banque
         run: |
+          for f in js/*.js sw.js; do node --check $f || exit 1; done
           node --test 'tests/**/*.test.js'
           python3 -I scripts/build_bank.py --check
       - name: Préparer le site
