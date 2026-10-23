@@ -1,0 +1,611 @@
+{
+  "session": "2024-11",
+  "format": "qrc",
+  "questions": [
+    {
+      "id": "2024-11-EC-01",
+      "n": 1,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["personnes_physiques", "societes_ec_capital"],
+      "points": 2,
+      "question": "Un expert-comptable peut-il recourir au statut d'entrepreneur individuel tel que défini par la loi n° 2022-172 du 14 février 2022 en faveur de l'activité professionnelle indépendante ? Si oui, quel en est l'intérêt ?",
+      "qcm": {
+        "question": "Un expert-comptable exerçant à titre individuel peut-il bénéficier du statut d'entrepreneur individuel issu de la loi du 14 février 2022 ?",
+        "choices": [
+          "Non : l'expertise comptable ne peut être exercée qu'en société d'expertise comptable depuis la loi Pacte",
+          "Oui : le statut s'applique aussi aux professions libérales réglementées et sépare de plein droit le patrimoine professionnel du patrimoine personnel",
+          "Oui, mais seulement après une déclaration d'affectation de patrimoine (EIRL) déposée auprès du conseil régional de l'Ordre",
+          "Non : seule l'inscription sur la liste de la H2A permet un exercice individuel à responsabilité limitée"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Oui, le statut d'EI s'applique à toute activité indépendante, y compris libérale réglementée",
+          "Séparation de plein droit des patrimoines professionnel et personnel, sans formalité",
+          "Les créanciers professionnels ne peuvent saisir que le patrimoine professionnel (protection des biens personnels)",
+          "Possibilité d'opter pour l'IS (assimilation à une EURL)"
+        ],
+        "model_answer": "Oui. L'expert-comptable inscrit au tableau qui exerce en nom propre est un entrepreneur individuel au sens de la loi du 14 février 2022. L'intérêt est la séparation automatique de ses patrimoines : ses créanciers professionnels ne peuvent saisir que les biens utiles à son activité, ce qui protège son patrimoine personnel, sans formalité particulière."
+      },
+      "explanation": "La loi 2022-172 crée un statut unique d'entrepreneur individuel applicable à toute activité professionnelle indépendante, y compris libérale réglementée : rien dans l'ordonnance de 1945 n'y fait obstacle, l'exercice individuel restant ouvert à l'expert-comptable inscrit au tableau. Le patrimoine professionnel est séparé de plein droit (plus besoin de déclaration d'affectation, l'EIRL étant mise en extinction). Piège : cette protection ne réduit pas la responsabilité civile professionnelle, qui reste couverte par l'assurance obligatoire.",
+      "reference": "Loi n° 2022-172 du 14 févr. 2022 ; C. com. L.526-22 s. ; Ord. 45-2138 art. 3 et 7",
+      "confidence": "medium"
+    },
+    {
+      "id": "2024-11-EC-02",
+      "n": 2,
+      "profession": "EC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions", "formation"],
+      "points": 2,
+      "question": "Un expert-comptable stagiaire peut-il être sanctionné par la chambre de discipline ou un conseil régional de l'Ordre des experts-comptables ? Justifiez votre réponse.",
+      "qcm": {
+        "question": "Un expert-comptable stagiaire commet un manquement déontologique. Quelle affirmation est exacte ?",
+        "choices": [
+          "Il ne peut être poursuivi, car il n'est pas membre de l'Ordre",
+          "Il peut être sanctionné directement par le conseil régional de l'Ordre, qui statue en matière disciplinaire",
+          "Il peut être poursuivi devant la chambre régionale de discipline, car il est soumis à la surveillance et au contrôle disciplinaire de l'Ordre",
+          "Il relève de la commission des sanctions de la H2A, comme les stagiaires commissaires aux comptes"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Le stagiaire n'est pas membre de l'Ordre mais est soumis à sa surveillance et à son contrôle disciplinaire",
+          "Il peut être sanctionné par la chambre régionale de discipline (mêmes peines que les professionnels)",
+          "Le conseil régional ne prononce pas de sanction disciplinaire : il peut saisir la chambre (et refuser l'attestation de stage, radiation administrative)"
+        ],
+        "model_answer": "Les experts-comptables stagiaires ne sont pas membres de l'Ordre mais sont soumis à sa surveillance et à son contrôle disciplinaire. Ils peuvent donc être sanctionnés par la chambre régionale de discipline, qui applique les mêmes peines qu'aux professionnels. Le conseil régional n'est pas une juridiction disciplinaire : il peut saisir la chambre et, au titre du contrôle du stage, refuser de valider tout ou partie du stage."
+      },
+      "explanation": "L'article 4 de l'ordonnance précise que les stagiaires ne sont pas membres de l'Ordre mais restent soumis à son contrôle disciplinaire ; le code de déontologie s'applique à eux (D. 2012-432 art. 141). La juridiction compétente est la chambre régionale de discipline. Le conseil régional (via le comité régional du stage) a des pouvoirs administratifs : refus d'attestation, suspension ou radiation administrative du stage. Une radiation disciplinaire interdit toute réinscription au stage.",
+      "reference": "Ord. 45-2138 art. 4, 49 et 53 ; D. 2012-432 art. 76 et 141 ; Règlement de stage",
+      "confidence": "high"
+    },
+    {
+      "id": "2024-11-EC-03",
+      "n": 3,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["inscription_tableau"],
+      "points": 2,
+      "question": "Quelles sont les conditions nécessaires pour qu'une personne physique puisse solliciter son inscription au tableau de l'Ordre des experts-comptables ?",
+      "qcm": {
+        "choices": [
+          "Être de nationalité française, titulaire du DEC et avoir prêté serment devant la cour d'appel",
+          "Jouir de ses droits civils, n'avoir subi aucune condamnation entachant l'honorabilité, être titulaire du DEC (ou équivalent), présenter les garanties de moralité jugées nécessaires",
+          "Être titulaire du DEC ou du CAFCAC et avoir accompli un stage de trois ans chez un commissaire aux comptes",
+          "Être titulaire du DSCG, justifier d'une assurance de responsabilité civile et d'une expérience de dix ans"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Jouir de ses droits civils",
+          "N'avoir subi aucune condamnation criminelle ou correctionnelle de nature à entacher l'honorabilité (notamment interdiction de gérer)",
+          "Être titulaire du diplôme d'expertise comptable ou relever des articles 26/27 (diplômés étrangers, VAE…)",
+          "Présenter les garanties de moralité jugées nécessaires par le conseil de l'Ordre"
+        ],
+        "model_answer": "Il faut jouir de ses droits civils, n'avoir subi aucune condamnation criminelle ou correctionnelle entachant son honorabilité (notamment une interdiction de gérer), être titulaire du DEC ou remplir les conditions des articles 26 ou 27, et présenter les garanties de moralité jugées nécessaires par le conseil de l'Ordre. La condition de nationalité a été supprimée."
+      },
+      "explanation": "Les conditions figurent à l'article 3 II de l'ordonnance ; la condition de nationalité (1°) est abrogée. Le serment n'est pas une condition d'inscription : il est prêté devant le conseil régional dans les six mois de l'inscription. Ne pas confondre avec les conditions d'inscription sur la liste des CAC (L.821-14 : CAFCAC ou DEC, stage chez un CAC, absence de faillite personnelle…). Une assurance RC est exigée pour exercer, mais ne figure pas parmi les conditions de l'article 3.",
+      "reference": "Ord. 45-2138 art. 3, 26 et 27 ; D. 2012-432 art. 143",
+      "confidence": "high"
+    },
+    {
+      "id": "2024-11-EC-04",
+      "n": 4,
+      "profession": "EC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions", "ordre_organisation"],
+      "points": 2,
+      "question": "Citez quatre des personnes pouvant interjeter appel d'une décision rendue par la chambre régionale de discipline.",
+      "qcm": {
+        "question": "Laquelle de ces listes ne comprend que des personnes pouvant faire appel (principal ou incident) d'une décision de la chambre régionale de discipline ?",
+        "choices": [
+          "L'intéressé, le plaignant, le commissaire du Gouvernement, le président du conseil régional",
+          "L'intéressé, le procureur de la République, le président de la CNCC, le client",
+          "L'intéressé, le rapporteur général de la H2A, le plaignant, le Conseil national de l'Ordre",
+          "Le plaignant, le premier président de la cour d'appel, le président de la chambre nationale, le commissaire du Gouvernement"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Le professionnel sanctionné (l'intéressé)",
+          "Le plaignant",
+          "Le commissaire du Gouvernement",
+          "Par appel incident : le président du conseil régional, le président de la commission nationale d'inscription, les commissaires du Gouvernement près ces instances"
+        ],
+        "model_answer": "L'appel, porté devant la chambre nationale de discipline dans le délai d'un mois, peut être formé par l'intéressé, le plaignant et le commissaire du Gouvernement. Un appel incident est ouvert dans les quinze jours au président du conseil régional, au président de la commission nationale d'inscription et aux commissaires du Gouvernement près ces instances."
+      },
+      "explanation": "L'article 192 du décret de 2012 fixe un délai d'appel d'un mois devant la chambre nationale de discipline, par lettre recommandée avec AR. L'appel incident (15 jours après notification) élargit la liste. Piège EC/CAC : en matière CAC, il n'y a pas d'appel mais un recours devant le Conseil d'État contre les décisions de la commission des sanctions de la H2A.",
+      "reference": "Ord. 45-2138 art. 50 ; D. 2012-432 art. 192",
+      "confidence": "high"
+    },
+    {
+      "id": "2024-11-EC-05",
+      "n": 5,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["lettre_mission", "confraternite_reprise_dossier"],
+      "points": 2,
+      "question": "Quels motifs doit invoquer un expert-comptable pour interrompre la mission qui le lie à son client ?",
+      "qcm": {
+        "choices": [
+          "Uniquement l'un des motifs légitimes limitativement énumérés par la loi (cessation d'activité, motif personnel impérieux, difficultés dans l'accomplissement de la mission)",
+          "Aucun motif : la mission peut être interrompue à tout moment, sans préavis",
+          "Des motifs justes et raisonnables, tels que la perte de confiance manifestée par le client ou la méconnaissance d'une clause substantielle du contrat, en s'efforçant de ne pas lui porter préjudice",
+          "Uniquement le non-paiement des honoraires, après autorisation du président du conseil régional"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Principe : exercer la mission jusqu'à son terme normal",
+          "Interruption possible pour motifs justes et raisonnables : perte de confiance manifestée par le client, méconnaissance d'une clause substantielle du contrat",
+          "En s'efforçant de ne pas porter préjudice au client",
+          "Obligation de dénoncer le contrat en cas de conflit d'intérêts ou d'atteinte à l'indépendance"
+        ],
+        "model_answer": "L'expert-comptable doit mener sa mission jusqu'à son terme normal. Il peut l'interrompre pour des motifs justes et raisonnables, comme la perte de confiance manifestée par le client ou la méconnaissance par celui-ci d'une clause substantielle du contrat, en s'efforçant de ne pas lui porter préjudice. Il doit même dénoncer le contrat dès qu'un événement le place en conflit d'intérêts ou menace son indépendance."
+      },
+      "explanation": "Article 156 du code de déontologie (D. 2012-432) : terme normal, sauf motifs justes et raisonnables ; article 157 : dénonciation obligatoire en cas de conflit d'intérêts. Distracteur fréquent : la liste de « motifs légitimes » de démission (cessation d'activité, motif personnel impérieux, difficultés…) relève du code de déontologie des CAC (art. 28), pas de celui des EC.",
+      "reference": "D. 2012-432 art. 156 et 157 (code de déontologie EC)",
+      "confidence": "high"
+    },
+    {
+      "id": "2024-11-EC-06",
+      "n": 6,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["publicite_demarchage", "confraternite_reprise_dossier"],
+      "points": 2,
+      "question": "Pour développer son activité, un expert-comptable souhaite publier un post sur un réseau social rédigé de la manière suivante : « Votre expert-comptable ne vous donne pas satisfaction - contactez-nous au 06 xx xx xx xx ». Est-ce possible ? Justifiez votre réponse.",
+      "qcm": {
+        "choices": [
+          "Oui : la publicité et le démarchage sont libres depuis 2014, sans autre limite que le droit de la consommation",
+          "Oui, à condition que le post soit préalablement visé par le conseil régional de l'Ordre",
+          "Non : toute publicité sur les réseaux sociaux est interdite aux experts-comptables",
+          "Non : le message dénigre implicitement les confrères et comporte un élément comparatif, contraire à la dignité, à la retenue et à la confraternité"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "expected": [
+          "Non",
+          "Les actions de promotion sont permises mais doivent être décentes, empreintes de retenue et exemptes de tout élément comparatif",
+          "Le message dénigre les confrères (manquement à la confraternité et à la loyauté)",
+          "Il vise à détourner la clientèle d'un confrère"
+        ],
+        "model_answer": "Non. Si la promotion et la sollicitation sont autorisées, elles doivent rester discrètes, décentes, empreintes de retenue, exactes et exemptes de tout élément comparatif. Ce message dénigre implicitement les autres experts-comptables et cherche à détourner leur clientèle, ce qui viole la dignité de la profession et le devoir de confraternité."
+      },
+      "explanation": "L'article 152 du code de déontologie autorise la promotion, y compris sur internet, mais encadre fortement son contenu. Le réseau social n'est pas en cause : c'est le contenu comparatif et dénigrant qui est fautif. Le même principe (pas d'élément comparatif ou dénigrant) existe pour les CAC (code de déontologie CAC art. 15 et 16), avec en plus l'interdiction du démarchage téléphonique.",
+      "reference": "Ord. 45-2138 art. 23 ; D. 2012-432 art. 152 et 161 s.",
+      "confidence": "high"
+    },
+    {
+      "id": "2024-11-EC-07",
+      "n": 7,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["confraternite_reprise_dossier"],
+      "points": 2,
+      "question": "Dans quels cas la lettre prévue à l'article 163 du code de déontologie n'est-elle pas obligatoire ?",
+      "qcm": {
+        "question": "L'information préalable du confrère (art. 163 du code de déontologie EC) n'est pas exigée :",
+        "choices": [
+          "lorsque le client a payé l'intégralité des honoraires du prédécesseur",
+          "lorsqu'il n'y a pas de remplacement d'un confrère : création d'entreprise, client sans professionnel, mission ponctuelle ou distincte confiée en complément de celle d'un confrère restant en place",
+          "lorsque le client délie expressément le prédécesseur du secret professionnel",
+          "lorsque le nouveau professionnel est inscrit dans une autre région que son prédécesseur"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "L'article 163 ne vise que le remplacement d'un confrère",
+          "Pas de lettre en cas de première mission (création, client jamais suivi)",
+          "Pas de lettre pour une mission ponctuelle ou spécifique ne se substituant pas à celle du confrère qui reste en place",
+          "Missions dont la durée est légalement limitée / missions légales ponctuelles (à vérifier)"
+        ],
+        "model_answer": "La lettre n'est obligatoire qu'en cas de remplacement d'un confrère. Elle n'est donc pas requise lorsqu'il n'existe pas de prédécesseur (création d'entreprise, client sans expert-comptable) ou lorsque la mission confiée est ponctuelle ou distincte et ne se substitue pas à celle du confrère qui demeure en fonction (par exemple une mission légale à durée limitée)."
+      },
+      "explanation": "L'article 163 impose, en cas de remplacement, d'informer le prédécesseur avant d'accepter, de vérifier que le changement n'a pas pour but d'éluder la loi, de s'enquérir du paiement de ses honoraires et, à défaut, d'en référer au président du conseil régional. Les exceptions résultent du champ du texte (remplacement) et de la pratique ordinale ; leur liste exacte n'est pas fixée par le décret. Le paiement des honoraires du prédécesseur n'est pas une exception mais une diligence.",
+      "reference": "D. 2012-432 art. 163 ; doctrine ordinale (CNOEC, conseils régionaux)",
+      "confidence": "low"
+    },
+    {
+      "id": "2024-11-EC-08",
+      "n": 8,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["ordre_organisation", "referentiel_normatif"],
+      "points": 2,
+      "question": "Quel est le rôle du Conseil national de l'Ordre des experts-comptables auprès de la profession ?",
+      "qcm": {
+        "choices": [
+          "Il statue en appel sur les sanctions disciplinaires prononcées contre les experts-comptables",
+          "Il représente la profession auprès des pouvoirs publics, élabore les normes et règles professionnelles, coordonne et contrôle l'action des conseils régionaux et veille au respect de la déontologie",
+          "Il tient la liste des professionnels habilités et procède au contrôle d'activité des cabinets d'audit",
+          "Il fixe le barème des honoraires des missions de présentation des comptes"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Représenter la profession auprès des pouvoirs publics (avis sur les textes)",
+          "Élaborer les normes professionnelles (agréées par arrêté) et le règlement intérieur",
+          "Diriger, coordonner et contrôler l'action des conseils régionaux (ex. harmonisation du contrôle qualité)",
+          "Veiller au respect de la déontologie, défendre l'honneur et l'indépendance de la profession, gérer ses biens"
+        ],
+        "model_answer": "Le Conseil national représente la profession auprès des pouvoirs publics, élabore les normes professionnelles soumises à l'agrément ministériel et veille à leur respect ainsi qu'à celui de la déontologie. Il dirige, coordonne et contrôle l'action des conseils régionaux (notamment l'harmonisation du contrôle de qualité) et défend l'honneur et l'indépendance de la profession."
+      },
+      "explanation": "Le Conseil national (ex-Conseil supérieur, renommé par la loi Pacte) est l'instance nationale de l'Ordre. Il ne juge pas : l'appel disciplinaire relève de la chambre nationale de discipline, présidée par un magistrat. Ne pas le confondre avec la CNCC, établissement d'utilité publique sous la supervision de la H2A, qui n'adopte plus elle-même les normes des CAC.",
+      "reference": "Ord. 45-2138 art. 1er et dispositions relatives au Conseil national (titre II) ; D. 2012-432",
+      "confidence": "medium",
+      "update_note": "Conseil supérieur de l'Ordre renommé Conseil national par la loi Pacte (2019)."
+    },
+    {
+      "id": "2024-11-EC-09",
+      "n": 9,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "missions_legales"],
+      "points": 2,
+      "question": "Aux termes de l'article L.52-12 du code électoral « le compte de campagne est présenté par un membre de l'Ordre des experts-comptables. Ce dernier met le compte de campagne en état d'examen et s'assure de la présence des pièces justificatives requises. » À quelle catégorie de missions du référentiel normatif appartient la mission de mise en état des comptes de campagne ? Quelles sont les normes applicables à cette mission ?",
+      "qcm": {
+        "choices": [
+          "Mission d'assurance sur des comptes complets historiques, soumise à la NP 2300",
+          "Autre mission d'assurance (attestation particulière), soumise à la NP 3100",
+          "Mission sans assurance prévue par un texte légal, sans norme spécifique : s'appliquent le code de déontologie, la NPMQ et la NPLAB",
+          "Mission de procédures convenues, soumise à la NP 4400 uniquement"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Mission sans assurance (mission particulière prévue par un texte légal ou réglementaire)",
+          "Pas de norme professionnelle spécifique",
+          "Textes applicables à toutes les missions : code de déontologie, NPMQ (maîtrise de la qualité), NPLAB (anti-blanchiment)",
+          "Plus le code électoral et la doctrine de la CNCCFP"
+        ],
+        "model_answer": "C'est une mission sans assurance, classée par le cadre de référence parmi les missions particulières prévues par un texte légal ou réglementaire ; elle ne fait l'objet d'aucune norme spécifique. S'appliquent les textes communs à toutes les missions : code de déontologie, NPMQ et NPLAB, ainsi que les dispositions du code électoral."
+      },
+      "explanation": "Le cadre de référence cite expressément les comptes de campagne comme exemple de mission sans assurance prévue par un texte légal, « ne donnant pas lieu à expression d'assurance et ne faisant l'objet d'aucune norme spécifique ». Piège : le visa de l'expert-comptable n'est ni une attestation de présentation (NP 2300) ni une attestation particulière (NP 3100). Les comptes de campagne sont classés à risque élevé en matière LCB-FT.",
+      "reference": "Cadre de référence des missions (référentiel normatif OEC) ; NPMQ ; NPLAB ; C. électoral L.52-12",
+      "confidence": "medium"
+    },
+    {
+      "id": "2024-11-EC-10",
+      "n": 10,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["honoraires"],
+      "points": 2,
+      "question": "Les honoraires entre un expert-comptable et son client sont-ils soumis à un barème ? Justifiez votre réponse.",
+      "qcm": {
+        "choices": [
+          "Oui : un barème d'heures fonction du total du bilan et des produits s'applique, avec dérogation possible auprès du président du conseil régional",
+          "Non : les honoraires sont fixés librement, par écrit et préalablement, en fonction des diligences, de la difficulté, des frais et de la notoriété",
+          "Oui : le Conseil national fixe chaque année un tarif horaire minimal",
+          "Non, sauf pour la mission de présentation des comptes, qui relève d'un tarif réglementé"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Non, les honoraires sont libres",
+          "Convenus par écrit avec le client, préalablement à la mission (lettre de mission)",
+          "Équitables, juste rémunération du travail et du service rendu (diligences, difficulté, frais, notoriété)",
+          "Seules les AGC appliquent des barèmes fixés par leurs instances"
+        ],
+        "model_answer": "Non. Les honoraires de l'expert-comptable sont fixés librement avec le client, par écrit et préalablement à la mission, en fonction de l'importance des diligences, de la difficulté, des frais exposés et de la notoriété du professionnel. Ils doivent être équitables et exclusifs de toute rémunération indirecte d'un tiers."
+      },
+      "explanation": "Article 24 de l'ordonnance et article 158 du code de déontologie. Confusion classique : le barème d'heures (D.821-188, ex-R.823-12) concerne la certification des comptes par le CAC, avec dérogation devant le président de la CRCC. Les seules « barèmes » côté Ordre concernent les cotisations des AGC.",
+      "reference": "Ord. 45-2138 art. 24 ; D. 2012-432 art. 151 et 158",
+      "confidence": "high"
+    },
+    {
+      "id": "2024-11-CAC-11",
+      "n": 11,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["honoraires_bareme", "alpe_petites_entreprises"],
+      "points": 1,
+      "question": "Le barème d'heures figurant à l'article D.821-188 du code de commerce est-il applicable à la mission de certification des comptes annuels prévue à l'article L.821-46 du code de commerce (mission ALPE) ? Justifiez votre réponse.",
+      "qcm": {
+        "choices": [
+          "Non : la mission ALPE est une prestation contractuelle aux honoraires libres",
+          "Non : le barème ne s'applique qu'aux entités d'intérêt public",
+          "Oui : la mission ALPE est une mission de certification des comptes et ne figure pas parmi les exclusions du barème (R.821-193 et R.821-194)",
+          "Oui, mais réduit de moitié par rapport au barème de droit commun"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Oui",
+          "La mission ALPE (mandat de 3 exercices) reste une mission de certification des comptes",
+          "Elle ne figure pas parmi les exclusions des articles R.821-193 et R.821-194",
+          "Dérogation possible via le président de la CRCC (D.821-190)"
+        ],
+        "model_answer": "Oui. La mission ALPE est une mission de certification des comptes dont seule la durée du mandat est réduite à trois exercices ; elle n'est pas visée par les exclusions des articles R.821-193 et R.821-194. Le barème D.821-188 s'applique donc, sous réserve de la procédure de dérogation devant le président de la CRCC."
+      },
+      "explanation": "Le barème d'heures s'applique aux missions de certification des comptes, sauf exclusions limitatives : comptes consolidés, entités dont bilan + produits dépassent 122 M€, sociétés cotées, banques, assurances, associations et fondations, syndicats, CSE… et la certification des informations en matière de durabilité. La mission ALPE n'y figure pas. Point à vérifier : certaines sources présentent le barème comme seulement indicatif pour l'ALPE.",
+      "reference": "C. com. L.821-46, L.821-57, D.821-188 à D.821-190, R.821-193, R.821-194 (ex-R.823-12 s.)",
+      "confidence": "medium",
+      "update_note": "Barème recodifié de R.823-12 vers D.821-188 depuis le 1er janvier 2024 ; mission ALPE ex-L.823-3-2."
+    },
+    {
+      "id": "2024-11-CAC-12",
+      "n": 12,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["inscription_liste", "h2a_supervision"],
+      "points": 1,
+      "question": "Devant quelle juridiction un candidat souhaitant figurer sur la liste des commissaires aux comptes peut-il faire un recours en cas de refus d'inscription par la H2A ?",
+      "qcm": {
+        "choices": [
+          "La cour d'appel de Paris",
+          "La juridiction administrative, soit le Conseil d'État s'agissant d'une décision de la H2A",
+          "La chambre nationale de discipline",
+          "Le tribunal judiciaire du siège de la CRCC"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Juridiction administrative (R.821-68)",
+          "Conseil d'État, compétent en premier et dernier ressort pour les décisions de la H2A (autorité publique indépendante)"
+        ],
+        "model_answer": "Les décisions d'inscription sont susceptibles de recours devant la juridiction administrative ; la H2A étant une autorité publique indépendante à compétence nationale, le recours est porté devant le Conseil d'État."
+      },
+      "explanation": "Le code de commerce renvoie à la juridiction administrative (R.821-68) ; la compétence du Conseil d'État en premier et dernier ressort résulte du code de justice administrative pour les décisions des autorités de régulation à compétence nationale (le H3C y figurait). Piège : l'ancien système de commissions régionales d'inscription avec recours devant le H3C n'existe plus. Pour les EC, le refus d'inscription au tableau est contesté devant le comité national du tableau.",
+      "reference": "C. com. L.821-13, R.821-68 (ex-R.822-19) ; CJA R.311-1",
+      "confidence": "medium",
+      "update_note": "H3C remplacé par la H2A au 1er janvier 2024 ; inscription centralisée par la H2A."
+    },
+    {
+      "id": "2024-11-CAC-13",
+      "n": 13,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["nomination_seuils"],
+      "points": 3,
+      "question": "Quels sont les seuils spécifiques de nomination d'un commissaire aux comptes et d'un suppléant pour un organisme de formation du droit privé ?",
+      "qcm": {
+        "choices": [
+          "Deux des trois seuils : 5 M€ de bilan, 10 M€ de chiffre d'affaires, 50 salariés",
+          "Deux des trois seuils : 230 000 € de total du bilan, 153 000 € de chiffre d'affaires (ressources), 3 salariés",
+          "Ressources supérieures à 230 000 €, quel que soit l'effectif",
+          "Plus de 153 000 € de subventions publiques annuelles"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Dépassement de deux des trois critères",
+          "3 salariés",
+          "153 000 € de chiffre d'affaires hors taxes ou de ressources",
+          "230 000 € de total du bilan"
+        ],
+        "model_answer": "Un organisme de formation de droit privé doit désigner un commissaire aux comptes titulaire et un suppléant lorsqu'il dépasse deux des trois seuils suivants : 3 salariés, 153 000 € de chiffre d'affaires hors taxes ou de ressources, 230 000 € de total du bilan."
+      },
+      "explanation": "Seuils spécifiques du code du travail, non modifiés par le décret 2024-152 (qui a relevé les seuils des sociétés commerciales à 5 M€ / 10 M€ / 50). Ne pas confondre avec le seuil de 153 000 € de subventions des associations ou de 230 000 € de ressources des syndicats. Le suppléant reste exigé par ces textes sectoriels.",
+      "reference": "C. trav. L.6352-8 et R.6352-19",
+      "confidence": "medium"
+    },
+    {
+      "id": "2024-11-CAC-14",
+      "n": 14,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["reseau", "h2a_supervision"],
+      "points": 1,
+      "question": "En cas de doute sur son appartenance à un réseau national ou international, quelle instance le commissaire aux comptes doit-il saisir ?",
+      "qcm": {
+        "choices": [
+          "La Compagnie nationale des commissaires aux comptes",
+          "Le président de la compagnie régionale",
+          "La Haute autorité de l'audit (H2A)",
+          "Le Conseil national de l'Ordre des experts-comptables"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": ["La Haute autorité de l'audit (ex-H3C)"],
+        "model_answer": "Il saisit la Haute autorité de l'audit (H2A), qui a succédé au H3C."
+      },
+      "explanation": "L'article 29 du code de déontologie impose au CAC de pouvoir justifier, avant d'accepter une mission de certification et pendant le mandat, qu'il appartient ou non à un réseau, à l'aide d'indices (direction commune, partage de résultats, dénomination commune, clientèle commune…) ; en cas de doute il saisit l'autorité de supervision. Piège : la CNCC donne des avis doctrinaux mais n'est pas l'instance visée.",
+      "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 29 ; C. com. L.821-4",
+      "confidence": "high",
+      "update_note": "Le texte vise historiquement le Haut Conseil du commissariat aux comptes, remplacé par la H2A au 1er janvier 2024."
+    },
+    {
+      "id": "2024-11-CAC-15",
+      "n": 15,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["nomination_seuils"],
+      "points": 2,
+      "question": "Dans le cas d'une augmentation de capital avec suppression du droit préférentiel de souscription (DPS), les actionnaires d'une société qui n'a pas désigné de commissaire aux comptes peuvent-ils à l'unanimité renoncer à l'intervention d'un commissaire aux comptes ? Justifiez votre réponse.",
+      "qcm": {
+        "choices": [
+          "Oui : depuis la loi Pacte, aucun rapport de commissaire aux comptes n'est requis dans une société sans CAC",
+          "Oui, si la décision est prise à l'unanimité des actionnaires présents",
+          "Non : un commissaire aux comptes doit être désigné à cet effet pour faire rapport sur les conditions de fixation du prix d'émission ; cette protection d'ordre public n'est pas susceptible de renonciation",
+          "Non : la société doit désigner un commissaire aux comptes pour six exercices"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Non",
+          "Le rapport du CAC sur la suppression du DPS n'est exigé que « s'il en existe », mais un CAC doit être désigné pour se prononcer sur le prix d'émission / ses modalités de fixation",
+          "Disposition protectrice d'ordre public : pas de renonciation unanime",
+          "Désignation ponctuelle (CAC ad hoc), pas pour un mandat de six exercices"
+        ],
+        "model_answer": "Non. Même dans une société dépourvue de commissaire aux comptes, la suppression du DPS impose de désigner un commissaire aux comptes à cet effet, chargé d'un rapport sur les conditions de fixation du prix d'émission. Cette intervention, destinée à protéger les actionnaires, est d'ordre public et les actionnaires ne peuvent y renoncer, même à l'unanimité."
+      },
+      "explanation": "Depuis la loi Pacte, l'article L.225-135 ne vise le rapport du CAC que « s'il en existe », mais l'intervention d'un CAC désigné ad hoc sur le prix d'émission demeure (L.225-136, L.225-138, R.225-114 s.). Point à vérifier : l'étendue exacte de la mission ad hoc selon le type d'émission et la forme sociale (SAS).",
+      "reference": "C. com. L.225-135, L.225-136, L.225-138, R.225-114 s.",
+      "confidence": "low"
+    },
+    {
+      "id": "2024-11-CAC-16",
+      "n": 16,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["durabilite_csrd"],
+      "points": 1,
+      "question": "Quelle est la nature de l'assurance formulée par le commissaire aux comptes dans le cadre de la mission de certification des informations en matière de durabilité ?",
+      "qcm": {
+        "choices": [
+          "Une assurance raisonnable, identique à celle de la certification des comptes",
+          "Une assurance limitée (modérée), exprimée sous forme négative",
+          "Aucune assurance : il s'agit de procédures convenues",
+          "Une assurance absolue sur l'analyse de double matérialité"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": ["Assurance limitée (modérée)", "Conclusion formulée sous forme négative"],
+        "model_answer": "Il s'agit d'une assurance limitée (modérée) : le commissaire aux comptes conclut qu'il n'a pas relevé d'éléments remettant en cause la conformité des informations de durabilité au référentiel applicable."
+      },
+      "explanation": "La directive CSRD, transposée par l'ordonnance 2023-1142, prévoit une assurance limitée, un passage à l'assurance raisonnable ayant été envisagé puis abandonné. Piège : la certification des comptes donne une assurance raisonnable. Le barème d'heures ne s'applique pas à la mission de durabilité.",
+      "reference": "C. com. L.821-54 et L.822-x (ord. 2023-1142) ; directive (UE) 2022/2464",
+      "confidence": "high"
+    },
+    {
+      "id": "2024-11-CAC-17",
+      "n": 17,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["publicite_demarchage", "code_deontologie_structure"],
+      "points": 3,
+      "question": "Le recours à la publicité pour un commissaire aux comptes est encadré par le code de déontologie. Listez sans les développer les conditions et interdictions mentionnées par ce dernier.",
+      "qcm": {
+        "question": "Parmi ces règles, laquelle ne figure pas dans le code de déontologie des CAC au titre de la publicité et de la sollicitation ?",
+        "choices": [
+          "La publicité est exempte de tout élément comparatif",
+          "La sollicitation personnalisée précise les modalités de détermination des honoraires",
+          "Le démarchage téléphonique est autorisé s'il est suivi d'une confirmation écrite",
+          "Le CAC utilise son titre suivi de l'indication de la compagnie régionale dont il est membre"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Publicité permise si elle procure au public une information nécessaire, sans atteinte à l'indépendance, la dignité, l'honneur, le secret professionnel, la loyauté",
+          "Titre de CAC suivi de la compagnie régionale ; aucune expression compromettant la dignité",
+          "Exempte de tout élément comparatif (et dénigrant pour la sollicitation)",
+          "Sollicitation personnalisée : information sincère, par envoi postal ou courriel à un destinataire déterminé ; démarchage physique, téléphonique et SMS exclus",
+          "Mention des modalités de détermination des honoraires",
+          "Interdiction des noms de domaine composés du seul titre de la profession et des bannières publicitaires étrangères à la profession"
+        ],
+        "model_answer": "Publicité permise si elle informe le public, avec discrétion et sans atteinte à l'indépendance, la dignité, l'honneur, le secret et la loyauté ; titre suivi de la CRCC ; aucune forme d'expression indigne ; aucun élément comparatif. Sollicitation et offre en ligne : information sincère, ni comparative ni dénigrante, uniquement par courrier ou courriel nominatif (pas de démarchage physique, téléphonique ou par SMS), avec indication des modalités de détermination des honoraires. Noms de domaine limités au seul titre et bannières publicitaires interdits."
+      },
+      "explanation": "Articles 15 (publicité) et 16 (sollicitation personnalisée et services en ligne) du titre I du code de déontologie CAC. La différence avec les EC (art. 152) porte surtout sur les modes de sollicitation : le CAC ne peut ni démarcher physiquement ni téléphoner.",
+      "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 15 et 16",
+      "confidence": "high",
+      "update_note": "Le décret 2026-176 du 11 mars 2026 a adapté le code à la durabilité et touché aux règles de sollicitation : vérifier la rédaction en vigueur."
+    },
+    {
+      "id": "2024-11-CAC-18",
+      "n": 18,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["formation"],
+      "points": 3,
+      "question": "Quelles sont les exigences quantitatives de formation continue de tous les commissaires aux comptes inscrits sur la liste mentionnée au I de l'article L.821-13 du code de commerce et exerçant une mission de commissaire aux comptes ?",
+      "qcm": {
+        "choices": [
+          "40 heures par an, dont 20 heures en déontologie",
+          "120 heures sur trois années consécutives, dont au moins 20 heures au cours d'une même année",
+          "120 heures sur trois ans, sans minimum annuel",
+          "60 heures sur deux ans, dont 10 heures par an"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "120 heures au cours de trois années consécutives",
+          "Au moins 20 heures au cours d'une même année",
+          "Déclaration annuelle avant le 31 mars auprès de la H2A ou de son délégataire (CNCC), justificatifs conservés 6 ans",
+          "Formation particulière de 40 heures (dans les 18 mois) pour le CAC n'ayant pas exercé depuis 3 ans"
+        ],
+        "model_answer": "Le commissaire aux comptes doit suivre 120 heures de formation au cours de trois années consécutives, dont au moins 20 heures au cours d'une même année. Il déclare chaque année, au plus tard le 31 mars, les formations suivies auprès de la H2A ou de son délégataire. S'il n'a pas exercé pendant trois ans sans se former, il doit suivre une formation particulière de 40 heures avant d'accepter une mission."
+      },
+      "explanation": "A.821-45 fixe la durée ; R.821-70 la déclaration annuelle ; R.821-71 la formation particulière (20 h programme CNCC + 20 h au moins de séminaires). Les manquements peuvent désormais faire l'objet de la procédure simplifiée de sanction. Côté EC, l'obligation de formation est aussi de 120 heures sur trois ans (règlement intérieur de l'Ordre), source fréquente de confusion sur le minimum annuel.",
+      "reference": "C. com. L.821-24, R.821-70, R.821-71, A.821-44 s. (ex-A.822-28-1 s.)",
+      "confidence": "high",
+      "update_note": "Articles recodifiés au 1er janvier 2024 (ex-L.822-4, R.822-21 s., A.822-28-1 s.)."
+    },
+    {
+      "id": "2024-11-CAC-19",
+      "n": 19,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["formation"],
+      "points": 2,
+      "question": "Citez quatre des six actions de formation éligibles à l'obligation de formation continue des commissaires aux comptes (le quantum de chaque action n'est pas demandé).",
+      "qcm": {
+        "question": "Laquelle de ces activités n'est pas une action de formation éligible pour un CAC ?",
+        "choices": [
+          "La conception ou l'animation de formations",
+          "La rédaction et la publication de travaux à caractère technique",
+          "La participation à des colloques ou conférences",
+          "La réalisation de missions de certification dans un secteur nouveau pour le professionnel"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "expected": [
+          "Séminaires de formation, autoformation encadrée, formation à distance",
+          "Assistance à des colloques ou conférences",
+          "Conception ou animation de formations, colloques, conférences, enseignements",
+          "Rédaction et publication de travaux techniques",
+          "Participation à des travaux à caractère technique (commissions, groupes de travail)",
+          "Programme de formation continue particulière"
+        ],
+        "model_answer": "Sont éligibles : la participation à des séminaires, programmes d'autoformation encadrée ou formations à distance ; l'assistance à des colloques ou conférences ; la conception ou l'animation de formations ou d'enseignements ; la rédaction et la publication de travaux techniques ; la participation à des travaux techniques ; le programme de formation continue particulière."
+      },
+      "explanation": "Liste de l'article A.821-46, avec plafonds (colloques 45 h sur 3 ans, animation 20 h/an, publications 30 h sur 3 ans, travaux techniques 20 h/an). L'expérience acquise en mission n'est pas une action de formation.",
+      "reference": "C. com. A.821-46 à A.821-51",
+      "confidence": "high"
+    },
+    {
+      "id": "2024-11-CAC-20",
+      "n": 20,
+      "profession": "CAC",
+      "theme": "controle_qualite",
+      "tags": ["prestations_declaration_activite", "controle_activite"],
+      "points": 3,
+      "question": "Que comporte la déclaration de prestation annuelle obligatoire du commissaire aux comptes prescrite à l'article D.821-186 du code de commerce ?",
+      "qcm": {
+        "choices": [
+          "La seule liste des formations suivies au cours de l'année",
+          "La liste des entités certifiées (EIP ou non) avec bilan, produits et heures, la liste des salariés et de leurs heures, les autres missions et prestations avec les honoraires, les sommes facturées et frais",
+          "Le montant des honoraires perçus, transmis directement à l'administration fiscale",
+          "La copie de chaque rapport de certification signé"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Entités où il exerce une certification des comptes ou de durabilité, en précisant si EIP",
+          "Pour chacune : total du bilan + produits d'exploitation et financiers, nombre d'heures",
+          "Liste des salariés, leurs mandats, missions et heures ; liste des associés pour les sociétés",
+          "Autres missions et prestations : entités, nature, honoraires",
+          "Sommes facturées et frais de déplacement ; transmission électronique à la CRCC puis CNCC puis H2A"
+        ],
+        "model_answer": "La déclaration d'activité annuelle mentionne les entités dans lesquelles le CAC exerce une mission de certification des comptes ou des informations de durabilité (en précisant si ce sont des EIP), avec pour chacune le total du bilan et des produits et le nombre d'heures ; la liste de ses salariés, de leurs mandats et heures (et de ses associés pour une société) ; les autres missions et prestations avec leur nature et les honoraires ; les sommes facturées et les frais. Elle est adressée par voie électronique à la CRCC, qui la transmet à la CNCC, laquelle en adresse copie à la H2A."
+      },
+      "explanation": "La déclaration d'activité (D.821-186 VI) alimente le contrôle d'activité et le calcul des cotisations. Elle est distincte de la déclaration de formation (R.821-70, avant le 31 mars). Le non-respect répété des obligations déclaratives peut être sanctionné par la procédure simplifiée.",
+      "reference": "C. com. D.821-186 (ex-R.823-10)",
+      "confidence": "high",
+      "update_note": "Contenu élargi par la recodification 2024 (durabilité, prestations)."
+    }
+  ]
+}
