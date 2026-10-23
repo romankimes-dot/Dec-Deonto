@@ -11,10 +11,10 @@ Nom | **Contrôle de qualité** | **Contrôle d'activité**
 Organisateur | **Conseil national** (programme) et **CROEC** (réalisation) | **H2A** ; délégué à la **CNCC** pour les CAC sans mandat d'EIP
 Contrôleurs | **EC candidats**, désignés par le **conseil régional** pour **3 ans** : inscrits depuis au moins **5 ans**, sans sanction, formés par l'Ordre, contrôle de qualité sans nouveau contrôle à un an | **Agents de la H2A** (EIP) ; **CAC contrôleurs** de la CNCC et des CRCC (non-EIP)
 Périodicité | Cycle pluriannuel, en pratique **≈ 6 ans** | **3 ans** pour les CAC des **grandes EIP** · **6 ans** au plus pour les autres
-Champ | Toutes les missions de l'EC, **sauf** le commissariat aux comptes et l'expertise judiciaire ; et la **LCB-FT** | La seule activité de **CAC** (et de durabilité), y compris la **LCB-FT**
+Champ | Toutes les missions de l'EC (en pratique hors commissariat aux comptes et expertise judiciaire, exclusions qu'aucun texte lu n'écrit) ; et la **LCB-FT** | La seule activité de **CAC** (et de durabilité), y compris la **LCB-FT**
 Secret | **Levé** envers les contrôleurs | **Inopposable**, pour les missions **et** les prestations
 Après un contrôle défavorable | **Nouveau contrôle à un an**, formation possible ; en cas de nouveaux manquements, **chambre de discipline** | Recommandations et suivi ; transmission au **rapporteur général**, puis **collège**, puis **commission des sanctions**
-Revue indépendante | Prévue par la **NPMQ** pour certaines missions (audit, missions à risque) | **Légale** pour les EIP (règlement UE 537/2014, art. 8), **avant** la signature du rapport
+Revue indépendante | **NPMQ** : obligatoire pour les **audits d'entités cotées**, ailleurs selon les critères du cabinet | **Légale** pour les EIP (règlement UE 537/2014, art. 8), **avant** la signature du rapport
 ```
 
 ## Contrôle de qualité de l'Ordre : déroulement

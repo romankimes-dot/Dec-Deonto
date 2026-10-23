@@ -84,23 +84,21 @@
 | **Chambre nationale de discipline** (auprès du Conseil national) | **Président** : un magistrat désigné par le **garde des Sceaux** parmi les **présidents de chambre de la cour d'appel de Paris** (en activité ou honoraires) ; **2 fonctionnaires** désignés par le ministre de l'économie ; **2 membres du Conseil national** élus (ord. art. 50) | **Appel** |
 | **Conseil d'État** | — | **Recours en cassation** contre les décisions de la chambre nationale |
 
-- Le **commissaire du gouvernement** n'est **pas membre** des chambres : il **saisit** et **fait appel**.
+- Le **commissaire du gouvernement** n'est **pas membre** des chambres : il peut être **à l'origine d'une plainte**, reçoit communication des plaintes et peut **faire appel**. Les poursuites sont conduites par un **magistrat chargé des poursuites** rattaché à chaque chambre (ord. art. 49 et 50).
 
 ### Saisine de la chambre régionale
-- **Président du conseil régional** (au nom du conseil).
-- **Commissaire du gouvernement**.
-- **Procureur de la République**.
-- **Plainte d'un client ou d'un tiers** : elle est adressée au président du CROEC, qui décide des suites à donner.
+- La **plainte** est adressée **à la chambre régionale de discipline** par toute **personne ayant intérêt à agir** : client, tiers, **conseil régional** (ord. art. 31), **commissaire du gouvernement** (D. 2012-432 art. 179 et 182).
+- Le **magistrat chargé des poursuites** la communique au président du conseil régional et au commissaire du gouvernement ; il la **classe sans suite** (ordonnance susceptible de recours) ou **nomme un rapporteur** (ord. art. 49 ; D. art. 179 et 181).
 
 ### Procédure
 - La procédure est **contradictoire** : notification des griefs, **accès au dossier**, assistance d'un avocat ou d'un confrère.
-- Un **rapporteur** instruit l'affaire, puis la chambre statue en **audience** et rend une **décision motivée**.
-- **Appel** devant la chambre nationale dans un délai d'**un mois** à compter de la notification (à vérifier). Peuvent faire appel :
-  - le **professionnel sanctionné** ;
-  - le **commissaire du gouvernement** ;
+- Un **rapporteur**, nommé par le magistrat chargé des poursuites, instruit l'affaire. Au vu de l'instruction, le **magistrat chargé des poursuites** prononce un non-lieu ou **notifie les griefs** et saisit la chambre, qui statue en **audience** et rend une **décision motivée** (ord. art. 49 ; D. art. 181 et 183).
+- **Appel** devant la chambre nationale dans un délai d'**un mois** à compter de la notification (D. 2012-432 art. 192 II) ; l'appel est **suspensif** (ord. art. 53). Peuvent faire appel :
+  - l'**intéressé** ;
+  - la personne ou l'autorité **à l'origine de la plainte** ;
+  - le **magistrat chargé des poursuites** ;
   - le **président du conseil régional** ;
-  - le **président du Conseil national** ;
-  - le **procureur général** ou le procureur de la République (à vérifier).
+  - le **commissaire du gouvernement**.
 - Contre la décision de la chambre nationale : **recours devant le Conseil d'État**.
 
 ### Peines disciplinaires (ord. art. 53) : liste exacte
@@ -110,8 +108,8 @@
 4. **Suspension pour une durée déterminée sans sursis**.
 5. **Radiation du tableau comportant interdiction définitive d'exercer** la profession.
 
-- La « **remontrance** », l'« **avertissement** » et l'« **amende** » **n'existent pas** dans la liste générale.
-- **Sanctions spécifiques LCB-FT** (en plus) : **sanction pécuniaire**, **interdiction temporaire** d'exercer certaines fonctions ou activités, **publication** de la décision.
+- La « **remontrance** » et l'« **amende** » **n'existent pas** dans la liste générale. L'« **avertissement** dans le cabinet du président » de la chambre régionale existe, mais **en dehors** des peines disciplinaires (art. 53 al. 1).
+- **Sanctions spécifiques LCB-FT** (en plus, ord. art. 53 bis renvoyant au C. mon. fin. L.561-36-3) : **injonction**, **interdiction temporaire d'exercice de responsabilités dirigeantes**, **sanction pécuniaire** (1 M€ au plus), **publication** de la décision.
 
 ### Personnes justiciables
 - **Experts-comptables** inscrits et **sociétés** inscrites.
@@ -143,8 +141,6 @@
 - **Responsabilité administrative** : elle n'existe **pas** pour l'EC ; pour le CAC, les sanctions de la H2A sont de **nature administrative**.
 
 ## À vérifier
-- **Composition exacte** de la chambre régionale de discipline : 2 membres élus par le conseil régional ou par l'assemblée (annale 2021-05 Q6).
-- **Liste exacte** des personnes pouvant faire appel d'une décision de la chambre régionale, et **délai d'appel** (annale 2024-11 Q4).
-- **Prescription de l'action disciplinaire** contre un EC (aucune règle certaine retenue ici).
+- **Prescription de l'action disciplinaire** contre un EC : aucun délai n'a été trouvé dans l'ord. 45-2138 ni dans le D. 2012-432 ; texte éventuel à identifier.
 - **Montant minimal** de l'assurance RC obligatoire de l'EC.
 - **Sanctions fiscales** CGI 1740 A / 1753 applicables aux professionnels.

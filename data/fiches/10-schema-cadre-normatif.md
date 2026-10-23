@@ -49,7 +49,7 @@ questions: EC:referentiel_normatif EC:missions_assurance EC:missions_legales
 - {!} Il n'existe **jamais** d'assurance **absolue**, ni chez l'EC ni chez le CAC.
 - {!} **Procédures convenues** et **attestations particulières** peuvent porter sur des informations **non financières**.
 - {!} **Comptes prévisionnels** : établir des comptes prévisionnels est une **autre prestation**. *Examiner* des informations prévisionnelles relève de la NP 3400.
-- {!} **Comptes de campagne** : mission **légale** (C. électoral L.52-12) de mise « en état d'examen ». Ce n'est **pas** une mission d'assurance. Sa catégorie exacte dans le cadre de référence reste {?}.
+- {!} **Comptes de campagne** : mission **légale** (C. électoral L.52-12) de mise « en état d'examen ». Ce n'est **pas** une mission d'assurance : le cadre de référence la range parmi les **missions sans assurance prévues par la loi ou le règlement**, sans norme spécifique.
 - {!} La **NPMQ** et la **NPLAB** ne sont pas des missions : elles s'appliquent **à toutes les missions**.
 
 ## Missions légales de l'EC (prévues par un texte)
@@ -58,7 +58,7 @@ questions: EC:referentiel_normatif EC:missions_assurance EC:missions_legales
 |---|---|
 | Comptes de campagne électorale | C. électoral L.52-12 |
 | Assistance du CSE (expertise légale) | Code du travail |
-| Présentation des comptes du CSE, selon ses ressources | Code du travail |
+| Présentation des comptes du CSE de taille intermédiaire | C. trav. L.2315-76 |
 | Attestations exigées par un texte (aides publiques…) | Divers |
 
 - {!} La « présentation des comptes des études notariales » **n'est pas** une mission légale.

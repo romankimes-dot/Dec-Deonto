@@ -8,7 +8,7 @@
 | **Directive 2006/43/CE**, modifiée par la **directive 2014/56/UE** | Contrôle légal des comptes dans l'UE |
 | **Règlement (UE) n° 537/2014** | Exigences propres aux **EIP** : services interdits, rotation, comité d'audit, revue indépendante |
 | **Directive CSRD 2022/2464** | Certification des informations de **durabilité** |
-| **Code de déontologie** | **Annexe 8-1** du livre VIII (décret 2020-292, mis à jour en 2024), complété par les **normes de déontologie** (A.821-54 s.) |
+| **Code de déontologie** | **Annexe 8-1** du livre VIII (décret 2020-292, modifié en dernier lieu par le **décret 2026-176 du 11 mars 2026**), complété par les **normes de déontologie** (A.821-54 s.) |
 | **NEP** (normes d'exercice professionnel) | **Adoptées par la H2A** et **homologuées par arrêté du garde des Sceaux** (ministre de la Justice) |
 | **Loi Pacte (2019)** | Relèvement des seuils, mission **ALPE**, suppression de la liste de services interdits hors EIP |
 
@@ -17,7 +17,7 @@
 ### Élaboration des NEP
 - **Deux commissions de normalisation** placées auprès de la H2A élaborent les projets (L.820-4, modifié par la loi 2025-391) : l'une pour la **durabilité**, l'autre pour la **certification des comptes**, les prestations et attestations. Elles sont présidées par le **même membre du collège**. La commission « comptes » comprend en outre **2 CAC** (proposés par la CNCC) et **1 personnalité qualifiée** ; membres désignés pour **3 ans**, renouvelables une fois.
 - Attention : l'ancienne commission **paritaire** (H3C) n'existe plus.
-- **Peuvent demander l'élaboration d'une NEP** : le **garde des Sceaux**, le **président de l'AMF**, le **président de l'ACPR**, la **CNCC** et, le cas échéant, le **Conseil de normalisation des comptes publics**.
+- **Peuvent demander l'élaboration d'une NEP** (demandes prises en compte dans le plan d'orientation et le programme de travail de la H2A) : le **garde des Sceaux**, l'**AMF**, l'**ACPR**, l'**Autorité des normes comptables**, le **Conseil de normalisation des comptes publics** et la **CNCC** (L.820-23 II).
 - La **CRCC ne le peut pas**.
 
 ## 2. Organisation de la profession
@@ -53,7 +53,7 @@
 ### Compagnies régionales (CRCC)
 - Elles sont établies dans le ressort des **cours d'appel**, ou après regroupement.
 - **Électeurs** au conseil régional : les **CAC personnes physiques inscrits** auprès de la CRCC et **à jour de leurs cotisations**.
-- **Éligibles** : les **personnes physiques** inscrites auprès de la CRCC, **à jour de leurs cotisations** et **exerçant des fonctions de CAC à la date du scrutin**.
+- **Éligibles** : les **personnes physiques** à **jour de leurs cotisations** et **exerçant la profession de CAC au 30 juin de l'année d'expiration des mandats** ; le président doit exercer au moins une **mission de certification** à cette date (D.821-31 II).
 - **Les sociétés ne sont ni électrices ni éligibles**.
 - Rôles du **président de la CRCC** :
   - **dérogation au barème** d'heures ;
@@ -78,7 +78,7 @@
 3. Les **dirigeants** (gérant, président, DG, membres du directoire) sont des **CAC**.
 
 - **Pas d'exercice sous forme d'association** : un CAC exerce **à titre individuel** ou en **société**.
-- Un CAC ne peut exercer qu'au sein **d'une seule société de CAC**, **sauf** si l'une **détient plus de la moitié du capital** des autres (**3 sociétés** possibles dans ce cas).
+- Un CAC ne peut exercer qu'au sein **d'une seule société de CAC**, **sauf** au sein d'un **groupe** formé par une société de CAC et les sociétés qu'elle **contrôle** (L.233-16 II et III), ou dans **deux sociétés** dont la **moitié au moins des associés** sont communs (L.821-25).
 - **Salariat** : il est **incompatible**, **sauf** chez un **autre CAC** ou un **EC**.
 
 ## 4. Nomination : seuils et cas
@@ -160,7 +160,7 @@
 
 ### Révocation, récusation, relèvement
 - **Récusation** : demandée en justice, **pour juste motif**, dans les **30 jours** de la nomination.
-- **Relèvement de fonctions** (ex L.823-7) : prononcé **par décision de justice**, **en cas de faute ou d'empêchement**. Il peut être demandé par l'organe de direction, des actionnaires (**5 %** du capital), le **CSE**, le **ministère public**, l'**AMF** (pour les EIP) ou la **H2A**.
+- **Relèvement de fonctions** (L.821-50, ex L.823-7) : prononcé **par décision de justice**, **en cas de faute ou d'empêchement**. Il peut être demandé par l'organe d'administration ou de direction, des actionnaires (**5 %** du capital), le **comité d'entreprise (CSE)**, le **ministère public** ou l'**AMF** (personnes dont les titres sont admis sur un marché réglementé). La **H2A** ne figure pas dans la liste.
 - **Pas de révocation ad nutum** par l'assemblée.
 
 ## 6. Honoraires
@@ -169,7 +169,7 @@
 - Il s'applique à la **mission de certification**, sauf ALPE. Il fixe des **fourchettes d'heures** par tranches de **(total bilan + produits d'exploitation + produits financiers HT)**.
 - Le **taux de vacation horaire** est **librement fixé d'un commun accord**.
 - Il **ne s'applique pas aux prestations**.
-- Il ne concerne pas non plus les entités au-delà de la dernière tranche (environ **15 M€** ; à vérifier).
+- Il ne concerne pas non plus les entités au-delà de la dernière tranche (**122 M€** de total bilan et produits ; D.821-188).
 
 ### Dérogation au barème
 - Si le nombre d'heures paraît **excessif ou insuffisant** (D.821-190 et D.821-191) :
@@ -189,19 +189,17 @@
 - Les honoraires **subordonnés au résultat** sont **interdits**. La rémunération est **en rapport avec les diligences**.
 
 ## 7. Lettre de mission (NEP 210)
-- Elle est établie **pour chaque mandat**, ou mise à jour, et pour **chaque prestation**.
-- **Objectifs** :
-  - **confirmer l'acceptation** de la mission ;
-  - **éviter les malentendus** ;
-  - préciser l'**objectif et l'étendue** de l'audit, les **responsabilités** respectives (CAC et direction), les **modalités** (équipe, calendrier, communication) et les **honoraires**.
-- Elle est **signée** par le CAC et par le représentant de l'entité.
+- Elle est établie par le CAC **la première année du mandat** et communiquée à l'entité **avant** ses travaux ; elle est **révisée** (ou complétée par un avenant) si les modalités changent de façon importante (NEP 210 § 3 et 7). Les **autres missions** et les **prestations** exigent aussi une lettre de mission (R.821-195).
+- **Objet** : définir les **modalités** de la mission et **demander l'accord** de l'entité sur son contenu (§ 2).
+- **Contenu** (§ 6) : **objectif et étendue** du contrôle légal, **calendrier**, répartition entre co-commissaires, **signataires**, recours à des experts, obligations de communication de l'entité, **budget d'honoraires** et conditions de facturation.
+- L'entité **accuse réception** et **confirme son accord** ; tout désaccord est consigné au dossier (§ 8).
 
 ## 8. Co-commissariat (NEP 100)
 - Il est **obligatoire** pour les entités qui **publient des comptes consolidés** (**2 CAC**), et pour certaines EIP ou entités réglementées.
 - Les deux CAC sont **indépendants** l'un de l'autre et **n'appartiennent pas au même réseau**.
 - **Répartition équilibrée** des travaux, en **volume** comme en **nature** (qualitative). Chacun procède à une **revue** des travaux de l'autre.
 - Exemple (annale 2022-05 Q12) : une répartition **90 % / 10 %** **n'est pas acceptable**. Le cabinet minoritaire **ne peut pas** accepter.
-- **Désaccord sur la répartition** : les CAC **saisissent** le **président de la CRCC** pour **conciliation**, ou le président de la CNCC s'ils relèvent de compagnies différentes (à vérifier).
+- **Désaccord sur la répartition** : les CAC **saisissent** le **président de leur CRCC** ou, s'ils relèvent de compagnies régionales distinctes, le **président de leur compagnie respective** (code de déontologie art. 24 I).
 - Le rapport est **commun**, et chaque CAC est **responsable** de l'ensemble.
 
 ## 9. Pouvoirs et obligations spécifiques
@@ -224,7 +222,7 @@
 
 ### Révélation des faits délictueux au procureur (L.821-10, ex L.823-12)
 - **Obligatoire** pour les faits connus « à l'occasion de sa **mission ou prestation** » (L.821-10) : elle vaut donc **aussi pour une prestation**, y compris auprès d'une entité dont il n'est pas CAC.
-- Elle vise les faits **significatifs**, **même régularisés** : un vol **remboursé** doit **quand même être révélé**, car le délit est consommé.
+- Elle vise les **faits délictueux** dont il a eu connaissance, **même régularisés** (L.821-10 ne pose aucun seuil de signification) : un vol **remboursé** doit **quand même être révélé**, car le délit est consommé.
 - **Non-révélation** : délit puni de **5 ans d'emprisonnement et 75 000 € d'amende**.
 - La révélation de **bonne foi** n'engage **pas** la responsabilité du CAC.
 
@@ -238,13 +236,13 @@
 
 ## 10. EIP (entités d'intérêt public)
 
-### Définition (L.820-1)
+### Définition (L.821-2 II)
 - Sociétés dont les titres sont **admis sur un marché réglementé** de l'UE.
 - **Établissements de crédit**.
 - **Entreprises d'assurance et de réassurance**.
 - **Mutuelles** et unions (livre II du code de la mutualité).
 - **Institutions de prévoyance**.
-- **Sociétés de financement** (à vérifier).
+- Au-delà d'un seuil de bilan consolidé, certaines **compagnies financières holdings** et **sociétés de groupe d'assurance** ; les **fonds, mutuelles et institutions de retraite professionnelle supplémentaire**. Les sociétés de financement ne figurent pas dans la liste.
 
 ### Règles propres
 
@@ -283,15 +281,14 @@
   5. **publications** et travaux d'ordre technique ;
   6. **participation à des groupes de travail** ou commissions techniques.
 - **Déclaration annuelle** des heures à la **CRCC**.
-- **Formation particulière** : obligatoire pour un CAC qui **n'a pas exercé pendant 3 ans** et n'a pas respecté l'obligation, **avant d'accepter une mission** (délai à vérifier).
+- **Formation particulière** : obligatoire pour un CAC qui **n'a pas exercé pendant 3 ans** et n'a pas respecté l'obligation : **40 heures**, accomplies dans les **18 mois qui précèdent l'acceptation** d'une mission (R.821-71).
 
 ## 13. Déclarations
-- **Déclaration annuelle de prestations (D.821-186)** : pour chaque prestation fournie **hors mission de certification**, le CAC déclare à la **CRCC** (pour la H2A) :
-  1. l'**identité de l'entité** bénéficiaire ;
-  2. la **nature** de la prestation ;
-  3. le **montant des honoraires**.
-- **Déclaration d'activité annuelle** : mandats détenus et honoraires. La **nomination** à un mandat est **notifiée au conseil régional** de la compagnie dans les **8 jours**, par lettre recommandée ou par voie électronique (D.821-173).
-- **Activités commerciales accessoires** : elles ne sont pas permises au CAC **non-EC**. L'exception de la loi Pacte bénéficie aux CAC **qui sont aussi EC**, dans le cadre de l'ordonnance de 1945.
+- **Déclaration d'activité annuelle (D.821-186 VI)**, adressée par voie électronique à la **CRCC**, qui la transmet à la CNCC, laquelle en adresse copie à la **H2A**. Elle porte notamment sur les mandats de certification, les heures et les honoraires et, **dans la même déclaration**, pour les **autres missions ou prestations** :
+  1. la **liste des personnes ou entités** ;
+  2. la **nature** des missions ou prestations ;
+  3. le **montant total des honoraires** facturés. La **nomination** à un mandat est **notifiée au conseil régional** de la compagnie dans les **8 jours**, par lettre recommandée ou par voie électronique (D.821-173).
+- **Activités commerciales accessoires** : elles ne sont pas permises au CAC **non-EC** (L.821-27 3°). L'exception de l'**art. 22 de l'ordonnance de 1945** (depuis la **loi 2010-853**, non la loi Pacte) bénéficie aux CAC **qui sont aussi EC**.
 
 ## Pièges EC vs CAC
 - **Serment** : l'EC le prête devant le **conseil régional** ; le CAC devant le **premier président de la cour d'appel**.
@@ -304,10 +301,8 @@
 - **Salariat** : l'EC peut être salarié chez un EC, une AGC ou un CAC ; le CAC chez un **CAC ou un EC**.
 
 ## À vérifier
-- **Nombre de CRCC** et signification des chiffres « 17 » et « 22 » dans l'annale 2025-11 Q19.
+- **Nombre de CRCC** (17 selon le site de la CNCC, aucun texte lu) dans l'annale 2025-11 Q19 ; « 22 » est l'effectif maximal d'un conseil régional (D.821-29 4°).
 - **Petit groupe** : le CAC de la tête de groupe peut-il obtenir des informations des CAC des filiales significatives (annale 2025-05 Q15) ? Texte exact.
-- **Formation particulière** : délai (6 ou 18 mois, avant ou après l'acceptation) et durée (annale 2018-11 Q16).
 - **Seuils des CSE, des fonds de dotation et des partis politiques**.
-- **Augmentation de capital avec suppression du DPS** sans CAC : possibilité de renonciation (annale 2024-11 Q15).
+- **Augmentation de capital avec suppression du DPS** sans CAC : la désignation d'un CAC « à cet effet » est prévue par L.225-136 1° et L.225-138 II ; l'impossibilité d'y renoncer n'est pas écrite (annale 2024-11 Q15).
 - **Calendrier CSRD** après le paquet Omnibus 2025 et l'ordonnance de transposition.
-- **Liste précise des EIP** (sociétés de financement, entreprises d'investissement ?).

@@ -22,15 +22,16 @@ Programme officiel (arrêté du 13 février 2019) : exercice de la profession ·
 ## Utilisation sur téléphone
 
 1. Ouvrir https://romankimes-dot.github.io/Dec-Deonto/ dans Safari (iPhone) ou Chrome (Android).
-2. « Partager » → « Sur l'écran d'accueil » (iPhone) ou « Installer l'application » (Android).
+2. **Avant de répondre à la moindre question** : « Partager » → « Sur l'écran d'accueil » (iPhone) ou « Installer l'application » (Android), puis lancer l'app depuis l'icône. Sur iPhone, Safari efface les données d'un site resté 7 jours sans visite ; une application installée n'est pas concernée, et ce qui est fait dans un onglet n'est pas transféré à l'application installée.
 3. Au premier lancement en ligne, l'app met tout en cache (questions, fiches). Elle fonctionne ensuite **sans réseau**.
-4. La progression est stockée **sur le téléphone** uniquement. Réglages → Exporter pour la sauvegarder.
+4. La progression est stockée **sur le téléphone** uniquement. Réglages → Exporter (partage, copie ou fichier) après chaque séance : l'accueil le rappelle au-delà de 2 jours. Une copie automatique est faite toutes les 3 heures, et l'état précédent est gardé avant un import ou un effacement.
 
 ## Modes
 
+- **Parcours** : 15 étapes pour partir de zéro (cadre normatif, institutions, EC, CAC, discipline, chiffres, puis examens blancs et points faibles). Les nouvelles cartes de « Réviser » suivent l'étape en cours.
 - **Réviser** : répétition espacée (SM-2 simplifié). Cartes dues + nouvelles cartes (CAC en premier). Format QCM, QRC ou mixte.
 - **Entraîner** : série ciblée par profession, thème, sujet ; ou « mes 20 questions les plus ratées ».
-- **Examen** : 10 EC + 10 CAC, 60 min chrono, QCM ou QRC avec auto-correction, note /20, détail par thème.
+- **Examen** : 10 EC + 10 CAC, 60 min chrono, QCM ou QRC avec auto-correction, note /20, détail par thème, corrigé complet (bonne proposition, votre choix, explication). Un examen en cours est repris après un rechargement.
 - **Fiches** : synthèses par thème (chiffres, instances, listes) et 12 **schémas** (cadre normatif, niveaux d'assurance, comparatifs EC / CAC, frises, arbres de décision). Chaque schéma lance une série sur les questions qu'il résume, et chaque explication renvoie au schéma correspondant.
 - **Stats** : maîtrise par thème × profession, points faibles, historique des examens.
 - **Carrière** : 8 grades, du stagiaire de 1re année à l'expert-comptable installé. Le bureau évolue et se remplit des objets gagnés.
@@ -41,8 +42,9 @@ Les badges sont recalculés à partir de l'historique existant à la première o
 
 ## Contenu et véracité
 
-- Les **questions** sont les sujets officiels, mot pour mot : 16 sessions (mai 2018 → mai 2026), 14 téléchargées depuis la docuthèque du SIEC, 2 (nov. 2024, mai 2026) depuis le sujet diffusé par compta-online.
+- Les **énoncés** sont ceux des sujets officiels, mot pour mot : 16 sessions (mai 2018 → mai 2026), 14 téléchargées depuis la docuthèque du SIEC, 2 (nov. 2024, mai 2026) depuis le sujet diffusé par compta-online. Pour les sessions QCM, les 4 propositions sont celles du sujet ; pour les sessions QRC (220 questions), **les 4 propositions du QCM sont rédigées par une IA**, avec une longueur volontairement égalisée (la bonne réponse n'est plus repérable à sa longueur).
 - Les **réponses, explications et références** ont été rédigées à partir des textes (ordonnance 45-2138, décret 2012-432, code de commerce recodifié 2024, codes de déontologie, NEP, NP), **pas recopiées d'un corrigé**. Elles ne sont pas des corrigés officiels.
+- **Contrôle** : en octobre 2026, les 320 questions ont été relues par des agents contre les textes en vigueur (code de commerce, ordonnance, décret, CMF, référentiel normatif 2022, règlement intérieur de l'Ordre), avec une contre-vérification indépendante des QCM réécrits. Environ la moitié des explications ont été corrigées. Sont restés non vérifiables faute de texte : le code civil, la loi de 1971, le code électoral, certaines NEP, la doctrine et la jurisprudence. Aucune clé de réponse d'un sujet officiel n'a été changée ; aucun corrigé officiel n'a été consulté.
 - Chaque question porte un niveau de **confiance** (`high` / `medium` / `low`). Les `low` sont signalées « à vérifier » dans l'app.
 - Pour fiabiliser : déposer vos supports dans `sources/supports/` (annales ANECS avec corrigés de membres du jury, manuel, référentiel normatif, fiches de cours) et demander une passe de contrôle question par question.
 

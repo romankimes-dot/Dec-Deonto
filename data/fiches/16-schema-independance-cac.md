@@ -9,7 +9,7 @@ questions: CAC:independance_situations_risque CAC:incompatibilites_liens CAC:res
 ```vs
 = | Titre I : dispositions communes | Titre II : dispositions complémentaires
 Champ | **Tout CAC**, pour **toutes** ses missions **et** prestations | Le CAC **qui certifie** les comptes d'une entité
-Contenu | **Principes fondamentaux** : intégrité, impartialité, indépendance, conflits d'intérêts, compétence, confraternité, discrétion. Puis compétence, secret, publicité, lettre de mission… | **Indépendance**, **situations à risque** et **sauvegardes**, **liens** personnels, financiers et professionnels, **réseau**, **honoraires**, **services** interdits, interdictions
+Contenu | **Principes fondamentaux** : intégrité, impartialité, indépendance et conflits d'intérêts, esprit critique, compétence et diligence, confraternité, secret et discrétion. Puis collaborateurs et experts, honoraires, publicité et sollicitation, monopoles des autres professions. **Pas de règle sur la lettre de mission** | **Indépendance**, **situations à risque** et **sauvegardes**, **liens** personnels, financiers et professionnels, **réseau**, **honoraires**, **services** interdits, interdictions
 ```
 
 ## Face à une situation : l'arbre de décision
@@ -18,11 +18,11 @@ Contenu | **Principes fondamentaux** : intégrité, impartialité, indépendance
 ? Une situation peut-elle affecter l'**opinion** ou l'**indépendance**, en réalité ou en apparence ?
   = Non : poursuivre la mission
   ? Oui : laquelle ?
+    Atteinte à l'intégrité, à l'impartialité ou à l'indépendance
+    Conflit d'intérêts
     Autorévision : se prononcer sur un travail fait par soi-même ou par son réseau
-    Intérêt personnel, financier ou autre
-    Défense ou représentation des intérêts de l'entité
-    Familiarité ou confiance excessive
-    Intimidation
+    Liens personnels, financiers ou professionnels
+    Appartenance à un réseau
     ? Une **mesure de sauvegarde** suffit-elle ?
       = Oui : l'appliquer **immédiatement** et la documenter (changement d'équipe ou de signataire, revue par un associé non impliqué, cession de l'intérêt, refus de la prestation, information du comité d'audit)
       = Doute sérieux : saisir la **H2A** pour avis
@@ -36,7 +36,7 @@ Contenu | **Principes fondamentaux** : intégrité, impartialité, indépendance
 ```vs
 = | EIP | Non-EIP
 Règle | **Liste** de services interdits (**règlement UE 537/2014, art. 5**) | **Pas de liste** depuis la loi Pacte : approche **risques / sauvegardes**
-Toujours interdit | Fiscalité (déclarations, conseil, contrôles fiscaux), **tenue de comptabilité**, **paie**, conception du contrôle interne, **évaluation**, services **juridiques**, **audit interne**, financement et stratégie d'investissement, placement d'actions, **RH** de direction, participation à la gestion | Tout service qui crée une **autorévision** ; toute **immixtion dans la gestion**
+Toujours interdit | Fiscalité (déclarations, conseil, contrôles fiscaux), **tenue de comptabilité**, **paie**, conception du contrôle interne, **évaluation**, services **juridiques**, **audit interne**, financement et stratégie d'investissement, placement d'actions, **RH** de direction, participation à la gestion | Mission interdite en cas de **risque d'autorévision** ou d'**indépendance compromise**, sans sauvegarde appropriée (L.821-28 IV) ; la **non-immixtion** est une règle distincte (L.821-54)
 Période | De l'exercice audité jusqu'au rapport ; pour le contrôle interne et les systèmes d'information, aussi l'**exercice précédent** | Pendant le mandat
 Plafond des SACC | **70 %** de la moyenne des honoraires d'audit sur 3 ans ; SACC **approuvés** par le comité d'audit | Pas de plafond chiffré
 Réseau | Les interdictions **s'étendent au réseau** | Les services du réseau entrent dans l'**analyse** de l'indépendance
@@ -55,7 +55,7 @@ Réseau | Les interdictions **s'étendent au réseau** | Les services du réseau
 ## Réseau : les indices
 
 - **Intérêt économique commun** : c'est le critère du réseau.
-- Indices : **nom ou marque** commune, **clientèle** commune, **procédures qualité** communes, **dirigeants** communs, **partage** des bénéfices ou des coûts, **stratégie** commerciale commune, **ressources** professionnelles partagées.
+- Indices (art. 29) : **direction ou coordination** communes, **partage** des revenus ou des résultats, transferts de rémunération ou de coûts, **commissions** d'apport d'affaires, **dénomination** ou signe distinctif communs, **clientèle habituelle** commune, **documents publics** présentant le réseau et des compétences pluridisciplinaires, **outils techniques** communs.
 - Le CAC doit pouvoir **justifier** qu'il appartient ou non à un réseau, **avant** d'accepter puis **pendant** le mandat.
 
 ## Pièges qui reviennent

@@ -38,8 +38,8 @@
 - **Procédure de reprise** (code de déontologie, art. **163**). Avant d'accepter, l'EC pressenti :
   1. **informe par écrit** son prédécesseur de la demande du client (« **lettre de l'art. 163** ») ;
   2. **s'assure** que la démarche du client n'a pas pour but d'**éluder** les règles ou le paiement des honoraires ;
-  3. **s'efforce d'obtenir la justification du paiement des honoraires** dus au prédécesseur ;
-  4. si les honoraires sont **contestés** : il peut accepter la mission, mais la **conciliation** ou l'**arbitrage** du **président du CROEC** est proposé.
+  3. **s'efforce d'obtenir la justification du paiement des honoraires** dus au prédécesseur avant de commencer ; **à défaut**, il en **réfère au président du conseil régional** et fait toutes **réserves** auprès du client ;
+  4. si les honoraires sont **contestés** par le client : il lui **suggère par écrit** de recourir à la **conciliation** ou à l'**arbitrage** du **président du CROEC** (art. 159 et 160).
 - Ce qui n'est **pas** exigé :
   - une **autorisation** du président du CROEC ;
   - le paiement d'une **indemnité** au prédécesseur.
@@ -68,10 +68,9 @@
 - Les informations **inexactes ou trompeuses** et les atteintes à la **dignité** ou au **secret professionnel**.
 
 ### Règles de communication (sollicitation et internet)
-- L'information doit être **sincère, loyale et exacte**.
+- L'information doit être **utile** au public, sans **inexactitude** ni risque d'**induire en erreur**, et mise en œuvre avec **discrétion** (art. 152).
 - Elle doit respecter le **secret** et l'**indépendance**.
 - Le cabinet doit être **identifié**, avec sa **qualité de membre de l'Ordre** et le **CROEC** de rattachement.
-- La sollicitation **précise les modalités de détermination des honoraires**.
 - Aucun élément **comparatif** ni **dénigrant**.
 - La prospection électronique respecte le **RGPD** et la **LCEN** : droit d'opposition (opt-out) entre professionnels.
 
@@ -117,7 +116,7 @@
 - La rétention n'est **pas** possible :
   - **sans litige sur les honoraires** (par exemple en cas de simple désaccord sur un autre point) ;
   - pour obtenir le paiement d'une **indemnité de rupture**, puisqu'elle n'est pas un honoraire lié aux travaux.
-- Pas d'information préalable obligatoire du président du CROEC.
+- L'EC **informe le président du conseil régional** de tout litige qui le conduit à **envisager la rétention** des travaux faute de paiement des honoraires (art. 168).
 
 ## 9. Mandats sociaux et participations
 - **Mandats sociaux** dans des sociétés non inscrites : **déclaration au CROEC**, absence d'atteinte à l'indépendance, activité **compatible** (voir fiche 01).
@@ -125,7 +124,7 @@
 
 ## 10. Honoraires (aspects déontologiques)
 - Ils sont **libres** et fixés dans la lettre de mission, **en rapport avec les travaux** et l'importance du service rendu.
-- **Honoraires au succès** : **interdits** pour la prérogative d'exercice (monopole), **possibles** pour les autres missions.
+- **Honoraires au succès** (complémentaires) : **interdits** pour la prérogative d'exercice (monopole) et pour les missions qui participent à la **détermination de l'assiette fiscale ou sociale** du client ; **possibles** pour les autres missions, sans compromettre l'indépendance (ord. art. 24).
 - **Indexation** : possible si une clause la prévoit et si l'indice a un lien avec l'activité.
 - **Aucun barème**.
 
@@ -134,18 +133,18 @@
 ### Cadre
 - Textes : **C. mon. fin. L.561-1 s.** et **NPLAB** (norme anti-blanchiment, agréée par arrêté).
 - La NPLAB s'applique à **toutes les missions** réalisées par la structure, sans se limiter aux missions comptables.
-- Le cabinet établit une **classification des risques** selon au moins **4 critères** :
-  1. **nature des missions** (produits et services) ;
-  2. **caractéristiques des clients** ;
-  3. **conditions de réalisation des opérations** et **canaux de distribution** (relation à distance) ;
-  4. **pays ou zones géographiques**.
+- Le cabinet établit une **classification des risques** selon au moins **4 critères** (NPLAB § 19) :
+  1. **caractéristiques des clients** ;
+  2. **activité des clients** ;
+  3. **localisation des clients**, y compris le territoire d'origine ou de destination des fonds ;
+  4. **missions proposées** par la structure.
 - Il formalise des **procédures internes** et **forme** le personnel.
 
 ### Obligations de vigilance
 | Étape | Contenu |
 |---|---|
 | **Avant la relation d'affaires** | **Identifier** le client et le **bénéficiaire effectif**, **vérifier** leur identité (pièces probantes) et recueillir des informations sur l'**objet et la nature** de la relation |
-| **Niveau de vigilance** | La NPLAB ne connaît que **deux niveaux** : **standard** et **renforcée**, déterminés par une **analyse des risques**. Elle ne prévoit **pas de vigilance simplifiée**, contrairement au C. mon. fin. applicable au CAC |
+| **Niveau de vigilance** | Au cours de la relation, la NPLAB retient **deux niveaux** : **standard** (risque faible ou moyen) et **renforcée** (risque élevé), déterminés par une **analyse des risques** (§ 21). Elle prévoit toutefois des **mesures d'identification et de vigilance simplifiées** : par exemple, pas de vérification d'identité ni d'identification du bénéficiaire effectif d'une **société cotée**, en l'absence de soupçon (§ 32 et 33) |
 | **Pendant la relation** | **Vigilance constante** et mise à jour des informations |
 | **Conservation** | **5 ans** à compter de la fin de la relation |
 
@@ -182,35 +181,32 @@
 
 | Rôle | Fonction |
 |---|---|
-| **Déclarant** | Personne **habilitée à effectuer les déclarations de soupçon**. Elle est désignée et déclarée à Tracfin ; c'est un **EC** de la structure, à défaut le représentant légal |
-| **Correspondant Tracfin** | **Interlocuteur de Tracfin** : il répond à ses **demandes d'informations** (droit de communication) et assure la diffusion des informations au sein du cabinet |
-| Point commun | Les deux sont **déclarés à Tracfin** et peuvent être **la même personne** |
+| **Expert-comptable en charge de la mission** | Il fait **personnellement** la déclaration de soupçon, quel que soit son mode d'exercice (C. mon. fin. **R.561-23 IV**, NPLAB § 47), et répond au **droit de communication** de Tracfin (NPLAB § 11). Il n'existe **pas de « déclarant désigné »** pour l'EC |
+| **Correspondant Tracfin** | Désigné par la structure au plus tard lors de la première déclaration (à défaut, le **représentant légal**) ; il n'est **pas forcément EC**. Il répond aux demandes de Tracfin **autres** que celles qui portent sur une déclaration ou un droit de communication, diffuse les informations générales, et **ne déclare pas** (C. mon. fin. R.561-24, NPLAB § 12, 13, A12) |
 
 ### Contrôle par l'Ordre
 - Le **contrôle de qualité LCB-FT** est réalisé par l'Ordre, autorité de contrôle désignée par le C. mon. fin.
-- Le **contrôleur** qui découvre des faits susceptibles de relever du blanchiment **en informe le président du conseil régional**. L'**Ordre informe Tracfin**.
+- Le **contrôleur** qui relève des éléments de nature à justifier une déclaration de soupçon **en informe par courrier confidentiel le comité LBC-FT** de l'Ordre (RI art. 406). L'**Ordre**, autorité de contrôle, **informe Tracfin** (C. mon. fin. L.561-28 II).
 - Le contrôleur **ne fait pas** lui-même de déclaration au nom du contrôlé.
 
 ### Sanctions spécifiques LCB-FT (en plus des peines disciplinaires)
-- **Sanction pécuniaire**.
-- **Interdiction temporaire d'exercer** certaines activités ou fonctions de direction.
+- **Injonction** de mettre un terme au comportement.
+- **Interdiction temporaire d'exercice de responsabilités dirigeantes**.
+- **Sanction pécuniaire** : **1 M€** au plus, ou le double de l'avantage retiré s'il est déterminable.
 - **Publication** de la décision.
-- Prononcées par la **chambre de discipline** sur le fondement du C. mon. fin.
+- Prononcées par la **chambre de discipline** : ord. **art. 53 bis**, qui renvoie au C. mon. fin. **L.561-36-3**.
 
 ## Pièges EC vs CAC
-- **Déclarant Tracfin** : pour le CAC, c'est en principe le **CAC signataire** (NEP 9605) ; pour l'EC, c'est le **déclarant désigné** (EC) de la structure.
+- **Déclarant Tracfin** : pour le CAC, le **CAC signataire** déclare personnellement (NEP 9605 § 61) ; pour l'EC, c'est l'**EC en charge de la mission**, personnellement (C. mon. fin. R.561-23 IV, NPLAB § 47). Le **correspondant Tracfin** ne déclare pas.
 - **Norme anti-blanchiment** : NPLAB pour l'EC, **NEP 9605** pour le CAC.
-- **Niveaux de vigilance** : la NPLAB n'en prévoit que **2**, **standard et renforcée**. Côté CAC, le C. mon. fin. prévoit aussi une vigilance **simplifiée**, par exemple pour une société cotée.
-- **Secret** : il est d'ordre public pour les deux professions. Mais le CAC bénéficie de **levées spécifiques** (CAC de la mère et des filiales consolidées, successeur, H2A, AMF, comité d'audit) qui n'existent pas pour l'EC.
+- **Niveaux de vigilance** : au cours de la relation, la NPLAB n'en prévoit que **2**, **standard et renforcée** ; elle reprend toutefois des **mesures d'identification simplifiées** (société cotée : pas d'identification du bénéficiaire effectif). Côté CAC, la NEP 9605 prévoit des mesures **simplifiées** et **renforcées**, par exemple pour une société cotée.
+- **Secret** : il est d'ordre public pour les deux professions. Mais le CAC bénéficie de **levées spécifiques** (CAC de la consolidante et des consolidées, président du tribunal dans l'alerte, H2A, AMF, comité d'audit) qui n'existent pas pour l'EC. Le CAC **successeur** accède aux documents de son prédécesseur en vertu de **L.821-44**, pas d'une levée du secret écrite à L.821-35.
 - **Faits délictueux** : le CAC doit les **révéler au procureur** ; l'EC ne le doit pas.
 - **Publicité** : les deux professions interdisent le **comparatif** et le **dénigrement**. Le code CAC impose en plus de préciser les **modalités de détermination des honoraires** dans la sollicitation.
-- **Successeur** : l'EC envoie une **lettre d'information** à son prédécesseur et s'efforce d'obtenir le paiement de ses honoraires ; le CAC successeur **doit prendre contact** avec son prédécesseur, qui est délié du secret envers lui.
-- **Honoraires au succès** : pour l'EC, ils sont interdits seulement pour le monopole ; pour le **CAC**, les honoraires **subordonnés au résultat** sont **interdits** en certification.
+- **Successeur** : l'EC envoie une **lettre d'information** à son prédécesseur et s'efforce d'obtenir le paiement de ses honoraires ; le CAC successeur **doit s'assurer auprès de son prédécesseur**, avant d'accepter, que le non-renouvellement ne vise pas à contourner la loi (code de déontologie CAC art. 26) ; le prédécesseur lui **donne accès** aux informations et documents pertinents (**L.821-44**). L.821-35 ne prévoit **aucune levée du secret** au profit du successeur.
+- **Honoraires au succès** : pour l'EC, ils sont interdits pour le monopole et pour les missions qui participent à la détermination de l'**assiette fiscale ou sociale** (ord. art. 24) ; pour le **CAC**, les honoraires **subordonnés au résultat** sont **interdits** en certification.
 
 ## À vérifier
 - **Liste exacte des levées du secret** de l'EC : la formule « audition pénale en qualité de témoin ou de suspect libre » est donnée comme levée par SCHEMA.md. L'opposabilité à la **CNIL** est déduite de l'annale 2025-11 Q4.
 - **Cas où la lettre de l'art. 163 n'est pas obligatoire** (annale 2024-11 Q7).
-- **Qui est déclarant Tracfin** dans une société d'EC à plusieurs associés (annale 2019-11 Q1) : le représentant légal, ou un EC désigné ?
-- **Sanctions LCB-FT** : montants maximaux et article de rattachement (ord. art. 53 ou C. mon. fin. L.561-36-x).
-- **Durée de conservation** des documents LCB-FT : **5 ans** à compter de la fin de la relation.
 - **Référencement par une société commerciale non inscrite, notation par les clients, parrainage** : quelle pratique est interdite (annale 2025-11 Q2) ? La fiche retient le **comparatif** (« premier réseau »).

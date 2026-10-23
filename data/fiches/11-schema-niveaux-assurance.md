@@ -7,8 +7,8 @@ questions: EC:missions_assurance 2018-05-EC-01
 ## L'échelle d'assurance
 
 ```echelle
-Raisonnable | {EC} Audit (normes ISA ; NP 2910 petite entité) · {CAC} Certification des comptes | Opinion **positive** : « les comptes sont réguliers et sincères et donnent une image fidèle »
-Modérée | {EC} Examen limité (NP 2400) · {CAC} Examen limité des comptes intermédiaires, assurance limitée sur la durabilité | Conclusion **négative** : « nous n'avons pas relevé d'anomalies significatives »
+Raisonnable | {EC} Audit (normes ISA ; NP 2910 petite entité) · {CAC} Certification des comptes | Opinion **positive** : {CAC} « réguliers et sincères », image fidèle ; {EC} image fidèle, conformément au référentiel comptable
+Modérée | {EC} Examen limité (NP 2400) · {CAC} Examen limité des comptes intermédiaires, assurance limitée sur la durabilité | Conclusion **négative** : {EC} « nous n'avons pas relevé d'éléments qui nous conduisent à considérer que les comptes ne sont pas établis […] conformément au référentiel comptable »
 Modérée (cohérence et vraisemblance) | {EC} Présentation des comptes (NP 2300) | **Attestation** : « nous n'avons pas relevé d'éléments remettant en cause la cohérence et la vraisemblance »
 Aucune | {EC} Procédures convenues (NP 4400), compilation (NP 4410), autres prestations | **Constats** ou compte rendu, sans conclusion d'assurance
 ```

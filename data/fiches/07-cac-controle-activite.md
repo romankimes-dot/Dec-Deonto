@@ -35,7 +35,7 @@
 
 - Le contrôle porte sur la **structure** (société de CAC), sur les **CAC personnes physiques** et sur leurs **mandats**. Il s'étend à la **LCB-FT**, puisque la H2A est l'autorité de contrôle des CAC au sens du C. mon. fin.
 
-### Modalités du contrôle d'activité
+### Modalités du contrôle d'activité (typologie usuelle, que les textes ne formulent pas)
 1. **Contrôles périodiques**, selon un **programme** annuel.
 2. **Contrôles occasionnels**, déclenchés par un événement, un signalement ou un risque.
 3. **Contrôles thématiques** ou **transversaux**, sur un sujet donné et plusieurs cabinets.
@@ -53,11 +53,9 @@
 - Le CAC est soumis à une **obligation de coopération**. Faire **obstacle** au contrôle constitue un **manquement sanctionnable**.
 
 ### Vérifications prévues par le code (sur les mandats sélectionnés)
-- Le **respect des dispositions légales et réglementaires**, du **code de déontologie** et des **NEP**.
-- La **pertinence de l'opinion** émise, au regard des **éléments probants** du dossier.
-- L'**adéquation des ressources** (heures, compétences) et des **honoraires** à l'**importance de la mission** (barème).
-- Le respect des **règles d'indépendance** (situations à risque, services fournis, réseau).
-- Le **système interne de qualité** du cabinet : procédures, formation, revue indépendante pour les EIP.
+- Sur les **missions de certification sélectionnées** : le respect des **règles d'indépendance**, la conformité aux **normes** (NEP), l'**adéquation des ressources affectées** aux missions et les **honoraires perçus** (R.820-45 I 1°).
+- Le **système de contrôle de qualité interne** du CAC, objet distinct du contrôle (2°).
+- Les **autres missions et prestations** fournies aux entités dont il certifie les comptes (3°).
 
 ### Déroulement et suites
 1. **Notification** du contrôle et demande d'informations préalables.
@@ -107,19 +105,18 @@
 | | Contrôle d'activité | Enquête | Sanction |
 |---|---|---|---|
 | Qui | Contrôleurs H2A (ou CNCC par délégation) | **Rapporteur général** et enquêteurs | **Commission des sanctions** |
-| Déclenchement | Programme (3 ou 6 ans) ou contrôle occasionnel | Saisine (voir fiche 08) ou **autosaisine** | **Notification des griefs** par le **collège** |
+| Déclenchement | Programme (3 ou 6 ans) ou contrôle occasionnel | Saisine (voir fiche 08) ou **autosaisine** | Griefs **arrêtés par la H2A** et **notifiés par son président**, qui transmet le dossier à la commission |
 | Finalité | Vérifier la qualité, **recommander** | **Établir les faits** | **Sanctionner** |
 
 ## Pièges EC vs CAC
 - **Contrôleurs** : chez l'EC, ce sont des **EC candidats** désignés par l'Ordre ; chez le CAC, des **agents de la H2A** (EIP) ou des **CAC agissant pour la CNCC par délégation** (non-EIP).
-- **Périodicité** : environ **6 ans** pour l'EC ; **3 ans pour les EIP** et **6 ans pour les non-EIP** chez le CAC.
-- **Champ** : le contrôle de qualité de l'Ordre **exclut le CAC** ; le contrôle H2A ne vise **que l'activité de CAC** (et de durabilité).
+- **Périodicité** : environ **6 ans** pour l'EC ; chez le CAC, **3 ans** pour les CAC des EIP visées au i) de l'art. 26 § 2 du règlement 537/2014, **6 ans** au plus pour les autres (R.820-49).
+- **Champ** : en pratique, le contrôle de qualité de l'Ordre ne porte pas sur l'activité de CAC (aucun texte lu ne l'écrit) ; le contrôle H2A ne vise **que l'activité de CAC** (et de durabilité).
 - **Revue indépendante** : pour l'EC, c'est une **règle interne de la NPMQ** ; pour le CAC, une **obligation légale** pour les EIP (règlement UE).
 - **Suites** : chez l'EC, transmission au **président du CROEC**, puis éventuelle **chambre régionale de discipline** ; chez le CAC, transmission au **rapporteur général**, puis au **collège**, puis à la **commission des sanctions**.
-- **Blanchiment découvert pendant un contrôle** : chez le CAC, ce sont **les contrôleurs** qui informent Tracfin ; chez l'EC, l'information passe par l'**Ordre**.
+- **Blanchiment découvert pendant un contrôle** : chez le CAC, ce sont **les contrôleurs** qui informent Tracfin ; chez l'EC, le contrôleur informe le **comité LBC-FT** de l'Ordre (RI art. 406), qui en tire les suites, l'Ordre informant Tracfin.
 
 ## À vérifier
-- **Les quatre modalités officielles** du contrôle d'activité (annale 2023-11 Q15) : la fiche retient périodique, occasionnel, thématique et suivi.
-- **Liste réglementaire des vérifications** du contrôleur (annale 2019-05 Q18 ; R.821-x).
+- **Les quatre modalités** du contrôle d'activité (annale 2023-11 Q15) : la fiche retient périodique, occasionnel, thématique et suivi, typologie qu'aucun texte lu ne formule. Lecture possible fondée sur L.820-14 : contrôleurs de la H2A pour les EIP, contrôleurs de la H2A pour les non-EIP, délégation à la CNCC, concours de l'AMF ou de l'ACPR.
 - **Mesures post-contrôle** dont dispose la H2A (recommandations, injonctions, mises en demeure).
 - **Normes de qualité applicables** (ISQM 1 / 2 homologuées ?).
