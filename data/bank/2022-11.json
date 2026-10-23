@@ -13,8 +13,8 @@
       "qcm": {
         "choices": [
           "Tout dirigeant mandataire social de la société, même non expert-comptable, dès lors qu'il engage juridiquement la société",
-          "Uniquement les experts-comptables inscrits au tableau exerçant au sein de la société (associés, dirigeants ou salariés), qui signent personnellement avec le visa ou la signature sociale",
-          "Tout collaborateur titulaire du DSCG ayant reçu une délégation écrite du gérant",
+          "Uniquement les experts-comptables inscrits au tableau exerçant au sein de la société, qui signent personnellement",
+          "Tout collaborateur titulaire du DSCG ayant reçu une délégation écrite du gérant de la société",
           "Les experts-comptables inscrits ainsi que les experts-comptables stagiaires de la société"
         ],
         "answer": 1
@@ -41,10 +41,10 @@
       "question": "Au sein d'un cabinet d'expertise comptable, quelles sont les conditions à respecter pour pouvoir réaliser une consultation juridique ?",
       "qcm": {
         "choices": [
-          "Aucune condition particulière : l'expert-comptable dispose du même droit de consultation juridique que l'avocat",
-          "La consultation est possible uniquement si le cabinet est inscrit sur la liste des commissaires aux comptes",
-          "La consultation doit rester accessoire (ne pas être l'objet principal de l'activité) et concerner une entreprise dans laquelle le cabinet assure une mission comptable ou d'accompagnement déclaratif permanente ou habituelle, ou être directement liée aux travaux comptables confiés",
-          "La consultation est possible pour tout client dès lors qu'elle est facturée séparément et donne lieu à une lettre de mission distincte"
+          "Aucune condition particulière : l'expert-comptable dispose du même droit de consultation juridique que l'avocat, sans limite de clientèle ni de volume",
+          "La consultation est possible uniquement si le cabinet est inscrit sur la liste des commissaires aux comptes et si elle porte sur une entité contrôlée",
+          "La consultation doit rester accessoire et concerner un client pour lequel le cabinet assure une mission comptable ou déclarative habituelle, ou être directement liée aux travaux comptables",
+          "La consultation est possible pour tout client dès lors qu'elle est facturée séparément et donne lieu à une lettre de mission distincte, même à titre principal"
         ],
         "answer": 2
       },
@@ -71,10 +71,10 @@
       "question": "Quelle est la distinction entre revue de dossiers et revue indépendante d'une mission ?",
       "qcm": {
         "choices": [
-          "La revue indépendante est réalisée par le contrôleur qualité de l'Ordre, la revue de dossiers par un associé du cabinet",
-          "La revue indépendante est faite avant la date du rapport par une personne extérieure à l'équipe, qui évalue les jugements importants et les conclusions ; la revue de dossiers, exercée tout au long de la mission, vérifie que les travaux sont conformes aux normes et suffisamment documentés",
-          "La revue de dossiers est réservée aux missions d'audit, la revue indépendante étant obligatoire pour toutes les missions",
-          "Les deux notions sont synonymes : il s'agit du contrôle du dossier par un second expert-comptable avant signature"
+          "La revue indépendante est réalisée par le contrôleur qualité de l'Ordre après la mission, la revue de dossiers par un associé du cabinet",
+          "La revue indépendante est faite avant le rapport par une personne extérieure à l'équipe ; la revue de dossiers se fait tout au long de la mission",
+          "La revue de dossiers est réservée aux missions d'audit, la revue indépendante étant obligatoire pour toutes les missions de la structure",
+          "Les deux notions sont synonymes : il s'agit du contrôle du dossier par un second expert-comptable avant la signature du rapport"
         ],
         "answer": 1
       },
@@ -99,10 +99,10 @@
       "question": "Citez deux critères à prendre en compte afin d'affecter le personnel aux missions d'expertise comptable.",
       "qcm": {
         "choices": [
-          "L'ancienneté dans le cabinet et le niveau de rémunération du collaborateur",
-          "L'expérience de missions similaires et les connaissances techniques et sectorielles du collaborateur au regard de la mission",
-          "Le domicile du collaborateur et sa proximité géographique avec le client",
-          "Le souhait du client de choisir nominativement les intervenants"
+          "L'ancienneté dans le cabinet et le niveau de rémunération du collaborateur concerné",
+          "L'expérience de missions similaires et les connaissances techniques du collaborateur",
+          "Le domicile du collaborateur et sa proximité géographique avec le siège du client",
+          "Le souhait du client de choisir nominativement les intervenants de la mission"
         ],
         "answer": 1
       },
@@ -128,10 +128,10 @@
       "question": "Quels sont les objectifs de la supervision dans le cadre d'une mission d'expertise comptable ?",
       "qcm": {
         "choices": [
-          "Vérifier uniquement que le budget d'heures de la mission n'est pas dépassé",
-          "Suivre l'avancement des travaux, s'assurer que les collaborateurs ont les compétences et le temps nécessaires, identifier les points nécessitant consultation ou examen approfondi, et vérifier que les travaux suivent la démarche du plan de mission",
-          "Remplacer la revue indépendante lorsque la mission présente un risque élevé",
-          "Contrôler que le client a transmis l'ensemble des pièces avant la clôture"
+          "Vérifier uniquement que le budget d'heures de la mission n'est pas dépassé par les collaborateurs",
+          "Suivre l'avancement des travaux, vérifier que les collaborateurs ont les compétences et le temps requis",
+          "Remplacer la revue indépendante lorsque la mission présente un risque élevé ou un enjeu public",
+          "Contrôler que le client a transmis l'ensemble des pièces comptables avant la clôture de l'exercice"
         ],
         "answer": 1
       },
@@ -158,10 +158,10 @@
       "question": "Citez deux conclusions possibles formulées à la suite d'un contrôle qualité.",
       "qcm": {
         "choices": [
-          "Certification sans réserve ou certification avec réserve du cabinet",
-          "Lettre de conclusion du président du conseil régional sans observation, avec simples observations, ou avec observations et nouveau contrôle sur place à l'issue d'un an ; saisine possible de la chambre de discipline en cas de nouveaux manquements",
-          "Agrément ou retrait d'agrément du cabinet par le commissaire du gouvernement",
-          "Avertissement, blâme ou radiation prononcés directement par le contrôleur qualité"
+          "Certification sans réserve ou certification avec réserve du cabinet par le conseil régional",
+          "Sans observation ou avec simples observations, par lettre du président du conseil régional",
+          "Agrément ou retrait d'agrément du cabinet par le commissaire du gouvernement près l'Ordre",
+          "Avertissement, blâme ou radiation prononcés directement par le contrôleur qualité de l'Ordre"
         ],
         "answer": 1
       },
@@ -189,10 +189,10 @@
       "question": "Le client n'ayant pas respecté le délai prévu pour la résiliation d'une lettre de mission doit-il rémunérer les travaux déjà effectués par le cabinet d'expertise comptable ?",
       "qcm": {
         "choices": [
-          "Non : la rupture irrégulière du contrat par le client fait perdre au cabinet tout droit à honoraires",
-          "Oui : les travaux déjà réalisés doivent être rémunérés, sans préjudice d'une éventuelle indemnité de rupture prévue par la lettre de mission",
+          "Non : la rupture irrégulière du contrat par le client fait perdre au cabinet tout droit à honoraires pour les travaux déjà effectués",
+          "Oui : les travaux déjà réalisés doivent être rémunérés, sans préjudice d'une éventuelle indemnité de rupture",
           "Non, sauf si le cabinet exerce son droit de rétention sur les documents comptables jusqu'au paiement",
-          "Oui, mais uniquement si l'Ordre a préalablement constaté le manquement du client"
+          "Oui, mais uniquement si l'Ordre a préalablement constaté le manquement du client à son obligation de préavis"
         ],
         "answer": 1
       },
@@ -219,9 +219,9 @@
       "qcm": {
         "choices": [
           "Oui, pour tous les clients : le code de déontologie impose une information annuelle sur la faculté de non-reconduction",
-          "Non, jamais : la lettre de mission à tacite reconduction se renouvelle sans formalité",
-          "Oui, mais seulement lorsque le client est un consommateur ou un non-professionnel (loi Chatel, C. consom. L.215-1) ; pas d'obligation légale pour les clients professionnels",
-          "Oui, et à défaut la lettre de mission devient caduque et les honoraires de l'exercice ne sont plus dus"
+          "Non, jamais : la lettre de mission à tacite reconduction se renouvelle sans aucune formalité à chaque échéance",
+          "Oui, mais seulement pour un consommateur ou un non-professionnel (loi Chatel, C. consom. L.215-1)",
+          "Oui, et à défaut la lettre de mission devient caduque et les honoraires de l'exercice ne sont plus dus au cabinet"
         ],
         "answer": 2
       },
@@ -248,7 +248,7 @@
       "qcm": {
         "choices": [
           "La NP 2300 (présentation) et la NP 2400 (examen limité)",
-          "La NPMQ (maîtrise de la qualité) et la NPLAB (lutte contre le blanchiment), applicables à toutes les missions, en plus de la NP 4410 propre à la compilation",
+          "La NPMQ (maîtrise de la qualité) et la NPLAB (lutte contre le blanchiment)",
           "La NEP 9605 et la NEP 210, communes aux experts-comptables et aux commissaires aux comptes",
           "La NP 3100 (attestations particulières) et la NP 4400 (procédures convenues)"
         ],
@@ -277,8 +277,8 @@
       "question": "Quels sont les niveaux d'assurance envisageables pour une mission d'attestation particulière ?",
       "qcm": {
         "choices": [
-          "Uniquement une assurance modérée, comme pour la présentation des comptes",
-          "Une assurance raisonnable ou une assurance modérée, selon la nature des diligences convenues et de l'information attestée",
+          "Uniquement une assurance modérée, comme pour la mission de présentation des comptes",
+          "Une assurance raisonnable ou une assurance modérée, selon l'information attestée",
           "Aucune assurance : l'attestation particulière est une mission sans assurance comme la compilation",
           "Une assurance absolue, l'expert-comptable certifiant l'exactitude de l'information"
         ],
@@ -306,9 +306,9 @@
       "question": "Citez quatre sanctions disciplinaires pouvant être infligées à un commissaire aux comptes, personne physique.",
       "qcm": {
         "choices": [
-          "Réprimande, blâme avec inscription au dossier, suspension avec sursis, radiation du tableau",
+          "Réprimande, blâme avec inscription au dossier, suspension avec sursis, radiation du tableau de l'Ordre",
           "Avertissement, blâme, interdiction temporaire d'exercer (trois ans au plus), radiation de la liste",
-          "Avertissement, amende pénale, fermeture du cabinet, interdiction de gérer",
+          "Avertissement, amende pénale, fermeture du cabinet, interdiction de gérer pendant cinq ans",
           "Rappel à l'ordre, blâme, suspension de six mois, exclusion de la compagnie régionale"
         ],
         "answer": 1
@@ -338,10 +338,10 @@
       "question": "Citez les quatre motifs légitimes de démission prévus par le code de déontologie pour un commissaire aux comptes, personne physique.",
       "qcm": {
         "choices": [
-          "Cessation définitive d'activité ; motif personnel impérieux (notamment l'état de santé) ; difficultés rencontrées dans l'accomplissement de la mission auxquelles il est impossible de remédier ; survenance d'un événement compromettant le respect des règles de la profession (indépendance, objectivité)",
-          "Cessation d'activité de l'entité contrôlée ; décès du dirigeant ; ouverture d'un redressement judiciaire ; désaccord sur les honoraires",
-          "Non-paiement des honoraires ; désaccord comptable avec la direction ; surcharge de travail ; changement de compagnie régionale",
-          "Perte d'un client important ; déménagement du cabinet ; refus de certification ; nomination d'un co-commissaire"
+          "Cessation définitive d'activité ; motif personnel impérieux ; difficultés insurmontables dans la mission ; événement compromettant le respect des règles de la profession (indépendance, objectivité)",
+          "Cessation d'activité de l'entité contrôlée ; décès ou départ du dirigeant ; ouverture d'une procédure de redressement judiciaire ; désaccord persistant sur le montant des honoraires",
+          "Non-paiement des honoraires par l'entité ; désaccord comptable avec la direction ; surcharge de travail du cabinet ; changement de compagnie régionale de rattachement",
+          "Perte d'un client important du cabinet ; déménagement du cabinet dans un autre ressort ; refus de certifier les comptes ; nomination d'un co-commissaire aux comptes"
         ],
         "answer": 0
       },
@@ -369,10 +369,10 @@
       "question": "Qui concilie deux commissaires aux comptes partageant une même mission légale de certification lorsqu'ils ne parviennent pas à s'entendre sur leur contribution respective ?",
       "qcm": {
         "choices": [
-          "Le président de la Haute autorité de l'audit",
-          "Le président de la compagnie régionale des commissaires aux comptes (ou les présidents de leurs compagnies respectives s'ils relèvent de compagnies distinctes)",
+          "Le président du collège de la Haute autorité de l'audit",
+          "Le président de leur compagnie régionale des commissaires aux comptes",
           "Le président du tribunal de commerce statuant en référé",
-          "Le président du conseil régional de l'Ordre des experts-comptables"
+          "Le président du conseil régional de l'Ordre des experts-comptables du ressort"
         ],
         "answer": 1
       },
@@ -397,10 +397,10 @@
       "question": "Citez au moins trois obstacles à la démission d'un commissaire aux comptes, personne physique.",
       "qcm": {
         "choices": [
-          "Le CAC ne peut démissionner pour se soustraire à la révélation de faits délictueux, à l'émission de son opinion, à la déclaration de soupçon à Tracfin ou à la procédure d'alerte, ni dans des conditions préjudiciables à l'entité",
-          "Le CAC ne peut démissionner avant la fin du troisième exercice de son mandat ni sans l'accord de l'assemblée générale",
-          "Le CAC ne peut démissionner qu'avec l'autorisation préalable de la H2A et du comité d'audit",
-          "Le CAC ne peut démissionner tant que ses honoraires n'ont pas été intégralement réglés"
+          "Le CAC ne peut démissionner pour échapper à la révélation de faits délictueux, à l'émission de son opinion ou à la procédure d'alerte, ni dans des conditions préjudiciables à l'entité",
+          "Le CAC ne peut démissionner avant la fin du troisième exercice de son mandat, ni sans l'accord préalable de l'assemblée générale de l'entité contrôlée",
+          "Le CAC ne peut démissionner qu'avec l'autorisation préalable de la H2A et l'avis conforme du comité d'audit de l'entité, quel que soit le motif invoqué",
+          "Le CAC ne peut démissionner tant que ses honoraires n'ont pas été intégralement réglés par l'entité, ni avant l'approbation des comptes de l'exercice"
         ],
         "answer": 0
       },
@@ -428,10 +428,10 @@
       "question": "Devant qui est porté le recours contre une décision du président de la compagnie régionale dans le cadre de la demande de dérogation au barème d'heures ?",
       "qcm": {
         "choices": [
-          "Devant le président de la Compagnie nationale des commissaires aux comptes, dans les dix jours de la notification",
-          "Devant la commission des sanctions de la Haute autorité de l'audit",
-          "Devant le tribunal de commerce du siège de l'entité contrôlée",
-          "Devant le président du conseil régional de l'Ordre des experts-comptables"
+          "Devant le président de la Compagnie nationale des CAC, dans les dix jours de la notification",
+          "Devant la commission des sanctions de la H2A, dans le mois de la notification",
+          "Devant le tribunal de commerce du siège de l'entité contrôlée, dans les quinze jours",
+          "Devant le président du conseil régional de l'Ordre des experts-comptables, dans le mois"
         ],
         "answer": 0
       },
@@ -457,10 +457,10 @@
       "question": "Devant qui est portée la décision de la formation restreinte du H3C en cas de désaccord sur les honoraires ?",
       "qcm": {
         "choices": [
-          "Devant le Conseil d'État, comme pour toutes les décisions disciplinaires",
-          "Devant la cour d'appel de Paris (régime antérieur à 2024) ; depuis la réforme de 2024, la H2A ne tranche plus les litiges d'honoraires, qui relèvent, après échec de la conciliation du président de la CRCC, de la juridiction de droit commun",
-          "Devant la chambre nationale de discipline",
-          "Devant le président de la Compagnie nationale des commissaires aux comptes"
+          "Devant le Conseil d'État, comme pour toutes les décisions disciplinaires du H3C, que le régime soit antérieur ou postérieur à 2024",
+          "Devant la cour d'appel de Paris (régime antérieur à 2024) ; depuis 2024, la H2A ne tranche plus ces litiges, relevant du juge de droit commun",
+          "Devant la chambre nationale de discipline, qui statue en dernier ressort sur les litiges entre professionnels (régime antérieur à 2024), sans autre recours",
+          "Devant le président de la Compagnie nationale des CAC, puis devant le tribunal administratif (régime antérieur à 2024)"
         ],
         "answer": 1
       },
@@ -486,10 +486,10 @@
       "question": "Dans quel cadre le commissaire aux comptes peut-il recourir à la publicité ?",
       "qcm": {
         "choices": [
-          "La publicité est totalement interdite au commissaire aux comptes, seule la participation à des colloques étant tolérée",
-          "La publicité est permise dans la mesure où elle procure au public une nécessaire information, sans porter atteinte à l'indépendance, à la dignité et à l'honneur de la profession, au secret professionnel ni à la loyauté, et sans élément comparatif ; la sollicitation personnalisée n'est possible que par envoi postal ou courriel",
-          "La publicité est libre, y compris comparative, depuis la loi Pacte, sous réserve d'en informer la H2A",
-          "La publicité est réservée aux sociétés de commissaires aux comptes appartenant à un réseau"
+          "La publicité est totalement interdite au commissaire aux comptes, seule la participation à des colloques ou à des publications scientifiques étant tolérée",
+          "La publicité est permise si elle procure au public une nécessaire information, sans élément comparatif ni atteinte à l'indépendance ou à la dignité",
+          "La publicité est libre, y compris comparative, depuis la loi Pacte, sous réserve d'en informer préalablement la H2A et la compagnie régionale",
+          "La publicité est réservée aux sociétés de commissaires aux comptes appartenant à un réseau, à l'exclusion des personnes physiques"
         ],
         "answer": 1
       },
@@ -517,10 +517,10 @@
       "question": "Que doit comporter la déclaration d'activité établie en cas de prestation fournie en dehors de toute mission légale ?",
       "qcm": {
         "choices": [
-          "Uniquement le montant global des honoraires perçus, sans identification des clients, afin de préserver le secret professionnel",
-          "Pour les missions et prestations autres que la certification : la liste des personnes ou entités concernées, la nature des prestations effectuées et le montant total des honoraires facturés, déclaration adressée à la compagnie régionale",
-          "Le programme de travail détaillé et le nombre d'heures, comme pour la certification des comptes",
-          "Une attestation d'indépendance visée par la H2A avant le début de la prestation"
+          "Uniquement le montant global des honoraires perçus, sans identification des clients, afin de préserver le secret professionnel du commissaire aux comptes envers ses clients",
+          "Pour les prestations autres que la certification : la liste des entités concernées, la nature des prestations et le montant total des honoraires facturés",
+          "Le programme de travail détaillé et le nombre d'heures, comme pour la certification des comptes, la déclaration étant adressée à la H2A",
+          "Une attestation d'indépendance visée par le président de la CNCC et la H2A avant le début de chaque prestation"
         ],
         "answer": 1
       },
@@ -548,10 +548,10 @@
       "question": "Un commissaire aux comptes non inscrit à l'ordre des experts-comptables peut-il exercer des activités commerciales accessoires ? Justifier la réponse.",
       "qcm": {
         "choices": [
-          "Oui : depuis la loi Pacte, tout commissaire aux comptes peut exercer des activités commerciales accessoires dans la limite de 10 % de son chiffre d'affaires",
-          "Non : la profession de CAC est incompatible avec toute activité commerciale, l'exception des activités commerciales accessoires ne visant que celles accessoires à la profession d'expert-comptable (art. 22 de l'ordonnance de 1945) ou celles exercées par une société pluri-professionnelle d'exercice",
-          "Oui, à condition d'en informer la compagnie régionale et de ne pas en faire la publicité",
-          "Non, sauf autorisation individuelle de la H2A accordée pour deux exercices"
+          "Oui : depuis la loi Pacte, tout commissaire aux comptes peut exercer des activités commerciales accessoires dans la limite de 10 % de son chiffre d'affaires annuel hors taxes",
+          "Non : incompatibilité avec toute activité commerciale, sauf celles accessoires à la profession d'expert-comptable (art. 22 de l'ordonnance de 1945) ou exercées par une SPE",
+          "Oui, à condition d'en informer la compagnie régionale, de ne pas en faire la publicité et de tenir une comptabilité distincte",
+          "Non, sauf autorisation individuelle de la H2A accordée pour deux exercices, renouvelable une fois après avis du garde des sceaux"
         ],
         "answer": 1
       },
@@ -579,10 +579,10 @@
       "question": "Citez quatre principes fondamentaux de comportement qui s'appliquent à toutes les missions et prestations réalisées par un commissaire aux comptes.",
       "qcm": {
         "choices": [
-          "Intégrité, impartialité, indépendance et prévention des conflits d'intérêts, esprit critique, compétence et diligence, confraternité, secret professionnel et discrétion",
+          "Intégrité, impartialité, indépendance, esprit critique, compétence et diligence, confraternité, secret professionnel",
           "Compétence, conscience professionnelle, indépendance d'esprit, probité, honneur et dignité (devoirs de l'expert-comptable)",
-          "Non-immixtion dans la gestion, permanence de la mission, révélation des faits délictueux, co-commissariat",
-          "Régularité, sincérité, image fidèle et continuité d'exploitation"
+          "Non-immixtion dans la gestion, permanence de la mission, révélation des faits délictueux, co-commissariat des comptes",
+          "Régularité, sincérité, image fidèle, continuité d'exploitation, indépendance des exercices et prudence"
         ],
         "answer": 0
       },

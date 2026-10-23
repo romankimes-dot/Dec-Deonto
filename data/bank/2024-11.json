@@ -14,7 +14,7 @@
         "question": "Un expert-comptable exerçant à titre individuel peut-il bénéficier du statut d'entrepreneur individuel issu de la loi du 14 février 2022 ?",
         "choices": [
           "Non : l'expertise comptable ne peut être exercée qu'en société d'expertise comptable depuis la loi Pacte",
-          "Oui : le statut s'applique aussi aux professions libérales réglementées et sépare de plein droit le patrimoine professionnel du patrimoine personnel",
+          "Oui : le statut s'applique aussi aux professions libérales réglementées et sépare de plein droit les patrimoines",
           "Oui, mais seulement après une déclaration d'affectation de patrimoine (EIRL) déposée auprès du conseil régional de l'Ordre",
           "Non : seule l'inscription sur la liste de la H2A permet un exercice individuel à responsabilité limitée"
         ],
@@ -44,9 +44,9 @@
       "qcm": {
         "question": "Un expert-comptable stagiaire commet un manquement déontologique. Quelle affirmation est exacte ?",
         "choices": [
-          "Il ne peut être poursuivi, car il n'est pas membre de l'Ordre",
+          "Il ne peut être poursuivi disciplinairement, car il n'est pas membre de l'Ordre des experts-comptables",
           "Il peut être sanctionné directement par le conseil régional de l'Ordre, qui statue en matière disciplinaire",
-          "Il peut être poursuivi devant la chambre régionale de discipline, car il est soumis à la surveillance et au contrôle disciplinaire de l'Ordre",
+          "Il relève de la chambre régionale de discipline, car il est soumis au contrôle disciplinaire de l'Ordre",
           "Il relève de la commission des sanctions de la H2A, comme les stagiaires commissaires aux comptes"
         ],
         "answer": 2
@@ -73,10 +73,10 @@
       "question": "Quelles sont les conditions nécessaires pour qu'une personne physique puisse solliciter son inscription au tableau de l'Ordre des experts-comptables ?",
       "qcm": {
         "choices": [
-          "Être de nationalité française, titulaire du DEC et avoir prêté serment devant la cour d'appel",
-          "Jouir de ses droits civils, n'avoir subi aucune condamnation entachant l'honorabilité, être titulaire du DEC (ou équivalent), présenter les garanties de moralité jugées nécessaires",
-          "Être titulaire du DEC ou du CAFCAC et avoir accompli un stage de trois ans chez un commissaire aux comptes",
-          "Être titulaire du DSCG, justifier d'une assurance de responsabilité civile et d'une expérience de dix ans"
+          "Être de nationalité française, titulaire du DEC et avoir prêté serment devant la cour d'appel avant l'inscription",
+          "Jouir de ses droits civils, n'avoir subi aucune condamnation entachant l'honorabilité, être titulaire du DEC, offrir des garanties de moralité",
+          "Être titulaire du DEC ou du CAFCAC et avoir accompli un stage de trois ans chez un commissaire aux comptes inscrit",
+          "Être titulaire du DSCG, justifier d'une assurance de responsabilité civile et d'une expérience professionnelle de dix ans"
         ],
         "answer": 1
       },
@@ -138,7 +138,7 @@
         "choices": [
           "Uniquement l'un des motifs légitimes limitativement énumérés par la loi (cessation d'activité, motif personnel impérieux, difficultés dans l'accomplissement de la mission)",
           "Aucun motif : la mission peut être interrompue à tout moment, sans préavis",
-          "Des motifs justes et raisonnables, tels que la perte de confiance manifestée par le client ou la méconnaissance d'une clause substantielle du contrat, en s'efforçant de ne pas lui porter préjudice",
+          "Des motifs justes et raisonnables, tels que la perte de confiance du client ou la méconnaissance d'une clause substantielle",
           "Uniquement le non-paiement des honoraires, après autorisation du président du conseil régional"
         ],
         "answer": 2
@@ -169,7 +169,7 @@
           "Oui : la publicité et le démarchage sont libres depuis 2014, sans autre limite que le droit de la consommation",
           "Oui, à condition que le post soit préalablement visé par le conseil régional de l'Ordre",
           "Non : toute publicité sur les réseaux sociaux est interdite aux experts-comptables",
-          "Non : le message dénigre implicitement les confrères et comporte un élément comparatif, contraire à la dignité, à la retenue et à la confraternité"
+          "Non : le message dénigre implicitement les confrères et comporte un élément comparatif"
         ],
         "answer": 3
       },
@@ -197,9 +197,9 @@
       "qcm": {
         "question": "L'information préalable du confrère (art. 163 du code de déontologie EC) n'est pas exigée :",
         "choices": [
-          "lorsque le client a payé l'intégralité des honoraires du prédécesseur",
-          "lorsqu'il n'y a pas de remplacement d'un confrère : création d'entreprise, client sans professionnel, mission ponctuelle ou distincte confiée en complément de celle d'un confrère restant en place",
-          "lorsque le client délie expressément le prédécesseur du secret professionnel",
+          "lorsque le client a déjà payé l'intégralité des honoraires du prédécesseur à la date de la reprise",
+          "lorsqu'il n'y a pas de remplacement d'un confrère, par exemple en cas de création d'entreprise",
+          "lorsque le client délie expressément le prédécesseur du secret professionnel par écrit",
           "lorsque le nouveau professionnel est inscrit dans une autre région que son prédécesseur"
         ],
         "answer": 1
@@ -227,10 +227,10 @@
       "question": "Quel est le rôle du Conseil national de l'Ordre des experts-comptables auprès de la profession ?",
       "qcm": {
         "choices": [
-          "Il statue en appel sur les sanctions disciplinaires prononcées contre les experts-comptables",
-          "Il représente la profession auprès des pouvoirs publics, élabore les normes et règles professionnelles, coordonne et contrôle l'action des conseils régionaux et veille au respect de la déontologie",
-          "Il tient la liste des professionnels habilités et procède au contrôle d'activité des cabinets d'audit",
-          "Il fixe le barème des honoraires des missions de présentation des comptes"
+          "Il statue en appel sur les sanctions disciplinaires prononcées par les chambres régionales contre les experts-comptables",
+          "Il représente la profession auprès des pouvoirs publics, élabore les normes professionnelles et coordonne l'action des conseils régionaux",
+          "Il tient la liste des professionnels habilités et procède au contrôle d'activité des cabinets d'audit et de certification, sans intervention de la H2A",
+          "Il fixe chaque année le barème obligatoire des honoraires applicable aux missions de présentation et de tenue des comptes"
         ],
         "answer": 1
       },
@@ -258,10 +258,10 @@
       "question": "Aux termes de l'article L.52-12 du code électoral « le compte de campagne est présenté par un membre de l'Ordre des experts-comptables. Ce dernier met le compte de campagne en état d'examen et s'assure de la présence des pièces justificatives requises. » À quelle catégorie de missions du référentiel normatif appartient la mission de mise en état des comptes de campagne ? Quelles sont les normes applicables à cette mission ?",
       "qcm": {
         "choices": [
-          "Mission d'assurance sur des comptes complets historiques, soumise à la NP 2300",
-          "Autre mission d'assurance (attestation particulière), soumise à la NP 3100",
-          "Mission sans assurance prévue par un texte légal, sans norme spécifique : s'appliquent le code de déontologie, la NPMQ et la NPLAB",
-          "Mission de procédures convenues, soumise à la NP 4400 uniquement"
+          "Mission d'assurance sur des comptes complets historiques, soumise à la NP 2300, à la NPMQ et à la NPLAB",
+          "Autre mission d'assurance (attestation particulière), soumise à la NP 3100 ainsi qu'à la NPLAB",
+          "Mission sans assurance prévue par un texte légal, sans norme spécifique : déontologie, NPMQ et NPLAB",
+          "Mission de procédures convenues, soumise à la seule NP 4400 et au code de déontologie"
         ],
         "answer": 2
       },
@@ -288,9 +288,9 @@
       "question": "Les honoraires entre un expert-comptable et son client sont-ils soumis à un barème ? Justifiez votre réponse.",
       "qcm": {
         "choices": [
-          "Oui : un barème d'heures fonction du total du bilan et des produits s'applique, avec dérogation possible auprès du président du conseil régional",
-          "Non : les honoraires sont fixés librement, par écrit et préalablement, en fonction des diligences, de la difficulté, des frais et de la notoriété",
-          "Oui : le Conseil national fixe chaque année un tarif horaire minimal",
+          "Oui : un barème d'heures fonction du total du bilan et des produits s'applique, avec dérogation possible",
+          "Non : les honoraires sont fixés librement, par écrit et préalablement, selon les diligences et la difficulté",
+          "Oui : le Conseil national fixe chaque année un tarif horaire minimal opposable aux clients",
           "Non, sauf pour la mission de présentation des comptes, qui relève d'un tarif réglementé"
         ],
         "answer": 1
@@ -318,10 +318,10 @@
       "question": "Le barème d'heures figurant à l'article D.821-188 du code de commerce est-il applicable à la mission de certification des comptes annuels prévue à l'article L.821-46 du code de commerce (mission ALPE) ? Justifiez votre réponse.",
       "qcm": {
         "choices": [
-          "Non : la mission ALPE est une prestation contractuelle aux honoraires libres",
-          "Non : le barème ne s'applique qu'aux entités d'intérêt public",
-          "Oui : la mission ALPE est une mission de certification des comptes et ne figure pas parmi les exclusions du barème (R.821-193 et R.821-194)",
-          "Oui, mais réduit de moitié par rapport au barème de droit commun"
+          "Non : la mission ALPE est une prestation contractuelle dont les honoraires sont librement fixés",
+          "Non : le barème d'heures ne s'applique qu'aux entités d'intérêt public, comme le prévoit l'article D.821-188",
+          "Oui : la mission ALPE est une mission de certification des comptes, non exclue du barème (R.821-193 et R.821-194)",
+          "Oui, mais réduit de moitié par rapport au barème de droit commun, la durée du mandat étant de trois exercices seulement"
         ],
         "answer": 2
       },
@@ -349,10 +349,10 @@
       "question": "Devant quelle juridiction un candidat souhaitant figurer sur la liste des commissaires aux comptes peut-il faire un recours en cas de refus d'inscription par la H2A ?",
       "qcm": {
         "choices": [
-          "La cour d'appel de Paris",
-          "La juridiction administrative, en principe le tribunal administratif du lieu du siège de la H2A, faute de texte donnant compétence directe au Conseil d'État",
-          "La chambre nationale de discipline",
-          "Le tribunal judiciaire du siège de la CRCC"
+          "La cour d'appel de Paris, statuant en matière de contentieux des décisions de la H2A",
+          "La juridiction administrative, en principe le tribunal administratif du lieu du siège de la H2A",
+          "La chambre nationale de discipline des commissaires aux comptes, puis le Conseil d'État en cassation",
+          "Le tribunal judiciaire du siège de la compagnie régionale dont relève le candidat"
         ],
         "answer": 1
       },
@@ -380,9 +380,9 @@
       "qcm": {
         "choices": [
           "Deux des trois seuils : 5 M€ de bilan, 10 M€ de chiffre d'affaires, 50 salariés",
-          "Deux des trois seuils : 230 000 € de total du bilan, 153 000 € de chiffre d'affaires (ressources), 3 salariés",
-          "Ressources supérieures à 230 000 €, quel que soit l'effectif",
-          "Plus de 153 000 € de subventions publiques annuelles"
+          "Deux des trois seuils : 230 000 € de bilan, 153 000 € de chiffre d'affaires ou de ressources, 3 salariés",
+          "Ressources annuelles supérieures à 230 000 €, quel que soit l'effectif de l'organisme de formation",
+          "Plus de 153 000 € de subventions publiques annuelles, quel que soit l'effectif"
         ],
         "answer": 1
       },
@@ -411,13 +411,15 @@
         "choices": [
           "La Compagnie nationale des commissaires aux comptes",
           "Le président de la compagnie régionale",
-          "La Haute autorité de l'audit (H2A)",
+          "La Haute autorité de l'audit (H2A), ex-H3C",
           "Le Conseil national de l'Ordre des experts-comptables"
         ],
         "answer": 2
       },
       "qrc": {
-        "expected": ["La Haute autorité de l'audit (ex-H3C)"],
+        "expected": [
+          "La Haute autorité de l'audit (ex-H3C)"
+        ],
         "model_answer": "Il saisit la Haute autorité de l'audit (H2A), qui a succédé au H3C."
       },
       "explanation": "L'article 29 du code de déontologie impose au CAC de pouvoir justifier, avant d'accepter une mission de certification et pendant le mandat, qu'il appartient ou non à un réseau, à l'aide d'indices (direction commune, partage de résultats, dénomination commune, clientèle commune…) ; en cas de doute il saisit l'autorité de supervision. Piège : la CNCC donne des avis doctrinaux mais n'est pas l'instance visée.",
@@ -435,10 +437,10 @@
       "question": "Dans le cas d'une augmentation de capital avec suppression du droit préférentiel de souscription (DPS), les actionnaires d'une société qui n'a pas désigné de commissaire aux comptes peuvent-ils à l'unanimité renoncer à l'intervention d'un commissaire aux comptes ? Justifiez votre réponse.",
       "qcm": {
         "choices": [
-          "Oui : depuis la loi Pacte, aucun rapport de commissaire aux comptes n'est requis dans une société sans CAC",
-          "Oui, si la décision est prise à l'unanimité des actionnaires présents",
-          "Non : un commissaire aux comptes doit être désigné à cet effet pour faire rapport sur les conditions de fixation du prix d'émission ; cette protection d'ordre public n'est pas susceptible de renonciation",
-          "Non : la société doit désigner un commissaire aux comptes pour six exercices"
+          "Oui : depuis la loi Pacte, aucun rapport de commissaire aux comptes n'est requis dans une société qui n'en a pas désigné",
+          "Oui, si la décision est prise à l'unanimité des actionnaires présents ou représentés, constatée au procès-verbal de l'assemblée générale extraordinaire",
+          "Non : un CAC doit être désigné pour faire rapport sur le prix d'émission ; cette protection d'ordre public n'admet pas de renonciation",
+          "Non : la société doit désigner un commissaire aux comptes pour six exercices dès la suppression du droit préférentiel"
         ],
         "answer": 2
       },
@@ -528,10 +530,10 @@
       "question": "Quelles sont les exigences quantitatives de formation continue de tous les commissaires aux comptes inscrits sur la liste mentionnée au I de l'article L.821-13 du code de commerce et exerçant une mission de commissaire aux comptes ?",
       "qcm": {
         "choices": [
-          "40 heures par an, dont 20 heures en déontologie",
+          "40 heures par an, dont 20 heures en déontologie, déclarées à la H2A",
           "120 heures sur trois années consécutives, dont au moins 20 heures au cours d'une même année",
-          "120 heures sur trois ans, sans minimum annuel",
-          "60 heures sur deux ans, dont 10 heures par an"
+          "120 heures sur trois ans, sans minimum annuel, déclarées chaque année",
+          "60 heures sur deux années consécutives, dont 10 heures au moins par an, déclarées à la H2A"
         ],
         "answer": 1
       },
@@ -560,10 +562,10 @@
       "qcm": {
         "question": "Laquelle de ces activités n'est pas une action de formation éligible pour un CAC ?",
         "choices": [
-          "La conception ou l'animation de formations",
+          "La conception ou l'animation de formations ou d'enseignements",
           "La rédaction et la publication de travaux à caractère technique",
-          "La participation à des colloques ou conférences",
-          "La réalisation de missions de certification dans un secteur nouveau pour le professionnel"
+          "L'assistance à des colloques ou conférences en rapport avec la profession",
+          "La réalisation de missions de certification dans un secteur nouveau"
         ],
         "answer": 3
       },
@@ -592,10 +594,10 @@
       "question": "Que comporte la déclaration de prestation annuelle obligatoire du commissaire aux comptes prescrite à l'article D.821-186 du code de commerce ?",
       "qcm": {
         "choices": [
-          "La seule liste des formations suivies au cours de l'année",
-          "La liste des entités certifiées (EIP ou non) avec bilan, produits et heures, la liste des salariés et de leurs heures, les autres missions et prestations avec les honoraires, les sommes facturées et frais",
-          "Le montant des honoraires perçus, transmis directement à l'administration fiscale",
-          "La copie de chaque rapport de certification signé"
+          "La seule liste des formations suivies au cours de l'année, avec le nombre d'heures validées au titre de la formation continue",
+          "La liste des entités certifiées avec bilan, produits et heures, la liste des salariés et de leurs heures, et les autres missions avec honoraires",
+          "Le montant global des honoraires perçus au cours de l'année, transmis directement à l'administration fiscale par la compagnie régionale avant le 31 mars",
+          "La copie de chaque rapport de certification signé dans l'année, accompagnée des dossiers de travail de chaque mission, transmis à la CNCC"
         ],
         "answer": 1
       },

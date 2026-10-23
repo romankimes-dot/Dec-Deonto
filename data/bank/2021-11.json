@@ -13,10 +13,10 @@
       "qcm": {
         "question": "Un expert-comptable souhaite faire de la promotion et du démarchage par internet. Quelle affirmation est exacte ?",
         "choices": [
-          "Le démarchage est interdit à l'expert-comptable, seule l'information institutionnelle du cabinet est tolérée",
-          "La promotion et le démarchage sont autorisés s'ils procurent au public une information utile, sont mis en œuvre avec discrétion, sans atteinte à l'indépendance, à la dignité, au secret professionnel ni à la loyauté envers confrères et clients, et dans le respect du droit du commerce électronique",
-          "Le démarchage n'est autorisé qu'auprès des entreprises ayant déjà un commissaire aux comptes",
-          "La publicité est libre sans aucune contrainte, comme pour toute entreprise commerciale"
+          "Le démarchage est interdit à l'expert-comptable, seule l'information institutionnelle du cabinet étant tolérée sur son site",
+          "La promotion et le démarchage sont admis s'ils procurent une information utile et ne portent atteinte ni à la dignité ni à la loyauté",
+          "Le démarchage n'est autorisé qu'auprès des entreprises ayant déjà un commissaire aux comptes ou une mission d'audit",
+          "La publicité est libre sans aucune contrainte déontologique, comme pour toute autre entreprise commerciale"
         ],
         "answer": 1
       },
@@ -45,7 +45,7 @@
       "qcm": {
         "question": "Quelle est la différence entre la conciliation et l'arbitrage proposés par le président du conseil régional de l'Ordre des experts-comptables ?",
         "choices": [
-          "La conciliation vise un accord amiable entre les parties sans décision imposée ; l'arbitrage aboutit à une sentence qui tranche le litige et s'impose aux parties",
+          "La conciliation vise un accord amiable sans décision imposée ; l'arbitrage aboutit à une sentence qui s'impose aux parties",
           "La conciliation est réservée aux litiges entre confrères, l'arbitrage aux litiges avec les clients",
           "La conciliation est obligatoire avant toute action en justice, l'arbitrage est interdit aux professions réglementées",
           "La conciliation est rendue par la chambre de discipline, l'arbitrage par le commissaire du gouvernement"
@@ -75,10 +75,10 @@
       "qcm": {
         "question": "Un expert-comptable est atteint d'une grave maladie l'empêchant de gérer son cabinet. Le conseil régional peut lui proposer :",
         "choices": [
-          "La désignation par le président du conseil régional, à sa demande ou avec son accord, d'un expert-comptable chargé d'assurer son remplacement provisoire",
-          "La radiation d'office du tableau avec interdiction définitive d'exercer",
+          "La désignation d'un confrère chargé d'assurer son remplacement provisoire, avec son accord",
+          "La radiation d'office du tableau, avec interdiction définitive d'exercer la profession en France",
           "La nomination d'un commissaire aux comptes chargé de certifier les comptes du cabinet",
-          "La saisine de la chambre régionale de discipline pour suspension"
+          "La saisine de la chambre régionale de discipline en vue d'une suspension de son activité"
         ],
         "answer": 0
       },
@@ -107,10 +107,10 @@
       "qcm": {
         "question": "En matière de LCB-FT, la chambre de discipline de l'Ordre des experts-comptables peut prononcer, en plus des sanctions disciplinaires ordinaires :",
         "choices": [
-          "Une sanction pécuniaire, une interdiction temporaire d'exercer certaines activités ou fonctions, et la publication de la décision",
-          "Une peine d'emprisonnement et la confiscation des fonds blanchis",
-          "Le retrait de l'agrément délivré par Tracfin",
-          "Le transfert du dossier à la commission des sanctions de la H2A"
+          "Une sanction pécuniaire, une interdiction temporaire de fonctions dirigeantes et la publication de la décision",
+          "Une peine d'emprisonnement ferme et la confiscation des fonds présumés blanchis par le client",
+          "Le retrait de l'agrément délivré par Tracfin et l'interdiction de toute déclaration de soupçon",
+          "Le transfert du dossier à la commission des sanctions de la H2A, seule compétente en matière de LCB-FT"
         ],
         "answer": 0
       },
@@ -138,10 +138,10 @@
       "qcm": {
         "question": "Un expert-comptable stagiaire peut-il être sanctionné disciplinairement par la chambre régionale de discipline de l'Ordre ?",
         "choices": [
-          "Oui : inscrit auprès du conseil régional, il est soumis au code de déontologie et au contrôle disciplinaire de l'Ordre, et relève de la chambre de discipline, qui lui applique les peines prévues pour les membres",
+          "Oui : quoique non membre de l'Ordre, il est soumis à son contrôle disciplinaire et au code de déontologie",
           "Non : seuls les membres de l'Ordre inscrits au tableau sont justiciables de la chambre de discipline",
-          "Non : le stagiaire relève exclusivement de la commission des sanctions de la H2A",
-          "Oui, mais uniquement si son maître de stage est lui-même poursuivi"
+          "Non : le stagiaire relève exclusivement de la commission des sanctions de la H2A, comme le stagiaire CAC",
+          "Oui, mais uniquement si son maître de stage est lui-même poursuivi devant la chambre de discipline"
         ],
         "answer": 0
       },
@@ -231,10 +231,10 @@
       "qcm": {
         "question": "Le serment prêté par l'expert-comptable lors de son inscription au tableau porte sur :",
         "choices": [
-          "L'exercice de la profession avec conscience et probité, et le respect des lois dans ses travaux ainsi que leur respect par autrui",
-          "L'indépendance à l'égard de l'entité contrôlée et la révélation des faits délictueux",
-          "La fidélité au Conseil national et le paiement des cotisations ordinales",
-          "La dignité, la confraternité et l'obligation de formation continue"
+          "L'exercice de la profession avec conscience et probité et le respect des lois",
+          "L'indépendance à l'égard de l'entité contrôlée et la révélation des faits délictueux au procureur",
+          "La fidélité au Conseil national et le paiement des cotisations ordinales à l'échéance",
+          "La dignité, la confraternité et l'obligation de suivre la formation continue"
         ],
         "answer": 0
       },
@@ -262,9 +262,9 @@
       "qcm": {
         "question": "Lors d'un contrôle qualité, le contrôleur relève sur un dossier du confrère contrôlé des indices de blanchiment. Il doit :",
         "choices": [
-          "En informer par courrier confidentiel le comité LBC-FT de l'Ordre, l'Ordre étant tenu, comme autorité de contrôle, d'en informer Tracfin",
-          "Adresser lui-même une déclaration de soupçon à Tracfin en qualité de contrôleur",
-          "Prévenir le client du confrère afin qu'il régularise sa situation",
+          "En informer par courrier confidentiel le comité LBC-FT de l'Ordre, qui saisira Tracfin",
+          "Adresser lui-même une déclaration de soupçon à Tracfin en qualité de contrôleur qualité de l'Ordre",
+          "Prévenir le client du confrère afin qu'il régularise sa situation avant la clôture du contrôle",
           "Ne rien faire, le secret professionnel du contrôle qualité lui interdisant toute communication"
         ],
         "answer": 0
@@ -293,10 +293,10 @@
       "qcm": {
         "question": "Dans une mission de présentation, comment l'expert-comptable communique-t-il ses recommandations à la direction, en complément de l'attestation ?",
         "choices": [
-          "Par un document distinct de l'attestation (lettre de recommandations ou compte rendu de mission), éventuellement complété d'un entretien de fin de mission",
-          "En insérant un paragraphe de recommandations dans l'attestation elle-même",
-          "Par un rapport spécial adressé à l'assemblée des associés",
-          "Par une communication au comité social et économique de l'entreprise"
+          "Par un écrit distinct de l'attestation (lettre de recommandations ou compte rendu de mission)",
+          "En insérant un paragraphe de recommandations dans le corps de l'attestation elle-même",
+          "Par un rapport spécial adressé à l'assemblée des associés à l'issue de la mission",
+          "Par une communication au comité social et économique de l'entreprise cliente"
         ],
         "answer": 0
       },
@@ -324,10 +324,10 @@
       "qcm": {
         "question": "Dans la procédure de dérogation au barème d'heures, les intervenants successifs sont :",
         "choices": [
-          "Le président de la compagnie régionale (saisi par la partie la plus diligente), puis, sur recours, le président de la CNCC, puis le bureau de la H2A, et enfin le tribunal administratif",
-          "Le commissaire aux comptes, l'assemblée générale, le tribunal de commerce, puis la cour d'appel",
+          "Le président de la compagnie régionale, puis le président de la CNCC, le bureau de la H2A et le tribunal administratif",
+          "Le commissaire aux comptes, l'assemblée générale de l'entité, le tribunal de commerce, puis la cour d'appel",
           "Le président de la CNCC, le commissaire du gouvernement, le ministre de la Justice, puis le Conseil d'État",
-          "Le comité d'audit, le conseil d'administration, l'AMF, puis la H2A"
+          "Le comité d'audit, le conseil d'administration, l'AMF, puis la commission des sanctions de la H2A, qui statue en dernier ressort"
         ],
         "answer": 0
       },
@@ -389,10 +389,10 @@
       "qcm": {
         "question": "Depuis sa refonte en 2020, le code de déontologie des commissaires aux comptes est organisé en deux titres :",
         "choices": [
-          "Un titre I applicable à toutes les missions et prestations, et un titre II de dispositions complémentaires pour la mission de certification des comptes",
-          "Un titre I pour les entités d'intérêt public et un titre II pour les autres entités",
-          "Un titre I pour les personnes physiques et un titre II pour les sociétés de commissaires aux comptes",
-          "Un titre I sur l'indépendance et un titre II sur les sanctions disciplinaires"
+          "Un titre I applicable à toutes les missions et prestations, un titre II complémentaire pour la certification des comptes",
+          "Un titre I pour les entités d'intérêt public et un titre II pour les autres entités, avec des règles distinctes d'indépendance",
+          "Un titre I pour les personnes physiques et un titre II pour les sociétés de commissaires aux comptes et leurs associés",
+          "Un titre I sur l'indépendance et un titre II sur les sanctions disciplinaires et la procédure devant la commission"
         ],
         "answer": 0
       },
@@ -419,10 +419,10 @@
       "qcm": {
         "question": "En cas de litige sur les honoraires du commissaire aux comptes, les organes successivement compétents sont :",
         "choices": [
-          "Le président de la compagnie régionale (conciliation en trois mois), puis, en cas d'échec, le juge ; la H2A ne tranche plus ces litiges depuis 2024",
-          "Le président du conseil régional de l'Ordre, la chambre nationale de discipline, le Conseil d'État",
-          "Le comité d'audit, l'assemblée générale, le tribunal administratif",
-          "Le commissaire du gouvernement, le garde des Sceaux, la Cour de cassation"
+          "Le président de la compagnie régionale (conciliation en trois mois), puis le juge ; la H2A ne tranche plus ces litiges",
+          "Le président du conseil régional de l'Ordre, la chambre nationale de discipline, puis le Conseil d'État",
+          "Le comité d'audit, puis l'assemblée générale, puis le tribunal administratif statuant en premier ressort, avec appel devant la cour administrative",
+          "Le commissaire du gouvernement, le garde des Sceaux, puis la Cour de cassation statuant en dernier ressort"
         ],
         "answer": 0
       },
@@ -451,10 +451,10 @@
       "qcm": {
         "question": "Qui peut saisir le rapporteur général de la H2A (ex-H3C) en vue d'une procédure disciplinaire contre un commissaire aux comptes ?",
         "choices": [
-          "Le premier président de la Cour des comptes ou le président d'une chambre régionale des comptes, le procureur général près la cour d'appel, les présidents de l'AMF, de l'ACPR et de la H2A, le président de la CNCC ou d'une CRCC",
-          "Uniquement l'entité contrôlée, par décision de son assemblée générale",
-          "Le président du Conseil national de l'Ordre des experts-comptables et le commissaire du gouvernement",
-          "Tout actionnaire détenant au moins 5 % du capital de l'entité contrôlée"
+          "Le premier président de la Cour des comptes, le procureur général près la cour d'appel, les présidents de l'AMF, de l'ACPR et de la CNCC",
+          "Uniquement l'entité contrôlée, par décision de son assemblée générale, ou le président du tribunal de commerce du siège de l'entité",
+          "Le président du Conseil national de l'Ordre des experts-comptables, le commissaire du gouvernement et le garde des sceaux, ministre de la Justice",
+          "Tout actionnaire détenant au moins 5 % du capital de l'entité contrôlée, ainsi que le comité d'audit ou le comité social et économique de celle-ci"
         ],
         "answer": 0
       },
@@ -484,10 +484,10 @@
       "qcm": {
         "question": "Existe-t-il dans le code de déontologie des commissaires aux comptes un socle commun applicable quelle que soit la mission ou prestation ?",
         "choices": [
-          "Oui : le titre I pose les principes fondamentaux de comportement (intégrité, impartialité, indépendance, compétence, confraternité, discrétion) applicables à toutes les missions et prestations",
+          "Oui : le titre I pose des principes fondamentaux de comportement applicables à toute mission ou prestation",
           "Non : chaque mission relève d'une norme d'exercice professionnel spécifique qui définit sa propre déontologie",
-          "Non : le code ne s'applique qu'à la mission de certification des comptes",
-          "Oui, mais uniquement pour les commissaires aux comptes d'entités d'intérêt public"
+          "Non : le code ne s'applique qu'à la mission de certification des comptes, les prestations relevant des seules NEP",
+          "Oui, mais uniquement pour les commissaires aux comptes d'entités d'intérêt public, à titre de socle commun"
         ],
         "answer": 0
       },
@@ -515,7 +515,7 @@
         "question": "Lequel de ces thèmes ne figure PAS parmi les dispositions complémentaires du titre II du code de déontologie, propres à la mission de certification ?",
         "choices": [
           "L'échelle des sanctions disciplinaires et la procédure devant la commission des sanctions",
-          "L'indépendance, les situations à risque et les mesures de sauvegarde",
+          "L'indépendance, les situations à risque, les mesures de sauvegarde et les services interdits aux EIP",
           "Les liens personnels, financiers et professionnels et l'appartenance à un réseau",
           "L'acceptation, la conduite et le maintien de la mission, ainsi que les honoraires"
         ],
@@ -547,10 +547,10 @@
       "qcm": {
         "question": "Dans le code de déontologie des commissaires aux comptes, que désignent respectivement les termes mission et prestation ?",
         "choices": [
-          "La mission est la certification des comptes, la certification des informations en matière de durabilité ou toute autre mission confiée par la loi ou le règlement ; la prestation est la fourniture de services et d'attestations ne relevant pas d'une mission",
-          "La mission désigne tout travail rémunéré ; la prestation désigne les travaux effectués gratuitement",
-          "La mission vise les entités d'intérêt public ; la prestation vise les autres entités",
-          "La mission est confiée par l'assemblée ; la prestation est confiée par le comité d'audit"
+          "La mission est celle confiée par la loi ou le règlement, dont la certification ; la prestation est la fourniture de services et d'attestations hors mission",
+          "La mission désigne tout travail rémunéré, quel qu'en soit l'objet ; la prestation désigne les travaux effectués gratuitement pour le compte d'un client",
+          "La mission vise les travaux réalisés pour les entités d'intérêt public ; la prestation vise ceux réalisés pour toutes les autres entités",
+          "La mission est confiée par l'assemblée générale ; la prestation est confiée par le comité d'audit ou par le conseil d'administration"
         ],
         "answer": 0
       },
@@ -609,10 +609,10 @@
       "qcm": {
         "question": "Lequel de ces services est interdit au commissaire aux comptes d'une entité d'intérêt public par le règlement européen 537/2014 ?",
         "choices": [
-          "La tenue de la comptabilité et l'établissement des documents comptables et états financiers",
-          "L'attestation sur des informations extraites des comptes demandée par un tiers",
-          "La certification des comptes consolidés du groupe",
-          "La revue limitée des comptes semestriels"
+          "La tenue de la comptabilité et l'établissement des comptes et états financiers",
+          "L'attestation, demandée par un tiers, sur des informations extraites des comptes de l'entité",
+          "La certification des comptes consolidés du groupe et des comptes annuels des filiales",
+          "La revue limitée des comptes semestriels publiés par l'entité, à la demande de son conseil"
         ],
         "answer": 0
       },

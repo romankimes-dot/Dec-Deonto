@@ -13,7 +13,7 @@
       "qcm": {
         "question": "Selon la NPLAB, la classification des risques de blanchiment du cabinet d'expertise comptable repose au moins sur les critères suivants :",
         "choices": [
-          "Les caractéristiques des clients, l'activité des clients, la localisation des clients (y compris origine ou destination des fonds) et les missions proposées par la structure",
+          "Les caractéristiques des clients, leur activité, leur localisation et les missions proposées par la structure",
           "Le montant des honoraires, la forme juridique du client, l'ancienneté de la relation et la taille du cabinet",
           "Les seuils de nomination du commissaire aux comptes : total du bilan, chiffre d'affaires et effectif, complétés par le secteur d'activité",
           "La notation Banque de France du client, son endettement, sa rentabilité et son actionnariat"
@@ -44,10 +44,10 @@
       "qcm": {
         "question": "Selon la NP 3100, une attestation particulière délivrée par l'expert-comptable peut procurer :",
         "choices": [
-          "Une assurance raisonnable uniquement, comme un audit",
+          "Une assurance raisonnable uniquement, comme dans une mission d'audit",
           "Une assurance raisonnable ou une assurance modérée, selon les diligences convenues",
           "Une assurance modérée ou aucune assurance, selon qu'elle porte ou non sur des comptes",
-          "Une assurance absolue lorsqu'elle est destinée à un tiers"
+          "Une assurance absolue lorsqu'elle est destinée à un tiers financeur"
         ],
         "answer": 1
       },
@@ -74,7 +74,7 @@
         "question": "Dans une société d'expertise comptable inscrite au tableau, la loi exige que :",
         "choices": [
           "Les experts-comptables détiennent la majorité du capital et la totalité des droits de vote",
-          "Plus des deux tiers des droits de vote soient détenus, directement ou indirectement, par des experts-comptables ou sociétés d'expertise comptable inscrites, sans exigence de majorité du capital",
+          "Plus des deux tiers des droits de vote soient détenus par des experts-comptables ou sociétés d'expertise comptable inscrites",
           "Les trois quarts du capital et des droits de vote soient détenus par des commissaires aux comptes ou experts-comptables",
           "La totalité du capital soit détenue par des professionnels inscrits, les tiers ne pouvant être qu'administrateurs"
         ],
@@ -105,10 +105,10 @@
       "qcm": {
         "question": "Parmi les infractions suivantes, laquelle peut être reprochée à l'expert-comptable en qualité d'auteur principal (et non de complice) ?",
         "choices": [
-          "La violation du secret professionnel",
-          "La présentation de comptes annuels infidèles de la société cliente",
-          "La non-révélation de faits délictueux au procureur de la République",
-          "L'abus de biens sociaux commis par le dirigeant du client"
+          "La violation du secret professionnel à l'égard du client",
+          "La présentation de comptes infidèles de la société cliente",
+          "La non-révélation de faits délictueux au procureur",
+          "L'abus de biens sociaux commis par le dirigeant"
         ],
         "answer": 0
       },
@@ -137,9 +137,9 @@
         "question": "Laquelle de ces évolutions a été apportée à l'ordonnance de 1945 par la loi Pacte du 22 mai 2019 ?",
         "choices": [
           "La suppression de l'exigence des deux tiers des droits de vote dans les sociétés d'expertise comptable",
-          "L'instauration d'une présomption simple de mandat (mandat implicite) pour les démarches auprès de l'administration fiscale et des organismes sociaux, et la possibilité de recouvrer les créances et de payer les dettes des clients par leur compte bancaire",
+          "L'instauration d'une présomption de mandat pour les démarches auprès de l'administration fiscale et des organismes sociaux",
           "Le relèvement des seuils de nomination obligatoire du commissaire aux comptes dans les sociétés commerciales",
-          "L'ouverture aux experts-comptables de la certification des comptes des petites entreprises"
+          "L'ouverture aux experts-comptables de la certification des comptes des petites entreprises non cotées"
         ],
         "answer": 1
       },
@@ -170,9 +170,9 @@
         "question": "La chambre régionale de discipline de l'Ordre des experts-comptables est composée (outre le commissaire du gouvernement) :",
         "choices": [
           "D'un président magistrat désigné par le premier président de la cour d'appel et de deux membres élus du conseil régional",
-          "Du président du conseil régional et de quatre experts-comptables tirés au sort",
-          "D'un conseiller d'État et de deux représentants du ministre chargé du budget",
-          "De trois membres du collège de la H2A et du président de la CRCC"
+          "Du président du conseil régional et de quatre experts-comptables tirés au sort parmi les inscrits",
+          "D'un conseiller d'État et de deux représentants du ministre chargé du budget, désignés par arrêté",
+          "De trois membres du collège de la H2A et du président de la compagnie régionale des commissaires aux comptes de la circonscription"
         ],
         "answer": 0
       },
@@ -200,9 +200,9 @@
       "qcm": {
         "question": "Dans le cadre de référence des missions de l'expert-comptable, les trois textes applicables à toutes les missions sont :",
         "choices": [
-          "Le code de déontologie, la norme de maîtrise de la qualité (NPMQ) et la norme anti-blanchiment (NPLAB)",
-          "Le code de déontologie, la NP 2300 et la NEP 9605",
-          "L'ordonnance de 1945, la norme de présentation et la norme d'audit",
+          "Le code de déontologie, la norme de maîtrise de la qualité et la norme anti-blanchiment",
+          "Le code de déontologie, la norme de présentation NP 2300 et la NEP 9605",
+          "L'ordonnance de 1945, la norme de présentation et la norme d'audit de la CNCC",
           "La NPMQ, la norme sur les procédures convenues et le règlement du contrôle qualité"
         ],
         "answer": 0
@@ -262,10 +262,10 @@
       "qcm": {
         "question": "Un expert-comptable peut-il accepter, comme seule mission pour un nouveau client, un accompagnement dans la transition numérique de l'entreprise ?",
         "choices": [
-          "Non : les missions de conseil ne peuvent être réalisées que pour les clients dont l'EC tient ou présente les comptes",
-          "Oui : depuis la loi Macron, les missions de conseil en organisation ne sont plus subordonnées à une mission comptable, sous réserve de la déontologie et de la lettre de mission",
-          "Non : cette mission relève des services interdits par le règlement européen de 2014",
-          "Oui, mais uniquement si la mission est confiée par le commissaire aux comptes de l'entreprise"
+          "Non : les missions de conseil ne peuvent être réalisées que pour les clients dont l'EC tient ou présente les comptes annuels",
+          "Oui : depuis la loi Macron, les missions de conseil en organisation ne sont plus subordonnées à une mission comptable",
+          "Non : cette mission relève des services interdits par le règlement européen de 2014 pour les entités d'intérêt public",
+          "Oui, mais uniquement si la mission est confiée par le commissaire aux comptes de l'entreprise, qui en assure le suivi"
         ],
         "answer": 1
       },
@@ -293,10 +293,10 @@
       "qcm": {
         "question": "Dans une mission de présentation (NP 2300), les contrôles par épreuves sur la qualité des enregistrements comptables consistent à :",
         "choices": [
-          "Vérifier, sur un échantillon de pièces et d'écritures, que les opérations sont justifiées, correctement imputées et enregistrées sur la bonne période",
-          "Procéder à une circularisation des tiers et à une observation physique des stocks",
-          "Évaluer le contrôle interne et tester les contrôles clés de l'entité",
-          "Recalculer l'intégralité des écritures pour obtenir une assurance raisonnable"
+          "Vérifier par sondage que les écritures sont justifiées, bien imputées et enregistrées sur la bonne période",
+          "Procéder à une circularisation des tiers et à une observation physique des stocks en fin d'exercice",
+          "Évaluer le contrôle interne de l'entité et tester ses contrôles clés sur l'ensemble de la période",
+          "Recalculer l'intégralité des écritures de l'exercice afin d'obtenir une assurance raisonnable"
         ],
         "answer": 0
       },
@@ -325,10 +325,10 @@
       "qcm": {
         "question": "Pour l'élection du conseil régional d'une compagnie régionale des commissaires aux comptes, sont électeurs :",
         "choices": [
-          "Les commissaires aux comptes personnes physiques inscrits dans le ressort de la compagnie, à condition d'être à jour de leurs cotisations",
-          "Les seuls commissaires aux comptes détenant au moins un mandat de certification en cours",
-          "Les sociétés de commissaires aux comptes uniquement, par l'intermédiaire de leur représentant légal",
-          "Tous les inscrits, personnes physiques et morales, à condition d'avoir prêté serment depuis plus de trois ans"
+          "Les commissaires aux comptes personnes physiques inscrits dans le ressort de la compagnie, à jour de leurs cotisations",
+          "Les seuls commissaires aux comptes détenant au moins un mandat de certification en cours dans le ressort",
+          "Les sociétés de commissaires aux comptes uniquement, par l'intermédiaire de leur représentant légal inscrit",
+          "Tous les inscrits, personnes physiques et morales, à condition d'avoir prêté serment depuis plus de trois ans et d'exercer au moins un mandat"
         ],
         "answer": 0
       },
@@ -388,9 +388,9 @@
         "question": "S'agissant de la lettre de mission du commissaire aux comptes pour la certification des comptes :",
         "choices": [
           "Elle est facultative puisque la mission est définie par la loi et que le CAC est nommé par l'assemblée",
-          "Elle est obligatoire selon la NEP 210, afin de définir les termes et conditions de la mission et d'éviter tout malentendu entre le CAC et l'entité",
+          "Elle est obligatoire selon la NEP 210, afin de définir les termes et conditions de la mission",
           "Elle est obligatoire uniquement pour les entités d'intérêt public, à la demande du comité d'audit",
-          "Elle est remplacée par la lettre d'affirmation signée par la direction"
+          "Elle est remplacée par la lettre d'affirmation prévue par la NEP 580, signée par la direction en fin de mission"
         ],
         "answer": 1
       },
@@ -420,9 +420,9 @@
         "question": "En cas d'absorption d'une société de commissaires aux comptes par une autre société de commissaires aux comptes, les mandats de l'absorbée :",
         "choices": [
           "Prennent fin de plein droit et une nouvelle nomination doit intervenir à la prochaine assemblée",
-          "Sont poursuivis par la société absorbante jusqu'à leur terme, l'entité contrôlée pouvant toutefois décider de ne pas les maintenir",
-          "Sont transférés au commissaire aux comptes suppléant de l'absorbée",
-          "Sont attribués par le président de la compagnie régionale à un autre cabinet"
+          "Sont poursuivis par la société absorbante jusqu'à leur terme, l'entité pouvant décider de ne pas les maintenir",
+          "Sont transférés au commissaire aux comptes suppléant de l'absorbée, qui les exerce jusqu'à leur terme",
+          "Sont attribués par le président de la compagnie régionale à un autre cabinet après avis de l'entité"
         ],
         "answer": 1
       },
@@ -452,9 +452,9 @@
         "question": "Laquelle de ces entités est une entité d'intérêt public (EIP) au sens du code de commerce ?",
         "choices": [
           "Une société anonyme non cotée dépassant les seuils de nomination du commissaire aux comptes",
-          "Une entreprise d'assurance régie par le code des assurances",
+          "Une entreprise d'assurance ou de réassurance soumise au contrôle de l'ACPR",
           "Une association recevant plus de 153 000 euros de subventions publiques",
-          "Une société dont les titres sont négociés sur Euronext Growth (système multilatéral de négociation)"
+          "Une société cotée sur Euronext Growth (système multilatéral de négociation)"
         ],
         "answer": 1
       },
@@ -484,10 +484,10 @@
       "qcm": {
         "question": "Lequel de ces éléments constitue, selon le code de déontologie des commissaires aux comptes, un indice d'appartenance à un réseau ?",
         "choices": [
-          "Une dénomination commune, une clientèle habituelle commune et un mécanisme de partage des revenus ou des résultats",
-          "L'inscription des associés dans la même compagnie régionale",
-          "Le recours au même assureur de responsabilité civile professionnelle",
-          "La participation aux mêmes formations continues organisées par la CNCC"
+          "Une dénomination commune, une clientèle habituelle commune et un partage des résultats",
+          "L'inscription des associés dans la même compagnie régionale et leur participation aux mêmes instances de la CNCC",
+          "Le recours au même assureur de responsabilité civile professionnelle et au même courtier d'assurance",
+          "La participation aux mêmes formations continues organisées par la CNCC ou par la compagnie régionale"
         ],
         "answer": 0
       },
@@ -517,10 +517,10 @@
       "qcm": {
         "question": "Selon le code de déontologie des commissaires aux comptes, l'importance des diligences qui détermine la rémunération s'apprécie notamment au regard :",
         "choices": [
-          "De la taille, de la nature et de la complexité des activités de l'entité, et des particularités de la mission ou prestation",
-          "Du résultat net de l'entité et du dividende distribué",
-          "Du nombre de mandats détenus par le cabinet et de son chiffre d'affaires",
-          "De la capacité financière de l'entité et de l'accord du comité d'audit"
+          "De la taille, de la nature et de la complexité des activités de l'entité, et des particularités de la mission",
+          "Du résultat net de l'entité et du dividende distribué aux actionnaires au titre de l'exercice",
+          "Du nombre de mandats détenus par le cabinet et de son chiffre d'affaires global, en pourcentage du total des honoraires",
+          "De la capacité financière de l'entité et de l'accord préalable de son comité d'audit sur le montant"
         ],
         "answer": 0
       },
@@ -549,9 +549,9 @@
       "qcm": {
         "question": "Deux co-commissaires aux comptes ne parviennent pas à s'accorder sur la répartition de leurs travaux. Ils doivent en premier lieu :",
         "choices": [
-          "Saisir le président de la compagnie régionale des commissaires aux comptes en vue d'une conciliation",
+          "Saisir le président de la compagnie régionale pour tenter une conciliation",
           "Demander à l'assemblée générale de l'entité de trancher la répartition",
-          "Saisir directement la commission des sanctions de la H2A",
+          "Saisir directement la commission des sanctions de la H2A pour trancher le différend",
           "Démissionner tous deux pour difficulté dans l'accomplissement de la mission"
         ],
         "answer": 0
@@ -579,10 +579,10 @@
       "qcm": {
         "question": "Un commissaire aux comptes exposé à une situation à risque ne peut mettre en œuvre de mesures de sauvegarde suffisantes. Il doit :",
         "choices": [
-          "Refuser la mission ou, si elle est en cours, y mettre fin en démissionnant pour motif légitime",
-          "Poursuivre la mission en mentionnant la situation dans son rapport",
-          "Solliciter une dérogation auprès du président de la compagnie régionale",
-          "Transférer la mission à un membre de son réseau non exposé au risque"
+          "Refuser la mission ou, si elle est en cours, y mettre fin en démissionnant",
+          "Poursuivre la mission en mentionnant la situation dans son rapport sur les comptes",
+          "Solliciter une dérogation auprès du président de la compagnie régionale ou de la H2A",
+          "Transférer la mission à un membre de son réseau non exposé au risque, avec l'accord de l'entité"
         ],
         "answer": 0
       },
@@ -610,7 +610,7 @@
         "question": "Pour le commissaire aux comptes d'une entité non-EIP, la loi Pacte interdit d'accepter ou de poursuivre la mission de certification lorsque :",
         "choices": [
           "Il existe un risque d'autorévision, ou son indépendance est compromise sans mesure de sauvegarde possible",
-          "Les services fournis figurent sur la liste des services interdits du règlement européen de 2014",
+          "Les services fournis figurent sur la liste des services interdits du règlement européen de 2014 sur l'audit des EIP",
           "Les services autres que la certification dépassent 70 % des honoraires de certification",
           "Il fournit des services de nature fiscale ou juridique, quelle qu'en soit l'ampleur"
         ],

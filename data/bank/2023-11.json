@@ -13,9 +13,9 @@
       "qcm": {
         "choices": [
           "Le garde des sceaux, ministre de la justice, par arrêté d'homologation après avis de la H2A",
-          "Le ministre chargé de l'économie (budget), par arrêté d'agrément, les normes étant élaborées par le Conseil national de l'Ordre",
+          "Le ministre chargé de l'économie, par arrêté d'agrément, sur proposition du Conseil national",
           "Le Conseil national de l'Ordre des experts-comptables, par délibération, sans intervention ministérielle",
-          "La Haute autorité de l'audit, après avis de la commission de normalisation"
+          "La Haute autorité de l'audit, par décision, après avis de la commission de normalisation"
         ],
         "answer": 1
       },
@@ -70,10 +70,10 @@
       "question": "Quels éléments doit comporter la revue indépendante d'une mission ? Citez en deux.",
       "qcm": {
         "choices": [
-          "Un entretien avec le client et la vérification des honoraires facturés",
-          "L'examen, par une personne n'ayant pas participé à la mission, des jugements significatifs et des conclusions, et la revue du rapport et des documents de synthèse avant leur délivrance",
-          "Le recomptage de l'ensemble des écritures et la vérification des déclarations fiscales",
-          "L'inspection par sondage de dossiers achevés sur les trois derniers exercices"
+          "Un entretien avec le client, la vérification des honoraires facturés et des délais d'exécution",
+          "L'examen des jugements significatifs et des conclusions par une personne extérieure à l'équipe",
+          "Le recomptage de l'ensemble des écritures et la vérification des déclarations fiscales du client",
+          "L'inspection par sondage de dossiers achevés sur les trois derniers exercices de la structure"
         ],
         "answer": 1
       },
@@ -100,7 +100,7 @@
       "question": "Citez quatre éléments à examiner dans le cadre d'une revue de dossiers.",
       "qcm": {
         "choices": [
-          "Le respect des normes professionnelles et des textes légaux, le respect de la lettre de mission et des procédures internes, le caractère suffisant des éléments probants étayant le rapport, la documentation correcte des travaux",
+          "Le respect des normes, de la lettre de mission, la suffisance des éléments probants, la documentation des travaux",
           "La satisfaction du client, le délai de paiement des honoraires, le taux de marge de la mission, la fidélisation",
           "La conformité fiscale de l'entreprise cliente, ses ratios financiers, son endettement et sa trésorerie",
           "Le contrat de travail des collaborateurs, leur temps de présence, leurs congés et leur formation"
@@ -130,9 +130,9 @@
       "question": "Quelle est la durée consécutive maximale de présidence d'un même conseil régional de l'ordre des experts-comptables ?",
       "qcm": {
         "choices": [
-          "Quatre années consécutives (soit deux mandats de bureau de deux ans), une interruption d'au moins deux ans étant ensuite exigée",
-          "Six ans, soit trois mandats de bureau de deux ans",
-          "Aucune limite : le président est rééligible sans restriction",
+          "Quatre années consécutives, soit deux mandats de bureau de deux ans",
+          "Six années consécutives, soit trois mandats de bureau de deux ans",
+          "Aucune limite : le président est rééligible sans restriction de durée ni interruption",
           "Huit ans, soit deux mandats consécutifs de conseiller de quatre ans"
         ],
         "answer": 0
@@ -161,10 +161,10 @@
       "question": "Quel est le rôle du commissaire du gouvernement lors d'une demande d'inscription au tableau de l'ordre ?",
       "qcm": {
         "choices": [
-          "Il statue lui-même sur la demande d'inscription, le conseil régional n'ayant qu'un avis consultatif",
-          "Il est destinataire de la décision du conseil régional (notifiée dans les dix jours francs) et peut, dans le mois, déférer une décision d'inscription au comité national du tableau",
-          "Il prête le serment au candidat et lui délivre la carte professionnelle",
-          "Il n'intervient qu'en cas de refus d'inscription, pour saisir le Conseil d'État"
+          "Il statue lui-même sur la demande d'inscription, le conseil régional n'ayant qu'un avis consultatif en la matière",
+          "Il reçoit la décision du conseil régional et peut déférer l'inscription, dans le mois, au comité national du tableau",
+          "Il prête le serment au candidat et lui délivre la carte professionnelle à l'issue de l'instruction",
+          "Il n'intervient qu'en cas de refus d'inscription, pour saisir le Conseil d'État dans un délai de deux mois"
         ],
         "answer": 1
       },
@@ -190,10 +190,10 @@
       "question": "Quelles sont les conditions de validité des pénalités en cas de rupture d'une lettre de mission avant son terme, sans justification, par le client d'un expert-comptable ?",
       "qcm": {
         "choices": [
-          "Elles sont toujours valables dès lors qu'elles ont été mentionnées oralement au client lors de la signature",
-          "Elles doivent être prévues par écrit dans la lettre de mission acceptée par le client, rester proportionnées au préjudice (clause pénale révisable par le juge) et ne pas entraver la liberté du client de changer de professionnel",
-          "Elles sont interdites par le code de déontologie, l'expert-comptable ne pouvant percevoir que les honoraires des travaux effectués",
-          "Elles doivent être validées préalablement par le conseil régional de l'Ordre"
+          "Elles sont toujours valables dès lors qu'elles ont été mentionnées oralement au client lors de la signature de la lettre",
+          "Elles doivent être prévues par écrit dans la lettre de mission, rester proportionnées au préjudice et ne pas entraver la liberté du client",
+          "Elles sont interdites par le code de déontologie, l'expert-comptable ne pouvant percevoir que les honoraires des travaux effectués, même si le client les a acceptées",
+          "Elles doivent être validées préalablement par le conseil régional de l'Ordre, qui en fixe le plafond"
         ],
         "answer": 1
       },
@@ -220,10 +220,10 @@
       "question": "Combien de sections comporte le tableau de l'ordre des experts-comptables ? Citez-les.",
       "qcm": {
         "choices": [
-          "Deux sections : les experts-comptables et les sociétés d'expertise comptable",
-          "Trois sections (experts-comptables personnes physiques, sociétés d'expertise comptable, sociétés de participations d'expertise comptable), suivies de onze listes (stagiaires, honoraires, salariés d'AGC, AGC, succursales, SPE, SPFPL, experts-comptables en entreprise…)",
-          "Trois sections : experts-comptables, commissaires aux comptes et comptables agréés",
-          "Une section unique, le tableau étant un simple registre alphabétique tenu par le Conseil national"
+          "Deux sections (experts-comptables, sociétés d'expertise comptable), suivies de neuf listes (stagiaires, honoraires, AGC, succursales…)",
+          "Trois sections (experts-comptables, sociétés d'expertise comptable, sociétés de participations d'expertise comptable), suivies de onze listes",
+          "Trois sections (experts-comptables, commissaires aux comptes, comptables agréés), suivies de cinq listes (stagiaires, honoraires, AGC, succursales, SPE…)",
+          "Une section unique, simple registre alphabétique tenu par le Conseil national, complété de quatre listes annexes"
         ],
         "answer": 1
       },
@@ -250,10 +250,10 @@
       "question": "Citez quatre types d'activités interdites aux experts-comptables.",
       "qcm": {
         "choices": [
-          "Emploi salarié hors cabinet, activité commerciale ou acte d'intermédiaire non accessoire, mandat de recevoir ou détenir des fonds, activité d'agent d'affaires, représentation en justice, travaux comptables pour des entreprises où ils ont des intérêts substantiels",
-          "Enseignement, fonctions d'arbitre, missions d'expertise judiciaire, mandats sociaux",
+          "Emploi salarié hors cabinet, activité commerciale non accessoire, détention de fonds, activité d'agent d'affaires",
+          "Enseignement, fonctions d'arbitre, missions d'expertise judiciaire, mandats sociaux dans des sociétés non inscrites",
           "Commissariat aux comptes, consultations fiscales, accompagnement à la création d'entreprise, assistance déclarative",
-          "Participation à des colloques, publication d'articles, démarchage, publicité"
+          "Participation à des colloques, publication d'articles scientifiques, démarchage, publicité sur internet"
         ],
         "answer": 0
       },
@@ -280,10 +280,10 @@
       "question": "Un jeune diplômé d'expertise comptable a décidé de créer son cabinet sans rachat de droit de présentation de clientèle. Il s'installe dans des locaux situés en zone d'activité d'une ville moyenne. Afin de se faire connaitre, il diffuse des prospectus dans les boites aux lettres des entreprises installées sur la zone, mentionnant que 150 entreprises lui font déjà confiance et que par ailleurs il est 10 % en dessous des tarifs des autres professionnels. Cette pratique est-elle conforme aux règles déontologiques ? Pour quelle(s) raison(s) ?",
       "qcm": {
         "choices": [
-          "Non, car toute forme de démarchage est interdite à l'expert-comptable",
-          "Non : le démarchage est admis depuis 2014, mais le message est mensonger (150 clients inexistants) et comparatif sur les prix, ce qui contrevient à la loyauté, à l'honneur et à la confraternité",
-          "Oui : la publicité et le démarchage sont libres et les honoraires sont librement fixés",
-          "Oui, à condition que les prospectus aient été visés par le conseil régional de l'Ordre"
+          "Non, car toute forme de démarchage est interdite à l'expert-comptable par le code de déontologie",
+          "Non : le message est mensonger et comparatif sur les prix, contraire à la loyauté et à la confraternité",
+          "Oui : la publicité et le démarchage sont libres et les honoraires sont librement fixés par le professionnel",
+          "Oui, à condition que les prospectus aient été visés par le conseil régional de l'Ordre avant diffusion"
         ],
         "answer": 1
       },
@@ -311,9 +311,9 @@
       "qcm": {
         "choices": [
           "Devant le conseil régional de l'Ordre des experts-comptables, en même temps que l'inscription au tableau",
-          "Devant la cour d'appel dont il relève, après son inscription sur la liste : serment de remplir les devoirs de sa profession avec honneur, probité et indépendance, de respecter et faire respecter les lois",
-          "Devant le président de la Haute autorité de l'audit, par écrit",
-          "Devant le tribunal de commerce du lieu de son cabinet, par déclaration au greffe"
+          "Devant la cour d'appel dont il relève, après son inscription : serment de remplir ses devoirs avec honneur, probité et indépendance",
+          "Devant le président de la Haute autorité de l'audit, par écrit, dans les six mois de son inscription sur la liste",
+          "Devant le tribunal de commerce du lieu de son cabinet, par déclaration au greffe, avant son inscription sur la liste des commissaires aux comptes"
         ],
         "answer": 1
       },
@@ -340,10 +340,10 @@
       "question": "Qui enquête dans le cadre d'une procédure disciplinaire contre un commissaire aux comptes ?",
       "qcm": {
         "choices": [
-          "Le syndic de la compagnie régionale, sous le contrôle du procureur général",
-          "Le rapporteur général de la Haute autorité de l'audit, à la tête d'un service d'enquêteurs qu'il habilite",
-          "Un rapporteur désigné par le président de la chambre régionale de discipline",
-          "Les contrôleurs de la Compagnie nationale, dans le cadre du contrôle d'activité"
+          "Le syndic de la compagnie régionale, sous le contrôle du procureur général près la cour d'appel",
+          "Le rapporteur général de la Haute autorité de l'audit, assisté d'enquêteurs qu'il habilite",
+          "Un rapporteur désigné par le président de la chambre régionale de discipline, assisté d'un greffier",
+          "Les contrôleurs de la Compagnie nationale, dans le cadre du contrôle d'activité périodique du cabinet"
         ],
         "answer": 1
       },
@@ -370,10 +370,10 @@
       "question": "Citez quatre des sanctions disciplinaires qui peuvent être prononcées par le H3C à l'encontre un commissaire aux comptes, personne physique.",
       "qcm": {
         "choices": [
-          "Avertissement, blâme, interdiction temporaire d'exercer (trois ans au plus), radiation de la liste, retrait de l'honorariat, sanction pécuniaire jusqu'à 250 000 €",
-          "Réprimande, blâme avec inscription au dossier, suspension avec sursis, radiation du tableau",
-          "Amende civile, interdiction de gérer, faillite personnelle, emprisonnement",
-          "Rappel à la loi, mise en demeure, astreinte, fermeture temporaire du cabinet"
+          "Avertissement, blâme, interdiction temporaire d'exercer (trois ans au plus), radiation de la liste, sanction pécuniaire",
+          "Réprimande, blâme avec inscription au dossier, suspension avec sursis, radiation du tableau, exclusion de l'Ordre",
+          "Amende civile, interdiction de gérer, faillite personnelle, emprisonnement, confiscation des honoraires perçus",
+          "Rappel à la loi, mise en demeure, astreinte, fermeture temporaire du cabinet, retrait de l'agrément de la CNCC"
         ],
         "answer": 0
       },
@@ -402,10 +402,10 @@
       "question": "Quelle est la nature de l'assurance formulée par le commissaire aux comptes dans le cadre de la certification des comptes, en quoi consiste-t-elle ?",
       "qcm": {
         "choices": [
-          "Une assurance modérée sur la cohérence et la vraisemblance des comptes",
-          "Une assurance raisonnable, c'est-à-dire élevée mais non absolue, que les comptes ne comportent pas d'anomalies significatives, exprimée par une opinion sur leur régularité, leur sincérité et leur image fidèle",
-          "Une assurance absolue garantissant l'exactitude des comptes et la viabilité de l'entité",
-          "Une assurance limitée exprimée sous forme négative, comme dans l'examen limité"
+          "Une assurance modérée sur la cohérence et la vraisemblance des comptes, fondée sur des entretiens et des analyses",
+          "Une assurance raisonnable, c'est-à-dire élevée mais non absolue, que les comptes ne comportent pas d'anomalies significatives",
+          "Une assurance absolue garantissant l'exactitude de tous les comptes ainsi que la viabilité de l'entité contrôlée à moyen terme",
+          "Une assurance limitée exprimée sous forme négative, comme dans l'examen limité, sur la régularité des comptes"
         ],
         "answer": 1
       },
@@ -431,10 +431,10 @@
       "question": "Pouvez-vous citer les quatre différentes modalités du contrôle d'activité professionnelle réalisé auprès des commissaires aux comptes par le H3C ?",
       "qcm": {
         "choices": [
-          "Contrôle structurel, contrôle technique, amélioration de la performance, contrôle de suivi",
-          "Contrôles périodiques (tous les six ans, trois ans pour les CAC d'EIP), contrôles occasionnels ou ciblés à la suite d'un signalement, contrôles thématiques, contrôles de suivi des recommandations",
-          "Contrôle sur pièces par la CNCC, audit par l'AMF, inspection par l'ACPR, enquête du procureur",
-          "Contrôle de qualité de l'Ordre, contrôle fiscal, contrôle URSSAF, contrôle Tracfin"
+          "Contrôles structurels, contrôles techniques, contrôles d'amélioration de la performance et contrôles de suivi des diligences",
+          "Contrôles périodiques, contrôles occasionnels après signalement, contrôles thématiques et contrôles de suivi des recommandations",
+          "Contrôle sur pièces par la CNCC, audit par l'AMF, inspection par l'ACPR et enquête préliminaire du procureur de la République sur le cabinet",
+          "Contrôle de qualité de l'Ordre, contrôle fiscal, contrôle de l'URSSAF et contrôle de Tracfin sur les cabinets"
         ],
         "answer": 1
       },
@@ -462,10 +462,10 @@
       "question": "Dans le cadre de leurs contrôles, que peuvent demander ou faire les agents du H3C auprès du commissaire aux comptes ou de toute autre personne ?",
       "qcm": {
         "choices": [
-          "Obtenir du contrôlé tout document ou information concernant ses missions et prestations et en exiger copie, obtenir des informations de toute autre personne, procéder à des contrôles sur place et recourir à des experts, sans que le secret professionnel puisse leur être opposé",
-          "Uniquement consulter les dossiers au siège de la Compagnie nationale, sur convocation du contrôlé",
-          "Perquisitionner le cabinet et saisir les documents sous le contrôle du juge des libertés",
-          "Interroger le contrôlé par écrit, celui-ci pouvant opposer le secret professionnel pour les dossiers clients"
+          "Obtenir tout document sur ses missions et prestations, avec copie, et des informations auprès de tiers, contrôler sur place, recourir à des experts, sans se voir opposer le secret",
+          "Uniquement consulter, au siège de la Compagnie nationale et sur convocation du contrôlé, les dossiers que celui-ci accepte de leur communiquer",
+          "Perquisitionner le cabinet et saisir les documents utiles, après autorisation du juge des libertés et de la détention, et entendre sous serment les associés du cabinet",
+          "Interroger le contrôlé par écrit uniquement, celui-ci pouvant opposer le secret professionnel pour les dossiers clients et refuser la copie des documents"
         ],
         "answer": 0
       },
@@ -493,10 +493,10 @@
       "question": "Citez quatre des missions du comité spécialisé (comité d'audit) prévu par le code de commerce.",
       "qcm": {
         "choices": [
-          "Arrêter les comptes, nommer le commissaire aux comptes, fixer ses honoraires et approuver son rapport",
-          "Suivre le processus d'élaboration de l'information financière et de durabilité, suivre l'efficacité du contrôle interne et de la gestion des risques, émettre une recommandation sur les CAC proposés à la désignation, suivre la réalisation de leur mission, s'assurer de leur indépendance et approuver les services autres que la certification",
-          "Certifier les comptes consolidés, réviser le rapport de gestion, convoquer l'assemblée générale et répartir les dividendes",
-          "Contrôler les rémunérations des dirigeants, approuver les conventions réglementées et désigner les administrateurs indépendants"
+          "Arrêter les comptes annuels, nommer le commissaire aux comptes, fixer ses honoraires et approuver son rapport avant sa transmission à l'assemblée",
+          "Suivre l'élaboration de l'information financière, suivre l'efficacité du contrôle interne, recommander les CAC à désigner et s'assurer de leur indépendance",
+          "Certifier les comptes consolidés, réviser le rapport de gestion, convoquer l'assemblée générale et répartir les dividendes entre les actionnaires",
+          "Contrôler les rémunérations des dirigeants, approuver les conventions réglementées, désigner les administrateurs indépendants et fixer l'ordre du jour de l'assemblée"
         ],
         "answer": 1
       },
@@ -524,10 +524,10 @@
       "question": "Citez quatre des actions de formation éligibles à l'obligation de formation professionnelle des commissaires aux comptes.",
       "qcm": {
         "choices": [
-          "Participation à des séminaires de formation, à l'autoformation encadrée ou à des formations à distance ; assistance à des colloques ou conférences ; conception ou animation de formations ; rédaction et publication de travaux techniques ; participation à des travaux techniques ; formation particulière après trois ans sans mission",
+          "Participation à des séminaires ou à l'autoformation encadrée ; assistance à des colloques ; conception ou animation de formations ; rédaction et publication de travaux techniques",
           "Lecture de la presse professionnelle, veille réglementaire personnelle, abonnement à des bases documentaires et participation aux assemblées de la compagnie régionale",
-          "Stage de trois ans chez un commissaire aux comptes, obtention du DEC, réussite du certificat d'aptitude",
-          "Heures de supervision des collaborateurs, revue indépendante des dossiers et participation au contrôle d'activité"
+          "Stage de trois ans chez un commissaire aux comptes ; obtention du DEC ; réussite du certificat d'aptitude ; expérience acquise lors des missions de certification",
+          "Heures de supervision des collaborateurs ; revue indépendante des dossiers ; participation au contrôle d'activité ; temps passé à la préparation des missions"
         ],
         "answer": 0
       },
@@ -555,10 +555,10 @@
       "question": "Quels sont les principes relatifs à l'utilisation des travaux de l'expert-comptable par le commissaire aux comptes ?",
       "qcm": {
         "choices": [
-          "Le CAC peut se fonder sur l'attestation de présentation de l'expert-comptable, qui constitue un élément probant suffisant dispensant de contrôles propres",
-          "Le CAC prend connaissance de la nature et de l'étendue de l'intervention de l'expert-comptable, apprécie la qualité de ses travaux par des procédures propres, peut les utiliser comme éléments probants mais conserve l'entière responsabilité de son opinion",
-          "Le CAC ne peut en aucun cas utiliser les travaux de l'expert-comptable, qui n'est pas indépendant de l'entité",
-          "Le CAC doit obtenir l'autorisation du conseil régional de l'Ordre avant de consulter les dossiers de l'expert-comptable"
+          "Le CAC peut se fonder sur l'attestation de présentation de l'expert-comptable, qui constitue un élément probant suffisant dispensant de contrôles propres de sa part",
+          "Le CAC prend connaissance de l'étendue de l'intervention de l'expert-comptable, apprécie la qualité de ses travaux et reste seul responsable de son opinion",
+          "Le CAC ne peut en aucun cas utiliser les travaux de l'expert-comptable, qui n'est pas indépendant de l'entité, et doit tout refaire",
+          "Le CAC doit obtenir l'autorisation du conseil régional de l'Ordre avant de consulter les dossiers de l'expert-comptable de l'entité"
         ],
         "answer": 1
       },
@@ -585,10 +585,10 @@
       "question": "Citez quatre entités où la nomination du commissaire aux comptes ne dépend pas d'un seuil.",
       "qcm": {
         "choices": [
-          "Toutes les SA, toutes les SAS, toutes les SARL et toutes les associations",
-          "Les entités d'intérêt public (sociétés cotées sur un marché réglementé, établissements de crédit, entreprises d'assurance, mutuelles), les sociétés de financement, les OPCVM et SICAV, les partis politiques, les fondations reconnues d'utilité publique",
-          "Les commerçants personnes physiques, les micro-entrepreneurs, les sociétés civiles immobilières et les GIE",
-          "Les syndicats de copropriétaires, les comités sociaux et économiques, les indivisions et les tontines"
+          "Toutes les sociétés anonymes, toutes les SAS, toutes les SARL et toutes les associations déclarées, quelle que soit leur taille",
+          "Les EIP (sociétés cotées, établissements de crédit, entreprises d'assurance), les sociétés de financement, les OPCVM, les partis politiques",
+          "Les commerçants personnes physiques, les micro-entrepreneurs, les sociétés civiles immobilières familiales, les GIE et les sociétés en nom collectif",
+          "Les syndicats de copropriétaires, les comités sociaux et économiques, les indivisions, les tontines et les sociétés en participation"
         ],
         "answer": 1
       },

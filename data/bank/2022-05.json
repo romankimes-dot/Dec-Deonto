@@ -13,10 +13,10 @@
       "qcm": {
         "question": "Au sens de la réglementation LCB-FT, un maire et un député sont-ils des personnes politiquement exposées (PPE) ?",
         "choices": [
-          "Le député est une PPE (membre d'une assemblée parlementaire nationale) ; le maire ne l'est pas en tant que tel, les élus locaux ne figurant pas dans la liste réglementaire",
-          "Tous deux sont des PPE car ils exercent un mandat électif",
+          "Le député est une PPE (parlementaire national) ; le maire ne l'est pas en tant que tel",
+          "Tous deux sont des PPE dès lors qu'ils exercent un mandat électif sur le territoire français",
           "Aucun des deux : seules les personnes exerçant des fonctions à l'étranger sont des PPE",
-          "Le maire est une PPE car il engage des fonds publics ; le député ne l'est pas"
+          "Le maire est une PPE car il engage des fonds publics communaux ; le député ne l'est pas"
         ],
         "answer": 0
       },
@@ -44,10 +44,10 @@
       "qcm": {
         "question": "À l'issue d'un contrôle qualité LCB-FT mené par l'Ordre des experts-comptables, la conclusion peut être :",
         "choices": [
-          "Une conclusion sans observation, avec simples observations, ou avec observations entraînant un nouveau contrôle sur site à l'issue d'un an, le comité LBC-FT pouvant en outre saisir l'instance disciplinaire",
-          "Certification sans réserve, avec réserve ou refus de certifier",
-          "Attestation sans observation, avec observation ou refus d'attester",
-          "Classement sans suite, déclaration de soupçon à Tracfin ou transmission au procureur"
+          "Sans observation, avec observations, ou avec observations et nouveau contrôle à un an",
+          "Certification sans réserve, avec réserve ou refus de certifier, prononcée par le comité LBC-FT",
+          "Attestation sans observation, avec observation ou refus d'attester, délivrée par le Conseil national",
+          "Classement sans suite, déclaration de soupçon à Tracfin ou transmission au procureur de la République"
         ],
         "answer": 0
       },
@@ -77,9 +77,9 @@
       "qcm": {
         "question": "Quelles sont les étapes successives du devoir de conseil de l'expert-comptable ?",
         "choices": [
-          "Se renseigner sur la situation du client, l'informer, le mettre en garde sur les risques, lui recommander la solution adaptée, et conserver la preuve écrite de ces diligences",
-          "Certifier les comptes, révéler les faits délictueux, déclencher la procédure d'alerte",
-          "Établir la lettre de mission, tenir la comptabilité, attester les comptes",
+          "Se renseigner sur la situation du client, l'informer, le mettre en garde, lui recommander la solution adaptée et conserver la preuve écrite",
+          "Certifier les comptes, révéler les faits délictueux au procureur, déclencher la procédure d'alerte auprès du président du tribunal et saisir la H2A",
+          "Établir la lettre de mission, tenir la comptabilité, attester les comptes et facturer les honoraires au client",
           "Conseiller uniquement sur demande expresse du client, le devoir de conseil n'existant pas sans mission comptable"
         ],
         "answer": 0
@@ -109,10 +109,10 @@
       "qcm": {
         "question": "Lors de la reprise d'un dossier, l'expert-comptable sortant est-il délié du secret professionnel à l'égard du confrère successeur ?",
         "choices": [
-          "Non : aucune levée légale n'existe entre confrères ; il se borne à restituer au client ses documents et à informer le successeur des honoraires restant dus",
+          "Non : aucune levée légale n'existe entre confrères ; il restitue au client ses documents",
           "Oui : la loi lève le secret entre prédécesseur et successeur, comme pour les commissaires aux comptes",
-          "Oui, dès lors que le client a signé une autorisation de transmission du dossier",
-          "Non, sauf autorisation du président du conseil régional"
+          "Oui, dès que le successeur lui a adressé la lettre d'information préalable prévue par le code de déontologie",
+          "Non, sauf autorisation du président du conseil régional ou du Conseil national"
         ],
         "answer": 0
       },
@@ -141,10 +141,10 @@
       "qcm": {
         "question": "L'expert-comptable sortant doit-il informer le confrère qui reprend le dossier qu'il a adressé une déclaration de soupçon à Tracfin ?",
         "choices": [
-          "Non : il lui est interdit de révéler l'existence et le contenu d'une déclaration de soupçon, sous peine de sanctions pénales",
+          "Non : il lui est interdit de révéler l'existence d'une déclaration de soupçon",
           "Oui : la confraternité impose de prévenir le successeur du risque de blanchiment",
-          "Oui, mais uniquement si le successeur appartient au même réseau",
-          "Non, sauf si Tracfin a accusé réception de la déclaration"
+          "Oui, mais uniquement si le successeur est inscrit au même conseil régional de l'Ordre",
+          "Non, sauf si Tracfin a accusé réception de la déclaration par courrier"
         ],
         "answer": 0
       },
@@ -172,10 +172,10 @@
       "qcm": {
         "question": "Le non-paiement par un expert-comptable des cotisations dues à sa caisse de retraite (CAVEC) peut-il donner lieu à une sanction disciplinaire ?",
         "choices": [
-          "Oui : le non-paiement des cotisations CAVEC, obligatoires (ord. art. 27 bis), pendant deux ans sur les dix dernières années et sans motif valable, entraîne la radiation d'office du tableau prononcée par le conseil régional",
-          "Non : seuls les manquements commis dans l'exécution des missions sont disciplinairement sanctionnables",
+          "Oui : le non-paiement des cotisations CAVEC pendant deux ans sur les dix dernières années, sans motif valable, entraîne la radiation d'office",
+          "Non : seuls les manquements commis dans l'exécution des missions confiées par les clients sont disciplinairement sanctionnables",
           "Non : la CAVEC dispose de ses propres sanctions et la chambre de discipline n'est compétente que pour les cotisations ordinales",
-          "Oui, mais seulement par la commission des sanctions de la H2A"
+          "Oui, mais seulement par la commission des sanctions de la H2A, après avis du Conseil national de l'Ordre"
         ],
         "answer": 0
       },
@@ -204,7 +204,7 @@
       "qcm": {
         "question": "Quelle a été la principale évolution du mode de scrutin pour l'élection du Conseil national de l'Ordre des experts-comptables en 2020 ?",
         "choices": [
-          "Le passage à une élection au suffrage direct par l'ensemble des membres de l'Ordre, au lieu d'une élection par les membres des conseils régionaux",
+          "Le passage à une élection au suffrage direct par l'ensemble des membres de l'Ordre",
           "La désignation des membres par le ministre chargé du budget sur proposition du commissaire du gouvernement",
           "L'élection par les présidents des compagnies régionales des commissaires aux comptes",
           "La suppression des élections au profit d'un tirage au sort parmi les inscrits"
@@ -235,10 +235,10 @@
       "qcm": {
         "question": "Qu'est-ce que le mandat implicite de l'expert-comptable, instauré par la loi Pacte ?",
         "choices": [
-          "La présomption simple selon laquelle l'expert-comptable chargé d'une mission est mandaté par son client pour le représenter devant l'administration fiscale et les organismes de sécurité sociale, sans mandat écrit distinct",
+          "La présomption simple que l'expert-comptable a reçu mandat de représenter son client devant l'administration fiscale et les organismes sociaux",
           "L'autorisation donnée à l'expert-comptable de régler les dettes de son client et de recouvrer ses créances sans accord de celui-ci",
-          "La faculté pour le commissaire aux comptes de certifier les comptes sans nomination par l'assemblée",
-          "La reconduction tacite de la lettre de mission à l'issue de chaque exercice"
+          "La faculté pour le commissaire aux comptes de certifier les comptes sans avoir été nommé par l'assemblée générale",
+          "La reconduction tacite de la lettre de mission à l'issue de chaque exercice, sauf dénonciation par le client"
         ],
         "answer": 0
       },
@@ -266,8 +266,8 @@
       "qcm": {
         "question": "La responsabilité civile de l'expert-comptable suppose la réunion de :",
         "choices": [
-          "Une faute (manquement contractuel ou délictuel), un préjudice certain et un lien de causalité entre les deux",
-          "Un élément légal, un élément matériel et un élément intentionnel",
+          "Une faute, un préjudice certain et un lien de causalité entre les deux",
+          "Un élément légal, un élément matériel et un élément moral de l'infraction",
           "Une plainte du client, une sanction disciplinaire préalable et une condamnation pénale",
           "Un dépassement des seuils, une absence de lettre de mission et un refus d'attester"
         ],
@@ -298,10 +298,10 @@
       "qcm": {
         "question": "Laquelle de ces situations impose la mise à jour de la lettre de mission de l'expert-comptable ?",
         "choices": [
-          "Une modification significative de la nature ou de l'étendue de la mission, ou un changement important dans la situation du client",
-          "Le simple renouvellement annuel de la mission sans changement",
+          "Une modification significative de la nature ou de l'étendue de la mission",
+          "Le simple renouvellement annuel de la mission, sans changement de son périmètre",
           "La nomination d'un commissaire aux comptes suppléant chez le client",
-          "Le changement de président du conseil régional de l'Ordre"
+          "Le changement de président du conseil régional de l'Ordre dont relève le cabinet"
         ],
         "answer": 0
       },
@@ -329,10 +329,10 @@
       "qcm": {
         "question": "Un commissaire aux comptes peut-il déléguer à un confrère d'une autre structure la réalisation de ses missions de certification, en ne conservant que la signature des rapports ?",
         "choices": [
-          "Non : le mandat est personnel ; le CAC nommé doit accomplir la mission sous sa responsabilité avec ses propres collaborateurs ou experts, et signer un rapport fondé sur des travaux qu'il n'a pas dirigés serait une faute",
+          "Non : le mandat est personnel ; le CAC doit accomplir la mission sous sa responsabilité, avec ses collaborateurs ou experts",
           "Oui : la délégation est libre entre commissaires aux comptes inscrits, à condition d'en informer la compagnie régionale",
-          "Oui, si l'assemblée générale de chaque entité autorise la délégation",
-          "Non, sauf si Maxime est nommé commissaire aux comptes suppléant"
+          "Oui, si l'assemblée générale de chaque entité concernée autorise expressément la délégation par écrit",
+          "Non, sauf si le confrère est nommé commissaire aux comptes suppléant de l'entité concernée"
         ],
         "answer": 0
       },
@@ -360,10 +360,10 @@
       "qcm": {
         "question": "Dans un co-commissariat, un cabinet sans compétence dans le secteur ni en consolidation prévoit d'assumer 10 % des travaux et honoraires et de se limiter à une revue des travaux de l'autre cabinet. Peut-il accepter la mission ?",
         "choices": [
-          "Non : la répartition doit être équilibrée (NEP 100) et le CAC doit disposer de la compétence nécessaire ; une revue critique ne remplace pas une participation effective aux travaux",
-          "Oui : la NEP 100 autorise toute répartition dès lors qu'elle est écrite et acceptée par les deux cabinets",
-          "Oui, car l'examen contradictoire des travaux suffit à engager la responsabilité solidaire des deux cabinets",
-          "Non, car le co-commissariat n'est pas autorisé dans le secteur sanitaire et social"
+          "Non : la répartition doit être équilibrée (NEP 100) et le CAC doit avoir la compétence requise ; une simple revue ne suffit pas",
+          "Oui : la NEP 100 autorise toute répartition dès lors qu'elle est écrite, acceptée par les deux cabinets et communiquée à l'entité",
+          "Oui, car l'examen contradictoire des travaux suffit à engager la responsabilité solidaire des deux cabinets vis-à-vis de l'entité",
+          "Non, car le co-commissariat est interdit aux cabinets intervenant dans le secteur sanitaire et social"
         ],
         "answer": 0
       },
@@ -392,10 +392,10 @@
       "qcm": {
         "question": "Selon la NEP 200, les limites inhérentes à l'audit des comptes tiennent notamment :",
         "choices": [
-          "À l'utilisation des techniques de sondages, aux limites inhérentes au contrôle interne et au fait que la plupart des éléments collectés conduisent davantage à des présomptions qu'à des certitudes",
-          "Au barème d'heures, au secret professionnel et à la non-immixtion dans la gestion",
-          "Au coût de l'audit, au délai légal de dépôt des comptes et à la taille de l'équipe",
-          "À l'absence de lettre de mission, à la rotation des associés et à l'interdiction des services non audit"
+          "Aux sondages, aux limites du contrôle interne et au fait que les éléments collectés donnent des présomptions plutôt que des certitudes",
+          "Au barème d'heures, au secret professionnel, à la non-immixtion dans la gestion et à l'obligation de révéler les faits délictueux",
+          "Au coût de l'audit, au délai légal de dépôt des comptes, à la taille de l'équipe et à la date de tenue de l'assemblée générale annuelle",
+          "À l'absence de lettre de mission, à la rotation des associés dans les EIP et à l'interdiction des services non audit"
         ],
         "answer": 0
       },
@@ -424,10 +424,10 @@
       "qcm": {
         "question": "Comment distinguer le plan de mission du programme de travail du commissaire aux comptes ?",
         "choices": [
-          "Le plan de mission décrit l'approche générale des travaux (étendue, calendrier, orientations, risques, seuils) ; le programme de travail détaille la nature et l'étendue des diligences nécessaires à sa mise en œuvre, avec le nombre d'heures et les intervenants",
-          "Le plan de mission est signé par l'entité, le programme de travail par la compagnie régionale",
-          "Le plan de mission fixe les honoraires ; le programme de travail est la lettre de mission",
-          "Le plan de mission concerne les comptes consolidés, le programme de travail les comptes annuels"
+          "Le plan de mission décrit l'approche générale (étendue, calendrier, risques) ; le programme de travail détaille les diligences à réaliser, avec heures et intervenants",
+          "Le plan de mission est signé par l'entité contrôlée, tandis que le programme de travail est visé par la compagnie régionale avant le début de la mission",
+          "Le plan de mission fixe le montant des honoraires et la durée du mandat ; le programme de travail n'est autre que la lettre de mission signée avec l'entité",
+          "Le plan de mission ne concerne que les comptes consolidés, alors que le programme de travail est établi uniquement pour les comptes annuels"
         ],
         "answer": 0
       },
@@ -455,10 +455,10 @@
       "qcm": {
         "question": "Selon le code de déontologie des commissaires aux comptes, exercent des fonctions sensibles au sein de l'entité certifiée :",
         "choices": [
-          "Les mandataires sociaux, les préposés chargés de tenir les comptes ou d'élaborer les états financiers, et les cadres dirigeants pouvant influer sur l'établissement de ces états",
-          "Les salariés du service commercial, les actionnaires minoritaires et les fournisseurs",
-          "Les membres du comité social et économique, les délégués syndicaux et le médecin du travail",
-          "Les avocats de l'entité, son expert-comptable et son banquier"
+          "Les mandataires sociaux, les préposés tenant les comptes ou élaborant les états financiers et les cadres dirigeants pouvant influer sur ces états",
+          "Les salariés du service commercial, les actionnaires minoritaires et les fournisseurs principaux de l'entité certifiée",
+          "Les membres du comité social et économique, les délégués syndicaux, le médecin du travail et les représentants du personnel",
+          "Les avocats de l'entité, son expert-comptable, son banquier et ses assureurs, en leur qualité de conseils externes"
         ],
         "answer": 0
       },
@@ -487,10 +487,10 @@
       "qcm": {
         "question": "La responsabilité pénale du commissaire aux comptes suppose la réunion de trois éléments :",
         "choices": [
-          "Un élément légal (texte d'incrimination), un élément matériel (acte ou omission) et un élément moral (intention ou, selon le cas, imprudence)",
-          "Une faute, un préjudice et un lien de causalité",
-          "Une plainte de l'entité, une sanction de la H2A et un rapport de la CNCC",
-          "Un mandat en cours, un dépassement des seuils et une absence de lettre de mission"
+          "Un élément légal, un élément matériel (acte ou omission) et un élément moral (intention ou imprudence)",
+          "Une faute, un préjudice et un lien de causalité entre la faute et le préjudice subi par l'entité contrôlée",
+          "Une plainte de l'entité, une sanction de la H2A et un rapport de la CNCC transmis au procureur de la République",
+          "Un mandat en cours, un dépassement des seuils légaux et une absence de lettre de mission signée par l'entité"
         ],
         "answer": 0
       },
@@ -518,10 +518,10 @@
       "qcm": {
         "question": "Selon le code de commerce, constitue une faute disciplinaire du commissaire aux comptes :",
         "choices": [
-          "Tout manquement aux conditions légales d'exercice de la profession, ainsi que toute négligence grave et tout fait contraire à la probité ou à l'honneur",
-          "Uniquement le défaut de formation continue et le non-paiement des cotisations",
-          "Uniquement les infractions pénales définitivement jugées",
-          "Toute divergence d'appréciation avec l'entité sur l'application des règles comptables"
+          "Tout manquement aux conditions légales d'exercice, toute négligence grave et tout fait contraire à la probité ou à l'honneur",
+          "Uniquement le défaut de formation continue et le non-paiement des cotisations à la compagnie régionale ou à la H2A",
+          "Uniquement les infractions pénales définitivement jugées par une juridiction répressive française, à l'exclusion des fautes civiles",
+          "Toute divergence d'appréciation avec l'entité sur l'application des règles comptables ou des normes d'exercice"
         ],
         "answer": 0
       },
@@ -550,10 +550,10 @@
       "qcm": {
         "question": "Après un refus de certifier pour désaccord et une révélation au procureur, l'assemblée approuve les comptes. Que doit faire le commissaire aux comptes ?",
         "choices": [
-          "Rien de plus : ses obligations sont remplies ; il poursuit son mandat sans démissionner, en tirant les conséquences sur l'exercice suivant, tandis que le parquet peut poursuivre les dirigeants pour présentation de comptes infidèles",
-          "Démissionner immédiatement, l'approbation des comptes valant désaveu de sa mission",
-          "Retirer sa révélation auprès du procureur, l'assemblée ayant régularisé la situation",
-          "Saisir le tribunal de commerce pour faire annuler l'assemblée générale"
+          "Rien de plus : ses obligations sont remplies ; il poursuit son mandat sans démissionner, et le parquet peut poursuivre les dirigeants pour comptes infidèles",
+          "Démissionner immédiatement, l'approbation des comptes par l'assemblée valant désaveu de sa mission et rendant impossible la poursuite du mandat jusqu'à son terme",
+          "Retirer sa révélation auprès du procureur, l'assemblée ayant régularisé la situation en approuvant les comptes malgré son refus de certifier",
+          "Saisir le tribunal de commerce pour faire annuler l'assemblée générale, puis demander la désignation d'un mandataire ad hoc"
         ],
         "answer": 0
       },
@@ -582,10 +582,10 @@
       "qcm": {
         "question": "Les dirigeants refusent de communiquer au commissaire aux comptes des pièces utiles à sa mission. Il doit :",
         "choices": [
-          "Réitérer sa demande par écrit, puis, le refus constituant un délit d'entrave, le révéler au procureur de la République et en tirer les conséquences dans son rapport (limitation, réserve ou impossibilité de certifier)",
-          "Saisir le président de la compagnie régionale pour qu'il ordonne la communication",
-          "Démissionner pour difficulté dans l'accomplissement de la mission",
-          "Certifier les comptes avec une observation signalant les pièces manquantes"
+          "Réitérer sa demande par écrit, révéler le délit d'entrave au procureur et en tirer les conséquences dans son rapport (réserve ou impossibilité de certifier)",
+          "Saisir le président de la compagnie régionale pour qu'il enjoigne aux dirigeants de communiquer les pièces, puis informer l'assemblée générale par lettre recommandée",
+          "Démissionner pour difficulté dans l'accomplissement de la mission, après en avoir informé la H2A et le président de la compagnie régionale",
+          "Certifier les comptes sans réserve avec une observation signalant les pièces manquantes, sans en informer le procureur"
         ],
         "answer": 0
       },
@@ -614,10 +614,10 @@
       "qcm": {
         "question": "Un commissaire aux comptes estime que sa mission requiert moins d'heures que le minimum du barème. Il doit :",
         "choices": [
-          "Solliciter une dérogation motivée auprès du président de la compagnie régionale, après information de l'entité",
-          "Appliquer librement le nombre d'heures qu'il juge nécessaire, le barème n'étant qu'indicatif",
-          "Demander l'autorisation de l'assemblée générale de l'entité",
-          "Saisir la H2A d'une demande d'avis préalable"
+          "Demander une dérogation motivée au président de la compagnie régionale",
+          "Appliquer librement le nombre d'heures qu'il juge nécessaire, le barème étant indicatif",
+          "Demander l'autorisation préalable de l'assemblée générale de l'entité",
+          "Saisir la H2A d'une demande d'avis préalable sur le nombre d'heures"
         ],
         "answer": 0
       },
