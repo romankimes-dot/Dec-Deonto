@@ -13,10 +13,10 @@
   - **sanctions** ;
   - **formation continue** ;
   - **coopération** (CEAOB européen, autorités de pays tiers).
-- **Délégation possible à la CNCC**, sous la supervision de la H2A :
-  - inscription et tenue de la liste ;
+- **Délégations actuelles à la CNCC**, sous la supervision de la H2A :
   - suivi de la **formation continue** ;
-  - **contrôles d'activité des CAC qui n'ont pas de mandat d'EIP**.
+  - **contrôles d'activité des CAC qui n'ont pas de mandat d'EIP**, par **conventions de délégation homologuées par arrêté** (2017, 19/05/2023, nouvelle convention homologuée le **6/07/2026**).
+- L'**inscription et la tenue de la liste** restent assurées par la **H2A elle-même**.
 - **Services internes** : direction des contrôles (**contrôleurs salariés** de la H2A) ; **rapporteur général** et **service des enquêtes** ; commission des sanctions (fiche 08).
 
 ### Autorité des marchés financiers (AMF)
@@ -31,7 +31,7 @@
 | Population | Contrôleur | Périodicité |
 |---|---|---|
 | CAC titulaires de **mandats d'EIP** | **Contrôleurs de la H2A** (agents de la H2A), **sans délégation** | **Tous les 3 ans** (**6 ans** pour les EIP qui ne sont pas de grande taille, au sens du règlement UE art. 26) |
-| CAC **sans mandat d'EIP** | **H2A**, avec **possibilité de délégation à la CNCC** ; contrôles menés par des **CAC contrôleurs** de la CNCC et des CRCC selon le cahier des charges de la H2A | **Au moins tous les 6 ans** |
+| CAC **sans mandat d'EIP** | **Délégués à la CNCC** par la H2A (convention homologuée par arrêté, la dernière le 6/07/2026). Ce n'est **pas un simple concours**. Les contrôles sont menés par des **CAC contrôleurs** de la CNCC et des CRCC, selon le cahier des charges et sous la **supervision de la H2A** | **Au moins tous les 6 ans** |
 
 - Le contrôle porte sur la **structure** (société de CAC), sur les **CAC personnes physiques** et sur leurs **mandats**. Il s'étend à la **LCB-FT**, puisque la H2A est l'autorité de contrôle des CAC au sens du C. mon. fin.
 
@@ -111,7 +111,7 @@
 | Finalité | Vérifier la qualité, **recommander** | **Établir les faits** | **Sanctionner** |
 
 ## Pièges EC vs CAC
-- **Contrôleurs** : chez l'EC, ce sont des **EC candidats** désignés par l'Ordre ; chez le CAC, des **agents de la H2A** (EIP) ou des **CAC agissant pour la CNCC** (non-EIP).
+- **Contrôleurs** : chez l'EC, ce sont des **EC candidats** désignés par l'Ordre ; chez le CAC, des **agents de la H2A** (EIP) ou des **CAC agissant pour la CNCC par délégation** (non-EIP).
 - **Périodicité** : environ **6 ans** pour l'EC ; **3 ans pour les EIP** et **6 ans pour les non-EIP** chez le CAC.
 - **Champ** : le contrôle de qualité de l'Ordre **exclut le CAC** ; le contrôle H2A ne vise **que l'activité de CAC** (et de durabilité).
 - **Revue indépendante** : pour l'EC, c'est une **règle interne de la NPMQ** ; pour le CAC, une **obligation légale** pour les EIP (règlement UE).
@@ -120,7 +120,6 @@
 
 ## À vérifier
 - **Les quatre modalités officielles** du contrôle d'activité (annale 2023-11 Q15) : la fiche retient périodique, occasionnel, thématique et suivi.
-- **État des délégations H2A → CNCC en 2026** : contrôles non-EIP délégués ou réalisés avec le **concours** de la CNCC ? (annale 2020-11 Q19 : réponses B et D).
 - **Périodicité EIP** : 3 ans pour toutes les EIP, ou 6 ans pour les plus petites ?
 - **Liste réglementaire des vérifications** du contrôleur (annale 2019-05 Q18 ; R.821-x).
 - **Mesures post-contrôle** dont dispose la H2A (recommandations, injonctions, mises en demeure).

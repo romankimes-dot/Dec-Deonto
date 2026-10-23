@@ -164,7 +164,7 @@
   - procure une information **sincère**, **loyale** et **objective** ;
   - respecte la **dignité** de la profession, le **secret professionnel** et l'**indépendance** ;
   - n'est **ni trompeuse ni de nature à induire en erreur**.
-- **Sollicitation personnalisée et proposition de services en ligne** autorisées. Conditions :
+- **Sollicitation personnalisée et proposition de services en ligne** : elles sont **permises depuis le code de déontologie de 2020**, sous conditions. Le **décret 2026-176 du 11/03/2026** est à vérifier. Conditions :
   - information **sincère** sur la nature des services ;
   - **exclusion de tout élément comparatif ou dénigrant** ;
   - **précision des modalités de détermination des honoraires**.
@@ -201,7 +201,8 @@
   4. **évaluer le risque** et déterminer le **niveau de vigilance** ;
   5. vérifier les **PPE** et les **gels des avoirs**.
 - **Bénéficiaire effectif** : la **personne physique** qui **contrôle en dernier lieu**, directement ou indirectement, le client, ou pour laquelle une opération est réalisée. Elle détient **plus de 25 % du capital ou des droits de vote** ou exerce un **pouvoir de contrôle**. À défaut : le **représentant légal**.
-- **Société cotée** (marché réglementé) : **vigilance allégée**. Le CAC est **dispensé d'identifier le bénéficiaire effectif** (à vérifier). Il reste soumis à la révélation, à la déclaration de soupçon et à l'identification du client.
+- **Niveaux de vigilance** : le C. mon. fin. prévoit une vigilance **simplifiée**, **standard** et **renforcée**. L'EC, sous la NPLAB, ne connaît que standard et renforcée.
+- **Société cotée** (marché réglementé) : **vigilance simplifiée**. Le CAC est **dispensé d'identifier le bénéficiaire effectif** (à vérifier). Il reste soumis à la révélation, à la déclaration de soupçon et à l'identification du client.
 - **Déclaration de soupçon** : faite en principe par le **CAC signataire**, personne physique, à **Tracfin**. Elle est **confidentielle**.
 - Le CAC **ne peut pas démissionner** pour éviter de faire une déclaration de soupçon.
 - La **H2A**, autorité de contrôle, **informe Tracfin** des faits susceptibles de blanchiment découverts lors d'un contrôle.
@@ -217,6 +218,7 @@
 
 ## À vérifier
 - **Liste exacte et ordre des principes fondamentaux** du titre I, section 1, et les qualités de l'**art. 3** (intégrité) : honnêteté, droiture, probité, loyauté ? (annales 2025-05 Q16 et 2025-11 Q17).
+- **Décret n° 2026-176 du 11/03/2026** : son incidence sur la publicité et la sollicitation des CAC.
 - **Intitulé exact et champ** des deux **normes de déontologie** (A.821-54 s.) (annale 2024-05 Q12).
 - **Les cinq « dispositions complémentaires »** du titre II (annale 2021-11 Q17).
 - **Définition réglementaire du « lien personnel »** (annale 2018-05 Q20) et **les 3 catégories de fonctions sensibles** de l'art. 31.

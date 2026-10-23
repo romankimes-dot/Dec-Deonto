@@ -133,7 +133,7 @@
 |---|---|---|
 | Missions d'EC (tenue, présentation, conseil…) | **Ordre des EC** (contrôle de qualité) | D. 2012-432, NPMQ |
 | LCB-FT chez l'EC | **Ordre des EC** | C. mon. fin. L.561-36 |
-| Missions de CAC (certification) | **H2A**, avec délégation ou concours de la **CNCC** pour les non-EIP | C. com. L.821-x |
+| Missions de CAC (certification) | **H2A** (EIP) ; **délégués à la CNCC** pour les non-EIP (convention homologuée par arrêté) | C. com. L.821-x |
 | LCB-FT chez le CAC | **H2A** | C. mon. fin. L.561-36 |
 | Expertise judiciaire | Juridictions et listes des cours d'appel | — |
 

@@ -31,7 +31,11 @@
   - **suivi de la formation continue** ;
   - **coopération** avec les autorités européennes et étrangères ;
   - **supervision des auditeurs de durabilité**.
-- **Délégations possibles à la CNCC** : inscription et tenue de la liste, **suivi de la formation continue**, **contrôles des CAC non-EIP**. La H2A garde la **supervision**.
+- **Délégations actuelles à la CNCC** :
+  - le **suivi de la formation continue** ;
+  - les **contrôles d'activité des CAC non-EIP**, **délégués** par des **conventions homologuées par arrêté** (2017, 19/05/2023, nouvelle convention homologuée le **6/07/2026**).
+- La H2A garde la **supervision**.
+- L'**inscription et la tenue de la liste** sont assurées par la **H2A elle-même** : elles ne sont **pas déléguées**.
 - La H2A **n'adopte pas** la déontologie des EC et n'est **pas** une instance d'appel des « commissions régionales de discipline », qui n'existent plus.
 - **Organes** :
   - le **collège**, composé de **non-praticiens** majoritaires : magistrats et personnalités qualifiées ;
@@ -63,14 +67,14 @@
 - **Prestation de serment** :
   - elle a lieu **devant le premier président de la cour d'appel** du ressort, **avant** tout exercice ;
   - formule : « Je jure d'**exercer ma profession avec honneur, probité et indépendance**, de **respecter et faire respecter les lois** ».
-- **Liste tenue par la H2A** : on s'inscrit **auprès de la H2A**, qui peut déléguer à la CNCC. On ne s'inscrit ni auprès de la CRCC ni du tribunal.
+- **Liste tenue par la H2A elle-même** (sans délégation) : on s'inscrit **auprès de la H2A**, ni auprès de la CNCC, ni de la CRCC, ni du tribunal.
 - **Recours** contre un **refus d'inscription** par la H2A : devant le **Conseil d'État**, ou la **cour d'appel de Paris** (à vérifier).
 - L'**usage du titre** sans inscription est **réprimé par la loi** : délit d'usurpation, **1 an d'emprisonnement et 15 000 € d'amende**.
 
-### Société de CAC : 3 conditions
+### Société de CAC : 3 conditions (L.821-16, ex L.822-1-3)
 1. La **majorité des droits de vote** est détenue par des **CAC** (ou des contrôleurs légaux de l'UE).
 2. La **majorité des membres des organes** de gestion, d'administration, de direction ou de surveillance sont des **CAC**.
-3. Les **dirigeants** (gérant, président, DG, membres du directoire) ou les représentants légaux sont des **CAC** (pour au moins la majorité).
+3. Les **dirigeants** (gérant, président, DG, membres du directoire) sont des **CAC**.
 
 - **Pas d'exercice sous forme d'association** : un CAC exerce **à titre individuel** ou en **société**.
 - Un CAC ne peut exercer qu'au sein **d'une seule société de CAC**, **sauf** si l'une **détient plus de la moitié du capital** des autres (**3 sociétés** possibles dans ce cas).
@@ -301,7 +305,6 @@
 ## À vérifier
 - **Juridiction de recours** contre un refus d'inscription par la H2A : Conseil d'État ou cour d'appel de Paris (annale 2024-11 Q12).
 - **Composition du conseil national de la CNCC** : qui sont les « autres membres » ? les présidents des CRCC ? Nombre de CRCC (17 ?) ; signification des chiffres « 17 » et « 22 » dans l'annale 2025-11 Q19.
-- **Délégations effectivement consenties** par la H2A à la CNCC en 2026 (inscription, formation, contrôles non-EIP).
 - **Recours** contre la décision du président de la CRCC sur le barème : bureau de la H2A ou une formation spécifique ? Recours ultérieur ?
 - **Instances successives en cas de litige d'honoraires** en certification, sous le régime H2A.
 - **Fusion de sociétés de CAC** : l'assemblée de l'entité auditée doit-elle délibérer, ou est-elle simplement informée ? Article exact.

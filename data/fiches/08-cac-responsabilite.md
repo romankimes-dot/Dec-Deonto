@@ -121,7 +121,7 @@
 ### Sanctions : personnes physiques
 1. **Avertissement**.
 2. **Blâme**.
-3. **Interdiction temporaire d'exercer** la fonction de CAC, **5 ans au plus**, éventuellement avec sursis.
+3. **Interdiction temporaire d'exercer** la fonction de CAC, **3 ans au plus** depuis le **1er janvier 2024** (**L.821-71** ; décision H2A CS 2025-13). Elle était de **5 ans** auparavant (H3C). Elle peut être assortie du sursis.
 4. **Radiation** de la liste.
 5. **Retrait de l'honorariat**.
 6. **Interdiction temporaire d'exercer des fonctions d'administration ou de direction** dans une société de CAC ou une EIP (**3 ans au plus**, à vérifier).
@@ -131,7 +131,7 @@
 - L'**emprisonnement** n'est **pas** une sanction disciplinaire.
 
 ### Sanctions : personnes morales (sociétés de CAC)
-- **Avertissement**, **blâme**, **interdiction temporaire d'exercer** (5 ans au plus), **radiation**.
+- **Avertissement**, **blâme**, **interdiction temporaire d'exercer** (**3 ans au plus** depuis le 01/01/2024, 5 ans avant), **radiation**.
 - **Sanction pécuniaire** : **1 M€ au plus**, ou un pourcentage du chiffre d'affaires selon les cas (à vérifier).
 - **Publication**.
 
@@ -156,7 +156,7 @@
 - **Prescription civile** : **5 ans** pour l'EC, aménageable jusqu'à 1 an minimum ; **3 ans** pour le CAC (révélation si dissimulation, 10 ans pour un crime), **non aménageable**.
 - **Plafonnement** : possible pour l'EC, **impossible** pour le CAC.
 - **Disciplinaire** : l'EC relève des **chambres régionale et nationale**, puis du **Conseil d'État** ; le CAC de la **commission des sanctions de la H2A**, puis du **Conseil d'État**.
-- **Sanctions** : pour l'EC, réprimande, blâme, suspension avec ou sans sursis, radiation ; pour le CAC, **avertissement**, blâme, interdiction temporaire (5 ans au plus), radiation, **sanction pécuniaire** (250 000 € / 1 M€), retrait de l'honorariat.
+- **Sanctions** : pour l'EC, réprimande, blâme, suspension avec ou sans sursis, radiation ; pour le CAC, **avertissement**, blâme, interdiction temporaire (**3 ans au plus**, 5 ans avant 2024), radiation, **sanction pécuniaire** (250 000 € / 1 M€), retrait de l'honorariat.
 - **Enquête** : chez l'EC, le rapporteur est désigné dans la chambre ; chez le CAC, c'est le **rapporteur général de la H2A**, et il est **séparé** de la commission.
 - **Responsabilité administrative** : elle n'existe **pas** pour l'EC ; elle **existe** pour le CAC (sanctions H2A).
 - **Révélation au procureur** : son omission est un **délit** pour le CAC ; il n'y a pas d'obligation équivalente pour l'EC.
@@ -165,6 +165,7 @@
 - **Composition exacte** de la commission des sanctions sous la H2A : nombre et qualité des personnalités qualifiées, présence d'un membre de la Cour des comptes (annale 2025-05 Q20).
 - **Liste exacte des personnes sanctionnables** selon L.820-2 dans sa version H2A (annale 2026-05 Q15).
 - **Liste exacte des autorités** pouvant saisir le rapporteur général (annale 2021-11 Q15).
+- **Interdiction temporaire d'exercer : 3 ans au plus** (L.821-71). Ce point a été confirmé par relecture et le piège « 5 ans » vient de l'ancien régime H3C.
 - **Plafonds** : 250 000 € pour une personne physique ; 1 M€ ou un pourcentage du CA pour une personne morale ; durée maximale de l'interdiction de fonctions de direction.
 - **Champ et sanctions de la procédure simplifiée**.
 - **Nouvelle numérotation** des délits pénaux (ex L.820-4 à L.820-7) après l'ordonnance 2023-1142, et **peine exacte** de l'exercice malgré une incompatibilité.

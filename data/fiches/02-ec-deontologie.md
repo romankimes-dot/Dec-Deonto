@@ -145,7 +145,7 @@
 | Étape | Contenu |
 |---|---|
 | **Avant la relation d'affaires** | **Identifier** le client et le **bénéficiaire effectif**, **vérifier** leur identité (pièces probantes) et recueillir des informations sur l'**objet et la nature** de la relation |
-| **Niveau de vigilance** | **Standard** ou **renforcée**, déterminé par une **analyse des risques**. La vigilance **simplifiée** est réservée aux cas de risque faible prévus par le C. mon. fin. |
+| **Niveau de vigilance** | La NPLAB ne connaît que **deux niveaux** : **standard** et **renforcée**, déterminés par une **analyse des risques**. Elle ne prévoit **pas de vigilance simplifiée**, contrairement au C. mon. fin. applicable au CAC |
 | **Pendant la relation** | **Vigilance constante** et mise à jour des informations |
 | **Conservation** | **5 ans** à compter de la fin de la relation |
 
@@ -200,6 +200,7 @@
 ## Pièges EC vs CAC
 - **Déclarant Tracfin** : pour le CAC, c'est en principe le **CAC signataire** (NEP 9605) ; pour l'EC, c'est le **déclarant désigné** (EC) de la structure.
 - **Norme anti-blanchiment** : NPLAB pour l'EC, **NEP 9605** pour le CAC.
+- **Niveaux de vigilance** : la NPLAB n'en prévoit que **2**, **standard et renforcée**. Côté CAC, le C. mon. fin. prévoit aussi une vigilance **simplifiée**, par exemple pour une société cotée.
 - **Secret** : il est d'ordre public pour les deux professions. Mais le CAC bénéficie de **levées spécifiques** (CAC de la mère et des filiales consolidées, successeur, H2A, AMF, comité d'audit) qui n'existent pas pour l'EC.
 - **Faits délictueux** : le CAC doit les **révéler au procureur** ; l'EC ne le doit pas.
 - **Publicité** : les deux professions interdisent le **comparatif** et le **dénigrement**. Le code CAC impose en plus de préciser les **modalités de détermination des honoraires** dans la sollicitation.
