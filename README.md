@@ -33,6 +33,11 @@ Programme officiel (arrêté du 13 février 2019) : exercice de la profession ·
 - **Examen** : 10 EC + 10 CAC, 60 min chrono, QCM ou QRC avec auto-correction, note /20, détail par thème.
 - **Fiches** : synthèses par thème (chiffres, instances, listes).
 - **Stats** : maîtrise par thème × profession, points faibles, historique des examens.
+- **Carrière** : 8 grades, du stagiaire de 1re année à l'expert-comptable installé. Le bureau évolue et se remplit des objets gagnés.
+- **Collection** : 209 badges en 7 familles (couverture, séries, maîtrise, repassage, anecdotes de carrière, chiffres et pièges, cachés). Catalogue complet dans `BADGES.md`.
+- **Souvenirs** : 64 cartes-souvenirs datées, chacune liée aux questions qui la débloquent.
+
+Les badges sont recalculés à partir de l'historique existant à la première ouverture. Pour modifier le catalogue : éditer `BADGES.md`, puis `npm run build`.
 
 ## Contenu et véracité
 
