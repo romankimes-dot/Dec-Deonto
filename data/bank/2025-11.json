@@ -1,0 +1,590 @@
+{
+  "session": "2025-11",
+  "format": "qcm",
+  "questions": [
+    {
+      "id": "2025-11-EC-01",
+      "n": 1,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["incompatibilites_activites"],
+      "points": 1,
+      "question": "Parmi les fonctions ou activités suivantes, laquelle est incompatible avec la profession d'expert-comptable ?",
+      "qcm": {
+        "choices": [
+          "Être conseiller en gestion de patrimoine à titre accessoire.",
+          "Être tiers payant pour un député européen.",
+          "Assister des clients dans le cadre de procédures auprès des tribunaux de l'ordre judiciaire ou administratif.",
+          "Représenter des clients auprès des tribunaux de l'ordre judiciaire ou administratif."
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Un expert-comptable peut-il représenter ses clients devant les juridictions judiciaires ou administratives ? Justifiez.",
+        "expected": [
+          "Non : la représentation en justice relève du monopole des avocats",
+          "L'EC doit respecter le monopole des autres professions",
+          "Activités accessoires possibles (gestion de patrimoine accessoire, tiers payant d'un député européen, assistance)"
+        ],
+        "model_answer": "Non. La représentation des parties devant les juridictions relève du monopole des avocats, que l'expert-comptable doit respecter. Il peut en revanche exercer certaines activités accessoires autorisées, comme le conseil en gestion de patrimoine à titre accessoire ou la fonction de tiers payant d'un député européen, et assister son client."
+      },
+      "explanation": "L'article 22 de l'ordonnance autorise, depuis la loi Pacte, des activités commerciales et actes d'intermédiaire accessoires dans les limites d'une norme professionnelle ; le tiers payant d'un député européen est prévu par les textes. La représentation en justice est un monopole de l'avocat (loi 71-1130). Nuance : l'assistance devant certaines juridictions est admise par la doctrine ordinale ; la frontière assistance / représentation est le cœur de la question.",
+      "reference": "Ord. 45-2138 art. 2 et 22 ; loi n° 71-1130 du 31 déc. 1971 art. 4",
+      "confidence": "medium"
+    },
+    {
+      "id": "2025-11-EC-02",
+      "n": 2,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["publicite_demarchage"],
+      "points": 1,
+      "question": "Laquelle de ces actions de promotion et de démarchage n'est pas autorisée ?",
+      "qcm": {
+        "choices": [
+          "Se faire référencer par une société commerciale non inscrite à l'Ordre des experts-comptables.",
+          "Se faire référencer sur un site qui comporte un système de notation par les clients.",
+          "Demander à ses clients d'en parrainer des nouveaux.",
+          "Mentionner dans une publicité l'appartenance au premier réseau de conseil et d'expertise comptable."
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Un cabinet peut-il se présenter dans une publicité comme membre du « premier réseau » de conseil et d'expertise comptable ? Justifiez.",
+        "expected": [
+          "Non : élément comparatif (superlatif) interdit",
+          "La communication doit être décente, empreinte de retenue, exacte, non trompeuse et exempte de tout élément comparatif",
+          "Le référencement sur des plateformes (même commerciales, même avec avis clients) et le parrainage sont admis sous conditions"
+        ],
+        "model_answer": "Non. L'article 152 du code de déontologie impose une communication décente, empreinte de retenue, exacte et exempte de tout élément comparatif : se dire membre du « premier réseau » introduit une comparaison avec les confrères. Le référencement sur des plateformes, même commerciales ou avec avis clients, et le parrainage restent possibles s'ils respectent ces principes et le secret."
+      },
+      "explanation": "Depuis 2014, la sollicitation est permise aux EC, y compris via des plateformes de mise en relation : le guide ordinal des plateformes encadre le recueil des avis clients et interdit seulement le classement des experts-comptables lié à leur rémunération. La mention de l'appartenance à un réseau est autorisée (art. 154 8°), mais pas le superlatif comparatif.",
+      "reference": "D. 2012-432 art. 152 et 154 ; guide ordinal de bonnes pratiques des plateformes en ligne",
+      "confidence": "medium"
+    },
+    {
+      "id": "2025-11-EC-03",
+      "n": 3,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["missions_assurance", "referentiel_normatif"],
+      "points": 1,
+      "question": "À l'issue de ses travaux, l'expert-comptable qui a une mission de présentation des comptes dans une entité dotée d'un commissaire aux comptes pourra délivrer :",
+      "qcm": {
+        "choices": [
+          "un refus d'attester.",
+          "un compte-rendu de mission.",
+          "un rapport sur la mission de présentation.",
+          "un compte-rendu de travaux."
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Quel document l'expert-comptable délivre-t-il à l'issue d'une mission de présentation dans une entité dotée d'un commissaire aux comptes, et pourquoi ?",
+        "expected": [
+          "Un compte rendu de travaux, sans formulation d'assurance",
+          "Pas d'attestation de présentation, sauf considérations particulières",
+          "Le CAC délivre une assurance de degré supérieur (raisonnable)"
+        ],
+        "model_answer": "Il délivre en principe un compte rendu de travaux, ne comportant pas d'expression d'assurance sur les comptes. Il n'a pas à émettre d'attestation de présentation, sauf considérations particulières, puisque le commissaire aux comptes délivre une assurance de niveau supérieur."
+      },
+      "explanation": "NP 2300, § A10 et exemple E4. Le refus d'attester existe, mais seulement dans le cadre d'une attestation de présentation. Ne pas confondre avec le rapport de certification du CAC.",
+      "reference": "NP 2300 § 22 et A10, annexe E4",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-11-EC-04",
+      "n": 4,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["secret_professionnel"],
+      "points": 1,
+      "question": "Dans quelle situation l'expert-comptable peut-il opposer le secret professionnel ?",
+      "qcm": {
+        "choices": [
+          "Lors d'une audition pénale en qualité de témoin ou de suspect libre.",
+          "Lors d'un contrôle qualité.",
+          "Lors d'un contrôle ou d'une enquête de l'Autorité des Marchés Financiers (AMF).",
+          "Lors d'un contrôle de la Commission Nationale de l'Informatique et des Libertés (CNIL)."
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Citez des situations dans lesquelles le secret professionnel de l'expert-comptable est levé, et une situation où il reste opposable.",
+        "expected": [
+          "Levée : témoignage / audition dans le cadre d'une procédure pénale",
+          "Levée : contrôle de qualité de l'Ordre",
+          "Levée : enquêtes et contrôles de l'AMF ; déclaration de soupçon à Tracfin",
+          "Opposable : contrôle de la CNIL (aucun texte de levée) ; le client ne peut pas délier"
+        ],
+        "model_answer": "Le secret de l'expert-comptable est levé notamment lors d'une audition ou d'un témoignage en matière pénale, lors du contrôle de qualité de l'Ordre et à l'égard de l'AMF ainsi que de Tracfin. Il reste opposable aux agents de la CNIL, faute de texte le levant."
+      },
+      "explanation": "Le secret (ord. art. 21, C. pén. 226-13) ne cède que devant une disposition législative contraire. Le CMF lève le secret à l'égard de l'AMF ; les contrôleurs qualité sont eux-mêmes tenus au secret. Pour la CNIL, la loi Informatique et libertés réserve expressément le secret professionnel applicable aux relations entre un professionnel et ses clients.",
+      "reference": "Ord. 45-2138 art. 21 ; C. pén. 226-13 et 226-14 ; CMF L.621-9-3 ; loi 78-17 art. 19",
+      "confidence": "medium"
+    },
+    {
+      "id": "2025-11-EC-05",
+      "n": 5,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["honoraires", "loi_pacte"],
+      "points": 1,
+      "question": "Laquelle des missions suivantes ne peut pas être rémunérée au succès ?",
+      "qcm": {
+        "choices": [
+          "Une mission d'accompagnement au financement de l'entreprise.",
+          "Une mission d'accompagnement à l'acquisition ou la cession d'une entreprise.",
+          "Une mission de recouvrement des créances clients.",
+          "Une mission d'optimisation des coûts fiscaux."
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Pour quelles missions l'expert-comptable ne peut-il pas percevoir d'honoraires complémentaires de résultat ?",
+        "expected": [
+          "Honoraires complémentaires liés à un objectif préalablement déterminé possibles depuis la loi Pacte",
+          "Exclus : missions des deux premiers alinéas de l'art. 2 (tenue, surveillance, révision, présentation… des comptes)",
+          "Exclus : missions participant à la détermination de l'assiette fiscale ou sociale du client",
+          "Ne doivent pas compromettre l'indépendance ni créer de conflit d'intérêts"
+        ],
+        "model_answer": "Les honoraires complémentaires de résultat sont interdits pour les missions comptables relevant du monopole (deux premiers alinéas de l'article 2) et pour celles participant à la détermination de l'assiette fiscale ou sociale du client, comme une mission d'optimisation des coûts fiscaux. Ils restent possibles pour d'autres missions (financement, cession, recouvrement) s'ils ne compromettent pas l'indépendance."
+      },
+      "explanation": "Article 24 de l'ordonnance, modifié par la loi Pacte : des honoraires complémentaires « au succès », s'ajoutant aux honoraires de diligence, sont admis sauf exceptions. Ne pas confondre avec le CAC, à qui toute rémunération proportionnelle ou conditionnelle est interdite (code de déontologie CAC art. 13).",
+      "reference": "Ord. 45-2138 art. 2 et 24",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-11-EC-06",
+      "n": 6,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["missions_assurance", "referentiel_normatif"],
+      "points": 1,
+      "question": "À l'issue d'une mission d'attestation particulière, l'expert-comptable délivrera une attestation avec une assurance de :",
+      "qcm": {
+        "choices": [
+          "niveau modéré ou de niveau raisonnable.",
+          "niveau modéré uniquement.",
+          "niveau raisonnable uniquement.",
+          "aucune de ces réponses."
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "question": "Quel niveau d'assurance l'expert-comptable exprime-t-il dans une mission d'attestation particulière (NP 3100) ?",
+        "expected": [
+          "Assurance raisonnable ou modérée selon le contexte de la mission",
+          "Autres missions d'assurance (informations autres que des comptes complets historiques)",
+          "Attestation directe ou indirecte, à l'aide de critères applicables"
+        ],
+        "model_answer": "L'attestation particulière (NP 3100) est une autre mission d'assurance : selon la lettre de mission et les diligences, l'expert-comptable exprime une assurance de niveau raisonnable ou de niveau modéré sur l'information visée, au regard de critères applicables."
+      },
+      "explanation": "La NP 3100 couvre des informations autres que des comptes complets historiques (attestations directes ou indirectes). À l'inverse, la présentation (NP 2300) et l'examen limité (NP 2400) ne donnent qu'une assurance modérée, l'audit (NP 2100) une assurance raisonnable.",
+      "reference": "NP 3100 (arrêté du 13 avr. 2022) § 3 ; cadre de référence",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-11-EC-07",
+      "n": 7,
+      "profession": "EC",
+      "theme": "controle_qualite",
+      "tags": ["controle_qualite"],
+      "points": 1,
+      "question": "Les contrôles qualité sont assurés par :",
+      "qcm": {
+        "choices": [
+          "des experts-comptables désignés par les conseils régionaux de l'Ordre des experts-comptables.",
+          "des experts-comptables qui ont fait acte de candidature.",
+          "des experts-comptables inscrits au Tableau de l'Ordre depuis moins de 5 ans.",
+          "des salariés des conseils régionaux et du conseil national de l'Ordre des experts-comptables."
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Qui réalise les contrôles de qualité des experts-comptables et selon quelles modalités ?",
+        "expected": [
+          "Des experts-comptables en exercice, contrôleurs volontaires ayant fait acte de candidature",
+          "Formés et habilités dans le cadre organisé par l'Ordre (conseils régionaux, harmonisation par le Conseil national)",
+          "Contrôle structurel du cabinet et contrôle technique des dossiers ; tenus au secret professionnel"
+        ],
+        "model_answer": "Le contrôle de qualité est réalisé par des experts-comptables en exercice, volontaires, ayant fait acte de candidature pour être contrôleurs, puis formés et missionnés dans le cadre organisé par l'Ordre. Ils examinent l'organisation du cabinet et, par sondages, les dossiers de travail, et sont tenus au secret professionnel."
+      },
+      "explanation": "Réponse retenue sur la base de la pratique ordinale (contrôleurs volontaires, conditions d'ancienneté d'inscription). Le décret de 1986 évoquait des contrôleurs désignés par les conseils régionaux, ce qui rend la proposition a) également plausible : point à vérifier dans le règlement intérieur de l'Ordre. Côté CAC, les contrôles d'activité sont réalisés par des contrôleurs de la H2A (ou de la CNCC par délégation pour les non-EIP).",
+      "reference": "Ord. 45-2138 ; D. 2012-432 ; règlement intérieur de l'Ordre (contrôle de qualité)",
+      "confidence": "low"
+    },
+    {
+      "id": "2025-11-EC-08",
+      "n": 8,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["lcb_ft"],
+      "points": 1,
+      "question": "Quels sont les deux niveaux de vigilance prévus par la norme professionnelle relative aux obligations de la profession en matière de lutte contre le blanchiment des capitaux et le financement du terrorisme ?",
+      "qcm": {
+        "choices": ["Faible et accrue.", "Allégée et standard.", "Standard et renforcée.", "Standard et accentuée."],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Quels sont les niveaux de vigilance prévus par la NPLAB ?",
+        "expected": [
+          "Vigilance standard",
+          "Vigilance renforcée (risque élevé, PPE, pays tiers à haut risque, opérations atypiques…)",
+          "Fixés selon l'approche par les risques"
+        ],
+        "model_answer": "La NPLAB retient deux niveaux de vigilance : standard et renforcée, déterminés selon l'évaluation du risque de la relation d'affaires (PPE, pays à haut risque, risque élevé…)."
+      },
+      "explanation": "Le CMF prévoit aussi des mesures simplifiées en cas de risque faible, mais la norme professionnelle de l'Ordre (NPLAB) n'en retient que deux. La NEP 9605 des CAC suit la même logique.",
+      "reference": "NPLAB ; CMF L.561-9 et L.561-10",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-11-EC-09",
+      "n": 9,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["honoraires", "lettre_mission"],
+      "points": 1,
+      "question": "Un expert-comptable peut-il faire usage de son droit de rétention sur les comptes annuels d'un client, si l'indemnité de rupture prévue par la lettre de mission ne lui a pas été réglée ?",
+      "qcm": {
+        "choices": ["Oui.", "Oui, si cela était convenu dans la lettre de mission.", "Non.", "Cela dépend des circonstances de départ du client."],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Dans quelles limites l'expert-comptable peut-il exercer un droit de rétention ?",
+        "expected": [
+          "Uniquement sur les travaux qu'il a effectués, faute de paiement des honoraires correspondants",
+          "Pas pour garantir une indemnité de rupture",
+          "Jamais sur les documents remis par le client",
+          "Information préalable du président du conseil régional de tout litige conduisant à envisager la rétention"
+        ],
+        "model_answer": "Non. Le droit de rétention ne garantit que le paiement des honoraires correspondant aux travaux réalisés et ne porte que sur ces travaux, jamais sur les documents remis par le client. Une indemnité de rupture n'est pas la contrepartie de travaux et ne peut justifier une rétention. L'expert-comptable doit en outre informer le président du conseil régional avant toute rétention."
+      },
+      "explanation": "La rétention est admise pour les travaux non payés (ord. art. 24 et code de déontologie art. 168 : information préalable du président du conseil régional). L'indemnité de rupture se recouvre par la conciliation, l'arbitrage du président du conseil régional ou le juge.",
+      "reference": "Ord. 45-2138 art. 24 ; D. 2012-432 art. 159, 160 et 168",
+      "confidence": "medium"
+    },
+    {
+      "id": "2025-11-EC-10",
+      "n": 10,
+      "profession": "EC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions"],
+      "points": 1,
+      "question": "Les chambres régionales de discipline peuvent prononcer des sanctions disciplinaires à l'encontre d'un expert-comptable, à l'exception de :",
+      "qcm": {
+        "choices": [
+          "la remontrance avec inscription au dossier.",
+          "le blâme avec inscription au dossier.",
+          "la suspension pour une durée déterminée avec sursis.",
+          "la radiation du Tableau comportant interdiction définitive d'exercer la profession."
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "question": "Quelles peines disciplinaires peut prononcer la chambre régionale de discipline à l'encontre d'un expert-comptable ?",
+        "expected": [
+          "Réprimande",
+          "Blâme avec inscription au dossier",
+          "Suspension pour une durée déterminée avec sursis ; suspension sans sursis",
+          "Radiation du tableau avec interdiction définitive d'exercer"
+        ],
+        "model_answer": "La réprimande, le blâme avec inscription au dossier, la suspension pour une durée déterminée avec sursis, la suspension sans sursis et la radiation du tableau comportant interdiction définitive d'exercer. La « remontrance » n'existe pas."
+      },
+      "explanation": "Article 53 de l'ordonnance : seul le blâme est assorti d'une inscription au dossier ; le terme exact est « réprimande ». L'avertissement dans le cabinet du président est une mesure hors peines.",
+      "reference": "Ord. 45-2138 art. 53",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-11-CAC-11",
+      "n": 11,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["code_deontologie_structure", "honoraires_bareme"],
+      "points": 1,
+      "question": "Parmi les dispositions présentées ci-dessous, laquelle ne figure pas dans le titre I du code de déontologie ?",
+      "qcm": {
+        "choices": [
+          "Les principes fondamentaux de comportement.",
+          "Le respect du monopole des autres professions.",
+          "Le recours à des collaborateurs externes.",
+          "La possibilité de fixer des honoraires proportionnels ou conditionnels."
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Quelles sont les grandes rubriques du titre I du code de déontologie des CAC ?",
+        "expected": [
+          "Section 1 : principes fondamentaux de comportement",
+          "Section 2 : conduite de la mission (collaborateurs et experts, fin de mission)",
+          "Section 3 : honoraires (proportionnés ; rémunération proportionnelle ou conditionnelle interdite ; cadeaux)",
+          "Section 4 : publicité, sollicitation personnalisée et services en ligne",
+          "Section 5 : monopoles des autres professions"
+        ],
+        "model_answer": "Le titre I, applicable à toutes les missions et prestations, traite des principes fondamentaux de comportement, de la conduite de la mission (recours à des collaborateurs et experts, fin de mission), des honoraires, de la publicité et de la sollicitation, et du respect des monopoles des autres professions. Il interdit les honoraires proportionnels ou conditionnels."
+      },
+      "explanation": "L'article 13 du code interdit toute rémunération proportionnelle ou conditionnelle. Confusion EC/CAC : l'expert-comptable peut, depuis la loi Pacte, percevoir des honoraires complémentaires de résultat pour certaines missions.",
+      "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 3 à 17, notamment art. 10, 13, 17",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-11-CAC-12",
+      "n": 12,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["honoraires_bareme", "prestations_declaration_activite"],
+      "points": 1,
+      "question": "En cas de litige relatif aux honoraires portant sur des prestations, les parties doivent saisir :",
+      "qcm": {
+        "choices": [
+          "la Compagnie régionale des commissaires aux comptes.",
+          "la Haute Autorité de l'Audit.",
+          "le tribunal compétent.",
+          "la Compagnie nationale des commissaires aux comptes."
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Quelle procédure s'applique aux litiges d'honoraires du CAC selon qu'ils portent sur la certification ou sur des prestations ?",
+        "expected": [
+          "Certification : barème d'heures, dérogation devant le président de la CRCC, recours devant le président de la CNCC puis le bureau de la H2A",
+          "Prestations : honoraires libres fixés par lettre de mission",
+          "Litige sur prestations : tribunal compétent (droit commun)"
+        ],
+        "model_answer": "Les honoraires des prestations sont librement fixés par lettre de mission et, en cas de litige, les parties saisissent le tribunal compétent selon le droit commun. La procédure de dérogation devant le président de la CRCC et les recours devant la CNCC puis le bureau de la H2A ne concernent que le nombre d'heures de la mission de certification."
+      },
+      "explanation": "Les prestations (SACC) ne relèvent pas du barème : R.821-195 exige une lettre de mission précisant les honoraires. Piège : appliquer la procédure de dérogation au barème, propre à la certification.",
+      "reference": "C. com. R.821-195, D.821-190, D.821-191",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-11-CAC-13",
+      "n": 13,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["honoraires_bareme"],
+      "points": 1,
+      "question": "En matière de fixation des honoraires du commissaire aux comptes, quelle affirmation est erronée ?",
+      "qcm": {
+        "choices": [
+          "Si le nombre d'heures de travail normalement nécessaires à la réalisation du programme de travail du commissaire aux comptes pour la mission de certification des comptes apparait excessif, l'entité contrôlée peut saisir le président de la Compagnie régionale des commissaires aux comptes pour demander une dérogation.",
+          "En cas de désaccord avec la décision du président de la Compagnie régionale des commissaires aux comptes, cette dernière peut faire l'objet d'un recours devant le bureau de la Haute Autorité de l'Audit.",
+          "Si le déclenchement de la procédure d'alerte rend nécessaire des diligences particulières, le nombre d'heures prévu par le programme peut être augmenté au plus d'un tiers.",
+          "Pour les missions de certification des comptes, le montant de la vacation horaire est fixé d'un commun accord entre le commissaire aux comptes et l'entité contrôlée."
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Décrivez la procédure de dérogation au barème d'heures du commissaire aux comptes.",
+        "expected": [
+          "Saisine du président de la CRCC par la partie la plus diligente, avant la mission",
+          "Décision dans les 15 jours",
+          "Recours dans les 10 jours devant le président de la CNCC (décision dans le mois)",
+          "Puis recours dans le mois devant le bureau de la H2A (puis tribunal administratif)",
+          "Pas de procédure si les parties sont d'accord ; majoration d'un tiers au plus en cas d'alerte"
+        ],
+        "model_answer": "La partie la plus diligente saisit, avant la mission, le président de la CRCC, qui statue dans les quinze jours. Sa décision peut être contestée dans les dix jours devant le président de la CNCC, puis dans le mois devant le bureau de la H2A. La procédure n'est pas requise si les parties s'accordent ; en cas d'alerte, les heures peuvent être majorées d'un tiers au plus."
+      },
+      "explanation": "Proposition b) erronée dans la rédaction actuelle de D.821-190 : le recours contre la décision du président de la CRCC est d'abord porté devant le président de la CNCC, le bureau de la H2A n'intervenant qu'en second recours. Nuance : L.820-2 III attribue au bureau le recours contre les décisions des présidents de CRCC ; le jury a pu viser une autre proposition. Les autres propositions reprennent D.821-189, D.821-190 et R.821-192.",
+      "reference": "C. com. L.820-2 III, D.821-188 à D.821-191, R.821-192",
+      "confidence": "medium",
+      "update_note": "Procédure recodifiée en 2024 (ex-R.823-12 à R.823-15) ; l'ancien recours devant la chambre régionale de discipline a disparu."
+    },
+    {
+      "id": "2025-11-CAC-14",
+      "n": 14,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["publicite_demarchage"],
+      "points": 1,
+      "question": "Les commissaires aux comptes peuvent recourir à la sollicitation personnalisée et à la proposition de services en ligne pour promouvoir leurs services. Parmi les conditions à respecter, laquelle est erronée ?",
+      "qcm": {
+        "choices": [
+          "La sollicitation doit procurer une information sincère.",
+          "La sollicitation doit être réalisée sous la forme d'un appel téléphonique.",
+          "La sollicitation doit exclure tout élément comparatif ou dénigrant.",
+          "La sollicitation doit préciser les modalités de détermination des honoraires du professionnel."
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "question": "Quelles conditions encadrent la sollicitation personnalisée du commissaire aux comptes ?",
+        "expected": [
+          "Information sincère sur la nature des missions et prestations",
+          "Respect de la dignité, de la confraternité, de la loyauté",
+          "Aucun élément comparatif ou dénigrant",
+          "Uniquement par envoi postal ou courriel à un destinataire déterminé ; démarchage physique, téléphonique et SMS exclus",
+          "Précision des modalités de détermination des honoraires"
+        ],
+        "model_answer": "La sollicitation personnalisée doit procurer une information sincère, respecter la dignité, la confraternité et la loyauté, exclure tout élément comparatif ou dénigrant et préciser les modalités de détermination des honoraires. Elle ne peut prendre que la forme d'un envoi postal ou d'un courriel adressé à un destinataire déterminé : démarchage physique, appels téléphoniques et SMS sont exclus."
+      },
+      "explanation": "Article 16 du code de déontologie CAC. Différence avec l'EC, pour qui le code (art. 152) ne prohibe pas en tant que tel le démarchage téléphonique, sous réserve de discrétion.",
+      "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 16",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-11-CAC-15",
+      "n": 15,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions", "responsabilite_penale"],
+      "points": 1,
+      "question": "Quelle sanction disciplinaire n'est pas encourue par un commissaire aux comptes ?",
+      "qcm": {
+        "choices": ["L'emprisonnement.", "La sanction pécuniaire.", "Le blâme.", "La radiation."],
+        "answer": 0
+      },
+      "qrc": {
+        "question": "Quelles sanctions la commission des sanctions de la H2A peut-elle prononcer à l'encontre d'un commissaire aux comptes ?",
+        "expected": [
+          "Avertissement ; blâme",
+          "Interdiction d'exercer tout ou partie des missions pour 3 ans au plus",
+          "Radiation de la liste ; retrait de l'honorariat",
+          "Complémentaires : publication d'une déclaration sur le rapport, interdiction (3 ans max) de fonctions de direction dans une société de CAC ou une EIP, sanction pécuniaire (250 000 € personne physique ; 1 M€ ou plus personne morale)"
+        ],
+        "model_answer": "L'avertissement, le blâme, l'interdiction d'exercer tout ou partie des missions pour trois ans au plus, la radiation de la liste et le retrait de l'honorariat, ainsi que, cumulativement, une déclaration publique sur le rapport, l'interdiction temporaire de fonctions de direction et une sanction pécuniaire. L'emprisonnement est une peine pénale, prononcée par le juge pénal."
+      },
+      "explanation": "L.821-71. L'emprisonnement relève de la responsabilité pénale (ex. non-révélation de faits délictueux, informations mensongères : 5 ans et 75 000 €). Confusion EC/CAC : les EC encourent réprimande, blâme avec inscription au dossier, suspension, radiation.",
+      "reference": "C. com. L.821-71 (ex-L.824-2), L.821-9",
+      "confidence": "high",
+      "update_note": "Le texte consulté (brochure CNCC sept. 2024) fixe l'interdiction temporaire à 3 ans au plus, et non 5 ans comme indiqué dans le schéma de la banque."
+    },
+    {
+      "id": "2025-11-CAC-16",
+      "n": 16,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions", "h2a_supervision"],
+      "points": 1,
+      "question": "Quelle personne n'entre pas dans le champ de compétences de la commission des sanctions instaurée par l'article L.820-2 du code de commerce ?",
+      "qcm": {
+        "choices": [
+          "Le commissaire aux comptes.",
+          "Le contrôleur de pays tiers inscrit.",
+          "Tout membre du comité spécialisé prévu aux articles L821-67 à L.821-69 du code de commerce.",
+          "L'expert-comptable."
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Quelles personnes relèvent de la commission des sanctions de la H2A ?",
+        "expected": [
+          "Les commissaires aux comptes (fautes disciplinaires)",
+          "Associés, salariés, personnes participant à la mission, personnes étroitement liées",
+          "EIP et leurs dirigeants et organes (dont comité spécialisé) pour les manquements sur services, désignation, durée, honoraires",
+          "Entités et dirigeants faisant obstacle aux contrôles ; contrôleurs de pays tiers inscrits ; auditeurs de durabilité"
+        ],
+        "model_answer": "La commission des sanctions juge les commissaires aux comptes, mais aussi leurs associés, salariés et proches pour les liens incompatibles, les EIP et leurs dirigeants et organes pour les règles d'indépendance et de désignation, les personnes faisant obstacle aux contrôles, les contrôleurs de pays tiers et les auditeurs de durabilité. L'expert-comptable relève, en tant que tel, des chambres de discipline de l'Ordre."
+      },
+      "explanation": "Un EC qui est aussi CAC relève de la H2A pour son activité de CAC et de l'Ordre pour son activité d'EC. Les membres des comités spécialisés relèvent de la H2A au titre des manquements des EIP (approbation des SACC, sélection du CAC…).",
+      "reference": "C. com. L.820-2 V, L.821-19 IV, L.821-70, L.821-72",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-11-CAC-17",
+      "n": 17,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["code_deontologie_structure"],
+      "points": 1,
+      "question": "Parmi les quatre qualités requises du commissaire aux comptes, laquelle n'est pas mentionnée à l'article 3 du code de déontologie ?",
+      "qcm": {
+        "choices": ["L'honnêteté.", "La droiture.", "La sincérité.", "La probité."],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Que recouvre le principe d'intégrité (article 3 du code de déontologie des CAC) ?",
+        "expected": ["Honnêteté", "Droiture", "S'abstenir de tout agissement contraire à l'honneur et à la probité"],
+        "model_answer": "Le commissaire aux comptes exerce sa profession avec honnêteté et droiture et s'abstient, en toutes circonstances, de tout agissement contraire à l'honneur et à la probité."
+      },
+      "explanation": "La sincérité qualifie les comptes (« réguliers et sincères ») ou l'information donnée dans une sollicitation, pas l'intégrité du CAC. Le serment du CAC vise « honneur, probité et indépendance » ; celui de l'EC « conscience et probité ».",
+      "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 3",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-11-CAC-18",
+      "n": 18,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions"],
+      "points": 1,
+      "question": "Quelle modalité de procédures disciplinaires n'est pas prévue par le code de commerce ?",
+      "qcm": {
+        "choices": [
+          "La procédure de composition administrative.",
+          "La procédure simplifiée de sanction.",
+          "La procédure de droit commun ou ordinaire ou prévue aux articles L.821-79 et L.821-80 du code de commerce.",
+          "La procédure de comparution immédiate."
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Quelles procédures de sanction le code de commerce prévoit-il à l'encontre des commissaires aux comptes ?",
+        "expected": [
+          "Procédure ordinaire devant la commission des sanctions (L.821-79, L.821-80)",
+          "Procédure simplifiée de sanction (L.821-81)",
+          "Composition administrative (L.821-78)",
+          "Possible suspension provisoire en cas d'urgence (L.821-76)"
+        ],
+        "model_answer": "Après enquête du rapporteur général et notification des griefs par le collège, la H2A peut recourir à la procédure ordinaire devant la commission des sanctions, à la procédure simplifiée de sanction pour certains manquements (formation, obligations déclaratives…) ou proposer une composition administrative. La comparution immédiate est une procédure pénale."
+      },
+      "explanation": "Composition administrative et procédure simplifiée sont des nouveautés de l'ordonnance 2023-1142. Recours contre les décisions : Conseil d'État.",
+      "reference": "C. com. L.821-76 à L.821-85",
+      "confidence": "high",
+      "update_note": "Procédures issues de l'ordonnance 2023-1142 en vigueur au 1er janvier 2024."
+    },
+    {
+      "id": "2025-11-CAC-19",
+      "n": 19,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["cncc_crcc_organisation"],
+      "points": 1,
+      "question": "Quel chiffre ne concerne pas le conseil national de la Compagnie nationale des commissaires aux comptes ?",
+      "qcm": {
+        "choices": ["Soixante.", "Dix-sept.", "Quatre.", "Vingt-deux."],
+        "answer": 3
+      },
+      "qrc": {
+        "question": "Comment est composé le Conseil national de la CNCC ?",
+        "expected": [
+          "60 membres",
+          "Désignés pour 4 ans",
+          "Comprenant les présidents des compagnies régionales (17) et des CAC élus",
+          "Moitié CAC exerçant des mandats EIP, moitié non-EIP (deux collèges de 30 sièges)"
+        ],
+        "model_answer": "Le Conseil national compte soixante membres désignés pour quatre ans, comprenant les présidents des dix-sept compagnies régionales et des commissaires aux comptes élus, répartis à parité entre un collège EIP et un collège non-EIP."
+      },
+      "explanation": "D.821-14 (ex-R.821-37) : 60 membres, 4 ans, présidents de CRCC inclus. Le nombre de 17 CRCC résulte des regroupements récents ; le chiffre « 22 » ne correspond à aucun élément de composition connu. Point à vérifier si le nombre de CRCC évolue.",
+      "reference": "C. com. D.821-13 et D.821-14 ; décret 2020-667",
+      "confidence": "medium"
+    },
+    {
+      "id": "2025-11-CAC-20",
+      "n": 20,
+      "profession": "CAC",
+      "theme": "controle_qualite",
+      "tags": ["nep", "h2a_supervision"],
+      "points": 1,
+      "question": "Quelle institution ne peut pas demander l'élaboration d'une norme d'exercice professionnel ?",
+      "qcm": {
+        "choices": [
+          "Le ministère de la Justice.",
+          "L'Autorité des marchés financiers.",
+          "La Compagnie régionale des commissaires aux comptes.",
+          "Le Conseil de normalisation des comptes publics."
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "question": "Qui peut demander à la H2A l'élaboration d'une norme d'exercice professionnel ?",
+        "expected": ["Le garde des sceaux", "L'AMF et l'ACPR", "L'ANC et le CNoCP", "La CNCC"],
+        "model_answer": "Le garde des sceaux, l'AMF, l'ACPR, l'Autorité des normes comptables, le Conseil de normalisation des comptes publics et la CNCC. Les compagnies régionales n'en font pas partie."
+      },
+      "explanation": "L.820-23 : la H2A adopte son plan d'orientation et son programme de travail selon ses besoins et ces demandes ; les normes sont homologuées par arrêté du garde des sceaux.",
+      "reference": "C. com. L.820-4, L.820-23",
+      "confidence": "high"
+    }
+  ]
+}

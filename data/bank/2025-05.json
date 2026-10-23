@@ -1,0 +1,591 @@
+{
+  "session": "2025-05",
+  "format": "qrc",
+  "questions": [
+    {
+      "id": "2025-05-EC-01",
+      "n": 1,
+      "profession": "EC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions"],
+      "points": 2,
+      "question": "À quelles sanctions s'expose un expert-comptable en cas de non-respect des règles déontologiques ?",
+      "qcm": {
+        "choices": [
+          "Avertissement, blâme, interdiction temporaire d'exercer pour trois ans au plus, radiation de la liste, retrait de l'honorariat",
+          "Réprimande, blâme avec inscription au dossier, suspension avec sursis, suspension, radiation du tableau avec interdiction définitive d'exercer",
+          "Amende civile, emprisonnement, fermeture du cabinet",
+          "Rappel à l'ordre par le Conseil national, suspension de la lettre de mission, déchéance du DEC"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Avertissement dans le cabinet du président (hors peines)",
+          "Réprimande ; blâme avec inscription au dossier",
+          "Suspension pour une durée déterminée avec sursis ; suspension sans sursis",
+          "Radiation du tableau comportant interdiction définitive d'exercer",
+          "Accessoires : privation du droit d'être élu aux conseils (10 ans max) ; sanctions LCB-FT (pécuniaires…)"
+        ],
+        "model_answer": "En dehors de l'avertissement délivré dans le cabinet du président de la chambre, les peines disciplinaires sont la réprimande, le blâme avec inscription au dossier, la suspension pour une durée déterminée avec ou sans sursis et la radiation du tableau comportant interdiction définitive d'exercer. Elles peuvent s'accompagner de la privation du droit de faire partie des conseils de l'Ordre pendant dix ans au plus."
+      },
+      "explanation": "Liste de l'article 53 de l'ordonnance, prononcée par la chambre régionale de discipline (appel devant la chambre nationale, puis cassation devant le Conseil d'État). Le distracteur reprend la liste des sanctions des CAC (L.821-71), source classique de confusion. La responsabilité civile ou pénale peut se cumuler avec la sanction disciplinaire.",
+      "reference": "Ord. 45-2138 art. 49, 50 et 53 ; D. 2012-432 art. 174 s.",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-05-EC-02",
+      "n": 2,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "missions_assurance"],
+      "points": 3,
+      "question": "Le cadre de référence définit la nature des différentes missions et activités réalisées par les structures d'exercice professionnel de l'expertise comptable ainsi que les normes professionnelles applicables à ces missions et activités. Il distingue trois grandes natures de missions. Quelles sont-elles ?",
+      "qcm": {
+        "choices": [
+          "Missions légales, missions contractuelles, prestations de conseil",
+          "Missions d'assurance sur des comptes complets historiques, autres missions d'assurance, missions sans assurance",
+          "Audit, examen limité, présentation",
+          "Missions de certification, missions de durabilité, services autres que la certification"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Missions d'assurance sur des comptes complets historiques (audit NP 2100, examen limité NP 2400, présentation NP 2300)",
+          "Autres missions d'assurance (attestations particulières NP 3100, informations prévisionnelles NP 3400)",
+          "Missions sans assurance (procédures convenues NP 4400, compilation NP 4410, missions légales sans assurance)"
+        ],
+        "model_answer": "Le cadre de référence distingue les missions d'assurance sur des comptes complets historiques (audit, examen limité, présentation), les autres missions d'assurance (attestations particulières, examen d'informations prévisionnelles) et les missions sans assurance (procédures convenues, compilation, missions particulières prévues par un texte). Les autres prestations (conseil, social, juridique…) relèvent d'un ensemble distinct."
+      },
+      "explanation": "Le cadre de référence est agréé par arrêté ; les textes applicables à toutes les missions sont le code de déontologie, la NPMQ et la NPLAB. Le distracteur « certification / durabilité / SACC » reprend la typologie CAC.",
+      "reference": "Référentiel normatif OEC : cadre de référence des missions",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-05-EC-03",
+      "n": 3,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["publicite_demarchage", "secret_professionnel"],
+      "points": 1,
+      "question": "Un cabinet d'expertise comptable peut-il référencer le nom et le logo de ses clients sur son site internet ? Justifiez votre réponse.",
+      "qcm": {
+        "choices": [
+          "Non, jamais : toute mention d'un client constitue une violation du secret professionnel",
+          "Oui, librement, car le nom d'un client n'est pas une information couverte par le secret",
+          "Oui, avec l'accord préalable de chaque client, dans le respect du secret professionnel, de la discrétion et de la dignité",
+          "Oui, après autorisation du conseil régional de l'Ordre"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Oui, sous condition",
+          "Accord préalable (écrit) du client, la relation d'affaires étant couverte par le secret et le devoir de discrétion",
+          "Information utile, décente, sans élément comparatif (art. 152)"
+        ],
+        "model_answer": "Oui, à condition d'avoir obtenu l'accord préalable de chaque client concerné, l'existence de la relation professionnelle relevant du secret et du devoir de discrétion. La présentation doit rester une information utile, décente et exempte de tout élément comparatif."
+      },
+      "explanation": "La communication est permise (art. 152), mais le professionnel ne peut révéler les informations couvertes par le secret (ord. art. 21). L'accord du client ne délie pas en général l'EC de son secret pénal, mais il permet ici la seule mention de la relation, que le client rend lui-même publique. Point de doctrine ordinale à vérifier.",
+      "reference": "Ord. 45-2138 art. 21 et 23 ; D. 2012-432 art. 147 et 152",
+      "confidence": "medium"
+    },
+    {
+      "id": "2025-05-EC-04",
+      "n": 4,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["missions_assurance", "referentiel_normatif"],
+      "points": 2,
+      "question": "Quel est le niveau d'assurance donné par l'expert-comptable et le(s) critère(s) attesté(s) dans le cadre d'une mission de présentation des comptes ?",
+      "qcm": {
+        "choices": [
+          "Assurance raisonnable sur la régularité, la sincérité et l'image fidèle",
+          "Assurance modérée sur la cohérence et la vraisemblance des comptes pris dans leur ensemble",
+          "Aucune assurance : simple compilation des comptes",
+          "Assurance limitée sur la conformité au référentiel comptable"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": ["Assurance de niveau modéré", "Cohérence", "Vraisemblance des comptes pris dans leur ensemble"],
+        "model_answer": "La mission de présentation (NP 2300) est une mission d'assurance de niveau modéré : l'expert-comptable atteste de la cohérence et de la vraisemblance des comptes pris dans leur ensemble. Il ne se prononce ni sur leur régularité ni sur leur sincérité ou leur image fidèle."
+      },
+      "explanation": "Régularité, sincérité et image fidèle relèvent de la certification (assurance raisonnable) du CAC ou de l'audit contractuel NP 2100. L'examen limité (NP 2400) donne une assurance modérée sur la conformité au référentiel. L'attestation de présentation peut être sans observation, avec observation(s) ou se traduire par un refus d'attester.",
+      "reference": "NP 2300 (arrêté du 1er sept. 2016) ; cadre de référence",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-05-EC-05",
+      "n": 5,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["incompatibilites_activites"],
+      "points": 2,
+      "question": "Un expert-comptable peut-il être agent immobilier ? Justifiez votre réponse.",
+      "qcm": {
+        "choices": [
+          "Oui, depuis la loi Pacte toute activité commerciale est autorisée sans limite",
+          "Oui, si l'activité est exercée au sein d'une société distincte détenue à plus des deux tiers par des experts-comptables",
+          "Non : il s'agit d'une activité d'intermédiaire commercial impliquant la détention de fonds pour autrui, incompatible avec l'indépendance de l'expert-comptable",
+          "Non, sauf autorisation du commissaire du Gouvernement"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Non",
+          "Activité commerciale / d'intermédiaire d'agent d'affaires, incompatible (art. 22)",
+          "Mandat de recevoir et détenir des fonds pour autrui interdit",
+          "L'exception des activités commerciales accessoires ne couvre pas une activité exercée à titre de profession, de nature à compromettre l'indépendance"
+        ],
+        "model_answer": "Non. L'agent immobilier exerce une activité commerciale d'intermédiaire et détient des fonds pour le compte de ses mandants, ce que l'article 22 de l'ordonnance interdit à l'expert-comptable. La dérogation pour activités commerciales accessoires ne s'applique pas à une activité exercée à titre professionnel et de nature à compromettre son indépendance."
+      },
+      "explanation": "Depuis la loi Pacte, l'EC peut exercer des activités commerciales et actes d'intermédiaire à titre accessoire, dans les limites fixées par une norme professionnelle, sans mettre en péril l'indépendance. L'activité d'agent immobilier (carte professionnelle, maniement de fonds, rémunération au succès) dépasse ce cadre. Point d'appréciation : le jury attend « non ».",
+      "reference": "Ord. 45-2138 art. 22 ; norme professionnelle sur les activités commerciales accessoires",
+      "confidence": "medium"
+    },
+    {
+      "id": "2025-05-EC-06",
+      "n": 6,
+      "profession": "EC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions"],
+      "points": 2,
+      "question": "Devant quelle juridiction une décision de la chambre nationale de discipline peut-elle faire l'objet d'un recours ?",
+      "qcm": {
+        "choices": ["La cour d'appel de Paris", "La Cour de cassation", "Le Conseil d'État (recours en cassation)", "Le tribunal administratif de Paris"],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": ["Conseil d'État", "Recours en cassation (juridiction administrative spécialisée)"],
+        "model_answer": "Les décisions de la chambre nationale de discipline peuvent faire l'objet d'un pourvoi en cassation devant le Conseil d'État."
+      },
+      "explanation": "Les chambres de discipline de l'Ordre sont des juridictions administratives spécialisées ; le juge de cassation est donc le Conseil d'État. Pour les CAC, la décision de la commission des sanctions de la H2A fait l'objet d'un recours de plein contentieux devant le Conseil d'État.",
+      "reference": "Ord. 45-2138 art. 50 ; D. 2012-432 art. 192 s. ; CJA L.331-1",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-05-EC-07",
+      "n": 7,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["lettre_mission", "lcb_ft"],
+      "points": 3,
+      "question": "Dans quelles situations un expert-comptable doit-il refuser une mission ?",
+      "qcm": {
+        "question": "Dans laquelle de ces situations l'expert-comptable doit-il refuser la mission ?",
+        "choices": [
+          "Le client refuse un honoraire forfaitaire et souhaite un honoraire au temps passé",
+          "Le client a été suivi par un confrère dont les honoraires ont été intégralement réglés",
+          "Le client ne permet pas l'identification de son bénéficiaire effectif",
+          "Le client est une société commerciale cotée"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Impossibilité de réaliser la mission conformément aux textes, au code et aux normes (compétence, moyens)",
+          "Conflit d'intérêts ou atteinte à l'indépendance",
+          "Mission incompatible (art. 22) ou relevant du monopole d'une autre profession",
+          "Changement de professionnel motivé par la volonté d'éluder les lois ou les devoirs professionnels",
+          "LCB-FT : impossibilité d'identifier le client ou le bénéficiaire effectif, ou d'obtenir les informations sur la relation d'affaires"
+        ],
+        "model_answer": "L'expert-comptable doit refuser la mission s'il ne peut l'exécuter conformément aux textes et aux normes (compétence, disponibilité, moyens), s'il se trouve en conflit d'intérêts ou si son indépendance est menacée, si la mission est incompatible avec son statut, si le client cherche à éluder la loi ou ses devoirs professionnels en changeant de professionnel, et lorsqu'il ne peut pas identifier le client et son bénéficiaire effectif ou connaître l'objet de la relation d'affaires (LCB-FT)."
+      },
+      "explanation": "Fondements : art. 145, 150, 157 et 163 du code de déontologie ; art. 22 de l'ordonnance ; L.561-8 CMF (interdiction de nouer la relation d'affaires en l'absence de vigilance possible). La forme des honoraires n'est jamais un motif obligatoire de refus.",
+      "reference": "D. 2012-432 art. 145, 150, 157, 163 ; Ord. 45-2138 art. 22 ; CMF L.561-8 ; NPLAB",
+      "confidence": "medium"
+    },
+    {
+      "id": "2025-05-EC-08",
+      "n": 8,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["missions_assurance", "referentiel_normatif"],
+      "points": 2,
+      "question": "Dans le cadre d'une mission d'examen limité des comptes (NP 2400), l'expert-comptable établit un rapport dont la conclusion est normée. Citez quatre conclusions sur les cinq possibles.",
+      "qcm": {
+        "question": "Laquelle de ces formulations ne fait pas partie des cinq conclusions possibles d'un examen limité (NP 2400) ?",
+        "choices": [
+          "Conclusion favorable assortie d'une ou plusieurs observations",
+          "Conclusion défavorable",
+          "Impossibilité de conclure",
+          "Refus d'attester"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "expected": [
+          "Conclusion favorable sans observation",
+          "Conclusion favorable avec observation(s)",
+          "Conclusion avec réserve(s)",
+          "Conclusion défavorable",
+          "Impossibilité de conclure"
+        ],
+        "model_answer": "Les cinq conclusions sont : favorable sans observation, favorable avec une ou plusieurs observations, avec réserve(s), défavorable, et impossibilité de conclure."
+      },
+      "explanation": "Le « refus d'attester » est propre à la mission de présentation (NP 2300). Le vocabulaire « certification avec réserve / refus de certifier » est celui du CAC.",
+      "reference": "NP 2400, § 22",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-05-EC-09",
+      "n": 9,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["ordre_organisation", "confraternite_reprise_dossier"],
+      "points": 1,
+      "question": "Dans l'exercice de ses fonctions, un expert-comptable suspecte une situation d'exercice illégal. Que doit-il faire ?",
+      "qcm": {
+        "choices": [
+          "Saisir directement le procureur de la République, comme un commissaire aux comptes révélant un fait délictueux",
+          "En informer le conseil régional de l'Ordre (son président), qui peut engager des poursuites",
+          "Effectuer une déclaration de soupçon à Tracfin",
+          "Ne rien faire, en raison du secret professionnel"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Informer le président du conseil régional de l'Ordre",
+          "L'Ordre peut saisir le tribunal par citation directe ou se constituer partie civile (art. 20 ord.)"
+        ],
+        "model_answer": "Il doit en informer le conseil régional de l'Ordre (son président), garant du respect du monopole, qui pourra saisir le tribunal par citation directe ou se constituer partie civile."
+      },
+      "explanation": "L'exercice illégal de l'expertise comptable est un délit (ord. art. 20) ; les conseils de l'Ordre peuvent agir par citation directe. Le devoir envers l'Ordre et la défense de la profession justifient le signalement. Piège : l'EC n'a pas l'obligation de révélation au procureur propre au CAC.",
+      "reference": "Ord. 45-2138 art. 20 et 31 ; D. 2012-432 (devoirs envers l'Ordre)",
+      "confidence": "medium"
+    },
+    {
+      "id": "2025-05-EC-10",
+      "n": 10,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["honoraires", "lettre_mission"],
+      "points": 2,
+      "question": "À quelles conditions et moyennant quelle précaution un expert-comptable peut-il réaliser une mission à titre gracieux ?",
+      "qcm": {
+        "choices": [
+          "C'est interdit : les honoraires doivent toujours être la juste rémunération du travail fourni",
+          "C'est possible sans formalité, la gratuité dispensant de lettre de mission",
+          "C'est possible si la gratuité ne constitue pas un procédé de concurrence déloyale ou de démarchage et ne compromet ni l'indépendance ni la qualité ; la mission doit être formalisée par une lettre de mission",
+          "C'est possible uniquement au profit d'associations reconnues d'utilité publique, après accord du Conseil national"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Possible, les honoraires étant libres",
+          "Pas de concurrence déloyale, de démarchage ou d'atteinte à la confraternité",
+          "Même niveau de diligences et de qualité ; indépendance préservée",
+          "Précaution : lettre de mission mentionnant la gratuité (et couverture d'assurance RC)"
+        ],
+        "model_answer": "C'est possible, les honoraires étant libres, à condition que la gratuité ne serve pas à capter la clientèle (concurrence déloyale, manquement à la confraternité) et ne conduise pas à réduire les diligences ou à compromettre l'indépendance. Précaution : formaliser la mission par une lettre de mission précisant son caractère gracieux, sa nature et ses limites, la responsabilité restant entière."
+      },
+      "explanation": "La lettre de mission est obligatoire pour toute mission (art. 151), même gratuite ; la gratuité ne réduit pas la responsabilité civile. Le remplacement provisoire d'un confrère (art. 166) est par principe une mission de confraternité gratuite. Réponse fondée sur la doctrine ordinale ; à vérifier.",
+      "reference": "Ord. 45-2138 art. 24 ; D. 2012-432 art. 151, 152, 158, 166",
+      "confidence": "low"
+    },
+    {
+      "id": "2025-05-CAC-11",
+      "n": 11,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["nomination_seuils"],
+      "points": 2,
+      "question": "Donnez les montants des 2 seuils de nomination des commissaires aux comptes ayant été modifiés par le décret 2024-152 du 24 février 2024 (article D 221-5 du code de commerce).",
+      "qcm": {
+        "choices": [
+          "Bilan 4 M€ et chiffre d'affaires 8 M€",
+          "Bilan 5 M€ et chiffre d'affaires 10 M€",
+          "Bilan 6 M€ et chiffre d'affaires 12 M€",
+          "Chiffre d'affaires 10 M€ et effectif 60 salariés"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Total du bilan : 5 000 000 € (au lieu de 4 M€)",
+          "Chiffre d'affaires HT : 10 000 000 € (au lieu de 8 M€)",
+          "Effectif inchangé : 50 salariés ; 2 critères sur 3"
+        ],
+        "model_answer": "Le total du bilan passe de 4 à 5 millions d'euros et le chiffre d'affaires hors taxes de 8 à 10 millions d'euros ; le seuil de 50 salariés est inchangé (deux critères sur trois, exercices ouverts à compter du 1er janvier 2024)."
+      },
+      "explanation": "Les mêmes seuils s'appliquent aux mères de petits groupes (cumulés) ; ceux des filiales importantes sont de 2,5 M€ / 5 M€ / 25 salariés. Le distracteur 4 M€ / 8 M€ correspond aux seuils de la loi Pacte (2019).",
+      "reference": "D. 2024-152 ; C. com. D.221-5, D.821-171, D.821-172",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-05-CAC-12",
+      "n": 12,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["publicite_demarchage"],
+      "points": 2,
+      "question": "Le recours à la publicité pour un commissaire aux comptes est encadré par le code de déontologie. Citez les conditions et interdiction fixées par ce dernier.",
+      "qcm": {
+        "choices": [
+          "La publicité est interdite aux commissaires aux comptes, seule la sollicitation par courriel étant permise",
+          "La publicité est permise si elle procure une information nécessaire au public, sans atteinte à l'indépendance, la dignité, l'honneur, le secret et la loyauté ; elle est exempte de tout élément comparatif",
+          "La publicité est libre, sous réserve d'un dépôt préalable auprès de la CRCC",
+          "La publicité est permise, y compris comparative si elle est loyale"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Information nécessaire au public",
+          "Moyens mis en œuvre sans porter atteinte à l'indépendance, la dignité, l'honneur, le secret professionnel, la loyauté",
+          "Titre de CAC suivi de la compagnie régionale ; pas d'expression compromettant la dignité",
+          "Interdiction de tout élément comparatif"
+        ],
+        "model_answer": "La publicité est permise dans la mesure où elle procure au public une information nécessaire, sans porter atteinte à l'indépendance, à la dignité et à l'honneur de la profession, au secret professionnel et à la loyauté envers les clients et confrères. Le CAC utilise son titre suivi de sa compagnie régionale, n'adopte aucune expression compromettant la dignité de sa fonction, et la publicité est exempte de tout élément comparatif."
+      },
+      "explanation": "Article 15 du code de déontologie (titre I). La sollicitation personnalisée (art. 16) obéit à des règles complémentaires : information sincère, envoi postal ou courriel, honoraires précisés, démarchage physique ou téléphonique exclu.",
+      "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 15 et 16",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-05-CAC-13",
+      "n": 13,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["independance_situations_risque", "secret_professionnel"],
+      "points": 3,
+      "question": "Vous êtes le commissaire aux comptes d'une société. Pouvez-vous réaliser une prestation d'évaluation de cette société à la demande de la société acquéreuse ? Justifiez votre réponse.",
+      "qcm": {
+        "choices": [
+          "Oui, car l'évaluation n'est interdite que pour les entités d'intérêt public",
+          "Oui, avec l'accord du dirigeant de la société contrôlée qui le délie du secret",
+          "Non : il serait en situation de conflit d'intérêts, ne pourrait utiliser les informations couvertes par le secret professionnel et compromettrait son impartialité et son indépendance",
+          "Non, sauf s'il démissionne immédiatement de son mandat"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Non",
+          "Conflit d'intérêts : il travaillerait pour la contrepartie de l'entité qu'il contrôle",
+          "Secret professionnel : il ne peut communiquer à un tiers les informations obtenues dans sa mission (le dirigeant ne peut l'en délier)",
+          "Atteinte à l'impartialité et à l'indépendance ; risques liés aux fusions/acquisitions (code art. 20) sans sauvegarde possible"
+        ],
+        "model_answer": "Non. En évaluant la société qu'il certifie pour le compte de l'acquéreur, le CAC se placerait en conflit d'intérêts et compromettrait son impartialité et son indépendance. Il exploiterait au profit d'un tiers des informations couvertes par son secret professionnel, dont l'entité ne peut le délier. Aucune mesure de sauvegarde ne permet de remédier à cette situation."
+      },
+      "explanation": "Le code de déontologie (art. 5 et 20) impose d'identifier les risques liés aux opérations de fusion ou d'acquisition intéressant l'entité certifiée. Même hors EIP (où l'évaluation fait partie des services interdits), le conflit d'intérêts et le secret (L.821-35) font obstacle. Ne pas confondre avec le commissariat aux apports ou à la fusion, missions distinctes soumises à leurs propres incompatibilités.",
+      "reference": "C. com. L.821-31, L.821-35 ; code de déontologie CAC art. 4, 5, 9, 20",
+      "confidence": "medium"
+    },
+    {
+      "id": "2025-05-CAC-14",
+      "n": 14,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["nomination_seuils"],
+      "points": 1,
+      "question": "Quel est le seuil et le montant rendant obligatoire la nomination d'un commissaire aux comptes dans un syndicat professionnel de salariés ?",
+      "qcm": {
+        "choices": [
+          "153 000 € de subventions publiques",
+          "230 000 € de ressources annuelles",
+          "Deux des trois seuils : 5 M€ / 10 M€ / 50 salariés",
+          "1 000 adhérents"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": ["Critère : ressources annuelles", "Montant : plus de 230 000 €"],
+        "model_answer": "Un syndicat professionnel de salariés dont les ressources annuelles dépassent 230 000 € doit nommer au moins un commissaire aux comptes."
+      },
+      "explanation": "Seuil fixé par le code du travail pour les syndicats et associations de salariés ou d'employeurs. Ces organismes sont exclus du barème d'heures (R.821-194 13°). Ne pas confondre avec les 153 000 € de subventions ou de dons des associations.",
+      "reference": "C. trav. L.2135-6 et D.2135-9",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-05-CAC-15",
+      "n": 15,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["secret_professionnel", "nomination_seuils"],
+      "points": 2,
+      "question": "Le commissaire aux comptes d'une société tête d'un petit groupe au sens de l'article L.821-43 du code de commerce peut-il demander des informations aux commissaires aux comptes des filiales significatives ? Justifiez votre réponse.",
+      "qcm": {
+        "choices": [
+          "Non : la levée du secret entre CAC ne vaut que pour les groupes établissant des comptes consolidés",
+          "Oui, mais seulement avec l'accord écrit du dirigeant de chaque filiale",
+          "Oui : les CAC de la mère d'un petit groupe et ceux des sociétés qu'elle contrôle sont libérés du secret professionnel les uns envers les autres",
+          "Oui, après autorisation de la H2A"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Oui",
+          "L.821-35 : les CAC de l'entité mère d'un petit groupe (L.821-43 al. 1) et ceux des sociétés contrôlées sont mutuellement libérés du secret",
+          "Utile notamment pour le rapport sur les risques à l'échelle du groupe (mandat de 3 exercices)"
+        ],
+        "model_answer": "Oui. Le code de commerce libère du secret professionnel, les uns à l'égard des autres, les commissaires aux comptes de la personne qui contrôle un petit groupe et ceux des sociétés qu'elle contrôle. Le CAC de la tête de groupe peut donc obtenir des informations des CAC des filiales, y compris en l'absence de comptes consolidés."
+      },
+      "explanation": "Ajout de la loi Pacte, repris à l'article L.821-35 (ex-L.822-15). Le secret est aussi levé entre CAC de la consolidante et des consolidées, entre CAC des comptes et auditeur de durabilité, et à l'égard de la CNCCFP.",
+      "reference": "C. com. L.821-35 (ex-L.822-15), L.821-43 (ex-L.823-2-2)",
+      "confidence": "high"
+    },
+    {
+      "id": "2025-05-CAC-16",
+      "n": 16,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["code_deontologie_structure"],
+      "points": 2,
+      "question": "Citez exactement les principes fondamentaux de comportement qui s'appliquent à l'activité professionnelle du commissaire aux comptes tels qu'ils figurent dans la Section 1 du titre 1er du code de déontologie.",
+      "qcm": {
+        "choices": [
+          "Intégrité, impartialité, indépendance et prévention des conflits d'intérêts, esprit critique, compétence et diligence, confraternité, secret professionnel et discrétion",
+          "Intégrité, objectivité, compétence, confidentialité, comportement professionnel",
+          "Indépendance, non-immixtion, révélation des faits délictueux, secret professionnel",
+          "Probité, conscience professionnelle, indépendance d'esprit, devoir de conseil"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Intégrité",
+          "Impartialité",
+          "Indépendance et prévention des conflits d'intérêts",
+          "Esprit critique",
+          "Compétence et diligence",
+          "Confraternité ; secret professionnel et discrétion"
+        ],
+        "model_answer": "Intégrité ; impartialité ; indépendance et prévention des conflits d'intérêts ; esprit critique ; compétence et diligence ; confraternité ; secret professionnel et discrétion."
+      },
+      "explanation": "Articles 3 à 9 du code de déontologie (version 2020). Le distracteur « intégrité, objectivité, compétence, confidentialité, comportement professionnel » reprend le code IESBA ; « conscience professionnelle, indépendance d'esprit » renvoie au code des EC (art. 145).",
+      "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 3 à 9",
+      "confidence": "high",
+      "update_note": "Les normes de déontologie homologuées (A.821-54 s.) précisent l'application de ces principes."
+    },
+    {
+      "id": "2025-05-CAC-17",
+      "n": 17,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["agp_associations"],
+      "points": 2,
+      "question": "Quel contrôle particulier et dans quel cadre, le commissaire aux comptes d'un organisme faisant appel à la générosité du public qui perçoit plus de 153 000 € de dons doit-il effectuer ?",
+      "qcm": {
+        "choices": [
+          "Il certifie séparément le budget prévisionnel dans le cadre d'une mission contractuelle",
+          "Il vérifie le compte d'emploi annuel des ressources collectées auprès du public (CER), dans le cadre de sa mission de certification des comptes annuels",
+          "Il contrôle l'affectation des subventions publiques pour le compte de la Cour des comptes",
+          "Il atteste le reçu fiscal de chaque donateur"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Contrôle du compte d'emploi annuel des ressources collectées auprès du public (CER)",
+          "Intégré à l'annexe des comptes annuels",
+          "Dans le cadre de la mission de certification des comptes (rapport sur les comptes)"
+        ],
+        "model_answer": "Il contrôle le compte d'emploi annuel des ressources collectées auprès du public (CER), qui figure dans l'annexe des comptes annuels. Ce contrôle s'inscrit dans sa mission de certification des comptes et donne lieu à des vérifications spécifiques mentionnées dans son rapport."
+      },
+      "explanation": "Les organismes faisant appel public à la générosité dont les dons dépassent 153 000 € doivent nommer un CAC et établir le CER. Le CER est intégré à l'annexe depuis le règlement ANC 2018-06. Ne pas confondre avec le seuil de 153 000 € de subventions publiques.",
+      "reference": "Loi n° 91-772 du 7 août 1991 art. 3 et 4 ; C. com. L.612-4 ; règl. ANC 2018-06",
+      "confidence": "medium"
+    },
+    {
+      "id": "2025-05-CAC-18",
+      "n": 18,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["revelation_procureur"],
+      "points": 2,
+      "question": "Le commissaire aux comptes réalisant une prestation pour une entité dans laquelle il n'est pas investi d'une mission de certification a-t-il l'obligation de signaler un fait délictueux qui serait porté à sa connaissance ? Justifiez votre réponse.",
+      "qcm": {
+        "choices": [
+          "Non : la révélation n'est due que dans le cadre d'une mission de certification",
+          "Oui : depuis la recodification de 2024, l'article L.821-10 vise les faits délictueux connus à l'occasion de sa « mission ou prestation »",
+          "Non : il doit seulement faire une déclaration de soupçon à Tracfin",
+          "Oui, mais uniquement s'il s'agit d'un fait de blanchiment"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "L.821-10 (ex-L.823-12) : révélation au procureur des faits délictueux connus à l'occasion de sa mission ou prestation",
+          "La recodification vise expressément les prestations",
+          "Responsabilité non engagée par la révélation ; non-révélation pénalement sanctionnée (L.821-9)",
+          "Les obligations LCB-FT visent le CAC chargé de la certification"
+        ],
+        "model_answer": "Selon la rédaction actuelle de l'article L.821-10, issue de l'ordonnance de 2023, le commissaire aux comptes révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou de sa prestation. L'obligation s'applique donc aussi à une prestation réalisée hors mandat de certification. Le non-respect de cette obligation est pénalement sanctionné."
+      },
+      "explanation": "Le texte recodifié vise « sa mission ou prestation » ; l'ancienne lecture limitait la révélation à la mission légale, ce que reprennent encore certains supports. La question de la portée exacte (doctrine CNCC, guide de la révélation) reste à vérifier, d'où la confiance basse. À l'inverse, l'expert-comptable n'a aucune obligation de révélation au procureur.",
+      "reference": "C. com. L.821-10 (ex-L.823-12), L.821-9 (ex-L.820-7)",
+      "confidence": "low",
+      "update_note": "Le schéma de la banque indique que la révélation ne s'applique pas à une simple prestation ; le texte de L.821-10 consulté (brochure CNCC sept. 2024) vise pourtant « sa mission ou prestation ». À trancher par l'utilisateur."
+    },
+    {
+      "id": "2025-05-CAC-19",
+      "n": 19,
+      "profession": "CAC",
+      "theme": "controle_qualite",
+      "tags": ["nep", "h2a_supervision"],
+      "points": 2,
+      "question": "Outre la H2A, qui peut demander l'élaboration d'une norme d'exercice professionnel ?",
+      "qcm": {
+        "choices": [
+          "Le garde des sceaux, l'AMF, l'ACPR, l'ANC, le CNoCP et la CNCC",
+          "Les compagnies régionales et le Conseil national de l'Ordre des experts-comptables",
+          "Le ministre de l'économie, la Cour des comptes et le Conseil d'État",
+          "Uniquement la CNCC"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Le garde des sceaux, ministre de la justice",
+          "L'Autorité des marchés financiers et l'Autorité de contrôle prudentiel et de résolution",
+          "L'Autorité des normes comptables et le Conseil de normalisation des comptes publics",
+          "La Compagnie nationale des commissaires aux comptes"
+        ],
+        "model_answer": "La H2A établit son plan d'orientation et son programme de travail en fonction de ses besoins et des demandes du garde des sceaux, de l'AMF, de l'ACPR, de l'Autorité des normes comptables, du Conseil de normalisation des comptes publics et de la CNCC."
+      },
+      "explanation": "Les projets de normes sont élaborés par les deux commissions de normalisation placées auprès de la H2A, adoptés par le collège après avis de la CNCC, puis homologués par arrêté du garde des sceaux. Les CRCC ne figurent pas parmi les demandeurs.",
+      "reference": "C. com. L.820-4, L.820-23 ; R.820-52 ; D.820-53",
+      "confidence": "high",
+      "update_note": "Les commissions de normalisation remplacent la commission paritaire du H3C depuis 2024."
+    },
+    {
+      "id": "2025-05-CAC-20",
+      "n": 20,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions", "h2a_supervision"],
+      "points": 2,
+      "question": "Quelles sont les personnes composant la commission des sanctions (les noms des personnes désignées ne sont pas demandés) ?",
+      "qcm": {
+        "choices": [
+          "Un conseiller d'État président, un magistrat de la Cour des comptes et trois commissaires aux comptes en exercice",
+          "Un magistrat de la Cour de cassation président, une personne ayant exercé la profession de CAC, une personne qualifiée en durabilité, deux personnes qualifiées en matière juridique, économique ou financière",
+          "Le président de la H2A, le président de l'AMF, le président de l'ACPR et le directeur général du Trésor",
+          "Un président de chambre de la cour d'appel de Paris, un conseiller référendaire à la Cour des comptes et deux membres du Conseil national"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Président : magistrat (conseiller ou président de chambre) de la Cour de cassation désigné par son premier président",
+          "Une personne ayant exercé la profession de commissaire aux comptes",
+          "Une personne qualifiée en certification des informations en matière de durabilité",
+          "Deux personnes qualifiées en matière juridique, économique ou financière",
+          "Nommés par décret pour 6 ans renouvelable une fois ; incompatibilité avec le collège"
+        ],
+        "model_answer": "La commission des sanctions comprend cinq membres : un magistrat de la Cour de cassation, qui la préside, et quatre personnes qualifiées (une ayant exercé la profession de CAC, une qualifiée en certification de durabilité, deux qualifiées en matière juridique, économique ou financière). Ils sont nommés par décret pour six ans renouvelables une fois et ne peuvent siéger au collège."
+      },
+      "explanation": "La séparation entre poursuite (collège, rapporteur général) et jugement (commission des sanctions) est une nouveauté de l'ordonnance 2023-1142. Le distracteur « président de chambre de la cour d'appel de Paris, conseiller référendaire à la Cour des comptes… » décrit la chambre nationale de discipline des EC ; celui avec l'AMF et l'ACPR décrit des membres du collège.",
+      "reference": "C. com. L.820-2 V",
+      "confidence": "high",
+      "update_note": "Instance créée au 1er janvier 2024 (H2A) ; auparavant formation restreinte du H3C."
+    }
+  ]
+}

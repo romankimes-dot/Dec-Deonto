@@ -1,0 +1,611 @@
+{
+  "session": "2026-05",
+  "format": "qrc",
+  "questions": [
+    {
+      "id": "2026-05-EC-01",
+      "n": 1,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["inscription_tableau", "ordre_organisation"],
+      "points": 2,
+      "question": "Devant quelle instance, un expert-comptable prête-t-il serment ?",
+      "qcm": {
+        "choices": [
+          "Devant le premier président de la cour d'appel",
+          "Devant le conseil régional de l'Ordre",
+          "Devant le Conseil national de l'Ordre",
+          "Devant le tribunal judiciaire du lieu de son cabinet"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Devant le conseil régional de l'Ordre",
+          "Dans les six mois de l'inscription au tableau",
+          "Formule : exercer avec conscience et probité, respecter et faire respecter les lois"
+        ],
+        "model_answer": "L'expert-comptable prête serment devant le conseil régional de l'Ordre, dans les six mois de son inscription au tableau, en jurant d'exercer sa profession avec conscience et probité et de respecter et faire respecter les lois dans ses travaux."
+      },
+      "explanation": "Confusion EC/CAC classique : le commissaire aux comptes prête serment devant le premier président de la cour d'appel du ressort de sa compagnie régionale, en jurant d'exercer « avec honneur, probité et indépendance ».",
+      "reference": "Ord. 45-2138 art. 47 ; D. 2012-432 art. 143 ; à comparer avec C. com. R.821-60",
+      "confidence": "high"
+    },
+    {
+      "id": "2026-05-EC-02",
+      "n": 2,
+      "profession": "EC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions"],
+      "points": 2,
+      "question": "Citez quatre peines disciplinaires applicables par la chambre régionale de discipline à l'exclusion des sanctions spécifiques à la lutte contre le blanchiment des capitaux et le financement du terrorisme.",
+      "qcm": {
+        "question": "Quelle liste ne contient que des peines que la chambre régionale de discipline peut prononcer contre un expert-comptable ?",
+        "choices": [
+          "Avertissement, blâme, interdiction d'exercer trois ans, retrait de l'honorariat",
+          "Réprimande, blâme avec inscription au dossier, suspension avec sursis, radiation du tableau",
+          "Remontrance, amende civile, suspension, radiation",
+          "Rappel à l'ordre, sanction pécuniaire de 250 000 €, suspension, radiation de la liste"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Réprimande",
+          "Blâme avec inscription au dossier",
+          "Suspension pour une durée déterminée avec sursis",
+          "Suspension pour une durée déterminée",
+          "Radiation du tableau comportant interdiction définitive d'exercer"
+        ],
+        "model_answer": "La réprimande ; le blâme avec inscription au dossier ; la suspension pour une durée déterminée avec sursis ; la suspension pour une durée déterminée ; la radiation du tableau comportant interdiction définitive d'exercer la profession."
+      },
+      "explanation": "Article 53 de l'ordonnance. L'avertissement dans le cabinet du président n'est pas une peine. Le distracteur a) mélange les sanctions des CAC (L.821-71).",
+      "reference": "Ord. 45-2138 art. 53",
+      "confidence": "high"
+    },
+    {
+      "id": "2026-05-EC-03",
+      "n": 3,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["secret_professionnel", "lcb_ft"],
+      "points": 2,
+      "question": "Que doit faire l'expert-comptable qui relève des faits délictueux sur un dossier ?",
+      "qcm": {
+        "choices": [
+          "Les révéler au procureur de la République, sous peine de sanction pénale, comme un commissaire aux comptes",
+          "Les signaler à la prochaine assemblée générale",
+          "Respecter le secret professionnel (pas d'obligation de révélation au procureur), conseiller le client, refuser d'y participer, voire mettre fin à la mission, et effectuer une déclaration de soupçon à Tracfin si les faits relèvent du blanchiment ou du financement du terrorisme",
+          "Informer le Conseil national de l'Ordre, qui saisit le parquet"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Pas d'obligation de révélation au procureur (propre au CAC) ; secret professionnel",
+          "Ne pas s'associer aux faits : informer et conseiller le client, refuser de cautionner",
+          "Si nécessaire, interrompre la mission (motif juste et raisonnable)",
+          "Déclaration de soupçon à Tracfin si suspicion de blanchiment (y compris de fraude fiscale) ou financement du terrorisme"
+        ],
+        "model_answer": "L'expert-comptable n'est pas tenu de révéler les faits au procureur, obligation propre au CAC, et reste lié par son secret. Il doit refuser de s'y associer, alerter et conseiller son client et, le cas échéant, mettre fin à sa mission. S'il soupçonne un blanchiment ou un financement du terrorisme, il effectue une déclaration de soupçon à Tracfin."
+      },
+      "explanation": "Le devoir de conseil (art. 155) et l'obligation de ne pas participer à une irrégularité dominent ; la LCB-FT impose la déclaration de soupçon (CMF L.561-15), sans en informer le client. La déclaration est faite par le professionnel lui-même, sans copie à l'Ordre.",
+      "reference": "Ord. 45-2138 art. 21 ; D. 2012-432 art. 155 et 156 ; CMF L.561-15 ; NPLAB",
+      "confidence": "medium"
+    },
+    {
+      "id": "2026-05-EC-04",
+      "n": 4,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["incompatibilites_activites"],
+      "points": 2,
+      "question": "Citez quatre activités d'exercice interdites aux experts-comptables.",
+      "qcm": {
+        "question": "Laquelle de ces activités est interdite à l'expert-comptable ?",
+        "choices": [
+          "Une activité commerciale accessoire ne mettant pas en péril son indépendance",
+          "Un emploi salarié chez un commissaire aux comptes",
+          "Un mandat de recevoir, conserver ou délivrer des fonds pour le compte de ses clients (hors exceptions limitées)",
+          "Des consultations juridiques accessoires à une mission d'ordre comptable"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Emploi salarié (sauf chez un membre de l'Ordre, un CAC, une AGC, une succursale, une SPE)",
+          "Activité commerciale ou acte d'intermédiaire, sauf à titre accessoire",
+          "Mandat de recevoir, conserver ou délivrer des fonds ou valeurs ou de donner quittance (sauf exceptions)",
+          "Agent d'affaires ; représentation en justice ; consultations juridiques à titre principal (monopoles)"
+        ],
+        "model_answer": "Sont interdits à l'expert-comptable : tout emploi salarié hors de la profession (sauf chez un confrère, un CAC, une AGC…), toute activité commerciale ou acte d'intermédiaire non accessoire, tout mandat de recevoir, conserver ou délivrer des fonds ou valeurs ou de donner quittance, l'activité d'agent d'affaires et l'exercice d'activités relevant du monopole d'autres professions (représentation en justice, consultation juridique à titre principal)."
+      },
+      "explanation": "Article 22 de l'ordonnance, assoupli par la loi Pacte (activités commerciales accessoires, recouvrement amiable et paiement de dettes par le compte du client, paiement de dettes fiscales et sociales). Côté CAC, l'interdiction porte surtout sur l'immixtion et l'autorévision.",
+      "reference": "Ord. 45-2138 art. 22",
+      "confidence": "high"
+    },
+    {
+      "id": "2026-05-EC-05",
+      "n": 5,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["societes_ec_capital"],
+      "points": 2,
+      "question": "Un expert-comptable envisage d'exercer son activité au sein d'une société. Quelles formes de sociétés sont interdites ?",
+      "qcm": {
+        "choices": [
+          "La SAS et la SASU",
+          "Les sociétés conférant à leurs associés la qualité de commerçant : SNC, SCS, SCA",
+          "La SARL unipersonnelle (EURL)",
+          "Toute société dont le capital n'est pas détenu à 100 % par des experts-comptables"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Formes conférant aux associés la qualité de commerçant",
+          "Société en nom collectif",
+          "Sociétés en commandite simple et par actions (pour les commandités)",
+          "Autres formes libres sous réserve : plus des 2/3 des droits de vote aux EC, dirigeants EC"
+        ],
+        "model_answer": "Sont interdites les formes sociales qui confèrent à leurs associés la qualité de commerçant : la société en nom collectif et les sociétés en commandite (simple ou par actions). Les autres formes sont admises si plus des deux tiers des droits de vote sont détenus par des experts-comptables et si les dirigeants sont des experts-comptables associés."
+      },
+      "explanation": "Article 7 de l'ordonnance. Pour les sociétés de CAC, la règle de détention est la majorité des droits de vote (L.821-16), et non les 2/3 : confusion fréquente.",
+      "reference": "Ord. 45-2138 art. 7",
+      "confidence": "high"
+    },
+    {
+      "id": "2026-05-EC-06",
+      "n": 6,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["confraternite_reprise_dossier"],
+      "points": 2,
+      "question": "En cas de remplacement de l'expert-comptable, quelle procédure doit suivre le nouvel expert-comptable à l'égard de son prédécesseur avant d'accepter la mission ?",
+      "qcm": {
+        "choices": [
+          "Obtenir l'autorisation écrite du prédécesseur, faute de quoi la mission ne peut être acceptée",
+          "Informer le prédécesseur avant d'accepter, vérifier que le changement ne vise pas à éluder la loi, s'efforcer d'obtenir la justification du paiement de ses honoraires et, à défaut, en référer au président du conseil régional",
+          "Saisir le président de la CRCC pour qu'il désigne le successeur",
+          "Aucune formalité : la liberté de choix du client prime"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Informer le prédécesseur avant d'accepter (lettre de reprise)",
+          "S'assurer que le changement n'est pas motivé par la volonté d'éluder les lois ou les devoirs professionnels",
+          "S'efforcer d'obtenir la justification du paiement des honoraires ; à défaut, en référer au président du conseil régional et faire des réserves",
+          "Si honoraires contestés : suggérer par écrit la conciliation ou l'arbitrage de l'Ordre"
+        ],
+        "model_answer": "Le nouvel expert-comptable informe son prédécesseur avant d'accepter la mission et s'assure que le changement n'a pas pour objet d'éluder la loi ou ses devoirs professionnels. Il s'efforce d'obtenir la justification du paiement des honoraires dus au prédécesseur ; à défaut, il en réfère au président du conseil régional et fait des réserves auprès du client. Si les honoraires sont contestés, il suggère par écrit la conciliation ou l'arbitrage de l'Ordre."
+      },
+      "explanation": "Article 163 du code de déontologie EC ; le prédécesseur favorise, avec l'accord du client, la transmission du dossier. Pour les CAC, la succession entre confrères est régie par l'article 26 du code de déontologie CAC (accès au dossier du prédécesseur, levée du secret entre CAC successifs).",
+      "reference": "D. 2012-432 art. 159, 160 et 163",
+      "confidence": "high"
+    },
+    {
+      "id": "2026-05-EC-07",
+      "n": 7,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["lettre_mission"],
+      "points": 2,
+      "question": "À quelles conditions, un expert-comptable peut-il interrompre sa mission ?",
+      "qcm": {
+        "choices": [
+          "Uniquement en cas de cessation définitive d'activité ou de motif personnel impérieux",
+          "Pour des motifs justes et raisonnables (perte de confiance du client, méconnaissance d'une clause substantielle), en s'efforçant de ne pas lui porter préjudice",
+          "Seulement après autorisation du président du conseil régional",
+          "À tout moment, à condition de restituer les honoraires perçus"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Principe : exécuter la mission jusqu'à son terme normal",
+          "Motifs justes et raisonnables : perte de confiance manifestée par le client, méconnaissance d'une clause substantielle",
+          "S'efforcer de ne pas porter préjudice au client (préavis, délai raisonnable)",
+          "Dénonciation obligatoire en cas de conflit d'intérêts ou d'atteinte à l'indépendance"
+        ],
+        "model_answer": "L'expert-comptable doit en principe mener sa mission à son terme. Il peut l'interrompre pour des motifs justes et raisonnables, tels que la perte de confiance manifestée par le client ou la méconnaissance d'une clause substantielle du contrat, en s'efforçant de ne pas lui porter préjudice. Il doit y mettre fin dès qu'un conflit d'intérêts ou une atteinte à son indépendance survient."
+      },
+      "explanation": "Articles 156 et 157 du code de déontologie EC (même question qu'en novembre 2024). La liste « cessation définitive d'activité, motif personnel impérieux… » correspond aux motifs légitimes de démission du CAC (code de déontologie CAC art. 28).",
+      "reference": "D. 2012-432 art. 156 et 157",
+      "confidence": "high"
+    },
+    {
+      "id": "2026-05-EC-08",
+      "n": 8,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": ["referentiel_normatif", "missions_legales"],
+      "points": 2,
+      "question": "À quelle catégorie de missions appartient la mission de mise en état d'examen des comptes de campagne réalisée par un expert-comptable pour un candidat aux dernières élections municipales ? Quels textes professionnels s'appliquent ?",
+      "qcm": {
+        "choices": [
+          "Mission de présentation des comptes (NP 2300)",
+          "Mission sans assurance prévue par un texte légal, sans norme spécifique : code de déontologie, NPMQ et NPLAB",
+          "Attestation particulière (NP 3100)",
+          "Mission d'examen limité (NP 2400)"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Mission sans assurance (mission particulière prévue par un texte légal : C. électoral L.52-12)",
+          "Aucune norme spécifique",
+          "Code de déontologie, NPMQ, NPLAB",
+          "Lettre de mission ; vigilance LCB-FT élevée"
+        ],
+        "model_answer": "C'est une mission sans assurance, catégorie des missions particulières prévues par un texte légal (code électoral), qui ne fait l'objet d'aucune norme spécifique. S'appliquent le code de déontologie, la NPMQ et la NPLAB, ainsi que le code électoral et la doctrine de la CNCCFP."
+      },
+      "explanation": "Question reprise de novembre 2024. Le visa de l'expert-comptable n'exprime aucune assurance : il met le compte en état d'examen et vérifie la présence des pièces. Les comptes de campagne sont considérés comme à risque élevé en matière LCB-FT.",
+      "reference": "Cadre de référence des missions (référentiel normatif OEC) ; C. électoral L.52-12 ; NPMQ ; NPLAB",
+      "confidence": "medium"
+    },
+    {
+      "id": "2026-05-EC-09",
+      "n": 9,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": ["lcb_ft"],
+      "points": 2,
+      "question": "Quels sont les critères caractérisant une opération atypique en matière de lutte contre le blanchiment des capitaux et le financement du terrorisme et nécessitant un examen renforcé ?",
+      "qcm": {
+        "choices": [
+          "Toute opération en espèces supérieure à 1 000 €",
+          "Une opération particulièrement complexe, d'un montant inhabituellement élevé, ou ne paraissant pas avoir de justification économique ou d'objet licite",
+          "Toute opération réalisée avec une personne politiquement exposée",
+          "Toute opération réalisée avec un pays de l'Union européenne"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Opération particulièrement complexe",
+          "Ou d'un montant inhabituellement élevé",
+          "Ou ne paraissant pas avoir de justification économique ou d'objet licite",
+          "Examen renforcé : origine et destination des fonds, objet de l'opération, identité du bénéficiaire ; consignation écrite"
+        ],
+        "model_answer": "Une opération est atypique lorsqu'elle est particulièrement complexe, d'un montant inhabituellement élevé, ou qu'elle ne paraît pas avoir de justification économique ou d'objet licite. Le professionnel effectue alors un examen renforcé : il se renseigne sur l'origine et la destination des fonds, l'objet de l'opération et l'identité du bénéficiaire, et consigne ses conclusions."
+      },
+      "explanation": "Article L.561-10-2 II du CMF, repris par la NPLAB (EC) et la NEP 9605 (CAC). L'examen renforcé peut déboucher sur une déclaration de soupçon. Une PPE déclenche une vigilance renforcée, mais n'est pas en soi une opération atypique.",
+      "reference": "CMF L.561-10-2 II ; NPLAB ; NEP 9605",
+      "confidence": "high"
+    },
+    {
+      "id": "2026-05-EC-10",
+      "n": 10,
+      "profession": "EC",
+      "theme": "responsabilite",
+      "tags": ["inscription_tableau", "discipline_sanctions"],
+      "points": 2,
+      "question": "Sur le plan déontologique, à quelle sanction s'expose un expert-comptable qui n'aurait pas réglé, sans motif valable, ses cotisations CAVEC pendant au moins deux ans au cours des dix dernières années ?",
+      "qcm": {
+        "choices": [
+          "Un blâme avec inscription au dossier",
+          "Il est réputé démissionnaire et radié du tableau après deux appels infructueux",
+          "Une suspension de trois mois avec sursis",
+          "Une simple majoration de retard, sans conséquence ordinale"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Réputé démissionnaire",
+          "Radiation du tableau (radiation d'office, administrative)",
+          "Après deux appels infructueux à un mois d'intervalle, le second par LRAR reproduisant le texte",
+          "Même règle : cotisations ordinales impayées, défaut d'assurance RC continue"
+        ],
+        "model_answer": "Il est réputé démissionnaire et radié du tableau, après deux appels infructueux adressés à un mois d'intervalle, le second par lettre recommandée reproduisant le texte. La même règle s'applique au non-paiement des cotisations ordinales et à l'absence d'assurance de responsabilité civile."
+      },
+      "explanation": "Article 125 du décret de 2012 : les cotisations de sécurité sociale personnelles (dont la CAVEC) sont visées. Il s'agit d'une radiation d'office administrative, distincte de la radiation disciplinaire prononcée par la chambre régionale de discipline (qui emporte interdiction définitive d'exercer).",
+      "reference": "D. 2012-432 art. 125",
+      "confidence": "high"
+    },
+    {
+      "id": "2026-05-CAC-11",
+      "n": 11,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["mandat_duree_cessation"],
+      "points": 2,
+      "question": "En cas de fusion entre des sociétés de commissariat aux comptes que deviennent les mandats détenus par la société absorbée ?",
+      "qcm": {
+        "choices": [
+          "Ils prennent fin automatiquement à la date de la fusion",
+          "La société absorbante poursuit les mandats jusqu'à leur expiration ; l'organe compétent de l'entité contrôlée peut, lors de sa première réunion après l'absorption, délibérer sur leur maintien après avoir entendu le CAC",
+          "Ils sont transférés au suppléant",
+          "Ils sont poursuivis pour six nouveaux exercices par l'absorbante"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "La société absorbante poursuit les mandats de l'absorbée jusqu'à leur date d'expiration",
+          "L'AG (ou l'organe compétent) de l'entité contrôlée peut, lors de sa première réunion postérieure à l'absorption, délibérer sur le maintien du mandat",
+          "Après avoir entendu le commissaire aux comptes"
+        ],
+        "model_answer": "La société absorbante poursuit les mandats confiés à la société absorbée jusqu'à leur date d'expiration. Toutefois, l'assemblée générale ou l'organe compétent de l'entité contrôlée peut, lors de sa première réunion postérieure à l'absorption, délibérer sur le maintien du mandat après avoir entendu le commissaire aux comptes."
+      },
+      "explanation": "Article L.821-48 (ex-L.823-5), dérogeant au principe du mandat de six exercices. Le mandat ne repart pas pour une nouvelle durée.",
+      "reference": "C. com. L.821-48 (ex-L.823-5)",
+      "confidence": "high",
+      "update_note": "Ancienne référence L.823-5, recodifiée au 1er janvier 2024."
+    },
+    {
+      "id": "2026-05-CAC-12",
+      "n": 12,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["lcb_ft", "nep"],
+      "points": 2,
+      "question": "Selon la NEP 9605 - Obligations du commissaire aux comptes en matière de lutte contre le blanchiment des capitaux et le financement du terrorisme, quelle est la définition du bénéficiaire effectif ?",
+      "qcm": {
+        "choices": [
+          "Toute personne morale détenant plus de 10 % du capital",
+          "La ou les personnes physiques qui contrôlent en dernier lieu, directement ou indirectement, le client, ou pour lesquelles une opération est exécutée ; notamment celles détenant plus de 25 % du capital ou des droits de vote ou exerçant un contrôle par tout autre moyen",
+          "Le dirigeant de droit de l'entité",
+          "Tout actionnaire ayant perçu un dividende au cours de l'exercice"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Personne(s) physique(s)",
+          "Qui contrôle(nt) en dernier lieu, directement ou indirectement, le client ou pour laquelle une opération est exécutée",
+          "Détention de plus de 25 % du capital ou des droits de vote, ou contrôle par tout autre moyen",
+          "À défaut, le représentant légal"
+        ],
+        "model_answer": "Le bénéficiaire effectif est la ou les personnes physiques qui contrôlent en dernier lieu, directement ou indirectement, le client, ou pour le compte desquelles une opération est exécutée. Pour une société, il s'agit de la personne qui détient plus de 25 % du capital ou des droits de vote ou exerce un contrôle par tout autre moyen ; à défaut, du représentant légal."
+      },
+      "explanation": "Définition des articles L.561-2-2 et R.561-1 du CMF, reprise par la NEP 9605 et la NPLAB. Le bénéficiaire effectif est toujours une personne physique.",
+      "reference": "NEP 9605 ; CMF L.561-2-2, R.561-1 s.",
+      "confidence": "high"
+    },
+    {
+      "id": "2026-05-CAC-13",
+      "n": 13,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["nep"],
+      "points": 2,
+      "question": "Compléter la phrase suivante : « Dans le cadre de sa mission d'audit légal portant sur les comptes annuels, le commissaire aux comptes émet un rapport de certification. En cas d'opinion favorable, il certifie que les comptes annuels sont, au regard des règles et principes comptables français, … ».",
+      "qcm": {
+        "choices": [
+          "… cohérents et vraisemblables dans leur ensemble",
+          "… réguliers et sincères et donnent une image fidèle du résultat des opérations de l'exercice écoulé ainsi que de la situation financière et du patrimoine de la société à la fin de cet exercice",
+          "… exempts de toute erreur et de toute fraude",
+          "… établis, dans tous leurs aspects significatifs, conformément au référentiel identifié, sans observation"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Réguliers et sincères",
+          "Donnent une image fidèle du résultat des opérations de l'exercice écoulé",
+          "Ainsi que de la situation financière et du patrimoine à la fin de l'exercice"
+        ],
+        "model_answer": "« … réguliers et sincères et donnent une image fidèle du résultat des opérations de l'exercice écoulé ainsi que de la situation financière et du patrimoine de la société à la fin de cet exercice. »"
+      },
+      "explanation": "Formule de L.821-53 (ex-L.823-9) et de la NEP 700. « Cohérence et vraisemblance » est le critère de la présentation (EC) ; la formule « établis conformément au référentiel » est celle de l'examen limité.",
+      "reference": "C. com. L.821-53 (ex-L.823-9) ; NEP 700",
+      "confidence": "high"
+    },
+    {
+      "id": "2026-05-CAC-14",
+      "n": 14,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions"],
+      "points": 2,
+      "question": "Quelles sont les deux interdictions temporaires prévues par le code de commerce pour les commissaires aux comptes ?",
+      "qcm": {
+        "choices": [
+          "L'interdiction d'exercer tout ou partie des missions (ou d'en accepter de nouvelles) et l'interdiction d'exercer des fonctions d'administration ou de direction au sein d'une société de CAC et d'EIP, chacune pour trois ans au plus",
+          "La suspension avec sursis et la suspension ferme",
+          "L'interdiction de publicité et l'interdiction de démarchage pendant un an",
+          "L'interdiction de signer et l'interdiction de facturer pendant six mois"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Interdiction d'exercer tout ou partie des missions de CAC ou d'en accepter de nouvelles (3 ans max)",
+          "Interdiction d'exercer des fonctions d'administration ou de direction au sein d'une société de CAC et d'EIP (3 ans max)",
+          "Prononcées par la commission des sanctions de la H2A"
+        ],
+        "model_answer": "La commission des sanctions peut prononcer l'interdiction d'exercer tout ou partie des missions de commissaire aux comptes ou d'en accepter de nouvelles, et l'interdiction d'exercer des fonctions d'administration ou de direction au sein d'une société de commissaires aux comptes et d'entités d'intérêt public, chacune pour une durée de trois ans au plus."
+      },
+      "explanation": "Lecture retenue : sanctions de L.821-71 (I 3° et II 2°). Lecture alternative possible : les délais de « viduité » (un CAC ne peut devenir dirigeant de l'entité contrôlée moins de trois ans après la fin de sa mission, L.821-32 ; un ancien dirigeant ou salarié ne peut en devenir CAC moins de cinq ans après, L.821-33). La suspension relève du vocabulaire EC.",
+      "reference": "C. com. L.821-71 (ex-L.824-2) ; voir aussi L.821-32 et L.821-33",
+      "confidence": "medium",
+      "update_note": "Le texte consulté fixe la durée maximale à 3 ans ; le schéma de la banque mentionne 5 ans."
+    },
+    {
+      "id": "2026-05-CAC-15",
+      "n": 15,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions", "h2a_supervision"],
+      "points": 2,
+      "question": "Citez les personnes sanctionnables par la commission des sanctions instaurée par l'article L.820-2 du code de commerce.",
+      "qcm": {
+        "question": "Laquelle de ces personnes n'est pas sanctionnable par la commission des sanctions de la H2A ?",
+        "choices": [
+          "Le dirigeant d'une EIP ayant méconnu les règles de désignation du CAC",
+          "Le salarié d'un cabinet de CAC détenant un intérêt incompatible dans l'entité contrôlée",
+          "Le contrôleur de pays tiers inscrit",
+          "Un expert-comptable stagiaire pour un manquement à sa mission d'expertise comptable"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "expected": [
+          "Commissaires aux comptes (fautes disciplinaires) et auditeurs de durabilité",
+          "Associés, salariés, toute personne participant à la mission, personnes étroitement liées (liens incompatibles)",
+          "EIP, leurs dirigeants et organes : services fournis, désignation, durée du mandat, honoraires",
+          "Entités et dirigeants qui s'opposent aux contrôles et enquêtes ; entités recrutant un ancien CAC en violation de L.821-32",
+          "Dirigeants et personnes des sociétés de CAC impliqués dans des manquements LCB-FT ; contrôleurs de pays tiers"
+        ],
+        "model_answer": "Sont sanctionnables : les commissaires aux comptes ; leurs associés, salariés, toute personne participant à la mission et leurs proches pour des liens incompatibles ; les EIP et leurs dirigeants pour les manquements sur les services, la désignation, la durée du mandat et les honoraires ; les entités et dirigeants qui font obstacle aux contrôles ; ceux qui recrutent un ancien CAC en violation du délai de viduité ; les dirigeants de sociétés de CAC pour des manquements LCB-FT ; les contrôleurs de pays tiers ; les auditeurs de durabilité."
+      },
+      "explanation": "L.821-70 I et II, L.821-19 IV, et les dispositions sur les auditeurs de durabilité (L.822-x). L'expert-comptable (ou le stagiaire EC) relève, pour son activité d'expertise comptable, des chambres de discipline de l'Ordre.",
+      "reference": "C. com. L.820-2 V, L.821-19 IV, L.821-70, L.821-72",
+      "confidence": "medium"
+    },
+    {
+      "id": "2026-05-CAC-16",
+      "n": 16,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["mandat_duree_cessation", "lettre_mission_nep210"],
+      "points": 2,
+      "question": "À quelle date débute la mission de certification légale des comptes annuels ?",
+      "qcm": {
+        "choices": [
+          "Au premier jour de l'exercice suivant la nomination",
+          "À la date de nomination par l'assemblée générale (ou l'organe compétent), sous réserve de l'acceptation du mandat ; la mission porte sur l'exercice en cours",
+          "À la date de signature de la lettre de mission",
+          "À la date d'inscription de la nomination au registre du commerce"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "À la date de la nomination par l'assemblée générale ou l'organe compétent",
+          "Sous réserve de l'acceptation par le CAC (après vérification de son indépendance)",
+          "Le premier exercice certifié est l'exercice en cours à la date de nomination",
+          "La lettre de mission (NEP 210) ne conditionne pas le début de la mission légale"
+        ],
+        "model_answer": "La mission légale débute à la date de la décision de nomination par l'assemblée générale ou l'organe compétent, dès lors que le commissaire aux comptes a accepté le mandat ; elle porte sur l'exercice en cours à cette date et prend fin après l'assemblée qui statue sur les comptes du sixième (ou troisième) exercice."
+      },
+      "explanation": "Le mandat expire après la délibération sur les comptes du sixième exercice (L.821-44), ce qui implique que le premier exercice certifié est celui en cours lors de la nomination. La lettre de mission (NEP 210) organise la mission mais n'en est pas la source. Réponse fondée sur la doctrine CNCC, non vérifiée dans le texte.",
+      "reference": "C. com. L.821-40, L.821-44 ; NEP 210 ; doctrine CNCC",
+      "confidence": "low"
+    },
+    {
+      "id": "2026-05-CAC-17",
+      "n": 17,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["services_interdits_eip", "independance_situations_risque"],
+      "points": 2,
+      "question": "À la suite des modifications introduites à l'article L.821-3 du code de commerce, un commissaire aux comptes peut-il produire les bulletins de paie d'une société dont il certifie les comptes ? Justifiez votre réponse.",
+      "qcm": {
+        "choices": [
+          "Oui, sans restriction, la profession comprenant désormais la fourniture de prestations",
+          "Oui, si la société n'est pas une EIP et si le comité d'audit l'autorise",
+          "Non : la paie est un service interdit pour une EIP, et pour une non-EIP l'établissement de la paie de l'entité certifiée crée un risque d'autorévision et d'immixtion dans la gestion qu'aucune sauvegarde ne permet de réduire",
+          "Non, sauf s'il est également inscrit à l'Ordre des experts-comptables"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Non",
+          "L.821-3 : la profession comprend les missions et la fourniture de prestations, dans le respect des règles d'indépendance",
+          "EIP : services de paie interdits (règl. UE 537/2014 art. 5 ; L.821-28)",
+          "Non-EIP : risque d'autorévision (paie = éléments des comptes) et d'immixtion ; interdiction lorsque les sauvegardes sont insuffisantes (L.821-28 IV)"
+        ],
+        "model_answer": "Non. Si la profession de CAC comprend désormais la fourniture de prestations, celles-ci restent soumises aux règles d'indépendance. Pour une EIP, la paie figure parmi les services interdits ; pour une non-EIP, établir les bulletins de paie de l'entité certifiée conduirait le CAC à auditer ses propres travaux (autorévision) et à s'immiscer dans la gestion, situation qu'aucune mesure de sauvegarde ne permet de traiter."
+      },
+      "explanation": "Depuis 2024, L.821-3 définit la profession comme l'exercice de missions et la fourniture de prestations. Pour la non-EIP, L.821-28 IV interdit d'accepter ou de poursuivre une mission en cas de risque d'autorévision sans sauvegarde appropriée. Point non vérifié : la question évoque des « modifications » de L.821-3 postérieures, dont la teneur exacte (loi 2025-2026 ?) n'a pas pu être confirmée.",
+      "reference": "C. com. L.821-3, L.821-28 ; règl. (UE) 537/2014 art. 5 ; code de déontologie CAC art. 5 et 19",
+      "confidence": "low",
+      "update_note": "L'article L.821-3 aurait été modifié après 2024 : vérifier la version en vigueur au 1er novembre 2026."
+    },
+    {
+      "id": "2026-05-CAC-18",
+      "n": 18,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": ["reseau"],
+      "points": 2,
+      "question": "Selon l'article 29 du code de déontologie de la profession de commissaire aux comptes, quelle est la caractéristique de l'exercice en réseau ?",
+      "qcm": {
+        "choices": [
+          "Le fait d'exercer avec au moins un autre commissaire aux comptes dans une même société",
+          "L'appartenance à un réseau national ou international qui n'a pas pour activité exclusive le contrôle légal des comptes et dont les membres ont un intérêt économique commun",
+          "L'adhésion à une compagnie régionale",
+          "Le co-commissariat aux comptes"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Réseau national ou international",
+          "N'ayant pas pour activité exclusive le contrôle légal des comptes",
+          "Dont les membres ont un intérêt économique commun",
+          "Indices : direction commune, partage de revenus, commissions d'apport, dénomination commune, clientèle commune, documents communs… ; doute → H2A"
+        ],
+        "model_answer": "Le réseau se caractérise par l'existence d'un intérêt économique commun entre ses membres, au sein d'une structure nationale ou internationale qui n'a pas pour activité exclusive le contrôle légal des comptes. Des indices (direction commune, partage de résultats, dénomination commune, clientèle commune…) permettent de l'établir ; en cas de doute, le CAC saisit la H2A."
+      },
+      "explanation": "Article 29 du code de déontologie (titre II, section 3) et L.821-4 : le CAC affilié informe l'entité de son appartenance au réseau et des services fournis par celui-ci. L'appartenance étend les règles d'indépendance aux autres membres du réseau.",
+      "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 29 et 30 ; C. com. L.821-4",
+      "confidence": "high"
+    },
+    {
+      "id": "2026-05-CAC-19",
+      "n": 19,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": ["discipline_sanctions"],
+      "points": 2,
+      "question": "Quelles procédures disciplinaires prévoit le code de commerce à l'encontre des commissaires aux comptes ?",
+      "qcm": {
+        "choices": [
+          "Procédure devant la chambre régionale de discipline puis appel devant la chambre nationale",
+          "Procédure ordinaire devant la commission des sanctions, procédure simplifiée de sanction et composition administrative",
+          "Comparution immédiate et citation directe",
+          "Médiation devant la CRCC puis arbitrage du président de la CNCC"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Procédure ordinaire (de droit commun) devant la commission des sanctions",
+          "Procédure simplifiée de sanction (certains manquements, décision du président de la commission, opposition possible)",
+          "Composition administrative proposée par la H2A après notification des griefs",
+          "Suspension provisoire en cas d'urgence ; recours devant le Conseil d'État"
+        ],
+        "model_answer": "Après enquête du rapporteur général, le code de commerce prévoit trois voies : la procédure ordinaire devant la commission des sanctions, la procédure simplifiée de sanction pour certains manquements, et la composition administrative proposée par la H2A. Les décisions peuvent faire l'objet d'un recours devant le Conseil d'État."
+      },
+      "explanation": "L.821-78 (composition administrative), L.821-79 et L.821-80 (procédure ordinaire), L.821-81 et L.821-82 (procédure simplifiée), L.821-85 (recours). Le schéma chambre régionale / chambre nationale est celui des EC.",
+      "reference": "C. com. L.821-73 à L.821-85",
+      "confidence": "high",
+      "update_note": "Composition administrative et procédure simplifiée issues de l'ordonnance 2023-1142."
+    },
+    {
+      "id": "2026-05-CAC-20",
+      "n": 20,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": ["non_immixtion", "code_deontologie_structure"],
+      "points": 2,
+      "question": "À quelles conditions, un commissaire aux comptes peut-il se faire assister ou représenter par des collaborateurs ou des experts ?",
+      "qcm": {
+        "choices": [
+          "Librement, en leur déléguant ses pouvoirs de signature",
+          "Sous sa responsabilité, sans pouvoir leur déléguer ses pouvoirs, en les faisant connaître nommément à l'entité et en s'assurant de leur compétence et de leur respect des règles déontologiques, notamment d'indépendance",
+          "Uniquement après autorisation de la CRCC",
+          "Uniquement s'ils sont eux-mêmes inscrits sur la liste des CAC"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Sous sa responsabilité entière ; aucune délégation de ses pouvoirs",
+          "Les faire connaître nommément à l'entité contrôlée",
+          "S'assurer qu'ils respectent les règles de la profession, notamment l'indépendance à l'égard de l'entité",
+          "S'assurer de leur compétence ; ils disposent des mêmes droits d'investigation et sont tenus au secret"
+        ],
+        "model_answer": "Le commissaire aux comptes peut se faire assister ou représenter par des collaborateurs ou experts de son choix, sous sa responsabilité, sans leur déléguer ses pouvoirs. Il les fait connaître nommément à l'entité contrôlée, s'assure de leur compétence et de leur respect des règles déontologiques, en particulier de leur indépendance. Ils disposent des mêmes droits d'investigation et sont tenus au secret professionnel."
+      },
+      "explanation": "Article 10 du code de déontologie CAC et article du code de commerce relatif aux pouvoirs d'investigation (ex-L.823-13). Côté EC, la délégation de signature est encadrée différemment (salariés EC, art. 83 ter et quater).",
+      "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 10 ; C. com. L.821-60 (ex-L.823-13) ; L.821-35",
+      "confidence": "medium"
+    }
+  ]
+}
