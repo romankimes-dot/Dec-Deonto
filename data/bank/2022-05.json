@@ -186,7 +186,8 @@
       },
       "explanation": "La faute disciplinaire est définie largement et ne se limite ni aux missions ni aux cotisations ordinales : la jurisprudence disciplinaire retient le défaut de paiement des charges sociales personnelles comme contraire à la probité. La H2A n'est jamais compétente pour les experts-comptables.",
       "reference": "Ord. 45-2138 art. 53 ; D. 2012-432 art. 141 s. (devoirs généraux : respect des lois, probité, dignité) ; jurisprudence de la chambre nationale de discipline",
-      "confidence": "low"
+      "confidence": "low",
+      "update_note": "Relecture : la réponse « oui » est cohérente, mais le sujet de mai 2026 (Q10) vise un texte précis (cotisations CAVEC impayées sans motif valable pendant au moins deux ans au cours des dix dernières années) qui prévoit une sanction déterminée ; la référence exacte et la sanction encourue sont à identifier et à ajouter."
     },
     {
       "id": "2022-05-EC-07",
@@ -526,9 +527,9 @@
         "model_answer": "Constituent une faute disciplinaire du commissaire aux comptes les manquements aux conditions légales d'exercice et aux règles professionnelles (lois, règlements, normes d'exercice professionnel, code de déontologie), la négligence grave, et tout fait contraire à la probité, à l'honneur ou à l'indépendance, y compris en dehors de l'exercice professionnel."
       },
       "explanation": "La définition est large : elle couvre les manquements techniques, l'incurie et les comportements indignes, sans exiger d'infraction pénale. Une simple divergence d'appréciation n'est pas une faute. L'EC connaît une définition similaire dans l'ordonnance de 1945 mais ses sanctions sont prononcées par les chambres de discipline ordinales.",
-      "reference": "C. com. ex art. L.824-1 (faute disciplinaire), recodifié L.820-x en 2024 ; pour l'EC : ord. 45-2138 art. 53",
-      "confidence": "medium",
-      "update_note": "L'article L.824-1 a été renuméroté dans les articles L.820-x par l'ordonnance 2023-1142 ; définition inchangée sur le fond."
+      "reference": "C. com. art. L.821-70 (faute disciplinaire, ex L.824-1) ; pour l'EC : ord. 45-2138 art. 53",
+      "confidence": "low",
+      "update_note": "L'article L.824-1 est devenu l'article L.821-70 avec l'ordonnance 2023-1142 ; définition inchangée sur le fond. Relecture : le découpage de la réponse est à vérifier sur le texte. Dans le souvenir du relecteur, le 1° vise les manquements aux conditions légales d'exercice ; le 2° la négligence grave et les faits contraires à la probité ou à l'honneur, même hors de l'exercice professionnel ; le 3° les manquements aux règles professionnelles (lois, règlements, NEP, code de déontologie). La mention de l'« indépendance » dans le fait contraire paraît reprise de l'ancien texte antérieur à 2016."
     },
     {
       "id": "2022-05-CAC-18",
