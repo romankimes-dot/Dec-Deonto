@@ -325,7 +325,7 @@ function renderExamResult() {
       <div class="muted">${r.note < 6 ? 'Éliminatoire (< 6)' : r.note < 10 ? 'Sous la moyenne' : r.note < 14 ? 'Validé' : 'Très bon'} · EC ${pct(r.byProf.EC)} · CAC ${pct(r.byProf.CAC)}</div></div>
     <div class="card"><h2>Par thème</h2><table><tbody>${Object.entries(r.byTheme).map(([k, v]) => `<tr><td>${THEMES[k]}</td><td>${v.points}/${v.max}</td></tr>`).join('')}</tbody></table></div>
     ${r.rows.map((row, i) => { const q = row.q; const ok = row.points >= row.max; return `<div class="card" style="border-left:4px solid ${ok ? 'var(--ok)' : row.points > 0 ? 'var(--warn)' : 'var(--ko)'}">${qHeader(q)}<div class="q" style="font-size:16px">${i + 1}. ${esc(r.mode === 'qcm' ? (q.qcm.question || q.question) : (q.qrc.question || q.question))}</div>
-      <div class="muted">Votre réponse : ${esc(r.mode === 'qcm' ? (q.qcm.choices[r.answers[q.id]] ?? '—') : (r.answers[q.id] || '—'))}</div>`
+      <div class="muted">Votre réponse : ${esc(r.mode === 'qcm' ? (q.qcm.choices[r.answers[q.id]] ?? '—') : (r.answers[q.id] || '—'))}</div>
       <div class="answer">${esc(q.qrc.model_answer)}</div><details><summary>Explication</summary>${qExplain(q)}</details></div>`; }).join('')}
     <button class="btn primary" id="close">Fermer</button>`;
 }
