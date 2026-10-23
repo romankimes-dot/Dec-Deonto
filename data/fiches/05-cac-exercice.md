@@ -15,7 +15,8 @@
 - **Anciennes références** à reconnaître : L.823-x (mission), L.822-x (statut, secret L.822-15), R.823-12 (barème), L.824-x (discipline). Elles ont été **renumérotées en 2024**.
 
 ### Élaboration des NEP
-- Une **commission** élabore les projets de normes (déontologie, contrôle interne de qualité, exercice professionnel). Elle est composée **à parité** de membres du **collège de la H2A** et de **CAC désignés par la CNCC** (4 et 4 sous le H3C), et **présidée** par le président de la H2A, qui a **voix prépondérante**.
+- **Deux commissions de normalisation** placées auprès de la H2A élaborent les projets (L.820-4, modifié par la loi 2025-391) : l'une pour la **durabilité**, l'autre pour la **certification des comptes**, les prestations et attestations. Elles sont présidées par le **même membre du collège**. La commission « comptes » comprend en outre **2 CAC** (proposés par la CNCC) et **1 personnalité qualifiée** ; membres désignés pour **3 ans**, renouvelables une fois.
+- Attention : l'ancienne commission **paritaire** (H3C) n'existe plus.
 - **Peuvent demander l'élaboration d'une NEP** : le **garde des Sceaux**, le **président de l'AMF**, le **président de l'ACPR**, la **CNCC** et, le cas échéant, le **Conseil de normalisation des comptes publics**.
 - La **CRCC ne le peut pas**.
 
@@ -33,9 +34,9 @@
   - **supervision des auditeurs de durabilité**.
 - **Délégations actuelles à la CNCC** :
   - le **suivi de la formation continue** ;
-  - les **contrôles d'activité des CAC non-EIP**, **délégués** par des **conventions homologuées par arrêté** (2017, 19/05/2023, nouvelle convention homologuée le **6/07/2026**).
+  - les **contrôles d'activité des CAC non-EIP**, **délégués** par des **conventions homologuées par arrêté** (2017, 19/05/2023, nouvelle convention homologuée par arrêté du **2 juillet 2026**).
 - La H2A garde la **supervision**.
-- L'**inscription et la tenue de la liste** sont assurées par la **H2A elle-même** : elles ne sont **pas déléguées**.
+- L'**inscription et la tenue de la liste** sont assurées par la **H2A elle-même**. Elles avaient été déléguées à la CNCC de **2017 à novembre 2020**.
 - La H2A **n'adopte pas** la déontologie des EC et n'est **pas** une instance d'appel des « commissions régionales de discipline », qui n'existent plus.
 - **Organes** :
   - le **collège**, composé de **non-praticiens** majoritaires : magistrats et personnalités qualifiées ;
@@ -46,7 +47,7 @@
 ### Compagnie nationale des commissaires aux comptes (CNCC)
 - **Établissement d'utilité publique** doté de la personnalité morale, placé **auprès du garde des Sceaux**.
 - Elle **représente la profession**, concourt au **bon exercice**, à la **surveillance** et à la **défense** des intérêts, et assure la **formation**.
-- **Conseil national** : **60 membres** élus pour **4 ans**. Il comprend des **CAC élus** et d'**autres membres** (les **présidents des CRCC**, à vérifier).
+- **Conseil national** : **60 membres** désignés pour **4 ans**, **présidents des CRCC compris** ; les autres sont **élus par deux collèges nationaux** (CAC d'EIP / CAC sans mandat d'EIP), chacun ayant 30 sièges (D.821-14).
 - Il élit un **président** et un **bureau**.
 
 ### Compagnies régionales (CRCC)
@@ -68,7 +69,7 @@
   - elle a lieu **devant le premier président de la cour d'appel** du ressort, **avant** tout exercice ;
   - formule : « Je jure d'**exercer ma profession avec honneur, probité et indépendance**, de **respecter et faire respecter les lois** ».
 - **Liste tenue par la H2A elle-même** (sans délégation) : on s'inscrit **auprès de la H2A**, ni auprès de la CNCC, ni de la CRCC, ni du tribunal.
-- **Recours** contre un **refus d'inscription** par la H2A : devant le **Conseil d'État**, ou la **cour d'appel de Paris** (à vérifier).
+- **Recours** contre une décision d'inscription de la H2A : devant la **juridiction administrative** (R.821-68), en pratique le **tribunal administratif**.
 - L'**usage du titre** sans inscription est **réprimé par la loi** : délit d'usurpation, **1 an d'emprisonnement et 15 000 € d'amende**.
 
 ### Société de CAC : 3 conditions (L.821-16, ex L.822-1-3)
@@ -139,7 +140,7 @@
 | **ALPE** (audit légal des petites entreprises, **L.821-46**) | **3 exercices**, sur option, pour les entités sous les seuils (petits groupes, volontaires). Rapport allégé. **Le barème d'heures ne s'applique pas** |
 | **Début de mission** | La mission porte sur l'**exercice au cours duquel le CAC est nommé** : elle commence dès sa nomination et couvre les **comptes de cet exercice** depuis son ouverture |
 | **Premier exercice audité** sans CAC antérieur | Le rapport **mentionne** que les **comptes de l'exercice précédent** (comparatifs) **n'ont pas été audités** |
-| **Fusion de sociétés de CAC** | Les mandats de la **société absorbée** sont **poursuivis par la société absorbante** jusqu'à leur **terme**. L'entité **est informée** et peut délibérer (à vérifier) |
+| **Fusion de sociétés de CAC** | La **société absorbante poursuit** le mandat jusqu'à son **terme**. L'assemblée de l'entité **peut**, à sa première réunion après l'absorption, **délibérer sur le maintien** du mandat, après avoir entendu le CAC (L.821-48) |
 
 ### Démission (code de déontologie)
 - **4 motifs légitimes** :
@@ -170,18 +171,18 @@
 - Il ne concerne pas non plus les entités au-delà de la dernière tranche (environ **15 M€** ; à vérifier).
 
 ### Dérogation au barème
-- Si le nombre d'heures paraît **excessif ou insuffisant** :
-  1. le **CAC** ou l'**entité** **saisit le président de la CRCC** ;
-  2. le président de la CRCC **statue** ;
-  3. un **recours** est ouvert devant la **H2A** ;
-  4. puis devant la **juridiction compétente**, la cour d'appel (à vérifier).
-- Il y a donc **4 intervenants** : CAC ou entité, président de la CRCC, H2A, juridiction.
+- Si le nombre d'heures paraît **excessif ou insuffisant** (D.821-190 et D.821-191) :
+  1. la partie la plus diligente **saisit le président de la CRCC**, **avant** la mission ; il statue sous **15 jours** ;
+  2. recours sous 10 jours devant le **président de la CNCC** ;
+  3. puis recours devant le **bureau de la H2A** ;
+  4. puis devant le **tribunal administratif**.
+- La procédure ne s'applique pas si les parties sont d'accord sur le dépassement.
 - Un CAC qui estime ses heures **inférieures** au barème **demande une dérogation** au président de la CRCC.
 
 ### Litiges sur les honoraires
 | Objet | Instances successives |
 |---|---|
-| **Certification** | **Président de la CRCC** (conciliation), puis **H2A** (formation compétente), puis **cour d'appel** (à vérifier) |
+| **Certification** (et durabilité) | **Président de la CRCC**, qui tente une **conciliation** en **3 mois** (R.821-196) ; à défaut, le **juge**. La H2A n'intervient pas |
 | **Prestations** (hors mission légale) | **Tribunal compétent** (droit commun) |
 
 - Les honoraires **subordonnés au résultat** sont **interdits**. La rémunération est **en rapport avec les diligences**.
@@ -221,8 +222,7 @@
   4. **révéler** le délit d'entrave **au procureur**.
 
 ### Révélation des faits délictueux au procureur (L.821-10, ex L.823-12)
-- **Obligatoire** dans le cadre de la **mission de certification** (et des missions légales).
-- **Pas d'obligation** pour une **simple prestation** auprès d'une entité dont il n'est pas CAC.
+- **Obligatoire** pour les faits connus « à l'occasion de sa **mission ou prestation** » (L.821-10) : elle vaut donc **aussi pour une prestation**, y compris auprès d'une entité dont il n'est pas CAC.
 - Elle vise les faits **significatifs**, **même régularisés** : un vol **remboursé** doit **quand même être révélé**, car le délit est consommé.
 - **Non-révélation** : délit puni de **5 ans d'emprisonnement et 75 000 € d'amende**.
 - La révélation de **bonne foi** n'engage **pas** la responsabilité du CAC.
@@ -289,7 +289,7 @@
   1. l'**identité de l'entité** bénéficiaire ;
   2. la **nature** de la prestation ;
   3. le **montant des honoraires**.
-- **Déclaration d'activité annuelle** : mandats détenus et honoraires. L'**acceptation d'un nouveau mandat** est déclarée à la compagnie régionale.
+- **Déclaration d'activité annuelle** : mandats détenus et honoraires. La **nomination** à un mandat est **notifiée au conseil régional** de la compagnie dans les **8 jours**, par lettre recommandée ou par voie électronique (D.821-173).
 - **Activités commerciales accessoires** : elles ne sont pas permises au CAC **non-EC**. L'exception de la loi Pacte bénéficie aux CAC **qui sont aussi EC**, dans le cadre de l'ordonnance de 1945.
 
 ## Pièges EC vs CAC
@@ -298,16 +298,12 @@
 - **Droits de vote** : **plus de 2/3** aux EC dans une société d'EC ; la **majorité** aux CAC dans une société de CAC.
 - **Honoraires** : ceux de l'EC sont libres, sans barème ; ceux du CAC suivent un **barème d'heures** en certification (hors ALPE), avec un **taux horaire libre**.
 - **Conciliation** : chez l'EC, par le **président du CROEC** (honoraires, confrères) ; chez le CAC, par le **président de la CRCC** (co-commissaires, honoraires, barème).
-- **Révélation des faits délictueux** : obligation du **CAC seul**, et seulement **en mission**, pas en prestation.
+- **Révélation des faits délictueux** : obligation du **CAC seul**, en **mission comme en prestation** ; l'EC n'y est pas tenu.
 - **Durée** : la mission de l'EC dépend de la lettre de mission ; le mandat du CAC dure **6 exercices** (**3** en ALPE).
 - **Salariat** : l'EC peut être salarié chez un EC, une AGC ou un CAC ; le CAC chez un **CAC ou un EC**.
 
 ## À vérifier
-- **Juridiction de recours** contre un refus d'inscription par la H2A : Conseil d'État ou cour d'appel de Paris (annale 2024-11 Q12).
-- **Composition du conseil national de la CNCC** : qui sont les « autres membres » ? les présidents des CRCC ? Nombre de CRCC (17 ?) ; signification des chiffres « 17 » et « 22 » dans l'annale 2025-11 Q19.
-- **Recours** contre la décision du président de la CRCC sur le barème : bureau de la H2A ou une formation spécifique ? Recours ultérieur ?
-- **Instances successives en cas de litige d'honoraires** en certification, sous le régime H2A.
-- **Fusion de sociétés de CAC** : l'assemblée de l'entité auditée doit-elle délibérer, ou est-elle simplement informée ? Article exact.
+- **Nombre de CRCC** et signification des chiffres « 17 » et « 22 » dans l'annale 2025-11 Q19.
 - **Nomination judiciaire** : 1/3 du capital en SA (annale 2023-05 Q20, réponse attendue SA ou SCA ?).
 - **Petit groupe** : le CAC de la tête de groupe peut-il obtenir des informations des CAC des filiales significatives (annale 2025-05 Q15) ? Texte exact.
 - **Formation particulière** : délai (6 ou 18 mois, avant ou après l'acceptation) et durée (annale 2018-11 Q16).

@@ -119,9 +119,10 @@
 - **Salariés autorisés (83 ter / quater)**.
 - **Experts-comptables stagiaires** : ils sont **soumis à la juridiction disciplinaire** et peuvent être **sanctionnés**.
 
-### Cotisations CAVEC (caisse de retraite)
-- Un EC qui, **sans motif valable**, n'a **pas réglé ses cotisations CAVEC pendant au moins 2 ans au cours des 10 dernières années** s'expose à une **sanction disciplinaire**, notamment la **suspension** (à vérifier).
-- Le non-paiement des cotisations à **l'Ordre** relève d'un autre mécanisme : l'**omission** ou la radiation administrative du tableau.
+### Radiation d'office du tableau (D. 2012-432 art. 125)
+- Ce n'est **pas une sanction disciplinaire** : le conseil régional **radie d'office** :
+  - le professionnel qui, **pendant 2 ans, consécutifs ou non, sur les 10 dernières années** et sans motif valable, n'a pas payé l'intégralité de ses **cotisations ordinales** ou de ses cotisations sociales personnelles (**CAVEC** comprise) ;
+  - le professionnel qui ne justifie pas d'une **assurance RC** continue.
 
 ## 5. Synthèse : un même fait, plusieurs responsabilités
 
@@ -131,7 +132,7 @@
 | Violation du secret | Oui (s'il y a préjudice) | **Oui** (226-13) | **Oui** |
 | Aide à une fraude fiscale | Oui | **Oui** (complicité) | **Oui** |
 | Publicité comparative | Possible (concurrence déloyale) | Non | **Oui** |
-| Défaut d'assurance RC | — | — | **Oui** |
+| Défaut d'assurance RC | — | — | **Radiation d'office** (D. 2012-432 art. 125), pas une sanction disciplinaire |
 
 ## Pièges EC vs CAC
 - **Prescription civile** : **5 ans** (droit commun) pour l'EC, et elle est **aménageable** par contrat jusqu'à 1 an minimum ; **3 ans** pour le CAC, à compter du fait dommageable ou de sa révélation s'il a été dissimulé (**10 ans** pour un crime), et elle n'est **pas aménageable**.
@@ -145,7 +146,6 @@
 - **Composition exacte** de la chambre régionale de discipline : 2 membres élus par le conseil régional ou par l'assemblée (annale 2021-05 Q6).
 - **Composition exacte** de la chambre nationale de discipline : qualité du magistrat président et nombre de membres du Conseil national (annale 2024-05 Q5).
 - **Liste exacte** des personnes pouvant faire appel d'une décision de la chambre régionale, et **délai d'appel** (annale 2024-11 Q4).
-- **Sanction précise** pour le défaut de paiement des cotisations CAVEC (annales 2022-05 Q6 et 2026-05 Q10).
 - **Prescription de l'action disciplinaire** contre un EC (aucune règle certaine retenue ici).
 - **Montant minimal** de l'assurance RC obligatoire de l'EC.
 - **Sanctions fiscales** CGI 1740 A / 1753 applicables aux professionnels.

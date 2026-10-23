@@ -75,7 +75,7 @@
       "qcm": {
         "question": "Un expert-comptable est atteint d'une grave maladie l'empêchant de gérer son cabinet. Le conseil régional peut lui proposer :",
         "choices": [
-          "La désignation d'un confrère suppléant (ou administrateur provisoire) chargé d'assurer la continuité du cabinet pendant l'empêchement",
+          "La désignation par le président du conseil régional, à sa demande ou avec son accord, d'un expert-comptable chargé d'assurer son remplacement provisoire",
           "La radiation d'office du tableau avec interdiction définitive d'exercer",
           "La nomination d'un commissaire aux comptes chargé de certifier les comptes du cabinet",
           "La saisine de la chambre régionale de discipline pour suspension"
@@ -84,15 +84,17 @@
       },
       "qrc": {
         "expected": [
-          "Procédure de suppléance : désignation, avec l'accord de l'intéressé ou d'office en cas d'urgence, d'un confrère suppléant qui assure la gestion du cabinet pendant l'empêchement",
-          "Variante : administration provisoire du cabinet lorsque le professionnel ne peut exprimer sa volonté",
-          "Alternative ou complément : omission temporaire du tableau à la demande de l'intéressé, sans caractère disciplinaire"
+          "Remplacement provisoire en cas d'incapacité temporaire d'exercer (D. 2012-432 art. 166)",
+          "Expert-comptable désigné par le président du conseil régional, sur demande du professionnel indisponible ou en accord avec lui (ou ses ayants droit)",
+          "Mission de confraternité gratuite ; indemnité possible si l'importance de la mission le justifie, convention soumise à l'agrément du conseil régional",
+          "Respect impérieux de la clientèle du confrère remplacé ; omission du tableau possible à sa demande (art. 123), sans caractère disciplinaire"
         ],
-        "model_answer": "Le conseil régional peut proposer la suppléance : un confrère suppléant, choisi par l'intéressé ou désigné par le conseil régional en cas d'urgence, assure la gestion du cabinet et la continuité des missions pendant la durée de l'empêchement. Le professionnel peut aussi demander son omission temporaire du tableau, mesure sans caractère disciplinaire."
+        "model_answer": "Le président du conseil régional peut, à la demande de l'expert-comptable empêché ou avec son accord, désigner un confrère chargé d'assurer son remplacement provisoire. Ce remplacement est une mission de confraternité gratuite, une indemnité pouvant toutefois être prévue par une convention agréée par le conseil régional ; le remplaçant doit respecter la clientèle du confrère."
       },
-      "explanation": "L'empêchement pour maladie n'est pas une faute : il appelle une mesure de continuité (suppléance, administration provisoire) et non une sanction. La suspension et la radiation sont des peines disciplinaires ; l'omission du tableau est une mesure administrative volontaire. Chez le CAC, l'équivalent passe par le suppléant ou, à défaut, par une nouvelle nomination par l'entité.",
-      "reference": "Règlement intérieur de l'Ordre des experts-comptables (suppléance et administration provisoire) ; D. 2012-432 (omission du tableau)",
-      "confidence": "low"
+      "explanation": "L'incapacité pour maladie n'est pas une faute : elle appelle une mesure de continuité, non une sanction (suspension et radiation sont des peines disciplinaires, ord. art. 53). Le remplacement suppose la demande ou l'accord de l'intéressé et est exclu en cas de suspension disciplinaire définitive. Le professionnel peut aussi demander son omission du tableau (D. 2012-432 art. 123). Chez le CAC personne physique, le suppléant remplace le titulaire empêché (C. com. L.821-40).",
+      "reference": "D. 2012-432 art. 166 (remplacement provisoire) et art. 123 (omission) ; ord. 45-2138 art. 53",
+      "confidence": "high",
+      "update_note": "Le texte applicable (art. 166 du code de déontologie) prévoit un remplacement provisoire décidé par le président du conseil régional avec l'accord de l'intéressé, et non une suppléance ou administration décidée d'office."
     },
     {
       "id": "2021-11-EC-04",
@@ -321,7 +323,7 @@
       "qcm": {
         "question": "Dans la procédure de dérogation au barème d'heures, les intervenants successifs sont :",
         "choices": [
-          "Le commissaire aux comptes, les dirigeants de l'entité, le président de la compagnie régionale, puis la H2A en cas de recours",
+          "Le président de la compagnie régionale (saisi par la partie la plus diligente), puis, sur recours, le président de la CNCC, puis le bureau de la H2A, et enfin le tribunal administratif",
           "Le commissaire aux comptes, l'assemblée générale, le tribunal de commerce, puis la cour d'appel",
           "Le président de la CNCC, le commissaire du gouvernement, le ministre de la Justice, puis le Conseil d'État",
           "Le comité d'audit, le conseil d'administration, l'AMF, puis la H2A"
@@ -330,17 +332,17 @@
       },
       "qrc": {
         "expected": [
-          "Le commissaire aux comptes, qui formule une demande motivée",
-          "Les dirigeants de l'entité contrôlée, informés et dont l'accord ou les observations sont recueillis",
-          "Le président de la compagnie régionale, qui accorde ou refuse la dérogation",
-          "La H2A (ex-H3C), saisie d'un recours contre la décision du président de la CRCC"
+          "Le président de la compagnie régionale, saisi avant la mission par la partie la plus diligente (CAC ou dirigeants), l'autre partie donnant son avis ; décision dans les quinze jours",
+          "Recours dans les dix jours devant le président de la Compagnie nationale, qui statue dans le mois",
+          "Recours dans le mois devant le bureau de la Haute autorité de l'audit (L.820-2 III 2°)",
+          "Recours contre la décision du bureau devant le tribunal administratif (D.821-191)"
         ],
-        "model_answer": "Le commissaire aux comptes adresse une demande motivée de dérogation ; les dirigeants de l'entité en sont informés et font connaître leur position ; le président de la compagnie régionale statue ; sa décision peut faire l'objet d'un recours devant la H2A, qui a succédé au H3C."
+        "model_answer": "La demande de dérogation, motivée et présentée avant la mission par la partie la plus diligente, est portée devant le président de la compagnie régionale, qui statue dans les quinze jours après avis de l'autre partie. Sa décision peut être contestée dans les dix jours devant le président de la CNCC, puis dans le mois devant le bureau de la H2A, dont la décision relève enfin du tribunal administratif."
       },
-      "explanation": "Le barème d'heures est une garantie de qualité de l'audit ; s'en écarter, à la baisse comme à la hausse, suppose l'autorisation du président de la CRCC, sous le contrôle du régulateur. Ni l'assemblée ni les juridictions n'interviennent. Chez l'EC, il n'existe aucun barème : les honoraires sont librement convenus.",
-      "reference": "C. com. D.821-188 s. (barème d'heures et dérogation, ex art. R.823-12 à R.823-15)",
-      "confidence": "medium",
-      "update_note": "H3C → H2A au 1er janvier 2024 ; articles R.823-12 s. renumérotés D.821-188 s. par le décret d'application de l'ordonnance 2023-1142."
+      "explanation": "Le barème d'heures (D.821-188) est une garantie de qualité de l'audit ; s'en écarter, à la hausse comme à la baisse, suppose une décision du président de la CRCC, sauf accord des parties sur le dépassement. Le circuit de recours est d'abord professionnel (président de la CNCC), puis administratif (bureau de la H2A, tribunal administratif). Chez l'EC, il n'existe aucun barème : les honoraires sont librement convenus (D. 2012-432 art. 158).",
+      "reference": "C. com. D.821-188 à D.821-191 (ex R.823-12 à R.823-15) ; L.820-2 III 2°",
+      "confidence": "high",
+      "update_note": "H3C → H2A au 1er janvier 2024 ; la procédure comporte un recours intermédiaire devant le président de la CNCC avant le bureau de la H2A, puis le tribunal administratif."
     },
     {
       "id": "2021-11-CAC-12",
@@ -362,17 +364,17 @@
       },
       "qrc": {
         "expected": [
-          "1. Saisine du rapporteur général (par les autorités habilitées) et enquête",
-          "2. Notification des griefs au commissaire aux comptes mis en cause",
-          "3. Saisine de la commission des sanctions de la H2A (rapport, désignation d'un rapporteur, instruction contradictoire)",
-          "4. Audience et décision de la commission des sanctions",
-          "5. Recours de plein contentieux devant le Conseil d'État"
+          "1. Saisine du rapporteur général (autorités de L.821-73 ou auto-saisine sur signalement) et enquête (L.821-74)",
+          "2. Rapport d'enquête soumis aux observations de l'intéressé ; la H2A arrête les griefs, notifiés par son président (L.821-77)",
+          "3. Transmission par le président de la H2A du rapport et des griefs à la commission des sanctions",
+          "4. Audience publique, au moins deux mois après la notification des griefs, et décision motivée (L.821-80)",
+          "5. Recours de pleine juridiction devant le Conseil d'État (L.821-85)"
         ],
         "model_answer": "La procédure comporte : l'enquête du rapporteur général, saisi par une autorité habilitée ; la notification des griefs ; la saisine de la commission des sanctions de la H2A et l'instruction contradictoire ; l'audience et la décision de la commission ; enfin, le recours de plein contentieux devant le Conseil d'État."
       },
       "explanation": "La discipline des CAC est confiée au régulateur avec une stricte séparation entre poursuite (rapporteur général) et jugement (commission des sanctions). Le circuit ordinal en deux degrés (chambre régionale puis nationale) est celui de l'EC, pas du CAC : c'est le distracteur principal. Il existe aussi une procédure simplifiée et une composition administrative.",
-      "reference": "C. com. ex art. L.824-4 à L.824-13 (procédure disciplinaire), recodifiés L.821-70 s. en 2024 (procédure ordinaire : L.821-79 et L.821-80) ; L.820-2 (commission des sanctions) ; ex art. L.821-3-1 (rapporteur général)",
-      "confidence": "medium",
+      "reference": "C. com. L.821-73 à L.821-85 (procédure ordinaire : L.821-77 et L.821-80 ; composition administrative : L.821-78 ; procédure simplifiée : L.821-81 et L.821-82) ; L.820-2",
+      "confidence": "high",
       "update_note": "Depuis le 1er janvier 2024, la formation restreinte du H3C est remplacée par la commission des sanctions de la H2A, distincte du collège (ordonnance 2023-1142)."
     },
     {
@@ -415,7 +417,7 @@
       "qcm": {
         "question": "En cas de litige sur les honoraires du commissaire aux comptes, les organes successivement compétents sont :",
         "choices": [
-          "Le président de la compagnie régionale (conciliation), puis la H2A (ex-H3C), puis la juridiction compétente",
+          "Le président de la compagnie régionale (conciliation en trois mois), puis, en cas d'échec, le juge ; la H2A ne tranche plus ces litiges depuis 2024",
           "Le président du conseil régional de l'Ordre, la chambre nationale de discipline, le Conseil d'État",
           "Le comité d'audit, l'assemblée générale, le tribunal administratif",
           "Le commissaire du gouvernement, le garde des Sceaux, la Cour de cassation"
@@ -424,16 +426,17 @@
       },
       "qrc": {
         "expected": [
-          "Le président de la compagnie régionale, saisi par la partie la plus diligente pour une conciliation",
-          "La H2A (ex-H3C), en cas d'échec de la conciliation ou de recours",
-          "Le juge (tribunal de commerce ou tribunal judiciaire selon l'entité) pour trancher définitivement"
+          "Saisine écrite du président de la compagnie régionale par la partie intéressée, qui s'efforce de concilier (R.821-196)",
+          "Si les CAC relèvent de compagnies différentes : président de la compagnie saisie la première",
+          "Délai de trois mois ; à défaut, notification de l'échec par LRAR",
+          "Le litige relève ensuite du juge de droit commun ; la compétence de l'ancienne formation restreinte du H3C n'a pas été reprise pour la H2A"
         ],
-        "model_answer": "Le litige est d'abord porté devant le président de la compagnie régionale, qui tente une conciliation ; à défaut, la H2A, qui a succédé au H3C, peut être saisie ; en dernier lieu, le différend relève de la juridiction compétente (tribunal de commerce ou tribunal judiciaire)."
+        "model_answer": "Le litige sur la rémunération de la mission de certification est porté devant le président de la compagnie régionale, saisi par écrit, qui dispose de trois mois pour concilier les parties et notifie, le cas échéant, l'échec de la conciliation. Le différend relève alors du juge de droit commun : depuis 2024, la H2A n'a plus compétence pour trancher ces litiges."
       },
-      "explanation": "Le circuit mêle conciliation professionnelle, intervention du régulateur et juge judiciaire. Le distracteur reproduit le circuit disciplinaire de l'EC (conseil régional, chambre nationale, Conseil d'État), confusion récurrente. Pour l'EC, un litige d'honoraires relève de la conciliation ou de l'arbitrage du président du conseil régional puis du juge.",
-      "reference": "C. com. partie réglementaire relative aux honoraires et aux litiges (ex art. R.823-18 et R.823-19, renumérotés D.821-x en 2024)",
-      "confidence": "low",
-      "update_note": "H3C → H2A au 1er janvier 2024 ; vérifier dans les articles D.821-x actuels la répartition exacte entre conciliation du président de CRCC, intervention de la H2A et juge. Relecture : la fiche 2022-11-CAC-16 affirme que, depuis 2024, la H2A n'est plus compétente pour ces litiges (conciliation du président de la CRCC puis juge de droit commun), et le sujet de novembre 2025 (Q12) renvoie au tribunal compétent pour les prestations ; si c'est le cas, l'étape H2A de la réponse A ne vaut que pour l'état du droit antérieur à 2024."
+      "explanation": "Le circuit en trois étapes (président de CRCC, H3C en formation restreinte, juge) correspond au droit antérieur à 2024. Les missions de la H2A (L.820-1, L.820-2) ne comprennent plus le règlement des litiges d'honoraires ; seule subsiste la conciliation (R.821-196), à laquelle renvoie la NEP 100 (§ 22). Ne pas confondre avec la dérogation au barème d'heures (président de CRCC, président de la CNCC, bureau de la H2A, tribunal administratif). Le distracteur reproduit le circuit disciplinaire de l'EC.",
+      "reference": "C. com. R.821-196 (ex R.823-18) ; L.820-1, L.820-2 ; A.821-65 (NEP 100 § 22)",
+      "confidence": "medium",
+      "update_note": "Depuis le 1er janvier 2024 : conciliation par le président de la CRCC en trois mois puis juge ; plus d'intervention de la H2A (aligné sur 2022-11-CAC-16)."
     },
     {
       "id": "2021-11-CAC-15",
@@ -446,7 +449,7 @@
       "qcm": {
         "question": "Qui peut saisir le rapporteur général de la H2A (ex-H3C) en vue d'une procédure disciplinaire contre un commissaire aux comptes ?",
         "choices": [
-          "Le président de la H2A, le garde des Sceaux, le procureur général, le président de l'AMF ou de l'ACPR, le président de la CNCC ou d'une CRCC",
+          "Le premier président de la Cour des comptes ou le président d'une chambre régionale des comptes, le procureur général près la cour d'appel, les présidents de l'AMF, de l'ACPR et de la H2A, le président de la CNCC ou d'une CRCC",
           "Uniquement l'entité contrôlée, par décision de son assemblée générale",
           "Le président du Conseil national de l'Ordre des experts-comptables et le commissaire du gouvernement",
           "Tout actionnaire détenant au moins 5 % du capital de l'entité contrôlée"
@@ -455,18 +458,18 @@
       },
       "qrc": {
         "expected": [
-          "Le président de la H2A (ex-H3C), notamment à la suite d'un contrôle ou d'un signalement",
-          "Le garde des Sceaux et le procureur général près la cour d'appel",
-          "Le président de l'AMF et le président de l'ACPR (entités relevant de leur champ)",
-          "Le président de la CNCC et les présidents des compagnies régionales",
-          "Les plaintes de tiers sont transmises par ces autorités, qui apprécient l'opportunité"
+          "Le premier président de la Cour des comptes ou le président d'une chambre régionale des comptes",
+          "Le procureur général près la cour d'appel compétente",
+          "Le président de l'AMF et le président de l'ACPR",
+          "Le président de la H2A",
+          "Le président de la CNCC ou d'une compagnie régionale ; le rapporteur général peut aussi se saisir des signalements dont il est destinataire"
         ],
-        "model_answer": "Le rapporteur général peut être saisi par le président de la H2A, par le garde des Sceaux, par le procureur général près la cour d'appel, par le président de l'AMF ou de l'ACPR pour les entités de leur champ, ainsi que par le président de la CNCC ou d'une compagnie régionale. Les tiers (entité, actionnaires) ne le saisissent pas directement mais peuvent signaler des faits à ces autorités."
+        "model_answer": "Le rapporteur général est saisi par le premier président de la Cour des comptes ou le président d'une chambre régionale des comptes, le procureur général près la cour d'appel compétente, les présidents de l'AMF, de l'ACPR et de la H2A, et le président de la CNCC ou d'une compagnie régionale. Il peut aussi se saisir des signalements qu'il reçoit ; le garde des sceaux ne figure pas dans la liste."
       },
-      "explanation": "La saisine est réservée à des autorités publiques et professionnelles, ce qui filtre les plaintes de justiciables. L'Ordre des experts-comptables n'a aucun pouvoir de saisine en matière de discipline des CAC. L'actionnaire peut en revanche demander en justice la récusation ou le relèvement du CAC, ce qui est une autre procédure.",
-      "reference": "C. com. ex art. L.824-4 (autorités habilitées à saisir le rapporteur général), recodifié L.821-70 s. en 2024",
-      "confidence": "low",
-      "update_note": "H3C → H2A au 1er janvier 2024 ; la liste des autorités de saisine a pu être ajustée par l'ordonnance 2023-1142, à vérifier."
+      "explanation": "La saisine est réservée à des autorités publiques et professionnelles, complétée par une auto-saisine sur signalement : les tiers (entité, actionnaires) peuvent signaler des faits mais ne saisissent pas directement. L'Ordre des experts-comptables n'a aucun pouvoir de saisine. Les faits remontant à plus de six ans sans acte de recherche ou de constatation ne peuvent plus être sanctionnés. L'actionnaire peut en revanche demander en justice la récusation (L.821-49) ou le relèvement (L.821-50) du CAC.",
+      "reference": "C. com. L.821-73 (ex L.824-4) ; L.821-49, L.821-50",
+      "confidence": "high",
+      "update_note": "H3C → H2A au 1er janvier 2024. Liste de L.821-73 : Cour des comptes/CRC, procureur général, AMF, ACPR, H2A, CNCC/CRCC ; le garde des sceaux n'y figure pas ; auto-saisine du rapporteur général sur signalement ; prescription de six ans."
     },
     {
       "id": "2021-11-CAC-16",
@@ -518,18 +521,18 @@
       },
       "qrc": {
         "expected": [
-          "Indépendance renforcée : situations à risque et mesures de sauvegarde, prévention des conflits d'intérêts",
-          "Liens personnels, financiers et professionnels (incompatibilités, fonctions sensibles)",
-          "Réseau : analyse de l'appartenance et services rendus par le réseau",
-          "Acceptation, conduite et maintien de la mission (viduité, succession, services autres que la certification)",
-          "Honoraires de la mission de certification (dépendance financière, barème, interdiction des honoraires liés au résultat)"
+          "Services interdits (EIP), identification et traitement des risques pesant sur l'indépendance, mesures de sauvegarde, risques liés aux fusions et acquisitions (art. 18 à 20)",
+          "Acceptation, conduite et maintien de la mission : acceptation, missions antérieures, co-commissariat, renouvellement, succession, démission (art. 21 à 28)",
+          "Exercice en réseau : appartenance et organisation (art. 29 et 30)",
+          "Liens personnels, financiers et professionnels ; fonctions sensibles (art. 31 à 35)",
+          "Honoraires : indépendance financière et information sur les honoraires (art. 36 et 37)"
         ],
-        "model_answer": "Le titre II complète le socle commun par des règles propres à la certification : l'indépendance renforcée avec les situations à risque et mesures de sauvegarde, les liens personnels, financiers et professionnels, l'appartenance à un réseau, l'acceptation, la conduite et le maintien de la mission (notamment les services autres que la certification et la succession), et les honoraires de la mission de certification."
+        "model_answer": "Le titre II complète le socle commun par des règles propres à la certification : identification et traitement des risques (services interdits aux EIP, sauvegardes, fusions-acquisitions), acceptation, conduite et maintien de la mission (dont succession et démission), exercice en réseau, liens personnels, financiers et professionnels, et honoraires (indépendance financière, information sur les honoraires)."
       },
-      "explanation": "Ces chapitres traduisent le fait que la certification exige une indépendance d'apparence et de fait plus stricte que les prestations libres. Les sanctions et la procédure disciplinaire ne sont jamais dans le code de déontologie mais dans le code de commerce. La numérotation et l'intitulé exacts des chapitres peuvent varier selon la version du code.",
-      "reference": "Code de déontologie des CAC, annexe 8-1 du livre VIII du code de commerce, Titre II (décret 2020-292, mis à jour 2024)",
-      "confidence": "low",
-      "update_note": "Mise à jour du code de déontologie en 2024 après la recodification : vérifier le découpage exact des chapitres du titre II."
+      "explanation": "Ces sections traduisent le fait que la certification exige une indépendance de fait et d'apparence plus stricte que les prestations. Les sanctions et la procédure disciplinaire ne figurent pas dans le code de déontologie mais dans le code de commerce (L.821-70 s.). L'interdiction des honoraires subordonnés (art. 13) et les règles de publicité (art. 15 et 16) relèvent du titre I, applicable à toutes missions et prestations ; le barème d'heures est dans la partie réglementaire (D.821-188).",
+      "reference": "Code de déontologie des CAC (C. com. annexe 8-1), titre II, art. 18 à 37 (version issue du décret 2026-176)",
+      "confidence": "high",
+      "update_note": "Titre II désormais applicable aussi à la certification des informations en matière de durabilité ; découpage vérifié dans la version modifiée par le décret 2026-176 du 11 mars 2026."
     },
     {
       "id": "2021-11-CAC-18",
@@ -542,7 +545,7 @@
       "qcm": {
         "question": "Dans le code de déontologie des commissaires aux comptes, que désignent respectivement les termes mission et prestation ?",
         "choices": [
-          "La mission est la mission de certification des comptes confiée par la loi ; la prestation désigne tout autre service fourni par le commissaire aux comptes, avec ou sans mandat de certification",
+          "La mission est la certification des comptes, la certification des informations en matière de durabilité ou toute autre mission confiée par la loi ou le règlement ; la prestation est la fourniture de services et d'attestations ne relevant pas d'une mission",
           "La mission désigne tout travail rémunéré ; la prestation désigne les travaux effectués gratuitement",
           "La mission vise les entités d'intérêt public ; la prestation vise les autres entités",
           "La mission est confiée par l'assemblée ; la prestation est confiée par le comité d'audit"
@@ -551,16 +554,16 @@
       },
       "qrc": {
         "expected": [
-          "Mission : la mission légale de certification des comptes (contrôle légal) confiée au CAC",
-          "Prestation : toute autre intervention ou service fourni par le CAC, à une entité dont il certifie ou non les comptes (attestations, diligences liées, interventions prévues par la loi hors certification, conseils autorisés)",
-          "Distinction structurante : le titre II ne s'applique qu'à la mission et aux prestations fournies à l'entité certifiée"
+          "Mission : certification des comptes, certification des informations en matière de durabilité ou toute autre mission confiée au CAC par la loi ou le règlement",
+          "Prestation : fourniture de services et d'attestations qui ne relèvent pas d'une mission, que le CAC certifie ou non les comptes de l'entité",
+          "Titre I applicable à toutes missions et prestations ; titre II réservé aux missions de certification"
         ],
-        "model_answer": "Dans le code de déontologie, la mission désigne la mission de certification des comptes, mission légale de contrôle ; la prestation désigne tout autre service ou intervention du commissaire aux comptes, qu'il soit fourni à une entité dont il certifie les comptes ou à une entité sans mandat. Cette distinction commande l'application du titre II, réservé à la certification."
+        "model_answer": "La mission désigne la certification des comptes, la certification des informations en matière de durabilité ou toute autre mission confiée au CAC par la loi ou le règlement ; la prestation désigne la fourniture de services et d'attestations qui ne relèvent pas d'une mission. Le titre I du code s'applique aux unes et aux autres, le titre II aux seules missions de certification."
       },
-      "explanation": "Le vocabulaire est devenu central depuis la loi Pacte, qui autorise le CAC à fournir des prestations à des entités dont il n'est pas le commissaire. Les prestations rendues à l'entité certifiée sont soumises aux règles d'indépendance du titre II ; celles rendues à d'autres relèvent du seul titre I et d'une déclaration d'activité.",
-      "reference": "C. com. art. L.821-2 III (mission) et IV (prestation) ; code de déontologie des CAC, annexe 8-1, dispositions liminaires ; C. com. ex art. L.822-11 (version loi Pacte)",
-      "confidence": "low",
-      "update_note": "Relecture : les définitions figurent désormais à l'article L.821-2 III et IV du code de commerce (cité par le sujet de mai 2024). Il faut vérifier si la mission y vise la seule certification ou aussi les autres missions que la loi ou le règlement confie au CAC ; dans ce cas, les interventions légales hors certification ne seraient pas des prestations, contrairement à ce qu'indique le 2e élément attendu."
+      "explanation": "Le vocabulaire est central depuis la loi Pacte, qui autorise le CAC à fournir des prestations à des entités dont il ne certifie pas les comptes ; L.821-3 définit la profession comme l'exercice de missions et la fourniture de prestations. Les interventions confiées par la loi en dehors de la certification sont des missions, non des prestations. Les prestations fournies à l'entité certifiée restent soumises aux règles d'indépendance (art. 5, 19 et 22 du code).",
+      "reference": "C. com. L.821-2 III et IV, L.821-3 ; code de déontologie des CAC (annexe 8-1) art. 1er III et art. 2",
+      "confidence": "high",
+      "update_note": "Définitions vérifiées (L.821-2, ordonnance 2023-1142 ; art. 1er III du code, version du décret 2026-176) : la mission couvre aussi la certification des informations de durabilité et les autres missions légales ou réglementaires."
     },
     {
       "id": "2021-11-CAC-19",

@@ -12,7 +12,7 @@
       "question": "Quelles sont les conditions pour être candidat aux fonctions de contrôleur qualité de l'ordre des experts-comptables ?",
       "qcm": {
         "choices": [
-          "Être expert-comptable inscrit au tableau et en exercice, à jour de ses obligations (cotisations, assurance, formation), n'avoir pas fait l'objet de sanction disciplinaire, avoir soi-même été soumis à un contrôle de qualité satisfaisant et suivre la formation de contrôleur ; désignation par le conseil régional",
+          "Être membre de l'Ordre inscrit au tableau depuis au moins cinq ans, n'avoir fait l'objet d'aucune sanction disciplinaire, avoir eu un contrôle de qualité n'ayant pas entraîné de nouveau contrôle à un an et suivre le stage de formation de l'Ordre ; désignation par le conseil régional pour trois ans renouvelables",
           "Être magistrat de la cour d'appel désigné par son premier président, comme pour les chambres de discipline",
           "Être salarié du Conseil national de l'Ordre, titulaire du DSCG et avoir cinq ans d'expérience en cabinet",
           "Être commissaire aux comptes inscrit sur la liste de la H2A depuis au moins dix ans"
@@ -21,16 +21,18 @@
       },
       "qrc": {
         "expected": [
-          "Être expert-comptable inscrit au tableau et en exercice effectif",
-          "Être en règle avec ses obligations ordinales (cotisations, assurance, formation continue) et n'avoir pas été sanctionné disciplinairement",
-          "Avoir soi-même fait l'objet d'un contrôle de qualité jugé satisfaisant et s'engager à suivre la formation des contrôleurs",
-          "Candidature volontaire, désignation par le conseil régional ; indépendance à l'égard des contrôlés et secret professionnel"
+          "Candidature auprès du conseil régional (commission nationale d'inscription pour les contrôles d'AGC) ; désignation pour trois ans renouvelables (RI art. 411 et 412)",
+          "Aucune sanction disciplinaire (art. 413)",
+          "Avoir bénéficié d'un contrôle de qualité n'ayant pas entraîné un nouveau contrôle sur place à un an ; se soumettre à un contrôle de qualité avant la désignation (art. 413 et 417)",
+          "Avoir suivi le stage de formation organisé par l'Ordre ; être inscrit au tableau comme membre depuis au moins cinq ans (art. 413)",
+          "Engagements : au moins 50 heures de contrôle par an (200 au plus), indépendance, secret (art. 415 à 417)"
         ],
-        "model_answer": "Le contrôleur de qualité est un expert-comptable inscrit au tableau et en exercice, en règle avec ses obligations ordinales, n'ayant pas fait l'objet de sanction disciplinaire, ayant lui-même subi un contrôle de qualité satisfaisant et s'engageant à suivre la formation spécifique des contrôleurs. Il est désigné par le conseil régional sur candidature volontaire, doit être indépendant des professionnels contrôlés et est tenu au secret professionnel."
+        "model_answer": "Le candidat, membre de l'Ordre inscrit au tableau depuis au moins cinq ans, ne doit avoir fait l'objet d'aucune sanction disciplinaire, doit avoir bénéficié d'un contrôle de qualité n'ayant pas entraîné de nouveau contrôle sur place à un an et avoir suivi le stage de formation de l'Ordre. Il fait acte de candidature auprès du conseil régional, qui le désigne pour trois ans renouvelables ; il s'engage à consacrer au moins 50 heures par an aux contrôles, à rester indépendant et à respecter le secret."
       },
-      "explanation": "Le contrôle de qualité est un contrôle par les pairs organisé par le règlement intérieur de l'Ordre sous l'autorité des conseils régionaux et de la commission nationale du contrôle de qualité : les contrôleurs sont des confrères formés et eux-mêmes contrôlés. À la différence du contrôle d'activité des CAC, réalisé par des contrôleurs de la H2A (ou de la CNCC par délégation) désignés de façon à éviter tout conflit d'intérêts (C. com. L.820-16). Les conditions exactes figurent dans le règlement du contrôle de qualité et doivent être vérifiées.",
-      "reference": "D. 2012-432 (contrôle de qualité) ; règlement intérieur de l'Ordre (titre consacré au contrôle de qualité) ; C. com. L.820-16 pour le parallèle CAC",
-      "confidence": "low"
+      "explanation": "Le contrôle de qualité est un contrôle par les pairs organisé par le titre IV du règlement intérieur : les contrôleurs sont des confrères formés et eux-mêmes contrôlés ; des directeurs et cadres d'AGC peuvent compléter le collège pour les contrôles structurels. À la différence du contrôle d'activité des CAC, réalisé par des contrôleurs de la H2A (ou de la CNCC par délégation) désignés de façon à éviter tout conflit d'intérêts (C. com. L.820-16, R.820-44).",
+      "reference": "Règlement intérieur de l'Ordre (arrêté du 6 mars 2024), art. 411 à 417 ; C. com. L.820-16, R.820-44",
+      "confidence": "high",
+      "update_note": "Conditions vérifiées dans le RI agréé par arrêté du 6 mars 2024 (art. 413 : ancienneté de cinq ans, absence de sanction, contrôle de qualité sans nouveau contrôle à un an, stage de formation)."
     },
     {
       "id": "2024-05-EC-02",

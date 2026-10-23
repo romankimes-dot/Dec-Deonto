@@ -9,11 +9,11 @@ questions: EC:controle_qualite CAC:controle_activite
 ```vs
 Nom | **Contrôle de qualité** | **Contrôle d'activité**
 Organisateur | **Conseil national** (programme) et **CROEC** (réalisation) | **H2A** ; délégué à la **CNCC** pour les CAC sans mandat d'EIP
-Contrôleurs | **EC candidats**, désignés par l'Ordre : inscrits depuis au moins **5 ans**, formés, sans sanction, indépendants du contrôlé | **Agents de la H2A** (EIP) ; **CAC contrôleurs** de la CNCC et des CRCC (non-EIP)
-Périodicité | Cycle pluriannuel, en pratique **≈ 6 ans** | **3 ans** (EIP) · **6 ans** (non-EIP)
+Contrôleurs | **EC candidats**, désignés par le **conseil régional** pour **3 ans** : inscrits depuis au moins **5 ans**, sans sanction, formés par l'Ordre, contrôle de qualité sans nouveau contrôle à un an | **Agents de la H2A** (EIP) ; **CAC contrôleurs** de la CNCC et des CRCC (non-EIP)
+Périodicité | Cycle pluriannuel, en pratique **≈ 6 ans** | **3 ans** pour les CAC des **grandes EIP** · **6 ans** au plus pour les autres
 Champ | Toutes les missions de l'EC, **sauf** le commissariat aux comptes et l'expertise judiciaire ; et la **LCB-FT** | La seule activité de **CAC** (et de durabilité), y compris la **LCB-FT**
 Secret | **Levé** envers les contrôleurs | **Inopposable**, pour les missions **et** les prestations
-Après un contrôle défavorable | Plan d'actions, **nouveau contrôle**, formation, transmission au **président du CROEC** pour une éventuelle **chambre de discipline** | Recommandations et suivi ; transmission au **rapporteur général**, puis **collège**, puis **commission des sanctions**
+Après un contrôle défavorable | **Nouveau contrôle à un an**, formation possible ; en cas de nouveaux manquements, **chambre de discipline** | Recommandations et suivi ; transmission au **rapporteur général**, puis **collège**, puis **commission des sanctions**
 Revue indépendante | Prévue par la **NPMQ** pour certaines missions (audit, missions à risque) | **Légale** pour les EIP (règlement UE 537/2014, art. 8), **avant** la signature du rapport
 ```
 
@@ -25,7 +25,7 @@ Questionnaire | Rempli par le cabinet avant la visite
 Phase 1 | Examen de l'**organisation** et des **procédures** au regard de la **NPMQ**
 Phase 2 | **Revue d'un échantillon de dossiers**
 Rapport | Entretien de synthèse, **rapport**, **observations** du contrôlé
-Conclusion | **Satisfaisant** · satisfaisant **avec recommandations** · **non satisfaisant** {?} (intitulés officiels)
+Conclusion | Par le **président du conseil régional** : **sans observation** · **avec simples observations** · **avec observations et nouveau contrôle à un an**
 ```
 
 ## NPMQ : le système de qualité du cabinet
@@ -54,3 +54,5 @@ Conclusion | **Satisfaisant** · satisfaisant **avec recommandations** · **non 
 
 - {!} L'**enquête** du rapporteur général est une procédure **distincte**, à visée disciplinaire.
 - {!} Faire **obstacle** au contrôle est un **manquement** sanctionnable.
+- {!} Contrôle **LCB-FT** de l'Ordre : c'est le **comité LBC-FT** qui conclut, et il peut saisir l'instance disciplinaire.
+- {!} Blanchiment découvert par un contrôleur de la H2A : il **informe lui-même Tracfin**.

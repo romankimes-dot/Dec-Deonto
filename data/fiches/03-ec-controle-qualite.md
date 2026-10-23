@@ -88,13 +88,13 @@
 ### Les contrôleurs
 - Ce sont des **experts-comptables** qui ont **fait acte de candidature**, puis ont été **retenus et désignés** par l'instance ordinale. Ce ne sont **pas des salariés** de l'Ordre.
 - Conditions :
-  - être **inscrit au tableau depuis au moins 5 ans** et **en exercice** ;
+  - être **inscrit au tableau depuis au moins 5 ans** ;
   - avoir suivi la **formation de contrôleur** organisée par l'Ordre ;
   - **ne pas avoir fait l'objet de sanction disciplinaire** ;
-  - **ne pas** être soi-même en situation de **contrôle non satisfaisant** ;
+  - avoir eu un **contrôle de qualité** qui n'a **pas** entraîné de **nouveau contrôle à un an** ;
   - **compétence** dans les missions contrôlées ;
   - **indépendance** à l'égard du contrôlé : pas de lien, pas de concurrence directe, et en principe une région différente ou l'absence de proximité ;
-  - être **à jour** de ses obligations (cotisations, formation).
+  - candidature auprès du **conseil régional**, qui le **désigne pour 3 ans** renouvelables ; engagement d'y consacrer au moins **50 heures par an** (règlement intérieur de l'Ordre, art. 411 à 413).
 - Les contrôleurs sont **tenus au secret professionnel**.
 
 ### Déroulement : 2 phases complémentaires
@@ -111,13 +111,15 @@
 7. **Suivi** : plan d'actions, éventuel **nouveau contrôle**.
 
 ### Conclusions possibles
+Le **président du conseil régional** conclut, au vu du rapport du contrôleur (règlement intérieur, art. 430) :
+
 | Conclusion | Conséquence |
 |---|---|
-| **Satisfaisant** | Pas de suite ; cycle normal |
-| **Satisfaisant avec recommandations** (ou « à améliorer ») | **Plan d'actions** correctrices à mettre en œuvre |
-| **Non satisfaisant** (ou « insuffisant ») | **Contrôle de suivi** ou **nouveau contrôle** rapproché, **formation** imposée, voire **transmission** au président du CROEC pour une éventuelle **saisine disciplinaire** |
+| **Sans observation** | Pas de suite ; cycle normal |
+| **Avec simples observations** | Éventuelle **convocation** par le président |
+| **Avec observations et nouveau contrôle** | **Nouveau contrôle sur place à un an**, **formation** spécifique possible ; en cas de nouveaux manquements, saisine de la **chambre de discipline** |
 
-- **LCB-FT** : les conclusions suivent la même logique. Si le dispositif est **insuffisant**, une **sanction disciplinaire** spécifique LCB-FT peut être prononcée.
+- **LCB-FT** : c'est le **comité LBC-FT** de l'Ordre qui conclut le contrôle (sans observation ; simples observations ; observations avec nouveau contrôle à un an et formation LCB-FT possible). Selon la gravité, il peut **saisir l'instance disciplinaire**.
 - Si le contrôleur constate des **faits susceptibles de blanchiment** : il en **informe le président du conseil régional**, et l'**Ordre en informe Tracfin**.
 
 ## 4. Formation continue et compétence
@@ -142,12 +144,10 @@
 - **Périodicité** : environ **6 ans** pour l'EC ; pour le CAC, **3 ans (EIP)** et **6 ans (non-EIP)**.
 - **Revue indépendante** : pour l'EC, elle est prévue par la **NPMQ** pour certaines missions ; pour le CAC, elle est **légale pour les EIP** (règlement UE 537/2014 art. 8) et est réalisée par un **autre contrôleur légal** non impliqué.
 - **Champ** : le contrôle de qualité de l'Ordre **exclut** les missions de CAC.
-- **Blanchiment découvert pendant un contrôle** : chez l'EC, l'information passe par le **président du CROEC**, puis l'**Ordre** informe Tracfin ; chez le CAC, la **H2A informe Tracfin**.
+- **Blanchiment découvert pendant un contrôle** : chez l'EC, l'information passe par le **président du CROEC**, puis l'**Ordre** informe Tracfin ; chez le CAC, ce sont **les contrôleurs** qui informent Tracfin (L.820-18).
 
 ## À vérifier
 - **Mission(s) soumise(s) à une revue indépendante obligatoire** dans la NPMQ (annale 2019-05 Q8) : audit uniquement, ou toutes les missions d'assurance sur comptes complets historiques présentant un risque ?
-- **Conditions exactes de candidature** des contrôleurs qualité (annale 2024-05 Q1) : 5 ans d'inscription ? critère d'âge ou de statut d'associé ?
-- **Intitulés officiels des conclusions** du contrôle de qualité (annales 2022-11 Q6 et 2022-05 Q2 pour la LCB-FT).
 - **Périodicité réglementaire** du contrôle de qualité de l'Ordre.
 - **Confirmation annuelle écrite d'indépendance** du personnel : exigée par la NPMQ ? (annale 2018-11 Q4, réponse C présumée).
 - **Quantum de formation continue** des EC (annale 2018-11 Q10).

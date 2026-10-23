@@ -495,16 +495,17 @@
       "qrc": {
         "question": "Quelle obligation particulière de formation pèse sur le commissaire aux comptes qui reprend une mission après trois ans sans exercice ni formation continue ?",
         "expected": [
-          "Formation particulière préalable à l'acceptation d'une mission de certification",
-          "Suivie dans les dix-huit mois précédant l'acceptation de la mission",
-          "Obligation de droit commun : 120 heures sur trois ans consécutifs, minimum 20 heures par an"
+          "Formation particulière préalable à l'acceptation d'une mission de certification (L.821-24 II)",
+          "Quarante heures, accomplies dans les dix-huit mois précédant l'acceptation de la mission (R.821-71)",
+          "Dont vingt heures de programme spécifique CNCC/CRCC ; déclaration préalable à la compagnie régionale (R.821-72)",
+          "Obligation de droit commun : 120 heures sur trois ans consécutifs, au moins 20 heures par an (A.821-45)"
         ],
-        "model_answer": "Le commissaire aux comptes qui n'a pas exercé pendant trois ans et n'a pas satisfait à son obligation de formation continue doit, avant d'accepter une nouvelle mission de certification, suivre une formation particulière ; celle-ci doit être accomplie dans les dix-huit mois qui précèdent l'acceptation."
+        "model_answer": "Le commissaire aux comptes qui n'a pas exercé pendant trois ans et n'a pas satisfait à son obligation de formation continue doit, avant d'accepter une nouvelle mission de certification, suivre une formation particulière de quarante heures, accomplie dans les dix-huit mois qui précèdent l'acceptation, et en déclarer les conditions à sa compagnie régionale."
       },
       "explanation": "La logique du texte est préventive : la remise à niveau précède la reprise d'activité, ce qui élimine les propositions « suivent ». L'obligation ordinaire est de 120 heures sur trois années consécutives, avec un minimum annuel de 20 heures ; elle est désormais commune aux experts-comptables, mais la formation particulière de reprise est propre aux commissaires aux comptes.",
-      "reference": "C. com. L.821-24 (ex L.822-4 II : formation particulière avant d'accepter une mission de certification) ; ex R.822-21 s. et A.822-28-1 s., recodifiés (A.821-45 s.) ; arrêté relatif à la formation continue des commissaires aux comptes",
-      "confidence": "low",
-      "update_note": "Articles recodifiés au 1er janvier 2024 ; le suivi de la formation (y compris la formation particulière) est délégué à la CNCC par convention homologuée (arrêté du 19 mai 2023). Relecture : le principe d'une formation préalable à l'acceptation est confirmé par la loi (L.821-24, ex L.822-4 II), mais le délai de dix-huit mois n'a pas pu être vérifié dans la partie arrêtés."
+      "reference": "C. com. L.821-24 II (ex L.822-4 II) ; R.821-71 et R.821-72 ; A.821-45",
+      "confidence": "high",
+      "update_note": "Articles recodifiés au 1er janvier 2024. Délai de dix-huit mois et durée de quarante heures vérifiés (R.821-71) ; suivi de la formation délégué à la CNCC (convention homologuée par arrêté du 19 mai 2023)."
     },
     {
       "id": "2018-11-CAC-17",
@@ -598,9 +599,9 @@
         "model_answer": "Le commissaire aux comptes ne peut rendre que des services qui ne le placent pas en situation d'autorévision ni d'immixtion : sont donc exclus l'établissement des déclarations fiscales, la conception de procédures de contrôle interne et l'audit interne, qu'il serait ensuite amené à apprécier. Une formation comptable destinée à des salariés sans rôle dans l'information financière est admissible, sous réserve de l'analyse des risques. Pour les EIP, la liste des services interdits du règlement européen s'ajoute à ces principes."
       },
       "explanation": "Le raisonnement passe par l'autorévision : déclarations fiscales (bases de l'impôt audité), procédures de contrôle interne (évaluées par l'auditeur), audit interne (sur lequel l'auditeur s'appuie) sont incompatibles. Le distracteur « déclarations fiscales » illustre la confusion EC/CAC : prestation ordinaire pour l'expert-comptable, interdite pour le commissaire aux comptes de l'entité.",
-      "reference": "C. com. ex L.822-11 (rédaction loi Pacte), recodifié L.821-x en 2024 ; code de déontologie des commissaires aux comptes (annexe 8-1) ; règlement (UE) 537/2014 art. 4 et 5",
+      "reference": "C. com. L.821-28 (II : EIP ; IV : non-EIP), L.821-30 ; code de déontologie des CAC art. 5 II, 19 et 22 ; règl. (UE) 537/2014 art. 4 § 2 (plafond de 70 %) et art. 5 § 1 (a i, e, h)",
       "confidence": "medium",
-      "update_note": "Depuis la loi Pacte, plus de liste de services interdits pour les non-EIP : raisonnement par l'autorévision, l'immixtion et le réseau. Articles recodifiés en 2024."
+      "update_note": "Depuis la loi Pacte, plus de liste de services interdits pour les non-EIP : raisonnement par l'autorévision et les sauvegardes (L.821-28 IV). Pour une EIP, les trois premières propositions figurent parmi les services interdits (art. 5 § 1 a i, e et h)."
     },
     {
       "id": "2018-11-CAC-20",
@@ -630,9 +631,9 @@
         "model_answer": "Le commissaire aux comptes identifie les risques pesant sur son indépendance et son opinion, prend sans délai les mesures de sauvegarde propres à en supprimer la cause ou à en réduire les effets, et documente sa démarche. Si un doute sérieux ou une difficulté d'interprétation subsiste, il saisit pour avis l'autorité de supervision, la Haute autorité de l'audit depuis 2024."
       },
       "explanation": "Les distracteurs renvoient à des interlocuteurs plausibles mais inexacts : le président de la CRCC intervient pour la conciliation, les dérogations au barème ou la répartition entre co-commissaires, pas pour les avis déontologiques ; mentionner le doute dans le rapport n'est pas une réponse déontologique. L'expert-comptable, lui, consulte son conseil régional.",
-      "reference": "Code de déontologie des commissaires aux comptes (annexe 8-1 C. com.), dispositions sur les situations à risque et mesures de sauvegarde (art. 11 dans la version 2010-2017)",
-      "confidence": "medium",
-      "update_note": "Code refondu par le décret 2020-292 (renumérotation) et H3C remplacé par la H2A au 1er janvier 2024."
+      "reference": "Code de déontologie des CAC (annexe 8-1), art. 19 I et II, art. 5 III ; ex-art. 11 (version 2010-2017)",
+      "confidence": "high",
+      "update_note": "Code refondu (décret 2020-292, modifié par le décret 2026-176) : identification des risques à l'art. 19 I 1°, saisine pour avis de la H2A à l'art. 19 II ; H3C remplacé par la H2A au 1er janvier 2024."
     }
   ]
 }

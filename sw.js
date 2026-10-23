@@ -1,7 +1,7 @@
 // Service worker : fonctionnement hors ligne.
 // Stratégie : précache de l'app et des données à l'installation, puis
 // "stale-while-revalidate" (réponse immédiate depuis le cache, mise à jour en arrière-plan).
-const VERSION = 'dec1-v3';
+const VERSION = 'dec1-v4';
 const CORE = [
   './',
   './index.html',

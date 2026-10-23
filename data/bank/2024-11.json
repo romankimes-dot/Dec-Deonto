@@ -207,16 +207,15 @@
       "qrc": {
         "expected": [
           "L'article 163 ne vise que le remplacement d'un confrère",
-          "Pas de lettre en cas de première mission (création, client jamais suivi)",
-          "Pas de lettre pour une mission ponctuelle ou spécifique ne se substituant pas à celle du confrère qui reste en place",
-          "Missions dont la durée est légalement limitée / missions légales ponctuelles (à vérifier)"
+          "Pas de lettre en cas de première mission (création, client jamais suivi par un professionnel)",
+          "Pas de lettre pour une mission ponctuelle ou distincte qui ne se substitue pas à celle du confrère resté en place"
         ],
-        "model_answer": "La lettre n'est obligatoire qu'en cas de remplacement d'un confrère. Elle n'est donc pas requise lorsqu'il n'existe pas de prédécesseur (création d'entreprise, client sans expert-comptable) ou lorsque la mission confiée est ponctuelle ou distincte et ne se substitue pas à celle du confrère qui demeure en fonction (par exemple une mission légale à durée limitée)."
+        "model_answer": "La lettre n'est obligatoire qu'en cas de remplacement d'un confrère. Elle n'est donc pas requise lorsqu'il n'existe pas de prédécesseur (création d'entreprise, client sans expert-comptable) ou lorsque la mission confiée est ponctuelle ou distincte et ne se substitue pas à celle du confrère qui demeure en fonction."
       },
       "explanation": "L'article 163 impose, en cas de remplacement, d'informer le prédécesseur avant d'accepter, de vérifier que le changement n'a pas pour but d'éluder la loi, de s'enquérir du paiement de ses honoraires et, à défaut, d'en référer au président du conseil régional. Les exceptions résultent du champ du texte (remplacement) et de la pratique ordinale ; leur liste exacte n'est pas fixée par le décret. Le paiement des honoraires du prédécesseur n'est pas une exception mais une diligence.",
       "reference": "D. 2012-432 art. 163 ; doctrine ordinale (CNOEC, conseils régionaux)",
-      "confidence": "low",
-      "update_note": "Relecture : l'art. 163 (texte vérifié, décret 2012-432 à jour) ne prévoit aucune exception expresse ; la réponse, déduite du champ du texte (remplacement d'un confrère), est plausible mais l'item « missions légales ponctuelles » n'a pu être rattaché à aucune source et devrait être vérifié."
+      "confidence": "medium",
+      "update_note": "Relecture : l'art. 163 (texte vérifié, inchangé depuis 2012) ne prévoit aucune exception expresse ; réponse déduite de son champ (« appelées […] à remplacer un confrère »). L'élément « missions légales ponctuelles », sans fondement textuel, est retiré."
     },
     {
       "id": "2024-11-EC-08",
@@ -351,7 +350,7 @@
       "qcm": {
         "choices": [
           "La cour d'appel de Paris",
-          "La juridiction administrative, soit le Conseil d'État s'agissant d'une décision de la H2A",
+          "La juridiction administrative, en principe le tribunal administratif du lieu du siège de la H2A, faute de texte donnant compétence directe au Conseil d'État",
           "La chambre nationale de discipline",
           "Le tribunal judiciaire du siège de la CRCC"
         ],
@@ -360,14 +359,15 @@
       "qrc": {
         "expected": [
           "Juridiction administrative (R.821-68)",
-          "Conseil d'État, compétent en premier et dernier ressort pour les décisions de la H2A (autorité publique indépendante)"
+          "À défaut de texte spécial : tribunal administratif dans le ressort duquel siège l'autorité qui a pris la décision (CJA R.312-1)",
+          "La H2A ne figure pas parmi les autorités dont les décisions relèvent en premier et dernier ressort du Conseil d'État (CJA R.311-1 4°)"
         ],
-        "model_answer": "Les décisions d'inscription sont susceptibles de recours devant la juridiction administrative ; la H2A étant une autorité publique indépendante à compétence nationale, le recours est porté devant le Conseil d'État."
+        "model_answer": "Les décisions rendues en matière d'inscription sont susceptibles de recours devant la juridiction administrative. Aucun texte ne donnant compétence en premier ressort au Conseil d'État pour ces décisions de la H2A, le recours relève du tribunal administratif territorialement compétent, celui du siège de l'autorité."
       },
-      "explanation": "Le code de commerce renvoie à la juridiction administrative (R.821-68) ; la compétence du Conseil d'État en premier et dernier ressort résulte du code de justice administrative pour les décisions des autorités de régulation à compétence nationale (le H3C y figurait). Piège : l'ancien système de commissions régionales d'inscription avec recours devant le H3C n'existe plus. Pour les EC, le refus d'inscription au tableau est contesté devant le comité national du tableau.",
-      "reference": "C. com. L.821-13, R.821-68 (ex-R.822-19) ; CJA R.311-1",
+      "explanation": "Le code de commerce renvoie à la juridiction administrative (R.821-68). Le code de justice administrative réserve au Conseil d'État les décisions de régulateurs énumérés (AMF, ACPR, CNIL…), liste qui ne comprend pas la H2A ; le Conseil d'État connaît en revanche des recours contre les sanctions de la commission des sanctions (L.821-85), et le tribunal administratif des décisions du bureau sur les dérogations au barème (D.821-191). Pour les EC, le refus d'inscription au tableau est déféré au comité national du tableau (ord. art. 42).",
+      "reference": "C. com. L.821-13, R.821-68 (ex R.822-19) ; CJA R.311-1 et R.312-1 ; ord. 45-2138 art. 42",
       "confidence": "medium",
-      "update_note": "H3C remplacé par la H2A au 1er janvier 2024 ; inscription centralisée par la H2A."
+      "update_note": "H3C remplacé par la H2A au 1er janvier 2024 ; inscription centralisée par la H2A. Compétence du Conseil d'État non retenue : la H2A ne figure pas à l'art. R.311-1 4° CJA (version du 7 novembre 2025)."
     },
     {
       "id": "2024-11-CAC-13",
@@ -396,8 +396,8 @@
         "model_answer": "Un organisme de formation de droit privé doit désigner un commissaire aux comptes titulaire et un suppléant lorsqu'il dépasse deux des trois seuils suivants : 3 salariés, 153 000 € de chiffre d'affaires hors taxes ou de ressources, 230 000 € de total du bilan."
       },
       "explanation": "Seuils spécifiques du code du travail, non modifiés par le décret 2024-152 (qui a relevé les seuils des sociétés commerciales à 5 M€ / 10 M€ / 50). Ne pas confondre avec le seuil de 153 000 € de subventions des associations ou de 230 000 € de ressources des syndicats. Le suppléant reste exigé par ces textes sectoriels.",
-      "reference": "C. trav. L.6352-8 et R.6352-19",
-      "confidence": "medium"
+      "reference": "C. trav. L.6352-8 et R.6352-19 (rédaction du décret 2023-1394)",
+      "confidence": "high"
     },
     {
       "id": "2024-11-CAC-14",
@@ -452,9 +452,9 @@
         "model_answer": "Non. Même dans une société dépourvue de commissaire aux comptes, la suppression du DPS impose de désigner un commissaire aux comptes à cet effet, chargé d'un rapport sur les conditions de fixation du prix d'émission. Cette intervention, destinée à protéger les actionnaires, est d'ordre public et les actionnaires ne peuvent y renoncer, même à l'unanimité."
       },
       "explanation": "Depuis la loi Pacte, l'article L.225-135 ne vise le rapport du CAC que « s'il en existe », mais l'intervention d'un CAC désigné ad hoc sur le prix d'émission demeure (L.225-136, L.225-138, R.225-114 s.). Point à vérifier : l'étendue exacte de la mission ad hoc selon le type d'émission et la forme sociale (SAS).",
-      "reference": "C. com. L.225-135, L.225-136, L.225-138, R.225-114 s.",
-      "confidence": "low",
-      "update_note": "Relecture : réponse « non » maintenue, mais à nuancer : si chaque actionnaire renonce individuellement à son DPS (L.225-132), il n'y a pas suppression du DPS et donc pas d'intervention du CAC ; le jury a pu attendre cette distinction."
+      "reference": "C. com. L.225-135, L.225-136 1°, L.225-138 II, R.225-114, R.225-115 ; L.227-1 (SAS)",
+      "confidence": "medium",
+      "update_note": "Relecture : réponse « non » maintenue, à nuancer : si chaque actionnaire renonce individuellement à son DPS (L.225-132), il n'y a pas suppression du DPS et donc pas d'intervention du CAC. L.225-136 1° et L.225-138 II imposent le rapport d'un CAC « désigné à cet effet » lorsqu'il n'en a pas été désigné, sans faculté de renonciation, à la différence du commissaire aux apports en SAS (L.227-1)."
     },
     {
       "id": "2024-11-CAC-16",

@@ -130,24 +130,26 @@
       "question": "Quelle est la durée consécutive maximale de présidence d'un même conseil régional de l'ordre des experts-comptables ?",
       "qcm": {
         "choices": [
-          "Deux mandats consécutifs, soit huit ans au maximum",
-          "Un seul mandat de quatre ans, non renouvelable",
+          "Quatre années consécutives (soit deux mandats de bureau de deux ans), une interruption d'au moins deux ans étant ensuite exigée",
+          "Six ans, soit trois mandats de bureau de deux ans",
           "Aucune limite : le président est rééligible sans restriction",
-          "Trois mandats consécutifs de deux ans, soit six ans"
+          "Huit ans, soit deux mandats consécutifs de conseiller de quatre ans"
         ],
         "answer": 0
       },
       "qrc": {
         "expected": [
-          "Président élu par le conseil régional en son sein, pour la durée du mandat du conseil (quatre ans)",
-          "Pas plus de deux mandats consécutifs de président",
-          "Soit huit années consécutives au maximum"
+          "Bureau, dont le président, élu par le conseil en son sein pour deux ans (D. 2012-432 art. 10)",
+          "Présidence d'un même conseil limitée à quatre années consécutives",
+          "Interruption d'au moins deux ans avant une nouvelle présidence",
+          "À distinguer : mandat de conseiller de quatre ans, deux mandats consécutifs au plus dans un même conseil (art. 1er et 2)"
         ],
-        "model_answer": "Les conseils régionaux sont élus pour quatre ans et leur président, élu par le conseil en son sein, ne peut exercer plus de deux mandats consécutifs : la durée consécutive maximale de présidence d'un même conseil régional est donc de huit ans."
+        "model_answer": "Le président est élu au sein du bureau pour un mandat de deux ans ; une même personne ne peut présider un même conseil plus de quatre années consécutives, puis doit observer une interruption d'au moins deux ans. Les membres du conseil sont, eux, élus pour quatre ans et ne peuvent exercer plus de deux mandats consécutifs dans un même conseil."
       },
-      "explanation": "L'organisation des conseils de l'Ordre est fixée par le décret du 30 mars 2012 (modifié par le décret 2019-1193 pour les élections) : mandats de quatre ans et limitation du nombre de mandats consécutifs pour prévenir la permanence d'une même équipe. Chez les CAC, les présidents des compagnies régionales sont également élus par les conseils régionaux pour des mandats limités. Le chiffre exact dépend de la lecture du décret et doit être vérifié.",
-      "reference": "D. 2012-432 art. 1 s. (conseils régionaux, élections) modifié par D. 2019-1193 ; Ord. 45-2138 art. 28 et 29",
-      "confidence": "low"
+      "explanation": "Ne pas confondre le mandat de membre du conseil (quatre ans, deux mandats consécutifs au plus, soit huit ans) et la fonction de président (bureau élu pour deux ans, présidence limitée à quatre années consécutives). La règle figure à l'art. 10 du décret depuis 2012. Chez les CAC, le président du conseil régional de la compagnie est élu pour quatre ans et son mandat n'est pas renouvelable (C. com. D.821-34).",
+      "reference": "D. 2012-432 art. 1er, 2 et 10 ; C. com. D.821-34 pour le parallèle CAC",
+      "confidence": "high",
+      "update_note": "Règle de l'art. 10 (inchangée sur ce point depuis 2012, dernière rédaction au 1er janvier 2023) : l'ancienne réponse (huit ans) confondait mandat de conseiller et présidence."
     },
     {
       "id": "2023-11-EC-06",
@@ -219,7 +221,7 @@
       "qcm": {
         "choices": [
           "Deux sections : les experts-comptables et les sociétés d'expertise comptable",
-          "Plusieurs sections distinguant notamment les experts-comptables personnes physiques, les sociétés d'expertise comptable, les sociétés de participations d'expertise comptable, les succursales, les AGC et leurs salariés autorisés (art. 83 ter et 83 quater), les sociétés pluri-professionnelles d'exercice, ainsi que les listes annexes (stagiaires, experts-comptables en entreprise, honoraires)",
+          "Trois sections (experts-comptables personnes physiques, sociétés d'expertise comptable, sociétés de participations d'expertise comptable), suivies de onze listes (stagiaires, honoraires, salariés d'AGC, AGC, succursales, SPE, SPFPL, experts-comptables en entreprise…)",
           "Trois sections : experts-comptables, commissaires aux comptes et comptables agréés",
           "Une section unique, le tableau étant un simple registre alphabétique tenu par le Conseil national"
         ],
@@ -227,17 +229,16 @@
       },
       "qrc": {
         "expected": [
-          "Experts-comptables personnes physiques",
-          "Sociétés d'expertise comptable et sociétés de participations d'expertise comptable",
-          "Succursales d'expertise comptable",
-          "Associations de gestion et de comptabilité et leurs salariés autorisés (art. 83 ter et 83 quater)",
-          "Sociétés pluri-professionnelles d'exercice ; listes annexes : experts-comptables stagiaires, experts-comptables en entreprise, membres honoraires"
+          "Trois sections : experts-comptables personnes physiques ; sociétés d'expertise comptable ; sociétés de participations d'expertise comptable",
+          "Suivies de onze listes : stagiaires ; honoraires ; salariés d'AGC autorisés (art. 83 ter et 83 quater) ; libre prestation de services (art. 26-1) ; accès partiel (art. 26-0)",
+          "Listes (suite) : AGC ; succursales ; sociétés pluri-professionnelles d'exercice ; SPFPL ; experts-comptables en entreprise"
         ],
-        "model_answer": "Le tableau, dressé par chaque conseil régional, est divisé en sections correspondant aux catégories de personnes admises à exercer tout ou partie de la profession : experts-comptables personnes physiques, sociétés d'expertise comptable (et sociétés de participations), succursales, associations de gestion et de comptabilité, salariés autorisés des AGC (art. 83 ter et 83 quater), sociétés pluri-professionnelles d'exercice. S'y ajoutent les inscriptions à la suite du tableau (experts-comptables stagiaires, experts-comptables en entreprise, membres honoraires). Le nombre exact de sections résulte du décret de 2012."
+        "model_answer": "Le tableau comporte trois sections : les experts-comptables personnes physiques, les sociétés d'expertise comptable et les sociétés de participations d'expertise comptable. Elles sont suivies de onze listes : stagiaires, honoraires, salariés d'AGC autorisés, professionnels en libre prestation ou en accès partiel, AGC, succursales, SPE, SPFPL et experts-comptables en entreprise."
       },
-      "explanation": "L'ordonnance (art. 40) prévoit que le conseil régional dresse le tableau des personnes physiques et morales et des succursales admises à exercer ; le décret de 2012 en fixe la structure par sections. Les stagiaires sont inscrits « à la suite » du tableau et ne sont pas membres de l'Ordre, de même que les AGC, succursales, SPE et experts-comptables en entreprise. Le détail et le nombre des sections doivent être vérifiés dans le décret.",
-      "reference": "Ord. 45-2138 art. 7, 7 ter, 7 quinquies, 7 sexies, 13, 40, 41 et 83 quinquies ; D. 2012-432 (tableau)",
-      "confidence": "low"
+      "explanation": "La structure est fixée par l'art. 114 du décret de 2012, réécrit par le décret 2019-1193 (trois sections au lieu de huit) puis actualisé au 16 février 2025. L'inscription dans une section ou une liste permet d'exercer sur tout le territoire, sauf pour les stagiaires, honoraires, experts-comptables en entreprise et sociétés de participations ; les SPFPL inscrites n'exercent pas et ne sont pas membres de l'Ordre.",
+      "reference": "D. 2012-432 art. 114 (version en vigueur depuis le 16 février 2025) ; ord. 45-2138 art. 40",
+      "confidence": "high",
+      "update_note": "Avant le décret 2019-1193 : huit sections ; depuis : trois sections suivies de onze listes (art. 114, mis à jour au 16 février 2025)."
     },
     {
       "id": "2023-11-EC-09",
@@ -447,7 +448,7 @@
         "model_answer": "Les contrôles d'activité comprennent des contrôles périodiques (au moins tous les six ans, ramenés à trois ans pour les CAC d'entités d'intérêt public), des contrôles occasionnels ou ciblés à la suite d'un signalement, des contrôles thématiques et des contrôles de suivi des recommandations. Ils sont réalisés par les contrôleurs de la Haute autorité de l'audit, ou par délégation à la CNCC pour les CAC sans mandat EIP, le cas échéant avec le concours de l'AMF ou de l'ACPR."
       },
       "explanation": "Le cadre et les orientations des contrôles sont définis par la H2A (C. com. L.820-1 I 5°), leur périodicité par la partie réglementaire (R.820-49) et leur contenu par R.820-45 (missions sélectionnées, système de contrôle qualité interne, autres missions et prestations). Les quatre modalités citées reprennent la typologie usuelle de l'autorité de supervision mais ne figurent pas sous cette forme dans le code : à vérifier. Le contrôle de qualité de l'Ordre (structurel/technique) relève d'une logique différente.",
-      "reference": "C. com. art. L.820-1, L.820-14, R.820-45 à R.820-49 ; règlement UE 537/2014 art. 26 ; conventions de délégation des contrôles non-EIP à la CNCC (arrêtés d'homologation des 25 avril 2017, 19 mai 2023 et 6 juillet 2026)",
+      "reference": "C. com. L.820-1 I 5° et II, L.820-14, R.820-45 à R.820-49 ; règlement UE 537/2014 art. 26 ; conventions de délégation des contrôles non-EIP à la CNCC (arrêtés d'homologation des 19 mai 2023 et 2 juillet 2026)",
       "confidence": "low",
       "update_note": "H3C → H2A au 1er janvier 2024 ; périodicité et contenu désormais aux articles R.820-45 à R.820-49 (ex R.821-26 et s.). Relecture : le terme « délégation » est exact pour les contrôles non-EIP (convention de délégation H3C-CNCC homologuée en 2017 et 2023, reconduite par la H2A en 2026) ; la mention d'un simple « concours » de la CNCC (2020-11-CAC-19) est à aligner. La typologie des quatre modalités reste à vérifier."
     },

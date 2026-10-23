@@ -376,8 +376,9 @@
         "model_answer": "Non. En évaluant la société qu'il certifie pour le compte de l'acquéreur, le CAC se placerait en conflit d'intérêts et compromettrait son impartialité et son indépendance. Il exploiterait au profit d'un tiers des informations couvertes par son secret professionnel, dont l'entité ne peut le délier. Aucune mesure de sauvegarde ne permet de remédier à cette situation."
       },
       "explanation": "Le code de déontologie (art. 5 et 20) impose d'identifier les risques liés aux opérations de fusion ou d'acquisition intéressant l'entité certifiée. Même hors EIP (où l'évaluation fait partie des services interdits), le conflit d'intérêts et le secret (L.821-35) font obstacle. Ne pas confondre avec le commissariat aux apports ou à la fusion, missions distinctes soumises à leurs propres incompatibilités.",
-      "reference": "C. com. L.821-31, L.821-35 ; code de déontologie CAC art. 4, 5, 9, 20",
-      "confidence": "medium"
+      "reference": "C. com. L.821-28 II, L.821-31, L.821-35 ; règl. (UE) 537/2014 art. 5 § 1 f ; code de déontologie CAC art. 4, 5, 9 et 20",
+      "confidence": "medium",
+      "update_note": "Pour une EIP, les services d'évaluation figurent parmi les services interdits (règl. 537/2014 art. 5 § 1 f ; L.821-28 II)."
     },
     {
       "id": "2025-05-CAC-14",

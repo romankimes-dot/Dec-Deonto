@@ -46,7 +46,7 @@ Réseau | Les interdictions **s'étendent au réseau** | Les services du réseau
 
 | Lien | Règle |
 |---|---|
-| **Personnel** | Pas de lien familial ou personnel entre une personne en **fonction sensible** dans l'entité et le CAC ou un dirigeant de la société de CAC |
+| **Personnel** | Pas de lien personnel entre une personne en **fonction sensible** dans l'entité et le CAC ou un dirigeant de la société de CAC. Lien personnel : parent et enfant, frères et sœurs (1er degré), conjoint, partenaire de PACS, concubin |
 | **Financier** | Aucun intérêt (actions, prêts, garanties) dans l'entité ou les entités liées : CAC, associés, équipe, proches |
 | **Professionnel** | Pas d'emploi, de mandat social ni de relation d'affaires significative |
 | **Après le mandat** | Le CAC ne devient pas dirigeant ou salarié de l'entité avant un délai {?} (3 ans pour une EIP) |

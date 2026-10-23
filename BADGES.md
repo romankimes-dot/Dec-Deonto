@@ -172,7 +172,7 @@ Chaque anecdote se débloque quand **toutes** les questions listées sont réuss
 | A18 | **Le DEC en poche** | « Épreuve 1 validée. Je sais enfin pourquoi la partie CAC fait baisser la moyenne. » | se débloque avec le badge **Bloc EC maîtrisé** + **Bloc CAC maîtrisé** | légendaire |
 | A19 | **Dossier d'inscription au tableau** | « Diplôme, moralité, pas d'incompatibilité. Le commissaire du gouvernement a émis son avis. » | 2024-11-EC-03, 2023-11-EC-06, 2023-11-EC-08 | rare |
 | A20 | **Prestation de serment d'expert-comptable** | « Devant le conseil régional de l'Ordre. Conscience et probité. » | 2021-11-EC-08, 2026-05-EC-01 | épique |
-| A21 | **Première cotisation ordinale** | « Payée. La CAVEC aussi : deux ans d'impayés suffisent pour finir devant la chambre. » | 2022-05-EC-06, 2026-05-EC-10 | commun |
+| A21 | **Première cotisation ordinale** | « Payée. La CAVEC aussi : deux ans d'impayés sur dix, et c'est la radiation d'office. » | 2022-05-EC-06, 2026-05-EC-10 | commun |
 
 ### 6.3 L'installation (EC)
 
@@ -191,7 +191,7 @@ Chaque anecdote se débloque quand **toutes** les questions listées sont réuss
 | A32 | **Premier mandat social** | « Administrateur d'une association. Déclaré au conseil régional. » | 2018-05-EC-04, 2019-05-EC-07 | commun |
 | A33 | **Premier stagiaire encadré** | « Un expert-comptable pour quinze collaborateurs. Mon premier stagiaire arrive lundi. » | 2019-11-EC-10, 2023-05-EC-10 | rare |
 | A34 | **Premier sous-traitant** | « Pour la tenue, il faut un professionnel inscrit. Le titulaire du DSCG sera salarié. » | 2024-05-EC-06 | commun |
-| A35 | **Premier contrôle qualité réussi** | « Examen de l'organisation, puis revue des dossiers. Conclusion : satisfaisant. » | 2019-11-EC-04, 2020-11-EC-03, 2023-05-EC-02, 2022-11-EC-06, 2024-05-EC-02 | épique |
+| A35 | **Premier contrôle qualité réussi** | « Examen de l'organisation, puis revue des dossiers. Conclusion : sans observation. » | 2019-11-EC-04, 2020-11-EC-03, 2023-05-EC-02, 2022-11-EC-06, 2024-05-EC-02 | épique |
 | A36 | **Contrôle qualité LAB** | « Le contrôleur a ouvert le dossier du client PPE en premier. » | 2022-05-EC-02, 2021-11-EC-09 | rare |
 | A37 | **Devenu contrôleur qualité** | « Candidature acceptée. À mon tour de poser les questions. » | 2024-05-EC-01 | épique |
 | A38 | **Convocation devant la chambre régionale** | « Classement sans suite. Mais je connais maintenant la composition par cœur. » | 2021-05-EC-06, 2024-05-EC-05, 2021-11-EC-06, 2025-05-EC-06, 2024-11-EC-04 | rare |

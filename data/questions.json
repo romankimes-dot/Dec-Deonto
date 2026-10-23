@@ -275,7 +275,7 @@
    "qcm": {
     "question": "Dans la NP 3100 (attestations particulières), sur quel critère repose la distinction entre attestation directe et attestation indirecte ?",
     "choices": [
-     "L'auteur de l'information : l'attestation est directe lorsque l'expert-comptable a lui-même établi l'information attestée, indirecte lorsqu'elle a été établie par l'entité (ou un tiers) et vérifiée par lui",
+     "La contribution du professionnel à l'élaboration de l'information : attestation directe lorsque l'expert-comptable a contribué, en tout ou partie, à l'élaborer (mesure ou évaluation de l'objet), indirecte lorsqu'elle a été élaborée par l'entité sans sa contribution",
      "Le destinataire : directe si l'attestation est remise au client, indirecte si elle est remise à un tiers (banque, administration)",
      "Le niveau d'assurance : directe pour une assurance raisonnable, indirecte pour une assurance modérée",
      "La présence d'un commissaire aux comptes : directe en son absence, indirecte lorsqu'il intervient dans l'entité"
@@ -284,16 +284,16 @@
    },
    "qrc": {
     "expected": [
-     "Critère : origine de l'information attestée (qui l'a établie)",
-     "Attestation directe : information établie par l'expert-comptable lui-même",
-     "Attestation indirecte : information établie par l'entité ou un tiers, vérifiée par l'expert-comptable"
+     "Critère : contribution ou non de l'expert-comptable à l'élaboration de l'information attestée (qui mesure ou évalue l'objet)",
+     "Attestation directe : l'expert-comptable a contribué, en tout ou partie, à l'élaboration de l'information",
+     "Attestation indirecte : l'information est élaborée par l'entité (partie responsable), l'expert-comptable se bornant à la vérifier"
     ],
-    "model_answer": "La distinction tient à l'origine de l'information attestée. L'attestation est directe lorsque l'expert-comptable atteste une information qu'il a lui-même établie (par exemple à partir des comptes issus de sa mission) ; elle est indirecte lorsque l'information a été préparée par l'entité ou un tiers et que l'expert-comptable la vérifie avant de l'attester."
+    "model_answer": "La NP 3100 distingue selon que l'expert-comptable a ou non contribué à l'élaboration des informations sur lesquelles il exprime une assurance. L'attestation est directe s'il a participé, en tout ou partie, à leur élaboration (mesure ou évaluation de l'objet) ; elle est indirecte si l'information a été élaborée par l'entité, partie responsable, et qu'il se borne à la vérifier."
    },
-   "explanation": "Les attestations particulières relèvent des « autres missions d'assurance » du référentiel : elles portent sur des informations qui ne constituent pas des comptes complets historiques. Le critère n'est ni le destinataire ni le niveau d'assurance, mais l'auteur de l'information. L'expert-comptable peut émettre les deux types d'attestations ; les diligences et la formulation s'adaptent à la nature de l'information et à l'assurance recherchée.",
-   "reference": "NP 3100 (attestations particulières) ; cadre de référence des missions de l'OEC",
-   "confidence": "low",
-   "update_note": "Relecture : le critère n'a pas pu être vérifié dans le texte de la NP 3100 ; dans la logique ISAE 3000, la distinction tiendrait plutôt à la personne qui mesure ou évalue le sujet au regard des critères (l'entité : attestation indirecte ; l'expert-comptable lui-même : attestation directe), formulation à confronter à la norme.",
+   "explanation": "Les attestations particulières relèvent des « autres missions d'assurance » du référentiel : elles portent sur des informations qui ne constituent pas des comptes complets historiques. Le critère n'est ni le destinataire ni le niveau d'assurance, mais la participation du professionnel à l'élaboration de l'information (dans une mission indirecte, c'est la partie responsable qui mesure ou évalue l'objet). Les deux types d'attestations sont possibles, avec une assurance modérée ou raisonnable ; la formulation de la conclusion diffère selon le cas.",
+   "reference": "NP 3100 agréée par arrêté du 13 avril 2022 (annexe 2), § 5 et § 9 ; cadre de référence des missions de l'OEC",
+   "confidence": "high",
+   "update_note": "NP 3100 révisée agréée par arrêté du 13 avril 2022 (remplace la version agréée le 1er septembre 2016) ; critère vérifié dans le texte : contribution ou non à l'élaboration de l'information.",
    "session": "2018-05",
    "origFormat": "qrc"
   },
@@ -467,9 +467,9 @@
     "model_answer": "Non. Le secret professionnel du commissaire aux comptes ne peut être opposé aux contrôleurs de l'autorité de supervision, qui ont accès à tous les documents et informations nécessaires ; refuser de coopérer constituerait un manquement sanctionnable. La réponse est la même pour une prestation fournie au client : le contrôle d'activité porte sur l'ensemble de l'exercice professionnel, et non sur la seule certification."
    },
    "explanation": "Le secret professionnel du commissaire aux comptes est pénalement protégé, mais la loi en organise des levées : autorité de supervision, AMF, Tracfin, juge, commissaires aux comptes du périmètre de consolidation, successeur. Le contrôle d'activité (contrôle qualité) vise à vérifier le respect des normes, de la déontologie et du contrôle interne de qualité sur toute l'activité, prestations comprises. Piège EC/CAC : l'expert-comptable ne peut pas davantage opposer son secret au contrôle qualité de l'Ordre.",
-   "reference": "C. com. ex L.822-15 (secret professionnel, non opposable au H3C) et ex L.821-9 s. (contrôles), dispositions recodifiées en 2024 dans le livre VIII (L.820-x / L.821-x)",
-   "confidence": "medium",
-   "update_note": "Depuis le 1er janvier 2024, le H3C est remplacé par la Haute autorité de l'audit (H2A) ; les articles ont été renumérotés par l'ordonnance 2023-1142 (ex L.822-15 et ex L.821-9 s.).",
+   "reference": "C. com. L.820-17 (pouvoirs des contrôleurs : documents relatifs à la certification et à toute prestation fournie aux entités certifiées, secret inopposable), L.820-8 II, L.821-35 (secret, ex L.822-15), L.821-70 II 3° (obstacle aux contrôles)",
+   "confidence": "high",
+   "update_note": "Depuis le 1er janvier 2024, le H3C est remplacé par la H2A ; règle désormais à L.820-17 (contrôles) et L.820-8 II (secret inopposable à la H2A et à ses services).",
    "session": "2018-05",
    "origFormat": "qrc"
   },
@@ -488,7 +488,7 @@
    "qcm": {
     "question": "Au cours d'un contrôle d'activité, un contrôleur de la Haute autorité de l'audit (ex-H3C) constate des faits susceptibles d'être liés au blanchiment de capitaux. Que doit-il faire ?",
     "choices": [
-     "En informer Tracfin, par l'intermédiaire de l'autorité : les autorités de contrôle doivent signaler à Tracfin les faits susceptibles d'être liés au blanchiment découverts lors de leurs contrôles",
+     "En informer Tracfin : les personnes réalisant les contrôles d'activité doivent signaler à ce service les faits susceptibles d'être liés au blanchiment qu'elles constatent",
      "Dénoncer directement les faits au procureur de la République, comme le ferait le commissaire aux comptes au titre de la révélation des faits délictueux",
      "Rien : seul le commissaire aux comptes contrôlé est assujetti aux obligations de lutte contre le blanchiment",
      "Adresser une déclaration de soupçon au président de la CNCC, qui décide de sa transmission à Tracfin"
@@ -497,16 +497,16 @@
    },
    "qrc": {
     "expected": [
-     "Informer Tracfin (information des autorités de contrôle, code monétaire et financier)",
-     "Via la Haute autorité (ex-H3C), autorité de contrôle du commissaire aux comptes",
-     "Le cas échéant, l'autorité apprécie aussi si le commissaire aux comptes a manqué à ses propres obligations LCB-FT (suites disciplinaires)"
+     "Informer Tracfin (service mentionné à l'art. L.561-23 CMF)",
+     "Obligation propre aux personnes réalisant les contrôles (C. com. L.820-18), qui s'ajoute à celle des autorités de contrôle (CMF L.561-28 II)",
+     "Le cas échéant, examen du respect par le CAC de ses propres obligations LCB-FT (suites disciplinaires)"
     ],
-    "model_answer": "L'autorité de contrôle qui, dans l'exercice de ses missions, découvre des faits susceptibles d'être liés au blanchiment de capitaux ou au financement du terrorisme doit en informer Tracfin : le contrôleur fait donc remonter l'information à la Haute autorité, qui saisit Tracfin. L'autorité peut par ailleurs examiner si le commissaire aux comptes contrôlé a lui-même respecté ses obligations de vigilance et de déclaration."
+    "model_answer": "Le contrôleur qui constate, lors d'un contrôle d'activité, des faits susceptibles d'être liés au blanchiment de capitaux ou au financement du terrorisme en informe Tracfin : le code de commerce met directement cette obligation à la charge des personnes réalisant les contrôles, en écho à celle des autorités de contrôle. La H2A peut par ailleurs vérifier si le CAC contrôlé a respecté ses obligations de vigilance et de déclaration."
    },
-   "explanation": "Il ne faut pas confondre la déclaration de soupçon, qui incombe au professionnel assujetti (le commissaire aux comptes signataire), et l'information de Tracfin par les autorités de contrôle et ordres professionnels (H2A, Ordre des experts-comptables), prévue par le code monétaire et financier. Le contrôleur n'a pas qualité pour révéler des faits au procureur : la révélation des faits délictueux est une obligation propre au commissaire aux comptes dans sa mission de certification.",
-   "reference": "C. mon. fin. art. L.561-28 (information de Tracfin par les autorités de contrôle) ; NEP 9605 pour les obligations propres du commissaire aux comptes",
-   "confidence": "medium",
-   "update_note": "H3C remplacé par la H2A depuis le 1er janvier 2024 ; la règle d'information de Tracfin par les autorités de contrôle est inchangée.",
+   "explanation": "Il ne faut pas confondre la déclaration de soupçon, qui incombe au professionnel assujetti (le commissaire aux comptes), et l'information de Tracfin par les autorités de contrôle et leurs contrôleurs (L.820-18 ; CMF L.561-28 II) ; le rapporteur général de la H2A y est également tenu (L.821-75). Le contrôleur n'a pas qualité pour révéler des faits au procureur : la révélation des faits délictueux est une obligation propre au commissaire aux comptes (L.821-10).",
+   "reference": "C. com. L.820-18, L.821-75 ; CMF L.561-28 II ; NEP 9605 (A.821-98) pour les obligations du CAC",
+   "confidence": "high",
+   "update_note": "H3C → H2A au 1er janvier 2024 ; obligation inscrite à L.820-18 à la charge des personnes réalisant les contrôles (information directe de Tracfin).",
    "session": "2018-05",
    "origFormat": "qrc"
   },
@@ -722,9 +722,9 @@
     "model_answer": "En cas de doute sérieux ou de difficulté d'interprétation, le code prévoit que le commissaire aux comptes saisit, pour avis, l'autorité de supervision de la profession : le Haut Conseil du commissariat aux comptes à la date du sujet, la Haute autorité de l'audit depuis 2024."
    },
    "explanation": "Le code organise une démarche en trois temps : identification des situations à risque (autorévision, intérêt personnel, familiarité, intimidation…), mesures de sauvegarde, puis, si le doute persiste, saisine pour avis de l'autorité de supervision. Piège EC/CAC : l'expert-comptable, lui, s'adresse à son conseil régional de l'Ordre ; le commissaire aux comptes ne saisit pas le président de la CRCC sur ce point.",
-   "reference": "Code de déontologie des commissaires aux comptes (annexe 8-1 C. com.), article relatif aux situations à risque et mesures de sauvegarde (art. 11 dans la version 2010-2017)",
-   "confidence": "medium",
-   "update_note": "Le code a été refondu par le décret 2020-292 (numérotation modifiée) et le H3C a été remplacé par la H2A au 1er janvier 2024 : la saisine pour avis s'adresse désormais à la Haute autorité de l'audit.",
+   "reference": "Code de déontologie des CAC (annexe 8-1), art. 19 II (doute sérieux : saisine pour avis de la H2A) et art. 5 III (mesures de sauvegarde) ; ex-art. 11 (version 2010-2017)",
+   "confidence": "high",
+   "update_note": "Code refondu (décret 2020-292, modifié par le décret 2026-176) : la règle figure à l'art. 19 II ; même saisine pour avis en cas de doute sur l'appartenance à un réseau (art. 29) ou de difficulté sérieuse de dépendance financière (art. 36).",
    "session": "2018-05",
    "origFormat": "qrc"
   },
@@ -777,7 +777,7 @@
    "qcm": {
     "question": "Au sens du code de déontologie des commissaires aux comptes, qu'est-ce qu'un « lien personnel » avec une personne occupant une fonction sensible dans l'entité contrôlée ?",
     "choices": [
-     "Un lien familial (conjoint, partenaire de PACS, concubin, parents et alliés en ligne directe et jusqu'au deuxième degré en ligne collatérale) et, plus largement, toute relation personnelle étroite susceptible d'affecter l'indépendance, en réalité ou en apparence",
+     "Un lien familial limitativement défini : entre ascendant et descendant au premier degré, entre collatéraux au premier degré (frères et sœurs), ou entre conjoints, partenaires de PACS ou concubins",
      "Uniquement le mariage ou le PACS entre le commissaire aux comptes et la personne occupant la fonction sensible",
      "Tout lien d'affaires ou financier, tel que la détention de titres de l'entité ou un prêt consenti par celle-ci",
      "Tout lien professionnel, tel que l'exercice antérieur de fonctions de salarié ou de dirigeant dans l'entité"
@@ -786,17 +786,17 @@
    },
    "qrc": {
     "expected": [
-     "Liens familiaux : conjoint, partenaire de PACS, concubin",
-     "Parents et alliés en ligne directe (ascendants, descendants) et en ligne collatérale jusqu'au deuxième degré (frères et sœurs) et leurs conjoints",
-     "Plus largement, toute relation personnelle étroite (amitié) de nature à affecter l'indépendance en réalité ou en apparence",
-     "Fonction sensible : dirigeants, administrateurs, responsables financiers ou comptables, salariés chargés de l'information financière"
+     "Lien entre ascendant et descendant au premier degré (parents et enfants)",
+     "Lien entre collatéraux au premier degré (frères et sœurs)",
+     "Lien entre conjoints, partenaires de PACS ou concubins (C. civ. art. 515-8)",
+     "Fonction sensible : mandataire social, préposé chargé de tenir les comptes ou d'élaborer les états financiers, cadre dirigeant pouvant influer sur leur établissement (art. 31)"
     ],
-    "model_answer": "Le lien personnel recouvre d'abord les liens familiaux : lien avec le conjoint, le partenaire de PACS ou le concubin, et avec les parents et alliés en ligne directe ou, en ligne collatérale, jusqu'au deuxième degré. Il s'entend plus largement de toute relation personnelle étroite, notamment d'amitié, de nature à affecter l'indépendance du commissaire aux comptes, en réalité ou en apparence."
+    "model_answer": "Le code définit limitativement le lien personnel : lien entre ascendant et descendant au premier degré, entre collatéraux au premier degré, et entre conjoints, partenaires de PACS ou concubins. Un tel lien est incompatible avec la mission lorsqu'il unit une personne occupant une fonction sensible dans l'entité au commissaire aux comptes ou à un membre de la direction de la société de commissaires aux comptes."
    },
-   "explanation": "Le code distingue trois familles de liens incompatibles ou à risque : personnels, financiers et professionnels. Le lien personnel, qui a remplacé la notion de lien familial en 2017, vise non seulement la parenté et l'alliance mais aussi les relations d'amitié ou de proximité. Il est apprécié à l'égard des personnes occupant des fonctions sensibles (dirigeants, responsables financiers) et s'étend aux membres de l'équipe et de la direction de la société de commissaires aux comptes.",
-   "reference": "Code de déontologie des commissaires aux comptes (annexe 8-1 C. com.), dispositions sur les liens personnels (art. 25 dans la version 2017 ; renumérotées par le décret 2020-292)",
-   "confidence": "low",
-   "update_note": "Code refondu en 2020 : vérifier la rédaction actuelle de la définition (degrés de parenté et d'alliance retenus).",
+   "explanation": "Le lien personnel est défini de façon fermée (art. 32 I) : premier degré seulement, en ligne directe et collatérale, plus le couple. L'incompatibilité est absolue à l'égard du CAC et des membres de la direction de la société (art. 32 II) ; pour les associés, salariés, membres de l'équipe ou du réseau, elle dépend du test du tiers objectif, raisonnable et informé (art. 32 III). Les liens financiers et professionnels relèvent des art. 33 et 34 ; une amitié n'est pas un « lien personnel » au sens du code, mais peut constituer une situation à risque à analyser (art. 19).",
+   "reference": "Code de déontologie des CAC (C. com. annexe 8-1), art. 31 (fonctions sensibles) et art. 32 (liens personnels) ; ex-art. 25 (version 2017)",
+   "confidence": "high",
+   "update_note": "Code refondu (décret 2020-292, modifié en dernier lieu par le décret 2026-176) : la définition du lien personnel figure à l'art. 32 I et se limite au premier degré.",
    "session": "2018-05",
    "origFormat": "qrc"
   },
@@ -1366,16 +1366,17 @@
    "qrc": {
     "question": "Quelle obligation particulière de formation pèse sur le commissaire aux comptes qui reprend une mission après trois ans sans exercice ni formation continue ?",
     "expected": [
-     "Formation particulière préalable à l'acceptation d'une mission de certification",
-     "Suivie dans les dix-huit mois précédant l'acceptation de la mission",
-     "Obligation de droit commun : 120 heures sur trois ans consécutifs, minimum 20 heures par an"
+     "Formation particulière préalable à l'acceptation d'une mission de certification (L.821-24 II)",
+     "Quarante heures, accomplies dans les dix-huit mois précédant l'acceptation de la mission (R.821-71)",
+     "Dont vingt heures de programme spécifique CNCC/CRCC ; déclaration préalable à la compagnie régionale (R.821-72)",
+     "Obligation de droit commun : 120 heures sur trois ans consécutifs, au moins 20 heures par an (A.821-45)"
     ],
-    "model_answer": "Le commissaire aux comptes qui n'a pas exercé pendant trois ans et n'a pas satisfait à son obligation de formation continue doit, avant d'accepter une nouvelle mission de certification, suivre une formation particulière ; celle-ci doit être accomplie dans les dix-huit mois qui précèdent l'acceptation."
+    "model_answer": "Le commissaire aux comptes qui n'a pas exercé pendant trois ans et n'a pas satisfait à son obligation de formation continue doit, avant d'accepter une nouvelle mission de certification, suivre une formation particulière de quarante heures, accomplie dans les dix-huit mois qui précèdent l'acceptation, et en déclarer les conditions à sa compagnie régionale."
    },
    "explanation": "La logique du texte est préventive : la remise à niveau précède la reprise d'activité, ce qui élimine les propositions « suivent ». L'obligation ordinaire est de 120 heures sur trois années consécutives, avec un minimum annuel de 20 heures ; elle est désormais commune aux experts-comptables, mais la formation particulière de reprise est propre aux commissaires aux comptes.",
-   "reference": "C. com. L.821-24 (ex L.822-4 II : formation particulière avant d'accepter une mission de certification) ; ex R.822-21 s. et A.822-28-1 s., recodifiés (A.821-45 s.) ; arrêté relatif à la formation continue des commissaires aux comptes",
-   "confidence": "low",
-   "update_note": "Articles recodifiés au 1er janvier 2024 ; le suivi de la formation (y compris la formation particulière) est délégué à la CNCC par convention homologuée (arrêté du 19 mai 2023). Relecture : le principe d'une formation préalable à l'acceptation est confirmé par la loi (L.821-24, ex L.822-4 II), mais le délai de dix-huit mois n'a pas pu être vérifié dans la partie arrêtés.",
+   "reference": "C. com. L.821-24 II (ex L.822-4 II) ; R.821-71 et R.821-72 ; A.821-45",
+   "confidence": "high",
+   "update_note": "Articles recodifiés au 1er janvier 2024. Délai de dix-huit mois et durée de quarante heures vérifiés (R.821-71) ; suivi de la formation délégué à la CNCC (convention homologuée par arrêté du 19 mai 2023).",
    "session": "2018-11",
    "origFormat": "qcm"
   },
@@ -1484,9 +1485,9 @@
     "model_answer": "Le commissaire aux comptes ne peut rendre que des services qui ne le placent pas en situation d'autorévision ni d'immixtion : sont donc exclus l'établissement des déclarations fiscales, la conception de procédures de contrôle interne et l'audit interne, qu'il serait ensuite amené à apprécier. Une formation comptable destinée à des salariés sans rôle dans l'information financière est admissible, sous réserve de l'analyse des risques. Pour les EIP, la liste des services interdits du règlement européen s'ajoute à ces principes."
    },
    "explanation": "Le raisonnement passe par l'autorévision : déclarations fiscales (bases de l'impôt audité), procédures de contrôle interne (évaluées par l'auditeur), audit interne (sur lequel l'auditeur s'appuie) sont incompatibles. Le distracteur « déclarations fiscales » illustre la confusion EC/CAC : prestation ordinaire pour l'expert-comptable, interdite pour le commissaire aux comptes de l'entité.",
-   "reference": "C. com. ex L.822-11 (rédaction loi Pacte), recodifié L.821-x en 2024 ; code de déontologie des commissaires aux comptes (annexe 8-1) ; règlement (UE) 537/2014 art. 4 et 5",
+   "reference": "C. com. L.821-28 (II : EIP ; IV : non-EIP), L.821-30 ; code de déontologie des CAC art. 5 II, 19 et 22 ; règl. (UE) 537/2014 art. 4 § 2 (plafond de 70 %) et art. 5 § 1 (a i, e, h)",
    "confidence": "medium",
-   "update_note": "Depuis la loi Pacte, plus de liste de services interdits pour les non-EIP : raisonnement par l'autorévision, l'immixtion et le réseau. Articles recodifiés en 2024.",
+   "update_note": "Depuis la loi Pacte, plus de liste de services interdits pour les non-EIP : raisonnement par l'autorévision et les sauvegardes (L.821-28 IV). Pour une EIP, les trois premières propositions figurent parmi les services interdits (art. 5 § 1 a i, e et h).",
    "session": "2018-11",
    "origFormat": "qcm"
   },
@@ -1521,9 +1522,9 @@
     "model_answer": "Le commissaire aux comptes identifie les risques pesant sur son indépendance et son opinion, prend sans délai les mesures de sauvegarde propres à en supprimer la cause ou à en réduire les effets, et documente sa démarche. Si un doute sérieux ou une difficulté d'interprétation subsiste, il saisit pour avis l'autorité de supervision, la Haute autorité de l'audit depuis 2024."
    },
    "explanation": "Les distracteurs renvoient à des interlocuteurs plausibles mais inexacts : le président de la CRCC intervient pour la conciliation, les dérogations au barème ou la répartition entre co-commissaires, pas pour les avis déontologiques ; mentionner le doute dans le rapport n'est pas une réponse déontologique. L'expert-comptable, lui, consulte son conseil régional.",
-   "reference": "Code de déontologie des commissaires aux comptes (annexe 8-1 C. com.), dispositions sur les situations à risque et mesures de sauvegarde (art. 11 dans la version 2010-2017)",
-   "confidence": "medium",
-   "update_note": "Code refondu par le décret 2020-292 (renumérotation) et H3C remplacé par la H2A au 1er janvier 2024.",
+   "reference": "Code de déontologie des CAC (annexe 8-1), art. 19 I et II, art. 5 III ; ex-art. 11 (version 2010-2017)",
+   "confidence": "high",
+   "update_note": "Code refondu (décret 2020-292, modifié par le décret 2026-176) : identification des risques à l'art. 19 I 1°, saisine pour avis de la H2A à l'art. 19 II ; H3C remplacé par la H2A au 1er janvier 2024.",
    "session": "2018-11",
    "origFormat": "qcm"
   },
@@ -1893,7 +1894,7 @@
    "qcm": {
     "question": "Qui élabore les projets de normes de déontologie, de contrôle interne de qualité et d'exercice professionnel des commissaires aux comptes ?",
     "choices": [
-     "Une commission paritaire composée de membres de l'autorité de supervision (H3C, aujourd'hui H2A) et de commissaires aux comptes désignés par la CNCC, présidée par l'autorité",
+     "Une commission de normalisation placée auprès de la H2A, présidée par un membre du collège de la H2A et composée de deux commissaires aux comptes (désignés sur proposition de la CNCC) et d'une personnalité qualifiée en matière économique et financière",
      "Le Conseil national de la CNCC seul, l'autorité de supervision se bornant à homologuer",
      "Une commission mixte réunissant le Conseil national de l'Ordre des experts-comptables et la CNCC",
      "Le garde des sceaux, après avis de l'Autorité des normes comptables"
@@ -1902,17 +1903,18 @@
    },
    "qrc": {
     "expected": [
-     "Commission instituée auprès de l'autorité de supervision (H3C, désormais H2A)",
-     "Composition paritaire : membres de l'autorité et commissaires aux comptes désignés par la CNCC",
-     "Présidence assurée par l'autorité de supervision (président ou représentant)",
-     "Les normes sont ensuite adoptées par l'autorité et homologuées par arrêté du garde des sceaux"
+     "Commission de normalisation placée auprès de la Haute autorité de l'audit (L.820-4 I 2°)",
+     "Présidée par un membre du collège de la H2A, élu par le collège",
+     "Composée en outre de deux commissaires aux comptes, désignés sur proposition de la CNCC, et d'une personnalité qualifiée en matière économique et financière",
+     "Membres désignés par le collège pour trois ans, renouvelables une fois",
+     "Projet adopté par la formation plénière du collège après avis de la CNCC, puis homologué par arrêté du garde des sceaux (L.820-23)"
     ],
-    "model_answer": "Les projets de normes sont élaborés par une commission placée auprès de l'autorité de supervision, composée à parité de membres de cette autorité et de commissaires aux comptes désignés par la CNCC, et présidée par l'autorité. Les normes sont ensuite adoptées par la Haute autorité de l'audit et homologuées par arrêté du garde des sceaux."
+    "model_answer": "Les projets sont élaborés par une commission de normalisation placée auprès de la H2A, présidée par un membre du collège et composée de deux commissaires aux comptes désignés sur proposition de la CNCC et d'une personnalité qualifiée en matière économique et financière, nommés pour trois ans renouvelables une fois. Le collège adopte la norme après avis de la CNCC et la transmet pour homologation au garde des sceaux."
    },
-   "explanation": "La réforme de 2016 a transféré à l'autorité publique le pouvoir d'adopter les normes, tout en associant la profession à leur élaboration par une commission paritaire. Piège EC/CAC : les normes de l'expert-comptable sont élaborées par le Conseil national de l'Ordre et agréées par arrêté du ministre chargé du budget ; l'Ordre n'intervient pas dans les normes de commissariat aux comptes.",
-   "reference": "C. com. ex L.821-14 (commission d'élaboration des normes), recodifié L.820-x en 2024 ; A.821-x (normes homologuées)",
-   "confidence": "low",
-   "update_note": "H3C remplacé par la H2A au 1er janvier 2024 ; la composition exacte de la commission (nombre de membres, participation des auditeurs de durabilité) est à vérifier dans la rédaction recodifiée.",
+   "explanation": "La réforme de 2016 avait créé une commission paritaire auprès du H3C. Depuis l'ordonnance 2023-1142 et la loi 2025-391, deux commissions de normalisation, de même président, sont placées auprès de la H2A : l'une pour la durabilité, l'autre pour la déontologie, le contrôle interne de qualité, l'exercice des autres missions et les prestations. Piège EC/CAC : les normes de l'EC sont élaborées par le Conseil national de l'Ordre et agréées par le ministre chargé de l'économie ; l'Ordre n'intervient pas dans les normes de commissariat aux comptes.",
+   "reference": "C. com. L.820-1 I 2°, L.820-4 (rédaction loi 2025-391), L.820-23 ; normes homologuées A.821-54 s.",
+   "confidence": "high",
+   "update_note": "H3C → H2A au 1er janvier 2024 ; la commission paritaire (ancien L.821-14) est remplacée par deux commissions de normalisation (L.820-4, modifié par la loi 2025-391 du 30 avril 2025).",
    "session": "2019-05",
    "origFormat": "qrc"
   },
@@ -1940,16 +1942,16 @@
    },
    "qrc": {
     "expected": [
-     "Déléguée à la CNCC : le suivi du respect des obligations de formation continue (y compris la formation particulière)",
-     "Déléguée à la CNCC : la réalisation des contrôles d'activité des commissaires aux comptes n'exerçant pas de mission auprès d'EIP, dans le cadre et selon les orientations définis par l'autorité, qui en supervise la réalisation",
-     "Non déléguée : l'inscription et la tenue de la liste, conservées par l'autorité de supervision ; les contrôles des CAC d'EIP ne sont jamais délégables"
+     "Déléguée à la CNCC : le suivi du respect des obligations de formation continue (convention homologuée par arrêté du 19 mai 2023)",
+     "Déléguée à la CNCC : la réalisation des contrôles d'activité des CAC sans mission EIP (arrêté du 19 mai 2023, puis convention du 6 mai 2026 homologuée par arrêté du 2 juillet 2026)",
+     "Non déléguée aujourd'hui : l'inscription et la tenue de la liste, déléguées de 2017 à novembre 2020 puis reprises par le H3C ; les contrôles des CAC d'EIP ne sont jamais délégables (L.820-14)"
     ],
-    "model_answer": "Le H3C a décidé le 21 juillet 2016 de déléguer à la CNCC deux missions, par conventions homologuées par arrêté du garde des sceaux (2017, renouvelées en 2023) : le suivi du respect des obligations de formation continue et la réalisation des contrôles d'activité des commissaires aux comptes non EIP. Il a conservé l'inscription et la tenue de la liste ; les contrôles des CAC d'EIP relèvent toujours de ses propres contrôleurs."
+    "model_answer": "Aujourd'hui, deux missions sont déléguées à la CNCC par conventions homologuées par arrêté : le suivi du respect de la formation continue et la réalisation des contrôles d'activité des commissaires aux comptes non EIP. L'inscription et la tenue de la liste, déléguées entre 2017 et novembre 2020, sont de nouveau assurées directement par l'autorité ; les contrôles des CAC d'EIP relèvent toujours de ses propres contrôleurs."
    },
-   "explanation": "La délégation est une faculté, exercée par convention homologuée entre l'autorité et la CNCC : le H3C, puis la H2A, a délégué la formation continue et les contrôles non-EIP, tout en définissant le cadre et les orientations des contrôles et en supervisant leur réalisation. Les contrôles des cabinets ayant des mandats EIP ne peuvent pas être délégués (exigence européenne). Rien de comparable chez les experts-comptables, où l'Ordre exerce lui-même le contrôle qualité.",
-   "reference": "C. com. ex L.821-1 II et ex L.821-9 al. 2 (délégations à la CNCC), recodifiés L.820-x en 2024 ; arrêtés du 25 avril 2017 et du 19 mai 2023 portant homologation des conventions de délégation (contrôles non-EIP ; formation continue) ; arrêté du 6 juillet 2026 (nouvelle convention H2A-CNCC sur les contrôles non-EIP)",
+   "explanation": "La délégation est une faculté (L.820-1 II), exercée par convention homologuée par arrêté du garde des sceaux. À la date du sujet (2019), les trois missions étaient déléguées ; le H3C a résilié la délégation de l'inscription à compter du 5 novembre 2020. Les contrôles des cabinets ayant des mandats EIP ne peuvent pas être délégués (L.820-14). Rien de comparable chez les experts-comptables, où l'Ordre organise lui-même le contrôle de qualité.",
+   "reference": "C. com. L.820-1 II, L.820-14 ; arrêtés du 19 mai 2023 (JO 26 mai 2023) homologuant les conventions de délégation (contrôles non-EIP ; formation continue) ; arrêté du 2 juillet 2026 homologuant la convention du 6 mai 2026 (contrôles non-EIP) ; communiqué du H3C du 5 mai 2020 (fin de la délégation de l'inscription)",
    "confidence": "medium",
-   "update_note": "Relecture : réponse corrigée. Les conventions homologuées en 2017 puis en 2023 (JO du 26 mai 2023) délèguent à la CNCC la formation continue et les contrôles non-EIP, et non l'inscription ; la délégation des contrôles non-EIP a été reconduite par la H2A (convention homologuée par arrêté du 6 juillet 2026). Le maintien de l'inscription par l'autorité est déduit de l'absence de convention sur ce point.",
+   "update_note": "Délégation de l'inscription résiliée par le H3C au 5 novembre 2020 (réponse à la date du sujet : les trois missions). Nouvelle convention H2A-CNCC sur les contrôles non-EIP homologuée par arrêté du 2 juillet 2026 (et non du 6 juillet).",
    "session": "2019-05",
    "origFormat": "qrc"
   },
@@ -2004,7 +2006,7 @@
    "qcm": {
     "question": "Une société de commissaires aux comptes est absorbée par une autre société de commissaires aux comptes. Que deviennent les mandats de la société absorbée ?",
     "choices": [
-     "Ils sont transmis à la société absorbante par l'effet de la transmission universelle du patrimoine et se poursuivent jusqu'à leur terme, sous réserve de l'inscription de l'absorbante et de l'information des entités concernées",
+     "Ils sont poursuivis par la société absorbante jusqu'à leur date d'expiration, l'assemblée ou l'organe compétent de l'entité contrôlée pouvant, à sa première réunion après l'absorption, délibérer sur leur maintien après avoir entendu le commissaire aux comptes",
      "Ils prennent fin de plein droit et chaque entité doit désigner un nouveau commissaire aux comptes pour un mandat de six exercices",
      "Ils sont transmis au signataire personne physique, qui les poursuit à titre individuel",
      "Ils sont suspendus jusqu'à décision de la H2A autorisant le transfert"
@@ -2013,17 +2015,17 @@
    },
    "qrc": {
     "expected": [
-     "Transmission universelle du patrimoine de l'absorbée à l'absorbante : les mandats se poursuivent jusqu'à leur terme",
-     "Condition : la société absorbante est inscrite sur la liste",
-     "Information des entités contrôlées (et de la compagnie régionale / H2A) ; continuité du signataire si possible",
-     "Pour les EIP, la durée des mandats transmis se décompte depuis la nomination initiale (rotation)"
+     "La société absorbante poursuit les mandats de l'absorbée jusqu'à leur date d'expiration (L.821-48 al. 1)",
+     "Par dérogation, l'assemblée ou l'organe compétent de l'entité peut, lors de sa première réunion postérieure à l'absorption, délibérer sur le maintien du mandat",
+     "Le commissaire aux comptes est préalablement entendu",
+     "L'absorbante doit être inscrite et vérifier l'absence d'incompatibilité"
     ],
-    "model_answer": "La fusion entraîne la transmission universelle du patrimoine de la société absorbée : ses mandats sont repris par la société absorbante, inscrite sur la liste, qui les poursuit jusqu'à leur terme normal. Les entités contrôlées en sont informées, et les règles de rotation se calculent en tenant compte de l'ancienneté du mandat transmis."
+    "model_answer": "Les mandats ne prennent pas fin : la société absorbante les poursuit jusqu'à leur date d'expiration. Toutefois, par dérogation aux règles de durée du mandat, l'assemblée générale ou l'organe compétent de chaque entité contrôlée peut, lors de sa première réunion qui suit l'absorption, délibérer sur le maintien du mandat après avoir entendu le commissaire aux comptes."
    },
-   "explanation": "La question oppose le caractère intuitu personae du mandat à la transmission universelle du patrimoine propre aux fusions ; la pratique retient la continuité des mandats au profit de l'absorbante inscrite, ce qui évite de rompre des mandats en cours. En revanche, un commissaire aux comptes personne physique qui cesse son activité ne transmet pas ses mandats : l'entité doit procéder à une nouvelle nomination.",
-   "reference": "C. com. art. L.236-3 (transmission universelle du patrimoine) ; doctrine CNCC sur les fusions de sociétés de commissaires aux comptes ; C. com. ex L.823-3 (durée du mandat), recodifié en 2024",
-   "confidence": "low",
-   "update_note": "Position doctrinale à confirmer (CNCC) ; numérotation du livre VIII recodifiée en 2024.",
+   "explanation": "La loi règle expressément la question (L.821-48) : continuité des mandats au profit de l'absorbante, sans nouvelle nomination, mais faculté pour l'entité de remettre en cause le mandat à la première réunion de son organe compétent. Le fondement est cette disposition spéciale, non la seule transmission universelle du patrimoine. Question reposée en mai 2026 (Q11).",
+   "reference": "C. com. L.821-48 ; L.821-44 (durée du mandat)",
+   "confidence": "high",
+   "update_note": "Règle légale figurant à L.821-48 depuis la recodification du 1er janvier 2024.",
    "session": "2019-05",
    "origFormat": "qrc"
   },
@@ -2050,15 +2052,15 @@
    },
    "qrc": {
     "expected": [
-     "Premier exercice audité : mention que les comptes de l'exercice précédent (comparatifs et bilan d'ouverture) n'ont pas été audités",
-     "Mention dans le rapport sur les comptes annuels (NEP 510)",
-     "Travaux spécifiques sur le bilan d'ouverture ; réserve seulement si les diligences sont impossibles et l'incidence significative"
+     "Premier exercice certifié : mention, à la fin de l'introduction du rapport, que les comptes de l'exercice précédent n'ont pas fait l'objet d'une certification (NEP 510 § 15)",
+     "Procédures spécifiques sur le bilan d'ouverture (NEP 510 § 09 à 11)",
+     "Réserve seulement si les procédures sont impossibles et l'incidence significative (§ 12 à 14)"
     ],
-    "model_answer": "S'agissant d'un premier audit, le commissaire aux comptes indique dans son rapport que les comptes de l'exercice précédent, présentés à titre de comparatifs, n'ont pas fait l'objet d'un audit. Cette mention ne vaut pas réserve : il met en œuvre des diligences sur le bilan d'ouverture et ne formule de réserve que s'il ne peut obtenir d'éléments suffisants sur un point significatif."
+    "model_answer": "S'agissant d'un premier audit, le commissaire aux comptes indique, à la fin de l'introduction de son rapport, que les comptes de l'exercice précédent n'ont pas fait l'objet d'une certification par un commissaire aux comptes. Cette mention ne vaut pas réserve : il met en œuvre des procédures sur le bilan d'ouverture et n'apprécie l'incidence sur son opinion que s'il ne peut obtenir d'éléments suffisants sur un point significatif."
    },
    "explanation": "La nomination en cours d'exercice ne fait pas obstacle à la certification de l'exercice entier ; la question porte sur l'information du lecteur quant au caractère non audité des comparatifs. Le distracteur relatif au prédécesseur est exclu par l'énoncé (aucun commissaire aux comptes antérieur). Sur les seuils de nomination, se référer aux chiffres applicables depuis 2024.",
-   "reference": "NEP 510 (contrôle du bilan d'ouverture à l'occasion du premier exercice certifié) ; NEP 700 (rapport sur les comptes annuels)",
-   "confidence": "medium",
+   "reference": "NEP 510 (C. com. A.821-87) § 09 à 15 ; NEP 710 (A.821-88) ; NEP 700 (A.821-92)",
+   "confidence": "high",
    "session": "2019-05",
    "origFormat": "qrc"
   },
@@ -2189,7 +2191,7 @@
    "qcm": {
     "question": "Quelle formalité le commissaire aux comptes doit-il accomplir auprès de sa compagnie régionale lorsqu'il obtient un nouveau mandat de certification ?",
     "choices": [
-     "Déclarer le nouveau mandat à la compagnie régionale, qui tient à jour la liste de ses mandats, et le faire figurer dans sa déclaration annuelle d'activité (mandats, honoraires, heures)",
+     "Notifier sa nomination au conseil régional de sa compagnie dans les huit jours, par lettre recommandée avec avis de réception ou par voie électronique ; la mission figure ensuite dans sa déclaration annuelle d'activité",
      "Demander à la compagnie régionale l'autorisation préalable d'accepter le mandat",
      "Déposer la lettre de mission signée au greffe de la compagnie régionale sous huit jours",
      "Aucune formalité, la nomination étant publiée au registre du commerce"
@@ -2198,16 +2200,17 @@
    },
    "qrc": {
     "expected": [
-     "Déclaration du nouveau mandat à la compagnie régionale (information de la CRCC)",
-     "Mise à jour de la déclaration d'activité (liste des mandats, honoraires, heures), remise chaque année",
-     "Pas d'autorisation préalable : la CRCC est informée, elle n'autorise pas"
+     "Notification de la nomination au conseil régional de la compagnie dont il est membre (D.821-173)",
+     "Dans un délai de huit jours, par LRAR ou par voie électronique (accusé de réception du conseil régional, qui informe le Conseil national)",
+     "Pas d'autorisation préalable ; déclaration renouvelée en cas de transfert hors du ressort",
+     "Mission reprise ensuite dans la déclaration annuelle d'activité (D.821-186 VI)"
     ],
-    "model_answer": "Le commissaire aux comptes doit déclarer son nouveau mandat à la compagnie régionale dont il relève, qui tient la liste des mandats de ses membres, et le reporter dans la déclaration annuelle d'activité adressée à la compagnie (mandats détenus, honoraires, heures de travail). Aucune autorisation préalable n'est requise."
+    "model_answer": "Il doit notifier sa nomination au conseil régional de la compagnie dont il est membre dans un délai de huit jours, par lettre recommandée avec demande d'avis de réception ou par voie électronique ; le conseil régional en informe le Conseil national. Il ne s'agit pas d'une autorisation. Le mandat figure ensuite dans la déclaration annuelle d'activité adressée à la compagnie régionale."
    },
-   "explanation": "La déclaration des mandats permet à la compagnie et à l'autorité de supervision de programmer les contrôles d'activité et de vérifier le respect des règles d'indépendance et du barème. Il ne faut pas confondre cette information avec une autorisation ; l'acceptation d'un mandat relève de la seule responsabilité du commissaire aux comptes. L'expert-comptable n'a pas d'obligation équivalente de déclaration de ses missions à l'Ordre.",
-   "reference": "C. com. D.821-186 (déclaration d'activité auprès de la compagnie régionale, ex R.823-10) ; règlement intérieur de la CNCC",
-   "confidence": "low",
-   "update_note": "Partie réglementaire recodifiée au 1er janvier 2024 (déclaration d'activité : D.821-186). Relecture : l'existence d'une déclaration ponctuelle de chaque nouveau mandat (et son délai), distincte de la déclaration annuelle d'activité, n'a pas pu être vérifiée.",
+   "explanation": "La notification dans les huit jours (D.821-173) permet à la profession et à la H2A de suivre les mandats, de programmer les contrôles et de vérifier l'indépendance ; elle s'ajoute à la déclaration annuelle d'activité (D.821-186 VI). Ce n'est pas une autorisation : l'acceptation relève de la seule responsabilité du commissaire aux comptes, qui tient lui-même la liste de ses mandats (D.821-186 I).",
+   "reference": "C. com. D.821-173 (notification de la nomination) ; D.821-186 I et VI (liste des mandats, déclaration d'activité)",
+   "confidence": "high",
+   "update_note": "Partie réglementaire recodifiée au 1er janvier 2024 : notification des nominations à l'article D.821-173.",
    "session": "2019-05",
    "origFormat": "qrc"
   },
@@ -2520,17 +2523,17 @@
    "qrc": {
     "question": "Que prévoit la NP 3100 quant aux types d'attestations particulières, à leur niveau d'assurance et à leur objet ?",
     "expected": [
-     "Deux types : attestation directe (information établie par l'expert-comptable) et attestation indirecte (information établie par l'entité et vérifiée)",
-     "Niveau d'assurance variable selon la nature de l'information et les diligences : raisonnable ou modéré, précisé dans l'attestation",
-     "Objet : toute information autre que des comptes complets historiques, de nature comptable, financière, mais aussi d'autre nature (sociale, environnementale…) dès lors qu'elle est vérifiable",
+     "Deux types : attestation directe (l'expert-comptable a contribué à l'élaboration de l'information) et attestation indirecte (information élaborée par l'entité et vérifiée)",
+     "Niveau d'assurance modéré ou raisonnable selon la mission convenue, précisé dans l'attestation (§ 10)",
+     "Objet : informations de nature comptable ou financière, juridique ou sociale, ou de toute autre nature (absentéisme, gaz à effet de serre…) (§ 9)",
      "Lettre de mission spécifique et formulation adaptée"
     ],
-    "model_answer": "La NP 3100 permet à l'expert-comptable d'émettre des attestations directes, sur des informations qu'il a lui-même établies, ou indirectes, sur des informations préparées par l'entité et qu'il vérifie. Le niveau d'assurance n'est pas uniforme : il dépend des diligences mises en œuvre et doit être indiqué dans l'attestation. L'objet n'est pas limité aux données comptables ou financières, mais à toute information vérifiable autre que des comptes complets historiques."
+    "model_answer": "La NP 3100 permet des attestations directes, lorsque l'expert-comptable a contribué à l'élaboration de l'information, ou indirectes, lorsqu'elle a été élaborée par l'entité et qu'il la vérifie. L'assurance peut être modérée ou raisonnable selon la mission convenue. L'objet n'est pas limité aux données comptables ou financières : il peut s'agir d'informations juridiques, sociales ou de toute autre nature."
    },
    "explanation": "Chaque proposition contient une restriction que la norme n'impose pas : exclusivité des attestations indirectes, assurance toujours modérée, objet purement comptable ou financier. La réponse attendue est donc « aucune ». Les attestations particulières s'opposent aux comptes complets historiques par leur objet, non par leur nature.",
-   "reference": "NP 3100 (missions d'assurance sur des informations autres que des comptes complets historiques : attestations particulières)",
-   "confidence": "low",
-   "update_note": "Relecture : la possibilité d'une assurance raisonnable ou modérée en NP 3100 est confirmée (choix convenu entre les parties), ce qui rend fausse la proposition b ; restent à vérifier dans la norme l'absence de restriction de l'objet (proposition c) et la définition exacte des attestations directes et indirectes.",
+   "reference": "NP 3100 agréée par arrêté du 13 avril 2022 (annexe 2), § 9 et § 10",
+   "confidence": "high",
+   "update_note": "Les trois restrictions sont contredites par la NP 3100 en vigueur (arrêté du 13 avril 2022) : attestations directes et indirectes (§ 9), assurance modérée ou raisonnable (§ 10), informations de toute nature (§ 9).",
    "session": "2019-11",
    "origFormat": "qcm"
   },
@@ -2551,22 +2554,22 @@
      "L'élaboration des normes professionnelles applicables à l'activité d'expertise comptable",
      "L'organisation de la formation et le perfectionnement professionnel des membres de l'Ordre"
     ],
-    "answer": 1
+    "answer": 0
    },
    "qrc": {
     "question": "Quelles sont les attributions du Conseil national de l'Ordre des experts-comptables, et qui édicte le code de déontologie de la profession ?",
     "expected": [
-     "Représentation de la profession auprès des pouvoirs publics, coordination des conseils régionaux, règlement intérieur",
-     "Élaboration des normes professionnelles (agréées par arrêté du ministre chargé du budget) et du référentiel",
-     "Organisation de la formation et du perfectionnement professionnel (les cotisations des membres sont fixées et recouvrées par les conseils régionaux, ord. art. 31 7°)",
-     "Le code de déontologie est édicté par décret en Conseil d'État (intégré au décret 2012-432) : le Conseil national le propose mais ne l'adopte pas"
+     "Conseil national : préparation du code de déontologie (édicté par décret en Conseil d'État) et contrôle de son respect ; règlement intérieur (D. 2012-432 art. 29 1°)",
+     "Élaboration des règles professionnelles, soumises à l'agrément du ministre chargé de l'économie (art. 29 3°)",
+     "Faculté d'organiser la formation et le perfectionnement professionnel ; représentation de l'Ordre et coordination des conseils régionaux",
+     "Les cotisations des membres sont fixées et recouvrées par les seuls conseils régionaux (ord. art. 31 7°) ; le Conseil national ne fixe que des redevances imposées aux conseils régionaux"
     ],
-    "model_answer": "Le Conseil national représente la profession, coordonne les conseils régionaux, élabore les normes professionnelles ensuite agréées par arrêté ministériel et organise la formation. Le code de déontologie, en revanche, n'est pas édicté par l'Ordre : il résulte d'un décret en Conseil d'État, l'Ordre n'ayant qu'un rôle de proposition."
+    "model_answer": "Le Conseil national prépare le code de déontologie, édicté par décret en Conseil d'État, et en fait respecter les prescriptions ; il élabore les normes professionnelles agréées par le ministre chargé de l'économie et peut organiser la formation. En revanche, la fixation et le recouvrement des cotisations des membres relèvent du seul conseil régional."
    },
-   "explanation": "La question oppose les actes de l'Ordre (normes, formation) à un texte réglementaire de l'État (code de déontologie, décret 2012-432). Parallèle utile : le code de déontologie des commissaires aux comptes est lui aussi un décret en Conseil d'État, et les normes d'exercice professionnel sont adoptées par la H2A puis homologuées par arrêté, la CNCC n'ayant plus de pouvoir normatif propre.",
-   "reference": "Ord. 45-2138 art. 31 (conseils régionaux, dont 7° : fixation et recouvrement des cotisations), art. 37 (1° à 7° abrogés) et art. 84 bis ; D. 2012-432 (attributions du Conseil national ; art. 141 s. : code de déontologie)",
-   "confidence": "low",
-   "update_note": "Le Conseil supérieur a été renommé Conseil national de l'Ordre des experts-comptables par la loi Pacte (2019) ; attributions inchangées. Relecture : l'article 31 7° de l'ordonnance donne au seul conseil régional qualité pour « fixer et recouvrer » les cotisations des membres ; la proposition « collecte des cotisations » pourrait donc aussi être tenue pour exacte, réponse b maintenue sous réserve du corrigé officiel.",
+   "explanation": "Le piège porte sur le code de déontologie : le Conseil national ne l'édicte pas (décret en Conseil d'État) mais il le prépare et en assure le respect (D. 2012-432 art. 29 1°), ce qui correspond à la proposition b. La collecte des cotisations est au contraire une attribution exclusive des conseils régionaux (ord. art. 31 : le conseil régional « a seul qualité » pour les fixer et les recouvrer). Parallèle CAC : le code de déontologie est aussi un décret en Conseil d'État (L.821-36) et les normes sont adoptées par la H2A puis homologuées par arrêté.",
+   "reference": "Ord. 45-2138 art. 31 7° ; D. 2012-432 art. 27 et art. 29 (missions du Conseil national)",
+   "confidence": "medium",
+   "update_note": "Le Conseil supérieur a été renommé Conseil national par la loi 2022-172 du 14 février 2022 (et non par la loi Pacte). Réponse modifiée de b en a sur le fondement des textes (art. 29 1° « préparer le code de déontologie », rédaction identique en 2019) ; corrigé officiel non consulté.",
    "session": "2019-11",
    "origFormat": "qcm"
   },
@@ -2698,16 +2701,17 @@
    "qrc": {
     "question": "Comment le Conseil national de la Compagnie nationale des commissaires aux comptes est-il composé aujourd'hui ?",
     "expected": [
-     "Soixante membres élus pour quatre ans au suffrage direct par les commissaires aux comptes inscrits (scrutin de liste), et non plus des délégués des conseils régionaux",
-     "Auxquels s'ajoutent les présidents des compagnies régionales (membres de droit)",
-     "Le Conseil national élit le président de la CNCC et le bureau ; la CNCC est placée sous la tutelle du garde des sceaux"
+     "Soixante membres désignés pour quatre ans, comprenant l'ensemble des présidents de compagnies régionales et des commissaires aux comptes élus",
+     "Moitié de CAC exerçant des missions auprès d'EIP, moitié de CAC sans mission EIP (deux collèges de trente sièges)",
+     "Élus au scrutin de liste par deux collèges de CAC personnes physiques à jour de leurs cotisations, et non plus délégués des conseils régionaux",
+     "Le Conseil national élit le président de la CNCC"
     ],
-    "model_answer": "Depuis la réforme de la gouvernance de la CNCC, le Conseil national comprend soixante membres élus pour quatre ans directement par les commissaires aux comptes inscrits, auxquels s'ajoutent les présidents des compagnies régionales. Il n'est donc plus formé de délégués désignés par les conseils régionaux parmi leurs membres."
+    "model_answer": "Le Conseil national compte soixante membres désignés pour quatre ans : tous les présidents de compagnies régionales et des commissaires aux comptes élus au scrutin de liste par deux collèges (CAC exerçant des missions EIP / CAC n'en exerçant pas), chaque collège disposant de trente sièges, présidents compris. Il n'est donc plus composé de délégués élus par les conseils régionaux."
    },
-   "explanation": "À la date du sujet, le Conseil national était composé de délégués élus par les conseils régionaux parmi leurs membres (première proposition, alors exacte). La réforme intervenue depuis a instauré une élection directe de soixante membres et la présence des présidents de CRCC, ce qui modifie la réponse. Côté expertise comptable, le Conseil national de l'Ordre est composé d'élus des conseils régionaux.",
-   "reference": "C. com. partie réglementaire relative à l'organisation de la CNCC (ex R.821-x, modifiée par la réforme de gouvernance puis recodifiée en 2024) ; règlement intérieur de la CNCC",
-   "confidence": "low",
-   "update_note": "Réponse modifiée par la réforme de la gouvernance de la CNCC (décret 2020-2021 : 60 membres élus pour 4 ans + présidents de CRCC) ; la composition exacte est à vérifier dans les textes en vigueur. Réponse d'origine en 2019 : délégués élus par les conseils régionaux. Relecture : la qualité de membres de droit des présidents de CRCC au Conseil national n'a pas pu être confirmée dans la partie réglementaire recodifiée ; si elle était inexacte, aucune proposition ne correspondrait au droit actuel.",
+   "explanation": "À la date du sujet, le Conseil national était composé de délégués élus par les conseils régionaux parmi leurs membres (première proposition, alors exacte). La réforme de la gouvernance a instauré l'élection par deux collèges nationaux et la présence de droit des présidents de CRCC, inclus dans les soixante sièges. Côté expertise comptable, le Conseil national de l'Ordre comprend aussi les présidents des conseils régionaux et des membres élus au scrutin de liste (ord. art. 33).",
+   "reference": "C. com. D.821-14 (composition et élection du Conseil national), D.821-27 ; ord. 45-2138 art. 33 pour le parallèle EC",
+   "confidence": "high",
+   "update_note": "Composition actuelle fixée par D.821-14 (partie réglementaire recodifiée au 1er janvier 2024) : les présidents de CRCC sont inclus dans les soixante membres. Réponse d'origine (2019) : délégués élus par les conseils régionaux.",
    "session": "2019-11",
    "origFormat": "qcm"
   },
@@ -2812,9 +2816,9 @@
     "model_answer": "L'assurance obligatoire garantit la réparation civile des préjudices causés par les fautes du commissaire aux comptes : les dommages-intérêts restent en principe couverts même si les faits sont aussi constitutifs d'un délit, seule l'amende pénale étant exclue. La garantie ne tomberait que si l'assureur établissait une faute intentionnelle au sens du droit des assurances, c'est-à-dire la volonté de provoquer le dommage lui-même ; l'existence d'une sanction disciplinaire est indifférente."
    },
    "explanation": "Il faut distinguer la nature des condamnations : la réparation civile est assurable, la peine ne l'est pas. La notion d'intention du code pénal (révéler sciemment) ne se confond pas avec la faute intentionnelle du code des assurances (vouloir le dommage), d'où le maintien de la garantie en principe. La CNCC n'indemnise pas les victimes à la place de l'assureur.",
-   "reference": "C. com. ex R.822-36 (assurance obligatoire), recodifié R.821-x en 2024 ; C. assur. art. L.113-1 ; C. pén. art. 226-13",
-   "confidence": "low",
-   "update_note": "Article réglementaire recodifié au 1er janvier 2024 ; la portée de l'exclusion de la faute intentionnelle dépend de la police et de la jurisprudence.",
+   "reference": "C. com. L.821-37 (responsabilité civile), R.821-85 (assurance obligatoire, ex R.822-36), A.821-56 s. ; C. assur. art. L.113-1 ; C. pén. art. 226-13",
+   "confidence": "medium",
+   "update_note": "Obligation d'assurance à l'article R.821-85 depuis la recodification de 2024. L.113-1 C. assur. n'exclut que la faute intentionnelle ou dolosive ; son application à une violation délibérée du secret relève de la jurisprudence et de la police (non vérifié).",
    "session": "2019-11",
    "origFormat": "qcm"
   },
@@ -2958,9 +2962,9 @@
     "model_answer": "La violation du code de déontologie constitue toujours une faute disciplinaire, jugée par la commission des sanctions de la Haute autorité de l'audit. Elle engage en outre la responsabilité civile si elle cause un préjudice, et la responsabilité pénale lorsque le manquement correspond à une infraction, comme l'exercice en situation d'incompatibilité ou la violation du secret. Les trois responsabilités peuvent se cumuler."
    },
    "explanation": "La question porte sur le mot « peut » : toutes les voies sont ouvertes, selon la nature du manquement. Le code de déontologie n'est pas en lui-même un texte pénal, mais plusieurs de ses règles (indépendance, secret) sont doublées d'incriminations dans le code de commerce ou le code pénal. Même architecture pour l'expert-comptable, avec les chambres de discipline de l'Ordre comme instance disciplinaire.",
-   "reference": "C. com. L.820-2 s. (commission des sanctions de la H2A), ex L.822-17 (responsabilité civile), ex L.820-6 et L.820-7 (délits), recodifiés en 2024 ; code de déontologie des commissaires aux comptes (annexe 8-1)",
-   "confidence": "medium",
-   "update_note": "Instance disciplinaire : commission des sanctions de la H2A depuis le 1er janvier 2024 (ex-H3C) ; articles recodifiés.",
+   "reference": "C. com. L.821-37 (responsabilité civile, ex L.822-17), L.821-70 et L.821-71 (discipline), L.821-8 et L.821-9 (délits) ; C. pén. art. 226-13 ; code de déontologie des CAC (annexe 8-1)",
+   "confidence": "high",
+   "update_note": "Instance disciplinaire : commission des sanctions de la H2A (L.820-2, L.821-79) depuis le 1er janvier 2024 ; articles recodifiés.",
    "session": "2019-11",
    "origFormat": "qcm"
   },
@@ -3356,9 +3360,9 @@
     "model_answer": "Le secret professionnel du CAC a une double source : légale, par le code de commerce et le code pénal qui le sanctionne, et réglementaire, par le code de déontologie pris par décret. Il s'étend aux collaborateurs et experts et ne connaît que les levées prévues par la loi (CAC d'une société mère et de ses filiales, successeur, H2A, AMF, Tracfin, témoignage en justice)."
    },
    "explanation": "La loi pose le principe et le code pénal le sanctionne ; le code de déontologie, texte réglementaire, en précise la portée et y ajoute un devoir de discrétion. Les NEP ne créent pas l'obligation. Côté EC, la structure est identique (ordonnance de 1945 et code pénal, plus code de déontologie intégré au décret de 2012).",
-   "reference": "C. com. ex art. L.822-15 (recodifié en 2024 dans le chapitre L.821) ; code de déontologie des CAC (annexe 8-1), principes de discrétion et de secret ; C. pén. art. 226-13",
-   "confidence": "medium",
-   "update_note": "Recodification du livre VIII par l'ordonnance 2023-1142 (1er janvier 2024) : l'ancien article L.822-15 est désormais dans les articles L.821-x ; le fond est inchangé.",
+   "reference": "C. com. L.821-35 (ex L.822-15) ; code de déontologie des CAC (annexe 8-1) art. 9 ; C. pén. art. 226-13",
+   "confidence": "high",
+   "update_note": "Recodification 2024 : secret à l'article L.821-35 (déliements : président du tribunal en procédure d'alerte, CAC des entités consolidées et des petits groupes, auditeurs de durabilité, CNCCFP) ; non-opposabilité aux contrôleurs de la H2A : L.820-17.",
    "session": "2020-11",
    "origFormat": "qcm"
   },
@@ -3644,17 +3648,17 @@
    "qrc": {
     "question": "Qui réalise les contrôles d'activité des commissaires aux comptes ne détenant pas de mandat auprès d'entités d'intérêt public, et selon quelle périodicité ?",
     "expected": [
-     "Contrôles relevant de la H2A",
-     "Pour les non-EIP, contrôles délégués à la CNCC par convention homologuée par arrêté (conventions 2017, 2023, 2026)",
-     "Pour les EIP, contrôles réservés aux contrôleurs de la H2A",
-     "Périodicité : six ans (non-EIP), trois ans (EIP)"
+     "Contrôles relevant de la H2A (L.820-1 I 5°)",
+     "Pour les non-EIP : contrôleurs de la H2A ou délégation à la CNCC par convention homologuée par arrêté (arrêté du 19 mai 2023 ; convention du 6 mai 2026 homologuée par arrêté du 2 juillet 2026)",
+     "Pour les EIP : contrôleurs de la H2A ; concours possible de l'AMF ou de l'ACPR",
+     "Périodicité : au moins tous les six ans ; trois ans pour les CAC d'EIP visées au i) de l'art. 26 § 2 du règlement 537/2014 (R.820-49)"
     ],
     "model_answer": "Les contrôles d'activité relèvent de la H2A. Pour les CAC sans mandat EIP, ils sont délégués à la CNCC par une convention homologuée par arrêté, sous la supervision de la H2A. Les cabinets EIP sont contrôlés par la H2A elle-même. Périodicité : six ans (non-EIP), trois ans (EIP)."
    },
    "explanation": "Le code de commerce permet à la H2A de déléguer à la CNCC les contrôles des CAC n'ayant pas de mandat EIP ; cette délégation est effective par conventions homologuées par arrêté (2017, 2023, nouvelle convention homologuée en juillet 2026). Les EIP restent contrôlées directement par le régulateur. Les finances publiques n'ont aucun rôle. À distinguer du contrôle qualité de l'EC, organisé par l'Ordre lui-même.",
-   "reference": "C. com. L.820-x et L.821-x recodifiés (contrôles d'activité, délégation à la CNCC) ; arrêtés d'homologation du 19/05/2023 et du 6/07/2026",
-   "confidence": "medium",
-   "update_note": "H3C → H2A au 1er janvier 2024. Relecture : réponse corrigée de B (concours) en D (délégation) ; la délégation des contrôles non-EIP à la CNCC est attestée par les conventions homologuées (JO 26/05/2023, homologation du 6/07/2026), cohérent avec 2023-11-CAC-15.",
+   "reference": "C. com. L.820-1 II 3°, L.820-14, R.820-49 ; arrêtés d'homologation du 19 mai 2023 et du 2 juillet 2026",
+   "confidence": "high",
+   "update_note": "H3C → H2A au 1er janvier 2024. L.820-14 : contrôles non-EIP réalisés par la H2A ou délégués à la CNCC ; concours de l'AMF ou de l'ACPR (et non de la CNCC). Convention de 2023 vérifiée au JO ; nouvelle convention homologuée par arrêté du 2 juillet 2026 (et non du 6 juillet).",
    "session": "2020-11",
    "origFormat": "qcm"
   },
@@ -3850,7 +3854,7 @@
     "question": "Laquelle de ces évolutions a été apportée à l'ordonnance de 1945 par la loi Pacte du 22 mai 2019 ?",
     "choices": [
      "La suppression de l'exigence des deux tiers des droits de vote dans les sociétés d'expertise comptable",
-     "La possibilité d'exercer, à titre accessoire, des activités commerciales et des actes d'intermédiaire, et l'instauration du mandat implicite pour les démarches déclaratives",
+     "L'instauration d'une présomption simple de mandat (mandat implicite) pour les démarches auprès de l'administration fiscale et des organismes sociaux, et la possibilité de recouvrer les créances et de payer les dettes des clients par leur compte bancaire",
      "Le relèvement des seuils de nomination obligatoire du commissaire aux comptes dans les sociétés commerciales",
      "L'ouverture aux experts-comptables de la certification des comptes des petites entreprises"
     ],
@@ -3858,18 +3862,18 @@
    },
    "qrc": {
     "expected": [
-     "Activités commerciales et actes d'intermédiaire autorisés à titre accessoire (art. 22)",
-     "Mandat implicite pour les démarches déclaratives, mandat de paiement de dettes et de recouvrement amiable de créances",
-     "Honoraires de succès admis pour certaines missions hors prérogative d'exercice (art. 24)",
-     "Conseil supérieur renommé Conseil national de l'Ordre",
-     "Création du statut d'expert-comptable en entreprise"
+     "Présomption simple de mandat (mandat implicite) pour représenter le client devant l'administration fiscale et les organismes de sécurité sociale (art. 22)",
+     "Recouvrement amiable des créances et paiement des dettes du client par son compte bancaire, à titre accessoire et sur mandat (art. 22)",
+     "Honoraires complémentaires liés à un objectif (succès), sauf pour les missions des deux premiers alinéas de l'art. 2 et celles concourant à l'assiette fiscale ou sociale (art. 24)",
+     "Création de l'expert-comptable en entreprise, inscrit au tableau sans être membre de l'Ordre (art. 13)",
+     "Extension des travaux accessoires aux domaines environnemental et numérique (art. 22)"
     ],
-    "model_answer": "La loi Pacte a notamment autorisé l'EC à exercer à titre accessoire des activités commerciales et des actes d'intermédiaire, instauré le mandat implicite pour les démarches déclaratives ainsi que les mandats de paiement et de recouvrement amiable, admis les honoraires de succès pour certaines missions ne relevant pas de la prérogative d'exercice, renommé le Conseil supérieur en Conseil national et créé le statut d'expert-comptable en entreprise."
+    "model_answer": "La loi Pacte a notamment instauré une présomption simple de mandat (mandat implicite) pour les démarches fiscales et sociales, permis le recouvrement amiable des créances et le paiement des dettes des clients par leur compte bancaire, admis des honoraires complémentaires de succès hors missions comptables et assiette fiscale ou sociale, et créé le statut d'expert-comptable en entreprise."
    },
-   "explanation": "La loi Pacte a surtout touché le périmètre d'activité de l'EC (art. 22 et 24 de l'ordonnance), pas le capital des sociétés. Le relèvement des seuils CAC et l'audit légal des petites entreprises sont aussi dans la loi Pacte mais concernent le code de commerce et le commissariat aux comptes, pas l'ordonnance de 1945 : c'est la confusion à éviter.",
-   "reference": "Loi 2019-486 du 22 mai 2019 (art. 32 s.) ; ord. 45-2138 art. 22, 24, 29 et 83 ter s.",
-   "confidence": "low",
-   "update_note": "Relecture : la réponse QCM (activités commerciales accessoires et mandat implicite) est sûre ; en revanche, l'attribution à la loi Pacte des honoraires de succès (art. 24, qui pourraient résulter de la réforme de 2014) et du statut d'expert-comptable en entreprise est à vérifier avant de les présenter comme des apports de cette loi.",
+   "explanation": "La loi Pacte (art. 34 à 37) a touché le périmètre d'activité de l'EC (art. 22), ses honoraires (art. 24) et son statut (art. 13), pas le capital des sociétés. Les activités commerciales accessoires figuraient déjà à l'art. 22 avant 2019, et le Conseil supérieur n'a été renommé Conseil national qu'en 2022 (loi 2022-172). Le relèvement des seuils CAC et l'audit légal des petites entreprises relèvent aussi de la loi Pacte, mais du code de commerce : c'est la confusion à éviter.",
+   "reference": "Loi 2019-486 du 22 mai 2019, art. 34 à 37 ; ord. 45-2138 art. 13, 22 et 24 (versions du 24 mai 2019)",
+   "confidence": "high",
+   "update_note": "Historique des versions vérifié : les activités commerciales accessoires étaient déjà prévues à l'art. 22 avant la loi Pacte (version du 2 avril 2016) et le changement de nom du Conseil supérieur résulte de la loi 2022-172 du 14 février 2022 ; ces deux éléments ne sont pas des apports de la loi Pacte.",
    "session": "2021-05",
    "origFormat": "qrc"
   },
@@ -4078,10 +4082,10 @@
     ],
     "model_answer": "Sont électeurs les commissaires aux comptes personnes physiques membres de la compagnie régionale, c'est-à-dire inscrits sur la liste et rattachés à son ressort, à condition d'être à jour de leurs cotisations. La détention d'un mandat en cours n'est pas exigée."
    },
-   "explanation": "Le corps électoral de la CRCC est constitué des personnes physiques inscrites, la condition tenant au paiement des cotisations. La règle est analogue chez l'EC pour les élections ordinales (membres inscrits au tableau à jour de cotisations). Attention : le statut des sociétés de CAC dans le vote est un point à vérifier dans la partie réglementaire du code.",
-   "reference": "C. com. partie réglementaire relative aux compagnies régionales (ex art. R.821-37 s., renumérotés R.821-x en 2024) ; règlement intérieur de la CNCC",
-   "confidence": "low",
-   "update_note": "Renumérotation de la partie réglementaire par le décret d'application de l'ordonnance 2023-1142 ; vérifier le libellé actuel sur la qualité d'électeur des sociétés de CAC.",
+   "explanation": "Le corps électoral de la CRCC est constitué des personnes physiques membres de la compagnie, la seule condition tenant au paiement des cotisations professionnelles (D.821-31 II) ; les sociétés de CAC ne votent pas. L'éligibilité suppose en outre d'exercer la profession au 30 juin de l'année d'expiration des mandats, et la présidence d'exercer au moins une mission de certification. La détention d'un mandat n'est pas une condition de l'électorat.",
+   "reference": "C. com. D.821-31 II (électeurs et éligibles) ; D.821-29 (composition du conseil régional)",
+   "confidence": "high",
+   "update_note": "Partie réglementaire recodifiée au 1er janvier 2024 : électorat fixé par D.821-31 II (personnes physiques membres, à jour de leurs cotisations).",
    "session": "2021-05",
    "origFormat": "qrc"
   },
@@ -4107,15 +4111,16 @@
    },
    "qrc": {
     "expected": [
-     "Les présidents des compagnies régionales des commissaires aux comptes, membres de droit",
-     "Mandat de quatre ans ; les membres élus le sont par les compagnies régionales"
+     "Les présidents des compagnies régionales, membres de droit, compris dans les soixante membres",
+     "Les autres membres sont des CAC élus au scrutin de liste par deux collèges nationaux de CAC personnes physiques à jour de leurs cotisations (EIP / non-EIP)",
+     "Mandat de quatre ans"
     ],
-    "model_answer": "Aux côtés des commissaires aux comptes élus par les compagnies régionales siègent, comme membres de droit, les présidents des compagnies régionales. Le Conseil national élit en son sein son président et son bureau."
+    "model_answer": "Les autres membres sont l'ensemble des présidents des compagnies régionales. Les commissaires aux comptes élus le sont au scrutin de liste par deux collèges, celui des CAC exerçant des missions EIP et celui des CAC n'en exerçant pas, chacun disposant de trente sièges dont sont déduits les présidents de CRCC qui en relèvent."
    },
    "explanation": "La CNCC est une institution professionnelle de droit privé dotée de la personnalité morale, sans représentant de l'État ni du régulateur en son sein ; la tutelle s'exerce de l'extérieur par le garde des Sceaux et la H2A. Les distracteurs insèrent des membres extérieurs comme chez l'Ordre des EC, où le commissaire du gouvernement siège aux conseils sans voix délibérative.",
-   "reference": "C. com. partie réglementaire relative à la Compagnie nationale (ex art. R.821-22 s., renumérotés en 2024) ; règlement intérieur de la CNCC",
-   "confidence": "low",
-   "update_note": "Composition et numérotation réglementaire modifiées par les décrets de 2024 : vérifier le nombre de membres et la qualité de membre de droit des présidents de CRCC.",
+   "reference": "C. com. D.821-14 ; D.821-27",
+   "confidence": "high",
+   "update_note": "Composition fixée par D.821-14 (recodification 2024) : soixante membres pour quatre ans, présidents de CRCC inclus ; élection par deux collèges nationaux.",
    "session": "2021-05",
    "origFormat": "qrc"
   },
@@ -4177,17 +4182,17 @@
    },
    "qrc": {
     "expected": [
-     "Les mandats sont poursuivis par la société absorbante jusqu'à leur terme (transmission universelle du patrimoine)",
+     "Les mandats sont poursuivis par la société absorbante jusqu'à leur date d'expiration (L.821-48)",
      "Condition : la société absorbante est elle-même inscrite sur la liste",
-     "L'entité contrôlée doit en être informée et son organe compétent peut décider de ne pas poursuivre le mandat",
+     "L'assemblée ou l'organe compétent peut, à sa première réunion après l'absorption, délibérer sur le maintien du mandat, après avoir entendu le CAC",
      "Le signataire personne physique doit rester inscrit et indépendant ; vérification des incompatibilités chez l'absorbante"
     ],
     "model_answer": "Les mandats de la société absorbée sont poursuivis par la société absorbante, elle-même inscrite, jusqu'à leur expiration, par l'effet de la transmission universelle du patrimoine. Les entités contrôlées doivent en être informées et leur assemblée peut décider de ne pas maintenir le mandat ; l'absorbante doit en outre vérifier qu'aucune incompatibilité ne résulte du regroupement."
    },
    "explanation": "La fusion ne met pas fin aux mandats : ils se poursuivent chez l'absorbante, sous réserve de la faculté de l'entité contrôlée de ne pas les maintenir. Il n'y a ni nouvelle nomination automatique, ni transfert au suppléant (dont le rôle, désormais marginal, ne vaut qu'en cas d'empêchement), ni intervention du président de la CRCC.",
-   "reference": "C. com. partie réglementaire relative aux sociétés de commissaires aux comptes et à la poursuite des mandats en cas de fusion (ex art. R.822-x, renumérotés R.821-x en 2024) ; code de déontologie des CAC (acceptation et maintien de la mission)",
-   "confidence": "low",
-   "update_note": "Renumérotation réglementaire en 2024 ; vérifier la rédaction actuelle de la faculté offerte à l'entité contrôlée de ne pas poursuivre le mandat. Relecture : la poursuite des mandats par l'absorbante est certaine (question reposée en mai 2026), mais la faculté de l'entité de ne pas maintenir le mandat n'est pas confirmée par un texte identifié (la fiche 2019-05-CAC-14 ne la mentionne pas) ; or elle figure dans la proposition B donnée comme juste.",
+   "reference": "C. com. L.821-48 ; code de déontologie des CAC (annexe 8-1) art. 25 (poursuite du mandat)",
+   "confidence": "high",
+   "update_note": "La faculté de l'entité est prévue par la loi : L.821-48 al. 2 (délibération sur le maintien du mandat lors de la première réunion postérieure à l'absorption, après audition du CAC).",
    "session": "2021-05",
    "origFormat": "qrc"
   },
@@ -4494,7 +4499,7 @@
    "qcm": {
     "question": "Un expert-comptable est atteint d'une grave maladie l'empêchant de gérer son cabinet. Le conseil régional peut lui proposer :",
     "choices": [
-     "La désignation d'un confrère suppléant (ou administrateur provisoire) chargé d'assurer la continuité du cabinet pendant l'empêchement",
+     "La désignation par le président du conseil régional, à sa demande ou avec son accord, d'un expert-comptable chargé d'assurer son remplacement provisoire",
      "La radiation d'office du tableau avec interdiction définitive d'exercer",
      "La nomination d'un commissaire aux comptes chargé de certifier les comptes du cabinet",
      "La saisine de la chambre régionale de discipline pour suspension"
@@ -4503,15 +4508,17 @@
    },
    "qrc": {
     "expected": [
-     "Procédure de suppléance : désignation, avec l'accord de l'intéressé ou d'office en cas d'urgence, d'un confrère suppléant qui assure la gestion du cabinet pendant l'empêchement",
-     "Variante : administration provisoire du cabinet lorsque le professionnel ne peut exprimer sa volonté",
-     "Alternative ou complément : omission temporaire du tableau à la demande de l'intéressé, sans caractère disciplinaire"
+     "Remplacement provisoire en cas d'incapacité temporaire d'exercer (D. 2012-432 art. 166)",
+     "Expert-comptable désigné par le président du conseil régional, sur demande du professionnel indisponible ou en accord avec lui (ou ses ayants droit)",
+     "Mission de confraternité gratuite ; indemnité possible si l'importance de la mission le justifie, convention soumise à l'agrément du conseil régional",
+     "Respect impérieux de la clientèle du confrère remplacé ; omission du tableau possible à sa demande (art. 123), sans caractère disciplinaire"
     ],
-    "model_answer": "Le conseil régional peut proposer la suppléance : un confrère suppléant, choisi par l'intéressé ou désigné par le conseil régional en cas d'urgence, assure la gestion du cabinet et la continuité des missions pendant la durée de l'empêchement. Le professionnel peut aussi demander son omission temporaire du tableau, mesure sans caractère disciplinaire."
+    "model_answer": "Le président du conseil régional peut, à la demande de l'expert-comptable empêché ou avec son accord, désigner un confrère chargé d'assurer son remplacement provisoire. Ce remplacement est une mission de confraternité gratuite, une indemnité pouvant toutefois être prévue par une convention agréée par le conseil régional ; le remplaçant doit respecter la clientèle du confrère."
    },
-   "explanation": "L'empêchement pour maladie n'est pas une faute : il appelle une mesure de continuité (suppléance, administration provisoire) et non une sanction. La suspension et la radiation sont des peines disciplinaires ; l'omission du tableau est une mesure administrative volontaire. Chez le CAC, l'équivalent passe par le suppléant ou, à défaut, par une nouvelle nomination par l'entité.",
-   "reference": "Règlement intérieur de l'Ordre des experts-comptables (suppléance et administration provisoire) ; D. 2012-432 (omission du tableau)",
-   "confidence": "low",
+   "explanation": "L'incapacité pour maladie n'est pas une faute : elle appelle une mesure de continuité, non une sanction (suspension et radiation sont des peines disciplinaires, ord. art. 53). Le remplacement suppose la demande ou l'accord de l'intéressé et est exclu en cas de suspension disciplinaire définitive. Le professionnel peut aussi demander son omission du tableau (D. 2012-432 art. 123). Chez le CAC personne physique, le suppléant remplace le titulaire empêché (C. com. L.821-40).",
+   "reference": "D. 2012-432 art. 166 (remplacement provisoire) et art. 123 (omission) ; ord. 45-2138 art. 53",
+   "confidence": "high",
+   "update_note": "Le texte applicable (art. 166 du code de déontologie) prévoit un remplacement provisoire décidé par le président du conseil régional avec l'accord de l'intéressé, et non une suppléance ou administration décidée d'office.",
    "session": "2021-11",
    "origFormat": "qrc"
   },
@@ -4781,7 +4788,7 @@
    "qcm": {
     "question": "Dans la procédure de dérogation au barème d'heures, les intervenants successifs sont :",
     "choices": [
-     "Le commissaire aux comptes, les dirigeants de l'entité, le président de la compagnie régionale, puis la H2A en cas de recours",
+     "Le président de la compagnie régionale (saisi par la partie la plus diligente), puis, sur recours, le président de la CNCC, puis le bureau de la H2A, et enfin le tribunal administratif",
      "Le commissaire aux comptes, l'assemblée générale, le tribunal de commerce, puis la cour d'appel",
      "Le président de la CNCC, le commissaire du gouvernement, le ministre de la Justice, puis le Conseil d'État",
      "Le comité d'audit, le conseil d'administration, l'AMF, puis la H2A"
@@ -4790,17 +4797,17 @@
    },
    "qrc": {
     "expected": [
-     "Le commissaire aux comptes, qui formule une demande motivée",
-     "Les dirigeants de l'entité contrôlée, informés et dont l'accord ou les observations sont recueillis",
-     "Le président de la compagnie régionale, qui accorde ou refuse la dérogation",
-     "La H2A (ex-H3C), saisie d'un recours contre la décision du président de la CRCC"
+     "Le président de la compagnie régionale, saisi avant la mission par la partie la plus diligente (CAC ou dirigeants), l'autre partie donnant son avis ; décision dans les quinze jours",
+     "Recours dans les dix jours devant le président de la Compagnie nationale, qui statue dans le mois",
+     "Recours dans le mois devant le bureau de la Haute autorité de l'audit (L.820-2 III 2°)",
+     "Recours contre la décision du bureau devant le tribunal administratif (D.821-191)"
     ],
-    "model_answer": "Le commissaire aux comptes adresse une demande motivée de dérogation ; les dirigeants de l'entité en sont informés et font connaître leur position ; le président de la compagnie régionale statue ; sa décision peut faire l'objet d'un recours devant la H2A, qui a succédé au H3C."
+    "model_answer": "La demande de dérogation, motivée et présentée avant la mission par la partie la plus diligente, est portée devant le président de la compagnie régionale, qui statue dans les quinze jours après avis de l'autre partie. Sa décision peut être contestée dans les dix jours devant le président de la CNCC, puis dans le mois devant le bureau de la H2A, dont la décision relève enfin du tribunal administratif."
    },
-   "explanation": "Le barème d'heures est une garantie de qualité de l'audit ; s'en écarter, à la baisse comme à la hausse, suppose l'autorisation du président de la CRCC, sous le contrôle du régulateur. Ni l'assemblée ni les juridictions n'interviennent. Chez l'EC, il n'existe aucun barème : les honoraires sont librement convenus.",
-   "reference": "C. com. D.821-188 s. (barème d'heures et dérogation, ex art. R.823-12 à R.823-15)",
-   "confidence": "medium",
-   "update_note": "H3C → H2A au 1er janvier 2024 ; articles R.823-12 s. renumérotés D.821-188 s. par le décret d'application de l'ordonnance 2023-1142.",
+   "explanation": "Le barème d'heures (D.821-188) est une garantie de qualité de l'audit ; s'en écarter, à la hausse comme à la baisse, suppose une décision du président de la CRCC, sauf accord des parties sur le dépassement. Le circuit de recours est d'abord professionnel (président de la CNCC), puis administratif (bureau de la H2A, tribunal administratif). Chez l'EC, il n'existe aucun barème : les honoraires sont librement convenus (D. 2012-432 art. 158).",
+   "reference": "C. com. D.821-188 à D.821-191 (ex R.823-12 à R.823-15) ; L.820-2 III 2°",
+   "confidence": "high",
+   "update_note": "H3C → H2A au 1er janvier 2024 ; la procédure comporte un recours intermédiaire devant le président de la CNCC avant le bureau de la H2A, puis le tribunal administratif.",
    "session": "2021-11",
    "origFormat": "qrc"
   },
@@ -4827,17 +4834,17 @@
    },
    "qrc": {
     "expected": [
-     "1. Saisine du rapporteur général (par les autorités habilitées) et enquête",
-     "2. Notification des griefs au commissaire aux comptes mis en cause",
-     "3. Saisine de la commission des sanctions de la H2A (rapport, désignation d'un rapporteur, instruction contradictoire)",
-     "4. Audience et décision de la commission des sanctions",
-     "5. Recours de plein contentieux devant le Conseil d'État"
+     "1. Saisine du rapporteur général (autorités de L.821-73 ou auto-saisine sur signalement) et enquête (L.821-74)",
+     "2. Rapport d'enquête soumis aux observations de l'intéressé ; la H2A arrête les griefs, notifiés par son président (L.821-77)",
+     "3. Transmission par le président de la H2A du rapport et des griefs à la commission des sanctions",
+     "4. Audience publique, au moins deux mois après la notification des griefs, et décision motivée (L.821-80)",
+     "5. Recours de pleine juridiction devant le Conseil d'État (L.821-85)"
     ],
     "model_answer": "La procédure comporte : l'enquête du rapporteur général, saisi par une autorité habilitée ; la notification des griefs ; la saisine de la commission des sanctions de la H2A et l'instruction contradictoire ; l'audience et la décision de la commission ; enfin, le recours de plein contentieux devant le Conseil d'État."
    },
    "explanation": "La discipline des CAC est confiée au régulateur avec une stricte séparation entre poursuite (rapporteur général) et jugement (commission des sanctions). Le circuit ordinal en deux degrés (chambre régionale puis nationale) est celui de l'EC, pas du CAC : c'est le distracteur principal. Il existe aussi une procédure simplifiée et une composition administrative.",
-   "reference": "C. com. ex art. L.824-4 à L.824-13 (procédure disciplinaire), recodifiés L.821-70 s. en 2024 (procédure ordinaire : L.821-79 et L.821-80) ; L.820-2 (commission des sanctions) ; ex art. L.821-3-1 (rapporteur général)",
-   "confidence": "medium",
+   "reference": "C. com. L.821-73 à L.821-85 (procédure ordinaire : L.821-77 et L.821-80 ; composition administrative : L.821-78 ; procédure simplifiée : L.821-81 et L.821-82) ; L.820-2",
+   "confidence": "high",
    "update_note": "Depuis le 1er janvier 2024, la formation restreinte du H3C est remplacée par la commission des sanctions de la H2A, distincte du collège (ordonnance 2023-1142).",
    "session": "2021-11",
    "origFormat": "qrc"
@@ -4889,7 +4896,7 @@
    "qcm": {
     "question": "En cas de litige sur les honoraires du commissaire aux comptes, les organes successivement compétents sont :",
     "choices": [
-     "Le président de la compagnie régionale (conciliation), puis la H2A (ex-H3C), puis la juridiction compétente",
+     "Le président de la compagnie régionale (conciliation en trois mois), puis, en cas d'échec, le juge ; la H2A ne tranche plus ces litiges depuis 2024",
      "Le président du conseil régional de l'Ordre, la chambre nationale de discipline, le Conseil d'État",
      "Le comité d'audit, l'assemblée générale, le tribunal administratif",
      "Le commissaire du gouvernement, le garde des Sceaux, la Cour de cassation"
@@ -4898,16 +4905,17 @@
    },
    "qrc": {
     "expected": [
-     "Le président de la compagnie régionale, saisi par la partie la plus diligente pour une conciliation",
-     "La H2A (ex-H3C), en cas d'échec de la conciliation ou de recours",
-     "Le juge (tribunal de commerce ou tribunal judiciaire selon l'entité) pour trancher définitivement"
+     "Saisine écrite du président de la compagnie régionale par la partie intéressée, qui s'efforce de concilier (R.821-196)",
+     "Si les CAC relèvent de compagnies différentes : président de la compagnie saisie la première",
+     "Délai de trois mois ; à défaut, notification de l'échec par LRAR",
+     "Le litige relève ensuite du juge de droit commun ; la compétence de l'ancienne formation restreinte du H3C n'a pas été reprise pour la H2A"
     ],
-    "model_answer": "Le litige est d'abord porté devant le président de la compagnie régionale, qui tente une conciliation ; à défaut, la H2A, qui a succédé au H3C, peut être saisie ; en dernier lieu, le différend relève de la juridiction compétente (tribunal de commerce ou tribunal judiciaire)."
+    "model_answer": "Le litige sur la rémunération de la mission de certification est porté devant le président de la compagnie régionale, saisi par écrit, qui dispose de trois mois pour concilier les parties et notifie, le cas échéant, l'échec de la conciliation. Le différend relève alors du juge de droit commun : depuis 2024, la H2A n'a plus compétence pour trancher ces litiges."
    },
-   "explanation": "Le circuit mêle conciliation professionnelle, intervention du régulateur et juge judiciaire. Le distracteur reproduit le circuit disciplinaire de l'EC (conseil régional, chambre nationale, Conseil d'État), confusion récurrente. Pour l'EC, un litige d'honoraires relève de la conciliation ou de l'arbitrage du président du conseil régional puis du juge.",
-   "reference": "C. com. partie réglementaire relative aux honoraires et aux litiges (ex art. R.823-18 et R.823-19, renumérotés D.821-x en 2024)",
-   "confidence": "low",
-   "update_note": "H3C → H2A au 1er janvier 2024 ; vérifier dans les articles D.821-x actuels la répartition exacte entre conciliation du président de CRCC, intervention de la H2A et juge. Relecture : la fiche 2022-11-CAC-16 affirme que, depuis 2024, la H2A n'est plus compétente pour ces litiges (conciliation du président de la CRCC puis juge de droit commun), et le sujet de novembre 2025 (Q12) renvoie au tribunal compétent pour les prestations ; si c'est le cas, l'étape H2A de la réponse A ne vaut que pour l'état du droit antérieur à 2024.",
+   "explanation": "Le circuit en trois étapes (président de CRCC, H3C en formation restreinte, juge) correspond au droit antérieur à 2024. Les missions de la H2A (L.820-1, L.820-2) ne comprennent plus le règlement des litiges d'honoraires ; seule subsiste la conciliation (R.821-196), à laquelle renvoie la NEP 100 (§ 22). Ne pas confondre avec la dérogation au barème d'heures (président de CRCC, président de la CNCC, bureau de la H2A, tribunal administratif). Le distracteur reproduit le circuit disciplinaire de l'EC.",
+   "reference": "C. com. R.821-196 (ex R.823-18) ; L.820-1, L.820-2 ; A.821-65 (NEP 100 § 22)",
+   "confidence": "medium",
+   "update_note": "Depuis le 1er janvier 2024 : conciliation par le président de la CRCC en trois mois puis juge ; plus d'intervention de la H2A (aligné sur 2022-11-CAC-16).",
    "session": "2021-11",
    "origFormat": "qrc"
   },
@@ -4925,7 +4933,7 @@
    "qcm": {
     "question": "Qui peut saisir le rapporteur général de la H2A (ex-H3C) en vue d'une procédure disciplinaire contre un commissaire aux comptes ?",
     "choices": [
-     "Le président de la H2A, le garde des Sceaux, le procureur général, le président de l'AMF ou de l'ACPR, le président de la CNCC ou d'une CRCC",
+     "Le premier président de la Cour des comptes ou le président d'une chambre régionale des comptes, le procureur général près la cour d'appel, les présidents de l'AMF, de l'ACPR et de la H2A, le président de la CNCC ou d'une CRCC",
      "Uniquement l'entité contrôlée, par décision de son assemblée générale",
      "Le président du Conseil national de l'Ordre des experts-comptables et le commissaire du gouvernement",
      "Tout actionnaire détenant au moins 5 % du capital de l'entité contrôlée"
@@ -4934,18 +4942,18 @@
    },
    "qrc": {
     "expected": [
-     "Le président de la H2A (ex-H3C), notamment à la suite d'un contrôle ou d'un signalement",
-     "Le garde des Sceaux et le procureur général près la cour d'appel",
-     "Le président de l'AMF et le président de l'ACPR (entités relevant de leur champ)",
-     "Le président de la CNCC et les présidents des compagnies régionales",
-     "Les plaintes de tiers sont transmises par ces autorités, qui apprécient l'opportunité"
+     "Le premier président de la Cour des comptes ou le président d'une chambre régionale des comptes",
+     "Le procureur général près la cour d'appel compétente",
+     "Le président de l'AMF et le président de l'ACPR",
+     "Le président de la H2A",
+     "Le président de la CNCC ou d'une compagnie régionale ; le rapporteur général peut aussi se saisir des signalements dont il est destinataire"
     ],
-    "model_answer": "Le rapporteur général peut être saisi par le président de la H2A, par le garde des Sceaux, par le procureur général près la cour d'appel, par le président de l'AMF ou de l'ACPR pour les entités de leur champ, ainsi que par le président de la CNCC ou d'une compagnie régionale. Les tiers (entité, actionnaires) ne le saisissent pas directement mais peuvent signaler des faits à ces autorités."
+    "model_answer": "Le rapporteur général est saisi par le premier président de la Cour des comptes ou le président d'une chambre régionale des comptes, le procureur général près la cour d'appel compétente, les présidents de l'AMF, de l'ACPR et de la H2A, et le président de la CNCC ou d'une compagnie régionale. Il peut aussi se saisir des signalements qu'il reçoit ; le garde des sceaux ne figure pas dans la liste."
    },
-   "explanation": "La saisine est réservée à des autorités publiques et professionnelles, ce qui filtre les plaintes de justiciables. L'Ordre des experts-comptables n'a aucun pouvoir de saisine en matière de discipline des CAC. L'actionnaire peut en revanche demander en justice la récusation ou le relèvement du CAC, ce qui est une autre procédure.",
-   "reference": "C. com. ex art. L.824-4 (autorités habilitées à saisir le rapporteur général), recodifié L.821-70 s. en 2024",
-   "confidence": "low",
-   "update_note": "H3C → H2A au 1er janvier 2024 ; la liste des autorités de saisine a pu être ajustée par l'ordonnance 2023-1142, à vérifier.",
+   "explanation": "La saisine est réservée à des autorités publiques et professionnelles, complétée par une auto-saisine sur signalement : les tiers (entité, actionnaires) peuvent signaler des faits mais ne saisissent pas directement. L'Ordre des experts-comptables n'a aucun pouvoir de saisine. Les faits remontant à plus de six ans sans acte de recherche ou de constatation ne peuvent plus être sanctionnés. L'actionnaire peut en revanche demander en justice la récusation (L.821-49) ou le relèvement (L.821-50) du CAC.",
+   "reference": "C. com. L.821-73 (ex L.824-4) ; L.821-49, L.821-50",
+   "confidence": "high",
+   "update_note": "H3C → H2A au 1er janvier 2024. Liste de L.821-73 : Cour des comptes/CRC, procureur général, AMF, ACPR, H2A, CNCC/CRCC ; le garde des sceaux n'y figure pas ; auto-saisine du rapporteur général sur signalement ; prescription de six ans.",
    "session": "2021-11",
    "origFormat": "qrc"
   },
@@ -5006,18 +5014,18 @@
    },
    "qrc": {
     "expected": [
-     "Indépendance renforcée : situations à risque et mesures de sauvegarde, prévention des conflits d'intérêts",
-     "Liens personnels, financiers et professionnels (incompatibilités, fonctions sensibles)",
-     "Réseau : analyse de l'appartenance et services rendus par le réseau",
-     "Acceptation, conduite et maintien de la mission (viduité, succession, services autres que la certification)",
-     "Honoraires de la mission de certification (dépendance financière, barème, interdiction des honoraires liés au résultat)"
+     "Services interdits (EIP), identification et traitement des risques pesant sur l'indépendance, mesures de sauvegarde, risques liés aux fusions et acquisitions (art. 18 à 20)",
+     "Acceptation, conduite et maintien de la mission : acceptation, missions antérieures, co-commissariat, renouvellement, succession, démission (art. 21 à 28)",
+     "Exercice en réseau : appartenance et organisation (art. 29 et 30)",
+     "Liens personnels, financiers et professionnels ; fonctions sensibles (art. 31 à 35)",
+     "Honoraires : indépendance financière et information sur les honoraires (art. 36 et 37)"
     ],
-    "model_answer": "Le titre II complète le socle commun par des règles propres à la certification : l'indépendance renforcée avec les situations à risque et mesures de sauvegarde, les liens personnels, financiers et professionnels, l'appartenance à un réseau, l'acceptation, la conduite et le maintien de la mission (notamment les services autres que la certification et la succession), et les honoraires de la mission de certification."
+    "model_answer": "Le titre II complète le socle commun par des règles propres à la certification : identification et traitement des risques (services interdits aux EIP, sauvegardes, fusions-acquisitions), acceptation, conduite et maintien de la mission (dont succession et démission), exercice en réseau, liens personnels, financiers et professionnels, et honoraires (indépendance financière, information sur les honoraires)."
    },
-   "explanation": "Ces chapitres traduisent le fait que la certification exige une indépendance d'apparence et de fait plus stricte que les prestations libres. Les sanctions et la procédure disciplinaire ne sont jamais dans le code de déontologie mais dans le code de commerce. La numérotation et l'intitulé exacts des chapitres peuvent varier selon la version du code.",
-   "reference": "Code de déontologie des CAC, annexe 8-1 du livre VIII du code de commerce, Titre II (décret 2020-292, mis à jour 2024)",
-   "confidence": "low",
-   "update_note": "Mise à jour du code de déontologie en 2024 après la recodification : vérifier le découpage exact des chapitres du titre II.",
+   "explanation": "Ces sections traduisent le fait que la certification exige une indépendance de fait et d'apparence plus stricte que les prestations. Les sanctions et la procédure disciplinaire ne figurent pas dans le code de déontologie mais dans le code de commerce (L.821-70 s.). L'interdiction des honoraires subordonnés (art. 13) et les règles de publicité (art. 15 et 16) relèvent du titre I, applicable à toutes missions et prestations ; le barème d'heures est dans la partie réglementaire (D.821-188).",
+   "reference": "Code de déontologie des CAC (C. com. annexe 8-1), titre II, art. 18 à 37 (version issue du décret 2026-176)",
+   "confidence": "high",
+   "update_note": "Titre II désormais applicable aussi à la certification des informations en matière de durabilité ; découpage vérifié dans la version modifiée par le décret 2026-176 du 11 mars 2026.",
    "session": "2021-11",
    "origFormat": "qrc"
   },
@@ -5035,7 +5043,7 @@
    "qcm": {
     "question": "Dans le code de déontologie des commissaires aux comptes, que désignent respectivement les termes mission et prestation ?",
     "choices": [
-     "La mission est la mission de certification des comptes confiée par la loi ; la prestation désigne tout autre service fourni par le commissaire aux comptes, avec ou sans mandat de certification",
+     "La mission est la certification des comptes, la certification des informations en matière de durabilité ou toute autre mission confiée par la loi ou le règlement ; la prestation est la fourniture de services et d'attestations ne relevant pas d'une mission",
      "La mission désigne tout travail rémunéré ; la prestation désigne les travaux effectués gratuitement",
      "La mission vise les entités d'intérêt public ; la prestation vise les autres entités",
      "La mission est confiée par l'assemblée ; la prestation est confiée par le comité d'audit"
@@ -5044,16 +5052,16 @@
    },
    "qrc": {
     "expected": [
-     "Mission : la mission légale de certification des comptes (contrôle légal) confiée au CAC",
-     "Prestation : toute autre intervention ou service fourni par le CAC, à une entité dont il certifie ou non les comptes (attestations, diligences liées, interventions prévues par la loi hors certification, conseils autorisés)",
-     "Distinction structurante : le titre II ne s'applique qu'à la mission et aux prestations fournies à l'entité certifiée"
+     "Mission : certification des comptes, certification des informations en matière de durabilité ou toute autre mission confiée au CAC par la loi ou le règlement",
+     "Prestation : fourniture de services et d'attestations qui ne relèvent pas d'une mission, que le CAC certifie ou non les comptes de l'entité",
+     "Titre I applicable à toutes missions et prestations ; titre II réservé aux missions de certification"
     ],
-    "model_answer": "Dans le code de déontologie, la mission désigne la mission de certification des comptes, mission légale de contrôle ; la prestation désigne tout autre service ou intervention du commissaire aux comptes, qu'il soit fourni à une entité dont il certifie les comptes ou à une entité sans mandat. Cette distinction commande l'application du titre II, réservé à la certification."
+    "model_answer": "La mission désigne la certification des comptes, la certification des informations en matière de durabilité ou toute autre mission confiée au CAC par la loi ou le règlement ; la prestation désigne la fourniture de services et d'attestations qui ne relèvent pas d'une mission. Le titre I du code s'applique aux unes et aux autres, le titre II aux seules missions de certification."
    },
-   "explanation": "Le vocabulaire est devenu central depuis la loi Pacte, qui autorise le CAC à fournir des prestations à des entités dont il n'est pas le commissaire. Les prestations rendues à l'entité certifiée sont soumises aux règles d'indépendance du titre II ; celles rendues à d'autres relèvent du seul titre I et d'une déclaration d'activité.",
-   "reference": "C. com. art. L.821-2 III (mission) et IV (prestation) ; code de déontologie des CAC, annexe 8-1, dispositions liminaires ; C. com. ex art. L.822-11 (version loi Pacte)",
-   "confidence": "low",
-   "update_note": "Relecture : les définitions figurent désormais à l'article L.821-2 III et IV du code de commerce (cité par le sujet de mai 2024). Il faut vérifier si la mission y vise la seule certification ou aussi les autres missions que la loi ou le règlement confie au CAC ; dans ce cas, les interventions légales hors certification ne seraient pas des prestations, contrairement à ce qu'indique le 2e élément attendu.",
+   "explanation": "Le vocabulaire est central depuis la loi Pacte, qui autorise le CAC à fournir des prestations à des entités dont il ne certifie pas les comptes ; L.821-3 définit la profession comme l'exercice de missions et la fourniture de prestations. Les interventions confiées par la loi en dehors de la certification sont des missions, non des prestations. Les prestations fournies à l'entité certifiée restent soumises aux règles d'indépendance (art. 5, 19 et 22 du code).",
+   "reference": "C. com. L.821-2 III et IV, L.821-3 ; code de déontologie des CAC (annexe 8-1) art. 1er III et art. 2",
+   "confidence": "high",
+   "update_note": "Définitions vérifiées (L.821-2, ordonnance 2023-1142 ; art. 1er III du code, version du décret 2026-176) : la mission couvre aussi la certification des informations de durabilité et les autres missions légales ou réglementaires.",
    "session": "2021-11",
    "origFormat": "qrc"
   },
@@ -5179,7 +5187,7 @@
    "qcm": {
     "question": "À l'issue d'un contrôle qualité LCB-FT mené par l'Ordre des experts-comptables, la conclusion peut être :",
     "choices": [
-     "Satisfaisante, satisfaisante avec recommandations ou observations, ou non satisfaisante avec contrôle complémentaire ou saisine de la chambre de discipline",
+     "Une conclusion sans observation, avec simples observations, ou avec observations entraînant un nouveau contrôle sur site à l'issue d'un an, le comité LBC-FT pouvant en outre saisir l'instance disciplinaire",
      "Certification sans réserve, avec réserve ou refus de certifier",
      "Attestation sans observation, avec observation ou refus d'attester",
      "Classement sans suite, déclaration de soupçon à Tracfin ou transmission au procureur"
@@ -5188,15 +5196,18 @@
    },
    "qrc": {
     "expected": [
-     "Conclusion satisfaisante : dispositif LCB-FT conforme",
-     "Conclusion satisfaisante assortie d'observations ou de recommandations à mettre en œuvre",
-     "Conclusion non satisfaisante : nouveau contrôle (contrôle complémentaire) dans un délai rapproché et/ou transmission au président du conseil régional pouvant conduire à la saisine de la chambre de discipline"
+     "Contrôle conclu par le comité LBC-FT placé auprès du Conseil national (RI art. 472)",
+     "Conclusion sans observation",
+     "Conclusion avec simples observations, éventuellement assortie d'une convocation devant des membres du comité",
+     "Conclusion avec observations entraînant un nouveau contrôle sur site à l'issue d'un an, avec formation LCB-FT obligatoire possible aux frais du professionnel",
+     "Selon la gravité des manquements : saisine de l'instance disciplinaire (CMF L.561-36) ou extension du contrôle à la structure"
     ],
-    "model_answer": "Le contrôle LCB-FT se conclut soit par une conclusion satisfaisante, soit par une conclusion satisfaisante avec observations ou recommandations, soit par une conclusion non satisfaisante, qui entraîne un contrôle complémentaire ultérieur et peut conduire le président du conseil régional à saisir la chambre régionale de discipline."
+    "model_answer": "Le comité LBC-FT conclut le contrôle sur site soit sans observation, soit avec simples observations (éventuellement avec convocation), soit avec observations entraînant un nouveau contrôle sur site à l'issue d'un an, le professionnel pouvant être obligé de suivre une formation LCB-FT à ses frais. Selon la gravité des manquements, le comité peut saisir l'instance disciplinaire."
    },
-   "explanation": "Le contrôle qualité ordinal, y compris son volet LCB-FT, n'est pas une procédure disciplinaire mais peut y conduire en cas de manquements graves. Les distracteurs sont les conclusions des missions du CAC (certification) et de l'EC (attestation de présentation), ainsi que des mesures propres à Tracfin et au parquet.",
-   "reference": "Règlement du contrôle de qualité de l'OEC ; CMF art. L.561-36 (contrôle par l'Ordre) ; NPLAB",
-   "confidence": "low",
+   "explanation": "Le contrôle LCB-FT de l'Ordre est organisé par le titre IV bis du règlement intérieur sous la direction du comité LBC-FT près le Conseil national, selon une approche par les risques : contrôle sur site, hors site, ou intégré au contrôle de qualité pour les professionnels faiblement exposés. Pour un contrôle hors site, la dernière conclusion est assortie d'un contrôle sur site dans l'année (art. 478). Ce n'est pas une procédure disciplinaire mais il peut y conduire. Les distracteurs sont les opinions du CAC, les conclusions de l'attestation de présentation et des mesures propres à Tracfin ou au parquet.",
+   "reference": "Règlement intérieur de l'Ordre (arrêté du 6 mars 2024), art. 460 à 478, notamment art. 472 et 478 ; ord. 45-2138 art. 1er ; CMF L.561-36",
+   "confidence": "high",
+   "update_note": "Conclusions fixées par le RI agréé par arrêté du 6 mars 2024 : c'est le comité LBC-FT, et non le président du conseil régional, qui conclut le contrôle et peut saisir l'instance disciplinaire.",
    "session": "2022-05",
    "origFormat": "qrc"
   },
@@ -5323,7 +5334,7 @@
    "qcm": {
     "question": "Le non-paiement par un expert-comptable des cotisations dues à sa caisse de retraite (CAVEC) peut-il donner lieu à une sanction disciplinaire ?",
     "choices": [
-     "Oui : le manquement à une obligation légale, contraire à la probité et à l'honneur de la profession, constitue une faute disciplinaire susceptible d'être poursuivie devant la chambre de discipline",
+     "Oui : le non-paiement des cotisations CAVEC, obligatoires (ord. art. 27 bis), pendant deux ans sur les dix dernières années et sans motif valable, entraîne la radiation d'office du tableau prononcée par le conseil régional",
      "Non : seuls les manquements commis dans l'exécution des missions sont disciplinairement sanctionnables",
      "Non : la CAVEC dispose de ses propres sanctions et la chambre de discipline n'est compétente que pour les cotisations ordinales",
      "Oui, mais seulement par la commission des sanctions de la H2A"
@@ -5332,17 +5343,17 @@
    },
    "qrc": {
     "expected": [
-     "Oui",
-     "La faute disciplinaire couvre tout manquement aux lois et règlements et tout fait contraire à la probité, à l'honneur ou à la dignité de la profession, même hors mission",
-     "Le non-paiement des cotisations à la caisse de retraite est un manquement à une obligation légale incompatible avec l'exemplarité attendue d'un professionnel qui conseille en matière sociale",
-     "Procédure : signalement par la caisse au conseil régional ; saisine de la chambre régionale de discipline"
+     "L'inscription au tableau oblige à cotiser à la CAVEC ; le défaut de paiement est sanctionné dans les conditions du décret (ord. art. 27 bis)",
+     "Radiation d'office du tableau si, pendant deux ans consécutifs ou non au cours des dix dernières années et sans motif valable, les cotisations professionnelles ou de sécurité sociale (dont CAVEC) n'ont pas été payées (D. 2012-432 art. 125)",
+     "Procédure : deux mises en demeure par LRAR, observations écrites ou orales, décision du conseil régional au plus tôt trente jours après",
+     "Recours suspensif devant le comité national du tableau ; réinscription subordonnée au paiement des sommes dues"
     ],
-    "model_answer": "Oui. La discipline ordinale sanctionne tout manquement aux obligations légales et tout fait contraire à la probité, à l'honneur ou à la dignité de la profession, y compris en dehors de l'exécution des missions. Le défaut de paiement des cotisations à la CAVEC, obligation légale que le professionnel fait respecter chez ses clients, peut donc être poursuivi devant la chambre régionale de discipline, indépendamment des mesures de recouvrement de la caisse."
+    "model_answer": "Oui, une sanction est encourue, selon une procédure propre : l'expert-comptable qui, pendant deux ans consécutifs ou non au cours des dix dernières années et sans motif valable, n'a pas payé ses cotisations CAVEC est radié d'office du tableau par le conseil régional, après deux mises en demeure. Le recours devant le comité national du tableau est suspensif et la réinscription suppose le paiement des sommes dues."
    },
-   "explanation": "La faute disciplinaire est définie largement et ne se limite ni aux missions ni aux cotisations ordinales : la jurisprudence disciplinaire retient le défaut de paiement des charges sociales personnelles comme contraire à la probité. La H2A n'est jamais compétente pour les experts-comptables.",
-   "reference": "Ord. 45-2138 art. 53 ; D. 2012-432 art. 141 s. (devoirs généraux : respect des lois, probité, dignité) ; jurisprudence de la chambre nationale de discipline",
-   "confidence": "low",
-   "update_note": "Relecture : la réponse « oui » est cohérente, mais le sujet de mai 2026 (Q10) vise un texte précis (cotisations CAVEC impayées sans motif valable pendant au moins deux ans au cours des dix dernières années) qui prévoit une sanction déterminée ; la référence exacte et la sanction encourue sont à identifier et à ajouter.",
+   "explanation": "L'ordonnance renvoie au décret la sanction du défaut de cotisation à la caisse de retraite (art. 27 bis) ; le décret prévoit la radiation d'office du tableau (art. 125), prononcée par le conseil régional et distincte de la procédure devant la chambre régionale de discipline, réservée notamment aux atteintes à la probité et à l'honneur. C'est la réponse attendue au sujet de mai 2026 (Q10). La H2A n'est jamais compétente pour les experts-comptables.",
+   "reference": "Ord. 45-2138 art. 27 bis ; D. 2012-432 art. 125 (rédaction issue du décret 2025-506)",
+   "confidence": "medium",
+   "update_note": "Art. 125 réécrit au 1er janvier 2023 (radiation d'office, auparavant « réputée démissionnaire ») puis au 12 juin 2025 (décret 2025-506 : observations écrites et orales). La qualification de « sanction disciplinaire » au sens strict est discutable : la mesure relève du conseil régional, non de la chambre de discipline.",
    "session": "2022-05",
    "origFormat": "qrc"
   },
@@ -5574,7 +5585,7 @@
    "qcm": {
     "question": "Selon la NEP 200, les limites inhérentes à l'audit des comptes tiennent notamment :",
     "choices": [
-     "À l'utilisation des techniques de sondages, aux limites inhérentes au contrôle interne et au caractère persuasif plutôt que concluant des éléments collectés, qui appelle le jugement professionnel",
+     "À l'utilisation des techniques de sondages, aux limites inhérentes au contrôle interne et au fait que la plupart des éléments collectés conduisent davantage à des présomptions qu'à des certitudes",
      "Au barème d'heures, au secret professionnel et à la non-immixtion dans la gestion",
      "Au coût de l'audit, au délai légal de dépôt des comptes et à la taille de l'équipe",
      "À l'absence de lettre de mission, à la rotation des associés et à l'interdiction des services non audit"
@@ -5583,16 +5594,17 @@
    },
    "qrc": {
     "expected": [
-     "Utilisation des techniques de sondages : l'auditeur ne contrôle pas l'exhaustivité des opérations",
-     "Limites inhérentes au contrôle interne : collusion, contournement par la direction, erreur humaine",
-     "Nature des éléments collectés : davantage persuasifs que concluants, d'où le recours au jugement professionnel",
-     "Conséquence : assurance raisonnable, non absolue, et risque d'audit"
+     "Utilisation des techniques de sondages",
+     "Limites inhérentes au contrôle interne",
+     "Éléments collectés conduisant davantage à des présomptions qu'à des certitudes",
+     "Conséquence : assurance élevée mais non absolue, qualifiée d'« assurance raisonnable » (NEP 200 § 08)"
     ],
-    "model_answer": "La NEP 200 reconnaît que l'audit comporte des limites tenant à l'utilisation des sondages, aux limites inhérentes à tout contrôle interne (collusion, contournement par la direction) et au fait que la plupart des éléments collectés sont persuasifs plutôt que concluants, ce qui implique le recours au jugement professionnel. C'est pourquoi la certification ne procure qu'une assurance raisonnable et non absolue."
+    "model_answer": "La NEP 200 indique que les limites de l'audit résultent notamment de l'utilisation des techniques de sondages, des limites inhérentes au contrôle interne et du fait que la plupart des éléments collectés conduisent davantage à des présomptions qu'à des certitudes. C'est pourquoi l'assurance obtenue, élevée mais non absolue, est qualifiée d'assurance raisonnable."
    },
    "explanation": "Ces limites expliquent la notion d'assurance raisonnable et le risque d'audit : un audit conforme aux NEP peut ne pas détecter toutes les anomalies significatives. Les distracteurs énumèrent des règles déontologiques ou organisationnelles qui ne sont pas des limites techniques de l'audit.",
-   "reference": "NEP 200 (principes applicables à l'audit des comptes), paragraphes sur l'assurance raisonnable et les limites de l'audit",
-   "confidence": "medium",
+   "reference": "NEP 200 (C. com. A.821-63), § 08 et 09",
+   "confidence": "high",
+   "update_note": "NEP reproduites dans la partie Arrêtés du code de commerce (A.821-63 pour la NEP 200).",
    "session": "2022-05",
    "origFormat": "qrc"
   },
@@ -5716,7 +5728,7 @@
    "qcm": {
     "question": "Selon le code de commerce, constitue une faute disciplinaire du commissaire aux comptes :",
     "choices": [
-     "Tout manquement aux conditions légales d'exercice et aux règles professionnelles (lois, règlements, NEP, code de déontologie), toute négligence grave, et tout fait contraire à la probité, à l'honneur ou à l'indépendance",
+     "Tout manquement aux conditions légales d'exercice de la profession, ainsi que toute négligence grave et tout fait contraire à la probité ou à l'honneur",
      "Uniquement le défaut de formation continue et le non-paiement des cotisations",
      "Uniquement les infractions pénales définitivement jugées",
      "Toute divergence d'appréciation avec l'entité sur l'application des règles comptables"
@@ -5725,16 +5737,17 @@
    },
    "qrc": {
     "expected": [
-     "Les manquements aux conditions légales d'exercice de la profession et aux règles professionnelles : lois, règlements, normes d'exercice professionnel, code de déontologie",
-     "La négligence grave",
-     "Tout fait contraire à la probité, à l'honneur ou à l'indépendance, même en dehors de l'activité professionnelle"
+     "1° Tout manquement aux conditions légales d'exercice de la profession",
+     "2° Toute négligence grave",
+     "2° (suite) Tout fait contraire à la probité ou à l'honneur",
+     "Sanctions : L.821-71 (avertissement, blâme, interdiction temporaire de trois ans au plus, radiation, retrait de l'honorariat, sanctions complémentaires et pécuniaires)"
     ],
-    "model_answer": "Constituent une faute disciplinaire du commissaire aux comptes les manquements aux conditions légales d'exercice et aux règles professionnelles (lois, règlements, normes d'exercice professionnel, code de déontologie), la négligence grave, et tout fait contraire à la probité, à l'honneur ou à l'indépendance, y compris en dehors de l'exercice professionnel."
+    "model_answer": "Constituent une faute disciplinaire du CAC tout manquement aux conditions légales d'exercice de la profession, toute négligence grave et tout fait contraire à la probité ou à l'honneur (L.821-70 I). Ces fautes exposent aux sanctions de L.821-71, prononcées par la commission des sanctions de la H2A."
    },
-   "explanation": "La définition est large : elle couvre les manquements techniques, l'incurie et les comportements indignes, sans exiger d'infraction pénale. Une simple divergence d'appréciation n'est pas une faute. L'EC connaît une définition similaire dans l'ordonnance de 1945 mais ses sanctions sont prononcées par les chambres de discipline ordinales.",
-   "reference": "C. com. art. L.821-70 (faute disciplinaire, ex L.824-1) ; pour l'EC : ord. 45-2138 art. 53",
-   "confidence": "low",
-   "update_note": "L'article L.824-1 est devenu l'article L.821-70 avec l'ordonnance 2023-1142 ; définition inchangée sur le fond. Relecture : le découpage de la réponse est à vérifier sur le texte. Dans le souvenir du relecteur, le 1° vise les manquements aux conditions légales d'exercice ; le 2° la négligence grave et les faits contraires à la probité ou à l'honneur, même hors de l'exercice professionnel ; le 3° les manquements aux règles professionnelles (lois, règlements, NEP, code de déontologie). La mention de l'« indépendance » dans le fait contraire paraît reprise de l'ancien texte antérieur à 2016.",
+   "explanation": "La définition est large : elle couvre les manquements aux conditions d'exercice, l'incurie et les comportements indignes, sans exiger d'infraction pénale. Le texte actuel ne vise plus expressément l'indépendance ni une catégorie distincte de manquements aux règles professionnelles : l'énumération en trois points de l'ancien L.824-1 est ramenée à deux. Une simple divergence d'appréciation n'est pas une faute. L'EC relève de l'ordonnance de 1945 et des chambres de discipline ordinales.",
+   "reference": "C. com. L.821-70 I (ex L.824-1), L.821-71 ; pour l'EC : ord. 45-2138 art. 53",
+   "confidence": "high",
+   "update_note": "Recodification 2024 : L.821-70 I ne retient plus que deux catégories (1° manquement aux conditions légales d'exercice ; 2° négligence grave et fait contraire à la probité ou à l'honneur) ; le II vise d'autres personnes (associés, EIP, dirigeants…) passibles des sanctions de L.821-72.",
    "session": "2022-05",
    "origFormat": "qrc"
   },
@@ -6036,7 +6049,7 @@
    "qcm": {
     "choices": [
      "Certification sans réserve ou certification avec réserve du cabinet",
-     "Lettre de conclusion sans observation, ou avec observations et recommandations, éventuellement assortie d'un nouveau contrôle dans un délai donné ou d'une saisine disciplinaire",
+     "Lettre de conclusion du président du conseil régional sans observation, avec simples observations, ou avec observations et nouveau contrôle sur place à l'issue d'un an ; saisine possible de la chambre de discipline en cas de nouveaux manquements",
      "Agrément ou retrait d'agrément du cabinet par le commissaire du gouvernement",
      "Avertissement, blâme ou radiation prononcés directement par le contrôleur qualité"
     ],
@@ -6044,15 +6057,17 @@
    },
    "qrc": {
     "expected": [
-     "Conclusion sans observation (ou avec simples recommandations)",
-     "Conclusion avec observations, éventuellement assortie d'un nouveau contrôle (contrôle de suivi) dans un délai déterminé",
-     "Transmission au président du conseil régional en vue d'une éventuelle saisine de la chambre régionale de discipline en cas de manquements graves"
+     "Lettre de conclusion du président du conseil régional sans observation",
+     "Lettre avec simples observations, éventuellement assortie d'une convocation dans le bureau du président",
+     "Lettre avec observations et décision d'un nouveau contrôle sur place à l'issue d'un an, avec formation spécifique obligatoire possible aux frais du contrôlé",
+     "En cas de nouveaux manquements : saisine possible de la chambre de discipline (ord. art. 31)"
     ],
-    "model_answer": "À l'issue du contrôle, le conseil régional adresse au professionnel une lettre de conclusion qui peut être sans observation, ou comporter des observations et recommandations, le cas échéant avec un nouveau contrôle dans un délai fixé. En cas de manquements graves, le dossier peut être transmis en vue d'une saisine de la chambre régionale de discipline."
+    "model_answer": "Au vu du rapport du contrôleur, le président du conseil régional conclut le contrôle par une lettre sans observation, avec simples observations (éventuellement assortie d'une convocation dans son bureau) ou avec observations et décision d'un nouveau contrôle sur place à l'issue d'un an, pouvant imposer une formation spécifique. En cas de nouveaux manquements, la chambre de discipline peut être saisie."
    },
-   "explanation": "Le contrôle de qualité de l'Ordre n'est pas une procédure disciplinaire : le contrôleur établit un rapport, le conseil régional en tire une conclusion (sans observation, avec observations, nouveau contrôle). Ce n'est que si des manquements graves sont relevés que le président du conseil régional peut saisir la chambre de discipline. À distinguer du contrôle d'activité des CAC, conduit sous l'autorité de la H2A, qui peut déboucher sur des recommandations de la formation d'examen des contrôles ou sur la saisine du rapporteur général (C. com. R.820-47, L.821-73).",
-   "reference": "D. 2012-432 (contrôle de qualité) ; règlement intérieur de l'Ordre (art. 400 s.) ; C. com. R.820-47 pour le parallèle CAC",
-   "confidence": "low",
+   "explanation": "Le contrôle de qualité de l'Ordre n'est pas une procédure disciplinaire : le contrôleur établit une note de synthèse puis un rapport, et le président du conseil régional en tire la conclusion (RI art. 427 à 430). La chambre de discipline n'intervient qu'en cas de nouveaux manquements. À distinguer du contrôle d'activité des CAC, conduit sous l'autorité de la H2A, qui peut déboucher sur des recommandations de la formation d'examen des contrôles ou sur la saisine du rapporteur général (C. com. R.820-47, L.821-73).",
+   "reference": "Règlement intérieur de l'Ordre (arrêté du 6 mars 2024), art. 427 à 430 ; ord. 45-2138 art. 31 ; C. com. R.820-47 pour le parallèle CAC",
+   "confidence": "high",
+   "update_note": "Conclusions fixées par l'art. 430 du RI agréé par arrêté du 6 mars 2024.",
    "session": "2022-11",
    "origFormat": "qrc"
   },
@@ -6400,9 +6415,9 @@
     "model_answer": "À la date du sujet, la décision rendue par la formation restreinte du H3C sur un litige d'honoraires pouvait être contestée devant la cour d'appel de Paris. Depuis la recodification de 2024, la H2A n'est plus compétente pour trancher ces litiges : en cas de désaccord sur la rémunération de la mission de certification, le président de la compagnie régionale tente une conciliation dans un délai de trois mois et, à défaut, le litige relève des juridictions de droit commun."
    },
    "explanation": "La loi Pacte avait confié au H3C statuant en formation restreinte les litiges relatifs à la rémunération des CAC, après disparition des chambres régionales de discipline. L'ordonnance 2023-1142 a réorganisé la H2A (collège, bureau, formation d'examen des contrôles, commission des sanctions) sans reprendre cette compétence contentieuse : seule subsiste la conciliation par le président de la CRCC (R.821-196). Ne pas confondre avec la dérogation au barème d'heures, dont le recours de dernier niveau relève du bureau de la H2A puis du tribunal administratif.",
-   "reference": "C. com. art. R.821-196 (ex R.823-18) ; ex L.823-18-1 et ex L.821-1 (H3C formation restreinte, abrogés) ; L.820-2",
-   "confidence": "low",
-   "update_note": "La formation restreinte du H3C a disparu avec la H2A (ordonnance 2023-1142, en vigueur le 1er janvier 2024) ; la voie de recours antérieure (cour d'appel de Paris) est indiquée sous réserve de vérification.",
+   "reference": "C. com. R.821-196 (ex R.823-18) ; L.820-1 et L.820-2 (missions et formations de la H2A) ; A.821-65 (NEP 100 § 22) ; ex L.823-18-1 et ex L.821-1 (abrogés)",
+   "confidence": "medium",
+   "update_note": "La formation restreinte du H3C a disparu avec la H2A (ordonnance 2023-1142, 1er janvier 2024). L'absence de compétence de la H2A est confirmée par R.821-196 (seule conciliation, trois mois) et par L.820-1/L.820-2 ; la voie de recours antérieure (cour d'appel de Paris) n'a pas été vérifiée dans les textes abrogés.",
    "session": "2022-11",
    "origFormat": "qrc"
   },
@@ -6473,8 +6488,8 @@
    },
    "explanation": "Depuis la loi Pacte, le CAC peut fournir des prestations à des entités dont il ne certifie pas les comptes ; ces prestations restent soumises au code de déontologie et doivent faire l'objet d'une lettre de mission (R.821-195). Elles sont retracées dans la déclaration d'activité annuelle à la CRCC (D.821-186 VI), qui permet le suivi de l'activité par la profession et la H2A. Le barème d'heures ne s'applique pas à ces prestations, dont les honoraires sont fixés par la lettre de mission.",
    "reference": "C. com. art. D.821-186 VI (ex R.823-10) ; R.821-195 (lettre de mission) ; L.821-2 IV",
-   "confidence": "low",
-   "update_note": "Les dispositions du titre I du code de déontologie de 2020 relatives à la conduite des prestations (anciens art. 10-1 et 11) ont été abrogées par le décret 2026-176 ; la réponse s'appuie sur la déclaration d'activité annuelle prévue par la partie réglementaire du code de commerce. Point à vérifier.",
+   "confidence": "high",
+   "update_note": "Abrogation des art. 10-1 et 11 du code de déontologie par le décret 2026-176 vérifiée ; contenu de la déclaration d'activité vérifié à D.821-186 VI 4° (liste des personnes ou entités, nature des missions ou prestations, montant total des honoraires).",
    "session": "2022-11",
    "origFormat": "qrc"
   },
@@ -7119,9 +7134,9 @@
     "model_answer": "Lorsque la société mère et les sociétés contrôlées n'ont pas la même date de clôture, les seuils cumulés du petit groupe sont calculés à partir des derniers comptes annuels arrêtés par chacune. L'obligation ne disparaît que si les seuils n'ont pas été dépassés pendant les deux exercices précédant l'expiration du mandat ; un suppléant n'est exigé que si le titulaire est une personne physique ou une société unipersonnelle ; et l'association qui reçoit plus de 153 000 € de subventions doit désigner un CAC au titre de l'exercice de franchissement."
    },
    "explanation": "Les trois distracteurs reposent sur des chiffres ou des conditions légèrement faussés : un exercice au lieu de deux pour la cessation de l'obligation (règle fixée par la partie réglementaire propre à chaque forme sociale, ex. D.223-27 pour la SARL), suppléant exigé pour toute société pluripersonnelle alors que la loi ne le prévoit que pour les personnes physiques et sociétés unipersonnelles (L.821-40), et décalage d'un exercice pour l'association subventionnée. Les seuils des sociétés commerciales ont été relevés par le décret 2024-152 (5 M€ / 10 M€ / 50) pour les exercices ouverts à compter du 1er janvier 2024.",
-   "reference": "C. com. art. L.821-40, L.821-43 ; D.221-5, D.223-27 et D.821-? (seuils fixés par le décret 2024-152) ; L.612-4 et D.612-5 (associations)",
+   "reference": "C. com. L.821-40 (suppléant), L.821-43 et D.821-171 (petits groupes : seuils de D.221-5, cessation après deux exercices), D.821-172 (filiales significatives) ; L.612-4 et D.612-5 (associations)",
    "confidence": "medium",
-   "update_note": "Seuils des sociétés commerciales relevés par le décret 2024-152 (bilan 5 M€, CA HT 10 M€, 50 salariés ; filiales significatives 2,5 M€ / 5 M€ / 25) pour les exercices ouverts à compter du 1er janvier 2024 ; recodification L.823-x → L.821-x.",
+   "update_note": "Seuils des sociétés commerciales (D.221-5, décret 2024-152 : 5 M€ / 10 M€ / 50) et règle des deux exercices (D.821-171) vérifiés ; la proposition a (derniers comptes arrêtés en cas de dates de clôture différentes) ne figure pas expressément dans les textes consultés et repose sur la doctrine. Recodification L.823-x → L.821-x.",
    "session": "2023-05",
    "origFormat": "qcm"
   },
@@ -7194,8 +7209,8 @@
    },
    "explanation": "La règle de l'unicité d'exercice (C. com. L.821-25) vise à garantir l'identification du responsable des missions et la cohérence du contrôle de qualité. La proposition c s'approche de la dérogation « groupe » mais la loi raisonne en termes de contrôle (majorité des droits de vote), non de capital, et la réponse attendue est la dérogation expressément formulée (moitié des associés communs). L'appartenance à un réseau ne suffit pas. L'expert-comptable, lui, peut cumuler les formes d'exercice (ord. art. 12).",
    "reference": "C. com. art. L.821-25 (ex L.822-9) ; L.233-16 ; Ord. 45-2138 art. 12 pour le parallèle EC",
-   "confidence": "medium",
-   "update_note": "Recodification 2024 : ex L.822-9 devenu L.821-25.",
+   "confidence": "high",
+   "update_note": "Recodification 2024 : ex L.822-9 devenu L.821-25 (dernière modification par la loi 2025-391, sans incidence sur la règle).",
    "session": "2023-05",
    "origFormat": "qcm"
   },
@@ -7420,24 +7435,26 @@
    "question": "Quelle est la durée consécutive maximale de présidence d'un même conseil régional de l'ordre des experts-comptables ?",
    "qcm": {
     "choices": [
-     "Deux mandats consécutifs, soit huit ans au maximum",
-     "Un seul mandat de quatre ans, non renouvelable",
+     "Quatre années consécutives (soit deux mandats de bureau de deux ans), une interruption d'au moins deux ans étant ensuite exigée",
+     "Six ans, soit trois mandats de bureau de deux ans",
      "Aucune limite : le président est rééligible sans restriction",
-     "Trois mandats consécutifs de deux ans, soit six ans"
+     "Huit ans, soit deux mandats consécutifs de conseiller de quatre ans"
     ],
     "answer": 0
    },
    "qrc": {
     "expected": [
-     "Président élu par le conseil régional en son sein, pour la durée du mandat du conseil (quatre ans)",
-     "Pas plus de deux mandats consécutifs de président",
-     "Soit huit années consécutives au maximum"
+     "Bureau, dont le président, élu par le conseil en son sein pour deux ans (D. 2012-432 art. 10)",
+     "Présidence d'un même conseil limitée à quatre années consécutives",
+     "Interruption d'au moins deux ans avant une nouvelle présidence",
+     "À distinguer : mandat de conseiller de quatre ans, deux mandats consécutifs au plus dans un même conseil (art. 1er et 2)"
     ],
-    "model_answer": "Les conseils régionaux sont élus pour quatre ans et leur président, élu par le conseil en son sein, ne peut exercer plus de deux mandats consécutifs : la durée consécutive maximale de présidence d'un même conseil régional est donc de huit ans."
+    "model_answer": "Le président est élu au sein du bureau pour un mandat de deux ans ; une même personne ne peut présider un même conseil plus de quatre années consécutives, puis doit observer une interruption d'au moins deux ans. Les membres du conseil sont, eux, élus pour quatre ans et ne peuvent exercer plus de deux mandats consécutifs dans un même conseil."
    },
-   "explanation": "L'organisation des conseils de l'Ordre est fixée par le décret du 30 mars 2012 (modifié par le décret 2019-1193 pour les élections) : mandats de quatre ans et limitation du nombre de mandats consécutifs pour prévenir la permanence d'une même équipe. Chez les CAC, les présidents des compagnies régionales sont également élus par les conseils régionaux pour des mandats limités. Le chiffre exact dépend de la lecture du décret et doit être vérifié.",
-   "reference": "D. 2012-432 art. 1 s. (conseils régionaux, élections) modifié par D. 2019-1193 ; Ord. 45-2138 art. 28 et 29",
-   "confidence": "low",
+   "explanation": "Ne pas confondre le mandat de membre du conseil (quatre ans, deux mandats consécutifs au plus, soit huit ans) et la fonction de président (bureau élu pour deux ans, présidence limitée à quatre années consécutives). La règle figure à l'art. 10 du décret depuis 2012. Chez les CAC, le président du conseil régional de la compagnie est élu pour quatre ans et son mandat n'est pas renouvelable (C. com. D.821-34).",
+   "reference": "D. 2012-432 art. 1er, 2 et 10 ; C. com. D.821-34 pour le parallèle CAC",
+   "confidence": "high",
+   "update_note": "Règle de l'art. 10 (inchangée sur ce point depuis 2012, dernière rédaction au 1er janvier 2023) : l'ancienne réponse (huit ans) confondait mandat de conseiller et présidence.",
    "session": "2023-11",
    "origFormat": "qrc"
   },
@@ -7525,7 +7542,7 @@
    "qcm": {
     "choices": [
      "Deux sections : les experts-comptables et les sociétés d'expertise comptable",
-     "Plusieurs sections distinguant notamment les experts-comptables personnes physiques, les sociétés d'expertise comptable, les sociétés de participations d'expertise comptable, les succursales, les AGC et leurs salariés autorisés (art. 83 ter et 83 quater), les sociétés pluri-professionnelles d'exercice, ainsi que les listes annexes (stagiaires, experts-comptables en entreprise, honoraires)",
+     "Trois sections (experts-comptables personnes physiques, sociétés d'expertise comptable, sociétés de participations d'expertise comptable), suivies de onze listes (stagiaires, honoraires, salariés d'AGC, AGC, succursales, SPE, SPFPL, experts-comptables en entreprise…)",
      "Trois sections : experts-comptables, commissaires aux comptes et comptables agréés",
      "Une section unique, le tableau étant un simple registre alphabétique tenu par le Conseil national"
     ],
@@ -7533,17 +7550,16 @@
    },
    "qrc": {
     "expected": [
-     "Experts-comptables personnes physiques",
-     "Sociétés d'expertise comptable et sociétés de participations d'expertise comptable",
-     "Succursales d'expertise comptable",
-     "Associations de gestion et de comptabilité et leurs salariés autorisés (art. 83 ter et 83 quater)",
-     "Sociétés pluri-professionnelles d'exercice ; listes annexes : experts-comptables stagiaires, experts-comptables en entreprise, membres honoraires"
+     "Trois sections : experts-comptables personnes physiques ; sociétés d'expertise comptable ; sociétés de participations d'expertise comptable",
+     "Suivies de onze listes : stagiaires ; honoraires ; salariés d'AGC autorisés (art. 83 ter et 83 quater) ; libre prestation de services (art. 26-1) ; accès partiel (art. 26-0)",
+     "Listes (suite) : AGC ; succursales ; sociétés pluri-professionnelles d'exercice ; SPFPL ; experts-comptables en entreprise"
     ],
-    "model_answer": "Le tableau, dressé par chaque conseil régional, est divisé en sections correspondant aux catégories de personnes admises à exercer tout ou partie de la profession : experts-comptables personnes physiques, sociétés d'expertise comptable (et sociétés de participations), succursales, associations de gestion et de comptabilité, salariés autorisés des AGC (art. 83 ter et 83 quater), sociétés pluri-professionnelles d'exercice. S'y ajoutent les inscriptions à la suite du tableau (experts-comptables stagiaires, experts-comptables en entreprise, membres honoraires). Le nombre exact de sections résulte du décret de 2012."
+    "model_answer": "Le tableau comporte trois sections : les experts-comptables personnes physiques, les sociétés d'expertise comptable et les sociétés de participations d'expertise comptable. Elles sont suivies de onze listes : stagiaires, honoraires, salariés d'AGC autorisés, professionnels en libre prestation ou en accès partiel, AGC, succursales, SPE, SPFPL et experts-comptables en entreprise."
    },
-   "explanation": "L'ordonnance (art. 40) prévoit que le conseil régional dresse le tableau des personnes physiques et morales et des succursales admises à exercer ; le décret de 2012 en fixe la structure par sections. Les stagiaires sont inscrits « à la suite » du tableau et ne sont pas membres de l'Ordre, de même que les AGC, succursales, SPE et experts-comptables en entreprise. Le détail et le nombre des sections doivent être vérifiés dans le décret.",
-   "reference": "Ord. 45-2138 art. 7, 7 ter, 7 quinquies, 7 sexies, 13, 40, 41 et 83 quinquies ; D. 2012-432 (tableau)",
-   "confidence": "low",
+   "explanation": "La structure est fixée par l'art. 114 du décret de 2012, réécrit par le décret 2019-1193 (trois sections au lieu de huit) puis actualisé au 16 février 2025. L'inscription dans une section ou une liste permet d'exercer sur tout le territoire, sauf pour les stagiaires, honoraires, experts-comptables en entreprise et sociétés de participations ; les SPFPL inscrites n'exercent pas et ne sont pas membres de l'Ordre.",
+   "reference": "D. 2012-432 art. 114 (version en vigueur depuis le 16 février 2025) ; ord. 45-2138 art. 40",
+   "confidence": "high",
+   "update_note": "Avant le décret 2019-1193 : huit sections ; depuis : trois sections suivies de onze listes (art. 114, mis à jour au 16 février 2025).",
    "session": "2023-11",
    "origFormat": "qrc"
   },
@@ -7788,7 +7804,7 @@
     "model_answer": "Les contrôles d'activité comprennent des contrôles périodiques (au moins tous les six ans, ramenés à trois ans pour les CAC d'entités d'intérêt public), des contrôles occasionnels ou ciblés à la suite d'un signalement, des contrôles thématiques et des contrôles de suivi des recommandations. Ils sont réalisés par les contrôleurs de la Haute autorité de l'audit, ou par délégation à la CNCC pour les CAC sans mandat EIP, le cas échéant avec le concours de l'AMF ou de l'ACPR."
    },
    "explanation": "Le cadre et les orientations des contrôles sont définis par la H2A (C. com. L.820-1 I 5°), leur périodicité par la partie réglementaire (R.820-49) et leur contenu par R.820-45 (missions sélectionnées, système de contrôle qualité interne, autres missions et prestations). Les quatre modalités citées reprennent la typologie usuelle de l'autorité de supervision mais ne figurent pas sous cette forme dans le code : à vérifier. Le contrôle de qualité de l'Ordre (structurel/technique) relève d'une logique différente.",
-   "reference": "C. com. art. L.820-1, L.820-14, R.820-45 à R.820-49 ; règlement UE 537/2014 art. 26 ; conventions de délégation des contrôles non-EIP à la CNCC (arrêtés d'homologation des 25 avril 2017, 19 mai 2023 et 6 juillet 2026)",
+   "reference": "C. com. L.820-1 I 5° et II, L.820-14, R.820-45 à R.820-49 ; règlement UE 537/2014 art. 26 ; conventions de délégation des contrôles non-EIP à la CNCC (arrêtés d'homologation des 19 mai 2023 et 2 juillet 2026)",
    "confidence": "low",
    "update_note": "H3C → H2A au 1er janvier 2024 ; périodicité et contenu désormais aux articles R.820-45 à R.820-49 (ex R.821-26 et s.). Relecture : le terme « délégation » est exact pour les contrôles non-EIP (convention de délégation H3C-CNCC homologuée en 2017 et 2023, reconduite par la H2A en 2026) ; la mention d'un simple « concours » de la CNCC (2020-11-CAC-19) est à aligner. La typologie des quatre modalités reste à vérifier.",
    "session": "2023-11",
@@ -7988,7 +8004,7 @@
    "question": "Quelles sont les conditions pour être candidat aux fonctions de contrôleur qualité de l'ordre des experts-comptables ?",
    "qcm": {
     "choices": [
-     "Être expert-comptable inscrit au tableau et en exercice, à jour de ses obligations (cotisations, assurance, formation), n'avoir pas fait l'objet de sanction disciplinaire, avoir soi-même été soumis à un contrôle de qualité satisfaisant et suivre la formation de contrôleur ; désignation par le conseil régional",
+     "Être membre de l'Ordre inscrit au tableau depuis au moins cinq ans, n'avoir fait l'objet d'aucune sanction disciplinaire, avoir eu un contrôle de qualité n'ayant pas entraîné de nouveau contrôle à un an et suivre le stage de formation de l'Ordre ; désignation par le conseil régional pour trois ans renouvelables",
      "Être magistrat de la cour d'appel désigné par son premier président, comme pour les chambres de discipline",
      "Être salarié du Conseil national de l'Ordre, titulaire du DSCG et avoir cinq ans d'expérience en cabinet",
      "Être commissaire aux comptes inscrit sur la liste de la H2A depuis au moins dix ans"
@@ -7997,16 +8013,18 @@
    },
    "qrc": {
     "expected": [
-     "Être expert-comptable inscrit au tableau et en exercice effectif",
-     "Être en règle avec ses obligations ordinales (cotisations, assurance, formation continue) et n'avoir pas été sanctionné disciplinairement",
-     "Avoir soi-même fait l'objet d'un contrôle de qualité jugé satisfaisant et s'engager à suivre la formation des contrôleurs",
-     "Candidature volontaire, désignation par le conseil régional ; indépendance à l'égard des contrôlés et secret professionnel"
+     "Candidature auprès du conseil régional (commission nationale d'inscription pour les contrôles d'AGC) ; désignation pour trois ans renouvelables (RI art. 411 et 412)",
+     "Aucune sanction disciplinaire (art. 413)",
+     "Avoir bénéficié d'un contrôle de qualité n'ayant pas entraîné un nouveau contrôle sur place à un an ; se soumettre à un contrôle de qualité avant la désignation (art. 413 et 417)",
+     "Avoir suivi le stage de formation organisé par l'Ordre ; être inscrit au tableau comme membre depuis au moins cinq ans (art. 413)",
+     "Engagements : au moins 50 heures de contrôle par an (200 au plus), indépendance, secret (art. 415 à 417)"
     ],
-    "model_answer": "Le contrôleur de qualité est un expert-comptable inscrit au tableau et en exercice, en règle avec ses obligations ordinales, n'ayant pas fait l'objet de sanction disciplinaire, ayant lui-même subi un contrôle de qualité satisfaisant et s'engageant à suivre la formation spécifique des contrôleurs. Il est désigné par le conseil régional sur candidature volontaire, doit être indépendant des professionnels contrôlés et est tenu au secret professionnel."
+    "model_answer": "Le candidat, membre de l'Ordre inscrit au tableau depuis au moins cinq ans, ne doit avoir fait l'objet d'aucune sanction disciplinaire, doit avoir bénéficié d'un contrôle de qualité n'ayant pas entraîné de nouveau contrôle sur place à un an et avoir suivi le stage de formation de l'Ordre. Il fait acte de candidature auprès du conseil régional, qui le désigne pour trois ans renouvelables ; il s'engage à consacrer au moins 50 heures par an aux contrôles, à rester indépendant et à respecter le secret."
    },
-   "explanation": "Le contrôle de qualité est un contrôle par les pairs organisé par le règlement intérieur de l'Ordre sous l'autorité des conseils régionaux et de la commission nationale du contrôle de qualité : les contrôleurs sont des confrères formés et eux-mêmes contrôlés. À la différence du contrôle d'activité des CAC, réalisé par des contrôleurs de la H2A (ou de la CNCC par délégation) désignés de façon à éviter tout conflit d'intérêts (C. com. L.820-16). Les conditions exactes figurent dans le règlement du contrôle de qualité et doivent être vérifiées.",
-   "reference": "D. 2012-432 (contrôle de qualité) ; règlement intérieur de l'Ordre (titre consacré au contrôle de qualité) ; C. com. L.820-16 pour le parallèle CAC",
-   "confidence": "low",
+   "explanation": "Le contrôle de qualité est un contrôle par les pairs organisé par le titre IV du règlement intérieur : les contrôleurs sont des confrères formés et eux-mêmes contrôlés ; des directeurs et cadres d'AGC peuvent compléter le collège pour les contrôles structurels. À la différence du contrôle d'activité des CAC, réalisé par des contrôleurs de la H2A (ou de la CNCC par délégation) désignés de façon à éviter tout conflit d'intérêts (C. com. L.820-16, R.820-44).",
+   "reference": "Règlement intérieur de l'Ordre (arrêté du 6 mars 2024), art. 411 à 417 ; C. com. L.820-16, R.820-44",
+   "confidence": "high",
+   "update_note": "Conditions vérifiées dans le RI agréé par arrêté du 6 mars 2024 (art. 413 : ancienneté de cinq ans, absence de sanction, contrôle de qualité sans nouveau contrôle à un an, stage de formation).",
    "session": "2024-05",
    "origFormat": "qrc"
   },
@@ -8910,16 +8928,15 @@
    "qrc": {
     "expected": [
      "L'article 163 ne vise que le remplacement d'un confrère",
-     "Pas de lettre en cas de première mission (création, client jamais suivi)",
-     "Pas de lettre pour une mission ponctuelle ou spécifique ne se substituant pas à celle du confrère qui reste en place",
-     "Missions dont la durée est légalement limitée / missions légales ponctuelles (à vérifier)"
+     "Pas de lettre en cas de première mission (création, client jamais suivi par un professionnel)",
+     "Pas de lettre pour une mission ponctuelle ou distincte qui ne se substitue pas à celle du confrère resté en place"
     ],
-    "model_answer": "La lettre n'est obligatoire qu'en cas de remplacement d'un confrère. Elle n'est donc pas requise lorsqu'il n'existe pas de prédécesseur (création d'entreprise, client sans expert-comptable) ou lorsque la mission confiée est ponctuelle ou distincte et ne se substitue pas à celle du confrère qui demeure en fonction (par exemple une mission légale à durée limitée)."
+    "model_answer": "La lettre n'est obligatoire qu'en cas de remplacement d'un confrère. Elle n'est donc pas requise lorsqu'il n'existe pas de prédécesseur (création d'entreprise, client sans expert-comptable) ou lorsque la mission confiée est ponctuelle ou distincte et ne se substitue pas à celle du confrère qui demeure en fonction."
    },
    "explanation": "L'article 163 impose, en cas de remplacement, d'informer le prédécesseur avant d'accepter, de vérifier que le changement n'a pas pour but d'éluder la loi, de s'enquérir du paiement de ses honoraires et, à défaut, d'en référer au président du conseil régional. Les exceptions résultent du champ du texte (remplacement) et de la pratique ordinale ; leur liste exacte n'est pas fixée par le décret. Le paiement des honoraires du prédécesseur n'est pas une exception mais une diligence.",
    "reference": "D. 2012-432 art. 163 ; doctrine ordinale (CNOEC, conseils régionaux)",
-   "confidence": "low",
-   "update_note": "Relecture : l'art. 163 (texte vérifié, décret 2012-432 à jour) ne prévoit aucune exception expresse ; la réponse, déduite du champ du texte (remplacement d'un confrère), est plausible mais l'item « missions légales ponctuelles » n'a pu être rattaché à aucune source et devrait être vérifié.",
+   "confidence": "medium",
+   "update_note": "Relecture : l'art. 163 (texte vérifié, inchangé depuis 2012) ne prévoit aucune exception expresse ; réponse déduite de son champ (« appelées […] à remplacer un confrère »). L'élément « missions légales ponctuelles », sans fondement textuel, est retiré.",
    "session": "2024-11",
    "origFormat": "qrc"
   },
@@ -9078,7 +9095,7 @@
    "qcm": {
     "choices": [
      "La cour d'appel de Paris",
-     "La juridiction administrative, soit le Conseil d'État s'agissant d'une décision de la H2A",
+     "La juridiction administrative, en principe le tribunal administratif du lieu du siège de la H2A, faute de texte donnant compétence directe au Conseil d'État",
      "La chambre nationale de discipline",
      "Le tribunal judiciaire du siège de la CRCC"
     ],
@@ -9087,14 +9104,15 @@
    "qrc": {
     "expected": [
      "Juridiction administrative (R.821-68)",
-     "Conseil d'État, compétent en premier et dernier ressort pour les décisions de la H2A (autorité publique indépendante)"
+     "À défaut de texte spécial : tribunal administratif dans le ressort duquel siège l'autorité qui a pris la décision (CJA R.312-1)",
+     "La H2A ne figure pas parmi les autorités dont les décisions relèvent en premier et dernier ressort du Conseil d'État (CJA R.311-1 4°)"
     ],
-    "model_answer": "Les décisions d'inscription sont susceptibles de recours devant la juridiction administrative ; la H2A étant une autorité publique indépendante à compétence nationale, le recours est porté devant le Conseil d'État."
+    "model_answer": "Les décisions rendues en matière d'inscription sont susceptibles de recours devant la juridiction administrative. Aucun texte ne donnant compétence en premier ressort au Conseil d'État pour ces décisions de la H2A, le recours relève du tribunal administratif territorialement compétent, celui du siège de l'autorité."
    },
-   "explanation": "Le code de commerce renvoie à la juridiction administrative (R.821-68) ; la compétence du Conseil d'État en premier et dernier ressort résulte du code de justice administrative pour les décisions des autorités de régulation à compétence nationale (le H3C y figurait). Piège : l'ancien système de commissions régionales d'inscription avec recours devant le H3C n'existe plus. Pour les EC, le refus d'inscription au tableau est contesté devant le comité national du tableau.",
-   "reference": "C. com. L.821-13, R.821-68 (ex-R.822-19) ; CJA R.311-1",
+   "explanation": "Le code de commerce renvoie à la juridiction administrative (R.821-68). Le code de justice administrative réserve au Conseil d'État les décisions de régulateurs énumérés (AMF, ACPR, CNIL…), liste qui ne comprend pas la H2A ; le Conseil d'État connaît en revanche des recours contre les sanctions de la commission des sanctions (L.821-85), et le tribunal administratif des décisions du bureau sur les dérogations au barème (D.821-191). Pour les EC, le refus d'inscription au tableau est déféré au comité national du tableau (ord. art. 42).",
+   "reference": "C. com. L.821-13, R.821-68 (ex R.822-19) ; CJA R.311-1 et R.312-1 ; ord. 45-2138 art. 42",
    "confidence": "medium",
-   "update_note": "H3C remplacé par la H2A au 1er janvier 2024 ; inscription centralisée par la H2A.",
+   "update_note": "H3C remplacé par la H2A au 1er janvier 2024 ; inscription centralisée par la H2A. Compétence du Conseil d'État non retenue : la H2A ne figure pas à l'art. R.311-1 4° CJA (version du 7 novembre 2025).",
    "session": "2024-11",
    "origFormat": "qrc"
   },
@@ -9127,8 +9145,8 @@
     "model_answer": "Un organisme de formation de droit privé doit désigner un commissaire aux comptes titulaire et un suppléant lorsqu'il dépasse deux des trois seuils suivants : 3 salariés, 153 000 € de chiffre d'affaires hors taxes ou de ressources, 230 000 € de total du bilan."
    },
    "explanation": "Seuils spécifiques du code du travail, non modifiés par le décret 2024-152 (qui a relevé les seuils des sociétés commerciales à 5 M€ / 10 M€ / 50). Ne pas confondre avec le seuil de 153 000 € de subventions des associations ou de 230 000 € de ressources des syndicats. Le suppléant reste exigé par ces textes sectoriels.",
-   "reference": "C. trav. L.6352-8 et R.6352-19",
-   "confidence": "medium",
+   "reference": "C. trav. L.6352-8 et R.6352-19 (rédaction du décret 2023-1394)",
+   "confidence": "high",
    "session": "2024-11",
    "origFormat": "qrc"
   },
@@ -9194,9 +9212,9 @@
     "model_answer": "Non. Même dans une société dépourvue de commissaire aux comptes, la suppression du DPS impose de désigner un commissaire aux comptes à cet effet, chargé d'un rapport sur les conditions de fixation du prix d'émission. Cette intervention, destinée à protéger les actionnaires, est d'ordre public et les actionnaires ne peuvent y renoncer, même à l'unanimité."
    },
    "explanation": "Depuis la loi Pacte, l'article L.225-135 ne vise le rapport du CAC que « s'il en existe », mais l'intervention d'un CAC désigné ad hoc sur le prix d'émission demeure (L.225-136, L.225-138, R.225-114 s.). Point à vérifier : l'étendue exacte de la mission ad hoc selon le type d'émission et la forme sociale (SAS).",
-   "reference": "C. com. L.225-135, L.225-136, L.225-138, R.225-114 s.",
-   "confidence": "low",
-   "update_note": "Relecture : réponse « non » maintenue, mais à nuancer : si chaque actionnaire renonce individuellement à son DPS (L.225-132), il n'y a pas suppression du DPS et donc pas d'intervention du CAC ; le jury a pu attendre cette distinction.",
+   "reference": "C. com. L.225-135, L.225-136 1°, L.225-138 II, R.225-114, R.225-115 ; L.227-1 (SAS)",
+   "confidence": "medium",
+   "update_note": "Relecture : réponse « non » maintenue, à nuancer : si chaque actionnaire renonce individuellement à son DPS (L.225-132), il n'y a pas suppression du DPS et donc pas d'intervention du CAC. L.225-136 1° et L.225-138 II imposent le rapport d'un CAC « désigné à cet effet » lorsqu'il n'en a pas été désigné, sans faculté de renonciation, à la différence du commissaire aux apports en SAS (L.227-1).",
    "session": "2024-11",
    "origFormat": "qrc"
   },
@@ -9824,8 +9842,9 @@
     "model_answer": "Non. En évaluant la société qu'il certifie pour le compte de l'acquéreur, le CAC se placerait en conflit d'intérêts et compromettrait son impartialité et son indépendance. Il exploiterait au profit d'un tiers des informations couvertes par son secret professionnel, dont l'entité ne peut le délier. Aucune mesure de sauvegarde ne permet de remédier à cette situation."
    },
    "explanation": "Le code de déontologie (art. 5 et 20) impose d'identifier les risques liés aux opérations de fusion ou d'acquisition intéressant l'entité certifiée. Même hors EIP (où l'évaluation fait partie des services interdits), le conflit d'intérêts et le secret (L.821-35) font obstacle. Ne pas confondre avec le commissariat aux apports ou à la fusion, missions distinctes soumises à leurs propres incompatibilités.",
-   "reference": "C. com. L.821-31, L.821-35 ; code de déontologie CAC art. 4, 5, 9, 20",
+   "reference": "C. com. L.821-28 II, L.821-31, L.821-35 ; règl. (UE) 537/2014 art. 5 § 1 f ; code de déontologie CAC art. 4, 5, 9 et 20",
    "confidence": "medium",
+   "update_note": "Pour une EIP, les services d'évaluation figurent parmi les services interdits (règl. 537/2014 art. 5 § 1 f ; L.821-28 II).",
    "session": "2025-05",
    "origFormat": "qrc"
   },
@@ -11355,7 +11374,7 @@
     "choices": [
      "Oui, sans restriction, la profession comprenant désormais la fourniture de prestations",
      "Oui, si la société n'est pas une EIP et si le comité d'audit l'autorise",
-     "Non : la paie est un service interdit pour une EIP, et pour une non-EIP l'établissement de la paie de l'entité certifiée crée un risque d'autorévision et d'immixtion dans la gestion qu'aucune sauvegarde ne permet de réduire",
+     "Non : la paie est un service interdit au CAC d'une EIP (règl. 537/2014 art. 5 § 1 d ; L.821-28 II) et, pour une autre entité, établir la paie qu'il devra auditer crée un risque d'autorévision qui interdit la mission faute de sauvegarde appropriée (L.821-28 IV)",
      "Non, sauf s'il est également inscrit à l'Ordre des experts-comptables"
     ],
     "answer": 2
@@ -11363,16 +11382,16 @@
    "qrc": {
     "expected": [
      "Non",
-     "L.821-3 : la profession comprend les missions et la fourniture de prestations, dans le respect des règles d'indépendance",
-     "EIP : services de paie interdits (règl. UE 537/2014 art. 5 ; L.821-28)",
-     "Non-EIP : risque d'autorévision (paie = éléments des comptes) et d'immixtion ; interdiction lorsque les sauvegardes sont insuffisantes (L.821-28 IV)"
+     "L.821-3 : la profession comprend les missions et la fourniture de prestations, sous réserve des règles d'indépendance",
+     "EIP : services de paie interdits, y compris au réseau (règl. UE 537/2014 art. 5 § 1 d ; L.821-28 II)",
+     "Non-EIP : risque d'autorévision (la paie alimente les comptes certifiés) ; interdiction d'accepter ou de poursuivre la mission si aucune sauvegarde appropriée ne peut être mise en œuvre (L.821-28 IV ; code art. 5 II et 19)"
     ],
-    "model_answer": "Non. Si la profession de CAC comprend désormais la fourniture de prestations, celles-ci restent soumises aux règles d'indépendance. Pour une EIP, la paie figure parmi les services interdits ; pour une non-EIP, établir les bulletins de paie de l'entité certifiée conduirait le CAC à auditer ses propres travaux (autorévision) et à s'immiscer dans la gestion, situation qu'aucune mesure de sauvegarde ne permet de traiter."
+    "model_answer": "Non. Si la profession de CAC comprend la fourniture de prestations (L.821-3), celles-ci restent soumises aux règles d'indépendance. Pour une EIP, la paie figure parmi les services interdits par le règlement européen. Pour une autre entité, produire les bulletins de paie conduirait le CAC à auditer ses propres travaux : ce risque d'autorévision lui interdit d'accepter ou de poursuivre la mission de certification s'il ne peut le ramener à un niveau acceptable par des mesures de sauvegarde, ce qui paraît difficilement envisageable pour une prestation portant sur des éléments des comptes."
    },
    "explanation": "Depuis 2024, L.821-3 définit la profession comme l'exercice de missions et la fourniture de prestations. Pour la non-EIP, L.821-28 IV interdit d'accepter ou de poursuivre une mission en cas de risque d'autorévision sans sauvegarde appropriée. Les « modifications » visées par le sujet sont celles de l'ordonnance 2023-1142 (L.821-3 en vigueur depuis le 1er janvier 2024, reprenant les anciens L.820-1-1 et L.820-2).",
-   "reference": "C. com. L.821-3, L.821-28 ; règl. (UE) 537/2014 art. 5 ; code de déontologie CAC art. 5 et 19",
-   "confidence": "low",
-   "update_note": "Relecture : aucune modification de L.821-3 postérieure à l'ordonnance 2023-1142 n'a été trouvée (version en vigueur depuis le 1er janvier 2024). Réponse « non » maintenue, mais l'affirmation qu'« aucune sauvegarde » n'est possible pour une non-EIP est discutable : hors EIP, il n'existe plus de liste de services interdits (L.821-28 IV : approche risques/sauvegardes) et la paie (art. 5 d du règlement 537/2014) ne figure pas parmi les services réputés non sauvegardables (points b, c et e).",
+   "reference": "C. com. L.821-2, L.821-3, L.821-28 II et IV ; règl. (UE) 537/2014 art. 5 § 1 d ; code de déontologie CAC art. 5 et 19",
+   "confidence": "medium",
+   "update_note": "L.821-3 en vigueur depuis le 1er janvier 2024 (aucune modification ultérieure). Formulation nuancée : hors EIP, la loi raisonne en risques et sauvegardes (L.821-28 IV) et ne qualifie pas expressément la paie de service non sauvegardable.",
    "session": "2026-05",
    "origFormat": "qrc"
   },
