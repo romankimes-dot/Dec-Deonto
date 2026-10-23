@@ -185,7 +185,7 @@
 ### Les 3 natures de missions et les normes
 | Nature | Mission | Norme | Assurance | Conclusion |
 |---|---|---|---|---|
-| **Assurance sur comptes complets historiques** | **Audit** | NP 2100 | **Raisonnable** | **Opinion positive** : régularité, sincérité, image fidèle |
+| **Assurance sur comptes complets historiques** | **Audit** | **Normes ISA** (pas de « NP 2100 ») ; **NP 2910** pour une petite entité | **Raisonnable** | **Opinion positive** : conformité des états financiers au référentiel comptable (image fidèle) |
 | | **Examen limité** | **NP 2400** | **Modérée** | **Conclusion négative** : « nous n'avons pas relevé d'anomalies significatives » |
 | | **Présentation** | **NP 2300** | **Modérée** | **Attestation** sur la **cohérence et la vraisemblance** |
 | **Autres missions d'assurance** | **Attestations particulières** | **NP 3100** | **Raisonnable ou modérée** | Attestation |
@@ -214,7 +214,7 @@
 4. Défavorable.
 5. Impossibilité de formuler une conclusion.
 
-### Audit (NP 2100) : opinions
+### Audit (normes ISA ; NP 2910 pour une petite entité) : opinions
 - Sans réserve, avec réserve, défavorable, impossibilité.
 - Formulation **positive**.
 - L'audit d'une **petite entité** suit les mêmes règles : **assurance raisonnable** et opinion positive.
@@ -279,7 +279,7 @@
 - **Honoraires** : ceux de l'EC sont **libres, sans barème** ; ceux du CAC en certification suivent un **barème d'heures** (D.821-188), mais le **taux horaire est libre**.
 - **Révélation des faits délictueux** : obligation pour le **CAC seul** ; l'EC n'a qu'un devoir de conseil et peut aller jusqu'au refus ou à l'interruption.
 - **Devoir de conseil** : il est propre à l'EC ; le CAC est tenu à la **non-immixtion**.
-- **Missions d'assurance** : l'audit contractuel de l'EC (NP 2100) donne une assurance **raisonnable**, comme la certification du CAC, mais ce n'est **pas** une mission légale de certification.
+- **Missions d'assurance** : l'audit contractuel de l'EC (normes ISA) donne une assurance **raisonnable**, comme la certification du CAC, mais ce n'est **pas** une mission légale de certification.
 - **Activités commerciales accessoires** : elles sont ouvertes à l'**EC** ; un CAC qui n'est pas EC n'y a pas accès.
 
 ## À vérifier
@@ -287,6 +287,6 @@
 - **Dirigeants des sociétés d'EC** : faut-il que tous soient EC, ou au moins un ? Cela détermine la réponse à l'annale 2024-05 Q8.
 - **Signatures de la lettre de mission en société** : faut-il la signature sociale **et** celle de l'EC responsable, ou seulement celle de l'EC ? Annales 2018-11 Q7 et 2022-11 Q1.
 - **Comptes de campagne** : catégorie exacte dans le cadre de référence (autre prestation ou mission sans assurance). Annales 2024-11 Q9 et 2026-05 Q8.
-- **Numéro de la norme d'audit contractuel** (NP 2100 ou NP 2200) et exclusion des comptes consolidés en présentation.
+- **Présentation** : exclusion des comptes consolidés (le référentiel exclut seulement les comptes consolidés).
 - **Honoraires au succès** : quelle mission de la liste de l'annale 2025-11 Q5 est interdite (recouvrement de créances ?) et sur quel fondement.
 - **Formation continue EC** : quantum exact (120 h / 3 ans, 20 h par an ou 40 h par an en moyenne) et texte (norme formation du CNOEC).
