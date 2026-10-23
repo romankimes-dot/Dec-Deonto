@@ -7,8 +7,12 @@ export const defaultState = () => ({
   cards: {},          // id -> carte SRS
   attempts: [],       // { id, ok, mode, t }  (200 derniers)
   examSeen: {},       // id -> timestamp
-  exams: [],          // { t, mode, note, byProf, byTheme, ids }
+  exams: [],          // { t, mode, note, byProf, byTheme, ids, durationMs }
   lastSession: null,
+  stats: null,        // statistiques agrégées de gamification (recalculées si absentes)
+  badges: {},         // id -> date de déblocage
+  grades: {},         // n° de grade -> date
+  seenAnecdotes: {},  // anecdotes déjà montrées en carte-souvenir
 });
 
 export function load() {

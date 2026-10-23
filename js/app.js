@@ -2,6 +2,8 @@ import { newCard, review, buildQueue, mastery, DAY } from './srs.js';
 import * as store from './store.js';
 import { loadBank, loadFichesIndex, loadFiche, renderMarkdown, THEMES } from './bank.js';
 import { startExam, remainingMs, finishExam } from './exam.js';
+import * as G from './gamify.js';
+import { renderScene, PROP_NAMES } from './scene.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -22,9 +24,92 @@ const state = {
   exam: null,     // examen blanc en cours
   examResult: null,
   timer: null,
+  gctx: null, catalog: [], badgeById: {},
+  celebrations: [], celebrating: false,
+  careerTab: 'carriere', collFamily: 'couverture',
 };
 
 function persist() { if (!store.save(state.progress)) toast('Stockage local indisponible : progression non sauvegardée'); }
+
+// ---------- Gamification ----------
+// Toute réponse passe par ici : historique, statistiques, badges.
+function answer(id, ok, mode, { defer = false, t = Date.now() } = {}) {
+  const att = { id, ok: !!ok, mode, t };
+  if (typeof navigator !== 'undefined' && navigator.onLine === false) att.off = 1;
+  store.pushAttempt(state.progress, att);
+  G.applyAnswer(state.progress.stats, att, state.gctx);
+  if (!defer) checkBadges();
+  updateStreakBadge();
+}
+function checkBadges() {
+  const fresh = G.evaluate(state.progress, state.catalog, state.gctx, Date.now());
+  persist();
+  for (const b of fresh.badges) state.celebrations.push({ type: b.family === 'anecdotes' ? 'anecdote' : 'badge', b });
+  for (const g of fresh.grades) state.celebrations.push({ type: 'grade', g });
+  if (state.celebrations.length) setTimeout(nextCelebration, 350);
+}
+function updateStreakBadge() {
+  const el = $('#streak'); if (!el || !state.progress.stats) return;
+  const s = state.progress.stats.streak;
+  el.innerHTML = `<span title="Série en cours">🔥 ${s.cur}</span><span class="muted" title="Record personnel">record ${s.best}</span>`;
+}
+function badgeIcon(b, locked = false) {
+  const col = G.RARITIES[b.rarity].color;
+  const fam = G.FAMILIES.find((f) => f.id === b.family);
+  const glyph = locked && b.hidden ? '?' : fam.icon;
+  return `<svg class="medal ${locked ? 'locked' : ''} ${b.gold ? 'gold' : ''}" viewBox="0 0 40 40" aria-hidden="true">
+    <path d="M12 2 h6 l2 10 h-6z M22 2 h6 l-2 10 h-6z" fill="${col}" opacity=".7"/>
+    <circle cx="20" cy="24" r="14" fill="${b.gold ? '#fde68a' : '#fff'}" stroke="${col}" stroke-width="3"/>
+    <text x="20" y="29" font-size="13" text-anchor="middle">${glyph}</text></svg>`;
+}
+function sceneFor(gradeN, opts = {}) {
+  const pr = state.progress; const st = pr.stats;
+  const seenProps = new Set(); const badgeProps = [];
+  for (const b of state.catalog) {
+    if (!b.prop || !pr.badges[b.id] || seenProps.has(b.prop) || !PROP_NAMES.has(b.prop)) continue;
+    seenProps.add(b.prop); badgeProps.push([b.id, b.prop, b.name]);
+  }
+  const seenCount = Object.keys(st.q).length;
+  const grade = G.GRADES[gradeN - 1];
+  const h = new Date().getHours();
+  return renderScene(gradeN, {
+    decor: grade.decor, badgeProps, bestStreak: st.streak.best,
+    coverage: seenCount / Math.max(1, state.gctx.all.length),
+    stickers: state.catalog.filter((b) => b.sub === 'tags' && pr.badges[b.id]).length,
+    glow: !!pr.badges['mast-total'], night: !!pr.badges['hid-couche-tard'] && (h >= 21 || h < 6),
+    ...opts,
+  });
+}
+function nextCelebration() {
+  if (state.celebrating) return;
+  const c = state.celebrations.shift(); if (!c) return;
+  state.celebrating = true;
+  const box = $('#celebrate');
+  const close = () => { box.classList.remove('show'); state.celebrating = false; setTimeout(nextCelebration, 250); };
+  let html = '';
+  if (c.type === 'grade') {
+    html = `<div class="cel-grade"><div class="cel-scene">${sceneFor(c.g.n)}</div><div class="cel-ribbon">Nouveau grade</div><h2>${esc(c.g.name)}</h2><p class="muted">Votre bureau a changé. Touchez pour continuer.</p></div>`;
+    try { navigator.vibrate?.([60, 40, 120]); } catch { /* ignore */ }
+  } else if (c.type === 'anecdote') {
+    const d = new Date(state.progress.badges[c.b.id] || Date.now()).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+    html = `<div class="memory flip"><div class="memory-date">${d}</div><div class="memory-title">📸 ${esc(c.b.name)}</div><p class="memory-text">« ${esc(c.b.desc)} »</p><div class="muted">Souvenir débloqué · ${G.RARITIES[c.b.rarity].label}</div></div>`;
+    try { navigator.vibrate?.(40); } catch { /* ignore */ }
+  } else {
+    const col = G.RARITIES[c.b.rarity].color;
+    html = `<div class="cel-badge" style="--halo:${col}"><div class="cel-medal">${badgeIcon(c.b)}</div><div class="cel-rarity" style="color:${col}">${G.RARITIES[c.b.rarity].label}</div><h2>${esc(c.b.name)}</h2><p>${esc(c.b.desc)}</p>${c.b.prop && PROP_NAMES.has(c.b.prop) ? '<p class="muted">Un nouvel objet est apparu dans votre bureau.</p>' : ''}</div>`;
+    try { navigator.vibrate?.(30); } catch { /* ignore */ }
+  }
+  box.innerHTML = html;
+  box.classList.add('show');
+  box.onclick = close;
+  clearTimeout(nextCelebration._t);
+  nextCelebration._t = setTimeout(() => { if (box.classList.contains('show')) close(); }, c.type === 'grade' ? 6000 : 3800);
+}
+function trainOn(ids, title) {
+  const qs = ids.map((id) => state.byId[id]).filter(Boolean);
+  state.train = { prof: 'all', theme: 'all', tag: 'all', mode: 'qcm', queue: qs, idx: 0, ok: 0, n: 0, title };
+  go('train');
+}
 function toast(msg) {
   const t = $('#toast'); t.textContent = msg; t.classList.add('show');
   clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 2200);
@@ -104,34 +189,39 @@ const views = {};
 
 views.home = () => {
   const qs = state.bank.questions;
-  const { due, fresh } = buildQueue(qs, state.progress.cards, { newLimit: state.progress.settings.newPerDay });
-  const total = qs.length;
-  const seen = Object.keys(state.progress.cards).length;
-  const acquired = qs.filter((q) => mastery(state.progress.cards[q.id]) === 3).length;
-  const lastExam = state.progress.exams[state.progress.exams.length - 1];
+  const pr = state.progress;
+  const { due, fresh } = buildQueue(qs, pr.cards, { newLimit: pr.settings.newPerDay });
+  const lastExam = pr.exams[pr.exams.length - 1];
   const d = daysToExam();
+  const grade = G.currentGrade(pr);
+  const next = G.GRADES[grade.n];
+  const has = (id) => !!pr.badges[id];
+  const conds = next ? G.gradeConditions(next.n, has, pr.stats, state.gctx) : [];
+  const nb = G.nextBadges(state.catalog, pr.stats, pr.badges, 3);
+  const unlocked = Object.keys(pr.badges).length;
   return `
-  <div class="card center"><div class="muted">Épreuve n°1 · mardi 10 novembre 2026 · 10h30</div>
-    <div class="big">${d > 0 ? `J-${d}` : d === 0 ? 'Aujourd’hui' : 'Passée'}</div>
-    <div class="muted">1 h · 20 questions (10 EC + 10 CAC) · sans document · < 6/20 éliminatoire</div></div>
-  <div class="grid2">
-    <div class="stat"><div class="n">${due.length}</div><div class="l">cartes à revoir</div></div>
-    <div class="stat"><div class="n">${fresh.length}</div><div class="l">nouvelles proposées</div></div>
-    <div class="stat"><div class="n">${seen}/${total}</div><div class="l">questions vues</div></div>
-    <div class="stat"><div class="n">${acquired}</div><div class="l">acquises (≥ 14 j)</div></div>
+  <div class="card hero">
+    <div class="row" style="justify-content:space-between;align-items:flex-end">
+      <div><div class="muted">Épreuve n°1 · mardi 10 novembre · 10 h 30</div><div class="big">${d > 0 ? `J-${d}` : d === 0 ? 'Jour J' : 'Passée'}</div></div>
+      <div class="muted hero-meta"><span>${Object.keys(pr.stats.q).length}/${qs.length} vues</span><span>${unlocked} badges</span></div>
+    </div>
+    <button class="btn primary big-btn" data-go="review">▶ Session du jour <span class="pill">${due.length + fresh.length}</span></button>
+    <div class="btnrow" style="margin-top:10px"><button class="btn" data-go="exam">⏱ Examen blanc</button><button class="btn" data-go="train">🎯 Ciblé</button></div>
   </div>
-  <div class="card">
-    <button class="btn primary" data-go="review">▶ Session du jour (${due.length + fresh.length} cartes)</button>
-    <div style="height:10px"></div>
-    <div class="btnrow"><button class="btn" data-go="exam">⏱ Examen blanc</button><button class="btn" data-go="train">🎯 Entraînement ciblé</button></div>
+  <div class="card career-card" data-go="carriere">
+    <div class="scene-thumb">${sceneFor(grade.n)}</div>
+    <div class="row" style="justify-content:space-between;margin-top:8px"><div><div class="muted">Grade ${grade.n}/8</div><strong>${esc(grade.name)}</strong></div><span class="muted">Ma carrière ›</span></div>
+    ${next ? `<div class="muted" style="margin-top:6px">Prochain grade : <strong>${esc(next.name)}</strong></div><ul class="conds">${conds.map((c) => `<li class="${c.ok ? 'ok' : ''}">${c.ok ? '✔' : '○'} ${esc(c.label)}</li>`).join('')}</ul>` : '<div class="muted">Carrière complète. Bravo.</div>'}
   </div>
+  ${nb.length ? `<div class="card"><h2>Presque débloqués</h2>${nb.map(({ b, p }) => `<div class="nb">${badgeIcon(b)}<div style="flex:1"><div><strong>${esc(b.name)}</strong></div><div class="progress"><div style="width:${Math.round((p.cur / p.max) * 100)}%"></div></div><div class="muted">${p.cur}/${p.max} · ${esc(b.cond)}</div></div></div>`).join('')}</div>` : ''}
   ${lastExam ? `<div class="card"><h2>Dernier examen blanc</h2><div class="row"><span class="big" style="font-size:28px">${lastExam.note}/20</span><span class="muted">${lastExam.mode.toUpperCase()} · ${new Date(lastExam.t).toLocaleDateString('fr-FR')}</span></div>
     <div class="muted">EC ${pct(lastExam.byProf.EC)} · CAC ${pct(lastExam.byProf.CAC)}</div></div>` : ''}
-  <div class="card"><h2>Conseils du jury</h2><ul class="muted" style="padding-left:18px;margin:0">
+  <div class="card"><details><summary>Conseils du jury</summary><ul class="muted" style="padding-left:18px;margin:8px 0 0">
     <li>La partie CAC est systématiquement moins bien réussie : travaillez-la en priorité.</li>
     <li>Les candidats confondent les règles EC et CAC : pour chaque règle, demandez-vous « et pour l’autre profession ? ».</li>
     <li>Réponses courtes : un mot, un chiffre, une liste. 3 minutes par question.</li>
-    <li>Références d’articles et quantum des sanctions ne sont pas exigés ; les chiffres (seuils, durées, délais) le sont.</li></ul></div>`;
+    <li>Références d’articles et quantum des sanctions ne sont pas exigés ; les chiffres (seuils, durées, délais) le sont.</li></ul></details>
+    <div style="margin-top:10px"><button class="btn" data-go="stats">📈 Statistiques détaillées</button></div></div>`;
 };
 function pct(a) { return a && a.max ? Math.round((a.points / a.max) * 100) + ' %' : '–'; }
 
@@ -162,7 +252,7 @@ function mountReviewCard(q) {
     $('#grade').innerHTML = `<div class="card"><div class="muted" style="margin-bottom:8px">Comment c’était ?</div><div class="btnrow4">${GRADES.map((g) => `<button class="btn ${g.g === suggest ? 'primary' : ''}" data-g="${g.g}">${g.label}<small>${intervalLabel(card, g.g)}</small></button>`).join('')}</div></div>`;
     $('#grade').querySelectorAll('button[data-g]').forEach((b) => { b.onclick = () => gradeCurrent(q, Number(b.dataset.g), mode); });
   };
-  if (mode === 'qcm') renderQcm(q, box, (ok) => { store.pushAttempt(state.progress, { id: q.id, ok, mode, t: Date.now() }); showGrades(ok ? 2 : 0); });
+  if (mode === 'qcm') renderQcm(q, box, (ok) => { answer(q.id, ok, mode); showGrades(ok ? 2 : 0); });
   else renderQrc(q, box, () => showGrades(2));
 }
 function gradeCurrent(q, g, mode) {
@@ -170,7 +260,7 @@ function gradeCurrent(q, g, mode) {
   const prev = state.progress.cards[q.id] || newCard();
   const wasNew = !state.progress.cards[q.id];
   state.progress.cards[q.id] = review(prev, g, Date.now());
-  if (mode === 'qrc') store.pushAttempt(state.progress, { id: q.id, ok: g >= 2, mode, t: Date.now() });
+  if (mode === 'qrc') answer(q.id, g >= 2, mode);
   s.queue.shift(); s.done += 1; if (g >= 2 && wasNew) s.ok += 1;
   if (g === 0) { s.queue.push(q); s.total += 1; }
   state.progress.lastSession = Date.now();
@@ -182,18 +272,18 @@ views.train = () => {
   const t = state.train;
   if (t.queue) {
     const q = t.queue[t.idx];
-    if (!q) { const r = `<div class="card center"><h2>Série terminée</h2><p>${t.ok} / ${t.n} bonnes réponses</p><button class="btn primary" id="again">Nouvelle série</button></div>`; setTimeout(() => { $('#again').onclick = () => { t.queue = null; render(); }; }, 0); return r; }
+    if (!q) { const r = `<div class="card center"><h2>Série terminée</h2><p>${t.ok} / ${t.n} bonnes réponses</p><button class="btn primary" id="again">Nouvelle série</button></div>`; setTimeout(() => { $('#again').onclick = () => { t.queue = null; t.title = null; render(); }; }, 0); return r; }
     setTimeout(() => {
       const box = $('#qcard');
       const next = () => { $('#next').classList.remove('hidden'); };
-      if (t.mode === 'qcm') renderQcm(q, box, (ok) => { t.n++; if (ok) t.ok++; store.pushAttempt(state.progress, { id: q.id, ok, mode: 'qcm', t: Date.now() }); persist(); next(); });
+      if (t.mode === 'qcm') renderQcm(q, box, (ok) => { t.n++; if (ok) t.ok++; answer(q.id, ok, 'qcm'); next(); });
       else renderQrc(q, box, () => { $('#selfgrade').classList.remove('hidden'); });
       $('#next').onclick = () => { t.idx++; render(); };
-      $('#sg-ok').onclick = () => { t.n++; t.ok++; store.pushAttempt(state.progress, { id: q.id, ok: true, mode: 'qrc', t: Date.now() }); persist(); t.idx++; render(); };
-      $('#sg-ko').onclick = () => { t.n++; store.pushAttempt(state.progress, { id: q.id, ok: false, mode: 'qrc', t: Date.now() }); persist(); t.idx++; render(); };
-      $('#stop').onclick = () => { t.queue = null; render(); };
+      $('#sg-ok').onclick = () => { t.n++; t.ok++; answer(q.id, true, 'qrc'); t.idx++; render(); };
+      $('#sg-ko').onclick = () => { t.n++; answer(q.id, false, 'qrc'); t.idx++; render(); };
+      $('#stop').onclick = () => { t.queue = null; t.title = null; render(); };
     }, 0);
-    return `<div class="row" style="justify-content:space-between"><span class="muted">${t.idx + 1} / ${t.queue.length} · ${t.ok}/${t.n} ✔</span><button class="btn sm" id="stop">Arrêter</button></div>
+    return `${t.title ? `<div class="muted" style="margin-bottom:6px">🎯 ${esc(t.title)}</div>` : ''}<div class="row" style="justify-content:space-between"><span class="muted">${t.idx + 1} / ${t.queue.length} · ${t.ok}/${t.n} ✔</span><button class="btn sm" id="stop">Arrêter</button></div>
       <div class="card" id="qcard" style="margin-top:10px"></div>
       <div id="selfgrade" class="btnrow hidden"><button class="btn" id="sg-ko">✘ Je ne savais pas</button><button class="btn primary" id="sg-ok">✔ Je savais</button></div>
       <button class="btn primary hidden" id="next">Question suivante →</button>`;
@@ -300,9 +390,10 @@ function recordExam(res) {
   const { rows, answers, ...summary } = res;
   state.progress.exams.push(summary);
   res.ids.forEach((id) => { state.progress.examSeen[id] = res.t; });
-  rows.forEach((r) => store.pushAttempt(state.progress, { id: r.id, ok: r.points >= r.max, mode: res.mode, t: res.t }));
+  rows.forEach((r) => answer(r.id, r.points >= r.max / 2, res.mode, { defer: true, t: res.t }));
+  G.applyExam(state.progress.stats, summary);
   state.examResult = { res };
-  persist();
+  checkBadges();
 }
 function renderExamResult() {
   const er = state.examResult;
@@ -383,9 +474,9 @@ views.settings = () => {
     };
     $('#import').onchange = async (e) => {
       const f = e.target.files[0]; if (!f) return;
-      try { state.progress = store.importJSON(await f.text()); persist(); toast('Progression importée'); render(); } catch (err) { toast('Import impossible : ' + err.message); }
+      try { state.progress = store.importJSON(await f.text()); if (!state.progress.stats) state.progress.badges = {}; initGamify(); persist(); toast('Progression importée'); render(); } catch (err) { toast('Import impossible : ' + err.message); }
     };
-    $('#reset').onclick = () => { if (confirm('Effacer toute la progression ?')) { state.progress = store.reset(); persist(); toast('Progression effacée'); render(); } };
+    $('#reset').onclick = () => { if (confirm('Effacer toute la progression ?')) { state.progress = store.reset(); initGamify(); persist(); toast('Progression effacée'); render(); } };
     $('#update').onclick = async () => {
       try { const reg = await navigator.serviceWorker?.getRegistration(); await reg?.update(); } catch { /* ignore */ }
       location.reload();
@@ -403,13 +494,100 @@ views.settings = () => {
 };
 
 // ---------- Routeur ----------
+// ---------- Carrière, collection, souvenirs ----------
+const PARTS = [['stage', 'Le stage'], ['diplome', 'Le diplôme et l’inscription'], ['installation', 'L’installation'], ['cac', 'Le commissariat aux comptes']];
+function showBadge(id) {
+  const b = state.badgeById[id]; if (!b) return;
+  const pr = state.progress; const p = G.progressOf(b, pr.stats);
+  const got = pr.badges[id];
+  const col = G.RARITIES[b.rarity].color;
+  const box = $('#celebrate');
+  box.innerHTML = `<div class="cel-badge static" style="--halo:${col}"><div class="cel-medal">${badgeIcon(b, !got)}</div><div class="cel-rarity" style="color:${col}">${G.RARITIES[b.rarity].label}</div>
+    <h2>${!got && b.hidden ? '???' : esc(b.name)}</h2><p>${esc(!got && b.hidden ? b.hint : b.desc)}</p>
+    <p class="muted">${got ? `Débloqué le ${new Date(got).toLocaleDateString('fr-FR')}` : `Condition : ${esc(b.hidden ? b.hint : b.cond)} · ${p.cur}/${p.max}`}</p>
+    ${b.ids && b.ids.length ? `<button class="btn primary" id="sheet-train">🎯 Réviser ces ${b.ids.length} questions</button>` : ''}</div>`;
+  box.classList.add('show');
+  box.onclick = (e) => { if (e.target.id === 'sheet-train') return; box.classList.remove('show'); };
+  const tb = $('#sheet-train'); if (tb) tb.onclick = () => { box.classList.remove('show'); trainOn(b.ids, b.name); };
+}
+function bindProps(root) {
+  root.querySelectorAll('.prop[data-badge]').forEach((el) => { if (el.dataset.badge) el.onclick = (e) => { e.stopPropagation(); showBadge(el.dataset.badge); }; });
+}
+views.carriere = () => {
+  const tab = state.careerTab;
+  setTimeout(() => {
+    document.querySelectorAll('[data-ctab]').forEach((b) => { b.onclick = () => { state.careerTab = b.dataset.ctab; render(); }; });
+    document.querySelectorAll('[data-fam]').forEach((b) => { b.onclick = () => { state.collFamily = b.dataset.fam; render(); }; });
+    document.querySelectorAll('[data-badge-card]').forEach((b) => { b.onclick = () => showBadge(b.dataset.badgeCard); });
+    document.querySelectorAll('[data-flip]').forEach((c) => { c.onclick = (e) => { if (e.target.closest('button')) return; c.classList.toggle('flipped'); }; });
+    document.querySelectorAll('[data-train-anec]').forEach((b) => { b.onclick = () => { const x = state.badgeById[b.dataset.trainAnec]; trainOn(x.ids, x.name); }; });
+    const main = $('#main'); bindProps(main);
+  }, 0);
+  const total = state.catalog.length, got = Object.keys(state.progress.badges).length;
+  const tabs = `<div class="tabs">${[['carriere', 'Ma carrière'], ['collection', `Collection ${got}/${total}`], ['souvenirs', 'Souvenirs']].map(([k, l]) => `<button class="chip ${tab === k ? 'on' : ''}" data-ctab="${k}">${l}</button>`).join('')}</div>`;
+  return tabs + (tab === 'collection' ? collectionView() : tab === 'souvenirs' ? souvenirsView() : careerView());
+};
+function careerView() {
+  const pr = state.progress; const cur = G.currentGrade(pr);
+  const has = (id) => !!pr.badges[id];
+  return `<div class="card"><div class="scene-big">${sceneFor(cur.n)}</div>
+    <div class="muted" style="margin-top:6px">Touchez un objet du bureau pour voir le badge qui l’a apporté.</div></div>
+    <div class="timeline">${G.GRADES.map((g) => {
+      const date = pr.grades[g.n];
+      const conds = G.gradeConditions(g.n, has, pr.stats, state.gctx);
+      return `<div class="tl-item ${date ? 'done' : 'locked'} ${g.n === cur.n ? 'current' : ''}">
+        <div class="tl-dot">${g.n}</div>
+        <div class="tl-body"><div class="tl-scene">${sceneFor(g.n, date ? {} : { badgeProps: [] })}</div>
+          <strong>${esc(g.name)}</strong><div class="muted">${date ? `Atteint le ${new Date(date).toLocaleDateString('fr-FR')}` : 'À débloquer :'}</div>
+          ${date ? '' : `<ul class="conds">${conds.map((c) => `<li class="${c.ok ? 'ok' : ''}">${c.ok ? '✔' : '○'} ${esc(c.label)}</li>`).join('')}</ul>`}</div></div>`;
+    }).join('')}</div>`;
+}
+function badgeCard(b) {
+  const pr = state.progress; const got = pr.badges[b.id]; const p = G.progressOf(b, pr.stats);
+  const secret = !got && b.hidden;
+  return `<button class="bcard ${got ? 'got' : 'locked'} r-${b.rarity}" data-badge-card="${b.id}">${badgeIcon(b, !got)}
+    <div class="bname">${secret ? '???' : esc(b.name)}</div>
+    <div class="bmeta">${G.RARITIES[b.rarity].label}</div>
+    ${got ? '' : `<div class="progress sm"><div style="width:${Math.round((p.cur / Math.max(1, p.max)) * 100)}%"></div></div><div class="bmeta">${secret ? esc(b.hint) : `${p.cur}/${p.max}`}</div>`}</button>`;
+}
+function collectionView() {
+  const fam = state.collFamily; const pr = state.progress;
+  const chips = G.FAMILIES.map((f) => { const all = state.catalog.filter((b) => b.family === f.id); const n = all.filter((b) => pr.badges[b.id]).length; return `<button class="chip ${fam === f.id ? 'on' : ''}" data-fam="${f.id}">${f.icon} ${f.label} ${n}/${all.length}</button>`; }).join('');
+  const list = state.catalog.filter((b) => b.family === fam);
+  const main = list.filter((b) => b.sub !== 'tags');
+  const tags = list.filter((b) => b.sub === 'tags');
+  const sorted = (arr) => [...arr].sort((a, b) => (pr.badges[b.id] ? 1 : 0) - (pr.badges[a.id] ? 1 : 0) || G.RARITIES[a.rarity].rank - G.RARITIES[b.rarity].rank);
+  return `<div class="chips scroll">${chips}</div>
+    <div class="bgrid">${(fam === 'anecdotes' ? main : sorted(main)).map(badgeCard).join('')}</div>
+    ${tags.length ? `<details class="card" style="margin-top:12px"><summary>Sous-thèmes ${tags.filter((b) => pr.badges[b.id]).length}/${tags.length}</summary><div class="bgrid" style="margin-top:10px">${sorted(tags).map(badgeCard).join('')}</div></details>` : ''}`;
+}
+function souvenirsView() {
+  const pr = state.progress;
+  const anecs = state.catalog.filter((b) => b.family === 'anecdotes');
+  return PARTS.map(([k, label]) => {
+    const items = anecs.filter((a) => a.part === k);
+    const n = items.filter((a) => pr.badges[a.id]).length;
+    return `<h3 class="section-title">${label} <span class="muted">${n}/${items.length}</span></h3><div class="memories">${items.map((a) => {
+      const got = pr.badges[a.id]; const p = G.progressOf(a, pr.stats);
+      const back = `<div class="memory-back"><div class="muted">Questions liées</div><ul>${a.ids.map((id) => { const q = state.byId[id]; const ok = pr.stats.q[id]?.ok > 0; return `<li>${ok ? '✔' : '○'} DEC ${esc(q?.sessionLabel || '')} Q${q?.n ?? ''} · ${esc((q?.question || '').slice(0, 70))}…</li>`; }).join('')}</ul>
+        ${a.ids.length ? `<button class="btn sm" data-train-anec="${a.id}">🎯 Réviser ces questions</button>` : '<div class="muted">Se débloque avec les blocs EC et CAC maîtrisés.</div>'}</div>`;
+      return `<div class="memory-card ${got ? 'got' : 'locked'}" data-flip><div class="memory-front">
+        ${got ? `<div class="memory-date">${new Date(got).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}</div>` : `<div class="memory-date">${p.cur}/${p.max} questions</div>`}
+        <div class="memory-title">${got ? '📸' : '🔒'} ${esc(a.name)}</div>
+        ${got ? `<p class="memory-text">« ${esc(a.desc)} »</p>` : '<p class="muted">Réussissez les questions liées pour révéler ce souvenir. Touchez la carte pour les voir.</p>'}
+      </div>${back}</div>`;
+    }).join('')}</div>`;
+  }).join('');
+}
+
 const NAV = [
-  ['home', '🏠', 'Accueil'], ['review', '🔁', 'Réviser'], ['train', '🎯', 'Entraîner'], ['exam', '⏱', 'Examen'], ['fiches', '📚', 'Fiches'], ['stats', '📈', 'Stats'],
+  ['home', '🏠', 'Accueil'], ['review', '🔁', 'Réviser'], ['train', '🎯', 'Entraîner'], ['exam', '⏱', 'Examen'], ['carriere', '🏆', 'Carrière'], ['fiches', '📚', 'Fiches'],
 ];
 function render() {
   const main = $('#main');
   main.innerHTML = views[state.view]();
-  document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view));
+  document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view || (state.view === 'stats' && b.dataset.view === 'home')));
+  updateStreakBadge();
   main.querySelectorAll('[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
 }
 function go(v) {
@@ -417,6 +595,23 @@ function go(v) {
   if (v !== 'exam' && state.exam) { clearInterval(state.timer); state.exam = null; }
   if (v !== 'review') state.session = null;
   state.view = v; window.scrollTo(0, 0); render();
+}
+
+function initGamify() {
+  state.gctx = G.buildContext(state.bank);
+  state.catalog = G.buildCatalog(state.gctx);
+  state.badgeById = Object.fromEntries(state.catalog.map((b) => [b.id, b]));
+  const pr = state.progress;
+  pr.badges = pr.badges || {}; pr.grades = pr.grades || {};
+  if (!pr.stats || pr.stats.v !== G.STATS_VERSION) {
+    // Calcul rétroactif depuis l'historique existant, sans animation
+    pr.stats = G.rebuildStats(pr, state.gctx);
+    const f = G.evaluate(pr, state.catalog, state.gctx, pr.stats.lastT || Date.now());
+    if (f.badges.length) setTimeout(() => toast(`${f.badges.length} badges récupérés depuis votre historique`), 800);
+    persist();
+  }
+  G.applyOpen(pr.stats, Date.now());
+  checkBadges();
 }
 
 async function init() {
@@ -429,6 +624,7 @@ async function init() {
     state.bank = await loadBank();
     state.bank.questions.forEach((q) => { state.byId[q.id] = q; });
     state.fiches = await loadFichesIndex();
+    initGamify();
   } catch (e) {
     $('#main').innerHTML = `<div class="card"><h2>Chargement impossible</h2><p>${esc(e.message)}</p><p class="muted">Vérifiez la connexion pour le premier chargement.</p></div>`;
     return;
