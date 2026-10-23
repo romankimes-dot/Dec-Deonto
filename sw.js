@@ -1,7 +1,8 @@
 // Service worker : fonctionnement hors ligne.
-// Stratégie : précache de l'app et des données à l'installation, puis
-// "stale-while-revalidate" (réponse immédiate depuis le cache, mise à jour en arrière-plan).
-const VERSION = 'dec1-v6';
+// Précache atomique de l'app et des données à l'installation (fichiers relus sur le réseau, jamais depuis le
+// cache HTTP, pour qu'une version ne mélange pas d'anciens et de nouveaux fichiers). Ensuite : réseau d'abord
+// (revalidation à chaque chargement, repli sur le cache au-delà de 4 s ou hors ligne).
+const VERSION = 'dec1-v7';
 const CORE = [
   './',
   './index.html',
@@ -21,15 +22,16 @@ const CORE = [
   './icons/icon-192.png',
   './icons/icon-512.png',
 ];
+const FRESH = (url) => new Request(url, { cache: 'reload' });
 
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
     const cache = await caches.open(VERSION);
-    await cache.addAll(CORE);
+    await cache.addAll(CORE.map(FRESH));
     // Fiches listées dans l'index
     try {
-      const idx = await (await fetch('./data/fiches/index.json', { cache: 'no-cache' })).json();
-      await cache.addAll(idx.map((f) => `./data/fiches/${f.file}`));
+      const idx = await (await fetch(FRESH('./data/fiches/index.json'))).json();
+      await cache.addAll(idx.map((f) => FRESH(`./data/fiches/${f.file}`)));
     } catch { /* pas bloquant */ }
     self.skipWaiting();
   })());
@@ -48,14 +50,17 @@ self.addEventListener('fetch', (event) => {
   if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
   event.respondWith((async () => {
     const cache = await caches.open(VERSION);
-    const cached = await cache.match(req, { ignoreSearch: true });
-    const network = fetch(req).then((res) => {
+    const network = fetch(req, { cache: 'no-cache' }).then((res) => {
       if (res && res.ok) cache.put(req, res.clone());
       return res;
     }).catch(() => null);
-    if (cached) { event.waitUntil(network); return cached; }
-    const res = await network;
-    return res || new Response('Hors ligne et ressource absente du cache', { status: 503 });
+    const cached = await cache.match(req, { ignoreSearch: true });
+    if (!cached) return (await network) || new Response('Hors ligne et ressource absente du cache', { status: 503 });
+    const timeout = new Promise((resolve) => setTimeout(() => resolve(null), 4000));
+    const res = await Promise.race([network, timeout]);
+    if (res) return res;
+    event.waitUntil(network);
+    return cached;
   })());
 });
 

@@ -9,6 +9,9 @@ const CORRUPT_KEY = 'dec1.progress.corrupt';   // texte illisible, conservé tel
 const EXAM_KEY = 'dec1.exam.v1';               // examen blanc en cours
 const BACKUP_EVERY_MS = 3 * 60 * 60 * 1000;
 
+// Incrémenté quand l'interface attend de nouvelles fonctions : app.js vérifie qu'il n'est pas associé à un store.js périmé.
+export const STORE_VERSION = 2;
+
 export const defaultState = () => ({
   version: 1,
   settings: { newPerDay: 20, mode: 'mixte', showLowConfidence: true, examDate: '2026-11-10T10:30:00' },

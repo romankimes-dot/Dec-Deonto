@@ -744,7 +744,24 @@ function initGamify() {
   checkBadges();
 }
 
+const STORE_EXPECTED = 2;
+// Mélange de versions (cache hors ligne d'une ancienne version + code neuf) : on vide les caches, on force
+// le rechargement des fichiers puis on relance, une seule fois par session.
+async function recoverFromStaleCache() {
+  try { if (sessionStorage.getItem('dec1.recover')) return false; sessionStorage.setItem('dec1.recover', '1'); } catch { return false; }
+  try {
+    const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
+    await Promise.all(regs.map((r) => r.unregister()));
+    await Promise.all((await caches.keys()).map((k) => caches.delete(k)));
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './sw.js']
+      .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
+  } catch { /* on relance quand même */ }
+  location.reload();
+  return true;
+}
+
 async function init() {
+  if (store.STORE_VERSION !== STORE_EXPECTED && await recoverFromStaleCache()) return;
   try { const th = localStorage.getItem('dec1.theme'); if (th) document.documentElement.dataset.theme = th; } catch { /* ignore */ }
   const nav = $('nav.bottom');
   nav.innerHTML = NAV.map(([v, ico, label]) => `<button data-view="${v}"><span class="ico">${ico}</span>${label}</button>`).join('');

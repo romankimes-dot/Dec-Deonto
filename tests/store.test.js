@@ -103,3 +103,17 @@ test('examen en cours : écrit, relu, refusé s’il est incohérent', () => {
   store.saveExam(ex); store.saveExam(null);
   assert.equal(store.loadExam(), null);
 });
+
+test('la version attendue par app.js est celle exportée par store.js', async () => {
+  const { readFileSync } = await import('node:fs');
+  const app = readFileSync(new URL('../js/app.js', import.meta.url), 'utf8');
+  const m = /const STORE_EXPECTED = (\d+);/.exec(app);
+  assert.ok(m, 'STORE_EXPECTED absent de app.js');
+  assert.equal(Number(m[1]), store.STORE_VERSION);
+});
+
+test('le service worker précharge tous les modules importés par l’application', async () => {
+  const { readFileSync, readdirSync } = await import('node:fs');
+  const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
+  for (const f of readdirSync(new URL('../js/', import.meta.url)).filter((n) => n.endsWith('.js'))) assert.ok(sw.includes(`'./js/${f}'`), `${f} absent du précache`);
+});
