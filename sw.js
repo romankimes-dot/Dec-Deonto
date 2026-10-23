@@ -14,6 +14,7 @@ const CORE = [
   './js/exam.js',
   './js/gamify.js',
   './js/scene.js',
+  './js/plan.js',
   './js/catalog-data.js',
   './data/questions.json',
   './data/fiches/index.json',

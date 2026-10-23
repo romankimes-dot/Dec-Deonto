@@ -81,7 +81,7 @@
 | Instance | Composition | Rôle |
 |---|---|---|
 | **Chambre régionale de discipline** (auprès de chaque CROEC) | **Présidée par un magistrat de l'ordre judiciaire** (désigné par le premier président de la cour d'appel), plus **2 membres** du conseil régional (élus) | **Première instance** |
-| **Chambre nationale de discipline** (auprès du Conseil national) | **Présidée par un magistrat** (de la Cour de cassation ou du Conseil d'État, à vérifier), plus des **membres du Conseil national** élus | **Appel** |
+| **Chambre nationale de discipline** (auprès du Conseil national) | **Président** : un magistrat désigné par le **garde des Sceaux** parmi les **présidents de chambre de la cour d'appel de Paris** (en activité ou honoraires) ; **2 fonctionnaires** désignés par le ministre de l'économie ; **2 membres du Conseil national** élus (ord. art. 50) | **Appel** |
 | **Conseil d'État** | — | **Recours en cassation** contre les décisions de la chambre nationale |
 
 - Le **commissaire du gouvernement** n'est **pas membre** des chambres : il **saisit** et **fait appel**.
@@ -144,7 +144,6 @@
 
 ## À vérifier
 - **Composition exacte** de la chambre régionale de discipline : 2 membres élus par le conseil régional ou par l'assemblée (annale 2021-05 Q6).
-- **Composition exacte** de la chambre nationale de discipline : qualité du magistrat président et nombre de membres du Conseil national (annale 2024-05 Q5).
 - **Liste exacte** des personnes pouvant faire appel d'une décision de la chambre régionale, et **délai d'appel** (annale 2024-11 Q4).
 - **Prescription de l'action disciplinaire** contre un EC (aucune règle certaine retenue ici).
 - **Montant minimal** de l'assurance RC obligatoire de l'EC.

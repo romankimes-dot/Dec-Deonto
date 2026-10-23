@@ -53,7 +53,7 @@ Disciplinaire | {?} | **6 ans**
 | **1 pour 15** | Un EC pour quinze salariés aux **fonctions comptables** | {EC} |
 | **> 25 %** | Capital ou droits de vote : seuil du bénéficiaire effectif | {EC} {CAC} |
 | **70 %** | Plafond des SACC d'une EIP (moyenne des honoraires d'audit sur 3 ans) | {CAC} |
-| **10 %** | Part du capital pour demander la nomination judiciaire d'un CAC (SARL, SAS, SNC) | {CAC} |
+| **10 %** | Part du capital pour demander la nomination judiciaire d'un CAC (SARL, SAS, SA, SCA ; en SNC, tout associé) | {CAC} |
 | **5 %** | Part du capital pour demander le relèvement d'un CAC | {CAC} |
 | **120 h / 3 ans, 20 h par an** | Formation continue | {EC} {CAC} |
 

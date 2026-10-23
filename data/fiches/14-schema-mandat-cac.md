@@ -14,7 +14,7 @@ questions: CAC:nomination_seuils CAC:mandat_duree_cessation CAC:demission_revoca
       = **5 M€** de total bilan · **10 M€** de CA HT · **50 salariés** → nomination obligatoire, mandat de **6 exercices**
       ? Sinon : est-elle tête d'un **petit groupe** qui dépasse ensemble ces seuils ?
         = Oui : la tête nomme un CAC ; les **filiales significatives** aussi (2 sur 3 : **2,5 M€** · **5 M€** · **25 salariés**) ; option **ALPE** de **3 exercices**
-        = Non : nomination **volontaire** possible, ou **en justice** à la demande d'associés (10 % du capital en SARL, SAS, SNC)
+        = Non : nomination **volontaire** possible, ou **en justice** à la demande d'associés (**tout associé** en SNC ; **10 % du capital** en SARL, SAS, SA, SCA)
 ```
 
 - Seuils du **décret 2024-152** (exercices ouverts à compter du 01/01/2024). Avant : 4 M€ et 8 M€.

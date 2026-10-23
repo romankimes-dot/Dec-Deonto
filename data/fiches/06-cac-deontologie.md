@@ -14,7 +14,8 @@
 | **Titre II : Dispositions complémentaires** | Le CAC **qui certifie les comptes** d'une entité | **Indépendance** et prévention des conflits d'intérêts, **situations à risque et mesures de sauvegarde**, **liens personnels, financiers et professionnels**, **réseau**, **honoraires**, **services interdits** et prestations, **interdictions**… |
 
 - Il existe donc bien un **socle commun** à tous les CAC : le **titre I**.
-- **Ne figure pas au titre I** : la « possibilité de fixer des honoraires proportionnels ou conditionnels ». Ces honoraires sont **interdits** et relèvent du titre II.
+- Le **titre I** contient aussi la section **Honoraires** (art. 12 à 14) et la section **Publicité** (art. 15 et 16) : l'**interdiction** des honoraires subordonnés au résultat y figure (**art. 13**). La « possibilité de fixer des honoraires proportionnels ou conditionnels » **n'existe pas** : c'est donc elle qui **ne figure pas** au titre I comme règle autorisée.
+- Le **titre II** (art. 18 à 37) ne traite que de la **certification** : situations à risque, mission de certification, réseau, liens, honoraires de certification (art. 36 et 37).
 
 ### Définitions (L.821-2)
 - **Mission** (III) : la **mission de certification** des comptes et les **missions ou interventions confiées par la loi ou le règlement** au CAC **en cette qualité**.
@@ -96,8 +97,8 @@
 ### Liens professionnels
 - **Interdiction** des relations d'affaires significatives, de l'**emploi** et des **mandats**.
 - **Interdictions temporaires** (L.821-x) :
-  1. le **CAC** (et le signataire) **ne peut pas devenir dirigeant ou salarié** de l'entité qu'il contrôlait, ni des entités qu'elle contrôle, **avant un délai** après la fin de ses fonctions (**3 ans** pour une EIP, à vérifier pour les non-EIP) ;
-  2. un **ancien dirigeant ou salarié** d'une entité **ne peut pas être nommé CAC** de cette entité **avant 5 ans** après la fin de ses fonctions (à vérifier).
+  1. le **CAC** (et le signataire) **ne peut pas être nommé dirigeant, administrateur, membre du conseil de surveillance ni occuper un poste de direction** dans l'entité qu'il contrôlait (ni dans celles qu'elle contrôle ou qui la contrôlent) **moins de 3 ans** après la fin de sa mission (L.821-32) ;
+  2. un **ancien dirigeant ou salarié** d'une entité **ne peut pas être CAC** de cette entité **moins de 5 ans** après la fin de ses fonctions (L.821-33).
 
 ## 5. Réseau
 - **Définition (art. 29)** : un ensemble destiné à **coopérer**, constitué de personnes physiques ou morales qui **n'ont pas pour activité exclusive le contrôle légal des comptes** et dont les membres ont un **intérêt économique commun**.
@@ -150,7 +151,7 @@
 - **Refus**. Une évaluation de l'entité auditée **pour le compte d'un tiers acquéreur** crée un **conflit d'intérêts** et un risque de **défense d'intérêts opposés**. Elle se heurte aussi au **secret professionnel**.
 - Pour une EIP, l'**évaluation** est de toute façon un **service interdit**.
 
-## 7. Honoraires (titre II)
+## 7. Honoraires (titre I, art. 12 à 14 ; titre II, art. 36 et 37)
 - La rémunération est **en rapport avec l'importance des diligences**. Celle-ci s'apprécie selon :
   - la **taille** et la **complexité** de l'entité ;
   - la **nature et les risques** de la mission ;
@@ -220,9 +221,7 @@
 - **Liste exacte et ordre des principes fondamentaux** du titre I, section 1, et les qualités de l'**art. 3** (intégrité) : honnêteté, droiture, probité, loyauté ? (annales 2025-05 Q16 et 2025-11 Q17).
 - **Décret n° 2026-176 du 11/03/2026** : son incidence sur la publicité et la sollicitation des CAC.
 - **Intitulé exact et champ** des deux **normes de déontologie** (A.821-54 s.) (annale 2024-05 Q12).
-- **Les cinq « dispositions complémentaires »** du titre II (annale 2021-11 Q17).
 - **Les 3 catégories de fonctions sensibles** de l'art. 31.
-- **Délais des interdictions temporaires** (dirigeant après la fin du mandat ; CAC après la fin des fonctions de dirigeant ou salarié) et distinction EIP / non-EIP.
 - **Version actuelle de L.821-3** (après l'ordonnance 2023-1142) sur les services interdits aux non-EIP (annale 2026-05 Q17).
 - **Instance à saisir** en cas de doute sur l'appartenance à un réseau : H2A ou CNCC (annale 2024-11 Q14).
 - **Dispense d'identification du bénéficiaire effectif** pour une société cotée (annale 2023-05 Q13).

@@ -12,7 +12,7 @@ questions: EC:discipline_sanctions CAC:discipline_sanctions
 Saisine | **Président du CROEC**, **commissaire du gouvernement** ou **procureur de la République**. La plainte d'un client va au président du CROEC
 Instruction | Un **rapporteur** instruit ; procédure **contradictoire** (griefs, accès au dossier, avocat ou confrère)
 1re instance | **Chambre régionale de discipline**, présidée par un **magistrat de l'ordre judiciaire**, avec des membres élus
-Appel | **Chambre nationale de discipline**, présidée par un **magistrat**
+Appel | **Chambre nationale de discipline** : un **magistrat** (président de chambre de la cour d'appel de Paris), **2 fonctionnaires**, **2 membres du Conseil national**
 Cassation | **Conseil d'État**
 ```
 

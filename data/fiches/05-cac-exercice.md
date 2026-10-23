@@ -123,8 +123,9 @@
 
 ### Nomination judiciaire
 - En dessous des seuils, les associés peuvent demander **en justice** la nomination d'un CAC :
-  - **SARL**, **SAS** et **SNC** : associés représentant **au moins 10 % du capital** ;
-  - **SA / SCA** : **au moins 1/3 du capital** (à vérifier).
+  - **SNC** : **tout associé** (L.221-9) ;
+  - **SARL**, **SAS**, **SA** et **SCA** : un ou plusieurs associés représentant **au moins le dixième du capital** (L.223-35, L.227-9-1, L.225-218, L.226-6) ;
+  - Le **tiers du capital** sert à autre chose : la demande **motivée** d'un mandat de **3 exercices** (ALPE) adressée à la société.
 
 ### Suppléant
 - Il est **obligatoire** lorsque le titulaire est une **personne physique** ou une **société unipersonnelle**.
@@ -304,7 +305,6 @@
 
 ## À vérifier
 - **Nombre de CRCC** et signification des chiffres « 17 » et « 22 » dans l'annale 2025-11 Q19.
-- **Nomination judiciaire** : 1/3 du capital en SA (annale 2023-05 Q20, réponse attendue SA ou SCA ?).
 - **Petit groupe** : le CAC de la tête de groupe peut-il obtenir des informations des CAC des filiales significatives (annale 2025-05 Q15) ? Texte exact.
 - **Formation particulière** : délai (6 ou 18 mois, avant ou après l'acceptation) et durée (annale 2018-11 Q16).
 - **Seuils des CSE, des fonds de dotation et des partis politiques**.

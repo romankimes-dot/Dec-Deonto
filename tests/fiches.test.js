@@ -37,7 +37,7 @@ test('blocs echelle, frise, etapes et pastilles', () => {
   assert.match(renderMarkdown('```echelle\nRaisonnable | Audit | Opinion\nAucune | Compilation\n```'), /--w:100%.*--w:55%/s);
   assert.match(renderMarkdown('```frise\n6 exercices | Fin du mandat\n```'), /<span class="fr-k">6 exercices<\/span>/);
   assert.match(renderMarkdown('```etapes\nSaisine | Président du CROEC\n```'), /<span class="et-k">Saisine<\/span>Président du CROEC/);
-  assert.match(renderMarkdown('{EC} et {CAC} {!} {?}'), /pill ec.*pill cac.*pill trap.*pill check/);
+  assert.match(renderMarkdown('{EC} et {CAC} {!} {?}'), /fpill ec.*fpill cac.*fpill trap.*fpill check/);
 });
 
 test('le texte des blocs est échappé', () => {
