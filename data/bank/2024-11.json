@@ -59,8 +59,8 @@
         ],
         "model_answer": "Les experts-comptables stagiaires ne sont pas membres de l'Ordre mais sont soumis à sa surveillance et à son contrôle disciplinaire. Ils peuvent donc être sanctionnés par la chambre régionale de discipline, qui applique les mêmes peines qu'aux professionnels. Le conseil régional n'est pas une juridiction disciplinaire : il peut saisir la chambre et, au titre du contrôle du stage, refuser de valider tout ou partie du stage."
       },
-      "explanation": "L'article 4 de l'ordonnance précise que les stagiaires ne sont pas membres de l'Ordre mais restent soumis à son contrôle disciplinaire ; le code de déontologie s'applique à eux (D. 2012-432 art. 141). La juridiction compétente est la chambre régionale de discipline. Le conseil régional (via le comité régional du stage) a des pouvoirs administratifs : refus d'attestation, suspension ou radiation administrative du stage. Une radiation disciplinaire interdit toute réinscription au stage.",
-      "reference": "Ord. 45-2138 art. 4, 49 et 53 ; D. 2012-432 art. 76 et 141 ; Règlement de stage",
+      "explanation": "L'article 4 de l'ordonnance précise que les stagiaires ne sont pas membres de l'Ordre mais restent soumis à son contrôle disciplinaire ; le code de déontologie s'applique à eux (D. 2012-432 art. 141) et les sanctions prévues pour les membres leur sont applicables (art. 76). La juridiction compétente est la chambre régionale de discipline. Le conseil régional exerce, lui, le contrôle du stage : il peut prolonger ou invalider le stage (art. 74) et refuser l'attestation de fin de stage (art. 75). Une radiation disciplinaire interdit toute réinscription au stage.",
+      "reference": "Ord. 45-2138 art. 4, 49 et 53 ; D. 2012-432 art. 74, 75, 76 et 141 ; règlement intérieur de l'Ordre (stage)",
       "confidence": "high"
     },
     {
@@ -243,10 +243,10 @@
         ],
         "model_answer": "Le Conseil national représente la profession auprès des pouvoirs publics, élabore les normes professionnelles soumises à l'agrément ministériel et veille à leur respect ainsi qu'à celui de la déontologie. Il dirige, coordonne et contrôle l'action des conseils régionaux (notamment l'harmonisation du contrôle de qualité) et défend l'honneur et l'indépendance de la profession."
       },
-      "explanation": "Le Conseil national (ex-Conseil supérieur, renommé par la loi Pacte) est l'instance nationale de l'Ordre. Il ne juge pas : l'appel disciplinaire relève de la chambre nationale de discipline, présidée par un magistrat. Ne pas le confondre avec la CNCC, établissement d'utilité publique sous la supervision de la H2A, qui n'adopte plus elle-même les normes des CAC.",
-      "reference": "Ord. 45-2138 art. 1er et dispositions relatives au Conseil national (titre II) ; D. 2012-432",
-      "confidence": "medium",
-      "update_note": "Conseil supérieur de l'Ordre renommé Conseil national par la loi Pacte (2019)."
+      "explanation": "Le Conseil national (ex-Conseil supérieur, renommé par la loi 2022-172 du 14 février 2022) est l'instance nationale de l'Ordre ; ses missions sont énumérées à l'article 29 du décret 2012-432. Il ne juge pas : l'appel disciplinaire relève de la chambre nationale de discipline, présidée par un magistrat. Ne pas le confondre avec la CNCC, établissement d'utilité publique sous la supervision de la H2A, qui n'adopte plus elle-même les normes des CAC.",
+      "reference": "Ord. 45-2138 art. 1er, 33 et 37 ; D. 2012-432 art. 29 et 172",
+      "confidence": "high",
+      "update_note": "Conseil supérieur de l'Ordre renommé Conseil national par la loi 2022-172 du 14 février 2022 ; ses missions, retirées de l'art. 37 de l'ordonnance, figurent à l'art. 29 du décret 2012-432."
     },
     {
       "id": "2024-11-EC-09",
@@ -274,7 +274,7 @@
         ],
         "model_answer": "C'est une mission sans assurance, classée par le cadre de référence parmi les missions particulières prévues par un texte légal ou réglementaire ; elle ne fait l'objet d'aucune norme spécifique. S'appliquent les textes communs à toutes les missions : code de déontologie, NPMQ et NPLAB, ainsi que les dispositions du code électoral."
       },
-      "explanation": "Le cadre de référence cite expressément les comptes de campagne comme exemple de mission sans assurance prévue par un texte légal, « ne donnant pas lieu à expression d'assurance et ne faisant l'objet d'aucune norme spécifique ». Piège : le visa de l'expert-comptable n'est ni une attestation de présentation (NP 2300) ni une attestation particulière (NP 3100). Les comptes de campagne sont classés à risque élevé en matière LCB-FT.",
+      "explanation": "Le cadre de référence cite expressément les comptes de campagne comme exemple de mission sans assurance prévue par un texte légal, « ne donnant pas lieu à expression d'assurance et ne faisant l'objet d'aucune norme spécifique ». Piège : le visa de l'expert-comptable n'est ni une attestation de présentation (NP 2300) ni une attestation particulière (NP 3100). La vigilance LCB-FT s'exerce selon l'approche par les risques de la NPLAB, renforcée si le candidat est une personne politiquement exposée.",
       "reference": "Cadre de référence des missions (référentiel normatif OEC) ; NPMQ ; NPLAB ; C. électoral L.52-12",
       "confidence": "medium"
     },
@@ -474,12 +474,15 @@
         "answer": 1
       },
       "qrc": {
-        "expected": ["Assurance limitée (modérée)", "Conclusion formulée sous forme négative"],
+        "expected": [
+          "Assurance limitée (modérée)",
+          "Conclusion formulée sous forme négative"
+        ],
         "model_answer": "Il s'agit d'une assurance limitée (modérée) : le commissaire aux comptes conclut qu'il n'a pas relevé d'éléments remettant en cause la conformité des informations de durabilité au référentiel applicable."
       },
       "explanation": "La directive CSRD, transposée par l'ordonnance 2023-1142, prévoit une assurance limitée, un passage à l'assurance raisonnable ayant été envisagé puis abandonné. Piège : la certification des comptes donne une assurance raisonnable. Le barème d'heures ne s'applique pas à la mission de durabilité.",
-      "reference": "C. com. L.821-54 et L.822-x (ord. 2023-1142) ; directive (UE) 2022/2464",
-      "confidence": "high"
+      "reference": "C. com. L.821-54 II (avis sur les informations en matière de durabilité), R.821-194 in fine (barème inapplicable) ; directive (UE) 2022/2464",
+      "confidence": "medium"
     },
     {
       "id": "2024-11-CAC-17",
@@ -508,7 +511,7 @@
           "Mention des modalités de détermination des honoraires",
           "Interdiction des noms de domaine composés du seul titre de la profession et des bannières publicitaires étrangères à la profession"
         ],
-        "model_answer": "Publicité permise si elle informe le public, avec discrétion et sans atteinte à l'indépendance, la dignité, l'honneur, le secret et la loyauté ; titre suivi de la CRCC ; aucune forme d'expression indigne ; aucun élément comparatif. Sollicitation et offre en ligne : information sincère, ni comparative ni dénigrante, uniquement par courrier ou courriel nominatif (pas de démarchage physique, téléphonique ou par SMS), avec indication des modalités de détermination des honoraires. Noms de domaine limités au seul titre et bannières publicitaires interdits."
+        "model_answer": "Publicité permise si elle procure au public une information nécessaire, sans atteinte à l'indépendance, la dignité, l'honneur, le secret et la loyauté ; titre suivi de la CRCC ; aucune forme d'expression indigne ; aucun élément comparatif. Sollicitation et offre en ligne : information sincère, ni comparative ni dénigrante, uniquement par courrier ou courriel nominatif (toute autre forme de démarchage interdite), avec indication des modalités de détermination des honoraires. Interdiction des noms de domaine composés du seul titre et des bannières publicitaires étrangères à la profession."
       },
       "explanation": "Articles 15 (publicité) et 16 (sollicitation personnalisée et services en ligne) du titre I du code de déontologie CAC. La différence avec les EC (art. 152) porte surtout sur les modes de sollicitation : le CAC ne peut ni démarcher physiquement ni téléphoner.",
       "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 15 et 16",

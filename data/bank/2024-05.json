@@ -60,7 +60,7 @@
         "model_answer": "Le contrôle de qualité comporte un contrôle structurel, qui porte sur l'organisation et le fonctionnement de la structure d'exercice (procédures, respect des obligations professionnelles, dispositif de qualité et de LCB-FT), et un contrôle technique, qui apprécie par sondage sur des dossiers sélectionnés l'application des normes et des diligences professionnelles."
       },
       "explanation": "Le contrôle structurel s'adresse au responsable de la structure, le contrôle technique à chaque professionnel contrôlé. Un échange sur l'amélioration de la performance peut s'y ajouter mais ne constitue pas une phase de contrôle. Cette architecture ressemble à celle du contrôle d'activité des CAC, qui porte à la fois sur le système de contrôle qualité interne et sur des missions sélectionnées (C. com. R.820-45).",
-      "reference": "D. 2012-432 (contrôle de qualité) ; règlement intérieur de l'Ordre ; C. com. R.820-45 pour le parallèle CAC",
+      "reference": "Règlement intérieur de l'Ordre art. 404 à 406 ; C. com. R.820-45 pour le parallèle CAC",
       "confidence": "high"
     },
     {
@@ -208,8 +208,8 @@
         ],
         "model_answer": "À l'issue de la mission de présentation, l'expert-comptable délivre une attestation exprimant une assurance modérée sur la cohérence et la vraisemblance des comptes, qui peut être sans observation, avec observation(s), ou se traduire par un refus d'attester lorsque les anomalies ou limitations rencontrées ne permettent pas d'exprimer cette assurance."
       },
-      "explanation": "La NP 2300 encadre strictement la forme de l'attestation ; les observations attirent l'attention sans remettre en cause la conclusion, le refus intervient en cas de désaccord ou de limitation significatifs non résolus. Le vocabulaire diffère de celui de la certification du CAC (sans réserve, avec réserve, refus, impossibilité de certifier, C. com. R.821-180) et de celui de l'examen limité (conclusion formulée négativement).",
-      "reference": "NP 2300 (présentation des comptes) ; C. com. R.821-180 pour le parallèle CAC",
+      "explanation": "La NP 2300 encadre strictement la forme de l'attestation ; les observations attirent l'attention sans remettre en cause la conclusion, le refus intervient en cas de désaccord ou de limitation significatifs non résolus. Le vocabulaire diffère de celui de la certification du CAC (sans réserve, avec réserve, refus, impossibilité de certifier, C. com. R.821-180) et de celui de l'examen limité (favorable sans observation, favorable avec observation(s), avec réserve(s), défavorable, impossibilité de conclure : NP 2400 § 22).",
+      "reference": "NP 2300 § 18 à 21 ; NP 2400 § 22 ; C. com. R.821-180 pour le parallèle CAC",
       "confidence": "high"
     },
     {
@@ -292,14 +292,14 @@
       "qrc": {
         "expected": [
           "Vérifier que le client a notifié au prédécesseur sa décision de changer de professionnel (rupture régulière de la lettre de mission)",
-          "Informer par écrit le confrère prédécesseur avant d'accepter la mission (courtoisie et confraternité)",
-          "S'enquérir auprès de lui des motifs du changement (s'assurer qu'il ne s'agit pas d'éluder des obligations légales) et de la situation des honoraires restant dus",
-          "Organiser la transmission des documents et informations nécessaires à la continuité ; le prédécesseur ne peut ni s'opposer ni exercer de rétention sur les documents du client"
+          "Informer le confrère prédécesseur avant d'accepter la mission (obligation de l'art. 163)",
+          "S'assurer que le changement n'a pas pour but d'éluder les lois et règlements ou les devoirs professionnels ; s'efforcer d'obtenir la justification du paiement des honoraires dus, à défaut en référer au président du conseil régional et faire des réserves",
+          "Organiser la transmission du dossier, que le prédécesseur favorise avec l'accord du client"
         ],
         "model_answer": "Avant d'accepter, l'expert-comptable pressenti s'assure que le client a informé son prédécesseur de son intention de changer de professionnel, puis informe lui-même par écrit ce confrère de la demande dont il est saisi. Il lui demande si des honoraires restent dus et s'enquiert des circonstances du changement afin de vérifier que celui-ci n'a pas pour objet d'éluder des obligations légales ; il organise enfin avec lui la transmission des documents et informations utiles. Le prédécesseur doit répondre et ne peut ni s'opposer au changement ni retenir les documents appartenant au client."
       },
-      "explanation": "La reprise d'un dossier est régie par les devoirs de confraternité du code de déontologie : information préalable du confrère, loyauté, interdiction de tout détournement de clientèle. Le non-paiement d'honoraires n'est pas un motif de refus de la mission mais une information à connaître, le successeur pouvant inciter le client à régulariser. Le parallèle CAC est la succession entre confrères (code de déontologie CAC art. 26) : le successeur s'assure que le non-renouvellement n'a pas pour but de contourner les obligations légales.",
-      "reference": "D. 2012-432 art. 141 s. (confraternité, art. 161 à 165 environ : information du prédécesseur, reprise de dossier) ; code de déontologie CAC art. 26 pour le parallèle",
+      "explanation": "La reprise d'un dossier est régie par l'article 163 du code de déontologie : information préalable du confrère, vérification que le changement ne vise pas à éluder la loi, effort pour obtenir la justification du paiement des honoraires conventionnels (à défaut, référé au président du conseil régional et réserves auprès du client) et suggestion écrite de conciliation si le client les conteste. Le non-paiement n'interdit donc pas d'accepter, mais impose ces diligences. Le parallèle CAC est la succession entre confrères (code de déontologie CAC art. 26) : le successeur s'assure que le non-renouvellement n'a pas pour but de contourner les obligations légales.",
+      "reference": "D. 2012-432 art. 163 (remplacement d'un confrère), 159 et 160 (conciliation, arbitrage), 161 et 164 (confraternité, liberté de choix du client) ; code de déontologie CAC art. 26 pour le parallèle",
       "confidence": "medium"
     },
     {
@@ -327,7 +327,7 @@
         ],
         "model_answer": "Au sens de l'article L.821-2 III, le terme « mission » désigne la mission de certification des comptes, la mission de certification des informations en matière de durabilité et toute autre mission confiée au commissaire aux comptes par la loi ou le règlement, qu'elle soit exercée auprès d'une entité dont il certifie les comptes ou non (par exemple le commissariat aux apports, à la fusion ou à la transformation)."
       },
-      "explanation": "La loi Pacte a défini la profession de CAC comme l'exercice de missions et la fourniture de prestations (C. com. L.821-3). La distinction commande le régime applicable : titre II du code de déontologie, barème d'heures et obligations légales (révélation, alerte) pour la certification ; titre I seul, lettre de mission et honoraires libres pour les prestations. L'ordonnance de 2023 a ajouté la certification de durabilité parmi les missions.",
+      "explanation": "La loi Pacte a défini la profession de CAC comme l'exercice de missions et la fourniture de prestations (aujourd'hui C. com. L.821-3). La distinction commande le régime applicable : titre II du code de déontologie et barème d'heures pour la certification ; lettre de mission obligatoire pour les autres missions et pour les prestations (R.821-195), hors barème. En revanche, le signalement des irrégularités et la révélation des faits délictueux s'appliquent aux missions comme aux prestations (L.821-10). L'ordonnance de 2023 a ajouté la certification de durabilité parmi les missions.",
       "reference": "C. com. art. L.821-2 III (ex L.820-1-1 et R.820-1-1) et L.821-3 ; code de déontologie CAC art. 1 III",
       "confidence": "high",
       "update_note": "Définition issue de la loi Pacte (ex L.820-1-1), recodifiée à L.821-2 en 2024 et étendue à la certification des informations en matière de durabilité."
@@ -387,7 +387,7 @@
         ],
         "model_answer": "Les principes fondamentaux de comportement s'appliquent expressément dans l'exercice de la profession, c'est-à-dire pour toute mission ou prestation ; mais le commissaire aux comptes les prend également en considération en toute circonstance, y compris lorsqu'il n'exerce aucune mission ni prestation, afin de s'abstenir, même dans sa vie personnelle, de tout agissement contraire à l'honneur ou à la probité, conformément à son serment."
       },
-      "explanation": "La norme (§ 04 et 05) rappelle que le statut de CAC et son serment engagent la personne au-delà de son activité : un fait contraire à la probité commis hors mission constitue une faute disciplinaire (C. com. L.821-70 : tout fait contraire à la probité ou à l'honneur). Le même raisonnement vaut pour l'expert-comptable, dont les devoirs de probité et de dignité s'étendent à la vie privée (D. 2012-432 art. 142).",
+      "explanation": "La norme (§ 04 et 05) rappelle que le statut de CAC et son serment engagent la personne au-delà de son activité : un fait contraire à la probité commis hors mission constitue une faute disciplinaire (C. com. L.821-70 I : tout fait contraire à la probité ou à l'honneur). Le même raisonnement vaut pour l'expert-comptable, qui doit s'abstenir « en toutes circonstances » d'agissements contraires à la probité, à l'honneur et à la dignité (D. 2012-432 art. 145).",
       "reference": "C. com. art. A.821-54 § 02 à 05 ; L.821-70 I ; L.821-23 (serment)",
       "confidence": "high"
     },
@@ -506,8 +506,8 @@
         ],
         "model_answer": "L'esprit critique, principe posé par l'article 6 du code de déontologie, conduit le commissaire aux comptes à considérer la source des informations qu'il collecte et à apprécier leur pertinence, à rester ouvert et réceptif aux informations, avis ou arguments qui pourraient contredire ces informations et l'amener à réaliser d'autres travaux ou à revoir ses conclusions, et à apprécier le caractère suffisant, approprié et cohérent des éléments recueillis. Il l'exerce tout au long de la mission, en s'appuyant sur sa connaissance de l'entité et de son environnement ; renforcé par les autres principes, il conforte son jugement professionnel."
       },
-      "explanation": "L'esprit critique a été érigé en principe fondamental de comportement par le code de 2020 ; il prolonge l'attitude requise par la NEP 200 (scepticisme professionnel face au risque de fraude) et par le code lui-même, qui impose une évaluation critique des éléments probants (art. 23). Il ne signifie ni défiance systématique ni immixtion dans la gestion. L'expert-comptable applique un principe voisin de prudence et de jugement professionnel, sans formulation normative équivalente.",
-      "reference": "C. com. art. A.821-54 § 24 à 26 ; code de déontologie CAC art. 6 et 23 ; NEP 200",
+      "explanation": "L'esprit critique a été érigé en principe fondamental de comportement par le code de 2020 ; il prolonge l'attitude requise par la NEP 200 (A.821-63 § 06 : esprit critique tout au long de l'audit) et par la NEP 240 face au risque de fraude, ainsi que par le code lui-même, qui impose une évaluation critique des éléments probants (art. 23). Il ne signifie ni défiance systématique ni immixtion dans la gestion. L'expert-comptable applique un principe voisin de prudence et de jugement professionnel, sans formulation normative équivalente.",
+      "reference": "C. com. art. A.821-54 § 24 à 26 ; code de déontologie CAC art. 6 et 23 ; NEP 200 (A.821-63) et NEP 240 (A.821-80)",
       "confidence": "high"
     },
     {
@@ -565,10 +565,10 @@
         ],
         "model_answer": "Le code de déontologie impose au commissaire aux comptes d'identifier les risques de nature à affecter la formation ou l'expression de son opinion : atteintes à l'intégrité, à l'impartialité et à l'indépendance, conflits d'intérêts, autorévision, liens personnels, professionnels ou financiers, risques et contraintes résultant de l'appartenance à un réseau (notamment la fourniture de services par le réseau), dépendance financière liée aux honoraires, ainsi que les risques nés d'une fusion ou acquisition intéressant l'entité. Il prend alors les mesures de sauvegarde appropriées ou renonce à la mission."
       },
-      "explanation": "L'approche par les risques (art. 19, ex art. 11) a remplacé la liste des services interdits pour les entités non EIP ; elle est complétée par les articles sur la dépendance financière (art. 36) et les fusions-acquisitions (art. 20). Les liens personnels, financiers et professionnels font en outre l'objet d'incompatibilités absolues (art. 32 à 34) lorsqu'ils concernent le CAC lui-même ou la direction de sa société, et d'une appréciation au regard du tiers objectif, raisonnable et informé pour les autres intervenants.",
+      "explanation": "L'approche par les risques (art. 19) a remplacé la liste des services interdits pour les entités non EIP ; elle est complétée par les articles sur la dépendance financière (art. 36) et les fusions-acquisitions (art. 20). Les liens personnels, financiers et professionnels font en outre l'objet d'incompatibilités absolues (art. 32 à 34) lorsqu'ils concernent le CAC lui-même ou la direction de sa société, et d'une appréciation au regard du tiers objectif, raisonnable et informé pour les autres intervenants.",
       "reference": "Code de déontologie CAC art. 5, 19, 20, 29, 30, 32 à 36 ; C. com. L.821-28 IV et L.821-31 ; A.821-55 § 28",
       "confidence": "high",
-      "update_note": "Numérotation du code de déontologie issue du décret 2020-292 et actualisée par le décret 2026-176 (art. 19 : identification et traitement des risques, ex art. 11)."
+      "update_note": "Numérotation issue du décret 2020-292 (art. 19 : identification et traitement des risques) ; rédaction en vigueur modifiée en dernier lieu par le décret 2026-176, qui l'étend aux organismes tiers indépendants et aux auditeurs de durabilité."
     },
     {
       "id": "2024-05-CAC-20",
@@ -596,7 +596,7 @@
         ],
         "model_answer": "Non. Le code de commerce réserve l'exercice de la profession de commissaire aux comptes aux personnes physiques et aux sociétés inscrites sur la liste tenue par la Haute autorité de l'audit, quelle que soit leur forme sociale (y compris les sociétés pluri-professionnelles d'exercice). Une association n'est pas une société et ne peut satisfaire aux conditions d'inscription relatives aux droits de vote et aux dirigeants ; elle ne peut donc pas être commissaire aux comptes. À l'inverse, l'activité d'expertise comptable peut être exercée au sein d'associations de gestion et de comptabilité."
       },
-      "explanation": "Les conditions d'inscription des sociétés de CAC (L.821-16) supposent un capital et des droits de vote détenus majoritairement par des CAC et des dirigeants CAC, notions sans objet pour une association de la loi de 1901. La confusion vient de l'expertise comptable, où la loi de 2004 a admis les AGC, non membres de l'Ordre mais inscrites au tableau (ord. art. 7 ter). Un CAC peut en revanche exercer en nom propre, en société (SARL, SAS, SA, SCP, SEL...) ou en SPE.",
+      "explanation": "Les conditions d'inscription des sociétés de CAC (L.821-16) supposent une majorité des droits de vote détenue par des CAC et des dirigeants CAC, notions sans objet pour une association de la loi de 1901. La confusion vient de l'expertise comptable, où la loi de 2004 a admis les AGC, non membres de l'Ordre mais inscrites au tableau (ord. art. 7 ter). Un CAC peut en revanche exercer en nom propre, en société (SARL, SAS, SA, SCP, SEL...) ou en SPE.",
       "reference": "C. com. art. L.821-13, L.821-16, L.821-25 ; Ord. 45-2138 art. 7 ter pour le parallèle EC",
       "confidence": "high",
       "update_note": "Recodification 2024 : ex L.822-1 et L.822-1-3 devenus L.821-13 et L.821-16."

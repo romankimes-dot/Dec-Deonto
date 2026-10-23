@@ -86,9 +86,9 @@
         ],
         "model_answer": "La revue indépendante, réalisée avant la délivrance du rapport par une personne compétente n'ayant pas participé à la mission, comporte notamment une discussion des points significatifs avec le responsable de mission, l'examen du projet de rapport et des documents de synthèse, et la revue de la documentation relative aux jugements significatifs afin d'évaluer les conclusions retenues."
       },
-      "explanation": "La NPMQ réserve la revue indépendante aux missions présentant des risques particuliers, selon des critères définis par le cabinet. Elle porte sur l'évaluation objective des jugements et de la pertinence du rapport, non sur la refonte des travaux. Elle ne se confond ni avec la supervision ni avec l'inspection a posteriori des dossiers (surveillance du système).",
-      "reference": "NPMQ (revue indépendante) ; code de déontologie CAC et C. com. L.821-35 pour le parallèle CAC",
-      "confidence": "medium"
+      "explanation": "La NPMQ rend la revue indépendante obligatoire pour tous les audits d'états financiers d'entités cotées et, pour les autres missions, selon des critères définis par le cabinet (par. 35). Elle comporte des entretiens avec le responsable de la mission, la revue des informations objet de la mission et du projet de rapport, la revue de la documentation relative aux jugements importants et l'évaluation des conclusions (par. 37) ; le rapport ne peut être daté avant son achèvement (par. 36). Elle ne se confond ni avec la supervision ni avec la surveillance a posteriori du système de qualité.",
+      "reference": "NPMQ par. 35 à 37 (revue indépendante) ; C. com. L.821-35 pour le parallèle CAC",
+      "confidence": "high"
     },
     {
       "id": "2023-11-EC-04",
@@ -100,7 +100,7 @@
       "question": "Citez quatre éléments à examiner dans le cadre d'une revue de dossiers.",
       "qcm": {
         "choices": [
-          "Le respect des normes professionnelles et des textes légaux, le respect des procédures internes du cabinet, le caractère approprié du rapport délivré, la documentation suffisante du dossier (lettre de mission, acceptation, supervision)",
+          "Le respect des normes professionnelles et des textes légaux, le respect de la lettre de mission et des procédures internes, le caractère suffisant des éléments probants étayant le rapport, la documentation correcte des travaux",
           "La satisfaction du client, le délai de paiement des honoraires, le taux de marge de la mission, la fidélisation",
           "La conformité fiscale de l'entreprise cliente, ses ratios financiers, son endettement et sa trésorerie",
           "Le contrat de travail des collaborateurs, leur temps de présence, leurs congés et leur formation"
@@ -109,16 +109,16 @@
       },
       "qrc": {
         "expected": [
-          "Respect des normes professionnelles et des obligations légales et réglementaires",
-          "Respect du code de déontologie (indépendance, acceptation et maintien de la mission)",
-          "Respect des procédures internes du cabinet (lettre de mission, planification, supervision, revue)",
-          "Caractère approprié du rapport ou de l'attestation délivrée et documentation suffisante du dossier"
+          "Conformité des travaux aux normes professionnelles et aux obligations légales et réglementaires",
+          "Respect de la lettre de mission et des procédures internes du cabinet",
+          "Identification des questions importantes et consultations menées et documentées ; besoin de réviser la nature, le calendrier ou l'étendue des travaux",
+          "Documentation correcte des travaux, éléments probants suffisants pour étayer le rapport, objectifs du plan de mission atteints"
         ],
-        "model_answer": "La revue (inspection) de dossiers achevés vérifie notamment le respect des normes professionnelles et des textes applicables, le respect des règles déontologiques (indépendance, acceptation et maintien de la mission), l'application des procédures du cabinet (lettre de mission, planification, supervision, revue des travaux) et le caractère approprié du rapport au regard de la documentation du dossier."
+        "model_answer": "La revue de dossiers vérifie notamment que les travaux respectent les normes professionnelles, les obligations légales, la lettre de mission et les procédures internes, que les questions importantes ont été identifiées et les consultations menées, que les travaux sont correctement documentés, que les éléments probants suffisent à étayer le rapport et que les objectifs du plan de mission sont atteints."
       },
-      "explanation": "L'inspection de dossiers est l'un des moyens de la surveillance du système de maîtrise de la qualité : elle intervient après la délivrance du rapport, par sondage, et vise à vérifier que les politiques et procédures du cabinet sont appliquées. Les constats alimentent les actions correctives. En contrôle de qualité de l'Ordre, le contrôleur procède de manière comparable lors du contrôle technique.",
-      "reference": "NPMQ (surveillance du système de qualité, inspection de dossiers) ; règlement intérieur de l'Ordre (contrôle de qualité)",
-      "confidence": "medium"
+      "explanation": "Dans la NPMQ, la revue de dossiers est une procédure de réalisation des missions (par. 32 c), exercée tout au long de la mission (A33) ; ses points d'examen sont listés en A35 et dans le glossaire. Elle ne se confond pas avec la surveillance du système de maîtrise de la qualité, qui comporte un contrôle périodique de missions achevées (par. 48), ni avec le contrôle technique du contrôle de qualité de l'Ordre, qui revoit des dossiers par sondages (RI art. 404 et 406).",
+      "reference": "NPMQ par. 32, 48, A33, A35 et glossaire « Revue de dossier » ; règlement intérieur de l'Ordre art. 404 et 406",
+      "confidence": "high"
     },
     {
       "id": "2023-11-EC-05",
@@ -266,7 +266,7 @@
         ],
         "model_answer": "L'article 22 de l'ordonnance interdit à l'expert-comptable : tout emploi salarié (sauf chez un confrère, un CAC, une AGC, une succursale ou une société pluri-professionnelle) ; toute activité commerciale ou acte d'intermédiaire non accessoire ; tout mandat de recevoir, conserver ou délivrer des fonds hors mandats de paiement accessoires ; l'activité d'agent d'affaires, la représentation devant les tribunaux et les travaux comptables pour des entreprises dans lesquelles il détient des intérêts substantiels."
       },
-      "explanation": "Ces interdictions protègent l'indépendance et le caractère libéral de la profession. La loi Pacte en a assoupli deux : activités commerciales accessoires et mandats de paiement ou recouvrement amiable par le compte du client. Le CAC connaît une liste proche (C. com. L.821-27 : atteinte à l'indépendance, emploi salarié sauf chez un CAC ou un expert-comptable, activité commerciale sauf accessoire à l'expertise comptable), d'où des confusions fréquentes.",
+      "explanation": "Ces interdictions protègent l'indépendance et le caractère libéral de la profession. Deux ont été assouplies : les activités commerciales accessoires (loi du 23 juillet 2010) et, avec la loi Pacte, le recouvrement amiable et le paiement des dettes par le compte bancaire du client. Le CAC connaît une liste proche (C. com. L.821-27 : atteinte à l'indépendance, emploi salarié sauf chez un CAC ou un expert-comptable, activité commerciale sauf accessoire à l'expertise comptable), d'où des confusions fréquentes.",
       "reference": "Ord. 45-2138 art. 22 ; C. com. L.821-27 pour le parallèle CAC",
       "confidence": "high"
     },
@@ -296,7 +296,7 @@
         ],
         "model_answer": "La pratique n'est pas conforme. Le démarchage et les actions de promotion sont admis depuis 2014 à condition de procurer au public une information utile et sincère, sans porter atteinte à la dignité, à l'honneur, à la loyauté envers les clients et les confrères. Or le message est mensonger (150 entreprises clientes alors que le cabinet débute) et comporte une comparaison tarifaire dénigrant les confrères, contraire à la confraternité et à la dignité de la profession ; il expose son auteur à des poursuites disciplinaires."
       },
-      "explanation": "Depuis l'arrêt de la CJUE de 2011 et la modification de l'ordonnance et du décret (2014), l'expert-comptable peut démarcher, mais dans les limites du code de déontologie : information sincère, discrétion, absence d'atteinte à l'image de la profession, respect de la confraternité. Le CAC est soumis à un régime encore plus restrictif (sollicitation personnalisée uniquement par courrier ou courriel, exempte de tout élément comparatif ou dénigrant, code de déontologie art. 16).",
+      "explanation": "Depuis l'arrêt de la CJUE de 2011 et la modification de l'article 152 du code de déontologie par le décret du 18 août 2014, l'expert-comptable peut démarcher, mais dans les limites de ce texte : information utile, sans inexactitude ni élément comparatif, discrétion, absence d'atteinte à l'image de la profession, respect de la confraternité (art. 161). Le CAC est soumis à un régime encore plus restrictif (sollicitation personnalisée uniquement par courrier ou courriel, exempte de tout élément comparatif ou dénigrant, code de déontologie art. 16).",
       "reference": "Ord. 45-2138 art. 23 et 24 ; D. 2012-432 art. 142, 152 et 161 s. (devoirs généraux, promotion, confraternité) ; code de déontologie CAC art. 15 et 16 pour le parallèle",
       "confidence": "medium"
     },
@@ -325,8 +325,8 @@
         ],
         "model_answer": "Tout commissaire aux comptes nouvellement inscrit doit prêter, devant la cour d'appel dont il relève, le serment de remplir les devoirs de sa profession avec honneur, probité et indépendance, et de respecter et faire respecter les lois. Il ne peut exercer ni faire usage du titre avant d'avoir prêté serment."
       },
-      "explanation": "Le serment rattache le commissaire aux comptes à l'institution judiciaire, cohérent avec sa mission d'intérêt général et sa tutelle par le ministère de la justice. L'expert-comptable, lui, ne prête plus serment depuis la suppression de l'ancien article 47 de l'ordonnance : son inscription au tableau suffit. L'usage du titre de CAC sans inscription et serment est un délit (C. com. L.821-7).",
-      "reference": "C. com. art. L.821-23 (ex L.822-1-? / R.822-?) et L.821-7 ; normes de déontologie A.821-54 § 02",
+      "explanation": "Le serment rattache le commissaire aux comptes à l'institution judiciaire, cohérent avec sa mission d'intérêt général et sa tutelle par le ministère de la justice. L'expert-comptable prête lui aussi serment, mais devant le conseil régional de l'Ordre, dans les six mois de son inscription au tableau (D. 2012-432 art. 143). L'usage du titre de CAC sans inscription et serment est un délit (C. com. L.821-7).",
+      "reference": "C. com. art. L.821-23 et L.821-7 ; norme de déontologie A.821-54 § 02 ; pour l'EC : D. 2012-432 art. 143",
       "confidence": "high",
       "update_note": "Recodification 2024 : le serment figure désormais à l'article L.821-23 du code de commerce."
     },
@@ -351,9 +351,9 @@
         "expected": [
           "Le rapporteur général de la H2A, qui dirige un service d'enquête composé d'enquêteurs qu'il habilite",
           "Saisi par le président de la H2A, le procureur général, l'AMF, l'ACPR, la Cour des comptes, le président de la CNCC ou d'une CRCC, ou par signalement",
-          "Il notifie les griefs et saisit la commission des sanctions ; prescription de six ans"
+          "Il établit un rapport d'enquête ; les griefs sont arrêtés par la H2A et notifiés par son président, qui saisit la commission des sanctions ; prescription de six ans"
         ],
-        "model_answer": "L'enquête est conduite par le rapporteur général de la Haute autorité de l'audit, qui dirige un service composé d'enquêteurs habilités par lui et désignés de façon à éviter tout conflit d'intérêts. Saisi notamment par le président de la H2A, le procureur général, l'AMF, l'ACPR ou les présidents de la CNCC et des CRCC, il instruit les faits, notifie les griefs et renvoie, le cas échéant, l'affaire devant la commission des sanctions."
+        "model_answer": "L'enquête est conduite par le rapporteur général de la Haute autorité de l'audit, qui dirige un service composé d'enquêteurs habilités par lui et désignés de façon à éviter tout conflit d'intérêts. Saisi notamment par le président de la H2A, le procureur général, l'AMF, l'ACPR ou les présidents de la CNCC et des CRCC, il instruit les faits et établit un rapport d'enquête ; la H2A arrête ensuite les griefs, que son président notifie avant de saisir la commission des sanctions."
       },
       "explanation": "Depuis la réforme de 2016, l'enquête et le jugement disciplinaires sont séparés au sein de l'autorité de supervision : rapporteur général (enquête, art. L.820-6 et L.821-73) et commission des sanctions (jugement, art. L.820-2). Les faits de plus de six ans sont prescrits. Chez les experts-comptables, l'instruction relève d'un rapporteur nommé par le magistrat chargé des poursuites rattaché à la chambre de discipline (ord. art. 49 et 50, loi 2022-172).",
       "reference": "C. com. art. L.820-6, L.821-73 et s. ; L.820-2 ; Ord. 45-2138 art. 49 et 50 pour le parallèle EC",
@@ -478,8 +478,8 @@
         ],
         "model_answer": "Les contrôleurs peuvent obtenir du commissaire aux comptes tout document ou information concernant ses missions de certification et ses autres prestations et en exiger copie, recueillir auprès de toute autre personne des informations liées à ces missions, procéder à des contrôles sur place et recourir à des experts pour leurs vérifications. Le contrôlé doit fournir tous les renseignements demandés sans pouvoir opposer le secret professionnel."
       },
-      "explanation": "Les pouvoirs des contrôleurs sont fixés par la loi (C. com. L.820-17) et s'exercent dans le cadre de contrôles administratifs, non de perquisitions judiciaires. L'obstruction aux contrôles est elle-même sanctionnable (L.821-70 II 3°). Le secret professionnel du CAC cède devant l'autorité de supervision, comme celui de l'expert-comptable cède devant le contrôle de qualité de l'Ordre.",
-      "reference": "C. com. art. L.820-17 (ex L.821-12-?) et R.820-46 ; L.821-70 II 3°",
+      "explanation": "Les pouvoirs des contrôleurs sont fixés par la loi (C. com. L.820-17) et s'exercent dans le cadre de contrôles administratifs, non de perquisitions judiciaires. L'obstruction aux contrôles est elle-même sanctionnable (L.821-70 II 3°). Le contrôlé justifie en outre des diligences accomplies pour garantir son indépendance, y compris pour les prestations de son réseau (R.820-46).",
+      "reference": "C. com. art. L.820-17 et R.820-46 ; L.821-70 II 3°",
       "confidence": "high",
       "update_note": "H3C → H2A ; pouvoirs des contrôleurs désormais codifiés à l'article L.820-17."
     },
@@ -571,9 +571,9 @@
         ],
         "model_answer": "Le commissaire aux comptes peut tenir compte des travaux de l'expert-comptable intervenant dans l'entité : il prend connaissance de la nature et de l'étendue de sa mission, apprécie la qualité de ses travaux par des procédures qui lui sont propres et détermine dans quelle mesure ils constituent des éléments probants. Il n'en demeure pas moins seul responsable de son opinion, ne peut se contenter de l'attestation de l'expert-comptable et doit conserver son indépendance et son esprit critique."
       },
-      "explanation": "La norme d'exercice professionnel consacrée à l'utilisation des travaux d'un expert-comptable intervenant dans l'entité (NEP 630) organise cette articulation : l'expert-comptable travaille pour l'entité et sous contrat, le CAC exerce une mission légale indépendante. Les travaux de l'un peuvent alléger ceux de l'autre, mais la responsabilité de l'opinion d'audit ne se partage pas. Rappel : l'expert-comptable et le CAC d'une même entité ne peuvent pas être la même personne ni appartenir à la même structure (autorévision).",
-      "reference": "NEP 630 (utilisation des travaux d'un expert-comptable intervenant dans l'entité) ; NEP 500 ; code de déontologie CAC art. 5 et 10",
-      "confidence": "medium"
+      "explanation": "La norme d'exercice professionnel consacrée à l'utilisation des travaux d'un expert-comptable intervenant dans l'entité (NEP 630) organise cette articulation : l'expert-comptable travaille pour l'entité et sous contrat, le CAC exerce une mission légale indépendante. Les travaux de l'un peuvent éviter à l'autre de les refaire, mais ils ne sont que des éléments collectés et l'opinion n'y fait pas référence. Rappel : la tenue de la comptabilité par le CAC, sa structure ou son réseau l'exposerait à un risque d'autorévision prohibé faute de sauvegarde possible (C. com. L.821-28 IV ; code de déontologie art. 5 II), et constitue un service interdit dans les EIP (règlement 537/2014 art. 5).",
+      "reference": "NEP 630 (A.821-91, utilisation des travaux d'un expert-comptable intervenant dans l'entité) ; C. com. L.821-61, L.821-28 IV ; NEP 500 ; code de déontologie CAC art. 5 et 10",
+      "confidence": "high"
     },
     {
       "id": "2023-11-CAC-20",

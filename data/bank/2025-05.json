@@ -52,7 +52,7 @@
       },
       "qrc": {
         "expected": [
-          "Missions d'assurance sur des comptes complets historiques (audit NP 2100, examen limité NP 2400, présentation NP 2300)",
+          "Missions d'assurance sur des comptes complets historiques (audit selon les normes ISA, examen limité NP 2400, présentation NP 2300)",
           "Autres missions d'assurance (attestations particulières NP 3100, informations prévisionnelles NP 3400)",
           "Missions sans assurance (procédures convenues NP 4400, compilation NP 4410, missions légales sans assurance)"
         ],
@@ -109,10 +109,14 @@
         "answer": 1
       },
       "qrc": {
-        "expected": ["Assurance de niveau modéré", "Cohérence", "Vraisemblance des comptes pris dans leur ensemble"],
+        "expected": [
+          "Assurance de niveau modéré",
+          "Cohérence",
+          "Vraisemblance des comptes pris dans leur ensemble"
+        ],
         "model_answer": "La mission de présentation (NP 2300) est une mission d'assurance de niveau modéré : l'expert-comptable atteste de la cohérence et de la vraisemblance des comptes pris dans leur ensemble. Il ne se prononce ni sur leur régularité ni sur leur sincérité ou leur image fidèle."
       },
-      "explanation": "Régularité, sincérité et image fidèle relèvent de la certification (assurance raisonnable) du CAC ou de l'audit contractuel NP 2100. L'examen limité (NP 2400) donne une assurance modérée sur la conformité au référentiel. L'attestation de présentation peut être sans observation, avec observation(s) ou se traduire par un refus d'attester.",
+      "explanation": "Régularité, sincérité et image fidèle relèvent de la certification du CAC (assurance raisonnable, C. com. L.821-53) ; l'audit d'états financiers de l'expert-comptable (normes ISA, NP 2910) donne aussi une assurance raisonnable. L'examen limité (NP 2400) donne une assurance modérée sur la conformité au référentiel. L'attestation de présentation peut être sans observation, avec observation(s) ou se traduire par un refus d'attester.",
       "reference": "NP 2300 (arrêté du 1er sept. 2016) ; cadre de référence",
       "confidence": "high"
     },
@@ -126,7 +130,7 @@
       "question": "Un expert-comptable peut-il être agent immobilier ? Justifiez votre réponse.",
       "qcm": {
         "choices": [
-          "Oui, depuis la loi Pacte toute activité commerciale est autorisée sans limite",
+          "Oui, depuis 2010 toute activité commerciale est autorisée sans limite",
           "Oui, si l'activité est exercée au sein d'une société distincte détenue à plus des deux tiers par des experts-comptables",
           "Non : il s'agit d'une activité d'intermédiaire commercial impliquant la détention de fonds pour autrui, incompatible avec l'indépendance de l'expert-comptable",
           "Non, sauf autorisation du commissaire du Gouvernement"
@@ -142,8 +146,8 @@
         ],
         "model_answer": "Non. L'agent immobilier exerce une activité commerciale d'intermédiaire et détient des fonds pour le compte de ses mandants, ce que l'article 22 de l'ordonnance interdit à l'expert-comptable. La dérogation pour activités commerciales accessoires ne s'applique pas à une activité exercée à titre professionnel et de nature à compromettre son indépendance."
       },
-      "explanation": "Depuis la loi Pacte, l'EC peut exercer des activités commerciales et actes d'intermédiaire à titre accessoire, dans les limites fixées par une norme professionnelle, sans mettre en péril l'indépendance. L'activité d'agent immobilier (carte professionnelle, maniement de fonds, rémunération au succès) dépasse ce cadre. Point d'appréciation : le jury attend « non ».",
-      "reference": "Ord. 45-2138 art. 22 ; norme professionnelle sur les activités commerciales accessoires",
+      "explanation": "Depuis la loi du 23 juillet 2010, l'EC peut exercer des activités commerciales et actes d'intermédiaire à titre accessoire, sans mettre en péril l'indépendance, dans les limites de la norme professionnelle agréée le 12 mars 2021, qui maintient l'interdiction de l'activité d'agent d'affaires. L'activité d'agent immobilier (carte professionnelle, maniement de fonds, rémunération au succès) dépasse ce cadre. Point d'appréciation : le jury attend « non ».",
+      "reference": "Ord. 45-2138 art. 22 ; norme professionnelle relative aux activités commerciales et aux actes d'intermédiaire (arrêté du 12 mars 2021)",
       "confidence": "medium"
     },
     {
@@ -155,15 +159,23 @@
       "points": 2,
       "question": "Devant quelle juridiction une décision de la chambre nationale de discipline peut-elle faire l'objet d'un recours ?",
       "qcm": {
-        "choices": ["La cour d'appel de Paris", "La Cour de cassation", "Le Conseil d'État (recours en cassation)", "Le tribunal administratif de Paris"],
+        "choices": [
+          "La cour d'appel de Paris",
+          "La Cour de cassation",
+          "Le Conseil d'État (recours en cassation)",
+          "Le tribunal administratif de Paris"
+        ],
         "answer": 2
       },
       "qrc": {
-        "expected": ["Conseil d'État", "Recours en cassation (juridiction administrative spécialisée)"],
+        "expected": [
+          "Conseil d'État",
+          "Recours en cassation (juridiction administrative spécialisée)"
+        ],
         "model_answer": "Les décisions de la chambre nationale de discipline peuvent faire l'objet d'un pourvoi en cassation devant le Conseil d'État."
       },
       "explanation": "Les chambres de discipline de l'Ordre sont des juridictions administratives spécialisées ; le juge de cassation est donc le Conseil d'État. Pour les CAC, la décision de la commission des sanctions de la H2A fait l'objet d'un recours de plein contentieux devant le Conseil d'État.",
-      "reference": "Ord. 45-2138 art. 50 ; D. 2012-432 art. 192 s. ; CJA L.331-1",
+      "reference": "Ord. 45-2138 art. 53 (dernier alinéa : recours devant le Conseil d'État) ; D. 2012-432 art. 192 s. ; CJA L.331-1 et L.821-1 ; C. com. L.821-85 pour le parallèle CAC",
       "confidence": "high"
     },
     {
@@ -571,7 +583,7 @@
           "Un conseiller d'État président, un magistrat de la Cour des comptes et trois commissaires aux comptes en exercice",
           "Un magistrat de la Cour de cassation président, une personne ayant exercé la profession de CAC, une personne qualifiée en durabilité, deux personnes qualifiées en matière juridique, économique ou financière",
           "Le président de la H2A, le président de l'AMF, le président de l'ACPR et le directeur général du Trésor",
-          "Un président de chambre de la cour d'appel de Paris, un conseiller référendaire à la Cour des comptes et deux membres du Conseil national"
+          "Un président de chambre de la cour d'appel de Paris, deux fonctionnaires désignés par le ministre de l'économie et deux membres du Conseil national"
         ],
         "answer": 1
       },
@@ -585,7 +597,7 @@
         ],
         "model_answer": "La commission des sanctions comprend cinq membres : un magistrat de la Cour de cassation, qui la préside, et quatre personnes qualifiées (une ayant exercé la profession de CAC, une qualifiée en certification de durabilité, deux qualifiées en matière juridique, économique ou financière). Ils sont nommés par décret pour six ans renouvelables une fois et ne peuvent siéger au collège."
       },
-      "explanation": "Composition fixée par L.820-2 V ; la commission succède à la formation restreinte du H3C (la séparation entre poursuite et jugement existait depuis 2016) et intègre désormais une compétence en durabilité. Le distracteur « président de chambre de la cour d'appel de Paris, conseiller référendaire à la Cour des comptes… » décrit la chambre nationale de discipline des EC ; celui avec l'AMF et l'ACPR décrit des membres du collège.",
+      "explanation": "Composition fixée par L.820-2 V ; la commission succède à la formation restreinte du H3C (la séparation entre poursuite et jugement existait depuis 2016) et intègre désormais une compétence en durabilité. Le distracteur « président de chambre de la cour d'appel de Paris, deux fonctionnaires, deux membres du Conseil national » décrit la chambre nationale de discipline des EC (ord. art. 50) ; celui avec l'AMF, l'ACPR et le Trésor décrit des membres du collège (L.820-2 II 4°).",
       "reference": "C. com. L.820-2 V",
       "confidence": "high",
       "update_note": "Instance créée au 1er janvier 2024 (H2A) ; auparavant formation restreinte du H3C."

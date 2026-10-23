@@ -59,8 +59,8 @@
         "model_answer": "Le contrôle de qualité porte sur la structure d'exercice professionnel (bureau principal, bureaux secondaires et organismes concourant aux missions) et sur chacun de ses membres inscrits au tableau ou à sa suite : experts-comptables, salariés autorisés à exercer au titre des articles 83 ter et 83 quater, et associations de gestion et de comptabilité. Les experts-comptables stagiaires, qui ne sont pas membres de l'Ordre, n'en font pas l'objet."
       },
       "explanation": "Le contrôle de qualité vise toutes les personnes autorisées à exercer l'activité d'expertise comptable et soumises au référentiel normatif : professionnels inscrits et structures. Les stagiaires sont soumis à la surveillance et au contrôle disciplinaire de l'Ordre mais ne réalisent pas de missions sous leur propre responsabilité, d'où leur exclusion. Chez les CAC, le contrôle d'activité est conduit sous l'autorité de la H2A et vise les commissaires inscrits et leurs structures (C. com. L.820-14).",
-      "reference": "D. 2012-432 (contrôle de qualité) ; règlement intérieur de l'Ordre art. 407 ; Ord. 45-2138 art. 4 et 83 quinquies",
-      "confidence": "medium"
+      "reference": "D. 2012-432 art. 170 ; règlement intérieur de l'Ordre art. 407 et 409 ; Ord. 45-2138 art. 4 et 83 quinquies",
+      "confidence": "high"
     },
     {
       "id": "2023-05-EC-03",
@@ -114,13 +114,13 @@
         "question": "Où se situent, dans le référentiel normatif de l'expertise comptable, les activités commerciales accessoires et les actes d'intermédiaire ?",
         "expected": [
           "En dehors des missions : dans la partie « activités » du référentiel",
-          "Activités accessoires autorisées par la loi Pacte (ord. art. 22), encadrées par une norme professionnelle",
+          "Activités autorisées à titre accessoire par l'article 22 de l'ordonnance (depuis la loi 2010-853), encadrées par une norme professionnelle agréée",
           "Elles ne relèvent ni des missions d'assurance, ni des missions sans assurance"
         ],
-        "model_answer": "Les activités commerciales accessoires et les actes d'intermédiaire, autorisés par la loi Pacte à titre accessoire, ne constituent pas des missions : ils figurent dans la partie « activités » du schéma du référentiel normatif, distincte des missions d'assurance (comptes complets historiques, autres missions d'assurance), des missions sans assurance et des autres prestations."
+        "model_answer": "Les activités commerciales accessoires et les actes d'intermédiaire, autorisés à titre accessoire par l'article 22 de l'ordonnance de 1945, ne constituent pas des missions : ils figurent dans la partie « activités » du schéma du référentiel normatif, distincte des missions d'assurance (comptes complets historiques, autres missions d'assurance), des missions sans assurance et des autres prestations."
       },
-      "explanation": "Le cadre de référence de l'Ordre distingue les missions (d'assurance sur comptes complets historiques, autres missions d'assurance, missions sans assurance, autres prestations) et les activités (activités commerciales accessoires, actes d'intermédiaire, mandats de paiement...). Ces activités restent soumises à des conditions et limites fixées par une norme professionnelle agréée. Les candidats confondent souvent « missions sans assurance » (compilation, procédures convenues) et « activités ».",
-      "reference": "Ord. 45-2138 art. 22 ; référentiel normatif OEC (cadre de référence des missions et activités) ; norme relative aux activités commerciales accessoires",
+      "explanation": "Le cadre de référence de l'Ordre distingue les missions (d'assurance sur comptes complets historiques, autres missions d'assurance, missions sans assurance, autres prestations) et le cadre des activités, qui comprend la norme relative aux activités commerciales et aux actes d'intermédiaire. Cette norme, agréée par arrêté, fixe les conditions et limites de ces activités, comme l'exige l'article 22 de l'ordonnance. Les candidats confondent souvent « missions sans assurance » (compilation, procédures convenues) et « activités ».",
+      "reference": "Ord. 45-2138 art. 22 ; référentiel normatif OEC (cadre de référence : « Cadre des activités ») ; norme professionnelle relative aux activités commerciales et aux actes d'intermédiaire (agréée le 12 mars 2021)",
       "confidence": "medium"
     },
     {
@@ -150,8 +150,8 @@
         ],
         "model_answer": "L'activité d'agent immobilier est incompatible : c'est une activité commerciale et d'intermédiaire, interdite par l'article 22 de l'ordonnance sauf à titre strictement accessoire. En revanche, les fonctions de conseiller prud'homal, de correspondant Tracfin (au sein du cabinet) et de commissaire aux comptes sont compatibles avec l'exercice de l'expertise comptable."
       },
-      "explanation": "L'article 22 de l'ordonnance interdit toute activité commerciale ou acte d'intermédiaire (sauf accessoire et sans atteinte à l'indépendance) et l'activité d'agent d'affaires ; l'agent immobilier cumule ces deux qualifications. Les fonctions de CAC sont expressément autorisées « dans les conditions prévues au livre VIII du code de commerce ». La désignation d'un correspondant et d'un déclarant Tracfin est une obligation d'organisation du cabinet (NPLAB).",
-      "reference": "Ord. 45-2138 art. 22 ; NPLAB ; CMF art. L.561-2 et R.561-23",
+      "explanation": "L'article 22 de l'ordonnance interdit toute activité commerciale ou acte d'intermédiaire (sauf accessoire et sans atteinte à l'indépendance) et l'activité d'agent d'affaires ; l'agent immobilier cumule ces deux qualifications. Les fonctions de CAC sont expressément autorisées « dans les conditions prévues au livre VIII du code de commerce ». La désignation d'un correspondant Tracfin est une obligation d'organisation de la structure (NPLAB § 12 ; CMF R.561-24), la déclaration de soupçon étant faite par l'expert-comptable en charge de la mission.",
+      "reference": "Ord. 45-2138 art. 22 ; NPLAB § 12 et 47 ; CMF art. L.561-2, R.561-23 et R.561-24",
       "confidence": "high"
     },
     {
@@ -241,7 +241,7 @@
         ],
         "model_answer": "À l'issue d'une mission de présentation (NP 2300), l'expert-comptable délivre une attestation exprimant une assurance modérée sur la cohérence et la vraisemblance des comptes annuels, et non sur leur régularité et sincérité. L'attestation peut être sans observation, avec observation(s), ou se traduire par un refus d'attester."
       },
-      "explanation": "La présentation est la mission d'assurance de niveau le plus bas sur des comptes complets historiques : assurance modérée, objet limité à la cohérence et à la vraisemblance. La régularité, la sincérité et l'image fidèle relèvent de la certification des comptes par le commissaire aux comptes (assurance raisonnable, C. com. L.821-53). L'examen limité (NP 2400) donne aussi une assurance modérée mais avec une conclusion formulée en termes négatifs sur la conformité au référentiel.",
+      "explanation": "La présentation est la mission d'assurance de niveau le plus bas sur des comptes complets historiques : assurance modérée, objet limité à la cohérence et à la vraisemblance. La régularité, la sincérité et l'image fidèle relèvent de la certification des comptes par le commissaire aux comptes (assurance raisonnable, C. com. L.821-53). L'examen limité (NP 2400) donne aussi une assurance modérée, mais sur la conformité des comptes au référentiel comptable ; dans les deux missions, la conclusion est formulée sous une forme négative.",
       "reference": "NP 2300 (présentation des comptes) ; NP 2400 ; C. com. L.821-53 pour le parallèle CAC",
       "confidence": "high"
     },
@@ -297,13 +297,13 @@
         "question": "Quel est le taux d'encadrement des comptables salariés imposé aux experts-comptables et à leurs structures ?",
         "expected": [
           "Un expert-comptable (ou salarié autorisé) pour quinze comptables salariés au maximum",
-          "Seuls les salariés exerçant des fonctions comptables sont comptés ; les stagiaires n'entrent pas dans le calcul",
-          "Ratio fixé par décret (ord. art. 19) ; relevé de 10 à 15 par le décret de 2012"
+          "Seuls les salariés participant aux missions de l'art. 2 (al. 1 à 5) sont comptés ; les stagiaires n'entrent pas dans le calcul",
+          "Ratio fixé par décret (ord. art. 19 ; D. 2012-432 art. 132)"
         ],
-        "model_answer": "Le nombre de comptables salariés dont un membre de l'Ordre peut utiliser les services est limité à quinze, et le même rapport d'un expert-comptable pour quinze comptables salariés s'applique aux sociétés d'expertise comptable, aux succursales et aux AGC. Seuls les salariés affectés à des travaux comptables sont pris en compte, les experts-comptables stagiaires étant exclus du calcul."
+        "model_answer": "Le nombre de comptables salariés dont un membre de l'Ordre peut utiliser les services est limité à quinze, et le même rapport d'un expert-comptable pour quinze comptables salariés s'applique aux sociétés d'expertise comptable et aux AGC. Seuls les salariés affectés à des travaux comptables sont pris en compte, les experts-comptables stagiaires étant exclus du calcul."
       },
-      "explanation": "Le taux d'encadrement garantit que les travaux comptables sont effectivement réalisés sous la direction et le contrôle d'un professionnel inscrit, conformément au monopole de l'article 2 de l'ordonnance. Le décret de 2012 a porté le ratio de 10 à 15. Les collaborateurs non comptables (juristes, informaticiens, secrétaires) ne sont pas concernés. Il n'existe pas de ratio équivalent en commissariat aux comptes, où le CAC conserve l'entière responsabilité de ses collaborateurs.",
-      "reference": "Ord. 45-2138 art. 19 ; D. 2012-432 (art. 132 pour les AGC et dispositions parallèles pour les cabinets)",
+      "explanation": "Le taux d'encadrement garantit que les travaux comptables sont effectivement réalisés sous la direction et le contrôle d'un professionnel inscrit, conformément au monopole de l'article 2 de l'ordonnance. Les collaborateurs non comptables (juristes, informaticiens, secrétaires) ne sont pas concernés. Il n'existe pas de ratio équivalent en commissariat aux comptes, où le CAC conserve l'entière responsabilité de ses collaborateurs.",
+      "reference": "Ord. 45-2138 art. 19 ; D. 2012-432 art. 132",
       "confidence": "high"
     },
     {
@@ -332,10 +332,10 @@
         ],
         "model_answer": "L'inscription sur la liste des commissaires aux comptes et la tenue de cette liste relèvent de la Haute autorité de l'audit (ex H3C), qui peut en déléguer la réalisation à la Compagnie nationale des commissaires aux comptes par une convention homologuée par arrêté du garde des sceaux. Une fois inscrit, le commissaire prête serment devant la cour d'appel dont il relève."
       },
-      "explanation": "Depuis la réforme de l'audit de 2016, les commissions régionales d'inscription ont disparu : la liste est nationale et tenue par l'autorité de supervision. Les compagnies régionales ne font qu'instruire par délégation. Chez les experts-comptables, c'est à l'inverse l'instance ordinale régionale (conseil régional de l'Ordre) qui statue sur l'inscription au tableau (ord. art. 42).",
+      "explanation": "Depuis la réforme de l'audit de 2016, les commissions régionales d'inscription ont disparu : la liste est nationale et tenue par l'autorité de supervision, qui ne peut déléguer l'inscription qu'à la CNCC (L.820-1 II). Cette délégation conventionnelle a été résiliée par le H3C à effet du 5 novembre 2020 : l'inscription est depuis réalisée directement par le régulateur, les compagnies régionales n'y intervenant pas. Chez les experts-comptables, c'est à l'inverse l'instance ordinale régionale (conseil régional de l'Ordre) qui statue sur l'inscription au tableau (ord. art. 42).",
       "reference": "C. com. art. L.820-1 I 1° et II, L.821-13 à L.821-16, L.821-23 ; Ord. 45-2138 art. 42 pour le parallèle EC",
       "confidence": "high",
-      "update_note": "H3C → Haute autorité de l'audit (H2A) depuis le 1er janvier 2024 (ordonnance 2023-1142) ; la réponse d reste exacte en lisant « H3C » comme l'autorité de supervision devenue H2A."
+      "update_note": "H3C → Haute autorité de l'audit (H2A) depuis le 1er janvier 2024 (ordonnance 2023-1142) ; la réponse d reste exacte en lisant « H3C » comme l'autorité de supervision devenue H2A. Délégation à la CNCC possible (L.820-1 II) mais résiliée depuis le 5 novembre 2020."
     },
     {
       "id": "2023-05-CAC-12",
@@ -455,8 +455,8 @@
         ],
         "model_answer": "Le commissaire aux comptes vérifie que l'organisme a publié ses comptes annuels et le rapport du CAC sur le site de la DILA, obtient le justificatif de dépôt et contrôle la conformité des comptes publiés avec ceux qu'il a certifiés. En cas de défaut de publication, il relève l'irrégularité et la signale, mais ne procède jamais lui-même à la publication, qui incombe aux dirigeants."
       },
-      "explanation": "Les associations et fondations faisant appel à la générosité du public doivent assurer la publicité de leurs comptes annuels (C. com. L.612-4, loi 91-772). Le CAC s'assure de la publicité sincère mais reste dans son rôle de contrôleur : la non-immixtion lui interdit d'accomplir un acte de gestion à la place des dirigeants. L'expert-comptable, lui, peut accomplir les formalités de dépôt pour le compte de son client, ce qui souligne la différence de posture entre les deux professions.",
-      "reference": "C. com. art. L.612-4 et D.612-5 ; loi 91-772 du 7 août 1991 art. 3 bis ; C. com. L.821-54 (non-immixtion) ; NEP 9510",
+      "explanation": "La publicité des comptes annuels et du rapport du commissaire aux comptes incombe aux dirigeants de l'organisme (loi 91-772 pour les organismes faisant appel à la générosité du public ; C. com. L.612-4 pour les associations recevant plus de 153 000 € de subventions, D.612-5). Le CAC s'assure de cette publicité mais reste dans son rôle de contrôleur : la non-immixtion dans la gestion (L.821-54) lui interdit d'accomplir l'acte à la place des dirigeants ; en cas de carence, c'est le président du tribunal qui peut enjoindre aux dirigeants de publier ou désigner un mandataire chargé des formalités (L.612-4). L'expert-comptable, lui, peut accomplir les formalités de dépôt pour le compte de son client, ce qui souligne la différence de posture entre les deux professions.",
+      "reference": "Loi 91-772 du 7 août 1991 art. 3 bis ; C. com. art. L.612-4 et D.612-5 (associations subventionnées) ; C. com. L.821-54 I (non-immixtion)",
       "confidence": "medium"
     },
     {

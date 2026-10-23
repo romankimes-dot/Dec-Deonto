@@ -120,7 +120,7 @@
         ],
         "model_answer": "Sont interdits à l'expert-comptable : tout emploi salarié hors de la profession (sauf chez un confrère, un CAC, une AGC…), toute activité commerciale ou acte d'intermédiaire non accessoire, tout mandat de recevoir, conserver ou délivrer des fonds ou valeurs ou de donner quittance, l'activité d'agent d'affaires et l'exercice d'activités relevant du monopole d'autres professions (représentation en justice, consultation juridique à titre principal)."
       },
-      "explanation": "Article 22 de l'ordonnance, assoupli par la loi Pacte (activités commerciales accessoires, recouvrement amiable et paiement de dettes par le compte du client, paiement de dettes fiscales et sociales). Côté CAC, l'interdiction porte surtout sur l'immixtion et l'autorévision.",
+      "explanation": "Article 22 de l'ordonnance, assoupli par la loi du 23 juillet 2010 (activités commerciales accessoires) puis par la loi Pacte (recouvrement amiable et paiement de dettes par le compte bancaire du client ; la délivrance de fonds pour payer des dettes fiscales et sociales sous mandat était déjà admise). Côté CAC, l'interdiction porte surtout sur l'immixtion et l'autorévision.",
       "reference": "Ord. 45-2138 art. 22",
       "confidence": "high"
     },
@@ -180,7 +180,7 @@
         ],
         "model_answer": "Le nouvel expert-comptable informe son prédécesseur avant d'accepter la mission et s'assure que le changement n'a pas pour objet d'éluder la loi ou ses devoirs professionnels. Il s'efforce d'obtenir la justification du paiement des honoraires dus au prédécesseur ; à défaut, il en réfère au président du conseil régional et fait des réserves auprès du client. Si les honoraires sont contestés, il suggère par écrit la conciliation ou l'arbitrage de l'Ordre."
       },
-      "explanation": "Article 163 du code de déontologie EC ; le prédécesseur favorise, avec l'accord du client, la transmission du dossier. Pour les CAC, la succession entre confrères est régie par l'article 26 du code de déontologie CAC (accès au dossier du prédécesseur, levée du secret entre CAC successifs).",
+      "explanation": "Article 163 du code de déontologie EC ; le prédécesseur favorise, avec l'accord du client, la transmission du dossier. Pour les CAC, l'article 26 du code de déontologie CAC impose seulement au successeur de s'assurer auprès du prédécesseur que le non-renouvellement ne vise pas à contourner les obligations légales ; la prise de connaissance du dossier de travail du prédécesseur résulte de la NEP 510 (§ 06).",
       "reference": "D. 2012-432 art. 159, 160 et 163",
       "confidence": "high"
     },
@@ -236,11 +236,11 @@
           "Mission sans assurance (mission particulière prévue par un texte légal : C. électoral L.52-12)",
           "Aucune norme spécifique",
           "Code de déontologie, NPMQ, NPLAB",
-          "Lettre de mission ; vigilance LCB-FT élevée"
+          "Lettre de mission ; vigilance LCB-FT selon l'approche par les risques"
         ],
         "model_answer": "C'est une mission sans assurance, catégorie des missions particulières prévues par un texte légal (code électoral), qui ne fait l'objet d'aucune norme spécifique. S'appliquent le code de déontologie, la NPMQ et la NPLAB, ainsi que le code électoral et la doctrine de la CNCCFP."
       },
-      "explanation": "Question reprise de novembre 2024. Le visa de l'expert-comptable n'exprime aucune assurance : il met le compte en état d'examen et vérifie la présence des pièces. Les comptes de campagne sont considérés comme à risque élevé en matière LCB-FT.",
+      "explanation": "Question reprise de novembre 2024. Le visa de l'expert-comptable n'exprime aucune assurance : il met le compte en état d'examen et vérifie la présence des pièces. Le cadre de référence cite les comptes de campagne parmi les missions sans assurance prévues par un texte, sans norme spécifique ; la vigilance LCB-FT est renforcée si le candidat est une personne politiquement exposée.",
       "reference": "Cadre de référence des missions (référentiel normatif OEC) ; C. électoral L.52-12 ; NPMQ ; NPLAB",
       "confidence": "medium"
     },
@@ -270,8 +270,8 @@
         ],
         "model_answer": "Une opération est atypique lorsqu'elle est particulièrement complexe, d'un montant inhabituellement élevé, ou qu'elle ne paraît pas avoir de justification économique ou d'objet licite. Le professionnel effectue alors un examen renforcé : il se renseigne sur l'origine et la destination des fonds, l'objet de l'opération et l'identité du bénéficiaire, et consigne ses conclusions."
       },
-      "explanation": "Article L.561-10-2 II du CMF, repris par la NPLAB (EC) et la NEP 9605 (CAC). L'examen renforcé peut déboucher sur une déclaration de soupçon. Une PPE déclenche une vigilance renforcée, mais n'est pas en soi une opération atypique.",
-      "reference": "CMF L.561-10-2 II ; NPLAB ; NEP 9605",
+      "explanation": "Article L.561-10-2 du CMF, repris par la NPLAB (§ 42 : résultats de l'examen renforcé consignés par écrit) et la NEP 9605 (CAC). L'examen renforcé peut déboucher sur une déclaration de soupçon. Une PPE déclenche une vigilance renforcée, mais n'est pas en soi une opération atypique.",
+      "reference": "CMF L.561-10-2 ; NPLAB § 42 ; NEP 9605",
       "confidence": "high"
     },
     {
@@ -301,9 +301,9 @@
         "model_answer": "Il est radié d'office du tableau par le conseil régional, après deux mises en demeure par lettre recommandée restées infructueuses (la seconde envoyée entre un et trois mois après la première), la radiation intervenant au plus tôt trente jours après réception de la seconde. La même règle s'applique au non-paiement des cotisations ordinales."
       },
       "explanation": "Article 125 du décret de 2012 : les cotisations de sécurité sociale personnelles (dont la CAVEC) sont visées. Il s'agit d'une radiation d'office administrative, distincte de la radiation disciplinaire prononcée par la chambre régionale de discipline (qui emporte interdiction définitive d'exercer). L'ancienne formule « réputé démissionnaire » ne figure plus dans le texte.",
-      "reference": "D. 2012-432 art. 125 (modifié par D. 2022-1732)",
+      "reference": "D. 2012-432 art. 125 (modifié par D. 2022-1732, puis D. 2025-506 du 10 juin 2025)",
       "confidence": "high",
-      "update_note": "Relecture : procédure corrigée selon l'art. 125 en vigueur (radiation d'office ; deux mises en demeure LRAR à 1-3 mois d'intervalle ; décision au plus tôt 30 jours après la seconde)."
+      "update_note": "Relecture : procédure corrigée selon l'art. 125 en vigueur (radiation d'office ; deux mises en demeure LRAR à 1-3 mois d'intervalle ; décision au plus tôt 30 jours après la seconde). Depuis le D. 2025-506 (12 juin 2025), la mise en demeure informe l'intéressé de la possibilité de présenter des observations écrites et orales, et le recours se porte devant le comité national du tableau."
     },
     {
       "id": "2026-05-CAC-11",
@@ -606,8 +606,8 @@
         ],
         "model_answer": "Le commissaire aux comptes peut se faire assister ou représenter par des collaborateurs ou experts de son choix, sous sa responsabilité, sans leur déléguer ses pouvoirs. Il les fait connaître nommément à l'entité contrôlée, s'assure de leur compétence et de leur respect des règles déontologiques, en particulier de leur indépendance. Ils disposent des mêmes droits d'investigation et sont tenus au secret professionnel."
       },
-      "explanation": "Article 10 du code de déontologie CAC (pas de délégation de pouvoirs, entière responsabilité, collaborateurs et experts respectant les règles de la profession et indépendants) et L.821-60 (ex-L.823-13 : experts ou collaborateurs « qu'ils font connaître nommément », mêmes droits d'investigation). Côté EC, la délégation de signature est encadrée différemment (salariés EC, art. 83 ter et quater).",
-      "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 10 ; C. com. L.821-60 (ex-L.823-13) ; L.821-35",
+      "explanation": "Article 10 du code de déontologie CAC (pas de délégation de pouvoirs, entière responsabilité, collaborateurs et experts respectant les règles de la profession et indépendants), article 7 (le CAC veille à ce que ses collaborateurs disposent des compétences appropriées) et L.821-60 (ex-L.823-13 : experts ou collaborateurs « qu'ils font connaître nommément », mêmes droits d'investigation). Ils sont tenus au secret professionnel (L.821-35). Côté EC, les travaux doivent porter la signature personnelle de l'expert-comptable, qui en assume la responsabilité (ord. 45-2138 art. 12).",
+      "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 7 et 10 ; C. com. L.821-60 (ex-L.823-13) ; L.821-35",
       "confidence": "high"
     }
   ]
