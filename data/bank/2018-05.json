@@ -182,7 +182,8 @@
       },
       "explanation": "Les attestations particulières relèvent des « autres missions d'assurance » du référentiel : elles portent sur des informations qui ne constituent pas des comptes complets historiques. Le critère n'est ni le destinataire ni le niveau d'assurance, mais l'auteur de l'information. L'expert-comptable peut émettre les deux types d'attestations ; les diligences et la formulation s'adaptent à la nature de l'information et à l'assurance recherchée.",
       "reference": "NP 3100 (attestations particulières) ; cadre de référence des missions de l'OEC",
-      "confidence": "medium"
+      "confidence": "low",
+      "update_note": "Relecture : le critère n'a pas pu être vérifié dans le texte de la NP 3100 ; dans la logique ISAE 3000, la distinction tiendrait plutôt à la personne qui mesure ou évalue le sujet au regard des critères (l'entité : attestation indirecte ; l'expert-comptable lui-même : attestation directe), formulation à confronter à la norme."
     },
     {
       "id": "2018-05-EC-07",
@@ -269,7 +270,7 @@
         ],
         "model_answer": "Non. Si la publicité et le démarchage sont désormais permis, le code de déontologie impose une communication délivrée avec décence et retenue, sans porter atteinte à la dignité de la profession ni à la loyauté envers les confrères, et exclut tout élément comparatif. Se proclamer « le plus important et le plus performant » est un superlatif comparatif invérifiable, donc prohibé."
       },
-      "explanation": "L'interdiction absolue du démarchage a disparu à la suite de l'arrêt de la CJUE du 5 avril 2011 ; les actions de promotion restent toutefois encadrées par le code de déontologie : information du public, décence, absence d'atteinte à l'indépendance, au secret, à la dignité et à la loyauté, et absence d'élément comparatif. Le commissaire aux comptes est soumis à des règles voisines (communication autorisée, pas de démarchage ni de publicité comparative), ce qui ne dispense pas de distinguer les deux textes.",
+      "explanation": "L'interdiction absolue du démarchage a disparu à la suite de l'arrêt de la CJUE du 5 avril 2011 ; les actions de promotion restent toutefois encadrées par le code de déontologie : information du public, décence, absence d'atteinte à l'indépendance, au secret, à la dignité et à la loyauté, et absence d'élément comparatif. Le commissaire aux comptes est soumis à des règles voisines (publicité permise si elle procure une nécessaire information, sans élément comparatif ; sollicitation personnalisée admise uniquement par envoi postal ou courriel, code de déontologie CAC art. 15 et 16), ce qui ne dispense pas de distinguer les deux textes.",
       "reference": "D. 2012-432 art. 152 (actions de promotion et de communication) ; ord. 45-2138 art. 12",
       "confidence": "medium"
     },
@@ -377,7 +378,7 @@
       "qcm": {
         "question": "Quelles conditions une société doit-elle remplir pour être inscrite sur la liste des commissaires aux comptes ?",
         "choices": [
-          "La majorité des droits de vote est détenue par des commissaires aux comptes ou sociétés de commissaires aux comptes inscrits (ou contrôleurs légaux de l'UE) ; les trois quarts au moins des membres des organes de gestion, d'administration, de direction ou de surveillance ont cette qualité ; les représentants légaux sont commissaires aux comptes",
+          "La majorité des droits de vote est détenue par des commissaires aux comptes ou sociétés de commissaires aux comptes inscrits (ou contrôleurs légaux de l'UE) ; les fonctions de gérant, président, directeur général sont assurées par des commissaires aux comptes ; la majorité au moins des membres des organes de gestion, d'administration, de direction ou de surveillance ont cette qualité",
           "Plus des deux tiers des droits de vote détenus par des commissaires aux comptes ; forme sociale ne conférant pas la qualité de commerçant ; inscription préalable au tableau de l'Ordre des experts-comptables",
           "Capital intégralement détenu par des commissaires aux comptes personnes physiques ; siège dans le ressort d'une cour d'appel ; agrément préalable de la CNCC",
           "Majorité du capital détenue par des commissaires aux comptes ; désignation d'un associé responsable du contrôle qualité ; souscription d'une assurance couvrant les sanctions pénales"
@@ -387,15 +388,15 @@
       "qrc": {
         "expected": [
           "Majorité des droits de vote détenue par des commissaires aux comptes, sociétés de commissaires aux comptes inscrites ou contrôleurs légaux agréés dans l'UE",
-          "Trois quarts au moins des membres des organes de gestion, d'administration, de direction ou de surveillance sont des commissaires aux comptes (ou sociétés inscrites)",
-          "Les dirigeants/représentants légaux (gérant, président, directeur général…) sont des commissaires aux comptes"
+          "Fonctions de gérant, président du conseil d'administration ou du directoire, président du conseil de surveillance et directeur général assurées par des commissaires aux comptes",
+          "Majorité au moins des membres des organes de gestion, d'administration, de direction ou de surveillance ayant la qualité de commissaire aux comptes (ou de contrôleur légal UE) ; représentants permanents des sociétés associées eux-mêmes CAC"
         ],
-        "model_answer": "La société, quelle que soit sa forme, doit remplir trois conditions : la majorité des droits de vote est détenue par des commissaires aux comptes ou sociétés de commissaires aux comptes inscrits (ou des contrôleurs légaux agréés dans un autre État membre) ; les trois quarts au moins des membres de ses organes de gestion, d'administration, de direction ou de surveillance sont des commissaires aux comptes ; ses représentants légaux sont eux-mêmes commissaires aux comptes."
+        "model_answer": "La société, quelle que soit sa forme, doit remplir trois conditions : la majorité des droits de vote est détenue par des commissaires aux comptes ou sociétés de commissaires aux comptes inscrits (ou des contrôleurs légaux agréés dans un autre État membre) ; les fonctions de gérant, de président du conseil d'administration ou du directoire, de président du conseil de surveillance et de directeur général sont assurées par des commissaires aux comptes ; la majorité au moins des membres de ses organes de gestion, d'administration, de direction ou de surveillance sont des commissaires aux comptes."
       },
-      "explanation": "Les conditions d'inscription des sociétés ont été alignées sur la directive audit par l'ordonnance 2016-315 (détention de la majorité des droits de vote, et non plus des trois quarts du capital). Piège EC/CAC : pour les sociétés d'expertise comptable, le seuil est de plus des deux tiers des droits de vote détenus par des experts-comptables, et les formes conférant la qualité de commerçant sont exclues, ce qui n'est pas le cas en commissariat aux comptes.",
-      "reference": "C. com. ex L.822-1-3 (conditions d'inscription des sociétés), recodifié en 2024 (L.821-x) ; directive 2006/43/CE art. 3 modifiée",
-      "confidence": "low",
-      "update_note": "Numérotation recodifiée au 1er janvier 2024 (ordonnance 2023-1142) ; la liste est désormais tenue par la H2A (délégation possible à la CNCC). Vérifier la rédaction exacte des quotités (majorité des droits de vote / trois quarts des organes)."
+      "explanation": "Les conditions d'inscription des sociétés ont été alignées sur la directive audit par l'ordonnance 2016-315 : majorité des droits de vote (et non plus trois quarts du capital) et majorité (et non plus trois quarts) des membres des organes sociaux. Piège EC/CAC : pour les sociétés d'expertise comptable, le seuil est de plus des deux tiers des droits de vote détenus par des experts-comptables, et les formes conférant la qualité de commerçant sont exclues, ce qui n'est pas le cas en commissariat aux comptes.",
+      "reference": "C. com. L.821-16 (ex L.822-1-3, conditions d'inscription des sociétés) ; directive 2006/43/CE art. 3 § 4 modifiée",
+      "confidence": "medium",
+      "update_note": "Numérotation recodifiée au 1er janvier 2024 (ordonnance 2023-1142) : ex L.822-1-3 devenu L.821-16 ; la liste est tenue par la H2A. Relecture : quotité des organes corrigée (majorité, et non trois quarts, depuis l'ordonnance 2016-315) et condition relative aux dirigeants explicitée."
     },
     {
       "id": "2018-05-CAC-14",

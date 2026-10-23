@@ -292,7 +292,7 @@
       },
       "explanation": "Les attestations particulières relèvent des « autres missions d'assurance » du référentiel : l'expert-comptable se prononce sur une information autre que des comptes complets historiques. La norme laisse le choix entre assurance raisonnable et assurance modérée. Il ne faut pas confondre avec la présentation (assurance modérée seulement) ni avec la compilation ou les procédures convenues (aucune assurance).",
       "reference": "NP 3100 (attestations particulières) ; référentiel normatif OEC",
-      "confidence": "medium"
+      "confidence": "high"
     },
     {
       "id": "2022-11-CAC-11",
@@ -324,7 +324,7 @@
       "explanation": "Les sanctions sont prononcées par la commission des sanctions de la H2A (C. com. L.821-71). Confusion fréquente avec l'échelle des peines des experts-comptables (ord. 1945 art. 53 : réprimande, blâme avec inscription au dossier, suspension avec ou sans sursis, radiation), prononcées par les chambres régionales de discipline. Notez que la sanction pécuniaire n'existe pour l'expert-comptable qu'en matière de LCB-FT.",
       "reference": "C. com. art. L.821-70 et L.821-71 (ex L.824-1 et L.824-2) ; L.820-2 (commission des sanctions)",
       "confidence": "high",
-      "update_note": "Depuis le 1er janvier 2024 (ordonnance 2023-1142), les sanctions sont prononcées par la commission des sanctions de la Haute autorité de l'audit (H2A), qui remplace le H3C ; les articles L.824-1 et s. sont devenus L.821-70 et s."
+      "update_note": "Depuis le 1er janvier 2024 (ordonnance 2023-1142), les sanctions sont prononcées par la commission des sanctions de la Haute autorité de l'audit (H2A), qui remplace le H3C ; les articles L.824-1 et s. sont devenus L.821-70 et s. Relecture : durée de trois ans confirmée ; l'ancienne interdiction temporaire d'exercer la fonction de CAC « pour une durée n'excédant pas cinq ans » (ex L.824-2, rédaction 2016) a été remplacée au 1er janvier 2024 par l'interdiction d'exercer tout ou partie des missions ou d'en accepter de nouvelles pour trois ans au plus (L.821-71), comme le rappelle la commission des sanctions de la H2A (décision CS 2025-13). Le maximum de cinq ans vaut seulement pour des faits jugés selon l'ancien texte."
     },
     {
       "id": "2022-11-CAC-12",

@@ -447,9 +447,9 @@
         "model_answer": "Les contrôles d'activité comprennent des contrôles périodiques (au moins tous les six ans, ramenés à trois ans pour les CAC d'entités d'intérêt public), des contrôles occasionnels ou ciblés à la suite d'un signalement, des contrôles thématiques et des contrôles de suivi des recommandations. Ils sont réalisés par les contrôleurs de la Haute autorité de l'audit, ou par délégation à la CNCC pour les CAC sans mandat EIP, le cas échéant avec le concours de l'AMF ou de l'ACPR."
       },
       "explanation": "Le cadre et les orientations des contrôles sont définis par la H2A (C. com. L.820-1 I 5°), leur périodicité par la partie réglementaire (R.820-49) et leur contenu par R.820-45 (missions sélectionnées, système de contrôle qualité interne, autres missions et prestations). Les quatre modalités citées reprennent la typologie usuelle de l'autorité de supervision mais ne figurent pas sous cette forme dans le code : à vérifier. Le contrôle de qualité de l'Ordre (structurel/technique) relève d'une logique différente.",
-      "reference": "C. com. art. L.820-1, L.820-14, R.820-45 à R.820-49 ; règlement UE 537/2014 art. 26",
+      "reference": "C. com. art. L.820-1, L.820-14, R.820-45 à R.820-49 ; règlement UE 537/2014 art. 26 ; conventions de délégation des contrôles non-EIP à la CNCC (arrêtés d'homologation des 25 avril 2017, 19 mai 2023 et 6 juillet 2026)",
       "confidence": "low",
-      "update_note": "H3C → H2A au 1er janvier 2024 ; périodicité et contenu désormais aux articles R.820-45 à R.820-49 (ex R.821-26 et s.)."
+      "update_note": "H3C → H2A au 1er janvier 2024 ; périodicité et contenu désormais aux articles R.820-45 à R.820-49 (ex R.821-26 et s.). Relecture : le terme « délégation » est exact pour les contrôles non-EIP (convention de délégation H3C-CNCC homologuée en 2017 et 2023, reconduite par la H2A en 2026) ; la mention d'un simple « concours » de la CNCC (2020-11-CAC-19) est à aligner. La typologie des quatre modalités reste à vérifier."
     },
     {
       "id": "2023-11-CAC-16",

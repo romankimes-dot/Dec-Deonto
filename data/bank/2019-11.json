@@ -60,7 +60,7 @@
         ],
         "model_answer": "Depuis la levée de l'interdiction du démarchage, l'expert-comptable peut faire de la publicité et solliciter des prospects, y compris par e-mail. Sa communication doit rester décente et loyale, ne pas porter atteinte à la dignité de la profession ni au secret, et ne comporter aucun élément comparatif. L'annonce d'une ouverture de cabinet et la mention de références clients, avec leur accord, sont licites."
       },
-      "explanation": "Le seul interdit absolu parmi les propositions est la publicité comparative. L'arrêt de la CJUE du 5 avril 2011 a condamné l'interdiction générale du démarchage, et l'ordonnance a été adaptée. Le commissaire aux comptes bénéficie d'une liberté de communication plus restreinte : information du public admise, démarchage et publicité comparative prohibés par son code de déontologie.",
+      "explanation": "Le seul interdit absolu parmi les propositions est la publicité comparative. L'arrêt de la CJUE du 5 avril 2011 a condamné l'interdiction générale du démarchage, et l'ordonnance a été adaptée. Le commissaire aux comptes bénéficie d'une liberté de communication plus restreinte : publicité admise si elle procure une nécessaire information, publicité comparative prohibée, et sollicitation personnalisée limitée à l'envoi postal ou au courriel adressé à une personne déterminée (code de déontologie CAC art. 15 et 16), toute autre forme de démarchage restant interdite.",
       "reference": "Ord. 45-2138 art. 12 ; D. 2012-432 art. 152 (actions de promotion) ; CJUE 5 avril 2011, Société fiduciaire nationale d'expertise comptable",
       "confidence": "medium"
     },
@@ -247,7 +247,8 @@
       },
       "explanation": "Chaque proposition contient une restriction que la norme n'impose pas : exclusivité des attestations indirectes, assurance toujours modérée, objet purement comptable ou financier. La réponse attendue est donc « aucune ». Les attestations particulières s'opposent aux comptes complets historiques par leur objet, non par leur nature.",
       "reference": "NP 3100 (missions d'assurance sur des informations autres que des comptes complets historiques : attestations particulières)",
-      "confidence": "low"
+      "confidence": "low",
+      "update_note": "Relecture : la possibilité d'une assurance raisonnable ou modérée en NP 3100 est confirmée (choix convenu entre les parties), ce qui rend fausse la proposition b ; restent à vérifier dans la norme l'absence de restriction de l'objet (proposition c) et la définition exacte des attestations directes et indirectes."
     },
     {
       "id": "2019-11-EC-09",
@@ -271,15 +272,15 @@
         "expected": [
           "Représentation de la profession auprès des pouvoirs publics, coordination des conseils régionaux, règlement intérieur",
           "Élaboration des normes professionnelles (agréées par arrêté du ministre chargé du budget) et du référentiel",
-          "Organisation de la formation et du perfectionnement professionnel ; fixation des cotisations",
+          "Organisation de la formation et du perfectionnement professionnel (les cotisations des membres sont fixées et recouvrées par les conseils régionaux, ord. art. 31 7°)",
           "Le code de déontologie est édicté par décret en Conseil d'État (intégré au décret 2012-432) : le Conseil national le propose mais ne l'adopte pas"
         ],
-        "model_answer": "Le Conseil national représente la profession, coordonne les conseils régionaux, élabore les normes professionnelles ensuite agréées par arrêté ministériel, organise la formation et fixe les cotisations. Le code de déontologie, en revanche, n'est pas édicté par l'Ordre : il résulte d'un décret en Conseil d'État, l'Ordre n'ayant qu'un rôle de proposition."
+        "model_answer": "Le Conseil national représente la profession, coordonne les conseils régionaux, élabore les normes professionnelles ensuite agréées par arrêté ministériel et organise la formation. Le code de déontologie, en revanche, n'est pas édicté par l'Ordre : il résulte d'un décret en Conseil d'État, l'Ordre n'ayant qu'un rôle de proposition."
       },
-      "explanation": "La question oppose les actes de l'Ordre (normes, formation, cotisations) à un texte réglementaire de l'État (code de déontologie, décret 2012-432). Parallèle utile : le code de déontologie des commissaires aux comptes est lui aussi un décret en Conseil d'État, et les normes d'exercice professionnel sont adoptées par la H2A puis homologuées par arrêté, la CNCC n'ayant plus de pouvoir normatif propre.",
-      "reference": "Ord. 45-2138 art. 37 (attributions du Conseil national) et art. 31 (conseils régionaux) ; D. 2012-432 art. 141 s. (code de déontologie)",
-      "confidence": "medium",
-      "update_note": "Le Conseil supérieur a été renommé Conseil national de l'Ordre des experts-comptables par la loi Pacte (2019) ; attributions inchangées."
+      "explanation": "La question oppose les actes de l'Ordre (normes, formation) à un texte réglementaire de l'État (code de déontologie, décret 2012-432). Parallèle utile : le code de déontologie des commissaires aux comptes est lui aussi un décret en Conseil d'État, et les normes d'exercice professionnel sont adoptées par la H2A puis homologuées par arrêté, la CNCC n'ayant plus de pouvoir normatif propre.",
+      "reference": "Ord. 45-2138 art. 31 (conseils régionaux, dont 7° : fixation et recouvrement des cotisations), art. 37 (1° à 7° abrogés) et art. 84 bis ; D. 2012-432 (attributions du Conseil national ; art. 141 s. : code de déontologie)",
+      "confidence": "low",
+      "update_note": "Le Conseil supérieur a été renommé Conseil national de l'Ordre des experts-comptables par la loi Pacte (2019) ; attributions inchangées. Relecture : l'article 31 7° de l'ordonnance donne au seul conseil régional qualité pour « fixer et recouvrer » les cotisations des membres ; la proposition « collecte des cotisations » pourrait donc aussi être tenue pour exacte, réponse b maintenue sous réserve du corrigé officiel."
     },
     {
       "id": "2019-11-EC-10",
@@ -308,7 +309,7 @@
         "model_answer": "Chaque expert-comptable peut avoir sous son autorité au maximum quinze comptables salariés. Dans une société, le plafond se calcule sur les experts-comptables qui y exercent effectivement, et dans une AGC sur l'ensemble des professionnels habilités, salariés autorisés compris. Le personnel non comptable n'entre pas dans le calcul."
       },
       "explanation": "Le chiffre à retenir est quinze. Les distracteurs jouent sur le mode de calcul : les associés qui n'exercent pas dans le cabinet ne peuvent pas « encadrer », et les salariés autorisés des AGC sont assimilés aux experts-comptables pour cette règle. Il n'existe aucune règle d'encadrement équivalente en commissariat aux comptes.",
-      "reference": "Ord. 45-2138 (règle d'encadrement : un expert-comptable pour quinze comptables salariés ; art. 83 ter et quater pour les salariés autorisés des AGC) ; règlement intérieur de l'Ordre",
+      "reference": "Ord. 45-2138 art. 19 (nombre et proportions fixés par décret ; associés exerçant de manière effective et régulière ; stagiaires exclus du calcul) et art. 83 ter et quater ; D. 2012-432 (taux d'encadrement)",
       "confidence": "medium"
     },
     {
@@ -403,7 +404,7 @@
       "explanation": "À la date du sujet, le Conseil national était composé de délégués élus par les conseils régionaux parmi leurs membres (première proposition, alors exacte). La réforme intervenue depuis a instauré une élection directe de soixante membres et la présence des présidents de CRCC, ce qui modifie la réponse. Côté expertise comptable, le Conseil national de l'Ordre est composé d'élus des conseils régionaux.",
       "reference": "C. com. partie réglementaire relative à l'organisation de la CNCC (ex R.821-x, modifiée par la réforme de gouvernance puis recodifiée en 2024) ; règlement intérieur de la CNCC",
       "confidence": "low",
-      "update_note": "Réponse modifiée par la réforme de la gouvernance de la CNCC (décret 2020-2021 : 60 membres élus pour 4 ans + présidents de CRCC) ; la composition exacte est à vérifier dans les textes en vigueur. Réponse d'origine en 2019 : délégués élus par les conseils régionaux."
+      "update_note": "Réponse modifiée par la réforme de la gouvernance de la CNCC (décret 2020-2021 : 60 membres élus pour 4 ans + présidents de CRCC) ; la composition exacte est à vérifier dans les textes en vigueur. Réponse d'origine en 2019 : délégués élus par les conseils régionaux. Relecture : la qualité de membres de droit des présidents de CRCC au Conseil national n'a pas pu être confirmée dans la partie réglementaire recodifiée ; si elle était inexacte, aucune proposition ne correspondrait au droit actuel."
     },
     {
       "id": "2019-11-CAC-14",

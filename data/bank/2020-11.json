@@ -7,7 +7,10 @@
       "n": 1,
       "profession": "EC",
       "theme": "deontologie",
-      "tags": ["lcb_ft", "referentiel_normatif"],
+      "tags": [
+        "lcb_ft",
+        "referentiel_normatif"
+      ],
       "points": 1,
       "question": "La norme anti-blanchiment :",
       "qcm": {
@@ -38,7 +41,10 @@
       "n": 2,
       "profession": "EC",
       "theme": "deontologie",
-      "tags": ["confraternite_reprise_dossier", "honoraires"],
+      "tags": [
+        "confraternite_reprise_dossier",
+        "honoraires"
+      ],
       "points": 1,
       "question": "Dans le cadre de la reprise d'un dossier auprès d'un confrère pour une mission identique, l'expert-comptable :",
       "qcm": {
@@ -69,7 +75,10 @@
       "n": 3,
       "profession": "EC",
       "theme": "controle_qualite",
-      "tags": ["controle_qualite", "ordre_organisation"],
+      "tags": [
+        "controle_qualite",
+        "ordre_organisation"
+      ],
       "points": 1,
       "question": "Le contrôle qualité de l'Ordre des experts-comptables concerne :",
       "qcm": {
@@ -100,7 +109,10 @@
       "n": 4,
       "profession": "EC",
       "theme": "exercice",
-      "tags": ["delegation_signature", "societes_ec_capital"],
+      "tags": [
+        "delegation_signature",
+        "societes_ec_capital"
+      ],
       "points": 1,
       "question": "Dans une société d'expertise comptable avec plusieurs associés :",
       "qcm": {
@@ -130,7 +142,10 @@
       "n": 5,
       "profession": "EC",
       "theme": "exercice",
-      "tags": ["missions_legales", "missions_assurance"],
+      "tags": [
+        "missions_legales",
+        "missions_assurance"
+      ],
       "points": 1,
       "question": "Parmi les missions suivantes, laquelle n'est pas qualifiée de mission légale car ne répondant pas à une disposition d'un texte législatif ou réglementaire ?",
       "qcm": {
@@ -162,7 +177,9 @@
       "n": 6,
       "profession": "EC",
       "theme": "deontologie",
-      "tags": ["incompatibilites_activites"],
+      "tags": [
+        "incompatibilites_activites"
+      ],
       "points": 1,
       "question": "Un expert-comptable en exercice ne peut pas exercer l'une des fonctions suivantes : laquelle ?",
       "qcm": {
@@ -195,7 +212,10 @@
       "n": 7,
       "profession": "EC",
       "theme": "exercice",
-      "tags": ["missions_assurance", "referentiel_normatif"],
+      "tags": [
+        "missions_assurance",
+        "referentiel_normatif"
+      ],
       "points": 1,
       "question": "L'objectif de cette mission est d'attester de la vraisemblance et de la cohérence de comptes intermédiaires. Quelle est cette mission ?",
       "qcm": {
@@ -226,7 +246,10 @@
       "n": 8,
       "profession": "EC",
       "theme": "exercice",
-      "tags": ["lettre_mission", "responsabilite_civile"],
+      "tags": [
+        "lettre_mission",
+        "responsabilite_civile"
+      ],
       "points": 1,
       "question": "Parmi les propositions suivantes concernant la lettre de mission, indiquer celle qui est inexacte :",
       "qcm": {
@@ -257,7 +280,10 @@
       "n": 9,
       "profession": "EC",
       "theme": "exercice",
-      "tags": ["missions_assurance", "referentiel_normatif"],
+      "tags": [
+        "missions_assurance",
+        "referentiel_normatif"
+      ],
       "points": 1,
       "question": "J'appartiens à la catégorie des missions sans assurance, je fais l'objet d'une norme spécifique et je peux porter sur des informations non financières. Qui suis-je ?",
       "qcm": {
@@ -288,7 +314,10 @@
       "n": 10,
       "profession": "EC",
       "theme": "exercice",
-      "tags": ["missions_assurance", "referentiel_normatif"],
+      "tags": [
+        "missions_assurance",
+        "referentiel_normatif"
+      ],
       "points": 1,
       "question": "Parmi les missions suivantes, indiquer celle qui relève des autres prestations fournies à l'entité ?",
       "qcm": {
@@ -319,7 +348,10 @@
       "n": 11,
       "profession": "CAC",
       "theme": "deontologie",
-      "tags": ["secret_professionnel", "code_deontologie_structure"],
+      "tags": [
+        "secret_professionnel",
+        "code_deontologie_structure"
+      ],
       "points": 1,
       "question": "Le secret professionnel du commissaire aux comptes est une obligation :",
       "qcm": {
@@ -351,7 +383,10 @@
       "n": 12,
       "profession": "CAC",
       "theme": "responsabilite",
-      "tags": ["responsabilite_penale", "inscription_liste"],
+      "tags": [
+        "responsabilite_penale",
+        "inscription_liste"
+      ],
       "points": 1,
       "question": "L'usage du titre de commissaire aux comptes par une personne physique qui n'est pas inscrite sur la liste des commissaires aux comptes est réprimé par :",
       "qcm": {
@@ -383,7 +418,11 @@
       "n": 13,
       "profession": "CAC",
       "theme": "exercice",
-      "tags": ["inscription_liste", "h2a_supervision", "cncc_crcc_organisation"],
+      "tags": [
+        "inscription_liste",
+        "h2a_supervision",
+        "cncc_crcc_organisation"
+      ],
       "points": 1,
       "question": "Les fonctions de commissaire aux comptes sont exercées par des personnes physiques ou par des sociétés inscrites sur la liste établie par :",
       "qcm": {
@@ -415,7 +454,10 @@
       "n": 14,
       "profession": "CAC",
       "theme": "deontologie",
-      "tags": ["incompatibilites_liens", "independance_situations_risque"],
+      "tags": [
+        "incompatibilites_liens",
+        "independance_situations_risque"
+      ],
       "points": 1,
       "question": "Un commissaire aux comptes peut-il avoir le statut de salarié ?",
       "qcm": {
@@ -447,7 +489,10 @@
       "n": 15,
       "profession": "CAC",
       "theme": "exercice",
-      "tags": ["non_immixtion", "nep"],
+      "tags": [
+        "non_immixtion",
+        "nep"
+      ],
       "points": 1,
       "question": "Le devoir de conseil du commissaire aux comptes envers l'entité auditée est :",
       "qcm": {
@@ -478,7 +523,9 @@
       "n": 16,
       "profession": "CAC",
       "theme": "exercice",
-      "tags": ["non_immixtion"],
+      "tags": [
+        "non_immixtion"
+      ],
       "points": 1,
       "question": "Le principe de non-immixtion dans la gestion interdit au commissaire aux comptes de :",
       "qcm": {
@@ -509,7 +556,10 @@
       "n": 17,
       "profession": "CAC",
       "theme": "responsabilite",
-      "tags": ["discipline_sanctions", "h2a_supervision"],
+      "tags": [
+        "discipline_sanctions",
+        "h2a_supervision"
+      ],
       "points": 1,
       "question": "Les sanctions disciplinaires applicables au commissaire aux comptes figurent dans :",
       "qcm": {
@@ -542,7 +592,10 @@
       "n": 18,
       "profession": "CAC",
       "theme": "responsabilite",
-      "tags": ["discipline_sanctions", "h2a_supervision"],
+      "tags": [
+        "discipline_sanctions",
+        "h2a_supervision"
+      ],
       "points": 1,
       "question": "Le H3C dispose d'un service chargé de procéder aux enquêtes préalables à l'ouverture des procédures disciplinaires. Ce service est :",
       "qcm": {
@@ -574,7 +627,11 @@
       "n": 19,
       "profession": "CAC",
       "theme": "controle_qualite",
-      "tags": ["controle_activite", "h2a_supervision", "cncc_crcc_organisation"],
+      "tags": [
+        "controle_activite",
+        "h2a_supervision",
+        "cncc_crcc_organisation"
+      ],
       "points": 1,
       "question": "Les contrôles de l'activité professionnelle (communément appelés contrôles qualité) de commissaires aux comptes n'exerçant pas de missions auprès d'entités d'intérêt public :",
       "qcm": {
@@ -584,29 +641,32 @@
           "Sont effectués par des contrôleurs du H3C et, le cas échéant, avec le concours d'inspecteurs des finances publiques",
           "Peuvent être délégués à la CNCC"
         ],
-        "answer": 1
+        "answer": 3
       },
       "qrc": {
         "question": "Qui réalise les contrôles d'activité des commissaires aux comptes ne détenant pas de mandat auprès d'entités d'intérêt public, et selon quelle périodicité ?",
         "expected": [
-          "Contrôles réalisés sous l'autorité de la H2A par ses contrôleurs",
-          "Pour les non-EIP, concours possible de la CNCC (mise à disposition de contrôleurs)",
+          "Contrôles relevant de la H2A",
+          "Pour les non-EIP, contrôles délégués à la CNCC par convention homologuée par arrêté (conventions 2017, 2023, 2026)",
           "Pour les EIP, contrôles réservés aux contrôleurs de la H2A",
-          "Périodicité : tous les six ans (non-EIP), tous les trois ans (EIP)"
+          "Périodicité : six ans (non-EIP), trois ans (EIP)"
         ],
-        "model_answer": "Les contrôles d'activité relèvent de la H2A et sont conduits par ses contrôleurs ; pour les CAC sans mandat EIP, la H2A peut recourir au concours de la CNCC, notamment pour la mise à disposition de contrôleurs. Les cabinets EIP sont contrôlés exclusivement par la H2A. La périodicité est de six ans pour les non-EIP et de trois ans pour les EIP."
+        "model_answer": "Les contrôles d'activité relèvent de la H2A. Pour les CAC sans mandat EIP, ils sont délégués à la CNCC par une convention homologuée par arrêté, sous la supervision de la H2A. Les cabinets EIP sont contrôlés par la H2A elle-même. Périodicité : six ans (non-EIP), trois ans (EIP)."
       },
-      "explanation": "Depuis la réforme de 2016 et la loi Pacte, le contrôle d'activité est une mission propre du régulateur ; la CNCC n'intervient plus qu'en concours, sous l'autorité de la H2A, et uniquement pour les non-EIP. Les finances publiques n'ont aucun rôle. À distinguer du contrôle qualité de l'EC, organisé par l'Ordre lui-même.",
-      "reference": "C. com. ex art. L.821-9 (contrôles) et L.821-1 (missions du H3C), recodifiés L.820-x en 2024 ; code de déontologie des CAC",
-      "confidence": "low",
-      "update_note": "H3C → H2A au 1er janvier 2024. La frontière entre délégation et concours de la CNCC a évolué avec la loi Pacte puis la recodification de 2024 : vérifier la rédaction actuelle des articles L.820-x relatifs aux contrôles. Relecture : les propositions B (concours de la CNCC) et D (délégation à la CNCC) sont toutes deux défendables selon la date retenue (délégation conventionnelle à la CNCC pratiquée de 2016 à la fin des années 2010, puis reprise des contrôles par le régulateur) ; la fiche 2023-11-CAC-15 parle de délégation, celle-ci de concours : réponse B maintenue sous réserve."
+      "explanation": "Le code de commerce permet à la H2A de déléguer à la CNCC les contrôles des CAC n'ayant pas de mandat EIP ; cette délégation est effective par conventions homologuées par arrêté (2017, 2023, nouvelle convention homologuée en juillet 2026). Les EIP restent contrôlées directement par le régulateur. Les finances publiques n'ont aucun rôle. À distinguer du contrôle qualité de l'EC, organisé par l'Ordre lui-même.",
+      "reference": "C. com. L.820-x et L.821-x recodifiés (contrôles d'activité, délégation à la CNCC) ; arrêtés d'homologation du 19/05/2023 et du 6/07/2026",
+      "confidence": "medium",
+      "update_note": "H3C → H2A au 1er janvier 2024. Relecture : réponse corrigée de B (concours) en D (délégation) ; la délégation des contrôles non-EIP à la CNCC est attestée par les conventions homologuées (JO 26/05/2023, homologation du 6/07/2026), cohérent avec 2023-11-CAC-15."
     },
     {
       "id": "2020-11-CAC-20",
       "n": 20,
       "profession": "CAC",
       "theme": "deontologie",
-      "tags": ["lcb_ft", "nep"],
+      "tags": [
+        "lcb_ft",
+        "nep"
+      ],
       "points": 1,
       "question": "Dans un cabinet de commissaires aux comptes, la/les personne(s) chargée(s) dans les cas les plus courants de la déclaration à Tracfin est/sont :",
       "qcm": {

@@ -154,7 +154,7 @@
         "model_answer": "Le droit de rétention ne peut être exercé qu'à l'appui d'une créance d'honoraires certaine, liquide et exigible, et seulement sur les documents que l'expert-comptable a lui-même établis, jamais sur les pièces appartenant au client. Il doit en informer le client et en aviser le président de son conseil régional, qui peut jouer un rôle de conciliation."
       },
       "explanation": "Le droit de rétention est un moyen de pression exceptionnel, encadré par le code de déontologie et le règlement intérieur : il suppose un impayé (et non un désaccord technique), ne porte pas sur les documents du client et s'exerce avec transparence envers le client et l'Ordre. Retenir les pièces comptables d'un client pourrait d'ailleurs l'empêcher de satisfaire à ses obligations légales et engagerait la responsabilité du professionnel.",
-      "reference": "D. 2012-432, code de déontologie (devoirs envers les clients, droit de rétention) ; règlement intérieur de l'Ordre",
+      "reference": "D. 2012-432 art. 168 (droit de rétention) ; règlement intérieur de l'Ordre",
       "confidence": "medium"
     },
     {
@@ -178,16 +178,17 @@
         "question": "Comment l'expert-comptable détermine-t-il le niveau de vigilance applicable à un dossier au titre de la lutte contre le blanchiment, et quelles sont les erreurs à éviter ?",
         "expected": [
           "Approche par les risques : classification des risques du cabinet et évaluation du risque de chaque client (nature du client, de la mission, zone géographique, PPE…)",
-          "Niveaux de vigilance : allégée, standard, renforcée",
+          "Niveaux de vigilance prévus par la NPLAB : standard ou renforcée",
           "La norme s'applique à toutes les missions et prestations, pas seulement aux missions comptables",
           "Identification et vérification de l'identité du client (et du bénéficiaire effectif) avant d'entrer en relation d'affaires",
           "La déclaration de soupçon est adressée à Tracfin seul, sans information de l'Ordre"
         ],
-        "model_answer": "La norme anti-blanchiment (NPLAB) repose sur une approche par les risques : le cabinet classe ses risques et évalue chaque relation d'affaires pour fixer le niveau de vigilance (allégée, standard ou renforcée). Elle s'applique à toutes les missions, impose d'identifier le client et son bénéficiaire effectif avant d'entrer en relation, et réserve la déclaration de soupçon à Tracfin, sans copie ni information de l'Ordre."
+        "model_answer": "La norme anti-blanchiment (NPLAB) repose sur une approche par les risques : le cabinet classe ses risques et évalue chaque relation d'affaires pour fixer le niveau de vigilance (standard ou renforcée). Elle s'applique à toutes les missions, impose d'identifier le client et son bénéficiaire effectif avant d'entrer en relation, et réserve la déclaration de soupçon à Tracfin, sans copie ni information de l'Ordre."
       },
       "explanation": "Les trois distracteurs correspondent à des erreurs fréquentes : champ limité aux missions comptables (faux : toutes les prestations sont visées), début des travaux avant identification (faux : l'identification précède l'entrée en relation, sauf cas de vérification différée strictement encadrés), information de l'Ordre (faux : la déclaration de soupçon est confidentielle et le président du conseil régional n'en est pas destinataire). La règle de confidentialité est identique pour le commissaire aux comptes vis-à-vis de la CRCC.",
       "reference": "C. mon. fin. art. L.561-4-1 s. (approche par les risques), L.561-5 s. (identification), L.561-15 s. (déclaration) ; NPLAB (norme anti-blanchiment de l'OEC)",
-      "confidence": "high"
+      "confidence": "high",
+      "update_note": "Relecture : la NPLAB en vigueur ne retient que deux niveaux de vigilance (standard et renforcée) ; la mention d'une vigilance « allégée » a été supprimée."
     },
     {
       "id": "2018-11-EC-07",
@@ -501,9 +502,9 @@
         "model_answer": "Le commissaire aux comptes qui n'a pas exercé pendant trois ans et n'a pas satisfait à son obligation de formation continue doit, avant d'accepter une nouvelle mission de certification, suivre une formation particulière ; celle-ci doit être accomplie dans les dix-huit mois qui précèdent l'acceptation."
       },
       "explanation": "La logique du texte est préventive : la remise à niveau précède la reprise d'activité, ce qui élimine les propositions « suivent ». L'obligation ordinaire est de 120 heures sur trois années consécutives, avec un minimum annuel de 20 heures ; elle est désormais commune aux experts-comptables, mais la formation particulière de reprise est propre aux commissaires aux comptes.",
-      "reference": "C. com. ex R.822-21 s. (formation continue) et ex R.822-23 (formation particulière), recodifiés R.821-x en 2024 ; arrêté relatif à la formation continue des commissaires aux comptes",
+      "reference": "C. com. L.821-24 (ex L.822-4 II : formation particulière avant d'accepter une mission de certification) ; ex R.822-21 s. et A.822-28-1 s., recodifiés (A.821-45 s.) ; arrêté relatif à la formation continue des commissaires aux comptes",
       "confidence": "low",
-      "update_note": "Articles recodifiés au 1er janvier 2024 ; le suivi de la formation peut être délégué par la H2A à la CNCC. Le délai de dix-huit mois est à vérifier dans l'arrêté en vigueur."
+      "update_note": "Articles recodifiés au 1er janvier 2024 ; le suivi de la formation (y compris la formation particulière) est délégué à la CNCC par convention homologuée (arrêté du 19 mai 2023). Relecture : le principe d'une formation préalable à l'acceptation est confirmé par la loi (L.821-24, ex L.822-4 II), mais le délai de dix-huit mois n'a pas pu être vérifié dans la partie arrêtés."
     },
     {
       "id": "2018-11-CAC-17",

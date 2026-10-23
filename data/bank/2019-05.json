@@ -350,7 +350,7 @@
       "qcm": {
         "question": "Parmi les missions que l'autorité de supervision (H3C, aujourd'hui H2A) peut déléguer à la CNCC, lesquelles ont été effectivement déléguées ?",
         "choices": [
-          "L'inscription et la tenue de la liste, ainsi que le suivi de la formation continue ; les contrôles d'activité des non-EIP restent conduits par l'autorité, avec le concours de la CNCC",
+          "Le suivi de la formation continue et la réalisation des contrôles d'activité des commissaires aux comptes non-EIP ; l'inscription et la tenue de la liste restent assurées par l'autorité",
           "Les trois missions, l'autorité ne conservant que les EIP",
           "Uniquement les contrôles d'activité des non-EIP, l'inscription restant une prérogative régalienne",
           "Aucune : la loi prévoit la délégation mais elle n'a jamais été mise en œuvre"
@@ -359,16 +359,16 @@
       },
       "qrc": {
         "expected": [
-          "Déléguées à la CNCC : l'inscription et la tenue de la liste",
-          "Déléguée : le suivi des obligations de formation continue",
-          "Non déléguée : le contrôle d'activité des non-EIP, réalisé par l'autorité avec le concours de la CNCC (contrôleurs)"
+          "Déléguée à la CNCC : le suivi du respect des obligations de formation continue (y compris la formation particulière)",
+          "Déléguée à la CNCC : la réalisation des contrôles d'activité des commissaires aux comptes n'exerçant pas de mission auprès d'EIP, dans le cadre et selon les orientations définis par l'autorité, qui en supervise la réalisation",
+          "Non déléguée : l'inscription et la tenue de la liste, conservées par l'autorité de supervision ; les contrôles des CAC d'EIP ne sont jamais délégables"
         ],
-        "model_answer": "L'autorité de supervision a délégué à la CNCC, par convention, l'inscription et la tenue de la liste ainsi que le suivi de la formation continue. Elle a conservé la responsabilité des contrôles d'activité, y compris pour les commissaires aux comptes non EIP, qu'elle réalise avec le concours de la CNCC."
+        "model_answer": "Le H3C a décidé le 21 juillet 2016 de déléguer à la CNCC deux missions, par conventions homologuées par arrêté du garde des sceaux (2017, renouvelées en 2023) : le suivi du respect des obligations de formation continue et la réalisation des contrôles d'activité des commissaires aux comptes non EIP. Il a conservé l'inscription et la tenue de la liste ; les contrôles des CAC d'EIP relèvent toujours de ses propres contrôleurs."
       },
-      "explanation": "La délégation est une faculté, exercée par convention entre l'autorité et la CNCC ; sa portée peut donc évoluer. L'idée à retenir est la séparation entre les tâches administratives (liste, formation), déléguées, et le contrôle d'activité, cœur de la supervision publique, que l'autorité garde sous sa responsabilité directe. Rien de comparable chez les experts-comptables, où l'Ordre exerce lui-même le contrôle qualité.",
-      "reference": "C. com. ex L.821-1 II (délégations à la CNCC), recodifié L.820-x en 2024 ; conventions de délégation H3C/H2A – CNCC",
-      "confidence": "low",
-      "update_note": "Depuis 2024, la H2A dispose de la même faculté de délégation ; l'état des délégations résulte de conventions et doit être vérifié à la date de révision."
+      "explanation": "La délégation est une faculté, exercée par convention homologuée entre l'autorité et la CNCC : le H3C, puis la H2A, a délégué la formation continue et les contrôles non-EIP, tout en définissant le cadre et les orientations des contrôles et en supervisant leur réalisation. Les contrôles des cabinets ayant des mandats EIP ne peuvent pas être délégués (exigence européenne). Rien de comparable chez les experts-comptables, où l'Ordre exerce lui-même le contrôle qualité.",
+      "reference": "C. com. ex L.821-1 II et ex L.821-9 al. 2 (délégations à la CNCC), recodifiés L.820-x en 2024 ; arrêtés du 25 avril 2017 et du 19 mai 2023 portant homologation des conventions de délégation (contrôles non-EIP ; formation continue) ; arrêté du 6 juillet 2026 (nouvelle convention H2A-CNCC sur les contrôles non-EIP)",
+      "confidence": "medium",
+      "update_note": "Relecture : réponse corrigée. Les conventions homologuées en 2017 puis en 2023 (JO du 26 mai 2023) délèguent à la CNCC la formation continue et les contrôles non-EIP, et non l'inscription ; la délégation des contrôles non-EIP a été reconduite par la H2A (convention homologuée par arrêté du 6 juillet 2026). Le maintien de l'inscription par l'autorité est déduit de l'absence de convention sur ce point."
     },
     {
       "id": "2019-05-CAC-13",
@@ -393,7 +393,7 @@
           "Identifier l'entité et vérifier son identité sur documents probants (extrait Kbis, statuts)",
           "Identifier le ou les bénéficiaires effectifs et vérifier leur identité (registre des bénéficiaires effectifs, pièces)",
           "Recueillir des informations sur l'objet et la nature de la relation d'affaires et sur les dirigeants (personnes politiquement exposées)",
-          "Évaluer le risque de blanchiment et déterminer le niveau de vigilance (standard, renforcée, allégée)",
+          "Évaluer le risque de blanchiment et déterminer le niveau de vigilance (standard, renforcée, ou simplifiée lorsque le risque est faible au sens du C. mon. fin.)",
           "En cas d'impossibilité d'identification : ne pas accepter la mission (et examiner une déclaration de soupçon)"
         ],
         "model_answer": "Avant d'accepter, le commissaire aux comptes identifie l'entité et vérifie son identité sur documents probants, identifie ses bénéficiaires effectifs et vérifie leur identité, recueille des informations sur l'objet de la relation et sur les dirigeants, puis évalue le risque de blanchiment pour fixer le niveau de vigilance applicable. Si l'identification ne peut être menée à bien, il doit refuser le mandat et, le cas échéant, déclarer ses soupçons à Tracfin."
@@ -588,9 +588,9 @@
         "model_answer": "Le commissaire aux comptes doit déclarer son nouveau mandat à la compagnie régionale dont il relève, qui tient la liste des mandats de ses membres, et le reporter dans la déclaration annuelle d'activité adressée à la compagnie (mandats détenus, honoraires, heures de travail). Aucune autorisation préalable n'est requise."
       },
       "explanation": "La déclaration des mandats permet à la compagnie et à l'autorité de supervision de programmer les contrôles d'activité et de vérifier le respect des règles d'indépendance et du barème. Il ne faut pas confondre cette information avec une autorisation ; l'acceptation d'un mandat relève de la seule responsabilité du commissaire aux comptes. L'expert-comptable n'a pas d'obligation équivalente de déclaration de ses missions à l'Ordre.",
-      "reference": "C. com. partie réglementaire relative à la déclaration d'activité et des mandats auprès de la compagnie régionale (ex R.823-x, recodifiée en 2024) ; règlement intérieur de la CNCC",
+      "reference": "C. com. D.821-186 (déclaration d'activité auprès de la compagnie régionale, ex R.823-10) ; règlement intérieur de la CNCC",
       "confidence": "low",
-      "update_note": "Partie réglementaire recodifiée au 1er janvier 2024 : vérifier le délai de déclaration et le contenu exact de la déclaration d'activité."
+      "update_note": "Partie réglementaire recodifiée au 1er janvier 2024 (déclaration d'activité : D.821-186). Relecture : l'existence d'une déclaration ponctuelle de chaque nouveau mandat (et son délai), distincte de la déclaration annuelle d'activité, n'a pas pu être vérifiée."
     },
     {
       "id": "2019-05-CAC-20",
@@ -621,7 +621,7 @@
       },
       "explanation": "Le cas combine trois règles : la liste des services interdits aux EIP, la période de « refroidissement » d'un exercice qui précède le mandat pour certains services (conception de contrôle interne, systèmes financiers), et l'imputation au commissaire aux comptes des prestations de son réseau. Même hors interdiction formelle, le code de déontologie impose l'analyse des situations à risque et les mesures de sauvegarde. Pour une entité non EIP, seul ce second raisonnement s'appliquerait.",
       "reference": "Règlement (UE) 537/2014 art. 5 §1 (services interdits et exercice précédent) ; C. com. ex L.822-11 (EIP, réseau), recodifié L.821-x en 2024 ; code de déontologie des commissaires aux comptes (réseau, situations à risque)",
-      "confidence": "medium",
+      "confidence": "high",
       "update_note": "Articles recodifiés au 1er janvier 2024 ; le règlement européen est inchangé."
     }
   ]
