@@ -91,7 +91,7 @@
         ],
         "model_answer": "Le contrôle de qualité s'applique à l'ensemble des membres de l'Ordre : structures d'exercice professionnel, experts-comptables personnes physiques, ainsi que les salariés autorisés à exercer la profession au titre des articles 83 ter et 83 quater de l'ordonnance. Les experts-comptables stagiaires, qui ne sont pas inscrits au tableau, n'y sont pas soumis."
       },
-      "explanation": "Le contrôle qualité ordinal vise toutes les personnes inscrites au tableau et exerçant la profession, y compris les salariés autorisés (83 ter : salariés d'un EC ; 83 quater : salariés d'une AGC). Les stagiaires relèvent du régime du stage, non du contrôle qualité. Ne pas confondre avec le contrôle d'activité des CAC, mené sous l'autorité de la H2A.",
+      "explanation": "Le contrôle qualité ordinal vise toutes les personnes inscrites au tableau et exerçant la profession, y compris les salariés autorisés à exercer au titre des articles 83 ter et 83 quater (salariés d'associations de gestion et de comptabilité). Les stagiaires relèvent du régime du stage, non du contrôle qualité. Ne pas confondre avec le contrôle d'activité des CAC, mené sous l'autorité de la H2A.",
       "reference": "Ord. 45-2138 art. 83 ter et 83 quater ; règlement du contrôle de qualité de l'OEC (approuvé par arrêté)",
       "confidence": "high"
     },
@@ -374,7 +374,7 @@
         "model_answer": "L'usage du titre par une personne non inscrite constitue un délit pénal d'usurpation de titre, défini par la loi dans le code de commerce et puni d'emprisonnement et d'amende. Une personne non inscrite ne relevant ni du code de déontologie ni de la commission des sanctions de la H2A, seule la voie pénale est ouverte, la CNCC pouvant se porter partie civile."
       },
       "explanation": "Le code de déontologie et les organes professionnels (H2A, CNCC) ne régissent que les inscrits. L'usurpation de titre et l'exercice illégal sont des infractions pénales prévues par la loi. Même logique pour l'EC : l'exercice illégal et l'usurpation du titre d'expert-comptable sont réprimés par l'ordonnance de 1945 (art. 20) et le code pénal.",
-      "reference": "C. com. ex art. L.820-5 et L.820-6 (usurpation de titre, exercice illégal), recodifiés L.820-x en 2024 ; C. pén. art. 433-17 ; pour l'EC : ord. 45-2138 art. 20",
+      "reference": "C. com. ex art. L.820-5 (usurpation du titre et exercice illégal ; L.820-6 visait les incompatibilités), recodifié en 2024 ; C. pén. art. 433-17 ; pour l'EC : ord. 45-2138 art. 20",
       "confidence": "high",
       "update_note": "H3C remplacé par la Haute autorité de l'audit (H2A) au 1er janvier 2024 ; les dispositions pénales ont été renumérotées par l'ordonnance 2023-1142."
     },
@@ -406,7 +406,7 @@
         "model_answer": "Depuis la réforme de 2016, la liste des commissaires aux comptes est établie par la Haute autorité de l'audit (H2A, qui a succédé au H3C), qui peut déléguer par convention à la CNCC la gestion de l'inscription. L'inscription n'est plus prononcée par des commissions régionales près les cours d'appel ; la cour d'appel ne reçoit plus que la prestation de serment."
       },
       "explanation": "Avant 2016 l'inscription relevait des commissions régionales près les cours d'appel ; depuis l'ordonnance 2016-315, c'est le régulateur (H3C puis H2A) qui tient la liste, avec faculté de délégation à la CNCC. La proposition conjointement est fausse : la CNCC n'agit que sur délégation. Pour l'EC, l'inscription au tableau relève des conseils régionaux de l'Ordre.",
-      "reference": "C. com. ex art. L.822-1 et L.821-1 II (délégation à la CNCC) ; depuis 2024 : art. L.820-x (missions de la H2A) et L.821-1 s. (inscription)",
+      "reference": "C. com. ex art. L.822-1 et L.821-1 II (délégation à la CNCC) ; depuis 2024 : art. L.820-x (missions de la H2A) et L.821-13 s. (liste et inscription)",
       "confidence": "high",
       "update_note": "H3C → H2A au 1er janvier 2024 (ordonnance 2023-1142) ; la faculté de délégation de l'inscription à la CNCC est maintenue."
     },
@@ -438,7 +438,7 @@
         "model_answer": "En principe, les fonctions de CAC sont incompatibles avec tout emploi salarié. Par exception, le CAC peut être salarié d'un confrère ou d'un expert-comptable, et dispenser un enseignement rémunéré se rattachant à l'exercice de la profession. Le montant du salaire est indifférent."
       },
       "explanation": "L'incompatibilité est de principe et les exceptions sont limitativement énumérées par la loi : salariat chez un CAC ou un EC, enseignement. Les propositions fondées sur le niveau du salaire sont des leurres. L'EC connaît la même règle (ord. art. 22 : emploi salarié interdit sauf chez un EC, une AGC ou un CAC).",
-      "reference": "C. com. ex art. L.822-10 (recodifié L.821-x en 2024) ; pour l'EC : ord. 45-2138 art. 22",
+      "reference": "C. com. art. L.821-27 (ex L.822-10, recodifié en 2024) ; pour l'EC : ord. 45-2138 art. 22",
       "confidence": "high",
       "update_note": "Numérotation modifiée par la recodification de 2024 ; règle de fond inchangée."
     },
@@ -533,9 +533,9 @@
         "model_answer": "L'échelle des sanctions figure dans le code de commerce. Elle comprend l'avertissement, le blâme, l'interdiction temporaire d'exercer (au plus cinq ans), la radiation, une sanction pécuniaire plafonnée, l'interdiction temporaire d'exercer des fonctions d'administration ou de surveillance et la publication de la décision. Elles sont prononcées par la commission des sanctions de la H2A."
       },
       "explanation": "Le code de déontologie fixe les devoirs, pas les peines ; celles-ci sont légales. Depuis 2016 la discipline est confiée au régulateur (formation restreinte du H3C, puis commission des sanctions de la H2A). Pour l'EC, l'échelle est dans l'ordonnance de 1945 (art. 53) et les instances sont les chambres de discipline de l'Ordre.",
-      "reference": "C. com. ex art. L.824-2 (sanctions), recodifié L.820-x en 2024 ; ex art. L.824-1 (faute disciplinaire) ; pour l'EC : ord. 45-2138 art. 53",
+      "reference": "C. com. art. L.821-71 (sanctions, ex L.824-2) et L.821-70 (faute disciplinaire, ex L.824-1) ; L.820-2 (commission des sanctions) ; pour l'EC : ord. 45-2138 art. 53",
       "confidence": "high",
-      "update_note": "Depuis le 1er janvier 2024, les sanctions sont prononcées par la commission des sanctions de la H2A (ordonnance 2023-1142) ; l'échelle des sanctions a été renumérotée dans les articles L.820-x."
+      "update_note": "Depuis le 1er janvier 2024, les sanctions sont prononcées par la commission des sanctions de la H2A (ordonnance 2023-1142) ; l'échelle des sanctions figure désormais à l'article L.821-71 (ex L.824-2), la commission des sanctions étant instituée par l'article L.820-2."
     },
     {
       "id": "2020-11-CAC-18",
@@ -565,7 +565,7 @@
         "model_answer": "Les enquêtes sont conduites par le rapporteur général de la H2A, qui dirige un service d'enquête distinct du collège et de la commission des sanctions afin de séparer poursuite et jugement. Il mène l'enquête, notifie les griefs et, le cas échéant, saisit la commission des sanctions."
       },
       "explanation": "La réforme de 2016 a créé la fonction de rapporteur général pour garantir la séparation entre instruction et jugement. Ni le président ni un membre du collège n'enquêtent. Pour l'EC, il n'y a pas de rapporteur général : la chambre régionale de discipline est saisie par le président du conseil régional, le commissaire du gouvernement ou sur plainte.",
-      "reference": "C. com. ex art. L.821-3-1 (rapporteur général), recodifié L.820-x en 2024 ; ex art. L.824-4 s. (procédure)",
+      "reference": "C. com. ex art. L.821-3-1 (rapporteur général), recodifié L.820-x en 2024 ; ex art. L.824-4 s. (procédure), recodifiés L.821-70 s.",
       "confidence": "high",
       "update_note": "H3C → H2A au 1er janvier 2024 ; la fonction de rapporteur général est maintenue auprès de la H2A, qui saisit désormais une commission des sanctions distincte du collège."
     },
@@ -599,7 +599,7 @@
       "explanation": "Depuis la réforme de 2016 et la loi Pacte, le contrôle d'activité est une mission propre du régulateur ; la CNCC n'intervient plus qu'en concours, sous l'autorité de la H2A, et uniquement pour les non-EIP. Les finances publiques n'ont aucun rôle. À distinguer du contrôle qualité de l'EC, organisé par l'Ordre lui-même.",
       "reference": "C. com. ex art. L.821-9 (contrôles) et L.821-1 (missions du H3C), recodifiés L.820-x en 2024 ; code de déontologie des CAC",
       "confidence": "low",
-      "update_note": "H3C → H2A au 1er janvier 2024. La frontière entre délégation et concours de la CNCC a évolué avec la loi Pacte puis la recodification de 2024 : vérifier la rédaction actuelle des articles L.820-x relatifs aux contrôles."
+      "update_note": "H3C → H2A au 1er janvier 2024. La frontière entre délégation et concours de la CNCC a évolué avec la loi Pacte puis la recodification de 2024 : vérifier la rédaction actuelle des articles L.820-x relatifs aux contrôles. Relecture : les propositions B (concours de la CNCC) et D (délégation à la CNCC) sont toutes deux défendables selon la date retenue (délégation conventionnelle à la CNCC pratiquée de 2016 à la fin des années 2010, puis reprise des contrôles par le régulateur) ; la fiche 2023-11-CAC-15 parle de délégation, celle-ci de concours : réponse B maintenue sous réserve."
     },
     {
       "id": "2020-11-CAC-20",

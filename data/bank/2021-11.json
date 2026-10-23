@@ -30,7 +30,7 @@
         ],
         "model_answer": "Depuis la réforme de 2010-2012, l'expert-comptable peut faire des actions de promotion et de démarchage, y compris en ligne, à condition qu'elles procurent au public une information utile et objective, soient mises en œuvre avec discrétion et ne portent atteinte ni à l'indépendance, ni à la dignité et à l'honneur de la profession, ni au secret professionnel, ni à la loyauté envers clients et confrères (pas de dénigrement ni de comparaison). Il respecte en outre le droit du commerce électronique et de la protection des données : identification claire de l'émetteur, consentement préalable à la prospection par courriel, droit d'opposition."
       },
-      "explanation": "L'interdiction du démarchage a été levée après la condamnation de la France par la CJUE (2011) ; le code de déontologie encadre désormais la promotion par des exigences de contenu et de forme. Le CAC est soumis à un encadrement comparable, mais le démarchage reste limité par son indépendance (interdiction de sollicitation personnalisée hors cadre). Le distracteur sur l'entreprise déjà dotée d'un CAC est une pure confusion.",
+      "explanation": "L'interdiction du démarchage a été levée après la condamnation de la France par la CJUE (2011) ; le code de déontologie encadre désormais la promotion par des exigences de contenu et de forme. Le CAC est soumis à un encadrement comparable : depuis 2020, son code de déontologie admet la sollicitation personnalisée et la proposition de services en ligne, à condition de procurer une information sincère, sans élément comparatif ni dénigrant, et de préciser les modalités de détermination des honoraires. Le distracteur sur l'entreprise déjà dotée d'un CAC est une pure confusion.",
       "reference": "Ord. 45-2138 art. 23 ; D. 2012-432 art. 152 (promotion et démarchage) ; loi 2004-575 (LCEN) art. 22 ; CJUE 5 avril 2011, aff. C-119/09",
       "confidence": "medium"
     },
@@ -371,7 +371,7 @@
         "model_answer": "La procédure comporte : l'enquête du rapporteur général, saisi par une autorité habilitée ; la notification des griefs ; la saisine de la commission des sanctions de la H2A et l'instruction contradictoire ; l'audience et la décision de la commission ; enfin, le recours de plein contentieux devant le Conseil d'État."
       },
       "explanation": "La discipline des CAC est confiée au régulateur avec une stricte séparation entre poursuite (rapporteur général) et jugement (commission des sanctions). Le circuit ordinal en deux degrés (chambre régionale puis nationale) est celui de l'EC, pas du CAC : c'est le distracteur principal. Il existe aussi une procédure simplifiée et une composition administrative.",
-      "reference": "C. com. ex art. L.824-4 à L.824-13 (procédure disciplinaire), recodifiés L.820-x en 2024 ; ex art. L.821-3-1 (rapporteur général)",
+      "reference": "C. com. ex art. L.824-4 à L.824-13 (procédure disciplinaire), recodifiés L.821-70 s. en 2024 (procédure ordinaire : L.821-79 et L.821-80) ; L.820-2 (commission des sanctions) ; ex art. L.821-3-1 (rapporteur général)",
       "confidence": "medium",
       "update_note": "Depuis le 1er janvier 2024, la formation restreinte du H3C est remplacée par la commission des sanctions de la H2A, distincte du collège (ordonnance 2023-1142)."
     },
@@ -433,7 +433,7 @@
       "explanation": "Le circuit mêle conciliation professionnelle, intervention du régulateur et juge judiciaire. Le distracteur reproduit le circuit disciplinaire de l'EC (conseil régional, chambre nationale, Conseil d'État), confusion récurrente. Pour l'EC, un litige d'honoraires relève de la conciliation ou de l'arbitrage du président du conseil régional puis du juge.",
       "reference": "C. com. partie réglementaire relative aux honoraires et aux litiges (ex art. R.823-18 et R.823-19, renumérotés D.821-x en 2024)",
       "confidence": "low",
-      "update_note": "H3C → H2A au 1er janvier 2024 ; vérifier dans les articles D.821-x actuels la répartition exacte entre conciliation du président de CRCC, intervention de la H2A et juge."
+      "update_note": "H3C → H2A au 1er janvier 2024 ; vérifier dans les articles D.821-x actuels la répartition exacte entre conciliation du président de CRCC, intervention de la H2A et juge. Relecture : la fiche 2022-11-CAC-16 affirme que, depuis 2024, la H2A n'est plus compétente pour ces litiges (conciliation du président de la CRCC puis juge de droit commun), et le sujet de novembre 2025 (Q12) renvoie au tribunal compétent pour les prestations ; si c'est le cas, l'étape H2A de la réponse A ne vaut que pour l'état du droit antérieur à 2024."
     },
     {
       "id": "2021-11-CAC-15",
@@ -464,7 +464,7 @@
         "model_answer": "Le rapporteur général peut être saisi par le président de la H2A, par le garde des Sceaux, par le procureur général près la cour d'appel, par le président de l'AMF ou de l'ACPR pour les entités de leur champ, ainsi que par le président de la CNCC ou d'une compagnie régionale. Les tiers (entité, actionnaires) ne le saisissent pas directement mais peuvent signaler des faits à ces autorités."
       },
       "explanation": "La saisine est réservée à des autorités publiques et professionnelles, ce qui filtre les plaintes de justiciables. L'Ordre des experts-comptables n'a aucun pouvoir de saisine en matière de discipline des CAC. L'actionnaire peut en revanche demander en justice la récusation ou le relèvement du CAC, ce qui est une autre procédure.",
-      "reference": "C. com. ex art. L.824-4 (autorités habilitées à saisir le rapporteur général), recodifié L.820-x en 2024",
+      "reference": "C. com. ex art. L.824-4 (autorités habilitées à saisir le rapporteur général), recodifié L.821-70 s. en 2024",
       "confidence": "low",
       "update_note": "H3C → H2A au 1er janvier 2024 ; la liste des autorités de saisine a pu être ajustée par l'ordonnance 2023-1142, à vérifier."
     },
@@ -558,8 +558,9 @@
         "model_answer": "Dans le code de déontologie, la mission désigne la mission de certification des comptes, mission légale de contrôle ; la prestation désigne tout autre service ou intervention du commissaire aux comptes, qu'il soit fourni à une entité dont il certifie les comptes ou à une entité sans mandat. Cette distinction commande l'application du titre II, réservé à la certification."
       },
       "explanation": "Le vocabulaire est devenu central depuis la loi Pacte, qui autorise le CAC à fournir des prestations à des entités dont il n'est pas le commissaire. Les prestations rendues à l'entité certifiée sont soumises aux règles d'indépendance du titre II ; celles rendues à d'autres relèvent du seul titre I et d'une déclaration d'activité.",
-      "reference": "Code de déontologie des CAC, annexe 8-1, dispositions liminaires (définitions) ; C. com. ex art. L.822-11 (version loi Pacte), recodifié L.821-x",
-      "confidence": "medium"
+      "reference": "C. com. art. L.821-2 III (mission) et IV (prestation) ; code de déontologie des CAC, annexe 8-1, dispositions liminaires ; C. com. ex art. L.822-11 (version loi Pacte)",
+      "confidence": "low",
+      "update_note": "Relecture : les définitions figurent désormais à l'article L.821-2 III et IV du code de commerce (cité par le sujet de mai 2024). Il faut vérifier si la mission y vise la seule certification ou aussi les autres missions que la loi ou le règlement confie au CAC ; dans ce cas, les interventions légales hors certification ne seraient pas des prestations, contrairement à ce qu'indique le 2e élément attendu."
     },
     {
       "id": "2021-11-CAC-19",
@@ -588,9 +589,9 @@
         "model_answer": "La déclaration d'activité adressée à la compagnie régionale indique l'identité de l'entité bénéficiaire, la nature de la prestation ou mission réalisée et le montant des honoraires correspondants."
       },
       "explanation": "Cette déclaration permet à la profession et au régulateur de suivre l'activité hors certification ouverte par la loi Pacte et de contrôler le respect des règles d'indépendance et de déontologie. Elle est distincte de la déclaration annuelle d'activité (mandats, heures) adressée par tout CAC. L'EC n'a pas d'obligation équivalente.",
-      "reference": "C. com. partie réglementaire relative à la déclaration des prestations hors certification (ex art. R.823-x issu du décret 2020-292, renuméroté en 2024) ; code de déontologie des CAC",
-      "confidence": "low",
-      "update_note": "Renumérotation réglementaire en 2024 ; vérifier la liste exacte des mentions exigées (et l'éventuelle mention de la date de réalisation)."
+      "reference": "C. com. art. D.821-186 (déclaration d'activité, ex R.823-10) ; code de déontologie des CAC",
+      "confidence": "medium",
+      "update_note": "Renumérotation réglementaire en 2024 : la déclaration d'activité figure à l'article D.821-186 (cité par le sujet de novembre 2024). Relecture : les trois mentions retenues (entité, nature, honoraires) concordent avec la fiche 2022-11-CAC-18 ; l'éventuelle mention de la date de réalisation reste à vérifier."
     },
     {
       "id": "2021-11-CAC-20",

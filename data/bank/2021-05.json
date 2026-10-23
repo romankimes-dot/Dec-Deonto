@@ -27,7 +27,7 @@
           "Zone géographique du client et de ses opérations (pays à risque)",
           "Conditions de la relation : mode d'entrée en relation (à distance, par intermédiaire), canal de distribution"
         ],
-        "model_answer": "La classification des risques du cabinet est établie en fonction de la nature des missions ou prestations réalisées, des caractéristiques des clients, de la localisation géographique des clients et de leurs opérations, et des conditions de la relation d'affaires (mode d'entrée en relation, canal de distribution). Elle fonde l'intensité de la vigilance (allégée, standard, renforcée)."
+        "model_answer": "La classification des risques du cabinet est établie en fonction de la nature des missions ou prestations réalisées, des caractéristiques des clients, de la localisation géographique des clients et de leurs opérations, et des conditions de la relation d'affaires (mode d'entrée en relation, canal de distribution). Elle fonde l'intensité de la vigilance, la NPLAB prévoyant deux niveaux : standard et renforcée."
       },
       "explanation": "Ces quatre axes reprennent les facteurs de risque du code monétaire et financier (produits et services, conditions de transaction, canaux, caractéristiques des clients, pays). La classification est propre au cabinet et doit être documentée et actualisée. Les distracteurs reprennent des critères financiers ou les seuils CAC qui n'ont rien à voir avec l'approche par les risques LCB-FT.",
       "reference": "NPLAB (classification des risques) ; CMF art. L.561-4-1 et R.561-38 s. ; analyse nationale des risques",
@@ -60,7 +60,7 @@
       },
       "explanation": "Les attestations particulières sont des autres missions d'assurance : à la différence de la présentation (toujours modérée) ou de l'audit (toujours raisonnable), le niveau d'assurance y est choisi en fonction des travaux convenus. Il n'existe jamais d'assurance absolue, quel que soit le destinataire.",
       "reference": "NP 3100 (attestations particulières) ; cadre de référence des missions",
-      "confidence": "medium"
+      "confidence": "high"
     },
     {
       "id": "2021-05-EC-03",
@@ -155,7 +155,8 @@
       },
       "explanation": "La loi Pacte a surtout touché le périmètre d'activité de l'EC (art. 22 et 24 de l'ordonnance), pas le capital des sociétés. Le relèvement des seuils CAC et l'audit légal des petites entreprises sont aussi dans la loi Pacte mais concernent le code de commerce et le commissariat aux comptes, pas l'ordonnance de 1945 : c'est la confusion à éviter.",
       "reference": "Loi 2019-486 du 22 mai 2019 (art. 32 s.) ; ord. 45-2138 art. 22, 24, 29 et 83 ter s.",
-      "confidence": "medium"
+      "confidence": "low",
+      "update_note": "Relecture : la réponse QCM (activités commerciales accessoires et mandat implicite) est sûre ; en revanche, l'attribution à la loi Pacte des honoraires de succès (art. 24, qui pourraient résulter de la réforme de 2014) et du statut d'expert-comptable en entreprise est à vérifier avant de les présenter comme des apports de cette loi."
     },
     {
       "id": "2021-05-EC-06",
@@ -185,7 +186,7 @@
       },
       "explanation": "La discipline ordinale de l'EC mêle un magistrat et des pairs élus, avec appel devant la chambre nationale présidée par un conseiller d'État, puis recours devant le Conseil d'État. Le CAC, lui, relève depuis 2016 du régulateur (commission des sanctions de la H2A), d'où le distracteur fondé sur la H2A.",
       "reference": "Ord. 45-2138 art. 49 et 50 (chambres régionale et nationale de discipline) ; D. 2012-432 (procédure disciplinaire)",
-      "confidence": "medium"
+      "confidence": "high"
     },
     {
       "id": "2021-05-EC-07",
@@ -433,8 +434,8 @@
       },
       "explanation": "La fusion ne met pas fin aux mandats : ils se poursuivent chez l'absorbante, sous réserve de la faculté de l'entité contrôlée de ne pas les maintenir. Il n'y a ni nouvelle nomination automatique, ni transfert au suppléant (dont le rôle, désormais marginal, ne vaut qu'en cas d'empêchement), ni intervention du président de la CRCC.",
       "reference": "C. com. partie réglementaire relative aux sociétés de commissaires aux comptes et à la poursuite des mandats en cas de fusion (ex art. R.822-x, renumérotés R.821-x en 2024) ; code de déontologie des CAC (acceptation et maintien de la mission)",
-      "confidence": "medium",
-      "update_note": "Renumérotation réglementaire en 2024 ; vérifier la rédaction actuelle de la faculté offerte à l'entité contrôlée de ne pas poursuivre le mandat."
+      "confidence": "low",
+      "update_note": "Renumérotation réglementaire en 2024 ; vérifier la rédaction actuelle de la faculté offerte à l'entité contrôlée de ne pas poursuivre le mandat. Relecture : la poursuite des mandats par l'absorbante est certaine (question reposée en mai 2026), mais la faculté de l'entité de ne pas maintenir le mandat n'est pas confirmée par un texte identifié (la fiche 2019-05-CAC-14 ne la mentionne pas) ; or elle figure dans la proposition B donnée comme juste."
     },
     {
       "id": "2021-05-CAC-15",

@@ -24,14 +24,14 @@
         "expected": [
           "Député : oui, membre d'une assemblée parlementaire nationale (liste du CMF)",
           "Maire : non en tant que tel, les élus locaux ne figurent pas dans la liste des fonctions (sauf cumul avec une fonction listée)",
-          "Depuis 2020, les PPE incluent les personnes exerçant ces fonctions en France comme à l'étranger",
+          "Depuis 2016 (ordonnance 2016-1635 transposant la 4e directive), les PPE incluent les personnes exerçant ces fonctions en France comme à l'étranger",
           "Conséquence : vigilance renforcée pour la PPE, les membres de sa famille et personnes étroitement associées"
         ],
         "model_answer": "Le député est une personne politiquement exposée, la liste réglementaire visant les membres d'une assemblée parlementaire nationale ou du Parlement européen, en France comme à l'étranger. Le maire n'en est pas une en tant que tel, les mandats locaux ne figurant pas dans la liste, sauf s'il exerce par ailleurs une fonction listée. À l'égard d'une PPE, de sa famille et de ses proches, l'expert-comptable applique des mesures de vigilance complémentaires."
       },
-      "explanation": "La notion de PPE est définie par une liste limitative de fonctions (chefs d'État, ministres, parlementaires, dirigeants de partis, hauts magistrats, ambassadeurs, officiers généraux, dirigeants d'entreprises publiques et d'organisations internationales...). Le mandat électif local n'y figure pas. Depuis la transposition de la cinquième directive, la distinction entre PPE nationales et étrangères a disparu.",
-      "reference": "CMF art. L.561-10 (2°) et R.561-18 (liste des fonctions) ; NPLAB",
-      "confidence": "medium"
+      "explanation": "La notion de PPE est définie par une liste limitative de fonctions (chefs d'État, ministres, parlementaires, dirigeants de partis, hauts magistrats, ambassadeurs, officiers généraux, dirigeants d'entreprises publiques et d'organisations internationales...). Le mandat électif local n'y figure pas. Depuis la transposition de la quatrième directive (ordonnance 2016-1635), la distinction entre PPE nationales et étrangères a disparu.",
+      "reference": "CMF art. L.561-10 (2°) et R.561-18 (liste des fonctions) ; ordonnance 2016-1635 ; NPLAB",
+      "confidence": "high"
     },
     {
       "id": "2022-05-EC-02",
