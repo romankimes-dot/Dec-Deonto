@@ -26,17 +26,17 @@
 
  { "id": "controle-05", "type": "vf", "prof": "EC", "tags": ["controle_qualite"], "fiche": "20-schema-controle-qualite.md",
    "title": "Devenir contrôleur de l'Ordre", "statement": "Un EC inscrit depuis 3 ans, formé par l'Ordre et sans sanction peut être désigné contrôleur de qualité.", "verdict": false,
-   "why": "Il faut être inscrit depuis au moins **5 ans**. Les 3 ans sont la durée de la désignation. Il faut aussi n'avoir eu aucun nouveau contrôle à un an.",
+   "why": "Il faut être inscrit depuis au moins **5 ans**. Les 3 ans sont la durée de la désignation. Il faut aussi que son contrôle de qualité n'ait pas entraîné de nouveau contrôle à un an.",
    "src": ["inscrits depuis au moins 5 ans, sans sanction, formés par l'Ordre, contrôle de qualité sans nouveau contrôle à un an"] },
 
  { "id": "controle-06", "type": "liste", "prof": "EC", "tags": ["controle_qualite"], "fiche": "20-schema-controle-qualite.md",
-   "title": "Déroulement du contrôle de qualité", "q": "Les cinq temps du contrôle de qualité de l'Ordre",
+   "title": "Déroulement du contrôle de qualité", "q": "Les étapes du contrôle de qualité de l'Ordre",
    "items": [
      { "k": "Désignation", "v": "Le contrôleur est désigné, le cabinet notifié" },
      { "k": "Questionnaire", "v": "Rempli par le cabinet avant la visite" },
      { "k": "Phase 1", "v": "Organisation et procédures, au regard de la NPMQ" },
      { "k": "Phase 2", "v": "Revue d'un échantillon de dossiers" },
-     { "k": "Rapport et conclusion", "v": "Observations du contrôlé, puis conclusion" } ],
+     { "k": "Rapport et conclusion", "v": "Entretien de synthèse, rapport, observations du contrôlé, puis conclusion" } ],
    "trap": "Le contrôleur rédige le rapport, mais il ne conclut pas.",
    "quiz": { "q": "Qui conclut le contrôle de qualité ?", "choices": ["Le contrôleur", "Le Conseil national", "Le président du conseil régional", "La H2A"], "answer": 2, "why": "Le **président du conseil régional** conclut : sans observation, avec simples observations, ou avec observations et nouveau contrôle à un an." },
    "src": ["Examen de l'organisation et des procédures au regard de la NPMQ", "Revue d'un échantillon de dossiers", "Par le président du conseil régional"] },
@@ -77,6 +77,6 @@
    "ec": { "main": "**Selon la NPMQ**", "det": "Obligatoire pour les audits d'**entités cotées**. Ailleurs, selon les **critères du cabinet**." },
    "cac": { "main": "**Légale pour les EIP**", "det": "Règlement UE 537/2014, **avant** la signature du rapport." },
    "trap": "Chez l'EC, c'est une règle de la norme. Chez le CAC d'EIP, c'est la loi.",
-   "quiz": { "q": "Pour un CAC d'EIP, la revue indépendante est…", "choices": ["Une obligation légale, avant la signature du rapport", "Une règle interne, selon les critères du cabinet", "Facultative"], "answer": 0, "why": "Elle est **légale** pour les EIP et réalisée **avant** la signature du rapport. Chez l'EC, la NPMQ ne l'impose que pour les audits d'entités cotées." },
+   "quiz": { "q": "Pour un CAC d'EIP, la revue indépendante est…", "choices": ["Une obligation légale, avant la signature du rapport", "Une règle interne, selon les critères du cabinet", "Facultative"], "answer": 0, "why": "Elle est **légale** pour les EIP et réalisée **avant** la signature du rapport. Chez l'EC, la NPMQ l'impose pour les audits d'entités cotées, ailleurs selon les critères du cabinet." },
    "src": ["NPMQ : obligatoire pour les audits d'entités cotées, ailleurs selon les critères du cabinet | Légale pour les EIP (règlement UE 537/2014, art. 8), avant la signature du rapport"] }
 ]}
