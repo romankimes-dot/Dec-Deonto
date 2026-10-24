@@ -1,4 +1,4 @@
-# Fiche 07 – Supervision publique et contrôle d'activité du commissaire aux comptes
+# Supervision publique et contrôle d'activité du commissaire aux comptes
 
 ## 1. Supervision publique
 
@@ -17,7 +17,7 @@
   - suivi de la **formation continue** ;
   - **contrôles d'activité des CAC qui n'ont pas de mandat d'EIP**, par **conventions de délégation homologuées par arrêté** (2017, 19/05/2023, nouvelle convention homologuée par arrêté du **2 juillet 2026**).
 - L'**inscription et la tenue de la liste** restent assurées par la **H2A elle-même**.
-- **Services internes** : direction des contrôles (**contrôleurs salariés** de la H2A) ; **rapporteur général** et **service des enquêtes** ; commission des sanctions (fiche 08).
+- **Services internes** : direction des contrôles (**contrôleurs salariés** de la H2A) ; **rapporteur général** et **service des enquêtes** ; commission des sanctions (fiche « Responsabilité du commissaire aux comptes »).
 
 ### Autorité des marchés financiers (AMF)
 - Le **président de l'AMF** peut **demander l'élaboration d'une NEP**, **saisir le rapporteur général** de la H2A et **demander le relèvement** d'un CAC d'une entité cotée.
@@ -105,7 +105,7 @@
 | | Contrôle d'activité | Enquête | Sanction |
 |---|---|---|---|
 | Qui | Contrôleurs H2A (ou CNCC par délégation) | **Rapporteur général** et enquêteurs | **Commission des sanctions** |
-| Déclenchement | Programme (3 ou 6 ans) ou contrôle occasionnel | Saisine (voir fiche 08) ou **autosaisine** | Griefs **arrêtés par la H2A** et **notifiés par son président**, qui transmet le dossier à la commission |
+| Déclenchement | Programme (3 ou 6 ans) ou contrôle occasionnel | Saisine (voir la fiche « Responsabilité du commissaire aux comptes ») ou **autosaisine** | Griefs **arrêtés par la H2A** et **notifiés par son président**, qui transmet le dossier à la commission |
 | Finalité | Vérifier la qualité, **recommander** | **Établir les faits** | **Sanctionner** |
 
 ## Pièges EC vs CAC

@@ -2,7 +2,7 @@
 type: visuel
 questions: EC:referentiel_normatif EC:missions_assurance EC:missions_legales
 ---
-# Schéma 10 – Le cadre normatif de l'expert-comptable
+# Le cadre normatif de l'expert-comptable
 
 ## Comment le référentiel est organisé
 

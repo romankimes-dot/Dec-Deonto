@@ -2,7 +2,7 @@
 type: visuel
 questions: EC:missions_assurance 2018-05-EC-01
 ---
-# Schéma 11 – Niveaux d'assurance : quelle mission, quelle conclusion
+# Niveaux d'assurance : quelle mission, quelle conclusion
 
 ## L'échelle d'assurance
 

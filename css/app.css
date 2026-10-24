@@ -321,3 +321,23 @@ header.top .sub { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orien
 .loci { list-style: none; padding: 0; margin: 10px 0; }
 .loci li { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; border-bottom: 1px dashed var(--line); }
 .loci .loc { font-size: 26px; line-height: 1; min-width: 32px; text-align: center; }
+/* Surimpression (fiche, variantes) : on lit sans quitter la séance */
+.sheet { position: fixed; inset: 0; z-index: 20; background: var(--bg); overflow-y: auto; -webkit-overflow-scrolling: touch; display: none; padding: 0 16px calc(24px + env(safe-area-inset-bottom)); }
+.sheet.show { display: block; }
+.sheet-head { position: sticky; top: 0; z-index: 1; background: var(--bg); padding: calc(10px + env(safe-area-inset-top)) 0 10px; }
+.sheet-body { max-width: 760px; margin: 0 auto; }
+body.noscroll { overflow: hidden; }
+/* Parcours : l'étape du jour */
+.todo { list-style: none; padding: 0; margin: 10px 0; }
+.todo li { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin-bottom: 8px; }
+.todo li .btn.sm { margin-top: 8px; width: 100%; }
+.todo li.done { border-color: var(--ok); background: var(--ok-bg); }
+.todo li.done strong::after { content: ' ✔'; color: var(--ok); }
+/* Arbre à trou */
+.tree { list-style: none; padding: 0; margin: 8px 0; }
+.tree li { margin: 4px 0 4px calc(var(--d) * 14px); padding-left: 10px; border-left: 2px solid var(--line); }
+.tree .node { display: inline-block; padding: 6px 10px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); font-size: 15px; }
+.tree .node.parent { border-color: var(--primary); }
+.tree .node.hole { border: 2px dashed var(--warn); background: var(--warn-bg); font-weight: 700; }
+.tree .node.ok { border: 2px solid var(--ok); background: var(--ok-bg); }
+.tree .node.ko { border: 2px solid var(--ko); background: var(--ko-bg); }

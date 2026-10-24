@@ -16,7 +16,8 @@ export const defaultState = () => ({
   version: 1,
   // confidence : indice de certitude avant la correction ; hideChoices : QCM, réfléchir avant de voir les propositions ;
   // focus : mode concentration (les badges s'annoncent par un simple message, sans animation)
-  settings: { newPerDay: 20, mode: 'mixte', showLowConfidence: true, examDate: '2026-11-10T10:30:00', confidence: true, hideChoices: true, focus: true },
+  // gameTimer : chrono des jeux rapides, 'normal' | 'large' | 'off'
+  settings: { newPerDay: 20, mode: 'mixte', showLowConfidence: true, examDate: '2026-11-10T10:30:00', confidence: true, hideChoices: true, focus: true, gameTimer: 'normal' },
   cards: {},          // id -> carte SRS
   attempts: [],       // { id, ok, mode, t, conf? }  (400 derniers ; conf : 2 sûr, 1 hésitant, 0 au hasard)
   examSeen: {},       // id -> timestamp
@@ -27,7 +28,7 @@ export const defaultState = () => ({
   grades: {},         // n° de grade -> date
   seenAnecdotes: {},  // anecdotes déjà montrées en carte-souvenir
   lastExportAt: 0,    // dernier export de la progression
-  plan: { done: {} }, // parcours guidé : étapes terminées, étape choisie
+  plan: { done: {}, read: {} }, // parcours guidé : étapes terminées, étape choisie, schémas lus
   drills: {},         // jeux : id d'item -> boîte de Leitner (drill.js)
   games: { best: {} }, // jeux : meilleurs scores
 });
@@ -41,7 +42,7 @@ const isObj = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 function hydrate(s) {
   const d = defaultState();
   return {
-    ...d, ...s, settings: { ...d.settings, ...(s.settings || {}) }, plan: { done: {}, ...(s.plan || {}) },
+    ...d, ...s, settings: { ...d.settings, ...(s.settings || {}) }, plan: { done: {}, read: {}, ...(s.plan || {}) },
     drills: isObj(s.drills) ? s.drills : {}, games: { best: {}, ...(isObj(s.games) ? s.games : {}) },
   };
 }

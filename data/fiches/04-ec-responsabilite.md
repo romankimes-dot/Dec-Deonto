@@ -1,4 +1,4 @@
-# Fiche 04 – Responsabilité de l'expert-comptable
+# Responsabilité de l'expert-comptable
 
 ## 1. Les quatre responsabilités
 

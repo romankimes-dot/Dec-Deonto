@@ -1,39 +1,39 @@
 [
  {
   "file": "01-ec-exercice.md",
-  "title": "Fiche 01 – Exercice de la profession d'expert-comptable"
+  "title": "Exercice de la profession d'expert-comptable"
  },
  {
   "file": "02-ec-deontologie.md",
-  "title": "Fiche 02 – Déontologie de l'expert-comptable"
+  "title": "Déontologie de l'expert-comptable"
  },
  {
   "file": "03-ec-controle-qualite.md",
-  "title": "Fiche 03 – Maîtrise et contrôle de la qualité (expertise comptable)"
+  "title": "Maîtrise et contrôle de la qualité (expertise comptable)"
  },
  {
   "file": "04-ec-responsabilite.md",
-  "title": "Fiche 04 – Responsabilité de l'expert-comptable"
+  "title": "Responsabilité de l'expert-comptable"
  },
  {
   "file": "05-cac-exercice.md",
-  "title": "Fiche 05 – Exercice de la profession de commissaire aux comptes"
+  "title": "Exercice de la profession de commissaire aux comptes"
  },
  {
   "file": "06-cac-deontologie.md",
-  "title": "Fiche 06 – Déontologie du commissaire aux comptes"
+  "title": "Déontologie du commissaire aux comptes"
  },
  {
   "file": "07-cac-controle-activite.md",
-  "title": "Fiche 07 – Supervision publique et contrôle d'activité du commissaire aux comptes"
+  "title": "Supervision publique et contrôle d'activité du commissaire aux comptes"
  },
  {
   "file": "08-cac-responsabilite.md",
-  "title": "Fiche 08 – Responsabilité du commissaire aux comptes"
+  "title": "Responsabilité du commissaire aux comptes"
  },
  {
   "file": "10-schema-cadre-normatif.md",
-  "title": "Schéma 10 – Le cadre normatif de l'expert-comptable",
+  "title": "Le cadre normatif de l'expert-comptable",
   "kind": "visuel",
   "questions": [
    "2018-05-EC-01",
@@ -90,7 +90,7 @@
  },
  {
   "file": "11-schema-niveaux-assurance.md",
-  "title": "Schéma 11 – Niveaux d'assurance : quelle mission, quelle conclusion",
+  "title": "Niveaux d'assurance : quelle mission, quelle conclusion",
   "kind": "visuel",
   "questions": [
    "2018-05-EC-01",
@@ -124,7 +124,7 @@
  },
  {
   "file": "12-schema-institutions-ec-cac.md",
-  "title": "Schéma 12 – Institutions : Ordre des EC ou H2A et CNCC",
+  "title": "Institutions : Ordre des EC ou H2A et CNCC",
   "kind": "visuel",
   "questions": [
    "2018-05-EC-04",
@@ -208,7 +208,7 @@
  },
  {
   "file": "13-schema-discipline.md",
-  "title": "Schéma 13 – Discipline : chambres de l'Ordre ou commission des sanctions",
+  "title": "Discipline : chambres de l'Ordre ou commission des sanctions",
   "kind": "visuel",
   "questions": [
    "2021-05-EC-06",
@@ -246,7 +246,7 @@
  },
  {
   "file": "14-schema-mandat-cac.md",
-  "title": "Schéma 14 – Le mandat du CAC, de la nomination à la sortie",
+  "title": "Le mandat du CAC, de la nomination à la sortie",
   "kind": "visuel",
   "questions": [
    "2019-05-CAC-15",
@@ -285,7 +285,7 @@
  },
  {
   "file": "15-schema-chiffres-cles.md",
-  "title": "Schéma 15 – Les chiffres à connaître par cœur",
+  "title": "Les chiffres à connaître par cœur",
   "kind": "visuel",
   "questions": [
    "2019-05-CAC-15",
@@ -345,7 +345,7 @@
  },
  {
   "file": "16-schema-independance-cac.md",
-  "title": "Schéma 16 – Indépendance du CAC : la démarche",
+  "title": "Indépendance du CAC : la démarche",
   "kind": "visuel",
   "questions": [
    "2018-05-CAC-18",
@@ -412,7 +412,7 @@
  },
  {
   "file": "17-schema-secret-signalements.md",
-  "title": "Schéma 17 – Secret professionnel et signalements : qui dit quoi, à qui",
+  "title": "Secret professionnel et signalements : qui dit quoi, à qui",
   "kind": "visuel",
   "questions": [
    "2021-11-EC-07",
@@ -465,7 +465,7 @@
  },
  {
   "file": "18-schema-lettre-mission-honoraires.md",
-  "title": "Schéma 18 – Lettre de mission, honoraires et reprise de dossier",
+  "title": "Lettre de mission, honoraires et reprise de dossier",
   "kind": "visuel",
   "questions": [
    "2018-05-EC-05",
@@ -530,7 +530,7 @@
  },
  {
   "file": "19-schema-activites-societes.md",
-  "title": "Schéma 19 – Activités permises, sociétés et publicité",
+  "title": "Activités permises, sociétés et publicité",
   "kind": "visuel",
   "questions": [
    "2018-05-EC-04",
@@ -585,7 +585,7 @@
  },
  {
   "file": "20-schema-controle-qualite.md",
-  "title": "Schéma 20 – Contrôle de qualité (EC) et contrôle d'activité (CAC)",
+  "title": "Contrôle de qualité (EC) et contrôle d'activité (CAC)",
   "kind": "visuel",
   "questions": [
    "2018-11-EC-04",
@@ -619,7 +619,7 @@
  },
  {
   "file": "21-schema-responsabilites.md",
-  "title": "Schéma 21 – Les quatre responsabilités, EC et CAC",
+  "title": "Les quatre responsabilités, EC et CAC",
   "kind": "visuel",
   "questions": [
    "2019-05-EC-02",

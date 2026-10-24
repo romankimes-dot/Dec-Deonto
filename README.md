@@ -28,7 +28,7 @@ Programme officiel (arrêté du 13 février 2019) : exercice de la profession ·
 
 ## Modes
 
-- **Parcours** : 15 étapes pour partir de zéro (cadre normatif, institutions, EC, CAC, discipline, chiffres, puis examens blancs et points faibles). Les nouvelles cartes de « Réviser » suivent l'étape en cours.
+- **Parcours** : l'accueil montre l'étape du jour en trois gestes (lire le schéma, répondre à ses questions dans la session du jour, passer à l'étape suivante). 15 étapes pour partir de zéro (cadre normatif, institutions, EC, CAC, discipline, chiffres, puis examens blancs et points faibles). Les nouvelles cartes de « Réviser » suivent l'étape en cours.
 - **Réviser** : répétition espacée (SM-2 simplifié). Cartes dues + nouvelles cartes (CAC en premier, puis les notions les plus souvent posées). Format QCM, QRC ou mixte. Avant l'épreuve, chaque carte revient au plus tard entre J-3 et J-1 (l'intervalle SM-2, qui mesure la solidité du souvenir, n'est pas modifié).
   - **Indice de certitude** (sûr / hésitant / au hasard) avant la correction : une bonne réponse au hasard est proposée « Encore » ; une erreur commise avec certitude est signalée (effet d'hypercorrection) et rejoint la série « Mes erreurs « j'étais sûr » ».
   - **QCM masqué** : la question d'abord, les propositions sur demande (rappel avant reconnaissance).
@@ -36,12 +36,13 @@ Programme officiel (arrêté du 13 février 2019) : exercice de la profession ·
   - **Recoupement des annales** : les questions posées à plusieurs sessions (même profession, mêmes sous-thèmes, énoncés proches) sont regroupées ; badge « posée N× », lien vers les variantes, et une notion n'est « acquise » qu'avec deux variantes réussies (Stats).
 - **Entraîner** : série ciblée par profession, thème, sujet ; ou « mes 20 questions les plus ratées ».
 - **Examen** : 10 EC + 10 CAC, 60 min chrono, QCM ou QRC avec auto-correction, note /20, détail par thème, corrigé complet (bonne proposition, votre choix, explication). Un examen en cours est repris après un rechargement.
-- **Fiches** : synthèses par thème (chiffres, instances, listes) et 12 **schémas** (cadre normatif, niveaux d'assurance, comparatifs EC / CAC, frises, arbres de décision). Chaque schéma lance une série sur les questions qu'il résume, et chaque explication renvoie au schéma correspondant.
+- **Fiches** : schémas rangés dans l'ordre du parcours (« Étape N »), fiches de référence par profession. Depuis une question, un jeu ou un examen, une fiche s'ouvre en surimpression : on la ferme et on reprend où l'on en était. La séance, la série et le jeu en cours sont gardés quand on change d'onglet. Synthèses par thème (chiffres, instances, listes) et 12 **schémas** (cadre normatif, niveaux d'assurance, comparatifs EC / CAC, frises, arbres de décision). Chaque schéma lance une série sur les questions qu'il résume, et chaque explication renvoie au schéma correspondant.
 - **Jeux** (onglet de « Entraîner ») : chacun a sa répétition espacée (boîtes de Leitner, échéances ramenées avant l'épreuve).
   - **Duel EC / CAC** : une règle des comparatifs des schémas, à attribuer à la bonne profession ; la règle d'en face s'affiche ensuite.
   - **Vrai / Faux éclair** : chaque proposition d'un QCM jugée seule, en temps limité ; une erreur remet la question d'origine dans la prochaine séance.
-  - **Sprint chiffres** : 90 secondes sur les tableaux du schéma 15 (durées, seuils, majorités, peines).
-  - **Arbres de décision** : retrouver la proposition qui se rattache à une branche des arbres des schémas (jamais une feuille sœur parmi les leurres).
+  - **Sprint chiffres** : le plus de chiffres possible en temps limité, sur les tableaux du schéma « Les chiffres à connaître par cœur » (durées, seuils, majorités, peines) ; le chrono s'arrête pendant la lecture d'une correction.
+  - **Arbres à trou** : un extrait d'arbre de décision d'un schéma, avec une case vide à remplir (jamais une feuille sœur parmi les leurres).
+  - Chrono réglable (Réglages) : normal, large ou sans chrono.
   - **Palais de mémoire** (aussi dans Carrière) : 14 listes à réciter posées sur les objets du bureau (méthode des lieux), puis récitées dans l'ordre parmi des leurres.
 - **Stats** : maîtrise par thème × profession, calibration (réussite selon la certitude annoncée), notions récurrentes, points faibles, historique des examens.
 - **Carrière** : 8 grades, du stagiaire de 1re année à l'expert-comptable installé. Le bureau évolue et se remplit des objets gagnés.

@@ -2,7 +2,7 @@
 type: visuel
 questions: EC:ordre_organisation EC:inscription_tableau CAC:h2a_supervision CAC:cncc_crcc_organisation CAC:inscription_liste
 ---
-# Schéma 12 – Institutions : Ordre des EC ou H2A et CNCC
+# Institutions : Ordre des EC ou H2A et CNCC
 
 Le jury le répète : les candidats **confondent les règles EC et CAC**. Ce comparatif met côte à côte qui fait quoi.
 

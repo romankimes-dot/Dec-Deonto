@@ -2,7 +2,7 @@
 type: visuel
 questions: EC:secret_professionnel CAC:secret_professionnel EC:lcb_ft CAC:lcb_ft CAC:revelation_procureur CAC:delit_entrave EC:devoir_conseil
 ---
-# Schéma 17 – Secret professionnel et signalements : qui dit quoi, à qui
+# Secret professionnel et signalements : qui dit quoi, à qui
 
 ## J'ai découvert quelque chose : que faire ?
 

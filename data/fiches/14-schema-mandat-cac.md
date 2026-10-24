@@ -2,7 +2,7 @@
 type: visuel
 questions: CAC:nomination_seuils CAC:mandat_duree_cessation CAC:demission_revocation CAC:eip CAC:alpe_petites_entreprises CAC:co_commissariat
 ---
-# Schéma 14 – Le mandat du CAC, de la nomination à la sortie
+# Le mandat du CAC, de la nomination à la sortie
 
 ## Faut-il nommer un CAC ?
 

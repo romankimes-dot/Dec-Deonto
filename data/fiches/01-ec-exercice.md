@@ -1,4 +1,4 @@
-# Fiche 01 – Exercice de la profession d'expert-comptable
+# Exercice de la profession d'expert-comptable
 
 ## 1. Textes de référence
 
@@ -154,7 +154,7 @@
   - elle est **prévue** dans la lettre de mission et **acceptée** par le client ;
   - son montant est **raisonnable** ;
   - le **juge peut la modérer**, car c'est une clause pénale (C. civ. art. 1231-5).
-- Une clause réduisant la **prescription** de la responsabilité civile est **possible**, mais pas en dessous de **1 an** (C. civ. art. 2254). Voir fiche 04.
+- Une clause réduisant la **prescription** de la responsabilité civile est **possible**, mais pas en dessous de **1 an** (C. civ. art. 2254). Voir la fiche « Responsabilité de l'expert-comptable ».
 - **Reconduction tacite** : l'information annuelle du client sur la possibilité de ne pas reconduire (loi Chatel, C. consom. L.215-1) ne concerne que les **clients consommateurs**, c'est-à-dire les personnes physiques non professionnelles. Elle ne s'applique pas aux entreprises.
 
 ### Mise à jour obligatoire de la lettre de mission

@@ -2,7 +2,7 @@
 type: visuel
 questions: EC:lettre_mission EC:honoraires CAC:honoraires_bareme CAC:lettre_mission_nep210 EC:confraternite_reprise_dossier EC:delegation_signature
 ---
-# Schéma 18 – Lettre de mission, honoraires et reprise de dossier
+# Lettre de mission, honoraires et reprise de dossier
 
 ## Lettre de mission
 

@@ -2,7 +2,7 @@
 type: visuel
 questions: CAC:independance_situations_risque CAC:incompatibilites_liens CAC:reseau CAC:services_interdits_eip CAC:code_deontologie_structure CAC:prestations_declaration_activite CAC:non_immixtion
 ---
-# Schéma 16 – Indépendance du CAC : la démarche
+# Indépendance du CAC : la démarche
 
 ## Structure du code de déontologie des CAC
 
