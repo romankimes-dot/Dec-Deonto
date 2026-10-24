@@ -1035,7 +1035,7 @@ function openFeed({ focus = [] } = {}) {
   let el = $('#feed');
   if (!el) { el = document.createElement('div'); el.id = 'feed'; el.className = 'feed'; document.body.appendChild(el); el.addEventListener('click', onFeedClick); }
   el.innerHTML = `<div class="feed-top"><button class="feed-x" id="feed-close" aria-label="Fermer">✕</button><span id="feed-count"></span></div><div class="feed-scroll" id="feed-scroll"></div>`;
-  el.classList.add('show'); document.body.classList.add('noscroll');
+  el.classList.add('show'); document.body.classList.add('noscroll'); feedChrome(true);
   try { history.pushState({ v: state.view, feed: 1 }, ''); } catch { /* ignore */ }
   $('#feed-close').onclick = () => closeFeed();
   state.feedObs = new IntersectionObserver((entries) => {
@@ -1051,9 +1051,15 @@ function openFeed({ focus = [] } = {}) {
 function closeFeed(viaPop = false) {
   const el = $('#feed'); if (!el || !state.feed) return;
   state.feedObs?.disconnect(); state.feed = null;
-  el.classList.remove('show'); el.innerHTML = ''; document.body.classList.remove('noscroll');
+  el.classList.remove('show'); el.innerHTML = ''; document.body.classList.remove('noscroll'); feedChrome(false);
   if (!viaPop && history.state?.feed) history.back();
   render();
+}
+// iPhone : le fondu sous la barre d'état prend la couleur du fond de la page ; sombre pendant le fil.
+function feedChrome(on) {
+  document.documentElement.classList.toggle('feed-open', on);
+  const m = document.querySelector('meta[name="theme-color"]'); if (!m) return;
+  if (on) { m.dataset.prev = m.content; m.content = '#0b1220'; } else if (m.dataset.prev) m.content = m.dataset.prev;
 }
 function feedCount() {
   const f = state.feed; const c = $('#feed-count'); if (!f || !c) return;
