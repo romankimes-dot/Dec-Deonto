@@ -87,8 +87,8 @@ export function schedule(today, exam, undone) {
     const studyLeft = n - 4;
     const k = rest.length ? Math.ceil(rest.length / studyLeft) : 0;
     const steps = rest.slice(0, k); rest = rest.slice(k);
-    // Examens blancs intermédiaires : J-10 en QCM, J-7 en QRC, puis un jour sur deux en consolidation.
-    const exam = n === 10 ? 'qcm' : n === 7 ? 'qrc' : !steps.length && n % 2 === 0 ? 'qcm' : null;
+    // Examens blancs intermédiaires : J-10 en QCM, J-7 en QRC (puis J-4 et J-3, ci-dessus).
+    const exam = n === 10 ? 'qcm' : n === 7 ? 'qrc' : null;
     days.push({ key, n, kind: steps.length ? 'etude' : 'consolidation', steps, exam });
   }
   return days;

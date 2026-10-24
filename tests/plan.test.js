@@ -70,6 +70,7 @@ test('plan jour par jour : étapes réparties, quatre derniers jours fixes', () 
   assert.deepEqual(days.flatMap((d) => d.steps), undone, 'chaque étape une fois, dans l’ordre');
   assert.deepEqual(days.slice(-4).map((d) => [d.kind, d.exam]), [['blanc', 'qcm'], ['blanc', 'qrc'], ['faibles', null], ['veille', null]]);
   assert.equal(days.find((d) => d.n === 10).exam, 'qcm');
+  assert.equal(days.filter((d) => d.exam).length, 4, 'quatre examens blancs : J-10, J-7, J-4, J-3');
   // En retard : tout ce qui reste est tassé sur les jours d'étude restants.
   const late = schedule('2026-11-03', '2026-11-10', undone);
   assert.deepEqual(late.flatMap((d) => d.steps), undone);

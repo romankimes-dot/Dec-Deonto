@@ -264,7 +264,7 @@ header.top .sub { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orien
 @keyframes scenein { from { opacity: 0; transform: scale(1.08); filter: blur(6px); } }
 @keyframes cardflip { from { transform: perspective(800px) rotateY(90deg); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .celebrate *, .celebrate { animation: none !important; } }
-.hero-meta { display: flex; flex-direction: column; align-items: flex-end; }
+.hero-meta { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 12px; text-align: center; }
 
 /* Parcours, notices, sommaire */
 .notice { border-left: 4px solid var(--warn); background: var(--warn-bg); }
@@ -349,3 +349,30 @@ body.noscroll { overflow: hidden; }
 .card.next { border-color: var(--primary); }
 button.estim { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 100%; margin-top: 10px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--text); font: inherit; font-size: 15px; text-align: left; cursor: pointer; }
 div.estim { margin-top: 10px; }
+
+/* Accueil : bouton « à faire maintenant », anneau, aide */
+.hero { background: linear-gradient(160deg, var(--card) 55%, color-mix(in srgb, var(--primary) 12%, var(--card))); }
+.hero-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+.ring { --p: 0; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--primary) calc(var(--p) * 1%), var(--line) 0); }
+.ring span { width: 50px; height: 50px; border-radius: 50%; background: var(--card); display: grid; place-items: center; font-weight: 800; font-size: 14px; color: var(--text); }
+.big-btn { flex-direction: column; gap: 2px; line-height: 1.25; }
+.cta-k { font-size: 12px; font-weight: 600; opacity: .85; text-transform: uppercase; letter-spacing: .04em; }
+.help { border-left: 4px solid var(--warn); }
+.help ol { padding-left: 20px; margin: 6px 0 12px; }
+.help li { margin: 6px 0; font-size: 15px; }
+/* Plan du jour : cases numérotées, tâche en cours */
+.todo li { display: flex; gap: 10px; align-items: flex-start; }
+.todo .tbody { flex: 1; min-width: 0; }
+.todo .tick { flex: none; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--line); display: grid; place-items: center; font-weight: 800; font-size: 14px; color: var(--muted); margin-top: 1px; }
+.todo li.done .tick { background: var(--ok); border-color: var(--ok); color: #fff; }
+.todo li.done strong::after { content: none; }
+.todo li.cur { border: 2px solid var(--primary); box-shadow: 0 2px 10px color-mix(in srgb, var(--primary) 18%, transparent); }
+.todo li.cur .tick { border-color: var(--primary); color: var(--primary); }
+.todo li.done .muted, .todo li.done strong { opacity: .8; }
+/* Séance : ce que l'on travaille */
+.ctx { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+.badge.new { color: var(--primary); border-color: var(--primary); }
+/* Barre de notation toujours visible pendant la lecture du corrigé */
+#grade { position: sticky; bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 8px); z-index: 4; }
+.gradebar { margin-bottom: 0; box-shadow: 0 -4px 18px rgba(15, 23, 42, .12); }
+.ctx { margin: -2px 0 8px; font-size: 13px; }

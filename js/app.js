@@ -264,7 +264,6 @@ const views = {};
 views.home = () => {
   const qs = state.bank.questions;
   const pr = state.progress;
-  const { due, fresh } = buildQueue(qs, pr.cards, queueOpts());
   const lastExam = pr.exams[pr.exams.length - 1];
   const d = daysToExam();
   const grade = G.currentGrade(pr);
@@ -272,17 +271,16 @@ views.home = () => {
   const has = (id) => !!pr.badges[id];
   const conds = next ? G.gradeConditions(next.n, has, pr.stats, state.gctx) : [];
   const nb = G.nextBadges(state.catalog, pr.stats, pr.badges, 3);
-  const unlocked = Object.keys(pr.badges).length;
   return `${noticeCard()}
   <div class="card hero">
-    <div class="row" style="justify-content:space-between;align-items:flex-end">
+    <div class="hero-top">
       <div><div class="muted">Épreuve n°1 · mardi 10 novembre · 10 h 30</div><div class="big">${d > 0 ? `J-${d}` : d === 0 ? 'Jour J' : 'Passée'}</div></div>
-      <div class="muted hero-meta"><span>${Object.keys(pr.stats.q).length}/${qs.length} vues</span><span>${unlocked} badges</span></div>
+      <div class="hero-meta"><div class="ring" style="--p:${Math.round((Object.keys(pr.stats.q).length / qs.length) * 100)}"><span>${Math.round((Object.keys(pr.stats.q).length / qs.length) * 100)} %</span></div><div class="muted">de la banque vue</div></div>
     </div>
     ${estimateLine()}
-    <button class="btn primary big-btn" data-go="review">▶ Session du jour <span class="pill">${due.length + fresh.length}</span></button>
-    <div class="btnrow" style="margin-top:10px"><button class="btn" data-go="exam">⏱ Examen blanc</button><button class="btn" data-go="train">🎯 Ciblé</button></div>
+    ${heroCta()}
   </div>
+  ${helpCard()}
   ${dayCard()}
   ${gamesCard()}
   ${backupCard()}
@@ -366,21 +364,24 @@ function dayTasks() {
   const tasks = [];
   const steps = d.steps.map((id) => P.stepById(id)).filter(Boolean);
   const files = [...new Set(steps.flatMap((st) => st.fiches))];
-  if (files.length) tasks.push({ id: 'read', icon: '📊', title: files.length > 1 ? `Lire les ${files.length} schémas du jour` : 'Lire le schéma du jour', sub: steps.map((st) => st.title).join(' · '), done: files.every((f) => pr.plan.read?.[f]), html: files.map((f) => `<button class="btn sm ${pr.plan.read?.[f] ? '' : 'primary'}" data-open-fiche="${esc(f)}">📊 ${esc(shortTitle(f))}</button>`).join('') });
-  if (d.exam) tasks.push({ id: 'exam', icon: '⏱', title: `Examen blanc ${d.exam.toUpperCase()}`, sub: '20 questions, 60 minutes, conditions réelles', done: pr.exams.some((e) => e.t >= t0), html: '<button class="btn sm primary" data-go="exam">⏱ Passer l’examen</button>' });
+  if (files.length) {
+    const unread = files.find((f) => !pr.plan.read?.[f]);
+    tasks.push({ id: 'read', icon: '📊', title: files.length > 1 ? `Lire les ${files.length} schémas du jour` : 'Lire le schéma du jour', sub: `${steps.map((st) => st.title).join(' · ')} · 5 à 10 min chacun`, done: !unread, cta: `Lire : ${shortTitle(unread || files[0])}`, run: () => ficheSheet(unread || files[0]), html: files.map((f) => `<button class="btn sm ${pr.plan.read?.[f] ? '' : 'primary'}" data-open-fiche="${esc(f)}">${pr.plan.read?.[f] ? '✔' : '📊'} ${esc(shortTitle(f))}</button>`).join('') });
+  }
+  if (d.exam) tasks.push({ id: 'exam', icon: '⏱', title: `Examen blanc ${d.exam.toUpperCase()}`, sub: '20 questions, 60 minutes, en conditions réelles', done: pr.exams.some((e) => e.t >= t0), cta: `Examen blanc ${d.exam.toUpperCase()}`, run: () => go('exam') });
   const due = dueNow(); const newLeft = Math.max(0, d.target - (d.newDone || 0));
-  tasks.push({ id: 'session', icon: '🔁', title: d.target ? `Session : ${d.target} nouvelles questions et les cartes à revoir` : 'Session : les cartes à revoir uniquement', sub: `${d.newDone || 0}/${d.target} nouvelles · ${due} à revoir maintenant`, done: newLeft === 0 && due === 0, html: `<button class="btn sm ${newLeft || due ? 'primary' : ''}" data-go="review">▶ ${d.newDone || state.session ? 'Continuer' : 'Commencer'} la session</button>` });
+  tasks.push({ id: 'session', icon: '🔁', title: d.target ? `Session : ${d.target} nouvelles questions et les cartes à revoir` : 'Session : les cartes à revoir uniquement', sub: `${d.newDone || 0}/${d.target} nouvelles · ${due} à revoir maintenant${steps.length ? ' · les questions des schémas du jour arrivent en premier' : ''}`, done: newLeft === 0 && due === 0, cta: `${d.newDone || state.session ? 'Continuer' : 'Commencer'} la session (${newLeft + due})`, run: () => go('review') });
   if (d.weak) {
     const ids = weakIds(d.weak); const today = pr.attempts.filter((a) => a.t >= t0 && ids.includes(a.id)).length; const need = Math.min(8, ids.length);
-    tasks.push({ id: 'weak', icon: '🎯', title: `Point faible : ${tagLabel(d.weak.tag)} (${d.weak.prof})`, sub: `${d.weak.acc} % de réussite jusqu’ici · ${Math.min(today, need)}/${need} questions aujourd’hui`, done: today >= need, html: `<button class="btn sm" data-weak="1">🎯 Série ciblée</button>` });
+    tasks.push({ id: 'weak', icon: '🎯', title: `Point faible : ${tagLabel(d.weak.tag)} (${d.weak.prof})`, sub: `${d.weak.acc} % de réussite jusqu’ici · ${Math.min(today, need)}/${need} questions aujourd’hui`, done: today >= need, cta: `Point faible : ${tagLabel(d.weak.tag)}`, run: () => trainOn(shuffle(ids, Date.now()).slice(0, 10), `Point faible du jour : ${tagLabel(d.weak.tag)}`) });
   }
   if (d.kind === 'faibles') {
     const sure = confidentErrors(pr.attempts).length;
-    tasks.push({ id: 'sure', icon: '⚠️', title: 'Reprendre les erreurs « j’étais sûr »', sub: `${sure} à reprendre`, done: sure === 0, html: '<button class="btn sm" data-go="train">🎯 Ouvrir les séries</button>' });
+    tasks.push({ id: 'sure', icon: '⚠️', title: 'Reprendre les erreurs « j’étais sûr »', sub: `${sure} à reprendre`, done: sure === 0, cta: 'Mes erreurs « j’étais sûr »', run: () => trainOn(confidentErrors(pr.attempts).slice(-20), 'Mes erreurs « j’étais sûr »') });
   }
   const g = GAMES[d.game];
   const played = Object.entries(pr.drills).some(([id, m]) => id.startsWith(GAME_PREFIX[d.game]) && m.last >= t0);
-  tasks.push({ id: 'game', icon: g.icon, title: `Jeu du jour : ${g.name}`, sub: d.kind === 'veille' ? 'Réciter les listes, sans rien apprendre de nouveau' : 'Choisi parmi ceux où vous vous trompez le plus', done: played, html: `<button class="btn sm" data-game="${d.game}">${g.icon} Jouer</button>` });
+  tasks.push({ id: 'game', icon: g.icon, title: `Jeu du jour : ${g.name}`, sub: d.kind === 'veille' ? 'Réciter les listes, sans rien apprendre de nouveau' : '5 minutes · choisi parmi ceux où vous vous trompez le plus', done: played, cta: `Jeu du jour : ${g.name}`, run: () => startGame(d.game) });
   // Étapes du jour terminées dès que le schéma est lu et la session faite : le lendemain prend la suite.
   const read = tasks.find((x) => x.id === 'read'); const sess = tasks.find((x) => x.id === 'session');
   if (steps.length && read?.done && sess.done && steps.some((st) => !pr.plan.done[st.id])) { steps.forEach((st) => { pr.plan.done[st.id] = pr.plan.done[st.id] || Date.now(); }); persist(); }
@@ -392,13 +393,43 @@ function dayCard() {
   if (d.kind === 'jour-j') return '<div class="card plan-card"><h2>Jour J 🍀</h2><p class="muted">Rien de nouveau. Relisez les chiffres clés, respirez, 3 minutes par question. Partie CAC : soignez-la.</p><button class="btn" data-open-fiche="15-schema-chiffres-cles.md">📊 Les chiffres à connaître</button></div>';
   if (d.kind === 'apres') return '';
   const tasks = dayTasks(); const n = tasks.filter((x) => x.done).length;
-  setTimeout(() => { const b = $('[data-weak]'); if (b) b.onclick = () => { const ids = shuffle(weakIds(d.weak), Date.now()).slice(0, 10); trainOn(ids, `Point faible : ${tagLabel(d.weak.tag)}`); }; }, 0);
   const date = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+  const cur = tasks.find((x) => !x.done);
+  const tom = calendar()[1];
+  const tomText = tom ? [...tom.steps.map((id) => P.stepById(id)?.title), tom.exam ? `examen blanc ${tom.exam.toUpperCase()}` : '', tom.kind === 'faibles' ? 'points faibles' : '', tom.kind === 'veille' ? 'veille légère' : '', tom.kind === 'consolidation' ? 'consolidation' : ''].filter(Boolean).join(' · ') : '';
   return `<div class="card plan-card"><div class="row" style="justify-content:space-between"><span class="badge warn">${esc(KIND_LABEL[d.kind])} · J-${d.n}</span><span class="muted">${n}/${tasks.length} fait</span></div>
     <h2 style="margin:8px 0 2px">Mon plan du ${esc(date)}</h2><div class="progress" style="margin:6px 0 10px"><div style="width:${Math.round((n / tasks.length) * 100)}%"></div></div>
-    <ol class="todo">${tasks.map((x) => `<li class="${x.done ? 'done' : ''}"><div><strong>${x.icon} ${esc(x.title)}</strong></div><div class="muted">${esc(x.sub)}</div>${x.done ? '' : x.html}</li>`).join('')}</ol>
-    ${n === tasks.length ? `<div class="gfb ok">🎉 Plan du jour terminé. La suite, en boucle :</div>${nextCard(true)}` : ''}
+    <ol class="todo">${tasks.map((x, i) => `<li class="${x.done ? 'done' : x === cur ? 'cur' : ''}"><span class="tick">${x.done ? '✔' : i + 1}</span><div class="tbody"><div><strong>${x.icon} ${esc(x.title)}</strong>${x === cur ? ' <span class="badge warn">maintenant</span>' : ''}</div><div class="muted">${esc(x.sub)}</div>${x.done ? '' : x.html || `<button class="btn sm ${x === cur ? 'primary' : ''}" data-task="${x.id}">▶ ${esc(x.cta)}</button>`}</div></li>`).join('')}</ol>
+    ${n === tasks.length ? `<div class="gfb ok">🎉 Plan du jour terminé. Vous pouvez vous arrêter, ou continuer en boucle :</div>${nextCard(true)}` : ''}
+    ${tomText ? `<p class="muted" style="margin:6px 0 10px">Demain : ${esc(tomText)}.</p>` : ''}
     <button class="btn sm" data-go="plan">📅 Mon plan jusqu’au 10 novembre</button></div>`;
+}
+// Le bouton principal de l'accueil : la prochaine chose à faire, sans réfléchir.
+function heroCta() {
+  const d = ensureDaily();
+  if (d.kind === 'apres') return '<button class="btn primary big-btn" data-go="review">▶ Réviser</button>';
+  const cur = d.kind === 'jour-j' ? null : dayTasks().find((x) => !x.done);
+  if (cur) return `<button class="btn primary big-btn" data-task="${cur.id}"><span class="cta-k">À faire maintenant</span>▶ ${esc(cur.cta)}</button>`;
+  const a = nextActions(); state.nextList = a;
+  return `<button class="btn primary big-btn" data-next="0"><span class="cta-k">Plan du jour terminé · et maintenant ?</span>${a[0].icon} ${esc(a[0].title)}</button>`;
+}
+// En fin de séance, de série, de jeu ou d'examen : ce qui suit dans le plan.
+function nextStepBlock() {
+  const cur = dayTasks().find((x) => !x.done);
+  if (cur) return `<div class="card next"><div class="muted">Prochaine étape de votre plan du jour</div><strong>${cur.icon} ${esc(cur.title)}</strong><p class="muted" style="margin:4px 0 8px">${esc(cur.sub)}</p><button class="btn primary" data-task="${cur.id}">▶ ${esc(cur.cta)}</button></div>`;
+  return `<div class="gfb ok">🎉 Plan du jour terminé.</div>${nextCard()}`;
+}
+// Aide de départ : affichée tant qu'on ne l'a pas fermée.
+function helpCard() {
+  const s = state.progress.settings;
+  if (s.helpSeen) return '';
+  setTimeout(() => { const b = $('#help-ok'); if (b) b.onclick = () => { s.helpSeen = true; persist(); render(); }; }, 0);
+  return `<div class="card help"><h2>Comment ça marche</h2><ol>
+    <li><strong>Suivez le plan du jour</strong>, juste en dessous : le gros bouton bleu lance toujours la prochaine chose à faire.</li>
+    <li><strong>Une session</strong> mêle vos nouvelles questions et celles à revoir : notez honnêtement, l’app calcule quand chaque question reviendra (toujours avant le 10 novembre).</li>
+    <li><strong>Un lien vers un schéma</strong> s’ouvre par-dessus : « Fermer et reprendre » vous ramène où vous en étiez.</li>
+    <li>Plan fini ? <strong>« Et maintenant ? »</strong> propose la suite, autant que vous voulez. Le plan se recale chaque matin sur vos résultats.</li></ol>
+    <button class="btn" id="help-ok">J’ai compris</button></div>`;
 }
 // « Et maintenant ? » : la meilleure activité du moment, d'après l'état ; « Autre idée » fait tourner la liste.
 function nextActions() {
@@ -516,11 +547,14 @@ views.review = () => {
     state.session = null;
     return `<div class="card center"><h2>Session terminée 🎉</h2><p>${s.done} cartes revues, ${s.ok} réussies du premier coup.</p>
       ${again ? `<p class="muted">${again} carte(s) « Encore » reviennent dans 10 min.</p>` : ''}</div>
-      ${nextCard()}<button class="btn" data-go="home">Retour à l’accueil et plan du jour</button>`;
+      ${nextStepBlock()}<button class="btn" data-go="home">🏠 Voir mon plan du jour</button>`;
   }
   const q = s.queue[0];
   setTimeout(() => mountReviewCard(q), 0);
-  return `<div class="row" style="justify-content:space-between;margin-bottom:8px"><span class="muted">${s.done + 1} / ${s.total}</span><span class="muted">${s.queue.length} restantes</span></div>
+  const d = ensureDaily(); const stepIds = new Set(d.steps.flatMap((id) => P.stepQuestionIds(P.stepById(id), state.fiches)));
+  const isNew = !state.progress.cards[q.id];
+  return `<div class="row" style="justify-content:space-between;margin-bottom:6px;flex-wrap:nowrap"><span>${isNew ? '<span class="badge new">🆕 Nouvelle</span>' : '<span class="badge">🔁 À revoir</span>'} <span class="muted">${s.done + 1} / ${s.total}</span></span><span class="muted">${s.queue.length - 1 > 0 ? `encore ${s.queue.length - 1}` : 'dernière'}</span></div>
+    ${stepIds.has(q.id) ? `<div class="muted ctx">📊 Étape du jour : ${esc(d.steps.map((id) => P.stepById(id)?.title).join(', '))}</div>` : ''}
     <div class="progress"><div style="width:${(s.done / Math.max(1, s.total)) * 100}%"></div></div>
     <div class="card" id="qcard" style="margin-top:12px"></div><div id="grade"></div>`;
 };
@@ -531,7 +565,7 @@ function mountReviewCard(q) {
   const set = state.progress.settings;
   const res = { conf: null, ratio: 0 };
   const showGrades = (suggest) => {
-    $('#grade').innerHTML = `<div class="card"><div class="muted" style="margin-bottom:8px">Comment c’était ?${mode === 'qrc' ? ' (proposé d’après les éléments cochés)' : ''}</div><div class="btnrow4">${GRADES.map((g) => `<button class="btn ${g.g === suggest ? 'primary' : ''}" data-g="${g.g}">${g.label}<small>${intervalLabel(card, g.g, q.id)}</small></button>`).join('')}</div></div>`;
+    $('#grade').innerHTML = `<div class="card gradebar"><div class="muted" style="margin-bottom:8px">Comment c’était ? <strong>En bleu : la note proposée</strong>${mode === 'qrc' ? ', d’après les éléments cochés' : ''} · sous chaque note, quand la question reviendra</div><div class="btnrow4">${GRADES.map((g) => `<button class="btn ${g.g === suggest ? 'primary' : ''}" data-g="${g.g}">${g.label}<small>${intervalLabel(card, g.g, q.id)}</small></button>`).join('')}</div></div>`;
     $('#grade').querySelectorAll('button[data-g]').forEach((b) => { b.onclick = () => gradeCurrent(q, Number(b.dataset.g), mode, res); });
   };
   if (mode === 'qcm') {
@@ -561,7 +595,7 @@ views.train = () => {
   const t = state.train;
   if (t.queue) {
     const q = t.queue[t.idx];
-    if (!q) { const r = `<div class="card center"><h2>Série terminée</h2><p>${t.ok} / ${t.n} bonnes réponses</p><button class="btn primary" id="again">Nouvelle série</button></div>`; setTimeout(() => { $('#again').onclick = () => { t.queue = null; t.title = null; render(); }; }, 0); return r; }
+    if (!q) { const r = `<div class="card center"><h2>Série terminée</h2><p>${t.ok} / ${t.n} bonnes réponses${t.title ? ` · ${esc(t.title)}` : ''}</p></div>${nextStepBlock()}<div class="btnrow"><button class="btn" id="again">Autre série</button><button class="btn" data-go="home">🏠 Plan du jour</button></div>`; setTimeout(() => { $('#again').onclick = () => { t.queue = null; t.title = null; render(); }; }, 0); return r; }
     setTimeout(() => {
       const box = $('#qcard');
       const next = () => { $('#next').classList.remove('hidden'); };
@@ -749,7 +783,7 @@ function renderExamResult() {
       ${r.mode === 'qcm'
     ? `${qcmReview(q, r.answers[q.id])}<details ${ok ? '' : 'open'}><summary>Explication</summary>${qExplain(q)}</details>`
     : `<div class="muted">Votre réponse : ${esc(r.answers[q.id] || '—')}</div><div class="answer">${esc(q.qrc.model_answer)}</div><details><summary>Explication</summary>${qExplain(q)}</details>`}</div>`; }).join('')}
-    <button class="btn primary" id="close">Fermer</button>`;
+    ${nextStepBlock()}<button class="btn" id="close">Fermer le corrigé</button>`;
 }
 
 views.fiches = () => {
@@ -796,17 +830,24 @@ function inActivity() {
 function sheet(html) {
   const el = $('#sheet');
   el.innerHTML = `<div class="sheet-head"><button class="btn sm" id="sheet-close">✕ Fermer et reprendre</button></div><div class="sheet-body">${html}</div>`;
+  if (!el.classList.contains('show')) { try { history.pushState({ v: state.view, sheet: 1 }, ''); } catch { /* ignore */ } }
   el.classList.add('show'); document.body.classList.add('noscroll');
-  $('#sheet-close').onclick = closeSheet;
+  $('#sheet-close').onclick = () => closeSheet();
   el.scrollTop = 0;
 }
-function closeSheet() { $('#sheet')?.classList.remove('show'); document.body.classList.remove('noscroll'); }
+function closeSheet(viaPop = false) {
+  const el = $('#sheet'); if (!el?.classList.contains('show')) return;
+  el.classList.remove('show'); document.body.classList.remove('noscroll');
+  if (!viaPop && history.state?.sheet) history.back(); // retire l'entrée « fiche ouverte » de l'historique
+  // Hors activité (accueil, plan…), l'écran se met à jour (schéma lu, tâche suivante) ; sinon tout reste en l'état.
+  if (!inActivity()) render();
+}
 // Fiche en surimpression : la lecture est notée pour le parcours.
 async function ficheSheet(file) {
   const meta = state.fiches.find((f) => f.file === file) || {};
   const n = (meta.questions || []).length;
   sheet(`<div class="card fiche" id="sheet-fiche">Chargement…</div>${n && !inActivity() ? `<button class="btn primary" id="sheet-train">🎯 S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : ''}`);
-  const tb = $('#sheet-train'); if (tb) tb.onclick = () => { closeSheet(); trainOn(shuffle(meta.questions, Date.now()).slice(0, 20), meta.title); };
+  const tb = $('#sheet-train'); if (tb) tb.onclick = () => { closeSheet(true); trainOn(shuffle(meta.questions, Date.now()).slice(0, 20), meta.title); };
   state.progress.plan.read = state.progress.plan.read || {};
   state.progress.plan.read[file] = Date.now(); persist();
   try { const box = $('#sheet-fiche'); box.innerHTML = renderMarkdown(await loadFiche(file)); addToc(box); } catch { $('#sheet-fiche').textContent = 'Fiche indisponible hors ligne (ouvrez-la une fois en ligne).'; }
@@ -817,7 +858,7 @@ function variantsSheet(id) {
   sheet(`<div class="card"><h2>Même notion, autres sessions</h2><p class="muted">Le jury repose les mêmes règles sous d’autres formes : vérifiez que vous sauriez répondre à chaque variante.</p></div>
     ${ids.map((x) => { const q = state.byId[x]; return `<div class="card"><div class="muted">DEC ${esc(q.sessionLabel)} · Q${q.n} · ${q.profession}</div><div class="q" style="font-size:16px">${esc(q.question)}</div><details><summary>Réponse</summary><div class="answer">${esc(q.qrc.model_answer)}</div><div class="ref">Réf. : ${esc(q.reference)}</div></details></div>`; }).join('')}
     <button class="btn primary" id="sheet-variants">🎯 S’entraîner sur ces ${ids.length + 1} questions</button>`);
-  $('#sheet-variants').onclick = () => { closeSheet(); trainOn([id, ...ids], 'Même notion, plusieurs sessions', state.train?.mode || 'qcm'); };
+  $('#sheet-variants').onclick = () => { closeSheet(true); trainOn([id, ...ids], 'Même notion, plusieurs sessions', state.train?.mode || 'qcm'); };
 }
 // Schémas qui résument une question (lien affiché sous l'explication)
 function relatedFiches(id) { return state.fiches.filter((f) => f.kind === 'visuel' && f.questions?.includes(id)); }
@@ -1059,7 +1100,7 @@ function gameView() {
     return `<div class="card center"><div class="muted">${meta.icon} ${esc(meta.name)}</div><div class="big">${g.ok}/${g.n}</div>
       <div class="muted">${g.kind === 'chiffres' && g.limit ? `en ${g.limit} secondes` : `meilleure série : ${g.bestCombo} d’affilée`}${g.record ? ' · 🏆 nouveau record' : ''}</div></div>
       ${errs.length ? `<div class="card"><h2>À retenir</h2><ul class="errlist">${errs.map((it) => `<li>${line(it)}</li>`).join('')}</ul><p class="muted">Ces items reviennent dans 10 minutes, puis aux intervalles de la répétition.</p></div>` : '<div class="card center"><p>Sans faute. 👏</p></div>'}
-      <div class="btnrow"><button class="btn" id="g-home">← Jeux</button><button class="btn primary" id="g-again">Rejouer</button></div>`;
+      ${nextStepBlock()}<div class="btnrow"><button class="btn" id="g-again">Rejouer</button><button class="btn" id="g-home">← Tous les jeux</button></div>`;
   }
   const it = g.items[g.idx];
   const head = `<div class="row" style="justify-content:space-between;margin-bottom:8px"><span class="muted">${meta.icon} ${g.kind === 'chiffres' && g.endsAt ? `<span id="sprint" class="timer">${Math.ceil(Math.max(0, g.endsAt - (g.pausedAt || Date.now())) / 1000)} s</span>${g.pausedAt ? ' ⏸' : ''}` : `${g.idx + 1} / ${g.items.length}`} · ✔ ${g.ok}${g.combo >= 2 ? ` · <span class="combo">🔥×${g.combo}</span>` : ''}</span><button class="btn sm" id="g-stop">Arrêter</button></div>`;
@@ -1287,13 +1328,22 @@ function render() {
   updateStreakBadge();
   main.querySelectorAll('[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
 }
-function go(v) {
-  if (state.exam && v !== 'exam' && !confirm('Un examen est en cours. Le quitter ?')) return;
-  if (v !== 'exam' && state.exam) { clearInterval(state.timer); state.exam = null; }
+// pop : navigation venue du bouton Retour du téléphone (pas de nouvelle entrée d'historique).
+function go(v, { pop = false } = {}) {
+  if (state.exam && v !== 'exam' && !confirm('Quitter l’examen blanc en cours ? Il sera abandonné.')) { if (pop) history.pushState({ v: state.view }, ''); return; }
+  if (v !== 'exam' && state.exam) { clearInterval(state.timer); state.exam = null; store.saveExam(null); }
   // La séance, la série et le jeu en cours sont gardés : on les retrouve en revenant sur l'onglet.
   if (v !== 'jeux') stopGameTimer();
-  closeSheet();
+  closeSheet(true);
+  const changed = v !== state.view;
   state.view = v; window.scrollTo(0, 0); render();
+  if (!pop && changed) { try { history.pushState({ v }, ''); } catch { /* ignore */ } }
+}
+// Bouton Retour (Android, geste iOS) : ferme d'abord la fiche ouverte par-dessus, sinon revient à l'écran précédent.
+function onPop(e) {
+  if ($('#sheet')?.classList.contains('show')) { closeSheet(true); return; }
+  const v = e.state?.v;
+  if (v && v !== state.view && views[v]) go(v, { pop: true });
 }
 
 function initGamify() {
@@ -1336,11 +1386,14 @@ async function init() {
   nav.innerHTML = NAV.map(([v, ico, label]) => `<button data-view="${v}"><span class="ico">${ico}</span>${label}</button>`).join('');
   nav.querySelectorAll('button').forEach((b) => { b.onclick = () => go(b.dataset.view); });
   $('#settingsBtn').onclick = () => go('settings');
+  try { history.replaceState({ v: state.view }, ''); } catch { /* ignore */ }
+  window.addEventListener('popstate', onPop);
   const sh = document.createElement('div'); sh.id = 'sheet'; sh.className = 'sheet'; sh.setAttribute('role', 'dialog'); document.body.appendChild(sh);
   sh.addEventListener('click', (e) => { const b = e.target.closest('[data-open-fiche]'); if (b) ficheSheet(b.dataset.openFiche); });
   $('#main').addEventListener('click', (e) => {
     const b = e.target.closest('[data-open-fiche]'); if (b) return ficheSheet(b.dataset.openFiche);
     const v = e.target.closest('[data-variants]'); if (v) return variantsSheet(v.dataset.variants);
+    const tk = e.target.closest('[data-task]'); if (tk) return dayTasks().find((x) => x.id === tk.dataset.task)?.run();
     const nx = e.target.closest('[data-next]'); if (nx) return state.nextList[Number(nx.dataset.next)]?.run();
     const other = e.target.closest('[data-next-other]'); if (other) { state.nextIdx++; return render(); }
     const g = e.target.closest('[data-game]'); if (g) return startGame(g.dataset.game);
