@@ -69,4 +69,5 @@ Disciplinaire | {?} | **6 ans**
 
 ## Montants des sanctions H2A
 
-- **250 000 €** au plus pour une personne physique ; **1 M€** au plus pour une société de CAC.
+- **250 000 €** au plus pour une personne physique.
+- Société de CAC : le plus élevé de **1 M€** ou, pour une faute en mission de certification, de la **moyenne annuelle des honoraires** facturés à l'entité sur 3 exercices.

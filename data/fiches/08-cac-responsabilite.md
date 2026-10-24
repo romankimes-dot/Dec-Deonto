@@ -155,7 +155,7 @@
 - **Prescription civile** : **5 ans** pour l'EC, aménageable jusqu'à 1 an minimum ; **3 ans** pour le CAC (révélation si dissimulation, 10 ans pour un crime), **non aménageable**.
 - **Plafonnement** : possible pour l'EC, **impossible** pour le CAC.
 - **Disciplinaire** : l'EC relève des **chambres régionale et nationale**, puis du **Conseil d'État** ; le CAC de la **commission des sanctions de la H2A**, puis du **Conseil d'État**.
-- **Sanctions** : pour l'EC, réprimande, blâme, suspension avec ou sans sursis, radiation ; pour le CAC, **avertissement**, blâme, interdiction temporaire (**3 ans au plus**, 5 ans avant 2024), radiation, **sanction pécuniaire** (250 000 € / 1 M€), retrait de l'honorariat.
+- **Sanctions** : pour l'EC, réprimande, blâme, suspension avec ou sans sursis, radiation ; pour le CAC, **avertissement**, blâme, interdiction temporaire (**3 ans au plus**, 5 ans avant 2024), radiation, **sanction pécuniaire** (250 000 € pour une personne physique ; pour une société, 1 M€ ou la moyenne annuelle des honoraires si elle est plus élevée), retrait de l'honorariat.
 - **Enquête** : chez l'EC, le rapporteur est désigné dans la chambre ; chez le CAC, c'est le **rapporteur général de la H2A**, et il est **séparé** de la commission.
 - **Responsabilité administrative** : elle n'existe **pas** pour l'EC ; elle **existe** pour le CAC (sanctions H2A).
 - **Révélation au procureur** : son omission est un **délit** pour le CAC ; il n'y a pas d'obligation équivalente pour l'EC.

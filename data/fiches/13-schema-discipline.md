@@ -33,7 +33,7 @@ Recours | **Conseil d'État**, recours de pleine juridiction
 
 ```vs
 Liste | 1. **Réprimande** · 2. **Blâme** avec inscription au dossier · 3. **Suspension** à durée déterminée **avec sursis** · 4. Suspension **sans sursis** · 5. **Radiation** du tableau avec interdiction définitive d'exercer | **Avertissement** · **Blâme** · **Interdiction temporaire** d'exercer (**3 ans au plus** depuis 2024) · **Radiation** · Retrait de l'**honorariat** · Interdiction temporaire de fonctions de direction · **Sanction pécuniaire** · Publication
-Sanction pécuniaire | **Non**, sauf en matière **LCB-FT** (sanction pécuniaire, interdiction temporaire, publication) | **Oui** : **250 000 €** au plus (personne physique), **1 M€** au plus (société)
+Sanction pécuniaire | **Non**, sauf en matière **LCB-FT** (sanction pécuniaire, interdiction temporaire, publication) | **Oui** : **250 000 €** au plus (personne physique) ; société : **1 M€**, ou la **moyenne annuelle des honoraires** facturés à l'entité sur 3 exercices si elle est plus élevée (faute en mission de certification)
 Qui est justiciable ? | EC et sociétés inscrites, **AGC**, salariés autorisés (83 ter / quater), **stagiaires** | CAC (personnes et sociétés), auditeurs de durabilité, membres des comités d'audit, contrôleurs de pays tiers… **Pas l'EC**
 Faute sanctionnable | Manquement aux règles professionnelles (ord. art. 49 s.) | **2 catégories** : manquement aux **conditions légales d'exercice** ; **négligence grave** ou fait contraire à la **probité ou à l'honneur**
 Prescription | {?} Aucun délai trouvé dans l'ordonnance ni dans le décret | **6 ans**, interrompue par un acte de recherche, de constatation ou de sanction

@@ -13,7 +13,7 @@
    "cac": { "main": "**Oui**", "det": "**250 000 €** au plus pour une personne physique." },
    "trap": "Chez l'EC, pas d'amende en dehors de la LCB-FT.",
    "quiz": { "q": "Quel est le plafond de la sanction pécuniaire d'un CAC personne physique ?", "choices": ["250 000 €", "500 000 €", "50 000 €"], "answer": 0, "why": "Plafond : **250 000 €** pour un CAC personne physique. Chez l'EC, pas de sanction pécuniaire, sauf en matière LCB-FT." },
-   "src": ["250 000 € au plus (personne physique), 1 M€ au plus (société)", "Non, sauf en matière LCB-FT (sanction pécuniaire, interdiction temporaire, publication)"] },
+   "src": ["250 000 € au plus (personne physique)", "Non, sauf en matière LCB-FT (sanction pécuniaire, interdiction temporaire, publication)"] },
 
  { "id": "discipline-03", "type": "duel", "prof": "EC+CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
    "title": "Qui est justiciable ?", "q": "Qui peut être sanctionné ?",
