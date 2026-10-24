@@ -23,22 +23,22 @@
  { "id": "mandat-04", "type": "chiffre", "prof": "CAC", "tags": ["mandat_duree_cessation"], "fiche": "14-schema-mandat-cac.md",
    "title": "Durée du mandat", "big": "6 exercices", "label": "Durée du mandat du commissaire aux comptes",
    "det": "Il prend fin après l'assemblée qui statue sur les comptes du **6e exercice**.", "trap": "On compte en exercices, pas en années. En ALPE : 3 exercices.",
-   "quiz": { "q": "Quand le mandat de 6 exercices prend-il fin ?", "choices": ["À la clôture du 6e exercice", "Après l'assemblée qui approuve les comptes du 6e exercice", "Six ans jour pour jour après la nomination"], "answer": 1, "why": "Le mandat **expire après l'assemblée** qui statue sur les comptes du **6e exercice**. Ni la clôture, ni une date anniversaire." },
+   "quiz": { "q": "Quand le mandat de 6 exercices prend-il fin ?", "choices": ["À la clôture du 6e exercice", "Après l'assemblée qui statue sur les comptes du 6e exercice", "Six ans jour pour jour après la nomination"], "answer": 1, "why": "Le mandat **expire après l'assemblée** qui statue sur les comptes du **6e exercice**. Ni la clôture, ni une date anniversaire." },
    "src": ["Fin du mandat après l'assemblée qui statue sur les comptes du 6e exercice (3 en ALPE)", "nomination obligatoire, mandat de 6 exercices"] },
 
  { "id": "mandat-05", "type": "cas", "prof": "CAC", "tags": ["alpe_petites_entreprises", "honoraires_bareme"], "fiche": "05-cac-exercice.md",
    "title": "Mission ALPE", "situation": "Une SARL sous les seuils décide, sur option, de faire auditer ses comptes dans le cadre de l'ALPE.",
-   "quiz": { "q": "Quelle durée de mandat et quel barème d'heures ?", "choices": ["6 exercices, barème d'heures applicable", "3 exercices, barème d'heures applicable", "6 exercices, sans barème d'heures", "3 exercices, sans barème d'heures"], "answer": 3, "why": "L'ALPE dure **3 exercices**, avec un rapport allégé. Le **barème d'heures ne s'applique pas** : il vise la certification classique." },
+   "quiz": { "q": "Quelle durée de mandat et quel barème d'heures ?", "choices": ["6 exercices, barème d'heures applicable", "3 exercices, barème d'heures applicable", "6 exercices, sans barème d'heures", "3 exercices, sans barème d'heures"], "answer": 3, "why": "L'ALPE dure **3 exercices**, avec un rapport allégé. Le **barème d'heures ne s'applique pas** : il vise la certification hors ALPE." },
    "src": ["3 exercices, sur option, pour les entités sous les seuils (petits groupes, volontaires). Rapport allégé. Le barème d'heures ne s'applique pas"] },
 
  { "id": "mandat-06", "type": "vf", "prof": "CAC", "tags": ["nomination_seuils", "alpe_petites_entreprises"], "fiche": "05-cac-exercice.md",
-   "title": "Le tiers du capital", "statement": "Un associé qui détient le tiers du capital peut demander en justice la nomination d'un CAC.",
+   "title": "Le tiers du capital", "statement": "Sous les seuils, l'associé qui demande en justice la nomination d'un CAC doit détenir au moins le tiers du capital.",
    "verdict": false,
-   "why": "Il faut **10 % du capital** (SARL, SAS, SA, SCA) ; en SNC, **tout associé**. Le **tiers** sert à demander, par une demande motivée, un mandat de **3 exercices** (ALPE).",
+   "why": "Le **dixième du capital** suffit (SARL, SAS, SA, SCA) ; en SNC, **tout associé**. Le **tiers** sert à la demande **motivée**, adressée à la société, d'un mandat de **3 exercices** (ALPE).",
    "src": ["au moins le dixième du capital", "Le tiers du capital sert à autre chose : la demande motivée d'un mandat de 3 exercices (ALPE) adressée à la société."] },
 
  { "id": "mandat-07", "type": "liste", "prof": "CAC", "tags": ["mandat_duree_cessation"], "fiche": "14-schema-mandat-cac.md",
-   "title": "Après la nomination", "q": "Les premières formalités du mandat",
+   "title": "Après la nomination", "q": "Nomination : suppléant et délais",
    "items": [
      { "k": "Suppléant", "v": "Obligatoire si le titulaire est une personne physique ou une société unipersonnelle" },
      { "k": "8 jours", "v": "Le CAC notifie sa nomination au conseil régional" },
@@ -52,10 +52,10 @@
    "items": [
      { "k": "Cessation d'activité", "v": "Définitive" },
      { "k": "Motif personnel impérieux", "v": "Maladie, par exemple" },
-     { "k": "Difficultés de mission", "v": "Informations impossibles à obtenir" },
+     { "k": "Difficultés de mission", "v": "Par exemple, impossibilité d'obtenir les informations" },
      { "k": "Indépendance compromise", "v": "Aucune mesure de sauvegarde possible" } ],
    "trap": "Pas de démission à contretemps. Le CAC informe l'entité et la H2A.",
-   "quiz": { "q": "Lequel n'est PAS un motif légitime de démission ?", "choices": ["Échapper à l'émission d'une opinion défavorable", "Cessation définitive d'activité", "Indépendance compromise sans sauvegarde possible"], "answer": 0, "why": "Le CAC ne démissionne pas pour **se soustraire** à la révélation, à l'alerte, à la déclaration de soupçon ou à l'**émission du rapport**." },
+   "quiz": { "q": "Lequel n'est PAS un motif légitime de démission ?", "choices": ["Échapper à l'émission d'une opinion défavorable", "Cessation définitive d'activité", "Indépendance compromise sans sauvegarde possible"], "answer": 0, "why": "Le CAC ne démissionne pas pour **se soustraire** à la révélation, à l'alerte, à la déclaration de soupçon ou à l'**émission du rapport** ou d'une **opinion défavorable**." },
    "src": ["Cessation définitive d'activité", "Motif personnel impérieux", "Indépendance compromise sans mesure de sauvegarde possible", "Pas de démission à contretemps ; le CAC informe l'entité et la H2A"] },
 
  { "id": "mandat-09", "type": "cas", "prof": "CAC", "tags": ["demission_revocation", "revelation_procureur"], "fiche": "14-schema-mandat-cac.md",
@@ -66,7 +66,7 @@
  { "id": "mandat-10", "type": "vf", "prof": "CAC", "tags": ["demission_revocation"], "fiche": "14-schema-mandat-cac.md",
    "title": "Révocation par l'assemblée", "statement": "L'assemblée générale peut mettre fin au mandat du CAC à tout moment, sans motif.",
    "verdict": false,
-   "why": "Il n'y a **pas de révocation ad nutum**. Seul un **relèvement de fonctions** par décision de justice, pour **faute** ou **empêchement**, met fin au mandat.",
+   "why": "Il n'y a **pas de révocation ad nutum**. Le **relèvement de fonctions** est prononcé par décision de justice, pour **faute** ou **empêchement**.",
    "src": ["Pas de révocation ad nutum par l'assemblée", "Décision de justice, pour faute ou empêchement"] },
 
  { "id": "mandat-11", "type": "liste", "prof": "CAC", "tags": ["demission_revocation"], "fiche": "14-schema-mandat-cac.md",
@@ -89,9 +89,9 @@
 
  { "id": "mandat-13", "type": "duel", "prof": "EC+CAC", "tags": ["mandat_duree_cessation"], "fiche": "05-cac-exercice.md",
    "title": "Durée de la mission", "q": "Combien de temps dure la mission ?",
-   "ec": { "main": "**Selon la lettre**", "det": "La durée dépend de la **lettre de mission**. Aucune durée légale." },
+   "ec": { "main": "**Selon la lettre**", "det": "La durée dépend de la **lettre de mission**." },
    "cac": { "main": "**6 exercices**", "det": "Mandat légal ; **3 exercices** en ALPE." },
-   "trap": "Seul le CAC a un mandat de durée fixée par la loi.",
+   "trap": "La durée de 6 exercices vaut pour le CAC, pas pour l'EC.",
    "quiz": { "q": "Qui voit la durée de sa mission fixée par la loi ?", "choices": ["L'expert-comptable", "Le commissaire aux comptes", "Les deux, pour 6 exercices"], "answer": 1, "why": "Le mandat du **CAC** dure **6 exercices** (3 en ALPE). La mission de l'**EC** dépend de sa **lettre de mission**." },
    "src": ["la mission de l'EC dépend de la lettre de mission ; le mandat du CAC dure 6 exercices (3 en ALPE)"] },
 

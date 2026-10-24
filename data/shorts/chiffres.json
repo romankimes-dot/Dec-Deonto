@@ -1,7 +1,7 @@
 { "step": "chiffres", "shorts": [
  { "id": "chiffres-01", "type": "chiffre", "prof": "CAC", "tags": ["mandat_duree_cessation", "alpe_petites_entreprises"], "fiche": "15-schema-chiffres-cles.md",
    "title": "Durée du mandat", "big": "6 / 3 exercices", "label": "Mandat du CAC : classique / ALPE",
-   "det": "Le mandat se compte en **exercices**, pas en années.", "trap": "L'ALPE (petites entreprises, petits groupes) dure 3 exercices, pas 6.",
+   "det": "Durées exprimées en **exercices**.", "trap": "L'ALPE (petites entreprises, petits groupes) dure 3 exercices, pas 6.",
    "quiz": { "q": "Quelle est la durée d'un mandat ALPE ?", "choices": ["3 exercices", "4 exercices", "5 exercices", "6 exercices"], "answer": 0, "why": "L'**ALPE** dure **3 exercices**. Le mandat de droit commun dure **6 exercices**." },
    "src": ["6 exercices | Durée du mandat de CAC", "3 exercices | Mandat ALPE (petites entreprises, petits groupes)"] },
 
@@ -19,7 +19,7 @@
 
  { "id": "chiffres-04", "type": "chiffre", "prof": "CAC", "tags": ["controle_activite", "h2a_supervision"], "fiche": "15-schema-chiffres-cles.md",
    "title": "Contrôle d'activité", "big": "3 ans / 6 ans", "label": "Contrôle d'activité : CAC des grandes EIP / autres CAC",
-   "det": "Le contrôle est plus fréquent pour les CAC des grandes EIP.", "trap": "Le cycle de 6 ans de l'Ordre vise les EC, via le contrôle de qualité.",
+   "det": "Le contrôle est plus fréquent pour les CAC des grandes EIP.", "trap": "Le cycle d'environ 6 ans du contrôle de qualité de l'Ordre vise les EC.",
    "quiz": { "q": "À quel rythme les CAC des grandes EIP sont-ils contrôlés ?", "choices": ["Tous les 6 ans", "Tous les 3 ans", "Tous les ans", "Tous les 10 ans"], "answer": 1, "why": "Tous les **3 ans** pour les CAC des grandes EIP ; tous les **6 ans** pour les autres CAC." },
    "src": ["3 ans / 6 ans | Contrôle d'activité : CAC des grandes EIP / autres CAC"] },
 
@@ -29,10 +29,10 @@
    "quiz": { "q": "Qui doit suivre 40 h de formation particulière ?", "choices": ["Tout CAC chaque année", "Le CAC n'ayant pas exercé pendant 3 ans", "Le CAC d'une EIP", "Le CAC stagiaire"], "answer": 1, "why": "C'est le CAC qui **n'a pas exercé pendant 3 ans**. Les **40 heures** se font dans les **18 mois** avant d'accepter une mission." },
    "src": ["40 h en 18 mois | Formation particulière avant d'accepter une mission, si le CAC n'a pas exercé pendant 3 ans"] },
 
- { "id": "chiffres-06", "type": "chiffre", "prof": "EC+CAC", "tags": ["formation"], "fiche": "15-schema-chiffres-cles.md",
-   "title": "Formation continue", "big": "120 h / 3 ans", "label": "Formation continue, avec au moins 20 h par an",
-   "det": "Valable pour l'EC comme pour le CAC.", "trap": "120 heures sur 3 ans, pas sur 1 an ni sur 5.",
-   "quiz": { "q": "Quel minimum annuel de formation continue ?", "choices": ["40 h", "30 h", "20 h", "12 h"], "answer": 2, "why": "**120 h sur 3 ans**, dont au moins **20 h par an**." },
+ { "id": "chiffres-06", "type": "chiffre", "prof": "CAC", "tags": ["formation"], "fiche": "15-schema-chiffres-cles.md",
+   "title": "Formation continue", "big": "120 h / 3 ans", "label": "Formation continue du CAC, avec 20 h par an",
+   "trap": "120 heures sur 3 ans, pas sur 1 an ni sur 5.",
+   "quiz": { "q": "Combien d'heures par an pour la formation continue du CAC ?", "choices": ["40 h", "30 h", "20 h", "12 h"], "answer": 2, "why": "**120 h sur 3 ans**, et **20 h par an**." },
    "src": ["120 h / 3 ans, 20 h par an | Formation continue"] },
 
  { "id": "chiffres-07", "type": "chiffre", "prof": "CAC", "tags": ["responsabilite_civile"], "fiche": "15-schema-chiffres-cles.md",
@@ -44,11 +44,11 @@
  { "id": "chiffres-08", "type": "chiffre", "prof": "CAC", "tags": ["services_interdits_eip", "eip"], "fiche": "15-schema-chiffres-cles.md",
    "title": "Plafond des SACC", "big": "70 %", "label": "Plafond des SACC d'une EIP",
    "det": "Moyenne des honoraires d'audit sur 3 ans.", "trap": "La base est la moyenne de 3 ans, pas l'année en cours.",
-   "quiz": { "q": "Sur quelle base se calcule le plafond de 70 % ?", "choices": ["Les honoraires de l'année en cours", "La moyenne des honoraires d'audit sur 3 ans", "Le chiffre d'affaires du cabinet"], "answer": 1, "why": "Plafond de **70 %** de la **moyenne des honoraires d'audit sur 3 ans**, pour les services autres que la certification d'une EIP." },
+   "quiz": { "q": "Sur quelle base se calcule le plafond de 70 % ?", "choices": ["Les honoraires de l'année en cours", "La moyenne des honoraires d'audit sur 3 ans", "Le chiffre d'affaires du cabinet"], "answer": 1, "why": "Plafond de **70 %** de la **moyenne des honoraires d'audit sur 3 ans**, pour les SACC d'une EIP." },
    "src": ["70 % | Plafond des SACC d'une EIP (moyenne des honoraires d'audit sur 3 ans)"] },
 
  { "id": "chiffres-09", "type": "chiffre", "prof": "CAC", "tags": ["discipline_sanctions", "h2a_supervision"], "fiche": "15-schema-chiffres-cles.md",
-   "title": "Sanctions pécuniaires H2A", "big": "250 000 € / 1 M€", "label": "Sanction maximale H2A : personne physique / société de CAC",
+   "title": "Sanctions pécuniaires H2A", "big": "250 000 € / 1 M€", "label": "Montant maximal des sanctions H2A : personne physique / société de CAC",
    "det": "250 000 € au plus pour une personne physique ; 1 M€ au plus pour une société.", "trap": "Le plafond de 1 M€ vise la société de CAC, pas la personne physique.",
    "quiz": { "q": "Plafond de la sanction H2A pour une société de CAC ?", "choices": ["250 000 €", "500 000 €", "1 M€", "5 M€"], "answer": 2, "why": "**250 000 €** au plus pour une personne physique ; **1 M€** au plus pour une société de CAC." },
    "src": ["250 000 € au plus pour une personne physique ; 1 M€ au plus pour une société de CAC."] },
@@ -59,7 +59,7 @@
      { "k": "Non-révélation", "v": "Faits délictueux non révélés par le CAC" },
      { "k": "Informations mensongères", "v": "Données ou confirmées par le CAC" },
      { "k": "Délit d'entrave", "v": "Commis contre le CAC" } ],
-   "trap": "Secret professionnel et usage illégal du titre : seulement 1 an et 15 000 €.",
+   "trap": "Secret professionnel et usage du titre de CAC sans inscription : 1 an et 15 000 €.",
    "quiz": { "q": "Quelle infraction est punie de 1 an et 15 000 € ?", "choices": ["La non-révélation de faits délictueux", "Le délit d'entrave", "La violation du secret professionnel", "Les informations mensongères"], "answer": 2, "why": "Le **secret professionnel** et l'usage du titre de CAC sans inscription : **1 an et 15 000 €**. Les trois autres : **5 ans et 75 000 €**." },
    "src": ["Non-révélation de faits délictueux par le CAC | 5 ans et 75 000 €", "Informations mensongères données ou confirmées par le CAC | 5 ans et 75 000 €", "Délit d'entrave (commis contre le CAC) | 5 ans et 75 000 €"] },
 
@@ -79,11 +79,11 @@
    "items": [
      { "k": "Appel public à la générosité", "v": "Dons > 153 000 €" },
      { "k": "Syndicat professionnel", "v": "Ressources > 230 000 €" },
-     { "k": "Association économique", "v": "2 sur 3 : 50 salariés · 3,1 M€ · 1,55 M€" },
-     { "k": "Organisme de formation", "v": "2 sur 3 : 3 salariés · 153 000 € · 230 000 €" } ],
+     { "k": "Association à activité économique", "v": "2 sur 3 : 50 salariés · 3,1 M€ de CA ou ressources · 1,55 M€ de bilan" },
+     { "k": "Organisme de formation", "v": "2 sur 3 : 3 salariés · 153 000 € de CA · 230 000 € de bilan" } ],
    "trap": "Les syndicats comptent en ressources (230 000 €), pas en subventions.",
-   "quiz": { "q": "Quel seuil de ressources pour un syndicat professionnel ?", "choices": ["153 000 €", "230 000 €", "1,55 M€", "3,1 M€"], "answer": 1, "why": "Syndicat professionnel : ressources **> 230 000 €**. Le seuil de **153 000 €** vise les subventions publiques et l'appel à la générosité." },
-   "src": ["Dons > 153 000 €", "Ressources > 230 000 €", "2 sur 3 : 50 salariés · 3,1 M€ de CA ou ressources · 1,55 M€ de bilan"] },
+   "quiz": { "q": "Quel seuil de ressources pour un syndicat professionnel ?", "choices": ["153 000 €", "230 000 €", "1,55 M€", "3,1 M€"], "answer": 1, "why": "Syndicat professionnel : ressources **> 230 000 €**. **153 000 €** : subventions publiques, dons, CA d'un organisme de formation." },
+   "src": ["Dons > 153 000 €", "Ressources > 230 000 €", "2 sur 3 : 50 salariés · 3,1 M€ de CA ou ressources · 1,55 M€ de bilan", "2 sur 3 : 3 salariés · 153 000 € de CA · 230 000 € de bilan"] },
 
  { "id": "chiffres-14", "type": "cas", "prof": "CAC", "tags": ["nomination_seuils", "loi_pacte"], "fiche": "15-schema-chiffres-cles.md",
    "title": "Filiale significative", "situation": "Une filiale d'un petit groupe a un bilan de 3 M€, un CA de 4 M€ et 30 salariés.",
@@ -99,6 +99,6 @@
  { "id": "chiffres-16", "type": "chiffre", "prof": "EC+CAC", "tags": ["lcb_ft"], "fiche": "15-schema-chiffres-cles.md",
    "title": "Bénéficiaire effectif", "big": "> 25 %", "label": "Capital ou droits de vote : seuil du bénéficiaire effectif",
    "det": "Au-delà de 25 % du capital ou des droits de vote.", "trap": "Les documents LCB-FT se conservent 5 ans après la fin de la relation.",
-   "quiz": { "q": "À partir de quand détient-on le statut de bénéficiaire effectif ?", "choices": ["Plus de 10 %", "Plus de 25 %", "Plus de 33 %", "Plus de 50 %"], "answer": 1, "why": "Le seuil est de **plus de 25 %** du capital ou des droits de vote." },
+   "quiz": { "q": "Seuil de détention du capital ou des droits de vote du bénéficiaire effectif ?", "choices": ["Plus de 10 %", "Plus de 25 %", "Plus de 33 %", "Plus de 50 %"], "answer": 1, "why": "Le seuil est de **plus de 25 %** du capital ou des droits de vote." },
    "src": ["> 25 % | Capital ou droits de vote : seuil du bénéficiaire effectif"] }
 ]}

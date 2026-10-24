@@ -27,7 +27,7 @@
    "title": "Recours sur l'inscription", "q": "Où conteste-t-on l'inscription ou son refus ?",
    "ec": { "main": "**Comité national du tableau**", "det": "Saisi par le **commissaire du gouvernement**." },
    "cac": { "main": "**Tribunal administratif**", "det": "**Juridiction administrative**, contre la décision d'inscription." },
-   "trap": "Voie ordinale pour l'EC, voie administrative pour le CAC.",
+   "trap": "Comité national du tableau pour l'EC, juridiction administrative pour le CAC.",
    "quiz": { "q": "Contre une inscription au tableau, le commissaire du gouvernement saisit…", "choices": ["Le comité national du tableau", "Le tribunal administratif", "Le Conseil d'État"], "answer": 0, "why": "Le commissaire du gouvernement saisit le **comité national du tableau**. Le tribunal administratif est le recours du CAC contre la H2A." },
    "src": ["Le commissaire du gouvernement saisit le comité national du tableau", "Juridiction administrative (tribunal administratif)"] },
 
@@ -51,7 +51,7 @@
    "title": "Doute déontologique", "q": "Qui consulter en cas de doute ?",
    "ec": { "main": "**Le CROEC**", "det": "Consulter le conseil régional de l'Ordre." },
    "cac": { "main": "**La H2A**", "det": "Saisir la H2A **pour avis**." },
-   "trap": "Un CAC ne consulte pas le CROEC : deux circuits distincts.",
+   "trap": "Pour le CAC, c'est la H2A, pas le CROEC : deux circuits distincts.",
    "quiz": { "q": "Un CAC a un doute déontologique. Il saisit…", "choices": ["Le CROEC", "La H2A pour avis", "Le commissaire du gouvernement"], "answer": 1, "why": "Le CAC saisit la **H2A pour avis**. L'EC, lui, consulte son **CROEC**." },
    "src": ["Consulter le CROEC", "Saisir la H2A pour avis"] },
 
@@ -59,7 +59,7 @@
    "title": "Conciliation", "q": "Qui concilie ?",
    "ec": { "main": "**Président du CROEC**", "det": "Honoraires, litiges entre confrères." },
    "cac": { "main": "**Président de la CRCC**", "det": "Co-commissaires, honoraires. Il statue aussi sur les **dérogations au barème**." },
-   "trap": "Chez le CAC, la conciliation relève de la CRCC, pas de la CNCC.",
+   "trap": "Chez le CAC, la conciliation relève du président de la CRCC, pas de la CNCC.",
    "quiz": { "q": "Qui concilie deux co-commissaires aux comptes en désaccord ?", "choices": ["Le président du CROEC", "Le président de la H2A", "Le président de la CRCC", "Le garde des Sceaux"], "answer": 2, "why": "C'est le **président de la CRCC**. Le président du CROEC est le conciliateur de l'EC (honoraires, confrères)." },
    "src": ["Président de la CRCC (co-commissaires, honoraires)", "Président du CROEC (honoraires, litiges entre confrères)"] },
 
@@ -70,7 +70,7 @@
      { "k": "Normes", "v": "NEP, déontologie, contrôle interne de qualité" },
      { "k": "Contrôles d'activité", "v": "Contrôleurs de la H2A pour les CAC d'EIP" },
      { "k": "Enquêtes et sanctions", "v": "Rapporteur général, puis commission des sanctions" },
-     { "k": "Formation continue", "v": "Suivie par la H2A, mais déléguée à la CNCC" } ],
+     { "k": "Formation continue", "v": "Suivi délégué à la CNCC" } ],
    "trap": "Elle n'adopte pas la déontologie des EC.",
    "quiz": { "q": "Quelle mission la H2A délègue-t-elle à la CNCC ?", "choices": ["L'inscription sur la liste", "Le suivi de la formation continue", "Les sanctions", "L'adoption des NEP"], "answer": 1, "why": "La H2A délègue à la CNCC le **suivi de la formation continue** et le contrôle des CAC sans mandat d'EIP. Liste, normes et sanctions restent à la H2A." },
    "src": ["Assurées par la H2A elle-même ; recours devant le tribunal administratif", "Adoption des normes (NEP, déontologie, contrôle interne de qualité)", "CAC d'EIP : contrôleurs de la H2A", "N'adopte pas la déontologie des EC"] },
@@ -126,7 +126,7 @@
 
  { "id": "institutions-19", "type": "cas", "prof": "CAC", "tags": ["inscription_liste"], "fiche": "12-schema-institutions-ec-cac.md",
    "title": "Demande d'inscription CAC", "situation": "Camille a obtenu son diplôme et terminé son stage. Elle veut s'inscrire comme commissaire aux comptes.",
-   "quiz": { "q": "Auprès de qui demande-t-elle son inscription ?", "choices": ["La CNCC", "La CRCC de son ressort", "La H2A", "Le CROEC"], "answer": 2, "why": "La liste est tenue par la **H2A elle-même**, sans délégation. Ni CNCC, ni CRCC : elles ne tiennent plus la liste." },
+   "quiz": { "q": "Auprès de qui demande-t-elle son inscription ?", "choices": ["La CNCC", "La CRCC de son ressort", "La H2A", "Le CROEC"], "answer": 2, "why": "La liste est tenue par la **H2A elle-même**, sans délégation : on s'inscrit auprès de la H2A, ni auprès de la CNCC, ni de la CRCC." },
    "src": ["Liste tenue par la H2A elle-même (déléguée à la CNCC de 2017 à 2020)"] },
 
  { "id": "institutions-20", "type": "cas", "prof": "EC+CAC", "tags": ["inscription_liste", "inscription_tableau"], "fiche": "12-schema-institutions-ec-cac.md",
@@ -141,6 +141,6 @@
 
  { "id": "institutions-22", "type": "cas", "prof": "CAC", "tags": ["cncc_crcc_organisation"], "fiche": "12-schema-institutions-ec-cac.md",
    "title": "Dérogation au barème", "situation": "Un CAC estime que les heures nécessaires à sa mission sont inférieures à celles du barème.",
-   "quiz": { "q": "À qui demande-t-il une dérogation au barème ?", "choices": ["Au président de la CNCC", "À la H2A", "Au président de la CRCC", "Au garde des Sceaux"], "answer": 2, "why": "Le **président de la CRCC** statue sur les dérogations au barème, comme il concilie co-commissaires et honoraires." },
+   "quiz": { "q": "À qui demande-t-il une dérogation au barème ?", "choices": ["Au président du CROEC", "Au commissaire du gouvernement", "Au président de la CRCC", "Au garde des Sceaux"], "answer": 2, "why": "Le **président de la CRCC** statue sur les dérogations au barème, comme il concilie co-commissaires et honoraires." },
    "src": ["il statue aussi sur les dérogations au barème"] }
 ]}

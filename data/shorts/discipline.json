@@ -10,17 +10,17 @@
  { "id": "discipline-02", "type": "duel", "prof": "EC+CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
    "title": "Sanction pécuniaire", "q": "Une sanction pécuniaire est-elle possible ?",
    "ec": { "main": "**Non**", "det": "Sauf en matière **LCB-FT** : sanction pécuniaire, interdiction temporaire, publication." },
-   "cac": { "main": "**Oui**", "det": "**250 000 €** au plus (personne physique), **1 M€** au plus (société)." },
+   "cac": { "main": "**Oui**", "det": "**250 000 €** au plus pour une personne physique." },
    "trap": "Chez l'EC, pas d'amende en dehors de la LCB-FT.",
-   "quiz": { "q": "Quel est le plafond de la sanction pécuniaire d'une société de CAC ?", "choices": ["250 000 €", "500 000 €", "1 M€"], "answer": 2, "why": "Plafond : **250 000 €** pour une personne physique, **1 M€** pour une société." },
+   "quiz": { "q": "Quel est le plafond de la sanction pécuniaire d'un CAC personne physique ?", "choices": ["250 000 €", "500 000 €", "50 000 €"], "answer": 0, "why": "Plafond : **250 000 €** pour un CAC personne physique. Chez l'EC, pas de sanction pécuniaire, sauf en matière LCB-FT." },
    "src": ["250 000 € au plus (personne physique), 1 M€ au plus (société)", "Non, sauf en matière LCB-FT (sanction pécuniaire, interdiction temporaire, publication)"] },
 
  { "id": "discipline-03", "type": "duel", "prof": "EC+CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
    "title": "Qui est justiciable ?", "q": "Qui peut être sanctionné ?",
    "ec": { "main": "**EC, sociétés, stagiaires**", "det": "Aussi les **AGC** et les salariés autorisés (83 ter / quater)." },
-   "cac": { "main": "**CAC et auditeurs de durabilité**", "det": "Personnes et sociétés, comités d'audit, pays tiers… **Pas l'EC**." },
+   "cac": { "main": "**CAC et auditeurs de durabilité**", "det": "Personnes et sociétés, membres des comités d'audit, contrôleurs de pays tiers… **Pas l'EC**." },
    "trap": "Un stagiaire EC peut être sanctionné.",
-   "quiz": { "q": "Qui est justiciable du régime de sanctions de la H2A ?", "choices": ["Les CAC et auditeurs de durabilité", "Les EC et les CAC", "Les stagiaires EC seulement"], "answer": 0, "why": "Le régime H2A vise les **CAC**, les auditeurs de durabilité, les comités d'audit, etc. **Pas l'EC**, qui relève de la discipline ordinale." },
+   "quiz": { "q": "Qui est justiciable du régime de sanctions de la H2A ?", "choices": ["Les CAC et auditeurs de durabilité", "Les EC et les CAC", "Les stagiaires EC seulement"], "answer": 0, "why": "Le régime H2A vise les **CAC**, les auditeurs de durabilité, les membres des comités d'audit, etc. **Pas l'EC**, qui relève de la discipline ordinale." },
    "src": ["EC et sociétés inscrites, AGC, salariés autorisés (83 ter / quater), stagiaires", "CAC (personnes et sociétés), auditeurs de durabilité, membres des comités d'audit, contrôleurs de pays tiers… Pas l'EC"] },
 
  { "id": "discipline-04", "type": "liste", "prof": "EC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
@@ -36,14 +36,14 @@
    "src": ["Réprimande · 2. Blâme avec inscription au dossier · 3. Suspension à durée déterminée avec sursis · 4. Suspension sans sursis · 5. Radiation du tableau avec interdiction définitive d'exercer", "ne figurent pas dans la liste de l'ord. art. 53 (EC)"] },
 
  { "id": "discipline-05", "type": "liste", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
-   "title": "Les sanctions du CAC", "q": "Les sanctions de la H2A contre un CAC (les principales)",
+   "title": "Les sanctions du CAC", "q": "Les sanctions de la H2A contre un CAC (extrait de la liste)",
    "items": [
      { "k": "Avertissement" },
      { "k": "Blâme" },
      { "k": "Interdiction temporaire d'exercer", "v": "3 ans au plus depuis 2024" },
      { "k": "Radiation" },
-     { "k": "Sanction pécuniaire", "v": "250 000 € (personne physique), 1 M€ (société)" } ],
-   "trap": "Existent aussi : retrait de l'honorariat, interdiction de direction, publication.",
+     { "k": "Sanction pécuniaire", "v": "250 000 € au plus pour une personne physique" } ],
+   "trap": "Existent aussi : retrait de l'honorariat, interdiction temporaire de fonctions de direction, publication.",
    "quiz": { "q": "Laquelle de ces sanctions existe pour le CAC ?", "choices": ["Réprimande", "Suspension avec sursis", "Avertissement", "Remontrance"], "answer": 2, "why": "L'**avertissement** existe chez le CAC. Réprimande et suspension sont des sanctions de l'**EC**." },
    "src": ["Avertissement · Blâme · Interdiction temporaire d'exercer (3 ans au plus depuis 2024) · Radiation · Retrait de l'honorariat · Interdiction temporaire de fonctions de direction · Sanction pécuniaire · Publication", "ne figurent pas dans la liste CAC"] },
 
@@ -54,7 +54,7 @@
    "src": ["Interdiction temporaire du CAC : 3 ans au plus depuis le 01/01/2024. Les 5 ans sont l'ancien régime H3C"] },
 
  { "id": "discipline-07", "type": "chiffre", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
-   "title": "Prescription CAC", "big": "6 ans", "label": "Prescription des sanctions contre un CAC",
+   "title": "Prescription CAC", "big": "6 ans", "label": "Prescription disciplinaire du CAC, à compter des faits",
    "det": "Interrompue par un acte de recherche, de constatation ou de sanction.", "trap": "Ne pas confondre avec les 3 ans de l'interdiction temporaire.",
    "quiz": { "q": "Quelle est la prescription en matière de sanctions des CAC ?", "choices": ["5 ans", "6 ans", "3 ans"], "answer": 1, "why": "La prescription est de **6 ans**, interrompue par un acte de recherche, de constatation ou de sanction." },
    "src": ["6 ans, interrompue par un acte de recherche, de constatation ou de sanction"] },
@@ -62,7 +62,7 @@
  { "id": "discipline-08", "type": "liste", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
    "title": "Parcours d'une poursuite CAC", "q": "De la saisine au recours",
    "items": [
-     { "k": "Saisine", "v": "Autorités habilitées ou autosaisine. Pas le garde des Sceaux" },
+     { "k": "Saisine", "v": "Autorités habilitées ou autosaisine sur signalement. Pas le garde des Sceaux" },
      { "k": "Enquête", "v": "Rapporteur général de la H2A ; secret non opposable" },
      { "k": "Poursuite", "v": "Le collège arrête les griefs, son président les notifie" },
      { "k": "Jugement", "v": "Commission des sanctions, séparée du collège" },
@@ -72,8 +72,8 @@
    "src": ["Pas le garde des Sceaux", "Rapporteur général de la H2A et service des enquêtes ; secret non opposable", "Le collège de la H2A engage les poursuites et arrête les griefs, que son président notifie", "Trois procédures : ordinaire, simplifiée"] },
 
  { "id": "discipline-09", "type": "vf", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
-   "title": "Saisine de la H2A", "statement": "Le garde des Sceaux figure parmi les autorités pouvant saisir la H2A d'une poursuite disciplinaire contre un CAC.", "verdict": false,
-   "why": "Peuvent saisir : Cour des comptes, procureur général, présidents de l'AMF, de l'ACPR, de la H2A, de la CNCC ou d'une CRCC. **Pas le garde des Sceaux**.",
+   "title": "Saisine de la H2A", "statement": "Le garde des Sceaux figure parmi les autorités pouvant saisir le rapporteur général de la H2A au sujet d'un CAC.", "verdict": false,
+   "why": "Peuvent saisir : Cour des comptes ou chambre régionale des comptes, procureur général, présidents de l'AMF, de l'ACPR, de la H2A, de la CNCC ou d'une CRCC ; autosaisine sur signalement. **Pas le garde des Sceaux**.",
    "src": ["Pas le garde des Sceaux"] },
 
  { "id": "discipline-10", "type": "vf", "prof": "EC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
@@ -93,7 +93,7 @@
 
  { "id": "discipline-13", "type": "cas", "prof": "EC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
    "title": "EC et blanchiment", "situation": "Un expert-comptable manque gravement à ses obligations de lutte contre le blanchiment et le financement du terrorisme (LCB-FT).",
-   "quiz": { "q": "Une sanction pécuniaire peut-elle être prononcée contre lui ?", "choices": ["Oui, car c'est en matière LCB-FT", "Non : l'EC n'encourt jamais de sanction pécuniaire", "Oui, jusqu'à 250 000 €"], "answer": 0, "why": "Pas de sanction pécuniaire chez l'EC, **sauf en matière LCB-FT**. Le plafond de 250 000 € vise le CAC personne physique." },
+   "quiz": { "q": "Une sanction pécuniaire peut-elle être prononcée contre lui ?", "choices": ["Oui, car c'est en matière LCB-FT", "Non : l'EC n'encourt jamais de sanction pécuniaire", "Oui, jusqu'à 250 000 €"], "answer": 0, "why": "Pas de sanction pécuniaire chez l'EC, **sauf en matière LCB-FT** (1 M€ au plus). Le plafond de 250 000 € vise le CAC personne physique." },
    "src": ["Non, sauf en matière LCB-FT (sanction pécuniaire, interdiction temporaire, publication)"] },
 
  { "id": "discipline-14", "type": "cas", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
