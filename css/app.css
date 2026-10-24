@@ -450,3 +450,4 @@ nav.bottom button { font-size: 10px; }
 @keyframes sh-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @media (max-height: 760px) { .sh-title { font-size: 25px; } .sh-det { font-size: 14px; } .sh-list li { padding: 8px 10px; font-size: 15px; } .sh-main { font-size: 19px; } .sh-sit { font-size: 18px; } }
 .sh-foot { order: 6; }
+html.feed-open, html.feed-open body { background: #0b1220; }
