@@ -111,5 +111,53 @@
      { "k": "Prestations : honoraires", "v": "Montant total facturé" } ],
    "trap": "Les prestations figurent dans la même déclaration, pas dans une déclaration à part.",
    "quiz": { "q": "À qui le CAC adresse-t-il sa déclaration d'activité ?", "choices": ["Directement à la H2A", "À la CRCC", "À la CNCC", "Au président du tribunal"], "answer": 1, "why": "Par voie électronique à la **CRCC**, qui la transmet à la **CNCC**, laquelle en adresse copie à la **H2A**. Les **prestations** y sont déclarées aussi." },
-   "src": ["adressée par voie électronique à la CRCC, qui la transmet à la CNCC, laquelle en adresse copie à la H2A", "dans la même déclaration, pour les autres missions ou prestations"] }
+   "src": ["adressée par voie électronique à la CRCC, qui la transmet à la CNCC, laquelle en adresse copie à la H2A", "dans la même déclaration, pour les autres missions ou prestations"] },
+
+{ "id": "mandat-16", "type": "liste", "prof": "CAC", "tags": ["prestations_declaration_activite"], "fiche": "06-cac-deontologie.md",
+   "title": "Mission ou prestation", "q": "Mission et prestation du CAC : définitions",
+   "items": [
+     { "k": "Mission", "v": "Certification des comptes ou de la durabilité, ou autre mission confiée par la loi ou le règlement" },
+     { "k": "Prestation", "v": "Service fourni hors missions légales, à la demande de l'entité ou d'un tiers" },
+     { "k": "Exemples de prestations", "v": "Attestations contractuelles, audits d'acquisition, formation" } ],
+   "trap": "La prestation n'est pas une mission légale, mais le code de déontologie s'y applique aussi.",
+   "quiz": { "q": "Un audit d'acquisition demandé par l'entité est…", "choices": ["Une mission légale de certification", "Une prestation", "Une mission confiée par la loi"], "answer": 1, "why": "C'est un **service hors missions légales**, fourni à la demande de l'entité ou d'un tiers : une **prestation**. Les attestations contractuelles et la formation en sont d'autres exemples." },
+   "src": ["la certification des comptes, la certification des informations en matière de durabilité ou toute autre mission confiée par la loi ou le règlement au CAC", "tout service fourni par un CAC en dehors des missions légales, à la demande de l'entité ou d'un tiers : attestations contractuelles, audits d'acquisition, formation…"] },
+
+ { "id": "mandat-17", "type": "vf", "prof": "CAC", "tags": ["prestations_declaration_activite"], "fiche": "06-cac-deontologie.md",
+   "title": "Déontologie et prestations", "statement": "Le code de déontologie du CAC s'applique à ses missions légales, mais pas à ses prestations.",
+   "verdict": false,
+   "why": "Le code de déontologie **s'applique aussi aux prestations**. Une prestation exige une **lettre de mission** et un **dossier**, mais le **barème d'heures** ne s'y applique pas.",
+   "src": ["Le code de déontologie s'applique aussi aux prestations. Une prestation exige une lettre de mission et un dossier"] },
+
+ { "id": "mandat-18", "type": "cas", "prof": "CAC", "tags": ["prestations_declaration_activite"], "fiche": "05-cac-exercice.md",
+   "title": "Litige sur une prestation", "situation": "Un CAC et une entité se disputent sur le montant des honoraires d'une prestation, fournie hors mission légale.",
+   "quiz": { "q": "Qui les parties saisissent-elles ?", "choices": ["Le président de la CRCC, qui concilie en 3 mois", "Le bureau de la H2A", "Le tribunal compétent, selon le droit commun", "Le président de la CNCC"], "answer": 2, "why": "Les litiges sur les prestations relèvent du **tribunal compétent** (droit commun). La **conciliation** du président de la CRCC (3 mois), puis le juge, vaut pour la **certification**." },
+   "src": ["Prestations (hors mission légale) | Tribunal compétent (droit commun)", "Président de la CRCC, qui tente une conciliation en 3 mois"] },
+
+ { "id": "mandat-19", "type": "cas", "prof": "CAC", "tags": ["prestations_declaration_activite"], "fiche": "05-cac-exercice.md",
+   "title": "Déclarer ses prestations", "situation": "Dans l'année, un CAC a facturé plusieurs prestations hors mission légale, à différentes entités.",
+   "quiz": { "q": "Que déclare-t-il, et où ?", "choices": ["Rien : seules les missions légales se déclarent", "Entités, nature et total des honoraires, dans la déclaration annuelle", "Une déclaration distincte, adressée à la H2A"], "answer": 1, "why": "La déclaration d'activité annuelle porte, **dans la même déclaration**, sur les autres missions ou prestations : **liste des entités**, **nature** et **montant total des honoraires** facturés." },
+   "src": ["dans la même déclaration, pour les autres missions ou prestations", "la liste des personnes ou entités", "le montant total des honoraires facturés"] },
+
+ { "id": "mandat-20", "type": "cas", "prof": "CAC", "tags": ["mandat_duree_cessation"], "fiche": "05-cac-exercice.md",
+   "title": "Fusion de sociétés de CAC", "situation": "Une société de CAC est absorbée par une autre. Elle détenait des mandats dans plusieurs entités.",
+   "quiz": { "q": "Que deviennent ces mandats ?", "choices": ["Ils prennent fin avec l'absorption", "Chaque entité doit renommer un CAC", "L'absorbante les poursuit jusqu'à leur terme"], "answer": 2, "why": "La **société absorbante poursuit** le mandat jusqu'à son **terme**. L'assemblée de l'entité **peut**, à sa première réunion après l'absorption, **délibérer sur le maintien** du mandat, après avoir entendu le CAC." },
+   "src": ["La société absorbante poursuit le mandat jusqu'à son terme", "peut, à sa première réunion après l'absorption, délibérer sur le maintien du mandat, après avoir entendu le CAC"] },
+
+ { "id": "mandat-21", "type": "cas", "prof": "CAC", "tags": ["mandat_duree_cessation"], "fiche": "05-cac-exercice.md",
+   "title": "Début de la mission", "situation": "Une assemblée nomme un CAC en cours d'exercice. Il accepte le mandat.",
+   "quiz": { "q": "Sur quels comptes porte sa mission ?", "choices": ["Ceux de l'exercice de sa nomination, depuis son ouverture", "Ceux de l'exercice suivant seulement", "Ceux de la période postérieure à sa nomination"], "answer": 0, "why": "La mission **commence dès la nomination** et couvre les comptes de l'**exercice au cours duquel** le CAC est nommé, **depuis son ouverture**." },
+   "src": ["elle commence dès sa nomination et couvre les comptes de cet exercice depuis son ouverture"] },
+
+ { "id": "mandat-22", "type": "vf", "prof": "CAC", "tags": ["mandat_duree_cessation"], "fiche": "05-cac-exercice.md",
+   "title": "Déléguer son mandat", "statement": "Un CAC peut déléguer son mandat à un autre CAC, qui conduit la mission à sa place.",
+   "verdict": false,
+   "why": "La mission est **intuitu personae** : pas de délégation du mandat. Le CAC peut se faire **assister** de collaborateurs ou d'experts, qu'il fait connaître nommément, et il **reste responsable**.",
+   "src": ["Pas de délégation du mandat à un autre CAC qui conduirait la mission à sa place : la mission est intuitu personae", "Le CAC reste responsable"] },
+
+ { "id": "mandat-23", "type": "chiffre", "prof": "CAC", "tags": ["durabilite_csrd"], "fiche": "05-cac-exercice.md",
+   "title": "Durabilité (CSRD)", "big": "Assurance limitée", "label": "Niveau d'assurance du CAC sur les informations de durabilité",
+   "det": "Dite aussi **modérée**. Elle est donnée par un CAC inscrit comme **auditeur de durabilité**, ou par un **OTI** accrédité.", "trap": "Une assurance raisonnable est envisagée, sans être prévue à ce jour.",
+   "quiz": { "q": "Quelle assurance le CAC donne-t-il sur la durabilité ?", "choices": ["Une assurance raisonnable", "Une assurance limitée (modérée)", "Aucune assurance"], "answer": 1, "why": "La certification des informations de durabilité est donnée en **assurance limitée (modérée)**. Le passage à l'assurance raisonnable est **envisagé**, sans être prévu à ce jour." },
+   "src": ["Assurance limitée (modérée). Le passage à une assurance raisonnable est envisagé, sans être prévu à ce jour.", "réalisée par un CAC inscrit comme auditeur de durabilité, ou par un organisme tiers indépendant (OTI) accrédité"] }
 ]}
