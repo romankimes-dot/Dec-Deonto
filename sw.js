@@ -2,7 +2,7 @@
 // Précache atomique de l'app et des données à l'installation (fichiers relus sur le réseau, jamais depuis le
 // cache HTTP, pour qu'une version ne mélange pas d'anciens et de nouveaux fichiers). Ensuite : réseau d'abord
 // (revalidation à chaque chargement, repli sur le cache au-delà de 4 s ou hors ligne).
-const VERSION = 'dec1-v11';
+const VERSION = 'dec1-v12';
 const CORE = [
   './',
   './index.html',
@@ -22,6 +22,8 @@ const CORE = [
   './js/games.js',
   './js/palais.js',
   './js/estimate.js',
+  './js/shorts.js',
+  './data/shorts/index.json',
   './data/questions.json',
   './data/fiches/index.json',
   './icons/icon-192.png',
@@ -37,6 +39,11 @@ self.addEventListener('install', (event) => {
     try {
       const idx = await (await fetch(FRESH('./data/fiches/index.json'))).json();
       await cache.addAll(idx.map((f) => FRESH(`./data/fiches/${f.file}`)));
+    } catch { /* pas bloquant */ }
+    // Shorts listés dans leur index
+    try {
+      const steps = await (await fetch(FRESH('./data/shorts/index.json'))).json();
+      await cache.addAll(steps.map((st) => FRESH(`./data/shorts/${st}.json`)));
     } catch { /* pas bloquant */ }
     self.skipWaiting();
   })());

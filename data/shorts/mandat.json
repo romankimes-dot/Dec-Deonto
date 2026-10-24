@@ -1,0 +1,115 @@
+{ "step": "mandat", "shorts": [
+ { "id": "mandat-01", "type": "liste", "prof": "CAC", "tags": ["nomination_seuils", "loi_pacte"], "fiche": "14-schema-mandat-cac.md",
+   "title": "Seuils de nomination", "q": "Société commerciale : quand nommer un CAC ?",
+   "items": [
+     { "k": "2 critères sur 3", "v": "Dépassés à la clôture de l'exercice" },
+     { "k": "5 M€", "v": "Total bilan" },
+     { "k": "10 M€", "v": "Chiffre d'affaires HT" },
+     { "k": "50 salariés", "v": "Le seul seuil resté inchangé" } ],
+   "trap": "Avant 2024 : 4 M€ de bilan et 8 M€ de CA. Les salariés n'ont pas bougé.",
+   "quiz": { "q": "Quels seuils le décret de 2024 a-t-il relevés ?", "choices": ["Le CA et les salariés", "Le bilan et le CA", "Le bilan et les salariés", "Les trois seuils"], "answer": 1, "why": "Le bilan passe de **4 à 5 M€** et le CA de **8 à 10 M€**. Les **50 salariés** restent. Il faut dépasser **2 critères sur 3**." },
+   "src": ["5 M€ de total bilan · 10 M€ de CA HT · 50 salariés", "Seuils du décret 2024-152 (exercices ouverts à compter du 01/01/2024). Avant : 4 M€ et 8 M€."] },
+
+ { "id": "mandat-02", "type": "cas", "prof": "CAC", "tags": ["prestations_declaration_activite", "revelation_procureur"], "fiche": "05-cac-exercice.md",
+   "title": "Révélation en prestation", "situation": "Un CAC réalise une simple prestation pour une société dont il n'est pas CAC. Il y découvre un fait délictueux.",
+   "quiz": { "q": "Doit-il le révéler au procureur ?", "choices": ["Oui : l'obligation couvre aussi la prestation", "Non : il n'est pas le CAC de cette société", "Non : la révélation ne vaut qu'en mission légale"], "answer": 0, "why": "La révélation vise les faits connus « à l'occasion de sa **mission ou prestation** ». Elle vaut **aussi pour une prestation**, même hors mandat. L'EC, lui, n'y est pas tenu." },
+   "src": ["elle vaut donc aussi pour une prestation, y compris auprès d'une entité dont il n'est pas CAC", "Révélation des faits délictueux : obligation du CAC seul, en mission comme en prestation"] },
+
+ { "id": "mandat-03", "type": "cas", "prof": "CAC", "tags": ["nomination_seuils"], "fiche": "14-schema-mandat-cac.md",
+   "title": "Nomination : un seul seuil", "situation": "Une SAS a un total bilan de 6 M€, un CA HT de 9 M€ et 40 salariés. Elle n'est pas tête de groupe et n'est pas une EIP.",
+   "quiz": { "q": "Doit-elle nommer un CAC ?", "choices": ["Oui : le bilan dépasse 5 M€", "Oui : avec l'ancien seuil de 8 M€ de CA", "Non : un seul seuil sur trois est dépassé"], "answer": 2, "why": "Seul le **bilan** dépasse 5 M€ : **1 seuil sur 3**. Il en faut **2**. Sous l'ancien régime (4 M€, 8 M€), elle aurait dépassé deux seuils : c'est le piège." },
+   "src": ["Société commerciale : dépasse-t-elle 2 des 3 seuils à la clôture ?", "5 M€ de total bilan · 10 M€ de CA HT · 50 salariés"] },
+
+ { "id": "mandat-04", "type": "chiffre", "prof": "CAC", "tags": ["mandat_duree_cessation"], "fiche": "14-schema-mandat-cac.md",
+   "title": "Durée du mandat", "big": "6 exercices", "label": "Durée du mandat du commissaire aux comptes",
+   "det": "Il prend fin après l'assemblée qui statue sur les comptes du **6e exercice**.", "trap": "On compte en exercices, pas en années. En ALPE : 3 exercices.",
+   "quiz": { "q": "Quand le mandat de 6 exercices prend-il fin ?", "choices": ["À la clôture du 6e exercice", "Après l'assemblée qui approuve les comptes du 6e exercice", "Six ans jour pour jour après la nomination"], "answer": 1, "why": "Le mandat **expire après l'assemblée** qui statue sur les comptes du **6e exercice**. Ni la clôture, ni une date anniversaire." },
+   "src": ["Fin du mandat après l'assemblée qui statue sur les comptes du 6e exercice (3 en ALPE)", "nomination obligatoire, mandat de 6 exercices"] },
+
+ { "id": "mandat-05", "type": "cas", "prof": "CAC", "tags": ["alpe_petites_entreprises", "honoraires_bareme"], "fiche": "05-cac-exercice.md",
+   "title": "Mission ALPE", "situation": "Une SARL sous les seuils décide, sur option, de faire auditer ses comptes dans le cadre de l'ALPE.",
+   "quiz": { "q": "Quelle durée de mandat et quel barème d'heures ?", "choices": ["6 exercices, barème d'heures applicable", "3 exercices, barème d'heures applicable", "6 exercices, sans barème d'heures", "3 exercices, sans barème d'heures"], "answer": 3, "why": "L'ALPE dure **3 exercices**, avec un rapport allégé. Le **barème d'heures ne s'applique pas** : il vise la certification classique." },
+   "src": ["3 exercices, sur option, pour les entités sous les seuils (petits groupes, volontaires). Rapport allégé. Le barème d'heures ne s'applique pas"] },
+
+ { "id": "mandat-06", "type": "vf", "prof": "CAC", "tags": ["nomination_seuils", "alpe_petites_entreprises"], "fiche": "05-cac-exercice.md",
+   "title": "Le tiers du capital", "statement": "Un associé qui détient le tiers du capital peut demander en justice la nomination d'un CAC.",
+   "verdict": false,
+   "why": "Il faut **10 % du capital** (SARL, SAS, SA, SCA) ; en SNC, **tout associé**. Le **tiers** sert à demander, par une demande motivée, un mandat de **3 exercices** (ALPE).",
+   "src": ["au moins le dixième du capital", "Le tiers du capital sert à autre chose : la demande motivée d'un mandat de 3 exercices (ALPE) adressée à la société."] },
+
+ { "id": "mandat-07", "type": "liste", "prof": "CAC", "tags": ["mandat_duree_cessation"], "fiche": "14-schema-mandat-cac.md",
+   "title": "Après la nomination", "q": "Les premières formalités du mandat",
+   "items": [
+     { "k": "Suppléant", "v": "Obligatoire si le titulaire est une personne physique ou une société unipersonnelle" },
+     { "k": "8 jours", "v": "Le CAC notifie sa nomination au conseil régional" },
+     { "k": "30 jours", "v": "Délai pour demander en justice la récusation" } ],
+   "trap": "La récusation exige un juste motif et se demande en justice.",
+   "quiz": { "q": "Dans quel délai demander la récusation d'un CAC ?", "choices": ["8 jours", "30 jours", "15 jours", "6 mois"], "answer": 1, "why": "La récusation se demande **en justice**, pour juste motif, dans les **30 jours**. Les **8 jours** sont le délai de notification de la nomination au conseil régional." },
+   "src": ["Le CAC notifie sa nomination au conseil régional de sa compagnie", "Délai pour demander en justice la récusation, pour juste motif", "suppléant obligatoire si le titulaire est une personne physique ou une société unipersonnelle"] },
+
+ { "id": "mandat-08", "type": "liste", "prof": "CAC", "tags": ["demission_revocation"], "fiche": "14-schema-mandat-cac.md",
+   "title": "Démission légitime", "q": "Les quatre motifs légitimes de démission",
+   "items": [
+     { "k": "Cessation d'activité", "v": "Définitive" },
+     { "k": "Motif personnel impérieux", "v": "Maladie, par exemple" },
+     { "k": "Difficultés de mission", "v": "Informations impossibles à obtenir" },
+     { "k": "Indépendance compromise", "v": "Aucune mesure de sauvegarde possible" } ],
+   "trap": "Pas de démission à contretemps. Le CAC informe l'entité et la H2A.",
+   "quiz": { "q": "Lequel n'est PAS un motif légitime de démission ?", "choices": ["Échapper à l'émission d'une opinion défavorable", "Cessation définitive d'activité", "Indépendance compromise sans sauvegarde possible"], "answer": 0, "why": "Le CAC ne démissionne pas pour **se soustraire** à la révélation, à l'alerte, à la déclaration de soupçon ou à l'**émission du rapport**." },
+   "src": ["Cessation définitive d'activité", "Motif personnel impérieux", "Indépendance compromise sans mesure de sauvegarde possible", "Pas de démission à contretemps ; le CAC informe l'entité et la H2A"] },
+
+ { "id": "mandat-09", "type": "cas", "prof": "CAC", "tags": ["demission_revocation", "revelation_procureur"], "fiche": "14-schema-mandat-cac.md",
+   "title": "Démission pour éviter la révélation", "situation": "Un CAC a relevé des faits délictueux. Pour ne pas avoir à les révéler au procureur, il envisage de démissionner.",
+   "quiz": { "q": "Cette démission est-elle permise ?", "choices": ["Non : c'est un motif interdit", "Oui : il est libre de partir quand il veut", "Oui, s'il prévient la H2A"], "answer": 0, "why": "La démission est **interdite** pour se soustraire à la **révélation**, à l'**alerte**, à la **déclaration de soupçon** ou à l'**émission du rapport**. Informer la H2A n'y change rien." },
+   "src": ["Interdit pour se soustraire à la révélation, à l'alerte, à la déclaration de soupçon ou à l'émission du rapport"] },
+
+ { "id": "mandat-10", "type": "vf", "prof": "CAC", "tags": ["demission_revocation"], "fiche": "14-schema-mandat-cac.md",
+   "title": "Révocation par l'assemblée", "statement": "L'assemblée générale peut mettre fin au mandat du CAC à tout moment, sans motif.",
+   "verdict": false,
+   "why": "Il n'y a **pas de révocation ad nutum**. Seul un **relèvement de fonctions** par décision de justice, pour **faute** ou **empêchement**, met fin au mandat.",
+   "src": ["Pas de révocation ad nutum par l'assemblée", "Décision de justice, pour faute ou empêchement"] },
+
+ { "id": "mandat-11", "type": "liste", "prof": "CAC", "tags": ["demission_revocation"], "fiche": "14-schema-mandat-cac.md",
+   "title": "Demander le relèvement", "q": "Qui peut demander le relèvement d'un CAC ?",
+   "items": [
+     { "k": "Administration ou direction", "v": "L'organe de l'entité" },
+     { "k": "Actionnaires", "v": "5 % du capital" },
+     { "k": "Le CSE" },
+     { "k": "Le ministère public" },
+     { "k": "L'AMF", "v": "Pour les sociétés cotées" } ],
+   "trap": "La H2A ne figure pas dans la liste.",
+   "quiz": { "q": "Qui ne peut PAS demander le relèvement ?", "choices": ["Le ministère public", "Le CSE", "Des actionnaires détenant 5 %", "La H2A"], "answer": 3, "why": "Le relèvement est prononcé par le **juge** pour faute ou empêchement. La **H2A** ne peut pas le demander ; l'**AMF** le peut, mais seulement pour les sociétés cotées." },
+   "src": ["Demandé par l'administration ou la direction, des actionnaires (5 %), le CSE, le ministère public, l'AMF (sociétés cotées) ; pas la H2A"] },
+
+ { "id": "mandat-12", "type": "vf", "prof": "CAC", "tags": ["co_commissariat"], "fiche": "14-schema-mandat-cac.md",
+   "title": "Répartition en co-commissariat", "statement": "Deux co-commissaires peuvent se répartir les travaux à 90 % et 10 %, si le rapport est commun.",
+   "verdict": false,
+   "why": "La répartition doit être **équilibrée**, en volume comme en nature. Une répartition **90 / 10 est refusée**. Les deux CAC ne sont pas du même réseau.",
+   "src": ["répartition équilibrée (une répartition 90 / 10 est refusée)", "2 CAC, pas du même réseau"] },
+
+ { "id": "mandat-13", "type": "duel", "prof": "EC+CAC", "tags": ["mandat_duree_cessation"], "fiche": "05-cac-exercice.md",
+   "title": "Durée de la mission", "q": "Combien de temps dure la mission ?",
+   "ec": { "main": "**Selon la lettre**", "det": "La durée dépend de la **lettre de mission**. Aucune durée légale." },
+   "cac": { "main": "**6 exercices**", "det": "Mandat légal ; **3 exercices** en ALPE." },
+   "trap": "Seul le CAC a un mandat de durée fixée par la loi.",
+   "quiz": { "q": "Qui voit la durée de sa mission fixée par la loi ?", "choices": ["L'expert-comptable", "Le commissaire aux comptes", "Les deux, pour 6 exercices"], "answer": 1, "why": "Le mandat du **CAC** dure **6 exercices** (3 en ALPE). La mission de l'**EC** dépend de sa **lettre de mission**." },
+   "src": ["la mission de l'EC dépend de la lettre de mission ; le mandat du CAC dure 6 exercices (3 en ALPE)"] },
+
+ { "id": "mandat-14", "type": "vf", "prof": "CAC", "tags": ["prestations_declaration_activite", "honoraires_bareme"], "fiche": "05-cac-exercice.md",
+   "title": "Barème et prestations", "statement": "Le barème d'heures s'applique aussi aux prestations du CAC hors mission légale.",
+   "verdict": false,
+   "why": "Le barème vise la **certification** (hors ALPE). Il **ne s'applique pas aux prestations**. Leurs litiges d'honoraires relèvent du **tribunal compétent**, non du président de la CRCC.",
+   "src": ["Il ne s'applique pas aux prestations.", "Prestations (hors mission légale) | Tribunal compétent (droit commun)"] },
+
+ { "id": "mandat-15", "type": "liste", "prof": "CAC", "tags": ["prestations_declaration_activite"], "fiche": "05-cac-exercice.md",
+   "title": "Déclaration d'activité", "q": "La déclaration d'activité annuelle du CAC",
+   "items": [
+     { "k": "Destinataire", "v": "La CRCC, qui la transmet à la CNCC, puis copie à la H2A" },
+     { "k": "Contenu", "v": "Mandats de certification, heures et honoraires" },
+     { "k": "Prestations : entités", "v": "La liste des personnes ou entités" },
+     { "k": "Prestations : nature", "v": "Nature des missions ou prestations" },
+     { "k": "Prestations : honoraires", "v": "Montant total facturé" } ],
+   "trap": "Les prestations figurent dans la même déclaration, pas dans une déclaration à part.",
+   "quiz": { "q": "À qui le CAC adresse-t-il sa déclaration d'activité ?", "choices": ["Directement à la H2A", "À la CRCC", "À la CNCC", "Au président du tribunal"], "answer": 1, "why": "Par voie électronique à la **CRCC**, qui la transmet à la **CNCC**, laquelle en adresse copie à la **H2A**. Les **prestations** y sont déclarées aussi." },
+   "src": ["adressée par voie électronique à la CRCC, qui la transmet à la CNCC, laquelle en adresse copie à la H2A", "dans la même déclaration, pour les autres missions ou prestations"] }
+]}
