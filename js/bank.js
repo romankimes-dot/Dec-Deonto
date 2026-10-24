@@ -46,9 +46,9 @@ export function splitFrontMatter(md) {
 }
 
 const escHtml = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-// Pastilles : {EC}, {CAC}, {!} (piège), {?} (à vérifier)
+// Pastilles : {EC}, {CAC}, {!} (piège), {?} (à vérifier). `inline` sert aussi aux jeux (texte des fiches).
 const PILLS = { EC: '<span class="fpill ec">EC</span>', CAC: '<span class="fpill cac">CAC</span>', '!': '<span class="fpill trap">piège</span>', '?': '<span class="fpill check">à vérifier</span>' };
-const inline = (s) => escHtml(s)
+export const inline = (s) => escHtml(s)
   .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
   .replace(/`(.+?)`/g, '<code>$1</code>')
   .replace(/(^|[^*])\*([^*]+?)\*(?!\*)/g, '$1<em>$2</em>')

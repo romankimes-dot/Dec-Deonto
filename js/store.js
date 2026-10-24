@@ -10,13 +10,15 @@ const EXAM_KEY = 'dec1.exam.v1';               // examen blanc en cours
 const BACKUP_EVERY_MS = 3 * 60 * 60 * 1000;
 
 // Incrémenté quand l'interface attend de nouvelles fonctions : app.js vérifie qu'il n'est pas associé à un store.js périmé.
-export const STORE_VERSION = 2;
+export const STORE_VERSION = 3;
 
 export const defaultState = () => ({
   version: 1,
-  settings: { newPerDay: 20, mode: 'mixte', showLowConfidence: true, examDate: '2026-11-10T10:30:00' },
+  // confidence : indice de certitude avant la correction ; hideChoices : QCM, réfléchir avant de voir les propositions ;
+  // focus : mode concentration (les badges s'annoncent par un simple message, sans animation)
+  settings: { newPerDay: 20, mode: 'mixte', showLowConfidence: true, examDate: '2026-11-10T10:30:00', confidence: true, hideChoices: true, focus: true },
   cards: {},          // id -> carte SRS
-  attempts: [],       // { id, ok, mode, t }  (400 derniers)
+  attempts: [],       // { id, ok, mode, t, conf? }  (400 derniers ; conf : 2 sûr, 1 hésitant, 0 au hasard)
   examSeen: {},       // id -> timestamp
   exams: [],          // { t, mode, note, byProf, byTheme, ids, durationMs }
   lastSession: null,
@@ -26,6 +28,8 @@ export const defaultState = () => ({
   seenAnecdotes: {},  // anecdotes déjà montrées en carte-souvenir
   lastExportAt: 0,    // dernier export de la progression
   plan: { done: {} }, // parcours guidé : étapes terminées, étape choisie
+  drills: {},         // jeux : id d'item -> boîte de Leitner (drill.js)
+  games: { best: {} }, // jeux : meilleurs scores
 });
 
 const get = (k) => { try { return localStorage.getItem(k); } catch { return null; } };
@@ -36,7 +40,10 @@ const isObj = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 
 function hydrate(s) {
   const d = defaultState();
-  return { ...d, ...s, settings: { ...d.settings, ...(s.settings || {}) }, plan: { done: {}, ...(s.plan || {}) } };
+  return {
+    ...d, ...s, settings: { ...d.settings, ...(s.settings || {}) }, plan: { done: {}, ...(s.plan || {}) },
+    drills: isObj(s.drills) ? s.drills : {}, games: { best: {}, ...(isObj(s.games) ? s.games : {}) },
+  };
 }
 
 // Texte JSON -> état valide, ou null.
@@ -115,7 +122,7 @@ export function importJSON(text) {
   try { s = JSON.parse(text); } catch { throw new Error('texte JSON illisible'); }
   if (!isObj(s) || !isObj(s.cards)) throw new Error('fichier non reconnu');
   for (const k of ['attempts', 'exams']) if (s[k] != null && !Array.isArray(s[k])) throw new Error(`champ « ${k} » invalide`);
-  for (const k of ['settings', 'examSeen', 'stats', 'badges', 'grades', 'seenAnecdotes', 'plan']) if (s[k] != null && !isObj(s[k])) throw new Error(`champ « ${k} » invalide`);
+  for (const k of ['settings', 'examSeen', 'stats', 'badges', 'grades', 'seenAnecdotes', 'plan', 'drills', 'games']) if (s[k] != null && !isObj(s[k])) throw new Error(`champ « ${k} » invalide`);
   for (const [id, c] of Object.entries(s.cards)) if (!isObj(c) || typeof c.due !== 'number') throw new Error(`carte « ${id} » invalide`);
   const { exportedAt, app, ...rest } = s;
   return hydrate(rest);
