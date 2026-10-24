@@ -1,4 +1,4 @@
-# Fiche 06 – Déontologie du commissaire aux comptes
+# Déontologie du commissaire aux comptes
 
 ## 1. Sources et structure du code
 - **Code de déontologie de la profession de CAC** : **annexe 8-1** du livre VIII du code de commerce (**décret 2020-292 du 21 mars 2020**, modifié en dernier lieu par le **décret 2026-176 du 11 mars 2026**).
@@ -156,7 +156,7 @@
   - les **qualifications et l'expérience** requises ;
   - les **diligences** nécessaires (temps).
 - **Interdits** : les honoraires **subordonnés au résultat** (conditionnels), les **avantages** autres que les honoraires, et les honoraires qui **compromettent l'indépendance** (dépendance financière).
-- **Barème d'heures** : voir fiche 05.
+- **Barème d'heures** : voir la fiche « Exercice de la profession de commissaire aux comptes ».
 
 ## 8. Publicité et sollicitation
 - **Publicité permise** (art. 15) dans la mesure où elle :

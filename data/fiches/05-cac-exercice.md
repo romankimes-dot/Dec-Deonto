@@ -1,4 +1,4 @@
-# Fiche 05 – Exercice de la profession de commissaire aux comptes
+# Exercice de la profession de commissaire aux comptes
 
 ## 1. Textes
 
@@ -42,7 +42,7 @@
   - le **collège**, composé de **non-praticiens** majoritaires : magistrats et personnalités qualifiées ;
   - le **bureau** ;
   - le **rapporteur général**, qui dirige le **service des enquêtes** ;
-  - la **commission des sanctions**, **séparée** du collège (voir fiche 08).
+  - la **commission des sanctions**, **séparée** du collège (voir la fiche « Responsabilité du commissaire aux comptes »).
 
 ### Compagnie nationale des commissaires aux comptes (CNCC)
 - **Établissement d'utilité publique** doté de la personnalité morale, placé **auprès du garde des Sceaux**.
@@ -250,9 +250,9 @@
 |---|---|
 | **Rotation du cabinet** | **10 ans**. Prolongation jusqu'à **16 ans** après **appel d'offres**, ou **24 ans** en **co-commissariat** |
 | **Rotation du signataire** | **6 ans**, puis **délai de viduité de 3 ans** |
-| **Services interdits** | Liste du **règlement UE 537/2014 art. 5** (voir fiche 06) |
+| **Services interdits** | Liste du **règlement UE 537/2014 art. 5** (voir la fiche « Déontologie du commissaire aux comptes ») |
 | **Plafond des services autres que la certification (SACC)** | **70 %** de la moyenne des honoraires de certification sur **3 ans** |
-| **Revue indépendante** | Obligatoire **avant la signature du rapport** (voir fiche 07) |
+| **Revue indépendante** | Obligatoire **avant la signature du rapport** (voir la fiche « Supervision publique et contrôle d'activité du commissaire aux comptes ») |
 | **Contrôle par la H2A** | Tous les **3 ans** (6 ans pour certaines petites EIP) |
 
 ### Comité d'audit (comité spécialisé, L.821-67 s.)

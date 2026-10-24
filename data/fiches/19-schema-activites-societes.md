@@ -2,7 +2,7 @@
 type: visuel
 questions: EC:incompatibilites_activites EC:societes_ec_capital EC:loi_pacte EC:personnes_physiques EC:publicite_demarchage CAC:publicite_demarchage
 ---
-# Schéma 19 – Activités permises, sociétés et publicité
+# Activités permises, sociétés et publicité
 
 ## L'EC peut-il le faire ?
 

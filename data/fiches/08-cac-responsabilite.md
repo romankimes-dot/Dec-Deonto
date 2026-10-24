@@ -1,4 +1,4 @@
-# Fiche 08 – Responsabilité du commissaire aux comptes
+# Responsabilité du commissaire aux comptes
 
 ## 1. Vue d'ensemble
 

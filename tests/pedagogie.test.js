@@ -125,6 +125,7 @@ test('Arbres : jamais de feuille sœur (également juste) parmi les leurres', ()
     assert.ok(it.pool.length >= 2);
     assert.ok(it.path.length >= 2, 'au moins le sommet et une branche');
     for (const s of it.siblings) assert.ok(!it.pool.includes(s), `${it.text} / ${s}`);
+    assert.ok(it.slot >= 0 && it.slot <= it.siblings.length, 'la case vide a une place dans la branche');
   }
 });
 

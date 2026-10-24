@@ -1,4 +1,4 @@
-# Fiche 02 – Déontologie de l'expert-comptable
+# Déontologie de l'expert-comptable
 
 ## 1. Sources
 - **Code de déontologie** des professionnels de l'expertise comptable, intégré au **décret n° 2012-432**, **art. 141 à 169**.
@@ -119,7 +119,7 @@
 - L'EC **informe le président du conseil régional** de tout litige qui le conduit à **envisager la rétention** des travaux faute de paiement des honoraires (art. 168).
 
 ## 9. Mandats sociaux et participations
-- **Mandats sociaux** dans des sociétés non inscrites : **déclaration au CROEC**, absence d'atteinte à l'indépendance, activité **compatible** (voir fiche 01).
+- **Mandats sociaux** dans des sociétés non inscrites : **déclaration au CROEC**, absence d'atteinte à l'indépendance, activité **compatible** (voir la fiche « Exercice de la profession d'expert-comptable »).
 - **Participations financières** : un EC ou une société d'EC **peut détenir des participations** dans des entreprises **non inscrites**, quelle que soit leur activité, **commerciale comprise**, à condition de ne pas porter atteinte à l'indépendance (annale 2019-11 Q3).
 
 ## 10. Honoraires (aspects déontologiques)

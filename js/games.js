@@ -121,6 +121,7 @@ export function arbreItems(file, md) {
       items.push({
         id: `arb:${hashId(`${file}|${bi}|${plain(leaf.text)}`)}`, file, title, path, text: leaf.text, kind: leaf.kind,
         siblings: leaf.parent.children.filter((x) => x !== leaf).map((x) => x.text),
+        slot: leaf.parent.children.indexOf(leaf), // place de la case vide parmi ses sœurs
         pool: others.map((x) => x.text),
       });
     }

@@ -2,7 +2,7 @@
 type: visuel
 questions: EC:discipline_sanctions CAC:discipline_sanctions
 ---
-# Schéma 13 – Discipline : chambres de l'Ordre ou commission des sanctions
+# Discipline : chambres de l'Ordre ou commission des sanctions
 
 ## Le parcours d'une poursuite
 

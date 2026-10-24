@@ -1,4 +1,4 @@
-# Fiche 03 – Maîtrise et contrôle de la qualité (expertise comptable)
+# Maîtrise et contrôle de la qualité (expertise comptable)
 
 ## 1. Deux dispositifs à ne pas confondre
 

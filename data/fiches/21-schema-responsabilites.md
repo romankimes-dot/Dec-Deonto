@@ -2,7 +2,7 @@
 type: visuel
 questions: EC:responsabilite_civile EC:responsabilite_penale CAC:responsabilite_civile CAC:responsabilite_penale
 ---
-# Schéma 21 – Les quatre responsabilités, EC et CAC
+# Les quatre responsabilités, EC et CAC
 
 ## La matrice
 

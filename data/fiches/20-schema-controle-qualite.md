@@ -2,7 +2,7 @@
 type: visuel
 questions: EC:controle_qualite CAC:controle_activite
 ---
-# Schéma 20 – Contrôle de qualité (EC) et contrôle d'activité (CAC)
+# Contrôle de qualité (EC) et contrôle d'activité (CAC)
 
 ## Deux contrôles à ne pas confondre
 

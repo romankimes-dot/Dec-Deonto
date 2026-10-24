@@ -2,7 +2,7 @@
 type: visuel
 questions: CAC:nomination_seuils CAC:agp_associations EC:societes_ec_capital CAC:formation EC:formation CAC:delit_entrave CAC:revelation_procureur EC:responsabilite_civile CAC:responsabilite_civile
 ---
-# Schéma 15 – Les chiffres à connaître par cœur
+# Les chiffres à connaître par cœur
 
 Le jury n'exige ni les numéros d'articles ni le quantum des sanctions. Les **seuils**, **durées** et **majorités** restent, eux, des réponses de QCM.
 
