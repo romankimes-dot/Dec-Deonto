@@ -76,3 +76,15 @@ test('avancement : vus, acquis, à revoir', () => {
   const memo = { 'sht:1': { box: 3, due: 9e12 }, 'sht:2': { box: 0, due: 0 } };
   assert.deepEqual(shortsStats(list, memo, 1000), { total: 3, seen: 2, known: 1, due: 1 });
 });
+
+test('mise en scène : chaque sous-thème des shorts a son objet, la distribution suit le format', async () => {
+  const { propFor, castFor, person, icon } = await import('../js/scenes.js');
+  const index = JSON.parse(read('data/shorts/index.json'));
+  const tags = new Set(index.flatMap((st) => JSON.parse(read(`data/shorts/${st}.json`)).shorts.flatMap((s) => s.tags)));
+  for (const t of tags) assert.notEqual(propFor([t]), 'folder', `${t} : aucun objet`);
+  assert.deepEqual(castFor({ type: 'duel', prof: 'CAC' }), ['ec', 'cac']);
+  assert.deepEqual(castFor({ type: 'cas', prof: 'EC' }), ['ec', 'boss']);
+  assert.deepEqual(castFor({ type: 'vf', prof: 'EC+CAC' }), ['ec', 'cac']);
+  assert.match(person('cac'), /^<svg/);
+  assert.match(icon('inconnu'), /<svg/);
+});

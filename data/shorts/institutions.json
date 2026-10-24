@@ -142,5 +142,151 @@
  { "id": "institutions-22", "type": "cas", "prof": "CAC", "tags": ["cncc_crcc_organisation"], "fiche": "12-schema-institutions-ec-cac.md",
    "title": "Dérogation au barème", "situation": "Un CAC estime que les heures nécessaires à sa mission sont inférieures à celles du barème.",
    "quiz": { "q": "À qui demande-t-il une dérogation au barème ?", "choices": ["Au président du CROEC", "Au commissaire du gouvernement", "Au président de la CRCC", "Au garde des Sceaux"], "answer": 2, "why": "Le **président de la CRCC** statue sur les dérogations au barème, comme il concilie co-commissaires et honoraires." },
-   "src": ["il statue aussi sur les dérogations au barème"] }
+   "src": ["il statue aussi sur les dérogations au barème"] },
+
+ { "id": "institutions-23", "type": "liste", "prof": "CAC", "tags": ["cncc_crcc_organisation", "honoraires_bareme", "h2a_supervision"], "fiche": "05-cac-exercice.md",
+   "title": "Dérogation au barème", "q": "Les quatre étapes de la dérogation au barème",
+   "items": [
+     { "k": "Président de la CRCC", "v": "Saisi **avant** la mission ; il statue sous **15 jours**" },
+     { "k": "Président de la CNCC", "v": "Recours sous **10 jours**" },
+     { "k": "Bureau de la H2A", "v": "Puis recours devant lui" },
+     { "k": "Tribunal administratif", "v": "Puis recours devant lui" } ],
+   "trap": "La procédure ne s'applique pas si les parties sont d'accord sur le dépassement.",
+   "quiz": { "q": "Après le président de la CRCC, devant qui le premier recours est-il porté ?", "choices": ["Le président de la CNCC", "Le bureau de la H2A", "Le tribunal administratif"], "answer": 0, "why": "Recours sous 10 jours devant le **président de la CNCC**, puis devant le bureau de la H2A, puis devant le tribunal administratif." },
+   "src": ["la partie la plus diligente saisit le président de la CRCC, avant la mission ; il statue sous 15 jours", "recours sous 10 jours devant le président de la CNCC", "puis recours devant le bureau de la H2A", "puis devant le tribunal administratif"] },
+
+ { "id": "institutions-24", "type": "vf", "prof": "CAC", "tags": ["cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
+   "title": "Les collèges nationaux", "statement": "Les membres du Conseil national de la CNCC qui ne sont pas présidents de CRCC sont élus par deux collèges nationaux de 30 sièges chacun.", "verdict": true,
+   "why": "Vrai : un collège pour les CAC d'**EIP**, un pour les CAC **sans mandat d'EIP**, chacun avec **30 sièges**.",
+   "src": ["les autres sont élus par deux collèges nationaux (CAC d'EIP / CAC sans mandat d'EIP), chacun ayant 30 sièges"] },
+
+ { "id": "institutions-25", "type": "vf", "prof": "CAC", "tags": ["cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
+   "title": "Électeurs d'une CRCC", "statement": "Un CAC personne physique inscrit auprès de la CRCC est électeur au conseil régional, même s'il n'est pas à jour de ses cotisations.", "verdict": false,
+   "why": "Les électeurs sont les CAC **personnes physiques** inscrits auprès de la CRCC **et à jour de leurs cotisations**.",
+   "src": ["les CAC personnes physiques inscrits auprès de la CRCC et à jour de leurs cotisations"] },
+
+ { "id": "institutions-26", "type": "chiffre", "prof": "CAC", "tags": ["cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
+   "title": "Éligibilité au conseil régional", "big": "30 juin", "label": "Date où le candidat à un conseil régional de CRCC doit exercer comme CAC",
+   "det": "C'est le **30 juin** de l'année d'expiration des mandats.", "trap": "Être à jour de ses cotisations est exigé en plus.",
+   "quiz": { "q": "À quelle date un candidat doit-il exercer la profession de CAC pour être éligible ?", "choices": ["Le 1er janvier de l'année d'expiration des mandats", "Le 31 décembre de l'année d'expiration des mandats", "Le 30 juin de l'année d'expiration des mandats"], "answer": 2, "why": "Sont éligibles les personnes physiques à jour de leurs cotisations et **exerçant la profession de CAC au 30 juin** de l'année d'expiration des mandats." },
+   "src": ["exerçant la profession de CAC au 30 juin de l'année d'expiration des mandats"] },
+
+ { "id": "institutions-27", "type": "cas", "prof": "CAC", "tags": ["cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
+   "title": "Présider une CRCC", "situation": "Léa est CAC, à jour de ses cotisations, et exerce au 30 juin de l'année d'expiration des mandats. Elle se porte candidate à la présidence de sa CRCC.",
+   "quiz": { "q": "Que doit-elle exercer en plus, à cette date ?", "choices": ["Rien de plus : elle est éligible", "Deux mandats dans des EIP", "Une mission d'expertise comptable", "Au moins une mission de certification"], "answer": 3, "why": "Le président doit exercer au moins une **mission de certification** à cette date." },
+   "src": ["le président doit exercer au moins une mission de certification à cette date"] },
+
+ { "id": "institutions-28", "type": "chiffre", "prof": "CAC", "tags": ["cncc_crcc_organisation", "honoraires_bareme"], "fiche": "05-cac-exercice.md",
+   "title": "Litige sur les honoraires", "big": "3 mois", "label": "Délai de conciliation du président de la CRCC sur des honoraires de certification",
+   "det": "À défaut de conciliation, le **juge**. La H2A n'intervient pas.", "trap": "Pour une prestation hors mission légale : le tribunal compétent (droit commun).",
+   "quiz": { "q": "Quel délai pour la conciliation du président de la CRCC sur des honoraires de certification ?", "choices": ["1 mois", "15 jours", "3 mois"], "answer": 2, "why": "Il tente une conciliation en **3 mois** ; à défaut, le juge. Les **15 jours** sont ceux de la dérogation au barème." },
+   "src": ["qui tente une conciliation en 3 mois (R.821-196) ; à défaut, le juge. La H2A n'intervient pas", "Tribunal compétent (droit commun)"] },
+
+ { "id": "institutions-29", "type": "cas", "prof": "CAC", "tags": ["co_commissariat", "cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
+   "title": "Co-commissaires de deux CRCC", "situation": "Deux co-commissaires aux comptes, relevant de deux CRCC différentes, ne s'entendent pas sur la répartition des travaux.",
+   "quiz": { "q": "À qui s'adressent-ils ?", "choices": ["Au président de la CNCC", "Au président du CROEC", "À la H2A", "Au président de leur compagnie respective"], "answer": 3, "why": "Relevant de compagnies régionales distinctes, ils saisissent le **président de leur compagnie respective**. Sinon, le président de leur CRCC." },
+   "src": ["les CAC saisissent le président de leur CRCC ou, s'ils relèvent de compagnies régionales distinctes, le président de leur compagnie respective"] },
+
+ { "id": "institutions-30", "type": "cas", "prof": "CAC", "tags": ["prestations_declaration_activite", "cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
+   "title": "Notifier une nomination", "situation": "Un CAC vient d'être nommé à un mandat de commissaire aux comptes.",
+   "quiz": { "q": "Dans quel délai sa nomination est-elle notifiée au conseil régional de la compagnie ?", "choices": ["30 jours", "15 jours", "8 jours"], "answer": 2, "why": "La nomination est notifiée au conseil régional **dans les 8 jours**, par lettre recommandée ou par voie électronique." },
+   "src": ["est notifiée au conseil régional de la compagnie dans les 8 jours, par lettre recommandée ou par voie électronique"] },
+
+ { "id": "institutions-31", "type": "liste", "prof": "CAC", "tags": ["prestations_declaration_activite", "cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
+   "title": "Déclaration d'activité", "q": "Autres missions ou prestations : trois informations déclarées",
+   "items": [
+     { "k": "Personnes ou entités", "v": "La **liste** des personnes ou entités" },
+     { "k": "Nature", "v": "La **nature** des missions ou prestations" },
+     { "k": "Honoraires", "v": "Le **montant total** des honoraires facturés" } ],
+   "trap": "Elles figurent dans la même déclaration d'activité annuelle que les mandats de certification.",
+   "quiz": { "q": "À qui le CAC adresse-t-il sa déclaration d'activité annuelle ?", "choices": ["À la CRCC", "À la H2A", "À la CNCC"], "answer": 0, "why": "Elle est adressée par voie électronique à la **CRCC**, qui la transmet à la CNCC, laquelle en adresse copie à la **H2A**." },
+   "src": ["Déclaration d'activité annuelle (D.821-186 VI), adressée par voie électronique à la CRCC, qui la transmet à la CNCC, laquelle en adresse copie à la H2A", "la liste des personnes ou entités", "la nature des missions ou prestations", "le montant total des honoraires facturés"] },
+
+ { "id": "institutions-32", "type": "liste", "prof": "CAC", "tags": ["h2a_supervision", "discipline_sanctions"], "fiche": "05-cac-exercice.md",
+   "title": "Les organes de la H2A", "q": "Les organes de la H2A",
+   "items": [
+     { "k": "Collège", "v": "**Non-praticiens** majoritaires : magistrats et personnalités qualifiées" },
+     { "k": "Bureau" },
+     { "k": "Rapporteur général", "v": "Dirige le **service des enquêtes**" },
+     { "k": "Commission des sanctions", "v": "**Séparée** du collège" } ],
+   "quiz": { "q": "Qui dirige le service des enquêtes de la H2A ?", "choices": ["Le rapporteur général", "Le collège", "La commission des sanctions", "Le bureau"], "answer": 0, "why": "Le **rapporteur général** dirige le service des enquêtes. La commission des sanctions est **séparée** du collège." },
+   "src": ["le collège, composé de non-praticiens majoritaires : magistrats et personnalités qualifiées", "le rapporteur général, qui dirige le service des enquêtes", "la commission des sanctions, séparée du collège"] },
+
+ { "id": "institutions-33", "type": "vf", "prof": "CAC", "tags": ["h2a_supervision", "discipline_sanctions"], "fiche": "05-cac-exercice.md",
+   "title": "La H2A et l'appel", "statement": "La H2A est l'instance d'appel des commissions régionales de discipline des commissaires aux comptes.", "verdict": false,
+   "why": "La H2A **n'est pas** une instance d'appel : les commissions régionales de discipline **n'existent plus**.",
+   "src": ["n'est pas une instance d'appel des « commissions régionales de discipline », qui n'existent plus"] },
+
+ { "id": "institutions-34", "type": "chiffre", "prof": "CAC", "tags": ["h2a_supervision", "nep"], "fiche": "05-cac-exercice.md",
+   "title": "Commissions de normalisation", "big": "2 commissions", "label": "Commissions de normalisation placées auprès de la H2A pour élaborer les projets de NEP",
+   "det": "L'une pour la **durabilité**, l'autre pour la **certification des comptes**, les prestations et attestations.", "trap": "L'ancienne commission paritaire du H3C n'existe plus.",
+   "quiz": { "q": "Combien de commissions de normalisation élaborent les projets de NEP auprès de la H2A ?", "choices": ["1", "2", "3"], "answer": 1, "why": "**Deux** commissions : l'une pour la durabilité, l'autre pour la certification des comptes, les prestations et attestations." },
+   "src": ["Deux commissions de normalisation placées auprès de la H2A élaborent les projets", "l'ancienne commission paritaire (H3C) n'existe plus"] },
+
+ { "id": "institutions-35", "type": "liste", "prof": "CAC", "tags": ["h2a_supervision", "nep", "cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
+   "title": "Commission « comptes » de la H2A", "q": "Composition de la commission « comptes »",
+   "items": [
+     { "k": "Présidence", "v": "Le **même membre du collège** que l'autre commission" },
+     { "k": "CAC", "v": "**2** CAC, proposés par la **CNCC**" },
+     { "k": "Personnalité qualifiée", "v": "**1** personnalité qualifiée" },
+     { "k": "Mandat", "v": "Membres désignés pour **3 ans**, renouvelables une fois" } ],
+   "quiz": { "q": "Qui propose les 2 CAC membres de la commission « comptes » ?", "choices": ["La CNCC", "Le garde des Sceaux", "La CRCC"], "answer": 0, "why": "Les **2 CAC** sont proposés par la **CNCC**, avec **1 personnalité qualifiée**. Mandat de 3 ans, renouvelable une fois." },
+   "src": ["Elles sont présidées par le même membre du collège", "La commission « comptes » comprend en outre 2 CAC (proposés par la CNCC) et 1 personnalité qualifiée ; membres désignés pour 3 ans, renouvelables une fois"] },
+
+ { "id": "institutions-36", "type": "duel", "prof": "EC+CAC", "tags": ["ordre_organisation", "cncc_crcc_organisation"], "fiche": "12-schema-institutions-ec-cac.md",
+   "title": "Instance nationale", "q": "Quelle est l'instance nationale ?",
+   "ec": { "main": "**Conseil national de l'Ordre**", "det": "Ex-Conseil supérieur, renommé par la **loi 2022-172**." },
+   "cac": { "main": "**CNCC**", "det": "**Établissement d'utilité publique**." },
+   "trap": "La H2A, autorité publique indépendante, assure la supervision publique des CAC : ce n'est pas l'instance nationale.",
+   "quiz": { "q": "Quelle est l'instance nationale des commissaires aux comptes ?", "choices": ["La CRCC", "Le Conseil national de l'Ordre", "La CNCC"], "answer": 2, "why": "La **CNCC**, établissement d'utilité publique. Le Conseil national de l'Ordre est l'instance nationale des EC ; la CRCC est l'instance régionale du CAC." },
+   "src": ["Conseil national de l'Ordre (ex-Conseil supérieur, renommé par la loi 2022-172)", "CNCC, établissement d'utilité publique", "H2A (ex-H3C), autorité publique indépendante", "CRCC, dans le ressort des cours d'appel"] },
+
+ { "id": "institutions-37", "type": "duel", "prof": "EC+CAC", "tags": ["ordre_organisation", "cncc_crcc_organisation"], "fiche": "12-schema-institutions-ec-cac.md",
+   "title": "Instance régionale", "q": "Quelle est l'instance régionale ?",
+   "ec": { "main": "**CROEC**", "det": "Tient le tableau, inscrit, appelle les cotisations, contrôle la qualité." },
+   "cac": { "main": "**CRCC**", "det": "Dans le ressort des **cours d'appel**." },
+   "trap": "Chez le CAC, la liste est tenue par la H2A, pas par la CRCC.",
+   "quiz": { "q": "Dans le ressort de quelles juridictions la CRCC est-elle établie ?", "choices": ["Des cours d'appel", "Des tribunaux de commerce", "Des tribunaux administratifs"], "answer": 0, "why": "Les CRCC sont établies dans le ressort des **cours d'appel**. Le CROEC est l'instance régionale de l'EC." },
+   "src": ["CROEC : tient le tableau, inscrit, appelle les cotisations, contrôle la qualité", "CRCC, dans le ressort des cours d'appel"] },
+
+ { "id": "institutions-38", "type": "cas", "prof": "EC", "tags": ["ordre_organisation", "honoraires"], "fiche": "01-ec-exercice.md",
+   "title": "Conciliateur ou arbitre", "situation": "Un client et un cabinet s'engagent par avance à respecter la décision que rendra le président du CROEC sur leur litige d'honoraires.",
+   "quiz": { "q": "Le président du CROEC agit alors comme…", "choices": ["Conciliateur", "Commissaire du gouvernement", "Arbitre"], "answer": 2, "why": "Il rend une **sentence** que les parties se sont engagées à respecter : c'est l'**arbitre**. Le conciliateur cherche un accord amiable, sans décision qui s'impose." },
+   "src": ["arbitre : il rend une sentence que les parties se sont engagées à respecter", "conciliateur : il cherche un accord amiable entre les parties, sans décision qui s'impose à elles"] },
+
+ { "id": "institutions-39", "type": "cas", "prof": "EC", "tags": ["ordre_organisation", "inscription_tableau"], "fiche": "01-ec-exercice.md",
+   "title": "Remplacement provisoire", "situation": "Un expert-comptable, frappé d'une incapacité temporaire, demande qu'un confrère assure son remplacement provisoire.",
+   "quiz": { "q": "Qui peut désigner l'expert-comptable chargé de ce remplacement ?", "choices": ["Le Conseil national", "Le président du conseil régional", "Le comité national du tableau", "Le commissaire du gouvernement"], "answer": 1, "why": "Le **président du conseil régional** peut désigner un EC chargé du remplacement provisoire. C'est une mission de confraternité, en principe gratuite." },
+   "src": ["le président du conseil régional peut désigner un expert-comptable chargé de son remplacement provisoire, à la demande du professionnel ou avec son accord", "C'est une mission de confraternité, en principe gratuite"] },
+
+ { "id": "institutions-40", "type": "liste", "prof": "CAC", "tags": ["inscription_liste", "cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
+   "title": "Société de CAC : 3 conditions", "q": "Les trois conditions d'inscription d'une société",
+   "items": [
+     { "k": "Droits de vote", "v": "La **majorité** détenue par des CAC (ou des contrôleurs légaux de l'UE)" },
+     { "k": "Organes : majorité de CAC", "v": "Membres des organes de gestion, d'administration, de direction ou de surveillance" },
+     { "k": "Dirigeants", "v": "Gérant, président, DG, membres du directoire : des **CAC**" } ],
+   "trap": "Société d'EC : plus de **2/3** des droits de vote. Société de CAC : la **majorité**.",
+   "quiz": { "q": "Dans une société de CAC, les dirigeants (gérant, président, DG, directoire) sont…", "choices": ["Des experts-comptables", "Des CAC", "Des salariés de l'entité contrôlée"], "answer": 1, "why": "Les **dirigeants** doivent être des **CAC**, comme la majorité des droits de vote et la majorité des membres des organes." },
+   "src": ["La majorité des droits de vote est détenue par des CAC (ou des contrôleurs légaux de l'UE)", "La majorité des membres des organes de gestion, d'administration, de direction ou de surveillance sont des CAC", "Les dirigeants (gérant, président, DG, membres du directoire) sont des CAC", "plus de 2/3 aux EC dans une société d'EC ; la majorité aux CAC dans une société de CAC"] },
+
+ { "id": "institutions-41", "type": "vf", "prof": "CAC", "tags": ["inscription_liste", "cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
+   "title": "Forme d'exercice du CAC", "statement": "Un commissaire aux comptes peut exercer sous la forme d'une association.", "verdict": false,
+   "why": "Pas d'exercice sous forme d'association : un CAC exerce **à titre individuel** ou en **société**.",
+   "src": ["Pas d'exercice sous forme d'association : un CAC exerce à titre individuel ou en société"] },
+
+ { "id": "institutions-42", "type": "chiffre", "prof": "CAC", "tags": ["formation"], "fiche": "05-cac-exercice.md",
+   "title": "Formation continue du CAC", "big": "120 heures", "label": "Formation continue du CAC sur 3 années consécutives",
+   "det": "Au moins **20 heures par an**. Déclaration annuelle des heures à la **CRCC**.", "trap": "Après 3 ans sans exercer (obligation non respectée) : **40 heures** de formation particulière.",
+   "quiz": { "q": "Combien d'heures de formation continue sur 3 années consécutives ?", "choices": ["120 heures", "60 heures", "40 heures"], "answer": 0, "why": "**120 heures** sur 3 années consécutives, avec au moins **20 heures par an**. Les 40 heures concernent le CAC qui n'a pas exercé pendant 3 ans." },
+   "src": ["120 heures sur 3 années consécutives, avec au moins 20 heures par an", "Déclaration annuelle des heures à la CRCC", "n'a pas exercé pendant 3 ans et n'a pas respecté l'obligation : 40 heures"] },
+
+ { "id": "institutions-43", "type": "cas", "prof": "EC", "tags": ["personnes_physiques", "lettre_mission"], "fiche": "01-ec-exercice.md",
+   "title": "IR du dirigeant d'un client", "situation": "Un cabinet, déjà chargé de la SARL dirigée par M. Zen, doit établir la déclaration d'impôt sur le revenu de M. Zen.",
+   "quiz": { "q": "Que prévoit le cabinet pour cette mission ?", "choices": ["Une lettre de mission propre, signée avec M. Zen", "Rien : la lettre de mission de la SARL suffit", "Rien : la mission n'est pas permise à l'EC"], "answer": 0, "why": "Les missions déclaratives des **personnes physiques** (ex. l'IR d'un dirigeant) se font avec une **lettre de mission propre**, signée avec cette personne." },
+   "src": ["missions déclaratives (fiscales, sociales, administratives) des personnes physiques, par exemple l'IR d'un dirigeant, avec une lettre de mission propre signée avec cette personne"] },
+
+ { "id": "institutions-44", "type": "vf", "prof": "EC", "tags": ["personnes_physiques", "lettre_mission"], "fiche": "01-ec-exercice.md",
+   "title": "Reconduction tacite", "statement": "Chaque année, l'EC doit informer tous ses clients, entreprises comprises, de la possibilité de ne pas reconduire la lettre de mission.", "verdict": false,
+   "why": "Cette information annuelle ne concerne que les **clients consommateurs** : personnes physiques non professionnelles. Elle ne s'applique pas aux entreprises.",
+   "src": ["ne concerne que les clients consommateurs, c'est-à-dire les personnes physiques non professionnelles. Elle ne s'applique pas aux entreprises"] }
 ]}

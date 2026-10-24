@@ -11,6 +11,7 @@ import * as GM from './games.js';
 import * as PAL from './palais.js';
 import { estimate } from './estimate.js';
 import * as SH from './shorts.js';
+import * as SC from './scenes.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -987,7 +988,7 @@ views.settings = () => {
 // Fil vertical, comme un réseau social : une notion animée en 30 secondes, puis une question. La réponse passe
 // par la répétition des jeux (boîtes de Leitner, « sht: ») ; une erreur remet les questions liées de la banque
 // dans la prochaine séance. Le fil suit le parcours : schémas du jour, shorts à revoir, points faibles.
-const SHORT_KIND = { duel: '⚔️ Duel EC / CAC', chiffre: '🔢 Chiffre clé', liste: '📋 À retenir', cas: '🧩 Cas pratique', vf: '⚡ Vrai ou faux' };
+const SHORT_KIND = { duel: 'Duel EC / CAC', chiffre: 'Chiffre clé', liste: 'À retenir', cas: 'Cas pratique', vf: 'Vrai ou faux' };
 async function ensureShorts() {
   if (state.shorts) return state.shorts;
   let steps = [];
@@ -1055,11 +1056,11 @@ function closeFeed(viaPop = false) {
   if (!viaPop && history.state?.feed) history.back();
   render();
 }
-// Pendant le fil : fond de page et couleur de thème (barre d'état sur Android) passent au sombre.
+// Pendant le fil : fond de page et couleur de thème (barre d'état sur Android) prennent la couleur papier des shorts.
 function feedChrome(on) {
   document.documentElement.classList.toggle('feed-open', on);
   const m = document.querySelector('meta[name="theme-color"]'); if (!m) return;
-  if (on) { m.dataset.prev = m.content; m.content = '#0b1220'; } else if (m.dataset.prev) m.content = m.dataset.prev;
+  if (on) { m.dataset.prev = m.content; m.content = '#f3eee6'; } else if (m.dataset.prev) m.content = m.dataset.prev;
 }
 function feedCount() {
   const f = state.feed; const c = $('#feed-count'); if (!f || !c) return;
@@ -1081,40 +1082,57 @@ function feedAppend() {
   }
 }
 const md = (t) => inline(t || '');
+// Trois rendus, pour varier le fil : mise en scène (personnages et objet du sous-thème), schéma (liste en
+// étapes reliées) et carte simple (une partie des chiffres et des vrai ou faux). Puis vient la question.
 function shortHtml(s, i) {
   const a = (d, html, cls = '') => `<div class="a ${cls}" style="--d:${d}s">${html}</div>`;
-  const prof = s.prof === 'EC+CAC' ? '<span class="fpill ec">EC</span> <span class="fpill cac">CAC</span>' : `<span class="fpill ${s.prof === 'EC' ? 'ec' : 'cac'}">${s.prof}</span>`;
   const st = P.stepById(s.step);
-  let body = ''; let t = 0;
-  // Leçon d'abord (duel, chiffre, liste) : elle s'efface quand on demande la question, pour répondre de mémoire.
+  const cast = SC.castFor(s);
+  const sides = cast.length === 2 ? ['l', 'r'] : ['c'];
   const lesson = ['duel', 'chiffre', 'liste'].includes(s.type);
-  const trap = (x) => (x ? a(t += 0.8, `<div class="sh-trap"><b>Piège</b>${md(x)}</div>`) : '');
+  const small = s.type === 'cas';
+  const scenic = s.type === 'duel' || s.type === 'cas' || (s.type !== 'liste' && Number(s.id.split('-').pop()) % 2 === 0);
+  const soft = SC.CAST[cast[0]].soft;
+  const discs = cast.map((k, n) => `<div class="sh-disc ${sides[n]} a pop" style="--d:${0.2 + n * 0.1}s;background:${SC.CAST[k].soft}"></div>`).join('');
+  const actors = cast.map((k, n) => a(0.4 + n * 0.25, `<div class="idle" style="animation-delay:${-n * 1.1}s">${SC.person(k)}</div><span class="sh-name" style="background:${SC.CAST[k].color}">${SC.CAST[k].name}</span>`, `sh-actor ${sides[n]} ${sides[n] === 'l' ? 'inL' : sides[n] === 'r' ? 'inR' : 'up'}`)).join('');
+  const prop = (d, where) => a(d, SC.icon(SC.propFor(s.tags)), `pop sh-prop ${where}`);
+  const stamp = (x, d) => (x ? a(d, `<div class="sh-stamp">${md(x)}</div>`, 'stampIn sh-stampW') : '');
+  let head = s.title; let over = ''; let stageExtra = ''; let below = ''; let t = 0;
   if (s.type === 'duel') {
-    body = a(0.2, `<div class="sh-q">${md(s.q)}</div>`)
-      + a(0.7, `<div class="sh-card ec"><span class="sh-pill">EXPERT-COMPTABLE</span><div class="sh-main">${md(s.ec.main)}</div><div class="sh-det">${md(s.ec.det)}</div></div>`, 'l')
-      + a(1.5, '<div class="sh-vs">VS</div>', 'pop')
-      + a(1.8, `<div class="sh-card cac"><span class="sh-pill">COMMISSAIRE AUX COMPTES</span><div class="sh-main">${md(s.cac.main)}</div><div class="sh-det">${md(s.cac.det)}</div></div>`, 'r');
-    t = 2.6; body += trap(s.trap);
+    head = s.q;
+    stageExtra = a(1.2, `<div class="sh-sign" style="color:${SC.CAST.ec.color}">${md(s.ec.main)}</div>`, 'pop sh-signW l')
+      + a(1.9, `<div class="sh-sign" style="color:${SC.CAST.cac.color}">${md(s.cac.main)}</div>`, 'pop sh-signW r') + prop(2.5, 'mid');
+    below = stamp(s.trap, 3) + a(3.4, `<details class="sh-more"><summary>Le détail</summary><p><b style="color:${SC.CAST.ec.color}">EC</b> ${md(s.ec.det)}</p><p><b style="color:${SC.CAST.cac.color}">CAC</b> ${md(s.cac.det)}</p></details>`);
+    t = 3.6;
   } else if (s.type === 'chiffre') {
-    body = a(0.3, `<div class="sh-big">${md(s.big)}</div>`, 'pop') + a(1, `<div class="sh-label">${md(s.label)}</div>`) + (s.det ? a(1.7, `<div class="sh-det">${md(s.det)}</div>`) : '');
-    t = 2.2; body += trap(s.trap);
+    stageExtra = a(1, `<div class="sh-big">${md(s.big)}</div>`, 'pop sh-bigW') + prop(1.6, cast.length === 2 ? 'mid' : 'side');
+    if (!scenic) over = a(0.2, `<div class="sh-card" style="background:${soft}">${SC.icon(SC.propFor(s.tags))}<div class="sh-big">${md(s.big)}</div></div>`, 'pop');
+    below = a(1.8, `<div class="sh-label">${md(s.label)}</div>`) + stamp(s.trap, 2.5) + (s.det ? a(2.9, `<details class="sh-more"><summary>Le détail</summary><p>${md(s.det)}</p></details>`) : '');
+    t = 3.1;
   } else if (s.type === 'liste') {
-    body = a(0.2, `<div class="sh-q">${md(s.q)}</div>`) + `<ol class="sh-list">${s.items.map((it, k) => `<li class="a l" style="--d:${0.8 + k * 0.7}s"><span class="sh-n">${k + 1}</span><div><strong>${md(it.k)}</strong>${it.v ? `<div class="sh-det">${md(it.v)}</div>` : ''}</div></li>`).join('')}</ol>`;
-    t = 0.8 + s.items.length * 0.7; body += trap(s.trap);
+    head = s.q;
+    over = a(0.15, SC.icon(SC.propFor(s.tags)), 'pop sh-propHead');
+    below = `<ol class="sh-flow" style="--c:${SC.CAST[cast[0]].color}">${s.items.map((it, k) => `<li class="a inL" style="--d:${0.5 + k * 0.5}s"><span class="sh-n">${k + 1}</span><div><strong>${md(it.k)}</strong>${it.v ? `<div class="sh-det">${md(it.v)}</div>` : ''}</div></li>`).join('')}</ol>`;
+    t = 0.5 + s.items.length * 0.5; below += stamp(s.trap, t); t += 0.4;
   } else if (s.type === 'cas') {
-    body = a(0.2, `<div class="sh-sit">${md(s.situation)}</div>`); t = 0.3;
+    over = a(0.3, `<div class="sh-narr">${md(s.situation)}</div>`);
+    stageExtra = a(1.4, '<div class="sh-think">?</div>', `pop sh-thinkW ${sides[0]}`) + prop(1.1, 'mid');
+    t = 1.6;
   } else if (s.type === 'vf') {
-    body = a(0.2, `<div class="sh-sit">${md(s.statement)}</div>`); t = 0.3;
+    stageExtra = a(0.9, `<div class="sh-bubble">${md(s.statement)}</div>`, 'pop sh-bubbleW') + prop(1.4, cast.length === 2 ? 'mid' : 'side');
+    if (!scenic) over = a(0.2, `<div class="sh-card quote" style="background:${soft}">${SC.icon(SC.propFor(s.tags))}<p>${md(s.statement)}</p></div>`, 'pop');
+    t = 1.2;
   }
   const quiz = s.type === 'vf'
-    ? `<div class="sh-choices two"><button class="btn" data-sh-c="1">Vrai</button><button class="btn" data-sh-c="0">Faux</button></div>`
+    ? `<div class="sh-qq">Vrai ou faux ?</div><div class="sh-choices two"><button class="btn" data-sh-c="1">Vrai</button><button class="btn" data-sh-c="0">Faux</button></div>`
     : `<div class="sh-qq">${md(s.quiz.q)}</div><div class="sh-choices">${s.quiz.choices.map((c, k) => `<button class="btn" data-sh-c="${k}">${md(c)}</button>`).join('')}</div>`;
+  const scene = scenic ? `${over}<div class="sh-stage ${small ? 'small' : ''}">${discs}<div class="sh-ground"></div>${actors}${stageExtra}</div>${below}` : `${over}${below}`;
   return `<section class="sh t-${s.type}" data-i="${i}" data-id="${esc(s.id)}"><div class="sh-in">
-    <div class="sh-kind">${SHORT_KIND[s.type]} · ${prof}</div>
-    ${a(0, `<h2 class="sh-title">${md(s.title)}</h2>`)}
-    ${lesson ? `<div class="sh-lesson">${body}</div>${a(t + 0.5, '<button class="btn primary sh-ask" data-sh-ask="1">J’ai retenu : la question ▶</button>')}` : body}
-    ${lesson ? `<div class="sh-quiz later">${quiz}<div class="sh-fb"></div></div>` : a(t + 0.6, `<div class="sh-quiz">${quiz}<div class="sh-fb"></div></div>`)}
-    <div class="sh-foot"><span>${esc(st ? `Étape ${P.STEPS.indexOf(st) + 1} · ${st.title}` : '')}</span><button class="linkbtn" data-open-fiche="${esc(s.fiche)}">📊 Schéma</button></div>
+    <div class="sh-top"><span class="sh-chip">${SHORT_KIND[s.type]}</span><span>${esc(s.title !== head ? s.title : st?.title || '')}</span></div>
+    ${a(0.05, `<h2 class="sh-title">${md(head)}</h2>`)}
+    ${lesson ? `<div class="sh-lesson">${scene}</div>${a(t + 0.3, '<button class="btn primary sh-ask" data-sh-ask="1">J’ai retenu : la question →</button>')}` : scene}
+    ${lesson ? `<div class="sh-quiz later">${quiz}<div class="sh-fb"></div></div>` : a(t, `<div class="sh-quiz">${quiz}<div class="sh-fb"></div></div>`)}
+    <div class="sh-foot"><span>${esc(st ? `Étape ${P.STEPS.indexOf(st) + 1} · ${st.title}` : '')}</span><button class="linkbtn" data-open-fiche="${esc(s.fiche)}">Lire la fiche ↗</button></div>
   </div></section>`;
 }
 function onFeedClick(e) {
@@ -1168,7 +1186,7 @@ function feedPause(after) {
   f.list = f.list.slice(0, Number(after.dataset.i) + 1);
   const task = dayTasks().find((x) => !x.done && x.id !== 'shorts');
   after.insertAdjacentHTML('afterend', `<section class="sh sh-end"><div class="sh-in center">
-    <div class="sh-kind">Pause</div><div class="sh-big">${f.ok}/${f.n}</div><div class="sh-label">${f.n} shorts, ${f.ok} réponses justes</div>
+    <span class="sh-chip" style="align-self:center">Pause</span><div class="sh-big">${f.ok}/${f.n}</div><div class="sh-label">${f.n} shorts, ${f.ok} réponses justes</div>
     <p class="muted">Les shorts ratés reviennent dans 10 minutes, puis aux intervalles de la répétition.</p>
     ${task ? `<button class="btn primary" data-sh-end="plan">▶ Suite du plan : ${esc(task.title)}</button>` : ''}
     <button class="btn ${task ? '' : 'primary'}" data-sh-end="more">🎬 Encore ${state.progress.settings.shortsLimit || 15} shorts</button>
@@ -1579,7 +1597,7 @@ async function recoverFromStaleCache() {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
     await Promise.all((await caches.keys()).map((k) => caches.delete(k)));
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/shorts.js', './sw.js']
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/shorts.js', './js/scenes.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();
