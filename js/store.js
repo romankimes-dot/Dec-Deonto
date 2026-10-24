@@ -10,7 +10,7 @@ const EXAM_KEY = 'dec1.exam.v1';               // examen blanc en cours
 const BACKUP_EVERY_MS = 3 * 60 * 60 * 1000;
 
 // Incrémenté quand l'interface attend de nouvelles fonctions : app.js vérifie qu'il n'est pas associé à un store.js périmé.
-export const STORE_VERSION = 3;
+export const STORE_VERSION = 4;
 
 export const defaultState = () => ({
   version: 1,
@@ -31,6 +31,7 @@ export const defaultState = () => ({
   plan: { done: {}, read: {} }, // parcours guidé : étapes terminées, étape choisie, schémas lus
   drills: {},         // jeux : id d'item -> boîte de Leitner (drill.js)
   games: { best: {} }, // jeux : meilleurs scores
+  daily: null,        // plan du jour, figé à la première ouverture : { day, n, kind, steps, exam, game, target, weak }
 });
 
 const get = (k) => { try { return localStorage.getItem(k); } catch { return null; } };
@@ -124,6 +125,7 @@ export function importJSON(text) {
   if (!isObj(s) || !isObj(s.cards)) throw new Error('fichier non reconnu');
   for (const k of ['attempts', 'exams']) if (s[k] != null && !Array.isArray(s[k])) throw new Error(`champ « ${k} » invalide`);
   for (const k of ['settings', 'examSeen', 'stats', 'badges', 'grades', 'seenAnecdotes', 'plan', 'drills', 'games']) if (s[k] != null && !isObj(s[k])) throw new Error(`champ « ${k} » invalide`);
+  if (s.daily != null && !isObj(s.daily)) throw new Error('champ « daily » invalide');
   for (const [id, c] of Object.entries(s.cards)) if (!isObj(c) || typeof c.due !== 'number') throw new Error(`carte « ${id} » invalide`);
   const { exportedAt, app, ...rest } = s;
   return hydrate(rest);

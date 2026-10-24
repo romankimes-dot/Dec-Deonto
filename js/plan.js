@@ -66,3 +66,75 @@ export function stepProgress(step, fichesIndex, cards, masteryFn) {
   }
   return { total: ids.length, seen, known };
 }
+
+// ---------- Plan jour par jour jusqu'à l'épreuve ----------
+// Recalculé chaque matin sur ce qui reste : les étapes non terminées sont réparties sur les jours d'étude,
+// les quatre derniers jours sont fixes (examen QCM, examen QRC, points faibles, veille).
+const dnum = (key) => { const [y, m, d] = key.split('-').map(Number); return Date.UTC(y, m - 1, d) / 86400000; };
+const dkey = (n) => new Date(n * 86400000).toISOString().slice(0, 10);
+export const daysUntil = (today, exam) => dnum(exam) - dnum(today);
+export const GAME_ROTATION = ['duel', 'vf', 'arbre', 'chiffres', 'palais'];
+const FINAL = { 4: { kind: 'blanc', exam: 'qcm' }, 3: { kind: 'blanc', exam: 'qrc' }, 2: { kind: 'faibles' }, 1: { kind: 'veille' } };
+
+// undone : identifiants des étapes « schéma » restantes, dans l'ordre. Renvoie un jour par date, d'aujourd'hui à J-1.
+export function schedule(today, exam, undone) {
+  const n0 = daysUntil(today, exam);
+  if (n0 <= 0) return [{ key: today, n: n0, kind: n0 === 0 ? 'jour-j' : 'apres', steps: [], exam: null }];
+  const days = []; let rest = [...undone];
+  for (let n = n0; n >= 1; n--) {
+    const key = dkey(dnum(today) + (n0 - n));
+    if (FINAL[n]) { days.push({ key, n, steps: [], exam: null, ...FINAL[n] }); continue; }
+    const studyLeft = n - 4;
+    const k = rest.length ? Math.ceil(rest.length / studyLeft) : 0;
+    const steps = rest.slice(0, k); rest = rest.slice(k);
+    // Examens blancs intermédiaires : J-10 en QCM, J-7 en QRC, puis un jour sur deux en consolidation.
+    const exam = n === 10 ? 'qcm' : n === 7 ? 'qrc' : !steps.length && n % 2 === 0 ? 'qcm' : null;
+    days.push({ key, n, kind: steps.length ? 'etude' : 'consolidation', steps, exam });
+  }
+  return days;
+}
+
+// Nouvelles cartes à voir aujourd'hui pour avoir tout vu à J-3 ; moins quand beaucoup de cartes attendent.
+export function newTarget(unseen, n, minPerDay = 20, dueNow = 0) {
+  if (n <= 2 || unseen <= 0) return 0;
+  let t = Math.max(minPerDay, Math.ceil(unseen / Math.max(1, n - 3)));
+  if (dueNow > 60) t = Math.ceil(t / 2);
+  return Math.min(unseen, t);
+}
+
+// Réussite par sous-thème (tags) : faiblesses (au moins 3 réponses) et points forts (85 % et plus sur 5 réponses).
+export function tagStats(attempts, byId) {
+  const m = {};
+  for (const a of attempts) {
+    const q = byId[a.id]; if (!q) continue;
+    for (const t of q.tags) { const k = `${q.profession}:${t}`; m[k] = m[k] || { ok: 0, n: 0 }; m[k].n++; if (a.ok) m[k].ok++; }
+  }
+  const rows = Object.entries(m).map(([k, v]) => ({ k, prof: k.split(':')[0], tag: k.split(':')[1], ...v, acc: v.ok / v.n }));
+  const weak = rows.filter((r) => r.n >= 3 && r.acc < 0.7).sort((a, b) => a.acc - b.acc || b.n - a.n);
+  const strong = rows.filter((r) => r.n >= 5 && r.acc >= 0.85).sort((a, b) => b.acc - a.acc);
+  return { rows, weak, strong, byKey: m };
+}
+
+// Priorité d'une nouvelle carte : notion souvent posée, sous-thème faible en tête, point fort en retrait.
+export function adaptiveWeight(q, ts, siblingsCount) {
+  let w = siblingsCount;
+  for (const t of q.tags) {
+    const v = ts.byKey[`${q.profession}:${t}`]; if (!v || v.n < 3) continue;
+    const acc = v.ok / v.n;
+    if (acc < 0.7) w += 3 * (1 - acc) * 2;
+    else if (v.n >= 5 && acc >= 0.85) w -= 2;
+  }
+  return w;
+}
+
+// Jeu du jour : celui où l'on se trompe le plus (au moins 5 réponses), sinon la rotation.
+export function gameOfDay(today, drills) {
+  const pre = { duel: 'duel:', vf: 'vf:', arbre: 'arb:', chiffres: 'num:', palais: 'pal:' };
+  const acc = {};
+  for (const [id, m] of Object.entries(drills || {})) {
+    const k = Object.keys(pre).find((x) => id.startsWith(pre[x])); if (!k) continue;
+    acc[k] = acc[k] || { ok: 0, n: 0 }; acc[k].ok += m.ok; acc[k].n += m.n;
+  }
+  const worst = Object.entries(acc).filter(([, v]) => v.n >= 5 && v.ok / v.n < 0.75).sort((a, b) => a[1].ok / a[1].n - b[1].ok / b[1].n)[0];
+  return worst ? worst[0] : GAME_ROTATION[dnum(today) % GAME_ROTATION.length];
+}

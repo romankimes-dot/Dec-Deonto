@@ -9,6 +9,7 @@ import { buildClusters } from './cluster.js';
 import { recordDrill, pickDrill, drillStats } from './drill.js';
 import * as GM from './games.js';
 import * as PAL from './palais.js';
+import { estimate } from './estimate.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -37,9 +38,19 @@ const state = {
   game: null,      // jeu en cours
   gameData: null,  // items des jeux, tirés des fiches au premier accès
   palais: null,    // palais de mémoire : liste ouverte, étape
+  bonusNew: false, // « 20 nouvelles de plus » demandées après le plan du jour
+  nextIdx: 0, nextList: [], // « Et maintenant ? » : suggestions en boucle
 };
 
-const queueOpts = () => ({ newLimit: state.progress.settings.newPerDay, priority: P.priorityIds(state.progress.plan, state.fiches), weight: (q) => siblings(q.id).length });
+// Nouvelles cartes : le reste de l'objectif du jour (ou 20 de plus sur demande), sous-thèmes faibles en tête.
+const queueOpts = () => {
+  const d = ensureDaily(); const ts = P.tagStats(state.progress.attempts, state.byId);
+  return {
+    newLimit: state.bonusNew ? 20 : Math.max(0, d.target - (d.newDone || 0)),
+    priority: P.priorityIds(state.progress.plan, state.fiches),
+    weight: (q) => P.adaptiveWeight(q, ts, siblings(q.id).length),
+  };
+};
 const examAt = () => Date.parse(state.progress.settings.examDate) || null;
 // Avant l'épreuve, chaque carte revient au plus tard entre J-3 et J-1 (étalement selon l'identifiant).
 const reviewOpts = (id) => ({ examAt: examAt(), spread: spreadOf(id) });
@@ -268,10 +279,11 @@ views.home = () => {
       <div><div class="muted">Épreuve n°1 · mardi 10 novembre · 10 h 30</div><div class="big">${d > 0 ? `J-${d}` : d === 0 ? 'Jour J' : 'Passée'}</div></div>
       <div class="muted hero-meta"><span>${Object.keys(pr.stats.q).length}/${qs.length} vues</span><span>${unlocked} badges</span></div>
     </div>
+    ${estimateLine()}
     <button class="btn primary big-btn" data-go="review">▶ Session du jour <span class="pill">${due.length + fresh.length}</span></button>
     <div class="btnrow" style="margin-top:10px"><button class="btn" data-go="exam">⏱ Examen blanc</button><button class="btn" data-go="train">🎯 Ciblé</button></div>
   </div>
-  ${planCard()}
+  ${dayCard()}
   ${gamesCard()}
   ${backupCard()}
   <div class="card career-card" data-go="carriere">
@@ -323,30 +335,142 @@ function backupCard() {
   if (days < 2) return '';
   return `<div class="card notice"><strong>💾 Sauvegarde</strong><p class="muted" style="margin:4px 0 8px">${pr.lastExportAt ? `Dernier export il y a ${Math.floor(days)} jours.` : 'Aucun export pour l’instant.'} Si le navigateur efface les données du site, la progression est perdue.</p><button class="btn" data-go="settings">Exporter ma progression</button></div>`;
 }
-// Parcours : l'étape du jour en trois gestes (lire, répondre, passer à la suite).
-function planCard() {
-  const pr = state.progress; const i = P.currentIndex(pr.plan); const total = P.STEPS.length;
-  if (i >= total) return `<div class="card"><h2>Parcours terminé ✔</h2><p class="muted">Gardez le rythme : cartes dues chaque jour, un examen blanc tous les deux jours.</p><button class="btn" data-go="plan">Revoir le parcours</button></div>`;
-  const s = P.STEPS[i];
-  const head = `<div class="row" style="justify-content:space-between"><span class="badge warn">Parcours · étape ${i + 1}/${total}</span><span class="muted">prévue ${esc(s.when)}</span></div><h2 style="margin:8px 0 4px">${esc(s.title)}</h2>`;
-  if (s.kind !== 'schema') {
-    return `<div class="card plan-card">${head}<p class="muted">${esc(s.hint)}</p><div class="btnrow"><button class="btn primary" data-go="${s.action === 'weak' ? 'train' : s.action}">${s.action === 'exam' ? '⏱ Examen blanc' : s.action === 'weak' ? '🎯 Mes points faibles' : '🔁 Réviser'}</button><button class="btn" data-step-next="${s.id}">✔ Étape faite</button></div><button class="btn sm" data-go="plan" style="margin-top:8px">Tout le parcours</button></div>`;
-  }
-  const read = s.fiches.every((f) => pr.plan.read?.[f]);
-  const prog = P.stepProgress(s, state.fiches, pr.cards, mastery);
-  const seenAll = prog.total > 0 && prog.seen >= prog.total;
-  return `<div class="card plan-card">${head}
-    <ol class="todo">
-      <li class="${read ? 'done' : ''}"><div><strong>1. Lire le schéma</strong> <span class="muted">5 à 10 min</span></div>${s.fiches.map((f) => `<button class="btn sm ${read ? '' : 'primary'}" data-open-fiche="${esc(f)}">📊 ${esc(shortTitle(f))}</button>`).join('')}</li>
-      <li class="${seenAll ? 'done' : ''}"><div><strong>2. Répondre aux questions de l’étape</strong> <span class="muted">${prog.seen}/${prog.total} vues</span></div><div class="progress" style="margin:6px 0"><div style="width:${prog.total ? Math.round((prog.seen / prog.total) * 100) : 0}%"></div></div><button class="btn sm ${read && !seenAll ? 'primary' : ''}" data-go="review">▶ Session du jour : elles arrivent en premier</button></li>
-      <li><div><strong>3. Passer à l’étape suivante</strong> <span class="muted">${seenAll ? 'toutes les questions sont vues' : 'quand les questions sont vues, ou quand vous voulez'}</span></div><button class="btn sm ${seenAll ? 'primary' : ''}" data-step-next="${s.id}">✔ Étape terminée</button></li>
-    </ol><button class="btn sm" data-go="plan">Tout le parcours</button></div>`;
+// ---------- Plan du jour ----------
+// Figé à la première ouverture de la journée, recalculé le lendemain sur ce qui reste et sur les résultats :
+// étapes non faites reportées, objectif de nouvelles cartes recalé, point faible du jour, jeu où l'on se trompe le plus.
+const todayKey = () => G.dayKey(Date.now());
+const startOfDay = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); };
+const dueNow = () => { const now = Date.now(); return Object.values(state.progress.cards).filter((c) => c.due <= now).length; };
+const tagLabel = (t) => G.TAG_LABELS?.[t] || t.replace(/_/g, ' ');
+const weakIds = (w) => state.bank.questions.filter((q) => q.profession === w.prof && q.tags.includes(w.tag)).map((q) => q.id);
+const GAME_PREFIX = { duel: 'duel:', vf: 'vf:', arbre: 'arb:', chiffres: 'num:', palais: 'pal:' };
+function ensureDaily() {
+  const pr = state.progress; const k = todayKey();
+  if (pr.daily?.day === k) return pr.daily;
+  const undone = P.STEPS.filter((st) => st.kind === 'schema' && !pr.plan.done[st.id]).map((st) => st.id);
+  const d = P.schedule(k, G.dayKey(examAt() || Date.now()), undone)[0];
+  const unseen = state.bank.questions.filter((q) => !pr.cards[q.id]).length;
+  const w = P.tagStats(pr.attempts, state.byId).weak[0];
+  const game = d.kind === 'veille' ? 'palais' : d.kind === 'faibles' ? 'chiffres' : P.gameOfDay(k, pr.drills);
+  pr.daily = {
+    day: k, n: d.n, kind: d.kind, steps: d.steps, exam: d.exam, game, newDone: 0,
+    target: P.newTarget(unseen, d.n, pr.settings.newPerDay, dueNow()),
+    weak: w && d.kind !== 'veille' ? { prof: w.prof, tag: w.tag, acc: Math.round(w.acc * 100) } : null,
+  };
+  persist();
+  return pr.daily;
 }
+// Tâches du jour et leur état (calculé d'après ce qui a été fait).
+function dayTasks() {
+  const pr = state.progress; const d = ensureDaily(); const t0 = startOfDay();
+  const tasks = [];
+  const steps = d.steps.map((id) => P.stepById(id)).filter(Boolean);
+  const files = [...new Set(steps.flatMap((st) => st.fiches))];
+  if (files.length) tasks.push({ id: 'read', icon: '📊', title: files.length > 1 ? `Lire les ${files.length} schémas du jour` : 'Lire le schéma du jour', sub: steps.map((st) => st.title).join(' · '), done: files.every((f) => pr.plan.read?.[f]), html: files.map((f) => `<button class="btn sm ${pr.plan.read?.[f] ? '' : 'primary'}" data-open-fiche="${esc(f)}">📊 ${esc(shortTitle(f))}</button>`).join('') });
+  if (d.exam) tasks.push({ id: 'exam', icon: '⏱', title: `Examen blanc ${d.exam.toUpperCase()}`, sub: '20 questions, 60 minutes, conditions réelles', done: pr.exams.some((e) => e.t >= t0), html: '<button class="btn sm primary" data-go="exam">⏱ Passer l’examen</button>' });
+  const due = dueNow(); const newLeft = Math.max(0, d.target - (d.newDone || 0));
+  tasks.push({ id: 'session', icon: '🔁', title: d.target ? `Session : ${d.target} nouvelles questions et les cartes à revoir` : 'Session : les cartes à revoir uniquement', sub: `${d.newDone || 0}/${d.target} nouvelles · ${due} à revoir maintenant`, done: newLeft === 0 && due === 0, html: `<button class="btn sm ${newLeft || due ? 'primary' : ''}" data-go="review">▶ ${d.newDone || state.session ? 'Continuer' : 'Commencer'} la session</button>` });
+  if (d.weak) {
+    const ids = weakIds(d.weak); const today = pr.attempts.filter((a) => a.t >= t0 && ids.includes(a.id)).length; const need = Math.min(8, ids.length);
+    tasks.push({ id: 'weak', icon: '🎯', title: `Point faible : ${tagLabel(d.weak.tag)} (${d.weak.prof})`, sub: `${d.weak.acc} % de réussite jusqu’ici · ${Math.min(today, need)}/${need} questions aujourd’hui`, done: today >= need, html: `<button class="btn sm" data-weak="1">🎯 Série ciblée</button>` });
+  }
+  if (d.kind === 'faibles') {
+    const sure = confidentErrors(pr.attempts).length;
+    tasks.push({ id: 'sure', icon: '⚠️', title: 'Reprendre les erreurs « j’étais sûr »', sub: `${sure} à reprendre`, done: sure === 0, html: '<button class="btn sm" data-go="train">🎯 Ouvrir les séries</button>' });
+  }
+  const g = GAMES[d.game];
+  const played = Object.entries(pr.drills).some(([id, m]) => id.startsWith(GAME_PREFIX[d.game]) && m.last >= t0);
+  tasks.push({ id: 'game', icon: g.icon, title: `Jeu du jour : ${g.name}`, sub: d.kind === 'veille' ? 'Réciter les listes, sans rien apprendre de nouveau' : 'Choisi parmi ceux où vous vous trompez le plus', done: played, html: `<button class="btn sm" data-game="${d.game}">${g.icon} Jouer</button>` });
+  // Étapes du jour terminées dès que le schéma est lu et la session faite : le lendemain prend la suite.
+  const read = tasks.find((x) => x.id === 'read'); const sess = tasks.find((x) => x.id === 'session');
+  if (steps.length && read?.done && sess.done && steps.some((st) => !pr.plan.done[st.id])) { steps.forEach((st) => { pr.plan.done[st.id] = pr.plan.done[st.id] || Date.now(); }); persist(); }
+  return tasks;
+}
+const KIND_LABEL = { etude: 'Apprendre', consolidation: 'Consolider', blanc: 'Examen blanc', faibles: 'Points faibles', veille: 'Veille : léger', 'jour-j': 'Jour J', apres: 'Après l’épreuve' };
+function dayCard() {
+  const d = ensureDaily();
+  if (d.kind === 'jour-j') return '<div class="card plan-card"><h2>Jour J 🍀</h2><p class="muted">Rien de nouveau. Relisez les chiffres clés, respirez, 3 minutes par question. Partie CAC : soignez-la.</p><button class="btn" data-open-fiche="15-schema-chiffres-cles.md">📊 Les chiffres à connaître</button></div>';
+  if (d.kind === 'apres') return '';
+  const tasks = dayTasks(); const n = tasks.filter((x) => x.done).length;
+  setTimeout(() => { const b = $('[data-weak]'); if (b) b.onclick = () => { const ids = shuffle(weakIds(d.weak), Date.now()).slice(0, 10); trainOn(ids, `Point faible : ${tagLabel(d.weak.tag)}`); }; }, 0);
+  const date = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+  return `<div class="card plan-card"><div class="row" style="justify-content:space-between"><span class="badge warn">${esc(KIND_LABEL[d.kind])} · J-${d.n}</span><span class="muted">${n}/${tasks.length} fait</span></div>
+    <h2 style="margin:8px 0 2px">Mon plan du ${esc(date)}</h2><div class="progress" style="margin:6px 0 10px"><div style="width:${Math.round((n / tasks.length) * 100)}%"></div></div>
+    <ol class="todo">${tasks.map((x) => `<li class="${x.done ? 'done' : ''}"><div><strong>${x.icon} ${esc(x.title)}</strong></div><div class="muted">${esc(x.sub)}</div>${x.done ? '' : x.html}</li>`).join('')}</ol>
+    ${n === tasks.length ? `<div class="gfb ok">🎉 Plan du jour terminé. La suite, en boucle :</div>${nextCard(true)}` : ''}
+    <button class="btn sm" data-go="plan">📅 Mon plan jusqu’au 10 novembre</button></div>`;
+}
+// « Et maintenant ? » : la meilleure activité du moment, d'après l'état ; « Autre idée » fait tourner la liste.
+function nextActions() {
+  const pr = state.progress; const out = []; const now = Date.now();
+  const due = dueNow();
+  if (due) out.push({ icon: '🔁', title: `${due} carte${due > 1 ? 's' : ''} à revoir maintenant`, why: 'Revues au bon moment, elles tiennent jusqu’à l’épreuve.', run: () => { state.session = null; go('review'); } });
+  const sure = confidentErrors(pr.attempts);
+  if (sure.length) out.push({ icon: '⚠️', title: `${sure.length} erreur${sure.length > 1 ? 's' : ''} « j’étais sûr »`, why: 'Une erreur commise avec certitude se corrige le mieux si on y revient vite.', run: () => trainOn(sure.slice(-20), 'Mes erreurs « j’étais sûr »') });
+  for (const w of P.tagStats(pr.attempts, state.byId).weak.slice(0, 3)) {
+    out.push({ icon: '🎯', title: `Point faible : ${tagLabel(w.tag)} (${w.prof}, ${Math.round(w.acc * 100)} %)`, why: 'Votre sous-thème le moins réussi : une série ciblée de 10 questions.', run: () => trainOn(shuffle(weakIds(w), now).slice(0, 10), `Point faible : ${tagLabel(w.tag)}`) });
+  }
+  for (const [k, pre] of Object.entries(GAME_PREFIX)) {
+    const n = Object.entries(pr.drills).filter(([id, m]) => id.startsWith(pre) && m.due <= now).length;
+    if (n) out.push({ icon: GAMES[k].icon, title: `${GAMES[k].name} : ${n} à revoir`, why: 'Les items ratés reviennent : c’est le moment de les reprendre.', run: () => startGame(k) });
+  }
+  const weakQ = weakest(20);
+  if (weakQ.length) out.push({ icon: '🔥', title: 'Mes questions les plus ratées', why: 'Les 20 questions où vous échouez le plus souvent.', run: () => trainOn(weakQ.map((q) => q.id), 'Mes questions les plus ratées') });
+  const todo = state.clusters.groups.map((g, i) => ({ g, i, ok: g.filter((id) => pr.stats.q[id]?.ok > 0).length })).filter((x) => x.ok < 2 && x.g.some((id) => pr.stats.q[id]));
+  if (todo.length) out.push({ icon: '🔁', title: 'Une notion récurrente, toutes ses variantes', why: 'Posée à plusieurs sessions : réussir chaque formulation prouve qu’on tient la règle.', run: () => trainOn(todo[0].g, 'Même notion, plusieurs sessions') });
+  const unseen = state.bank.questions.filter((q) => !pr.cards[q.id]).length;
+  if (unseen) out.push({ icon: '➕', title: '20 nouvelles questions de plus', why: `Prendre de l’avance : ${unseen} questions jamais vues.`, run: () => { state.bonusNew = true; state.session = null; go('review'); } });
+  const last = pr.exams[pr.exams.length - 1];
+  if (!last || now - last.t > 2 * DAY) out.push({ icon: '⏱', title: 'Un examen blanc', why: last ? 'Le dernier date de plus de deux jours.' : 'Pour situer votre niveau en conditions réelles.', run: () => go('exam') });
+  out.push({ icon: '⚡', title: 'Vrai / Faux éclair', why: '20 propositions de QCM à juger, toujours utile.', run: () => startGame('vf') });
+  out.push({ icon: '🏛', title: 'Réciter une liste du palais', why: 'Les listes à connaître par cœur, posées dans votre bureau.', run: () => startGame('palais') });
+  return out;
+}
+function nextCard(inner = false) {
+  const list = nextActions(); state.nextList = list;
+  const i = state.nextIdx % list.length; const a = list[i];
+  return `<div class="${inner ? 'next-inner' : 'card'} next"><div class="muted">Et maintenant ? (${i + 1}/${list.length})</div><strong>${a.icon} ${esc(a.title)}</strong><p class="muted" style="margin:4px 0 8px">${esc(a.why)}</p>
+    <div class="btnrow"><button class="btn primary" data-next="${i}">C’est parti</button><button class="btn" data-next-other="1">↻ Autre idée</button></div></div>`;
+}
+
+// ---------- Estimation du niveau ----------
+function currentEstimate() {
+  const pr = state.progress;
+  return estimate({ questions: state.bank.questions, stats: pr.stats, cards: pr.cards, attempts: pr.attempts, exams: pr.exams });
+}
+const fr = (x) => String(x).replace('.', ',');
+function estimateLine() {
+  if (!state.progress.attempts.length) return '<div class="estim muted">Niveau estimé : répondez à quelques questions pour l’obtenir.</div>';
+  const e = currentEstimate();
+  return `<button class="estim" data-go="stats"><span>Niveau estimé <strong>${fr(e.qcm.note)}</strong>/20 en QCM · <strong>${fr(e.qrc.note)}</strong>/20 en QRC</span><span class="muted">risque &lt; 6 : ${e.qcm.risk} % (QCM) · ${e.reliable ? 'fiable' : `indicatif, ${Math.round(e.coverage * 100)} % de la banque vue`} ›</span></button>`;
+}
+function estimateCard() {
+  if (!state.progress.attempts.length) return '';
+  const e = currentEstimate();
+  const row = (m, l) => `<tr><td>${l}</td><td><strong>${fr(e[m].note)}</strong> <span class="muted">(${fr(e[m].low)} à ${fr(e[m].high)})</span></td><td>${e[m].ec} %</td><td>${e[m].cac} %</td><td>${e[m].pass} %</td><td>${e[m].risk} %</td></tr>`;
+  const weaker = e.qcm.cac < e.qcm.ec ? 'CAC' : 'EC';
+  return `<div class="card"><h2>Estimation à l’épreuve</h2><table><thead><tr><th>Format</th><th>Note /20</th><th>EC</th><th>CAC</th><th>≥ 10</th><th>&lt; 6</th></tr></thead><tbody>${row('qcm', 'QCM')}${row('qrc', 'QRC')}</tbody></table>
+    <p class="muted">Pour chaque question de la banque, une chance de réussite d’après vos réponses (et, pour les questions jamais vues, votre réussite dans le même sous-thème) ; la note est celle d’un tirage de 10 EC + 10 CAC, la fourchette couvre deux tirages sur trois. Les examens blancs des 7 derniers jours comptent pour 40 %. ${e.reliable ? '' : `<strong>Estimation indicative</strong> tant que moins de 60 % de la banque est vue (${Math.round(e.coverage * 100)} %).`} Les QCM rédigés par IA peuvent flatter la note QCM.</p>
+    <p class="muted">Le plus rentable : la partie <strong>${weaker}</strong> (${Math.min(e.qcm.ec, e.qcm.cac)} % contre ${Math.max(e.qcm.ec, e.qcm.cac)} %).</p></div>`;
+}
+
 function pct(a) { return a && a.max ? Math.round((a.points / a.max) * 100) + ' %' : '–'; }
 
 const shortTitle = (file) => (state.fiches.find((f) => f.file === file)?.title || file).replace(/^(Schéma|Fiche)\s*\d+\s*[–-]\s*/, '');
+// Calendrier jusqu'à l'épreuve : aujourd'hui (figé) puis la projection des jours suivants sur ce qui reste.
+function calendar() {
+  const pr = state.progress; const d = ensureDaily();
+  const tomorrow = G.dayKey(Date.now() + DAY);
+  const undone = P.STEPS.filter((st) => st.kind === 'schema' && !pr.plan.done[st.id] && !d.steps.includes(st.id)).map((st) => st.id);
+  const later = d.n > 1 ? P.schedule(tomorrow, G.dayKey(examAt() || Date.now()), undone) : [];
+  return [{ key: todayKey(), ...d, today: true }, ...later];
+}
 views.plan = () => {
   const pr = state.progress; const cur = P.currentIndex(pr.plan);
+  const cal = calendar();
+  const stepDay = {}; cal.forEach((day) => day.steps.forEach((id) => { stepDay[id] = day; }));
+  const finalDay = { 'blanc-qcm': 4, 'blanc-qrc': 3, faibles: 2, veille: 1 };
+  const dayLabel = (day) => `${new Date(`${day.key}T12:00:00`).toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' })} · J-${day.n}`;
   setTimeout(() => {
     document.querySelectorAll('[data-step-done]').forEach((b) => { b.onclick = () => { const id = b.dataset.stepDone; if (pr.plan.done[id]) delete pr.plan.done[id]; else { pr.plan.done[id] = Date.now(); if (pr.plan.focus === id) delete pr.plan.focus; } persist(); render(); }; });
     document.querySelectorAll('[data-step-focus]').forEach((b) => { b.onclick = () => { pr.plan.focus = b.dataset.stepFocus; persist(); toast('Cette étape passe en premier dans vos nouvelles cartes'); render(); }; });
@@ -358,27 +482,41 @@ views.plan = () => {
       ? `${st.fiches.map((f) => `<button class="btn sm" data-open-fiche="${esc(f)}">📊 ${esc(shortTitle(f))}</button>`).join('')}${st.deep.length ? `<div class="muted" style="margin-top:6px">En détail : ${st.deep.map((f) => `<a href="#" data-open-fiche="${esc(f)}">${esc(shortTitle(f))}</a>`).join(' · ')}</div>` : ''}`
       : `<button class="btn sm" data-go="${st.action === 'weak' ? 'train' : st.action}">${st.action === 'exam' ? '⏱ Aller aux examens' : st.action === 'weak' ? '🎯 Mes questions les plus ratées' : '🔁 Réviser'}</button>`;
     return `<div class="card step ${done ? 'done' : ''} ${isCur ? 'cur' : ''}">
-      <div class="row" style="justify-content:space-between"><span class="muted">${esc(st.when)}${st.who ? ` · ${esc(st.who)}` : ''}</span>${done ? '<span class="badge">✔ terminée</span>' : isCur ? '<span class="badge warn">en cours</span>' : ''}</div>
+      <div class="row" style="justify-content:space-between"><span class="muted">${done ? 'faite' : stepDay[st.id] ? `prévue ${esc(dayLabel(stepDay[st.id]))}` : finalDay[st.id] && cal.find((x) => x.n === finalDay[st.id]) ? `prévue ${esc(dayLabel(cal.find((x) => x.n === finalDay[st.id])))}` : ''}${st.who ? ` · ${esc(st.who)}` : ''}</span>${done ? '<span class="badge">✔ terminée</span>' : isCur ? '<span class="badge warn">en cours</span>' : ''}</div>
       <strong>${i + 1}. ${esc(st.title)}</strong>
       ${prog ? `<div class="progress" style="margin:8px 0 4px"><div style="width:${prog.total ? Math.round((prog.seen / prog.total) * 100) : 0}%"></div></div><div class="muted">${prog.seen}/${prog.total} questions vues · ${prog.known} acquises</div>` : `<p class="muted" style="margin:6px 0">${esc(st.hint)}</p>`}
       <div class="btnrow" style="margin-top:8px;flex-wrap:wrap">${links}</div>
       <div class="btnrow" style="margin-top:8px"><button class="btn sm" data-step-done="${st.id}">${done ? '↩ Rouvrir' : '✔ Marquer terminée'}</button>${!done && !isCur && st.kind === 'schema' ? `<button class="btn sm" data-step-focus="${st.id}">Commencer par celle-ci</button>` : ''}</div></div>`;
   }).join('');
-  return `<div class="card"><h2>Parcours de départ</h2><p class="muted">Pour apprendre dans l’ordre quand on part de zéro. Chaque étape : lire le schéma, puis la session du jour (🔁 Réviser) fait venir en premier les questions de l’étape en cours. Les jours indiqués supposent 18 jours ; rattrapez ou avancez sans pression.</p><button class="btn primary" data-go="review">▶ Session du jour</button></div>${rows}`;
+  const calRows = cal.filter((day) => day.n >= 1).map((day) => {
+    const what = [
+      ...day.steps.map((id) => `📊 ${esc(P.stepById(id)?.title || id)}`),
+      day.exam ? `⏱ Examen blanc ${day.exam.toUpperCase()}` : '',
+      day.kind === 'faibles' ? '🎯 Points faibles et erreurs « j’étais sûr »' : '',
+      day.kind === 'veille' ? '🔁 Cartes à revoir uniquement, listes du palais, dormir' : '',
+      day.kind === 'consolidation' ? '🔁 Révisions, points faibles, jeux' : '',
+      day.today && day.target ? `➕ ${day.target} nouvelles questions` : '',
+    ].filter(Boolean);
+    return `<li class="${day.today ? 'today' : ''}"><div class="row" style="justify-content:space-between"><strong>${esc(dayLabel(day))}</strong><span class="badge ${day.today ? 'warn' : ''}">${day.today ? 'aujourd’hui' : esc(KIND_LABEL[day.kind])}</span></div><div class="muted">${what.join('<br>') || '🔁 Révisions'}</div></li>`;
+  }).join('');
+  return `<div class="card"><h2>Mon plan jusqu’au 10 novembre</h2><p class="muted">Recalculé chaque matin d’après ce qui reste et vos résultats : une étape non finie est reportée, le nombre de nouvelles questions est recalé pour tout avoir vu à J-3, le point faible et le jeu du jour suivent vos erreurs. Les quatre derniers jours sont fixes.</p>
+    <ol class="cal">${calRows}</ol><button class="btn primary" data-go="home">▶ Faire le plan du jour</button></div>
+    <details class="card"><summary><strong>Les 15 étapes du parcours</strong> <span class="muted">(détail, schémas, marquer une étape)</span></summary><div style="margin-top:10px">${rows}</div></details>`;
 };
 
 views.review = () => {
   if (!state.session) {
     const { queue } = buildQueue(state.bank.questions, state.progress.cards, queueOpts());
     state.session = { queue: [...queue], done: 0, total: queue.length, ok: 0 };
+    state.bonusNew = false;
   }
   const s = state.session;
   if (!s.queue.length) {
     const again = Object.values(state.progress.cards).filter((c) => c.due <= Date.now()).length;
     state.session = null;
     return `<div class="card center"><h2>Session terminée 🎉</h2><p>${s.done} cartes revues, ${s.ok} réussies du premier coup.</p>
-      ${again ? `<p class="muted">${again} carte(s) « Encore » reviennent dans 10 min.</p>` : ''}
-      <button class="btn primary" data-go="home">Retour à l’accueil</button></div>`;
+      ${again ? `<p class="muted">${again} carte(s) « Encore » reviennent dans 10 min.</p>` : ''}</div>
+      ${nextCard()}<button class="btn" data-go="home">Retour à l’accueil et plan du jour</button>`;
   }
   const q = s.queue[0];
   setTimeout(() => mountReviewCard(q), 0);
@@ -413,6 +551,7 @@ function gradeCurrent(q, g, mode, res = {}) {
   }
   s.queue.shift(); s.done += 1; if (g >= 2 && wasNew) s.ok += 1;
   if (g === 0) { s.queue.push(q); s.total += 1; }
+  if (wasNew) { const d = ensureDaily(); d.newDone = (d.newDone || 0) + 1; }
   state.progress.lastSession = Date.now();
   persist(); render();
 }
@@ -700,6 +839,7 @@ views.stats = () => {
   return `<div class="grid2"><div class="stat"><div class="n">${acc === null ? '–' : acc + ' %'}</div><div class="l">réussite (50 dernières)</div></div><div class="stat"><div class="n">${due7}</div><div class="l">à revoir sous 7 jours</div></div></div>
     <div class="card"><h2>Maîtrise par thème</h2><div class="muted" style="margin-bottom:8px"><i class="m3" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> acquise <i class="m2" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> en cours <i class="m1" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> apprentissage · gris = jamais vue</div>
       ${rows.map((r) => `<div class="mastery" style="margin:6px 0"><div><span class="badge ${r.p.toLowerCase()}">${r.p}</span> ${THEMES[r.t]}</div><div class="bar">${[3, 2, 1].map((k) => `<i class="m${k}" style="width:${(r.m[k] / Math.max(1, r.n)) * 100}%"></i>`).join('')}</div><div class="muted">${r.m[3]}/${r.n}</div></div>`).join('')}</div>
+    ${estimateCard()}
     ${calibrationCard()}
     ${recurringCard()}
     ${weakTags.length ? `<div class="card"><h2>Points faibles</h2><table><tbody>${weakTags.map(([k, v]) => `<tr><td>${k.replace(/_/g, ' ')}</td><td>${Math.round((v.ok / v.n) * 100)} % (${v.n})</td></tr>`).join('')}</tbody></table></div>` : ''}
@@ -771,7 +911,7 @@ views.settings = () => {
     };
   }, 0);
   return `<div class="card"><h2>Réglages</h2>
-    <label class="field">Nouvelles cartes par session<input type="number" id="s-new" min="0" max="100" value="${s.newPerDay}"></label>
+    <label class="field">Nouvelles cartes par jour, au minimum (le plan en demande plus s’il le faut pour tout voir à J-3)<input type="number" id="s-new" min="0" max="100" value="${s.newPerDay}"></label>
     <label class="field">Format de révision<select id="s-mode"><option value="mixte" ${s.mode === 'mixte' ? 'selected' : ''}>Mixte (alterne QCM / QRC)</option><option value="qcm" ${s.mode === 'qcm' ? 'selected' : ''}>QCM uniquement</option><option value="qrc" ${s.mode === 'qrc' ? 'selected' : ''}>QRC uniquement</option></select></label>
     <label class="field"><input type="checkbox" id="s-low" ${s.showLowConfidence ? 'checked' : ''}> Afficher le badge « à vérifier » sur les réponses de confiance faible</label>
     <label class="field"><input type="checkbox" id="s-conf" ${s.confidence ? 'checked' : ''}> Indice de certitude avant la correction (sûr / hésitant / au hasard)</label>
@@ -1173,7 +1313,7 @@ function initGamify() {
   checkBadges();
 }
 
-const STORE_EXPECTED = 3;
+const STORE_EXPECTED = 4;
 // Mélange de versions (cache hors ligne d'une ancienne version + code neuf) : on vide les caches, on force
 // le rechargement des fichiers puis on relance, une seule fois par session.
 async function recoverFromStaleCache() {
@@ -1182,7 +1322,7 @@ async function recoverFromStaleCache() {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
     await Promise.all((await caches.keys()).map((k) => caches.delete(k)));
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './sw.js']
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();
@@ -1201,7 +1341,8 @@ async function init() {
   $('#main').addEventListener('click', (e) => {
     const b = e.target.closest('[data-open-fiche]'); if (b) return ficheSheet(b.dataset.openFiche);
     const v = e.target.closest('[data-variants]'); if (v) return variantsSheet(v.dataset.variants);
-    const sn = e.target.closest('[data-step-next]'); if (sn) { state.progress.plan.done[sn.dataset.stepNext] = Date.now(); delete state.progress.plan.focus; persist(); toast('Étape terminée : la suivante prend le relais'); return render(); }
+    const nx = e.target.closest('[data-next]'); if (nx) return state.nextList[Number(nx.dataset.next)]?.run();
+    const other = e.target.closest('[data-next-other]'); if (other) { state.nextIdx++; return render(); }
     const g = e.target.closest('[data-game]'); if (g) return startGame(g.dataset.game);
   });
   try {

@@ -58,3 +58,48 @@ test('chaque schéma du parcours existe dans l’index réel des fiches', async 
   for (const st of STEPS) for (const f of [...(st.fiches || []), ...(st.deep || [])]) assert.ok(real.some((x) => x.file === f), f);
   for (const st of STEPS.filter((s) => s.kind === 'schema')) assert.ok(stepQuestionIds(st, real).length > 0, st.id);
 });
+
+import { schedule, newTarget, tagStats, adaptiveWeight, gameOfDay, daysUntil } from '../js/plan.js';
+import { estimate } from '../js/estimate.js';
+
+test('plan jour par jour : étapes réparties, quatre derniers jours fixes', () => {
+  const undone = STEPS.filter((s) => s.kind === 'schema').map((s) => s.id);
+  const days = schedule('2026-10-24', '2026-11-10', undone);
+  assert.equal(days.length, 17);
+  assert.equal(days[0].n, 17); assert.equal(days.at(-1).n, 1);
+  assert.deepEqual(days.flatMap((d) => d.steps), undone, 'chaque étape une fois, dans l’ordre');
+  assert.deepEqual(days.slice(-4).map((d) => [d.kind, d.exam]), [['blanc', 'qcm'], ['blanc', 'qrc'], ['faibles', null], ['veille', null]]);
+  assert.equal(days.find((d) => d.n === 10).exam, 'qcm');
+  // En retard : tout ce qui reste est tassé sur les jours d'étude restants.
+  const late = schedule('2026-11-03', '2026-11-10', undone);
+  assert.deepEqual(late.flatMap((d) => d.steps), undone);
+  assert.ok(late.slice(0, 3).every((d) => d.steps.length >= 3));
+  assert.equal(schedule('2026-11-10', '2026-11-10', [])[0].kind, 'jour-j');
+  assert.equal(daysUntil('2026-10-31', '2026-11-01'), 1);
+});
+test('objectif de nouvelles cartes : tout voir à J-3, allégé si beaucoup de cartes attendent', () => {
+  assert.equal(newTarget(320, 17, 20), 23);
+  assert.equal(newTarget(10, 17, 20), 10);
+  assert.equal(newTarget(320, 17, 20, 80), 12);
+  assert.equal(newTarget(50, 2, 20), 0);
+});
+test('adaptation : sous-thème faible en tête, point fort en retrait, jeu le plus raté', () => {
+  const byId = { a: { id: 'a', profession: 'EC', tags: ['lcb_ft'] }, b: { id: 'b', profession: 'EC', tags: ['honoraires'] } };
+  const att = [...Array(4)].map(() => ({ id: 'a', ok: false })).concat([...Array(6)].map(() => ({ id: 'b', ok: true })));
+  const ts = tagStats(att, byId);
+  assert.equal(ts.weak[0].tag, 'lcb_ft'); assert.equal(ts.strong[0].tag, 'honoraires');
+  assert.ok(adaptiveWeight(byId.a, ts, 0) > adaptiveWeight({ profession: 'EC', tags: ['x'] }, ts, 0));
+  assert.ok(adaptiveWeight(byId.b, ts, 0) < 0);
+  assert.equal(gameOfDay('2026-10-24', { 'num:1': { ok: 1, n: 6 }, 'duel:1': { ok: 9, n: 10 } }), 'chiffres');
+});
+test('estimation : monte avec les réussites, risque d’éliminatoire cohérent', () => {
+  const questions = [...Array(40)].map((_, i) => ({ id: `q${i}`, profession: i < 20 ? 'EC' : 'CAC', tags: ['t'] }));
+  const none = estimate({ questions, stats: { q: {} }, cards: {}, attempts: [] });
+  const q = {}; const attempts = [];
+  questions.forEach((x) => { q[x.id] = { seen: 3, ok: 3, ko: 0, last: 'ok' }; for (let k = 0; k < 3; k++) attempts.push({ id: x.id, ok: true, mode: 'qcm' }); });
+  const good = estimate({ questions, stats: { q }, cards: {}, attempts });
+  assert.ok(good.qcm.note > 14 && none.qcm.note < 8, `${none.qcm.note} → ${good.qcm.note}`);
+  assert.ok(good.qcm.risk < 1 && none.qcm.risk > 30);
+  assert.ok(good.qrc.note < good.qcm.note, 'produire est plus dur que reconnaître');
+  assert.equal(good.reliable, true); assert.equal(none.reliable, false);
+});
