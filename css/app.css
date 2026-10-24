@@ -396,37 +396,41 @@ nav.bottom button { font-size: 10px; }
   padding: calc(8px + var(--top-safe)) 14px 8px; background: linear-gradient(var(--f-paper) 70%, rgba(243, 238, 230, 0)); font-size: 14px; color: var(--f-muted); font-weight: 700; }
 .feed-x { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--f-ink); background: #fff; color: var(--f-ink); font-size: 15px; font-weight: 800; cursor: pointer; }
 .feed-scroll { height: 100%; overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
-.sh { min-height: 100%; scroll-snap-align: start; scroll-snap-stop: always; display: flex; position: relative; overflow: hidden;
-  padding: calc(58px + var(--top-safe)) 20px calc(16px + env(safe-area-inset-bottom)); }
-.sh-in { position: relative; width: 100%; max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+/* Un short = un écran : la scène se réduit pour laisser la place au texte et à la question ; au-delà, le short défile. */
+.sh { height: 100%; scroll-snap-align: start; scroll-snap-stop: always; display: flex; position: relative; overflow: hidden;
+  padding: calc(64px + var(--top-safe)) 0 0; }
+.sh-in { position: relative; width: 100%; max-width: 520px; height: 100%; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;
+  overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0 20px calc(16px + env(safe-area-inset-bottom)); }
+.sh-in > *, .sh-lesson > * { flex-shrink: 0; }
 .sh-in.center { justify-content: center; text-align: center; align-items: stretch; }
 .sh-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; color: var(--f-muted); }
 .sh-top span:last-child { text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .sh-chip { flex: none; padding: 5px 10px; border-radius: 99px; background: var(--f-ink); color: var(--f-paper); }
 .sh-title { margin: 0; font-size: clamp(26px, 7.6vw, 34px); line-height: 1.03; font-weight: 800; letter-spacing: -.02em; }
 /* Scène */
-.sh-stage { position: relative; height: clamp(250px, 38vh, 330px); margin: 0 -20px; overflow: hidden; flex: none; }
-.sh-stage.small { height: clamp(170px, 26vh, 220px); }
+.sh-stage { position: relative; flex: 1 1 260px; min-height: 130px; max-height: 300px; margin: 0 -20px; overflow: hidden; }
+.sh-lesson { flex: 1 1 auto; min-height: 0; }
+.sh.asking .sh-lesson { flex: none; }
 .sh-ground { position: absolute; left: -10%; right: -10%; bottom: 0; height: 24%; background: var(--f-ground); border-radius: 50% 50% 0 0 / 40% 40% 0 0; }
-.sh-disc { position: absolute; bottom: 6%; width: 58%; aspect-ratio: 1; border-radius: 50%; }
-.sh-disc.l { left: -8%; } .sh-disc.r { right: -8%; } .sh-disc.c { left: 21%; }
-.sh-actor { position: absolute; bottom: 0; width: 33%; max-width: 150px; }
-.sh-actor.l { left: 7%; } .sh-actor.r { right: 7%; } .sh-actor.c { left: 50%; margin-left: min(-16.5%, -75px); }
-.small .sh-actor { width: 25%; max-width: 110px; } .small .sh-actor.c { margin-left: min(-12.5%, -55px); }
-.sh-actor .pers { display: block; width: 100%; height: auto; }
+.sh-disc { position: absolute; bottom: 4%; height: 96%; aspect-ratio: 1; border-radius: 50%; }
+.sh-disc.l { left: -12%; } .sh-disc.r { right: -12%; } .sh-disc.c { left: 50%; translate: -50% 0; }
+.sh-actor { position: absolute; bottom: 0; height: 84%; aspect-ratio: 164 / 240; }
+.sh-actor.l { left: 6%; } .sh-actor.r { right: 6%; } .sh-actor.c { left: 50%; translate: -50% 0; }
+.sh-actor > .idle { height: 100%; }
+.sh-actor .pers { display: block; height: 100%; width: auto; }
 .sh-name { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); padding: 3px 9px; border-radius: 99px; color: #fff; font-size: 12px; font-weight: 800; white-space: nowrap; }
-.sh-signW { position: absolute; top: 5%; max-width: 46%; z-index: 1; } .sh-signW.l { left: 4%; } .sh-signW.r { right: 4%; }
+.sh-signs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+.sh-signs > div:last-child { justify-self: end; text-align: right; }
 .sh-sign { background: #fff; border: 2.5px solid var(--f-ink); border-radius: 12px; padding: 8px 11px; font-size: 18px; font-weight: 800; line-height: 1.1; box-shadow: 0 3px 0 var(--f-ink); }
 .sh-sign strong { font-weight: 800; }
 .sh-prop { position: absolute; width: 56px; } .sh-prop.mid { left: 50%; margin-left: -28px; top: 44%; } .sh-prop.side { right: 10%; top: 40%; }
 .ico { display: block; width: 100%; height: auto; }
-.sh-bigW { position: absolute; top: 3%; left: 0; right: 0; text-align: center; }
+.sh-bigW { text-align: center; }
 .sh-big { font-size: clamp(50px, 15vw, 78px); font-weight: 800; line-height: .95; letter-spacing: -.04em; }
-.sh-bubbleW { position: absolute; top: 4%; left: 6%; right: 6%; z-index: 1; }
 .sh-bubble { position: relative; background: #fff; border-radius: 18px; padding: 12px 15px; font-size: 18px; font-weight: 700; line-height: 1.25; box-shadow: 0 3px 0 rgba(0, 0, 0, .1); }
 .sh-bubble::after { content: ""; position: absolute; bottom: -8px; left: 50%; margin-left: -8px; width: 16px; height: 16px; background: #fff; transform: rotate(45deg); border-radius: 3px; }
-.sh-thinkW { position: absolute; top: 4%; } .sh-thinkW.l { left: 12%; } .sh-thinkW.c { left: 50%; margin-left: 30px; }
-.sh-think { width: 52px; height: 52px; border-radius: 50%; background: #fff; border: 2.5px solid var(--f-ink); display: grid; place-items: center; font-size: 30px; font-weight: 800; animation: sh-think 1.2s ease-in-out infinite; }
+.sh-thinkW { position: absolute; top: -2%; right: -14%; }
+.sh-think { width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 2.5px solid var(--f-ink); display: grid; place-items: center; font-size: 26px; font-weight: 800; animation: sh-think 1.2s ease-in-out infinite; }
 .sh-narr { background: #fff; border-left: 6px solid #2b3a67; border-radius: 12px; padding: 12px 14px; font-size: 17px; font-weight: 600; line-height: 1.32; }
 /* Cartes simples et schémas */
 .sh-card { border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
@@ -483,7 +487,15 @@ nav.bottom button { font-size: 10px; }
 @keyframes sh-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
 @keyframes sh-think { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
 @media (prefers-reduced-motion: reduce) { .sh .a, .sh .idle, .sh-think { animation: none; } }
-@media (max-height: 740px) { .sh-title { font-size: 24px; } .sh-stage { height: 33vh; } .sh-sign { font-size: 16px; } .sh-bubble { font-size: 16px; } .sh-narr { font-size: 15px; } }
+@media (max-height: 740px) { .sh-title { font-size: 24px; } .sh-sign { font-size: 16px; } .sh-bubble { font-size: 16px; } .sh-narr { font-size: 15px; } .sh-big { font-size: 48px; } }
 html.feed-open, html.feed-open body { background: #f3eee6; }
 .feed .btn.primary { border-color: var(--f-ink); }
 .sh-foot .linkbtn { white-space: nowrap; }
+#feed-count { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sh-actor.l .sh-name { left: 0; transform: none; } .sh-actor.r .sh-name { left: auto; right: 0; transform: none; }
+/* Écrans chargés (cas pratiques à quatre réponses) : scène plus basse, réponses plus serrées. */
+.sh.t-cas .sh-stage { min-height: 92px; }
+.sh.t-cas .sh-narr { font-size: 16px; padding: 10px 13px; }
+.sh .sh-choices .btn { min-height: 44px; padding: 9px 14px; font-size: 15px; }
+.sh .sh-choices.two .btn { min-height: 52px; font-size: 20px; }
+.sh .sh-qq { font-size: 18px; margin-bottom: 8px; }

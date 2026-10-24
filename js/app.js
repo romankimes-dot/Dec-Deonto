@@ -1090,22 +1090,23 @@ function shortHtml(s, i) {
   const cast = SC.castFor(s);
   const sides = cast.length === 2 ? ['l', 'r'] : ['c'];
   const lesson = ['duel', 'chiffre', 'liste'].includes(s.type);
-  const small = s.type === 'cas';
   const scenic = s.type === 'duel' || s.type === 'cas' || (s.type !== 'liste' && Number(s.id.split('-').pop()) % 2 === 0);
   const soft = SC.CAST[cast[0]].soft;
   const discs = cast.map((k, n) => `<div class="sh-disc ${sides[n]} a pop" style="--d:${0.2 + n * 0.1}s;background:${SC.CAST[k].soft}"></div>`).join('');
-  const actors = cast.map((k, n) => a(0.4 + n * 0.25, `<div class="idle" style="animation-delay:${-n * 1.1}s">${SC.person(k)}</div><span class="sh-name" style="background:${SC.CAST[k].color}">${SC.CAST[k].name}</span>`, `sh-actor ${sides[n]} ${sides[n] === 'l' ? 'inL' : sides[n] === 'r' ? 'inR' : 'up'}`)).join('');
+  const think = s.type === 'cas' ? a(1.4, '<div class="sh-think">?</div>', 'pop sh-thinkW') : '';
+  const actors = cast.map((k, n) => a(0.4 + n * 0.25, `<div class="idle" style="animation-delay:${-n * 1.1}s">${SC.person(k)}</div>${n === 0 ? think : ''}<span class="sh-name" style="background:${SC.CAST[k].color}">${SC.CAST[k].name}</span>`, `sh-actor ${sides[n]} ${sides[n] === 'l' ? 'inL' : sides[n] === 'r' ? 'inR' : 'up'}`)).join('');
   const prop = (d, where) => a(d, SC.icon(SC.propFor(s.tags)), `pop sh-prop ${where}`);
   const stamp = (x, d) => (x ? a(d, `<div class="sh-stamp">${md(x)}</div>`, 'stampIn sh-stampW') : '');
   let head = s.title; let over = ''; let stageExtra = ''; let below = ''; let t = 0;
   if (s.type === 'duel') {
     head = s.q;
-    stageExtra = a(1.2, `<div class="sh-sign" style="color:${SC.CAST.ec.color}">${md(s.ec.main)}</div>`, 'pop sh-signW l')
-      + a(1.9, `<div class="sh-sign" style="color:${SC.CAST.cac.color}">${md(s.cac.main)}</div>`, 'pop sh-signW r') + prop(2.5, 'mid');
+    over = `<div class="sh-signs">${a(1.2, `<div class="sh-sign" style="color:${SC.CAST.ec.color}">${md(s.ec.main)}</div>`, 'pop')}${a(1.9, `<div class="sh-sign" style="color:${SC.CAST.cac.color}">${md(s.cac.main)}</div>`, 'pop')}</div>`;
+    stageExtra = prop(2.5, 'mid');
     below = stamp(s.trap, 3) + a(3.4, `<details class="sh-more"><summary>Le détail</summary><p><b style="color:${SC.CAST.ec.color}">EC</b> ${md(s.ec.det)}</p><p><b style="color:${SC.CAST.cac.color}">CAC</b> ${md(s.cac.det)}</p></details>`);
     t = 3.6;
   } else if (s.type === 'chiffre') {
-    stageExtra = a(1, `<div class="sh-big">${md(s.big)}</div>`, 'pop sh-bigW') + prop(1.6, cast.length === 2 ? 'mid' : 'side');
+    over = a(1, `<div class="sh-big">${md(s.big)}</div>`, 'pop sh-bigW');
+    stageExtra = prop(1.6, cast.length === 2 ? 'mid' : 'side');
     if (!scenic) over = a(0.2, `<div class="sh-card" style="background:${soft}">${SC.icon(SC.propFor(s.tags))}<div class="sh-big">${md(s.big)}</div></div>`, 'pop');
     below = a(1.8, `<div class="sh-label">${md(s.label)}</div>`) + stamp(s.trap, 2.5) + (s.det ? a(2.9, `<details class="sh-more"><summary>Le détail</summary><p>${md(s.det)}</p></details>`) : '');
     t = 3.1;
@@ -1116,17 +1117,18 @@ function shortHtml(s, i) {
     t = 0.5 + s.items.length * 0.5; below += stamp(s.trap, t); t += 0.4;
   } else if (s.type === 'cas') {
     over = a(0.3, `<div class="sh-narr">${md(s.situation)}</div>`);
-    stageExtra = a(1.4, '<div class="sh-think">?</div>', `pop sh-thinkW ${sides[0]}`) + prop(1.1, 'mid');
+    stageExtra = prop(1.1, 'mid');
     t = 1.6;
   } else if (s.type === 'vf') {
-    stageExtra = a(0.9, `<div class="sh-bubble">${md(s.statement)}</div>`, 'pop sh-bubbleW') + prop(1.4, cast.length === 2 ? 'mid' : 'side');
+    over = a(0.9, `<div class="sh-bubble">${md(s.statement)}</div>`, 'pop');
+    stageExtra = prop(1.4, cast.length === 2 ? 'mid' : 'side');
     if (!scenic) over = a(0.2, `<div class="sh-card quote" style="background:${soft}">${SC.icon(SC.propFor(s.tags))}<p>${md(s.statement)}</p></div>`, 'pop');
     t = 1.2;
   }
   const quiz = s.type === 'vf'
     ? `<div class="sh-qq">Vrai ou faux ?</div><div class="sh-choices two"><button class="btn" data-sh-c="1">Vrai</button><button class="btn" data-sh-c="0">Faux</button></div>`
     : `<div class="sh-qq">${md(s.quiz.q)}</div><div class="sh-choices">${s.quiz.choices.map((c, k) => `<button class="btn" data-sh-c="${k}">${md(c)}</button>`).join('')}</div>`;
-  const scene = scenic ? `${over}<div class="sh-stage ${small ? 'small' : ''}">${discs}<div class="sh-ground"></div>${actors}${stageExtra}</div>${below}` : `${over}${below}`;
+  const scene = scenic ? `${over}<div class="sh-stage">${discs}<div class="sh-ground"></div>${actors}${stageExtra}</div>${below}` : `${over}${below}`;
   return `<section class="sh t-${s.type}" data-i="${i}" data-id="${esc(s.id)}"><div class="sh-in">
     <div class="sh-top"><span class="sh-chip">${SHORT_KIND[s.type]}</span><span>${esc(s.title !== head ? s.title : st?.title || '')}</span></div>
     ${a(0.05, `<h2 class="sh-title">${md(head)}</h2>`)}
