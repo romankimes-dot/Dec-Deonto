@@ -173,7 +173,7 @@
 
  { "id": "institutions-27", "type": "cas", "prof": "CAC", "tags": ["cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
    "title": "Présider une CRCC", "situation": "Léa est CAC, à jour de ses cotisations, et exerce au 30 juin de l'année d'expiration des mandats. Elle se porte candidate à la présidence de sa CRCC.",
-   "quiz": { "q": "Que doit-elle exercer en plus, à cette date ?", "choices": ["Rien de plus : elle est éligible", "Deux mandats dans des EIP", "Une mission ALPE", "Au moins une mission de certification"], "answer": 3, "why": "Le président doit exercer au moins une **mission de certification** à cette date." },
+   "quiz": { "q": "Que doit-elle exercer en plus, à cette date ?", "choices": ["Rien de plus : elle est éligible", "Deux mandats dans des EIP", "Une mission d'expertise comptable", "Au moins une mission de certification"], "answer": 3, "why": "Le président doit exercer au moins une **mission de certification** à cette date." },
    "src": ["le président doit exercer au moins une mission de certification à cette date"] },
 
  { "id": "institutions-28", "type": "chiffre", "prof": "CAC", "tags": ["cncc_crcc_organisation", "honoraires_bareme"], "fiche": "05-cac-exercice.md",
@@ -188,8 +188,8 @@
    "src": ["les CAC saisissent le président de leur CRCC ou, s'ils relèvent de compagnies régionales distinctes, le président de leur compagnie respective"] },
 
  { "id": "institutions-30", "type": "cas", "prof": "CAC", "tags": ["prestations_declaration_activite", "cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
-   "title": "Notifier une nomination", "situation": "Un CAC vient d'obtenir une mission de certification.",
-   "quiz": { "q": "Dans quel délai notifie-t-il sa nomination au conseil régional de la compagnie ?", "choices": ["30 jours", "15 jours", "8 jours"], "answer": 2, "why": "La nomination est notifiée au conseil régional **dans les 8 jours**, par lettre recommandée ou par voie électronique." },
+   "title": "Notifier une nomination", "situation": "Un CAC vient d'être nommé à un mandat de commissaire aux comptes.",
+   "quiz": { "q": "Dans quel délai sa nomination est-elle notifiée au conseil régional de la compagnie ?", "choices": ["30 jours", "15 jours", "8 jours"], "answer": 2, "why": "La nomination est notifiée au conseil régional **dans les 8 jours**, par lettre recommandée ou par voie électronique." },
    "src": ["est notifiée au conseil régional de la compagnie dans les 8 jours, par lettre recommandée ou par voie électronique"] },
 
  { "id": "institutions-31", "type": "liste", "prof": "CAC", "tags": ["prestations_declaration_activite", "cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
@@ -215,7 +215,7 @@
  { "id": "institutions-33", "type": "vf", "prof": "CAC", "tags": ["h2a_supervision", "discipline_sanctions"], "fiche": "05-cac-exercice.md",
    "title": "La H2A et l'appel", "statement": "La H2A est l'instance d'appel des commissions régionales de discipline des commissaires aux comptes.", "verdict": false,
    "why": "La H2A **n'est pas** une instance d'appel : les commissions régionales de discipline **n'existent plus**.",
-   "src": ["n'est pas une instance d'appel"] },
+   "src": ["n'est pas une instance d'appel des « commissions régionales de discipline », qui n'existent plus"] },
 
  { "id": "institutions-34", "type": "chiffre", "prof": "CAC", "tags": ["h2a_supervision", "nep"], "fiche": "05-cac-exercice.md",
    "title": "Commissions de normalisation", "big": "2 commissions", "label": "Commissions de normalisation placées auprès de la H2A pour élaborer les projets de NEP",
@@ -237,9 +237,9 @@
    "title": "Instance nationale", "q": "Quelle est l'instance nationale ?",
    "ec": { "main": "**Conseil national de l'Ordre**", "det": "Ex-Conseil supérieur, renommé par la **loi 2022-172**." },
    "cac": { "main": "**CNCC**", "det": "**Établissement d'utilité publique**." },
-   "trap": "La H2A supervise la profession : c'est une autorité publique indépendante.",
-   "quiz": { "q": "Quelle instance nationale est un établissement d'utilité publique ?", "choices": ["La H2A", "Le Conseil national de l'Ordre", "La CNCC"], "answer": 2, "why": "La **CNCC** est un établissement d'utilité publique. La H2A est une autorité publique indépendante ; le Conseil national est celui de l'Ordre des EC." },
-   "src": ["Conseil national de l'Ordre (ex-Conseil supérieur, renommé par la loi 2022-172)", "CNCC, établissement d'utilité publique"] },
+   "trap": "La H2A, autorité publique indépendante, assure la supervision publique des CAC : ce n'est pas l'instance nationale.",
+   "quiz": { "q": "Quelle est l'instance nationale des commissaires aux comptes ?", "choices": ["La CRCC", "Le Conseil national de l'Ordre", "La CNCC"], "answer": 2, "why": "La **CNCC**, établissement d'utilité publique. Le Conseil national de l'Ordre est l'instance nationale des EC ; la CRCC est l'instance régionale du CAC." },
+   "src": ["Conseil national de l'Ordre (ex-Conseil supérieur, renommé par la loi 2022-172)", "CNCC, établissement d'utilité publique", "H2A (ex-H3C), autorité publique indépendante", "CRCC, dans le ressort des cours d'appel"] },
 
  { "id": "institutions-37", "type": "duel", "prof": "EC+CAC", "tags": ["ordre_organisation", "cncc_crcc_organisation"], "fiche": "12-schema-institutions-ec-cac.md",
    "title": "Instance régionale", "q": "Quelle est l'instance régionale ?",
@@ -263,11 +263,11 @@
    "title": "Société de CAC : 3 conditions", "q": "Les trois conditions d'inscription d'une société",
    "items": [
      { "k": "Droits de vote", "v": "La **majorité** détenue par des CAC (ou des contrôleurs légaux de l'UE)" },
-     { "k": "Organes", "v": "**Majorité** des membres des organes de gestion, d'administration, de direction ou de surveillance" },
+     { "k": "Organes : majorité de CAC", "v": "Membres des organes de gestion, d'administration, de direction ou de surveillance" },
      { "k": "Dirigeants", "v": "Gérant, président, DG, membres du directoire : des **CAC**" } ],
    "trap": "Société d'EC : plus de **2/3** des droits de vote. Société de CAC : la **majorité**.",
    "quiz": { "q": "Dans une société de CAC, les dirigeants (gérant, président, DG, directoire) sont…", "choices": ["Des experts-comptables", "Des CAC", "Des salariés de l'entité contrôlée"], "answer": 1, "why": "Les **dirigeants** doivent être des **CAC**, comme la majorité des droits de vote et la majorité des membres des organes." },
-   "src": ["La majorité des droits de vote est détenue par des CAC (ou des contrôleurs légaux de l'UE)", "La majorité des membres des organes de gestion, d'administration, de direction ou de surveillance sont des CAC", "Les dirigeants (gérant, président, DG, membres du directoire) sont des CAC"] },
+   "src": ["La majorité des droits de vote est détenue par des CAC (ou des contrôleurs légaux de l'UE)", "La majorité des membres des organes de gestion, d'administration, de direction ou de surveillance sont des CAC", "Les dirigeants (gérant, président, DG, membres du directoire) sont des CAC", "plus de 2/3 aux EC dans une société d'EC ; la majorité aux CAC dans une société de CAC"] },
 
  { "id": "institutions-41", "type": "vf", "prof": "CAC", "tags": ["inscription_liste", "cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
    "title": "Forme d'exercice du CAC", "statement": "Un commissaire aux comptes peut exercer sous la forme d'une association.", "verdict": false,
@@ -281,7 +281,7 @@
    "src": ["120 heures sur 3 années consécutives, avec au moins 20 heures par an", "Déclaration annuelle des heures à la CRCC", "n'a pas exercé pendant 3 ans et n'a pas respecté l'obligation : 40 heures"] },
 
  { "id": "institutions-43", "type": "cas", "prof": "EC", "tags": ["personnes_physiques", "lettre_mission"], "fiche": "01-ec-exercice.md",
-   "title": "IR du dirigeant d'un client", "situation": "Un cabinet, déjà chargé de la SARL de M. Zen, doit établir la déclaration d'impôt sur le revenu de son dirigeant.",
+   "title": "IR du dirigeant d'un client", "situation": "Un cabinet, déjà chargé de la SARL dirigée par M. Zen, doit établir la déclaration d'impôt sur le revenu de M. Zen.",
    "quiz": { "q": "Que prévoit le cabinet pour cette mission ?", "choices": ["Une lettre de mission propre, signée avec M. Zen", "Rien : la lettre de mission de la SARL suffit", "Rien : la mission n'est pas permise à l'EC"], "answer": 0, "why": "Les missions déclaratives des **personnes physiques** (ex. l'IR d'un dirigeant) se font avec une **lettre de mission propre**, signée avec cette personne." },
    "src": ["missions déclaratives (fiscales, sociales, administratives) des personnes physiques, par exemple l'IR d'un dirigeant, avec une lettre de mission propre signée avec cette personne"] },
 

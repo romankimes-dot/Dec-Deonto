@@ -86,17 +86,6 @@
    "why": "Il vise la **structure d'exercice**, les **EC inscrits au tableau** et les **salariés autorisés**. Les **stagiaires** ne sont **pas** contrôlés.",
    "src": ["la structure d'exercice", "les salariés autorisés (art. 83 ter et 83 quater)", "Pas les stagiaires."] },
 
- { "id": "controle-14", "type": "liste", "prof": "EC", "tags": ["controle_qualite"], "fiche": "03-ec-controle-qualite.md",
-   "title": "Affecter le personnel aux missions", "q": "Critères d'affectation du personnel (NPMQ)",
-   "items": [
-     { "k": "Missions similaires", "v": "Expérience ou compréhension de missions similaires" },
-     { "k": "Normes et obligations", "v": "Compréhension des normes et des obligations légales" },
-     { "k": "Expertise technique", "v": "Connaissances et expertises techniques appropriées" },
-     { "k": "Secteurs d'activité", "v": "Connaissance des secteurs d'activité de l'entité" },
-     { "k": "Jugement professionnel", "v": "Capacité d'exercer un jugement professionnel" } ],
-   "trap": "Ces critères servent aussi à fixer le niveau de supervision.",
-   "quiz": { "q": "Lequel ne figure PAS parmi ces critères ?", "choices": ["La connaissance des secteurs d'activité", "La disponibilité du personnel", "L'expérience de missions similaires", "La capacité d'exercer un jugement professionnel"], "answer": 1, "why": "La **disponibilité** et l'**indépendance** ne figurent pas dans cette liste. Ces critères servent aussi à fixer le **niveau de supervision**." },
-   "src": ["Expérience ou compréhension de missions similaires", "Connaissance des secteurs d'activité de l'entité", "Capacité d'exercer un jugement professionnel", "La disponibilité et l'indépendance ne figurent pas dans cette liste."] },
 
  { "id": "controle-15", "type": "liste", "prof": "EC", "tags": ["controle_qualite"], "fiche": "03-ec-controle-qualite.md",
    "title": "Revue de dossiers", "q": "La revue de dossiers, dans la NPMQ",
@@ -107,10 +96,5 @@
      { "k": "Objet", "v": "Revue détaillée des travaux réalisés" } ],
    "trap": "À ne pas confondre avec la revue indépendante, réservée à certaines missions.",
    "quiz": { "q": "Qui réalise la revue indépendante d'une mission ?", "choices": ["Une personne qui n'a pas participé à la mission", "Un membre de l'équipe de niveau supérieur", "Le contrôleur de l'Ordre"], "answer": 0, "why": "La revue indépendante est faite par une personne qui n'a **pas participé** à la mission, **achevée** au plus tard à la **date du rapport**. La revue de dossiers relève de l'**équipe**." },
-   "src": ["Un membre de l'équipe de niveau supérieur, en général l'EC responsable ou un chef de mission", "Tout au long de la mission", "Revue détaillée des travaux réalisés", "Une personne qui n'a pas participé à la mission"] },
-
- { "id": "controle-16", "type": "cas", "prof": "EC", "tags": ["controle_qualite"], "fiche": "03-ec-controle-qualite.md",
-   "title": "La NPMQ d'un petit cabinet", "situation": "Un petit cabinet d'expertise comptable estime que la NPMQ ne le concerne pas, vu sa taille.",
-   "quiz": { "q": "Qu'en est-il ?", "choices": ["Les petites structures en sont dispensées", "La NPMQ vise surtout les missions comptables", "Aucune dispense : la formalisation est proportionnée à la taille"], "answer": 2, "why": "La NPMQ s'applique à **toute structure**, **quelle que soit sa taille**, et à **toutes les missions**. **Aucune dispense** : seule la **formalisation** est **proportionnée**." },
-   "src": ["Elle s'applique à toute structure d'exercice, quelle que soit sa taille, et à toutes les missions du cabinet", "Il n'existe aucune dispense pour les petites structures, mais la formalisation est proportionnée à la taille."] }
+   "src": ["Un membre de l'équipe de niveau supérieur, en général l'EC responsable ou un chef de mission", "Tout au long de la mission", "Revue détaillée des travaux réalisés", "Une personne qui n'a pas participé à la mission"] }
 ]}
