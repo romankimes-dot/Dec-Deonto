@@ -1,0 +1,103 @@
+{ "step": "discipline", "shorts": [
+ { "id": "discipline-01", "type": "duel", "prof": "EC+CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
+   "title": "Qui juge ?", "q": "Quelle instance juge le professionnel ?",
+   "ec": { "main": "**Chambres de discipline**", "det": "Chambre régionale présidée par un magistrat. Appel : chambre nationale. Cassation : Conseil d'État." },
+   "cac": { "main": "**Commission des sanctions**", "det": "**Séparée** du collège de la H2A. Recours devant le Conseil d'État, de pleine juridiction." },
+   "trap": "Discipline ordinale pour l'EC, sanctions administratives pour le CAC.",
+   "quiz": { "q": "Quelle instance juge un CAC poursuivi par la H2A ?", "choices": ["La chambre régionale de discipline", "La commission des sanctions", "La chambre nationale de discipline"], "answer": 1, "why": "Le CAC est jugé par la **commission des sanctions**, séparée du collège. Les chambres de discipline sont celles de l'**EC**." },
+   "src": ["Commission des sanctions, séparée du collège", "Chambre régionale de discipline, présidée par un magistrat de l'ordre judiciaire"] },
+
+ { "id": "discipline-02", "type": "duel", "prof": "EC+CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
+   "title": "Sanction pécuniaire", "q": "Une sanction pécuniaire est-elle possible ?",
+   "ec": { "main": "**Non**", "det": "Sauf en matière **LCB-FT** : sanction pécuniaire, interdiction temporaire, publication." },
+   "cac": { "main": "**Oui**", "det": "**250 000 €** au plus pour une personne physique." },
+   "trap": "Chez l'EC, pas d'amende en dehors de la LCB-FT.",
+   "quiz": { "q": "Quel est le plafond de la sanction pécuniaire d'un CAC personne physique ?", "choices": ["250 000 €", "500 000 €", "50 000 €"], "answer": 0, "why": "Plafond : **250 000 €** pour un CAC personne physique. Chez l'EC, pas de sanction pécuniaire, sauf en matière LCB-FT." },
+   "src": ["250 000 € au plus (personne physique)", "Non, sauf en matière LCB-FT (sanction pécuniaire, interdiction temporaire, publication)"] },
+
+ { "id": "discipline-03", "type": "duel", "prof": "EC+CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
+   "title": "Qui est justiciable ?", "q": "Qui peut être sanctionné ?",
+   "ec": { "main": "**EC, sociétés, stagiaires**", "det": "Aussi les **AGC** et les salariés autorisés (83 ter / quater)." },
+   "cac": { "main": "**CAC et auditeurs de durabilité**", "det": "Personnes et sociétés, membres des comités d'audit, contrôleurs de pays tiers… **Pas l'EC**." },
+   "trap": "Un stagiaire EC peut être sanctionné.",
+   "quiz": { "q": "Qui est justiciable du régime de sanctions de la H2A ?", "choices": ["Les CAC et auditeurs de durabilité", "Les EC et les CAC", "Les stagiaires EC seulement"], "answer": 0, "why": "Le régime H2A vise les **CAC**, les auditeurs de durabilité, les membres des comités d'audit, etc. **Pas l'EC**, qui relève de la discipline ordinale." },
+   "src": ["EC et sociétés inscrites, AGC, salariés autorisés (83 ter / quater), stagiaires", "CAC (personnes et sociétés), auditeurs de durabilité, membres des comités d'audit, contrôleurs de pays tiers… Pas l'EC"] },
+
+ { "id": "discipline-04", "type": "liste", "prof": "EC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
+   "title": "Les sanctions de l'EC", "q": "Les cinq sanctions de l'EC, de la plus légère à la plus lourde",
+   "items": [
+     { "k": "Réprimande" },
+     { "k": "Blâme", "v": "Avec inscription au dossier" },
+     { "k": "Suspension avec sursis", "v": "À durée déterminée" },
+     { "k": "Suspension sans sursis" },
+     { "k": "Radiation", "v": "Du tableau, avec interdiction définitive d'exercer" } ],
+   "trap": "Ni remontrance, ni avertissement, ni amende dans cette liste.",
+   "quiz": { "q": "Laquelle de ces mesures n'est pas une sanction disciplinaire de l'EC ?", "choices": ["Réprimande", "Blâme", "Radiation", "Amende"], "answer": 3, "why": "Remontrance, avertissement et **amende** ne figurent pas dans la liste de l'EC. Elle compte réprimande, blâme, suspension et radiation." },
+   "src": ["Réprimande · 2. Blâme avec inscription au dossier · 3. Suspension à durée déterminée avec sursis · 4. Suspension sans sursis · 5. Radiation du tableau avec interdiction définitive d'exercer", "ne figurent pas dans la liste de l'ord. art. 53 (EC)"] },
+
+ { "id": "discipline-05", "type": "liste", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
+   "title": "Les sanctions du CAC", "q": "Les sanctions de la H2A contre un CAC (extrait de la liste)",
+   "items": [
+     { "k": "Avertissement" },
+     { "k": "Blâme" },
+     { "k": "Interdiction temporaire d'exercer", "v": "3 ans au plus depuis 2024" },
+     { "k": "Radiation" },
+     { "k": "Sanction pécuniaire", "v": "250 000 € au plus pour une personne physique" } ],
+   "trap": "Existent aussi : retrait de l'honorariat, interdiction temporaire de fonctions de direction, publication.",
+   "quiz": { "q": "Laquelle de ces sanctions existe pour le CAC ?", "choices": ["Réprimande", "Suspension avec sursis", "Avertissement", "Remontrance"], "answer": 2, "why": "L'**avertissement** existe chez le CAC. Réprimande et suspension sont des sanctions de l'**EC**." },
+   "src": ["Avertissement · Blâme · Interdiction temporaire d'exercer (3 ans au plus depuis 2024) · Radiation · Retrait de l'honorariat · Interdiction temporaire de fonctions de direction · Sanction pécuniaire · Publication", "ne figurent pas dans la liste CAC"] },
+
+ { "id": "discipline-06", "type": "chiffre", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
+   "title": "Interdiction temporaire du CAC", "big": "3 ans", "label": "Durée maximale de l'interdiction temporaire d'exercer d'un CAC",
+   "det": "Plafond en vigueur depuis le 01/01/2024.", "trap": "Les 5 ans sont l'ancien régime H3C.",
+   "quiz": { "q": "Quelle est la durée maximale de l'interdiction temporaire du CAC depuis 2024 ?", "choices": ["3 ans", "5 ans", "1 an"], "answer": 0, "why": "**3 ans** au plus depuis le 01/01/2024. Les 5 ans relevaient de l'ancien régime du H3C." },
+   "src": ["Interdiction temporaire du CAC : 3 ans au plus depuis le 01/01/2024. Les 5 ans sont l'ancien régime H3C"] },
+
+ { "id": "discipline-07", "type": "chiffre", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
+   "title": "Prescription CAC", "big": "6 ans", "label": "Prescription disciplinaire du CAC, à compter des faits",
+   "det": "Interrompue par un acte de recherche, de constatation ou de sanction.", "trap": "Ne pas confondre avec les 3 ans de l'interdiction temporaire.",
+   "quiz": { "q": "Quelle est la prescription en matière de sanctions des CAC ?", "choices": ["5 ans", "6 ans", "3 ans"], "answer": 1, "why": "La prescription est de **6 ans**, interrompue par un acte de recherche, de constatation ou de sanction." },
+   "src": ["6 ans, interrompue par un acte de recherche, de constatation ou de sanction"] },
+
+ { "id": "discipline-08", "type": "liste", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
+   "title": "Parcours d'une poursuite CAC", "q": "De la saisine au recours",
+   "items": [
+     { "k": "Saisine", "v": "Autorités habilitées ou autosaisine sur signalement. Pas le garde des Sceaux" },
+     { "k": "Enquête", "v": "Rapporteur général de la H2A ; secret non opposable" },
+     { "k": "Poursuite", "v": "Le collège arrête les griefs, son président les notifie" },
+     { "k": "Jugement", "v": "Commission des sanctions, séparée du collège" },
+     { "k": "Recours", "v": "Conseil d'État, pleine juridiction" } ],
+   "trap": "Trois procédures : ordinaire, simplifiée, composition administrative.",
+   "quiz": { "q": "Devant quelle juridiction attaque-t-on une décision de la commission des sanctions ?", "choices": ["La chambre nationale de discipline", "Le Conseil d'État", "La Cour de cassation"], "answer": 1, "why": "Recours devant le **Conseil d'État**, recours de pleine juridiction. La chambre nationale de discipline est l'appel de l'EC." },
+   "src": ["Pas le garde des Sceaux", "Rapporteur général de la H2A et service des enquêtes ; secret non opposable", "Le collège de la H2A engage les poursuites et arrête les griefs, que son président notifie", "Trois procédures : ordinaire, simplifiée"] },
+
+ { "id": "discipline-09", "type": "vf", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
+   "title": "Saisine de la H2A", "statement": "Le garde des Sceaux figure parmi les autorités pouvant saisir le rapporteur général de la H2A au sujet d'un CAC.", "verdict": false,
+   "why": "Peuvent saisir : Cour des comptes ou chambre régionale des comptes, procureur général, présidents de l'AMF, de l'ACPR, de la H2A, de la CNCC ou d'une CRCC ; autosaisine sur signalement. **Pas le garde des Sceaux**.",
+   "src": ["Pas le garde des Sceaux"] },
+
+ { "id": "discipline-10", "type": "vf", "prof": "EC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
+   "title": "Le stagiaire EC", "statement": "Un expert-comptable stagiaire ne peut pas être sanctionné disciplinairement.", "verdict": false,
+   "why": "Faux : un **stagiaire** EC **peut** être sanctionné. Il est justiciable des chambres de discipline, comme les EC et les sociétés inscrites.",
+   "src": ["Un stagiaire EC peut être sanctionné"] },
+
+ { "id": "discipline-11", "type": "vf", "prof": "EC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
+   "title": "La remontrance", "statement": "La remontrance fait partie des sanctions disciplinaires prévues pour l'expert-comptable.", "verdict": false,
+   "why": "Faux. La liste compte réprimande, blâme, suspension et radiation. L'avertissement dans le cabinet du président existe, mais **hors** des peines.",
+   "src": ["ne figurent pas dans la liste de l'ord. art. 53 (EC)", "l'avertissement dans le cabinet du président existe, mais hors des peines"] },
+
+ { "id": "discipline-12", "type": "cas", "prof": "EC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
+   "title": "Cotisations impayées", "situation": "Un expert-comptable n'a pas payé ses cotisations (Ordre, CAVEC) pendant 2 ans sur 10. Le conseil régional le radie du tableau.",
+   "quiz": { "q": "Quelle est la nature de cette radiation ?", "choices": ["Sanction disciplinaire de la chambre régionale", "Radiation d'office, non disciplinaire", "Sanction administrative de la H2A"], "answer": 1, "why": "C'est une **radiation d'office** par le conseil régional. Ce n'est **pas** une sanction disciplinaire." },
+   "src": ["Cotisations impayées (Ordre, CAVEC) 2 ans sur 10 : radiation d'office du tableau par le conseil régional, ce n'est pas une sanction disciplinaire"] },
+
+ { "id": "discipline-13", "type": "cas", "prof": "EC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
+   "title": "EC et blanchiment", "situation": "Un expert-comptable manque gravement à ses obligations de lutte contre le blanchiment et le financement du terrorisme (LCB-FT).",
+   "quiz": { "q": "Une sanction pécuniaire peut-elle être prononcée contre lui ?", "choices": ["Oui, car c'est en matière LCB-FT", "Non : l'EC n'encourt jamais de sanction pécuniaire", "Oui, jusqu'à 250 000 €"], "answer": 0, "why": "Pas de sanction pécuniaire chez l'EC, **sauf en matière LCB-FT** (1 M€ au plus). Le plafond de 250 000 € vise le CAC personne physique." },
+   "src": ["Non, sauf en matière LCB-FT (sanction pécuniaire, interdiction temporaire, publication)"] },
+
+ { "id": "discipline-14", "type": "cas", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
+   "title": "Qui arrête les griefs ?", "situation": "À la H2A, l'enquête sur un CAC est terminée. Il faut engager les poursuites et arrêter les griefs.",
+   "quiz": { "q": "Qui arrête les griefs ?", "choices": ["Le rapporteur général", "La commission des sanctions", "Le collège de la H2A", "Le garde des Sceaux"], "answer": 2, "why": "Le **collège** engage les poursuites et arrête les griefs ; son président les notifie. La commission des sanctions, séparée, juge ensuite." },
+   "src": ["Le collège de la H2A engage les poursuites et arrête les griefs, que son président notifie"] }
+]}

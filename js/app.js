@@ -10,6 +10,7 @@ import { recordDrill, pickDrill, drillStats } from './drill.js';
 import * as GM from './games.js';
 import * as PAL from './palais.js';
 import { estimate } from './estimate.js';
+import * as SH from './shorts.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -40,6 +41,8 @@ const state = {
   palais: null,    // palais de mémoire : liste ouverte, étape
   bonusNew: false, // « 20 nouvelles de plus » demandées après le plan du jour
   nextIdx: 0, nextList: [], // « Et maintenant ? » : suggestions en boucle
+  shorts: null,    // shorts de toutes les étapes (data/shorts)
+  feed: null,      // fil de shorts ouvert
 };
 
 // Nouvelles cartes : le reste de l'objectif du jour (ou 20 de plus sur demande), sous-thèmes faibles en tête.
@@ -368,6 +371,10 @@ function dayTasks() {
     const unread = files.find((f) => !pr.plan.read?.[f]);
     tasks.push({ id: 'read', icon: '📊', title: files.length > 1 ? `Lire les ${files.length} schémas du jour` : 'Lire le schéma du jour', sub: `${steps.map((st) => st.title).join(' · ')} · 5 à 10 min chacun`, done: !unread, cta: `Lire : ${shortTitle(unread || files[0])}`, run: () => ficheSheet(unread || files[0]), html: files.map((f) => `<button class="btn sm ${pr.plan.read?.[f] ? '' : 'primary'}" data-open-fiche="${esc(f)}">${pr.plan.read?.[f] ? '✔' : '📊'} ${esc(shortTitle(f))}</button>`).join('') });
   }
+  if (state.shorts?.length) {
+    const n = shortsToday(); const need = d.kind === 'veille' ? 5 : 10;
+    tasks.push({ id: 'shorts', icon: '🎬', title: `Shorts du jour : ${need} notions, 30 s chacune`, sub: `${Math.min(n, need)}/${need} aujourd’hui · ${steps.length ? 'les schémas du jour d’abord, puis les shorts à revoir et vos points faibles' : 'les shorts à revoir et vos points faibles'}`, done: n >= need, cta: 'Shorts du jour', run: () => openFeed({ focus: d.steps }) });
+  }
   if (d.exam) tasks.push({ id: 'exam', icon: '⏱', title: `Examen blanc ${d.exam.toUpperCase()}`, sub: '20 questions, 60 minutes, en conditions réelles', done: pr.exams.some((e) => e.t >= t0), cta: `Examen blanc ${d.exam.toUpperCase()}`, run: () => go('exam') });
   const due = dueNow(); const newLeft = Math.max(0, d.target - (d.newDone || 0));
   tasks.push({ id: 'session', icon: '🔁', title: d.target ? `Session : ${d.target} nouvelles questions et les cartes à revoir` : 'Session : les cartes à revoir uniquement', sub: `${d.newDone || 0}/${d.target} nouvelles · ${due} à revoir maintenant${steps.length ? ' · les questions des schémas du jour arrivent en premier' : ''}`, done: newLeft === 0 && due === 0, cta: `${d.newDone || state.session ? 'Continuer' : 'Commencer'} la session (${newLeft + due})`, run: () => go('review') });
@@ -438,6 +445,8 @@ function nextActions() {
   if (due) out.push({ icon: '🔁', title: `${due} carte${due > 1 ? 's' : ''} à revoir maintenant`, why: 'Revues au bon moment, elles tiennent jusqu’à l’épreuve.', run: () => { state.session = null; go('review'); } });
   const sure = confidentErrors(pr.attempts);
   if (sure.length) out.push({ icon: '⚠️', title: `${sure.length} erreur${sure.length > 1 ? 's' : ''} « j’étais sûr »`, why: 'Une erreur commise avec certitude se corrige le mieux si on y revient vite.', run: () => trainOn(sure.slice(-20), 'Mes erreurs « j’étais sûr »') });
+  const shDue = state.shorts ? SH.shortsStats(state.shorts, pr.drills, now).due : 0;
+  if (shDue) out.push({ icon: '🎬', title: `Shorts : ${shDue} à revoir`, why: 'Les notions ratées dans le fil reviennent : 30 secondes chacune.', run: () => openFeed() });
   for (const w of P.tagStats(pr.attempts, state.byId).weak.slice(0, 3)) {
     out.push({ icon: '🎯', title: `Point faible : ${tagLabel(w.tag)} (${w.prof}, ${Math.round(w.acc * 100)} %)`, why: 'Votre sous-thème le moins réussi : une série ciblée de 10 questions.', run: () => trainOn(shuffle(weakIds(w), now).slice(0, 10), `Point faible : ${tagLabel(w.tag)}`) });
   }
@@ -453,6 +462,7 @@ function nextActions() {
   if (unseen) out.push({ icon: '➕', title: '20 nouvelles questions de plus', why: `Prendre de l’avance : ${unseen} questions jamais vues.`, run: () => { state.bonusNew = true; state.session = null; go('review'); } });
   const last = pr.exams[pr.exams.length - 1];
   if (!last || now - last.t > 2 * DAY) out.push({ icon: '⏱', title: 'Un examen blanc', why: last ? 'Le dernier date de plus de deux jours.' : 'Pour situer votre niveau en conditions réelles.', run: () => go('exam') });
+  if (state.shorts?.length) out.push({ icon: '🎬', title: 'Le fil de shorts', why: 'Une notion en 30 secondes, une question à chaque fois : vos points faibles d’abord.', run: () => openFeed() });
   out.push({ icon: '⚡', title: 'Vrai / Faux éclair', why: '20 propositions de QCM à juger, toujours utile.', run: () => startGame('vf') });
   out.push({ icon: '🏛', title: 'Réciter une liste du palais', why: 'Les listes à connaître par cœur, posées dans votre bureau.', run: () => startGame('palais') });
   return out;
@@ -510,7 +520,7 @@ views.plan = () => {
     const done = !!pr.plan.done[st.id]; const isCur = i === cur;
     const prog = st.kind === 'schema' ? P.stepProgress(st, state.fiches, pr.cards, mastery) : null;
     const links = st.kind === 'schema'
-      ? `${st.fiches.map((f) => `<button class="btn sm" data-open-fiche="${esc(f)}">📊 ${esc(shortTitle(f))}</button>`).join('')}${st.deep.length ? `<div class="muted" style="margin-top:6px">En détail : ${st.deep.map((f) => `<a href="#" data-open-fiche="${esc(f)}">${esc(shortTitle(f))}</a>`).join(' · ')}</div>` : ''}`
+      ? `${st.fiches.map((f) => `<button class="btn sm" data-open-fiche="${esc(f)}">📊 ${esc(shortTitle(f))}</button>`).join('')}${shortsBtn(st.id)}${st.deep.length ? `<div class="muted" style="margin-top:6px">En détail : ${st.deep.map((f) => `<a href="#" data-open-fiche="${esc(f)}">${esc(shortTitle(f))}</a>`).join(' · ')}</div>` : ''}`
       : `<button class="btn sm" data-go="${st.action === 'weak' ? 'train' : st.action}">${st.action === 'exam' ? '⏱ Aller aux examens' : st.action === 'weak' ? '🎯 Mes questions les plus ratées' : '🔁 Réviser'}</button>`;
     return `<div class="card step ${done ? 'done' : ''} ${isCur ? 'cur' : ''}">
       <div class="row" style="justify-content:space-between"><span class="muted">${done ? 'faite' : stepDay[st.id] ? `prévue ${esc(dayLabel(stepDay[st.id]))}` : finalDay[st.id] && cal.find((x) => x.n === finalDay[st.id]) ? `prévue ${esc(dayLabel(cal.find((x) => x.n === finalDay[st.id])))}` : ''}${st.who ? ` · ${esc(st.who)}` : ''}</span>${done ? '<span class="badge">✔ terminée</span>' : isCur ? '<span class="badge warn">en cours</span>' : ''}</div>
@@ -846,7 +856,8 @@ function closeSheet(viaPop = false) {
 async function ficheSheet(file) {
   const meta = state.fiches.find((f) => f.file === file) || {};
   const n = (meta.questions || []).length;
-  sheet(`<div class="card fiche" id="sheet-fiche">Chargement…</div>${n && !inActivity() ? `<button class="btn primary" id="sheet-train">🎯 S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : ''}`);
+  const step = P.STEPS.find((st) => st.fiches?.includes(file));
+  sheet(`<div class="card fiche" id="sheet-fiche">Chargement…</div>${n && !inActivity() ? `<button class="btn primary" id="sheet-train">🎯 S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : ''}${step && !inActivity() ? `<div style="margin-top:10px">${shortsBtn(step.id)}</div>` : ''}`);
   const tb = $('#sheet-train'); if (tb) tb.onclick = () => { closeSheet(true); trainOn(shuffle(meta.questions, Date.now()).slice(0, 20), meta.title); };
   state.progress.plan.read = state.progress.plan.read || {};
   state.progress.plan.read[file] = Date.now(); persist();
@@ -929,6 +940,7 @@ views.settings = () => {
     $('#s-hide').onchange = (e) => { s.hideChoices = e.target.checked; persist(); };
     $('#s-focus').onchange = (e) => { s.focus = e.target.checked; persist(); };
     $('#s-timer').onchange = (e) => { s.gameTimer = e.target.value; persist(); };
+    $('#s-shorts').onchange = (e) => { s.shortsLimit = Number(e.target.value) || 0; persist(); };
     $('#s-theme').onchange = (e) => { document.documentElement.dataset.theme = e.target.value; try { localStorage.setItem('dec1.theme', e.target.value); } catch { /* ignore */ } };
     $('#export').onclick = exportProgress;
     $('#copy').onclick = async () => {
@@ -959,6 +971,7 @@ views.settings = () => {
     <label class="field"><input type="checkbox" id="s-hide" ${s.hideChoices ? 'checked' : ''}> QCM : réfléchir avant d’afficher les propositions</label>
     <label class="field"><input type="checkbox" id="s-focus" ${s.focus ? 'checked' : ''}> Mode concentration : badges annoncés sans animation, accueil épuré</label>
     <label class="field">Chrono des jeux (Vrai / Faux, Sprint chiffres)<select id="s-timer">${[['normal', 'Normal'], ['large', 'Large'], ['off', 'Sans chrono']].map(([k, l]) => `<option value="${k}" ${s.gameTimer === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
+    <label class="field">Shorts : pause proposée après<select id="s-shorts">${[[10, '10 shorts'], [15, '15 shorts'], [20, '20 shorts'], [30, '30 shorts'], [0, 'Sans limite']].map(([k, l]) => `<option value="${k}" ${(s.shortsLimit ?? 15) === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
     <label class="field">Thème<select id="s-theme"><option value="">Automatique</option><option value="light" ${document.documentElement.dataset.theme === 'light' ? 'selected' : ''}>Clair</option><option value="dark" ${document.documentElement.dataset.theme === 'dark' ? 'selected' : ''}>Sombre</option></select></label></div>
     <div class="card"><h2>Données</h2><p class="muted">La progression est stockée uniquement sur ce téléphone. ${s.lastExportAt ? `Dernier export : ${new Date(s.lastExportAt).toLocaleString('fr-FR')}.` : '<strong>Aucun export pour l’instant.</strong>'}</p>
       <div class="btnrow"><button class="btn" id="export">⬇ Exporter</button><button class="btn" id="copy">📋 Copier</button></div>
@@ -969,6 +982,192 @@ views.settings = () => {
       <p class="muted" style="margin-top:10px">Protection : ${state.persisted === true ? 'le navigateur a accepté de conserver ces données.' : state.persisted === false ? 'le navigateur peut effacer ces données s’il manque de place.' : 'état de protection inconnu.'} Sur iPhone, <strong>installez l’application sur l’écran d’accueil avant de commencer</strong> : Safari efface les données d’un site resté 7 jours sans visite, pas celles d’une application installée. Une copie automatique est faite toutes les 3 heures.</p></div>
     <div class="card"><h2>Application</h2><p class="muted">Version ${esc(state.bank.generatedAt || '')} · ${state.bank.count} questions. Fonctionne hors ligne une fois chargée.</p><button class="btn" id="update">Vérifier les mises à jour</button></div>`;
 };
+
+// ---------- Shorts ----------
+// Fil vertical, comme un réseau social : une notion animée en 30 secondes, puis une question. La réponse passe
+// par la répétition des jeux (boîtes de Leitner, « sht: ») ; une erreur remet les questions liées de la banque
+// dans la prochaine séance. Le fil suit le parcours : schémas du jour, shorts à revoir, points faibles.
+const SHORT_KIND = { duel: '⚔️ Duel EC / CAC', chiffre: '🔢 Chiffre clé', liste: '📋 À retenir', cas: '🧩 Cas pratique', vf: '⚡ Vrai ou faux' };
+async function ensureShorts() {
+  if (state.shorts) return state.shorts;
+  let steps = [];
+  try { const r = await fetch('./data/shorts/index.json', { cache: 'no-cache' }); if (r.ok) steps = await r.json(); } catch { /* hors ligne, jamais chargé */ }
+  const files = await Promise.all(steps.map(async (st) => {
+    try { const r = await fetch(`./data/shorts/${st}.json`, { cache: 'no-cache' }); return r.ok ? await r.json() : null; } catch { return null; }
+  }));
+  const list = files.filter((f) => f && Array.isArray(f.shorts)).flatMap((f) => f.shorts.map((s) => ({ ...s, step: f.step })));
+  if (list.length) state.shorts = list;
+  return state.shorts;
+}
+// Shorts répondus aujourd'hui (au moins une fois).
+const shortsToday = () => { const t0 = startOfDay(); return Object.entries(state.progress.drills).filter(([id, m]) => id.startsWith(SH.PREFIX) && m.last >= t0).length; };
+function shortsBtn(step) {
+  const n = state.shorts?.filter((s) => s.step === step).length;
+  return n ? `<button class="btn sm" data-shorts-step="${esc(step)}">🎬 ${n} shorts</button>` : '';
+}
+
+views.shorts = () => {
+  if (!state.shorts) {
+    setTimeout(async () => { await ensureShorts(); if (state.view === 'shorts' && state.shorts) render(); }, 0);
+    return '<div class="card"><h2>🎬 Shorts</h2><p class="muted">Les shorts se chargent à la première ouverture en ligne.</p></div>';
+  }
+  const pr = state.progress; const all = SH.shortsStats(state.shorts, pr.drills);
+  const cur = P.currentIndex(pr.plan); const lim = pr.settings.shortsLimit ?? 15;
+  const rows = P.STEPS.filter((st) => st.kind === 'schema').map((st) => {
+    const list = state.shorts.filter((s) => s.step === st.id); if (!list.length) return '';
+    const x = SH.shortsStats(list, pr.drills); const i = P.STEPS.indexOf(st);
+    return `<div class="sh-step"><div style="flex:1"><div><strong>${i + 1}. ${esc(st.title)}</strong>${i === cur ? ' <span class="badge warn">en cours</span>' : ''}</div>
+      <div class="progress" style="margin:6px 0 3px"><div style="width:${Math.round((x.seen / x.total) * 100)}%"></div></div>
+      <div class="muted">${x.seen}/${x.total} vus · ${x.known} acquis${x.due ? ` · <strong>${x.due} à revoir</strong>` : ''}</div></div>
+      <button class="btn sm" data-shorts-step="${st.id}">▶</button></div>`;
+  }).join('');
+  return `<div class="card hero"><h2 style="margin:0 0 6px">🎬 Le fil de shorts</h2>
+    <p class="muted" style="margin:0 0 10px">Une notion en 30 secondes, puis une question. Faites défiler vers le haut. Les shorts ratés reviennent aux bons intervalles et remettent les questions liées dans votre prochaine séance.</p>
+    <div class="muted" style="margin-bottom:10px">${all.seen}/${all.total} vus · ${all.known} acquis · ${all.due} à revoir · d’abord : à revoir, étape en cours, points faibles${lim ? ` · pause proposée tous les ${lim} (Réglages)` : ''}</div>
+    <button class="btn primary big-btn" data-shorts-step="">▶ Lancer le fil</button></div>
+    <div class="card"><h2>Par étape du parcours</h2><p class="muted">Un short d’une étape choisie passe en tête du fil, puis le fil continue.</p>${rows}</div>`;
+};
+
+function openFeed({ focus = [] } = {}) {
+  if (!state.shorts?.length) return toast('Shorts indisponibles : ouvrez l’application une fois en ligne');
+  closeSheet(true);
+  state.feed = { focus: focus.filter(Boolean), served: new Set(), list: [], ok: 0, n: 0, limit: state.progress.settings.shortsLimit ?? 15, paused: false, active: 0 };
+  let el = $('#feed');
+  if (!el) { el = document.createElement('div'); el.id = 'feed'; el.className = 'feed'; document.body.appendChild(el); el.addEventListener('click', onFeedClick); }
+  el.innerHTML = `<div class="feed-top"><button class="feed-x" id="feed-close" aria-label="Fermer">✕</button><span id="feed-count"></span></div><div class="feed-scroll" id="feed-scroll"></div>`;
+  el.classList.add('show'); document.body.classList.add('noscroll');
+  try { history.pushState({ v: state.view, feed: 1 }, ''); } catch { /* ignore */ }
+  $('#feed-close').onclick = () => closeFeed();
+  state.feedObs = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      e.target.classList.add('play');
+      const i = Number(e.target.dataset.i);
+      if (!Number.isNaN(i)) { state.feed.active = i; if (i >= state.feed.list.length - 3) feedAppend(); }
+    }
+  }, { root: $('#feed-scroll'), threshold: 0.55 });
+  feedAppend(); feedCount();
+}
+function closeFeed(viaPop = false) {
+  const el = $('#feed'); if (!el || !state.feed) return;
+  state.feedObs?.disconnect(); state.feed = null;
+  el.classList.remove('show'); el.innerHTML = ''; document.body.classList.remove('noscroll');
+  if (!viaPop && history.state?.feed) history.back();
+  render();
+}
+function feedCount() {
+  const f = state.feed; const c = $('#feed-count'); if (!f || !c) return;
+  c.textContent = f.n ? `${f.ok}/${f.n} juste${f.ok > 1 ? 's' : ''}${f.limit ? ` · ${Math.min(f.n, f.limit)}/${f.limit}` : ''}` : f.focus.length ? (P.stepById(f.focus[0])?.title || '') : 'Shorts';
+}
+// Ajoute les prochains shorts au fil ; tout servi : on recommence (en évitant les derniers vus).
+function feedAppend() {
+  const f = state.feed; if (!f || f.paused) return;
+  const pr = state.progress;
+  const opts = () => ({ steps: P.STEPS.map((s) => s.id), cur: P.currentIndex(pr.plan), done: pr.plan.done, focus: f.focus,
+    weak: new Set(P.tagStats(pr.attempts, state.byId).weak.map((w) => `${w.prof}:${w.tag}`)), served: f.served, now: Date.now() });
+  let more = SH.buildFeed(state.shorts, pr.drills, opts()).slice(0, 6);
+  if (!more.length) { f.served = new Set(f.list.slice(-5).map((s) => s.id)); more = SH.buildFeed(state.shorts, pr.drills, opts()).slice(0, 6); }
+  const box = $('#feed-scroll'); if (!box) return;
+  for (const s of more) {
+    f.served.add(s.id); f.list.push(s);
+    box.insertAdjacentHTML('beforeend', shortHtml(s, f.list.length - 1));
+    state.feedObs.observe(box.lastElementChild);
+  }
+}
+const md = (t) => inline(t || '');
+function shortHtml(s, i) {
+  const a = (d, html, cls = '') => `<div class="a ${cls}" style="--d:${d}s">${html}</div>`;
+  const prof = s.prof === 'EC+CAC' ? '<span class="fpill ec">EC</span> <span class="fpill cac">CAC</span>' : `<span class="fpill ${s.prof === 'EC' ? 'ec' : 'cac'}">${s.prof}</span>`;
+  const st = P.stepById(s.step);
+  let body = ''; let t = 0;
+  // Leçon d'abord (duel, chiffre, liste) : elle s'efface quand on demande la question, pour répondre de mémoire.
+  const lesson = ['duel', 'chiffre', 'liste'].includes(s.type);
+  const trap = (x) => (x ? a(t += 0.8, `<div class="sh-trap"><b>Piège</b>${md(x)}</div>`) : '');
+  if (s.type === 'duel') {
+    body = a(0.2, `<div class="sh-q">${md(s.q)}</div>`)
+      + a(0.7, `<div class="sh-card ec"><span class="sh-pill">EXPERT-COMPTABLE</span><div class="sh-main">${md(s.ec.main)}</div><div class="sh-det">${md(s.ec.det)}</div></div>`, 'l')
+      + a(1.5, '<div class="sh-vs">VS</div>', 'pop')
+      + a(1.8, `<div class="sh-card cac"><span class="sh-pill">COMMISSAIRE AUX COMPTES</span><div class="sh-main">${md(s.cac.main)}</div><div class="sh-det">${md(s.cac.det)}</div></div>`, 'r');
+    t = 2.6; body += trap(s.trap);
+  } else if (s.type === 'chiffre') {
+    body = a(0.3, `<div class="sh-big">${md(s.big)}</div>`, 'pop') + a(1, `<div class="sh-label">${md(s.label)}</div>`) + (s.det ? a(1.7, `<div class="sh-det">${md(s.det)}</div>`) : '');
+    t = 2.2; body += trap(s.trap);
+  } else if (s.type === 'liste') {
+    body = a(0.2, `<div class="sh-q">${md(s.q)}</div>`) + `<ol class="sh-list">${s.items.map((it, k) => `<li class="a l" style="--d:${0.8 + k * 0.7}s"><span class="sh-n">${k + 1}</span><div><strong>${md(it.k)}</strong>${it.v ? `<div class="sh-det">${md(it.v)}</div>` : ''}</div></li>`).join('')}</ol>`;
+    t = 0.8 + s.items.length * 0.7; body += trap(s.trap);
+  } else if (s.type === 'cas') {
+    body = a(0.2, `<div class="sh-sit">${md(s.situation)}</div>`); t = 0.3;
+  } else if (s.type === 'vf') {
+    body = a(0.2, `<div class="sh-sit">${md(s.statement)}</div>`); t = 0.3;
+  }
+  const quiz = s.type === 'vf'
+    ? `<div class="sh-choices two"><button class="btn" data-sh-c="1">Vrai</button><button class="btn" data-sh-c="0">Faux</button></div>`
+    : `<div class="sh-qq">${md(s.quiz.q)}</div><div class="sh-choices">${s.quiz.choices.map((c, k) => `<button class="btn" data-sh-c="${k}">${md(c)}</button>`).join('')}</div>`;
+  return `<section class="sh t-${s.type}" data-i="${i}" data-id="${esc(s.id)}"><div class="sh-in">
+    <div class="sh-kind">${SHORT_KIND[s.type]} · ${prof}</div>
+    ${a(0, `<h2 class="sh-title">${md(s.title)}</h2>`)}
+    ${lesson ? `<div class="sh-lesson">${body}</div>${a(t + 0.5, '<button class="btn primary sh-ask" data-sh-ask="1">J’ai retenu : la question ▶</button>')}` : body}
+    ${lesson ? `<div class="sh-quiz later">${quiz}<div class="sh-fb"></div></div>` : a(t + 0.6, `<div class="sh-quiz">${quiz}<div class="sh-fb"></div></div>`)}
+    <div class="sh-foot"><span>${esc(st ? `Étape ${P.STEPS.indexOf(st) + 1} · ${st.title}` : '')}</span><button class="linkbtn" data-open-fiche="${esc(s.fiche)}">📊 Schéma</button></div>
+  </div></section>`;
+}
+function onFeedClick(e) {
+  const f = state.feed; if (!f) return;
+  const fiche = e.target.closest('[data-open-fiche]');
+  if (fiche) return ficheSheet(fiche.dataset.openFiche);
+  const ask = e.target.closest('[data-sh-ask]');
+  if (ask) { const sec = ask.closest('section'); sec.classList.add('asking'); sec.scrollIntoView(); return; }
+  const rv = e.target.closest('[data-sh-review]');
+  if (rv) { rv.closest('section').classList.toggle('review'); return; }
+  const nx = e.target.closest('[data-sh-next]');
+  if (nx) { const sec = nx.closest('section'); return sec.nextElementSibling?.scrollIntoView({ behavior: 'smooth' }); }
+  const act = e.target.closest('[data-sh-end]');
+  if (act) {
+    const k = act.dataset.shEnd;
+    if (k === 'more') { f.paused = false; f.limit += state.progress.settings.shortsLimit || 15; act.closest('section').remove(); feedAppend(); feedCount(); return; }
+    if (k === 'close') return closeFeed();
+    if (k === 'plan') { const task = dayTasks().find((x) => !x.done && x.id !== 'shorts'); closeFeed(true); return task ? task.run() : go('home'); }
+  }
+  const b = e.target.closest('[data-sh-c]'); if (!b) return;
+  const sec = b.closest('section'); if (sec.dataset.done) return;
+  const s = f.list[Number(sec.dataset.i)]; const c = Number(b.dataset.shC);
+  const ok = s.type === 'vf' ? (c === 1) === s.verdict : c === s.quiz.answer;
+  sec.dataset.done = '1';
+  const now = Date.now();
+  recordDrill(state.progress.drills, SH.memoId(s), ok, now, examAt());
+  let requeued = 0;
+  // Au plus 3 questions déjà vues, les moins solides d'abord.
+  if (!ok) {
+    const cards = state.progress.cards;
+    const ids = SH.linkedQuestions(s, state.fiches, state.byId, P.stepById(s.step)?.fiches).filter((id) => cards[id] && cards[id].due > now);
+    for (const id of ids.sort((x, y) => cards[x].interval - cards[y].interval).slice(0, 3)) { cards[id].due = now; requeued++; }
+  }
+  persist();
+  f.n++; if (ok) f.ok++;
+  sec.querySelectorAll('[data-sh-c]').forEach((x) => {
+    x.disabled = true;
+    const k = Number(x.dataset.shC);
+    const good = s.type === 'vf' ? (k === 1) === s.verdict : k === s.quiz.answer;
+    if (good) x.classList.add('okb'); else if (x === b) x.classList.add('ko');
+  });
+  const why = s.type === 'vf' ? s.why : s.quiz.why;
+  sec.querySelector('.sh-fb').innerHTML = `<div class="gfb ${ok ? 'ok' : 'ko'}">${ok ? '✔ Juste' : `✘ ${s.type === 'vf' ? `C’est ${s.verdict ? 'vrai' : 'faux'}.` : 'Raté.'}`}</div><div class="sh-why">${md(why)}</div>${!ok ? `<div class="muted" style="margin-top:6px">Ce short revient dans 10 minutes${requeued ? `, et ${requeued} question${requeued > 1 ? 's' : ''} liée${requeued > 1 ? 's' : ''} dans votre prochaine séance` : ''}.</div>` : ''}${sec.querySelector('.sh-lesson') ? '<button class="btn sh-next" data-sh-review="1">👁 Revoir la notion</button>' : ''}<button class="btn primary sh-next" data-sh-next="1">Suivant ↓</button>`;
+  feedCount();
+  if (f.limit && f.n >= f.limit && !f.paused) feedPause(sec);
+}
+// Pause proposée (Réglages) : bilan, puis la suite du plan, encore une série, ou fermer.
+function feedPause(after) {
+  const f = state.feed; f.paused = true;
+  [...after.parentNode.children].filter((x) => Number(x.dataset.i) > Number(after.dataset.i)).forEach((x) => { state.feedObs.unobserve(x); x.remove(); });
+  f.list = f.list.slice(0, Number(after.dataset.i) + 1);
+  const task = dayTasks().find((x) => !x.done && x.id !== 'shorts');
+  after.insertAdjacentHTML('afterend', `<section class="sh sh-end"><div class="sh-in center">
+    <div class="sh-kind">Pause</div><div class="sh-big">${f.ok}/${f.n}</div><div class="sh-label">${f.n} shorts, ${f.ok} réponses justes</div>
+    <p class="muted">Les shorts ratés reviennent dans 10 minutes, puis aux intervalles de la répétition.</p>
+    ${task ? `<button class="btn primary" data-sh-end="plan">▶ Suite du plan : ${esc(task.title)}</button>` : ''}
+    <button class="btn ${task ? '' : 'primary'}" data-sh-end="more">🎬 Encore ${state.progress.settings.shortsLimit || 15} shorts</button>
+    <button class="btn" data-sh-end="close">Fermer</button></div></section>`);
+}
 
 // ---------- Jeux ----------
 // Items tirés des fiches (relues) et de la banque ; répétition par boîtes de Leitner (drill.js), échéances
@@ -1319,7 +1518,7 @@ function souvenirsView() {
 }
 
 const NAV = [
-  ['home', '🏠', 'Accueil'], ['review', '🔁', 'Réviser'], ['train', '🎯', 'Entraîner'], ['exam', '⏱', 'Examen'], ['carriere', '🏆', 'Carrière'], ['fiches', '📚', 'Fiches'],
+  ['home', '🏠', 'Accueil'], ['review', '🔁', 'Réviser'], ['train', '🎯', 'Entraîner'], ['shorts', '🎬', 'Shorts'], ['exam', '⏱', 'Examen'], ['carriere', '🏆', 'Carrière'], ['fiches', '📚', 'Fiches'],
 ];
 function render() {
   const main = $('#main');
@@ -1335,6 +1534,7 @@ function go(v, { pop = false } = {}) {
   // La séance, la série et le jeu en cours sont gardés : on les retrouve en revenant sur l'onglet.
   if (v !== 'jeux') stopGameTimer();
   closeSheet(true);
+  if (state.feed) closeFeed(true);
   const changed = v !== state.view;
   state.view = v; window.scrollTo(0, 0); render();
   if (!pop && changed) { try { history.pushState({ v }, ''); } catch { /* ignore */ } }
@@ -1342,6 +1542,7 @@ function go(v, { pop = false } = {}) {
 // Bouton Retour (Android, geste iOS) : ferme d'abord la fiche ouverte par-dessus, sinon revient à l'écran précédent.
 function onPop(e) {
   if ($('#sheet')?.classList.contains('show')) { closeSheet(true); return; }
+  if (state.feed) { closeFeed(true); return; }
   const v = e.state?.v;
   if (v && v !== state.view && views[v]) go(v, { pop: true });
 }
@@ -1372,7 +1573,7 @@ async function recoverFromStaleCache() {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
     await Promise.all((await caches.keys()).map((k) => caches.delete(k)));
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './sw.js']
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/shorts.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();
@@ -1389,7 +1590,10 @@ async function init() {
   try { history.replaceState({ v: state.view }, ''); } catch { /* ignore */ }
   window.addEventListener('popstate', onPop);
   const sh = document.createElement('div'); sh.id = 'sheet'; sh.className = 'sheet'; sh.setAttribute('role', 'dialog'); document.body.appendChild(sh);
-  sh.addEventListener('click', (e) => { const b = e.target.closest('[data-open-fiche]'); if (b) ficheSheet(b.dataset.openFiche); });
+  sh.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-open-fiche]'); if (b) return ficheSheet(b.dataset.openFiche);
+    const f = e.target.closest('[data-shorts-step]'); if (f) { closeSheet(true); openFeed({ focus: [f.dataset.shortsStep] }); }
+  });
   $('#main').addEventListener('click', (e) => {
     const b = e.target.closest('[data-open-fiche]'); if (b) return ficheSheet(b.dataset.openFiche);
     const v = e.target.closest('[data-variants]'); if (v) return variantsSheet(v.dataset.variants);
@@ -1397,12 +1601,14 @@ async function init() {
     const nx = e.target.closest('[data-next]'); if (nx) return state.nextList[Number(nx.dataset.next)]?.run();
     const other = e.target.closest('[data-next-other]'); if (other) { state.nextIdx++; return render(); }
     const g = e.target.closest('[data-game]'); if (g) return startGame(g.dataset.game);
+    const f = e.target.closest('[data-shorts-step]'); if (f) return openFeed({ focus: f.dataset.shortsStep ? [f.dataset.shortsStep] : [] });
   });
   try {
     state.bank = await loadBank();
     state.bank.questions.forEach((q) => { state.byId[q.id] = q; });
     state.clusters = buildClusters(state.bank.questions);
     state.fiches = await loadFichesIndex();
+    await ensureShorts();
     initGamify();
     state.notice = store.notices[0] || null;
     const savedExam = store.loadExam();

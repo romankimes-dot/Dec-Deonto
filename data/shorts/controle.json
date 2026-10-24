@@ -1,0 +1,82 @@
+{ "step": "controle", "shorts": [
+ { "id": "controle-01", "type": "duel", "prof": "EC+CAC", "tags": ["controle_qualite", "controle_activite"], "fiche": "20-schema-controle-qualite.md",
+   "title": "Qui organise le contrôle ?", "q": "Qui organise le contrôle de l'activité professionnelle ?",
+   "ec": { "main": "**Conseil national et CROEC**", "det": "Le Conseil national fixe le **programme**. Les CROEC **réalisent** les contrôles." },
+   "cac": { "main": "**H2A**", "det": "Déléguée à la **CNCC** pour les CAC **sans mandat d'EIP**." },
+   "trap": "Le contrôle de qualité de l'Ordre ne relève pas de la H2A.",
+   "quiz": { "q": "Qui contrôle l'activité d'un CAC sans mandat d'EIP ?", "choices": ["Les agents de la H2A, sans délégation", "La CNCC, par délégation de la H2A", "Le CROEC"], "answer": 1, "why": "La H2A **délègue** à la **CNCC** le contrôle des CAC sans mandat d'EIP. Pour les EIP, ce sont ses propres agents." },
+   "src": ["Conseil national (programme) et CROEC (réalisation) | H2A ; délégué à la CNCC pour les CAC sans mandat d'EIP"] },
+
+ { "id": "controle-02", "type": "vf", "prof": "EC", "tags": ["controle_qualite"], "fiche": "20-schema-controle-qualite.md",
+   "title": "Les contrôleurs de l'Ordre", "statement": "Les contrôleurs de qualité de l'Ordre sont des salariés de l'Ordre.", "verdict": false,
+   "why": "Ce sont des **EC candidats**, désignés par le **conseil régional** pour **3 ans**. Les agents salariés de la H2A contrôlent les CAC d'EIP.",
+   "src": ["EC candidats, désignés par le conseil régional pour 3 ans", "Agents de la H2A (EIP)"] },
+
+ { "id": "controle-03", "type": "chiffre", "prof": "EC", "tags": ["controle_qualite"], "fiche": "20-schema-controle-qualite.md",
+   "title": "Périodicité du contrôle de qualité", "big": "≈ 6 ans", "label": "Cycle du contrôle de qualité d'un cabinet d'EC, en pratique",
+   "det": "Cycle pluriannuel de l'Ordre.", "trap": "Les 3 ans visent les CAC des grandes EIP, pas les EC.",
+   "quiz": { "q": "Quel est le cycle en pratique du contrôle de qualité d'un cabinet d'EC ?", "choices": ["3 ans", "Environ 6 ans", "1 an", "5 ans"], "answer": 1, "why": "Environ **6 ans**. Le délai de **3 ans** est celui des CAC des grandes EIP. Les **5 ans** sont l'ancienneté exigée du contrôleur." },
+   "src": ["Cycle pluriannuel, en pratique ≈ 6 ans"] },
+
+ { "id": "controle-04", "type": "chiffre", "prof": "CAC", "tags": ["controle_activite"], "fiche": "20-schema-controle-qualite.md",
+   "title": "Périodicité du contrôle d'activité", "big": "3 ans", "label": "Contrôle d'activité des CAC des grandes EIP",
+   "det": "Pour les autres CAC : tous les 6 ans au plus.", "trap": "Les autres CAC : 6 ans au plus, pas 3.",
+   "quiz": { "q": "Quelle périodicité pour les CAC des grandes EIP ?", "choices": ["6 ans", "5 ans", "1 an", "3 ans"], "answer": 3, "why": "**3 ans** pour les CAC des grandes EIP, **6 ans au plus** pour les autres." },
+   "src": ["3 ans pour les CAC des grandes EIP · 6 ans au plus pour les autres"] },
+
+ { "id": "controle-05", "type": "vf", "prof": "EC", "tags": ["controle_qualite"], "fiche": "20-schema-controle-qualite.md",
+   "title": "Devenir contrôleur de l'Ordre", "statement": "Un EC inscrit depuis 3 ans, formé par l'Ordre et sans sanction peut être désigné contrôleur de qualité.", "verdict": false,
+   "why": "Il faut être inscrit depuis au moins **5 ans**. Les 3 ans sont la durée de la désignation. Il faut aussi que son contrôle de qualité n'ait pas entraîné de nouveau contrôle à un an.",
+   "src": ["inscrits depuis au moins 5 ans, sans sanction, formés par l'Ordre, contrôle de qualité sans nouveau contrôle à un an"] },
+
+ { "id": "controle-06", "type": "liste", "prof": "EC", "tags": ["controle_qualite"], "fiche": "20-schema-controle-qualite.md",
+   "title": "Déroulement du contrôle de qualité", "q": "Les étapes du contrôle de qualité de l'Ordre",
+   "items": [
+     { "k": "Désignation", "v": "Le contrôleur est désigné, le cabinet notifié" },
+     { "k": "Questionnaire", "v": "Rempli par le cabinet avant la visite" },
+     { "k": "Phase 1", "v": "Organisation et procédures, au regard de la NPMQ" },
+     { "k": "Phase 2", "v": "Revue d'un échantillon de dossiers" },
+     { "k": "Rapport et conclusion", "v": "Entretien de synthèse, rapport, observations du contrôlé, puis conclusion" } ],
+   "trap": "Le contrôleur rédige le rapport, mais il ne conclut pas.",
+   "quiz": { "q": "Qui conclut le contrôle de qualité ?", "choices": ["Le contrôleur", "Le Conseil national", "Le président du conseil régional", "La H2A"], "answer": 2, "why": "Le **président du conseil régional** conclut : sans observation, avec simples observations, ou avec observations et nouveau contrôle à un an." },
+   "src": ["Examen de l'organisation et des procédures au regard de la NPMQ", "Revue d'un échantillon de dossiers", "Par le président du conseil régional"] },
+
+ { "id": "controle-07", "type": "cas", "prof": "EC", "tags": ["controle_qualite"], "fiche": "20-schema-controle-qualite.md",
+   "title": "Contrôle défavorable chez l'EC", "situation": "Le contrôle de qualité d'un cabinet d'EC se conclut « avec observations et nouveau contrôle à un an ». Au second contrôle, de nouveaux manquements apparaissent.",
+   "quiz": { "q": "Que peut-il se passer ensuite ?", "choices": ["Saisine de la commission des sanctions de la H2A", "Transmission au rapporteur général", "Saisine de la chambre de discipline"], "answer": 2, "why": "En cas de nouveaux manquements, la **chambre de discipline** est saisie. Rapporteur général et commission des sanctions sont la voie du **CAC**." },
+   "src": ["Nouveau contrôle à un an, formation possible ; en cas de nouveaux manquements, chambre de discipline"] },
+
+ { "id": "controle-08", "type": "cas", "prof": "CAC", "tags": ["controle_activite"], "fiche": "20-schema-controle-qualite.md",
+   "title": "Suites d'un contrôle d'activité", "situation": "Un contrôle d'activité révèle chez un CAC des manquements qui dépassent de simples recommandations.",
+   "quiz": { "q": "Vers qui le dossier est-il d'abord transmis ?", "choices": ["Le comité LBC-FT", "Le rapporteur général", "Le président du CROEC", "La commission des sanctions"], "answer": 1, "why": "Au **rapporteur général**, puis au **collège**, puis à la **commission des sanctions**. Chambre de discipline et CROEC sont la voie de l'EC." },
+   "src": ["Recommandations et suivi ; transmission au rapporteur général, puis collège, puis commission des sanctions"] },
+
+ { "id": "controle-09", "type": "vf", "prof": "CAC", "tags": ["controle_activite"], "fiche": "20-schema-controle-qualite.md",
+   "title": "Secret face aux contrôleurs", "statement": "Un CAC peut opposer le secret professionnel aux contrôleurs de la H2A pour les prestations fournies à un client.", "verdict": false,
+   "why": "Le secret est **inopposable** aux contrôleurs, pour les **missions et** pour les **prestations**. Refuser de communiquer est un manquement.",
+   "src": ["Inopposable, pour les missions et les prestations", "Faire obstacle au contrôle est un manquement sanctionnable."] },
+
+ { "id": "controle-10", "type": "liste", "prof": "CAC", "tags": ["controle_activite"], "fiche": "20-schema-controle-qualite.md",
+   "title": "Pouvoirs des contrôleurs du CAC", "q": "Que peuvent faire les contrôleurs d'activité ?",
+   "items": [
+     { "k": "Obtenir tout document", "v": "Dossiers de travail compris" },
+     { "k": "Convoquer et entendre", "v": "Toute personne" },
+     { "k": "Accéder aux locaux", "v": "Les locaux professionnels, pas le domicile" },
+     { "k": "Interroger", "v": "L'entité contrôlée et le réseau" } ],
+   "trap": "Faire obstacle au contrôle est un manquement sanctionnable.",
+   "quiz": { "q": "Où les contrôleurs peuvent-ils accéder ?", "choices": ["Au domicile du CAC, avec son accord seulement", "Aux seuls documents que le CAC choisit de produire", "Aux locaux professionnels, pas au domicile"], "answer": 2, "why": "Ils accèdent aux **locaux professionnels**, **pas au domicile**. Ils obtiennent aussi tout document, dossiers de travail compris." },
+   "src": ["Obtenir tout document, dossiers de travail compris", "Convoquer et entendre toute personne", "Accéder aux locaux professionnels (pas au domicile)", "Interroger l'entité contrôlée et le réseau"] },
+
+ { "id": "controle-11", "type": "cas", "prof": "CAC", "tags": ["controle_activite"], "fiche": "20-schema-controle-qualite.md",
+   "title": "Blanchiment découvert en contrôle", "situation": "Lors d'un contrôle d'activité, un contrôleur de la H2A découvre chez un CAC des faits qui relèvent du blanchiment.",
+   "quiz": { "q": "Que fait le contrôleur ?", "choices": ["Il informe le comité LBC-FT de l'Ordre", "Il attend la fin du contrôle pour le signaler", "Il informe lui-même Tracfin"], "answer": 2, "why": "Il **informe lui-même Tracfin**. Côté EC, c'est le **comité LBC-FT** de l'Ordre qui conclut le contrôle LCB-FT et peut saisir l'instance disciplinaire." },
+   "src": ["Blanchiment découvert par un contrôleur de la H2A : il informe lui-même Tracfin.", "c'est le comité LBC-FT qui conclut, et il peut saisir l'instance disciplinaire"] },
+
+ { "id": "controle-12", "type": "duel", "prof": "EC+CAC", "tags": ["controle_qualite", "controle_activite"], "fiche": "20-schema-controle-qualite.md",
+   "title": "Revue indépendante", "q": "La revue indépendante est-elle obligatoire ?",
+   "ec": { "main": "**Selon la NPMQ**", "det": "Obligatoire pour les audits d'**entités cotées**. Ailleurs, selon les **critères du cabinet**." },
+   "cac": { "main": "**Légale pour les EIP**", "det": "Règlement UE 537/2014, **avant** la signature du rapport." },
+   "trap": "Chez l'EC, c'est une règle de la norme. Chez le CAC d'EIP, c'est la loi.",
+   "quiz": { "q": "Pour un CAC d'EIP, la revue indépendante est…", "choices": ["Une obligation légale, avant la signature du rapport", "Une règle interne, selon les critères du cabinet", "Facultative"], "answer": 0, "why": "Elle est **légale** pour les EIP et réalisée **avant** la signature du rapport. Chez l'EC, la NPMQ l'impose pour les audits d'entités cotées, ailleurs selon les critères du cabinet." },
+   "src": ["NPMQ : obligatoire pour les audits d'entités cotées, ailleurs selon les critères du cabinet | Légale pour les EIP (règlement UE 537/2014, art. 8), avant la signature du rapport"] }
+]}
