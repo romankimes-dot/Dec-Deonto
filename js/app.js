@@ -1055,7 +1055,7 @@ function closeFeed(viaPop = false) {
   if (!viaPop && history.state?.feed) history.back();
   render();
 }
-// iPhone : le fondu sous la barre d'état prend la couleur du fond de la page ; sombre pendant le fil.
+// Pendant le fil : fond de page et couleur de thème (barre d'état sur Android) passent au sombre.
 function feedChrome(on) {
   document.documentElement.classList.toggle('feed-open', on);
   const m = document.querySelector('meta[name="theme-color"]'); if (!m) return;
