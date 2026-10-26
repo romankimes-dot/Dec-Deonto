@@ -275,7 +275,7 @@ Arbre de décision (lire de haut en bas) :
 #### À vérifier
 - **Seuils des CSE, des fonds de dotation et des partis politiques**.
 - **Augmentation de capital avec suppression du DPS** sans CAC : la désignation d'un CAC « à cet effet » est prévue par L.225-136 1° et L.225-138 II ; l'impossibilité d'y renoncer n'est pas écrite (annale 2024-11 Q15).
-- **Transposition de la directive Omnibus I** (2026/470) : texte français et nouveaux seuils, attendus au plus tard le 19 mars 2027.
+- **Transposition de la directive Omnibus I** (2026/470) : texte français et nouveaux seuils d'application de la CSRD (sans effet sur les seuils de nomination d'un CAC), attendus au plus tard le 19 mars 2027.
 
 ## Questions d’annales de l’épisode (8)
 

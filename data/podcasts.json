@@ -28,8 +28,34 @@
     "steps": [
       "mandat"
     ],
-    "file": null,
-    "duration": null
+    "file": "data/podcasts/03-mandat.m4a",
+    "duration": 645,
+    "errata": [
+      {
+        "t": "03:11",
+        "text": "Le mandat dure six exercices (et non « six ans »)."
+      },
+      {
+        "t": "03:16",
+        "text": "Le mandat ALPE de trois exercices ne vise pas que la nomination volontaire : il s'applique aussi aux petits groupes et à la demande d'associés détenant le tiers du capital."
+      },
+      {
+        "t": "06:20",
+        "text": "Six exercices, et non « six ans »."
+      },
+      {
+        "t": "08:55",
+        "text": "La révélation au procureur par le CAC repose sur le C. com. L.821-10, pas sur « l'article 40 » (du code de procédure pénale, qui vise les agents publics)."
+      },
+      {
+        "t": "09:04",
+        "text": "L'expert-comptable n'a pas d'obligation de révélation au procureur, mais il doit déclarer ses soupçons à Tracfin (LCB-FT)."
+      },
+      {
+        "t": "10:03",
+        "text": "La réflexion finale sur le rapport ALPE et la non-immixtion est une spéculation des présentateurs : ce rapport sur les risques est prévu par la loi (C. com. L.821-57)."
+      }
+    ]
   },
   {
     "n": 4,
