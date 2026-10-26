@@ -12,6 +12,7 @@ import * as PAL from './palais.js';
 import { estimate } from './estimate.js';
 import * as SH from './shorts.js';
 import * as SC from './scenes.js';
+import * as GL from './glossaire.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -44,6 +45,8 @@ const state = {
   nextIdx: 0, nextList: [], // « Et maintenant ? » : suggestions en boucle
   shorts: null,    // shorts de toutes les étapes (data/shorts)
   feed: null,      // fil de shorts ouvert
+  gloss: [], glById: {}, glMatcher: null, // glossaire (data/glossaire.json)
+  glQuery: '', glFilter: 'tout',
 };
 
 // Nouvelles cartes : le reste de l'objectif du jour (ou 20 de plus sur demande), sous-thèmes faibles en tête.
@@ -819,7 +822,7 @@ views.fiches = () => {
   const visuels = state.fiches.filter((f) => f.kind === 'visuel').map((f) => ({ f, n: steps.find((x) => x.file === f.file)?.n || 99 })).sort((a, b) => a.n - b.n);
   const synth = state.fiches.filter((f) => f.kind !== 'visuel');
   const ec = synth.filter((f) => /-ec-/.test(f.file)); const cac = synth.filter((f) => /-cac-/.test(f.file));
-  return `<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ✔ = déjà lu.</p><button class="btn primary" data-go="plan">🧭 Ouvrir le parcours</button></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
+  return `<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ✔ = déjà lu.</p><div class="btnrow"><button class="btn primary" data-go="plan">🧭 Ouvrir le parcours</button><button class="btn" data-go="glossaire">📖 Glossaire</button></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
     <div class="card"><h2>Fiches de référence</h2><h3>Expert-comptable</h3><div class="list">${ec.map((f) => item(f)).join('')}</div><h3>Commissaire aux comptes</h3><div class="list">${cac.map((f) => item(f)).join('')}</div></div>`;
 };
 // Sommaire déroulant en tête des fiches longues.
@@ -940,6 +943,7 @@ views.settings = () => {
     $('#s-conf').onchange = (e) => { s.confidence = e.target.checked; persist(); };
     $('#s-hide').onchange = (e) => { s.hideChoices = e.target.checked; persist(); };
     $('#s-focus').onchange = (e) => { s.focus = e.target.checked; persist(); };
+    $('#s-gl').onchange = (e) => { s.glossary = e.target.checked; persist(); };
     $('#s-timer').onchange = (e) => { s.gameTimer = e.target.value; persist(); };
     $('#s-shorts').onchange = (e) => { s.shortsLimit = Number(e.target.value) || 0; persist(); };
     $('#s-theme').onchange = (e) => { document.documentElement.dataset.theme = e.target.value; try { localStorage.setItem('dec1.theme', e.target.value); } catch { /* ignore */ } };
@@ -971,6 +975,7 @@ views.settings = () => {
     <label class="field"><input type="checkbox" id="s-conf" ${s.confidence ? 'checked' : ''}> Indice de certitude avant la correction (sûr / hésitant / au hasard)</label>
     <label class="field"><input type="checkbox" id="s-hide" ${s.hideChoices ? 'checked' : ''}> QCM : réfléchir avant d’afficher les propositions</label>
     <label class="field"><input type="checkbox" id="s-focus" ${s.focus ? 'checked' : ''}> Mode concentration : badges annoncés sans animation, accueil épuré</label>
+    <label class="field"><input type="checkbox" id="s-gl" ${s.glossary !== false ? 'checked' : ''}> Glossaire : définition au toucher des termes clés (soulignés en pointillé), hors examen blanc et jeux</label>
     <label class="field">Chrono des jeux (Vrai / Faux, Sprint chiffres)<select id="s-timer">${[['normal', 'Normal'], ['large', 'Large'], ['off', 'Sans chrono']].map(([k, l]) => `<option value="${k}" ${s.gameTimer === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
     <label class="field">Shorts : pause proposée après<select id="s-shorts">${[[10, '10 shorts'], [15, '15 shorts'], [20, '20 shorts'], [30, '30 shorts'], [0, 'Sans limite']].map(([k, l]) => `<option value="${k}" ${(s.shortsLimit ?? 15) === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
     <label class="field">Thème<select id="s-theme"><option value="">Automatique</option><option value="light" ${document.documentElement.dataset.theme === 'light' ? 'selected' : ''}>Clair</option><option value="dark" ${document.documentElement.dataset.theme === 'dark' ? 'selected' : ''}>Sombre</option></select></label></div>
@@ -1543,6 +1548,71 @@ function souvenirsView() {
   }).join('');
 }
 
+// ---------- Glossaire ----------
+// Termes clés soulignés partout (première occurrence par carte, fiche ou short) ; un toucher ouvre la définition.
+const GL_SKIP = 'button, a, textarea, input, select, label, code, pre, h1, h2, h3, nav, header, svg, .gl, .gl-pop, .fpill, .toast, .celebrate, .sheet-head, .feed-top, [data-no-gl]';
+const glScope = (el) => el.closest('.card, section, .sheet-body') || document.body;
+// Pas d'aide pendant un examen blanc ni dans les jeux : la définition donnerait la réponse.
+const glActive = () => !!state.glMatcher && state.progress.settings.glossary !== false
+  && !(state.view === 'exam' && state.exam) && state.view !== 'jeux' && state.view !== 'glossaire';
+function glObserve() {
+  const obs = new MutationObserver((recs) => {
+    if (!glActive()) return;
+    const roots = new Set();
+    recs.forEach((r) => r.addedNodes.forEach((n) => { const el = n.nodeType === 1 ? n : n.parentElement; if (el?.isConnected) roots.add(el); }));
+    roots.forEach((el) => GL.linkTerms(el, state.glMatcher, { skip: GL_SKIP, scopeOf: glScope }));
+    obs.takeRecords(); // nos propres remplacements
+  });
+  obs.observe(document.body, { childList: true, subtree: true });
+  document.addEventListener('click', (e) => {
+    const g = e.target.closest?.('.gl');
+    if (g) { e.preventDefault(); e.stopPropagation(); return glShow(g.dataset.gl); }
+    if ($('#glpop')?.classList.contains('show') && !e.target.closest?.('#glpop')) glHide();
+  }, true);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') return glHide();
+    if (e.key === 'Enter' && e.target.classList?.contains('gl')) { e.preventDefault(); glShow(e.target.dataset.gl); }
+  });
+}
+const glPills = (e) => e.prof.map((p) => inline(`{${p.toUpperCase()}}`)).join(' ');
+function glShow(id) {
+  const e = state.glById[id]; if (!e) return;
+  let el = $('#glpop');
+  if (!el) {
+    el = document.createElement('div'); el.id = 'glpop'; el.className = 'gl-pop'; el.setAttribute('role', 'dialog'); document.body.appendChild(el);
+    el.addEventListener('click', (ev) => {
+      if (ev.target.closest('.gl-x')) return glHide();
+      const f = ev.target.closest('[data-gl-fiche]'); if (f) { glHide(); return ficheSheet(f.dataset.glFiche); }
+      const a = ev.target.closest('[data-gl-all]'); if (a) { state.glQuery = state.glById[a.dataset.glAll]?.terme || ''; state.glFilter = 'tout'; glHide(); go('glossaire'); }
+    });
+  }
+  el.setAttribute('aria-label', e.terme);
+  el.innerHTML = `<div class="gl-head"><strong>${esc(e.terme)}</strong>${glPills(e)}<button class="gl-x" aria-label="Fermer">✕</button></div><div class="gl-def">${inline(e.def)}</div><div class="gl-act">${e.fiche ? `<button class="btn sm" data-gl-fiche="${esc(e.fiche)}">📚 Voir la fiche</button>` : ''}<button class="btn sm" data-gl-all="${esc(e.id)}">📖 Tout le glossaire</button></div>`;
+  el.classList.add('show');
+}
+function glHide() { $('#glpop')?.classList.remove('show'); }
+const GL_FILTERS = [['tout', 'Tout'], ['ec', 'EC'], ['cac', 'CAC'], ['institution', 'Institutions'], ['norme', 'Normes et textes']];
+function glList() {
+  const box = $('#gl-list'); if (!box) return;
+  const res = GL.search(state.gloss, state.glQuery, state.glFilter);
+  $('#gl-count').textContent = `${res.length} terme${res.length > 1 ? 's' : ''}`;
+  box.innerHTML = res.length ? res.map((e) => `<div class="card gl-item"><div class="gl-head"><strong>${esc(e.terme)}</strong>${glPills(e)}</div>${e.alias.length ? `<div class="muted gl-alias">${e.alias.map(esc).join(' · ')}</div>` : ''}<div class="gl-def">${inline(e.def)}</div>${e.fiche ? `<button class="btn sm" data-open-fiche="${esc(e.fiche)}">📚 Voir la fiche</button>` : ''}</div>`).join('')
+    : '<div class="card muted">Aucun terme ne correspond. Essayez un sigle (H2A, NEP) ou un mot de la définition.</div>';
+}
+views.glossaire = () => {
+  setTimeout(() => {
+    const q = $('#gl-q'); if (!q) return;
+    q.oninput = (e) => { state.glQuery = e.target.value; glList(); };
+    document.querySelectorAll('[data-gl-filter]').forEach((b) => { b.onclick = () => { state.glFilter = b.dataset.glFilter; document.querySelectorAll('[data-gl-filter]').forEach((x) => x.classList.toggle('on', x === b)); glList(); }; });
+    glList();
+  }, 0);
+  if (!state.gloss.length) return '<div class="card"><h2>📖 Glossaire</h2><p class="muted">Glossaire indisponible hors ligne : ouvrez l’application une fois en ligne.</p></div>';
+  return `<div class="card"><h2>📖 Glossaire</h2><p class="muted" style="margin-top:0">${state.gloss.length} définitions clés. Partout dans l’application, les termes <span class="gl" style="cursor:default">soulignés en pointillé</span> s’ouvrent d’un toucher.</p>
+    <input type="search" id="gl-q" placeholder="Rechercher : H2A, rotation, Tracfin…" value="${esc(state.glQuery)}" autocomplete="off" enterkeyhint="search">
+    <div class="chips" style="margin-top:10px">${GL_FILTERS.map(([k, l]) => `<button class="chip ${state.glFilter === k ? 'on' : ''}" data-gl-filter="${k}">${l}</button>`).join('')}</div>
+    <div class="muted" id="gl-count" style="margin-top:8px;font-size:13px"></div></div><div id="gl-list" data-no-gl></div>`;
+};
+
 const NAV = [
   ['home', '🏠', 'Accueil'], ['review', '🔁', 'Réviser'], ['train', '🎯', 'Entraîner'], ['shorts', '🎬', 'Shorts'], ['exam', '⏱', 'Examen'], ['carriere', '🏆', 'Carrière'], ['fiches', '📚', 'Fiches'],
 ];
@@ -1561,6 +1631,7 @@ function go(v, { pop = false } = {}) {
   if (v !== 'jeux') stopGameTimer();
   closeSheet(true);
   if (state.feed) closeFeed(true);
+  glHide();
   const changed = v !== state.view;
   state.view = v; window.scrollTo(0, 0); render();
   if (!pop && changed) { try { history.pushState({ v }, ''); } catch { /* ignore */ } }
@@ -1599,7 +1670,7 @@ async function recoverFromStaleCache() {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
     await Promise.all((await caches.keys()).map((k) => caches.delete(k)));
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/shorts.js', './js/scenes.js', './sw.js']
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();
@@ -1613,6 +1684,7 @@ async function init() {
   nav.innerHTML = NAV.map(([v, ico, label]) => `<button data-view="${v}"><span class="ico">${ico}</span>${label}</button>`).join('');
   nav.querySelectorAll('button').forEach((b) => { b.onclick = () => go(b.dataset.view); });
   $('#settingsBtn').onclick = () => go('settings');
+  $('#glossBtn').onclick = () => go('glossaire');
   try { history.replaceState({ v: state.view }, ''); } catch { /* ignore */ }
   window.addEventListener('popstate', onPop);
   const sh = document.createElement('div'); sh.id = 'sheet'; sh.className = 'sheet'; sh.setAttribute('role', 'dialog'); document.body.appendChild(sh);
@@ -1635,6 +1707,10 @@ async function init() {
     state.clusters = buildClusters(state.bank.questions);
     state.fiches = await loadFichesIndex();
     await ensureShorts();
+    try { state.gloss = await GL.loadGlossary(); } catch { state.gloss = []; }
+    state.glById = Object.fromEntries(state.gloss.map((e) => [e.id, e]));
+    state.glMatcher = GL.buildMatcher(state.gloss);
+    glObserve();
     initGamify();
     state.notice = store.notices[0] || null;
     const savedExam = store.loadExam();
