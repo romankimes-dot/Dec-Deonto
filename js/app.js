@@ -2073,6 +2073,7 @@ function pcItem(ep) {
     <div class="muted">${esc(stepsLabel(ep))}${av ? ` · ${esc(PC.fmtDuration(ep.duration))}` : ''}</div>
     <div class="pc-state">${pcStateBadge(ep)}</div>
     ${av && s.state === 'progress' ? `<div class="progress sm"><div data-pc-bar="${ep.id}" style="width:${Math.round(s.ratio * 100)}%"></div></div>` : ''}
+    ${av && ep.errata?.length ? `<details class="pc-errata"><summary>⚠ À corriger en écoutant (${ep.errata.length})</summary><ul>${ep.errata.map((x) => `<li><strong>${esc(x.t)}</strong> ${esc(x.text)}</li>`).join('')}</ul></details>` : ''}
     ${actions}</div></li>`;
 }
 // Liens vers les schémas des étapes couvertes (étapes « action » : l'écran correspondant).
