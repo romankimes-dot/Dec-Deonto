@@ -9,31 +9,11 @@
     ],
     "file": "data/podcasts/01-cadre-institutions.m4a",
     "duration": 769,
-    "errata": [
-      {
-        "t": "03:34",
-        "text": "Pour les petites entités, il faut entendre « NP 2910 » (et non « NP 990 »)."
-      },
-      {
-        "t": "05:52",
-        "text": "Erreur : « régularité et sincérité » est propre à la certification du CAC (C. com. L.821-53). L'audit de l'expert-comptable conclut seulement à l'image fidèle selon le référentiel comptable."
-      },
-      {
-        "t": "09:31",
-        "text": "Les cotisations sont perçues par les conseils régionaux et reversées en partie au Conseil national : l'argent ne « reste » pas en région."
-      },
-      {
-        "t": "10:08",
-        "text": "Le CAC n'a pas à être français : la nationalité d'un État de l'UE ou de l'EEE suffit, ou celle d'un État qui admet les Français à exercer le contrôle légal (L.821-14 1°)."
-      },
-      {
-        "t": "11:15",
-        "text": "Le CAC peut exercer sous toute forme sociale, SCP comprise (L.821-13), pas seulement en société commerciale."
-      },
-      {
-        "t": "11:28",
-        "text": "Erreur : la directive Omnibus restreint le champ de la CSRD ; elle ne modifie pas les seuils de nomination du CAC."
-      }
+    "retenir": [
+      "L'audit de l'expert-comptable conclut à l'image fidèle selon le référentiel comptable ; « réguliers et sincères » est propre à la certification du CAC (C. com. L.821-53).",
+      "La directive Omnibus I restreint le champ de la CSRD : les seuils de nomination d'un CAC ne changent pas.",
+      "CAC : nationalité d'un État de l'UE ou de l'EEE, ou d'un État qui admet les Français au contrôle légal (L.821-14 1°) ; exercice sous toute forme sociale, SCP comprise (L.821-13).",
+      "Petites entités : NP 2910. Les cotisations sont perçues par les conseils régionaux et reversées en partie au Conseil national."
     ]
   },
   {
@@ -46,27 +26,11 @@
     ],
     "file": "data/podcasts/02-activites-lettre.m4a",
     "duration": 1137,
-    "errata": [
-      {
-        "t": "00:12",
-        "text": "Le scénario d'ouverture (radiation « ordonnée par l'État » après une cession de parts) est inventé : le dossier ne prévoit pas de radiation automatique. La règle à retenir : plus des deux tiers des droits de vote aux experts-comptables (ord. 1945 art. 7)."
-      },
-      {
-        "t": "11:09",
-        "text": "Le mandat du CAC dure six exercices (et non « six ans »)."
-      },
-      {
-        "t": "12:30",
-        "text": "La « double signature » est une conclusion des présentateurs : le dossier laisse la question ouverte (signature personnelle de l'EC responsable en plus de la signature sociale, à vérifier)."
-      },
-      {
-        "t": "15:48",
-        "text": "Motifs d'interruption par l'EC (code de déontologie art. 156 et 157) : perte de confiance manifestée par le client ou méconnaissance d'une clause substantielle du contrat, sans lui porter préjudice ; en cas de conflit d'intérêts, l'EC doit dénoncer le contrat. Le « refus de payer les honoraires » ne figure pas dans le dossier."
-      },
-      {
-        "t": "17:55",
-        "text": "La réflexion finale sur une fusion des métiers d'EC et de CAC est une spéculation des présentateurs, hors du dossier."
-      }
+    "retenir": [
+      "Société d'expertise comptable : plus des deux tiers des droits de vote aux experts-comptables (ord. 1945 art. 7) ; aucune règle sur le capital.",
+      "Interrompre une mission (EC) : motif juste et raisonnable, comme la perte de confiance ou la méconnaissance d'une clause substantielle, sans nuire au client ; en cas de conflit d'intérêts, dénonciation obligatoire (code de déontologie art. 156 et 157).",
+      "Lettre de mission en société d'EC : signature sociale ; la signature personnelle de l'EC responsable en plus reste à vérifier.",
+      "Le mandat du CAC se compte en exercices : six exercices."
     ]
   },
   {
@@ -78,31 +42,11 @@
     ],
     "file": "data/podcasts/03-mandat.m4a",
     "duration": 645,
-    "errata": [
-      {
-        "t": "03:11",
-        "text": "Le mandat dure six exercices (et non « six ans »)."
-      },
-      {
-        "t": "03:16",
-        "text": "Le mandat ALPE de trois exercices ne vise pas que la nomination volontaire : il s'applique aussi aux petits groupes et à la demande d'associés détenant le tiers du capital."
-      },
-      {
-        "t": "06:20",
-        "text": "Six exercices, et non « six ans »."
-      },
-      {
-        "t": "08:55",
-        "text": "La révélation au procureur par le CAC repose sur le C. com. L.821-10, pas sur « l'article 40 » (du code de procédure pénale, qui vise les agents publics)."
-      },
-      {
-        "t": "09:04",
-        "text": "L'expert-comptable n'a pas d'obligation de révélation au procureur, mais il doit déclarer ses soupçons à Tracfin (LCB-FT)."
-      },
-      {
-        "t": "10:03",
-        "text": "La réflexion finale sur le rapport ALPE et la non-immixtion est une spéculation des présentateurs : ce rapport sur les risques est prévu par la loi (C. com. L.821-57)."
-      }
+    "retenir": [
+      "Mandat du CAC : six exercices ; mandat ALPE de trois exercices en cas de nomination volontaire, dans les petits groupes ou à la demande d'associés détenant le tiers du capital.",
+      "Révélation au procureur par le CAC : C. com. L.821-10 (et non l'article 40 du code de procédure pénale, qui vise les agents publics).",
+      "L'expert-comptable n'a pas d'obligation de révélation, mais il déclare ses soupçons à Tracfin (LCB-FT).",
+      "Le rapport ALPE sur les risques est prévu par la loi (C. com. L.821-57)."
     ]
   },
   {

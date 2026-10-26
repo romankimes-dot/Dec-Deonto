@@ -571,7 +571,7 @@ html.feed-open, html.feed-open body { background: #f3eee6; }
 .pc-mini-t span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .pc-mini-on .toast { bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 76px); }
 .pc-mini-on main { padding-bottom: 76px; }
-.pc-errata { margin-top: 6px; font-size: 14px; }
-.pc-errata summary { cursor: pointer; color: var(--warn); font-weight: 600; }
-.pc-errata ul { margin: 6px 0 0; padding-left: 18px; }
-.pc-errata li { margin-bottom: 4px; }
+.pc-retenir { margin-top: 6px; font-size: 14px; }
+.pc-retenir summary { cursor: pointer; color: var(--primary); font-weight: 600; }
+.pc-retenir ul { margin: 6px 0 0; padding-left: 18px; }
+.pc-retenir li { margin-bottom: 4px; }
