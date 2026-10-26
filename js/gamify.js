@@ -1,6 +1,7 @@
 // Moteur de gamification : statistiques agrégées, catalogue de badges, grades de carrière.
 // Logique pure (aucun accès au DOM), importable dans les tests Node.
 import { ANECDOTES, QBADGES } from './catalog-data.js';
+import { isCounted } from './exam.js';
 
 export const STATS_VERSION = 1;
 // Jour de l'épreuve par défaut (tests, ou contexte construit sans date) : 10 novembre 2026, 10 h 30.
@@ -135,7 +136,9 @@ export function applyAnswer(stats, ev, ctx) {
 }
 
 // Enregistre un examen blanc terminé. ex = { t, mode, note, durationMs, byProf }
+// Une copie répondue à moins de 50 % (rendue presque blanche) ne compte pas pour les badges.
 export function applyExam(stats, ex) {
+  if (!isCounted(ex)) return stats;
   const cac = ex.byProf && ex.byProf.CAC;
   stats.exams.push({ t: ex.t, mode: ex.mode, note: ex.note, durationMs: ex.durationMs || null, cacOk: !!cac && cac.max > 0 && cac.points >= cac.max });
   stats.lastT = Math.max(stats.lastT, ex.t);
