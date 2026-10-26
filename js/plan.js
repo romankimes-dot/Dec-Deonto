@@ -76,21 +76,56 @@ export const daysUntil = (today, exam) => dnum(exam) - dnum(today);
 export const GAME_ROTATION = ['duel', 'vf', 'arbre', 'chiffres', 'palais'];
 const FINAL = { 4: { kind: 'blanc', exam: 'qcm' }, 3: { kind: 'blanc', exam: 'qrc' }, 2: { kind: 'faibles' }, 1: { kind: 'veille' } };
 
+// Date d'épreuve saisie (« AAAA-MM-JJ » ou « AAAA-MM-JJTHH:MM »). Renvoie { ok, key } ; refuse le vide, le format invalide
+// et toute date qui n'est pas strictement postérieure à aujourd'hui.
+export function validateExamDate(value, today) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})(?:T\d{2}:\d{2}(?::\d{2})?)?$/.exec(String(value || '').trim());
+  if (!m) return { ok: false, reason: 'format' };
+  const key = `${m[1]}-${m[2]}-${m[3]}`;
+  if (dkey(dnum(key)) !== key) return { ok: false, reason: 'format' };
+  if (daysUntil(today, key) <= 0) return { ok: false, reason: 'passee' };
+  return { ok: true, key };
+}
+
+// Sans date d'épreuve : parcours générique de 18 jours à partir du premier jour d'utilisation (J-18 à J-1).
+export const DEFAULT_SPAN = 18;
+export function examKeyOf(examDate, startKey) {
+  const m = /^(\d{4}-\d{2}-\d{2})/.exec(String(examDate || ''));
+  if (m && dkey(dnum(m[1])) === m[1]) return m[1];
+  return dkey(dnum(startKey) + DEFAULT_SPAN);
+}
+
+// Révisions espacées d'une étape étudiée au jour d'étude `i` : +2 et +6 jours.
+const REVISE_GAPS = [2, 6];
+
 // undone : identifiants des étapes « schéma » restantes, dans l'ordre. Renvoie un jour par date, d'aujourd'hui à J-1.
+// Délai court (moins de 5 jours) : aucune étape n'est supprimée, tout le reste est tassé sur aujourd'hui, avec les
+// journées fixes déjà passées (`merged`). Délai long : les étapes sont espacées de façon régulière et chaque étape
+// revient en révision (`revise`) 2 et 6 jours plus tard.
 export function schedule(today, exam, undone) {
   const n0 = daysUntil(today, exam);
   if (n0 <= 0) return [{ key: today, n: n0, kind: n0 === 0 ? 'jour-j' : 'apres', steps: [], exam: null }];
   const days = []; let rest = [...undone];
+  const gap = rest.length && n0 - 4 >= rest.length * 2 ? Math.floor((n0 - 4) / rest.length) : 1;
   for (let n = n0; n >= 1; n--) {
     const key = dkey(dnum(today) + (n0 - n));
-    if (FINAL[n]) { days.push({ key, n, steps: [], exam: null, ...FINAL[n] }); continue; }
+    if (FINAL[n]) { days.push({ key, n, steps: [], exam: null, revise: [], ...FINAL[n] }); continue; }
     const studyLeft = n - 4;
-    const k = rest.length ? Math.ceil(rest.length / studyLeft) : 0;
+    const idx = n0 - n;
+    const k = !rest.length ? 0 : gap > 1 ? (idx % gap === 0 ? 1 : 0) : Math.ceil(rest.length / studyLeft);
     const steps = rest.slice(0, k); rest = rest.slice(k);
     // Examens blancs intermédiaires : J-10 en QCM, J-7 en QRC (puis J-4 et J-3, ci-dessus).
     const exam = n === 10 ? 'qcm' : n === 7 ? 'qrc' : null;
-    days.push({ key, n, kind: steps.length ? 'etude' : 'consolidation', steps, exam });
+    days.push({ key, n, kind: steps.length ? 'etude' : 'consolidation', steps, exam, revise: [] });
   }
+  // Délai trop court pour les journées d'étude : le reste des étapes et les journées fixes manquées vont sur aujourd'hui.
+  if (n0 < 5) {
+    days[0].steps = rest; rest = [];
+    days[0].merged = Object.keys(FINAL).map(Number).filter((n) => n > n0).sort((x, y) => y - x).map((n) => ({ ...FINAL[n] }));
+  }
+  days.forEach((d, i) => d.steps.forEach((id) => REVISE_GAPS.forEach((g) => {
+    const t = days[i + g]; if (t && t.n >= 5 && !t.revise.includes(id)) t.revise.push(id);
+  })));
   return days;
 }
 

@@ -310,6 +310,7 @@ header.top .sub { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orien
 .gfb { font-weight: 700; padding: 8px 12px; border-radius: 8px; margin: 6px 0 10px; }
 .gfb.ok { background: var(--ok-bg); color: var(--ok); }
 .gfb.ko { background: var(--ko-bg); color: var(--ko); }
+.gfb.warn { background: var(--warn-bg); color: var(--warn); font-weight: 600; }
 .vs-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0; font-size: 15px; }
 .vs-cell { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; }
 .vs-cell.on { border: 2px solid var(--primary); background: var(--bg); }

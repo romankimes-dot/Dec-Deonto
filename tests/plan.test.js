@@ -59,7 +59,7 @@ test('chaque schéma du parcours existe dans l’index réel des fiches', async 
   for (const st of STEPS.filter((s) => s.kind === 'schema')) assert.ok(stepQuestionIds(st, real).length > 0, st.id);
 });
 
-import { schedule, newTarget, tagStats, adaptiveWeight, gameOfDay, daysUntil } from '../js/plan.js';
+import { schedule, newTarget, tagStats, adaptiveWeight, gameOfDay, daysUntil, validateExamDate, examKeyOf } from '../js/plan.js';
 import { estimate } from '../js/estimate.js';
 
 test('plan jour par jour : étapes réparties, quatre derniers jours fixes', () => {
@@ -103,4 +103,43 @@ test('estimation : monte avec les réussites, risque d’éliminatoire cohérent
   assert.ok(good.qcm.risk < 1 && none.qcm.risk > 30);
   assert.ok(good.qrc.note < good.qcm.note, 'produire est plus dur que reconnaître');
   assert.equal(good.reliable, true); assert.equal(none.reliable, false);
+});
+
+const SCHEMAS = STEPS.filter((s) => s.kind === 'schema').map((s) => s.id);
+test('date d’examen : validation (future seulement) et parcours générique si absente', () => {
+  assert.deepEqual(validateExamDate('2026-11-10T10:30', '2026-10-26'), { ok: true, key: '2026-11-10' });
+  assert.equal(validateExamDate('2026-11-10', '2026-10-26').ok, true);
+  assert.equal(validateExamDate('2026-10-26T10:30', '2026-10-26').reason, 'passee');
+  assert.equal(validateExamDate('2026-10-01', '2026-10-26').reason, 'passee');
+  assert.equal(validateExamDate('', '2026-10-26').reason, 'format');
+  assert.equal(validateExamDate('2026-02-30', '2026-01-01').reason, 'format');
+  assert.equal(examKeyOf('2026-11-10T10:30:00', '2026-10-01'), '2026-11-10');
+  assert.equal(examKeyOf('', '2026-10-01'), '2026-10-19', 'sans date : J-18 le premier jour');
+  assert.equal(schedule('2026-10-01', examKeyOf('', '2026-10-01'), SCHEMAS)[0].n, 18);
+});
+test('délai court : aucune étape ni journée fixe supprimée, tout regroupé sur aujourd’hui', () => {
+  for (const n of [1, 2, 3, 4]) {
+    const exam = `2026-11-${String(10).padStart(2, '0')}`;
+    const today = new Date(Date.UTC(2026, 10, 10 - n)).toISOString().slice(0, 10);
+    const days = schedule(today, exam, SCHEMAS);
+    assert.equal(days.length, n);
+    assert.deepEqual(days.flatMap((d) => d.steps), SCHEMAS, `J-${n} : toutes les étapes`);
+    const kinds = days.flatMap((d) => [d.exam && `blanc-${d.exam}`, d.kind === 'faibles' && 'faibles', d.kind === 'veille' && 'veille', ...(d.merged || []).map((m) => m.kind === 'blanc' ? `blanc-${m.exam}` : m.kind)]).filter(Boolean);
+    assert.deepEqual(kinds.sort(), ['blanc-qcm', 'blanc-qrc', 'faibles', 'veille'].sort(), `J-${n} : examens blancs, points faibles, veille`);
+  }
+  const j5 = schedule('2026-11-05', '2026-11-10', SCHEMAS);
+  assert.deepEqual(j5.flatMap((d) => d.steps), SCHEMAS);
+  assert.equal(j5[0].steps.length, SCHEMAS.length, 'une seule journée d’étude : tout dessus');
+});
+test('délai long : étapes espacées régulièrement, révisions espacées à +2 et +6 jours', () => {
+  const days = schedule('2026-08-01', '2026-11-10', SCHEMAS);
+  assert.deepEqual(days.flatMap((d) => d.steps), SCHEMAS);
+  const withSteps = days.filter((d) => d.steps.length);
+  assert.ok(withSteps.every((d) => d.steps.length === 1));
+  const gaps = withSteps.slice(1).map((d, i) => daysUntil(withSteps[i].key, d.key));
+  assert.ok(gaps.every((g) => g === gaps[0] && g > 1), `espacement régulier : ${gaps}`);
+  const first = withSteps[0]; const i0 = days.indexOf(first);
+  assert.ok(days[i0 + 2].revise.includes(first.steps[0]) && days[i0 + 6].revise.includes(first.steps[0]));
+  assert.ok(days.slice(-4).every((d) => d.revise.length === 0), 'rien à relire pendant les quatre derniers jours');
+  assert.deepEqual(days.slice(-4).map((d) => d.kind), ['blanc', 'blanc', 'faibles', 'veille']);
 });

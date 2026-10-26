@@ -3,7 +3,7 @@
 Application web hors ligne (PWA) pour préparer l'épreuve n°1 du Diplôme d'expertise comptable :
 « Réglementation professionnelle et déontologie de l'expert-comptable et du commissaire aux comptes ».
 
-Session visée : **mardi 10 novembre 2026, 10 h 30 – 11 h 30**.
+Session visée : **mardi 10 novembre 2026, 10 h 30 – 11 h 30** (modifiable dans Réglages : le plan, le compte à rebours et les révisions s’adaptent).
 
 ## L'épreuve (note du jury SIEC, version du 6 juillet 2026)
 
