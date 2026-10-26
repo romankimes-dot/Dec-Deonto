@@ -27,6 +27,7 @@ const CORE = [
   './js/shorts.js',
   './js/scenes.js',
   './js/glossaire.js',
+  './js/qrc.js',
   './fonts/bricolage-grotesque.woff2',
   './data/shorts/index.json',
   './data/questions.json',
