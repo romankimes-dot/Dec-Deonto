@@ -73,7 +73,7 @@ Arbre de décision (lire de haut en bas) :
 |---|---|
 | Co-commissariat (comptes consolidés) | **2 CAC**, pas du même réseau, répartition **équilibrée** (une répartition 90 / 10 est refusée) |
 | Désaccord sur la répartition | **Président de la CRCC** ; si compagnies distinctes, président de la compagnie de chacun |
-| Barème d'heures (certification, hors ALPE) | Fourchettes selon bilan + produits ; **taux horaire libre** |
+| Barème d'heures (certification, ALPE comprise) | Fourchettes selon bilan + produits ; **taux horaire libre** |
 | Dérogation au barème | **Président de la CRCC**, puis **président de la CNCC**, puis **bureau de la H2A**, puis **tribunal administratif** |
 | Litige sur le montant des honoraires | **Président de la CRCC** (conciliation en 3 mois), puis le **juge** |
 | SACC d'une EIP | Plafond de **70 %** de la moyenne des honoraires d'audit sur **3 ans** |
@@ -140,7 +140,7 @@ Arbre de décision (lire de haut en bas) :
 | Point | Règle |
 |---|---|
 | **Durée** | **6 exercices**. Le mandat **expire** après l'assemblée qui statue sur les comptes du **6e exercice** |
-| **ALPE** (audit légal des petites entreprises, **L.821-46**) | **3 exercices**, sur option, pour les entités sous les seuils (petits groupes, volontaires). Rapport allégé. **Le barème d'heures ne s'applique pas** |
+| **ALPE** (audit légal des petites entreprises, **L.821-46**) | **3 exercices**, sur option, pour les entités sous les seuils (petits groupes, volontaires). Rapport allégé, plus un **rapport sur les risques** financiers, comptables et de gestion destiné aux dirigeants (L.821-57). **Le barème d'heures s'applique** : c'est une mission de certification, que R.821-193 et R.821-194 n'excluent pas |
 | **Début de mission** | La mission porte sur l'**exercice au cours duquel le CAC est nommé** : elle commence dès sa nomination et couvre les **comptes de cet exercice** depuis son ouverture |
 | **Premier exercice audité** sans CAC antérieur | Le rapport **mentionne** que les **comptes de l'exercice précédent** (comparatifs) **n'ont pas été audités** |
 | **Fusion de sociétés de CAC** | La **société absorbante poursuit** le mandat jusqu'à son **terme**. L'assemblée de l'entité **peut**, à sa première réunion après l'absorption, **délibérer sur le maintien** du mandat, après avoir entendu le CAC (L.821-48) |
@@ -212,7 +212,7 @@ Arbre de décision (lire de haut en bas) :
 - **Serment** : l'EC le prête devant le **conseil régional** ; le CAC devant le **premier président de la cour d'appel**.
 - **Inscription** : l'EC est inscrit au **tableau tenu par le CROEC** ; le CAC sur la **liste tenue par la H2A**.
 - **Droits de vote** : **plus de 2/3** aux EC dans une société d'EC ; la **majorité** aux CAC dans une société de CAC.
-- **Honoraires** : ceux de l'EC sont libres, sans barème ; ceux du CAC suivent un **barème d'heures** en certification (hors ALPE), avec un **taux horaire libre**.
+- **Honoraires** : ceux de l'EC sont libres, sans barème ; ceux du CAC suivent un **barème d'heures** en certification (ALPE comprise), avec un **taux horaire libre**.
 - **Conciliation** : chez l'EC, par le **président du CROEC** (honoraires, confrères) ; chez le CAC, par le **président de la CRCC** (co-commissaires, honoraires, barème).
 - **Révélation des faits délictueux** : obligation du **CAC seul**, en **mission comme en prestation** ; l'EC n'y est pas tenu.
 - **Durée** : la mission de l'EC dépend de la lettre de mission ; le mandat du CAC dure **6 exercices** (**3** en ALPE).
@@ -224,7 +224,7 @@ Arbre de décision (lire de haut en bas) :
 - **Petit groupe** : le CAC de la tête de groupe peut-il obtenir des informations des CAC des filiales significatives (annale 2025-05 Q15) ? Texte exact.
 - **Seuils des CSE, des fonds de dotation et des partis politiques**.
 - **Augmentation de capital avec suppression du DPS** sans CAC : la désignation d'un CAC « à cet effet » est prévue par L.225-136 1° et L.225-138 II ; l'impossibilité d'y renoncer n'est pas écrite (annale 2024-11 Q15).
-- **Calendrier CSRD** après le paquet Omnibus 2025 et l'ordonnance de transposition.
+- **Transposition de la directive Omnibus I** (2026/470) : texte français et nouveaux seuils, attendus au plus tard le 19 mars 2027.
 
 ## Questions d’annales de l’épisode (8)
 

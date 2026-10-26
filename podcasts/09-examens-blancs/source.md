@@ -78,6 +78,16 @@ Rappel du format : 20 questions, 4 propositions, une seule juste, 1 point par qu
 - [PIÈGE] Un **stagiaire** EC **peut** être sanctionné.
 - [PIÈGE] Cotisations impayées (Ordre, CAVEC) **2 ans sur 10** : **radiation d'office** du tableau par le conseil régional, ce n'est pas une sanction disciplinaire.
 
+### La procédure de sanction de la H2A (commissaires aux comptes)
+
+- [PIÈGE] Aucun **expert-comptable** en tant que tel, aucun **président de CRCC** ni de la CNCC ne siège à la commission. L'**EC** est jugé par les **chambres de discipline de l'Ordre**.
+- [PIÈGE] La « **comparution immédiate** », la « **chambre régionale** » et l'« **appel devant la chambre nationale** » n'existent pas pour le CAC.
+- [PIÈGE] **3 ans** au plus pour l'interdiction temporaire : les **5 ans** sont l'ancien régime H3C.
+- [PIÈGE] **Réprimande** et **suspension** sont des peines de l'**expert-comptable**, pas du CAC.
+- [PIÈGE] La **suspension provisoire** n'est pas une sanction et ne dure que **6 mois** au plus.
+- [PIÈGE] La **procédure simplifiée** ne prononce qu'une **somme** (15 000 € au plus), jamais une interdiction ni une radiation.
+- [PIÈGE] Le **garde des Sceaux** ne saisit pas le rapporteur général.
+
 ### Contrôle de qualité (EC) et contrôle d'activité (CAC)
 
 - [PIÈGE] L'**enquête** du rapporteur général est une procédure **distincte**, à visée disciplinaire.
@@ -152,7 +162,7 @@ Rappel du format : réponses courtes, double correction, 40 points ramenés sur 
 
 | Critère | Expert-comptable (EC) | Commissaire aux comptes (CAC) |
 |---|---|---|
-| Principe | **Libres**, convenus dans la lettre de mission ; **aucun barème** (ce serait une entente) | **Barème d'heures** pour la certification (hors ALPE) ; **taux horaire libre** |
+| Principe | **Libres**, convenus dans la lettre de mission ; **aucun barème** (ce serait une entente) | **Barème d'heures** pour la certification, **ALPE comprise** (hors sociétés cotées, banques, assurances, associations, très grandes entités…) ; **taux horaire libre** |
 | Honoraires au succès | **Interdits** pour les missions du **monopole** (comptabilité) et celles qui participent à l'**assiette fiscale ou sociale** ; **possibles** pour les autres | **Interdits** (honoraires subordonnés au résultat) |
 | Indexation | Possible si une **clause** la prévoit et que l'indice est **lié** à l'activité | — |
 | Mission gratuite | Possible si ce n'est **pas** une concurrence déloyale ; lettre de mission qui précise la **gratuité**, même qualité | — |
@@ -202,8 +212,16 @@ Rappel du format : réponses courtes, double correction, 40 points ramenés sur 
 | Sanction pécuniaire | **Non**, sauf en matière **LCB-FT** (sanction pécuniaire, interdiction temporaire, publication) | **Oui** : **250 000 €** au plus (personne physique) ; société : **1 M€**, ou la **moyenne annuelle des honoraires** facturés à l'entité sur 3 exercices si elle est plus élevée (faute en mission de certification) |
 | Qui est justiciable ? | EC et sociétés inscrites, **AGC**, salariés autorisés (83 ter / quater), **stagiaires** | CAC (personnes et sociétés), auditeurs de durabilité, membres des comités d'audit, contrôleurs de pays tiers… **Pas l'EC** |
 | Faute sanctionnable | Manquement aux règles professionnelles (ord. art. 49 s.) | **2 catégories** : manquement aux **conditions légales d'exercice** ; **négligence grave** ou fait contraire à la **probité ou à l'honneur** |
-| Prescription | {?} (à vérifier) Aucun délai trouvé dans l'ordonnance ni dans le décret | **6 ans**, interrompue par un acte de recherche, de constatation ou de sanction |
+| Prescription | {?} (à vérifier) Aucun délai trouvé dans l'ordonnance, le décret ni le règlement intérieur (recueil de l'Ordre, 2024) | **6 ans**, interrompue par un acte de recherche, de constatation ou de sanction |
 | Nature | Disciplinaire (juridictions ordinales) | Sanctions **administratives** d'une autorité publique indépendante |
+
+### La procédure de sanction de la H2A (commissaires aux comptes)
+
+| Critère | Collège de la H2A | Commission des sanctions |
+|---|---|---|
+| Rôle | **Poursuit** : arrête les **griefs** (notifiés par le **président de la H2A**), classe, propose une **composition administrative** ; la formation plénière peut ordonner une **suspension provisoire** | **Juge** : audience, **décision motivée**, sanction ; **homologue** les compositions administratives |
+| Composition | Président (magistrat de la Cour de cassation), membres du Conseil d'État et de la Cour des comptes, AMF, ACPR, Trésor, personnes qualifiées, **2 anciens CAC** | Un **magistrat de la Cour de cassation** (président) et **4 personnes qualifiées** : un **ancien CAC**, une en **durabilité**, deux en matière **juridique, économique ou financière** |
+| Lien | **Incompatibilité** : nul ne siège dans les deux | Membres nommés par **décret** pour **6 ans**, renouvelables une fois |
 
 ### Contrôle de qualité (EC) et contrôle d'activité (CAC)
 

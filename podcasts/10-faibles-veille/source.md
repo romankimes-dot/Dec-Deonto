@@ -72,7 +72,7 @@ Selon le jury, la partie CAC est régulièrement moins bien réussie que la part
 - **Serment** : l'EC le prête devant le **conseil régional** ; le CAC devant le **premier président de la cour d'appel**.
 - **Inscription** : l'EC est inscrit au **tableau tenu par le CROEC** ; le CAC sur la **liste tenue par la H2A**.
 - **Droits de vote** : **plus de 2/3** aux EC dans une société d'EC ; la **majorité** aux CAC dans une société de CAC.
-- **Honoraires** : ceux de l'EC sont libres, sans barème ; ceux du CAC suivent un **barème d'heures** en certification (hors ALPE), avec un **taux horaire libre**.
+- **Honoraires** : ceux de l'EC sont libres, sans barème ; ceux du CAC suivent un **barème d'heures** en certification (ALPE comprise), avec un **taux horaire libre**.
 - **Conciliation** : chez l'EC, par le **président du CROEC** (honoraires, confrères) ; chez le CAC, par le **président de la CRCC** (co-commissaires, honoraires, barème).
 - **Révélation des faits délictueux** : obligation du **CAC seul**, en **mission comme en prestation** ; l'EC n'y est pas tenu.
 - **Durée** : la mission de l'EC dépend de la lettre de mission ; le mandat du CAC dure **6 exercices** (**3** en ALPE).
@@ -240,6 +240,21 @@ Arbre de décision (lire de haut en bas) :
   - Question : Un **obstacle** à ses vérifications [CAC]
     - → Conclusion : **Délit d'entrave** (commis par les dirigeants) : demander par écrit, informer les organes, en tirer les conséquences dans le rapport, **révéler au procureur**
 
+### La procédure de sanction de la H2A (commissaires aux comptes)
+
+Arbre de décision (lire de haut en bas) :
+- Question : Qui est en cause ?
+  - Question : Un **commissaire aux comptes**, personne physique ou société (L.821-70 I)
+    - → Conclusion : **Faute disciplinaire** : manquement aux **conditions légales d'exercice**, **négligence grave**, fait contraire à la **probité ou à l'honneur**
+    - → Conclusion : Échelle complète : avertissement, blâme, interdiction temporaire, radiation, retrait de l'honorariat, sanctions complémentaires
+  - Question : Une **autre personne** (L.821-70 II)
+    - → Conclusion : Associés, salariés, personnes participant à la mission, proches : **liens** personnels, financiers ou professionnels interdits
+    - → Conclusion : **EIP** et leurs dirigeants : services fournis par le CAC, **désignation**, **durée du mandat**, **honoraires**
+    - → Conclusion : Entités et dirigeants qui **s'opposent** aux contrôles et enquêtes de la H2A
+    - → Conclusion : Entité qui recrute un ancien CAC trop tôt (**délai de 3 ans**, L.821-32)
+    - → Conclusion : Dirigeants de sociétés de CAC impliqués dans un manquement **LCB-FT**
+  - → Attention : Un **expert-comptable** pour son activité d'expertise comptable : **chambres de l'Ordre**, pas la H2A
+
 ### Contrôle de qualité (EC) et contrôle d'activité (CAC)
 
 Arbre de décision (lire de haut en bas) :
@@ -275,7 +290,7 @@ Arbre de décision (lire de haut en bas) :
 
 ### Responsabilité de l'expert-comptable
 
-- **Prescription de l'action disciplinaire** contre un EC : aucun délai n'a été trouvé dans l'ord. 45-2138 ni dans le D. 2012-432 ; texte éventuel à identifier.
+- **Prescription de l'action disciplinaire** contre un EC : aucun délai dans l'ord. 45-2138, le D. 2012-432 ni le règlement intérieur de l'Ordre (recueil réglementaire de l'Ordre, édition 2024, interrogé en octobre 2026). Un avocat spécialisé écrit qu'aucun texte n'en fixe ; aucune source officielle ne le confirme expressément.
 - **Montant minimal** de l'assurance RC obligatoire de l'EC.
 - **Sanctions fiscales** CGI 1740 A / 1753 applicables aux professionnels.
 
@@ -285,7 +300,7 @@ Arbre de décision (lire de haut en bas) :
 - **Petit groupe** : le CAC de la tête de groupe peut-il obtenir des informations des CAC des filiales significatives (annale 2025-05 Q15) ? Texte exact.
 - **Seuils des CSE, des fonds de dotation et des partis politiques**.
 - **Augmentation de capital avec suppression du DPS** sans CAC : la désignation d'un CAC « à cet effet » est prévue par L.225-136 1° et L.225-138 II ; l'impossibilité d'y renoncer n'est pas écrite (annale 2024-11 Q15).
-- **Calendrier CSRD** après le paquet Omnibus 2025 et l'ordonnance de transposition.
+- **Transposition de la directive Omnibus I** (2026/470) : texte français et nouveaux seuils, attendus au plus tard le 19 mars 2027.
 
 ### Supervision publique et contrôle d'activité du commissaire aux comptes
 
@@ -295,7 +310,6 @@ Arbre de décision (lire de haut en bas) :
 
 ### Responsabilité du commissaire aux comptes
 
-- **Champ et sanctions de la procédure simplifiée**.
 - **Couverture d'assurance** des dommages-intérêts en cas de violation du secret (annale 2019-11 Q16 : réponse « non couverts » présumée).
 
 ## Questions d’annales de l’épisode (10)

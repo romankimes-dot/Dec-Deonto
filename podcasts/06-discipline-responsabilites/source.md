@@ -45,7 +45,7 @@ Dossier source pour un résumé audio (podcast). Étapes 8 et 10 sur 15 du parco
 - **Jugement** : **Commission des sanctions**, **séparée** du collège : un **magistrat de la Cour de cassation** (président) et **4 personnes qualifiées**, dont une **ayant exercé la profession de CAC**
 - **Recours** : **Conseil d'État**, recours de pleine juridiction
 
-- [CAC] Trois procédures : **ordinaire**, **simplifiée** (manquements simples, sanctions plafonnées), **composition administrative** (sanction acceptée par l'intéressé, puis homologuée par la commission).
+- [CAC] Trois procédures : **ordinaire**, **simplifiée** (défauts de **déclaration** ou de **formation continue** : **sanction pécuniaire** de **15 000 €** au plus, prononcée par le **président de la commission** sans débat), **composition administrative** (sanction acceptée par l'intéressé, validée par le collège, puis **homologuée** par la commission). Le détail est dans le schéma « La procédure de sanction de la H2A ».
 - [PIÈGE] La « comparution immédiate » n'existe pas en discipline : c'est une procédure pénale.
 
 #### Les sanctions côte à côte
@@ -56,7 +56,7 @@ Dossier source pour un résumé audio (podcast). Étapes 8 et 10 sur 15 du parco
 | Sanction pécuniaire | **Non**, sauf en matière **LCB-FT** (sanction pécuniaire, interdiction temporaire, publication) | **Oui** : **250 000 €** au plus (personne physique) ; société : **1 M€**, ou la **moyenne annuelle des honoraires** facturés à l'entité sur 3 exercices si elle est plus élevée (faute en mission de certification) |
 | Qui est justiciable ? | EC et sociétés inscrites, **AGC**, salariés autorisés (83 ter / quater), **stagiaires** | CAC (personnes et sociétés), auditeurs de durabilité, membres des comités d'audit, contrôleurs de pays tiers… **Pas l'EC** |
 | Faute sanctionnable | Manquement aux règles professionnelles (ord. art. 49 s.) | **2 catégories** : manquement aux **conditions légales d'exercice** ; **négligence grave** ou fait contraire à la **probité ou à l'honneur** |
-| Prescription | {?} (à vérifier) Aucun délai trouvé dans l'ordonnance ni dans le décret | **6 ans**, interrompue par un acte de recherche, de constatation ou de sanction |
+| Prescription | {?} (à vérifier) Aucun délai trouvé dans l'ordonnance, le décret ni le règlement intérieur (recueil de l'Ordre, 2024) | **6 ans**, interrompue par un acte de recherche, de constatation ou de sanction |
 | Nature | Disciplinaire (juridictions ordinales) | Sanctions **administratives** d'une autorité publique indépendante |
 
 #### Pièges qui reviennent
@@ -67,6 +67,80 @@ Dossier source pour un résumé audio (podcast). Étapes 8 et 10 sur 15 du parco
 - [PIÈGE] L'**emprisonnement** n'est jamais une sanction disciplinaire.
 - [PIÈGE] Un **stagiaire** EC **peut** être sanctionné.
 - [PIÈGE] Cotisations impayées (Ordre, CAVEC) **2 ans sur 10** : **radiation d'office** du tableau par le conseil régional, ce n'est pas une sanction disciplinaire.
+
+### La procédure de sanction de la H2A (commissaires aux comptes)
+
+Depuis le **1er janvier 2024**, la **commission des sanctions** de la **Haute autorité de l'audit** remplace la **formation restreinte** du H3C (C. com. **L.820-2** et **L.821-70 à L.821-85**). Le jury ne demande ni les numéros d'articles ni les montants, mais les **acteurs**, l'**ordre des étapes** et la **liste des sanctions** reviennent à chaque session.
+
+#### Qui fait quoi : poursuite et jugement séparés
+
+| Critère | Collège de la H2A | Commission des sanctions |
+|---|---|---|
+| Rôle | **Poursuit** : arrête les **griefs** (notifiés par le **président de la H2A**), classe, propose une **composition administrative** ; la formation plénière peut ordonner une **suspension provisoire** | **Juge** : audience, **décision motivée**, sanction ; **homologue** les compositions administratives |
+| Composition | Président (magistrat de la Cour de cassation), membres du Conseil d'État et de la Cour des comptes, AMF, ACPR, Trésor, personnes qualifiées, **2 anciens CAC** | Un **magistrat de la Cour de cassation** (président) et **4 personnes qualifiées** : un **ancien CAC**, une en **durabilité**, deux en matière **juridique, économique ou financière** |
+| Lien | **Incompatibilité** : nul ne siège dans les deux | Membres nommés par **décret** pour **6 ans**, renouvelables une fois |
+
+- [PIÈGE] Aucun **expert-comptable** en tant que tel, aucun **président de CRCC** ni de la CNCC ne siège à la commission. L'**EC** est jugé par les **chambres de discipline de l'Ordre**.
+
+#### La procédure ordinaire, de la saisine au recours
+
+- **Saisine** : Le **rapporteur général** est saisi par la Cour des comptes (ou une chambre régionale des comptes), le **procureur général**, les présidents de l'**AMF**, de l'**ACPR**, de la **H2A**, de la **CNCC** ou d'une **CRCC** ; ou se saisit des **signalements**
+- **Enquête** : Rapporteur général et enquêteurs : documents, auditions, accès aux locaux, experts ; **secret non opposable**. Faits de blanchiment : il informe **Tracfin**
+- **Rapport** : Rapport d'enquête soumis aux **observations écrites** de l'intéressé, puis adressé à la H2A
+- **Griefs** : La H2A (collège) **arrête les griefs** ; son **président les notifie** ; accès au dossier, observations, conseil de son choix ; le dossier est transmis à la commission
+- **Audience** : **Deux mois au moins** après les griefs ; **publique** ; le président de la **CRCC** est avisé ; le **président de la H2A** soutient les griefs et **propose une sanction**
+- **Décision** : Délibéré hors la présence des parties et du rapporteur ; **décision motivée**, **publiée** sur le site de la H2A
+- **Recours** : **Conseil d'État**, recours de **pleine juridiction** : la personne sanctionnée, ou le président de la H2A après accord du collège
+
+#### Trois procédures
+
+| | Ordinaire | Simplifiée | Composition administrative |
+|---|---|---|---|
+| **Pour quoi ?** | Toute faute ou tout manquement | Manquements **simples et établis** aux **obligations déclaratives** et à la **formation continue** | Après la notification des griefs, si l'intéressé **accepte** d'entrer en composition |
+| **Qui décide ?** | La **commission des sanctions**, après audience | Le **président de la commission**, **seul et sans débat** ; **opposition** possible dans les **30 jours**, puis audience | Le **président de la H2A** propose ; accord **validé par le collège**, puis **homologué** par la commission |
+| **Sanctions** | Toute l'échelle (ci-dessous) | **Sanction pécuniaire** seulement : **15 000 €** au plus | Sanctions de l'échelle sauf la **radiation** ; somme plafonnée à **50 000 €** (personne physique) ou **200 000 €** (personne morale) |
+
+- [PIÈGE] La « **comparution immédiate** », la « **chambre régionale** » et l'« **appel devant la chambre nationale** » n'existent pas pour le CAC.
+
+#### Qui peut être sanctionné ?
+
+Arbre de décision (lire de haut en bas) :
+- Question : Qui est en cause ?
+  - Question : Un **commissaire aux comptes**, personne physique ou société (L.821-70 I)
+    - → Conclusion : **Faute disciplinaire** : manquement aux **conditions légales d'exercice**, **négligence grave**, fait contraire à la **probité ou à l'honneur**
+    - → Conclusion : Échelle complète : avertissement, blâme, interdiction temporaire, radiation, retrait de l'honorariat, sanctions complémentaires
+  - Question : Une **autre personne** (L.821-70 II)
+    - → Conclusion : Associés, salariés, personnes participant à la mission, proches : **liens** personnels, financiers ou professionnels interdits
+    - → Conclusion : **EIP** et leurs dirigeants : services fournis par le CAC, **désignation**, **durée du mandat**, **honoraires**
+    - → Conclusion : Entités et dirigeants qui **s'opposent** aux contrôles et enquêtes de la H2A
+    - → Conclusion : Entité qui recrute un ancien CAC trop tôt (**délai de 3 ans**, L.821-32)
+    - → Conclusion : Dirigeants de sociétés de CAC impliqués dans un manquement **LCB-FT**
+  - → Attention : Un **expert-comptable** pour son activité d'expertise comptable : **chambres de l'Ordre**, pas la H2A
+
+#### L'échelle des sanctions
+
+| Sanction | Commissaire aux comptes (L.821-71) | Autres personnes (L.821-72) |
+|---|---|---|
+| **Avertissement**, **blâme** | Oui | Non |
+| **Interdiction d'exercer** tout ou partie des missions | **3 ans au plus** (5 ans sous le H3C) ; **sursis** possible | Interdiction d'exercer des fonctions de CAC ou de direction dans une EIP : **3 ans au plus** |
+| **Radiation** de la liste | Oui | Non |
+| **Retrait de l'honorariat** | Oui | Non |
+| **Interdiction de fonctions** d'administration ou de direction (société de CAC, EIP) | **3 ans au plus** | Voir ci-dessus |
+| **Sanction pécuniaire** | **250 000 €** (personne physique) ; société : **1 M€** ou la **moyenne annuelle des honoraires** de l'entité si elle est plus élevée | De **50 000 €** à **1 M€** (ou plus pour une EIP) selon la personne |
+| **Publication** | Décision publiée ; déclaration publique possible sur un rapport non conforme | Décision publiée |
+| **Inéligibilité** aux organismes professionnels | **10 ans au plus**, en complément | — |
+
+- **Suspension provisoire** (L.821-76) : en cas d'**urgence**, pour des faits d'une **particulière gravité**, la formation plénière du collège peut suspendre un CAC personne physique pour **6 mois au plus**. Ce n'est **pas une sanction**.
+- La sanction tient compte de la **gravité** et de la **durée** des faits, de l'**implication**, de la **capacité financière**, des **gains** obtenus, de la **coopération** à l'enquête et des **manquements antérieurs** (L.821-83).
+- **Prescription** : **6 ans** à compter des faits, interrompue par un acte de recherche, de constatation ou de sanction.
+
+#### Pièges qui reviennent
+
+- [PIÈGE] **3 ans** au plus pour l'interdiction temporaire : les **5 ans** sont l'ancien régime H3C.
+- [PIÈGE] **Réprimande** et **suspension** sont des peines de l'**expert-comptable**, pas du CAC.
+- [PIÈGE] La **suspension provisoire** n'est pas une sanction et ne dure que **6 mois** au plus.
+- [PIÈGE] La **procédure simplifiée** ne prononce qu'une **somme** (15 000 € au plus), jamais une interdiction ni une radiation.
+- [PIÈGE] Le **garde des Sceaux** ne saisit pas le rapporteur général.
 
 ### Les quatre responsabilités, EC et CAC
 
@@ -263,7 +337,7 @@ Dossier source pour un résumé audio (podcast). Étapes 8 et 10 sur 15 du parco
 
 
 #### À vérifier
-- **Prescription de l'action disciplinaire** contre un EC : aucun délai n'a été trouvé dans l'ord. 45-2138 ni dans le D. 2012-432 ; texte éventuel à identifier.
+- **Prescription de l'action disciplinaire** contre un EC : aucun délai dans l'ord. 45-2138, le D. 2012-432 ni le règlement intérieur de l'Ordre (recueil réglementaire de l'Ordre, édition 2024, interrogé en octobre 2026). Un avocat spécialisé écrit qu'aucun texte n'en fixe ; aucune source officielle ne le confirme expressément.
 - **Montant minimal** de l'assurance RC obligatoire de l'EC.
 - **Sanctions fiscales** CGI 1740 A / 1753 applicables aux professionnels.
 
@@ -384,10 +458,14 @@ Dossier source pour un résumé audio (podcast). Étapes 8 et 10 sur 15 du parco
 | Procédure | Principe |
 |---|---|
 | **Ordinaire** (droit commun) | Les étapes ci-dessus, avec un débat contradictoire complet |
-| **Simplifiée** | Pour des **manquements simples** : formation restreinte ou membre unique, **sanctions plafonnées** (avertissement, blâme, sanction pécuniaire limitée) (à vérifier) |
-| **Composition administrative** | Le collège **propose** une sanction (souvent une **somme**) que l'intéressé **accepte**. L'accord est ensuite **homologué** par la commission des sanctions |
+| **Simplifiée** (L.821-81 et L.821-82) | Pour les manquements, **simples et établis**, aux **obligations déclaratives** fixées par décret et à la **formation continue**. La formation plénière du collège saisit le **président de la commission des sanctions**, qui statue **seul et sans débat** : **sanction pécuniaire** seulement, **15 000 € au plus** (et pas plus que la proposition du collège). **Opposition** possible dans les **30 jours** (intéressé ou président de la H2A) : l'affaire revient alors devant la commission, en audience publique |
+| **Composition administrative** (L.821-78) | Après la notification des griefs, la H2A **propose** d'entrer en composition ; si l'intéressé accepte, le président de la H2A lui propose une ou plusieurs sanctions (sanction pécuniaire plafonnée à **50 000 €** pour une personne physique, **200 000 €** pour une personne morale). L'accord est **validé par la formation plénière du collège**, puis **homologué** par la commission des sanctions et **publié** ; sans homologation, retour à la procédure ordinaire |
 
 - La « **comparution immédiate** » **n'existe pas** : c'est une procédure pénale.
+- **Audience** (L.821-80) : **deux mois au moins** après la notification des griefs ; **publique** (huis clos possible) ; le **président de la CRCC** dont relève la personne est **avisé** et peut être entendu ; le **président de la H2A** représente le collège et **propose une sanction** ; la commission délibère hors la présence des parties et du rapporteur général.
+- **Suspension provisoire** (L.821-76) : pour des faits d'une **particulière gravité**, en cas d'**urgence**, le rapporteur général peut demander à la **formation plénière du collège** de suspendre un CAC personne physique pour **6 mois au plus**, après l'avoir mis en mesure de présenter ses observations. Ce n'est **pas une sanction**.
+- **Critères** de la sanction (L.821-83) : gravité et durée de la faute, degré d'implication, situation et capacité financière, gains obtenus ou pertes évitées, coopération à l'enquête, manquements antérieurs.
+- Avant 2024, la **formation restreinte** du H3C jugeait ; les procédures en cours ont été transférées à la **commission des sanctions** de la H2A.
 
 ##### Sanctions : personnes physiques
 1. **Avertissement**.
@@ -437,7 +515,6 @@ Dossier source pour un résumé audio (podcast). Étapes 8 et 10 sur 15 du parco
 
 
 #### À vérifier
-- **Champ et sanctions de la procédure simplifiée**.
 - **Couverture d'assurance** des dommages-intérêts en cas de violation du secret (annale 2019-11 Q16 : réponse « non couverts » présumée).
 
 ## Questions d’annales de l’épisode (10)

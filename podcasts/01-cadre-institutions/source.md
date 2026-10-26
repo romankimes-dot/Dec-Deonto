@@ -427,7 +427,7 @@ Arbre de décision (lire de haut en bas) :
 - **Serment** : l'EC le prête devant le **conseil régional** ; le CAC devant le **premier président de la cour d'appel**.
 - **Inscription** : l'EC est inscrit au **tableau tenu par le CROEC** ; le CAC sur la **liste tenue par la H2A**.
 - **Droits de vote** : **plus de 2/3** aux EC dans une société d'EC ; la **majorité** aux CAC dans une société de CAC.
-- **Honoraires** : ceux de l'EC sont libres, sans barème ; ceux du CAC suivent un **barème d'heures** en certification (hors ALPE), avec un **taux horaire libre**.
+- **Honoraires** : ceux de l'EC sont libres, sans barème ; ceux du CAC suivent un **barème d'heures** en certification (ALPE comprise), avec un **taux horaire libre**.
 - **Conciliation** : chez l'EC, par le **président du CROEC** (honoraires, confrères) ; chez le CAC, par le **président de la CRCC** (co-commissaires, honoraires, barème).
 - **Révélation des faits délictueux** : obligation du **CAC seul**, en **mission comme en prestation** ; l'EC n'y est pas tenu.
 - **Durée** : la mission de l'EC dépend de la lettre de mission ; le mandat du CAC dure **6 exercices** (**3** en ALPE).
@@ -439,7 +439,7 @@ Arbre de décision (lire de haut en bas) :
 - **Petit groupe** : le CAC de la tête de groupe peut-il obtenir des informations des CAC des filiales significatives (annale 2025-05 Q15) ? Texte exact.
 - **Seuils des CSE, des fonds de dotation et des partis politiques**.
 - **Augmentation de capital avec suppression du DPS** sans CAC : la désignation d'un CAC « à cet effet » est prévue par L.225-136 1° et L.225-138 II ; l'impossibilité d'y renoncer n'est pas écrite (annale 2024-11 Q15).
-- **Calendrier CSRD** après le paquet Omnibus 2025 et l'ordonnance de transposition.
+- **Transposition de la directive Omnibus I** (2026/470) : texte français et nouveaux seuils, attendus au plus tard le 19 mars 2027.
 
 ## Questions d’annales de l’épisode (10)
 
@@ -537,7 +537,7 @@ Propositions (rédigées pour l’application, pas celles du sujet) :
 
 Propositions (rédigées pour l’application, pas celles du sujet) :
 - A. Une commission de normalisation placée auprès de la H2A, présidée par un membre du collège et composée de deux CAC proposés par la CNCC et d'une personnalité qualifiée
-- B. Le Conseil national de la CNCC seul, le garde des sceaux se bornant à homologuer ses projets sans consulter l'autorité de supervision ni l'Autorité des normes comptables
+- B. Le Conseil national de la CNCC, dont les projets de normes sont ensuite homologués par arrêté du garde des Sceaux, après avis de l'autorité de supervision
 - C. Une commission mixte réunissant le Conseil national de l'Ordre des experts-comptables et la CNCC, présidée alternativement par chacun d'eux
 - D. Le garde des sceaux lui-même, après avis de l'Autorité des normes comptables, du Conseil d'État et de la Cour des comptes
 

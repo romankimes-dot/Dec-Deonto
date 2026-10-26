@@ -7,7 +7,7 @@ Chaque dossier `NN-<id>/` contient deux fichiers :
 - **`source.md`** : le dossier à téléverser dans NotebookLM. Le texte des fiches et des questions de l'app y est recopié mot pour mot. Seule la mise en forme change : les blocs des schémas (comparatifs, frises, étapes, arbres) deviennent des tableaux et des listes, les pastilles deviennent [EC], [CAC] et [PIÈGE], et les marques `{?}` reçoivent la mention « (à vérifier) ». La mention « (à vérifier) » a aussi été ajoutée à l'opposabilité du secret à la CNIL (épisode 05), à la demande de la relecture. Le dossier ajoute un en-tête commun sur l'épreuve (format, citations des rapports du jury) et des titres de section.
 - **`consigne.txt`** : le texte à coller dans le champ de personnalisation (de 453 à 499 caractères).
 
-Chaque dossier contient, dans l'ordre : le contexte de l'épreuve, le ou les schémas de l'étape, des extraits des fiches de référence (pièges EC / CAC et points « à vérifier » compris), puis 8 à 10 questions d'annales. Pour chaque question : l'énoncé officiel, la bonne réponse, la réponse courte attendue et l'explication.
+Chaque dossier contient, dans l'ordre : le contexte de l'épreuve, le ou les schémas de l’étape (dont, pour l’épisode 06, le schéma « La procédure de sanction de la H2A »), des extraits des fiches de référence (pièges EC / CAC et points « à vérifier » compris), puis 8 à 10 questions d'annales. Pour chaque question : l'énoncé officiel, la bonne réponse, la réponse courte attendue et l'explication.
 
 ## Mode d'emploi, épisode par épisode
 
@@ -45,7 +45,7 @@ Comptez environ 10 minutes par épisode, génération comprise. Le compte gratui
 
 Dans l'app, les étapes 12 à 15 sont des actions (examens blancs, points faibles, veille) et n'ont pas de schéma. Les épisodes 09 et 10 rassemblent donc des passages de toutes les fiches :
 
-- **Épisode 09** : tous les pièges `[PIÈGE]` des 12 schémas, puis tous leurs comparatifs EC / CAC. Questions : 5 tirées de sessions QCM (propositions du sujet), puis 5 tirées de sessions QRC.
+- **Épisode 09** : tous les pièges `[PIÈGE]` des 13 schémas, puis tous leurs comparatifs EC / CAC. Questions : 5 tirées de sessions QCM (propositions du sujet), puis 5 tirées de sessions QRC.
 - **Épisode 10** : les sections « Pièges EC vs CAC » des 8 fiches de référence, les arbres de décision des schémas et la liste des points « à vérifier ». Les questions portent surtout sur le CAC.
 
 ## À savoir

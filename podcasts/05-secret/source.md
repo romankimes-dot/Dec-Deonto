@@ -288,7 +288,7 @@ Propositions (rédigées pour l’application, pas celles du sujet) :
 Propositions (rédigées pour l’application, pas celles du sujet) :
 - A. Non : il lui est interdit de révéler l'existence d'une déclaration de soupçon
 - B. Oui : la confraternité impose de prévenir le successeur du risque de blanchiment
-- C. Oui, mais uniquement si le successeur est inscrit au même conseil régional de l'Ordre
+- C. Oui, si le successeur s'engage par écrit à garder l'information confidentielle
 - D. Non, sauf si Tracfin a accusé réception de la déclaration par courrier
 
 **Bonne réponse** : A. Non : il lui est interdit de révéler l'existence d'une déclaration de soupçon
@@ -327,7 +327,7 @@ Propositions (rédigées pour l’application, pas celles du sujet) :
 - A. Oui : le fait est délictueux, significatif et délibéré ; le remboursement n'efface pas l'infraction consommée ni l'obligation de révéler
 - B. Non : le préjudice ayant été réparé par le remboursement, il n'existe plus de fait délictueux à révéler au procureur
 - C. Non : la révélation ne concerne que les infractions ayant une incidence sur les comptes certifiés, ce qui n'est plus le cas après remboursement
-- D. Oui, mais seulement après avoir déclenché la procédure d'alerte, préalable obligatoire à toute révélation au procureur
+- D. Oui, mais après avoir déclenché la procédure d'alerte, qui doit précéder la révélation au procureur
 
 **Bonne réponse** : A. Oui : le fait est délictueux, significatif et délibéré ; le remboursement n'efface pas l'infraction consommée ni l'obligation de révéler
 

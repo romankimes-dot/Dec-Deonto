@@ -85,7 +85,7 @@ Arbre de décision (lire de haut en bas) :
 
 | Critère | Expert-comptable (EC) | Commissaire aux comptes (CAC) |
 |---|---|---|
-| Principe | **Libres**, convenus dans la lettre de mission ; **aucun barème** (ce serait une entente) | **Barème d'heures** pour la certification (hors ALPE) ; **taux horaire libre** |
+| Principe | **Libres**, convenus dans la lettre de mission ; **aucun barème** (ce serait une entente) | **Barème d'heures** pour la certification, **ALPE comprise** (hors sociétés cotées, banques, assurances, associations, très grandes entités…) ; **taux horaire libre** |
 | Honoraires au succès | **Interdits** pour les missions du **monopole** (comptabilité) et celles qui participent à l'**assiette fiscale ou sociale** ; **possibles** pour les autres | **Interdits** (honoraires subordonnés au résultat) |
 | Indexation | Possible si une **clause** la prévoit et que l'indice est **lié** à l'activité | — |
 | Mission gratuite | Possible si ce n'est **pas** une concurrence déloyale ; lettre de mission qui précise la **gratuité**, même qualité | — |
@@ -373,10 +373,11 @@ Arbre de décision (lire de haut en bas) :
 #### 6. Honoraires
 
 ##### Barème d'heures (D.821-188, ex R.823-12)
-- Il s'applique à la **mission de certification**, sauf ALPE. Il fixe des **fourchettes d'heures** par tranches de **(total bilan + produits d'exploitation + produits financiers HT)**.
+- Il s'applique à la **mission de certification**, **ALPE comprise**. Il fixe des **fourchettes d'heures** par tranches de **(total bilan + produits d'exploitation + produits financiers HT)**.
 - Le **taux de vacation horaire** est **librement fixé d'un commun accord**.
 - Il **ne s'applique pas aux prestations**.
 - Il ne concerne pas non plus les entités au-delà de la dernière tranche (**122 M€** de total bilan et produits ; D.821-188).
+- Sont aussi exclus notamment les **sociétés cotées**, les **banques**, les **assurances**, les **associations et fondations**, les **syndicats** et les **CSE** (R.821-194), ainsi que la certification des informations de **durabilité**.
 
 ##### Dérogation au barème
 - Si le nombre d'heures paraît **excessif ou insuffisant** (D.821-190 et D.821-191) :
@@ -466,8 +467,8 @@ Propositions (celles du sujet) :
 Propositions (rédigées pour l’application, pas celles du sujet) :
 - A. Non : l'expertise comptable ne peut être exercée qu'en société d'expertise comptable depuis la loi Pacte
 - B. Oui : le statut s'applique aussi aux professions libérales réglementées et sépare de plein droit les patrimoines
-- C. Oui, mais seulement après une déclaration d'affectation de patrimoine (EIRL) déposée auprès du conseil régional de l'Ordre
-- D. Non : seule l'inscription sur la liste de la H2A permet un exercice individuel à responsabilité limitée
+- C. Oui, après une déclaration d'affectation de patrimoine (EIRL) déposée auprès du conseil régional de l'Ordre des experts-comptables
+- D. Non : l'exercice individuel à responsabilité limitée est réservé aux commissaires aux comptes inscrits
 
 **Bonne réponse** : B. Oui : le statut s'applique aussi aux professions libérales réglementées et sépare de plein droit les patrimoines
 
@@ -553,7 +554,7 @@ Propositions (celles du sujet) :
 Propositions (rédigées pour l’application, pas celles du sujet) :
 - A. Elle est facultative puisque la mission est définie par la loi et que le CAC est nommé par l'assemblée
 - B. Elle est obligatoire selon la NEP 210, afin de définir les termes et conditions de la mission
-- C. Elle est obligatoire uniquement pour les entités d'intérêt public, à la demande du comité d'audit
+- C. Elle est obligatoire uniquement pour les entités d'intérêt public, facultative pour les autres entités
 - D. Elle est remplacée par la lettre d'affirmation prévue par la NEP 580, signée par la direction en fin de mission
 
 **Bonne réponse** : B. Elle est obligatoire selon la NEP 210, afin de définir les termes et conditions de la mission
