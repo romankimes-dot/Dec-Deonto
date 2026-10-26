@@ -18,7 +18,7 @@ export const defaultState = () => ({
   // focus : mode concentration (les badges s'annoncent par un simple message, sans animation)
   // gameTimer : chrono des jeux rapides, 'normal' | 'large' | 'off'
   // shortsLimit : pause proposée dans le fil de shorts après ce nombre de réponses (0 = sans limite)
-  settings: { newPerDay: 20, mode: 'mixte', showLowConfidence: true, examDate: '2026-11-10T10:30:00', confidence: true, hideChoices: true, focus: true, gameTimer: 'normal', shortsLimit: 15 },
+  settings: { newPerDay: 20, mode: 'mixte', showLowConfidence: true, examDate: '2026-11-10T10:30:00', confidence: true, hideChoices: true, focus: true, gameTimer: 'normal', shortsLimit: 15, glossary: true },
   cards: {},          // id -> carte SRS
   attempts: [],       // { id, ok, mode, t, conf? }  (400 derniers ; conf : 2 sûr, 1 hésitant, 0 au hasard)
   examSeen: {},       // id -> timestamp
