@@ -42,3 +42,18 @@ export function buildClusters(questions, threshold = 0.3) {
   groups.forEach((g, n) => g.forEach((id) => { clusterOf[id] = n; }));
   return { clusterOf, groups };
 }
+
+// Quasi-reprises : questions qui ont une question proche (mêmes critères) dans une session ANTÉRIEURE.
+export function buildRepeatIndex(questions, threshold = 0.3) {
+  const tk = questions.map((q) => tokens(`${q.question} ${q.qcm?.question || ''}`));
+  const hasEarlier = new Set();
+  for (let i = 0; i < questions.length; i++) {
+    const a = questions[i];
+    for (let j = 0; j < questions.length; j++) {
+      const b = questions[j];
+      if (!(b.session < a.session) || a.profession !== b.profession || !a.tags.some((t) => b.tags.includes(t))) continue;
+      if (jaccard(tk[i], tk[j]) >= threshold) { hasEarlier.add(a.id); break; }
+    }
+  }
+  return { hasEarlier };
+}

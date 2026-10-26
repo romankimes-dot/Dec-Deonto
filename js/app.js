@@ -1,7 +1,7 @@
 import { newCard, review, buildQueue, mastery, DAY, spreadOf, suggestGrade, confidentError, qrcPoints, calibration, confidentErrors } from './srs.js';
 import * as store from './store.js';
 import { loadBank, loadFichesIndex, loadFiche, renderMarkdown, inline, THEMES } from './bank.js';
-import { startExam, remainingMs, finishExam } from './exam.js';
+import { startExam, remainingMs, finishExam, pauseExam, resumePaused, answeredCount, isCounted } from './exam.js';
 import * as G from './gamify.js';
 import { renderScene, PROP_NAMES } from './scene.js';
 import * as P from './plan.js';
@@ -9,7 +9,7 @@ import { buildClusters } from './cluster.js';
 import { recordDrill, pickDrill, drillStats } from './drill.js';
 import * as GM from './games.js';
 import * as PAL from './palais.js';
-import { estimate } from './estimate.js';
+import { estimate, pickHeldOut } from './estimate.js';
 import * as SH from './shorts.js';
 import * as SC from './scenes.js';
 import * as GL from './glossaire.js';
@@ -399,7 +399,7 @@ function dayTasks() {
     tasks.push({ id: 'shorts', icon: '🎬', title: `Shorts du jour : ${need} notions, 30 s chacune`, sub: `${Math.min(n, need)}/${need} aujourd’hui · ${steps.length ? 'les schémas du jour d’abord, puis les shorts à revoir et vos points faibles' : 'les shorts à revoir et vos points faibles'}`, done: n >= need, cta: 'Shorts du jour', run: () => openFeed({ focus: d.steps }) });
   }
   const mergedExams = (d.merged || []).filter((m) => m.kind === 'blanc').map((m) => m.exam);
-  const todayExams = pr.exams.filter((e) => e.t >= t0).length;
+  const todayExams = pr.exams.filter((e) => e.t >= t0 && isCounted(e)).length; // copie rendue presque blanche : la tâche reste à faire
   [...mergedExams, ...(d.exam ? [d.exam] : [])].forEach((ex, i) => tasks.push({ id: i ? `exam${i}` : 'exam', icon: '⏱', title: `Examen blanc ${ex.toUpperCase()}${i < mergedExams.length ? ' (regroupé : délai court)' : ''}`, sub: '20 questions, 60 minutes, en conditions réelles', done: todayExams > i, cta: `Examen blanc ${ex.toUpperCase()}`, run: () => go('exam') }));
   const reviseSteps = (d.revise || []).map((id) => P.stepById(id)).filter(Boolean);
   if (reviseSteps.length) {
@@ -417,13 +417,16 @@ function dayTasks() {
     tasks.push({ id: 'sure', icon: '⚠️', title: 'Reprendre les erreurs « j’étais sûr »', sub: `${sure} à reprendre`, done: sure === 0, cta: 'Mes erreurs « j’étais sûr »', run: () => trainOn(confidentErrors(pr.attempts).slice(-20), 'Mes erreurs « j’étais sûr »') });
   }
   const g = GAMES[d.game];
-  const played = Object.entries(pr.drills).some(([id, m]) => id.startsWith(GAME_PREFIX[d.game]) && m.last >= t0);
+  // Coché à la fin d'une partie (palais : une liste récitée jusqu'au bout), pas après quelques réponses.
+  const played = d.game === 'palais' ? Object.entries(pr.drills).some(([id, m]) => id.startsWith(GAME_PREFIX.palais) && m.last >= t0) : !!pr.plan.gamesDone?.[d.day]?.includes(d.game);
   tasks.push({ id: 'game', icon: g.icon, title: `Jeu du jour : ${g.name}`, sub: d.kind === 'veille' ? 'Réciter les listes, sans rien apprendre de nouveau' : '5 minutes · choisi parmi ceux où vous vous trompez le plus', done: played, cta: `Jeu du jour : ${g.name}`, run: () => startGame(d.game) });
   // Étapes du jour terminées dès que le schéma est lu et la session faite : le lendemain prend la suite.
   const read = tasks.find((x) => x.id === 'read'); const sess = tasks.find((x) => x.id === 'session');
   if (steps.length && read?.done && sess.done && steps.some((st) => !pr.plan.done[st.id])) { steps.forEach((st) => { pr.plan.done[st.id] = pr.plan.done[st.id] || Date.now(); }); persist(); }
   return tasks;
 }
+// Jeu du jour : noté à la fin de la partie (voir endGame).
+function markGameFinished(kind) { P.markGameDone(state.progress.plan, todayKey(), kind); }
 function lateBanner(d) {
   const parts = [];
   if (d.late?.length) parts.push(`↩ <strong>Rattrapage</strong> : ${d.late.map((x) => `${esc(P.stepById(x.id)?.title || x.id)} (prévue le ${new Date(`${x.was}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })})`).join(' · ')}.`);
@@ -527,7 +530,7 @@ function estimateCard() {
   const row = (m, l) => `<tr><td>${l}</td><td><strong>${fr(e[m].note)}</strong> <span class="muted">(${fr(e[m].low)} à ${fr(e[m].high)})</span></td><td>${e[m].ec} %</td><td>${e[m].cac} %</td><td>${e[m].pass} %</td><td>${e[m].risk} %</td></tr>`;
   const weaker = e.qcm.cac < e.qcm.ec ? 'CAC' : 'EC';
   return `<div class="card"><h2>Estimation à l’épreuve</h2><table><thead><tr><th>Format</th><th>Note /20</th><th>EC</th><th>CAC</th><th>≥ 10</th><th>&lt; 6</th></tr></thead><tbody>${row('qcm', 'QCM')}${row('qrc', 'QRC')}</tbody></table>
-    <p class="muted">Pour chaque question de la banque, une chance de réussite d’après vos réponses (et, pour les questions jamais vues, votre réussite dans le même sous-thème) ; la note est celle d’un tirage de 10 EC + 10 CAC, la fourchette couvre deux tirages sur trois. Les examens blancs des 7 derniers jours comptent pour 40 %. ${e.reliable ? '' : `<strong>Estimation indicative</strong> tant que moins de 60 % de la banque est vue (${Math.round(e.coverage * 100)} %).`} Les QCM rédigés par IA peuvent flatter la note QCM.</p>
+    <p class="muted">Le sujet sera inédit : seules ${Math.round(e.repeat * 20)} questions sur 20 environ reprennent presque une annale (moyenne des dernières sessions). La note mêle donc votre mémoire des questions de la banque (pour cette part) et, pour le reste, votre réussite au premier essai sur des questions encore jamais vues du même sous-thème. La fourchette couvre deux tirages sur trois. Les examens blancs des 14 derniers jours comptent pour 50 % (copies répondues à moins de moitié exclues), l’examen inédit pour 60 %${e.qcm.inedit != null || e.qrc.inedit != null ? '' : ' (pas encore passé : onglet ⏱ Examen)'}. ${e.reliable ? '' : `<strong>Estimation indicative</strong> tant que moins de 60 % de la banque est vue (${Math.round(e.coverage * 100)} %).`} Les QCM rédigés par IA peuvent flatter la note QCM.</p>
     <p class="muted">Le plus rentable : la partie <strong>${weaker}</strong> (${Math.min(e.qcm.ec, e.qcm.cac)} % contre ${Math.max(e.qcm.ec, e.qcm.cac)} %).</p></div>`;
 }
 
@@ -705,48 +708,121 @@ views.exam = () => {
     setTimeout(() => {
       $('#ex-qcm').onclick = () => beginExam('qcm');
       $('#ex-qrc').onclick = () => beginExam('qrc');
+      document.querySelectorAll('[data-inedit]').forEach((b) => { b.onclick = () => beginExam(b.dataset.inedit, { inedit: true }); });
     }, 0);
     const hist = state.progress.exams.slice(-8);
-    return `<div class="card"><h2>Examen blanc</h2><p class="muted">20 questions tirées au sort (10 EC puis 10 CAC), 60 minutes, questions jamais passées en examen en priorité. QCM : 1 point par bonne réponse. QRC : barème du sujet d’origine, auto-correction à la fin, note ramenée sur 20.</p>
-      <div class="btnrow"><button class="btn primary" id="ex-qcm">QCM</button><button class="btn primary" id="ex-qrc">QRC</button></div></div>
-      ${hist.length ? `<div class="card"><h2>Historique</h2>${chart(hist)}<table><thead><tr><th>Date</th><th>Format</th><th>Note</th><th>EC</th><th>CAC</th></tr></thead><tbody>${hist.slice().reverse().map((e) => `<tr><td>${new Date(e.t).toLocaleDateString('fr-FR')}</td><td>${e.mode.toUpperCase()}</td><td><strong>${e.note}</strong></td><td>${pct(e.byProf.EC)}</td><td>${pct(e.byProf.CAC)}</td></tr>`).join('')}</tbody></table></div>` : ''}`;
+    const ho = state.heldOut || [];
+    const inedit = ho.length ? `<div class="card plan-card"><h2>Examen inédit · DEC ${esc(ho[0].sessionLabel)}</h2><p class="muted">Ce sujet complet est tenu à l’écart de la révision (séances, séries, jeux, examens blancs) : ses 20 questions sont neuves pour vous, comme le jour J. Le passer mesure ce que vous savez faire sur des questions jamais vues ; son résultat compte davantage dans le niveau estimé. À garder pour la dernière semaine, une seule fois : ensuite, ses questions rejoignent la révision.</p>
+      <div class="btnrow"><button class="btn primary" data-inedit="qcm">Examen inédit en QCM</button><button class="btn primary" data-inedit="qrc">Examen inédit en QRC</button></div></div>` : '';
+    return `<div class="card"><h2>Examen blanc</h2><p class="muted">20 questions tirées au sort (10 EC puis 10 CAC), 60 minutes, questions jamais passées en examen en priorité. QCM : 1 point par bonne réponse. QRC : barème du sujet d’origine, auto-correction à la fin, note ramenée sur 20. Vous pouvez mettre l’examen en pause (chrono arrêté) ou l’abandonner sans qu’il compte.</p>
+      <div class="btnrow"><button class="btn primary" id="ex-qcm">QCM</button><button class="btn primary" id="ex-qrc">QRC</button></div></div>${inedit}
+      ${hist.length ? `<div class="card"><h2>Historique</h2>${chart(hist)}<table><thead><tr><th>Date</th><th>Format</th><th>Note</th><th>EC</th><th>CAC</th></tr></thead><tbody>${hist.slice().reverse().map((e) => `<tr><td>${new Date(e.t).toLocaleDateString('fr-FR')}${e.inedit ? ' · inédit' : ''}</td><td>${e.mode.toUpperCase()}</td><td><strong>${e.note}</strong>${isCounted(e) ? '' : ' <span class="muted">(incomplète, non comptée)</span>'}</td><td>${pct(e.byProf.EC)}</td><td>${pct(e.byProf.CAC)}</td></tr>`).join('')}</tbody></table></div>` : ''}`;
   }
   const ex = state.exam;
-  const q = state.byId[ex.ids[ex.current]];
+  const n = ex.ids.length; const answered = answeredCount(ex); const blank = n - answered;
+  const timer = `<span class="timer" id="timer">${fmtMs(remainingMs(ex))}</span>`;
+  if (ex.pausedAt) {
+    setTimeout(() => {
+      $('#ex-resume').onclick = () => { resumePaused(ex); persistExam(); startExamTimer(); render(); };
+      $('#ex-hand').onclick = () => { state.examConfirm = true; resumePaused(ex); persistExam(); startExamTimer(); render(); };
+      $('#ex-abandon').onclick = () => abandonExam();
+    }, 0);
+    return `<div class="card center"><div class="muted">Examen blanc ${ex.mode.toUpperCase()}${ex.inedit ? ' inédit' : ''} · en pause</div><div class="big">⏸ ${fmtMs(remainingMs(ex))}</div>
+      <p class="muted">Le chrono est arrêté. ${answered}/${n} questions répondues. L’examen vous attend ici, même après avoir fermé l’application.</p>
+      <div class="btnrow" style="justify-content:center"><button class="btn primary" id="ex-resume">▶ Reprendre l’examen</button></div>
+      <div class="btnrow" style="justify-content:center;margin-top:8px"><button class="btn" id="ex-hand">Rendre la copie</button><button class="btn" id="ex-abandon">Abandonner (non compté)</button></div></div>`;
+  }
+  if (state.examConfirm) {
+    setTimeout(() => {
+      $('#ex-confirm').onclick = () => { state.examConfirm = false; endExam(); };
+      $('#ex-back').onclick = () => { state.examConfirm = false; render(); };
+      $('#ex-abandon').onclick = () => abandonExam();
+      const first = $('#ex-first-blank'); if (first) first.onclick = () => { state.examConfirm = false; ex.current = ex.ids.findIndex((id) => !hasAnswer(ex, id)); persistExam(); render(); };
+    }, 0);
+    return `<div class="row" style="justify-content:space-between"><span class="muted">Rendre la copie ?</span>${timer}</div>
+      <div class="card" style="margin-top:10px"><h2>${blank ? `${blank} question${blank > 1 ? 's' : ''} sans réponse` : 'Toutes les questions ont une réponse'}</h2>
+      <p class="muted">${answered}/${n} répondues.${blank ? ' Une question sans réponse vaut 0.' : ''}${answered < n / 2 ? ' <strong>Moins de la moitié est répondue</strong> : la copie sera corrigée mais ne comptera ni dans le niveau estimé, ni dans les badges, ni dans le plan.' : ''}</p>
+      ${blank ? `<div class="chips exam-grid">${ex.ids.map((id, i) => hasAnswer(ex, id) ? '' : `<span class="chip muted">${i + 1}</span>`).join('')}</div>` : ''}
+      <div class="btnrow" style="margin-top:12px">${blank ? '<button class="btn primary" id="ex-first-blank">Répondre aux questions manquantes</button>' : ''}<button class="btn ${blank ? '' : 'primary'}" id="ex-confirm">Rendre la copie${blank ? ' quand même' : ''}</button></div>
+      <div class="btnrow" style="margin-top:8px"><button class="btn" id="ex-back">← Continuer l’examen</button><button class="btn" id="ex-abandon">Abandonner (non compté)</button></div></div>`;
+  }
+  const q = examById()[ex.ids[ex.current]];
   setTimeout(() => mountExamQuestion(q), 0);
-  return `<div class="row" style="justify-content:space-between"><span class="muted">Question ${ex.current + 1} / 20 · <span class="badge ${q.profession.toLowerCase()}">${q.profession}</span></span><span class="timer" id="timer">60:00</span></div>
+  return `<div class="row" style="justify-content:space-between"><span class="muted">Question ${ex.current + 1} / ${n} · <span class="badge ${q.profession.toLowerCase()}">${q.profession}</span></span><span class="row" style="gap:8px"><button class="btn sm" id="ex-pause">⏸ Pause / Quitter</button>${timer}</span></div>
     <div class="card" id="qcard" style="margin-top:10px"></div>
-    <div class="btnrow"><button class="btn" id="prev" ${ex.current === 0 ? 'disabled' : ''}>← Précédente</button><button class="btn" id="next">${ex.current === 19 ? 'Terminer' : 'Suivante →'}</button></div>
-    <div class="chips" style="margin-top:12px" id="grid">${ex.ids.map((id, i) => `<button class="chip ${i === ex.current ? 'on' : ''} ${ex.answers[id] !== undefined && ex.answers[id] !== '' ? '' : 'muted'}" data-i="${i}">${i + 1}${ex.answers[id] !== undefined && ex.answers[id] !== '' ? ' ✓' : ''}</button>`).join('')}</div>
-    <div style="margin-top:12px"><button class="btn" id="finish">Rendre la copie</button></div>`;
+    <div class="btnrow"><button class="btn" id="prev" ${ex.current === 0 ? 'disabled' : ''}>← Précédente</button><button class="btn" id="next">${ex.current === n - 1 ? 'Terminer' : 'Suivante →'}</button></div>
+    <div class="chips exam-grid" id="grid">${ex.ids.map((id, i) => `<button class="chip ${i === ex.current ? 'on' : ''} ${hasAnswer(ex, id) ? '' : 'muted'}" data-i="${i}" aria-label="Question ${i + 1}${hasAnswer(ex, id) ? ', répondue' : ', sans réponse'}">${i + 1}${hasAnswer(ex, id) ? ' ✓' : ''}</button>`).join('')}</div>
+    <div class="exam-finish"><button class="btn" id="finish">Rendre la copie</button><span class="muted">${answered}/${n} répondues</span></div>`;
 };
+const hasAnswer = (ex, id) => { const a = ex.answers[id]; return a !== undefined && a !== null && String(a).trim() !== ''; };
+const fmtMs = (ms) => { const m = Math.floor(ms / 60000), s = Math.floor((ms % 60000) / 1000); return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`; };
+// Questions d'examen : la banque de révision, plus la session de l'examen inédit (tenue à l'écart).
+function examById() {
+  if (!state.heldOut?.length) return state.byId;
+  return { ...state.byId, ...Object.fromEntries(state.heldOut.map((q) => [q.id, q])) };
+}
+// Examen inédit : une session entière tenue à l'écart de la révision (pickHeldOut, js/estimate.js), choisie une
+// fois pour toutes et gardée dans plan.heldOut. Ses questions sont retirées de state.bank.questions (séances,
+// séries, jeux, shorts, examens blancs, recoupements) jusqu'à ce que l'examen inédit soit rendu.
+function setupHeldOut() {
+  const pr = state.progress; const all = state.bank.all || state.bank.questions;
+  state.bank.all = all;
+  if (!pr.plan.heldOut) { pr.plan.heldOut = { session: pickHeldOut(all, pr), t: Date.now() }; persist(); }
+  const s = pr.plan.heldOut.done ? null : pr.plan.heldOut.session;
+  state.heldOut = s ? all.filter((q) => q.session === s) : [];
+  state.bank.questions = s ? all.filter((q) => q.session !== s) : all;
+}
+function releaseHeldOut(t) {
+  if (!state.heldOut?.length) return;
+  state.progress.plan.heldOut.done = t;
+  setupHeldOut();
+  state.bank.questions.forEach((q) => { state.byId[q.id] = q; });
+  state.clusters = buildClusters(state.bank.questions);
+  state.gctx = G.buildContext(state.bank); refreshExamBadges();
+}
 // Examen en cours : sauvegardé à chaque réponse, repris après un rechargement.
 function persistExam() {
   if (state.exam) store.saveExam(state.exam);
   else if (state.examResult?.pending) store.saveExam({ ...state.examResult.exam, pending: true });
 }
-function beginExam(mode) {
-  state.exam = startExam(state.bank.questions, state.progress.examSeen, mode);
+function beginExam(mode, { inedit = false } = {}) {
+  const fixed = inedit && state.heldOut?.length ? [...state.heldOut].sort((a, b) => (a.profession === b.profession ? a.n - b.n : a.profession === 'EC' ? -1 : 1)) : null;
+  state.exam = startExam(state.bank.questions, state.progress.examSeen, mode, Date.now(), fixed);
+  if (fixed) state.exam.inedit = fixed[0].session;
+  state.examConfirm = false;
   persistExam();
   startExamTimer();
   render();
 }
 function resumeExam(saved) {
-  if (!saved.ids.every((id) => state.byId[id])) { store.saveExam(null); return; }
-  state.view = 'exam';
-  if (saved.pending) { const { pending, ...ex } = saved; state.examResult = { pending: true, exam: ex }; return; }
+  if (!saved.ids.every((id) => examById()[id])) { store.saveExam(null); return; }
+  if (saved.pending) { state.view = 'exam'; const { pending, ...ex } = saved; state.examResult = { pending: true, exam: ex }; return; }
   state.exam = saved;
-  if (remainingMs(saved) <= 0) { toast('Temps écoulé pendant votre absence'); endExam(); return; }
-  toast('Examen repris là où vous l’avez laissé');
+  // En pause : rien ne presse, l'onglet Examen le montre.
+  if (saved.pausedAt) { toast('Un examen blanc est en pause : onglet ⏱ Examen pour le reprendre'); return; }
+  state.view = 'exam';
+  if (remainingMs(saved) <= 0) { toast('Temps écoulé pendant votre absence : copie rendue'); endExam(); return; }
+  toast(`Examen en cours : le chrono a continué pendant votre absence (${Math.ceil(remainingMs(saved) / 60000)} min restantes)`);
   startExamTimer();
+}
+// Pause explicite (bouton, ou changement d'onglet) : chrono arrêté, copie gardée.
+function pauseCurrentExam(msg = 'Examen en pause : chrono arrêté. Reprenez-le depuis l’onglet ⏱ Examen.') {
+  const ex = state.exam; if (!ex || ex.pausedAt) return;
+  pauseExam(ex); state.examConfirm = false; clearInterval(state.timer); persistExam(); toast(msg);
+}
+// Abandon : la copie n'est ni notée ni enregistrée (estimation, badges et plan inchangés).
+function abandonExam() {
+  if (!confirm('Abandonner l’examen ? Il ne sera ni noté ni compté.')) return;
+  clearInterval(state.timer); state.exam = null; state.examConfirm = false; store.saveExam(null);
+  toast('Examen abandonné : non compté'); render();
 }
 function startExamTimer() {
   clearInterval(state.timer);
   state.timer = setInterval(() => {
-    if (!state.exam) return clearInterval(state.timer);
+    if (!state.exam || state.exam.pausedAt) return clearInterval(state.timer);
     const ms = remainingMs(state.exam); const el = $('#timer');
-    if (el) { const m = Math.floor(ms / 60000), s = Math.floor((ms % 60000) / 1000); el.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`; el.classList.toggle('low', ms < 5 * 60000); }
-    if (ms <= 0) { toast('Temps écoulé'); endExam(); }
+    if (el) { el.textContent = fmtMs(ms); el.classList.toggle('low', ms < 5 * 60000); }
+    if (ms <= 0) { toast('Temps écoulé'); state.examConfirm = false; endExam(); }
   }, 500);
 }
 function mountExamQuestion(q) {
@@ -765,33 +841,39 @@ function mountExamQuestion(q) {
     box.innerHTML = `<div class="muted">DEC ${esc(q.sessionLabel)} · Q${q.n} · ${q.points} pt${q.points > 1 ? 's' : ''}</div><div class="q">${esc(q.qrc.question || q.question)}</div><textarea id="ans" placeholder="Réponse courte…">${esc(ex.answers[q.id] || '')}</textarea>`;
     $('#ans', box).oninput = (e) => { ex.answers[q.id] = e.target.value; persistExam(); refreshGrid(); };
   }
+  const last = ex.ids.length - 1;
   $('#prev').onclick = () => { ex.current--; persistExam(); render(); };
-  $('#next').onclick = () => { if (ex.current === 19) endExam(); else { ex.current++; persistExam(); render(); } };
-  $('#finish').onclick = () => { if (confirm('Rendre la copie maintenant ?')) endExam(); };
+  $('#next').onclick = () => { if (ex.current === last) { state.examConfirm = true; render(); } else { ex.current++; persistExam(); render(); } };
+  $('#finish').onclick = () => { state.examConfirm = true; render(); };
+  $('#ex-pause').onclick = () => { pauseCurrentExam('Examen en pause : chrono arrêté. Reprenez quand vous voulez, ou quittez par les onglets.'); render(); };
   $('#grid').querySelectorAll('button[data-i]').forEach((b) => { b.onclick = () => { ex.current = Number(b.dataset.i); persistExam(); render(); }; });
 }
 function refreshGrid() {
   const ex = state.exam; const g = $('#grid'); if (!g) return;
-  g.querySelectorAll('button[data-i]').forEach((b) => { const id = ex.ids[Number(b.dataset.i)]; const a = ex.answers[id]; const has = a !== undefined && a !== ''; b.textContent = `${Number(b.dataset.i) + 1}${has ? ' ✓' : ''}`; });
+  g.querySelectorAll('button[data-i]').forEach((b) => { const i = Number(b.dataset.i); const has = hasAnswer(ex, ex.ids[i]); b.textContent = `${i + 1}${has ? ' ✓' : ''}`; b.classList.toggle('muted', !has); });
+  const c = $('.exam-finish .muted'); if (c) c.textContent = `${answeredCount(ex)}/${ex.ids.length} répondues`;
 }
 function endExam() {
   clearInterval(state.timer);
   const ex = state.exam;
   if (ex.mode === 'qcm') {
-    const res = finishExam(ex, state.byId);
+    const res = finishExam(ex, examById());
     recordExam(res);
   } else {
     state.examResult = { pending: true, exam: ex };
   }
-  state.exam = null;
+  state.exam = null; state.examConfirm = false;
   if (state.examResult?.pending) persistExam(); else store.saveExam(null);
-  render();
+  render(); window.scrollTo(0, 0); // la note /20 (ou l'auto-correction) en haut, pas le milieu du corrigé
 }
 function recordExam(res) {
   const { rows, answers, ...summary } = res;
+  if (res.inedit) releaseHeldOut(res.t); // ses questions rejoignent la révision (et les badges)
   state.progress.exams.push(summary);
   res.ids.forEach((id) => { state.progress.examSeen[id] = res.t; });
-  rows.forEach((r) => answer(r.id, r.points >= r.max / 2, res.mode, { defer: true, t: res.t }));
+  // Copie complète : chaque question compte (blanc = raté). Copie répondue à moins de 50 % : seules les réponses données.
+  const counted = isCounted(summary);
+  rows.forEach((r) => { if (counted || hasAnswer({ answers }, r.id)) answer(r.id, r.points >= r.max / 2, res.mode, { defer: true, t: res.t }); });
   G.applyExam(state.progress.stats, summary);
   state.examResult = { res };
   store.saveExam(null);
@@ -805,19 +887,19 @@ function qcmReview(q, chosen) {
 function renderExamResult() {
   const er = state.examResult;
   if (er.pending) {
-    const ex = er.exam;
+    const ex = er.exam; const byId = examById();
     setTimeout(() => {
       ex.ids.forEach((id) => {
-        const q = state.byId[id]; const inp = $(`#g-${CSS.escape(id)}`); if (!inp) return;
+        const q = byId[id]; const inp = $(`#g-${CSS.escape(id)}`); if (!inp) return;
         inp.oninput = () => { ex.grading[id] = Math.max(0, Math.min(q.points || 2, Number(inp.value) || 0)); persistExam(); };
         // Cocher les éléments attendus propose les points (modifiables ensuite).
         const boxes = [...document.querySelectorAll(`[data-exp-for="${CSS.escape(id)}"]`)];
         boxes.forEach((b) => { b.onchange = () => { inp.value = qrcPoints(q.points || 2, boxes.filter((x) => x.checked).length / boxes.length); inp.oninput(); }; });
       });
-      $('#validate').onclick = () => { recordExam(finishExam(ex, state.byId)); render(); };
+      $('#validate').onclick = () => { recordExam(finishExam(ex, examById())); render(); window.scrollTo(0, 0); };
     }, 0);
     return `<div class="card"><h2>Auto-correction</h2><p class="muted">Cochez les éléments attendus présents dans votre réponse : les points sont proposés au prorata (barème du sujet), et restent modifiables.</p></div>
-      ${ex.ids.map((id, i) => { const q = state.byId[id]; return `<div class="card">${qHeader(q)}<div class="q">${i + 1}. ${esc(q.qrc.question || q.question)}</div>
+      ${ex.ids.map((id, i) => { const q = byId[id]; return `<div class="card">${qHeader(q)}<div class="q">${i + 1}. ${esc(q.qrc.question || q.question)}</div>
         <div class="muted"><strong>Votre réponse :</strong> ${esc(ex.answers[id] || '—')}</div>
         <div class="answer"><strong>Attendu :</strong><ul class="expected">${q.qrc.expected.map((e, k) => `<li><input type="checkbox" id="x-${esc(id)}-${k}" data-exp-for="${esc(id)}"><label for="x-${esc(id)}-${k}">${esc(e)}</label></li>`).join('')}</ul><div>${esc(q.qrc.model_answer)}</div></div>${qExplain(q)}
         <label class="field">Points obtenus (sur ${q.points || 2})<input type="number" id="g-${esc(id)}" min="0" max="${q.points || 2}" step="0.5" value="${ex.grading[id] || 0}"></label></div>`; }).join('')}
@@ -825,8 +907,9 @@ function renderExamResult() {
   }
   const r = er.res;
   setTimeout(() => { $('#close').onclick = () => { state.examResult = null; render(); }; }, 0);
-  return `<div class="card center"><div class="muted">Examen blanc ${r.mode.toUpperCase()}</div><div class="big">${r.note}/20</div>
-      <div class="muted">${r.note < 6 ? 'Éliminatoire (< 6)' : r.note < 10 ? 'Sous la moyenne' : r.note < 14 ? 'Validé' : 'Très bon'} · EC ${pct(r.byProf.EC)} · CAC ${pct(r.byProf.CAC)}</div></div>
+  const full = isCounted(r);
+  return `<div class="card center"><div class="muted">Examen blanc ${r.mode.toUpperCase()}${r.inedit ? ' inédit' : ''}</div><div class="big">${r.note}/20</div>
+      <div class="muted">${!full ? `Copie incomplète (${r.answered}/${r.ids.length} répondues) : non comptée dans le niveau estimé ni les badges` : r.note < 6 ? 'Éliminatoire (< 6)' : r.note < 10 ? 'Sous la moyenne' : r.note < 14 ? 'Validé' : 'Très bon'} · EC ${pct(r.byProf.EC)} · CAC ${pct(r.byProf.CAC)}</div>${r.answered != null && full && r.answered < r.ids.length ? `<div class="muted">${r.ids.length - r.answered} question${r.ids.length - r.answered > 1 ? 's' : ''} sans réponse</div>` : ''}</div>
     <div class="card"><h2>Par thème</h2><table><tbody>${Object.entries(r.byTheme).map(([k, v]) => `<tr><td>${THEMES[k]}</td><td>${v.points}/${v.max}</td></tr>`).join('')}</tbody></table></div>
     ${r.rows.map((row, i) => { const q = row.q; const ok = row.points >= row.max; return `<div class="card" style="border-left:4px solid ${ok ? 'var(--ok)' : row.points > 0 ? 'var(--warn)' : 'var(--ko)'}">${qHeader(q)}<div class="q" style="font-size:16px">${i + 1}. ${esc(r.mode === 'qcm' ? (q.qcm.question || q.question) : (q.qrc.question || q.question))}</div>
       ${r.mode === 'qcm'
@@ -843,8 +926,8 @@ views.fiches = () => {
     setTimeout(async () => {
       $('#back').onclick = () => { state.ficheOpen = null; render(); };
       document.querySelectorAll('#fiche-train, #fiche-train2').forEach((b) => { b.onclick = () => trainOn(shuffle(meta.questions, Date.now()).slice(0, 20), meta.title); });
-      state.progress.plan.read = state.progress.plan.read || {}; state.progress.plan.read[state.ficheOpen] = Date.now(); persist();
-      try { $('#fiche').innerHTML = renderMarkdown(await loadFiche(state.ficheOpen)); addToc($('#fiche')); } catch { $('#fiche').textContent = 'Fiche indisponible hors ligne (ouvrez-la une fois en ligne).'; }
+      const file = state.ficheOpen;
+      try { $('#fiche').innerHTML = renderMarkdown(await loadFiche(file)); addToc($('#fiche')); trackRead(file, () => (state.view === 'fiches' && state.ficheOpen === file && !$('#sheet')?.classList.contains('show') ? window : null)); } catch { $('#fiche').textContent = 'Fiche indisponible hors ligne (ouvrez-la une fois en ligne).'; }
     }, 0);
     return `<button class="btn sm" id="back">← Fiches</button>${n ? `<div style="margin-top:10px">${trainBtn('fiche-train')}</div>` : ''}<div class="card fiche" id="fiche" style="margin-top:10px">Chargement…</div>${trainBtn('fiche-train2')}`;
   }
@@ -891,16 +974,40 @@ function closeSheet(viaPop = false) {
   // Hors activité (accueil, plan…), l'écran se met à jour (schéma lu, tâche suivante) ; sinon tout reste en l'état.
   if (!inActivity()) render();
 }
-// Fiche en surimpression : la lecture est notée pour le parcours.
+// Schéma « lu » pour le plan : seulement après l'avoir parcouru jusqu'en bas (15 s au moins), ou après 40 s
+// s'il tient à l'écran. Ouvrir puis refermer aussitôt ne coche plus la tâche.
+function trackRead(file, scroller) {
+  state.readStop?.(); state.readStop = null;
+  const pr = state.progress; if (pr.plan.read?.[file]) return;
+  const target = scroller(); if (!target) return;
+  const t0 = Date.now(); let reachedBottom = false;
+  const measure = () => (target === window
+    ? { top: window.scrollY, height: window.innerHeight, total: document.documentElement.scrollHeight }
+    : { top: target.scrollTop, height: target.clientHeight, total: target.scrollHeight });
+  const onScroll = () => { if (P.atBottom(measure())) reachedBottom = true; };
+  const stop = () => { clearInterval(timer); target.removeEventListener('scroll', onScroll); if (state.readStop === stop) state.readStop = null; };
+  const timer = setInterval(() => {
+    if (scroller() !== target) return stop(); // fiche fermée ou autre écran
+    const m = measure(); reachedBottom = reachedBottom || P.atBottom(m);
+    if (!P.readDone({ reachedBottom, fits: P.fitsScreen(m), elapsedMs: Date.now() - t0 })) return;
+    stop();
+    pr.plan.read = pr.plan.read || {}; pr.plan.read[file] = Date.now(); persist();
+    toast('📊 Schéma lu : noté dans le plan');
+  }, 1000);
+  target.addEventListener('scroll', onScroll, { passive: true });
+  state.readStop = stop;
+}
+// Fiche en surimpression : la lecture est notée pour le parcours (voir trackRead).
 async function ficheSheet(file) {
   const meta = state.fiches.find((f) => f.file === file) || {};
   const n = (meta.questions || []).length;
   const step = P.STEPS.find((st) => st.fiches?.includes(file));
   sheet(`<div class="card fiche" id="sheet-fiche">Chargement…</div>${n && !inActivity() ? `<button class="btn primary" id="sheet-train">🎯 S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : ''}${step && !inActivity() ? `<div style="margin-top:10px">${shortsBtn(step.id)}</div>` : ''}`);
   const tb = $('#sheet-train'); if (tb) tb.onclick = () => { closeSheet(true); trainOn(shuffle(meta.questions, Date.now()).slice(0, 20), meta.title); };
-  state.progress.plan.read = state.progress.plan.read || {};
-  state.progress.plan.read[file] = Date.now(); persist();
-  try { const box = $('#sheet-fiche'); box.innerHTML = renderMarkdown(await loadFiche(file)); addToc(box); } catch { $('#sheet-fiche').textContent = 'Fiche indisponible hors ligne (ouvrez-la une fois en ligne).'; }
+  try {
+    const box = $('#sheet-fiche'); box.dataset.file = file; box.innerHTML = renderMarkdown(await loadFiche(file)); addToc(box);
+    trackRead(file, () => { const el = $('#sheet'); return el?.classList.contains('show') && $('#sheet-fiche')?.dataset.file === file ? el : null; });
+  } catch { $('#sheet-fiche').textContent = 'Fiche indisponible hors ligne (ouvrez-la une fois en ligne).'; }
 }
 // Même notion aux autres sessions : énoncés et réponses, en surimpression.
 function variantsSheet(id) {
@@ -1323,7 +1430,9 @@ function endGame() {
   const best = state.progress.games.best;
   g.record = score > (best[g.kind] || 0);
   if (g.record) best[g.kind] = score;
-  g.phase = 'end'; persist();
+  g.phase = 'end';
+  if (g.n >= g.items.length || (g.endsAt && Date.now() >= g.endsAt)) markGameFinished(g.kind); // partie menée à son terme
+  persist();
 }
 function startSprintClock() {
   const g = state.game; if (!g?.endsAt) return;
@@ -1671,8 +1780,8 @@ function render() {
 }
 // pop : navigation venue du bouton Retour du téléphone (pas de nouvelle entrée d'historique).
 function go(v, { pop = false } = {}) {
-  if (state.exam && v !== 'exam' && !confirm('Quitter l’examen blanc en cours ? Il sera abandonné.')) { if (pop) history.pushState({ v: state.view }, ''); return; }
-  if (v !== 'exam' && state.exam) { clearInterval(state.timer); state.exam = null; store.saveExam(null); }
+  // Quitter l'onglet pendant un examen : mis en pause (chrono arrêté), repris depuis l'onglet Examen.
+  if (state.exam && v !== 'exam') pauseCurrentExam();
   // La séance, la série et le jeu en cours sont gardés : on les retrouve en revenant sur l'onglet.
   if (v !== 'jeux') stopGameTimer();
   closeSheet(true);
@@ -1748,6 +1857,7 @@ async function init() {
   });
   try {
     state.bank = await loadBank();
+    setupHeldOut();
     state.bank.questions.forEach((q) => { state.byId[q.id] = q; });
     state.clusters = buildClusters(state.bank.questions);
     state.fiches = await loadFichesIndex();

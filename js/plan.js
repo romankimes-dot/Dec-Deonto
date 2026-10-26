@@ -176,3 +176,23 @@ export function gameOfDay(today, drills) {
   const worst = Object.entries(acc).filter(([, v]) => v.n >= 5 && v.ok / v.n < 0.75).sort((a, b) => a[1].ok / a[1].n - b[1].ok / b[1].n)[0];
   return worst ? worst[0] : GAME_ROTATION[dnum(today) % GAME_ROTATION.length];
 }
+
+// ---------- Tâches du plan réellement faites ----------
+// Schéma lu : parcouru jusqu'en bas (au moins READ_MIN_MS d'ouverture, pour qu'un défilement éclair ne compte pas),
+// ou, s'il tient entièrement à l'écran, resté ouvert READ_FIT_MS.
+export const READ_MIN_MS = 15000;
+export const READ_FIT_MS = 40000;
+const MARGIN = 48; // px : bas de page atteint à une ligne près
+export const atBottom = ({ top, height, total }) => top + height >= total - MARGIN;
+export const fitsScreen = ({ height, total }) => total <= height + MARGIN;
+export function readDone({ reachedBottom = false, fits = false, elapsedMs = 0 }) {
+  return fits ? elapsedMs >= READ_FIT_MS : reachedBottom && elapsedMs >= READ_MIN_MS;
+}
+
+// Jeu du jour : noté à la fin d'une partie (plan.gamesDone[jour] = [jeux terminés]) ; une semaine gardée.
+export function markGameDone(plan, day, kind) {
+  const gd = plan.gamesDone = plan.gamesDone || {};
+  gd[day] = [...new Set([...(gd[day] || []), kind])];
+  for (const k of Object.keys(gd).sort().slice(0, -7)) delete gd[k];
+  return plan;
+}

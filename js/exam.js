@@ -3,8 +3,9 @@ import { drawExam, scoreExam } from './srs.js';
 
 export const EXAM_DURATION_MS = 60 * 60 * 1000;
 
-export function startExam(questions, seen, mode, now = Date.now()) {
-  const qs = drawExam(questions, seen);
+// `fixed` : questions imposées (examen inédit : une session entière, dans l'ordre du sujet).
+export function startExam(questions, seen, mode, now = Date.now(), fixed = null) {
+  const qs = fixed || drawExam(questions, seen);
   return {
     mode,                     // 'qcm' | 'qrc'
     startedAt: now,
@@ -14,11 +15,34 @@ export function startExam(questions, seen, mode, now = Date.now()) {
     grading: {},              // qrc : id -> points attribués
     current: 0,
     finished: false,
+    pausedAt: null,           // pause : chrono arrêté depuis cet instant
   };
 }
 
+// Temps restant ; figé pendant une pause.
 export function remainingMs(exam, now = Date.now()) {
-  return Math.max(0, exam.endsAt - now);
+  return Math.max(0, exam.endsAt - (exam.pausedAt || now));
+}
+
+// Pause : le chrono s'arrête ; à la reprise, l'échéance est repoussée d'autant.
+export function pauseExam(exam, now = Date.now()) {
+  if (!exam.pausedAt) exam.pausedAt = now;
+  return exam;
+}
+export function resumePaused(exam, now = Date.now()) {
+  if (exam.pausedAt) { exam.endsAt += Math.max(0, now - exam.pausedAt); exam.pausedAt = null; }
+  return exam;
+}
+
+// Questions répondues d'une copie (QRC : texte non vide).
+export function answeredCount(exam) {
+  return exam.ids.filter((id) => { const a = exam.answers[id]; return a !== undefined && a !== null && String(a).trim() !== ''; }).length;
+}
+
+// Une copie répondue à moins de 50 % ne mesure rien : exclue de l'estimation, des badges et du plan.
+// Les copies enregistrées avant ce champ (answered absent) restent comptées.
+export function isCounted(e) {
+  return !!e && (e.answered == null || e.answered >= (e.ids?.length || 20) / 2);
 }
 
 export function qcmPoints(q, answer) {
@@ -44,9 +68,11 @@ export function finishExam(exam, byId, now = Date.now()) {
     return m;
   };
   return {
-    t: now, mode: exam.mode, note, ids: exam.ids,
+    t: now, mode: exam.mode, note, ids: exam.ids, answered: answeredCount(exam),
+    ...(exam.inedit ? { inedit: exam.inedit } : {}),
     byProf: agg('profession'), byTheme: agg('theme'),
     rows, answers: exam.answers,
-    durationMs: Math.min(EXAM_DURATION_MS, now - exam.startedAt),
+    // Temps de composition effectif (pauses déduites).
+    durationMs: Math.min(EXAM_DURATION_MS, Math.max(0, EXAM_DURATION_MS - remainingMs(exam, exam.pausedAt || now))),
   };
 }
