@@ -42,7 +42,7 @@
   - les **amendes pénales**, par exemple une amende de 5 000 € prononcée pour non-révélation (maximum légal : 75 000 €, L.821-9, ex L.820-7) ;
   - les **fautes intentionnelles ou dolosives** (C. assur. **L.113-1**) ;
   - les **sanctions pécuniaires** prononcées par la H2A.
-- Les **dommages-intérêts** dus pour une **violation du secret** restent en principe **couverts** (annale 2019-11 Q16, réponse « couverts ») : seule l'amende est exclue. L'exclusion de la **faute intentionnelle ou dolosive** (C. assur. L.113-1) suppose la volonté de causer le dommage, notion plus étroite que l'intention pénale.
+- Les **dommages-intérêts** dus pour une **violation du secret** restent en principe **couverts** (annale 2019-11 Q16, réponse « couverts ») : seule l'amende est exclue. L'exclusion de la **faute intentionnelle** (volonté de causer le dommage) **ou dolosive** (acte délibéré commis avec conscience du caractère inéluctable du dommage, selon la 2e chambre civile de la Cour de cassation) (C. assur. L.113-1) est plus étroite que l'intention pénale.
 
 ## 3. Responsabilité pénale
 

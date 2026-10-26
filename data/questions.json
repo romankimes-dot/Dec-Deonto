@@ -10461,7 +10461,7 @@
     ],
     "model_answer": "Oui. Selon l'article L.821-10, le commissaire aux comptes révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou de sa prestation. L'obligation s'applique donc aussi à une prestation réalisée hors mandat de certification. Le non-respect de cette obligation est pénalement sanctionné."
    },
-   "explanation": "L'article L.821-10, alinéa 2, dispose que le CAC « révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation » ; la profession comprenant désormais missions et prestations (L.821-2 et L.821-3), l'obligation ne se limite plus à la certification. L.821-9 punit de 5 ans et 75 000 € toute personne exerçant la profession de CAC qui ne révèle pas ces faits. Piège : ne pas confondre avec la déclaration de soupçon à Tracfin (LCB-FT), obligation distincte qui s'applique elle aussi à toutes les missions et prestations du CAC (NEP 9605) ; l'expert-comptable n'a aucune obligation de révélation au procureur.",
+   "explanation": "L'article L.821-10, alinéa 2, dispose que le CAC « révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation » ; la profession comprenant désormais missions et prestations (L.821-2 et L.821-3), l'obligation ne se limite plus à la certification. L.821-9 punit de 5 ans et 75 000 € toute personne exerçant la profession de CAC qui ne révèle pas ces faits. Piège : ne pas confondre avec la déclaration de soupçon à Tracfin (LCB-FT), obligation distincte qui s'applique elle aussi à toutes les missions et prestations du CAC (CMF L.561-2 12° bis ; NEP 9605) ; l'expert-comptable n'a aucune obligation de révélation au procureur.",
    "reference": "C. com. L.821-10 (ex-L.823-12), L.821-9 (ex-L.820-7)",
    "confidence": "high",
    "update_note": "Relecture : point tranché par le texte de L.821-10 (brochure CNCC « Code de commerce, partie législative », sept. 2024) : « à l'occasion de sa mission ou prestation ». L'affirmation contraire de data/SCHEMA.md (révélation limitée à la certification) est erronée.",
@@ -10686,9 +10686,9 @@
     ],
     "model_answer": "Le secret de l'expert-comptable est levé notamment lors d'une audition ou d'un témoignage en matière pénale, lors du contrôle de qualité de l'Ordre et à l'égard de l'AMF ainsi que de Tracfin. Il reste opposable aux agents de la CNIL, faute de texte le levant."
    },
-   "explanation": "Le secret (ord. art. 21, C. pén. 226-13) ne cède que devant une disposition législative contraire. Le CMF lève le secret à l'égard de l'AMF ; les contrôleurs qualité sont eux-mêmes tenus au secret. Pour la CNIL, aucun texte ne lève le secret de l'expert-comptable, et la loi Informatique et libertés dispense de répondre les personnes interrogées astreintes au secret professionnel.",
+   "explanation": "Le secret (ord. art. 21, C. pén. 226-13) ne cède que devant une disposition législative contraire. Le CMF lève le secret à l'égard de l'AMF ; les contrôleurs qualité sont eux-mêmes tenus au secret. Pour la CNIL, la clé officielle retient que le secret est opposable. Attention : l'article 19 III de la loi Informatique et libertés ne réserve, face aux agents de la CNIL, que le secret avocat-client, le secret des sources journalistiques et le secret médical ; la justification de cette clé est donc incertaine (à vérifier).",
    "reference": "Ord. 45-2138 art. 21 ; C. pén. 226-13 et 226-14 ; CMF L.621-9-3 ; loi 78-17 art. 18 et 19",
-   "confidence": "medium",
+   "confidence": "low",
    "update_note": "Relecture : la justification CNIL est nuancée. L'art. 18 de la loi 78-17 dispense de fournir les renseignements demandés les personnes interrogées astreintes au secret professionnel, mais l'art. 19 III précise que, lors des contrôles, le secret ne peut être opposé aux agents de la CNIL sauf secret avocat-client, secret des sources et secret médical. La réponse d) reste celle du sujet officiel au regard des levées classiques (audition pénale, contrôle qualité, AMF).",
    "session": "2025-11",
    "origFormat": "qcm"
