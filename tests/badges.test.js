@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   buildContext, buildCatalog, emptyStats, applyAnswer, applyExam, applyOpen, rebuildStats,
-  evaluate, progressOf, currentGrade, gradeConditions, themeMastery, dayKey, examInfo,
+  evaluate, progressOf, currentGrade, gradeConditions, themeMastery, dayKey, examInfo, applyListens, mergeStats,
 } from '../js/gamify.js';
 import { ANECDOTES, QBADGES } from '../js/catalog-data.js';
 
@@ -31,7 +31,7 @@ function sim() {
 test('catalogue : ids uniques, familles et raretés valides, toutes les questions citées existent', () => {
   assert.equal(new Set(catalog.map((b) => b.id)).size, catalog.length);
   for (const b of catalog) {
-    assert.ok(['couverture', 'series', 'maitrise', 'repassage', 'anecdotes', 'questions', 'caches'].includes(b.family), b.id);
+    assert.ok(['couverture', 'series', 'maitrise', 'repassage', 'anecdotes', 'questions', 'ecoute', 'caches'].includes(b.family), b.id);
     assert.ok(['commun', 'rare', 'epique', 'legendaire'].includes(b.rarity), b.id);
     for (const id of b.ids || []) assert.ok(ctx.known.has(id), `${b.id} → ${id}`);
   }
@@ -302,4 +302,23 @@ test('évaluation idempotente : un badge débloqué garde sa date', () => {
   const f2 = evaluate(p, catalog, ctx, 222);
   assert.equal(f2.badges.length, 0);
   assert.equal(p.badges['cov-1'], 111);
+});
+
+test('Écoute : badges des podcasts écoutés, rétroactifs et conservés à la fusion', () => {
+  const st = emptyStats();
+  const done = (b) => progressOf(byId[b], st).done;
+  assert.equal(done('pc-1'), false);
+  applyListens(st, { '01-cadre-institutions': { pos: 700, done: true, t: T0 }, '02-activites-lettre': { pos: 100, done: false, t: T0 } });
+  assert.equal(done('pc-1'), true);
+  assert.equal(done('pc-jour'), false);
+  applyListens(st, { '03-mandat': { pos: 600, done: true, t: T0 + 3600000 } });
+  assert.equal(done('pc-jour'), true);
+  applyListens(st, { '02-activites-lettre': { pos: 1100, done: true, t: T0 + DAY } });
+  assert.equal(done('pc-3'), true);
+  assert.equal(st.pc['01-cadre-institutions'], dayKey(T0), 'le jour de la première écoute ne change pas');
+  assert.deepEqual(progressOf(byId['pc-tous'], st), { cur: 3, max: 10, done: false, rate: undefined });
+  st.flags.pcRapide = true; assert.equal(done('pc-rapide'), true);
+  const re = rebuildStats({ attempts: [], exams: [], podcasts: { '03-mandat': { pos: 600, done: true, t: T0 } } }, ctx);
+  assert.equal(Object.keys(re.pc).length, 1);
+  assert.equal(Object.keys(mergeStats(emptyStats(), st).pc).length, 3);
 });

@@ -22,6 +22,7 @@ export const FAMILIES = [
   { id: 'repassage', label: 'Repassage', icon: '🔁' },
   { id: 'anecdotes', label: 'Carrière', icon: '📸' },
   { id: 'questions', label: 'Chiffres et pièges', icon: '🎯' },
+  { id: 'ecoute', label: 'Écoute', icon: '🎧' },
   { id: 'caches', label: 'Cachés', icon: '❓' },
 ];
 
@@ -146,6 +147,14 @@ export function applyExam(stats, ex) {
 }
 
 // Ouverture de l'app (pour « Jour J ») : le jour de l'épreuve, avant son heure de début.
+// Podcasts écoutés (progress.podcasts : id -> { pos, done, t }) : stats.pc[id] = jour de la première écoute complète.
+export const PC_EPISODES = 10;
+export function applyListens(stats, podcasts) {
+  stats.pc = stats.pc || {};
+  for (const [id, p] of Object.entries(podcasts || {})) if (p?.done && !stats.pc[id]) stats.pc[id] = dayKey(p.t || Date.now());
+  return stats;
+}
+
 export function applyOpen(stats, t, ctx) {
   const d = new Date(t); const ex = ctx?.exam || examInfo();
   if (dayKey(t) === ex.day && d.getHours() * 60 + d.getMinutes() < ex.min) stats.flags.jourJ = true;
@@ -163,6 +172,7 @@ export function rebuildStats(progress, ctx) {
     if (ev.k === 'a') { if (ctx.known.has(ev.a.id)) applyAnswer(stats, { id: ev.a.id, ok: !!ev.a.ok, t: ev.a.t, off: ev.a.off }, ctx); }
     else applyExam(stats, ev.e);
   }
+  applyListens(stats, progress.podcasts);
   // L'historique est tronqué (400 réponses) : les statistiques déjà acquises ne doivent pas reculer.
   return progress.stats ? mergeStats(stats, progress.stats) : stats;
 }
@@ -185,6 +195,7 @@ export function mergeStats(stats, prev) {
   s.best = Math.max(s.best, num(ps.best)); s.hardBest = Math.max(s.hardBest, num(ps.hardBest));
   for (const k of ['days', 'offlineDays']) for (const [d, n] of Object.entries(prev[k] || {})) stats[k][d] = Math.max(stats[k][d] || 0, num(n));
   for (const [f, v] of Object.entries(prev.flags || {})) if (v) stats.flags[f] = true;
+  for (const [id, d] of Object.entries(prev.pc || {})) if (typeof d === 'string' && (!stats.pc?.[id] || d < stats.pc[id])) (stats.pc = stats.pc || {})[id] = d;
   const ts = new Set(stats.exams.map((e) => e.t));
   for (const e of Array.isArray(prev.exams) ? prev.exams : []) if (e && !ts.has(e.t)) stats.exams.push(e);
   stats.exams.sort((a, b) => a.t - b.t);
@@ -296,7 +307,17 @@ export function buildCatalog(ctx) {
     add({ id: `${b.id}-or`, family: 'questions', rarity: b.rarity === 'commun' ? 'rare' : b.rarity === 'rare' ? 'epique' : 'legendaire', gold: true, name: `${b.title} (or)`, desc: `${b.desc} Deux fois, deux jours différents.`, ids, cond: 'chaque question réussie 2 jours différents', check: (st) => all(ids, (id) => okTwoDays(st, id)) });
   }
 
-  // Famille 7 — Cachés
+  // Famille 7 — Écoute (podcasts écoutés à 90 %)
+  const listened = (st) => Object.keys(st.pc || {}).length;
+  const sameDay = (st) => Math.max(0, ...Object.values(Object.values(st.pc || {}).reduce((m, d) => ({ ...m, [d]: (m[d] || 0) + 1 }), {})));
+  const L = (id, rarity, name, desc, cond, check) => add({ id, family: 'ecoute', rarity, name, desc, cond, check });
+  L('pc-1', 'commun', 'Premier entretien', 'Un épisode écouté jusqu’au bout.', '1 épisode écouté (90 %)', (st) => ({ cur: Math.min(1, listened(st)), max: 1 }));
+  L('pc-3', 'rare', 'Auditeur assidu', 'Trois épisodes, trois étapes du parcours en audio.', '3 épisodes écoutés', (st) => ({ cur: Math.min(3, listened(st)), max: 3 }));
+  L('pc-jour', 'rare', 'Aller-retour', 'Un épisode à l’aller, un au retour.', '2 épisodes écoutés le même jour', (st) => ({ cur: Math.min(2, sameDay(st)), max: 2 }));
+  L('pc-rapide', 'rare', 'Lecture accélérée', 'Le jury parle vite, vous aussi.', 'un épisode terminé à 1,5× ou plus', (st) => ({ cur: st.flags.pcRapide ? 1 : 0, max: 1 }));
+  L('pc-tous', 'epique', 'L’intégrale du parcours', 'Les dix épisodes, de bout en bout.', `les ${PC_EPISODES} épisodes écoutés`, (st) => ({ cur: Math.min(PC_EPISODES, listened(st)), max: PC_EPISODES }));
+
+  // Famille 8 — Cachés
   const flag = (k) => (st) => ({ cur: st.flags[k] ? 1 : 0, max: 1 });
   const exams = (fn) => (st) => ({ cur: st.exams.some(fn) ? 1 : 0, max: 1 });
   const H = (id, rarity, name, hint, cond, check, prop = null) => add({ id, family: 'caches', hidden: true, rarity, name, hint, desc: hint, cond, check, prop });

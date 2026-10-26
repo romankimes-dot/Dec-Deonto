@@ -1933,7 +1933,13 @@ function pcSave(force) {
   const prev = state.progress.podcasts[id];
   const next = PC.updateProgress(prev, a.ended ? dur : a.currentTime, dur, now);
   state.progress.podcasts[id] = next; persist();
-  if (next.done && !prev?.done) { toast(`🎧 Épisode ${ep.n} écouté`); if (state.view === 'podcasts') pcRefreshList(); }
+  if (next.done && !prev?.done) {
+    toast(`🎧 Épisode ${ep.n} écouté`);
+    G.applyListens(state.progress.stats, state.progress.podcasts);
+    if (a.playbackRate >= 1.5) state.progress.stats.flags.pcRapide = true;
+    checkBadges();
+    if (state.view === 'podcasts') pcRefreshList();
+  }
 }
 function pcMediaSession(ep) {
   const ms = navigator.mediaSession; if (!ms) return;
@@ -1954,13 +1960,14 @@ function pcPosition() {
   if (!ms?.setPositionState || !Number.isFinite(a.duration) || !a.duration) return;
   try { ms.setPositionState({ duration: a.duration, playbackRate: a.playbackRate, position: Math.min(a.currentTime, a.duration) }); } catch { /* ignore */ }
 }
-function pcPlay(id, { play = true } = {}) {
+function pcPlay(id, { play = true, fromStart = false } = {}) {
   const ep = epById(id); if (!PC.isAvailable(ep)) return;
   const a = audioEl();
+  if (state.pc.current === id && fromStart) { a.currentTime = 0; pcUi(); }
   if (state.pc.current !== id) {
     pcSave(true);
     state.pc.current = id; state.pc.lastSave = Date.now();
-    state.pc.seekTo = PC.resumeAt(ep, state.progress.podcasts[id]);
+    state.pc.seekTo = fromStart ? 0 : PC.resumeAt(ep, state.progress.podcasts[id]);
     a.src = new URL(ep.file, location.href).href;
     a.defaultPlaybackRate = pcRate(); a.playbackRate = pcRate();
     pcMediaSession(ep);
@@ -1999,7 +2006,7 @@ function pcMini() {
     m.addEventListener('click', (e) => {
       const b = e.target.closest('[data-pcm]'); if (!b) return;
       const aa = audioEl();
-      if (b.dataset.pcm === 'toggle') { if (aa.paused) aa.play(); else aa.pause(); } else if (b.dataset.pcm === 'close') { state.pc.miniOff = true; aa.pause(); } else go('podcasts');
+      if (b.dataset.pcm === 'toggle') { if (aa.paused) aa.play(); else aa.pause(); } else if (b.dataset.pcm === 'close') { state.pc.miniOff = true; aa.pause(); pcMini(); } else go('podcasts');
     });
   }
   m.hidden = false;
@@ -2064,7 +2071,8 @@ function pcStateBadge(ep) {
 function pcItem(ep) {
   const av = PC.isAvailable(ep); const s = PC.episodeState(ep, state.progress.podcasts[ep.id]);
   const cur = state.pc.current === ep.id; const size = state.pc.sizes[ep.id]; const dl = state.pc.dl[ep.id];
-  const actions = !av ? '' : `<div class="pc-actions">${cur ? '' : `<button class="btn sm primary" data-pc-play="${ep.id}">▶ ${s.state === 'progress' ? `Reprendre à ${PC.fmtClock(PC.resumeAt(ep, state.progress.podcasts[ep.id]))}` : s.state === 'done' ? 'Réécouter' : 'Écouter'}</button>`}
+  const resume = s.state === 'progress' && PC.resumeAt(ep, state.progress.podcasts[ep.id]) > 0;
+  const actions = !av ? '' : `<div class="pc-actions">${cur ? '' : `<button class="btn sm primary" data-pc-play="${ep.id}">▶ ${resume ? `Reprendre à ${PC.fmtClock(PC.resumeAt(ep, state.progress.podcasts[ep.id]))}` : s.state === 'done' ? 'Réécouter' : 'Écouter'}</button>${resume ? `<button class="btn sm" data-pc-start="${ep.id}">⏮ Depuis le début</button>` : ''}`}
     ${dl != null ? `<span class="muted" data-pc-dl-label="${ep.id}">Téléchargement… ${Math.round(dl * 100)} %</span>`
       : size ? `<span class="muted">✔ Hors ligne · ${esc(PC.fmtSize(size))}</span><button class="btn sm" data-pc-del="${ep.id}">🗑 Supprimer</button>`
         : `<button class="btn sm" data-pc-dl="${ep.id}">⬇ Télécharger pour hors ligne</button>`}</div>`;
@@ -2089,7 +2097,7 @@ function pcPlayer() {
   return `<div class="card pc-player" id="pc-player"><div class="muted">En lecture · épisode ${ep.n} · ${esc(stepsLabel(ep))}</div><strong class="pc-title" data-no-gl>${esc(ep.title)}</strong>
     <input type="range" id="pc-seek" class="pc-seek" min="0" max="${Math.round(dur)}" step="1" value="${Math.round(pos)}" aria-label="Position dans l’épisode">
     <div class="muted pc-time" id="pc-time">${PC.fmtClock(pos)} / ${PC.fmtClock(dur)}</div>
-    <div class="pc-controls"><button class="btn" data-pc-seek="-15" aria-label="Reculer de 15 secondes">↺ 15 s</button><button class="btn primary pc-toggle" id="pc-toggle" aria-label="${a.paused ? 'Lecture' : 'Pause'}">${a.paused ? '▶' : '⏸'}</button><button class="btn" data-pc-seek="15" aria-label="Avancer de 15 secondes">15 s ↻</button></div>
+    <div class="pc-controls"><button class="btn" data-pc-start="${ep.id}" aria-label="Reprendre depuis le début">⏮</button><button class="btn" data-pc-seek="-15" aria-label="Reculer de 15 secondes">↺ 15 s</button><button class="btn primary pc-toggle" id="pc-toggle" aria-label="${a.paused ? 'Lecture' : 'Pause'}">${a.paused ? '▶' : '⏸'}</button><button class="btn" data-pc-seek="15" aria-label="Avancer de 15 secondes">15 s ↻</button></div>
     <div class="chips pc-rates" role="group" aria-label="Vitesse">${PC.SPEEDS.map((r) => `<button class="chip ${a.playbackRate === r ? 'on' : ''}" data-pc-rate="${r}">${String(r).replace('.', ',')}×</button>`).join('')}</div>
     <div class="muted" style="margin-top:10px">Les schémas de ${ep.steps.length > 1 ? 'ces étapes' : 'cette étape'} :</div><div class="pc-links">${pcStepLinks(ep)}</div></div>`;
 }
@@ -2105,10 +2113,12 @@ views.podcasts = () => {
     const seek = $('#pc-seek'); if (seek) seek.oninput = () => { audioEl().currentTime = Number(seek.value); pcUi(); };
     const tg = $('#pc-toggle'); if (tg) tg.onclick = () => { const a = audioEl(); if (a.paused) a.play().catch(() => {}); else a.pause(); };
     document.querySelectorAll('[data-pc-seek]').forEach((b) => { b.onclick = () => pcSeek(Number(b.dataset.pcSeek)); });
+    const ps = $('#pc-player [data-pc-start]'); if (ps) ps.onclick = () => pcPlay(ps.dataset.pcStart, { fromStart: true });
     document.querySelectorAll('[data-pc-rate]').forEach((b) => { b.onclick = () => { const r = Number(b.dataset.pcRate); state.progress.settings.podcastRate = r; persist(); const a = audioEl(); a.defaultPlaybackRate = r; a.playbackRate = r; pcPosition(); }; });
     const box = $('#pc-list-box');
     if (box) box.onclick = (e) => {
       const p = e.target.closest('[data-pc-play]'); if (p) { pcPlay(p.dataset.pcPlay); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+      const st = e.target.closest('[data-pc-start]'); if (st) { pcPlay(st.dataset.pcStart, { fromStart: true }); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
       const d = e.target.closest('[data-pc-dl]'); if (d) return pcDownload(d.dataset.pcDl);
       const x = e.target.closest('[data-pc-del]'); if (x) return pcDelete(x.dataset.pcDel);
     };
@@ -2168,6 +2178,7 @@ function initGamify() {
     persist();
   }
   G.applyOpen(pr.stats, Date.now(), state.gctx);
+  G.applyListens(pr.stats, pr.podcasts);
   checkBadges();
 }
 
