@@ -6,6 +6,7 @@
   --line: #e2e8f0;
   --primary: #1e40af;
   --primary-ink: #ffffff;
+  --primary-btn: var(--primary);
   --ok: #15803d;
   --ok-bg: #dcfce7;
   --ko: #b91c1c;
@@ -25,12 +26,14 @@
     --bg: #0b1220; --card: #111a2e; --text: #e5e7eb; --muted: #94a3b8; --line: #1f2a44;
     --primary: #3b82f6; --ok-bg: #052e16; --ko-bg: #450a0a; --warn-bg: #451a03;
     --ok: #4ade80; --ko: #f87171; --warn: #fbbf24; --ec: #22d3ee; --cac: #c4b5fd;
+    --primary-btn: #1d4ed8;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0b1220; --card: #111a2e; --text: #e5e7eb; --muted: #94a3b8; --line: #1f2a44;
   --primary: #3b82f6; --ok-bg: #052e16; --ko-bg: #450a0a; --warn-bg: #451a03;
   --ok: #4ade80; --ko: #f87171; --warn: #fbbf24; --ec: #22d3ee; --cac: #c4b5fd;
+  --primary-btn: #1d4ed8;
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -72,13 +75,14 @@ button.btn, a.btn {
   border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--text); font-size: 16px; font-weight: 600;
   cursor: pointer; text-decoration: none; font-family: inherit; width: 100%;
 }
-button.btn.primary { background: var(--primary); color: var(--primary-ink); border-color: var(--primary); }
+button.btn.primary { background: var(--primary-btn); color: var(--primary-ink); border-color: var(--primary-btn); }
 button.btn.sm { min-height: 40px; font-size: 14px; width: auto; padding: 6px 12px; }
 button.btn:disabled { opacity: .5; cursor: default; }
 .btnrow { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .btnrow4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .btnrow4 button.btn { padding: 8px 4px; font-size: 14px; flex-direction: column; gap: 0; }
-.btnrow4 button.btn small { font-weight: 400; font-size: 11px; color: var(--muted); }
+.btnrow4 button.btn small { font-weight: 400; font-size: 12px; color: var(--muted); }
+.btnrow4 button.btn.primary small { color: var(--primary-ink); font-weight: 600; }
 .badge { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
 .badge.ec { color: var(--ec); border-color: var(--ec); }
 .badge.cac { color: var(--cac); border-color: var(--cac); }
@@ -94,16 +98,24 @@ button.btn:disabled { opacity: .5; cursor: default; }
 .choice.ko { background: var(--ko-bg); border-color: var(--ko); }
 .choice.sel { border-color: var(--primary); border-width: 2px; }
 .choice:disabled { cursor: default; }
-textarea, input[type="text"], input[type="search"], select, input[type="number"] {
+textarea, input[type="text"], input[type="search"], select, input[type="number"], input[type="datetime-local"], input[type="date"] {
   width: 100%; font: inherit; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--text);
 }
+/* Champ date (Réglages) : hauteur d'un champ normal, sous son libellé (iOS l'affiche sinon en ligne, 21 px de haut). */
+input[type="datetime-local"], input[type="date"] { display: block; min-height: 46px; -webkit-appearance: none; appearance: none; text-align: left; color-scheme: light dark; }
+input[type="datetime-local"]::-webkit-date-and-time-value { text-align: left; }
 textarea { min-height: 90px; resize: vertical; }
 .answer { border-left: 4px solid var(--ok); padding: 8px 12px; background: var(--ok-bg); border-radius: 8px; margin-top: 10px; }
 .explain { border-left: 4px solid var(--primary); padding: 8px 12px; margin-top: 10px; background: var(--bg); border-radius: 8px; font-size: 15px; }
 .ref { font-size: 13px; color: var(--muted); margin-top: 8px; }
 .expected { list-style: none; padding: 0; margin: 6px 0; }
 .expected li { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; border-bottom: 1px dashed var(--line); }
-.expected input { width: 22px; height: 22px; margin-top: 2px; }
+.expected input { width: 22px; height: 22px; margin-top: 2px; flex: none; }
+/* Réponse tapée, mots-clés des éléments attendus surlignés */
+.typed { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; margin-top: 10px; }
+.typed p { margin: 4px 0 0; white-space: pre-line; }
+mark { background: #fde68a; color: #422006; border-radius: 3px; padding: 0 2px; }
+.m3t { color: var(--ok); }
 .progress { height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; }
 .progress > div { height: 100%; background: var(--primary); }
 .timer { font-variant-numeric: tabular-nums; font-weight: 800; font-size: 20px; }
@@ -376,9 +388,14 @@ div.estim { margin-top: 10px; }
 /* Séance : ce que l'on travaille */
 .ctx { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
 .badge.new { color: var(--primary); border-color: var(--primary); }
-/* Barre de notation toujours visible pendant la lecture du corrigé */
-#grade { position: sticky; bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 8px); z-index: 4; }
-.gradebar { margin-bottom: 0; box-shadow: 0 -4px 18px rgba(15, 23, 42, .12); }
+/* Notation : la barre complète suit la correction ; avant, un rappel compact reste au-dessus des onglets. */
+#grade-peek { position: sticky; bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 8px); z-index: 4; display: flex; justify-content: center; pointer-events: none; margin: 4px 0 8px; }
+#grade-peek:empty { display: none; }
+.gradepeek { pointer-events: auto; box-shadow: 0 4px 14px rgba(15, 23, 42, .18); border-radius: 999px !important; gap: 6px; }
+.gradepeek .muted { font-size: 13px; font-weight: 400; }
+#grade { margin-bottom: 24px; scroll-margin-bottom: calc(var(--nav-h) + 16px); }
+.gradebar { margin-bottom: 0; }
+.short-sess { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 8px 0 0; }
 .ctx { margin: -2px 0 8px; font-size: 13px; }
 
 /* ---------- Shorts : fil vertical plein écran, papier et personnages ---------- */

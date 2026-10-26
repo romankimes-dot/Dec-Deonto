@@ -13,6 +13,7 @@ import { estimate } from './estimate.js';
 import * as SH from './shorts.js';
 import * as SC from './scenes.js';
 import * as GL from './glossaire.js';
+import { matchExpected, highlight } from './qrc.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -112,7 +113,8 @@ function checkBadges() {
 function updateStreakBadge() {
   const el = $('#streak'); if (!el || !state.progress.stats) return;
   const s = state.progress.stats.streak;
-  el.innerHTML = `<span title="Série en cours">🔥 ${s.cur}</span><span class="muted" title="Record personnel">record ${s.best}</span>`;
+  el.title = 'Bonnes réponses d’affilée : série en cours et record';
+  el.innerHTML = `<span>🔥 série ${s.cur}</span><span class="muted">record ${s.best}</span>`;
 }
 function badgeIcon(b, locked = false) {
   const col = G.RARITIES[b.rarity].color;
@@ -174,6 +176,24 @@ function toast(msg) {
   const t = $('#toast'); t.textContent = msg; t.classList.add('show');
   clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 2200);
 }
+// Amène un élément au-dessus de la barre d'onglets (fixe) sans cacher son haut sous l'en-tête collant.
+function revealBelow(el, { smooth = true } = {}) {
+  if (!el?.getBoundingClientRect) return;
+  const r = el.getBoundingClientRect();
+  const navH = $('nav.bottom')?.getBoundingClientRect().height || 0;
+  const headH = $('header.top')?.getBoundingClientRect().height || 0;
+  const bottom = window.innerHeight - navH - 12;
+  if (r.bottom <= bottom) return;
+  const dy = Math.min(r.bottom - bottom, r.top - headH - 8);
+  if (dy > 0) window.scrollBy({ top: dy, behavior: smooth ? 'smooth' : 'auto' });
+}
+// Après « Voir la réponse » ou un choix : la correction vient en haut de l'écran (sous l'en-tête).
+function scrollToCorrection(el) {
+  if (!el?.getBoundingClientRect) return;
+  const headH = $('header.top')?.getBoundingClientRect().height || 0;
+  const dy = el.getBoundingClientRect().top - headH - 12;
+  if (dy > 0) window.scrollBy({ top: dy, behavior: 'smooth' });
+}
 function shuffle(arr, seed) {
   // Mélange déterministe par id (pour que l'ordre des propositions soit stable pendant une question)
   let s = 0; for (const ch of String(seed)) s = (s * 31 + ch.charCodeAt(0)) >>> 0;
@@ -185,8 +205,9 @@ function intervalLabel(card, g, id) {
   const now = Date.now();
   const c = review(card || newCard(), g, now, reviewOpts(id));
   if (g === 0) return '10 min';
-  const d = Math.round((c.due - now) / DAY);
-  return d === 1 ? '1 j' : `${d} j`;
+  // En jours de calendrier : l'échéance tombe dès le matin du jour prévu.
+  const d = P.daysUntil(G.dayKey(now), G.dayKey(c.due));
+  return d <= 0 ? 'auj.' : `${d} j`;
 }
 
 // ---------- Rendu commun d'une question ----------
@@ -225,6 +246,8 @@ function renderQcm(q, container, onAnswered, { hide = false, askConf = false } =
     $('.pending', container).innerHTML = '';
     $('.after', container).innerHTML = `${confidentError(ok, conf) ? hcAlert() : ''}<div class="answer"><strong>${ok ? '✔ Bonne réponse' : '✘ Mauvaise réponse'}.</strong> ${esc(q.qrc.model_answer)}</div>${qExplain(q)}`;
     onAnswered(ok, conf);
+    // La bonne proposition reste visible au-dessus de la correction.
+    setTimeout(() => scrollToCorrection(box.children[Math.min(chosen, order.indexOf(q.qcm.answer))]), 30);
   };
   order.forEach((idx, i) => {
     const b = document.createElement('button');
@@ -237,7 +260,7 @@ function renderQcm(q, container, onAnswered, { hide = false, askConf = false } =
       if (!p.innerHTML) {
         p.innerHTML = certRow('qcm', 'Avant de voir la correction : vous êtes…');
         p.querySelectorAll('[data-conf]').forEach((cb) => { cb.onclick = () => reveal(Number(cb.dataset.conf)); });
-        p.scrollIntoView?.({ block: 'nearest', behavior: 'smooth' });
+        setTimeout(() => revealBelow(p), 30);
       }
     };
     box.appendChild(b);
@@ -251,9 +274,14 @@ function renderQrc(q, container, onRevealed, onCheck = () => {}, { askConf = fal
     <div style="margin-top:10px" class="reveal-box">${askConf ? certRow('qrc', 'Voir la réponse. Vous êtes…') : '<button class="btn primary reveal">Voir la réponse</button>'}</div><div class="after"></div>`;
   const reveal = (conf) => {
     $('.reveal-box', container).innerHTML = '';
-    $('.after', container).innerHTML = `
-      <div class="answer"><strong>Éléments attendus</strong> (cochez ce que vous aviez) :
-        <ul class="expected">${q.qrc.expected.map((e, i) => `<li><input type="checkbox" id="exp${i}"><label for="exp${i}">${esc(e)}</label></li>`).join('')}</ul>
+    // Réponse tapée : mots-clés des éléments attendus surlignés ; seuls les éléments retrouvés sont pré-cochés.
+    const typed = $('textarea', container).value.trim();
+    const m = typed ? matchExpected(typed, q.qrc.expected) : { found: q.qrc.expected.map(() => false), marks: [] };
+    const nFound = m.found.filter(Boolean).length;
+    $('textarea', container).classList.add('hidden');
+    $('.after', container).innerHTML = `${typed ? `<div class="typed"><div class="muted">Votre réponse${m.marks.length ? ' · <mark>surligné</mark> : mots des éléments attendus' : ''}</div><p>${highlight(typed, m.marks, esc)}</p></div>` : ''}
+      <div class="answer"><strong>Éléments attendus</strong> ${typed ? `(${nFound ? `${nFound} retrouvé${nFound > 1 ? 's' : ''} dans votre réponse et pré-coché${nFound > 1 ? 's' : ''}` : 'aucun retrouvé automatiquement'} : vérifiez, cochez ce que vous aviez)` : '(cochez ce que vous aviez)'} :
+        <ul class="expected">${q.qrc.expected.map((e, i) => `<li><input type="checkbox" id="exp${i}" ${m.found[i] ? 'checked' : ''}><label for="exp${i}">${esc(e)}</label></li>`).join('')}</ul>
         <div style="margin-top:6px"><strong>Réponse type.</strong> ${esc(q.qrc.model_answer)}</div></div><div class="hc-slot"></div>${qExplain(q)}`;
     const boxes = [...container.querySelectorAll('.expected input')];
     // L'alerte « erreur avec certitude » attend que l'on ait commencé à cocher ; sinon elle vient à la notation.
@@ -265,6 +293,7 @@ function renderQrc(q, container, onRevealed, onCheck = () => {}, { askConf = fal
     boxes.forEach((x) => { x.onchange = () => update(true); });
     onRevealed(conf);
     update(false);
+    setTimeout(() => scrollToCorrection($('.after', container)), 30);
   };
   if (askConf) container.querySelectorAll('.reveal-box [data-conf]').forEach((b) => { b.onclick = () => reveal(Number(b.dataset.conf)); });
   else $('.reveal', container).onclick = () => reveal(null);
@@ -396,7 +425,7 @@ function dayTasks() {
   }
   if (state.shorts?.length) {
     const n = shortsToday(); const need = d.kind === 'veille' ? 5 : 10;
-    tasks.push({ id: 'shorts', icon: '🎬', title: `Shorts du jour : ${need} notions, 30 s chacune`, sub: `${Math.min(n, need)}/${need} aujourd’hui · ${steps.length ? 'les schémas du jour d’abord, puis les shorts à revoir et vos points faibles' : 'les shorts à revoir et vos points faibles'}`, done: n >= need, cta: 'Shorts du jour', run: () => openFeed({ focus: d.steps }) });
+    tasks.push({ id: 'shorts', icon: '🎬', title: `Shorts du jour : ${need} notions, 30 s chacune`, sub: `${Math.min(n, need)}/${need} aujourd’hui · ${steps.length ? 'les schémas du jour d’abord, puis les shorts à revoir et vos points faibles' : 'les shorts à revoir et vos points faibles'}`, done: n >= need, cta: 'Shorts du jour', run: () => openFeed({ focus: d.steps, goal: need, base: Math.min(n, need) }) });
   }
   const mergedExams = (d.merged || []).filter((m) => m.kind === 'blanc').map((m) => m.exam);
   const todayExams = pr.exams.filter((e) => e.t >= t0).length;
@@ -587,36 +616,57 @@ views.plan = () => {
 views.review = () => {
   if (!state.session) {
     const { queue } = buildQueue(state.bank.questions, state.progress.cards, queueOpts());
-    state.session = { queue: [...queue], done: 0, total: queue.length, ok: 0 };
+    // Séance commencée plus tôt dans la journée (rechargement, retour dans l'app) : le compteur reprend où il en était.
+    const d = ensureDaily(); const prev = !state.bonusNew && queue.length ? d.sess : null;
+    state.session = { queue: [...queue], done: prev?.done || 0, total: (prev?.done || 0) + queue.length, ok: prev?.ok || 0 };
     state.bonusNew = false;
   }
   const s = state.session;
   if (!s.queue.length) {
     const again = Object.values(state.progress.cards).filter((c) => c.due <= Date.now()).length;
-    state.session = null;
+    state.session = null; ensureDaily().sess = null; persist();
     return `<div class="card center"><h2>Session terminée 🎉</h2><p>${s.done} cartes revues, ${s.ok} réussies du premier coup.</p>
       ${again ? `<p class="muted">${again} carte(s) « Encore » reviennent dans 10 min.</p>` : ''}</div>
       ${nextStepBlock()}<button class="btn" data-go="home">🏠 Voir mon plan du jour</button>`;
   }
   const q = s.queue[0];
-  setTimeout(() => mountReviewCard(q), 0);
+  setTimeout(() => {
+    mountReviewCard(q);
+    const sh = $('#short-sess'); if (sh) sh.onclick = () => { s.queue = s.queue.slice(0, SHORT_SESSION); s.total = s.done + s.queue.length; render(); };
+  }, 0);
   const d = ensureDaily(); const stepIds = new Set(d.steps.flatMap((id) => P.stepQuestionIds(P.stepById(id), state.fiches)));
   const isNew = !state.progress.cards[q.id];
   return `<div class="row" style="justify-content:space-between;margin-bottom:6px;flex-wrap:nowrap"><span>${isNew ? '<span class="badge new">🆕 Nouvelle</span>' : '<span class="badge">🔁 À revoir</span>'} <span class="muted">${s.done + 1} / ${s.total}</span></span><span class="muted">${s.queue.length - 1 > 0 ? `encore ${s.queue.length - 1}` : 'dernière'}</span></div>
     ${stepIds.has(q.id) ? `<div class="muted ctx">📊 Étape du jour : ${esc(d.steps.map((id) => P.stepById(id)?.title).join(', '))}</div>` : ''}
     <div class="progress"><div style="width:${(s.done / Math.max(1, s.total)) * 100}%"></div></div>
-    <div class="card" id="qcard" style="margin-top:12px"></div><div id="grade"></div>`;
+    ${s.done === 0 && s.queue.length > SHORT_SESSION + 5 ? `<div class="short-sess"><span class="muted">${s.queue.length} cartes dans cette séance.</span><button class="btn sm" id="short-sess">Faire ${SHORT_SESSION} seulement</button></div>` : ''}
+    <div class="card" id="qcard" style="margin-top:12px"></div><div id="grade-peek"></div><div id="grade"></div>`;
 };
+// Séance courte (première séance chargée) : les cartes restantes attendent la prochaine séance.
+const SHORT_SESSION = 10;
 function mountReviewCard(q) {
   const box = $('#qcard'); if (!box) return;
   const mode = pickMode(q);
   const card = state.progress.cards[q.id];
   const set = state.progress.settings;
   const res = { conf: null, ratio: 0 };
+  // La barre de notation suit la correction (on la lit avant de noter) ; tant qu'elle n'est pas à l'écran,
+  // un rappel compact reste au-dessus des onglets et y mène.
+  let seen = false;
   const showGrades = (suggest) => {
     $('#grade').innerHTML = `<div class="card gradebar"><div class="muted" style="margin-bottom:8px">Comment c’était ? <strong>En bleu : la note proposée</strong>${mode === 'qrc' ? ', d’après les éléments cochés' : ''} · sous chaque note, quand la question reviendra</div><div class="btnrow4">${GRADES.map((g) => `<button class="btn ${g.g === suggest ? 'primary' : ''}" data-g="${g.g}">${g.label}<small>${intervalLabel(card, g.g, q.id)}</small></button>`).join('')}</div></div>`;
     $('#grade').querySelectorAll('button[data-g]').forEach((b) => { b.onclick = () => gradeCurrent(q, Number(b.dataset.g), mode, res); });
+    const peek = $('#grade-peek');
+    if (peek && !seen) {
+      peek.innerHTML = `<button class="btn sm gradepeek">Lire la correction, puis noter ↓ <span class="muted">proposé : ${GRADES[suggest]?.label || ''}</span></button>`;
+      peek.firstChild.onclick = () => revealBelow($('#grade'));
+      if (!state.gradeObs && 'IntersectionObserver' in window) {
+        state.gradeObs = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { seen = true; $('#grade-peek')?.replaceChildren(); state.gradeObs.disconnect(); state.gradeObs = null; } }, { threshold: 0.6, rootMargin: '0px 0px -80px 0px' });
+        state.gradeObs.observe($('#grade'));
+      }
+    }
   };
+  state.gradeObs?.disconnect(); state.gradeObs = null;
   if (mode === 'qcm') {
     renderQcm(q, box, (ok, conf) => { res.conf = conf; answer(q.id, ok, mode, { conf }); showGrades(suggestGrade({ mode, ok, conf })); }, { hide: set.hideChoices, askConf: set.confidence });
   } else {
@@ -634,7 +684,9 @@ function gradeCurrent(q, g, mode, res = {}) {
   }
   s.queue.shift(); s.done += 1; if (g >= 2 && wasNew) s.ok += 1;
   if (g === 0) { s.queue.push(q); s.total += 1; }
-  if (wasNew) { const d = ensureDaily(); d.newDone = (d.newDone || 0) + 1; }
+  const d = ensureDaily();
+  if (wasNew) d.newDone = (d.newDone || 0) + 1;
+  d.sess = { done: s.done, ok: s.ok };
   state.progress.lastSession = Date.now();
   persist(); render();
 }
@@ -681,7 +733,7 @@ views.train = () => {
   return `${trainTabs('train')}<div class="card"><h2>Entraînement ciblé</h2>
     <label class="field">Profession<select id="f-prof"><option value="all">EC + CAC</option><option value="EC" ${t.prof === 'EC' ? 'selected' : ''}>Expert-comptable</option><option value="CAC" ${t.prof === 'CAC' ? 'selected' : ''}>Commissaire aux comptes</option></select></label>
     <label class="field">Thème<select id="f-theme"><option value="all">Tous</option>${Object.entries(THEMES).map(([k, v]) => `<option value="${k}" ${t.theme === k ? 'selected' : ''}>${v}</option>`).join('')}</select></label>
-    <label class="field">Sujet précis<select id="f-tag"><option value="all">Tous</option>${Object.entries(tags).sort().map(([k, n]) => `<option value="${k}" ${t.tag === k ? 'selected' : ''}>${k.replace(/_/g, ' ')} (${n})</option>`).join('')}</select></label>
+    <label class="field">Sujet précis<select id="f-tag"><option value="all">Tous</option>${Object.entries(tags).sort((a, b) => tagLabel(a[0]).localeCompare(tagLabel(b[0]), 'fr')).map(([k, n]) => `<option value="${k}" ${t.tag === k ? 'selected' : ''}>${esc(tagLabel(k))} (${n})</option>`).join('')}</select></label>
     <label class="field">Format<select id="f-mode"><option value="qcm" ${t.mode === 'qcm' ? 'selected' : ''}>QCM</option><option value="qrc" ${t.mode === 'qrc' ? 'selected' : ''}>QRC (réponse courte)</option></select></label>
     <p class="muted">${filtered.length} question(s) correspondent. Série de 20 max, sans effet sur la répétition espacée.</p>
     <button class="btn primary" id="start" ${filtered.length ? '' : 'disabled'}>Lancer la série</button>
@@ -927,13 +979,13 @@ views.stats = () => {
   for (const a of state.progress.attempts) { const q = state.byId[a.id]; if (!q) continue; for (const tg of q.tags) { tagAcc[tg] = tagAcc[tg] || { ok: 0, n: 0 }; tagAcc[tg].n++; if (a.ok) tagAcc[tg].ok++; } }
   const weakTags = Object.entries(tagAcc).filter(([, v]) => v.n >= 3).sort((a, b) => a[1].ok / a[1].n - b[1].ok / b[1].n).slice(0, 8);
   const due7 = Object.values(cards).filter((c) => c.due <= Date.now() + 7 * DAY).length;
-  return `<div class="grid2"><div class="stat"><div class="n">${acc === null ? '–' : acc + ' %'}</div><div class="l">réussite (50 dernières)</div></div><div class="stat"><div class="n">${due7}</div><div class="l">à revoir sous 7 jours</div></div></div>
-    <div class="card"><h2>Maîtrise par thème</h2><div class="muted" style="margin-bottom:8px"><i class="m3" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> acquise <i class="m2" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> en cours <i class="m1" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> apprentissage · gris = jamais vue</div>
-      ${rows.map((r) => `<div class="mastery" style="margin:6px 0"><div><span class="badge ${r.p.toLowerCase()}">${r.p}</span> ${THEMES[r.t]}</div><div class="bar">${[3, 2, 1].map((k) => `<i class="m${k}" style="width:${(r.m[k] / Math.max(1, r.n)) * 100}%"></i>`).join('')}</div><div class="muted">${r.m[3]}/${r.n}</div></div>`).join('')}</div>
+  return `<button class="btn sm" data-go="home" style="margin-bottom:12px">← Accueil</button><div class="grid2"><div class="stat"><div class="n">${acc === null ? '–' : acc + ' %'}</div><div class="l">réussite (50 dernières)</div></div><div class="stat"><div class="n">${due7}</div><div class="l">à revoir sous 7 jours</div></div></div>
+    <div class="card"><h2>Maîtrise par thème</h2><div class="muted" style="margin-bottom:8px"><i class="m3" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> acquise <i class="m2" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> en cours <i class="m1" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> apprentissage · gris = jamais vue · chiffre : questions de la barre (couleurs) / total, ✔ = acquises</div>
+      ${rows.map((r) => `<div class="mastery" style="margin:6px 0"><div><span class="badge ${r.p.toLowerCase()}">${r.p}</span> ${THEMES[r.t]}</div><div class="bar">${[3, 2, 1].map((k) => `<i class="m${k}" style="width:${(r.m[k] / Math.max(1, r.n)) * 100}%"></i>`).join('')}</div><div class="muted" title="${r.m[3]} acquise(s)">${r.n - r.m[0]}/${r.n}${r.m[3] ? ` <span class="m3t">(${r.m[3]} ✔)</span>` : ''}</div></div>`).join('')}</div>
     ${estimateCard()}
     ${calibrationCard()}
     ${recurringCard()}
-    ${weakTags.length ? `<div class="card"><h2>Points faibles</h2><table><tbody>${weakTags.map(([k, v]) => `<tr><td>${k.replace(/_/g, ' ')}</td><td>${Math.round((v.ok / v.n) * 100)} % (${v.n})</td></tr>`).join('')}</tbody></table></div>` : ''}
+    ${weakTags.length ? `<div class="card"><h2>Points faibles</h2><table><tbody>${weakTags.map(([k, v]) => `<tr><td>${esc(tagLabel(k))}</td><td>${Math.round((v.ok / v.n) * 100)} % (${v.n})</td></tr>`).join('')}</tbody></table></div>` : ''}
     ${state.progress.exams.length ? `<div class="card"><h2>Examens blancs</h2>${chart(state.progress.exams.slice(-12))}</div>` : ''}
     <div class="card"><h2>Banque</h2><div class="muted">${qs.length} questions · ${state.bank.sessions.length} sessions (${state.bank.sessions[0].session} → ${state.bank.sessions[state.bank.sessions.length - 1].session})<br>Confiance : ${['high', 'medium', 'low'].map((c) => `${c} ${qs.filter((q) => q.confidence === c).length}`).join(' · ')}</div></div>`;
 };
@@ -1008,6 +1060,7 @@ views.settings = () => {
       if (!confirm('Revenir à l’état précédent ? L’état actuel sera conservé à son tour.')) return;
       store.snapshotPrev(state.progress); state.progress = prev; initGamify(); persist(); toast('État précédent restauré'); render();
     };
+    $('#help-again').onclick = () => { s.helpSeen = false; persist(); go('home'); };
     $('#update').onclick = async () => {
       try { const reg = await navigator.serviceWorker?.getRegistration(); await reg?.update(); } catch { /* ignore */ }
       location.reload();
@@ -1032,7 +1085,7 @@ views.settings = () => {
       ${store.prevInfo() ? `<div style="height:8px"></div><button class="btn" id="undo">↩ Revenir à l’état précédent (${store.prevInfo().cards} cartes, ${new Date(store.prevInfo().t).toLocaleString('fr-FR')})</button>` : ''}
       <div style="height:8px"></div><button class="btn" id="reset">Effacer la progression</button>
       <p class="muted" style="margin-top:10px">Protection : ${state.persisted === true ? 'le navigateur a accepté de conserver ces données.' : state.persisted === false ? 'le navigateur peut effacer ces données s’il manque de place.' : 'état de protection inconnu.'} Sur iPhone, <strong>installez l’application sur l’écran d’accueil avant de commencer</strong> : Safari efface les données d’un site resté 7 jours sans visite, pas celles d’une application installée. Une copie automatique est faite toutes les 3 heures.</p></div>
-    <div class="card"><h2>Application</h2><p class="muted">Version ${esc(state.bank.generatedAt || '')} · ${state.bank.count} questions. Fonctionne hors ligne une fois chargée.</p><button class="btn" id="update">Vérifier les mises à jour</button></div>`;
+    <div class="card"><h2>Application</h2><p class="muted">Version ${esc(state.bank.generatedAt || '')} · ${state.bank.count} questions. Fonctionne hors ligne une fois chargée.</p><button class="btn" id="update">Vérifier les mises à jour</button><div style="height:8px"></div><button class="btn" id="help-again">❔ Revoir l’aide de départ</button></div>`;
 };
 
 // ---------- Shorts ----------
@@ -1080,10 +1133,12 @@ views.shorts = () => {
     <div class="card"><h2>Par étape du parcours</h2><p class="muted">Un short d’une étape choisie passe en tête du fil, puis le fil continue.</p>${rows}</div>`;
 };
 
-function openFeed({ focus = [] } = {}) {
+// goal / base : « Shorts du jour » du plan ; le compteur et la pause suivent l'objectif du plan (base = déjà faits aujourd'hui).
+function openFeed({ focus = [], goal = 0, base = 0 } = {}) {
   if (!state.shorts?.length) return toast('Shorts indisponibles : ouvrez l’application une fois en ligne');
   closeSheet(true);
-  state.feed = { focus: focus.filter(Boolean), served: new Set(), list: [], ok: 0, n: 0, limit: state.progress.settings.shortsLimit ?? 15, paused: false, active: 0 };
+  const lim = goal ? Math.max(1, goal - base) : state.progress.settings.shortsLimit ?? 15;
+  state.feed = { focus: focus.filter(Boolean), served: new Set(), list: [], ok: 0, n: 0, limit: lim, goal: goal ? goal : 0, base: goal ? base : 0, paused: false, active: 0 };
   let el = $('#feed');
   if (!el) { el = document.createElement('div'); el.id = 'feed'; el.className = 'feed'; document.body.appendChild(el); el.addEventListener('click', onFeedClick); }
   el.innerHTML = `<div class="feed-top"><button class="feed-x" id="feed-close" aria-label="Fermer">✕</button><span id="feed-count"></span></div><div class="feed-scroll" id="feed-scroll"></div>`;
@@ -1115,7 +1170,8 @@ function feedChrome(on) {
 }
 function feedCount() {
   const f = state.feed; const c = $('#feed-count'); if (!f || !c) return;
-  c.textContent = f.n ? `${f.ok}/${f.n} juste${f.ok > 1 ? 's' : ''}${f.limit ? ` · ${Math.min(f.n, f.limit)}/${f.limit}` : ''}` : f.focus.length ? (P.stepById(f.focus[0])?.title || '') : 'Shorts';
+  const prog = f.goal ? ` · ${Math.min(f.base + f.n, f.goal)}/${f.goal} du jour` : f.limit ? ` · ${Math.min(f.n, f.limit)}/${f.limit}` : '';
+  c.textContent = f.n ? `${f.ok}/${f.n} juste${f.ok > 1 ? 's' : ''}${prog}` : f.goal ? `Shorts du jour · ${f.base}/${f.goal}` : f.focus.length ? (P.stepById(f.focus[0])?.title || '') : 'Shorts';
 }
 // Ajoute les prochains shorts au fil ; tout servi : on recommence (en évitant les derniers vus).
 function feedAppend() {
@@ -1201,7 +1257,7 @@ function onFeedClick(e) {
   const act = e.target.closest('[data-sh-end]');
   if (act) {
     const k = act.dataset.shEnd;
-    if (k === 'more') { f.paused = false; f.limit += state.progress.settings.shortsLimit || 15; act.closest('section').remove(); feedAppend(); feedCount(); return; }
+    if (k === 'more') { f.paused = false; f.goal = 0; f.limit = f.n + (state.progress.settings.shortsLimit || 15); act.closest('section').remove(); feedAppend(); feedCount(); return; }
     if (k === 'close') return closeFeed();
     if (k === 'plan') { const task = dayTasks().find((x) => !x.done && x.id !== 'shorts'); closeFeed(true); return task ? task.run() : go('home'); }
   }
@@ -1438,10 +1494,11 @@ function bindGame() {
   const stop = $('#g-stop'); if (stop) stop.onclick = () => { if (g.n) { endGame(); } else { stopGameTimer(); state.game = null; } render(); };
   const again = $('#g-again'); if (again) again.onclick = () => startGame(g.kind);
   const home = $('#g-home'); if (home) home.onclick = () => { state.game = null; render(); };
-  const nx = $('#g-next'); if (nx) nx.onclick = nextGameItem;
+  const nx = $('#g-next'); if (nx) { nx.onclick = nextGameItem; if (g.kind === 'arbre') revealBelow(nx); }
   if (g.phase !== 'ask') return;
   const it = g.items[g.idx];
   const cardEl = $('#g-card');
+  if (g.kind === 'arbre') revealBelow($('#main .choices'));
   if (g.kind === 'duel') {
     document.querySelectorAll('[data-side]').forEach((b) => { b.onclick = () => gameAnswer(Number(b.dataset.side) === it.answer); });
     if (cardEl) onSwipe(cardEl, () => gameAnswer(it.answer === 0), () => gameAnswer(it.answer === 1));
@@ -1551,7 +1608,7 @@ function careerView() {
       const conds = G.gradeConditions(g.n, has, pr.stats, state.gctx);
       return `<div class="tl-item ${date ? 'done' : 'locked'} ${g.n === cur.n ? 'current' : ''}">
         <div class="tl-dot">${g.n}</div>
-        <div class="tl-body"><div class="tl-scene">${sceneFor(g.n, date ? {} : { badgeProps: [] })}</div>
+        <div class="tl-body">${g.n === cur.n ? '' : `<div class="tl-scene">${sceneFor(g.n, date ? {} : { badgeProps: [] })}</div>`}
           <strong>${esc(g.name)}</strong><div class="muted">${date ? `Atteint le ${new Date(date).toLocaleDateString('fr-FR')}` : 'À débloquer :'}</div>
           ${date ? '' : `<ul class="conds">${conds.map((c) => `<li class="${c.ok ? 'ok' : ''}">${c.ok ? '✔' : '○'} ${esc(c.label)}</li>`).join('')}</ul>`}</div></div>`;
     }).join('')}</div>`;
@@ -1665,7 +1722,7 @@ const NAV = [
 function render() {
   const main = $('#main');
   main.innerHTML = views[state.view]();
-  document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view || ((state.view === 'stats' || state.view === 'plan') && b.dataset.view === 'home') || (state.view === 'jeux' && b.dataset.view === 'train')));
+  document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view || (state.view === 'plan' && b.dataset.view === 'home') || (state.view === 'jeux' && b.dataset.view === 'train')));
   updateStreakBadge();
   main.querySelectorAll('[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
 }
@@ -1715,7 +1772,7 @@ async function recoverFromStaleCache() {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
     await Promise.all((await caches.keys()).map((k) => caches.delete(k)));
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './sw.js']
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();
