@@ -4,6 +4,7 @@
   "questions": [
     {
       "id": "2021-05-EC-01",
+      "intrus": {"q": "Lequel n'est pas un critère de classification des risques de la NPLAB ?", "items": ["Les caractéristiques des clients", "L'activité des clients", "La localisation des clients (pays, origine et destination des fonds)", "Les missions proposées par la structure"], "leurre": "Le montant des honoraires facturés au client", "cross": false, "why": "La NPLAB classe les risques selon les clients (caractéristiques, activité, localisation) et les missions : pas selon les honoraires."},
       "n": 1,
       "profession": "EC",
       "theme": "deontologie",
@@ -44,7 +45,7 @@
       "qcm": {
         "question": "Selon la NP 3100, une attestation particulière délivrée par l'expert-comptable peut procurer :",
         "choices": [
-          "Une assurance raisonnable uniquement, comme dans une mission d'audit",
+          "Une assurance raisonnable lorsqu'elle porte sur des comptes, aucune assurance dans les autres cas",
           "Une assurance raisonnable ou une assurance modérée, selon les diligences convenues",
           "Une assurance modérée ou aucune assurance, selon qu'elle porte ou non sur des comptes",
           "Une assurance absolue lorsqu'elle est destinée à un tiers financeur"
@@ -110,7 +111,7 @@
           "La non-révélation de faits délictueux au procureur",
           "L'abus de biens sociaux commis par le dirigeant"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 2
       },
       "qrc": {
         "expected": [
@@ -127,6 +128,7 @@
     },
     {
       "id": "2021-05-EC-05",
+      "intrus": {"q": "Laquelle n'est pas un apport de la loi Pacte (2019) à l'ordonnance de 1945 ?", "items": ["La présomption de mandat (mandat implicite) devant l'administration fiscale et sociale", "Le recouvrement amiable de créances et le paiement de dettes pour le client", "Les honoraires de succès, hors missions comptables", "L'expert-comptable en entreprise"], "leurre": "L'ouverture des activités commerciales accessoires", "cross": false, "why": "Les activités commerciales accessoires datent de la loi du 23 juillet 2010, pas de la loi Pacte."},
       "n": 5,
       "profession": "EC",
       "theme": "exercice",
@@ -174,7 +176,7 @@
           "D'un conseiller d'État et de deux représentants du ministre chargé du budget, désignés par arrêté",
           "De trois membres du collège de la H2A et du président de la compagnie régionale des commissaires aux comptes de la circonscription"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 3
       },
       "qrc": {
         "expected": [
@@ -191,6 +193,7 @@
     },
     {
       "id": "2021-05-EC-07",
+      "intrus": {"q": "Lequel n'est pas un des textes applicables à toutes les missions de l'expert-comptable ?", "items": ["Le code de déontologie des professionnels de l'expertise comptable", "La norme de maîtrise de la qualité (NPMQ)", "La norme anti-blanchiment (NPLAB)"], "leurre": "Les normes d'exercice professionnel (NEP) homologuées par le garde des Sceaux", "cross": true, "why": "Les NEP sont les normes du commissaire aux comptes. Pour l'EC, le socle commun est : code de déontologie, NPMQ, NPLAB."},
       "n": 7,
       "profession": "EC",
       "theme": "exercice",
@@ -265,7 +268,7 @@
           "Non : les missions de conseil ne peuvent être réalisées que pour les clients dont l'EC tient ou présente les comptes annuels",
           "Oui : depuis la loi Macron, les missions de conseil en organisation ne sont plus subordonnées à une mission comptable",
           "Non : cette mission relève des services interdits par le règlement européen de 2014 pour les entités d'intérêt public",
-          "Oui, mais uniquement si la mission est confiée par le commissaire aux comptes de l'entreprise, qui en assure le suivi"
+          "Oui, si la mission est confiée par le commissaire aux comptes de l'entreprise, qui en assure le suivi"
         ],
         "answer": 1
       },
@@ -326,9 +329,9 @@
         "question": "Pour l'élection du conseil régional d'une compagnie régionale des commissaires aux comptes, sont électeurs :",
         "choices": [
           "Les commissaires aux comptes personnes physiques inscrits dans le ressort de la compagnie, à jour de leurs cotisations",
-          "Les seuls commissaires aux comptes détenant au moins un mandat de certification en cours dans le ressort",
-          "Les sociétés de commissaires aux comptes uniquement, par l'intermédiaire de leur représentant légal inscrit",
-          "Tous les inscrits, personnes physiques et morales, à condition d'avoir prêté serment depuis plus de trois ans et d'exercer au moins un mandat"
+          "Les commissaires aux comptes détenant au moins un mandat de certification en cours dans le ressort de la compagnie régionale",
+          "Les sociétés de commissaires aux comptes, représentées par leur représentant légal inscrit",
+          "Les personnes physiques et les sociétés inscrites dans le ressort, à condition d'exercer au moins un mandat de certification"
         ],
         "answer": 0
       },
@@ -389,7 +392,7 @@
         "choices": [
           "Elle est facultative puisque la mission est définie par la loi et que le CAC est nommé par l'assemblée",
           "Elle est obligatoire selon la NEP 210, afin de définir les termes et conditions de la mission",
-          "Elle est obligatoire uniquement pour les entités d'intérêt public, à la demande du comité d'audit",
+          "Elle est obligatoire uniquement pour les entités d'intérêt public, facultative pour les autres entités",
           "Elle est remplacée par la lettre d'affirmation prévue par la NEP 580, signée par la direction en fin de mission"
         ],
         "answer": 1
@@ -508,6 +511,7 @@
     },
     {
       "id": "2021-05-CAC-17",
+      "intrus": {"q": "Lequel n'est pas un critère de l'importance des diligences fondant la rémunération du CAC (art. 12) ?", "items": ["La taille de l'entité", "La nature de ses activités", "La complexité de ses activités", "Les particularités de la mission ou de la prestation"], "leurre": "Le résultat de l'entité au titre de l'exercice", "cross": false, "why": "Les honoraires subordonnés au résultat sont interdits (art. 13) ; la rémunération suit l'importance des diligences."},
       "n": 17,
       "profession": "CAC",
       "theme": "deontologie",

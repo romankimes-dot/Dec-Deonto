@@ -54,7 +54,7 @@ EIP : cabinet | **10 ans**, jusqu'à **16 ans** après appel d'offres, **24 ans*
 |---|---|
 | Co-commissariat (comptes consolidés) | **2 CAC**, pas du même réseau, répartition **équilibrée** (une répartition 90 / 10 est refusée) |
 | Désaccord sur la répartition | **Président de la CRCC** ; si compagnies distinctes, président de la compagnie de chacun |
-| Barème d'heures (certification, hors ALPE) | Fourchettes selon bilan + produits ; **taux horaire libre** |
+| Barème d'heures (certification, ALPE comprise) | Fourchettes selon bilan + produits ; **taux horaire libre** |
 | Dérogation au barème | **Président de la CRCC**, puis **président de la CNCC**, puis **bureau de la H2A**, puis **tribunal administratif** |
 | Litige sur le montant des honoraires | **Président de la CRCC** (conciliation en 3 mois), puis le **juge** |
 | SACC d'une EIP | Plafond de **70 %** de la moyenne des honoraires d'audit sur **3 ans** |

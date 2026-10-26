@@ -73,12 +73,12 @@
       "question": "Une mission relevant de la prérogative d'exercice exclusive peut-elle être rémunérée par des honoraires complémentaires ou honoraires au succès (success fees) ?",
       "qcm": {
         "choices": [
-          "Oui : depuis la loi Pacte, des honoraires complémentaires liés à un objectif sont possibles pour toutes les missions",
+          "Oui : depuis la loi Pacte, des honoraires complémentaires liés à un objectif sont possibles pour ces missions",
           "Non : exclus pour les missions relevant de la prérogative d'exercice et celles déterminant l'assiette fiscale ou sociale",
           "Oui, à condition que le pourcentage soit fixé dans la lettre de mission et n'excède pas 10 % des honoraires de diligence",
-          "Non, car toute rémunération variable est interdite à l'expert-comptable, y compris pour les missions de conseil"
+          "Non : comme pour le commissaire aux comptes, les honoraires subordonnés au résultat sont interdits, y compris en conseil"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 3
       },
       "qrc": {
         "expected": [
@@ -102,9 +102,9 @@
       "question": "Les actions et droits de vote du cabinet (forme juridique SAS) SACOMPTE se répartissent comme suit : Madame A, expert-comptable inscrite au tableau de l'ordre, 25 % ; Madame B, expert-comptable inscrite au tableau de l'ordre, 35 % ; Monsieur C, expert-comptable inscrit au tableau de l'ordre, 30 % ; Monsieur D, informaticien, non expert-comptable, 10 %. À l'occasion de son départ à la retraite, madame B envisage de céder ses actions à madame E, collaboratrice du cabinet non expert-comptable. Que pensez-vous de ce projet de cession ?",
       "qcm": {
         "choices": [
-          "La cession est possible : la SAS étant une forme libre, le capital peut être ouvert aux non-professionnels sans limite de détention ni agrément",
+          "La cession est possible : la SAS est une forme libre et les statuts peuvent ouvrir le capital aux tiers",
           "La cession est impossible en l'état : les experts-comptables ne détiendraient plus que 55 % des droits de vote, en deçà des deux tiers exigés",
-          "La cession est possible à condition que madame E s'inscrive comme expert-comptable stagiaire et que les statuts soient modifiés",
+          "La cession est possible à condition que madame E s'inscrive au tableau comme expert-comptable stagiaire et que les statuts de la SAS soient modifiés",
           "La cession est possible car la règle des deux tiers ne s'applique qu'au capital et non aux droits de vote de la société"
         ],
         "answer": 1
@@ -137,7 +137,7 @@
           "Le président du Conseil national de l'Ordre, quatre présidents de conseils régionaux élus par leurs pairs et le commissaire du gouvernement près l'Ordre, désignés pour trois ans renouvelables",
           "Un conseiller d'État président, deux experts-comptables élus par le Conseil national et deux commissaires aux comptes désignés par la CNCC"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -166,7 +166,7 @@
           "Oui : le DSCG confère le droit de tenir des comptabilités pour autrui, sous la responsabilité de l'expert-comptable donneur d'ordre qui supervise les travaux, sans condition d'inscription à l'Ordre",
           "Non : la tenue de comptabilité pour des tiers est une prérogative d'exercice réservée aux inscrits au tableau ; le sous-traitant non inscrit commettrait un exercice illégal",
           "Oui, à condition que le sous-traitant souscrive une assurance de responsabilité civile professionnelle et que la lettre de mission le mentionne expressément",
-          "Non, car toute sous-traitance de travaux comptables est interdite aux experts-comptables par le code de déontologie, même entre confrères inscrits"
+          "Non, car la sous-traitance de travaux comptables est interdite par le code de déontologie, y compris entre confrères"
         ],
         "answer": 1
       },
@@ -185,6 +185,7 @@
     },
     {
       "id": "2024-05-EC-07",
+      "intrus": {"q": "Laquelle n'est pas une conclusion possible de l'attestation de présentation des comptes ?", "items": ["Attestation sans observation", "Attestation avec observation(s)", "Refus d'attester"], "leurre": "Certification avec réserve", "cross": true, "why": "La certification (avec ou sans réserve) est l'opinion du commissaire aux comptes. La présentation conduit à une attestation, avec ou sans observation, ou à un refus d'attester."},
       "n": 7,
       "profession": "EC",
       "theme": "exercice",
@@ -198,7 +199,7 @@
           "Conclusion favorable, conclusion défavorable, impossibilité de conclure",
           "Assurance raisonnable, assurance modérée, absence d'assurance"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -225,7 +226,7 @@
           "Oui : le représentant légal engage la société et la lettre de mission est un simple contrat commercial, sans lien avec la qualité d'inscrit",
           "Non : la mission relève de la prérogative d'exercice et sa lettre de mission doit être signée par un expert-comptable inscrit exerçant dans la société",
           "Oui, si un expert-comptable de la société contresigne ensuite le rapport final et que la lettre de mission est datée avant le début des travaux",
-          "Non, car seule la personne physique titulaire du mandat peut signer, la société d'expertise comptable ne pouvant elle-même être inscrite à l'Ordre"
+          "Non, car la société d'expertise comptable ne peut pas être inscrite au tableau : seul l'associé personne physique l'est"
         ],
         "answer": 1
       },
@@ -244,6 +245,7 @@
     },
     {
       "id": "2024-05-EC-09",
+      "intrus": {"q": "Laquelle n'est pas une étape du devoir de conseil de l'expert-comptable ?", "items": ["Informer", "Mettre en garde", "Exiger", "Refuser son concours (voire interrompre la mission)"], "leurre": "Révéler les faits délictueux au procureur", "cross": true, "why": "La révélation au procureur est une obligation du commissaire aux comptes. L'EC informe, met en garde, exige, puis refuse ou interrompt."},
       "n": 9,
       "profession": "EC",
       "theme": "responsabilite",
@@ -282,10 +284,10 @@
       "question": "Un expert-comptable est contacté par un client qui souhaite changer d'expert-comptable. Indiquez la procédure à suivre par l'expert-comptable pressenti vis-à-vis de son confrère avant d'accepter la mission.",
       "qcm": {
         "choices": [
-          "Il peut accepter immédiatement, le libre choix du client excluant toute formalité envers le prédécesseur ou le conseil régional",
+          "Il peut accepter sans aucune formalité dès l'accord du client, le libre choix de celui-ci prévalant sur les relations entre confrères",
           "Il doit informer par écrit le confrère de sa saisine, s'enquérir des motifs du changement et de la situation des honoraires dus",
-          "Il doit obtenir l'autorisation écrite du confrère prédécesseur et du conseil régional de l'Ordre avant toute prise de contact",
-          "Il doit attendre l'expiration de la lettre de mission du confrère et le paiement intégral de ses honoraires avant toute intervention"
+          "Il doit obtenir l'autorisation écrite du confrère prédécesseur et du conseil régional de l'Ordre avant d'accepter",
+          "Il doit attendre l'expiration de la lettre de mission du confrère et le paiement de ses honoraires"
         ],
         "answer": 1
       },
@@ -312,10 +314,10 @@
       "question": "Que signifie le terme « mission » au sens de l'article L.821-2 III du code commerce ?",
       "qcm": {
         "choices": [
-          "Uniquement la certification des comptes annuels et consolidés de l'entité dont le CAC est le contrôleur légal, à l'exclusion de toute autre intervention légale",
+          "La certification des comptes annuels et consolidés de l'entité, les autres interventions prévues par la loi constituant des prestations",
           "La mission de certification des comptes, la certification des informations de durabilité et toute autre mission confiée au CAC par la loi ou le règlement",
-          "Tout service, attestation ou conseil fourni par un commissaire aux comptes, qu'il soit ou non prévu par la loi ou le règlement",
-          "Les seules interventions réalisées par le commissaire aux comptes auprès d'entités d'intérêt public, à l'exclusion des autres entités"
+          "Les services, attestations et conseils fournis par le commissaire aux comptes, qu'ils soient ou non prévus par la loi",
+          "Les interventions réalisées par le commissaire aux comptes auprès des entités d'intérêt public, qu'elles soient prévues par la loi ou purement contractuelles"
         ],
         "answer": 1
       },
@@ -342,10 +344,10 @@
       "question": "À qui et dans quel cadre s'appliquent les deux normes de déontologie ?",
       "qcm": {
         "choices": [
-          "Aux seuls commissaires aux comptes d'entités d'intérêt public, dans le cadre de la certification des comptes, y compris consolidés",
-          "À tout commissaire aux comptes inscrit intervenant ès qualités, quelle que soit la mission ou la prestation, personne physique ou société",
+          "Aux commissaires aux comptes d'entités d'intérêt public, pour la certification des comptes annuels et consolidés",
+          "Aux commissaires aux comptes inscrits intervenant ès qualités, pour leurs missions comme pour leurs prestations, personnes physiques ou sociétés",
           "Aux experts-comptables et aux commissaires aux comptes, pour l'ensemble de leurs activités, qu'ils agissent ès qualités ou non",
-          "Aux sociétés de commissaires aux comptes uniquement, pour l'organisation de leur contrôle qualité interne et de leurs mandats"
+          "Aux sociétés de commissaires aux comptes, pour l'organisation de leur contrôle qualité interne et de leurs mandats"
         ],
         "answer": 1
       },
@@ -372,10 +374,10 @@
       "question": "Dans quelles circonstances s'appliquent les principes fondamentaux de comportement précisés par la norme de déontologie codifiée à l'article A 821-54 du code de commerce ?",
       "qcm": {
         "choices": [
-          "Uniquement pendant l'exécution d'une mission de certification des comptes, à l'exclusion des prestations et des missions légales hors certification",
+          "Pendant l'exécution d'une mission de certification des comptes, les prestations et les autres missions légales relevant d'autres règles",
           "Dans l'exercice de la profession, pour toute mission ou prestation, mais aussi en toute circonstance, y compris hors mission, afin d'éviter tout agissement contraire à l'honneur",
-          "Uniquement dans la vie professionnelle, la vie personnelle du commissaire aux comptes échappant à toute exigence déontologique, même en cas de fait contraire à la probité",
-          "Uniquement lors des contrôles de la H2A et des procédures disciplinaires, c'est-à-dire lorsque le commissaire aux comptes est mis en cause"
+          "Dans la seule vie professionnelle, la vie personnelle du commissaire aux comptes échappant aux exigences déontologiques, même en cas de faute",
+          "Lors des contrôles de la H2A et des procédures disciplinaires, c'est-à-dire lorsque le commissaire aux comptes est mis en cause"
         ],
         "answer": 1
       },
@@ -403,7 +405,7 @@
         "choices": [
           "Les missions confiées au CAC par la loi ou le règlement, lorsqu'elles sont exercées auprès d'entités dont il ne certifie pas les comptes",
           "La fourniture de services et d'attestations qui ne relèvent pas d'une mission, à une entité dont le CAC certifie ou non les comptes",
-          "Les seules diligences directement liées à la mission de certification, réalisées uniquement auprès de l'entité contrôlée",
+          "Les diligences directement liées à la mission de certification, réalisées auprès de l'entité contrôlée",
           "Les travaux réalisés par le CAC pour le compte de la Compagnie nationale ou de la H2A, notamment lors des contrôles"
         ],
         "answer": 1
@@ -462,7 +464,7 @@
         "choices": [
           "L'obligation de partager ses honoraires avec les confrères membres de la même compagnie régionale et de leur reverser une quote-part de chaque nouveau mandat",
           "Le respect mutuel entre commissaires aux comptes : ne tenir aucun propos déloyal ni acte visant à nuire à un confrère, notamment en cas de co-intervention",
-          "L'interdiction de succéder à un confrère sans son accord écrit préalable, accord que l'entité ne peut en aucun cas suppléer par une décision de son assemblée",
+          "L'obligation d'obtenir l'accord écrit du confrère avant de lui succéder dans un mandat",
           "L'obligation d'adhérer à un réseau et de participer aux travaux de la Compagnie nationale et aux commissions de la compagnie régionale"
         ],
         "answer": 1
@@ -490,10 +492,10 @@
       "question": "En quoi consiste l'esprit critique du commissaire aux comptes ?",
       "qcm": {
         "choices": [
-          "À refuser systématiquement les explications de la direction et à privilégier, tout au long de la mission, les contrôles de substance sur les tests de procédures de contrôle interne",
+          "À écarter les explications de la direction et à privilégier les contrôles de substance sur les tests de contrôle interne",
           "À apprécier la source et la pertinence des informations, rester ouvert aux arguments contraires et juger si les éléments recueillis suffisent à fonder ses conclusions",
           "À exprimer des réserves dans son rapport dès qu'un désaccord apparaît avec la direction, sans attendre la fin de ses travaux ni les explications de celle-ci",
-          "À contrôler l'opportunité des décisions de gestion prises par les dirigeants et à les contester lorsqu'elles lui paraissent contraires à l'intérêt social"
+          "À contrôler l'opportunité des décisions de gestion prises par les dirigeants et à les contester devant l'assemblée lorsqu'elles lui paraissent contraires à l'intérêt social"
         ],
         "answer": 1
       },
@@ -541,6 +543,7 @@
     },
     {
       "id": "2024-05-CAC-19",
+      "intrus": {"q": "Laquelle n'est pas une situation à risque du code de déontologie (sauvegardes) ?", "items": ["Un risque d'autorévision", "Des liens personnels, financiers ou professionnels", "L'appartenance à un réseau", "La dépendance financière envers l'entité"], "leurre": "Le risque d'anomalies significatives dans les comptes", "cross": false, "why": "Le risque d'anomalies relève de l'approche d'audit (NEP), non des menaces sur l'indépendance."},
       "n": 19,
       "profession": "CAC",
       "theme": "deontologie",
@@ -580,12 +583,12 @@
       "question": "Un commissaire aux comptes peut-il exercer sous la forme d'une association ? Justifiez votre réponse.",
       "qcm": {
         "choices": [
-          "Oui : toute personne morale peut être inscrite sur la liste dès lors que ses dirigeants sont commissaires aux comptes",
+          "Oui : une personne morale peut être inscrite sur la liste dès lors que ses dirigeants sont commissaires aux comptes",
           "Non : la profession est exercée par des personnes physiques ou des sociétés inscrites sur la liste ; l'association n'est pas une société",
-          "Oui, mais uniquement sous la forme d'une association de gestion et de comptabilité inscrite au tableau de l'Ordre",
+          "Oui, sous la forme d'une association de gestion et de comptabilité, comme en expertise comptable",
           "Non, sauf pour les mandats détenus auprès d'associations ou de fondations, qui peuvent être confiés à une association inscrite sur la liste"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 2
       },
       "qrc": {
         "expected": [

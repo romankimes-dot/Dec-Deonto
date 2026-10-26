@@ -28,8 +28,8 @@
 
  { "id": "mandat-05", "type": "cas", "prof": "CAC", "tags": ["alpe_petites_entreprises", "honoraires_bareme"], "fiche": "05-cac-exercice.md",
    "title": "Mission ALPE", "situation": "Une SARL sous les seuils décide, sur option, de faire auditer ses comptes dans le cadre de l'ALPE.",
-   "quiz": { "q": "Quelle durée de mandat et quel barème d'heures ?", "choices": ["6 exercices, barème d'heures applicable", "3 exercices, barème d'heures applicable", "6 exercices, sans barème d'heures", "3 exercices, sans barème d'heures"], "answer": 3, "why": "L'ALPE dure **3 exercices**, avec un rapport allégé. Le **barème d'heures ne s'applique pas** : il vise la certification hors ALPE." },
-   "src": ["3 exercices, sur option, pour les entités sous les seuils (petits groupes, volontaires). Rapport allégé. Le barème d'heures ne s'applique pas"] },
+   "quiz": { "q": "Quelle durée de mandat et quel barème d'heures ?", "choices": ["6 exercices, barème d'heures applicable", "3 exercices, barème d'heures applicable", "6 exercices, sans barème d'heures", "3 exercices, sans barème d'heures"], "answer": 1, "why": "L'ALPE dure **3 exercices**, avec un rapport allégé. C'est une mission de **certification** : le **barème d'heures s'applique**." },
+   "src": ["3 exercices, sur option, pour les entités sous les seuils (petits groupes, volontaires). Rapport allégé", "Le barème d'heures s'applique : c'est une mission de certification"] },
 
  { "id": "mandat-06", "type": "vf", "prof": "CAC", "tags": ["nomination_seuils", "alpe_petites_entreprises"], "fiche": "05-cac-exercice.md",
    "title": "Le tiers du capital", "statement": "Sous les seuils, l'associé qui demande en justice la nomination d'un CAC doit détenir au moins le tiers du capital.",
@@ -98,7 +98,7 @@
  { "id": "mandat-14", "type": "vf", "prof": "CAC", "tags": ["prestations_declaration_activite", "honoraires_bareme"], "fiche": "05-cac-exercice.md",
    "title": "Barème et prestations", "statement": "Le barème d'heures s'applique aussi aux prestations du CAC hors mission légale.",
    "verdict": false,
-   "why": "Le barème vise la **certification** (hors ALPE). Il **ne s'applique pas aux prestations**. Leurs litiges d'honoraires relèvent du **tribunal compétent**, non du président de la CRCC.",
+   "why": "Le barème vise la **certification**, ALPE comprise. Il **ne s'applique pas aux prestations**. Leurs litiges d'honoraires relèvent du **tribunal compétent**, non du président de la CRCC.",
    "src": ["Il ne s'applique pas aux prestations.", "Prestations (hors mission légale) | Tribunal compétent (droit commun)"] },
 
  { "id": "mandat-15", "type": "liste", "prof": "CAC", "tags": ["prestations_declaration_activite"], "fiche": "05-cac-exercice.md",

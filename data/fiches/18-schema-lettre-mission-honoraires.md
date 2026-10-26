@@ -20,7 +20,7 @@ Limiter sa responsabilité ? | **Oui** : plafond possible, prescription réduite
 ## Honoraires
 
 ```vs
-Principe | **Libres**, convenus dans la lettre de mission ; **aucun barème** (ce serait une entente) | **Barème d'heures** pour la certification (hors ALPE) ; **taux horaire libre**
+Principe | **Libres**, convenus dans la lettre de mission ; **aucun barème** (ce serait une entente) | **Barème d'heures** pour la certification, **ALPE comprise** (hors sociétés cotées, banques, assurances, associations, très grandes entités…) ; **taux horaire libre**
 Honoraires au succès | **Interdits** pour les missions du **monopole** (comptabilité) et celles qui participent à l'**assiette fiscale ou sociale** ; **possibles** pour les autres | **Interdits** (honoraires subordonnés au résultat)
 Indexation | Possible si une **clause** la prévoit et que l'indice est **lié** à l'activité | —
 Mission gratuite | Possible si ce n'est **pas** une concurrence déloyale ; lettre de mission qui précise la **gratuité**, même qualité | —

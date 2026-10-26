@@ -11,7 +11,7 @@ export const STEPS = [
   { id: 'mandat', kind: 'schema', title: 'Le mandat du commissaire aux comptes', who: 'CAC', when: 'J-14 à J-13', fiches: ['14-schema-mandat-cac.md'], deep: ['05-cac-exercice.md'] },
   { id: 'independance', kind: 'schema', title: 'L’indépendance du CAC', who: 'CAC', when: 'J-12 à J-11', fiches: ['16-schema-independance-cac.md'], deep: ['06-cac-deontologie.md'] },
   { id: 'secret', kind: 'schema', title: 'Secret professionnel et signalements', who: 'EC + CAC', when: 'J-10', fiches: ['17-schema-secret-signalements.md'], deep: ['02-ec-deontologie.md', '06-cac-deontologie.md'] },
-  { id: 'discipline', kind: 'schema', title: 'Discipline et sanctions', who: 'EC + CAC', when: 'J-9', fiches: ['13-schema-discipline.md'], deep: ['04-ec-responsabilite.md', '08-cac-responsabilite.md'] },
+  { id: 'discipline', kind: 'schema', title: 'Discipline et sanctions', who: 'EC + CAC', when: 'J-9', fiches: ['13-schema-discipline.md', '22-schema-sanctions-h2a.md'], deep: ['04-ec-responsabilite.md', '08-cac-responsabilite.md'] },
   { id: 'controle', kind: 'schema', title: 'Contrôle de qualité et contrôle d’activité', who: 'EC + CAC', when: 'J-8', fiches: ['20-schema-controle-qualite.md'], deep: ['03-ec-controle-qualite.md', '07-cac-controle-activite.md'] },
   { id: 'responsabilites', kind: 'schema', title: 'Les quatre responsabilités', who: 'EC + CAC', when: 'J-7', fiches: ['21-schema-responsabilites.md'], deep: ['04-ec-responsabilite.md', '08-cac-responsabilite.md'] },
   { id: 'chiffres', kind: 'schema', title: 'Les chiffres à connaître par cœur', who: 'EC + CAC', when: 'J-6 à J-5', fiches: ['15-schema-chiffres-cles.md'], deep: [] },
@@ -73,7 +73,7 @@ export function stepProgress(step, fichesIndex, cards, masteryFn) {
 const dnum = (key) => { const [y, m, d] = key.split('-').map(Number); return Date.UTC(y, m - 1, d) / 86400000; };
 const dkey = (n) => new Date(n * 86400000).toISOString().slice(0, 10);
 export const daysUntil = (today, exam) => dnum(exam) - dnum(today);
-export const GAME_ROTATION = ['duel', 'vf', 'arbre', 'chiffres', 'palais'];
+export const GAME_ROTATION = ['duel', 'vf', 'arbre', 'chiffres', 'palais', 'intrus'];
 const FINAL = { 4: { kind: 'blanc', exam: 'qcm' }, 3: { kind: 'blanc', exam: 'qrc' }, 2: { kind: 'faibles' }, 1: { kind: 'veille' } };
 
 // Date d'épreuve saisie (« AAAA-MM-JJ » ou « AAAA-MM-JJTHH:MM »). Renvoie { ok, key } ; refuse le vide, le format invalide
@@ -167,7 +167,7 @@ export function adaptiveWeight(q, ts, siblingsCount) {
 
 // Jeu du jour : celui où l'on se trompe le plus (au moins 5 réponses), sinon la rotation.
 export function gameOfDay(today, drills) {
-  const pre = { duel: 'duel:', vf: 'vf:', arbre: 'arb:', chiffres: 'num:', palais: 'pal:' };
+  const pre = { duel: 'duel:', vf: 'vf:', arbre: 'arb:', chiffres: 'num:', palais: 'pal:', intrus: 'int:' };
   const acc = {};
   for (const [id, m] of Object.entries(drills || {})) {
     const k = Object.keys(pre).find((x) => id.startsWith(pre[x])); if (!k) continue;

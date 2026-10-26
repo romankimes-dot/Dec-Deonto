@@ -23,6 +23,8 @@ Le jury n'exige ni les numéros d'articles ni le quantum des sanctions. Les **se
 | **3 ans** | Stage d'expertise comptable | {EC} |
 | **40 h en 18 mois** | Formation particulière avant d'accepter une mission, si le CAC n'a pas exercé pendant 3 ans | {CAC} |
 | **3 ans** | Interdiction temporaire d'exercer au plus (H2A, depuis 2024) | {CAC} |
+| **6 mois** | Suspension provisoire d'un CAC au plus (collège de la H2A, mesure d'urgence, pas une sanction) | {CAC} |
+| **2 mois** | Délai minimal entre la notification des griefs et l'audience de la commission des sanctions | {CAC} |
 | **5 ans** | Conservation des documents LCB-FT après la fin de la relation | {EC} {CAC} |
 
 ## Prescriptions
@@ -71,3 +73,4 @@ Disciplinaire | {?} | **6 ans**
 
 - **250 000 €** au plus pour une personne physique.
 - Société de CAC : le plus élevé de **1 M€** ou, pour une faute en mission de certification, de la **moyenne annuelle des honoraires** facturés à l'entité sur 3 exercices.
+- **15 000 €** au plus en **procédure simplifiée** (déclarations, formation continue) ; **50 000 €** (personne physique) ou **200 000 €** (personne morale) en **composition administrative**.

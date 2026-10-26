@@ -14,8 +14,8 @@
         "question": "Au sens de la réglementation LCB-FT, un maire et un député sont-ils des personnes politiquement exposées (PPE) ?",
         "choices": [
           "Le député est une PPE (parlementaire national) ; le maire ne l'est pas en tant que tel",
-          "Tous deux sont des PPE dès lors qu'ils exercent un mandat électif sur le territoire français",
-          "Aucun des deux : seules les personnes exerçant des fonctions à l'étranger sont des PPE",
+          "Les deux sont des PPE, puisqu'ils exercent un mandat électif, national pour l'un, local pour l'autre",
+          "Aucun des deux : la qualité de PPE vise les fonctions exercées dans un État étranger",
           "Le maire est une PPE car il engage des fonds publics communaux ; le député ne l'est pas"
         ],
         "answer": 0
@@ -78,11 +78,11 @@
         "question": "Quelles sont les étapes successives du devoir de conseil de l'expert-comptable ?",
         "choices": [
           "Se renseigner sur la situation du client, l'informer, le mettre en garde, lui recommander la solution adaptée et conserver la preuve écrite",
-          "Certifier les comptes, révéler les faits délictueux au procureur, déclencher la procédure d'alerte auprès du président du tribunal et saisir la H2A",
-          "Établir la lettre de mission, tenir la comptabilité, attester les comptes et facturer les honoraires au client",
-          "Conseiller uniquement sur demande expresse du client, le devoir de conseil n'existant pas sans mission comptable"
+          "Prendre connaissance de l'entité, évaluer les risques d'anomalies, puis communiquer ses constats à la direction sans porter de jugement sur la gestion",
+          "Informer le client oralement et lui faire signer une décharge, la preuve d'un manquement au devoir de conseil incombant au client",
+          "Conseiller le client dans le strict périmètre de la lettre de mission, les points voisins relevant d'une mission distincte"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 1
       },
       "qrc": {
         "expected": [
@@ -109,12 +109,12 @@
       "qcm": {
         "question": "Lors de la reprise d'un dossier, l'expert-comptable sortant est-il délié du secret professionnel à l'égard du confrère successeur ?",
         "choices": [
-          "Non : aucune levée légale n'existe entre confrères ; il restitue au client ses documents",
+          "Non : la loi ne prévoit pas de levée du secret entre confrères ; il restitue au client ses documents",
           "Oui : la loi lève le secret entre prédécesseur et successeur, comme pour les commissaires aux comptes",
           "Oui, dès que le successeur lui a adressé la lettre d'information préalable prévue par le code de déontologie",
           "Non, sauf autorisation du président du conseil régional ou du Conseil national"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 1
       },
       "qrc": {
         "expected": [
@@ -143,7 +143,7 @@
         "choices": [
           "Non : il lui est interdit de révéler l'existence d'une déclaration de soupçon",
           "Oui : la confraternité impose de prévenir le successeur du risque de blanchiment",
-          "Oui, mais uniquement si le successeur est inscrit au même conseil régional de l'Ordre",
+          "Oui, si le successeur s'engage par écrit à garder l'information confidentielle",
           "Non, sauf si Tracfin a accusé réception de la déclaration par courrier"
         ],
         "answer": 0
@@ -173,11 +173,11 @@
         "question": "Le non-paiement par un expert-comptable des cotisations dues à sa caisse de retraite (CAVEC) peut-il donner lieu à une sanction disciplinaire ?",
         "choices": [
           "Oui : le non-paiement des cotisations CAVEC pendant deux ans sur les dix dernières années, sans motif valable, entraîne la radiation d'office",
-          "Non : seuls les manquements commis dans l'exécution des missions confiées par les clients sont disciplinairement sanctionnables",
+          "Non : le défaut de paiement relève du recouvrement par la CAVEC, sans conséquence sur l'inscription au tableau",
           "Non : la CAVEC dispose de ses propres sanctions et la chambre de discipline n'est compétente que pour les cotisations ordinales",
-          "Oui, mais seulement par la commission des sanctions de la H2A, après avis du Conseil national de l'Ordre"
+          "Oui : la commission des sanctions de la H2A peut prononcer un blâme pour défaut de paiement, après avis du Conseil national de l'Ordre"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 3
       },
       "qrc": {
         "expected": [
@@ -361,7 +361,7 @@
         "question": "Dans un co-commissariat, un cabinet sans compétence dans le secteur ni en consolidation prévoit d'assumer 10 % des travaux et honoraires et de se limiter à une revue des travaux de l'autre cabinet. Peut-il accepter la mission ?",
         "choices": [
           "Non : la répartition doit être équilibrée (NEP 100) et le CAC doit avoir la compétence requise ; une simple revue ne suffit pas",
-          "Oui : la NEP 100 autorise toute répartition dès lors qu'elle est écrite, acceptée par les deux cabinets et communiquée à l'entité",
+          "Oui : la répartition des travaux est libre dès lors qu'elle est écrite et acceptée par les deux cabinets",
           "Oui, car l'examen contradictoire des travaux suffit à engager la responsabilité solidaire des deux cabinets vis-à-vis de l'entité",
           "Non, car le co-commissariat est interdit aux cabinets intervenant dans le secteur sanitaire et social"
         ],
@@ -383,6 +383,7 @@
     },
     {
       "id": "2022-05-CAC-13",
+      "intrus": {"q": "Laquelle n'est pas une limite inhérente à l'audit selon la NEP 200 ?", "items": ["Le recours aux sondages", "Les limites inhérentes au contrôle interne", "Des éléments probants qui donnent des présomptions plutôt que des certitudes"], "leurre": "Le barème d'heures fixé par le code de commerce", "cross": false, "why": "Ces limites expliquent que l'assurance soit raisonnable et non absolue ; le barème n'en fait pas partie."},
       "n": 13,
       "profession": "CAC",
       "theme": "exercice",
@@ -425,9 +426,9 @@
         "question": "Comment distinguer le plan de mission du programme de travail du commissaire aux comptes ?",
         "choices": [
           "Le plan de mission décrit l'approche générale (étendue, calendrier, risques) ; le programme de travail détaille les diligences à réaliser, avec heures et intervenants",
-          "Le plan de mission est signé par l'entité contrôlée, tandis que le programme de travail est visé par la compagnie régionale avant le début de la mission",
-          "Le plan de mission fixe le montant des honoraires et la durée du mandat ; le programme de travail n'est autre que la lettre de mission signée avec l'entité",
-          "Le plan de mission ne concerne que les comptes consolidés, alors que le programme de travail est établi uniquement pour les comptes annuels"
+          "Le plan de mission détaille les diligences, avec heures et intervenants ; le programme de travail décrit l'approche générale (étendue, calendrier, risques)",
+          "Le plan de mission couvre les six exercices du mandat ; le programme de travail est la lettre de mission adressée chaque année à l'entité",
+          "Le plan de mission est soumis au comité d'audit pour approbation ; le programme de travail est joint à la déclaration d'activité adressée à la compagnie"
         ],
         "answer": 0
       },
@@ -446,6 +447,7 @@
     },
     {
       "id": "2022-05-CAC-15",
+      "intrus": {"q": "Laquelle n'exerce pas une fonction sensible au sens de l'art. 31 du code de déontologie ?", "items": ["Un mandataire social", "Un préposé chargé de tenir les comptes ou d'élaborer les états financiers", "Un cadre dirigeant pouvant influer sur ces états"], "leurre": "Un membre du comité social et économique", "cross": false, "why": "Les fonctions sensibles visent ceux qui établissent ou peuvent influencer les comptes et les informations de durabilité."},
       "n": 15,
       "profession": "CAC",
       "theme": "deontologie",
@@ -509,6 +511,7 @@
     },
     {
       "id": "2022-05-CAC-17",
+      "intrus": {"q": "Lequel ne constitue pas une faute disciplinaire du CAC (L.821-70) ?", "items": ["Un manquement aux conditions légales d'exercice", "Une négligence grave", "Un fait contraire à la probité ou à l'honneur"], "leurre": "Un manquement aux règles de l'ordonnance de 1945", "cross": true, "why": "L'ordonnance de 1945 régit l'expert-comptable. La faute disciplinaire du CAC est définie par le code de commerce."},
       "n": 17,
       "profession": "CAC",
       "theme": "responsabilite",
@@ -519,11 +522,11 @@
         "question": "Selon le code de commerce, constitue une faute disciplinaire du commissaire aux comptes :",
         "choices": [
           "Tout manquement aux conditions légales d'exercice, toute négligence grave et tout fait contraire à la probité ou à l'honneur",
-          "Uniquement le défaut de formation continue et le non-paiement des cotisations à la compagnie régionale ou à la H2A",
-          "Uniquement les infractions pénales définitivement jugées par une juridiction répressive française, à l'exclusion des fautes civiles",
-          "Toute divergence d'appréciation avec l'entité sur l'application des règles comptables ou des normes d'exercice"
+          "Le manquement aux règles professionnelles fixées par l'ordonnance de 1945 et par le code de déontologie des experts-comptables",
+          "Les infractions pénales définitivement jugées, à l'exclusion des simples négligences professionnelles",
+          "Une divergence d'appréciation avec l'entité sur l'application des règles comptables ou des normes d'exercice"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 1
       },
       "qrc": {
         "expected": [
@@ -615,7 +618,7 @@
         "question": "Un commissaire aux comptes estime que sa mission requiert moins d'heures que le minimum du barème. Il doit :",
         "choices": [
           "Demander une dérogation motivée au président de la compagnie régionale",
-          "Appliquer librement le nombre d'heures qu'il juge nécessaire, le barème étant indicatif",
+          "Appliquer librement le nombre d'heures qu'il juge nécessaire, le barème n'étant qu'indicatif",
           "Demander l'autorisation préalable de l'assemblée générale de l'entité",
           "Saisir la H2A d'une demande d'avis préalable sur le nombre d'heures"
         ],

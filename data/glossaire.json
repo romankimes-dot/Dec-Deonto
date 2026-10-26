@@ -111,7 +111,7 @@
  {"id": "suppleant", "terme": "CAC suppléant", "alias": ["suppléant", "suppléants"], "prof": ["cac"], "cat": "notion", "fiche": "14-schema-mandat-cac.md",
   "def": "Obligatoire lorsque le CAC titulaire est une **personne physique** ou une **société unipersonnelle**. Il remplace le titulaire en cas d'empêchement, de démission ou de décès."},
  {"id": "alpe", "terme": "ALPE", "alias": ["audit légal des petites entreprises"], "prof": ["cac"], "cat": "notion", "fiche": "14-schema-mandat-cac.md",
-  "def": "**Audit légal des petites entreprises**, créé par la loi Pacte. Mandat de **3 exercices** au lieu de 6, notamment pour les têtes et **filiales significatives** de petits groupes. Hors **barème d'heures**."},
+  "def": "**Audit légal des petites entreprises**, créé par la loi Pacte. Mandat de **3 exercices** au lieu de 6, notamment pour les têtes et **filiales significatives** de petits groupes. Mission de certification : le **barème d'heures** s'applique."},
  {"id": "seuils-nomination", "terme": "Seuils de nomination", "alias": ["seuils de nomination d'un CAC"], "prof": ["cac"], "cat": "notion", "fiche": "15-schema-chiffres-cles.md",
   "def": "Société commerciale : CAC obligatoire au-delà de **2 des 3 seuils** : **5 M€** de bilan, **10 M€** de CA HT, **50 salariés** (décret 2024-152). EIP et comptes consolidés : sans seuil."},
  {"id": "filiale-significative", "terme": "Filiale significative", "alias": ["filiales significatives"], "prof": ["cac"], "cat": "notion", "fiche": "14-schema-mandat-cac.md",
@@ -123,7 +123,7 @@
  {"id": "demission-cac", "terme": "Démission du CAC", "alias": [], "prof": ["cac"], "cat": "notion", "fiche": "14-schema-mandat-cac.md",
   "def": "Possible pour **motif légitime** (cessation d'activité, motif personnel impérieux, difficultés de mission, indépendance compromise). Jamais **à contretemps**, ni pour échapper à la **révélation**, à l'alerte, à la **déclaration de soupçon** ou au rapport. Le CAC informe l'entité et la H2A."},
  {"id": "bareme", "terme": "Barème d'heures", "alias": ["barème"], "prof": ["cac"], "cat": "notion", "fiche": "18-schema-lettre-mission-honoraires.md",
-  "def": "Fourchettes d'heures pour la **certification** (hors ALPE), selon le total bilan et les produits ; le **taux horaire est libre**. Dérogation : président de la **CRCC**, puis de la **CNCC**, puis **bureau de la H2A**, puis **tribunal administratif**."},
+  "def": "Fourchettes d'heures pour la **certification** (ALPE comprise), selon le total bilan et les produits ; le **taux horaire est libre**. Dérogation : président de la **CRCC**, puis de la **CNCC**, puis **bureau de la H2A**, puis **tribunal administratif**."},
 
  {"id": "independance", "terme": "Indépendance", "alias": [], "prof": ["ec", "cac"], "cat": "notion", "fiche": "16-schema-independance-cac.md",
   "def": "Absence de lien ou de situation affectant le jugement, **en réalité et en apparence**. L'apparence s'apprécie du point de vue d'un **tiers objectif, raisonnable et informé**."},

@@ -9,6 +9,8 @@ const STOP = new Set(('alors aussi autre autres avec avoir cette cela celle celu
   + 'expert-comptable experts-comptables expert comptable comptables commissaire commissaires comptes profession professionnel professionnels '
   + 'societe entite mission missions').split(/\s+/));
 
+const ANNALE = /^\d{4}-\d{2}$/;
+
 export function tokens(text) {
   const t = String(text || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/[’']/g, ' ').replace(/[^a-z0-9-]+/g, ' ');
@@ -30,6 +32,8 @@ export function buildClusters(questions, threshold = 0.3) {
     for (let j = i + 1; j < questions.length; j++) {
       const a = questions[i], b = questions[j];
       if (a.profession !== b.profession || a.session === b.session) continue;
+      // Questions de transfert (hors annales) : jamais comptées comme « posées » à une session.
+      if (!ANNALE.test(a.session) || !ANNALE.test(b.session)) continue;
       if (!a.tags.some((t) => b.tags.includes(t))) continue;
       if (jaccard(tk[i], tk[j]) >= threshold) parent[find(i)] = find(j);
     }

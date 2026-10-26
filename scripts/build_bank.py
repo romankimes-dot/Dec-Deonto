@@ -27,6 +27,10 @@ prestations_declaration_activite agp_associations delit_entrave code_deontologie
 alpe_petites_entreprises
 """.split())
 
+# Fichier des questions de transfert, rédigées hors annales (data/bank/transfert.json) ; les autres fichiers sont
+# des sessions officielles (AAAA-MM).
+TRANSFERT = "transfert"
+
 errors: list[str] = []
 warnings: list[str] = []
 
@@ -67,6 +71,26 @@ def check_question(q: dict, session: str) -> None:
         err(pre + "confidence invalide")
     if not str(q.get("question", "")).strip():
         err(pre + "question vide")
+    # Leurre « règle de l'autre profession » (index de la proposition), pour mesurer la confusion EC / CAC.
+    if "crossProf" in qcm:
+        cp = qcm["crossProf"]
+        if not isinstance(cp, int) or not 0 <= cp <= 3 or cp == qcm.get("answer"):
+            err(pre + "qcm.crossProf doit désigner un leurre (index 0..3 différent de la réponse)")
+    # Jeu de l'intrus : éléments attendus (au moins 3) et un leurre qui n'en fait pas partie.
+    it = q.get("intrus")
+    if it is not None:
+        items = it.get("items") if isinstance(it, dict) else None
+        if not isinstance(items, list) or len(items) < 3 or not all(isinstance(x, str) and x.strip() for x in items):
+            err(pre + "intrus.items : au moins 3 éléments")
+        elif not str(it.get("leurre", "")).strip() or it["leurre"] in items:
+            err(pre + "intrus.leurre manquant ou présent dans les éléments")
+        elif not str(it.get("q", "")).strip() or not str(it.get("why", "")).strip():
+            err(pre + "intrus.q et intrus.why obligatoires")
+        elif any(len(x) > 100 for x in items + [it["leurre"]]):
+            err(pre + "intrus : 100 caractères au plus par élément")
+    # Questions de transfert (hors annales) : rédigées pour combler un sujet peu couvert, jamais des sujets officiels.
+    if session == TRANSFERT and not q.get("hors_annales"):
+        err(pre + "question de transfert sans le marqueur hors_annales")
 
 
 FENCES = {"vs", "echelle", "frise", "etapes", "arbre"}
@@ -145,7 +169,8 @@ def main() -> int:
         session = d.get("session") or f.stem
         if session != f.stem:
             err(f"{f.name}: session '{session}' ≠ nom de fichier")
-        sessions.append({"session": session, "format": d.get("format"), "count": len(d.get("questions", []))})
+        if session != TRANSFERT:
+            sessions.append({"session": session, "format": d.get("format"), "count": len(d.get("questions", []))})
         for q in d.get("questions", []):
             check_question(q, session)
             if q.get("id") in ids:

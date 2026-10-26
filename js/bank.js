@@ -6,7 +6,10 @@ export const THEMES = {
   responsabilite: 'Responsabilité',
 };
 
+// Sessions officielles « AAAA-MM » ; « transfert » : questions rédigées hors annales (data/bank/transfert.json).
+export const isAnnale = (q) => /^\d{4}-\d{2}$/.test(q.session);
 export const SESSION_LABEL = (s) => {
+  if (!/^\d{4}-\d{2}$/.test(s)) return 'hors annales (transfert)';
   const [y, m] = s.split('-');
   return `${m === '05' ? 'mai' : 'nov.'} ${y}`;
 };

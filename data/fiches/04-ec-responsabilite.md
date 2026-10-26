@@ -141,6 +141,6 @@
 - **Responsabilité administrative** : elle n'existe **pas** pour l'EC ; pour le CAC, les sanctions de la H2A sont de **nature administrative**.
 
 ## À vérifier
-- **Prescription de l'action disciplinaire** contre un EC : aucun délai n'a été trouvé dans l'ord. 45-2138 ni dans le D. 2012-432 ; texte éventuel à identifier.
+- **Prescription de l'action disciplinaire** contre un EC : aucun délai dans l'ord. 45-2138, le D. 2012-432 ni le règlement intérieur de l'Ordre (recueil réglementaire de l'Ordre, édition 2024, interrogé en octobre 2026). Un avocat spécialisé écrit qu'aucun texte n'en fixe ; aucune source officielle ne le confirme expressément.
 - **Montant minimal** de l'assurance RC obligatoire de l'EC.
 - **Sanctions fiscales** CGI 1740 A / 1753 applicables aux professionnels.

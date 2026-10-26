@@ -17,7 +17,7 @@
           "Amende civile, emprisonnement, fermeture du cabinet et publication judiciaire",
           "Rappel à l'ordre par le Conseil national, suspension de la lettre de mission, déchéance du DEC"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -35,6 +35,7 @@
     },
     {
       "id": "2025-05-EC-02",
+      "intrus": {"q": "Laquelle n'est pas une des trois natures de missions du cadre de référence de l'Ordre ?", "items": ["Missions d'assurance sur des comptes complets historiques", "Autres missions d'assurance", "Missions sans assurance"], "leurre": "Missions de certification légale des comptes", "cross": true, "why": "La certification légale est la mission du commissaire aux comptes. Le cadre de référence de l'EC distingue assurance sur comptes complets, autres missions d'assurance et missions sans assurance."},
       "n": 2,
       "profession": "EC",
       "theme": "exercice",
@@ -72,8 +73,8 @@
       "question": "Un cabinet d'expertise comptable peut-il référencer le nom et le logo de ses clients sur son site internet ? Justifiez votre réponse.",
       "qcm": {
         "choices": [
-          "Non, jamais : toute mention d'un client constitue une violation du secret professionnel",
-          "Oui, librement, car le nom d'un client n'est pas une information couverte par le secret",
+          "Non : la mention d'un client, même avec son accord, constitue une violation du secret professionnel",
+          "Oui, sans accord, car le nom d'un client n'est pas une information couverte par le secret",
           "Oui, avec l'accord préalable de chaque client, dans le respect du secret professionnel",
           "Oui, après autorisation du conseil régional de l'Ordre, valable pour trois ans"
         ],
@@ -130,7 +131,7 @@
       "question": "Un expert-comptable peut-il être agent immobilier ? Justifiez votre réponse.",
       "qcm": {
         "choices": [
-          "Oui, depuis 2010 toute activité commerciale est autorisée sans limite ni déclaration",
+          "Oui : depuis 2010, les activités commerciales accessoires sont ouvertes à l'expert-comptable",
           "Oui, si l'activité est exercée au sein d'une société distincte détenue à plus des deux tiers par des experts-comptables",
           "Non : activité d'intermédiaire commercial impliquant la détention de fonds, incompatible avec l'indépendance",
           "Non, sauf autorisation du commissaire du Gouvernement et du conseil régional"
@@ -212,6 +213,7 @@
     },
     {
       "id": "2025-05-EC-08",
+      "intrus": {"q": "Laquelle n'est pas une des cinq conclusions de l'examen limité (NP 2400) ?", "items": ["Conclusion favorable sans observation", "Conclusion favorable avec observation(s)", "Conclusion avec réserve(s)", "Conclusion défavorable", "Impossibilité de conclure"], "leurre": "Refus d'attester", "cross": false, "why": "Le refus d'attester appartient à la mission de présentation (NP 2300)."},
       "n": 8,
       "profession": "EC",
       "theme": "exercice",
@@ -255,9 +257,9 @@
           "Saisir directement le procureur de la République, comme un commissaire aux comptes révélant un fait délictueux",
           "En informer le conseil régional de l'Ordre (son président), qui peut engager des poursuites",
           "Effectuer une déclaration de soupçon à Tracfin sans en informer le client",
-          "Ne rien faire, en raison du secret professionnel qui s'oppose à tout signalement"
+          "Le signaler au client concerné, le secret professionnel lui interdisant d'alerter l'Ordre"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -281,10 +283,10 @@
       "question": "À quelles conditions et moyennant quelle précaution un expert-comptable peut-il réaliser une mission à titre gracieux ?",
       "qcm": {
         "choices": [
-          "C'est interdit : les honoraires doivent toujours être la juste rémunération du travail fourni, toute gratuité étant une faute, sans exception possible",
-          "C'est possible sans aucune formalité, la gratuité dispensant de lettre de mission comme de toute information du client",
+          "C'est interdit : les honoraires doivent toujours être la juste rémunération du travail fourni",
+          "C'est possible, la gratuité dispensant d'établir une lettre de mission et d'informer le client des conditions de l'intervention du cabinet",
           "C'est possible si la gratuité n'est pas un procédé de concurrence déloyale ni ne compromet l'indépendance, et sous lettre de mission",
-          "C'est possible uniquement au profit d'associations reconnues d'utilité publique, après accord du Conseil national de l'Ordre"
+          "C'est possible au profit d'associations reconnues d'utilité publique, après accord du Conseil national de l'Ordre"
         ],
         "answer": 2
       },
@@ -341,7 +343,7 @@
       "question": "Le recours à la publicité pour un commissaire aux comptes est encadré par le code de déontologie. Citez les conditions et interdiction fixées par ce dernier.",
       "qcm": {
         "choices": [
-          "La publicité est interdite aux commissaires aux comptes, seule la sollicitation personnalisée par courriel étant permise, avec accord de la CRCC",
+          "La publicité est interdite au commissaire aux comptes ; la sollicitation personnalisée par courriel reste permise avec l'accord de la CRCC",
           "La publicité est permise si elle procure une information nécessaire au public, sans atteinte à l'indépendance ni à la dignité, et sans élément comparatif",
           "La publicité est libre, sous réserve d'un dépôt préalable des supports auprès de la CRCC, qui dispose d'un mois pour s'y opposer par décision motivée du conseil régional",
           "La publicité est permise, y compris comparative dès lors qu'elle est loyale, véridique et ne dénigre pas nommément les confrères"
@@ -428,9 +430,9 @@
       "qcm": {
         "choices": [
           "Non : la levée du secret entre CAC ne vaut que pour les groupes établissant des comptes consolidés, ce que n'est pas un petit groupe",
-          "Oui, mais seulement avec l'accord écrit du dirigeant de chaque filiale, qui délie son commissaire aux comptes du secret",
+          "Oui, avec l'accord écrit du dirigeant de chaque filiale, qui délie son commissaire aux comptes du secret",
           "Oui : les CAC de la mère d'un petit groupe et ceux des sociétés qu'elle contrôle sont libérés du secret entre eux",
-          "Oui, mais seulement après autorisation préalable de la H2A et information de la compagnie régionale"
+          "Oui, après autorisation préalable de la H2A et information de la compagnie régionale"
         ],
         "answer": 2
       },
@@ -448,6 +450,7 @@
     },
     {
       "id": "2025-05-CAC-16",
+      "intrus": {"q": "Lequel n'est pas un principe fondamental de comportement du CAC (titre I) ?", "items": ["L'intégrité", "L'impartialité", "L'indépendance et la prévention des conflits d'intérêts", "L'esprit critique", "La compétence et la diligence", "Le secret professionnel et la discrétion"], "leurre": "Le devoir de conseil", "cross": true, "why": "Le devoir de conseil est propre à l'expert-comptable ; le CAC est tenu à la non-immixtion."},
       "n": 16,
       "profession": "CAC",
       "theme": "deontologie",
@@ -520,10 +523,10 @@
         "choices": [
           "Non : l'article L.821-10 ne vise la révélation au procureur que dans le cadre d'une mission de certification",
           "Oui : l'article L.821-10 vise les faits délictueux connus à l'occasion de sa « mission ou prestation »",
-          "Non : il doit seulement faire une déclaration de soupçon à Tracfin, sans révéler au procureur de la République",
-          "Oui, mais uniquement s'il s'agit d'un fait de blanchiment ou de financement du terrorisme"
+          "Non : comme l'expert-comptable, il n'a pas à révéler ; il déclare à Tracfin s'il soupçonne un blanchiment",
+          "Oui, lorsqu'il s'agit d'un fait de blanchiment ou de financement du terrorisme"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 2
       },
       "qrc": {
         "expected": [
@@ -552,7 +555,7 @@
           "Le garde des sceaux, l'AMF, l'ACPR, l'ANC, le CNoCP et la CNCC",
           "Les compagnies régionales et le Conseil national de l'Ordre des experts-comptables",
           "Le ministre de l'économie, la Cour des comptes et le Conseil d'État",
-          "Uniquement la CNCC"
+          "La CNCC, après avis des compagnies régionales"
         ],
         "answer": 0
       },
@@ -572,6 +575,7 @@
     },
     {
       "id": "2025-05-CAC-20",
+      "intrus": {"q": "Lequel ne siège pas à la commission des sanctions de la H2A ?", "items": ["Un magistrat de la Cour de cassation, président", "Une personne ayant exercé la profession de CAC", "Une personne qualifiée en durabilité", "Deux personnes qualifiées en droit, économie ou finance"], "leurre": "Deux membres élus du Conseil national de l'Ordre des experts-comptables", "cross": true, "why": "Les membres élus du Conseil national siègent à la chambre nationale de discipline des experts-comptables."},
       "n": 20,
       "profession": "CAC",
       "theme": "responsabilite",
@@ -585,7 +589,7 @@
           "Le président de la H2A, le président de l'AMF, le président de l'ACPR, le directeur général du Trésor et le président de la CNCC",
           "Un président de chambre de la cour d'appel de Paris, deux fonctionnaires désignés par le ministre de l'économie et deux membres du Conseil national de l'Ordre"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 3
       },
       "qrc": {
         "expected": [

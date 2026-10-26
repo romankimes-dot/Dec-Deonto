@@ -4,7 +4,7 @@
 // il ne change qu'avec un nouveau service worker, jamais module par module (un import manquant bloquerait
 // le démarrage). Les données (data/) : cache d'abord, rafraîchi en arrière-plan (stale-while-revalidate).
 // Toute modification du code impose d'incrémenter VERSION.
-const VERSION = 'dec1-v19';
+const VERSION = 'dec1-v20';
 const CORE = [
   './',
   './index.html',

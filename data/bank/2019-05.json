@@ -45,11 +45,11 @@
         "question": "Les conditions générales d'un cabinet limitent à dix mois le délai pour mettre en jeu la responsabilité civile de l'expert-comptable. Qu'en penser ?",
         "choices": [
           "La clause est illicite : la prescription de droit commun (cinq ans) peut être réduite par contrat, mais pas en dessous d'un an",
-          "La clause est valable : les parties fixent librement la durée de la prescription dans un contrat entre professionnels",
+          "La clause est valable : entre professionnels, la prescription peut être réduite jusqu'à six mois",
           "La clause est illicite : la responsabilité de l'expert-comptable se prescrit par dix ans et ce délai est d'ordre public",
-          "La clause est valable : la prescription est de trois ans pour les missions de présentation, et peut être réduite sans limite"
+          "La clause est illicite : la prescription est de trois ans à compter du fait dommageable et ne peut pas être aménagée"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 3
       },
       "qrc": {
         "expected": [
@@ -108,7 +108,7 @@
         "choices": [
           "Un compte rendu de travaux, et non une attestation, sauf considérations particulières",
           "Une attestation de présentation identique à celle délivrée en l'absence de commissaire aux comptes",
-          "Aucun document : le rapport du commissaire aux comptes se substitue à l'attestation",
+          "Une attestation d'examen limité, la présence d'un commissaire aux comptes excluant l'attestation de présentation",
           "Une attestation de cohérence et de vraisemblance cosignée par le commissaire aux comptes"
         ],
         "answer": 0
@@ -136,7 +136,7 @@
         "question": "Quelle est la différence entre le « déclarant » et le « correspondant » Tracfin au sein d'un cabinet d'expertise comptable ?",
         "choices": [
           "Le déclarant, expert-comptable en charge de la mission, effectue la déclaration ; le correspondant est l'interlocuteur de Tracfin",
-          "Le déclarant est obligatoirement le représentant légal du cabinet ; le correspondant est un salarié désigné par le conseil régional de l'Ordre",
+          "Le déclarant est le représentant légal du cabinet ; le correspondant est un salarié désigné par le conseil régional de l'Ordre",
           "Le déclarant adresse la déclaration à Tracfin, le correspondant en adresse une copie au procureur de la République et au conseil régional",
           "Le correspondant établit les déclarations de soupçon, le déclarant les signe et les transmet au président du conseil régional"
         ],
@@ -157,6 +157,7 @@
     },
     {
       "id": "2019-05-EC-06",
+      "intrus": {"q": "Lequel n'est pas une condition de la responsabilité civile de l'expert-comptable ?", "items": ["Une faute", "Un préjudice", "Un lien de causalité entre la faute et le préjudice"], "leurre": "Une intention de nuire (élément moral)", "cross": false, "why": "L'élément moral (intention) est une condition de la responsabilité pénale, pas de la responsabilité civile."},
       "n": 6,
       "profession": "EC",
       "theme": "responsabilite",
@@ -198,7 +199,7 @@
         "question": "À quelles conditions un expert-comptable peut-il exercer un mandat social dans une société non inscrite à l'Ordre ?",
         "choices": [
           "Absence d'atteinte à l'indépendance, déclaration au conseil régional et absence de mission d'expertise comptable dans la même entité",
-          "Le mandat n'est possible que dans des sociétés civiles ou des associations, à l'exclusion de toute société commerciale ou financière",
+          "Le mandat est possible uniquement dans les sociétés civiles et les associations",
           "Le mandat est libre dès lors qu'il n'est pas rémunéré et que la société n'est pas cliente du cabinet ni de ses associés",
           "Le mandat requiert l'autorisation préalable de la chambre régionale de discipline et une assurance spécifique de responsabilité"
         ],
@@ -231,7 +232,7 @@
         "choices": [
           "Les missions d'audit d'états financiers d'entités cotées",
           "Les missions de présentation des comptes",
-          "Toutes les missions d'assurance, y compris l'examen limité et les attestations particulières",
+          "Les missions d'assurance sur des comptes complets historiques, examen limité et présentation compris",
           "Les missions réalisées pour des entités dotées d'un commissaire aux comptes"
         ],
         "answer": 0
@@ -250,6 +251,7 @@
     },
     {
       "id": "2019-05-EC-09",
+      "intrus": {"q": "Lequel ne caractérise pas le bénéficiaire effectif ?", "items": ["Une personne physique", "Plus de 25 % du capital ou des droits de vote, directement ou indirectement", "Un pouvoir de contrôle exercé par tout autre moyen", "À défaut, le représentant légal"], "leurre": "Au moins 10 % du capital, détenus par une personne physique ou morale", "cross": false, "why": "Le bénéficiaire effectif est toujours une personne physique, au-delà de 25 % ou exerçant un contrôle ; 10 % est le seuil de la nomination judiciaire d'un CAC."},
       "n": 9,
       "profession": "EC",
       "theme": "deontologie",
@@ -260,9 +262,9 @@
         "question": "Qui est le bénéficiaire effectif d'une société au sens de la réglementation anti-blanchiment ?",
         "choices": [
           "Les personnes physiques détenant plus de 25 % du capital ou des droits de vote, ou exerçant un pouvoir de contrôle",
-          "Toute personne, physique ou morale, détenant au moins 10 % du capital de la société ou de ses droits de vote",
-          "Le représentant légal de la société, quelle que soit la répartition du capital ou des droits de vote",
-          "Les personnes physiques détenant plus de 50 % du capital ou des droits de vote, seules à pouvoir contrôler la société"
+          "Les personnes physiques ou morales détenant au moins 10 % du capital ou des droits de vote",
+          "Le représentant légal de la société, même lorsqu'un associé personne physique détient directement la majorité du capital et des droits de vote",
+          "Les seules personnes physiques détenant plus de 50 % du capital ou des droits de vote"
         ],
         "answer": 0
       },
@@ -321,7 +323,7 @@
         "question": "Qui élabore les projets de normes de déontologie, de contrôle interne de qualité et d'exercice professionnel des commissaires aux comptes ?",
         "choices": [
           "Une commission de normalisation placée auprès de la H2A, présidée par un membre du collège et composée de deux CAC proposés par la CNCC et d'une personnalité qualifiée",
-          "Le Conseil national de la CNCC seul, le garde des sceaux se bornant à homologuer ses projets sans consulter l'autorité de supervision ni l'Autorité des normes comptables",
+          "Le Conseil national de la CNCC, dont les projets de normes sont ensuite homologués par arrêté du garde des Sceaux, après avis de l'autorité de supervision",
           "Une commission mixte réunissant le Conseil national de l'Ordre des experts-comptables et la CNCC, présidée alternativement par chacun d'eux",
           "Le garde des sceaux lui-même, après avis de l'Autorité des normes comptables, du Conseil d'État et de la Cour des comptes"
         ],
@@ -355,8 +357,8 @@
         "choices": [
           "Le suivi de la formation continue et les contrôles d'activité des CAC non-EIP ; l'inscription et la tenue de la liste restent à l'autorité",
           "Les trois missions (inscription, formation continue, contrôles), y compris les contrôles des CAC d'EIP, l'autorité ne conservant que le pouvoir de sanction",
-          "Uniquement les contrôles d'activité des non-EIP, l'inscription et la formation continue restant des prérogatives régaliennes de l'autorité",
-          "Aucune : la loi prévoit la délégation mais aucune convention n'a jamais été homologuée par le garde des sceaux"
+          "Les contrôles d'activité des non-EIP ; le suivi de la formation continue reste exercé par l'autorité elle-même",
+          "Les contrôles d'activité de tous les CAC, y compris ceux des EIP, ainsi que l'inscription sur la liste"
         ],
         "answer": 0
       },
@@ -385,9 +387,9 @@
         "question": "Au titre de la lutte anti-blanchiment, quelles diligences le commissaire aux comptes pressenti doit-il accomplir avant d'accepter un mandat ?",
         "choices": [
           "Identifier et vérifier l'identité de l'entité et de ses bénéficiaires effectifs, évaluer le risque de blanchiment et renoncer si l'identification est impossible",
-          "Adresser à Tracfin une déclaration de soupçon préventive pour toute nouvelle entité, avant même l'acceptation du mandat, puis en informer la CNCC par écrit",
-          "Demander au prédécesseur une attestation écrite de conformité anti-blanchiment de l'entité, qui dispense de toute identification propre par le nouveau commissaire aux comptes",
-          "Obtenir du président de la CRCC un avis de non-opposition sur le profil de risque de l'entité, préalable obligatoire à toute acceptation"
+          "Adresser systématiquement à Tracfin une déclaration préventive pour chaque nouvelle entité, avant l'acceptation du mandat, et en informer la CNCC par écrit sous huit jours",
+          "Obtenir du prédécesseur une attestation de conformité anti-blanchiment de l'entité, sur laquelle il peut fonder son acceptation du mandat",
+          "Obtenir du président de la CRCC un avis de non-opposition sur le profil de risque de l'entité, puis l'annexer à sa lettre de mission"
         ],
         "answer": 0
       },
@@ -417,9 +419,9 @@
         "question": "Une société de commissaires aux comptes est absorbée par une autre société de commissaires aux comptes. Que deviennent les mandats de la société absorbée ?",
         "choices": [
           "Ils sont poursuivis par la société absorbante jusqu'à leur expiration, l'organe compétent de l'entité pouvant délibérer sur leur maintien à sa première réunion",
-          "Ils prennent fin de plein droit et chaque entité doit désigner un nouveau commissaire aux comptes pour un mandat de six exercices, sous peine de nullité de leur nomination",
+          "Ils prennent fin à la date de l'absorption ; chaque entité désigne un nouveau commissaire aux comptes pour six exercices",
           "Ils sont transmis au signataire personne physique, qui les poursuit à titre individuel jusqu'à l'assemblée suivant l'absorption",
-          "Ils sont suspendus jusqu'à décision de la H2A autorisant le transfert à la société absorbante, après avis de la CNCC et de la compagnie régionale"
+          "Ils sont suspendus jusqu'à la décision de la H2A autorisant leur transfert à la société absorbante, prise après avis de la CNCC et de la compagnie régionale"
         ],
         "answer": 0
       },
@@ -479,9 +481,9 @@
         "question": "Le commissaire aux comptes d'une filiale intégrée globalement veut vérifier des frais facturés par la société mère. Quels moyens a-t-il ?",
         "choices": [
           "Étendre ses investigations à la société mère, qui contrôle la filiale, et interroger les commissaires aux comptes de la mère, libérés du secret à son égard",
-          "Demander au commissaire aux comptes de la mère de certifier lui-même les frais facturés, seul habilité à contrôler la société mère et à accéder à ses justificatifs",
+          "Demander au commissaire aux comptes de la mère de vérifier lui-même ces frais et de lui en certifier le montant par une attestation écrite, jointe à son dossier",
           "Se limiter aux explications de la direction de la filiale, ses pouvoirs ne s'exerçant pas en dehors de l'entité auditée elle-même",
-          "Saisir la H2A pour qu'elle ordonne à la société mère de produire les justificatifs, au besoin sous astreinte"
+          "Saisir la H2A pour qu'elle ordonne à la société mère de produire les justificatifs des frais facturés, au besoin sous astreinte"
         ],
         "answer": 0
       },
@@ -533,6 +535,7 @@
     },
     {
       "id": "2019-05-CAC-18",
+      "intrus": {"q": "Laquelle n'est pas une vérification du contrôle d'activité sur les missions sélectionnées ?", "items": ["La conformité des travaux aux NEP", "Le respect des règles d'indépendance", "L'adéquation des ressources affectées à la mission", "Les honoraires perçus"], "leurre": "L'exactitude des comptes certifiés, par un nouvel audit complet", "cross": false, "why": "Le contrôleur vérifie les diligences du CAC ; il ne refait pas l'audit et ne substitue pas son opinion."},
       "n": 18,
       "profession": "CAC",
       "theme": "controle_qualite",
@@ -576,9 +579,9 @@
         "question": "Quelle formalité le commissaire aux comptes doit-il accomplir auprès de sa compagnie régionale lorsqu'il obtient un nouveau mandat de certification ?",
         "choices": [
           "Notifier sa nomination au conseil régional de sa compagnie dans les huit jours, par lettre recommandée ou par voie électronique",
-          "Demander à la compagnie régionale l'autorisation préalable d'accepter le mandat, qui dispose d'un mois pour répondre",
-          "Déposer la lettre de mission signée au greffe de la compagnie régionale sous huit jours, avec le justificatif de nomination et une copie de la déclaration d'activité",
-          "Aucune formalité auprès de la compagnie, la nomination étant publiée au registre du commerce et au BODACC"
+          "Notifier sa nomination à la H2A dans le mois, la compagnie régionale en étant ensuite informée par la H2A",
+          "Mentionner le nouveau mandat dans sa déclaration annuelle d'activité, sans notification en cours d'année",
+          "Demander au président de la compagnie régionale un avis préalable sur son indépendance avant d'accepter le mandat, sous peine de nullité de la nomination"
         ],
         "answer": 0
       },
@@ -609,7 +612,7 @@
         "choices": [
           "Oui en principe : l'interdiction ne couvre que l'exercice précédant le premier exercice audité (2018), mais elle doit apprécier le risque d'autorévision et prévoir des sauvegardes",
           "Non : un service interdit rendu par le réseau à une EIP entraîne, pour le commissaire aux comptes, une incompatibilité définitive avec le mandat de cette entité",
-          "Oui sans réserve : les services rendus par un autre membre du réseau ne concernent pas l'indépendance du commissaire aux comptes, seuls ses propres services étant pris en compte",
+          "Oui : les services rendus par un autre membre du réseau n'entrent pas en compte, l'interdiction visant le commissaire aux comptes lui-même",
           "Non : elle devra attendre l'expiration d'un délai de viduité de trois ans à compter de la fin de la prestation, soit 2021, avant d'accepter le mandat"
         ],
         "answer": 0
