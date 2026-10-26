@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   buildContext, buildCatalog, emptyStats, applyAnswer, applyExam, applyOpen, rebuildStats,
-  evaluate, progressOf, currentGrade, gradeConditions, themeMastery, dayKey,
+  evaluate, progressOf, currentGrade, gradeConditions, themeMastery, dayKey, examInfo,
 } from '../js/gamify.js';
 import { ANECDOTES, QBADGES } from '../js/catalog-data.js';
 
@@ -189,6 +189,21 @@ test('cachés : horaires, retour, 100 réponses, week-end, 7 jours, mode avion, 
   s = sim(); applyOpen(s.st, D(2026, 11, 10, 10, 29)); assert.equal(s.done('hid-jourj'), true);
   s = sim(); applyOpen(s.st, D(2026, 11, 10, 10, 30)); assert.equal(s.done('hid-jourj'), false);
   for (const b of catalog.filter((x) => x.family === 'caches')) assert.equal(b.hidden, true, b.id);
+});
+
+test('cachés : « La veille » et « Jour J » suivent la date d’épreuve choisie', () => {
+  const c2 = { ...ctx, exam: examInfo('2027-03-01', 14 * 60) };
+  const cat2 = buildCatalog(c2);
+  const byId = (id) => cat2.find((b) => b.id === id);
+  assert.equal(c2.exam.eve, '2027-02-28');
+  assert.equal(byId('hid-veille').hint, 'Le 28 février.');
+  assert.equal(byId('hid-jourj').hint, 'Le 1er mars, 13 h 59.');
+  assert.equal(byId('hid-jourj').cond, 'ouvrir l’app le 1er mars 2027 avant 14 h 00');
+  const id = ctx.all[0];
+  let st = emptyStats(); applyAnswer(st, { id, ok: true, t: D(2026, 11, 9, 20) }, c2); assert.equal(progressOf(byId('hid-veille'), st).done, false, 'ancienne veille');
+  st = emptyStats(); applyAnswer(st, { id, ok: true, t: D(2027, 2, 28, 20) }, c2); assert.equal(progressOf(byId('hid-veille'), st).done, true);
+  st = emptyStats(); applyOpen(st, D(2027, 3, 1, 13, 59), c2); assert.equal(progressOf(byId('hid-jourj'), st).done, true);
+  st = emptyStats(); applyOpen(st, D(2027, 3, 1, 14, 0), c2); assert.equal(progressOf(byId('hid-jourj'), st).done, false);
 });
 
 test('caché : 20 questions difficiles d’affilée', () => {

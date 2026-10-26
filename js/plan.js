@@ -87,8 +87,11 @@ export function validateExamDate(value, today) {
   return { ok: true, key };
 }
 
-// Sans date d'épreuve : parcours générique de 18 jours à partir du premier jour d'utilisation (J-18 à J-1).
-export const DEFAULT_SPAN = 18;
+// Sans date d'épreuve : parcours générique de 28 jours à partir du premier jour d'utilisation (J-28 à J-1).
+// Quatre semaines : ~16 h de programme à raison de 30 à 45 min par jour, et un écart optimal entre révisions de
+// 20 à 40 % du délai avant l'épreuve (Cepeda et al., 2008) laisse la place aux relectures +2 / +6 jours et aux
+// intervalles de la répétition espacée. Au-delà, les premières notions s'éloignent sans bénéfice de rétention.
+export const DEFAULT_SPAN = 28;
 export function examKeyOf(examDate, startKey) {
   const m = /^(\d{4}-\d{2}-\d{2})/.exec(String(examDate || ''));
   if (m && dkey(dnum(m[1])) === m[1]) return m[1];

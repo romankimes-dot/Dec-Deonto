@@ -267,8 +267,8 @@ Affichés « ??? » dans la collection jusqu'au déblocage, avec un indice d'une
 | **Mention très bien** | « 16 et plus, en conditions réelles. » | un examen blanc ≥ 16/20 | épique |
 | **Contre la montre** | « Il reste vingt minutes. » | examen blanc rendu en moins de 40 minutes avec ≥ 14/20 | épique |
 | **Partie CAC parfaite** | « Les questions 11 à 20. » | 10/10 sur la partie CAC d'un examen blanc | légendaire |
-| **La veille** | « Le 9 novembre. » | une session le 9 novembre 2026 | commun |
-| **Jour J** | « Le 10 novembre, 10 h 29. » | ouvrir l'app le 10 novembre 2026 avant 10 h 30 | rare |
+| **La veille** | « Le 9 novembre. » | une session la veille de l'épreuve (date choisie dans Réglages ; par défaut le 9 novembre 2026) | commun |
+| **Jour J** | « Le 10 novembre, 10 h 29. » | ouvrir l'app le jour de l'épreuve avant son heure de début (par défaut le 10 novembre 2026 avant 10 h 30) | rare |
 
 ---
 

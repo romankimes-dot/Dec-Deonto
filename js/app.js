@@ -59,9 +59,16 @@ const queueOpts = () => {
   };
 };
 const examAt = () => Date.parse(state.progress.settings.examDate) || null;
-// Jour de l'épreuve (AAAA-MM-JJ). Sans date saisie : parcours générique de 18 jours depuis le premier jour d'utilisation.
+// Jour de l'épreuve (AAAA-MM-JJ). Sans date saisie : parcours générique de 28 jours depuis le premier jour d'utilisation.
 const examKey = () => { const pl = state.progress.plan; pl.start = pl.start || G.dayKey(Date.now()); return P.examKeyOf(state.progress.settings.examDate, pl.start); };
 const examDateSet = () => !!examAt();
+// Épreuve vue par les badges cachés « La veille » et « Jour J » (heure par défaut : 10 h 30).
+const gameExam = () => { const m = /T(\d{2}):(\d{2})/.exec(state.progress.settings.examDate || ''); return G.examInfo(examKey(), m ? Number(m[1]) * 60 + Number(m[2]) : G.DEFAULT_EXAM_MIN); };
+function refreshExamBadges() {
+  state.gctx.exam = gameExam();
+  state.catalog = G.buildCatalog(state.gctx);
+  state.badgeById = Object.fromEntries(state.catalog.map((b) => [b.id, b]));
+}
 function examLabel() {
   const t = examAt(); if (!t) return 'Date d’épreuve non définie';
   const d = new Date(t); const hm = /T\d{2}:\d{2}/.test(state.progress.settings.examDate) ? ` · ${d.getHours()} h ${String(d.getMinutes()).padStart(2, '0')}` : '';
@@ -973,6 +980,7 @@ views.settings = () => {
         if (!r.ok) { toast(r.reason === 'passee' ? 'La date de l’examen doit être à venir' : 'Date invalide'); e.target.value = (s.examDate || '').slice(0, 16); return; }
       }
       s.examDate = v ? `${v}:00` : '';
+      refreshExamBadges(); G.applyOpen(state.progress.stats, Date.now(), state.gctx);
       state.progress.daily = null; persist(); toast(v ? 'Date enregistrée : plan recalculé' : 'Date effacée : parcours générique'); render();
     };
     $('#s-mode').onchange = (e) => { s.mode = e.target.value; persist(); };
@@ -1006,7 +1014,7 @@ views.settings = () => {
     };
   }, 0);
   return `<div class="card"><h2>Réglages</h2>
-    <label class="field">Date de l’examen (le plan et les révisions s’y adaptent ; vide = parcours générique de 18 jours)<input type="datetime-local" id="s-exam" value="${esc((s.examDate || '').slice(0, 16))}"></label>
+    <label class="field">Date de l’examen (le plan et les révisions s’y adaptent ; vide = parcours générique de 4 semaines)<input type="datetime-local" id="s-exam" value="${esc((s.examDate || '').slice(0, 16))}"></label>
     <label class="field">Nouvelles cartes par jour, au minimum (le plan en demande plus s’il le faut pour tout voir à J-3)<input type="number" id="s-new" min="0" max="100" value="${s.newPerDay}"></label>
     <label class="field">Format de révision<select id="s-mode"><option value="mixte" ${s.mode === 'mixte' ? 'selected' : ''}>Mixte (alterne QCM / QRC)</option><option value="qcm" ${s.mode === 'qcm' ? 'selected' : ''}>QCM uniquement</option><option value="qrc" ${s.mode === 'qrc' ? 'selected' : ''}>QRC uniquement</option></select></label>
     <label class="field"><input type="checkbox" id="s-low" ${s.showLowConfidence ? 'checked' : ''}> Afficher le badge « à vérifier » sur les réponses de confiance faible</label>
@@ -1684,8 +1692,7 @@ function onPop(e) {
 
 function initGamify() {
   state.gctx = G.buildContext(state.bank);
-  state.catalog = G.buildCatalog(state.gctx);
-  state.badgeById = Object.fromEntries(state.catalog.map((b) => [b.id, b]));
+  refreshExamBadges();
   const pr = state.progress;
   pr.badges = pr.badges || {}; pr.grades = pr.grades || {};
   if (!pr.stats || pr.stats.v !== G.STATS_VERSION) {
@@ -1695,7 +1702,7 @@ function initGamify() {
     if (f.badges.length) setTimeout(() => toast(`${f.badges.length} badges récupérés depuis votre historique`), 800);
     persist();
   }
-  G.applyOpen(pr.stats, Date.now());
+  G.applyOpen(pr.stats, Date.now(), state.gctx);
   checkBadges();
 }
 

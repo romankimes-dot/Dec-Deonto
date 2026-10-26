@@ -114,8 +114,8 @@ test('date d’examen : validation (future seulement) et parcours générique si
   assert.equal(validateExamDate('', '2026-10-26').reason, 'format');
   assert.equal(validateExamDate('2026-02-30', '2026-01-01').reason, 'format');
   assert.equal(examKeyOf('2026-11-10T10:30:00', '2026-10-01'), '2026-11-10');
-  assert.equal(examKeyOf('', '2026-10-01'), '2026-10-19', 'sans date : J-18 le premier jour');
-  assert.equal(schedule('2026-10-01', examKeyOf('', '2026-10-01'), SCHEMAS)[0].n, 18);
+  assert.equal(examKeyOf('', '2026-10-01'), '2026-10-29', 'sans date : J-28 le premier jour');
+  assert.equal(schedule('2026-10-01', examKeyOf('', '2026-10-01'), SCHEMAS)[0].n, 28);
 });
 test('délai court : aucune étape ni journée fixe supprimée, tout regroupé sur aujourd’hui', () => {
   for (const n of [1, 2, 3, 4]) {

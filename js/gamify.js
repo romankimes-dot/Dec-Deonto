@@ -3,8 +3,9 @@
 import { ANECDOTES, QBADGES } from './catalog-data.js';
 
 export const STATS_VERSION = 1;
-export const EXAM_DAY = '2026-11-10';
-export const EVE_DAY = '2026-11-09';
+// Jour de l'épreuve par défaut (tests, ou contexte construit sans date) : 10 novembre 2026, 10 h 30.
+export const DEFAULT_EXAM_DAY = '2026-11-10';
+export const DEFAULT_EXAM_MIN = 10 * 60 + 30;
 
 export const RARITIES = {
   commun: { label: 'Commun', color: '#64748b', rank: 0 },
@@ -54,9 +55,16 @@ export function dayKey(t) {
 function dayNum(key) { const [y, m, d] = key.split('-').map(Number); return Date.UTC(y, m - 1, d) / 86400000; }
 function keyFromNum(n) { const d = new Date(n * 86400000); return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`; }
 function weekday(key) { return new Date(dayNum(key) * 86400000).getUTCDay(); } // 0 = dimanche
+const MONTHS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+function frDate(key, year = false) { const [y, m, d] = key.split('-').map(Number); return `${d === 1 ? '1er' : d} ${MONTHS[m - 1]}${year ? ` ${y}` : ''}`; }
+
+// Épreuve : jour (AAAA-MM-JJ), veille, et heure de début en minutes depuis minuit (« Jour J » : ouvrir l'app avant).
+export function examInfo(day = DEFAULT_EXAM_DAY, min = DEFAULT_EXAM_MIN) {
+  return { day, eve: keyFromNum(dayNum(day) - 1), min };
+}
 
 // ---------- Contexte (dérivé de la banque) ----------
-export function buildContext(bank) {
+export function buildContext(bank, exam = examInfo()) {
   const qs = bank.questions;
   const ids = (f) => qs.filter(f).map((q) => q.id);
   const themes = {};
@@ -70,7 +78,7 @@ export function buildContext(bank) {
   for (const q of qs) if (q.confidence === 'low') hardList.add(q.id);
   return {
     all: qs.map((q) => q.id), ec: ids((q) => q.profession === 'EC'), cac: ids((q) => q.profession === 'CAC'),
-    themes, tags, hardList, known,
+    themes, tags, hardList, known, exam,
   };
 }
 
@@ -120,7 +128,7 @@ export function applyAnswer(stats, ev, ctx) {
   const h = new Date(ev.t).getHours();
   if (h >= 5 && h < 7) f.leveTot = true;
   if (h >= 23 || h < 2) f.couchTard = true;
-  if (day === EVE_DAY) f.veille = true;
+  if (day === ctx.exam.eve) f.veille = true;
   stats.lastDay = day;
   stats.lastT = Math.max(stats.lastT, ev.t);
   return stats;
@@ -134,10 +142,10 @@ export function applyExam(stats, ex) {
   return stats;
 }
 
-// Ouverture de l'app (pour « Jour J »)
-export function applyOpen(stats, t) {
-  const d = new Date(t);
-  if (dayKey(t) === EXAM_DAY && (d.getHours() < 10 || (d.getHours() === 10 && d.getMinutes() < 30))) stats.flags.jourJ = true;
+// Ouverture de l'app (pour « Jour J ») : le jour de l'épreuve, avant son heure de début.
+export function applyOpen(stats, t, ctx) {
+  const d = new Date(t); const ex = ctx?.exam || examInfo();
+  if (dayKey(t) === ex.day && d.getHours() * 60 + d.getMinutes() < ex.min) stats.flags.jourJ = true;
   return stats;
 }
 
@@ -274,8 +282,10 @@ export function buildCatalog(ctx) {
   H('hid-mention', 'epique', 'Mention très bien', '16 et plus, en conditions réelles.', 'un examen blanc ≥ 16/20', exams((e) => e.note >= 16), 'trophee16');
   H('hid-chrono', 'epique', 'Contre la montre', 'Il reste vingt minutes.', 'examen blanc rendu en moins de 40 min avec ≥ 14/20', exams((e) => e.durationMs != null && e.durationMs < 40 * 60000 && e.note >= 14));
   H('hid-cac10', 'legendaire', 'Partie CAC parfaite', 'Les questions 11 à 20.', '10/10 sur la partie CAC d’un examen blanc', exams((e) => e.cacOk));
-  H('hid-veille', 'commun', 'La veille', 'Le 9 novembre.', 'une session le 9 novembre 2026', flag('veille'));
-  H('hid-jourj', 'rare', 'Jour J', 'Le 10 novembre, 10 h 29.', 'ouvrir l’app le 10 novembre 2026 avant 10 h 30', flag('jourJ'));
+  const ex = ctx.exam || examInfo();
+  const hm = (m) => `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, '0')}`;
+  H('hid-veille', 'commun', 'La veille', `Le ${frDate(ex.eve)}.`, `une session le ${frDate(ex.eve, true)}`, flag('veille'));
+  H('hid-jourj', 'rare', 'Jour J', `Le ${frDate(ex.day)}, ${hm(Math.max(0, ex.min - 1))}.`, `ouvrir l’app le ${frDate(ex.day, true)} avant ${hm(ex.min)}`, flag('jourJ'));
 
   return B;
 }
