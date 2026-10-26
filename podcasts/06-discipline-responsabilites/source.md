@@ -70,7 +70,7 @@ Dossier source pour un résumé audio (podcast). Étapes 8 et 10 sur 15 du parco
 
 ### La procédure de sanction de la H2A (commissaires aux comptes)
 
-Depuis le **1er janvier 2024**, la **commission des sanctions** de la **Haute autorité de l'audit** remplace la **formation restreinte** du H3C (C. com. **L.820-2** et **L.821-70 à L.821-85**). Le jury ne demande ni les numéros d'articles ni les montants, mais les **acteurs**, l'**ordre des étapes** et la **liste des sanctions** reviennent à chaque session.
+Depuis le **1er janvier 2024**, la **commission des sanctions** de la **Haute autorité de l'audit** remplace la **formation restreinte** du H3C (C. com. **L.820-2** et **L.821-70 à L.821-85**). Les consignes des sujets QRC précisent que « les références des textes ainsi que le quantum des sanctions ne sont pas exigés des candidats » : retenir les **acteurs**, l'**ordre des étapes** et la **liste des sanctions**.
 
 #### Qui fait quoi : poursuite et jugement séparés
 
@@ -96,7 +96,7 @@ Depuis le **1er janvier 2024**, la **commission des sanctions** de la **Haute au
 
 | | Ordinaire | Simplifiée | Composition administrative |
 |---|---|---|---|
-| **Pour quoi ?** | Toute faute ou tout manquement | Manquements **simples et établis** aux **obligations déclaratives** et à la **formation continue** | Après la notification des griefs, si l'intéressé **accepte** d'entrer en composition |
+| **Pour quoi ?** | Toute faute ou tout manquement | Manquements **répétés**, **simples et établis**, aux **obligations déclaratives** et à la **formation continue** | Après la notification des griefs, si l'intéressé **accepte** d'entrer en composition |
 | **Qui décide ?** | La **commission des sanctions**, après audience | Le **président de la commission**, **seul et sans débat** ; **opposition** possible dans les **30 jours**, puis audience | Le **président de la H2A** propose ; accord **validé par le collège**, puis **homologué** par la commission |
 | **Sanctions** | Toute l'échelle (ci-dessous) | **Sanction pécuniaire** seulement : **15 000 €** au plus | Sanctions de l'échelle sauf la **radiation** ; somme plafonnée à **50 000 €** (personne physique) ou **200 000 €** (personne morale) |
 
@@ -458,14 +458,14 @@ Arbre de décision (lire de haut en bas) :
 | Procédure | Principe |
 |---|---|
 | **Ordinaire** (droit commun) | Les étapes ci-dessus, avec un débat contradictoire complet |
-| **Simplifiée** (L.821-81 et L.821-82) | Pour les manquements, **simples et établis**, aux **obligations déclaratives** fixées par décret et à la **formation continue**. La formation plénière du collège saisit le **président de la commission des sanctions**, qui statue **seul et sans débat** : **sanction pécuniaire** seulement, **15 000 € au plus** (et pas plus que la proposition du collège). **Opposition** possible dans les **30 jours** (intéressé ou président de la H2A) : l'affaire revient alors devant la commission, en audience publique |
+| **Simplifiée** (L.821-81 et L.821-82) | Pour les manquements **répétés**, **simples et établis**, aux **obligations déclaratives** fixées par décret et à la **formation continue**. La formation plénière du collège saisit le **président de la commission des sanctions**, qui statue **seul et sans débat** : **sanction pécuniaire** seulement, **15 000 € au plus** (et pas plus que la proposition du collège). **Opposition** possible dans les **30 jours** (intéressé ou président de la H2A) : l'affaire revient alors devant la commission, en audience publique |
 | **Composition administrative** (L.821-78) | Après la notification des griefs, la H2A **propose** d'entrer en composition ; si l'intéressé accepte, le président de la H2A lui propose une ou plusieurs sanctions (sanction pécuniaire plafonnée à **50 000 €** pour une personne physique, **200 000 €** pour une personne morale). L'accord est **validé par la formation plénière du collège**, puis **homologué** par la commission des sanctions et **publié** ; sans homologation, retour à la procédure ordinaire |
 
 - La « **comparution immédiate** » **n'existe pas** : c'est une procédure pénale.
 - **Audience** (L.821-80) : **deux mois au moins** après la notification des griefs ; **publique** (huis clos possible) ; le **président de la CRCC** dont relève la personne est **avisé** et peut être entendu ; le **président de la H2A** représente le collège et **propose une sanction** ; la commission délibère hors la présence des parties et du rapporteur général.
 - **Suspension provisoire** (L.821-76) : pour des faits d'une **particulière gravité**, en cas d'**urgence**, le rapporteur général peut demander à la **formation plénière du collège** de suspendre un CAC personne physique pour **6 mois au plus**, après l'avoir mis en mesure de présenter ses observations. Ce n'est **pas une sanction**.
 - **Critères** de la sanction (L.821-83) : gravité et durée de la faute, degré d'implication, situation et capacité financière, gains obtenus ou pertes évitées, coopération à l'enquête, manquements antérieurs.
-- Avant 2024, la **formation restreinte** du H3C jugeait ; les procédures en cours ont été transférées à la **commission des sanctions** de la H2A.
+- Avant 2024, la **formation restreinte** du H3C jugeait ; les procédures en cours ont été transférées à la **commission des sanctions** de la H2A (ord. 2023-1142 art. 40).
 
 ##### Sanctions : personnes physiques
 1. **Avertissement**.

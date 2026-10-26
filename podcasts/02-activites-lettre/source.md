@@ -376,8 +376,8 @@ Arbre de décision (lire de haut en bas) :
 - Il s'applique à la **mission de certification**, **ALPE comprise**. Il fixe des **fourchettes d'heures** par tranches de **(total bilan + produits d'exploitation + produits financiers HT)**.
 - Le **taux de vacation horaire** est **librement fixé d'un commun accord**.
 - Il **ne s'applique pas aux prestations**.
-- Il ne concerne pas non plus les entités au-delà de la dernière tranche (**122 M€** de total bilan et produits ; D.821-188).
-- Sont aussi exclus notamment les **sociétés cotées**, les **banques**, les **assurances**, les **associations et fondations**, les **syndicats** et les **CSE** (R.821-194), ainsi que la certification des informations de **durabilité**.
+- Il ne concerne pas non plus les entités au-delà de la dernière tranche (**122 M€** de total bilan et produits ; D.821-188 et R.821-194 1°).
+- Sont aussi exclus notamment les **sociétés cotées**, les **banques**, les **assurances**, les **associations et fondations**, les **syndicats** et les **comités d'entreprise et comités centraux d'entreprise** (R.821-194, 14° pour ces derniers), ainsi que la certification des informations de **durabilité**.
 
 ##### Dérogation au barème
 - Si le nombre d'heures paraît **excessif ou insuffisant** (D.821-190 et D.821-191) :
