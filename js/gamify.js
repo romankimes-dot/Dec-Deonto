@@ -160,6 +160,33 @@ export function rebuildStats(progress, ctx) {
     if (ev.k === 'a') { if (ctx.known.has(ev.a.id)) applyAnswer(stats, { id: ev.a.id, ok: !!ev.a.ok, t: ev.a.t, off: ev.a.off }, ctx); }
     else applyExam(stats, ev.e);
   }
+  // L'historique est tronqué (400 réponses) : les statistiques déjà acquises ne doivent pas reculer.
+  return progress.stats ? mergeStats(stats, progress.stats) : stats;
+}
+
+// Fusionne des statistiques recalculées avec les précédentes (autre version, historique plus long) :
+// compteurs et records au maximum, jours et drapeaux réunis, examens absents ajoutés.
+export function mergeStats(stats, prev) {
+  if (!prev || typeof prev !== 'object') return stats;
+  const num = (v) => (typeof v === 'number' && Number.isFinite(v) ? v : 0);
+  const union = (a, b) => [...new Set([...(a || []), ...(Array.isArray(b) ? b : [])])].sort();
+  for (const [id, p] of Object.entries(prev.q || {})) {
+    if (!p || typeof p !== 'object') continue;
+    const q = stats.q[id];
+    if (!q) { stats.q[id] = { seen: 0, ok: 0, ko: 0, seenDays: [], okDays: [], last: null, failed: false, recDays: [], recovered: false, ...p }; continue; }
+    q.seen = Math.max(q.seen, num(p.seen)); q.ok = Math.max(q.ok, num(p.ok)); q.ko = Math.max(q.ko, num(p.ko));
+    q.seenDays = union(q.seenDays, p.seenDays); q.okDays = union(q.okDays, p.okDays);
+    q.failed = q.failed || !!p.failed; q.recovered = q.recovered || !!p.recovered;
+  }
+  const s = stats.streak, ps = prev.streak || {};
+  s.best = Math.max(s.best, num(ps.best)); s.hardBest = Math.max(s.hardBest, num(ps.hardBest));
+  for (const k of ['days', 'offlineDays']) for (const [d, n] of Object.entries(prev[k] || {})) stats[k][d] = Math.max(stats[k][d] || 0, num(n));
+  for (const [f, v] of Object.entries(prev.flags || {})) if (v) stats.flags[f] = true;
+  const ts = new Set(stats.exams.map((e) => e.t));
+  for (const e of Array.isArray(prev.exams) ? prev.exams : []) if (e && !ts.has(e.t)) stats.exams.push(e);
+  stats.exams.sort((a, b) => a.t - b.t);
+  if (typeof prev.lastDay === 'string' && (!stats.lastDay || prev.lastDay > stats.lastDay)) stats.lastDay = prev.lastDay;
+  stats.lastT = Math.max(stats.lastT, num(prev.lastT));
   return stats;
 }
 

@@ -1,8 +1,10 @@
 // Service worker : fonctionnement hors ligne.
 // Précache atomique de l'app et des données à l'installation (fichiers relus sur le réseau, jamais depuis le
-// cache HTTP, pour qu'une version ne mélange pas d'anciens et de nouveaux fichiers). Ensuite : réseau d'abord
-// (revalidation à chaque chargement, repli sur le cache au-delà de 4 s ou hors ligne).
-const VERSION = 'dec1-v18';
+// cache HTTP). Le code (HTML, JS, CSS, polices, icônes) est servi uniquement depuis le cache de sa version :
+// il ne change qu'avec un nouveau service worker, jamais module par module (un import manquant bloquerait
+// le démarrage). Les données (data/) : cache d'abord, rafraîchi en arrière-plan (stale-while-revalidate).
+// Toute modification du code impose d'incrémenter VERSION.
+const VERSION = 'dec1-v19';
 const CORE = [
   './',
   './index.html',
@@ -61,22 +63,25 @@ self.addEventListener('activate', (event) => {
   })());
 });
 
+const isData = (url) => url.pathname.includes('/data/');
+
 self.addEventListener('fetch', (event) => {
   const req = event.request;
-  if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
+  const url = new URL(req.url);
+  if (req.method !== 'GET' || url.origin !== self.location.origin) return;
   event.respondWith((async () => {
     const cache = await caches.open(VERSION);
-    const network = fetch(req, { cache: 'no-cache' }).then((res) => {
-      if (res && res.ok) cache.put(req, res.clone());
+    const fromNetwork = () => fetch(req.mode === 'navigate' ? req.url : req, { cache: 'no-cache' }).then((res) => {
+      if (res && res.ok) event.waitUntil(cache.put(req, res.clone()));
       return res;
-    }).catch(() => null);
-    const cached = await cache.match(req, { ignoreSearch: true });
-    if (!cached) return (await network) || new Response('Hors ligne et ressource absente du cache', { status: 503 });
-    const timeout = new Promise((resolve) => setTimeout(() => resolve(null), 4000));
-    const res = await Promise.race([network, timeout]);
-    if (res) return res;
-    event.waitUntil(network);
-    return cached;
+    });
+    // Navigation : la page de la version en cache, quels que soient les paramètres d'URL
+    const cached = await cache.match(req.mode === 'navigate' ? './index.html' : req, { ignoreSearch: true });
+    if (isData(url)) {
+      if (cached) { event.waitUntil(fromNetwork().catch(() => null)); return cached; }
+    } else if (cached) return cached;
+    // Absent du cache (fiche jamais chargée, nouvelle ressource) : réseau
+    try { return await fromNetwork(); } catch { return new Response('Hors ligne et ressource absente du cache', { status: 503 }); }
   })());
 });
 

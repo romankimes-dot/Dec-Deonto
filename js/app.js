@@ -146,7 +146,7 @@ function nextCelebration() {
   const c = state.celebrations.shift(); if (!c) return;
   state.celebrating = true;
   const box = $('#celebrate');
-  const close = () => { box.classList.remove('show'); state.celebrating = false; setTimeout(nextCelebration, 250); };
+  const close = () => { box.classList.remove('show'); focusBack(box); state.celebrating = false; setTimeout(nextCelebration, 250); };
   let html = '';
   if (c.type === 'grade') {
     html = `<div class="cel-grade"><div class="cel-scene">${sceneFor(c.g.n)}</div><div class="cel-ribbon">Nouveau grade</div><h2>${esc(c.g.name)}</h2><p class="muted">Votre bureau a changé. Touchez pour continuer.</p></div>`;
@@ -164,11 +164,22 @@ function nextCelebration() {
   box.classList.add('show');
   if (c.type !== 'grade') box.firstElementChild.insertAdjacentHTML('beforeend', '<p class="muted" style="font-size:12px;margin-top:12px">Touchez pour continuer</p>');
   box.onclick = close;
+  box.onkeydown = (e) => { if (e.key === 'Escape' || e.key === 'Enter') close(); };
+  focusIn(box);
 }
 function trainOn(ids, title, mode = 'qcm') {
   const qs = ids.map((id) => state.byId[id]).filter(Boolean);
   state.train = { prof: 'all', theme: 'all', tag: 'all', mode, queue: qs, idx: 0, ok: 0, n: 0, title };
   go('train');
+}
+// Dialogues (fiche, célébration) : focus déplacé à l'ouverture, rendu à l'élément d'origine à la fermeture.
+function focusIn(el, target = el) {
+  if (!el._back) el._back = document.activeElement;
+  try { target.focus({ preventScroll: true }); } catch { /* ignore */ }
+}
+function focusBack(el) {
+  const b = el._back; el._back = null;
+  if (b && b !== document.body && document.contains(b)) try { b.focus({ preventScroll: true }); } catch { /* ignore */ }
 }
 function toast(msg) {
   const t = $('#toast'); t.textContent = msg; t.classList.add('show');
@@ -883,10 +894,12 @@ function sheet(html) {
   el.classList.add('show'); document.body.classList.add('noscroll');
   $('#sheet-close').onclick = () => closeSheet();
   el.scrollTop = 0;
+  focusIn(el, $('#sheet-close'));
 }
 function closeSheet(viaPop = false) {
   const el = $('#sheet'); if (!el?.classList.contains('show')) return;
   el.classList.remove('show'); document.body.classList.remove('noscroll');
+  focusBack(el);
   if (!viaPop && history.state?.sheet) history.back(); // retire l'entrée « fiche ouverte » de l'historique
   // Hors activité (accueil, plan…), l'écran se met à jour (schéma lu, tâche suivante) ; sinon tout reste en l'état.
   if (!inActivity()) render();
@@ -1521,8 +1534,10 @@ function showBadge(id) {
     <p class="muted">${got ? `Débloqué le ${new Date(got).toLocaleDateString('fr-FR')}` : `Condition : ${esc(b.hidden ? b.hint : b.cond)} · ${p.cur}/${p.max}`}</p>
     ${b.ids && b.ids.length ? `<button class="btn primary" id="sheet-train">🎯 Réviser ces ${b.ids.length} questions</button>` : ''}</div>`;
   box.classList.add('show');
-  box.onclick = (e) => { if (e.target.id === 'sheet-train') return; box.classList.remove('show'); };
-  const tb = $('#sheet-train'); if (tb) tb.onclick = () => { box.classList.remove('show'); trainOn(b.ids, b.name); };
+  box.onclick = (e) => { if (e.target.id === 'sheet-train') return; box.classList.remove('show'); focusBack(box); };
+  box.onkeydown = (e) => { if (e.key === 'Escape') { box.classList.remove('show'); focusBack(box); } };
+  const tb = $('#sheet-train'); if (tb) tb.onclick = () => { box.classList.remove('show'); box._back = null; trainOn(b.ids, b.name); };
+  focusIn(box, tb || box);
 }
 function bindProps(root) {
   root.querySelectorAll('.prop[data-badge]').forEach((el) => { if (el.dataset.badge) el.onclick = (e) => { e.stopPropagation(); showBadge(el.dataset.badge); }; });
@@ -1726,13 +1741,14 @@ async function init() {
   if (store.STORE_VERSION !== STORE_EXPECTED && await recoverFromStaleCache()) return;
   try { const th = localStorage.getItem('dec1.theme'); if (th) document.documentElement.dataset.theme = th; } catch { /* ignore */ }
   const nav = $('nav.bottom');
-  nav.innerHTML = NAV.map(([v, ico, label]) => `<button data-view="${v}"><span class="ico">${ico}</span>${label}</button>`).join('');
+  nav.innerHTML = NAV.map(([v, ico, label]) => `<button data-view="${v}"><span class="ico" aria-hidden="true">${ico}</span>${label}</button>`).join('');
   nav.querySelectorAll('button').forEach((b) => { b.onclick = () => go(b.dataset.view); });
   $('#settingsBtn').onclick = () => go('settings');
   $('#glossBtn').onclick = () => go('glossaire');
   try { history.replaceState({ v: state.view }, ''); } catch { /* ignore */ }
   window.addEventListener('popstate', onPop);
-  const sh = document.createElement('div'); sh.id = 'sheet'; sh.className = 'sheet'; sh.setAttribute('role', 'dialog'); document.body.appendChild(sh);
+  const sh = document.createElement('div'); sh.id = 'sheet'; sh.className = 'sheet'; sh.setAttribute('role', 'dialog'); sh.setAttribute('aria-modal', 'true'); sh.tabIndex = -1; document.body.appendChild(sh);
+  sh.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSheet(); });
   sh.addEventListener('click', (e) => {
     const b = e.target.closest('[data-open-fiche]'); if (b) return ficheSheet(b.dataset.openFiche);
     const f = e.target.closest('[data-shorts-step]'); if (f) { closeSheet(true); openFeed({ focus: [f.dataset.shortsStep] }); }
@@ -1747,12 +1763,13 @@ async function init() {
     const f = e.target.closest('[data-shorts-step]'); if (f) return openFeed({ focus: f.dataset.shortsStep ? [f.dataset.shortsStep] : [] });
   });
   try {
-    state.bank = await loadBank();
+    // Chargements en parallèle (banque, index des fiches, shorts, glossaire)
+    const [bank, fiches, , gloss] = await Promise.all([loadBank(), loadFichesIndex(), ensureShorts(), GL.loadGlossary().catch(() => [])]);
+    state.bank = bank;
     state.bank.questions.forEach((q) => { state.byId[q.id] = q; });
     state.clusters = buildClusters(state.bank.questions);
-    state.fiches = await loadFichesIndex();
-    await ensureShorts();
-    try { state.gloss = await GL.loadGlossary(); } catch { state.gloss = []; }
+    state.fiches = fiches;
+    state.gloss = gloss;
     state.glById = Object.fromEntries(state.gloss.map((e) => [e.id, e]));
     state.glMatcher = GL.buildMatcher(state.gloss);
     glObserve();
