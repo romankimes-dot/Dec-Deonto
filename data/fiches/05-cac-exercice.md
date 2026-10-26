@@ -47,11 +47,12 @@
 ### Compagnie nationale des commissaires aux comptes (CNCC)
 - **Établissement d'utilité publique** doté de la personnalité morale, placé **auprès du garde des Sceaux**.
 - Elle **représente la profession**, concourt au **bon exercice**, à la **surveillance** et à la **défense** des intérêts, et assure la **formation**.
-- **Conseil national** : **60 membres** désignés pour **4 ans**, **présidents des CRCC compris** ; les autres sont **élus par deux collèges nationaux** (CAC d'EIP / CAC sans mandat d'EIP), chacun ayant 30 sièges (D.821-14).
+- **Conseil national** : **60 membres** désignés pour **4 ans**, comprenant **tous les présidents de CRCC** et des **CAC élus** ; **moitié** CAC d'EIP, **moitié** CAC sans mandat d'EIP : **30 sièges par collège, présidents de CRCC compris**. Chaque collège national élit 30 CAC, moins le nombre de présidents de CRCC de sa catégorie (D.821-14).
 - Il élit un **président** et un **bureau**.
 
 ### Compagnies régionales (CRCC)
-- Elles sont établies dans le ressort des **cours d'appel**, ou après regroupement.
+- Elles sont établies dans le ressort des **cours d'appel**, ou après regroupement par le garde des Sceaux (L.821-12) : **17 CRCC** depuis le **1er novembre 2020** (arrêtés des 31 janvier et 18 juin 2020), contre 33 auparavant.
+- « **22** » est l'effectif maximal d'un **conseil régional** (au moins 900 membres personnes physiques, D.821-29 4°), non un nombre de compagnies (annale 2025-11 Q19).
 - **Électeurs** au conseil régional : les **CAC personnes physiques inscrits** auprès de la CRCC et **à jour de leurs cotisations**.
 - **Éligibles** : les **personnes physiques** à **jour de leurs cotisations** et **exerçant la profession de CAC au 30 juin de l'année d'expiration des mandats** ; le président doit exercer au moins une **mission de certification** à cette date (D.821-31 II).
 - **Les sociétés ne sont ni électrices ni éligibles**.
@@ -308,8 +309,6 @@
 - **Salariat** : l'EC peut être salarié chez un EC, une AGC ou un CAC ; le CAC chez un **CAC ou un EC**.
 
 ## À vérifier
-- **Nombre de CRCC** (17 selon le site de la CNCC, aucun texte lu) dans l'annale 2025-11 Q19 ; « 22 » est l'effectif maximal d'un conseil régional (D.821-29 4°).
-- **Petit groupe** : le CAC de la tête de groupe peut-il obtenir des informations des CAC des filiales significatives (annale 2025-05 Q15) ? Texte exact.
 - **Seuils des CSE, des fonds de dotation et des partis politiques**.
 - **Augmentation de capital avec suppression du DPS** sans CAC : la désignation d'un CAC « à cet effet » est prévue par L.225-136 1° et L.225-138 II ; l'impossibilité d'y renoncer n'est pas écrite (annale 2024-11 Q15).
 - **Transposition de la directive Omnibus I** (2026/470) : texte français et nouveaux seuils, attendus au plus tard le 19 mars 2027.

@@ -207,6 +207,6 @@
 - **Honoraires au succès** : pour l'EC, ils sont interdits pour le monopole et pour les missions qui participent à la détermination de l'**assiette fiscale ou sociale** (ord. art. 24) ; pour le **CAC**, les honoraires **subordonnés au résultat** sont **interdits** pour toute mission ou prestation (code de déontologie CAC **art. 13**, titre I).
 
 ## À vérifier
-- **Liste exacte des levées du secret** de l'EC : la formule « audition pénale en qualité de témoin ou de suspect libre » est donnée comme levée par SCHEMA.md. L'opposabilité à la **CNIL** est déduite de l'annale 2025-11 Q4.
+- **Liste exacte des levées du secret** de l'EC : la formule « audition pénale en qualité de témoin ou de suspect libre » est donnée comme levée par des supports de révision, sans texte retrouvé. L'opposabilité à la **CNIL** est déduite de l'annale 2025-11 Q4.
 - **Cas où la lettre de l'art. 163 n'est pas obligatoire** (annale 2024-11 Q7).
 - **Référencement par une société commerciale non inscrite, notation par les clients, parrainage** : quelle pratique est interdite (annale 2025-11 Q2) ? La fiche retient le **comparatif** (« premier réseau »).

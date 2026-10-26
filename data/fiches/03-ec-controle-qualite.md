@@ -123,7 +123,7 @@ Le **président du conseil régional** conclut, au vu du rapport du contrôleur 
 
 ## 4. Formation continue et compétence
 - L'**obligation de compétence** est portée par le code de déontologie et la NPMQ.
-- La **formation continue** est **obligatoire** pour les EC : en principe **120 heures sur 3 ans**, avec au moins **20 heures par an**. Les heures de formation CAC sont prises en compte.
+- La **formation continue** est **obligatoire** pour les EC (décret 2012-432, **art. 145 1°** : compléter et mettre à jour ses connaissances). Le quantum de **120 heures sur 3 ans**, avec au moins **20 heures par an**, est une **recommandation de l'Ordre**, fixée par aucun texte (ni le décret, ni le règlement intérieur de 2024, ni la NPMQ) {?}. Les heures de formation CAC sont prises en compte.
 - Lors du contrôle de qualité, les actions retenues ne se limitent **pas** aux formations attestées : enseignement dispensé, colloques, publications et travaux techniques comptent aussi, dans certaines limites (annale 2018-11 Q10 ; pour le CAC, A.821-46).
 - Le **personnel** du cabinet fait l'objet d'une **évaluation périodique** de ses compétences (NPMQ, ressources humaines).
 - L'Ordre organise la **formation des stagiaires** et la **formation professionnelle continue** (CNOEC).
@@ -147,4 +147,4 @@ Le **président du conseil régional** conclut, au vu du rapport du contrôleur 
 
 ## À vérifier
 - **Périodicité réglementaire** du contrôle de qualité de l'Ordre.
-- **Quantum de formation continue** des EC (annale 2018-11 Q10).
+- **Quantum de formation continue** des EC : 120 h sur 3 ans, dont 20 h par an, recommandation de l'Ordre sans texte réglementaire ; texte de la recommandation non lu (annale 2018-11 Q10).

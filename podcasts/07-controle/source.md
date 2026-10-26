@@ -204,7 +204,7 @@ Le **président du conseil régional** conclut, au vu du rapport du contrôleur 
 
 #### 4. Formation continue et compétence
 - L'**obligation de compétence** est portée par le code de déontologie et la NPMQ.
-- La **formation continue** est **obligatoire** pour les EC : en principe **120 heures sur 3 ans**, avec au moins **20 heures par an**. Les heures de formation CAC sont prises en compte.
+- La **formation continue** est **obligatoire** pour les EC (décret 2012-432, **art. 145 1°** : compléter et mettre à jour ses connaissances). Le quantum de **120 heures sur 3 ans**, avec au moins **20 heures par an**, est une **recommandation de l'Ordre**, fixée par aucun texte (ni le décret, ni le règlement intérieur de 2024, ni la NPMQ) {?} (à vérifier). Les heures de formation CAC sont prises en compte.
 - Lors du contrôle de qualité, les actions retenues ne se limitent **pas** aux formations attestées : enseignement dispensé, colloques, publications et travaux techniques comptent aussi, dans certaines limites (annale 2018-11 Q10 ; pour le CAC, A.821-46).
 - Le **personnel** du cabinet fait l'objet d'une **évaluation périodique** de ses compétences (NPMQ, ressources humaines).
 - L'Ordre organise la **formation des stagiaires** et la **formation professionnelle continue** (CNOEC).
@@ -228,7 +228,7 @@ Le **président du conseil régional** conclut, au vu du rapport du contrôleur 
 
 #### À vérifier
 - **Périodicité réglementaire** du contrôle de qualité de l'Ordre.
-- **Quantum de formation continue** des EC (annale 2018-11 Q10).
+- **Quantum de formation continue** des EC : 120 h sur 3 ans, dont 20 h par an, recommandation de l'Ordre sans texte réglementaire ; texte de la recommandation non lu (annale 2018-11 Q10).
 
 ### Extrait de la fiche « Supervision publique et contrôle d'activité du commissaire aux comptes »
 
@@ -391,13 +391,13 @@ Propositions (adaptées du sujet) :
 
 **Version QRC de la question** : Quelles obligations la réglementation professionnelle impose-t-elle à l'expert-comptable pour maintenir la compétence du cabinet et la sienne ?
 
-**Réponse courte attendue** : La NPMQ impose au cabinet des procédures de ressources humaines comprenant l'évaluation périodique des compétences et des performances du personnel. L'expert-comptable est en outre personnellement tenu à une formation continue (120 heures sur trois ans, dont au moins 20 par an), satisfaite par des actions diverses et pas uniquement par des formations attestées ; il n'existe pas de quantum légal propre aux collaborateurs.
+**Réponse courte attendue** : La NPMQ impose au cabinet des procédures de ressources humaines comprenant l'évaluation périodique des compétences et des performances du personnel. L'expert-comptable est en outre personnellement tenu à une formation continue (l'Ordre recommande 120 heures sur trois ans, dont au moins 20 par an), satisfaite par des actions diverses et pas uniquement par des formations attestées ; il n'existe pas de quantum légal propre aux collaborateurs.
 
-Éléments attendus : NPMQ : politiques de ressources humaines incluant l'évaluation périodique des performances et compétences du personnel ; Obligation de formation continue de l'expert-comptable (120 heures sur 3 ans, minimum 20 heures par an, alignée sur celle des commissaires aux comptes) ; Actions de formation variées admises (formations suivies ou dispensées, colloques, publications, travaux de recherche…), pas seulement les formations attestées ; Pas d'obligation chiffrée légale pour les collaborateurs, mais obligation du cabinet de maintenir leurs compétences
+Éléments attendus : NPMQ : politiques de ressources humaines incluant l'évaluation périodique des performances et compétences du personnel ; Obligation de formation continue de l'expert-comptable (D. 2012-432 art. 145 1°), appréciée lors du contrôle de qualité ; quantum recommandé par l'Ordre : 120 heures sur 3 ans, dont 20 heures par an (aucun texte ne le fixe, à vérifier) ; Actions de formation variées admises (formations suivies ou dispensées, colloques, publications, travaux de recherche…), pas seulement les formations attestées ; Pas d'obligation chiffrée légale pour les collaborateurs, mais obligation du cabinet de maintenir leurs compétences
 
-**Explication** : La proposition sur l'évaluation du personnel découle directement de la composante « ressources humaines » de la NPMQ. Les autres sont fausses : aucun texte ne fixe 20 heures par an aux collaborateurs, et la formation prise en compte ne se limite pas aux formations attestées (enseignement, publications, groupes de travail comptent). Attention à l'évolution : l'obligation chiffrée de l'expert-comptable a été alignée sur celle du commissaire aux comptes (120 h/3 ans), ce qui a rendu obsolète un ancien distracteur de ce sujet.
+**Explication** : La proposition sur l'évaluation du personnel découle directement de la composante « ressources humaines » de la NPMQ. Les autres sont fausses : aucun texte ne fixe 20 heures par an aux collaborateurs, et la formation prise en compte ne se limite pas aux formations attestées (enseignement, publications, groupes de travail comptent). Attention : pour l'expert-comptable, le quantum de 120 h sur 3 ans, dont 20 h par an, est une recommandation de l'Ordre qu'aucun texte ne fixe (à vérifier) ; pour le commissaire aux comptes, il est réglementaire (A.821-45).
 
-**Évolution depuis le sujet** : Le sujet d'origine comportait une proposition « 120 heures sur 3 ans incluant les heures CAC », supprimée ici car l'obligation de formation de l'expert-comptable a depuis été alignée sur ce quantum : vérifier la version en vigueur du règlement intérieur.
+**Évolution depuis le sujet** : Le sujet d'origine comportait une proposition « 120 heures sur 3 ans incluant les heures CAC », supprimée ici : ce quantum, recommandé par l'Ordre, n'est fixé ni par le décret 2012-432, ni par le règlement intérieur de 2024, ni par la NPMQ (texte de la recommandation à vérifier).
 
 Confiance moyenne dans la banque : à recouper avec les textes.
 
@@ -489,7 +489,7 @@ Propositions (celles du sujet) :
 
 **Explication** : Le cadre et les orientations des contrôles sont définis par la H2A (C. com. L.820-1 I 5°), leur périodicité par la partie réglementaire (R.820-49) et leur contenu par R.820-45 (missions sélectionnées, système de contrôle qualité interne, autres missions et prestations). Les quatre modalités citées reprennent la typologie usuelle de l'autorité de supervision mais ne figurent pas sous cette forme dans le code : à vérifier. Le contrôle de qualité de l'Ordre (structurel/technique) relève d'une logique différente.
 
-**Évolution depuis le sujet** : H3C → H2A au 1er janvier 2024 ; périodicité et contenu désormais aux articles R.820-45 à R.820-49 (ex R.821-26 et s.). Relecture : le terme « délégation » est exact pour les contrôles non-EIP (convention de délégation H3C-CNCC homologuée en 2017 et 2023, reconduite par la H2A en 2026) ; la mention d'un simple « concours » de la CNCC (2020-11-CAC-19) est à aligner. La typologie des quatre modalités reste à vérifier.
+**Évolution depuis le sujet** : H3C → H2A au 1er janvier 2024 ; périodicité et contenu désormais aux articles R.820-45 à R.820-49 (ex R.821-26 et s.). Relecture : le terme « délégation » est exact pour les contrôles non-EIP (convention de délégation H3C-CNCC homologuée en 2017 et 2023, reconduite par la H2A en 2026). La typologie des quatre modalités reste à vérifier.
 
 {?} (à vérifier) **À vérifier** : réponse de confiance faible dans la banque.
 

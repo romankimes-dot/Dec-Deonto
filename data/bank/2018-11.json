@@ -305,16 +305,16 @@
         "question": "Quelles obligations la réglementation professionnelle impose-t-elle à l'expert-comptable pour maintenir la compétence du cabinet et la sienne ?",
         "expected": [
           "NPMQ : politiques de ressources humaines incluant l'évaluation périodique des performances et compétences du personnel",
-          "Obligation de formation continue de l'expert-comptable (120 heures sur 3 ans, minimum 20 heures par an, alignée sur celle des commissaires aux comptes)",
+          "Obligation de formation continue de l'expert-comptable (D. 2012-432 art. 145 1°), appréciée lors du contrôle de qualité ; quantum recommandé par l'Ordre : 120 heures sur 3 ans, dont 20 heures par an (aucun texte ne le fixe, à vérifier)",
           "Actions de formation variées admises (formations suivies ou dispensées, colloques, publications, travaux de recherche…), pas seulement les formations attestées",
           "Pas d'obligation chiffrée légale pour les collaborateurs, mais obligation du cabinet de maintenir leurs compétences"
         ],
-        "model_answer": "La NPMQ impose au cabinet des procédures de ressources humaines comprenant l'évaluation périodique des compétences et des performances du personnel. L'expert-comptable est en outre personnellement tenu à une formation continue (120 heures sur trois ans, dont au moins 20 par an), satisfaite par des actions diverses et pas uniquement par des formations attestées ; il n'existe pas de quantum légal propre aux collaborateurs."
+        "model_answer": "La NPMQ impose au cabinet des procédures de ressources humaines comprenant l'évaluation périodique des compétences et des performances du personnel. L'expert-comptable est en outre personnellement tenu à une formation continue (l'Ordre recommande 120 heures sur trois ans, dont au moins 20 par an), satisfaite par des actions diverses et pas uniquement par des formations attestées ; il n'existe pas de quantum légal propre aux collaborateurs."
       },
-      "explanation": "La proposition sur l'évaluation du personnel découle directement de la composante « ressources humaines » de la NPMQ. Les autres sont fausses : aucun texte ne fixe 20 heures par an aux collaborateurs, et la formation prise en compte ne se limite pas aux formations attestées (enseignement, publications, groupes de travail comptent). Attention à l'évolution : l'obligation chiffrée de l'expert-comptable a été alignée sur celle du commissaire aux comptes (120 h/3 ans), ce qui a rendu obsolète un ancien distracteur de ce sujet.",
-      "reference": "NPMQ § 29 et A24 (ressources humaines : évaluation périodique du personnel) ; D. 2012-432 art. 145 1° ; pour comparaison, C. com. L.821-24, R.821-70 et A.821-46 (formation des commissaires aux comptes)",
+      "explanation": "La proposition sur l'évaluation du personnel découle directement de la composante « ressources humaines » de la NPMQ. Les autres sont fausses : aucun texte ne fixe 20 heures par an aux collaborateurs, et la formation prise en compte ne se limite pas aux formations attestées (enseignement, publications, groupes de travail comptent). Attention : pour l'expert-comptable, le quantum de 120 h sur 3 ans, dont 20 h par an, est une recommandation de l'Ordre qu'aucun texte ne fixe (à vérifier) ; pour le commissaire aux comptes, il est réglementaire (A.821-45).",
+      "reference": "NPMQ § 29 et A24 (ressources humaines : évaluation périodique du personnel) ; D. 2012-432 art. 145 1° ; pour comparaison, C. com. L.821-24, R.821-70, A.821-45 et A.821-46 (formation des commissaires aux comptes)",
       "confidence": "medium",
-      "update_note": "Le sujet d'origine comportait une proposition « 120 heures sur 3 ans incluant les heures CAC », supprimée ici car l'obligation de formation de l'expert-comptable a depuis été alignée sur ce quantum : vérifier la version en vigueur du règlement intérieur."
+      "update_note": "Le sujet d'origine comportait une proposition « 120 heures sur 3 ans incluant les heures CAC », supprimée ici : ce quantum, recommandé par l'Ordre, n'est fixé ni par le décret 2012-432, ni par le règlement intérieur de 2024, ni par la NPMQ (texte de la recommandation à vérifier)."
     },
     {
       "id": "2018-11-CAC-11",

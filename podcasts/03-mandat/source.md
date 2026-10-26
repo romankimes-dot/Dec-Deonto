@@ -221,8 +221,6 @@ Arbre de décision (lire de haut en bas) :
 
 
 #### À vérifier
-- **Nombre de CRCC** (17 selon le site de la CNCC, aucun texte lu) dans l'annale 2025-11 Q19 ; « 22 » est l'effectif maximal d'un conseil régional (D.821-29 4°).
-- **Petit groupe** : le CAC de la tête de groupe peut-il obtenir des informations des CAC des filiales significatives (annale 2025-05 Q15) ? Texte exact.
 - **Seuils des CSE, des fonds de dotation et des partis politiques**.
 - **Augmentation de capital avec suppression du DPS** sans CAC : la désignation d'un CAC « à cet effet » est prévue par L.225-136 1° et L.225-138 II ; l'impossibilité d'y renoncer n'est pas écrite (annale 2024-11 Q15).
 - **Transposition de la directive Omnibus I** (2026/470) : texte français et nouveaux seuils, attendus au plus tard le 19 mars 2027.

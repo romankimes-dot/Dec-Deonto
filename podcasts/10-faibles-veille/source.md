@@ -275,19 +275,19 @@ Arbre de décision (lire de haut en bas) :
 
 ### Exercice de la profession d'expert-comptable
 
-- **Signatures de la lettre de mission en société** : faut-il la signature sociale **et** celle de l'EC responsable, ou seulement celle de l'EC ? Annales 2018-11 Q7 et 2022-11 Q1.
-- **Formation continue EC** : quantum exact (120 h / 3 ans, 20 h par an ou 40 h par an en moyenne) et texte (norme formation du CNOEC) ; ce quantum ne figure ni dans le règlement intérieur de 2024 ni dans le référentiel normatif 2022.
+- **Signatures de la lettre de mission en société** : faut-il, outre la signature sociale, celle de l'EC responsable ? L'art. 12 de l'ordonnance exige la signature personnelle de l'EC et le visa ou la signature sociale pour les **travaux** ; l'art. 151 du décret 2012-432 ne dit pas qui signe le contrat. Les annales 2018-11 Q7 et 2022-11 Q1 ne retiennent pas la même réponse.
+- **Formation continue EC** : le quantum de 120 h sur 3 ans, dont 20 h par an, est donné par les conseils régionaux comme une recommandation de l'Ordre inspirée de la norme IES 7 de l'IFAC ; il ne figure ni dans le décret 2012-432, ni dans le règlement intérieur de 2024, ni dans la NPMQ, ni dans le référentiel normatif 2022. Texte de la recommandation non lu.
 
 ### Déontologie de l'expert-comptable
 
-- **Liste exacte des levées du secret** de l'EC : la formule « audition pénale en qualité de témoin ou de suspect libre » est donnée comme levée par SCHEMA.md. L'opposabilité à la **CNIL** est déduite de l'annale 2025-11 Q4.
+- **Liste exacte des levées du secret** de l'EC : la formule « audition pénale en qualité de témoin ou de suspect libre » est donnée comme levée par des supports de révision, sans texte retrouvé. L'opposabilité à la **CNIL** est déduite de l'annale 2025-11 Q4.
 - **Cas où la lettre de l'art. 163 n'est pas obligatoire** (annale 2024-11 Q7).
 - **Référencement par une société commerciale non inscrite, notation par les clients, parrainage** : quelle pratique est interdite (annale 2025-11 Q2) ? La fiche retient le **comparatif** (« premier réseau »).
 
 ### Maîtrise et contrôle de la qualité (expertise comptable)
 
 - **Périodicité réglementaire** du contrôle de qualité de l'Ordre.
-- **Quantum de formation continue** des EC (annale 2018-11 Q10).
+- **Quantum de formation continue** des EC : 120 h sur 3 ans, dont 20 h par an, recommandation de l'Ordre sans texte réglementaire ; texte de la recommandation non lu (annale 2018-11 Q10).
 
 ### Responsabilité de l'expert-comptable
 
@@ -297,8 +297,6 @@ Arbre de décision (lire de haut en bas) :
 
 ### Exercice de la profession de commissaire aux comptes
 
-- **Nombre de CRCC** (17 selon le site de la CNCC, aucun texte lu) dans l'annale 2025-11 Q19 ; « 22 » est l'effectif maximal d'un conseil régional (D.821-29 4°).
-- **Petit groupe** : le CAC de la tête de groupe peut-il obtenir des informations des CAC des filiales significatives (annale 2025-05 Q15) ? Texte exact.
 - **Seuils des CSE, des fonds de dotation et des partis politiques**.
 - **Augmentation de capital avec suppression du DPS** sans CAC : la désignation d'un CAC « à cet effet » est prévue par L.225-136 1° et L.225-138 II ; l'impossibilité d'y renoncer n'est pas écrite (annale 2024-11 Q15).
 - **Transposition de la directive Omnibus I** (2026/470) : texte français et nouveaux seuils, attendus au plus tard le 19 mars 2027.
@@ -346,9 +344,9 @@ Arbre de décision (lire de haut en bas) :
 
 **Réponse courte attendue** : Non. Les honoraires de l'expert-comptable sont fixés librement avec le client, par écrit et préalablement à la mission, en fonction de l'importance des diligences, de la difficulté, des frais exposés et de la notoriété du professionnel. Ils doivent être équitables et exclusifs de toute rémunération indirecte d'un tiers.
 
-Éléments attendus : Non, les honoraires sont libres ; Convenus par écrit avec le client, préalablement à la mission (lettre de mission) ; Équitables, juste rémunération du travail et du service rendu (diligences, difficulté, frais, notoriété) ; Seules les AGC appliquent des barèmes fixés par leurs instances
+Éléments attendus : Non, les honoraires sont libres ; Convenus par écrit avec le client, préalablement à la mission (lettre de mission) ; Équitables, juste rémunération du travail et du service rendu (diligences, difficulté, frais, notoriété) ; Seules les AGC fixent leurs cotisations ou honoraires selon des règles ou barèmes de leurs instances dirigeantes
 
-**Explication** : Article 24 de l'ordonnance et article 158 du code de déontologie. Confusion classique : le barème d'heures (D.821-188, ex-R.823-12) concerne la certification des comptes par le CAC, avec dérogation devant le président de la CRCC. Les seules « barèmes » côté Ordre concernent les cotisations des AGC.
+**Explication** : Article 24 de l'ordonnance et article 158 du code de déontologie. Confusion classique : le barème d'heures (D.821-188, ex-R.823-12) concerne la certification des comptes par le CAC, avec dérogation devant le président de la CRCC. Côté Ordre, seules les AGC appliquent des barèmes : leurs cotisations ou honoraires sont fixés selon les règles ou barèmes déterminés par leurs instances dirigeantes (art. 158 al. 2).
 
 ### Question 4 : EC, session 2025-05 (QRC), 3 pts
 
@@ -396,7 +394,7 @@ Arbre de décision (lire de haut en bas) :
 
 Éléments attendus : Assurance raisonnable : niveau élevé mais non absolu ; Obtenue par des éléments probants suffisants et appropriés permettant de conclure que les comptes ne comportent pas d'anomalies significatives (approche par les risques, sondages) ; Se traduit par une opinion : certification sans réserve, avec réserve, refus ou impossibilité de certifier, sur la régularité, la sincérité et l'image fidèle
 
-**Explication** : L'assurance ne peut être absolue en raison des limites inhérentes à l'audit : sondages, jugement professionnel, possibilité de fraude et de collusion. C'est pourquoi la mission ne consiste pas à garantir la viabilité ou la qualité de la gestion (C. com. L.821-55). L'expert-comptable délivre, en présentation ou en examen limité, une assurance modérée seulement.
+**Explication** : L'assurance ne peut être absolue en raison des limites inhérentes à l'audit : sondages, jugement professionnel, possibilité de fraude et de collusion. C'est pourquoi la mission ne consiste pas à garantir la viabilité ou la qualité de la gestion (C. com. L.821-55). L'expert-comptable délivre une assurance modérée en présentation ou en examen limité, et une assurance raisonnable en audit contractuel, qui n'est pas une certification légale.
 
 ### Question 8 : CAC, session 2024-05 (QRC), 2 pts
 

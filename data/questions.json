@@ -608,7 +608,7 @@
    "qcm": {
     "question": "Le dirigeant a détourné un bien de grande valeur de la société, puis l'a remboursé. Le commissaire aux comptes doit-il révéler ce fait au procureur de la République ?",
     "choices": [
-     "Oui : le fait est délictueux, significatif et délibéré ; le remboursement n'efface pas l'infraction consommée ni l'obligation de révéler",
+     "Oui : le fait est délictueux et frauduleux ; le remboursement n'efface ni l'infraction consommée ni l'obligation de révéler",
      "Non : le préjudice ayant été réparé par le remboursement, il n'existe plus de fait délictueux à révéler au procureur",
      "Non : la révélation ne concerne que les infractions ayant une incidence sur les comptes certifiés, ce qui n'est plus le cas après remboursement",
      "Oui, mais après avoir déclenché la procédure d'alerte, qui doit précéder la révélation au procureur"
@@ -618,13 +618,13 @@
    "qrc": {
     "expected": [
      "Oui",
-     "Fait délictueux (vol / abus de biens sociaux) significatif et délibéré, dont le commissaire aux comptes a connaissance",
+     "Fait délictueux (vol / abus de biens sociaux) dont le commissaire aux comptes a connaissance, sans seuil de gravité : seules les irrégularités manifestement non frauduleuses sont exclues",
      "Le remboursement ultérieur n'efface pas l'infraction consommée",
      "La non-révélation est elle-même un délit"
     ],
-    "model_answer": "Oui. Le commissaire aux comptes doit révéler au procureur les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation, dès lors qu'ils sont significatifs et délibérés. Le détournement d'un bien de grande valeur par le dirigeant remplit ces critères ; l'infraction est consommée au jour des faits et le remboursement postérieur ne l'efface pas. S'abstenir exposerait le commissaire aux comptes au délit de non-révélation."
+    "model_answer": "Oui. Le commissaire aux comptes doit révéler au procureur les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation, sans distinction tenant à leur gravité : seules les simples irrégularités ne procédant manifestement pas d'une intention frauduleuse en sont exclues. Le détournement d'un bien de grande valeur par le dirigeant est un fait délictueux ; l'infraction est consommée au jour des faits et le remboursement postérieur ne l'efface pas. S'abstenir exposerait le commissaire aux comptes au délit de non-révélation."
    },
-   "explanation": "L'obligation de révélation vise les faits délictueux dont le CAC a eu connaissance « à l'occasion de sa mission ou prestation » (L.821-10) ; la non-révélation est punie de cinq ans d'emprisonnement et 75 000 € d'amende (L.821-9). Le commissaire aux comptes n'a pas à qualifier précisément l'infraction ni à apprécier l'opportunité des poursuites ; la réparation ou le repentir du dirigeant sont sans effet sur l'obligation. Distinction avec l'expert-comptable, qui n'a aucune obligation de révélation au parquet, mais qui est tenu, comme le commissaire aux comptes, à la déclaration de soupçon à Tracfin.",
+   "explanation": "L'obligation de révélation vise les faits délictueux dont le CAC a eu connaissance « à l'occasion de sa mission ou prestation » (L.821-10) ; la non-révélation est punie de cinq ans d'emprisonnement et 75 000 € d'amende (L.821-9). Le commissaire aux comptes n'a pas à qualifier précisément l'infraction ni à apprécier l'opportunité des poursuites ; la réparation ou le repentir du dirigeant sont sans effet sur l'obligation. La circulaire du 18 avril 2014 a abandonné les critères « significatifs » et « délibérés » de la circulaire de 1985 : la régularisation peut seulement être signalée au parquet, en même temps que la révélation ou après. Distinction avec l'expert-comptable, qui n'a aucune obligation de révélation au parquet, mais qui est tenu, comme le commissaire aux comptes, à la déclaration de soupçon à Tracfin.",
    "reference": "C. com. L.821-10 (ex L.823-12, révélation des faits délictueux) ; L.821-9 (ex L.820-7, délit de non-révélation) ; NEP 240",
    "confidence": "high",
    "update_note": "Articles recodifiés au 1er janvier 2024 : L.823-12 est devenu L.821-10 et L.820-7 est devenu L.821-9 ; L.821-10 vise désormais les faits connus « à l'occasion de sa mission ou prestation ».",
@@ -655,9 +655,10 @@
     "expected": [
      "Oui, le secret s'applique",
      "La levée légale du secret est limitée aux commissaires aux comptes de l'entité consolidante et des entités comprises dans la consolidation",
-     "Une filiale non consolidée est hors de ce périmètre"
+     "Une filiale non consolidée est hors de ce périmètre",
+     "Réserve : dans un petit groupe (tête tenue de désigner un CAC, L.821-43 al. 1), le secret est levé entre les CAC de la tête et ceux des sociétés qu'elle contrôle, même sans consolidation (L.821-35)"
     ],
-    "model_answer": "Oui. La loi ne libère du secret professionnel, les uns à l'égard des autres, que les commissaires aux comptes de la personne qui établit des comptes consolidés et ceux des entités comprises dans la consolidation. Une filiale non consolidée se trouve hors de ce périmètre : son commissaire aux comptes et ceux de la société mère restent tenus au secret entre eux."
+    "model_answer": "Oui. La loi libère du secret professionnel, les uns à l'égard des autres, les commissaires aux comptes de la personne qui établit des comptes consolidés et ceux des entités comprises dans la consolidation. Une filiale non consolidée se trouve hors de ce périmètre : son commissaire aux comptes et ceux de la société mère restent tenus au secret entre eux. Réserve : si la mère est la tête d'un petit groupe tenue de désigner un commissaire aux comptes (L.821-43 al. 1), ses commissaires aux comptes et ceux des sociétés qu'elle contrôle sont libérés du secret entre eux, même sans comptes consolidés (L.821-35)."
    },
    "explanation": "Les dérogations au secret sont d'interprétation stricte : périmètre de consolidation ou de combinaison, petits groupes, successeur (L.821-44), autorité de supervision (L.820-17), AMF, Tracfin, juge. Ni le client ni un dirigeant ne peuvent délier le commissaire aux comptes. Même logique pour l'expert-comptable, dont le client ne peut pas non plus lever le secret.",
    "reference": "C. com. L.821-35 (ex L.822-15 : levée du secret dans le périmètre de consolidation) ; C. pén. art. 226-13",
@@ -1160,16 +1161,16 @@
     "question": "Quelles obligations la réglementation professionnelle impose-t-elle à l'expert-comptable pour maintenir la compétence du cabinet et la sienne ?",
     "expected": [
      "NPMQ : politiques de ressources humaines incluant l'évaluation périodique des performances et compétences du personnel",
-     "Obligation de formation continue de l'expert-comptable (120 heures sur 3 ans, minimum 20 heures par an, alignée sur celle des commissaires aux comptes)",
+     "Obligation de formation continue de l'expert-comptable (D. 2012-432 art. 145 1°), appréciée lors du contrôle de qualité ; quantum recommandé par l'Ordre : 120 heures sur 3 ans, dont 20 heures par an (aucun texte ne le fixe, à vérifier)",
      "Actions de formation variées admises (formations suivies ou dispensées, colloques, publications, travaux de recherche…), pas seulement les formations attestées",
      "Pas d'obligation chiffrée légale pour les collaborateurs, mais obligation du cabinet de maintenir leurs compétences"
     ],
-    "model_answer": "La NPMQ impose au cabinet des procédures de ressources humaines comprenant l'évaluation périodique des compétences et des performances du personnel. L'expert-comptable est en outre personnellement tenu à une formation continue (120 heures sur trois ans, dont au moins 20 par an), satisfaite par des actions diverses et pas uniquement par des formations attestées ; il n'existe pas de quantum légal propre aux collaborateurs."
+    "model_answer": "La NPMQ impose au cabinet des procédures de ressources humaines comprenant l'évaluation périodique des compétences et des performances du personnel. L'expert-comptable est en outre personnellement tenu à une formation continue (l'Ordre recommande 120 heures sur trois ans, dont au moins 20 par an), satisfaite par des actions diverses et pas uniquement par des formations attestées ; il n'existe pas de quantum légal propre aux collaborateurs."
    },
-   "explanation": "La proposition sur l'évaluation du personnel découle directement de la composante « ressources humaines » de la NPMQ. Les autres sont fausses : aucun texte ne fixe 20 heures par an aux collaborateurs, et la formation prise en compte ne se limite pas aux formations attestées (enseignement, publications, groupes de travail comptent). Attention à l'évolution : l'obligation chiffrée de l'expert-comptable a été alignée sur celle du commissaire aux comptes (120 h/3 ans), ce qui a rendu obsolète un ancien distracteur de ce sujet.",
-   "reference": "NPMQ § 29 et A24 (ressources humaines : évaluation périodique du personnel) ; D. 2012-432 art. 145 1° ; pour comparaison, C. com. L.821-24, R.821-70 et A.821-46 (formation des commissaires aux comptes)",
+   "explanation": "La proposition sur l'évaluation du personnel découle directement de la composante « ressources humaines » de la NPMQ. Les autres sont fausses : aucun texte ne fixe 20 heures par an aux collaborateurs, et la formation prise en compte ne se limite pas aux formations attestées (enseignement, publications, groupes de travail comptent). Attention : pour l'expert-comptable, le quantum de 120 h sur 3 ans, dont 20 h par an, est une recommandation de l'Ordre qu'aucun texte ne fixe (à vérifier) ; pour le commissaire aux comptes, il est réglementaire (A.821-45).",
+   "reference": "NPMQ § 29 et A24 (ressources humaines : évaluation périodique du personnel) ; D. 2012-432 art. 145 1° ; pour comparaison, C. com. L.821-24, R.821-70, A.821-45 et A.821-46 (formation des commissaires aux comptes)",
    "confidence": "medium",
-   "update_note": "Le sujet d'origine comportait une proposition « 120 heures sur 3 ans incluant les heures CAC », supprimée ici car l'obligation de formation de l'expert-comptable a depuis été alignée sur ce quantum : vérifier la version en vigueur du règlement intérieur.",
+   "update_note": "Le sujet d'origine comportait une proposition « 120 heures sur 3 ans incluant les heures CAC », supprimée ici : ce quantum, recommandé par l'Ordre, n'est fixé ni par le décret 2012-432, ni par le règlement intérieur de 2024, ni par la NPMQ (texte de la recommandation à vérifier).",
    "session": "2018-11",
    "origFormat": "qcm"
   },
@@ -8049,7 +8050,7 @@
     ],
     "model_answer": "Le commissaire aux comptes exprime une assurance raisonnable, c'est-à-dire élevée mais non absolue, que les comptes pris dans leur ensemble ne comportent pas d'anomalies significatives. Elle repose sur la collecte d'éléments probants suffisants et appropriés selon une approche par les risques et se traduit par une opinion (certification sans réserve, avec réserve, refus ou impossibilité de certifier) sur la régularité, la sincérité et l'image fidèle des comptes."
    },
-   "explanation": "L'assurance ne peut être absolue en raison des limites inhérentes à l'audit : sondages, jugement professionnel, possibilité de fraude et de collusion. C'est pourquoi la mission ne consiste pas à garantir la viabilité ou la qualité de la gestion (C. com. L.821-55). L'expert-comptable délivre, en présentation ou en examen limité, une assurance modérée seulement.",
+   "explanation": "L'assurance ne peut être absolue en raison des limites inhérentes à l'audit : sondages, jugement professionnel, possibilité de fraude et de collusion. C'est pourquoi la mission ne consiste pas à garantir la viabilité ou la qualité de la gestion (C. com. L.821-55). L'expert-comptable délivre une assurance modérée en présentation ou en examen limité, et une assurance raisonnable en audit contractuel, qui n'est pas une certification légale.",
    "reference": "C. com. art. L.821-53, L.821-55, R.821-180 ; NEP 200 ; NP 2300 et 2400 pour le parallèle EC",
    "confidence": "high",
    "session": "2023-11",
@@ -8087,7 +8088,7 @@
    "explanation": "Le cadre et les orientations des contrôles sont définis par la H2A (C. com. L.820-1 I 5°), leur périodicité par la partie réglementaire (R.820-49) et leur contenu par R.820-45 (missions sélectionnées, système de contrôle qualité interne, autres missions et prestations). Les quatre modalités citées reprennent la typologie usuelle de l'autorité de supervision mais ne figurent pas sous cette forme dans le code : à vérifier. Le contrôle de qualité de l'Ordre (structurel/technique) relève d'une logique différente.",
    "reference": "C. com. L.820-1 I 5° et II, L.820-14, R.820-45 à R.820-49 ; règlement UE 537/2014 art. 26 ; conventions de délégation des contrôles non-EIP à la CNCC (arrêtés d'homologation des 19 mai 2023 et 2 juillet 2026)",
    "confidence": "low",
-   "update_note": "H3C → H2A au 1er janvier 2024 ; périodicité et contenu désormais aux articles R.820-45 à R.820-49 (ex R.821-26 et s.). Relecture : le terme « délégation » est exact pour les contrôles non-EIP (convention de délégation H3C-CNCC homologuée en 2017 et 2023, reconduite par la H2A en 2026) ; la mention d'un simple « concours » de la CNCC (2020-11-CAC-19) est à aligner. La typologie des quatre modalités reste à vérifier.",
+   "update_note": "H3C → H2A au 1er janvier 2024 ; périodicité et contenu désormais aux articles R.820-45 à R.820-49 (ex R.821-26 et s.). Relecture : le terme « délégation » est exact pour les contrôles non-EIP (convention de délégation H3C-CNCC homologuée en 2017 et 2023, reconduite par la H2A en 2026). La typologie des quatre modalités reste à vérifier.",
    "session": "2023-11",
    "origFormat": "qrc"
   },
@@ -9407,11 +9408,11 @@
      "Non, les honoraires sont libres",
      "Convenus par écrit avec le client, préalablement à la mission (lettre de mission)",
      "Équitables, juste rémunération du travail et du service rendu (diligences, difficulté, frais, notoriété)",
-     "Seules les AGC appliquent des barèmes fixés par leurs instances"
+     "Seules les AGC fixent leurs cotisations ou honoraires selon des règles ou barèmes de leurs instances dirigeantes"
     ],
     "model_answer": "Non. Les honoraires de l'expert-comptable sont fixés librement avec le client, par écrit et préalablement à la mission, en fonction de l'importance des diligences, de la difficulté, des frais exposés et de la notoriété du professionnel. Ils doivent être équitables et exclusifs de toute rémunération indirecte d'un tiers."
    },
-   "explanation": "Article 24 de l'ordonnance et article 158 du code de déontologie. Confusion classique : le barème d'heures (D.821-188, ex-R.823-12) concerne la certification des comptes par le CAC, avec dérogation devant le président de la CRCC. Les seules « barèmes » côté Ordre concernent les cotisations des AGC.",
+   "explanation": "Article 24 de l'ordonnance et article 158 du code de déontologie. Confusion classique : le barème d'heures (D.821-188, ex-R.823-12) concerne la certification des comptes par le CAC, avec dérogation devant le président de la CRCC. Côté Ordre, seules les AGC appliquent des barèmes : leurs cotisations ou honoraires sont fixés selon les règles ou barèmes déterminés par leurs instances dirigeantes (art. 158 al. 2).",
    "reference": "Ord. 45-2138 art. 24 ; D. 2012-432 art. 151 et 158",
    "confidence": "high",
    "session": "2024-11",
@@ -9712,7 +9713,7 @@
     ],
     "model_answer": "Le commissaire aux comptes doit suivre 120 heures de formation au cours de trois années consécutives, dont au moins 20 heures au cours d'une même année. Il déclare chaque année, au plus tard le 31 mars, les formations suivies auprès de la H2A ou de son délégataire. S'il n'a pas exercé pendant trois ans sans se former, il doit suivre une formation particulière de 40 heures avant d'accepter une mission."
    },
-   "explanation": "A.821-45 fixe la durée ; R.821-70 la déclaration annuelle ; R.821-71 la formation particulière (20 h programme CNCC + 20 h au moins de séminaires). Les manquements peuvent désormais faire l'objet de la procédure simplifiée de sanction. Côté EC, l'obligation de formation est aussi de 120 heures sur trois ans (règlement intérieur de l'Ordre), source fréquente de confusion sur le minimum annuel.",
+   "explanation": "A.821-45 fixe la durée ; R.821-70 la déclaration annuelle ; R.821-71 la formation particulière (20 h programme CNCC + 20 h au moins de séminaires). Les manquements peuvent désormais faire l'objet de la procédure simplifiée de sanction. Côté EC, le même quantum de 120 heures sur trois ans n'est qu'une recommandation de l'Ordre, qu'aucun texte ne fixe (ni le décret 2012-432, ni le règlement intérieur ; à vérifier), source fréquente de confusion.",
    "reference": "C. com. L.821-24, R.821-70, R.821-71, A.821-44 s. (ex-A.822-28-1 s.)",
    "confidence": "high",
    "update_note": "Articles recodifiés au 1er janvier 2024 (ex-L.822-4, R.822-21 s., A.822-28-1 s.).",
@@ -10464,7 +10465,7 @@
    "explanation": "L'article L.821-10, alinéa 2, dispose que le CAC « révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation » ; la profession comprenant désormais missions et prestations (L.821-2 et L.821-3), l'obligation ne se limite plus à la certification. L.821-9 punit de 5 ans et 75 000 € toute personne exerçant la profession de CAC qui ne révèle pas ces faits. Piège : ne pas confondre avec la déclaration de soupçon à Tracfin (LCB-FT), obligation distincte qui s'applique elle aussi à toutes les missions et prestations du CAC (CMF L.561-2 12° bis ; NEP 9605) ; l'expert-comptable n'a aucune obligation de révélation au procureur.",
    "reference": "C. com. L.821-10 (ex-L.823-12), L.821-9 (ex-L.820-7)",
    "confidence": "high",
-   "update_note": "Relecture : point tranché par le texte de L.821-10 (brochure CNCC « Code de commerce, partie législative », sept. 2024) : « à l'occasion de sa mission ou prestation ». L'affirmation contraire de data/SCHEMA.md (révélation limitée à la certification) est erronée.",
+   "update_note": "Relecture : point tranché par le texte de L.821-10 (brochure CNCC « Code de commerce, partie législative », sept. 2024) : « à l'occasion de sa mission ou prestation ». L'idée d'une révélation limitée à la certification est donc erronée.",
    "session": "2025-05",
    "origFormat": "qrc"
   },
@@ -11084,7 +11085,7 @@
    "explanation": "L.821-71. L'emprisonnement relève de la responsabilité pénale (ex. non-révélation de faits délictueux, informations mensongères : 5 ans et 75 000 €). Confusion EC/CAC : les EC encourent réprimande, blâme avec inscription au dossier, suspension, radiation.",
    "reference": "C. com. L.821-71 (ex-L.824-2), L.821-9",
    "confidence": "high",
-   "update_note": "Relecture : durée maximale de 3 ans confirmée (L.821-71 I 3° et II 2°, brochure CNCC sept. 2024 ; conforme à l'art. 30 bis de la directive 2006/43/CE) ; la mention « 5 ans » de data/SCHEMA.md est erronée (le délai de 5 ans de L.821-71 concerne la réitération pour la sanction pécuniaire).",
+   "update_note": "Relecture : durée maximale de 3 ans confirmée (L.821-71 I 3° et II 2°, brochure CNCC sept. 2024 ; conforme à l'art. 30 bis de la directive 2006/43/CE) ; une durée de 5 ans serait erronée (le délai de 5 ans de L.821-71 concerne la réitération pour la sanction pécuniaire).",
    "session": "2025-11",
    "origFormat": "qcm"
   },
@@ -11219,11 +11220,11 @@
      "60 membres",
      "Désignés pour 4 ans",
      "Comprenant les présidents des compagnies régionales (17) et des CAC élus",
-     "Moitié CAC exerçant des mandats EIP, moitié non-EIP (deux collèges de 30 sièges)"
+     "Moitié CAC exerçant des mandats EIP, moitié non-EIP (30 sièges par collège, présidents de CRCC compris)"
     ],
     "model_answer": "Le Conseil national compte soixante membres désignés pour quatre ans, comprenant les présidents des dix-sept compagnies régionales et des commissaires aux comptes élus, répartis à parité entre un collège EIP et un collège non-EIP."
    },
-   "explanation": "D.821-14 (ex-R.821-37) : 60 membres désignés pour 4 ans, comprenant l'ensemble des présidents de compagnies régionales (17 compagnies régionales depuis les regroupements de 2020) et des CAC élus, 30 sièges par collège. Le chiffre « 22 » concerne le conseil régional (22 membres lorsque la compagnie compte au moins 900 membres personnes physiques, D.821-29), non le conseil national.",
+   "explanation": "D.821-14 (ex-R.821-37) : 60 membres désignés pour 4 ans, comprenant l'ensemble des présidents de compagnies régionales (17 compagnies régionales depuis les regroupements opérés par les arrêtés des 31 janvier et 18 juin 2020) et des CAC élus, 30 sièges par collège, présidents de CRCC compris : chaque collège élit 30 CAC moins le nombre de présidents de sa catégorie. Le chiffre « 22 » concerne le conseil régional (22 membres lorsque la compagnie compte au moins 900 membres personnes physiques, D.821-29), non le conseil national.",
    "reference": "C. com. L.821-12, D.821-13, D.821-14 et D.821-29 ; décret 2020-667",
    "confidence": "high",
    "session": "2025-11",
@@ -11784,7 +11785,7 @@
    "explanation": "Lecture retenue : sanctions de L.821-71 (I 3° et II 2°). Lecture alternative possible : les délais de « viduité » (un CAC ne peut devenir dirigeant de l'entité contrôlée moins de trois ans après la fin de sa mission, L.821-32 ; un ancien dirigeant ou salarié ne peut en devenir CAC moins de cinq ans après, L.821-33). La suspension relève du vocabulaire EC.",
    "reference": "C. com. L.821-71 (ex-L.824-2) ; voir aussi L.821-32 et L.821-33",
    "confidence": "high",
-   "update_note": "Relecture : durée maximale de 3 ans confirmée par L.821-71 I 3° et II 2° (brochure CNCC sept. 2024) ; L.821-84 (dernier alinéa, information du CEAOB) qualifie lui-même ces deux mesures d'« interdictions temporaires ». La mention « 5 ans » de data/SCHEMA.md est erronée.",
+   "update_note": "Relecture : durée maximale de 3 ans confirmée par L.821-71 I 3° et II 2° (brochure CNCC sept. 2024) ; L.821-84 (dernier alinéa, information du CEAOB) qualifie lui-même ces deux mesures d'« interdictions temporaires ». Une durée de 5 ans serait erronée.",
    "session": "2026-05",
    "origFormat": "qrc"
   },

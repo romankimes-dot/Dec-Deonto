@@ -441,7 +441,7 @@
       "qcm": {
         "question": "Le dirigeant a détourné un bien de grande valeur de la société, puis l'a remboursé. Le commissaire aux comptes doit-il révéler ce fait au procureur de la République ?",
         "choices": [
-          "Oui : le fait est délictueux, significatif et délibéré ; le remboursement n'efface pas l'infraction consommée ni l'obligation de révéler",
+          "Oui : le fait est délictueux et frauduleux ; le remboursement n'efface ni l'infraction consommée ni l'obligation de révéler",
           "Non : le préjudice ayant été réparé par le remboursement, il n'existe plus de fait délictueux à révéler au procureur",
           "Non : la révélation ne concerne que les infractions ayant une incidence sur les comptes certifiés, ce qui n'est plus le cas après remboursement",
           "Oui, mais après avoir déclenché la procédure d'alerte, qui doit précéder la révélation au procureur"
@@ -451,13 +451,13 @@
       "qrc": {
         "expected": [
           "Oui",
-          "Fait délictueux (vol / abus de biens sociaux) significatif et délibéré, dont le commissaire aux comptes a connaissance",
+          "Fait délictueux (vol / abus de biens sociaux) dont le commissaire aux comptes a connaissance, sans seuil de gravité : seules les irrégularités manifestement non frauduleuses sont exclues",
           "Le remboursement ultérieur n'efface pas l'infraction consommée",
           "La non-révélation est elle-même un délit"
         ],
-        "model_answer": "Oui. Le commissaire aux comptes doit révéler au procureur les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation, dès lors qu'ils sont significatifs et délibérés. Le détournement d'un bien de grande valeur par le dirigeant remplit ces critères ; l'infraction est consommée au jour des faits et le remboursement postérieur ne l'efface pas. S'abstenir exposerait le commissaire aux comptes au délit de non-révélation."
+        "model_answer": "Oui. Le commissaire aux comptes doit révéler au procureur les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation, sans distinction tenant à leur gravité : seules les simples irrégularités ne procédant manifestement pas d'une intention frauduleuse en sont exclues. Le détournement d'un bien de grande valeur par le dirigeant est un fait délictueux ; l'infraction est consommée au jour des faits et le remboursement postérieur ne l'efface pas. S'abstenir exposerait le commissaire aux comptes au délit de non-révélation."
       },
-      "explanation": "L'obligation de révélation vise les faits délictueux dont le CAC a eu connaissance « à l'occasion de sa mission ou prestation » (L.821-10) ; la non-révélation est punie de cinq ans d'emprisonnement et 75 000 € d'amende (L.821-9). Le commissaire aux comptes n'a pas à qualifier précisément l'infraction ni à apprécier l'opportunité des poursuites ; la réparation ou le repentir du dirigeant sont sans effet sur l'obligation. Distinction avec l'expert-comptable, qui n'a aucune obligation de révélation au parquet, mais qui est tenu, comme le commissaire aux comptes, à la déclaration de soupçon à Tracfin.",
+      "explanation": "L'obligation de révélation vise les faits délictueux dont le CAC a eu connaissance « à l'occasion de sa mission ou prestation » (L.821-10) ; la non-révélation est punie de cinq ans d'emprisonnement et 75 000 € d'amende (L.821-9). Le commissaire aux comptes n'a pas à qualifier précisément l'infraction ni à apprécier l'opportunité des poursuites ; la réparation ou le repentir du dirigeant sont sans effet sur l'obligation. La circulaire du 18 avril 2014 a abandonné les critères « significatifs » et « délibérés » de la circulaire de 1985 : la régularisation peut seulement être signalée au parquet, en même temps que la révélation ou après. Distinction avec l'expert-comptable, qui n'a aucune obligation de révélation au parquet, mais qui est tenu, comme le commissaire aux comptes, à la déclaration de soupçon à Tracfin.",
       "reference": "C. com. L.821-10 (ex L.823-12, révélation des faits délictueux) ; L.821-9 (ex L.820-7, délit de non-révélation) ; NEP 240",
       "confidence": "high",
       "update_note": "Articles recodifiés au 1er janvier 2024 : L.823-12 est devenu L.821-10 et L.820-7 est devenu L.821-9 ; L.821-10 vise désormais les faits connus « à l'occasion de sa mission ou prestation »."
@@ -484,9 +484,10 @@
         "expected": [
           "Oui, le secret s'applique",
           "La levée légale du secret est limitée aux commissaires aux comptes de l'entité consolidante et des entités comprises dans la consolidation",
-          "Une filiale non consolidée est hors de ce périmètre"
+          "Une filiale non consolidée est hors de ce périmètre",
+          "Réserve : dans un petit groupe (tête tenue de désigner un CAC, L.821-43 al. 1), le secret est levé entre les CAC de la tête et ceux des sociétés qu'elle contrôle, même sans consolidation (L.821-35)"
         ],
-        "model_answer": "Oui. La loi ne libère du secret professionnel, les uns à l'égard des autres, que les commissaires aux comptes de la personne qui établit des comptes consolidés et ceux des entités comprises dans la consolidation. Une filiale non consolidée se trouve hors de ce périmètre : son commissaire aux comptes et ceux de la société mère restent tenus au secret entre eux."
+        "model_answer": "Oui. La loi libère du secret professionnel, les uns à l'égard des autres, les commissaires aux comptes de la personne qui établit des comptes consolidés et ceux des entités comprises dans la consolidation. Une filiale non consolidée se trouve hors de ce périmètre : son commissaire aux comptes et ceux de la société mère restent tenus au secret entre eux. Réserve : si la mère est la tête d'un petit groupe tenue de désigner un commissaire aux comptes (L.821-43 al. 1), ses commissaires aux comptes et ceux des sociétés qu'elle contrôle sont libérés du secret entre eux, même sans comptes consolidés (L.821-35)."
       },
       "explanation": "Les dérogations au secret sont d'interprétation stricte : périmètre de consolidation ou de combinaison, petits groupes, successeur (L.821-44), autorité de supervision (L.820-17), AMF, Tracfin, juge. Ni le client ni un dirigeant ne peuvent délier le commissaire aux comptes. Même logique pour l'expert-comptable, dont le client ne peut pas non plus lever le secret.",
       "reference": "C. com. L.821-35 (ex L.822-15 : levée du secret dans le périmètre de consolidation) ; C. pén. art. 226-13",

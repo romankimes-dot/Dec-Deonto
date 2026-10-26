@@ -180,7 +180,8 @@
 ## 10. Secret professionnel
 - **Obligation légale et réglementaire** (L.821-x, ex L.822-15 ; code de déontologie). Sa **violation** est punie par **C. pén. 226-13** : **1 an d'emprisonnement et 15 000 € d'amende**.
 - **Levées** (secret non opposable) :
-  - entre les **CAC de la société consolidante** et ceux des **sociétés consolidées**, **dans les deux sens**. **Pas** pour une **filiale non consolidée** ;
+  - entre les **CAC de la société consolidante** et ceux des **sociétés consolidées**, **dans les deux sens**. **Pas** pour une **filiale non consolidée**, sauf dans un **petit groupe** ;
+  - entre les **CAC de la tête d'un petit groupe** (tenue de désigner un CAC, L.821-43 al. 1) et ceux des **sociétés qu'elle contrôle** (L.233-3), **même sans comptes consolidés** (L.821-35) ;
   - entre **co-commissaires** ;
   - à l'égard de la **H2A** (contrôleurs, enquêteurs) : le secret ne leur est **pas opposable**, ni pour les missions **ni pour les prestations** ;
   - à l'égard de l'**AMF** (contrôles et enquêtes) et de l'**ACPR** ;

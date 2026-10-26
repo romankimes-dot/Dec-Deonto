@@ -156,9 +156,9 @@
    "src": ["la partie la plus diligente saisit le président de la CRCC, avant la mission ; il statue sous 15 jours", "recours sous 10 jours devant le président de la CNCC", "puis recours devant le bureau de la H2A", "puis devant le tribunal administratif"] },
 
  { "id": "institutions-24", "type": "vf", "prof": "CAC", "tags": ["cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
-   "title": "Les collèges nationaux", "statement": "Les membres du Conseil national de la CNCC qui ne sont pas présidents de CRCC sont élus par deux collèges nationaux de 30 sièges chacun.", "verdict": true,
-   "why": "Vrai : un collège pour les CAC d'**EIP**, un pour les CAC **sans mandat d'EIP**, chacun avec **30 sièges**.",
-   "src": ["les autres sont élus par deux collèges nationaux (CAC d'EIP / CAC sans mandat d'EIP), chacun ayant 30 sièges"] },
+   "title": "Les collèges nationaux", "statement": "Au Conseil national de la CNCC, chacun des deux collèges (CAC d'EIP, CAC sans mandat d'EIP) a 30 sièges, présidents de CRCC compris.", "verdict": true,
+   "why": "Vrai : **30 sièges par collège, présidents de CRCC compris**. Chaque collège élit 30 CAC, moins les présidents de CRCC de sa catégorie.",
+   "src": ["30 sièges par collège, présidents de CRCC compris", "Chaque collège national élit 30 CAC, moins le nombre de présidents de CRCC de sa catégorie"] },
 
  { "id": "institutions-25", "type": "vf", "prof": "CAC", "tags": ["cncc_crcc_organisation"], "fiche": "05-cac-exercice.md",
    "title": "Électeurs d'une CRCC", "statement": "Un CAC personne physique inscrit auprès de la CRCC est électeur au conseil régional, même s'il n'est pas à jour de ses cotisations.", "verdict": false,

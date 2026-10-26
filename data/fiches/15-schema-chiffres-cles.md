@@ -57,7 +57,7 @@ Disciplinaire | {?} Aucun délai trouvé | **6 ans**
 | **70 %** | Plafond des SACC d'une EIP (moyenne des honoraires d'audit sur 3 ans) | {CAC} |
 | **10 %** | Part du capital pour demander la nomination judiciaire d'un CAC (SARL, SAS, SA, SCA ; en SNC, tout associé) | {CAC} |
 | **5 %** | Part du capital pour demander le relèvement d'un CAC | {CAC} |
-| **120 h / 3 ans, 20 h par an** | Formation continue (CAC : A.821-45 ; pour l'EC, quantum {?}) | {EC} {CAC} |
+| **120 h / 3 ans, 20 h par an** | Formation continue (CAC : A.821-45 ; pour l'EC, recommandation de l'Ordre sans texte {?}) | {EC} {CAC} |
 
 ## Peines pénales
 

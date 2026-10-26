@@ -156,7 +156,7 @@ Rappel du format : réponses courtes, double correction, 40 points ramenés sur 
 |---|---|---|
 | Obligatoire ? | **Oui**, pour toute mission (code de déontologie, art. 151) ; une lettre peut couvrir plusieurs missions | **Oui** : NEP 210 pour la certification (première année du mandat, révisée si besoin) ; R.821-195 pour les autres missions et les prestations |
 | Contenu clé | Parties, **nature et étendue**, durée, **honoraires**, **répartition des obligations**, résiliation, **conditions générales** (partie intégrante) | Objectif et étendue de l'audit, **responsabilités** du CAC et de la direction, équipe, calendrier, **honoraires** |
-| Signataires | Le **client** et l'**EC** ; en société : **signature sociale** et **EC responsable** de la mission | Le **CAC** et le **représentant** de l'entité |
+| Signataires | Le **client** et l'**EC** ; en société : **signature sociale**, et celle de l'**EC responsable** de la mission {?} (à vérifier) | Le **CAC** et le **représentant** de l'entité |
 | Durée de la mission | Fixée par la lettre de mission | Fixée par la **loi** : **6 exercices** (3 en ALPE) |
 | Limiter sa responsabilité ? | **Oui** : plafond possible, prescription réduite jusqu'à **1 an** minimum | **Non** : mission légale, d'**ordre public** |
 
@@ -195,7 +195,7 @@ Rappel du format : réponses courtes, double correction, 40 points ramenés sur 
 | Autorités | **AMF** ; **Tracfin** ; administration fiscale (droit de communication, dans ses limites) | **AMF**, **ACPR**, **Tracfin** |
 | Justice | Audition ou témoignage en matière **pénale** ; défense de l'EC poursuivi | **Procureur** (révélation), juge d'instruction |
 | Entre professionnels | **Non levé** envers le **successeur** : l'EC restitue seulement les documents du client | Levé entre CAC de la **consolidante** et des **consolidées** (dans les deux sens), entre **co-commissaires** ; le **successeur** accède aux documents (L.821-44), sans levée écrite à L.821-35 |
-| Opposable | À la **CNIL** {?} (à vérifier) | Au **CAC** d'une filiale **non consolidée** |
+| Opposable | À la **CNIL** {?} (à vérifier) | Au **CAC** d'une filiale **non consolidée**, sauf **petit groupe** (L.821-35) |
 
 | Critère | Expert-comptable (EC) | Commissaire aux comptes (CAC) |
 |---|---|---|
@@ -361,7 +361,7 @@ Propositions (celles du sujet) :
 
 **Explication** : L.821-71. L'emprisonnement relève de la responsabilité pénale (ex. non-révélation de faits délictueux, informations mensongères : 5 ans et 75 000 €). Confusion EC/CAC : les EC encourent réprimande, blâme avec inscription au dossier, suspension, radiation.
 
-**Évolution depuis le sujet** : Relecture : durée maximale de 3 ans confirmée (L.821-71 I 3° et II 2°, brochure CNCC sept. 2024 ; conforme à l'art. 30 bis de la directive 2006/43/CE) ; la mention « 5 ans » de data/SCHEMA.md est erronée (le délai de 5 ans de L.821-71 concerne la réitération pour la sanction pécuniaire).
+**Évolution depuis le sujet** : Relecture : durée maximale de 3 ans confirmée (L.821-71 I 3° et II 2°, brochure CNCC sept. 2024 ; conforme à l'art. 30 bis de la directive 2006/43/CE) ; une durée de 5 ans serait erronée (le délai de 5 ans de L.821-71 concerne la réitération pour la sanction pécuniaire).
 
 ### Question 6 : EC, session 2023-11 (QRC), 2 pts, notion posée 2 fois aux annales
 

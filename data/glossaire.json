@@ -184,7 +184,7 @@
  {"id": "radiation-office", "terme": "Radiation d'office", "alias": [], "prof": ["ec"], "cat": "notion", "fiche": "13-schema-discipline.md",
   "def": "Radiation du tableau par le conseil régional pour cotisations (Ordre, CAVEC) impayées **2 ans sur 10**. Ce n'est **pas** une sanction disciplinaire."},
  {"id": "formation-continue", "terme": "Formation continue", "alias": [], "prof": ["ec", "cac"], "cat": "notion", "fiche": "15-schema-chiffres-cles.md",
-  "def": "**120 heures sur 3 ans**, dont au moins **20 heures par an**. Suivie par l'Ordre (EC) ou par la CNCC sur délégation de la H2A (CAC)."},
+  "def": "**120 heures sur 3 ans**, dont au moins **20 heures par an** : règle fixée par arrêté pour le CAC (A.821-45), simple recommandation de l'Ordre pour l'EC (à vérifier). Suivie par l'Ordre (EC) ou par la CNCC sur délégation de la H2A (CAC)."},
 
  {"id": "obligation-moyens", "terme": "Obligation de moyens", "alias": [], "prof": ["ec", "cac"], "cat": "notion", "fiche": "21-schema-responsabilites.md",
   "def": "Le professionnel s'engage à mettre en œuvre toutes les diligences, pas à atteindre un résultat. Le demandeur doit prouver une **faute**, un **préjudice** et un **lien de causalité**."},

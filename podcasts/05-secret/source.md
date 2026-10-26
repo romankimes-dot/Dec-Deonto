@@ -60,7 +60,7 @@ Arbre de décision (lire de haut en bas) :
 | Autorités | **AMF** ; **Tracfin** ; administration fiscale (droit de communication, dans ses limites) | **AMF**, **ACPR**, **Tracfin** |
 | Justice | Audition ou témoignage en matière **pénale** ; défense de l'EC poursuivi | **Procureur** (révélation), juge d'instruction |
 | Entre professionnels | **Non levé** envers le **successeur** : l'EC restitue seulement les documents du client | Levé entre CAC de la **consolidante** et des **consolidées** (dans les deux sens), entre **co-commissaires** ; le **successeur** accède aux documents (L.821-44), sans levée écrite à L.821-35 |
-| Opposable | À la **CNIL** {?} (à vérifier) | Au **CAC** d'une filiale **non consolidée** |
+| Opposable | À la **CNIL** {?} (à vérifier) | Au **CAC** d'une filiale **non consolidée**, sauf **petit groupe** (L.821-35) |
 
 #### LCB-FT : les deux normes
 
@@ -168,8 +168,19 @@ Arbre de décision (lire de haut en bas) :
 - Prononcées par la **chambre de discipline** : ord. **art. 53 bis**, qui renvoie au C. mon. fin. **L.561-36-3**.
 
 
+#### Pièges EC vs CAC
+- **Déclarant Tracfin** : pour le CAC, le **CAC signataire** déclare personnellement (NEP 9605 § 61) ; pour l'EC, c'est l'**EC en charge de la mission**, personnellement (C. mon. fin. R.561-23 IV, NPLAB § 47). Le **correspondant Tracfin** ne déclare pas.
+- **Norme anti-blanchiment** : NPLAB pour l'EC, **NEP 9605** pour le CAC.
+- **Niveaux de vigilance** : au cours de la relation, la NPLAB n'en prévoit que **2**, **standard et renforcée** ; elle reprend toutefois des **mesures d'identification simplifiées** (société cotée : pas d'identification du bénéficiaire effectif). Côté CAC, la NEP 9605 en retient **trois** : vigilance **simplifiée** (risque faible, par exemple société cotée), **standard** et **renforcée**.
+- **Secret** : il est d'ordre public pour les deux professions. Mais le CAC bénéficie de **levées spécifiques** (CAC de la consolidante et des consolidées, président du tribunal dans l'alerte, H2A, AMF, comité d'audit) qui n'existent pas pour l'EC. Le CAC **successeur** accède aux documents de son prédécesseur en vertu de **L.821-44**, pas d'une levée du secret écrite à L.821-35.
+- **Faits délictueux** : le CAC doit les **révéler au procureur** ; l'EC ne le doit pas.
+- **Publicité** : les deux professions interdisent le **comparatif** et le **dénigrement**. Le code CAC impose en plus de préciser les **modalités de détermination des honoraires** dans la sollicitation.
+- **Successeur** : l'EC envoie une **lettre d'information** à son prédécesseur et s'efforce d'obtenir le paiement de ses honoraires ; le CAC successeur **doit s'assurer auprès de son prédécesseur**, avant d'accepter, que le non-renouvellement ne vise pas à contourner la loi (code de déontologie CAC art. 26) ; le prédécesseur lui **donne accès** aux informations et documents pertinents (**L.821-44**). L.821-35 ne prévoit **aucune levée du secret** au profit du successeur.
+- **Honoraires au succès** : pour l'EC, ils sont interdits pour le monopole et pour les missions qui participent à la détermination de l'**assiette fiscale ou sociale** (ord. art. 24) ; pour le **CAC**, les honoraires **subordonnés au résultat** sont **interdits** pour toute mission ou prestation (code de déontologie CAC **art. 13**, titre I).
+
+
 #### À vérifier
-- **Liste exacte des levées du secret** de l'EC : la formule « audition pénale en qualité de témoin ou de suspect libre » est donnée comme levée par SCHEMA.md. L'opposabilité à la **CNIL** est déduite de l'annale 2025-11 Q4.
+- **Liste exacte des levées du secret** de l'EC : la formule « audition pénale en qualité de témoin ou de suspect libre » est donnée comme levée par des supports de révision, sans texte retrouvé. L'opposabilité à la **CNIL** est déduite de l'annale 2025-11 Q4.
 - **Cas où la lettre de l'art. 163 n'est pas obligatoire** (annale 2024-11 Q7).
 - **Référencement par une société commerciale non inscrite, notation par les clients, parrainage** : quelle pratique est interdite (annale 2025-11 Q2) ? La fiche retient le **comparatif** (« premier réseau »).
 
@@ -178,7 +189,8 @@ Arbre de décision (lire de haut en bas) :
 #### 10. Secret professionnel
 - **Obligation légale et réglementaire** (L.821-x, ex L.822-15 ; code de déontologie). Sa **violation** est punie par **C. pén. 226-13** : **1 an d'emprisonnement et 15 000 € d'amende**.
 - **Levées** (secret non opposable) :
-  - entre les **CAC de la société consolidante** et ceux des **sociétés consolidées**, **dans les deux sens**. **Pas** pour une **filiale non consolidée** ;
+  - entre les **CAC de la société consolidante** et ceux des **sociétés consolidées**, **dans les deux sens**. **Pas** pour une **filiale non consolidée**, sauf dans un **petit groupe** ;
+  - entre les **CAC de la tête d'un petit groupe** (tenue de désigner un CAC, L.821-43 al. 1) et ceux des **sociétés qu'elle contrôle** (L.233-3), **même sans comptes consolidés** (L.821-35) ;
   - entre **co-commissaires** ;
   - à l'égard de la **H2A** (contrôleurs, enquêteurs) : le secret ne leur est **pas opposable**, ni pour les missions **ni pour les prestations** ;
   - à l'égard de l'**AMF** (contrôles et enquêtes) et de l'**ACPR** ;
@@ -202,6 +214,16 @@ Arbre de décision (lire de haut en bas) :
 - **Déclaration de soupçon** : faite en principe par le **CAC signataire**, personne physique, à **Tracfin**. Elle est **confidentielle**.
 - Le CAC **ne peut pas démissionner** pour éviter de faire une déclaration de soupçon.
 - Les **contrôleurs** de la H2A (ou de la CNCC par délégation) **informent eux-mêmes Tracfin** des faits susceptibles de blanchiment découverts lors d'un contrôle (L.820-18).
+
+
+#### Pièges EC vs CAC
+- **Indépendance** : pour l'EC, c'est un principe général ; pour le CAC, il existe une **architecture précise** (situations à risque, sauvegardes, liens, réseau, services interdits).
+- **Services interdits** : il n'en existe **aucune liste** chez l'EC. Pour le CAC : la **liste UE** pour les EIP ; pour les non-EIP, le **risque d'autorévision** ou l'**indépendance compromise** sans sauvegarde possible (L.821-28 IV), la **non-immixtion** étant une règle distincte (L.821-54).
+- **Doute déontologique** : l'EC **consulte le CROEC** ; le CAC **saisit la H2A** pour avis.
+- **Successeur** : l'EC **informe** son prédécesseur (lettre art. 163) ; le CAC **doit s'assurer auprès de son prédécesseur** des motifs du non-renouvellement (art. 26), et le prédécesseur lui donne **accès aux documents** (L.821-44), sans levée du secret écrite à L.821-35.
+- **Déclarant Tracfin** : le **CAC signataire** chez le CAC (NEP 9605 § 61) ; l'**EC en charge de la mission**, personnellement, dans le cabinet d'EC (C. mon. fin. R.561-23 IV, NPLAB § 47). Le correspondant Tracfin ne déclare pas.
+- **Sollicitation** : chez le CAC, il faut **préciser les modalités des honoraires** ; les deux professions interdisent le comparatif et le dénigrement.
+- **Honoraires conditionnels** : **interdits** au CAC pour toute mission ou prestation (art. 13, titre I) ; possibles pour l'EC **hors monopole** et hors missions qui participent à la détermination de l'**assiette fiscale ou sociale** (ord. art. 24).
 
 ### Extrait de la fiche « Exercice de la profession de commissaire aux comptes »
 
@@ -236,6 +258,24 @@ Arbre de décision (lire de haut en bas) :
 - Le CAC **reste responsable**.
 - **Pas de délégation du mandat** à un autre CAC qui conduirait la mission à sa place : la mission est **intuitu personae**.
 - **Utilisation des travaux de l'expert-comptable** de l'entité : c'est **possible**. Le CAC **apprécie** ces travaux (compétence, indépendance, qualité) et **conserve l'entière responsabilité** de son opinion. Ce n'est **pas** une délégation.
+
+
+#### Pièges EC vs CAC
+- **Serment** : l'EC le prête devant le **conseil régional** ; le CAC devant le **premier président de la cour d'appel**.
+- **Inscription** : l'EC est inscrit au **tableau tenu par le CROEC** ; le CAC sur la **liste tenue par la H2A**.
+- **Nationalité** : aucune condition pour l'EC (ord. art. 3 II 1° abrogé) ; le CAC doit être Français, ressortissant de l'UE ou de l'EEE, ou d'un État qui admet les Français au contrôle légal des comptes (**L.821-14 1°**).
+- **Droits de vote** : **plus de 2/3** aux EC dans une société d'EC ; la **majorité** aux CAC dans une société de CAC.
+- **Honoraires** : ceux de l'EC sont libres, sans barème ; ceux du CAC suivent un **barème d'heures** en certification (ALPE comprise), avec un **taux horaire libre**.
+- **Conciliation** : chez l'EC, par le **président du CROEC** (honoraires, confrères) ; chez le CAC, par le **président de la CRCC** (co-commissaires, honoraires, barème).
+- **Révélation des faits délictueux** : obligation du **CAC seul**, en **mission comme en prestation** ; l'EC n'y est pas tenu.
+- **Durée** : la mission de l'EC dépend de la lettre de mission ; le mandat du CAC dure **6 exercices** (**3** en ALPE).
+- **Salariat** : l'EC peut être salarié chez un EC, une AGC ou un CAC ; le CAC chez un **CAC ou un EC**.
+
+
+#### À vérifier
+- **Seuils des CSE, des fonds de dotation et des partis politiques**.
+- **Augmentation de capital avec suppression du DPS** sans CAC : la désignation d'un CAC « à cet effet » est prévue par L.225-136 1° et L.225-138 II ; l'impossibilité d'y renoncer n'est pas écrite (annale 2024-11 Q15).
+- **Transposition de la directive Omnibus I** (2026/470) : texte français et nouveaux seuils, attendus au plus tard le 19 mars 2027.
 
 ## Questions d’annales de l’épisode (8)
 
@@ -328,18 +368,18 @@ Propositions (celles du sujet) :
 **Version QCM de la question** : Le dirigeant a détourné un bien de grande valeur de la société, puis l'a remboursé. Le commissaire aux comptes doit-il révéler ce fait au procureur de la République ?
 
 Propositions (rédigées pour l’application, pas celles du sujet) :
-- A. Oui : le fait est délictueux, significatif et délibéré ; le remboursement n'efface pas l'infraction consommée ni l'obligation de révéler
+- A. Oui : le fait est délictueux et frauduleux ; le remboursement n'efface ni l'infraction consommée ni l'obligation de révéler
 - B. Non : le préjudice ayant été réparé par le remboursement, il n'existe plus de fait délictueux à révéler au procureur
 - C. Non : la révélation ne concerne que les infractions ayant une incidence sur les comptes certifiés, ce qui n'est plus le cas après remboursement
 - D. Oui, mais après avoir déclenché la procédure d'alerte, qui doit précéder la révélation au procureur
 
-**Bonne réponse** : A. Oui : le fait est délictueux, significatif et délibéré ; le remboursement n'efface pas l'infraction consommée ni l'obligation de révéler
+**Bonne réponse** : A. Oui : le fait est délictueux et frauduleux ; le remboursement n'efface ni l'infraction consommée ni l'obligation de révéler
 
-**Réponse courte attendue** : Oui. Le commissaire aux comptes doit révéler au procureur les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation, dès lors qu'ils sont significatifs et délibérés. Le détournement d'un bien de grande valeur par le dirigeant remplit ces critères ; l'infraction est consommée au jour des faits et le remboursement postérieur ne l'efface pas. S'abstenir exposerait le commissaire aux comptes au délit de non-révélation.
+**Réponse courte attendue** : Oui. Le commissaire aux comptes doit révéler au procureur les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation, sans distinction tenant à leur gravité : seules les simples irrégularités ne procédant manifestement pas d'une intention frauduleuse en sont exclues. Le détournement d'un bien de grande valeur par le dirigeant est un fait délictueux ; l'infraction est consommée au jour des faits et le remboursement postérieur ne l'efface pas. S'abstenir exposerait le commissaire aux comptes au délit de non-révélation.
 
-Éléments attendus : Oui ; Fait délictueux (vol / abus de biens sociaux) significatif et délibéré, dont le commissaire aux comptes a connaissance ; Le remboursement ultérieur n'efface pas l'infraction consommée ; La non-révélation est elle-même un délit
+Éléments attendus : Oui ; Fait délictueux (vol / abus de biens sociaux) dont le commissaire aux comptes a connaissance, sans seuil de gravité : seules les irrégularités manifestement non frauduleuses sont exclues ; Le remboursement ultérieur n'efface pas l'infraction consommée ; La non-révélation est elle-même un délit
 
-**Explication** : L'obligation de révélation vise les faits délictueux dont le CAC a eu connaissance « à l'occasion de sa mission ou prestation » (L.821-10) ; la non-révélation est punie de cinq ans d'emprisonnement et 75 000 € d'amende (L.821-9). Le commissaire aux comptes n'a pas à qualifier précisément l'infraction ni à apprécier l'opportunité des poursuites ; la réparation ou le repentir du dirigeant sont sans effet sur l'obligation. Distinction avec l'expert-comptable, qui n'a aucune obligation de révélation au parquet, mais qui est tenu, comme le commissaire aux comptes, à la déclaration de soupçon à Tracfin.
+**Explication** : L'obligation de révélation vise les faits délictueux dont le CAC a eu connaissance « à l'occasion de sa mission ou prestation » (L.821-10) ; la non-révélation est punie de cinq ans d'emprisonnement et 75 000 € d'amende (L.821-9). Le commissaire aux comptes n'a pas à qualifier précisément l'infraction ni à apprécier l'opportunité des poursuites ; la réparation ou le repentir du dirigeant sont sans effet sur l'obligation. La circulaire du 18 avril 2014 a abandonné les critères « significatifs » et « délibérés » de la circulaire de 1985 : la régularisation peut seulement être signalée au parquet, en même temps que la révélation ou après. Distinction avec l'expert-comptable, qui n'a aucune obligation de révélation au parquet, mais qui est tenu, comme le commissaire aux comptes, à la déclaration de soupçon à Tracfin.
 
 **Évolution depuis le sujet** : Articles recodifiés au 1er janvier 2024 : L.823-12 est devenu L.821-10 et L.820-7 est devenu L.821-9 ; L.821-10 vise désormais les faits connus « à l'occasion de sa mission ou prestation ».
 
@@ -387,4 +427,4 @@ Propositions (rédigées pour l’application, pas celles du sujet) :
 
 **Explication** : L'article L.821-10, alinéa 2, dispose que le CAC « révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation » ; la profession comprenant désormais missions et prestations (L.821-2 et L.821-3), l'obligation ne se limite plus à la certification. L.821-9 punit de 5 ans et 75 000 € toute personne exerçant la profession de CAC qui ne révèle pas ces faits. Piège : ne pas confondre avec la déclaration de soupçon à Tracfin (LCB-FT), obligation distincte qui s'applique elle aussi à toutes les missions et prestations du CAC (CMF L.561-2 12° bis ; NEP 9605) ; l'expert-comptable n'a aucune obligation de révélation au procureur.
 
-**Évolution depuis le sujet** : Relecture : point tranché par le texte de L.821-10 (brochure CNCC « Code de commerce, partie législative », sept. 2024) : « à l'occasion de sa mission ou prestation ». L'affirmation contraire de data/SCHEMA.md (révélation limitée à la certification) est erronée.
+**Évolution depuis le sujet** : Relecture : point tranché par le texte de L.821-10 (brochure CNCC « Code de commerce, partie législative », sept. 2024) : « à l'occasion de sa mission ou prestation ». L'idée d'une révélation limitée à la certification est donc erronée.

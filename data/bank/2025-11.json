@@ -457,7 +457,7 @@
       "explanation": "L.821-71. L'emprisonnement relève de la responsabilité pénale (ex. non-révélation de faits délictueux, informations mensongères : 5 ans et 75 000 €). Confusion EC/CAC : les EC encourent réprimande, blâme avec inscription au dossier, suspension, radiation.",
       "reference": "C. com. L.821-71 (ex-L.824-2), L.821-9",
       "confidence": "high",
-      "update_note": "Relecture : durée maximale de 3 ans confirmée (L.821-71 I 3° et II 2°, brochure CNCC sept. 2024 ; conforme à l'art. 30 bis de la directive 2006/43/CE) ; la mention « 5 ans » de data/SCHEMA.md est erronée (le délai de 5 ans de L.821-71 concerne la réitération pour la sanction pécuniaire)."
+      "update_note": "Relecture : durée maximale de 3 ans confirmée (L.821-71 I 3° et II 2°, brochure CNCC sept. 2024 ; conforme à l'art. 30 bis de la directive 2006/43/CE) ; une durée de 5 ans serait erronée (le délai de 5 ans de L.821-71 concerne la réitération pour la sanction pécuniaire)."
     },
     {
       "id": "2025-11-CAC-16",
@@ -566,11 +566,11 @@
           "60 membres",
           "Désignés pour 4 ans",
           "Comprenant les présidents des compagnies régionales (17) et des CAC élus",
-          "Moitié CAC exerçant des mandats EIP, moitié non-EIP (deux collèges de 30 sièges)"
+          "Moitié CAC exerçant des mandats EIP, moitié non-EIP (30 sièges par collège, présidents de CRCC compris)"
         ],
         "model_answer": "Le Conseil national compte soixante membres désignés pour quatre ans, comprenant les présidents des dix-sept compagnies régionales et des commissaires aux comptes élus, répartis à parité entre un collège EIP et un collège non-EIP."
       },
-      "explanation": "D.821-14 (ex-R.821-37) : 60 membres désignés pour 4 ans, comprenant l'ensemble des présidents de compagnies régionales (17 compagnies régionales depuis les regroupements de 2020) et des CAC élus, 30 sièges par collège. Le chiffre « 22 » concerne le conseil régional (22 membres lorsque la compagnie compte au moins 900 membres personnes physiques, D.821-29), non le conseil national.",
+      "explanation": "D.821-14 (ex-R.821-37) : 60 membres désignés pour 4 ans, comprenant l'ensemble des présidents de compagnies régionales (17 compagnies régionales depuis les regroupements opérés par les arrêtés des 31 janvier et 18 juin 2020) et des CAC élus, 30 sièges par collège, présidents de CRCC compris : chaque collège élit 30 CAC moins le nombre de présidents de sa catégorie. Le chiffre « 22 » concerne le conseil régional (22 membres lorsque la compagnie compte au moins 900 membres personnes physiques, D.821-29), non le conseil national.",
       "reference": "C. com. L.821-12, D.821-13, D.821-14 et D.821-29 ; décret 2020-667",
       "confidence": "high"
     },

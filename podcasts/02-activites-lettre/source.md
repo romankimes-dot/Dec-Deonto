@@ -74,7 +74,7 @@ Arbre de décision (lire de haut en bas) :
 |---|---|---|
 | Obligatoire ? | **Oui**, pour toute mission (code de déontologie, art. 151) ; une lettre peut couvrir plusieurs missions | **Oui** : NEP 210 pour la certification (première année du mandat, révisée si besoin) ; R.821-195 pour les autres missions et les prestations |
 | Contenu clé | Parties, **nature et étendue**, durée, **honoraires**, **répartition des obligations**, résiliation, **conditions générales** (partie intégrante) | Objectif et étendue de l'audit, **responsabilités** du CAC et de la direction, équipe, calendrier, **honoraires** |
-| Signataires | Le **client** et l'**EC** ; en société : **signature sociale** et **EC responsable** de la mission | Le **CAC** et le **représentant** de l'entité |
+| Signataires | Le **client** et l'**EC** ; en société : **signature sociale**, et celle de l'**EC responsable** de la mission {?} (à vérifier) | Le **CAC** et le **représentant** de l'entité |
 | Durée de la mission | Fixée par la lettre de mission | Fixée par la **loi** : **6 exercices** (3 en ALPE) |
 | Limiter sa responsabilité ? | **Oui** : plafond possible, prescription réduite jusqu'à **1 an** minimum | **Non** : mission légale, d'**ordre public** |
 
@@ -202,7 +202,7 @@ Arbre de décision (lire de haut en bas) :
 | Situation | Signataires |
 |---|---|
 | EC individuel | **EC** et **client** |
-| Société d'EC | **Signature sociale** de la structure, **EC responsable de la mission** et **client** |
+| Société d'EC | **Signature sociale** de la structure et **client** ; signature personnelle de l'**EC responsable de la mission** en plus {?} (à vérifier) |
 | Rapport ou attestation (ex. présentation) en société | **Signature sociale** et **signature technique** de l'EC responsable |
 
 ##### Résiliation et indemnité
@@ -254,8 +254,8 @@ Arbre de décision (lire de haut en bas) :
 
 
 #### À vérifier
-- **Signatures de la lettre de mission en société** : faut-il la signature sociale **et** celle de l'EC responsable, ou seulement celle de l'EC ? Annales 2018-11 Q7 et 2022-11 Q1.
-- **Formation continue EC** : quantum exact (120 h / 3 ans, 20 h par an ou 40 h par an en moyenne) et texte (norme formation du CNOEC) ; ce quantum ne figure ni dans le règlement intérieur de 2024 ni dans le référentiel normatif 2022.
+- **Signatures de la lettre de mission en société** : faut-il, outre la signature sociale, celle de l'EC responsable ? L'art. 12 de l'ordonnance exige la signature personnelle de l'EC et le visa ou la signature sociale pour les **travaux** ; l'art. 151 du décret 2012-432 ne dit pas qui signe le contrat. Les annales 2018-11 Q7 et 2022-11 Q1 ne retiennent pas la même réponse.
+- **Formation continue EC** : le quantum de 120 h sur 3 ans, dont 20 h par an, est donné par les conseils régionaux comme une recommandation de l'Ordre inspirée de la norme IES 7 de l'IFAC ; il ne figure ni dans le décret 2012-432, ni dans le règlement intérieur de 2024, ni dans la NPMQ, ni dans le référentiel normatif 2022. Texte de la recommandation non lu.
 
 ### Extrait de la fiche « Déontologie de l'expert-comptable »
 
@@ -364,7 +364,7 @@ Arbre de décision (lire de haut en bas) :
 
 
 #### À vérifier
-- **Liste exacte des levées du secret** de l'EC : la formule « audition pénale en qualité de témoin ou de suspect libre » est donnée comme levée par SCHEMA.md. L'opposabilité à la **CNIL** est déduite de l'annale 2025-11 Q4.
+- **Liste exacte des levées du secret** de l'EC : la formule « audition pénale en qualité de témoin ou de suspect libre » est donnée comme levée par des supports de révision, sans texte retrouvé. L'opposabilité à la **CNIL** est déduite de l'annale 2025-11 Q4.
 - **Cas où la lettre de l'art. 163 n'est pas obligatoire** (annale 2024-11 Q7).
 - **Référencement par une société commerciale non inscrite, notation par les clients, parrainage** : quelle pratique est interdite (annale 2025-11 Q2) ? La fiche retient le **comparatif** (« premier réseau »).
 
@@ -402,6 +402,24 @@ Arbre de décision (lire de haut en bas) :
 - **Objet** : définir les **modalités** de la mission et **demander l'accord** de l'entité sur son contenu (§ 2).
 - **Contenu** (§ 6) : **objectif et étendue** du contrôle légal, **calendrier**, répartition entre co-commissaires, **signataires**, recours à des experts, obligations de communication de l'entité, **budget d'honoraires** et conditions de facturation.
 - L'entité **accuse réception** et **confirme son accord** ; tout désaccord est consigné au dossier (§ 8).
+
+
+#### Pièges EC vs CAC
+- **Serment** : l'EC le prête devant le **conseil régional** ; le CAC devant le **premier président de la cour d'appel**.
+- **Inscription** : l'EC est inscrit au **tableau tenu par le CROEC** ; le CAC sur la **liste tenue par la H2A**.
+- **Nationalité** : aucune condition pour l'EC (ord. art. 3 II 1° abrogé) ; le CAC doit être Français, ressortissant de l'UE ou de l'EEE, ou d'un État qui admet les Français au contrôle légal des comptes (**L.821-14 1°**).
+- **Droits de vote** : **plus de 2/3** aux EC dans une société d'EC ; la **majorité** aux CAC dans une société de CAC.
+- **Honoraires** : ceux de l'EC sont libres, sans barème ; ceux du CAC suivent un **barème d'heures** en certification (ALPE comprise), avec un **taux horaire libre**.
+- **Conciliation** : chez l'EC, par le **président du CROEC** (honoraires, confrères) ; chez le CAC, par le **président de la CRCC** (co-commissaires, honoraires, barème).
+- **Révélation des faits délictueux** : obligation du **CAC seul**, en **mission comme en prestation** ; l'EC n'y est pas tenu.
+- **Durée** : la mission de l'EC dépend de la lettre de mission ; le mandat du CAC dure **6 exercices** (**3** en ALPE).
+- **Salariat** : l'EC peut être salarié chez un EC, une AGC ou un CAC ; le CAC chez un **CAC ou un EC**.
+
+
+#### À vérifier
+- **Seuils des CSE, des fonds de dotation et des partis politiques**.
+- **Augmentation de capital avec suppression du DPS** sans CAC : la désignation d'un CAC « à cet effet » est prévue par L.225-136 1° et L.225-138 II ; l'impossibilité d'y renoncer n'est pas écrite (annale 2024-11 Q15).
+- **Transposition de la directive Omnibus I** (2026/470) : texte français et nouveaux seuils, attendus au plus tard le 19 mars 2027.
 
 ## Questions d’annales de l’épisode (10)
 

@@ -50,7 +50,7 @@
 - **Aucune condition de nationalité** : le 1° de l'art. 3 II, qui l'imposait, est **abrogé**.
 
 ### Serment
-- Prêté **devant le conseil régional** de l'Ordre lors de l'inscription.
+- Prêté **devant le conseil régional** de l'Ordre **dans les six mois de l'inscription** au tableau (décret 2012-432, art. 143).
 - Thèmes : exercer avec **conscience et probité**, **respecter et faire respecter les lois** dans ses travaux.
 
 ### Le tableau
@@ -146,7 +146,7 @@
 | Situation | Signataires |
 |---|---|
 | EC individuel | **EC** et **client** |
-| Société d'EC | **Signature sociale** de la structure, **EC responsable de la mission** et **client** |
+| Société d'EC | **Signature sociale** de la structure et **client** ; signature personnelle de l'**EC responsable de la mission** en plus {?} |
 | Rapport ou attestation (ex. présentation) en société | **Signature sociale** et **signature technique** de l'EC responsable |
 
 ### Résiliation et indemnité
@@ -269,7 +269,7 @@
 | **Accountancy Europe** (ex-FEE) | Fédération européenne |
 
 ## 13. Formation continue (EC)
-- Elle est **obligatoire** : en principe **120 heures sur 3 ans**, avec au moins **20 heures par an**. Les heures de formation CAC sont prises en compte.
+- Elle est **obligatoire** (décret 2012-432, **art. 145 1°** : compléter et mettre à jour ses connaissances). Le quantum de **120 heures sur 3 ans**, avec au moins **20 heures par an**, est une **recommandation de l'Ordre**, fixée par aucun texte (ni le décret, ni le règlement intérieur de 2024, ni la NPMQ) {?}. Les heures de formation CAC sont prises en compte.
 - Son respect est vérifié lors du **contrôle de qualité**. Les actions retenues ne se limitent **pas** aux formations attestées : enseignement dispensé, colloques, publications et travaux techniques comptent aussi, dans certaines limites (annale 2018-11 Q10 ; pour le CAC, A.821-46).
 
 ## Pièges EC vs CAC
@@ -285,5 +285,5 @@
 - **Activités commerciales accessoires** : elles sont ouvertes à l'**EC** ; un CAC qui n'est pas EC n'y a pas accès.
 
 ## À vérifier
-- **Signatures de la lettre de mission en société** : faut-il la signature sociale **et** celle de l'EC responsable, ou seulement celle de l'EC ? Annales 2018-11 Q7 et 2022-11 Q1.
-- **Formation continue EC** : quantum exact (120 h / 3 ans, 20 h par an ou 40 h par an en moyenne) et texte (norme formation du CNOEC) ; ce quantum ne figure ni dans le règlement intérieur de 2024 ni dans le référentiel normatif 2022.
+- **Signatures de la lettre de mission en société** : faut-il, outre la signature sociale, celle de l'EC responsable ? L'art. 12 de l'ordonnance exige la signature personnelle de l'EC et le visa ou la signature sociale pour les **travaux** ; l'art. 151 du décret 2012-432 ne dit pas qui signe le contrat. Les annales 2018-11 Q7 et 2022-11 Q1 ne retiennent pas la même réponse.
+- **Formation continue EC** : le quantum de 120 h sur 3 ans, dont 20 h par an, est donné par les conseils régionaux comme une recommandation de l'Ordre inspirée de la norme IES 7 de l'IFAC ; il ne figure ni dans le décret 2012-432, ni dans le règlement intérieur de 2024, ni dans la NPMQ, ni dans le référentiel normatif 2022. Texte de la recommandation non lu.

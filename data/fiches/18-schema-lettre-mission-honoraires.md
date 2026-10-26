@@ -9,7 +9,7 @@ questions: EC:lettre_mission EC:honoraires CAC:honoraires_bareme CAC:lettre_miss
 ```vs
 Obligatoire ? | **Oui**, pour toute mission (code de déontologie, art. 151) ; une lettre peut couvrir plusieurs missions | **Oui** : NEP 210 pour la certification (première année du mandat, révisée si besoin) ; R.821-195 pour les autres missions et les prestations
 Contenu clé | Parties, **nature et étendue**, durée, **honoraires**, **répartition des obligations**, résiliation, **conditions générales** (partie intégrante) | Objectif et étendue de l'audit, **responsabilités** du CAC et de la direction, équipe, calendrier, **honoraires**
-Signataires | Le **client** et l'**EC** ; en société : **signature sociale** et **EC responsable** de la mission | Le **CAC** et le **représentant** de l'entité
+Signataires | Le **client** et l'**EC** ; en société : **signature sociale**, et celle de l'**EC responsable** de la mission {?} | Le **CAC** et le **représentant** de l'entité
 Durée de la mission | Fixée par la lettre de mission | Fixée par la **loi** : **6 exercices** (3 en ALPE)
 Limiter sa responsabilité ? | **Oui** : plafond possible, prescription réduite jusqu'à **1 an** minimum | **Non** : mission légale, d'**ordre public**
 ```

@@ -80,7 +80,7 @@ Le jury n'exige ni les numéros d'articles ni le quantum des sanctions. Les **se
 | **70 %** | Plafond des SACC d'une EIP (moyenne des honoraires d'audit sur 3 ans) | [CAC] |
 | **10 %** | Part du capital pour demander la nomination judiciaire d'un CAC (SARL, SAS, SA, SCA ; en SNC, tout associé) | [CAC] |
 | **5 %** | Part du capital pour demander le relèvement d'un CAC | [CAC] |
-| **120 h / 3 ans, 20 h par an** | Formation continue (CAC : A.821-45 ; pour l'EC, quantum {?} (à vérifier)) | [EC] [CAC] |
+| **120 h / 3 ans, 20 h par an** | Formation continue (CAC : A.821-45 ; pour l'EC, recommandation de l'Ordre sans texte {?} (à vérifier)) | [EC] [CAC] |
 
 #### Peines pénales
 
@@ -236,6 +236,6 @@ Propositions (rédigées pour l’application, pas celles du sujet) :
 
 Éléments attendus : 120 heures au cours de trois années consécutives ; Au moins 20 heures au cours d'une même année ; Déclaration annuelle avant le 31 mars auprès de la H2A ou de son délégataire (CNCC), justificatifs conservés 6 ans ; Formation particulière de 40 heures (dans les 18 mois) pour le CAC n'ayant pas exercé depuis 3 ans
 
-**Explication** : A.821-45 fixe la durée ; R.821-70 la déclaration annuelle ; R.821-71 la formation particulière (20 h programme CNCC + 20 h au moins de séminaires). Les manquements peuvent désormais faire l'objet de la procédure simplifiée de sanction. Côté EC, l'obligation de formation est aussi de 120 heures sur trois ans (règlement intérieur de l'Ordre), source fréquente de confusion sur le minimum annuel.
+**Explication** : A.821-45 fixe la durée ; R.821-70 la déclaration annuelle ; R.821-71 la formation particulière (20 h programme CNCC + 20 h au moins de séminaires). Les manquements peuvent désormais faire l'objet de la procédure simplifiée de sanction. Côté EC, le même quantum de 120 heures sur trois ans n'est qu'une recommandation de l'Ordre, qu'aucun texte ne fixe (ni le décret 2012-432, ni le règlement intérieur ; à vérifier), source fréquente de confusion.
 
 **Évolution depuis le sujet** : Articles recodifiés au 1er janvier 2024 (ex-L.822-4, R.822-21 s., A.822-28-1 s.).

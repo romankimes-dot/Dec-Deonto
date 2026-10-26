@@ -231,7 +231,7 @@ Arbre de décision (lire de haut en bas) :
 - **Aucune condition de nationalité** : le 1° de l'art. 3 II, qui l'imposait, est **abrogé**.
 
 ##### Serment
-- Prêté **devant le conseil régional** de l'Ordre lors de l'inscription.
+- Prêté **devant le conseil régional** de l'Ordre **dans les six mois de l'inscription** au tableau (décret 2012-432, art. 143).
 - Thèmes : exercer avec **conscience et probité**, **respecter et faire respecter les lois** dans ses travaux.
 
 ##### Le tableau
@@ -335,8 +335,8 @@ Arbre de décision (lire de haut en bas) :
 
 
 #### À vérifier
-- **Signatures de la lettre de mission en société** : faut-il la signature sociale **et** celle de l'EC responsable, ou seulement celle de l'EC ? Annales 2018-11 Q7 et 2022-11 Q1.
-- **Formation continue EC** : quantum exact (120 h / 3 ans, 20 h par an ou 40 h par an en moyenne) et texte (norme formation du CNOEC) ; ce quantum ne figure ni dans le règlement intérieur de 2024 ni dans le référentiel normatif 2022.
+- **Signatures de la lettre de mission en société** : faut-il, outre la signature sociale, celle de l'EC responsable ? L'art. 12 de l'ordonnance exige la signature personnelle de l'EC et le visa ou la signature sociale pour les **travaux** ; l'art. 151 du décret 2012-432 ne dit pas qui signe le contrat. Les annales 2018-11 Q7 et 2022-11 Q1 ne retiennent pas la même réponse.
+- **Formation continue EC** : le quantum de 120 h sur 3 ans, dont 20 h par an, est donné par les conseils régionaux comme une recommandation de l'Ordre inspirée de la norme IES 7 de l'IFAC ; il ne figure ni dans le décret 2012-432, ni dans le règlement intérieur de 2024, ni dans la NPMQ, ni dans le référentiel normatif 2022. Texte de la recommandation non lu.
 
 ### Extrait de la fiche « Exercice de la profession de commissaire aux comptes »
 
@@ -388,11 +388,12 @@ Arbre de décision (lire de haut en bas) :
 ##### Compagnie nationale des commissaires aux comptes (CNCC)
 - **Établissement d'utilité publique** doté de la personnalité morale, placé **auprès du garde des Sceaux**.
 - Elle **représente la profession**, concourt au **bon exercice**, à la **surveillance** et à la **défense** des intérêts, et assure la **formation**.
-- **Conseil national** : **60 membres** désignés pour **4 ans**, **présidents des CRCC compris** ; les autres sont **élus par deux collèges nationaux** (CAC d'EIP / CAC sans mandat d'EIP), chacun ayant 30 sièges (D.821-14).
+- **Conseil national** : **60 membres** désignés pour **4 ans**, comprenant **tous les présidents de CRCC** et des **CAC élus** ; **moitié** CAC d'EIP, **moitié** CAC sans mandat d'EIP : **30 sièges par collège, présidents de CRCC compris**. Chaque collège national élit 30 CAC, moins le nombre de présidents de CRCC de sa catégorie (D.821-14).
 - Il élit un **président** et un **bureau**.
 
 ##### Compagnies régionales (CRCC)
-- Elles sont établies dans le ressort des **cours d'appel**, ou après regroupement.
+- Elles sont établies dans le ressort des **cours d'appel**, ou après regroupement par le garde des Sceaux (L.821-12) : **17 CRCC** depuis le **1er novembre 2020** (arrêtés des 31 janvier et 18 juin 2020), contre 33 auparavant.
+- « **22** » est l'effectif maximal d'un **conseil régional** (au moins 900 membres personnes physiques, D.821-29 4°), non un nombre de compagnies (annale 2025-11 Q19).
 - **Électeurs** au conseil régional : les **CAC personnes physiques inscrits** auprès de la CRCC et **à jour de leurs cotisations**.
 - **Éligibles** : les **personnes physiques** à **jour de leurs cotisations** et **exerçant la profession de CAC au 30 juin de l'année d'expiration des mandats** ; le président doit exercer au moins une **mission de certification** à cette date (D.821-31 II).
 - **Les sociétés ne sont ni électrices ni éligibles**.
@@ -438,8 +439,6 @@ Arbre de décision (lire de haut en bas) :
 
 
 #### À vérifier
-- **Nombre de CRCC** (17 selon le site de la CNCC, aucun texte lu) dans l'annale 2025-11 Q19 ; « 22 » est l'effectif maximal d'un conseil régional (D.821-29 4°).
-- **Petit groupe** : le CAC de la tête de groupe peut-il obtenir des informations des CAC des filiales significatives (annale 2025-05 Q15) ? Texte exact.
 - **Seuils des CSE, des fonds de dotation et des partis politiques**.
 - **Augmentation de capital avec suppression du DPS** sans CAC : la désignation d'un CAC « à cet effet » est prévue par L.225-136 1° et L.225-138 II ; l'impossibilité d'y renoncer n'est pas écrite (annale 2024-11 Q15).
 - **Transposition de la directive Omnibus I** (2026/470) : texte français et nouveaux seuils, attendus au plus tard le 19 mars 2027.
@@ -585,9 +584,9 @@ Propositions (celles du sujet) :
 
 **Réponse courte attendue** : Le Conseil national compte soixante membres désignés pour quatre ans, comprenant les présidents des dix-sept compagnies régionales et des commissaires aux comptes élus, répartis à parité entre un collège EIP et un collège non-EIP.
 
-Éléments attendus : 60 membres ; Désignés pour 4 ans ; Comprenant les présidents des compagnies régionales (17) et des CAC élus ; Moitié CAC exerçant des mandats EIP, moitié non-EIP (deux collèges de 30 sièges)
+Éléments attendus : 60 membres ; Désignés pour 4 ans ; Comprenant les présidents des compagnies régionales (17) et des CAC élus ; Moitié CAC exerçant des mandats EIP, moitié non-EIP (30 sièges par collège, présidents de CRCC compris)
 
-**Explication** : D.821-14 (ex-R.821-37) : 60 membres désignés pour 4 ans, comprenant l'ensemble des présidents de compagnies régionales (17 compagnies régionales depuis les regroupements de 2020) et des CAC élus, 30 sièges par collège. Le chiffre « 22 » concerne le conseil régional (22 membres lorsque la compagnie compte au moins 900 membres personnes physiques, D.821-29), non le conseil national.
+**Explication** : D.821-14 (ex-R.821-37) : 60 membres désignés pour 4 ans, comprenant l'ensemble des présidents de compagnies régionales (17 compagnies régionales depuis les regroupements opérés par les arrêtés des 31 janvier et 18 juin 2020) et des CAC élus, 30 sièges par collège, présidents de CRCC compris : chaque collège élit 30 CAC moins le nombre de présidents de sa catégorie. Le chiffre « 22 » concerne le conseil régional (22 membres lorsque la compagnie compte au moins 900 membres personnes physiques, D.821-29), non le conseil national.
 
 ### Question 10 : CAC, session 2025-11 (QCM), 1 pt, notion posée 2 fois aux annales
 
