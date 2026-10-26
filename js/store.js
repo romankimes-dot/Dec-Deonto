@@ -32,6 +32,7 @@ export const defaultState = () => ({
   plan: { done: {}, read: {} }, // parcours guidé : étapes terminées, étape choisie, schémas lus
   drills: {},         // jeux : id d'item -> boîte de Leitner (drill.js)
   games: { best: {} }, // jeux : meilleurs scores
+  podcasts: {},       // épisode -> { pos (s), done, t } : reprise de l'écoute, écouté à 90 %
   daily: null,        // plan du jour, figé à la première ouverture : { day, n, kind, steps, exam, game, target, weak }
 });
 
@@ -45,7 +46,7 @@ function hydrate(s) {
   const d = defaultState();
   return {
     ...d, ...s, settings: { ...d.settings, ...(s.settings || {}) }, plan: { done: {}, read: {}, ...(s.plan || {}) },
-    drills: isObj(s.drills) ? s.drills : {}, games: { best: {}, ...(isObj(s.games) ? s.games : {}) },
+    drills: isObj(s.drills) ? s.drills : {}, podcasts: isObj(s.podcasts) ? s.podcasts : {}, games: { best: {}, ...(isObj(s.games) ? s.games : {}) },
   };
 }
 
@@ -125,7 +126,7 @@ export function importJSON(text) {
   try { s = JSON.parse(text); } catch { throw new Error('texte JSON illisible'); }
   if (!isObj(s) || !isObj(s.cards)) throw new Error('fichier non reconnu');
   for (const k of ['attempts', 'exams']) if (s[k] != null && !Array.isArray(s[k])) throw new Error(`champ « ${k} » invalide`);
-  for (const k of ['settings', 'examSeen', 'stats', 'badges', 'grades', 'seenAnecdotes', 'plan', 'drills', 'games']) if (s[k] != null && !isObj(s[k])) throw new Error(`champ « ${k} » invalide`);
+  for (const k of ['settings', 'examSeen', 'stats', 'badges', 'grades', 'seenAnecdotes', 'plan', 'drills', 'games', 'podcasts']) if (s[k] != null && !isObj(s[k])) throw new Error(`champ « ${k} » invalide`);
   if (s.daily != null && !isObj(s.daily)) throw new Error('champ « daily » invalide');
   for (const [id, c] of Object.entries(s.cards)) if (!isObj(c) || typeof c.due !== 'number') throw new Error(`carte « ${id} » invalide`);
   const { exportedAt, app, ...rest } = s;

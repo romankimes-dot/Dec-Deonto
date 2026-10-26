@@ -14,6 +14,7 @@ import * as SH from './shorts.js';
 import * as SC from './scenes.js';
 import * as GL from './glossaire.js';
 import { matchExpected, highlight } from './qrc.js';
+import * as PC from './podcasts.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -48,6 +49,8 @@ const state = {
   feed: null,      // fil de shorts ouvert
   gloss: [], glById: {}, glMatcher: null, // glossaire (data/glossaire.json)
   glQuery: '', glFilter: 'tout',
+  episodes: [],    // podcasts (data/podcasts.json)
+  pc: { current: null, sizes: {}, dl: {}, lastSave: 0 }, // épisode chargé dans le lecteur, téléchargements
 };
 
 // Nouvelles cartes : le reste de l'objectif du jour (ou 20 de plus sur demande), sous-thèmes faibles en tête.
@@ -342,6 +345,7 @@ views.home = () => {
   </div>
   ${helpCard()}
   ${dayCard()}
+  ${podcastsLink()}
   ${gamesCard()}
   ${backupCard()}
   <div class="card career-card" data-go="carriere">
@@ -461,11 +465,17 @@ function dayTasks() {
   // Coché à la fin d'une partie (palais : une liste récitée jusqu'au bout), pas après quelques réponses.
   const played = d.game === 'palais' ? Object.entries(pr.drills).some(([id, m]) => id.startsWith(GAME_PREFIX.palais) && m.last >= t0) : !!pr.plan.gamesDone?.[d.day]?.includes(d.game);
   tasks.push({ id: 'game', icon: g.icon, title: `Jeu du jour : ${g.name}`, sub: d.kind === 'veille' ? 'Réciter les listes, sans rien apprendre de nouveau' : '5 minutes · choisi parmi ceux où vous vous trompez le plus', done: played, cta: `Jeu du jour : ${g.name}`, run: () => startGame(d.game) });
+  // Podcast de l'étape étudiée la veille (disponible et pas encore écouté) : facultatif, ne bloque pas la journée.
+  const studied = PC.stepsStudiedOn(PC.prevDay(d.day), pr.plan, { n: d.n, dayKeyOf: G.dayKey });
+  const pc = PC.suggestEpisode(state.episodes, studied, pr.podcasts, t0);
+  if (pc) tasks.push({ id: 'podcast', optional: true, icon: '🎧', title: `Podcast : ${pc.ep.title}`, sub: `Facultatif · ${PC.fmtDuration(pc.ep.duration)} · l’étape d’hier en audio, à écouter en marchant ou dans les transports`, done: pc.done, cta: `Écouter l’épisode ${pc.ep.n}`, run: () => { go('podcasts'); pcPlay(pc.ep.id); } });
   // Étapes du jour terminées dès que le schéma est lu et la session faite : le lendemain prend la suite.
   const read = tasks.find((x) => x.id === 'read'); const sess = tasks.find((x) => x.id === 'session');
   if (steps.length && read?.done && sess.done && steps.some((st) => !pr.plan.done[st.id])) { steps.forEach((st) => { pr.plan.done[st.id] = pr.plan.done[st.id] || Date.now(); }); persist(); }
   return tasks;
 }
+// Prochaine tâche obligatoire du plan (les tâches facultatives, comme le podcast, ne bloquent pas la journée).
+const nextTask = (tasks, skip = '') => tasks.find((x) => !x.done && !x.optional && x.id !== skip);
 // Jeu du jour : noté à la fin de la partie (voir endGame).
 function markGameFinished(kind) { P.markGameDone(state.progress.plan, todayKey(), kind); }
 function lateBanner(d) {
@@ -479,15 +489,15 @@ function dayCard() {
   const d = ensureDaily();
   if (d.kind === 'jour-j') return '<div class="card plan-card"><h2>Jour J 🍀</h2><p class="muted">Rien de nouveau. Relisez les chiffres clés, respirez, 3 minutes par question. Partie CAC : soignez-la.</p><button class="btn" data-open-fiche="15-schema-chiffres-cles.md">📊 Les chiffres à connaître</button></div>';
   if (d.kind === 'apres') return '';
-  const tasks = dayTasks(); const n = tasks.filter((x) => x.done).length;
+  const tasks = dayTasks(); const req = tasks.filter((x) => !x.optional); const n = req.filter((x) => x.done).length;
   const date = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
-  const cur = tasks.find((x) => !x.done);
+  const cur = nextTask(tasks);
   const tom = calendar()[1];
   const tomText = tom ? [...tom.steps.map((id) => P.stepById(id)?.title), tom.exam ? `examen blanc ${tom.exam.toUpperCase()}` : '', tom.kind === 'faibles' ? 'points faibles' : '', tom.kind === 'veille' ? 'veille légère' : '', tom.kind === 'consolidation' ? 'consolidation' : ''].filter(Boolean).join(' · ') : '';
-  return `<div class="card plan-card"><div class="row" style="justify-content:space-between"><span class="badge warn">${esc(KIND_LABEL[d.kind])} · J-${d.n}</span><span class="muted">${n}/${tasks.length} fait</span></div>
-    <h2 style="margin:8px 0 2px">Mon plan du ${esc(date)}</h2>${lateBanner(d)}<div class="progress" style="margin:6px 0 10px"><div style="width:${Math.round((n / tasks.length) * 100)}%"></div></div>
-    <ol class="todo">${tasks.map((x, i) => `<li class="${x.done ? 'done' : x === cur ? 'cur' : ''}"><span class="tick">${x.done ? '✔' : i + 1}</span><div class="tbody"><div><strong>${x.icon} ${esc(x.title)}</strong>${x === cur ? ' <span class="badge warn">maintenant</span>' : ''}</div><div class="muted">${esc(x.sub)}</div>${x.done ? '' : x.html || `<button class="btn sm ${x === cur ? 'primary' : ''}" data-task="${x.id}">▶ ${esc(x.cta)}</button>`}</div></li>`).join('')}</ol>
-    ${n === tasks.length ? `<div class="gfb ok">🎉 Plan du jour terminé. Vous pouvez vous arrêter, ou continuer en boucle :</div>${nextCard(true)}` : ''}
+  return `<div class="card plan-card"><div class="row" style="justify-content:space-between"><span class="badge warn">${esc(KIND_LABEL[d.kind])} · J-${d.n}</span><span class="muted">${n}/${req.length} fait</span></div>
+    <h2 style="margin:8px 0 2px">Mon plan du ${esc(date)}</h2>${lateBanner(d)}<div class="progress" style="margin:6px 0 10px"><div style="width:${Math.round((n / req.length) * 100)}%"></div></div>
+    <ol class="todo">${tasks.map((x, i) => `<li class="${x.done ? 'done' : x === cur ? 'cur' : ''}"><span class="tick">${x.done ? '✔' : x.optional ? '+' : i + 1}</span><div class="tbody"><div><strong>${x.icon} ${esc(x.title)}</strong>${x === cur ? ' <span class="badge warn">maintenant</span>' : ''}${x.optional ? ' <span class="badge">facultatif</span>' : ''}</div><div class="muted">${esc(x.sub)}</div>${x.done ? '' : x.html || `<button class="btn sm ${x === cur ? 'primary' : ''}" data-task="${x.id}">▶ ${esc(x.cta)}</button>`}</div></li>`).join('')}</ol>
+    ${n === req.length ? `<div class="gfb ok">🎉 Plan du jour terminé. Vous pouvez vous arrêter, ou continuer en boucle :</div>${nextCard(true)}` : ''}
     ${tomText ? `<p class="muted" style="margin:6px 0 10px">Demain : ${esc(tomText)}.</p>` : ''}
     <button class="btn sm" data-go="plan">📅 Mon plan jusqu’au ${esc(examDay())}</button></div>`;
 }
@@ -495,14 +505,14 @@ function dayCard() {
 function heroCta() {
   const d = ensureDaily();
   if (d.kind === 'apres') return '<button class="btn primary big-btn" data-go="review">▶ Réviser</button>';
-  const cur = d.kind === 'jour-j' ? null : dayTasks().find((x) => !x.done);
+  const cur = d.kind === 'jour-j' ? null : nextTask(dayTasks());
   if (cur) return `<button class="btn primary big-btn" data-task="${cur.id}"><span class="cta-k">À faire maintenant</span>▶ ${esc(cur.cta)}</button>`;
   const a = nextActions(); state.nextList = a;
   return `<button class="btn primary big-btn" data-next="0"><span class="cta-k">Plan du jour terminé · et maintenant ?</span>${a[0].icon} ${esc(a[0].title)}</button>`;
 }
 // En fin de séance, de série, de jeu ou d'examen : ce qui suit dans le plan.
 function nextStepBlock() {
-  const cur = dayTasks().find((x) => !x.done);
+  const cur = nextTask(dayTasks());
   if (cur) return `<div class="card next"><div class="muted">Prochaine étape de votre plan du jour</div><strong>${cur.icon} ${esc(cur.title)}</strong><p class="muted" style="margin:4px 0 8px">${esc(cur.sub)}</p><button class="btn primary" data-task="${cur.id}">▶ ${esc(cur.cta)}</button></div>`;
   return `<div class="gfb ok">🎉 Plan du jour terminé.</div>${nextCard()}`;
 }
@@ -1004,7 +1014,7 @@ views.fiches = () => {
   const visuels = state.fiches.filter((f) => f.kind === 'visuel').map((f) => ({ f, n: steps.find((x) => x.file === f.file)?.n || 99 })).sort((a, b) => a.n - b.n);
   const synth = state.fiches.filter((f) => f.kind !== 'visuel');
   const ec = synth.filter((f) => /-ec-/.test(f.file)); const cac = synth.filter((f) => /-cac-/.test(f.file));
-  return `<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ✔ = déjà lu.</p><div class="btnrow"><button class="btn primary" data-go="plan">🧭 Ouvrir le parcours</button><button class="btn" data-go="glossaire">📖 Glossaire</button></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
+  return `${podcastsEntry()}<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ✔ = déjà lu.</p><div class="btnrow"><button class="btn primary" data-go="plan">🧭 Ouvrir le parcours</button><button class="btn" data-go="glossaire">📖 Glossaire</button></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
     <div class="card"><h2>Fiches de référence</h2><h3>Expert-comptable</h3><div class="list">${ec.map((f) => item(f)).join('')}</div><h3>Commissaire aux comptes</h3><div class="list">${cac.map((f) => item(f)).join('')}</div></div>`;
 };
 // Sommaire déroulant en tête des fiches longues.
@@ -1396,7 +1406,7 @@ function onFeedClick(e) {
     const k = act.dataset.shEnd;
     if (k === 'more') { f.paused = false; f.goal = 0; f.limit = f.n + (state.progress.settings.shortsLimit || 15); act.closest('section').remove(); feedAppend(); feedCount(); return; }
     if (k === 'close') return closeFeed();
-    if (k === 'plan') { const task = dayTasks().find((x) => !x.done && x.id !== 'shorts'); closeFeed(true); return task ? task.run() : go('home'); }
+    if (k === 'plan') { const task = nextTask(dayTasks(), 'shorts'); closeFeed(true); return task ? task.run() : go('home'); }
   }
   const b = e.target.closest('[data-sh-c]'); if (!b) return;
   const sec = b.closest('section'); if (sec.dataset.done) return;
@@ -1430,7 +1440,7 @@ function feedPause(after) {
   const f = state.feed; f.paused = true;
   [...after.parentNode.children].filter((x) => Number(x.dataset.i) > Number(after.dataset.i)).forEach((x) => { state.feedObs.unobserve(x); x.remove(); });
   f.list = f.list.slice(0, Number(after.dataset.i) + 1);
-  const task = dayTasks().find((x) => !x.done && x.id !== 'shorts');
+  const task = nextTask(dayTasks(), 'shorts');
   after.insertAdjacentHTML('afterend', `<section class="sh sh-end"><div class="sh-in center">
     <span class="sh-chip" style="align-self:center">Pause</span><div class="sh-big">${f.ok}/${f.n}</div><div class="sh-label">${f.n} shorts, ${f.ok} réponses justes</div>
     <p class="muted">Les shorts ratés reviennent dans 10 minutes, puis aux intervalles de la répétition.</p>
@@ -1869,13 +1879,257 @@ views.glossaire = () => {
     <div class="muted" id="gl-count" style="margin-top:8px;font-size:13px"></div></div><div id="gl-list" data-no-gl></div>`;
 };
 
+// ---------- Podcasts ----------
+// 10 résumés audio (NotebookLM) qui suivent le parcours. Un épisode est disponible quand data/podcasts.json renseigne
+// son fichier et sa durée. Lecteur : un seul <audio> natif, gardé hors de #main (l'écoute continue d'un onglet à
+// l'autre), reprise à la dernière position, écouté à 90 %, commandes de l'écran verrouillé (Media Session).
+async function loadEpisodes() {
+  try {
+    const r = await fetch('./data/podcasts.json');
+    const list = r.ok ? await r.json() : [];
+    return Array.isArray(list) ? list.filter((ep) => ep && ep.id).sort((a, b) => a.n - b.n) : [];
+  } catch { return []; }
+}
+const epById = (id) => state.episodes.find((ep) => ep.id === id);
+const pcAvailable = () => state.episodes.filter(PC.isAvailable).length;
+const pcRate = () => (PC.SPEEDS.includes(state.progress.settings.podcastRate) ? state.progress.settings.podcastRate : 1);
+const stepNums = (ep) => ep.steps.map((id) => P.STEPS.findIndex((st) => st.id === id) + 1).filter((n) => n > 0);
+const stepsLabel = (ep) => { const n = stepNums(ep); return n.length > 1 ? `Étapes ${n.slice(0, -1).join(', ')} et ${n[n.length - 1]}` : `Étape ${n[0]}`; };
+// En tête de l'onglet Fiches.
+function podcastsEntry() {
+  if (!state.episodes.length) return '';
+  const av = pcAvailable(); const heard = state.episodes.filter((ep) => state.progress.podcasts[ep.id]?.done).length;
+  return `<div class="card pc-entry"><div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:12px"><div><strong>🎧 Podcasts</strong><div class="muted">${state.episodes.length} résumés audio du parcours, 10 à 13 min · ${av ? `${av} disponible${av > 1 ? 's' : ''}${heard ? ` · ${heard} écouté${heard > 1 ? 's' : ''}` : ''}` : 'bientôt disponibles'}</div></div><button class="btn sm primary" data-go="podcasts">Écouter ›</button></div></div>`;
+}
+// Lien discret sur l'accueil.
+function podcastsLink() {
+  if (!state.episodes.length) return '';
+  const av = pcAvailable();
+  return `<p class="pc-link"><button class="linkbtn" data-go="podcasts">🎧 Podcasts du parcours${av ? ` · ${av}/${state.episodes.length} disponibles` : ' · bientôt disponibles'}</button></p>`;
+}
+function audioEl() {
+  let a = document.getElementById('pc-audio');
+  if (a) return a;
+  a = document.createElement('audio'); a.id = 'pc-audio'; a.preload = 'metadata';
+  a.setAttribute('playsinline', '');
+  document.body.appendChild(a);
+  a.addEventListener('loadedmetadata', () => {
+    if (state.pc.seekTo) { try { a.currentTime = state.pc.seekTo; } catch { /* ignore */ } state.pc.seekTo = 0; }
+    a.playbackRate = pcRate(); pcUi();
+  });
+  a.addEventListener('timeupdate', () => { pcSave(false); pcUi(); });
+  a.addEventListener('play', () => { state.pc.miniOff = false; pcUi(); pcMini(); if (navigator.mediaSession) navigator.mediaSession.playbackState = 'playing'; });
+  a.addEventListener('pause', () => { pcSave(true); pcUi(); pcMini(); if (navigator.mediaSession) navigator.mediaSession.playbackState = 'paused'; });
+  a.addEventListener('ended', () => { pcSave(true); pcUi(); pcMini(); });
+  a.addEventListener('ratechange', () => pcUi());
+  return a;
+}
+// Position enregistrée toutes les 5 s, à la pause et à la fin ; écouté à 90 %.
+function pcSave(force) {
+  const a = audioEl(); const id = state.pc.current; const ep = epById(id); if (!ep) return;
+  const now = Date.now(); if (!force && now - state.pc.lastSave < 5000) return;
+  state.pc.lastSave = now;
+  const dur = a.duration && Number.isFinite(a.duration) ? a.duration : ep.duration;
+  const prev = state.progress.podcasts[id];
+  const next = PC.updateProgress(prev, a.ended ? dur : a.currentTime, dur, now);
+  state.progress.podcasts[id] = next; persist();
+  if (next.done && !prev?.done) { toast(`🎧 Épisode ${ep.n} écouté`); if (state.view === 'podcasts') pcRefreshList(); }
+}
+function pcMediaSession(ep) {
+  const ms = navigator.mediaSession; if (!ms) return;
+  try {
+    ms.metadata = new MediaMetadata({ title: `${ep.n}. ${ep.title}`, artist: 'DEC · Épreuve 1', album: 'Podcasts du parcours', artwork: [{ src: new URL('./icons/icon-192.png', location.href).href, sizes: '192x192', type: 'image/png' }, { src: new URL('./icons/icon-512.png', location.href).href, sizes: '512x512', type: 'image/png' }] });
+  } catch { /* MediaMetadata absent */ }
+  const a = audioEl();
+  const set = (k, fn) => { try { ms.setActionHandler(k, fn); } catch { /* action non prise en charge */ } };
+  set('play', () => a.play());
+  set('pause', () => a.pause());
+  set('seekbackward', (e) => pcSeek(-(e?.seekOffset || 15)));
+  set('seekforward', (e) => pcSeek(e?.seekOffset || 15));
+  set('seekto', (e) => { if (e?.fastSeek && 'fastSeek' in a) a.fastSeek(e.seekTime); else a.currentTime = e.seekTime; pcUi(); });
+  set('stop', () => a.pause());
+}
+function pcPosition() {
+  const ms = navigator.mediaSession; const a = audioEl();
+  if (!ms?.setPositionState || !Number.isFinite(a.duration) || !a.duration) return;
+  try { ms.setPositionState({ duration: a.duration, playbackRate: a.playbackRate, position: Math.min(a.currentTime, a.duration) }); } catch { /* ignore */ }
+}
+function pcPlay(id, { play = true } = {}) {
+  const ep = epById(id); if (!PC.isAvailable(ep)) return;
+  const a = audioEl();
+  if (state.pc.current !== id) {
+    pcSave(true);
+    state.pc.current = id; state.pc.lastSave = Date.now();
+    state.pc.seekTo = PC.resumeAt(ep, state.progress.podcasts[id]);
+    a.src = new URL(ep.file, location.href).href;
+    a.defaultPlaybackRate = pcRate(); a.playbackRate = pcRate();
+    pcMediaSession(ep);
+  }
+  if (play) a.play().catch(() => { /* lecture refusée sans geste : bouton ▶ */ });
+  if (state.view === 'podcasts') render(); else pcMini();
+}
+function pcSeek(delta) {
+  const a = audioEl(); if (!state.pc.current) return;
+  const max = Number.isFinite(a.duration) ? a.duration : epById(state.pc.current)?.duration || 0;
+  a.currentTime = Math.max(0, Math.min(max, a.currentTime + delta)); pcUi();
+}
+// Met à jour le lecteur affiché sans redessiner l'écran.
+function pcUi() {
+  const a = document.getElementById('pc-audio'); if (!a) return;
+  pcPosition();
+  const ep = epById(state.pc.current); if (!ep) return;
+  const dur = Number.isFinite(a.duration) && a.duration ? a.duration : ep.duration;
+  const seek = $('#pc-seek');
+  if (seek && !seek.matches(':active')) { seek.max = String(Math.round(dur)); seek.value = String(Math.round(a.currentTime)); }
+  const t = $('#pc-time'); if (t) t.textContent = `${PC.fmtClock(a.currentTime)} / ${PC.fmtClock(dur)}`;
+  const pb = $('#pc-toggle'); if (pb) { pb.textContent = a.paused ? '▶' : '⏸'; pb.setAttribute('aria-label', a.paused ? 'Lecture' : 'Pause'); }
+  document.querySelectorAll('[data-pc-rate]').forEach((b) => b.classList.toggle('on', Number(b.dataset.pcRate) === a.playbackRate));
+  const bar = document.querySelector(`[data-pc-bar="${ep.id}"]`);
+  if (bar && !state.progress.podcasts[ep.id]?.done) bar.style.width = `${Math.round((a.currentTime / dur) * 100)}%`;
+}
+// Mini-lecteur au-dessus de la barre d'onglets, quand un épisode est chargé et qu'on a quitté l'écran Podcasts.
+function pcMini() {
+  let m = document.getElementById('pc-mini');
+  const a = document.getElementById('pc-audio'); const ep = epById(state.pc.current);
+  const show = !!(ep && a && state.view !== 'podcasts' && !state.feed && !state.pc.miniOff && (!a.paused || a.currentTime > 0) && !a.ended);
+  document.body.classList.toggle('pc-mini-on', show);
+  if (!show) { if (m) m.hidden = true; return; }
+  if (!m) {
+    m = document.createElement('div'); m.id = 'pc-mini'; m.className = 'pc-mini'; document.body.appendChild(m);
+    m.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-pcm]'); if (!b) return;
+      const aa = audioEl();
+      if (b.dataset.pcm === 'toggle') { if (aa.paused) aa.play(); else aa.pause(); } else if (b.dataset.pcm === 'close') { state.pc.miniOff = true; aa.pause(); } else go('podcasts');
+    });
+  }
+  m.hidden = false;
+  m.innerHTML = `<button class="pc-mini-t" data-pcm="open">🎧 <span>${esc(ep.n)}. ${esc(ep.title)}</span></button><button class="btn sm" data-pcm="toggle" aria-label="${a.paused ? 'Lecture' : 'Pause'}">${a.paused ? '▶' : '⏸'}</button><button class="btn sm" data-pcm="close" aria-label="Fermer le lecteur">✕</button>`;
+}
+// Téléchargement pour l'écoute hors ligne : le fichier entier dans le cache dédié (servi par sw.js, Range compris).
+const audioUrl = (ep) => new URL(ep.file, location.href).href;
+async function pcRefreshSizes() {
+  if (!('caches' in window)) return;
+  try {
+    const c = await caches.open(PC.AUDIO_CACHE); const sizes = {};
+    for (const ep of state.episodes.filter(PC.isAvailable)) {
+      const r = await c.match(audioUrl(ep), { ignoreSearch: true });
+      if (r) sizes[ep.id] = Number(r.headers.get('Content-Length')) || (await r.blob()).size;
+    }
+    const changed = JSON.stringify(sizes) !== JSON.stringify(state.pc.sizes);
+    state.pc.sizes = sizes; state.pc.sizesLoaded = true;
+    if (changed && state.view === 'podcasts') pcRefreshList();
+  } catch { /* stockage indisponible */ }
+}
+async function pcDownload(id) {
+  const ep = epById(id); if (!PC.isAvailable(ep) || state.pc.dl[id] != null) return;
+  if (!('caches' in window)) { toast('Téléchargement impossible sur ce navigateur'); return; }
+  state.pc.dl[id] = 0; pcRefreshList();
+  try {
+    const res = await fetch(audioUrl(ep), { cache: 'no-store' });
+    if (!res.ok) throw new Error(String(res.status));
+    const total = Number(res.headers.get('Content-Length')) || 0;
+    let blob;
+    if (res.body?.getReader && total) {
+      const reader = res.body.getReader(); const chunks = []; let got = 0;
+      for (;;) {
+        const { done, value } = await reader.read(); if (done) break;
+        chunks.push(value); got += value.length; state.pc.dl[id] = got / total;
+        const el = document.querySelector(`[data-pc-dl-label="${id}"]`); if (el) el.textContent = `Téléchargement… ${Math.round((got / total) * 100)} %`;
+      }
+      blob = new Blob(chunks, { type: res.headers.get('Content-Type') || 'audio/mp4' });
+    } else blob = await res.blob();
+    const c = await caches.open(PC.AUDIO_CACHE);
+    await c.put(audioUrl(ep), new Response(blob, { headers: { 'Content-Type': blob.type || 'audio/mp4', 'Content-Length': String(blob.size) } }));
+    state.pc.sizes[id] = blob.size;
+    toast(`⬇ Épisode ${ep.n} disponible hors ligne (${PC.fmtSize(blob.size)})`);
+  } catch {
+    toast('Téléchargement impossible : vérifiez la connexion ou l’espace disponible');
+  }
+  delete state.pc.dl[id];
+  if (state.view === 'podcasts') pcRefreshList();
+}
+async function pcDelete(id) {
+  const ep = epById(id); if (!ep) return;
+  try { await (await caches.open(PC.AUDIO_CACHE)).delete(audioUrl(ep), { ignoreSearch: true }); } catch { /* ignore */ }
+  delete state.pc.sizes[id]; toast(`Épisode ${ep.n} retiré du téléphone`);
+  if (state.view === 'podcasts') pcRefreshList();
+}
+function pcStateBadge(ep) {
+  const s = PC.episodeState(ep, state.progress.podcasts[ep.id]);
+  if (s.state === 'soon') return '<span class="badge">Bientôt disponible</span>';
+  if (s.state === 'done') return '<span class="badge ok">✔ Écouté</span>';
+  if (s.state === 'progress') return `<span class="badge warn">${Math.round(s.ratio * 100)} % écouté</span>`;
+  return '<span class="badge new">Nouveau</span>';
+}
+function pcItem(ep) {
+  const av = PC.isAvailable(ep); const s = PC.episodeState(ep, state.progress.podcasts[ep.id]);
+  const cur = state.pc.current === ep.id; const size = state.pc.sizes[ep.id]; const dl = state.pc.dl[ep.id];
+  const actions = !av ? '' : `<div class="pc-actions">${cur ? '' : `<button class="btn sm primary" data-pc-play="${ep.id}">▶ ${s.state === 'progress' ? `Reprendre à ${PC.fmtClock(PC.resumeAt(ep, state.progress.podcasts[ep.id]))}` : s.state === 'done' ? 'Réécouter' : 'Écouter'}</button>`}
+    ${dl != null ? `<span class="muted" data-pc-dl-label="${ep.id}">Téléchargement… ${Math.round(dl * 100)} %</span>`
+      : size ? `<span class="muted">✔ Hors ligne · ${esc(PC.fmtSize(size))}</span><button class="btn sm" data-pc-del="${ep.id}">🗑 Supprimer</button>`
+        : `<button class="btn sm" data-pc-dl="${ep.id}">⬇ Télécharger pour hors ligne</button>`}</div>`;
+  return `<li class="pc-item ${av ? '' : 'soon'} ${cur ? 'cur' : ''}"><span class="pc-n">${ep.n}</span><div class="pc-body">
+    <strong>${esc(ep.title)}</strong>
+    <div class="muted">${esc(stepsLabel(ep))}${av ? ` · ${esc(PC.fmtDuration(ep.duration))}` : ''}</div>
+    <div class="pc-state">${pcStateBadge(ep)}</div>
+    ${av && s.state === 'progress' ? `<div class="progress sm"><div data-pc-bar="${ep.id}" style="width:${Math.round(s.ratio * 100)}%"></div></div>` : ''}
+    ${actions}</div></li>`;
+}
+// Liens vers les schémas des étapes couvertes (étapes « action » : l'écran correspondant).
+function pcStepLinks(ep) {
+  return ep.steps.map((id) => P.stepById(id)).filter(Boolean).map((st) => st.kind === 'schema'
+    ? st.fiches.map((f) => `<button class="btn sm" data-open-fiche="${esc(f)}">📊 ${esc(shortTitle(f))}</button>`).join('')
+    : `<button class="btn sm" data-go="${st.action === 'weak' ? 'train' : st.action}">${st.action === 'exam' ? '⏱' : st.action === 'weak' ? '🎯' : '🔁'} ${esc(st.title)}</button>`).join('');
+}
+function pcPlayer() {
+  const ep = epById(state.pc.current); if (!ep) return '';
+  const a = audioEl(); const dur = Number.isFinite(a.duration) && a.duration ? a.duration : ep.duration;
+  const pos = a.currentTime || state.pc.seekTo || 0;
+  return `<div class="card pc-player" id="pc-player"><div class="muted">En lecture · épisode ${ep.n} · ${esc(stepsLabel(ep))}</div><strong class="pc-title" data-no-gl>${esc(ep.title)}</strong>
+    <input type="range" id="pc-seek" class="pc-seek" min="0" max="${Math.round(dur)}" step="1" value="${Math.round(pos)}" aria-label="Position dans l’épisode">
+    <div class="muted pc-time" id="pc-time">${PC.fmtClock(pos)} / ${PC.fmtClock(dur)}</div>
+    <div class="pc-controls"><button class="btn" data-pc-seek="-15" aria-label="Reculer de 15 secondes">↺ 15 s</button><button class="btn primary pc-toggle" id="pc-toggle" aria-label="${a.paused ? 'Lecture' : 'Pause'}">${a.paused ? '▶' : '⏸'}</button><button class="btn" data-pc-seek="15" aria-label="Avancer de 15 secondes">15 s ↻</button></div>
+    <div class="chips pc-rates" role="group" aria-label="Vitesse">${PC.SPEEDS.map((r) => `<button class="chip ${a.playbackRate === r ? 'on' : ''}" data-pc-rate="${r}">${String(r).replace('.', ',')}×</button>`).join('')}</div>
+    <div class="muted" style="margin-top:10px">Les schémas de ${ep.steps.length > 1 ? 'ces étapes' : 'cette étape'} :</div><div class="pc-links">${pcStepLinks(ep)}</div></div>`;
+}
+function pcList() {
+  return `<ol class="pc-list" data-no-gl>${state.episodes.map(pcItem).join('')}</ol>`;
+}
+function pcRefreshList() {
+  const box = $('#pc-list-box'); if (box) { box.innerHTML = pcList(); return; }
+  if (state.view === 'podcasts') render();
+}
+views.podcasts = () => {
+  setTimeout(() => {
+    const seek = $('#pc-seek'); if (seek) seek.oninput = () => { audioEl().currentTime = Number(seek.value); pcUi(); };
+    const tg = $('#pc-toggle'); if (tg) tg.onclick = () => { const a = audioEl(); if (a.paused) a.play().catch(() => {}); else a.pause(); };
+    document.querySelectorAll('[data-pc-seek]').forEach((b) => { b.onclick = () => pcSeek(Number(b.dataset.pcSeek)); });
+    document.querySelectorAll('[data-pc-rate]').forEach((b) => { b.onclick = () => { const r = Number(b.dataset.pcRate); state.progress.settings.podcastRate = r; persist(); const a = audioEl(); a.defaultPlaybackRate = r; a.playbackRate = r; pcPosition(); }; });
+    const box = $('#pc-list-box');
+    if (box) box.onclick = (e) => {
+      const p = e.target.closest('[data-pc-play]'); if (p) { pcPlay(p.dataset.pcPlay); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+      const d = e.target.closest('[data-pc-dl]'); if (d) return pcDownload(d.dataset.pcDl);
+      const x = e.target.closest('[data-pc-del]'); if (x) return pcDelete(x.dataset.pcDel);
+    };
+    pcUi();
+    if (!state.pc.sizesLoaded || !Object.keys(state.pc.dl).length) pcRefreshSizes();
+  }, 0);
+  const av = pcAvailable(); const total = Object.values(state.pc.sizes).reduce((x, y) => x + y, 0);
+  return `<button class="btn sm" data-go="fiches">← Fiches</button>
+    <div class="card" style="margin-top:10px"><h2>🎧 Podcasts</h2><p class="muted" style="margin:4px 0 0">${state.episodes.length} résumés audio du parcours, à deux voix (NotebookLM), pour réviser en marchant ou dans les transports : l’épisode pose une question, mettez sur pause, répondez, reprenez. En cas de doute, la fiche fait foi.</p>
+    <p class="muted" style="margin:6px 0 0">${av ? `${av}/${state.episodes.length} disponible${av > 1 ? 's' : ''}` : 'Les épisodes arrivent au fil des jours'}${total ? ` · ${PC.fmtSize(total)} sur le téléphone` : ''}. Téléchargez un épisode pour l’écouter sans réseau ; l’écoute reprend où vous l’aviez laissée.</p></div>
+    ${pcPlayer()}
+    <div id="pc-list-box">${pcList()}</div>`;
+};
+
 const NAV = [
   ['home', '🏠', 'Accueil'], ['review', '🔁', 'Réviser'], ['train', '🎯', 'Entraîner'], ['shorts', '🎬', 'Shorts'], ['exam', '⏱', 'Examen'], ['carriere', '🏆', 'Carrière'], ['fiches', '📚', 'Fiches'],
 ];
 function render() {
   const main = $('#main');
   main.innerHTML = views[state.view]();
-  document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view || (state.view === 'plan' && b.dataset.view === 'home') || (state.view === 'jeux' && b.dataset.view === 'train')));
+  document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view || (state.view === 'plan' && b.dataset.view === 'home') || (state.view === 'jeux' && b.dataset.view === 'train') || (state.view === 'podcasts' && b.dataset.view === 'fiches')));
+  pcMini();
   updateStreakBadge();
   main.querySelectorAll('[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
 }
@@ -1924,8 +2178,8 @@ async function recoverFromStaleCache() {
   try {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
-    await Promise.all((await caches.keys()).map((k) => caches.delete(k)));
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './sw.js']
+    await Promise.all((await caches.keys()).filter((k) => k !== PC.AUDIO_CACHE).map((k) => caches.delete(k))); // épisodes téléchargés gardés
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();
@@ -1959,7 +2213,8 @@ async function init() {
   });
   try {
     // Chargements en parallèle (banque, index des fiches, shorts, glossaire)
-    const [bank, fiches, , gloss] = await Promise.all([loadBank(), loadFichesIndex(), ensureShorts(), GL.loadGlossary().catch(() => [])]);
+    const [bank, fiches, , gloss, episodes] = await Promise.all([loadBank(), loadFichesIndex(), ensureShorts(), GL.loadGlossary().catch(() => []), loadEpisodes()]);
+    state.episodes = episodes;
     state.bank = bank;
     setupHeldOut();
     state.bank.questions.forEach((q) => { state.byId[q.id] = q; });
