@@ -8,7 +8,33 @@
       "institutions"
     ],
     "file": "data/podcasts/01-cadre-institutions.m4a",
-    "duration": 1137
+    "duration": 769,
+    "errata": [
+      {
+        "t": "03:34",
+        "text": "Pour les petites entités, il faut entendre « NP 2910 » (et non « NP 990 »)."
+      },
+      {
+        "t": "05:52",
+        "text": "Erreur : « régularité et sincérité » est propre à la certification du CAC (C. com. L.821-53). L'audit de l'expert-comptable conclut seulement à l'image fidèle selon le référentiel comptable."
+      },
+      {
+        "t": "09:31",
+        "text": "Les cotisations sont perçues par les conseils régionaux et reversées en partie au Conseil national : l'argent ne « reste » pas en région."
+      },
+      {
+        "t": "10:08",
+        "text": "Le CAC n'a pas à être français : la nationalité d'un État de l'UE ou de l'EEE suffit, ou celle d'un État qui admet les Français à exercer le contrôle légal (L.821-14 1°)."
+      },
+      {
+        "t": "11:15",
+        "text": "Le CAC peut exercer sous toute forme sociale, SCP comprise (L.821-13), pas seulement en société commerciale."
+      },
+      {
+        "t": "11:28",
+        "text": "Erreur : la directive Omnibus restreint le champ de la CSRD ; elle ne modifie pas les seuils de nomination du CAC."
+      }
+    ]
   },
   {
     "n": 2,
@@ -18,8 +44,30 @@
       "activites",
       "lettre"
     ],
-    "file": null,
-    "duration": null
+    "file": "data/podcasts/02-activites-lettre.m4a",
+    "duration": 1137,
+    "errata": [
+      {
+        "t": "00:12",
+        "text": "Le scénario d'ouverture (radiation « ordonnée par l'État » après une cession de parts) est inventé : le dossier ne prévoit pas de radiation automatique. La règle à retenir : plus des deux tiers des droits de vote aux experts-comptables (ord. 1945 art. 7)."
+      },
+      {
+        "t": "11:09",
+        "text": "Le mandat du CAC dure six exercices (et non « six ans »)."
+      },
+      {
+        "t": "12:30",
+        "text": "La « double signature » est une conclusion des présentateurs : le dossier laisse la question ouverte (signature personnelle de l'EC responsable en plus de la signature sociale, à vérifier)."
+      },
+      {
+        "t": "15:48",
+        "text": "Motifs d'interruption par l'EC (code de déontologie art. 156 et 157) : perte de confiance manifestée par le client ou méconnaissance d'une clause substantielle du contrat, sans lui porter préjudice ; en cas de conflit d'intérêts, l'EC doit dénoncer le contrat. Le « refus de payer les honoraires » ne figure pas dans le dossier."
+      },
+      {
+        "t": "17:55",
+        "text": "La réflexion finale sur une fusion des métiers d'EC et de CAC est une spéculation des présentateurs, hors du dossier."
+      }
+    ]
   },
   {
     "n": 3,
