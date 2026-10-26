@@ -32,9 +32,9 @@ Dossier source pour un résumé audio (podcast). Étapes 3 et 4 sur 15 du parcou
 Arbre de décision (lire de haut en bas) :
 - Question : Quelle activité ?
   - → Attention : **Emploi salarié** : interdit, sauf chez un EC, une société d'EC, une AGC ou un CAC
-  - → Attention : **Actes de commerce** à titre principal, **agent d'affaires**, intermédiaire (agent immobilier, courtier)
-  - → Attention : **Représenter** un client devant les juridictions (réservé aux avocats)
-  - → Attention : **Sous-traiter** la tenue comptable à un non-inscrit : participation à l'**exercice illégal**
+  - → Interdit : **Actes de commerce** à titre principal, **agent d'affaires**, intermédiaire (agent immobilier, courtier)
+  - → Interdit : **Représenter** un client devant les juridictions (réservé aux avocats)
+  - → Interdit : **Sous-traiter** la tenue comptable à un non-inscrit : participation à l'**exercice illégal**
   - → Conclusion : Activités commerciales et actes d'intermédiaire **à titre accessoire**, sans atteinte à l'indépendance (loi 2010-853)
   - → Conclusion : **Recouvrement amiable** de créances et **paiement de dettes** pour le compte des clients (loi Pacte)
   - → Conclusion : Consultations juridiques et actes sous seing privé **à titre accessoire**, pour un client chez qui il a une mission **comptable ou déclarative permanente**
@@ -162,8 +162,8 @@ Arbre de décision (lire de haut en bas) :
 
 ##### Missions juridiques et consultations (loi 1971 art. 59)
 - Les **consultations juridiques et la rédaction d'actes sous seing privé** sont permises **à titre accessoire**, pour des entreprises chez qui l'EC assure une mission **d'ordre comptable ou d'accompagnement déclaratif et administratif de caractère permanent ou habituel**, ou lorsqu'elles sont **directement liées aux travaux comptables** dont il est chargé.
-- Un **contrat de travail** pour un client chez qui l'EC fait **habituellement la paie** est **possible**.
-- Un contrat de travail ou une consultation pour un **prospect sans autre mission** n'est **pas possible**.
+- La **rédaction d'un contrat de travail** pour un client chez qui l'EC fait **habituellement la paie** est **possible**.
+- La rédaction d'un contrat de travail ou une consultation pour un **prospect sans autre mission** n'est **pas possible**.
 - Les **statuts** dans le cadre de l'accompagnement global d'un créateur sont **possibles** (loi Macron).
 
 ##### Missions possibles sans mission comptable (loi Macron 2015)
@@ -243,6 +243,7 @@ Arbre de décision (lire de haut en bas) :
 #### Pièges EC vs CAC
 - **Serment** : l'EC le prête devant le **conseil régional de l'Ordre** ; le CAC devant la **cour d'appel** (premier président).
 - **Inscription** : l'EC est inscrit au **tableau tenu par le CROEC** ; le CAC sur la **liste tenue par la H2A**.
+- **Nationalité** : aucune condition pour l'EC (ord. art. 3 II 1° abrogé) ; le CAC doit être Français, ressortissant de l'UE ou de l'EEE, ou d'un État qui admet les Français au contrôle légal des comptes (**L.821-14 1°**).
 - **Capital** : dans une société d'EC, plus de **2/3 des droits de vote** aux EC ; dans une société de CAC, la **majorité** des droits de vote aux CAC.
 - **Formes de société** : l'EC ne peut pas exercer dans une société conférant la qualité de commerçant ; ne pas transposer ce raisonnement au CAC sans vérifier.
 - **Honoraires** : ceux de l'EC sont **libres, sans barème** ; ceux du CAC en certification suivent un **barème d'heures** (D.821-188), mais le **taux horaire est libre**.
@@ -253,7 +254,6 @@ Arbre de décision (lire de haut en bas) :
 
 
 #### À vérifier
-- **Conditions d'inscription** : une condition de **nationalité** subsiste-t-elle ?
 - **Signatures de la lettre de mission en société** : faut-il la signature sociale **et** celle de l'EC responsable, ou seulement celle de l'EC ? Annales 2018-11 Q7 et 2022-11 Q1.
 - **Formation continue EC** : quantum exact (120 h / 3 ans, 20 h par an ou 40 h par an en moyenne) et texte (norme formation du CNOEC) ; ce quantum ne figure ni dans le règlement intérieur de 2024 ni dans le référentiel normatif 2022.
 
@@ -355,12 +355,12 @@ Arbre de décision (lire de haut en bas) :
 #### Pièges EC vs CAC
 - **Déclarant Tracfin** : pour le CAC, le **CAC signataire** déclare personnellement (NEP 9605 § 61) ; pour l'EC, c'est l'**EC en charge de la mission**, personnellement (C. mon. fin. R.561-23 IV, NPLAB § 47). Le **correspondant Tracfin** ne déclare pas.
 - **Norme anti-blanchiment** : NPLAB pour l'EC, **NEP 9605** pour le CAC.
-- **Niveaux de vigilance** : au cours de la relation, la NPLAB n'en prévoit que **2**, **standard et renforcée** ; elle reprend toutefois des **mesures d'identification simplifiées** (société cotée : pas d'identification du bénéficiaire effectif). Côté CAC, la NEP 9605 prévoit des mesures **simplifiées** et **renforcées**, par exemple pour une société cotée.
+- **Niveaux de vigilance** : au cours de la relation, la NPLAB n'en prévoit que **2**, **standard et renforcée** ; elle reprend toutefois des **mesures d'identification simplifiées** (société cotée : pas d'identification du bénéficiaire effectif). Côté CAC, la NEP 9605 en retient **trois** : vigilance **simplifiée** (risque faible, par exemple société cotée), **standard** et **renforcée**.
 - **Secret** : il est d'ordre public pour les deux professions. Mais le CAC bénéficie de **levées spécifiques** (CAC de la consolidante et des consolidées, président du tribunal dans l'alerte, H2A, AMF, comité d'audit) qui n'existent pas pour l'EC. Le CAC **successeur** accède aux documents de son prédécesseur en vertu de **L.821-44**, pas d'une levée du secret écrite à L.821-35.
 - **Faits délictueux** : le CAC doit les **révéler au procureur** ; l'EC ne le doit pas.
 - **Publicité** : les deux professions interdisent le **comparatif** et le **dénigrement**. Le code CAC impose en plus de préciser les **modalités de détermination des honoraires** dans la sollicitation.
 - **Successeur** : l'EC envoie une **lettre d'information** à son prédécesseur et s'efforce d'obtenir le paiement de ses honoraires ; le CAC successeur **doit s'assurer auprès de son prédécesseur**, avant d'accepter, que le non-renouvellement ne vise pas à contourner la loi (code de déontologie CAC art. 26) ; le prédécesseur lui **donne accès** aux informations et documents pertinents (**L.821-44**). L.821-35 ne prévoit **aucune levée du secret** au profit du successeur.
-- **Honoraires au succès** : pour l'EC, ils sont interdits pour le monopole et pour les missions qui participent à la détermination de l'**assiette fiscale ou sociale** (ord. art. 24) ; pour le **CAC**, les honoraires **subordonnés au résultat** sont **interdits** en certification.
+- **Honoraires au succès** : pour l'EC, ils sont interdits pour le monopole et pour les missions qui participent à la détermination de l'**assiette fiscale ou sociale** (ord. art. 24) ; pour le **CAC**, les honoraires **subordonnés au résultat** sont **interdits** pour toute mission ou prestation (code de déontologie CAC **art. 13**, titre I).
 
 
 #### À vérifier
@@ -441,6 +441,8 @@ Propositions (celles du sujet) :
 
 **Bonne réponse** : B. Les personnes physiques ressortissantes de l'UE et de l'EEE et les personnes morales y ayant leur siège et exerçant la profession d'expertise comptable, doivent détenir plus de 2/3 des droits de vote.
 
+**Version QRC de la question** : Quelle condition de détention des droits de vote doit respecter une société d'expertise comptable pour être inscrite au tableau de l'Ordre ?
+
 **Réponse courte attendue** : Les experts-comptables (personnes physiques ressortissantes de l'UE ou de l'EEE, ou personnes morales y exerçant légalement la profession) doivent détenir, directement ou par l'intermédiaire d'une société inscrite à l'Ordre, plus des deux tiers des droits de vote de la société. La condition porte sur les droits de vote et non sur le capital, et aucune personne extérieure ne doit détenir une part des droits de vote de nature à compromettre l'indépendance.
 
 Éléments attendus : Plus des deux tiers des droits de vote détenus par des professionnels de l'expertise comptable (personnes physiques UE/EEE ou personnes morales y exerçant légalement), directement ou par une société inscrite ; La règle porte sur les droits de vote, non sur le capital ; Aucun tiers ne doit détenir une fraction des droits de vote mettant en péril l'indépendance
@@ -501,6 +503,8 @@ Propositions (celles du sujet) :
 
 **Bonne réponse** : D. Représenter des clients auprès des tribunaux de l'ordre judiciaire ou administratif.
 
+**Version QRC de la question** : Un expert-comptable peut-il représenter ses clients devant les juridictions judiciaires ou administratives ? Justifiez.
+
 **Réponse courte attendue** : Non. La représentation des parties devant les juridictions relève du monopole des avocats, que l'expert-comptable doit respecter. Il peut en revanche exercer certaines activités accessoires autorisées, comme le conseil en gestion de patrimoine à titre accessoire ou la fonction de tiers payant d'un député européen, et assister son client.
 
 Éléments attendus : Non : la représentation en justice relève du monopole des avocats ; L'EC doit respecter le monopole des autres professions ; Activités accessoires possibles (gestion de patrimoine accessoire, tiers payant d'un député européen, assistance)
@@ -519,6 +523,8 @@ Propositions (celles du sujet) :
 
 **Bonne réponse** : D. Une mission d'optimisation des coûts fiscaux.
 
+**Version QRC de la question** : Pour quelles missions l'expert-comptable ne peut-il pas percevoir d'honoraires complémentaires de résultat ?
+
 **Réponse courte attendue** : Les honoraires complémentaires de résultat sont interdits pour les missions comptables relevant du monopole (deux premiers alinéas de l'article 2) et pour celles participant à la détermination de l'assiette fiscale ou sociale du client, comme une mission d'optimisation des coûts fiscaux. Ils restent possibles pour d'autres missions (financement, cession, recouvrement) s'ils ne compromettent pas l'indépendance.
 
 Éléments attendus : Honoraires complémentaires liés à un objectif préalablement déterminé possibles depuis la loi Pacte ; Exclus : missions des deux premiers alinéas de l'art. 2 (tenue, surveillance, révision, présentation… des comptes) ; Exclus : missions participant à la détermination de l'assiette fiscale ou sociale du client ; Ne doivent pas compromettre l'indépendance ni créer de conflit d'intérêts
@@ -536,6 +542,8 @@ Propositions (celles du sujet) :
 - D. Sont basés sur des fourchettes de taux exprimés en €/heure
 
 **Bonne réponse** : B. Peuvent reposer sur un barème figurant dans le code de commerce
+
+**Version QRC de la question** : Comment sont fixés les honoraires du commissaire aux comptes et quels recours existent en cas de désaccord ?
 
 **Réponse courte attendue** : Pour la mission de certification, le code de commerce prévoit un barème d'heures par tranche de total bilan et produits, le taux horaire étant convenu avec l'entité. Les dérogations relèvent du président de la compagnie régionale, dont la décision peut être contestée devant le président de la CNCC puis devant le bureau de la Haute autorité de l'audit. Les prestations sont rémunérées hors barème ; pour les EIP, les services autres que d'audit sont plafonnés à 70 % de la moyenne des honoraires d'audit des trois derniers exercices.
 

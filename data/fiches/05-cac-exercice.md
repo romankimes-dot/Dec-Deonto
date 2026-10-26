@@ -64,6 +64,7 @@
 
 ### Personne physique
 - **Conditions générales** : **honorabilité** (aucune condamnation pour des faits contraires à l'honneur ou à la probité, aucune sanction de radiation, aucune faillite personnelle).
+- **Nationalité** (L.821-14 1°) : être Français, ressortissant d'un État de l'**UE** ou de l'**EEE**, ou d'un État étranger qui admet les Français à exercer le contrôle légal des comptes. Pour l'EC, cette condition est abrogée.
 - **Diplôme** : **DEC** ou **CAFCAC**, après un **stage** professionnel (3 ans).
 - **Prestation de serment** :
   - elle a lieu **devant le premier président de la cour d'appel** du ressort, **avant** tout exercice ;
@@ -298,6 +299,7 @@
 ## Pièges EC vs CAC
 - **Serment** : l'EC le prête devant le **conseil régional** ; le CAC devant le **premier président de la cour d'appel**.
 - **Inscription** : l'EC est inscrit au **tableau tenu par le CROEC** ; le CAC sur la **liste tenue par la H2A**.
+- **Nationalité** : aucune condition pour l'EC (ord. art. 3 II 1° abrogé) ; le CAC doit être Français, ressortissant de l'UE ou de l'EEE, ou d'un État qui admet les Français au contrôle légal des comptes (**L.821-14 1°**).
 - **Droits de vote** : **plus de 2/3** aux EC dans une société d'EC ; la **majorité** aux CAC dans une société de CAC.
 - **Honoraires** : ceux de l'EC sont libres, sans barème ; ceux du CAC suivent un **barème d'heures** en certification (ALPE comprise), avec un **taux horaire libre**.
 - **Conciliation** : chez l'EC, par le **président du CROEC** (honoraires, confrères) ; chez le CAC, par le **président de la CRCC** (co-commissaires, honoraires, barème).

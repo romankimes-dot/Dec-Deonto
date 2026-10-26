@@ -55,14 +55,14 @@ Le jury n'exige ni les numéros d'articles ni le quantum des sanctions. Les **se
 | Critère | Expert-comptable (EC) | Commissaire aux comptes (CAC) |
 |---|---|---|
 | Responsabilité civile | **5 ans** (droit commun, C. civ. 2224) ; réductible par contrat, **jamais sous 1 an** | **3 ans** à compter du fait dommageable, ou de sa **révélation** s'il a été dissimulé ; **10 ans** pour un crime ; **non aménageable** |
-| Disciplinaire | {?} (à vérifier) | **6 ans** |
+| Disciplinaire | {?} (à vérifier) Aucun délai trouvé | **6 ans** |
 
 #### Seuils de nomination d'un CAC
 
 | Entité | Seuil |
 |---|---|
 | Société commerciale | 2 sur 3 : **5 M€** de bilan · **10 M€** de CA HT · **50** salariés |
-| Filiale significative d'un petit groupe | 2 sur 3 : **2,5 M€** · **5 M€** · **25** salariés |
+| Filiale significative d'un petit groupe | 2 sur 3 : **2,5 M€** de bilan · **5 M€** de CA HT · **25** salariés |
 | Association subventionnée | Subventions publiques **> 153 000 €** par an |
 | Appel public à la générosité | Dons **> 153 000 €** |
 | Association à activité économique | 2 sur 3 : **50** salariés · **3,1 M€** de CA ou ressources · **1,55 M€** de bilan |
@@ -80,7 +80,7 @@ Le jury n'exige ni les numéros d'articles ni le quantum des sanctions. Les **se
 | **70 %** | Plafond des SACC d'une EIP (moyenne des honoraires d'audit sur 3 ans) | [CAC] |
 | **10 %** | Part du capital pour demander la nomination judiciaire d'un CAC (SARL, SAS, SA, SCA ; en SNC, tout associé) | [CAC] |
 | **5 %** | Part du capital pour demander le relèvement d'un CAC | [CAC] |
-| **120 h / 3 ans, 20 h par an** | Formation continue | [EC] [CAC] |
+| **120 h / 3 ans, 20 h par an** | Formation continue (CAC : A.821-45 ; pour l'EC, quantum {?} (à vérifier)) | [EC] [CAC] |
 
 #### Peines pénales
 
@@ -161,6 +161,8 @@ Propositions (adaptées du sujet) :
 - D. Le commissaire aux comptes personne physique titulaire doit cesser ses fonctions après six exercices et respecter un délai de viduité de trois ans
 
 **Bonne réponse** : A. Le cabinet titulaire du mandat, le signataire au nom du cabinet et le commissaire aux comptes personne physique titulaire peuvent tous exercer plus de six exercices consécutifs
+
+**Version QRC de la question** : Quelles règles de rotation s'appliquent au commissaire aux comptes d'une entité non EIP, et à quelles entités s'étend la rotation du signataire ?
 
 **Réponse courte attendue** : Dans une société commerciale non EIP, le mandat de six exercices est renouvelable sans limitation : ni le cabinet, ni le signataire, ni le commissaire aux comptes personne physique ne sont soumis à rotation. La rotation du signataire (six exercices consécutifs dans la limite de sept ans, puis trois ans de viduité) vise les EIP, les personnes morales non commerçantes ayant une activité économique (L.612-1), les associations de L.612-4 faisant appel à la générosité du public et les filiales importantes d'EIP ayant le même CAC ; la rotation du cabinet ne concerne que les EIP.
 

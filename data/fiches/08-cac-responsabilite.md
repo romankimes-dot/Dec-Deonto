@@ -39,10 +39,10 @@
 ### Assurance
 - L'**assurance RC professionnelle** est **obligatoire** (R.821-x, ex **R.822-36**). Il existe un contrat collectif souscrit par la CNCC et des compléments.
 - Elle **ne couvre pas** :
-  - les **amendes pénales**, par exemple une amende de 5 000 € pour non-révélation ;
+  - les **amendes pénales**, par exemple une amende de 5 000 € prononcée pour non-révélation (maximum légal : 75 000 €, L.821-9, ex L.820-7) ;
   - les **fautes intentionnelles ou dolosives** (C. assur. **L.113-1**) ;
   - les **sanctions pécuniaires** prononcées par la H2A.
-- Pour des **dommages-intérêts** consécutifs à une **violation volontaire du secret**, la couverture est **exclue** en cas de **faute intentionnelle** (à vérifier).
+- Les **dommages-intérêts** dus pour une **violation du secret** restent en principe **couverts** (annale 2019-11 Q16, réponse « couverts ») : seule l'amende est exclue. L'exclusion de la **faute intentionnelle ou dolosive** (C. assur. L.113-1) suppose la volonté de causer le dommage, notion plus étroite que l'intention pénale.
 
 ## 3. Responsabilité pénale
 
@@ -152,7 +152,7 @@
 | Certification sans réserve de comptes **sciemment** faussés | **Pénale** (informations mensongères), **civile**, **disciplinaire** |
 | Oubli d'une convention réglementée dans le rapport spécial | **Civile** (et disciplinaire possible) |
 | Vol du dirigeant **remboursé**, non révélé | **Pénale** (non-révélation), **disciplinaire** |
-| Amende pénale de 5 000 € | **Non couverte** par l'assurance RC |
+| Amende pénale de 5 000 € prononcée (maximum légal : 75 000 €) | **Non couverte** par l'assurance RC |
 | Exercice d'une activité commerciale incompatible | **Pénale** (délit) et **disciplinaire** |
 
 ## Pièges EC vs CAC
@@ -165,4 +165,4 @@
 - **Révélation au procureur** : son omission est un **délit** pour le CAC ; il n'y a pas d'obligation équivalente pour l'EC.
 
 ## À vérifier
-- **Couverture d'assurance** des dommages-intérêts en cas de violation du secret (annale 2019-11 Q16 : réponse « non couverts » présumée).
+- **Couverture d'assurance** des dommages-intérêts en cas de violation du secret : « couverts » selon l'annale 2019-11 Q16 ; l'application de l'exclusion de la faute intentionnelle (C. assur. L.113-1) à une violation délibérée relève de la jurisprudence et de la police.

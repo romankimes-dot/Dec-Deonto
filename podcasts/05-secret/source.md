@@ -60,7 +60,7 @@ Arbre de décision (lire de haut en bas) :
 | Autorités | **AMF** ; **Tracfin** ; administration fiscale (droit de communication, dans ses limites) | **AMF**, **ACPR**, **Tracfin** |
 | Justice | Audition ou témoignage en matière **pénale** ; défense de l'EC poursuivi | **Procureur** (révélation), juge d'instruction |
 | Entre professionnels | **Non levé** envers le **successeur** : l'EC restitue seulement les documents du client | Levé entre CAC de la **consolidante** et des **consolidées** (dans les deux sens), entre **co-commissaires** ; le **successeur** accède aux documents (L.821-44), sans levée écrite à L.821-35 |
-| Opposable | À la **CNIL** (à vérifier) | À une filiale **non consolidée** |
+| Opposable | À la **CNIL** {?} (à vérifier) | Au **CAC** d'une filiale **non consolidée** |
 
 #### LCB-FT : les deux normes
 
@@ -94,7 +94,7 @@ Arbre de décision (lire de haut en bas) :
   - **Tracfin** (déclaration de soupçon, droit de communication) ;
   - **administration fiscale** au titre de son droit de communication, dans les limites prévues ;
   - **défense** de l'EC poursuivi (procédure disciplinaire ou instance qui le met en cause).
-- **Opposable** à la **CNIL** (à vérifier) (annale 2025-11 Q4).
+- **Opposable** à la **CNIL** {?} (à vérifier) (annale 2025-11 Q4).
 - **Reprise de dossier** : l'EC sortant **n'est pas délié** du secret à l'égard de son successeur. Il doit en revanche **restituer les documents** du client.
 - **Déclaration de soupçon** : il est **interdit de la révéler**, y compris au client et au confrère successeur. La violation est un délit (C. mon. fin. **L.561-18** et **L.574-1**).
 
@@ -169,7 +169,7 @@ Arbre de décision (lire de haut en bas) :
 
 
 #### À vérifier
-- **Liste exacte des levées du secret** de l'EC : la formule « audition pénale en qualité de témoin ou de suspect libre » est donnée comme levée par SCHEMA.md. L'opposabilité à la **CNIL** (à vérifier) est déduite de l'annale 2025-11 Q4.
+- **Liste exacte des levées du secret** de l'EC : la formule « audition pénale en qualité de témoin ou de suspect libre » est donnée comme levée par SCHEMA.md. L'opposabilité à la **CNIL** est déduite de l'annale 2025-11 Q4.
 - **Cas où la lettre de l'art. 163 n'est pas obligatoire** (annale 2024-11 Q7).
 - **Référencement par une société commerciale non inscrite, notation par les clients, parrainage** : quelle pratique est interdite (annale 2025-11 Q2) ? La fiche retient le **comparatif** (« premier réseau »).
 
@@ -253,6 +253,8 @@ Propositions (celles du sujet) :
 
 **Bonne réponse** : D. Est applicable à toutes les missions réalisées au sein de la structure d'exercice professionnel
 
+**Version QRC de la question** : Quel est le champ d'application de la norme professionnelle relative aux obligations de lutte contre le blanchiment des capitaux et le financement du terrorisme (NPLAB) ?
+
 **Réponse courte attendue** : La NPLAB s'applique à l'ensemble des missions et prestations réalisées par la structure d'exercice professionnel, quelle que soit leur nature et quel que soit le client, personne morale ou personne physique. Elle constitue, avec le code de déontologie et la NPMQ, l'un des trois textes transversaux du cadre de référence des missions.
 
 Éléments attendus : Toutes les missions et prestations réalisées par la structure d'exercice professionnel ; Sans distinction selon la nature de la mission (avec ou sans assurance, normée ou non) ; Y compris les missions auprès de personnes physiques ; Texte transversal du cadre de référence, avec le code de déontologie et la NPMQ
@@ -311,11 +313,13 @@ Propositions (celles du sujet) :
 
 **Bonne réponse** : C. Standard et renforcée.
 
+**Version QRC de la question** : Quels sont les niveaux de vigilance prévus par la NPLAB ?
+
 **Réponse courte attendue** : La NPLAB retient deux niveaux de vigilance : standard et renforcée, déterminés selon l'évaluation du risque de la relation d'affaires (PPE, pays à haut risque, risque élevé…).
 
 Éléments attendus : Vigilance standard ; Vigilance renforcée (risque élevé, PPE, pays tiers à haut risque, opérations atypiques…) ; Fixés selon l'approche par les risques
 
-**Explication** : Le CMF prévoit aussi des mesures simplifiées en cas de risque faible, mais la norme professionnelle de l'Ordre (NPLAB) n'en retient que deux. La NEP 9605 des CAC suit la même logique.
+**Explication** : Le CMF prévoit aussi des mesures simplifiées en cas de risque faible, mais la norme professionnelle de l'Ordre (NPLAB) n'en retient que deux. Ne pas transposer au CAC : la NEP 9605 admet des mesures simplifiées, standard et renforcées.
 
 ### Question 5 : CAC, session 2018-05 (QRC), 2 pts
 
@@ -379,8 +383,8 @@ Propositions (rédigées pour l’application, pas celles du sujet) :
 
 **Réponse courte attendue** : Oui. Selon l'article L.821-10, le commissaire aux comptes révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou de sa prestation. L'obligation s'applique donc aussi à une prestation réalisée hors mandat de certification. Le non-respect de cette obligation est pénalement sanctionné.
 
-Éléments attendus : L.821-10 (ex-L.823-12) : révélation au procureur des faits délictueux connus à l'occasion de sa mission ou prestation ; Le texte vise expressément les prestations, y compris hors mandat de certification ; Responsabilité non engagée par la révélation ; non-révélation pénalement sanctionnée (L.821-9) ; Les obligations LCB-FT visent le CAC chargé de la certification
+Éléments attendus : L.821-10 (ex-L.823-12) : révélation au procureur des faits délictueux connus à l'occasion de sa mission ou prestation ; Le texte vise expressément les prestations, y compris hors mandat de certification ; Responsabilité non engagée par la révélation ; non-révélation pénalement sanctionnée (L.821-9) ; Ne pas confondre avec la déclaration de soupçon à Tracfin (LCB-FT), obligation distincte qui vise aussi toutes les missions et prestations du CAC
 
-**Explication** : L'article L.821-10, alinéa 2, dispose que le CAC « révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation » ; la profession comprenant désormais missions et prestations (L.821-2 et L.821-3), l'obligation ne se limite plus à la certification. L.821-9 punit de 5 ans et 75 000 € toute personne exerçant la profession de CAC qui ne révèle pas ces faits. Piège : les obligations LCB-FT (Tracfin) restent attachées au CAC chargé de la certification ; l'expert-comptable n'a aucune obligation de révélation au procureur.
+**Explication** : L'article L.821-10, alinéa 2, dispose que le CAC « révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation » ; la profession comprenant désormais missions et prestations (L.821-2 et L.821-3), l'obligation ne se limite plus à la certification. L.821-9 punit de 5 ans et 75 000 € toute personne exerçant la profession de CAC qui ne révèle pas ces faits. Piège : ne pas confondre avec la déclaration de soupçon à Tracfin (LCB-FT), obligation distincte qui s'applique elle aussi à toutes les missions et prestations du CAC (NEP 9605) ; l'expert-comptable n'a aucune obligation de révélation au procureur.
 
 **Évolution depuis le sujet** : Relecture : point tranché par le texte de L.821-10 (brochure CNCC « Code de commerce, partie législative », sept. 2024) : « à l'occasion de sa mission ou prestation ». L'affirmation contraire de data/SCHEMA.md (révélation limitée à la certification) est erronée.

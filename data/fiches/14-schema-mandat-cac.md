@@ -44,7 +44,7 @@ EIP : cabinet | **10 ans**, jusqu'à **16 ans** après appel d'offres, **24 ans*
     ! Pas de démission **à contretemps** ; le CAC informe l'entité et la **H2A**
   ? **Relèvement** de fonctions
     = **Décision de justice**, pour **faute** ou **empêchement**
-    = Demandé par l'administration ou la direction, des actionnaires (5 %), le CSE, le ministère public, l'AMF (sociétés cotées) ; **pas la H2A**
+    = Demandé par l'organe d'administration ou de direction, des actionnaires (5 %), le CSE, le ministère public, l'AMF (sociétés cotées) ; **pas la H2A**
     ! **Pas de révocation ad nutum** par l'assemblée
 ```
 

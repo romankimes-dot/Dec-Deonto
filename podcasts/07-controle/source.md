@@ -205,7 +205,7 @@ Le **président du conseil régional** conclut, au vu du rapport du contrôleur 
 #### 4. Formation continue et compétence
 - L'**obligation de compétence** est portée par le code de déontologie et la NPMQ.
 - La **formation continue** est **obligatoire** pour les EC : en principe **120 heures sur 3 ans**, avec au moins **20 heures par an**. Les heures de formation CAC sont prises en compte.
-- Lors du contrôle de qualité, seules les **formations vérifiables** (attestation de présence, justificatif) sont retenues.
+- Lors du contrôle de qualité, les actions retenues ne se limitent **pas** aux formations attestées : enseignement dispensé, colloques, publications et travaux techniques comptent aussi, dans certaines limites (annale 2018-11 Q10 ; pour le CAC, A.821-46).
 - Le **personnel** du cabinet fait l'objet d'une **évaluation périodique** de ses compétences (NPMQ, ressources humaines).
 - L'Ordre organise la **formation des stagiaires** et la **formation professionnelle continue** (CNOEC).
 
@@ -369,6 +369,8 @@ Propositions (celles du sujet) :
 
 **Bonne réponse** : C. A l'obligation de demander à son personnel au moins une fois par an une confirmation écrite au regard des règles d'indépendance
 
+**Version QRC de la question** : Quelles obligations la norme de maîtrise de la qualité (NPMQ) impose-t-elle au cabinet en matière de documentation des procédures et d'indépendance du personnel ?
+
 **Réponse courte attendue** : La NPMQ s'applique à toutes les missions du cabinet et impose des politiques et procédures écrites, adaptées à sa taille mais jamais facultatives, couvrant notamment les règles de déontologie. En matière d'indépendance, le cabinet doit obtenir de son personnel, au moins une fois par an, une confirmation écrite du respect des règles applicables.
 
 Éléments attendus : Politiques et procédures documentées, proportionnées à la taille du cabinet mais obligatoires quelle que soit sa taille ; Champ : toutes les missions et prestations du cabinet (y compris paie, social) ; Rappel des règles de déontologie et d'indépendance dans les procédures ; Confirmation écrite au moins annuelle du personnel sur le respect des règles d'indépendance
@@ -386,6 +388,8 @@ Propositions (adaptées du sujet) :
 - D. Aucune des propositions précédentes
 
 **Bonne réponse** : A. Les experts-comptables procèdent à une évaluation périodique du personnel et notamment de ses compétences
+
+**Version QRC de la question** : Quelles obligations la réglementation professionnelle impose-t-elle à l'expert-comptable pour maintenir la compétence du cabinet et la sienne ?
 
 **Réponse courte attendue** : La NPMQ impose au cabinet des procédures de ressources humaines comprenant l'évaluation périodique des compétences et des performances du personnel. L'expert-comptable est en outre personnellement tenu à une formation continue (120 heures sur trois ans, dont au moins 20 par an), satisfaite par des actions diverses et pas uniquement par des formations attestées ; il n'existe pas de quantum légal propre aux collaborateurs.
 
@@ -408,6 +412,8 @@ Propositions (celles du sujet) :
 - D. Les experts-comptables, les salariés articles 83 ter et 83 quater, les experts-comptables stagiaires
 
 **Bonne réponse** : B. La structure d'exercice professionnel, les experts-comptables, les salariés articles 83 ter et 83 quater
+
+**Version QRC de la question** : Quelles personnes sont soumises au contrôle de qualité organisé par l'Ordre des experts-comptables ?
 
 **Réponse courte attendue** : Le contrôle de qualité s'applique à l'ensemble des membres de l'Ordre : structures d'exercice professionnel, experts-comptables personnes physiques, ainsi que les salariés autorisés à exercer la profession au titre des articles 83 ter et 83 quater de l'ordonnance. Les experts-comptables stagiaires, bien qu'inscrits au tableau en cette qualité (D. 2012-432 art. 67), ne sont pas visés par ce contrôle.
 
@@ -461,6 +467,8 @@ Propositions (celles du sujet) :
 - D. Peuvent être délégués à la CNCC
 
 **Bonne réponse** : D. Peuvent être délégués à la CNCC
+
+**Version QRC de la question** : Qui réalise les contrôles d'activité des commissaires aux comptes ne détenant pas de mandat auprès d'entités d'intérêt public, et selon quelle périodicité ?
 
 **Réponse courte attendue** : Les contrôles d'activité relèvent de la H2A. Pour les CAC sans mandat EIP, ils sont délégués à la CNCC par une convention homologuée par arrêté, sous la supervision de la H2A. Les cabinets EIP sont contrôlés par la H2A elle-même. Périodicité : six ans (non-EIP), trois ans (EIP).
 

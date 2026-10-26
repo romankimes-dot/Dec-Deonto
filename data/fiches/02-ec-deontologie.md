@@ -29,7 +29,7 @@
   - **Tracfin** (déclaration de soupçon, droit de communication) ;
   - **administration fiscale** au titre de son droit de communication, dans les limites prévues ;
   - **défense** de l'EC poursuivi (procédure disciplinaire ou instance qui le met en cause).
-- **Opposable** à la **CNIL** (annale 2025-11 Q4).
+- **Opposable** à la **CNIL** {?} (annale 2025-11 Q4).
 - **Reprise de dossier** : l'EC sortant **n'est pas délié** du secret à l'égard de son successeur. Il doit en revanche **restituer les documents** du client.
 - **Déclaration de soupçon** : il est **interdit de la révéler**, y compris au client et au confrère successeur. La violation est un délit (C. mon. fin. **L.561-18** et **L.574-1**).
 
@@ -199,12 +199,12 @@
 ## Pièges EC vs CAC
 - **Déclarant Tracfin** : pour le CAC, le **CAC signataire** déclare personnellement (NEP 9605 § 61) ; pour l'EC, c'est l'**EC en charge de la mission**, personnellement (C. mon. fin. R.561-23 IV, NPLAB § 47). Le **correspondant Tracfin** ne déclare pas.
 - **Norme anti-blanchiment** : NPLAB pour l'EC, **NEP 9605** pour le CAC.
-- **Niveaux de vigilance** : au cours de la relation, la NPLAB n'en prévoit que **2**, **standard et renforcée** ; elle reprend toutefois des **mesures d'identification simplifiées** (société cotée : pas d'identification du bénéficiaire effectif). Côté CAC, la NEP 9605 prévoit des mesures **simplifiées** et **renforcées**, par exemple pour une société cotée.
+- **Niveaux de vigilance** : au cours de la relation, la NPLAB n'en prévoit que **2**, **standard et renforcée** ; elle reprend toutefois des **mesures d'identification simplifiées** (société cotée : pas d'identification du bénéficiaire effectif). Côté CAC, la NEP 9605 en retient **trois** : vigilance **simplifiée** (risque faible, par exemple société cotée), **standard** et **renforcée**.
 - **Secret** : il est d'ordre public pour les deux professions. Mais le CAC bénéficie de **levées spécifiques** (CAC de la consolidante et des consolidées, président du tribunal dans l'alerte, H2A, AMF, comité d'audit) qui n'existent pas pour l'EC. Le CAC **successeur** accède aux documents de son prédécesseur en vertu de **L.821-44**, pas d'une levée du secret écrite à L.821-35.
 - **Faits délictueux** : le CAC doit les **révéler au procureur** ; l'EC ne le doit pas.
 - **Publicité** : les deux professions interdisent le **comparatif** et le **dénigrement**. Le code CAC impose en plus de préciser les **modalités de détermination des honoraires** dans la sollicitation.
 - **Successeur** : l'EC envoie une **lettre d'information** à son prédécesseur et s'efforce d'obtenir le paiement de ses honoraires ; le CAC successeur **doit s'assurer auprès de son prédécesseur**, avant d'accepter, que le non-renouvellement ne vise pas à contourner la loi (code de déontologie CAC art. 26) ; le prédécesseur lui **donne accès** aux informations et documents pertinents (**L.821-44**). L.821-35 ne prévoit **aucune levée du secret** au profit du successeur.
-- **Honoraires au succès** : pour l'EC, ils sont interdits pour le monopole et pour les missions qui participent à la détermination de l'**assiette fiscale ou sociale** (ord. art. 24) ; pour le **CAC**, les honoraires **subordonnés au résultat** sont **interdits** en certification.
+- **Honoraires au succès** : pour l'EC, ils sont interdits pour le monopole et pour les missions qui participent à la détermination de l'**assiette fiscale ou sociale** (ord. art. 24) ; pour le **CAC**, les honoraires **subordonnés au résultat** sont **interdits** pour toute mission ou prestation (code de déontologie CAC **art. 13**, titre I).
 
 ## À vérifier
 - **Liste exacte des levées du secret** de l'EC : la formule « audition pénale en qualité de témoin ou de suspect libre » est donnée comme levée par SCHEMA.md. L'opposabilité à la **CNIL** est déduite de l'annale 2025-11 Q4.

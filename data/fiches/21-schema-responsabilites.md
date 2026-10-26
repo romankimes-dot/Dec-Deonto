@@ -26,7 +26,7 @@ Lien de causalité | Entre la faute et le préjudice
 
 ## Ce que l'assurance ne couvre pas
 
-- Les **amendes pénales** (par exemple 5 000 € pour non-révélation).
+- Les **amendes pénales** (par exemple une amende de 5 000 € prononcée pour non-révélation ; maximum légal : 75 000 €, L.821-9).
 - Les **fautes intentionnelles ou dolosives** (C. assur. L.113-1).
 - Les **sanctions pécuniaires** de la H2A.
 

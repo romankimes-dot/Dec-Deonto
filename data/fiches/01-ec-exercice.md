@@ -47,6 +47,7 @@
 - N'avoir subi **aucune condamnation criminelle ou correctionnelle** de nature à entacher l'**honorabilité**.
 - Présenter des **garanties de moralité** jugées suffisantes par le conseil régional.
 - Être titulaire du **diplôme d'expertise comptable (DEC)**, ou bénéficier d'une **reconnaissance** (UE ou équivalence) ou d'une **autorisation** (art. 7 bis / art. 26).
+- **Aucune condition de nationalité** : le 1° de l'art. 3 II, qui l'imposait, est **abrogé**.
 
 ### Serment
 - Prêté **devant le conseil régional** de l'Ordre lors de l'inscription.
@@ -107,8 +108,8 @@
 
 ### Missions juridiques et consultations (loi 1971 art. 59)
 - Les **consultations juridiques et la rédaction d'actes sous seing privé** sont permises **à titre accessoire**, pour des entreprises chez qui l'EC assure une mission **d'ordre comptable ou d'accompagnement déclaratif et administratif de caractère permanent ou habituel**, ou lorsqu'elles sont **directement liées aux travaux comptables** dont il est chargé.
-- Un **contrat de travail** pour un client chez qui l'EC fait **habituellement la paie** est **possible**.
-- Un contrat de travail ou une consultation pour un **prospect sans autre mission** n'est **pas possible**.
+- La **rédaction d'un contrat de travail** pour un client chez qui l'EC fait **habituellement la paie** est **possible**.
+- La rédaction d'un contrat de travail ou une consultation pour un **prospect sans autre mission** n'est **pas possible**.
 - Les **statuts** dans le cadre de l'accompagnement global d'un créateur sont **possibles** (loi Macron).
 
 ### Missions possibles sans mission comptable (loi Macron 2015)
@@ -269,11 +270,12 @@
 
 ## 13. Formation continue (EC)
 - Elle est **obligatoire** : en principe **120 heures sur 3 ans**, avec au moins **20 heures par an**. Les heures de formation CAC sont prises en compte.
-- Son respect est vérifié lors du **contrôle de qualité**. Seules les **formations vérifiables** (attestation) sont retenues.
+- Son respect est vérifié lors du **contrôle de qualité**. Les actions retenues ne se limitent **pas** aux formations attestées : enseignement dispensé, colloques, publications et travaux techniques comptent aussi, dans certaines limites (annale 2018-11 Q10 ; pour le CAC, A.821-46).
 
 ## Pièges EC vs CAC
 - **Serment** : l'EC le prête devant le **conseil régional de l'Ordre** ; le CAC devant la **cour d'appel** (premier président).
 - **Inscription** : l'EC est inscrit au **tableau tenu par le CROEC** ; le CAC sur la **liste tenue par la H2A**.
+- **Nationalité** : aucune condition pour l'EC (ord. art. 3 II 1° abrogé) ; le CAC doit être Français, ressortissant de l'UE ou de l'EEE, ou d'un État qui admet les Français au contrôle légal des comptes (**L.821-14 1°**).
 - **Capital** : dans une société d'EC, plus de **2/3 des droits de vote** aux EC ; dans une société de CAC, la **majorité** des droits de vote aux CAC.
 - **Formes de société** : l'EC ne peut pas exercer dans une société conférant la qualité de commerçant ; ne pas transposer ce raisonnement au CAC sans vérifier.
 - **Honoraires** : ceux de l'EC sont **libres, sans barème** ; ceux du CAC en certification suivent un **barème d'heures** (D.821-188), mais le **taux horaire est libre**.
@@ -283,6 +285,5 @@
 - **Activités commerciales accessoires** : elles sont ouvertes à l'**EC** ; un CAC qui n'est pas EC n'y a pas accès.
 
 ## À vérifier
-- **Conditions d'inscription** : une condition de **nationalité** subsiste-t-elle ?
 - **Signatures de la lettre de mission en société** : faut-il la signature sociale **et** celle de l'EC responsable, ou seulement celle de l'EC ? Annales 2018-11 Q7 et 2022-11 Q1.
 - **Formation continue EC** : quantum exact (120 h / 3 ans, 20 h par an ou 40 h par an en moyenne) et texte (norme formation du CNOEC) ; ce quantum ne figure ni dans le règlement intérieur de 2024 ni dans le référentiel normatif 2022.

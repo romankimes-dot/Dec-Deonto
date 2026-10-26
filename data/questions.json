@@ -8014,7 +8014,7 @@
     ],
     "model_answer": "La commission des sanctions de la H2A peut prononcer contre un commissaire aux comptes personne physique l'avertissement, le blâme, l'interdiction temporaire d'exercer tout ou partie des missions (trois ans au plus, éventuellement avec sursis), la radiation de la liste ou le retrait de l'honorariat ; elle peut y ajouter une sanction pécuniaire pouvant atteindre 250 000 €, une interdiction de fonctions de direction, la publication d'une déclaration ou l'inéligibilité aux organismes professionnels."
    },
-   "explanation": "L'échelle des sanctions des CAC (C. com. L.821-71) diffère de celle des experts-comptables (ord. art. 53 : réprimande, blâme, suspension, radiation), proposition b conçue comme distracteur. La sanction pécuniaire est propre au régime des CAC (hors LCB-FT pour les EC). La prescription est de six ans et le recours contre la décision de la commission des sanctions est porté devant le Conseil d'État.",
+   "explanation": "L'échelle des sanctions des CAC (C. com. L.821-71) diffère de celle des experts-comptables (ord. art. 53 : réprimande, blâme, suspension, radiation), qu'il ne faut pas lui prêter. La sanction pécuniaire est propre au régime des CAC (hors LCB-FT pour les EC). La prescription est de six ans et le recours contre la décision de la commission des sanctions est porté devant le Conseil d'État.",
    "reference": "C. com. art. L.821-71 (ex L.824-2) ; L.820-2 V",
    "confidence": "high",
    "update_note": "Le H3C est devenu la Haute autorité de l'audit (H2A) le 1er janvier 2024 ; les sanctions sont prononcées par sa commission des sanctions (ex L.824-2 devenu L.821-71).",
@@ -10392,7 +10392,7 @@
     ],
     "model_answer": "Intégrité ; impartialité ; indépendance et prévention des conflits d'intérêts ; esprit critique ; compétence et diligence ; confraternité ; relations réciproques entre professionnels chargés de l'audit des informations en matière de durabilité (art. 8-1, depuis mars 2026) ; secret professionnel et discrétion."
    },
-   "explanation": "Articles 3 à 9 du code de déontologie, complétés par l'article 8-1 (relations réciproques entre professionnels chargés de l'audit des informations en matière de durabilité) issu du décret 2026-176. Le distracteur « intégrité, objectivité, compétence et diligence professionnelle, confidentialité, comportement professionnel… » reprend pour l'essentiel les principes du code IESBA ; « probité, conscience professionnelle, indépendance d'esprit… » renvoie au code des EC (D. 2012-432 art. 145).",
+   "explanation": "Articles 3 à 9 du code de déontologie, complétés par l'article 8-1 (relations réciproques entre professionnels chargés de l'audit des informations en matière de durabilité) issu du décret 2026-176. La liste « intégrité, objectivité, compétence et diligence professionnelle, confidentialité, comportement professionnel… » reprend pour l'essentiel les principes du code IESBA ; « probité, conscience professionnelle, indépendance d'esprit… » renvoie au code des EC (D. 2012-432 art. 145).",
    "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 3 à 9",
    "confidence": "high",
    "update_note": "Les normes de déontologie homologuées (A.821-54 s.) précisent l'application de ces principes. Le décret 2026-176 (en vigueur le 14 mars 2026) a inséré dans la section 1 un article 8-1 (relations réciproques entre CAC, OTI et auditeurs de durabilité) et étendu l'intégrité (art. 3) à l'auditeur de durabilité.",
@@ -10457,11 +10457,11 @@
      "L.821-10 (ex-L.823-12) : révélation au procureur des faits délictueux connus à l'occasion de sa mission ou prestation",
      "Le texte vise expressément les prestations, y compris hors mandat de certification",
      "Responsabilité non engagée par la révélation ; non-révélation pénalement sanctionnée (L.821-9)",
-     "Les obligations LCB-FT visent le CAC chargé de la certification"
+     "Ne pas confondre avec la déclaration de soupçon à Tracfin (LCB-FT), obligation distincte qui vise aussi toutes les missions et prestations du CAC"
     ],
     "model_answer": "Oui. Selon l'article L.821-10, le commissaire aux comptes révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou de sa prestation. L'obligation s'applique donc aussi à une prestation réalisée hors mandat de certification. Le non-respect de cette obligation est pénalement sanctionné."
    },
-   "explanation": "L'article L.821-10, alinéa 2, dispose que le CAC « révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation » ; la profession comprenant désormais missions et prestations (L.821-2 et L.821-3), l'obligation ne se limite plus à la certification. L.821-9 punit de 5 ans et 75 000 € toute personne exerçant la profession de CAC qui ne révèle pas ces faits. Piège : les obligations LCB-FT (Tracfin) restent attachées au CAC chargé de la certification ; l'expert-comptable n'a aucune obligation de révélation au procureur.",
+   "explanation": "L'article L.821-10, alinéa 2, dispose que le CAC « révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation » ; la profession comprenant désormais missions et prestations (L.821-2 et L.821-3), l'obligation ne se limite plus à la certification. L.821-9 punit de 5 ans et 75 000 € toute personne exerçant la profession de CAC qui ne révèle pas ces faits. Piège : ne pas confondre avec la déclaration de soupçon à Tracfin (LCB-FT), obligation distincte qui s'applique elle aussi à toutes les missions et prestations du CAC (NEP 9605) ; l'expert-comptable n'a aucune obligation de révélation au procureur.",
    "reference": "C. com. L.821-10 (ex-L.823-12), L.821-9 (ex-L.820-7)",
    "confidence": "high",
    "update_note": "Relecture : point tranché par le texte de L.821-10 (brochure CNCC « Code de commerce, partie législative », sept. 2024) : « à l'occasion de sa mission ou prestation ». L'affirmation contraire de data/SCHEMA.md (révélation limitée à la certification) est erronée.",
@@ -10827,7 +10827,7 @@
     ],
     "model_answer": "La NPLAB retient deux niveaux de vigilance : standard et renforcée, déterminés selon l'évaluation du risque de la relation d'affaires (PPE, pays à haut risque, risque élevé…)."
    },
-   "explanation": "Le CMF prévoit aussi des mesures simplifiées en cas de risque faible, mais la norme professionnelle de l'Ordre (NPLAB) n'en retient que deux. La NEP 9605 des CAC suit la même logique.",
+   "explanation": "Le CMF prévoit aussi des mesures simplifiées en cas de risque faible, mais la norme professionnelle de l'Ordre (NPLAB) n'en retient que deux. Ne pas transposer au CAC : la NEP 9605 admet des mesures simplifiées, standard et renforcées.",
    "reference": "NPLAB ; CMF L.561-9 et L.561-10",
    "confidence": "high",
    "session": "2025-11",

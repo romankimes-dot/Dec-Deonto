@@ -228,6 +228,7 @@ Arbre de décision (lire de haut en bas) :
 - N'avoir subi **aucune condamnation criminelle ou correctionnelle** de nature à entacher l'**honorabilité**.
 - Présenter des **garanties de moralité** jugées suffisantes par le conseil régional.
 - Être titulaire du **diplôme d'expertise comptable (DEC)**, ou bénéficier d'une **reconnaissance** (UE ou équivalence) ou d'une **autorisation** (art. 7 bis / art. 26).
+- **Aucune condition de nationalité** : le 1° de l'art. 3 II, qui l'imposait, est **abrogé**.
 
 ##### Serment
 - Prêté **devant le conseil régional** de l'Ordre lors de l'inscription.
@@ -323,6 +324,7 @@ Arbre de décision (lire de haut en bas) :
 #### Pièges EC vs CAC
 - **Serment** : l'EC le prête devant le **conseil régional de l'Ordre** ; le CAC devant la **cour d'appel** (premier président).
 - **Inscription** : l'EC est inscrit au **tableau tenu par le CROEC** ; le CAC sur la **liste tenue par la H2A**.
+- **Nationalité** : aucune condition pour l'EC (ord. art. 3 II 1° abrogé) ; le CAC doit être Français, ressortissant de l'UE ou de l'EEE, ou d'un État qui admet les Français au contrôle légal des comptes (**L.821-14 1°**).
 - **Capital** : dans une société d'EC, plus de **2/3 des droits de vote** aux EC ; dans une société de CAC, la **majorité** des droits de vote aux CAC.
 - **Formes de société** : l'EC ne peut pas exercer dans une société conférant la qualité de commerçant ; ne pas transposer ce raisonnement au CAC sans vérifier.
 - **Honoraires** : ceux de l'EC sont **libres, sans barème** ; ceux du CAC en certification suivent un **barème d'heures** (D.821-188), mais le **taux horaire est libre**.
@@ -333,7 +335,6 @@ Arbre de décision (lire de haut en bas) :
 
 
 #### À vérifier
-- **Conditions d'inscription** : une condition de **nationalité** subsiste-t-elle ?
 - **Signatures de la lettre de mission en société** : faut-il la signature sociale **et** celle de l'EC responsable, ou seulement celle de l'EC ? Annales 2018-11 Q7 et 2022-11 Q1.
 - **Formation continue EC** : quantum exact (120 h / 3 ans, 20 h par an ou 40 h par an en moyenne) et texte (norme formation du CNOEC) ; ce quantum ne figure ni dans le règlement intérieur de 2024 ni dans le référentiel normatif 2022.
 
@@ -405,6 +406,7 @@ Arbre de décision (lire de haut en bas) :
 
 ##### Personne physique
 - **Conditions générales** : **honorabilité** (aucune condamnation pour des faits contraires à l'honneur ou à la probité, aucune sanction de radiation, aucune faillite personnelle).
+- **Nationalité** (L.821-14 1°) : être Français, ressortissant d'un État de l'**UE** ou de l'**EEE**, ou d'un État étranger qui admet les Français à exercer le contrôle légal des comptes. Pour l'EC, cette condition est abrogée.
 - **Diplôme** : **DEC** ou **CAFCAC**, après un **stage** professionnel (3 ans).
 - **Prestation de serment** :
   - elle a lieu **devant le premier président de la cour d'appel** du ressort, **avant** tout exercice ;
@@ -426,6 +428,7 @@ Arbre de décision (lire de haut en bas) :
 #### Pièges EC vs CAC
 - **Serment** : l'EC le prête devant le **conseil régional** ; le CAC devant le **premier président de la cour d'appel**.
 - **Inscription** : l'EC est inscrit au **tableau tenu par le CROEC** ; le CAC sur la **liste tenue par la H2A**.
+- **Nationalité** : aucune condition pour l'EC (ord. art. 3 II 1° abrogé) ; le CAC doit être Français, ressortissant de l'UE ou de l'EEE, ou d'un État qui admet les Français au contrôle légal des comptes (**L.821-14 1°**).
 - **Droits de vote** : **plus de 2/3** aux EC dans une société d'EC ; la **majorité** aux CAC dans une société de CAC.
 - **Honoraires** : ceux de l'EC sont libres, sans barème ; ceux du CAC suivent un **barème d'heures** en certification (ALPE comprise), avec un **taux horaire libre**.
 - **Conciliation** : chez l'EC, par le **président du CROEC** (honoraires, confrères) ; chez le CAC, par le **président de la CRCC** (co-commissaires, honoraires, barème).
@@ -456,6 +459,8 @@ Propositions (celles du sujet) :
 - D. La mission de compilation
 
 **Bonne réponse** : D. La mission de compilation
+
+**Version QRC de la question** : Comment le référentiel normatif de l'Ordre classe-t-il les missions, et où se situe la compilation ?
 
 **Réponse courte attendue** : Le référentiel distingue les missions d'assurance sur comptes complets historiques (présentation, examen limité, audit), les autres missions d'assurance (attestations particulières, examen d'informations prévisionnelles) et les missions sans assurance. La compilation appartient à cette dernière catégorie, avec les procédures convenues : l'expert-comptable n'y exprime aucune assurance.
 
@@ -576,6 +581,8 @@ Propositions (celles du sujet) :
 
 **Bonne réponse** : D. Vingt-deux.
 
+**Version QRC de la question** : Comment est composé le Conseil national de la CNCC ?
+
 **Réponse courte attendue** : Le Conseil national compte soixante membres désignés pour quatre ans, comprenant les présidents des dix-sept compagnies régionales et des commissaires aux comptes élus, répartis à parité entre un collège EIP et un collège non-EIP.
 
 Éléments attendus : 60 membres ; Désignés pour 4 ans ; Comprenant les présidents des compagnies régionales (17) et des CAC élus ; Moitié CAC exerçant des mandats EIP, moitié non-EIP (deux collèges de 30 sièges)
@@ -593,6 +600,8 @@ Propositions (celles du sujet) :
 - D. Le Conseil de normalisation des comptes publics.
 
 **Bonne réponse** : C. La Compagnie régionale des commissaires aux comptes.
+
+**Version QRC de la question** : Qui peut demander à la H2A l'élaboration d'une norme d'exercice professionnel ?
 
 **Réponse courte attendue** : Le garde des sceaux, l'AMF, l'ACPR, l'Autorité des normes comptables, le Conseil de normalisation des comptes publics et la CNCC. Les compagnies régionales n'en font pas partie.
 

@@ -64,7 +64,7 @@
    "items": [ { "k": "Amendes pénales", "v": "Par exemple 5 000 € pour non-révélation" }, { "k": "Fautes intentionnelles, dolosives" }, { "k": "Sanctions pécuniaires de la H2A" } ],
    "trap": "L'assurance RC est obligatoire pour les deux : contrat collectif de l'Ordre (EC) ou de la CNCC (CAC).",
    "quiz": { "q": "Un CAC paie une amende pénale de 5 000 € pour non-révélation. Son assurance RC la prend-elle en charge ?", "choices": ["Oui, l'assurance RC est obligatoire", "Non, les amendes pénales sont exclues", "Oui, si le contrat collectif de la CNCC le prévoit"], "answer": 1, "why": "Les **amendes pénales** sont exclues, comme les fautes intentionnelles ou dolosives et les sanctions pécuniaires de la H2A." },
-   "src": ["Les amendes pénales (par exemple 5 000 € pour non-révélation).", "Les fautes intentionnelles ou dolosives", "Les sanctions pécuniaires de la H2A."] },
+   "src": ["Les amendes pénales (par exemple une amende de 5 000 € prononcée pour non-révélation ; maximum légal : 75 000 €, L.821-9).", "Les fautes intentionnelles ou dolosives", "Les sanctions pécuniaires de la H2A."] },
 
  { "id": "responsabilites-11", "type": "vf", "prof": "EC+CAC", "tags": ["responsabilite_penale"], "fiche": "21-schema-responsabilites.md",
    "title": "Négligence grave : un délit ?",

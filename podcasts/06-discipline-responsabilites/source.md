@@ -164,7 +164,7 @@ Arbre de décision (lire de haut en bas) :
 
 #### Ce que l'assurance ne couvre pas
 
-- Les **amendes pénales** (par exemple 5 000 € pour non-révélation).
+- Les **amendes pénales** (par exemple une amende de 5 000 € prononcée pour non-révélation ; maximum légal : 75 000 €, L.821-9).
 - Les **fautes intentionnelles ou dolosives** (C. assur. L.113-1).
 - Les **sanctions pécuniaires** de la H2A.
 
@@ -383,10 +383,10 @@ Arbre de décision (lire de haut en bas) :
 ##### Assurance
 - L'**assurance RC professionnelle** est **obligatoire** (R.821-x, ex **R.822-36**). Il existe un contrat collectif souscrit par la CNCC et des compléments.
 - Elle **ne couvre pas** :
-  - les **amendes pénales**, par exemple une amende de 5 000 € pour non-révélation ;
+  - les **amendes pénales**, par exemple une amende de 5 000 € prononcée pour non-révélation (maximum légal : 75 000 €, L.821-9, ex L.820-7) ;
   - les **fautes intentionnelles ou dolosives** (C. assur. **L.113-1**) ;
   - les **sanctions pécuniaires** prononcées par la H2A.
-- Pour des **dommages-intérêts** consécutifs à une **violation volontaire du secret**, la couverture est **exclue** en cas de **faute intentionnelle** (à vérifier).
+- Les **dommages-intérêts** dus pour une **violation du secret** restent en principe **couverts** (annale 2019-11 Q16, réponse « couverts ») : seule l'amende est exclue. L'exclusion de la **faute intentionnelle ou dolosive** (C. assur. L.113-1) suppose la volonté de causer le dommage, notion plus étroite que l'intention pénale.
 
 
 #### 3. Responsabilité pénale
@@ -500,7 +500,7 @@ Arbre de décision (lire de haut en bas) :
 | Certification sans réserve de comptes **sciemment** faussés | **Pénale** (informations mensongères), **civile**, **disciplinaire** |
 | Oubli d'une convention réglementée dans le rapport spécial | **Civile** (et disciplinaire possible) |
 | Vol du dirigeant **remboursé**, non révélé | **Pénale** (non-révélation), **disciplinaire** |
-| Amende pénale de 5 000 € | **Non couverte** par l'assurance RC |
+| Amende pénale de 5 000 € prononcée (maximum légal : 75 000 €) | **Non couverte** par l'assurance RC |
 | Exercice d'une activité commerciale incompatible | **Pénale** (délit) et **disciplinaire** |
 
 
@@ -515,7 +515,7 @@ Arbre de décision (lire de haut en bas) :
 
 
 #### À vérifier
-- **Couverture d'assurance** des dommages-intérêts en cas de violation du secret (annale 2019-11 Q16 : réponse « non couverts » présumée).
+- **Couverture d'assurance** des dommages-intérêts en cas de violation du secret : « couverts » selon l'annale 2019-11 Q16 ; l'application de l'exclusion de la faute intentionnelle (C. assur. L.113-1) à une violation délibérée relève de la jurisprudence et de la police.
 
 ## Questions d’annales de l’épisode (10)
 
@@ -575,6 +575,8 @@ Propositions (celles du sujet) :
 
 **Bonne réponse** : A. La responsabilité civile professionnelle ne peut être mise en jeu que sur une période contractuellement définie à 6 mois à compter du jour où le client a connu ou aurait dû connaître les faits lui permettant de la mettre en cause.
 
+**Version QRC de la question** : Une lettre de mission peut-elle réduire le délai de prescription de l'action en responsabilité civile contre l'expert-comptable ? Dans quelles limites ?
+
 **Réponse courte attendue** : Oui, entre professionnels : l'article 2254 du code civil autorise les parties à abréger la prescription, sans toutefois la réduire à moins d'un an, ou à l'allonger sans excéder dix ans. Une clause ramenant le délai à six mois serait donc nulle, alors qu'une clause d'un, deux ou trois ans est valable. Le délai de droit commun reste de cinq ans à compter de la connaissance des faits.
 
 Éléments attendus : Prescription de droit commun : cinq ans à compter du jour où le titulaire a connu ou aurait dû connaître les faits (C. civ. 2224) ; Aménagement contractuel possible (C. civ. 2254) : réduction sans pouvoir descendre en dessous d'un an, allongement sans dépasser dix ans ; Clause interdite dans les contrats avec un consommateur ; clause d'un an fréquente dans les lettres de mission
@@ -626,6 +628,8 @@ Propositions (celles du sujet) :
 
 **Bonne réponse** : A. Sont couverts par son assurance responsabilité civile
 
+**Version QRC de la question** : Que couvre l'assurance de responsabilité civile obligatoire du commissaire aux comptes lorsqu'une même faute donne lieu à une condamnation pénale et à des dommages-intérêts ?
+
 **Réponse courte attendue** : L'assurance obligatoire garantit la réparation civile des préjudices causés par les fautes du commissaire aux comptes : les dommages-intérêts restent en principe couverts même si les faits sont aussi constitutifs d'un délit, seule l'amende pénale étant exclue. La garantie ne tomberait que si l'assureur établissait une faute intentionnelle au sens du droit des assurances, c'est-à-dire la volonté de provoquer le dommage lui-même ; l'existence d'une sanction disciplinaire est indifférente.
 
 Éléments attendus : L'assurance couvre les conséquences pécuniaires de la responsabilité civile : les dommages-intérêts dus aux victimes ; Elle ne couvre jamais l'amende pénale ni les sanctions disciplinaires, peines personnelles ; Limite : exclusion légale de la faute intentionnelle ou dolosive (volonté de causer le dommage), appréciée strictement ; la sanction disciplinaire est sans effet sur la garantie
@@ -647,6 +651,8 @@ Propositions (celles du sujet) :
 - D. Le code de déontologie
 
 **Bonne réponse** : A. La loi
+
+**Version QRC de la question** : Comment est sanctionné l'usage du titre de commissaire aux comptes par une personne non inscrite sur la liste ?
 
 **Réponse courte attendue** : L'usage du titre par une personne non inscrite constitue un délit pénal d'usurpation de titre, défini par la loi dans le code de commerce et puni d'emprisonnement et d'amende. Une personne non inscrite ne relevant ni du code de déontologie ni de la commission des sanctions de la H2A, seule la voie pénale est ouverte, la CNCC pouvant se porter partie civile.
 
@@ -690,6 +696,8 @@ Propositions (celles du sujet) :
 
 **Bonne réponse** : D. L'expert-comptable.
 
+**Version QRC de la question** : Quelles personnes relèvent de la commission des sanctions de la H2A ?
+
 **Réponse courte attendue** : La commission des sanctions juge les commissaires aux comptes, mais aussi leurs associés, salariés et proches pour les liens incompatibles, les EIP et leurs dirigeants et organes pour les règles d'indépendance et de désignation, les personnes faisant obstacle aux contrôles, les contrôleurs de pays tiers et les auditeurs de durabilité. L'expert-comptable relève, en tant que tel, des chambres de discipline de l'Ordre.
 
 Éléments attendus : Les commissaires aux comptes (fautes disciplinaires) ; Associés, salariés, personnes participant à la mission, personnes étroitement liées ; EIP et leurs dirigeants et organes (dont comité spécialisé) pour les manquements sur services, désignation, durée, honoraires ; Entités et dirigeants faisant obstacle aux contrôles ; contrôleurs de pays tiers inscrits ; auditeurs de durabilité
@@ -707,6 +715,8 @@ Propositions (celles du sujet) :
 - D. La procédure de comparution immédiate.
 
 **Bonne réponse** : D. La procédure de comparution immédiate.
+
+**Version QRC de la question** : Quelles procédures de sanction le code de commerce prévoit-il à l'encontre des commissaires aux comptes ?
 
 **Réponse courte attendue** : Après enquête du rapporteur général et notification des griefs par le collège, la H2A peut recourir à la procédure ordinaire devant la commission des sanctions, à la procédure simplifiée de sanction pour certains manquements (formation, obligations déclaratives…) ou proposer une composition administrative. La comparution immédiate est une procédure pénale.
 

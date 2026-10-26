@@ -295,6 +295,8 @@ Propositions (celles du sujet) :
 
 **Bonne réponse** : C. Porter un jugement sur la gestion de l'entité
 
+**Version QRC de la question** : Que recouvre le principe de non-immixtion dans la gestion du commissaire aux comptes, et que ne lui interdit-il pas ?
+
 **Réponse courte attendue** : Le CAC vérifie et certifie sans s'immiscer dans la gestion : il ne porte pas de jugement d'opportunité sur les choix de gestion et ne participe pas aux décisions. Le principe ne l'empêche ni d'obtenir tous documents utiles, dont la comptabilité de gestion, ni d'apprécier la continuité d'exploitation dans le cadre de l'alerte, ni de relever les irrégularités et fraudes.
 
 Éléments attendus : Interdiction de porter un jugement d'opportunité sur la gestion et de participer aux décisions ; N'interdit pas de se faire communiquer tous documents utiles, y compris la comptabilité de gestion ; N'interdit pas d'apprécier la continuité d'exploitation (procédure d'alerte) ; N'interdit pas de relever les irrégularités, y compris fiscales
@@ -325,6 +327,8 @@ Propositions (celles du sujet) :
 - D. a été remplacée par une approche risque-sauvegarde.
 
 **Bonne réponse** : D. a été remplacée par une approche risque-sauvegarde.
+
+**Version QRC de la question** : Quelle conséquence la loi Pacte et le décret de 2020 ont-ils eue sur la liste des services interdits du code de déontologie des commissaires aux comptes ?
 
 **Réponse courte attendue** : La liste des services interdits de l'ancien article 10 du code de déontologie a été supprimée pour les entités non EIP ; elle est remplacée par une approche fondée sur l'identification des risques (autorévision, conflits d'intérêts, liens) et la mise en œuvre de mesures de sauvegarde, le CAC devant refuser ou interrompre la mission lorsque ces mesures sont insuffisantes. Pour les entités d'intérêt public, les services interdits subsistent par renvoi à l'article 5 du règlement européen 537/2014.
 
@@ -376,7 +380,7 @@ Propositions (celles du sujet) :
 
 Éléments attendus : Intégrité ; Impartialité ; Indépendance et prévention des conflits d'intérêts ; Esprit critique ; Compétence et diligence ; Confraternité ; relations réciproques entre professionnels de l'audit de durabilité (art. 8-1, depuis mars 2026) ; secret professionnel et discrétion
 
-**Explication** : Articles 3 à 9 du code de déontologie, complétés par l'article 8-1 (relations réciproques entre professionnels chargés de l'audit des informations en matière de durabilité) issu du décret 2026-176. Le distracteur « intégrité, objectivité, compétence et diligence professionnelle, confidentialité, comportement professionnel… » reprend pour l'essentiel les principes du code IESBA ; « probité, conscience professionnelle, indépendance d'esprit… » renvoie au code des EC (D. 2012-432 art. 145).
+**Explication** : Articles 3 à 9 du code de déontologie, complétés par l'article 8-1 (relations réciproques entre professionnels chargés de l'audit des informations en matière de durabilité) issu du décret 2026-176. La liste « intégrité, objectivité, compétence et diligence professionnelle, confidentialité, comportement professionnel… » reprend pour l'essentiel les principes du code IESBA ; « probité, conscience professionnelle, indépendance d'esprit… » renvoie au code des EC (D. 2012-432 art. 145).
 
 **Évolution depuis le sujet** : Les normes de déontologie homologuées (A.821-54 s.) précisent l'application de ces principes. Le décret 2026-176 (en vigueur le 14 mars 2026) a inséré dans la section 1 un article 8-1 (relations réciproques entre CAC, OTI et auditeurs de durabilité) et étendu l'intégrité (art. 3) à l'auditeur de durabilité.
 
@@ -391,6 +395,8 @@ Propositions (celles du sujet) :
 - D. La possibilité de fixer des honoraires proportionnels ou conditionnels.
 
 **Bonne réponse** : D. La possibilité de fixer des honoraires proportionnels ou conditionnels.
+
+**Version QRC de la question** : Quelles sont les grandes rubriques du titre I du code de déontologie des CAC ?
 
 **Réponse courte attendue** : Le titre I, applicable à toutes les missions et prestations, traite des principes fondamentaux de comportement, de la conduite de la mission (recours à des collaborateurs et experts), des honoraires, de la publicité et de la sollicitation, et du respect des monopoles des autres professions. Il interdit les honoraires proportionnels ou conditionnels.
 

@@ -79,7 +79,7 @@
      { "k": "L'AMF", "v": "Pour les sociétés cotées" } ],
    "trap": "La H2A ne figure pas dans la liste.",
    "quiz": { "q": "Qui ne peut PAS demander le relèvement ?", "choices": ["Le ministère public", "Le CSE", "Des actionnaires détenant 5 %", "La H2A"], "answer": 3, "why": "Le relèvement est prononcé par le **juge** pour faute ou empêchement. La **H2A** ne peut pas le demander ; l'**AMF** le peut, mais seulement pour les sociétés cotées." },
-   "src": ["Demandé par l'administration ou la direction, des actionnaires (5 %), le CSE, le ministère public, l'AMF (sociétés cotées) ; pas la H2A"] },
+   "src": ["Demandé par l'organe d'administration ou de direction, des actionnaires (5 %), le CSE, le ministère public, l'AMF (sociétés cotées) ; pas la H2A"] },
 
  { "id": "mandat-12", "type": "vf", "prof": "CAC", "tags": ["co_commissariat"], "fiche": "14-schema-mandat-cac.md",
    "title": "Répartition en co-commissariat", "statement": "Deux co-commissaires peuvent se répartir les travaux à 90 % et 10 %, si le rapport est commun.",

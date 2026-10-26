@@ -31,6 +31,7 @@ Selon le jury, la partie CAC est régulièrement moins bien réussie que la part
 
 - **Serment** : l'EC le prête devant le **conseil régional de l'Ordre** ; le CAC devant la **cour d'appel** (premier président).
 - **Inscription** : l'EC est inscrit au **tableau tenu par le CROEC** ; le CAC sur la **liste tenue par la H2A**.
+- **Nationalité** : aucune condition pour l'EC (ord. art. 3 II 1° abrogé) ; le CAC doit être Français, ressortissant de l'UE ou de l'EEE, ou d'un État qui admet les Français au contrôle légal des comptes (**L.821-14 1°**).
 - **Capital** : dans une société d'EC, plus de **2/3 des droits de vote** aux EC ; dans une société de CAC, la **majorité** des droits de vote aux CAC.
 - **Formes de société** : l'EC ne peut pas exercer dans une société conférant la qualité de commerçant ; ne pas transposer ce raisonnement au CAC sans vérifier.
 - **Honoraires** : ceux de l'EC sont **libres, sans barème** ; ceux du CAC en certification suivent un **barème d'heures** (D.821-188), mais le **taux horaire est libre**.
@@ -43,12 +44,12 @@ Selon le jury, la partie CAC est régulièrement moins bien réussie que la part
 
 - **Déclarant Tracfin** : pour le CAC, le **CAC signataire** déclare personnellement (NEP 9605 § 61) ; pour l'EC, c'est l'**EC en charge de la mission**, personnellement (C. mon. fin. R.561-23 IV, NPLAB § 47). Le **correspondant Tracfin** ne déclare pas.
 - **Norme anti-blanchiment** : NPLAB pour l'EC, **NEP 9605** pour le CAC.
-- **Niveaux de vigilance** : au cours de la relation, la NPLAB n'en prévoit que **2**, **standard et renforcée** ; elle reprend toutefois des **mesures d'identification simplifiées** (société cotée : pas d'identification du bénéficiaire effectif). Côté CAC, la NEP 9605 prévoit des mesures **simplifiées** et **renforcées**, par exemple pour une société cotée.
+- **Niveaux de vigilance** : au cours de la relation, la NPLAB n'en prévoit que **2**, **standard et renforcée** ; elle reprend toutefois des **mesures d'identification simplifiées** (société cotée : pas d'identification du bénéficiaire effectif). Côté CAC, la NEP 9605 en retient **trois** : vigilance **simplifiée** (risque faible, par exemple société cotée), **standard** et **renforcée**.
 - **Secret** : il est d'ordre public pour les deux professions. Mais le CAC bénéficie de **levées spécifiques** (CAC de la consolidante et des consolidées, président du tribunal dans l'alerte, H2A, AMF, comité d'audit) qui n'existent pas pour l'EC. Le CAC **successeur** accède aux documents de son prédécesseur en vertu de **L.821-44**, pas d'une levée du secret écrite à L.821-35.
 - **Faits délictueux** : le CAC doit les **révéler au procureur** ; l'EC ne le doit pas.
 - **Publicité** : les deux professions interdisent le **comparatif** et le **dénigrement**. Le code CAC impose en plus de préciser les **modalités de détermination des honoraires** dans la sollicitation.
 - **Successeur** : l'EC envoie une **lettre d'information** à son prédécesseur et s'efforce d'obtenir le paiement de ses honoraires ; le CAC successeur **doit s'assurer auprès de son prédécesseur**, avant d'accepter, que le non-renouvellement ne vise pas à contourner la loi (code de déontologie CAC art. 26) ; le prédécesseur lui **donne accès** aux informations et documents pertinents (**L.821-44**). L.821-35 ne prévoit **aucune levée du secret** au profit du successeur.
-- **Honoraires au succès** : pour l'EC, ils sont interdits pour le monopole et pour les missions qui participent à la détermination de l'**assiette fiscale ou sociale** (ord. art. 24) ; pour le **CAC**, les honoraires **subordonnés au résultat** sont **interdits** en certification.
+- **Honoraires au succès** : pour l'EC, ils sont interdits pour le monopole et pour les missions qui participent à la détermination de l'**assiette fiscale ou sociale** (ord. art. 24) ; pour le **CAC**, les honoraires **subordonnés au résultat** sont **interdits** pour toute mission ou prestation (code de déontologie CAC **art. 13**, titre I).
 
 ### Maîtrise et contrôle de la qualité (expertise comptable)
 
@@ -71,6 +72,7 @@ Selon le jury, la partie CAC est régulièrement moins bien réussie que la part
 
 - **Serment** : l'EC le prête devant le **conseil régional** ; le CAC devant le **premier président de la cour d'appel**.
 - **Inscription** : l'EC est inscrit au **tableau tenu par le CROEC** ; le CAC sur la **liste tenue par la H2A**.
+- **Nationalité** : aucune condition pour l'EC (ord. art. 3 II 1° abrogé) ; le CAC doit être Français, ressortissant de l'UE ou de l'EEE, ou d'un État qui admet les Français au contrôle légal des comptes (**L.821-14 1°**).
 - **Droits de vote** : **plus de 2/3** aux EC dans une société d'EC ; la **majorité** aux CAC dans une société de CAC.
 - **Honoraires** : ceux de l'EC sont libres, sans barème ; ceux du CAC suivent un **barème d'heures** en certification (ALPE comprise), avec un **taux horaire libre**.
 - **Conciliation** : chez l'EC, par le **président du CROEC** (honoraires, confrères) ; chez le CAC, par le **président de la CRCC** (co-commissaires, honoraires, barème).
@@ -154,9 +156,9 @@ Arbre de décision (lire de haut en bas) :
 Arbre de décision (lire de haut en bas) :
 - Question : Quelle activité ?
   - → Attention : **Emploi salarié** : interdit, sauf chez un EC, une société d'EC, une AGC ou un CAC
-  - → Attention : **Actes de commerce** à titre principal, **agent d'affaires**, intermédiaire (agent immobilier, courtier)
-  - → Attention : **Représenter** un client devant les juridictions (réservé aux avocats)
-  - → Attention : **Sous-traiter** la tenue comptable à un non-inscrit : participation à l'**exercice illégal**
+  - → Interdit : **Actes de commerce** à titre principal, **agent d'affaires**, intermédiaire (agent immobilier, courtier)
+  - → Interdit : **Représenter** un client devant les juridictions (réservé aux avocats)
+  - → Interdit : **Sous-traiter** la tenue comptable à un non-inscrit : participation à l'**exercice illégal**
   - → Conclusion : Activités commerciales et actes d'intermédiaire **à titre accessoire**, sans atteinte à l'indépendance (loi 2010-853)
   - → Conclusion : **Recouvrement amiable** de créances et **paiement de dettes** pour le compte des clients (loi Pacte)
   - → Conclusion : Consultations juridiques et actes sous seing privé **à titre accessoire**, pour un client chez qui il a une mission **comptable ou déclarative permanente**
@@ -198,7 +200,7 @@ Arbre de décision (lire de haut en bas) :
     - → Attention : Pas de démission **à contretemps** ; le CAC informe l'entité et la **H2A**
   - Question : **Relèvement** de fonctions
     - → Conclusion : **Décision de justice**, pour **faute** ou **empêchement**
-    - → Conclusion : Demandé par l'administration ou la direction, des actionnaires (5 %), le CSE, le ministère public, l'AMF (sociétés cotées) ; **pas la H2A**
+    - → Conclusion : Demandé par l'organe d'administration ou de direction, des actionnaires (5 %), le CSE, le ministère public, l'AMF (sociétés cotées) ; **pas la H2A**
     - → Attention : **Pas de révocation ad nutum** par l'assemblée
 
 ### Indépendance du CAC : la démarche
@@ -273,7 +275,6 @@ Arbre de décision (lire de haut en bas) :
 
 ### Exercice de la profession d'expert-comptable
 
-- **Conditions d'inscription** : une condition de **nationalité** subsiste-t-elle ?
 - **Signatures de la lettre de mission en société** : faut-il la signature sociale **et** celle de l'EC responsable, ou seulement celle de l'EC ? Annales 2018-11 Q7 et 2022-11 Q1.
 - **Formation continue EC** : quantum exact (120 h / 3 ans, 20 h par an ou 40 h par an en moyenne) et texte (norme formation du CNOEC) ; ce quantum ne figure ni dans le règlement intérieur de 2024 ni dans le référentiel normatif 2022.
 
@@ -310,7 +311,7 @@ Arbre de décision (lire de haut en bas) :
 
 ### Responsabilité du commissaire aux comptes
 
-- **Couverture d'assurance** des dommages-intérêts en cas de violation du secret (annale 2019-11 Q16 : réponse « non couverts » présumée).
+- **Couverture d'assurance** des dommages-intérêts en cas de violation du secret : « couverts » selon l'annale 2019-11 Q16 ; l'application de l'exclusion de la faute intentionnelle (C. assur. L.113-1) à une violation délibérée relève de la jurisprudence et de la police.
 
 ## Questions d’annales de l’épisode (10)
 
@@ -382,7 +383,7 @@ Arbre de décision (lire de haut en bas) :
 
 Éléments attendus : Avertissement ; Blâme ; Interdiction d'exercer tout ou partie des missions ou d'en accepter de nouvelles, pour trois ans au plus (sursis possible) ; Radiation de la liste ; Retrait de l'honorariat ; sanctions complémentaires : sanction pécuniaire (250 000 € maximum pour une personne physique), interdiction de fonctions d'administration ou de direction, publication, inéligibilité
 
-**Explication** : L'échelle des sanctions des CAC (C. com. L.821-71) diffère de celle des experts-comptables (ord. art. 53 : réprimande, blâme, suspension, radiation), proposition b conçue comme distracteur. La sanction pécuniaire est propre au régime des CAC (hors LCB-FT pour les EC). La prescription est de six ans et le recours contre la décision de la commission des sanctions est porté devant le Conseil d'État.
+**Explication** : L'échelle des sanctions des CAC (C. com. L.821-71) diffère de celle des experts-comptables (ord. art. 53 : réprimande, blâme, suspension, radiation), qu'il ne faut pas lui prêter. La sanction pécuniaire est propre au régime des CAC (hors LCB-FT pour les EC). La prescription est de six ans et le recours contre la décision de la commission des sanctions est porté devant le Conseil d'État.
 
 **Évolution depuis le sujet** : Le H3C est devenu la Haute autorité de l'audit (H2A) le 1er janvier 2024 ; les sanctions sont prononcées par sa commission des sanctions (ex L.824-2 devenu L.821-71).
 
@@ -434,6 +435,8 @@ Propositions (celles du sujet) :
 - D. La probité.
 
 **Bonne réponse** : C. La sincérité.
+
+**Version QRC de la question** : Que recouvre le principe d'intégrité (article 3 du code de déontologie des CAC) ?
 
 **Réponse courte attendue** : Le commissaire aux comptes (et, depuis 2026, l'auditeur des informations en matière de durabilité) agit avec honnêteté et droiture et s'abstient, en toutes circonstances, de tout agissement contraire à l'honneur et à la probité.
 

@@ -237,7 +237,7 @@
         ],
         "model_answer": "La NPLAB retient deux niveaux de vigilance : standard et renforcée, déterminés selon l'évaluation du risque de la relation d'affaires (PPE, pays à haut risque, risque élevé…)."
       },
-      "explanation": "Le CMF prévoit aussi des mesures simplifiées en cas de risque faible, mais la norme professionnelle de l'Ordre (NPLAB) n'en retient que deux. La NEP 9605 des CAC suit la même logique.",
+      "explanation": "Le CMF prévoit aussi des mesures simplifiées en cas de risque faible, mais la norme professionnelle de l'Ordre (NPLAB) n'en retient que deux. Ne pas transposer au CAC : la NEP 9605 admet des mesures simplifiées, standard et renforcées.",
       "reference": "NPLAB ; CMF L.561-9 et L.561-10",
       "confidence": "high"
     },

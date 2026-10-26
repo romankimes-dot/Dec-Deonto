@@ -31,7 +31,7 @@ Le jury n'exige ni les numéros d'articles ni le quantum des sanctions. Les **se
 
 ```vs
 Responsabilité civile | **5 ans** (droit commun, C. civ. 2224) ; réductible par contrat, **jamais sous 1 an** | **3 ans** à compter du fait dommageable, ou de sa **révélation** s'il a été dissimulé ; **10 ans** pour un crime ; **non aménageable**
-Disciplinaire | {?} | **6 ans**
+Disciplinaire | {?} Aucun délai trouvé | **6 ans**
 ```
 
 ## Seuils de nomination d'un CAC
@@ -39,7 +39,7 @@ Disciplinaire | {?} | **6 ans**
 | Entité | Seuil |
 |---|---|
 | Société commerciale | 2 sur 3 : **5 M€** de bilan · **10 M€** de CA HT · **50** salariés |
-| Filiale significative d'un petit groupe | 2 sur 3 : **2,5 M€** · **5 M€** · **25** salariés |
+| Filiale significative d'un petit groupe | 2 sur 3 : **2,5 M€** de bilan · **5 M€** de CA HT · **25** salariés |
 | Association subventionnée | Subventions publiques **> 153 000 €** par an |
 | Appel public à la générosité | Dons **> 153 000 €** |
 | Association à activité économique | 2 sur 3 : **50** salariés · **3,1 M€** de CA ou ressources · **1,55 M€** de bilan |
@@ -57,7 +57,7 @@ Disciplinaire | {?} | **6 ans**
 | **70 %** | Plafond des SACC d'une EIP (moyenne des honoraires d'audit sur 3 ans) | {CAC} |
 | **10 %** | Part du capital pour demander la nomination judiciaire d'un CAC (SARL, SAS, SA, SCA ; en SNC, tout associé) | {CAC} |
 | **5 %** | Part du capital pour demander le relèvement d'un CAC | {CAC} |
-| **120 h / 3 ans, 20 h par an** | Formation continue | {EC} {CAC} |
+| **120 h / 3 ans, 20 h par an** | Formation continue (CAC : A.821-45 ; pour l'EC, quantum {?}) | {EC} {CAC} |
 
 ## Peines pénales
 

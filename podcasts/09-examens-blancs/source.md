@@ -195,7 +195,7 @@ Rappel du format : réponses courtes, double correction, 40 points ramenés sur 
 | Autorités | **AMF** ; **Tracfin** ; administration fiscale (droit de communication, dans ses limites) | **AMF**, **ACPR**, **Tracfin** |
 | Justice | Audition ou témoignage en matière **pénale** ; défense de l'EC poursuivi | **Procureur** (révélation), juge d'instruction |
 | Entre professionnels | **Non levé** envers le **successeur** : l'EC restitue seulement les documents du client | Levé entre CAC de la **consolidante** et des **consolidées** (dans les deux sens), entre **co-commissaires** ; le **successeur** accède aux documents (L.821-44), sans levée écrite à L.821-35 |
-| Opposable | À la **CNIL** | À une filiale **non consolidée** |
+| Opposable | À la **CNIL** {?} (à vérifier) | Au **CAC** d'une filiale **non consolidée** |
 
 | Critère | Expert-comptable (EC) | Commissaire aux comptes (CAC) |
 |---|---|---|
@@ -251,7 +251,7 @@ Rappel du format : réponses courtes, double correction, 40 points ramenés sur 
 | Critère | Expert-comptable (EC) | Commissaire aux comptes (CAC) |
 |---|---|---|
 | Responsabilité civile | **5 ans** (droit commun, C. civ. 2224) ; réductible par contrat, **jamais sous 1 an** | **3 ans** à compter du fait dommageable, ou de sa **révélation** s'il a été dissimulé ; **10 ans** pour un crime ; **non aménageable** |
-| Disciplinaire | {?} (à vérifier) | **6 ans** |
+| Disciplinaire | {?} (à vérifier) Aucun délai trouvé | **6 ans** |
 
 ## Questions d’annales de l’épisode (10)
 
@@ -268,6 +268,8 @@ Propositions (celles du sujet) :
 - D. un compte-rendu de travaux.
 
 **Bonne réponse** : D. un compte-rendu de travaux.
+
+**Version QRC de la question** : Quel document l'expert-comptable délivre-t-il à l'issue d'une mission de présentation dans une entité dotée d'un commissaire aux comptes, et pourquoi ?
 
 **Réponse courte attendue** : Il délivre en principe un compte rendu de travaux, ne comportant pas d'expression d'assurance sur les comptes. Il n'a pas à émettre d'attestation de présentation, sauf considérations particulières, puisque le commissaire aux comptes délivre une assurance de niveau supérieur.
 
@@ -287,6 +289,8 @@ Propositions (celles du sujet) :
 
 **Bonne réponse** : C. Non.
 
+**Version QRC de la question** : Dans quelles limites l'expert-comptable peut-il exercer un droit de rétention ?
+
 **Réponse courte attendue** : Non. Le droit de rétention ne garantit que le paiement des honoraires correspondant aux travaux réalisés et ne porte que sur ces travaux, jamais sur les documents remis par le client. Une indemnité de rupture n'est pas la contrepartie de travaux et ne peut justifier une rétention. L'expert-comptable doit en outre informer le président du conseil régional avant toute rétention.
 
 Éléments attendus : Uniquement sur les travaux qu'il a effectués, faute de paiement des honoraires correspondants ; Pas pour garantir une indemnité de rupture ; Jamais sur les documents remis par le client ; Information préalable du président du conseil régional de tout litige conduisant à envisager la rétention
@@ -304,6 +308,8 @@ Propositions (celles du sujet) :
 - D. Pour les missions de certification des comptes, le montant de la vacation horaire est fixé d'un commun accord entre le commissaire aux comptes et l'entité contrôlée.
 
 **Bonne réponse** : B. En cas de désaccord avec la décision du président de la Compagnie régionale des commissaires aux comptes, cette dernière peut faire l'objet d'un recours devant le bureau de la Haute Autorité de l'Audit.
+
+**Version QRC de la question** : Décrivez la procédure de dérogation au barème d'heures du commissaire aux comptes.
 
 **Réponse courte attendue** : La partie la plus diligente saisit, avant la mission, le président de la CRCC, qui statue dans les quinze jours. Sa décision peut être contestée dans les dix jours devant le président de la CNCC, puis dans le mois devant le bureau de la H2A. La procédure n'est pas requise si les parties s'accordent ; en cas d'alerte, les heures peuvent être majorées d'un tiers au plus.
 
@@ -325,6 +331,8 @@ Propositions (celles du sujet) :
 
 **Bonne réponse** : B. La sollicitation doit être réalisée sous la forme d'un appel téléphonique.
 
+**Version QRC de la question** : Quelles conditions encadrent la sollicitation personnalisée du commissaire aux comptes ?
+
 **Réponse courte attendue** : La sollicitation personnalisée doit procurer une information sincère, respecter la dignité, la confraternité et la loyauté, exclure tout élément comparatif ou dénigrant et préciser les modalités de détermination des honoraires. Elle ne peut prendre que la forme d'un envoi postal ou d'un courriel adressé à un destinataire déterminé : démarchage physique, appels téléphoniques et SMS sont exclus.
 
 Éléments attendus : Information sincère sur la nature des missions et prestations ; Respect de la dignité, de la confraternité, de la loyauté ; Aucun élément comparatif ou dénigrant ; Uniquement par envoi postal ou courriel à un destinataire déterminé ; démarchage physique, téléphonique et SMS exclus ; Précision des modalités de détermination des honoraires
@@ -344,6 +352,8 @@ Propositions (celles du sujet) :
 - D. La radiation.
 
 **Bonne réponse** : A. L'emprisonnement.
+
+**Version QRC de la question** : Quelles sanctions la commission des sanctions de la H2A peut-elle prononcer à l'encontre d'un commissaire aux comptes ?
 
 **Réponse courte attendue** : L'avertissement, le blâme, l'interdiction d'exercer tout ou partie des missions pour trois ans au plus, la radiation de la liste et le retrait de l'honorariat, ainsi que, cumulativement, une déclaration publique sur le rapport, l'interdiction temporaire de fonctions de direction et une sanction pécuniaire. L'emprisonnement est une peine pénale, prononcée par le juge pénal.
 

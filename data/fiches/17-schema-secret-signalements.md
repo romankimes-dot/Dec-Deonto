@@ -37,7 +37,7 @@ Contrôleurs | **Contrôle de qualité** de l'Ordre | **H2A** (contrôleurs et e
 Autorités | **AMF** ; **Tracfin** ; administration fiscale (droit de communication, dans ses limites) | **AMF**, **ACPR**, **Tracfin**
 Justice | Audition ou témoignage en matière **pénale** ; défense de l'EC poursuivi | **Procureur** (révélation), juge d'instruction
 Entre professionnels | **Non levé** envers le **successeur** : l'EC restitue seulement les documents du client | Levé entre CAC de la **consolidante** et des **consolidées** (dans les deux sens), entre **co-commissaires** ; le **successeur** accède aux documents (L.821-44), sans levée écrite à L.821-35
-Opposable | À la **CNIL** | À une filiale **non consolidée**
+Opposable | À la **CNIL** {?} | Au **CAC** d'une filiale **non consolidée**
 ```
 
 ## LCB-FT : les deux normes

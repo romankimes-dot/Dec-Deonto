@@ -64,7 +64,7 @@ Arbre de décision (lire de haut en bas) :
     - → Attention : Pas de démission **à contretemps** ; le CAC informe l'entité et la **H2A**
   - Question : **Relèvement** de fonctions
     - → Conclusion : **Décision de justice**, pour **faute** ou **empêchement**
-    - → Conclusion : Demandé par l'administration ou la direction, des actionnaires (5 %), le CSE, le ministère public, l'AMF (sociétés cotées) ; **pas la H2A**
+    - → Conclusion : Demandé par l'organe d'administration ou de direction, des actionnaires (5 %), le CSE, le ministère public, l'AMF (sociétés cotées) ; **pas la H2A**
     - → Attention : **Pas de révocation ad nutum** par l'assemblée
 
 #### Chiffres du co-commissariat et de la rémunération
@@ -211,6 +211,7 @@ Arbre de décision (lire de haut en bas) :
 #### Pièges EC vs CAC
 - **Serment** : l'EC le prête devant le **conseil régional** ; le CAC devant le **premier président de la cour d'appel**.
 - **Inscription** : l'EC est inscrit au **tableau tenu par le CROEC** ; le CAC sur la **liste tenue par la H2A**.
+- **Nationalité** : aucune condition pour l'EC (ord. art. 3 II 1° abrogé) ; le CAC doit être Français, ressortissant de l'UE ou de l'EEE, ou d'un État qui admet les Français au contrôle légal des comptes (**L.821-14 1°**).
 - **Droits de vote** : **plus de 2/3** aux EC dans une société d'EC ; la **majorité** aux CAC dans une société de CAC.
 - **Honoraires** : ceux de l'EC sont libres, sans barème ; ceux du CAC suivent un **barème d'heures** en certification (ALPE comprise), avec un **taux horaire libre**.
 - **Conciliation** : chez l'EC, par le **président du CROEC** (honoraires, confrères) ; chez le CAC, par le **président de la CRCC** (co-commissaires, honoraires, barème).
@@ -288,6 +289,8 @@ Propositions (celles du sujet) :
 
 **Bonne réponse** : D. Procéder lui-même à la publication des comptes en cas de carence.
 
+**Version QRC de la question** : Quelles diligences le commissaire aux comptes d'un organisme faisant appel à la générosité du public accomplit-il au titre de la publicité des comptes annuels ?
+
 **Réponse courte attendue** : Le commissaire aux comptes vérifie que l'organisme a publié ses comptes annuels et le rapport du CAC sur le site de la DILA, obtient le justificatif de dépôt et contrôle la conformité des comptes publiés avec ceux qu'il a certifiés. En cas de défaut de publication, il relève l'irrégularité et la signale, mais ne procède jamais lui-même à la publication, qui incombe aux dirigeants.
 
 Éléments attendus : Vérifier que les comptes annuels et le rapport ont été publiés sur le site de la DILA (Journal officiel des associations) dans le délai ; Obtenir le justificatif (récépissé) de dépôt ; Vérifier la concordance des comptes publiés avec ceux certifiés ; En cas de carence : signaler l'irrégularité (rapport, organe compétent), sans se substituer à l'organisme
@@ -307,6 +310,8 @@ Propositions (celles du sujet) :
 - D. l'entité est placée en redressement judiciaire.
 
 **Bonne réponse** : B. un motif personnel impérieux le justifie.
+
+**Version QRC de la question** : Pour quels motifs légitimes un commissaire aux comptes peut-il démissionner de son mandat ?
 
 **Réponse courte attendue** : Le commissaire aux comptes ne peut démissionner que pour un motif légitime : sa cessation définitive d'activité, un motif personnel impérieux (notamment l'état de santé), des difficultés insurmontables dans l'accomplissement de la mission, ou la survenance d'un événement compromettant le respect des règles de la profession, en particulier son indépendance ou son objectivité.
 
