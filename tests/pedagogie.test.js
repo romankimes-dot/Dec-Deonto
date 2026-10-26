@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
-import { newCard, review, capToExam, spreadOf, suggestGrade, confidentError, qrcPoints, calibration, confidentErrors, buildQueue, mastery, DAY } from '../js/srs.js';
+import { newCard, review, capToExam, startOfDay, spreadOf, suggestGrade, confidentError, qrcPoints, calibration, confidentErrors, buildQueue, mastery, DAY } from '../js/srs.js';
 import { recordDrill, pickDrill, drillStats, BOX_DAYS } from '../js/drill.js';
 import * as GM from '../js/games.js';
 import { buildClusters } from '../js/cluster.js';
@@ -17,7 +17,8 @@ const fiches = readdirSync(ficheDir).filter((f) => /^\d+-schema/.test(f)).map((f
 test('avant l’épreuve, chaque carte revient avant l’épreuve, l’intervalle SM-2 reste intact', () => {
   let c = newCard(T0); let t = T0; const dues = [];
   for (let i = 0; i < 4; i++) { c = review(c, 2, t, { examAt: EXAM }); assert.ok(c.due <= EXAM, `révision ${i} avant l’épreuve`); dues.push(c.due); t = c.due; }
-  assert.equal(dues[2], EXAM - DAY - 1.5 * 60 * 60 * 1000, 'J-8 + 7 j : la veille, sans saut par-dessus l’épreuve');
+  assert.ok(dues[2] >= startOfDay(EXAM - 2 * DAY) && dues[2] < EXAM, 'J-8 + 7 j : juste avant l’épreuve, sans saut par-dessus');
+  assert.equal(dues[2], startOfDay(dues[2]), 'due dès le matin');
   const free = [2, 2, 2, 2].reduce((card, g) => review(card, g, card.due), newCard(T0));
   assert.equal(c.interval, free.interval, 'même solidité mesurée qu’en SM-2 libre');
   assert.equal(mastery(c), mastery(free));

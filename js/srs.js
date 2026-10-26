@@ -21,19 +21,29 @@ export function review(card, grade, now = Date.now(), { examAt = null, spread = 
     c.due = now + 10 * 60 * 1000; // revue dans la même session (10 min)
     return c;
   }
-  if (c.reps === 0) {
-    c.interval = grade === 1 ? 1 : grade === 2 ? 3 : 5;
+  if (grade === 1) {
+    // Difficile : revoir plus tôt sans repartir de zéro (1 jour la première fois, puis la moitié de l'intervalle, 1 à 4 jours).
+    c.interval = c.reps === 0 ? 1 : Math.min(HARD_MAX, Math.max(1, Math.round(c.interval / 2)));
+  } else if (c.reps === 0) {
+    c.interval = grade === 2 ? 3 : 5;
   } else if (c.reps === 1) {
-    c.interval = grade === 1 ? 3 : grade === 2 ? 7 : 10;
+    c.interval = grade === 2 ? 7 : 10;
   } else {
-    const mult = grade === 1 ? 1.2 : grade === 2 ? c.ease : c.ease * 1.3;
+    const mult = grade === 2 ? c.ease : c.ease * 1.3;
     c.interval = Math.max(c.interval + 1, Math.round(c.interval * mult));
   }
   if (grade === 1) c.ease = Math.max(1.3, c.ease - 0.15);
   if (grade === 3) c.ease = Math.min(3.0, c.ease + 0.15);
   c.reps += 1;
-  c.due = now + capToExam(c.interval, now, examAt, spread) * DAY;
+  c.due = startOfDay(now + capToExam(c.interval, now, examAt, spread) * DAY);
   return c;
+}
+
+const HARD_MAX = 4;
+
+// Début du jour local : une carte due « dans 3 jours » l'est dès le matin, quelle que soit l'heure de la révision.
+export function startOfDay(t) {
+  const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime();
 }
 
 // Plus grand intervalle (en jours) qui fait revenir la carte avant l'épreuve.

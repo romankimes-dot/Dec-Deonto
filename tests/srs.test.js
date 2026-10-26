@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { newCard, review, isDue, mastery, buildQueue, drawExam, scoreExam, DAY } from '../js/srs.js';
+import { newCard, review, isDue, mastery, buildQueue, drawExam, scoreExam, startOfDay, DAY } from '../js/srs.js';
 
 const T0 = 1_000_000_000_000;
 
@@ -14,9 +14,26 @@ test('Bien sur une nouvelle carte : 3 jours', () => {
   const c = review(newCard(T0), 2, T0);
   assert.equal(c.interval, 3);
   assert.equal(c.reps, 1);
-  assert.equal(c.due, T0 + 3 * DAY);
-  assert.equal(isDue(c, T0 + 2 * DAY), false);
+  assert.equal(c.due, startOfDay(T0 + 3 * DAY));
+  assert.equal(isDue(c, startOfDay(T0 + 3 * DAY) - 1), false);
   assert.equal(isDue(c, T0 + 3 * DAY), true);
+});
+
+test('révisée le soir, la carte est due dès le matin du jour prévu', () => {
+  const evening = new Date(2026, 9, 26, 21, 10).getTime();
+  const c = review(newCard(evening), 2, evening);
+  assert.equal(isDue(c, new Date(2026, 9, 29, 8, 0).getTime()), true);
+  assert.equal(isDue(c, new Date(2026, 9, 28, 23, 59).getTime()), false);
+});
+
+test('Difficile : intervalle resserré (1 jour, puis moitié de l’intervalle, 4 jours au plus)', () => {
+  assert.equal(review(newCard(T0), 1, T0).interval, 1);
+  let c = review(newCard(T0), 2, T0); c = review(c, 2, c.due); c = review(c, 2, c.due);
+  assert.ok(c.interval > 8);
+  assert.equal(review(c, 1, c.due).interval, 4, 'plafonné à 4 jours');
+  assert.equal(review({ ...c, interval: 6 }, 1, c.due).interval, 3);
+  assert.equal(review({ ...c, interval: 1 }, 1, c.due).interval, 1);
+  assert.ok(review(c, 1, c.due).ease < c.ease, 'facilité réduite');
 });
 
 test('Encore remet la carte en apprentissage dans 10 minutes', () => {
