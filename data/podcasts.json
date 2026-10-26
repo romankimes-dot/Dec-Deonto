@@ -1,0 +1,107 @@
+[
+  {
+    "n": 1,
+    "id": "01-cadre-institutions",
+    "title": "Le cadre normatif, les niveaux d’assurance et les institutions",
+    "steps": [
+      "cadre",
+      "institutions"
+    ],
+    "file": null,
+    "duration": null
+  },
+  {
+    "n": 2,
+    "id": "02-activites-lettre",
+    "title": "Activités permises, sociétés, publicité, lettre de mission, honoraires, reprise de dossier",
+    "steps": [
+      "activites",
+      "lettre"
+    ],
+    "file": null,
+    "duration": null
+  },
+  {
+    "n": 3,
+    "id": "03-mandat",
+    "title": "Le mandat du commissaire aux comptes",
+    "steps": [
+      "mandat"
+    ],
+    "file": null,
+    "duration": null
+  },
+  {
+    "n": 4,
+    "id": "04-independance",
+    "title": "L’indépendance du CAC",
+    "steps": [
+      "independance"
+    ],
+    "file": null,
+    "duration": null
+  },
+  {
+    "n": 5,
+    "id": "05-secret",
+    "title": "Secret professionnel et signalements",
+    "steps": [
+      "secret"
+    ],
+    "file": null,
+    "duration": null
+  },
+  {
+    "n": 6,
+    "id": "06-discipline-responsabilites",
+    "title": "Discipline, sanctions et les quatre responsabilités",
+    "steps": [
+      "discipline",
+      "responsabilites"
+    ],
+    "file": null,
+    "duration": null
+  },
+  {
+    "n": 7,
+    "id": "07-controle",
+    "title": "Contrôle de qualité et contrôle d’activité",
+    "steps": [
+      "controle"
+    ],
+    "file": null,
+    "duration": null
+  },
+  {
+    "n": 8,
+    "id": "08-chiffres",
+    "title": "Les chiffres à connaître par cœur",
+    "steps": [
+      "chiffres"
+    ],
+    "file": null,
+    "duration": null
+  },
+  {
+    "n": 9,
+    "id": "09-examens-blancs",
+    "title": "Examens blancs : QCM et réponses courtes (QRC)",
+    "steps": [
+      "blanc-qcm",
+      "blanc-qrc"
+    ],
+    "file": null,
+    "duration": null
+  },
+  {
+    "n": 10,
+    "id": "10-faibles-veille",
+    "title": "Points faibles et révision de la veille de l’épreuve (J-1)",
+    "steps": [
+      "faibles",
+      "veille"
+    ],
+    "file": null,
+    "duration": null
+  }
+]
