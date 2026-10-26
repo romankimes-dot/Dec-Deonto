@@ -146,9 +146,8 @@ function nextCelebration() {
   }
   box.innerHTML = html;
   box.classList.add('show');
+  if (c.type !== 'grade') box.firstElementChild.insertAdjacentHTML('beforeend', '<p class="muted" style="font-size:12px;margin-top:12px">Touchez pour continuer</p>');
   box.onclick = close;
-  clearTimeout(nextCelebration._t);
-  nextCelebration._t = setTimeout(() => { if (box.classList.contains('show')) close(); }, c.type === 'grade' ? 6000 : 3800);
 }
 function trainOn(ids, title, mode = 'qcm') {
   const qs = ids.map((id) => state.byId[id]).filter(Boolean);
