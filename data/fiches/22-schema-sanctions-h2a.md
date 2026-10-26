@@ -4,7 +4,7 @@ questions: CAC:discipline_sanctions
 ---
 # La procédure de sanction de la H2A (commissaires aux comptes)
 
-Depuis le **1er janvier 2024**, la **commission des sanctions** de la **Haute autorité de l'audit** remplace la **formation restreinte** du H3C (C. com. **L.820-2** et **L.821-70 à L.821-85**). Le jury ne demande ni les numéros d'articles ni les montants, mais les **acteurs**, l'**ordre des étapes** et la **liste des sanctions** reviennent à chaque session.
+Depuis le **1er janvier 2024**, la **commission des sanctions** de la **Haute autorité de l'audit** remplace la **formation restreinte** du H3C (C. com. **L.820-2** et **L.821-70 à L.821-85**). Les consignes des sujets QRC précisent que « les références des textes ainsi que le quantum des sanctions ne sont pas exigés des candidats » : retenir les **acteurs**, l'**ordre des étapes** et la **liste des sanctions**.
 
 ## Qui fait quoi : poursuite et jugement séparés
 
@@ -33,7 +33,7 @@ Recours | **Conseil d'État**, recours de **pleine juridiction** : la personne s
 
 | | Ordinaire | Simplifiée | Composition administrative |
 |---|---|---|---|
-| **Pour quoi ?** | Toute faute ou tout manquement | Manquements **simples et établis** aux **obligations déclaratives** et à la **formation continue** | Après la notification des griefs, si l'intéressé **accepte** d'entrer en composition |
+| **Pour quoi ?** | Toute faute ou tout manquement | Manquements **répétés**, **simples et établis**, aux **obligations déclaratives** et à la **formation continue** | Après la notification des griefs, si l'intéressé **accepte** d'entrer en composition |
 | **Qui décide ?** | La **commission des sanctions**, après audience | Le **président de la commission**, **seul et sans débat** ; **opposition** possible dans les **30 jours**, puis audience | Le **président de la H2A** propose ; accord **validé par le collège**, puis **homologué** par la commission |
 | **Sanctions** | Toute l'échelle (ci-dessous) | **Sanction pécuniaire** seulement : **15 000 €** au plus | Sanctions de l'échelle sauf la **radiation** ; somme plafonnée à **50 000 €** (personne physique) ou **200 000 €** (personne morale) |
 

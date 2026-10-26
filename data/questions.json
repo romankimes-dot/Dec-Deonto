@@ -536,7 +536,7 @@
     "question": "Quelles conditions une société doit-elle remplir pour être inscrite sur la liste des commissaires aux comptes ?",
     "choices": [
      "Majorité des droits de vote détenue par des commissaires aux comptes ; fonctions de gérant, président ou DG assurées par des commissaires aux comptes ; majorité des membres des organes de gestion et de surveillance ayant cette qualité",
-     "Plus des deux tiers des droits de vote détenus par des commissaires aux comptes ; forme sociale ne conférant pas la qualité de commerçant ; inscription préalable au tableau de l'Ordre des experts-comptables",
+     "Plus des deux tiers des droits de vote détenus par des experts-comptables ; forme sociale ne conférant pas la qualité de commerçant ; inscription de la société au tableau de l'Ordre",
      "Capital intégralement détenu par des commissaires aux comptes personnes physiques ; siège dans le ressort d'une cour d'appel ; agrément préalable de la CNCC et du garde des sceaux",
      "Majorité du capital détenue par des commissaires aux comptes ; désignation d'un associé responsable du contrôle qualité ; souscription d'une assurance couvrant les sanctions pénales et disciplinaires"
     ],
@@ -3811,7 +3811,7 @@
    "qcm": {
     "question": "Selon la NP 3100, une attestation particulière délivrée par l'expert-comptable peut procurer :",
     "choices": [
-     "Une assurance raisonnable lorsqu'elle porte sur des comptes, aucune assurance dans les autres cas",
+     "Une assurance modérée seulement, comme dans une mission de présentation des comptes annuels",
      "Une assurance raisonnable ou une assurance modérée, selon les diligences convenues",
      "Une assurance modérée ou aucune assurance, selon qu'elle porte ou non sur des comptes",
      "Une assurance absolue lorsqu'elle est destinée à un tiers financeur"
@@ -3971,7 +3971,7 @@
      "D'un président magistrat désigné par le premier président de la cour d'appel et de deux membres élus du conseil régional",
      "Du président du conseil régional et de quatre experts-comptables tirés au sort parmi les inscrits",
      "D'un conseiller d'État et de deux représentants du ministre chargé du budget, désignés par arrêté",
-     "De trois membres du collège de la H2A et du président de la compagnie régionale des commissaires aux comptes de la circonscription"
+     "D'un magistrat de la Cour de cassation et de quatre personnes qualifiées (commission des sanctions de la H2A)"
     ],
     "answer": 0,
     "crossProf": 3
@@ -4810,7 +4810,7 @@
     "question": "Le serment prêté par l'expert-comptable lors de son inscription au tableau porte sur :",
     "choices": [
      "L'exercice de la profession avec conscience et probité et le respect des lois",
-     "L'indépendance à l'égard de l'entité contrôlée et la révélation des faits délictueux au procureur",
+     "L'exercice de la profession avec honneur, probité et indépendance et le respect des lois",
      "La fidélité au Conseil national et le paiement des cotisations ordinales à l'échéance",
      "La dignité, la confraternité et l'obligation de suivre la formation continue"
     ],
@@ -4826,8 +4826,8 @@
     ],
     "model_answer": "Le serment engage l'expert-comptable à exercer sa profession avec conscience et probité, et à respecter et faire respecter les lois dans ses travaux. Il est prêté devant le conseil régional de l'Ordre après l'inscription au tableau."
    },
-   "explanation": "Trois idées : conscience, probité, légalité. Le serment du CAC, prêté devant la cour d'appel, a une formulation différente et évoque l'exercice de la profession avec honneur, probité et indépendance et le respect des lois. Le distracteur sur la révélation des faits délictueux est propre au CAC.",
-   "reference": "D. 2012-432 art. 143 ; pour le CAC : C. com. R.821-60",
+   "explanation": "Trois idées : conscience, probité, légalité. Le serment du CAC, prêté devant la cour d'appel, a une formulation différente et évoque l'exercice de la profession avec honneur, probité et indépendance et le respect des lois. Le distracteur reprend le serment du CAC (L.821-23, R.821-60).",
+   "reference": "D. 2012-432 art. 143 ; pour le CAC : C. com. L.821-23 et R.821-60",
    "confidence": "medium",
    "session": "2021-11",
    "origFormat": "qrc"
@@ -4970,7 +4970,7 @@
     "question": "Quel enchaînement décrit correctement la procédure disciplinaire d'un commissaire aux comptes jusqu'au recours ?",
     "choices": [
      "Saisine du rapporteur général et enquête, notification des griefs, saisine de la commission des sanctions, audience et décision, recours devant le Conseil d'État",
-     "Plainte au président de la CRCC, chambre régionale de discipline, chambre nationale de discipline, Conseil d'État, Cour de cassation",
+     "Plainte, chambre régionale de discipline, chambre nationale de discipline, Conseil d'État",
      "Signalement à l'AMF, enquête de la CNCC, décision du garde des Sceaux, appel devant la cour d'appel de Paris, pourvoi en cassation",
      "Contrôle d'activité, avertissement du président de la CNCC, décision du collège de la H2A, appel devant la cour d'appel, Conseil d'État"
     ],
@@ -5043,7 +5043,7 @@
     "question": "En cas de litige sur les honoraires du commissaire aux comptes, les organes successivement compétents sont :",
     "choices": [
      "Le président de la compagnie régionale (conciliation en trois mois), puis le juge ; la H2A ne tranche plus ces litiges",
-     "Le président du conseil régional de l'Ordre, la chambre nationale de discipline, puis le Conseil d'État",
+     "Conciliation ou arbitrage du président du conseil régional de l'Ordre, puis le juge",
      "Le comité d'audit, puis l'assemblée générale, puis le tribunal administratif statuant en premier ressort, avec appel devant la cour administrative",
      "Le commissaire du gouvernement, le garde des Sceaux, puis la Cour de cassation statuant en dernier ressort"
     ],
@@ -5059,7 +5059,7 @@
     ],
     "model_answer": "Le litige sur la rémunération de la mission de certification est porté devant le président de la compagnie régionale, saisi par écrit, qui dispose de trois mois pour concilier les parties et notifie, le cas échéant, l'échec de la conciliation. Le différend relève alors du juge de droit commun : depuis 2024, la H2A n'a plus compétence pour trancher ces litiges."
    },
-   "explanation": "Le circuit en trois étapes (président de CRCC, H3C en formation restreinte, juge) correspond au droit antérieur à 2024. Les missions de la H2A (L.820-1, L.820-2) ne comprennent plus le règlement des litiges d'honoraires ; seule subsiste la conciliation (R.821-196), à laquelle renvoie la NEP 100 (§ 22). Ne pas confondre avec la dérogation au barème d'heures (président de CRCC, président de la CNCC, bureau de la H2A, tribunal administratif). Le distracteur reproduit le circuit disciplinaire de l'EC.",
+   "explanation": "Le circuit en trois étapes (président de CRCC, H3C en formation restreinte, juge) correspond au droit antérieur à 2024. Les missions de la H2A (L.820-1, L.820-2) ne comprennent plus le règlement des litiges d'honoraires ; seule subsiste la conciliation (R.821-196), à laquelle renvoie la NEP 100 (§ 22). Ne pas confondre avec la dérogation au barème d'heures (président de CRCC, président de la CNCC, bureau de la H2A, tribunal administratif). Le distracteur reproduit le dispositif de l'expert-comptable : conciliation ou arbitrage du président du conseil régional de l'Ordre (D. 2012-432 art. 160), puis le juge.",
    "reference": "C. com. R.821-196 (ex R.823-18) ; L.820-1, L.820-2 ; A.821-65 (NEP 100 § 22)",
    "confidence": "medium",
    "update_note": "Depuis le 1er janvier 2024 : conciliation par le président de la CRCC en trois mois puis juge ; plus d'intervention de la H2A (aligné sur 2022-11-CAC-16).",
@@ -5095,7 +5095,7 @@
     "choices": [
      "Le premier président de la Cour des comptes, le procureur général près la cour d'appel, les présidents de l'AMF, de l'ACPR et de la CNCC",
      "L'entité contrôlée, par décision de son assemblée générale, ou le président du tribunal de commerce du siège",
-     "Le président du Conseil national de l'Ordre des experts-comptables, le commissaire du gouvernement et le garde des sceaux, ministre de la Justice",
+     "Toute personne y ayant intérêt, le conseil régional de l'Ordre ou le commissaire du gouvernement, par une plainte à la chambre régionale",
      "Les actionnaires détenant au moins 5 % du capital, le comité d'audit ou le comité social et économique de l'entité"
     ],
     "answer": 0,
@@ -5111,7 +5111,7 @@
     ],
     "model_answer": "Le rapporteur général est saisi par le premier président de la Cour des comptes ou le président d'une chambre régionale des comptes, le procureur général près la cour d'appel compétente, les présidents de l'AMF, de l'ACPR et de la H2A, et le président de la CNCC ou d'une compagnie régionale. Il peut aussi se saisir des signalements qu'il reçoit ; le garde des sceaux ne figure pas dans la liste."
    },
-   "explanation": "La saisine est réservée à des autorités publiques et professionnelles, complétée par une auto-saisine sur signalement : les tiers (entité, actionnaires) peuvent signaler des faits mais ne saisissent pas directement. L'Ordre des experts-comptables n'a aucun pouvoir de saisine. Les faits remontant à plus de six ans sans acte de recherche ou de constatation ne peuvent plus être sanctionnés. L'actionnaire peut en revanche demander en justice la récusation (L.821-49) ou le relèvement (L.821-50) du CAC.",
+   "explanation": "La saisine est réservée à des autorités publiques et professionnelles, complétée par une auto-saisine sur signalement : les tiers (entité, actionnaires) peuvent signaler des faits mais ne saisissent pas directement. L'Ordre des experts-comptables n'a aucun pouvoir de saisine ; la plainte de toute personne intéressée, du conseil régional ou du commissaire du gouvernement devant la chambre régionale de discipline est le circuit de l'expert-comptable (D. 2012-432 art. 179 et 182). Les faits remontant à plus de six ans sans acte de recherche ou de constatation ne peuvent plus être sanctionnés. L'actionnaire peut en revanche demander en justice la récusation (L.821-49) ou le relèvement (L.821-50) du CAC.",
    "reference": "C. com. L.821-73 (ex L.824-4) ; L.821-49, L.821-50",
    "confidence": "high",
    "update_note": "H3C → H2A au 1er janvier 2024. Liste de L.821-73 : Cour des comptes/CRC, procureur général, AMF, ACPR, H2A, CNCC/CRCC ; le garde des sceaux n'y figure pas ; auto-saisine du rapporteur général sur signalement ; prescription de six ans.",
@@ -5528,8 +5528,7 @@
      "Non : la CAVEC dispose de ses propres sanctions et la chambre de discipline n'est compétente que pour les cotisations ordinales",
      "Oui : la commission des sanctions de la H2A peut prononcer un blâme pour défaut de paiement, après avis du Conseil national de l'Ordre"
     ],
-    "answer": 0,
-    "crossProf": 3
+    "answer": 0
    },
    "qrc": {
     "expected": [
@@ -6635,8 +6634,7 @@
      "Devant le tribunal de commerce du siège de l'entité contrôlée, dans les quinze jours",
      "Devant le président du conseil régional de l'Ordre des experts-comptables, dans le mois"
     ],
-    "answer": 0,
-    "crossProf": 3
+    "answer": 0
    },
    "qrc": {
     "expected": [
@@ -7564,7 +7562,7 @@
    "question": "Quelle autorité agrée les normes professionnelles applicables aux experts-comptables ?",
    "qcm": {
     "choices": [
-     "Le garde des sceaux, ministre de la justice, par arrêté d'homologation après avis de la H2A",
+     "Le garde des sceaux, ministre de la justice, par arrêté d'homologation des normes adoptées par la H2A après avis de la CNCC",
      "Le ministre chargé de l'économie, par arrêté d'agrément, sur proposition du Conseil national",
      "Le Conseil national de l'Ordre des experts-comptables, par délibération, sans intervention ministérielle",
      "La Haute autorité de l'audit, par décision, après avis de la commission de normalisation"
@@ -7580,7 +7578,7 @@
     ],
     "model_answer": "Les normes professionnelles de l'expertise comptable sont élaborées par le Conseil national de l'Ordre et agréées par arrêté du ministre chargé de l'économie (en pratique le ministre chargé du budget). Elles se distinguent des normes d'exercice professionnel des commissaires aux comptes, adoptées par la Haute autorité de l'audit et homologuées par arrêté du garde des sceaux."
    },
-   "explanation": "La tutelle de l'Ordre est exercée par le ministre chargé de l'économie et du budget (commissaire du gouvernement), ce qui explique que l'agrément des normes relève d'un arrêté de ce ministre (voir par exemple ord. art. 22 pour les normes relatives aux activités accessoires). Les CAC relèvent du ministère de la justice : leurs normes sont adoptées par la H2A puis homologuées par le garde des sceaux (C. com. L.820-23 et L.821-11). C'est l'une des confusions EC/CAC les plus fréquentes.",
+   "explanation": "La tutelle de l'Ordre est exercée par le ministre chargé de l'économie et du budget (commissaire du gouvernement), ce qui explique que l'agrément des normes relève d'un arrêté de ce ministre (voir par exemple ord. art. 22 pour les normes relatives aux activités accessoires). Les CAC relèvent du ministère de la justice : leurs normes sont adoptées par la H2A, après avis de la CNCC, puis homologuées par arrêté du garde des sceaux (C. com. L.820-23 et L.821-11). C'est l'une des confusions EC/CAC les plus fréquentes.",
    "reference": "Ord. 45-2138 art. 22 et 60 ; arrêtés d'agrément des normes professionnelles ; C. com. L.820-23 pour le parallèle CAC",
    "confidence": "medium",
    "session": "2023-11",
@@ -7964,7 +7962,7 @@
     "choices": [
      "Le syndic de la compagnie régionale, sous le contrôle du procureur général près la cour d'appel",
      "Le rapporteur général de la Haute autorité de l'audit, assisté d'enquêteurs qu'il habilite",
-     "Un rapporteur désigné par le président de la chambre régionale de discipline, assisté d'un greffier",
+     "Un rapporteur nommé par le magistrat chargé des poursuites rattaché à la chambre régionale de discipline",
      "Les contrôleurs de la Compagnie nationale, dans le cadre du contrôle d'activité périodique du cabinet"
     ],
     "answer": 1,
@@ -7999,7 +7997,7 @@
    "qcm": {
     "choices": [
      "Avertissement, blâme, interdiction temporaire d'exercer (trois ans au plus), radiation de la liste, sanction pécuniaire",
-     "Réprimande, blâme avec inscription au dossier, suspension avec sursis, radiation du tableau, exclusion de l'Ordre",
+     "Réprimande, blâme avec inscription au dossier, suspension avec sursis, suspension sans sursis, radiation du tableau",
      "Amende civile, interdiction de gérer, faillite personnelle, emprisonnement, confiscation des honoraires perçus",
      "Rappel à la loi, mise en demeure, astreinte, fermeture temporaire du cabinet, retrait de l'agrément de la CNCC"
     ],
@@ -8450,7 +8448,7 @@
    "question": "Quelle est la composition de la chambre nationale de discipline ?",
    "qcm": {
     "choices": [
-     "Un président magistrat de la Cour de cassation désigné par le premier président, quatre personnalités qualifiées et un représentant du garde des sceaux",
+     "Un président magistrat de la Cour de cassation désigné par le premier président de cette Cour et quatre personnes qualifiées, dont un ancien commissaire aux comptes",
      "Un président magistrat désigné par le garde des sceaux (cour d'appel de Paris), deux fonctionnaires désignés par le ministre de l'économie et deux membres élus du Conseil national",
      "Le président du Conseil national de l'Ordre, quatre présidents de conseils régionaux élus par leurs pairs et le commissaire du gouvernement près l'Ordre, désignés pour trois ans renouvelables",
      "Un conseiller d'État président, deux experts-comptables élus par le Conseil national et deux commissaires aux comptes désignés par la CNCC"
@@ -8467,7 +8465,7 @@
     ],
     "model_answer": "La chambre nationale de discipline, instituée auprès du Conseil national de l'Ordre, comprend un président magistrat désigné par le garde des sceaux parmi les présidents de chambre de la cour d'appel de Paris (en activité ou honoraires), deux fonctionnaires désignés par le ministre chargé de l'économie et deux membres du Conseil national élus par lui. Un magistrat chargé des poursuites, qui nomme un rapporteur, lui est rattaché ; des suppléants sont désignés dans les mêmes conditions. Ses décisions peuvent faire l'objet d'un recours devant le Conseil d'État."
    },
-   "explanation": "La loi 2022-172 du 14 février 2022 a réformé les instances disciplinaires de l'Ordre à la suite d'une décision du Conseil constitutionnel : séparation des fonctions de poursuite et de jugement (magistrat chargé des poursuites, rapporteur), composition de la chambre nationale précisée (deux fonctionnaires au lieu d'un conseiller référendaire à la Cour des comptes et d'un fonctionnaire). La chambre régionale est, elle, composée d'un président magistrat de la cour d'appel et de deux membres élus du conseil régional. Chez les CAC, la commission des sanctions de la H2A est présidée par un magistrat de la Cour de cassation avec quatre personnalités qualifiées.",
+   "explanation": "La loi 2022-172 du 14 février 2022 a réformé les instances disciplinaires de l'Ordre à la suite d'une décision du Conseil constitutionnel : séparation des fonctions de poursuite et de jugement (magistrat chargé des poursuites, rapporteur), composition de la chambre nationale précisée (deux fonctionnaires au lieu d'un conseiller référendaire à la Cour des comptes et d'un fonctionnaire). La chambre régionale est, elle, composée d'un président magistrat de la cour d'appel et de deux membres élus du conseil régional. Chez les CAC, la commission des sanctions de la H2A est présidée par un magistrat de la Cour de cassation avec quatre personnes qualifiées ; le commissaire du Gouvernement auprès de la H2A n'assiste pas à ses délibérations (L.820-9).",
    "reference": "Ord. 45-2138 art. 49, 49 bis, 50 et 53 (modifiés par la loi 2022-172) ; C. com. L.820-2 V pour le parallèle CAC",
    "confidence": "high",
    "update_note": "Le Conseil supérieur est devenu le Conseil national de l'Ordre et la composition a été modifiée par la loi 2022-172 du 14 février 2022 (deux fonctionnaires ; magistrat chargé des poursuites).",
@@ -9093,8 +9091,7 @@
      "Il relève de la chambre régionale de discipline, car il est soumis au contrôle disciplinaire de l'Ordre",
      "Il relève de la commission des sanctions de la H2A, comme les stagiaires commissaires aux comptes"
     ],
-    "answer": 2,
-    "crossProf": 3
+    "answer": 2
    },
    "qrc": {
     "expected": [
@@ -9903,7 +9900,7 @@
    "question": "Un cabinet d'expertise comptable peut-il référencer le nom et le logo de ses clients sur son site internet ? Justifiez votre réponse.",
    "qcm": {
     "choices": [
-     "Non : la mention d'un client, même avec son accord, constitue une violation du secret professionnel",
+     "Non : toute communication d'un cabinet d'expertise comptable sur internet reste interdite par le code de déontologie",
      "Oui, sans accord, car le nom d'un client n'est pas une information couverte par le secret",
      "Oui, avec l'accord préalable de chaque client, dans le respect du secret professionnel",
      "Oui, après autorisation du conseil régional de l'Ordre, valable pour trois ans"
@@ -11297,8 +11294,8 @@
     ],
     "model_answer": "L'expert-comptable prête serment devant le conseil régional de l'Ordre, dans les six mois de son inscription au tableau, en jurant d'exercer sa profession avec conscience et probité et de respecter et faire respecter les lois dans ses travaux."
    },
-   "explanation": "Confusion EC/CAC classique : le commissaire aux comptes prête serment devant le premier président de la cour d'appel du ressort de sa compagnie régionale, en jurant d'exercer « avec honneur, probité et indépendance ».",
-   "reference": "D. 2012-432 art. 143 ; à comparer avec C. com. R.821-60",
+   "explanation": "Confusion EC/CAC classique : le commissaire aux comptes prête serment devant le premier président de la cour d'appel du ressort de sa compagnie régionale (L.821-23, R.821-60), en jurant d'exercer « avec honneur, probité et indépendance ».",
+   "reference": "D. 2012-432 art. 143 ; à comparer avec C. com. L.821-23 et R.821-60",
    "confidence": "high",
    "session": "2026-05",
    "origFormat": "qrc"
@@ -11487,8 +11484,7 @@
      "Saisir le président de la compagnie régionale pour qu'il désigne le successeur parmi les confrères inscrits",
      "Informer le conseil régional de l'Ordre, qui avise lui-même le prédécesseur"
     ],
-    "answer": 1,
-    "crossProf": 2
+    "answer": 1
    },
    "qrc": {
     "expected": [
@@ -12047,10 +12043,10 @@
      "Elle a succédé à la formation restreinte du H3C (procédures en cours transférées)",
      "Séparée du collège, qui poursuit"
     ],
-    "model_answer": "C'est la commission des sanctions de la Haute autorité de l'audit, distincte du collège qui engage les poursuites. Elle a remplacé la formation restreinte du Haut conseil du commissariat aux comptes le 1er janvier 2024, les procédures en cours lui ayant été transférées."
+    "model_answer": "C'est la commission des sanctions de la Haute autorité de l'audit, distincte du collège qui engage les poursuites. Elle a remplacé la formation restreinte du Haut conseil du commissariat aux comptes le 1er janvier 2024, les procédures en cours lui ayant été transférées (ord. 2023-1142 art. 40)."
    },
    "explanation": "La H2A comprend un collège et une commission des sanctions (L.820-2 I) : le collège poursuit, la commission juge. Les chambres régionale et nationale de discipline sont celles de l'expert-comptable, piège classique de confusion entre les deux professions.",
-   "reference": "C. com. L.820-2 I et V, L.821-79 ; ordonnance 2023-1142 (entrée en vigueur au 01/01/2024)",
+   "reference": "C. com. L.820-2 I et V, L.821-79 ; ordonnance 2023-1142 (entrée en vigueur au 01/01/2024), art. 40 (transfert des procédures en cours)",
    "confidence": "high",
    "session": "transfert",
    "origFormat": "transfert"
@@ -12105,7 +12101,7 @@
    "question": "À quels manquements s'applique la procédure simplifiée de sanction de la H2A, et quelle sanction peut-elle aboutir à prononcer ?",
    "qcm": {
     "choices": [
-     "Aux manquements simples et établis aux obligations déclaratives et à la formation continue ; une sanction pécuniaire de 15 000 € au plus",
+     "Aux manquements répétés, simples et établis, aux obligations déclaratives et à la formation continue ; une sanction pécuniaire de 15 000 € au plus",
      "Aux manquements simples de toute nature ; un avertissement ou un blâme, prononcé par une formation restreinte de trois membres",
      "Aux fautes reconnues par le commissaire aux comptes ; une interdiction d'exercer d'un an au plus, avec sursis",
      "Aux manquements commis par les entités d'intérêt public ; une sanction pécuniaire plafonnée à 250 000 €"
@@ -12115,11 +12111,11 @@
    "qrc": {
     "expected": [
      "Manquements aux obligations déclaratives (fixées par décret) et à la formation continue",
-     "Manquements simples et établis",
+     "Manquements répétés, simples et établis",
      "Sanction pécuniaire seulement, 15 000 € au plus",
      "Décision du président de la commission sans débat ; opposition dans les 30 jours"
     ],
-    "model_answer": "Elle vise les manquements simples et établis aux obligations déclaratives fixées par décret et à l'obligation de formation continue. Sur proposition de la formation plénière du collège, le président de la commission des sanctions statue seul et sans débat ; il ne peut prononcer qu'une sanction pécuniaire de 15 000 € au plus. L'intéressé ou le président de la H2A peut former opposition dans les 30 jours, l'affaire revenant alors devant la commission."
+    "model_answer": "Elle vise les manquements répétés, simples et établis, aux obligations déclaratives fixées par décret et à l'obligation de formation continue. Sur proposition de la formation plénière du collège, le président de la commission des sanctions statue seul et sans débat ; il ne peut prononcer qu'une sanction pécuniaire de 15 000 € au plus. L'intéressé ou le président de la H2A peut former opposition dans les 30 jours, l'affaire revenant alors devant la commission."
    },
    "explanation": "La procédure simplifiée ne permet ni avertissement, ni blâme, ni interdiction : seulement une somme, dans la limite proposée par le collège. L'opposition ramène l'affaire en audience publique devant la commission (audience un mois au moins après l'opposition).",
    "reference": "C. com. L.821-81 et L.821-82 ; L.821-24 (formation continue)",
@@ -12435,7 +12431,7 @@
     ],
     "model_answer": "La sanction tient compte de la gravité et de la durée de la faute, de la qualité et du degré d'implication de la personne, de sa situation et de sa capacité financière, des gains obtenus ou des pertes évitées, de son degré de coopération pendant l'enquête et des manquements commis précédemment (et, en LCB-FT, du préjudice subi par les tiers)."
    },
-   "explanation": "Le président de la CRCC est avisé de l'audience et peut présenter des observations, mais il ne lie pas la commission. Le jury n'exige pas le quantum : retenir les grandes familles de critères.",
+   "explanation": "Le président de la CRCC est avisé de l'audience et peut présenter des observations, mais il ne lie pas la commission. Les consignes des sujets QRC précisent que « les références des textes ainsi que le quantum des sanctions ne sont pas exigés des candidats » : retenir les grandes familles de critères.",
    "reference": "C. com. L.821-83, L.821-80",
    "confidence": "high",
    "session": "transfert",
@@ -12647,7 +12643,7 @@
     ],
     "model_answer": "Outre son rapport de certification des comptes, le commissaire aux comptes nommé pour trois exercices établit, à destination des dirigeants, un rapport identifiant les risques financiers, comptables et de gestion de la société (ou de l'ensemble qu'elle forme avec ses filiales pour une tête de petit groupe). Il est dispensé d'une série de diligences et rapports du droit commun, notamment ceux sur les conventions réglementées."
    },
-   "explanation": "L'ALPE reste une mission de certification des comptes (assurance raisonnable) : le CAC certifie et le barème d'heures s'applique. Le rapport sur les risques remplace des rapports jugés lourds pour une petite entreprise ; la lettre de recommandations relève du devoir de conseil de l'expert-comptable.",
+   "explanation": "L'ALPE reste une mission de certification des comptes (assurance raisonnable) : le CAC certifie et le barème d'heures s'applique, avec la dérogation possible si le nombre d'heures paraît excessif ou insuffisant (D.821-190). Le rapport sur les risques remplace des rapports jugés lourds pour une petite entreprise ; la lettre de recommandations relève du devoir de conseil de l'expert-comptable.",
    "reference": "C. com. L.821-57 (dispense : L.223-19, L.225-40, L.225-88…), L.821-53 ; NEP 911 (A.821-94)",
    "confidence": "high",
    "session": "transfert",

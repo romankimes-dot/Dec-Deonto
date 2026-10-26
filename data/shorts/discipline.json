@@ -106,7 +106,7 @@
    "items": [{ "k": "Ordinaire", "v": "La commission des sanctions juge, après audience" }, { "k": "Simplifiée", "v": "Déclarations, formation continue : sanction pécuniaire de 15 000 € au plus" }, { "k": "Composition administrative", "v": "Sanction acceptée, validée par le collège, homologuée par la commission" }],
    "trap": "La procédure simplifiée ne prononce qu'une somme.",
    "quiz": { "q": "Quelle sanction la procédure simplifiée peut-elle prononcer ?", "choices": ["Une sanction pécuniaire", "Un avertissement ou un blâme", "Une interdiction d'exercer"], "answer": 0, "why": "Seulement une **sanction pécuniaire**, **15 000 €** au plus, décidée par le **président de la commission** sans débat." },
-   "src": ["Sanction pécuniaire seulement : 15 000 € au plus", "Manquements simples et établis aux obligations déclaratives et à la formation continue"] },
+   "src": ["Sanction pécuniaire seulement : 15 000 € au plus", "Manquements répétés, simples et établis, aux obligations déclaratives et à la formation continue"] },
 
  { "id": "discipline-16", "type": "chiffre", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "22-schema-sanctions-h2a.md",
    "title": "Suspension provisoire", "big": "6 mois", "label": "Durée maximale de la suspension provisoire d'un CAC, décidée par le collège",

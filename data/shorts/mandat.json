@@ -29,7 +29,7 @@
  { "id": "mandat-05", "type": "cas", "prof": "CAC", "tags": ["alpe_petites_entreprises", "honoraires_bareme"], "fiche": "05-cac-exercice.md",
    "title": "Mission ALPE", "situation": "Une SARL sous les seuils décide, sur option, de faire auditer ses comptes dans le cadre de l'ALPE.",
    "quiz": { "q": "Quelle durée de mandat et quel barème d'heures ?", "choices": ["6 exercices, barème d'heures applicable", "3 exercices, barème d'heures applicable", "6 exercices, sans barème d'heures", "3 exercices, sans barème d'heures"], "answer": 1, "why": "L'ALPE dure **3 exercices**, avec un rapport allégé. C'est une mission de **certification** : le **barème d'heures s'applique**." },
-   "src": ["3 exercices, sur option, pour les entités sous les seuils (petits groupes, volontaires). Rapport allégé", "Le barème d'heures s'applique : c'est une mission de certification"] },
+   "src": ["3 exercices, sur option, quand le CAC est désigné volontairement", "Le barème d'heures s'applique : c'est une mission de certification"] },
 
  { "id": "mandat-06", "type": "vf", "prof": "CAC", "tags": ["nomination_seuils", "alpe_petites_entreprises"], "fiche": "05-cac-exercice.md",
    "title": "Le tiers du capital", "statement": "Sous les seuils, l'associé qui demande en justice la nomination d'un CAC doit détenir au moins le tiers du capital.",

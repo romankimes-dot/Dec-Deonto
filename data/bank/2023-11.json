@@ -12,7 +12,7 @@
       "question": "Quelle autorité agrée les normes professionnelles applicables aux experts-comptables ?",
       "qcm": {
         "choices": [
-          "Le garde des sceaux, ministre de la justice, par arrêté d'homologation après avis de la H2A",
+          "Le garde des sceaux, ministre de la justice, par arrêté d'homologation des normes adoptées par la H2A après avis de la CNCC",
           "Le ministre chargé de l'économie, par arrêté d'agrément, sur proposition du Conseil national",
           "Le Conseil national de l'Ordre des experts-comptables, par délibération, sans intervention ministérielle",
           "La Haute autorité de l'audit, par décision, après avis de la commission de normalisation"
@@ -27,7 +27,7 @@
         ],
         "model_answer": "Les normes professionnelles de l'expertise comptable sont élaborées par le Conseil national de l'Ordre et agréées par arrêté du ministre chargé de l'économie (en pratique le ministre chargé du budget). Elles se distinguent des normes d'exercice professionnel des commissaires aux comptes, adoptées par la Haute autorité de l'audit et homologuées par arrêté du garde des sceaux."
       },
-      "explanation": "La tutelle de l'Ordre est exercée par le ministre chargé de l'économie et du budget (commissaire du gouvernement), ce qui explique que l'agrément des normes relève d'un arrêté de ce ministre (voir par exemple ord. art. 22 pour les normes relatives aux activités accessoires). Les CAC relèvent du ministère de la justice : leurs normes sont adoptées par la H2A puis homologuées par le garde des sceaux (C. com. L.820-23 et L.821-11). C'est l'une des confusions EC/CAC les plus fréquentes.",
+      "explanation": "La tutelle de l'Ordre est exercée par le ministre chargé de l'économie et du budget (commissaire du gouvernement), ce qui explique que l'agrément des normes relève d'un arrêté de ce ministre (voir par exemple ord. art. 22 pour les normes relatives aux activités accessoires). Les CAC relèvent du ministère de la justice : leurs normes sont adoptées par la H2A, après avis de la CNCC, puis homologuées par arrêté du garde des sceaux (C. com. L.820-23 et L.821-11). C'est l'une des confusions EC/CAC les plus fréquentes.",
       "reference": "Ord. 45-2138 art. 22 et 60 ; arrêtés d'agrément des normes professionnelles ; C. com. L.820-23 pour le parallèle CAC",
       "confidence": "medium"
     },
@@ -343,7 +343,7 @@
         "choices": [
           "Le syndic de la compagnie régionale, sous le contrôle du procureur général près la cour d'appel",
           "Le rapporteur général de la Haute autorité de l'audit, assisté d'enquêteurs qu'il habilite",
-          "Un rapporteur désigné par le président de la chambre régionale de discipline, assisté d'un greffier",
+          "Un rapporteur nommé par le magistrat chargé des poursuites rattaché à la chambre régionale de discipline",
           "Les contrôleurs de la Compagnie nationale, dans le cadre du contrôle d'activité périodique du cabinet"
         ],
         "answer": 1, "crossProf": 2
@@ -372,7 +372,7 @@
       "qcm": {
         "choices": [
           "Avertissement, blâme, interdiction temporaire d'exercer (trois ans au plus), radiation de la liste, sanction pécuniaire",
-          "Réprimande, blâme avec inscription au dossier, suspension avec sursis, radiation du tableau, exclusion de l'Ordre",
+          "Réprimande, blâme avec inscription au dossier, suspension avec sursis, suspension sans sursis, radiation du tableau",
           "Amende civile, interdiction de gérer, faillite personnelle, emprisonnement, confiscation des honoraires perçus",
           "Rappel à la loi, mise en demeure, astreinte, fermeture temporaire du cabinet, retrait de l'agrément de la CNCC"
         ],

@@ -45,7 +45,7 @@
       "qcm": {
         "question": "Selon la NP 3100, une attestation particulière délivrée par l'expert-comptable peut procurer :",
         "choices": [
-          "Une assurance raisonnable lorsqu'elle porte sur des comptes, aucune assurance dans les autres cas",
+          "Une assurance modérée seulement, comme dans une mission de présentation des comptes annuels",
           "Une assurance raisonnable ou une assurance modérée, selon les diligences convenues",
           "Une assurance modérée ou aucune assurance, selon qu'elle porte ou non sur des comptes",
           "Une assurance absolue lorsqu'elle est destinée à un tiers financeur"
@@ -174,7 +174,7 @@
           "D'un président magistrat désigné par le premier président de la cour d'appel et de deux membres élus du conseil régional",
           "Du président du conseil régional et de quatre experts-comptables tirés au sort parmi les inscrits",
           "D'un conseiller d'État et de deux représentants du ministre chargé du budget, désignés par arrêté",
-          "De trois membres du collège de la H2A et du président de la compagnie régionale des commissaires aux comptes de la circonscription"
+          "D'un magistrat de la Cour de cassation et de quatre personnes qualifiées (commission des sanctions de la H2A)"
         ],
         "answer": 0, "crossProf": 3
       },

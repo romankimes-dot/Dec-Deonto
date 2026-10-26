@@ -234,7 +234,7 @@
         "question": "Le serment prêté par l'expert-comptable lors de son inscription au tableau porte sur :",
         "choices": [
           "L'exercice de la profession avec conscience et probité et le respect des lois",
-          "L'indépendance à l'égard de l'entité contrôlée et la révélation des faits délictueux au procureur",
+          "L'exercice de la profession avec honneur, probité et indépendance et le respect des lois",
           "La fidélité au Conseil national et le paiement des cotisations ordinales à l'échéance",
           "La dignité, la confraternité et l'obligation de suivre la formation continue"
         ],
@@ -249,8 +249,8 @@
         ],
         "model_answer": "Le serment engage l'expert-comptable à exercer sa profession avec conscience et probité, et à respecter et faire respecter les lois dans ses travaux. Il est prêté devant le conseil régional de l'Ordre après l'inscription au tableau."
       },
-      "explanation": "Trois idées : conscience, probité, légalité. Le serment du CAC, prêté devant la cour d'appel, a une formulation différente et évoque l'exercice de la profession avec honneur, probité et indépendance et le respect des lois. Le distracteur sur la révélation des faits délictueux est propre au CAC.",
-      "reference": "D. 2012-432 art. 143 ; pour le CAC : C. com. R.821-60",
+      "explanation": "Trois idées : conscience, probité, légalité. Le serment du CAC, prêté devant la cour d'appel, a une formulation différente et évoque l'exercice de la profession avec honneur, probité et indépendance et le respect des lois. Le distracteur reprend le serment du CAC (L.821-23, R.821-60).",
+      "reference": "D. 2012-432 art. 143 ; pour le CAC : C. com. L.821-23 et R.821-60",
       "confidence": "medium"
     },
     {
@@ -360,7 +360,7 @@
         "question": "Quel enchaînement décrit correctement la procédure disciplinaire d'un commissaire aux comptes jusqu'au recours ?",
         "choices": [
           "Saisine du rapporteur général et enquête, notification des griefs, saisine de la commission des sanctions, audience et décision, recours devant le Conseil d'État",
-          "Plainte au président de la CRCC, chambre régionale de discipline, chambre nationale de discipline, Conseil d'État, Cour de cassation",
+          "Plainte, chambre régionale de discipline, chambre nationale de discipline, Conseil d'État",
           "Signalement à l'AMF, enquête de la CNCC, décision du garde des Sceaux, appel devant la cour d'appel de Paris, pourvoi en cassation",
           "Contrôle d'activité, avertissement du président de la CNCC, décision du collège de la H2A, appel devant la cour d'appel, Conseil d'État"
         ],
@@ -423,7 +423,7 @@
         "question": "En cas de litige sur les honoraires du commissaire aux comptes, les organes successivement compétents sont :",
         "choices": [
           "Le président de la compagnie régionale (conciliation en trois mois), puis le juge ; la H2A ne tranche plus ces litiges",
-          "Le président du conseil régional de l'Ordre, la chambre nationale de discipline, puis le Conseil d'État",
+          "Conciliation ou arbitrage du président du conseil régional de l'Ordre, puis le juge",
           "Le comité d'audit, puis l'assemblée générale, puis le tribunal administratif statuant en premier ressort, avec appel devant la cour administrative",
           "Le commissaire du gouvernement, le garde des Sceaux, puis la Cour de cassation statuant en dernier ressort"
         ],
@@ -438,7 +438,7 @@
         ],
         "model_answer": "Le litige sur la rémunération de la mission de certification est porté devant le président de la compagnie régionale, saisi par écrit, qui dispose de trois mois pour concilier les parties et notifie, le cas échéant, l'échec de la conciliation. Le différend relève alors du juge de droit commun : depuis 2024, la H2A n'a plus compétence pour trancher ces litiges."
       },
-      "explanation": "Le circuit en trois étapes (président de CRCC, H3C en formation restreinte, juge) correspond au droit antérieur à 2024. Les missions de la H2A (L.820-1, L.820-2) ne comprennent plus le règlement des litiges d'honoraires ; seule subsiste la conciliation (R.821-196), à laquelle renvoie la NEP 100 (§ 22). Ne pas confondre avec la dérogation au barème d'heures (président de CRCC, président de la CNCC, bureau de la H2A, tribunal administratif). Le distracteur reproduit le circuit disciplinaire de l'EC.",
+      "explanation": "Le circuit en trois étapes (président de CRCC, H3C en formation restreinte, juge) correspond au droit antérieur à 2024. Les missions de la H2A (L.820-1, L.820-2) ne comprennent plus le règlement des litiges d'honoraires ; seule subsiste la conciliation (R.821-196), à laquelle renvoie la NEP 100 (§ 22). Ne pas confondre avec la dérogation au barème d'heures (président de CRCC, président de la CNCC, bureau de la H2A, tribunal administratif). Le distracteur reproduit le dispositif de l'expert-comptable : conciliation ou arbitrage du président du conseil régional de l'Ordre (D. 2012-432 art. 160), puis le juge.",
       "reference": "C. com. R.821-196 (ex R.823-18) ; L.820-1, L.820-2 ; A.821-65 (NEP 100 § 22)",
       "confidence": "medium",
       "update_note": "Depuis le 1er janvier 2024 : conciliation par le président de la CRCC en trois mois puis juge ; plus d'intervention de la H2A (aligné sur 2022-11-CAC-16)."
@@ -457,7 +457,7 @@
         "choices": [
           "Le premier président de la Cour des comptes, le procureur général près la cour d'appel, les présidents de l'AMF, de l'ACPR et de la CNCC",
           "L'entité contrôlée, par décision de son assemblée générale, ou le président du tribunal de commerce du siège",
-          "Le président du Conseil national de l'Ordre des experts-comptables, le commissaire du gouvernement et le garde des sceaux, ministre de la Justice",
+          "Toute personne y ayant intérêt, le conseil régional de l'Ordre ou le commissaire du gouvernement, par une plainte à la chambre régionale",
           "Les actionnaires détenant au moins 5 % du capital, le comité d'audit ou le comité social et économique de l'entité"
         ],
         "answer": 0, "crossProf": 2
@@ -472,7 +472,7 @@
         ],
         "model_answer": "Le rapporteur général est saisi par le premier président de la Cour des comptes ou le président d'une chambre régionale des comptes, le procureur général près la cour d'appel compétente, les présidents de l'AMF, de l'ACPR et de la H2A, et le président de la CNCC ou d'une compagnie régionale. Il peut aussi se saisir des signalements qu'il reçoit ; le garde des sceaux ne figure pas dans la liste."
       },
-      "explanation": "La saisine est réservée à des autorités publiques et professionnelles, complétée par une auto-saisine sur signalement : les tiers (entité, actionnaires) peuvent signaler des faits mais ne saisissent pas directement. L'Ordre des experts-comptables n'a aucun pouvoir de saisine. Les faits remontant à plus de six ans sans acte de recherche ou de constatation ne peuvent plus être sanctionnés. L'actionnaire peut en revanche demander en justice la récusation (L.821-49) ou le relèvement (L.821-50) du CAC.",
+      "explanation": "La saisine est réservée à des autorités publiques et professionnelles, complétée par une auto-saisine sur signalement : les tiers (entité, actionnaires) peuvent signaler des faits mais ne saisissent pas directement. L'Ordre des experts-comptables n'a aucun pouvoir de saisine ; la plainte de toute personne intéressée, du conseil régional ou du commissaire du gouvernement devant la chambre régionale de discipline est le circuit de l'expert-comptable (D. 2012-432 art. 179 et 182). Les faits remontant à plus de six ans sans acte de recherche ou de constatation ne peuvent plus être sanctionnés. L'actionnaire peut en revanche demander en justice la récusation (L.821-49) ou le relèvement (L.821-50) du CAC.",
       "reference": "C. com. L.821-73 (ex L.824-4) ; L.821-49, L.821-50",
       "confidence": "high",
       "update_note": "H3C → H2A au 1er janvier 2024. Liste de L.821-73 : Cour des comptes/CRC, procureur général, AMF, ACPR, H2A, CNCC/CRCC ; le garde des sceaux n'y figure pas ; auto-saisine du rapporteur général sur signalement ; prescription de six ans."

@@ -17,10 +17,10 @@
    },
    "qrc": {
     "expected": ["Commission des sanctions de la Haute autorité de l'audit (H2A)", "Elle a succédé à la formation restreinte du H3C (procédures en cours transférées)", "Séparée du collège, qui poursuit"],
-    "model_answer": "C'est la commission des sanctions de la Haute autorité de l'audit, distincte du collège qui engage les poursuites. Elle a remplacé la formation restreinte du Haut conseil du commissariat aux comptes le 1er janvier 2024, les procédures en cours lui ayant été transférées."
+    "model_answer": "C'est la commission des sanctions de la Haute autorité de l'audit, distincte du collège qui engage les poursuites. Elle a remplacé la formation restreinte du Haut conseil du commissariat aux comptes le 1er janvier 2024, les procédures en cours lui ayant été transférées (ord. 2023-1142 art. 40)."
    },
    "explanation": "La H2A comprend un collège et une commission des sanctions (L.820-2 I) : le collège poursuit, la commission juge. Les chambres régionale et nationale de discipline sont celles de l'expert-comptable, piège classique de confusion entre les deux professions.",
-   "reference": "C. com. L.820-2 I et V, L.821-79 ; ordonnance 2023-1142 (entrée en vigueur au 01/01/2024)",
+   "reference": "C. com. L.820-2 I et V, L.821-79 ; ordonnance 2023-1142 (entrée en vigueur au 01/01/2024), art. 40 (transfert des procédures en cours)",
    "confidence": "high"
   },
   {
@@ -48,7 +48,7 @@
    "question": "À quels manquements s'applique la procédure simplifiée de sanction de la H2A, et quelle sanction peut-elle aboutir à prononcer ?",
    "qcm": {
     "choices": [
-     "Aux manquements simples et établis aux obligations déclaratives et à la formation continue ; une sanction pécuniaire de 15 000 € au plus",
+     "Aux manquements répétés, simples et établis, aux obligations déclaratives et à la formation continue ; une sanction pécuniaire de 15 000 € au plus",
      "Aux manquements simples de toute nature ; un avertissement ou un blâme, prononcé par une formation restreinte de trois membres",
      "Aux fautes reconnues par le commissaire aux comptes ; une interdiction d'exercer d'un an au plus, avec sursis",
      "Aux manquements commis par les entités d'intérêt public ; une sanction pécuniaire plafonnée à 250 000 €"
@@ -56,8 +56,8 @@
     "answer": 0
    },
    "qrc": {
-    "expected": ["Manquements aux obligations déclaratives (fixées par décret) et à la formation continue", "Manquements simples et établis", "Sanction pécuniaire seulement, 15 000 € au plus", "Décision du président de la commission sans débat ; opposition dans les 30 jours"],
-    "model_answer": "Elle vise les manquements simples et établis aux obligations déclaratives fixées par décret et à l'obligation de formation continue. Sur proposition de la formation plénière du collège, le président de la commission des sanctions statue seul et sans débat ; il ne peut prononcer qu'une sanction pécuniaire de 15 000 € au plus. L'intéressé ou le président de la H2A peut former opposition dans les 30 jours, l'affaire revenant alors devant la commission."
+    "expected": ["Manquements aux obligations déclaratives (fixées par décret) et à la formation continue", "Manquements répétés, simples et établis", "Sanction pécuniaire seulement, 15 000 € au plus", "Décision du président de la commission sans débat ; opposition dans les 30 jours"],
+    "model_answer": "Elle vise les manquements répétés, simples et établis, aux obligations déclaratives fixées par décret et à l'obligation de formation continue. Sur proposition de la formation plénière du collège, le président de la commission des sanctions statue seul et sans débat ; il ne peut prononcer qu'une sanction pécuniaire de 15 000 € au plus. L'intéressé ou le président de la H2A peut former opposition dans les 30 jours, l'affaire revenant alors devant la commission."
    },
    "explanation": "La procédure simplifiée ne permet ni avertissement, ni blâme, ni interdiction : seulement une somme, dans la limite proposée par le collège. L'opposition ramène l'affaire en audience publique devant la commission (audience un mois au moins après l'opposition).",
    "reference": "C. com. L.821-81 et L.821-82 ; L.821-24 (formation continue)",
@@ -223,7 +223,7 @@
     "expected": ["Gravité et durée de la faute ou du manquement", "Qualité et degré d'implication de la personne", "Situation et capacité financière ; gains obtenus ou pertes évitées", "Coopération à l'enquête ; manquements antérieurs"],
     "model_answer": "La sanction tient compte de la gravité et de la durée de la faute, de la qualité et du degré d'implication de la personne, de sa situation et de sa capacité financière, des gains obtenus ou des pertes évitées, de son degré de coopération pendant l'enquête et des manquements commis précédemment (et, en LCB-FT, du préjudice subi par les tiers)."
    },
-   "explanation": "Le président de la CRCC est avisé de l'audience et peut présenter des observations, mais il ne lie pas la commission. Le jury n'exige pas le quantum : retenir les grandes familles de critères.",
+   "explanation": "Le président de la CRCC est avisé de l'audience et peut présenter des observations, mais il ne lie pas la commission. Les consignes des sujets QRC précisent que « les références des textes ainsi que le quantum des sanctions ne sont pas exigés des candidats » : retenir les grandes familles de critères.",
    "reference": "C. com. L.821-83, L.821-80",
    "confidence": "high"
   },
@@ -343,7 +343,7 @@
     "expected": ["Rapport de certification des comptes (L.821-53), comme dans tout mandat", "Rapport à destination des dirigeants identifiant les risques financiers, comptables et de gestion (sur l'ensemble du petit groupe pour une tête de groupe)", "Dispense de diligences et rapports du droit commun, notamment sur les conventions réglementées"],
     "model_answer": "Outre son rapport de certification des comptes, le commissaire aux comptes nommé pour trois exercices établit, à destination des dirigeants, un rapport identifiant les risques financiers, comptables et de gestion de la société (ou de l'ensemble qu'elle forme avec ses filiales pour une tête de petit groupe). Il est dispensé d'une série de diligences et rapports du droit commun, notamment ceux sur les conventions réglementées."
    },
-   "explanation": "L'ALPE reste une mission de certification des comptes (assurance raisonnable) : le CAC certifie et le barème d'heures s'applique. Le rapport sur les risques remplace des rapports jugés lourds pour une petite entreprise ; la lettre de recommandations relève du devoir de conseil de l'expert-comptable.",
+   "explanation": "L'ALPE reste une mission de certification des comptes (assurance raisonnable) : le CAC certifie et le barème d'heures s'applique, avec la dérogation possible si le nombre d'heures paraît excessif ou insuffisant (D.821-190). Le rapport sur les risques remplace des rapports jugés lourds pour une petite entreprise ; la lettre de recommandations relève du devoir de conseil de l'expert-comptable.",
    "reference": "C. com. L.821-57 (dispense : L.223-19, L.225-40, L.225-88…), L.821-53 ; NEP 911 (A.821-94)",
    "confidence": "high"
   },

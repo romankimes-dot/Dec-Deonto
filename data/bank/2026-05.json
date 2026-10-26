@@ -27,8 +27,8 @@
         ],
         "model_answer": "L'expert-comptable prête serment devant le conseil régional de l'Ordre, dans les six mois de son inscription au tableau, en jurant d'exercer sa profession avec conscience et probité et de respecter et faire respecter les lois dans ses travaux."
       },
-      "explanation": "Confusion EC/CAC classique : le commissaire aux comptes prête serment devant le premier président de la cour d'appel du ressort de sa compagnie régionale, en jurant d'exercer « avec honneur, probité et indépendance ».",
-      "reference": "D. 2012-432 art. 143 ; à comparer avec C. com. R.821-60",
+      "explanation": "Confusion EC/CAC classique : le commissaire aux comptes prête serment devant le premier président de la cour d'appel du ressort de sa compagnie régionale (L.821-23, R.821-60), en jurant d'exercer « avec honneur, probité et indépendance ».",
+      "reference": "D. 2012-432 art. 143 ; à comparer avec C. com. L.821-23 et R.821-60",
       "confidence": "high"
     },
     {
@@ -171,7 +171,7 @@
           "Saisir le président de la compagnie régionale pour qu'il désigne le successeur parmi les confrères inscrits",
           "Informer le conseil régional de l'Ordre, qui avise lui-même le prédécesseur"
         ],
-        "answer": 1, "crossProf": 2
+        "answer": 1
       },
       "qrc": {
         "expected": [

@@ -138,7 +138,7 @@
 | Point | Règle |
 |---|---|
 | **Durée** | **6 exercices**. Le mandat **expire** après l'assemblée qui statue sur les comptes du **6e exercice** |
-| **ALPE** (audit légal des petites entreprises, **L.821-46**) | **3 exercices**, sur option, pour les entités sous les seuils (petits groupes, volontaires). Rapport allégé, plus un **rapport sur les risques** financiers, comptables et de gestion destiné aux dirigeants (L.821-57). **Le barème d'heures s'applique** : c'est une mission de certification, que R.821-193 et R.821-194 n'excluent pas |
+| **ALPE** (audit légal des petites entreprises, **L.821-46**) | **3 exercices**, sur option, quand le CAC est désigné **volontairement** ou au titre d'un **petit groupe** dont l'ensemble dépasse les seuils (tête de groupe ; filiale qui dépasse ses propres seuils : L.821-43 al. 1 et dernier). Mandat de 3 exercices aussi quand des **associés détenant au moins le tiers du capital** demandent la nomination (L.221-9, L.223-35, L.227-9-1…). Rapport allégé, plus un **rapport sur les risques** financiers, comptables et de gestion destiné aux dirigeants (L.821-57). **Le barème d'heures s'applique** : c'est une mission de certification, que R.821-193 et R.821-194 n'excluent pas ; **dérogation** possible si le nombre d'heures paraît excessif ou insuffisant (D.821-190) |
 | **Début de mission** | La mission porte sur l'**exercice au cours duquel le CAC est nommé** : elle commence dès sa nomination et couvre les **comptes de cet exercice** depuis son ouverture |
 | **Premier exercice audité** sans CAC antérieur | Le rapport **mentionne** que les **comptes de l'exercice précédent** (comparatifs) **n'ont pas été audités** |
 | **Fusion de sociétés de CAC** | La **société absorbante poursuit** le mandat jusqu'à son **terme**. L'assemblée de l'entité **peut**, à sa première réunion après l'absorption, **délibérer sur le maintien** du mandat, après avoir entendu le CAC (L.821-48) |
@@ -169,8 +169,8 @@
 - Il s'applique à la **mission de certification**, **ALPE comprise**. Il fixe des **fourchettes d'heures** par tranches de **(total bilan + produits d'exploitation + produits financiers HT)**.
 - Le **taux de vacation horaire** est **librement fixé d'un commun accord**.
 - Il **ne s'applique pas aux prestations**.
-- Il ne concerne pas non plus les entités au-delà de la dernière tranche (**122 M€** de total bilan et produits ; D.821-188).
-- Sont aussi exclus notamment les **sociétés cotées**, les **banques**, les **assurances**, les **associations et fondations**, les **syndicats** et les **CSE** (R.821-194), ainsi que la certification des informations de **durabilité**.
+- Il ne concerne pas non plus les entités au-delà de la dernière tranche (**122 M€** de total bilan et produits ; D.821-188 et R.821-194 1°).
+- Sont aussi exclus notamment les **sociétés cotées**, les **banques**, les **assurances**, les **associations et fondations**, les **syndicats** et les **comités d'entreprise et comités centraux d'entreprise** (R.821-194, 14° pour ces derniers), ainsi que la certification des informations de **durabilité**.
 
 ### Dérogation au barème
 - Si le nombre d'heures paraît **excessif ou insuffisant** (D.821-190 et D.821-191) :

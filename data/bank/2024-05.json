@@ -132,7 +132,7 @@
       "question": "Quelle est la composition de la chambre nationale de discipline ?",
       "qcm": {
         "choices": [
-          "Un président magistrat de la Cour de cassation désigné par le premier président, quatre personnalités qualifiées et un représentant du garde des sceaux",
+          "Un président magistrat de la Cour de cassation désigné par le premier président de cette Cour et quatre personnes qualifiées, dont un ancien commissaire aux comptes",
           "Un président magistrat désigné par le garde des sceaux (cour d'appel de Paris), deux fonctionnaires désignés par le ministre de l'économie et deux membres élus du Conseil national",
           "Le président du Conseil national de l'Ordre, quatre présidents de conseils régionaux élus par leurs pairs et le commissaire du gouvernement près l'Ordre, désignés pour trois ans renouvelables",
           "Un conseiller d'État président, deux experts-comptables élus par le Conseil national et deux commissaires aux comptes désignés par la CNCC"
@@ -148,7 +148,7 @@
         ],
         "model_answer": "La chambre nationale de discipline, instituée auprès du Conseil national de l'Ordre, comprend un président magistrat désigné par le garde des sceaux parmi les présidents de chambre de la cour d'appel de Paris (en activité ou honoraires), deux fonctionnaires désignés par le ministre chargé de l'économie et deux membres du Conseil national élus par lui. Un magistrat chargé des poursuites, qui nomme un rapporteur, lui est rattaché ; des suppléants sont désignés dans les mêmes conditions. Ses décisions peuvent faire l'objet d'un recours devant le Conseil d'État."
       },
-      "explanation": "La loi 2022-172 du 14 février 2022 a réformé les instances disciplinaires de l'Ordre à la suite d'une décision du Conseil constitutionnel : séparation des fonctions de poursuite et de jugement (magistrat chargé des poursuites, rapporteur), composition de la chambre nationale précisée (deux fonctionnaires au lieu d'un conseiller référendaire à la Cour des comptes et d'un fonctionnaire). La chambre régionale est, elle, composée d'un président magistrat de la cour d'appel et de deux membres élus du conseil régional. Chez les CAC, la commission des sanctions de la H2A est présidée par un magistrat de la Cour de cassation avec quatre personnalités qualifiées.",
+      "explanation": "La loi 2022-172 du 14 février 2022 a réformé les instances disciplinaires de l'Ordre à la suite d'une décision du Conseil constitutionnel : séparation des fonctions de poursuite et de jugement (magistrat chargé des poursuites, rapporteur), composition de la chambre nationale précisée (deux fonctionnaires au lieu d'un conseiller référendaire à la Cour des comptes et d'un fonctionnaire). La chambre régionale est, elle, composée d'un président magistrat de la cour d'appel et de deux membres élus du conseil régional. Chez les CAC, la commission des sanctions de la H2A est présidée par un magistrat de la Cour de cassation avec quatre personnes qualifiées ; le commissaire du Gouvernement auprès de la H2A n'assiste pas à ses délibérations (L.820-9).",
       "reference": "Ord. 45-2138 art. 49, 49 bis, 50 et 53 (modifiés par la loi 2022-172) ; C. com. L.820-2 V pour le parallèle CAC",
       "confidence": "high",
       "update_note": "Le Conseil supérieur est devenu le Conseil national de l'Ordre et la composition a été modifiée par la loi 2022-172 du 14 février 2022 (deux fonctionnaires ; magistrat chargé des poursuites)."
