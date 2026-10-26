@@ -698,7 +698,7 @@
     ],
     "model_answer": "Le commissaire aux comptes de la filiale peut conduire lui-même ses investigations auprès de la société mère, la loi lui permettant d'enquêter auprès des personnes qui contrôlent l'entité dont il certifie les comptes : il demande les conventions, justificatifs et modalités de calcul des frais facturés. Il peut aussi obtenir des renseignements des commissaires aux comptes de la mère, libérés du secret à son égard dans le périmètre de consolidation, sans toutefois pouvoir exiger leurs dossiers de travail. Un refus de la mère constituerait un obstacle à ses vérifications."
    },
-   "explanation": "Le secret est levé entre commissaires aux comptes du périmètre de consolidation pour l'échange d'informations, mais les dossiers de travail restent la propriété de chaque commissaire aux comptes. L'outil principal est le droit d'investigation étendu aux sociétés contrôlantes et contrôlées, assorti du délit d'entrave. Il ne faut pas confondre cette situation avec celle d'une filiale non consolidée, où le secret s'applique pleinement entre confrères.",
+   "explanation": "Le secret est levé entre commissaires aux comptes du périmètre de consolidation pour l'échange d'informations, mais les dossiers de travail restent la propriété de chaque commissaire aux comptes. L'outil principal est le droit d'investigation étendu aux sociétés contrôlantes et contrôlées, assorti du délit d'entrave. Il ne faut pas confondre cette situation avec celle d'une filiale non consolidée, où le secret s'applique entre confrères, sauf dans un petit groupe (L.821-35 al. 5).",
    "reference": "C. com. L.821-61 (ex L.823-14, investigations auprès des personnes contrôlant ou contrôlées), L.821-35 (ex L.822-15, secret et levée dans le périmètre de consolidation), L.821-6 3° (ex L.820-4, entrave) ; NEP 600",
    "confidence": "medium",
    "update_note": "Numérotation recodifiée au 1er janvier 2024 (ordonnance 2023-1142) : L.823-14 → L.821-61, L.822-15 → L.821-35, L.820-4 → L.821-6 ; règles de fond inchangées.",
@@ -2135,7 +2135,7 @@
     ],
     "model_answer": "Il peut mener directement ses investigations auprès de la société mère, la loi l'autorisant à enquêter auprès des personnes qui contrôlent l'entité dont il certifie les comptes, et obtenir conventions, clés de répartition et justificatifs. Il peut aussi interroger les commissaires aux comptes de la mère, libérés du secret à son égard puisque la filiale est consolidée. Un refus de la mère constituerait une entrave."
    },
-   "explanation": "Deux instruments se combinent : l'extension légale du droit d'investigation aux sociétés contrôlantes et contrôlées, et la levée réciproque du secret entre commissaires aux comptes du périmètre de consolidation. Cette levée n'existe pas pour une filiale non consolidée, et elle ne donne pas accès aux dossiers de travail du confrère, seulement aux informations.",
+   "explanation": "Deux instruments se combinent : l'extension légale du droit d'investigation aux sociétés contrôlantes et contrôlées, et la levée réciproque du secret entre commissaires aux comptes du périmètre de consolidation. Cette levée n'existe pas pour une filiale non consolidée (sauf dans un petit groupe, L.821-35 al. 5), et elle ne donne pas accès aux dossiers de travail du confrère, seulement aux informations.",
    "reference": "C. com. L.821-61 (ex L.823-14, investigations auprès des sociétés mères et filiales), L.821-35 (ex L.822-15, levée du secret dans le groupe consolidé), L.821-6 3° (ex L.820-4, entrave) ; NEP 600",
    "confidence": "medium",
    "update_note": "Articles recodifiés au 1er janvier 2024 (ordonnance 2023-1142) : L.823-14 → L.821-61, L.822-15 → L.821-35, L.820-4 → L.821-6 ; règles de fond inchangées.",
@@ -4808,7 +4808,7 @@
    "points": 2,
    "question": "Quels sont les thèmes abordés dans le texte de la prestation de serment lors de l'inscription à l'Ordre des Experts-Comptables ?",
    "qcm": {
-    "question": "Le serment prêté par l'expert-comptable lors de son inscription au tableau porte sur :",
+    "question": "Le serment prêté par l'expert-comptable dans les six mois de son inscription au tableau porte sur :",
     "choices": [
      "L'exercice de la profession avec conscience et probité et le respect des lois",
      "L'exercice de la profession avec honneur, probité et indépendance et le respect des lois",
