@@ -32,7 +32,7 @@ Seul le gras `**…**` est autorisé dans les textes. Longueurs maximales : ques
 ```json
 { "type": "duel", "q": "Qui fixe le prix de la mission ?",
   "ec": { "main": "**Libres**", "det": "Convenus dans la **lettre de mission**. Aucun barème." },
-  "cac": { "main": "**Barème d'heures**", "det": "Pour la certification (hors ALPE). Taux horaire libre." },
+  "cac": { "main": "**Barème d'heures**", "det": "Pour la certification, ALPE comprise. Taux horaire libre." },
   "trap": "Le barème fixe des heures, pas un tarif en euros." }
 ```
 `main` 48 · `det` 150 · `trap` 120 (facultatif).

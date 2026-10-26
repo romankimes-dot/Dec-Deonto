@@ -15,8 +15,8 @@
         "choices": [
           "Non : l'expertise comptable ne peut être exercée qu'en société d'expertise comptable depuis la loi Pacte",
           "Oui : le statut s'applique aussi aux professions libérales réglementées et sépare de plein droit les patrimoines",
-          "Oui, mais seulement après une déclaration d'affectation de patrimoine (EIRL) déposée auprès du conseil régional de l'Ordre",
-          "Non : seule l'inscription sur la liste de la H2A permet un exercice individuel à responsabilité limitée"
+          "Oui, après une déclaration d'affectation de patrimoine (EIRL) déposée auprès du conseil régional de l'Ordre des experts-comptables",
+          "Non : l'exercice individuel à responsabilité limitée est réservé aux commissaires aux comptes inscrits"
         ],
         "answer": 1
       },
@@ -49,7 +49,7 @@
           "Il relève de la chambre régionale de discipline, car il est soumis au contrôle disciplinaire de l'Ordre",
           "Il relève de la commission des sanctions de la H2A, comme les stagiaires commissaires aux comptes"
         ],
-        "answer": 2
+        "answer": 2, "crossProf": 3
       },
       "qrc": {
         "expected": [
@@ -65,6 +65,7 @@
     },
     {
       "id": "2024-11-EC-03",
+      "intrus": {"q": "Laquelle n'est pas une condition d'inscription d'une personne physique au tableau de l'Ordre ?", "items": ["Jouir de ses droits civils", "Ne pas avoir été condamné pour des faits entachant l'honorabilité", "Être titulaire du diplôme d'expertise comptable (ou assimilé)", "Présenter les garanties de moralité nécessaires"], "leurre": "Avoir prêté serment devant le premier président de la cour d'appel", "cross": true, "why": "Le CAC prête serment devant le premier président de la cour d'appel ; l'EC prête serment devant le conseil régional, après son inscription."},
       "n": 3,
       "profession": "EC",
       "theme": "exercice",
@@ -73,8 +74,8 @@
       "question": "Quelles sont les conditions nécessaires pour qu'une personne physique puisse solliciter son inscription au tableau de l'Ordre des experts-comptables ?",
       "qcm": {
         "choices": [
-          "Être de nationalité française, titulaire du DEC et avoir prêté serment devant la cour d'appel avant l'inscription",
-          "Jouir de ses droits civils, n'avoir subi aucune condamnation entachant l'honorabilité, être titulaire du DEC, offrir des garanties de moralité",
+          "Être de nationalité française, titulaire du DEC et avoir prêté serment devant la cour d'appel avant de déposer la demande d'inscription",
+          "Jouir de ses droits civils, ne pas avoir été condamné pour des faits entachant l'honorabilité, être titulaire du DEC, offrir des garanties de moralité",
           "Être titulaire du DEC ou du CAFCAC et avoir accompli un stage de trois ans chez un commissaire aux comptes inscrit",
           "Être titulaire du DSCG, justifier d'une assurance de responsabilité civile et d'une expérience professionnelle de dix ans"
         ],
@@ -95,6 +96,7 @@
     },
     {
       "id": "2024-11-EC-04",
+      "intrus": {"q": "Laquelle de ces personnes ne peut pas faire appel d'une décision de la chambre régionale de discipline ?", "items": ["Le professionnel sanctionné", "Le plaignant", "Le commissaire du Gouvernement", "Le magistrat chargé des poursuites", "Le président du conseil régional"], "leurre": "Le rapporteur général de la H2A", "cross": true, "why": "Le rapporteur général de la H2A enquête sur les commissaires aux comptes ; il n'intervient pas dans la discipline de l'expert-comptable."},
       "n": 4,
       "profession": "EC",
       "theme": "responsabilite",
@@ -136,12 +138,12 @@
       "question": "Quels motifs doit invoquer un expert-comptable pour interrompre la mission qui le lie à son client ?",
       "qcm": {
         "choices": [
-          "Uniquement l'un des motifs légitimes limitativement énumérés par la loi (cessation d'activité, motif personnel impérieux, difficultés dans l'accomplissement de la mission)",
-          "Aucun motif : la mission peut être interrompue à tout moment, sans préavis",
+          "L'un des motifs légitimes de démission du code de déontologie : cessation d'activité, motif personnel impérieux, difficultés dans la mission",
+          "Il peut interrompre la mission à tout moment, en respectant le préavis prévu par la lettre de mission",
           "Des motifs justes et raisonnables, tels que la perte de confiance du client ou la méconnaissance d'une clause substantielle",
-          "Uniquement le non-paiement des honoraires, après autorisation du président du conseil régional"
+          "Le non-paiement des honoraires, après autorisation du président du conseil régional"
         ],
-        "answer": 2
+        "answer": 2, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -168,10 +170,10 @@
         "choices": [
           "Oui : la publicité et le démarchage sont libres depuis 2014, sans autre limite que le droit de la consommation",
           "Oui, à condition que le post soit préalablement visé par le conseil régional de l'Ordre",
-          "Non : toute publicité sur les réseaux sociaux est interdite aux experts-comptables",
+          "Non : la sollicitation doit être personnalisée et adressée à un destinataire déterminé, pas diffusée au public",
           "Non : le message dénigre implicitement les confrères et comporte un élément comparatif"
         ],
-        "answer": 3
+        "answer": 3, "crossProf": 2
       },
       "qrc": {
         "expected": [
@@ -261,7 +263,7 @@
           "Mission d'assurance sur des comptes complets historiques, soumise à la NP 2300, à la NPMQ et à la NPLAB",
           "Autre mission d'assurance (attestation particulière), soumise à la NP 3100 ainsi qu'à la NPLAB",
           "Mission sans assurance prévue par un texte légal, sans norme spécifique : déontologie, NPMQ et NPLAB",
-          "Mission de procédures convenues, soumise à la seule NP 4400 et au code de déontologie"
+          "Mission de procédures convenues, soumise à la NP 4400 et au code de déontologie"
         ],
         "answer": 2
       },
@@ -289,11 +291,11 @@
       "qcm": {
         "choices": [
           "Oui : un barème d'heures fonction du total du bilan et des produits s'applique, avec dérogation possible",
-          "Non : les honoraires sont fixés librement, par écrit et préalablement, selon les diligences et la difficulté",
+          "Non : les honoraires sont convenus avec le client, par écrit et préalablement, selon les diligences et la difficulté",
           "Oui : le Conseil national fixe chaque année un tarif horaire minimal opposable aux clients",
           "Non, sauf pour la mission de présentation des comptes, qui relève d'un tarif réglementé"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -318,10 +320,10 @@
       "question": "Le barème d'heures figurant à l'article D.821-188 du code de commerce est-il applicable à la mission de certification des comptes annuels prévue à l'article L.821-46 du code de commerce (mission ALPE) ? Justifiez votre réponse.",
       "qcm": {
         "choices": [
-          "Non : la mission ALPE est une prestation contractuelle dont les honoraires sont librement fixés",
+          "Non : la mission ALPE est une prestation contractuelle, dont les honoraires sont fixés d'un commun accord avec la société, hors barème",
           "Non : le barème d'heures ne s'applique qu'aux entités d'intérêt public, comme le prévoit l'article D.821-188",
           "Oui : la mission ALPE est une mission de certification des comptes, non exclue du barème (R.821-193 et R.821-194)",
-          "Oui, mais réduit de moitié par rapport au barème de droit commun, la durée du mandat étant de trois exercices seulement"
+          "Oui, mais réduit de moitié par rapport au barème de droit commun, la durée du mandat étant de trois exercices"
         ],
         "answer": 2
       },
@@ -371,6 +373,7 @@
     },
     {
       "id": "2024-11-CAC-13",
+      "intrus": {"q": "Lequel n'est pas un seuil de nomination d'un CAC dans un organisme de formation ?", "items": ["3 salariés", "153 000 € de chiffre d'affaires ou de ressources", "230 000 € de total du bilan"], "leurre": "50 salariés", "cross": false, "why": "50 salariés est un seuil des sociétés commerciales (avec 5 M€ de bilan et 10 M€ de CA)."},
       "n": 13,
       "profession": "CAC",
       "theme": "exercice",
@@ -381,8 +384,8 @@
         "choices": [
           "Deux des trois seuils : 5 M€ de bilan, 10 M€ de chiffre d'affaires, 50 salariés",
           "Deux des trois seuils : 230 000 € de bilan, 153 000 € de chiffre d'affaires ou de ressources, 3 salariés",
-          "Ressources annuelles supérieures à 230 000 €, quel que soit l'effectif de l'organisme de formation",
-          "Plus de 153 000 € de subventions publiques annuelles, quel que soit l'effectif"
+          "Ressources annuelles supérieures à 230 000 €, sans critère d'effectif ni de bilan, comme pour un syndicat professionnel",
+          "Plus de 153 000 € de subventions publiques annuelles, comme une association, quel que soit le chiffre d'affaires"
         ],
         "answer": 1
       },
@@ -488,6 +491,7 @@
     },
     {
       "id": "2024-11-CAC-17",
+      "intrus": {"q": "Laquelle n'est pas une règle de publicité ou de sollicitation du CAC ?", "items": ["Une information nécessaire au public", "Aucune atteinte à l'indépendance, à la dignité ou au secret", "Aucun élément comparatif", "Le titre de CAC suivi de la compagnie régionale"], "leurre": "Le démarchage téléphonique, s'il est suivi d'une confirmation écrite", "cross": false, "why": "La sollicitation personnalisée se fait par courrier ou courriel ; le démarchage physique ou téléphonique est exclu."},
       "n": 17,
       "profession": "CAC",
       "theme": "deontologie",
@@ -553,6 +557,7 @@
     },
     {
       "id": "2024-11-CAC-19",
+      "intrus": {"q": "Laquelle n'est pas une action de formation éligible pour un CAC ?", "items": ["Séminaires, autoformation encadrée, formation à distance", "Assistance à des colloques ou conférences", "Conception ou animation de formations", "Rédaction et publication de travaux techniques", "Participation à des travaux techniques"], "leurre": "La réalisation de missions de certification dans un secteur nouveau", "cross": false, "why": "L'expérience acquise en mission n'est pas une action de formation."},
       "n": 19,
       "profession": "CAC",
       "theme": "exercice",
@@ -594,7 +599,7 @@
       "question": "Que comporte la déclaration de prestation annuelle obligatoire du commissaire aux comptes prescrite à l'article D.821-186 du code de commerce ?",
       "qcm": {
         "choices": [
-          "La seule liste des formations suivies au cours de l'année, avec le nombre d'heures validées au titre de la formation continue",
+          "La liste des formations suivies au cours de l'année, avec le nombre d'heures validées au titre de la formation continue",
           "La liste des entités certifiées avec bilan, produits et heures, la liste des salariés et de leurs heures, et les autres missions avec honoraires",
           "Le montant global des honoraires perçus au cours de l'année, transmis directement à l'administration fiscale par la compagnie régionale avant le 31 mars",
           "La copie de chaque rapport de certification signé dans l'année, accompagnée des dossiers de travail de chaque mission, transmis à la CNCC"

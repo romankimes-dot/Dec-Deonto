@@ -26,7 +26,7 @@ Jugement | **Commission des sanctions**, **séparée** du collège : un **magist
 Recours | **Conseil d'État**, recours de pleine juridiction
 ```
 
-- {CAC} Trois procédures : **ordinaire**, **simplifiée** (manquements simples, sanctions plafonnées), **composition administrative** (sanction acceptée par l'intéressé, puis homologuée par la commission).
+- {CAC} Trois procédures : **ordinaire**, **simplifiée** (défauts de **déclaration** ou de **formation continue** : **sanction pécuniaire** de **15 000 €** au plus, prononcée par le **président de la commission** sans débat), **composition administrative** (sanction acceptée par l'intéressé, validée par le collège, puis **homologuée** par la commission). Le détail est dans le schéma « La procédure de sanction de la H2A ».
 - {!} La « comparution immédiate » n'existe pas en discipline : c'est une procédure pénale.
 
 ## Les sanctions côte à côte
@@ -36,7 +36,7 @@ Liste | 1. **Réprimande** · 2. **Blâme** avec inscription au dossier · 3. **
 Sanction pécuniaire | **Non**, sauf en matière **LCB-FT** (sanction pécuniaire, interdiction temporaire, publication) | **Oui** : **250 000 €** au plus (personne physique) ; société : **1 M€**, ou la **moyenne annuelle des honoraires** facturés à l'entité sur 3 exercices si elle est plus élevée (faute en mission de certification)
 Qui est justiciable ? | EC et sociétés inscrites, **AGC**, salariés autorisés (83 ter / quater), **stagiaires** | CAC (personnes et sociétés), auditeurs de durabilité, membres des comités d'audit, contrôleurs de pays tiers… **Pas l'EC**
 Faute sanctionnable | Manquement aux règles professionnelles (ord. art. 49 s.) | **2 catégories** : manquement aux **conditions légales d'exercice** ; **négligence grave** ou fait contraire à la **probité ou à l'honneur**
-Prescription | {?} Aucun délai trouvé dans l'ordonnance ni dans le décret | **6 ans**, interrompue par un acte de recherche, de constatation ou de sanction
+Prescription | {?} Aucun délai trouvé dans l'ordonnance, le décret ni le règlement intérieur (recueil de l'Ordre, 2024) | **6 ans**, interrompue par un acte de recherche, de constatation ou de sanction
 Nature | Disciplinaire (juridictions ordinales) | Sanctions **administratives** d'une autorité publique indépendante
 ```
 

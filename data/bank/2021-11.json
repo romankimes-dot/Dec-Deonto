@@ -13,12 +13,12 @@
       "qcm": {
         "question": "Un expert-comptable souhaite faire de la promotion et du démarchage par internet. Quelle affirmation est exacte ?",
         "choices": [
-          "Le démarchage est interdit à l'expert-comptable, seule l'information institutionnelle du cabinet étant tolérée sur son site",
+          "La sollicitation personnalisée est admise par courrier ou courriel, mais le démarchage téléphonique ou physique est exclu",
           "La promotion et le démarchage sont admis s'ils procurent une information utile et ne portent atteinte ni à la dignité ni à la loyauté",
           "Le démarchage n'est autorisé qu'auprès des entreprises ayant déjà un commissaire aux comptes ou une mission d'audit",
-          "La publicité est libre sans aucune contrainte déontologique, comme pour toute autre entreprise commerciale"
+          "La publicité est libre, y compris comparative et sur les prix, dès lors qu'elle reste exacte, loyale et non trompeuse pour le public"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -47,7 +47,7 @@
         "choices": [
           "La conciliation vise un accord amiable sans décision imposée ; l'arbitrage aboutit à une sentence qui s'impose aux parties",
           "La conciliation est réservée aux litiges entre confrères, l'arbitrage aux litiges avec les clients",
-          "La conciliation est obligatoire avant toute action en justice, l'arbitrage est interdit aux professions réglementées",
+          "La conciliation aboutit à une décision du président qui s'impose aux parties, l'arbitrage à un simple avis",
           "La conciliation est rendue par la chambre de discipline, l'arbitrage par le commissaire du gouvernement"
         ],
         "answer": 0
@@ -98,6 +98,7 @@
     },
     {
       "id": "2021-11-EC-04",
+      "intrus": {"q": "Laquelle n'est pas une sanction spécifique LCB-FT de l'expert-comptable ?", "items": ["Une sanction pécuniaire (1 M€ au plus)", "Une interdiction temporaire de responsabilités dirigeantes", "La publication de la décision", "Une injonction de mettre fin au comportement"], "leurre": "Le retrait de l'honorariat", "cross": true, "why": "Le retrait de l'honorariat est une sanction du commissaire aux comptes (H2A), pas une sanction LCB-FT de l'expert-comptable."},
       "n": 4,
       "profession": "EC",
       "theme": "responsabilite",
@@ -109,10 +110,10 @@
         "choices": [
           "Une sanction pécuniaire, une interdiction temporaire de fonctions dirigeantes et la publication de la décision",
           "Une peine d'emprisonnement ferme et la confiscation des fonds présumés blanchis par le client",
-          "Le retrait de l'agrément délivré par Tracfin et l'interdiction de toute déclaration de soupçon",
-          "Le transfert du dossier à la commission des sanctions de la H2A, seule compétente en matière de LCB-FT"
+          "Les sanctions de la H2A : avertissement, blâme et interdiction d'exercer pour trois ans au plus",
+          "Une amende pénale et une interdiction de gérer prononcées par la chambre régionale"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 2
       },
       "qrc": {
         "expected": [
@@ -139,11 +140,11 @@
         "question": "Un expert-comptable stagiaire peut-il être sanctionné disciplinairement par la chambre régionale de discipline de l'Ordre ?",
         "choices": [
           "Oui : quoique non membre de l'Ordre, il est soumis à son contrôle disciplinaire et au code de déontologie",
-          "Non : seuls les membres de l'Ordre inscrits au tableau sont justiciables de la chambre de discipline",
-          "Non : le stagiaire relève exclusivement de la commission des sanctions de la H2A, comme le stagiaire CAC",
-          "Oui, mais uniquement si son maître de stage est lui-même poursuivi devant la chambre de discipline"
+          "Non : n'étant pas membre de l'Ordre, le stagiaire échappe à toute juridiction disciplinaire",
+          "Non : il relève de la commission des sanctions de la H2A, comme les commissaires aux comptes",
+          "Oui, à condition que son maître de stage soit poursuivi pour les mêmes faits"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 2
       },
       "qrc": {
         "expected": [
@@ -174,7 +175,7 @@
           "Recours devant la commission des sanctions de la H2A, puis devant le Conseil d'État",
           "Recours gracieux devant le président du Conseil national, puis devant le ministre chargé du budget"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 2
       },
       "qrc": {
         "expected": [
@@ -222,6 +223,7 @@
     },
     {
       "id": "2021-11-EC-08",
+      "intrus": {"q": "Lequel n'est pas un thème du serment de l'expert-comptable ?", "items": ["La conscience professionnelle", "La probité", "Le respect des lois dans ses travaux"], "leurre": "L'indépendance", "cross": true, "why": "L'indépendance figure dans le serment du commissaire aux comptes (honneur, probité, indépendance), prêté devant la cour d'appel ; l'EC jure d'exercer avec conscience et probité et de respecter les lois."},
       "n": 8,
       "profession": "EC",
       "theme": "exercice",
@@ -236,7 +238,7 @@
           "La fidélité au Conseil national et le paiement des cotisations ordinales à l'échéance",
           "La dignité, la confraternité et l'obligation de suivre la formation continue"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 1
       },
       "qrc": {
         "expected": [
@@ -265,7 +267,7 @@
           "En informer par courrier confidentiel le comité LBC-FT de l'Ordre, qui saisira Tracfin",
           "Adresser lui-même une déclaration de soupçon à Tracfin en qualité de contrôleur qualité de l'Ordre",
           "Prévenir le client du confrère afin qu'il régularise sa situation avant la clôture du contrôle",
-          "Ne rien faire, le secret professionnel du contrôle qualité lui interdisant toute communication"
+          "Signaler les faits au confrère contrôlé, à qui il revient de déclarer à Tracfin"
         ],
         "answer": 0
       },
@@ -315,6 +317,7 @@
     },
     {
       "id": "2021-11-CAC-11",
+      "intrus": {"q": "Lequel n'intervient pas dans la procédure de dérogation au barème d'heures ?", "items": ["Le président de la compagnie régionale", "Le président de la CNCC, sur recours", "Le bureau de la H2A, sur recours", "Le tribunal administratif"], "leurre": "Le président du conseil régional de l'Ordre", "cross": true, "why": "Le président du conseil régional de l'Ordre concilie les litiges des experts-comptables ; le barème d'heures ne concerne que le CAC."},
       "n": 11,
       "profession": "CAC",
       "theme": "exercice",
@@ -361,7 +364,7 @@
           "Signalement à l'AMF, enquête de la CNCC, décision du garde des Sceaux, appel devant la cour d'appel de Paris, pourvoi en cassation",
           "Contrôle d'activité, avertissement du président de la CNCC, décision du collège de la H2A, appel devant la cour d'appel, Conseil d'État"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 1
       },
       "qrc": {
         "expected": [
@@ -389,7 +392,7 @@
       "qcm": {
         "question": "Depuis sa refonte en 2020, le code de déontologie des commissaires aux comptes est organisé en deux titres :",
         "choices": [
-          "Un titre I applicable à toutes les missions et prestations, un titre II complémentaire pour la certification des comptes",
+          "Un titre I commun aux missions et aux prestations, un titre II complémentaire pour la certification des comptes",
           "Un titre I pour les entités d'intérêt public et un titre II pour les autres entités, avec des règles distinctes d'indépendance",
           "Un titre I pour les personnes physiques et un titre II pour les sociétés de commissaires aux comptes et leurs associés",
           "Un titre I sur l'indépendance et un titre II sur les sanctions disciplinaires et la procédure devant la commission"
@@ -424,7 +427,7 @@
           "Le comité d'audit, puis l'assemblée générale, puis le tribunal administratif statuant en premier ressort, avec appel devant la cour administrative",
           "Le commissaire du gouvernement, le garde des Sceaux, puis la Cour de cassation statuant en dernier ressort"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 1
       },
       "qrc": {
         "expected": [
@@ -442,6 +445,7 @@
     },
     {
       "id": "2021-11-CAC-15",
+      "intrus": {"q": "Lequel ne peut pas saisir le rapporteur général de la H2A ?", "items": ["Le premier président de la Cour des comptes", "Le procureur général près la cour d'appel", "Le président de l'AMF ou de l'ACPR", "Le président de la CNCC ou d'une CRCC", "Le président de la H2A"], "leurre": "Le garde des Sceaux, ministre de la Justice", "cross": false, "why": "Le garde des Sceaux ne figure pas dans la liste de L.821-73 ; le rapporteur général peut en outre se saisir des signalements."},
       "n": 15,
       "profession": "CAC",
       "theme": "responsabilite",
@@ -452,11 +456,11 @@
         "question": "Qui peut saisir le rapporteur général de la H2A (ex-H3C) en vue d'une procédure disciplinaire contre un commissaire aux comptes ?",
         "choices": [
           "Le premier président de la Cour des comptes, le procureur général près la cour d'appel, les présidents de l'AMF, de l'ACPR et de la CNCC",
-          "Uniquement l'entité contrôlée, par décision de son assemblée générale, ou le président du tribunal de commerce du siège de l'entité",
+          "L'entité contrôlée, par décision de son assemblée générale, ou le président du tribunal de commerce du siège",
           "Le président du Conseil national de l'Ordre des experts-comptables, le commissaire du gouvernement et le garde des sceaux, ministre de la Justice",
-          "Tout actionnaire détenant au moins 5 % du capital de l'entité contrôlée, ainsi que le comité d'audit ou le comité social et économique de celle-ci"
+          "Les actionnaires détenant au moins 5 % du capital, le comité d'audit ou le comité social et économique de l'entité"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 2
       },
       "qrc": {
         "expected": [
@@ -484,10 +488,10 @@
       "qcm": {
         "question": "Existe-t-il dans le code de déontologie des commissaires aux comptes un socle commun applicable quelle que soit la mission ou prestation ?",
         "choices": [
-          "Oui : le titre I pose des principes fondamentaux de comportement applicables à toute mission ou prestation",
+          "Oui : le titre I pose des principes fondamentaux de comportement applicables aux missions comme aux prestations",
           "Non : chaque mission relève d'une norme d'exercice professionnel spécifique qui définit sa propre déontologie",
-          "Non : le code ne s'applique qu'à la mission de certification des comptes, les prestations relevant des seules NEP",
-          "Oui, mais uniquement pour les commissaires aux comptes d'entités d'intérêt public, à titre de socle commun"
+          "Non : le code vise la seule mission de certification ; les prestations relèvent des normes d'exercice professionnel",
+          "Oui, mais pour les commissaires aux comptes d'entités d'intérêt public, les autres relevant des NEP"
         ],
         "answer": 0
       },
@@ -548,8 +552,8 @@
         "question": "Dans le code de déontologie des commissaires aux comptes, que désignent respectivement les termes mission et prestation ?",
         "choices": [
           "La mission est celle confiée par la loi ou le règlement, dont la certification ; la prestation est la fourniture de services et d'attestations hors mission",
-          "La mission désigne tout travail rémunéré, quel qu'en soit l'objet ; la prestation désigne les travaux effectués gratuitement pour le compte d'un client",
-          "La mission vise les travaux réalisés pour les entités d'intérêt public ; la prestation vise ceux réalisés pour toutes les autres entités",
+          "La mission désigne les travaux rémunérés selon le barème ; la prestation, les travaux effectués gratuitement pour un client ou un confrère",
+          "La mission vise les travaux réalisés pour les entités d'intérêt public ; la prestation, ceux réalisés pour les autres entités",
           "La mission est confiée par l'assemblée générale ; la prestation est confiée par le comité d'audit ou par le conseil d'administration"
         ],
         "answer": 0
@@ -569,6 +573,7 @@
     },
     {
       "id": "2021-11-CAC-19",
+      "intrus": {"q": "Laquelle n'est pas une mention de la déclaration d'activité pour une prestation hors certification ?", "items": ["L'identité de l'entité bénéficiaire", "La nature de la prestation", "Le montant des honoraires"], "leurre": "Le nombre d'heures prévu par le barème", "cross": false, "why": "Le barème d'heures ne s'applique pas aux prestations."},
       "n": 19,
       "profession": "CAC",
       "theme": "exercice",
@@ -600,6 +605,7 @@
     },
     {
       "id": "2021-11-CAC-20",
+      "intrus": {"q": "Lequel n'est pas un service interdit au CAC d'une EIP (règlement 537/2014) ?", "items": ["La tenue de la comptabilité", "La paie", "Les services fiscaux", "Les services d'évaluation", "Les services juridiques", "L'audit interne"], "leurre": "Une attestation demandée par un tiers sur des informations extraites des comptes", "cross": false, "why": "Ce type d'attestation n'est pas sur la liste des services interdits ; elle reste soumise à l'approbation des services autres que la certification par le comité d'audit."},
       "n": 20,
       "profession": "CAC",
       "theme": "deontologie",

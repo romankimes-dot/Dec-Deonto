@@ -86,9 +86,10 @@ function persist() { if (!store.save(state.progress)) toast('Stockage local indi
 
 // ---------- Gamification ----------
 // Toute réponse passe par ici : historique, statistiques, badges.
-function answer(id, ok, mode, { defer = false, t = Date.now(), conf = null } = {}) {
+function answer(id, ok, mode, { defer = false, t = Date.now(), conf = null, pick = null } = {}) {
   const att = { id, ok: !!ok, mode, t };
   if (conf !== null) att.conf = conf;
+  if (Number.isInteger(pick)) att.pick = pick; // QCM : proposition choisie (index d'origine), pour la confusion EC / CAC
   if (typeof navigator !== 'undefined' && navigator.onLine === false) att.off = 1;
   store.pushAttempt(state.progress, att);
   G.applyAnswer(state.progress.stats, att, state.gctx);
@@ -207,7 +208,7 @@ const CERT = { qcm: [[2, 'Sûr'], [1, 'Hésitant'], [0, 'Au hasard']], qrc: [[2,
 const certRow = (mode, label) => `<div class="cert"><div class="muted">${label}</div><div class="btnrow3">${CERT[mode].map(([c, l]) => `<button class="btn" data-conf="${c}">${l}</button>`).join('')}</div></div>`;
 const hcAlert = () => '<div class="hc">⚠️ <strong>Erreur commise avec certitude.</strong> C’est celle qu’on retient le mieux une fois corrigée : lisez l’explication, la question revient dans la séance.</div>';
 // QCM. opts.hide : la question d'abord, les propositions sur demande (rappel avant reconnaissance).
-// onAnswered(ok, conf) ; conf vaut null si la certitude n'est pas demandée.
+// onAnswered(ok, conf, pick) ; conf vaut null si la certitude n'est pas demandée ; pick : index d'origine choisi.
 function renderQcm(q, container, onAnswered, { hide = false, askConf = false } = {}) {
   const order = shuffle([0, 1, 2, 3], q.id);
   const qt = q.qcm.question || q.question;
@@ -224,7 +225,7 @@ function renderQcm(q, container, onAnswered, { hide = false, askConf = false } =
     });
     $('.pending', container).innerHTML = '';
     $('.after', container).innerHTML = `${confidentError(ok, conf) ? hcAlert() : ''}<div class="answer"><strong>${ok ? '✔ Bonne réponse' : '✘ Mauvaise réponse'}.</strong> ${esc(q.qrc.model_answer)}</div>${qExplain(q)}`;
-    onAnswered(ok, conf);
+    onAnswered(ok, conf, order[chosen]);
   };
   order.forEach((idx, i) => {
     const b = document.createElement('button');
@@ -360,7 +361,7 @@ const startOfDay = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return 
 const dueNow = () => { const now = Date.now(); return Object.values(state.progress.cards).filter((c) => c.due <= now).length; };
 const tagLabel = (t) => G.TAG_LABELS?.[t] || t.replace(/_/g, ' ');
 const weakIds = (w) => state.bank.questions.filter((q) => q.profession === w.prof && q.tags.includes(w.tag)).map((q) => q.id);
-const GAME_PREFIX = { duel: 'duel:', vf: 'vf:', arbre: 'arb:', chiffres: 'num:', palais: 'pal:' };
+const GAME_PREFIX = { duel: 'duel:', vf: 'vf:', arbre: 'arb:', chiffres: 'num:', palais: 'pal:', intrus: GM.INTRUS_PREFIX };
 // Étapes prévues un jour passé et toujours non terminées : reprises aujourd'hui (rattrapage). `plan.sched` garde le jour prévu.
 function lateSteps(k, todaySteps) {
   const sched = state.progress.plan.sched = state.progress.plan.sched || {};
@@ -618,7 +619,7 @@ function mountReviewCard(q) {
     $('#grade').querySelectorAll('button[data-g]').forEach((b) => { b.onclick = () => gradeCurrent(q, Number(b.dataset.g), mode, res); });
   };
   if (mode === 'qcm') {
-    renderQcm(q, box, (ok, conf) => { res.conf = conf; answer(q.id, ok, mode, { conf }); showGrades(suggestGrade({ mode, ok, conf })); }, { hide: set.hideChoices, askConf: set.confidence });
+    renderQcm(q, box, (ok, conf, pick) => { res.conf = conf; answer(q.id, ok, mode, { conf, pick }); showGrades(suggestGrade({ mode, ok, conf })); }, { hide: set.hideChoices, askConf: set.confidence });
   } else {
     renderQrc(q, box, (conf) => { res.conf = conf; }, (ratio, conf) => { res.ratio = ratio; showGrades(suggestGrade({ mode, ratio, conf })); }, { askConf: set.confidence });
   }
@@ -649,7 +650,7 @@ views.train = () => {
       const box = $('#qcard');
       const next = () => { $('#next').classList.remove('hidden'); };
       const set = state.progress.settings; let qconf = null;
-      if (t.mode === 'qcm') renderQcm(q, box, (ok, conf) => { t.n++; if (ok) t.ok++; answer(q.id, ok, 'qcm', { conf }); next(); }, { hide: set.hideChoices, askConf: set.confidence });
+      if (t.mode === 'qcm') renderQcm(q, box, (ok, conf, pick) => { t.n++; if (ok) t.ok++; answer(q.id, ok, 'qcm', { conf, pick }); next(); }, { hide: set.hideChoices, askConf: set.confidence });
       else {
         renderQrc(q, box, (conf) => { qconf = conf; $('#selfgrade').classList.remove('hidden'); }, (ratio) => {
           $('#sg-ok').classList.toggle('primary', ratio >= 1); $('#sg-ko').classList.toggle('primary', ratio < 1);
@@ -932,6 +933,7 @@ views.stats = () => {
       ${rows.map((r) => `<div class="mastery" style="margin:6px 0"><div><span class="badge ${r.p.toLowerCase()}">${r.p}</span> ${THEMES[r.t]}</div><div class="bar">${[3, 2, 1].map((k) => `<i class="m${k}" style="width:${(r.m[k] / Math.max(1, r.n)) * 100}%"></i>`).join('')}</div><div class="muted">${r.m[3]}/${r.n}</div></div>`).join('')}</div>
     ${estimateCard()}
     ${calibrationCard()}
+    ${confusionCard()}
     ${recurringCard()}
     ${weakTags.length ? `<div class="card"><h2>Points faibles</h2><table><tbody>${weakTags.map(([k, v]) => `<tr><td>${k.replace(/_/g, ' ')}</td><td>${Math.round((v.ok / v.n) * 100)} % (${v.n})</td></tr>`).join('')}</tbody></table></div>` : ''}
     ${state.progress.exams.length ? `<div class="card"><h2>Examens blancs</h2>${chart(state.progress.exams.slice(-12))}</div>` : ''}
@@ -949,6 +951,21 @@ function calibrationCard() {
   if (guess !== null && c[0].n >= 10 && guess > 50) tips.push('Vous en savez plus que vous ne le pensez : au hasard, on n’aurait que 25 % en QCM.');
   if (!tips.length && c[2].n >= 10) tips.push('Bonne calibration : votre certitude est un indicateur fiable.');
   return `<div class="card"><h2>Calibration</h2><table><thead><tr><th>Certitude annoncée</th><th>Réussite</th><th>Réponses</th></tr></thead><tbody>${[[2, 'Sûr'], [1, 'Hésitant'], [0, 'Au hasard / je ne sais pas']].map(([k, l]) => `<tr><td>${l}</td><td><strong>${p(c[k]) === null ? '–' : p(c[k]) + ' %'}</strong></td><td>${c[k].n}</td></tr>`).join('')}</tbody></table>${tips.map((t) => `<p class="muted">${esc(t)}</p>`).join('')}</div>`;
+}
+// Confusion EC / CAC : choix du leurre « règle de l'autre profession » (QCM marqués qcm.crossProf) et intrus de même nature.
+// Le jury le relève à chaque session : les candidats appliquent au CAC la règle de l'EC, et inversement.
+function confusionCard() {
+  const c = GM.confusionStats(state.progress.attempts, state.byId);
+  const marked = state.bank.questions.filter((q) => Number.isInteger(q.qcm?.crossProf)).length;
+  const it = state.gameData ? GM.intrusCrossStats(state.gameData.intrus || [], state.progress.drills) : { n: 0 };
+  if (!c.n && !it.n) return `<div class="card"><h2>Confusion EC / CAC</h2><p class="muted">${marked} QCM ont un leurre qui est la règle de l’autre profession. Répondez à quelques QCM : la part de vos réponses qui le choisissent s’affichera ici.</p></div>`;
+  const pc = (x) => (x === null || x === undefined ? '–' : `${Math.round(x * 100)} %`);
+  const row = (k) => { const v = c.byProf[k]; return `<tr><td>${k === 'EC' ? 'Questions EC' : 'Questions CAC'}</td><td><strong>${v.n ? pc(v.cross / v.n) : '–'}</strong></td><td>${v.n}</td></tr>`; };
+  const tip = c.n >= 8 && c.rate >= 0.15 ? '<p class="muted">Confusion fréquente : jouez au Duel EC / CAC et à « Trouvez l’intrus », qui opposent les règles voisines des deux professions.</p>' : '';
+  return `<div class="card"><h2>Confusion EC / CAC</h2><p class="muted">Part des réponses QCM qui choisissent le leurre « règle de l’autre profession » (${marked} QCM en ont un).</p>
+    ${c.n ? `<table><thead><tr><th></th><th>Leurre choisi</th><th>Réponses</th></tr></thead><tbody><tr><td>Ensemble</td><td><strong>${pc(c.rate)}</strong></td><td>${c.n}</td></tr>${row('EC')}${row('CAC')}</tbody></table>
+    <p class="muted">${c.wrong ? `Parmi vos erreurs sur ces questions, ${pc(c.shareOfErrors)} viennent de ce leurre.` : 'Aucune erreur sur ces questions pour l’instant.'}</p>` : ''}
+    ${it.n ? `<p class="muted">Trouvez l’intrus, quand l’intrus est la règle de l’autre profession : ${pc(it.rate)} d’erreurs (${it.n} réponse${it.n > 1 ? 's' : ''}).</p>` : ''}${tip}</div>`;
 }
 // Recoupement des annales : une notion est acquise quand au moins deux de ses variantes ont été réussies.
 function recurringCard() {
@@ -1255,6 +1272,7 @@ const GAMES = {
   chiffres: { icon: '🔢', name: 'Sprint chiffres', why: 'Le plus de seuils, durées, majorités et peines en temps limité (réglable). Les chiffres sont exigés par le jury.' },
   arbre: { icon: '🌳', name: 'Arbres à trou', n: 10, why: 'Un morceau d’arbre de décision des schémas, avec une case vide : choisissez ce qui la remplit. On apprend la logique de la décision, pas une phrase.' },
   palais: { icon: '🏛', name: 'Palais de mémoire', why: 'Les listes à réciter, posées une à une sur les objets de votre bureau (méthode des lieux).' },
+  intrus: { icon: '🕵️', name: 'Trouvez l’intrus', n: 12, why: 'Trois éléments d’une liste à connaître et un intrus, souvent la règle de l’autre profession : lequel n’en fait pas partie ? Le QCM de novembre 2025 posait 12 questions sur 20 sous cette forme négative.' },
 };
 // Chronos (Réglages) : secondes pour lire et juger une proposition, durée du sprint.
 const TIMERS = {
@@ -1270,7 +1288,7 @@ function gamesCard() {
 }
 async function ensureGameData() {
   if (state.gameData) return state.gameData;
-  const d = { duel: [], arbre: [], chiffres: [], vf: GM.vfItems(state.bank.questions) };
+  const d = { duel: [], arbre: [], chiffres: [], vf: GM.vfItems(state.bank.questions), intrus: GM.intrusItems(state.bank.questions) };
   for (const f of state.fiches.filter((x) => x.kind === 'visuel')) {
     let md; try { md = await loadFiche(f.file); } catch { continue; }
     d.duel.push(...GM.duelItems(f.file, md));
@@ -1372,7 +1390,8 @@ function gameView() {
     const line = (it) => g.kind === 'duel' ? `${inline(it.criterion)} : ${inline(it.text)} → <strong>${esc(it.labels[it.answer])}</strong>`
       : g.kind === 'vf' ? `${esc(it.text)} → <strong>${it.answer ? 'bonne réponse' : 'fausse'}</strong>`
         : g.kind === 'chiffres' ? `${inline(it.prompt)} → <strong>${esc(it.value)}</strong>`
-          : `${it.path.map(inline).join(' › ')} → <strong>${inline(it.text)}</strong>`;
+          : g.kind === 'intrus' ? `${esc(it.ask)} → <strong>${esc(it.leurre)}</strong>`
+            : `${it.path.map(inline).join(' › ')} → <strong>${inline(it.text)}</strong>`;
     return `<div class="card center"><div class="muted">${meta.icon} ${esc(meta.name)}</div><div class="big">${g.ok}/${g.n}</div>
       <div class="muted">${g.kind === 'chiffres' && g.limit ? `en ${g.limit} secondes` : `meilleure série : ${g.bestCombo} d’affilée`}${g.record ? ' · 🏆 nouveau record' : ''}</div></div>
       ${errs.length ? `<div class="card"><h2>À retenir</h2><ul class="errlist">${errs.map((it) => `<li>${line(it)}</li>`).join('')}</ul><p class="muted">Ces items reviennent dans 10 minutes, puis aux intervalles de la répétition.</p></div>` : '<div class="card center"><p>Sans faute. 👏</p></div>'}
@@ -1380,7 +1399,7 @@ function gameView() {
   }
   const it = g.items[g.idx];
   const head = `<div class="row" style="justify-content:space-between;margin-bottom:8px"><span class="muted">${meta.icon} ${g.kind === 'chiffres' && g.endsAt ? `<span id="sprint" class="timer">${Math.ceil(Math.max(0, g.endsAt - (g.pausedAt || Date.now())) / 1000)} s</span>${g.pausedAt ? ' ⏸' : ''}` : `${g.idx + 1} / ${g.items.length}`} · ✔ ${g.ok}${g.combo >= 2 ? ` · <span class="combo">🔥×${g.combo}</span>` : ''}</span><button class="btn sm" id="g-stop">Arrêter</button></div>`;
-  return head + ({ duel: duelCard, vf: vfCard, chiffres: chiffresCard, arbre: arbreCard })[g.kind](it, g);
+  return head + ({ duel: duelCard, vf: vfCard, chiffres: chiffresCard, arbre: arbreCard, intrus: intrusCard })[g.kind](it, g);
 }
 function fbLine(g, okText, koText) {
   return `<div class="gfb ${g.last.ok ? 'ok' : 'ko'}">${g.last.ok ? `✔ ${okText}` : `✘ ${g.last.timeout ? 'Temps écoulé. ' : ''}${koText}`}</div>`;
@@ -1433,6 +1452,16 @@ function arbreCard(it, g) {
     <div class="choices">${g.choices.map((c, i) => `<button class="choice ${done && c === it.text ? 'ok' : done && i === g.last.pick ? 'ko' : ''}" data-pick="${i}" ${done ? 'disabled' : ''}><span>${inline(c)}</span></button>`).join('')}</div>
     ${done ? `${fbLine(g, 'C’est bien cette case.', 'Ce n’est pas cette case : la bonne est surlignée.')}<p class="muted">Les autres propositions viennent d’autres branches du même arbre.</p><button class="btn sm" data-open-fiche="${esc(it.file)}">📊 Voir l’arbre entier</button>${nextBtn()}` : ''}</div>`;
 }
+// Intrus : trois éléments d'une liste à connaître et un leurre (souvent la règle de l'autre profession).
+function intrusCard(it, g) {
+  if (!g.choices) { const r = GM.intrusRound(it); g.choices = r.choices; }
+  const done = g.phase === 'fb'; const q = state.byId[it.qid];
+  return `<div class="card"><div class="muted">🕵️ ${esc(q ? `${q.profession} · DEC ${q.sessionLabel}` : it.prof)}</div><div class="q">${esc(it.ask)}</div>
+    <div class="choices">${g.choices.map((c, i) => `<button class="choice ${done && c === it.leurre ? 'ok' : done && i === g.last.pick ? 'ko' : ''}" data-pick="${i}" ${done ? 'disabled' : ''}><span>${esc(c)}</span></button>`).join('')}</div>
+    ${done ? `${fbLine(g, 'C’est bien l’intrus.', `L’intrus était : ${esc(it.leurre)}.`)}<p class="muted">${it.cross ? '⚖️ Règle de l’autre profession. ' : ''}${esc(it.why)}</p>
+      <details><summary>La liste complète</summary><ul>${it.items.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></details>
+      ${g.last.requeued ? '<p class="muted">🔁 La question d’origine revient dans votre prochaine séance.</p>' : ''}${nextBtn()}` : '<p class="muted">Touchez l’élément qui n’en fait pas partie.</p>'}</div>`;
+}
 function bindGame() {
   const g = state.game; if (!g) return;
   const stop = $('#g-stop'); if (stop) stop.onclick = () => { if (g.n) { endGame(); } else { stopGameTimer(); state.game = null; } render(); };
@@ -1451,7 +1480,7 @@ function bindGame() {
     if (g.secs) state.gameTimeout = setTimeout(() => gameAnswer(false, { timeout: true }), g.secs * 1000);
   } else {
     if (g.kind === 'chiffres') startSprintClock();
-    const good = g.kind === 'chiffres' ? it.value : it.text;
+    const good = g.kind === 'chiffres' ? it.value : g.kind === 'intrus' ? it.leurre : it.text;
     document.querySelectorAll('[data-pick]').forEach((b) => { b.onclick = () => { const i = Number(b.dataset.pick); gameAnswer(g.choices[i] === good, { pick: i }); }; });
   }
 }

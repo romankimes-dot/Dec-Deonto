@@ -17,7 +17,7 @@
           "Devant le Conseil national de l'Ordre",
           "Devant le tribunal judiciaire du lieu de son cabinet"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -33,6 +33,7 @@
     },
     {
       "id": "2026-05-EC-02",
+      "intrus": {"q": "Laquelle n'est pas une peine disciplinaire de l'expert-comptable (ord. art. 53) ?", "items": ["La réprimande", "Le blâme avec inscription au dossier", "La suspension avec sursis", "La suspension sans sursis", "La radiation du tableau"], "leurre": "L'avertissement", "cross": true, "why": "L'avertissement est une sanction du commissaire aux comptes ; chez l'EC, l'avertissement dans le cabinet du président est hors de l'échelle des peines."},
       "n": 2,
       "profession": "EC",
       "theme": "responsabilite",
@@ -47,7 +48,7 @@
           "Remontrance, amende civile, suspension temporaire, radiation de la liste",
           "Rappel à l'ordre, sanction pécuniaire de 250 000 €, suspension, radiation de la liste, publication au Journal officiel"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -78,7 +79,7 @@
           "Respecter le secret, conseiller le client, refuser d'y participer et déclarer à Tracfin si blanchiment",
           "Informer le Conseil national de l'Ordre, qui saisit le parquet après enquête disciplinaire"
         ],
-        "answer": 2
+        "answer": 2, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -95,6 +96,7 @@
     },
     {
       "id": "2026-05-EC-04",
+      "intrus": {"q": "Laquelle n'est pas une activité interdite à l'expert-comptable ?", "items": ["Un emploi salarié hors cabinet (sauf exceptions)", "Une activité commerciale non accessoire", "Un mandat de recevoir, conserver ou délivrer des fonds", "Une activité d'agent d'affaires"], "leurre": "Un mandat social dans une société non inscrite à l'Ordre", "cross": false, "why": "Les mandats sociaux sont permis, sous le contrôle du conseil régional et sans atteinte à l'indépendance."},
       "n": 4,
       "profession": "EC",
       "theme": "deontologie",
@@ -137,7 +139,7 @@
           "Les sociétés par actions simplifiées, y compris unipersonnelles (SAS et SASU)",
           "Les sociétés conférant à leurs associés la qualité de commerçant (SNC, SCS, SCA)",
           "Les sociétés à responsabilité limitée, même unipersonnelles (SARL et EURL)",
-          "Toute société dont le capital n'est pas détenu à 100 % par des experts-comptables inscrits"
+          "Les sociétés dont le capital n'est pas détenu en totalité par des experts-comptables inscrits"
         ],
         "answer": 1
       },
@@ -166,10 +168,10 @@
         "choices": [
           "Obtenir l'autorisation écrite du prédécesseur, faute de quoi la mission ne peut être acceptée",
           "Informer le prédécesseur avant d'accepter et vérifier que le changement ne vise pas à éluder la loi",
-          "Saisir le président de la CRCC pour qu'il désigne le successeur parmi les confrères inscrits",
-          "Aucune formalité : la liberté de choix du client prime sur toute considération confraternelle"
+          "Saisir le président de la compagnie régionale pour qu'il désigne le successeur parmi les confrères inscrits",
+          "Informer le conseil régional de l'Ordre, qui avise lui-même le prédécesseur"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 2
       },
       "qrc": {
         "expected": [
@@ -194,12 +196,12 @@
       "question": "À quelles conditions, un expert-comptable peut-il interrompre sa mission ?",
       "qcm": {
         "choices": [
-          "Uniquement en cas de cessation définitive d'activité ou de motif personnel impérieux",
+          "Pour l'un des motifs légitimes de démission : cessation définitive d'activité, motif personnel impérieux, difficultés dans la mission",
           "Pour des motifs justes et raisonnables, en s'efforçant de ne pas porter préjudice au client",
-          "Seulement après autorisation préalable du président du conseil régional de l'Ordre",
-          "À tout moment, à condition de restituer les honoraires perçus et de payer une indemnité"
+          "Après autorisation préalable du président du conseil régional de l'Ordre",
+          "À sa convenance, à condition de restituer les honoraires perçus et de payer une indemnité"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -246,6 +248,7 @@
     },
     {
       "id": "2026-05-EC-09",
+      "intrus": {"q": "Lequel n'est pas un critère d'une opération atypique (examen renforcé) ?", "items": ["Une opération particulièrement complexe", "Un montant inhabituellement élevé", "L'absence de justification économique ou d'objet licite apparent"], "leurre": "Une opération réalisée avec une personne politiquement exposée", "cross": false, "why": "Une PPE impose une vigilance renforcée sur la relation, mais n'est pas un critère de l'opération atypique."},
       "n": 9,
       "profession": "EC",
       "theme": "deontologie",
@@ -254,10 +257,10 @@
       "question": "Quels sont les critères caractérisant une opération atypique en matière de lutte contre le blanchiment des capitaux et le financement du terrorisme et nécessitant un examen renforcé ?",
       "qcm": {
         "choices": [
-          "Toute opération en espèces supérieure à 1 000 € réalisée par un client occasionnel",
+          "Une opération en espèces supérieure à 1 000 € réalisée par un client occasionnel",
           "Une opération particulièrement complexe, d'un montant inhabituellement élevé ou sans justification économique",
-          "Toute opération réalisée avec une personne politiquement exposée, quel qu'en soit le montant",
-          "Toute opération réalisée avec un pays de l'Union européenne autre que la France, quel que soit son objet"
+          "Toute opération réalisée avec une personne politiquement exposée ou l'un de ses proches",
+          "Une opération réalisée avec un pays de l'Union européenne autre que la France, quel qu'en soit le montant"
         ],
         "answer": 1
       },
@@ -287,7 +290,7 @@
           "Un blâme avec inscription au dossier, prononcé par la chambre régionale de discipline",
           "Il est radié d'office du tableau après deux mises en demeure infructueuses",
           "Une suspension de trois mois avec sursis, prononcée par le conseil régional",
-          "Une simple majoration de retard, sans aucune conséquence ordinale"
+          "Une majoration de retard appliquée par la CAVEC, l'Ordre n'intervenant pas"
         ],
         "answer": 1
       },
@@ -317,8 +320,8 @@
         "choices": [
           "Ils prennent fin automatiquement à la date de la fusion, l'entité devant procéder à une nouvelle nomination",
           "L'absorbante poursuit les mandats jusqu'à leur expiration ; l'entité peut délibérer sur leur maintien après avoir entendu le CAC",
-          "Ils sont transférés de plein droit au commissaire aux comptes suppléant de la société absorbée, jusqu'à leur terme normal et sans délibération",
-          "Ils sont poursuivis par l'absorbante pour six nouveaux exercices, sans que l'entité contrôlée puisse en délibérer"
+          "Ils sont transférés au commissaire aux comptes suppléant de la société absorbée jusqu'à leur terme",
+          "Ils sont poursuivis par la société absorbante pour six nouveaux exercices, sans que l'entité contrôlée puisse délibérer sur leur maintien"
         ],
         "answer": 1
       },
@@ -345,10 +348,10 @@
       "question": "Selon la NEP 9605 - Obligations du commissaire aux comptes en matière de lutte contre le blanchiment des capitaux et le financement du terrorisme, quelle est la définition du bénéficiaire effectif ?",
       "qcm": {
         "choices": [
-          "Toute personne morale détenant plus de 10 % du capital ou des droits de vote, directement ou par une société interposée",
+          "Les personnes morales détenant plus de 10 % du capital ou des droits de vote, directement ou par une société interposée",
           "La ou les personnes physiques qui contrôlent en dernier lieu le client, notamment par plus de 25 % du capital ou des droits de vote",
-          "Le dirigeant de droit de l'entité, toujours seul bénéficiaire effectif, même lorsqu'un associé personne physique détient la majorité du capital",
-          "Tout actionnaire ayant perçu un dividende au cours de l'exercice, quel que soit le pourcentage de capital qu'il détient"
+          "Le dirigeant de droit de l'entité, même lorsqu'un associé personne physique détient la majorité du capital",
+          "Les actionnaires ayant perçu un dividende au cours de l'exercice, quel que soit le pourcentage du capital ou des droits de vote qu'ils détiennent"
         ],
         "answer": 1
       },
@@ -377,7 +380,7 @@
         "choices": [
           "… cohérents et vraisemblables dans leur ensemble, au regard des informations recueillies auprès de la direction et des principaux responsables de l'entité",
           "… réguliers et sincères et donnent une image fidèle du résultat des opérations de l'exercice écoulé ainsi que de la situation financière et du patrimoine à la fin de cet exercice",
-          "… exempts de toute erreur et de toute fraude, quelle qu'en soit l'importance, et garantissent la continuité de l'exploitation de la société au-delà de la clôture de l'exercice",
+          "… exacts et exempts de toute erreur, et garantissent la continuité de l'exploitation de la société au-delà de la clôture de l'exercice",
           "… établis, dans tous leurs aspects significatifs, conformément au référentiel comptable identifié, sans observation, au vu des procédures d'examen limité mises en œuvre"
         ],
         "answer": 1
@@ -426,6 +429,7 @@
     },
     {
       "id": "2026-05-CAC-15",
+      "intrus": {"q": "Lequel n'est pas sanctionnable par la commission des sanctions de la H2A ?", "items": ["Un commissaire aux comptes, personne physique ou société", "Un salarié du cabinet ayant un lien interdit avec l'entité", "Le dirigeant d'une EIP pour la désignation ou la durée du mandat", "L'entité qui s'oppose aux contrôles de la H2A"], "leurre": "Un expert-comptable, pour son activité d'expertise comptable", "cross": true, "why": "L'expert-comptable relève des chambres de discipline de l'Ordre pour son activité d'expertise comptable."},
       "n": 15,
       "profession": "CAC",
       "theme": "responsabilite",
@@ -528,9 +532,9 @@
       "question": "Selon l'article 29 du code de déontologie de la profession de commissaire aux comptes, quelle est la caractéristique de l'exercice en réseau ?",
       "qcm": {
         "choices": [
-          "Le fait d'exercer avec au moins un autre commissaire aux comptes dans une même société inscrite à la même compagnie régionale, quelle que soit la forme sociale choisie",
+          "Le fait d'exercer avec au moins un autre commissaire aux comptes dans une même société inscrite à la même compagnie régionale",
           "L'appartenance à un réseau national ou international dont les membres ont un intérêt économique commun et qui ne certifie pas exclusivement les comptes",
-          "L'adhésion à une compagnie régionale et à la Compagnie nationale, qui imposent une charte commune à tous leurs membres",
+          "L'adhésion à une compagnie régionale et à la Compagnie nationale, qui fixent une charte commune à l'ensemble de leurs membres et contrôlent leur activité",
           "Le co-commissariat aux comptes, c'est-à-dire la nomination conjointe de deux commissaires aux comptes dans une même entité"
         ],
         "answer": 1
@@ -564,7 +568,7 @@
           "Comparution immédiate, citation directe et ordonnance pénale devant le tribunal correctionnel",
           "Médiation devant la CRCC, puis arbitrage du président de la CNCC et homologation par la H2A"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -590,10 +594,10 @@
       "question": "À quelles conditions, un commissaire aux comptes peut-il se faire assister ou représenter par des collaborateurs ou des experts ?",
       "qcm": {
         "choices": [
-          "Librement, en leur déléguant ses pouvoirs de signature, sous réserve d'en informer la compagnie régionale de rattachement et l'entité contrôlée",
+          "En leur déléguant librement ses pouvoirs de signature, après en avoir informé la compagnie régionale et l'entité contrôlée",
           "Sous sa responsabilité, sans leur déléguer ses pouvoirs, en les faisant connaître nommément à l'entité et en s'assurant de leur compétence",
-          "Uniquement après autorisation préalable de la CRCC, qui agrée nominativement chaque collaborateur ou expert concerné",
-          "Uniquement s'ils sont eux-mêmes inscrits sur la liste des CAC et exercent au sein de la même structure que lui, à titre salarié ou associé"
+          "Après autorisation préalable de la CRCC, qui agrée nominativement chaque collaborateur ou expert intervenant dans la mission",
+          "S'ils sont eux-mêmes inscrits sur la liste des commissaires aux comptes et exercent au sein de la même structure que lui, comme associés ou salariés"
         ],
         "answer": 1
       },

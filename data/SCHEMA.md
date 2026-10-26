@@ -34,6 +34,12 @@ Un fichier par session dans `data/bank/<AAAA-MM>.json` :
 }
 ```
 
+## Champs facultatifs
+
+- `qcm.crossProf` : index du leurre qui est **la règle de l'autre profession** (jamais la bonne réponse). Sert à la statistique « confusion EC / CAC ». Seulement sur les QCM rédigés (sessions QRC, transfert), jamais sur un sujet QCM officiel.
+- `intrus` : `{ "q": "Laquelle n'est pas… ?", "items": [3 éléments attendus ou plus, 100 caractères au plus], "leurre": "…", "cross": true|false, "why": "pourquoi le leurre n'en fait pas partie" }`. Alimente le jeu « Trouvez l'intrus » (trois éléments tirés + le leurre). Le leurre doit être faux de façon certaine ; `cross` s'il s'agit de la règle de l'autre profession.
+- `hors_annales: true` : obligatoire dans `data/bank/transfert.json` (questions de transfert rédigées hors annales, session `transfert`).
+
 ## Règles
 
 - **Chaque question existe dans les deux formats.** Sujet QRC d'origine → rédiger `qcm` avec 4 propositions plausibles (distracteurs issus des confusions classiques, notamment EC vs CAC). Sujet QCM d'origine → reprendre les 4 propositions telles quelles dans `qcm`, et rédiger `qrc` (question ouverte + éléments attendus).

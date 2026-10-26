@@ -17,7 +17,7 @@
           "Le Conseil national de l'Ordre des experts-comptables, par délibération, sans intervention ministérielle",
           "La Haute autorité de l'audit, par décision, après avis de la commission de normalisation"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -41,7 +41,7 @@
       "question": "Quelles sont les normes professionnelles d'application générale ?",
       "qcm": {
         "choices": [
-          "La NP 2300 et la NP 2400, applicables à tous les comptes annuels",
+          "La NP 2300 (présentation) et la NP 2400 (examen limité) des comptes annuels",
           "La norme de maîtrise de la qualité (NPMQ) et la norme relative à la lutte contre le blanchiment (NPLAB)",
           "Les NEP homologuées par le garde des sceaux, communes aux experts-comptables et aux commissaires aux comptes",
           "La norme de compilation (NP 4410) et la norme de procédures convenues (NP 4400)"
@@ -132,8 +132,8 @@
         "choices": [
           "Quatre années consécutives, soit deux mandats de bureau de deux ans",
           "Six années consécutives, soit trois mandats de bureau de deux ans",
-          "Aucune limite : le président est rééligible sans restriction de durée ni interruption",
-          "Huit ans, soit deux mandats consécutifs de conseiller de quatre ans"
+          "Deux années, sans possibilité de réélection immédiate",
+          "Huit années, soit deux mandats consécutifs de conseiller régional de quatre ans"
         ],
         "answer": 0
       },
@@ -190,7 +190,7 @@
       "question": "Quelles sont les conditions de validité des pénalités en cas de rupture d'une lettre de mission avant son terme, sans justification, par le client d'un expert-comptable ?",
       "qcm": {
         "choices": [
-          "Elles sont toujours valables dès lors qu'elles ont été mentionnées oralement au client lors de la signature de la lettre",
+          "Elles sont valables dès lors qu'elles ont été annoncées oralement au client lors de la signature de la lettre",
           "Elles doivent être prévues par écrit dans la lettre de mission, rester proportionnées au préjudice et ne pas entraver la liberté du client",
           "Elles sont interdites par le code de déontologie, l'expert-comptable ne pouvant percevoir que les honoraires des travaux effectués, même si le client les a acceptées",
           "Elles doivent être validées préalablement par le conseil régional de l'Ordre, qui en fixe le plafond"
@@ -212,6 +212,7 @@
     },
     {
       "id": "2023-11-EC-08",
+      "intrus": {"q": "Laquelle n'est pas une des trois sections du tableau de l'Ordre ?", "items": ["Les experts-comptables personnes physiques", "Les sociétés d'expertise comptable", "Les sociétés de participations d'expertise comptable"], "leurre": "Les associations de gestion et de comptabilité (AGC)", "cross": false, "why": "Les AGC figurent sur une des listes qui suivent les trois sections du tableau."},
       "n": 8,
       "profession": "EC",
       "theme": "exercice",
@@ -280,12 +281,12 @@
       "question": "Un jeune diplômé d'expertise comptable a décidé de créer son cabinet sans rachat de droit de présentation de clientèle. Il s'installe dans des locaux situés en zone d'activité d'une ville moyenne. Afin de se faire connaitre, il diffuse des prospectus dans les boites aux lettres des entreprises installées sur la zone, mentionnant que 150 entreprises lui font déjà confiance et que par ailleurs il est 10 % en dessous des tarifs des autres professionnels. Cette pratique est-elle conforme aux règles déontologiques ? Pour quelle(s) raison(s) ?",
       "qcm": {
         "choices": [
-          "Non, car toute forme de démarchage est interdite à l'expert-comptable par le code de déontologie",
+          "Non, car la sollicitation n'est admise que par courrier ou courriel adressé à un destinataire déterminé, pas par prospectus",
           "Non : le message est mensonger et comparatif sur les prix, contraire à la loyauté et à la confraternité",
-          "Oui : la publicité et le démarchage sont libres et les honoraires sont librement fixés par le professionnel",
+          "Oui : les honoraires étant libres, l'expert-comptable peut annoncer des prix inférieurs à ceux de ses confrères",
           "Oui, à condition que les prospectus aient été visés par le conseil régional de l'Ordre avant diffusion"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -315,7 +316,7 @@
           "Devant le président de la Haute autorité de l'audit, par écrit, dans les six mois de son inscription sur la liste",
           "Devant le tribunal de commerce du lieu de son cabinet, par déclaration au greffe, avant son inscription sur la liste des commissaires aux comptes"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 0
       },
       "qrc": {
         "expected": [
@@ -345,7 +346,7 @@
           "Un rapporteur désigné par le président de la chambre régionale de discipline, assisté d'un greffier",
           "Les contrôleurs de la Compagnie nationale, dans le cadre du contrôle d'activité périodique du cabinet"
         ],
-        "answer": 1
+        "answer": 1, "crossProf": 2
       },
       "qrc": {
         "expected": [
@@ -375,7 +376,7 @@
           "Amende civile, interdiction de gérer, faillite personnelle, emprisonnement, confiscation des honoraires perçus",
           "Rappel à la loi, mise en demeure, astreinte, fermeture temporaire du cabinet, retrait de l'agrément de la CNCC"
         ],
-        "answer": 0
+        "answer": 0, "crossProf": 1
       },
       "qrc": {
         "expected": [
@@ -402,9 +403,9 @@
       "question": "Quelle est la nature de l'assurance formulée par le commissaire aux comptes dans le cadre de la certification des comptes, en quoi consiste-t-elle ?",
       "qcm": {
         "choices": [
-          "Une assurance modérée sur la cohérence et la vraisemblance des comptes, fondée sur des entretiens et des analyses",
+          "Une assurance modérée sur la cohérence et la vraisemblance des comptes, fondée principalement sur des entretiens avec la direction et des analyses",
           "Une assurance raisonnable, c'est-à-dire élevée mais non absolue, que les comptes ne comportent pas d'anomalies significatives",
-          "Une assurance absolue garantissant l'exactitude de tous les comptes ainsi que la viabilité de l'entité contrôlée à moyen terme",
+          "Une assurance élevée portant sur l'exactitude des comptes et sur la viabilité de l'entité contrôlée",
           "Une assurance limitée exprimée sous forme négative, comme dans l'examen limité, sur la régularité des comptes"
         ],
         "answer": 1
@@ -462,10 +463,10 @@
       "question": "Dans le cadre de leurs contrôles, que peuvent demander ou faire les agents du H3C auprès du commissaire aux comptes ou de toute autre personne ?",
       "qcm": {
         "choices": [
-          "Obtenir tout document sur ses missions et prestations, avec copie, et des informations auprès de tiers, contrôler sur place, recourir à des experts, sans se voir opposer le secret",
-          "Uniquement consulter, au siège de la Compagnie nationale et sur convocation du contrôlé, les dossiers que celui-ci accepte de leur communiquer",
+          "Obtenir les documents relatifs à ses missions et prestations, avec copie, et des informations auprès de tiers, contrôler sur place, recourir à des experts, sans se voir opposer le secret",
+          "Consulter, au siège de la CNCC et sur convocation, les dossiers que le contrôlé accepte de leur communiquer, sans pouvoir en prendre copie",
           "Perquisitionner le cabinet et saisir les documents utiles, après autorisation du juge des libertés et de la détention, et entendre sous serment les associés du cabinet",
-          "Interroger le contrôlé par écrit uniquement, celui-ci pouvant opposer le secret professionnel pour les dossiers clients et refuser la copie des documents"
+          "Interroger le contrôlé par écrit et sur rendez-vous, celui-ci pouvant opposer le secret professionnel pour les dossiers de ses clients"
         ],
         "answer": 0
       },
@@ -485,6 +486,7 @@
     },
     {
       "id": "2023-11-CAC-17",
+      "intrus": {"q": "Laquelle n'est pas une mission du comité d'audit ?", "items": ["Suivre l'élaboration de l'information financière", "Suivre l'efficacité du contrôle interne et de la gestion des risques", "Recommander les CAC proposés à la désignation", "S'assurer de l'indépendance des CAC"], "leurre": "Arrêter les comptes annuels", "cross": false, "why": "Les comptes sont arrêtés par l'organe d'administration ou de direction ; le comité d'audit suit et recommande."},
       "n": 17,
       "profession": "CAC",
       "theme": "exercice",
@@ -525,9 +527,9 @@
       "qcm": {
         "choices": [
           "Participation à des séminaires ou à l'autoformation encadrée ; assistance à des colloques ; conception ou animation de formations ; rédaction et publication de travaux techniques",
-          "Lecture de la presse professionnelle, veille réglementaire personnelle, abonnement à des bases documentaires et participation aux assemblées de la compagnie régionale",
-          "Stage de trois ans chez un commissaire aux comptes ; obtention du DEC ; réussite du certificat d'aptitude ; expérience acquise lors des missions de certification",
-          "Heures de supervision des collaborateurs ; revue indépendante des dossiers ; participation au contrôle d'activité ; temps passé à la préparation des missions"
+          "Séminaires de formation ; assistance à des colloques ; heures de mission de certification dans un secteur nouveau ; rédaction de travaux techniques",
+          "Formations à distance ; animation de formations ; participation aux assemblées générales de la compagnie régionale ; travaux techniques en commission",
+          "Autoformation encadrée ; conférences ; temps de supervision des collaborateurs sur les dossiers ; publication d'articles techniques"
         ],
         "answer": 0
       },
@@ -557,7 +559,7 @@
         "choices": [
           "Le CAC peut se fonder sur l'attestation de présentation de l'expert-comptable, qui constitue un élément probant suffisant dispensant de contrôles propres de sa part",
           "Le CAC prend connaissance de l'étendue de l'intervention de l'expert-comptable, apprécie la qualité de ses travaux et reste seul responsable de son opinion",
-          "Le CAC ne peut en aucun cas utiliser les travaux de l'expert-comptable, qui n'est pas indépendant de l'entité, et doit tout refaire",
+          "Le CAC ne peut jamais utiliser les travaux de l'expert-comptable, qui n'est pas indépendant de l'entité, et doit les refaire",
           "Le CAC doit obtenir l'autorisation du conseil régional de l'Ordre avant de consulter les dossiers de l'expert-comptable de l'entité"
         ],
         "answer": 1
@@ -577,6 +579,7 @@
     },
     {
       "id": "2023-11-CAC-20",
+      "intrus": {"q": "Laquelle doit nommer un CAC selon un seuil (et non sans condition de seuil) ?", "items": ["Une entité d'intérêt public (société cotée, établissement de crédit, assureur)", "Une société de financement", "Un OPCVM (SICAV)", "Une fondation reconnue d'utilité publique"], "leurre": "Une association recevant des subventions publiques", "cross": false, "why": "L'association subventionnée nomme un CAC au-delà de 153 000 € de subventions par an."},
       "n": 20,
       "profession": "CAC",
       "theme": "exercice",
@@ -585,7 +588,7 @@
       "question": "Citez quatre entités où la nomination du commissaire aux comptes ne dépend pas d'un seuil.",
       "qcm": {
         "choices": [
-          "Toutes les sociétés anonymes, toutes les SAS, toutes les SARL et toutes les associations déclarées, quelle que soit leur taille",
+          "Les sociétés anonymes et les SAS, ainsi que les SARL et les associations déclarées",
           "Les EIP (sociétés cotées, établissements de crédit, entreprises d'assurance), les sociétés de financement, les OPCVM, les partis politiques",
           "Les commerçants personnes physiques, les micro-entrepreneurs, les sociétés civiles immobilières familiales, les GIE et les sociétés en nom collectif",
           "Les syndicats de copropriétaires, les comités sociaux et économiques, les indivisions, les tontines et les sociétés en participation"

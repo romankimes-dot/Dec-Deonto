@@ -82,7 +82,7 @@
    "count": 20
   }
  ],
- "count": 320,
+ "count": 341,
  "questions": [
   {
    "id": "2018-05-EC-01",
@@ -136,7 +136,7 @@
      "Assurance modérée ; conclusion négative (pas d'éléments conduisant à considérer les comptes non conformes au référentiel)",
      "Assurance raisonnable ; opinion exprimée sous forme positive sur la régularité, la sincérité et l'image fidèle",
      "Assurance modérée ; attestation portant sur la cohérence et la vraisemblance des comptes annuels",
-     "Aucune assurance ; l'expert-comptable remet un simple compte rendu de travaux sans conclusion"
+     "Absence d'assurance ; rapport de constats factuels issu de procédures convenues avec le client"
     ],
     "answer": 0
    },
@@ -204,8 +204,8 @@
     "question": "Un expert-comptable accepte un mandat social dans une société non inscrite à l'Ordre. Quelles sont ses obligations envers son conseil régional ?",
     "choices": [
      "Il doit en informer le conseil régional, qui contrôle la compatibilité du mandat avec son indépendance",
-     "Il doit obtenir une autorisation préalable du Conseil national de l'Ordre, seul compétent en matière de mandats sociaux",
-     "Aucune : depuis la réforme de 2010, les mandats sociaux dans des sociétés non inscrites sont libres et ne concernent pas l'Ordre",
+     "Il doit obtenir l'autorisation préalable du Conseil national de l'Ordre, seul compétent pour les mandats sociaux",
+     "Il en informe le commissaire du gouvernement, les mandats sociaux échappant au contrôle du conseil régional",
      "Il doit demander son omission du tableau pendant la durée du mandat, le cumul étant interdit"
     ],
     "answer": 0
@@ -241,8 +241,8 @@
     "choices": [
      "Oui, si la clause figure dans la lettre de mission et si l'indice a un lien direct avec l'activité",
      "Non : les honoraires de l'expert-comptable résultent d'un barème national et ne peuvent pas être indexés",
-     "Oui, librement, y compris sur le SMIC ou sur l'indice général des prix à la consommation, sans écrit",
-     "Oui, mais uniquement après accord préalable du président du conseil régional de l'Ordre"
+     "Oui, sur l'indice de son choix, y compris le SMIC, dès lors que le client l'accepte oralement",
+     "Oui, après accord préalable du président du conseil régional de l'Ordre sur l'indice retenu"
     ],
     "answer": 0
    },
@@ -345,7 +345,7 @@
     "question": "Que recouvre la notion de « comptes complets historiques » dans le référentiel normatif de l'Ordre ?",
     "choices": [
      "Les comptes annuels, consolidés ou intermédiaires formant un jeu complet, selon un référentiel comptable identifié",
-     "Les seuls comptes annuels approuvés par l'assemblée et déposés au greffe depuis au moins un exercice",
+     "Les comptes annuels approuvés par l'assemblée et déposés au greffe depuis au moins un exercice",
      "Les comptes prévisionnels et budgets établis à partir des données des exercices passés",
      "Les comptes des exercices antérieurs à l'entrée en fonctions de l'expert-comptable, qu'il n'a pas lui-même établis"
     ],
@@ -379,10 +379,10 @@
    "qcm": {
     "question": "Un cabinet d'expertise comptable peut-il affirmer dans une publicité qu'il est « le plus important et le plus performant cabinet de France » ?",
     "choices": [
-     "Non : la publicité ne peut comporter aucun élément comparatif et doit respecter la dignité de la profession",
+     "Non : la publicité doit être exempte d'élément comparatif et respecter la dignité de la profession",
      "Oui : depuis la levée de l'interdiction du démarchage, le contenu de la publicité des experts-comptables est libre",
      "Oui, à condition que le message ait été préalablement visé par le conseil régional de l'Ordre",
-     "Non : toute publicité est interdite aux experts-comptables, seule l'information sur la plaque et le papier à en-tête est admise"
+     "Oui, si l'affirmation repose sur un classement publié par un organisme indépendant"
     ],
     "answer": 0
    },
@@ -451,8 +451,8 @@
    "qcm": {
     "question": "Lors d'un contrôle d'activité mené par la Haute autorité de l'audit (ex-H3C), le commissaire aux comptes peut-il opposer son secret professionnel pour refuser des informations sur sa mission de certification, puis sur une prestation (service autre que la certification) fournie au même client ?",
     "choices": [
-     "Non dans les deux cas : le secret professionnel n'est pas opposable à la H2A, dont le contrôle couvre toute l'activité",
-     "Oui dans les deux cas : le secret professionnel est absolu et seul le juge pénal peut en délier le commissaire aux comptes",
+     "Non dans les deux cas : le secret professionnel n'est pas opposable à la H2A, dont le contrôle couvre missions et prestations",
+     "Oui dans les deux cas, sauf accord écrit de l'entité contrôlée levant le secret au profit des contrôleurs",
      "Non pour la certification, oui pour la prestation : le contrôle d'activité ne couvre que la mission légale de certification des comptes",
      "Oui pour la certification, non pour la prestation : les services autres que la certification ne sont pas couverts par le secret"
     ],
@@ -490,8 +490,8 @@
     "choices": [
      "En informer Tracfin : les personnes qui réalisent les contrôles d'activité doivent signaler ces faits à ce service",
      "Dénoncer directement les faits au procureur de la République, comme le ferait le commissaire aux comptes au titre de la révélation des faits délictueux",
-     "Rien : seul le commissaire aux comptes contrôlé est assujetti aux obligations de lutte contre le blanchiment et le financement du terrorisme",
-     "Adresser une déclaration de soupçon au président de la CNCC, qui décide seul de sa transmission éventuelle à Tracfin"
+     "Informer le commissaire aux comptes contrôlé, à qui il revient d'apprécier s'il doit déclarer un soupçon à Tracfin",
+     "Transmettre ses constats au président de la CNCC, seul à pouvoir saisir Tracfin"
     ],
     "answer": 0
    },
@@ -512,6 +512,17 @@
   },
   {
    "id": "2018-05-CAC-13",
+   "intrus": {
+    "q": "Laquelle n'est pas une condition d'inscription d'une société de commissaires aux comptes ?",
+    "items": [
+     "Majorité des droits de vote détenue par des CAC (ou contrôleurs légaux de l'UE)",
+     "Dirigeants (gérant, président, DG) commissaires aux comptes",
+     "Majorité des membres des organes de gestion ou de surveillance CAC"
+    ],
+    "leurre": "Plus des deux tiers des droits de vote détenus par des professionnels inscrits",
+    "cross": true,
+    "why": "Les deux tiers des droits de vote sont la règle des sociétés d'expertise comptable ; pour une société de CAC, la majorité suffit."
+   },
    "n": 13,
    "profession": "CAC",
    "theme": "exercice",
@@ -529,7 +540,8 @@
      "Capital intégralement détenu par des commissaires aux comptes personnes physiques ; siège dans le ressort d'une cour d'appel ; agrément préalable de la CNCC et du garde des sceaux",
      "Majorité du capital détenue par des commissaires aux comptes ; désignation d'un associé responsable du contrôle qualité ; souscription d'une assurance couvrant les sanctions pénales et disciplinaires"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 1
    },
    "qrc": {
     "expected": [
@@ -561,9 +573,9 @@
     "question": "Un commissaire aux comptes est condamné à une amende de 5 000 € pour non-révélation de faits délictueux. Son assurance de responsabilité civile professionnelle obligatoire peut-elle prendre en charge cette amende ?",
     "choices": [
      "Non : l'assurance obligatoire couvre la responsabilité civile ; une amende pénale est une peine personnelle, non assurable",
-     "Oui : l'assurance obligatoire couvre toutes les condamnations pénales et civiles prononcées à raison de la mission légale du CAC",
+     "Oui, si l'infraction a été commise sans intention de nuire, dans l'exercice de la mission légale",
      "Oui, si la police d'assurance prévoit expressément la garantie des sanctions pénales et disciplinaires",
-     "Non, mais la CNCC prend en charge l'amende au titre de la solidarité professionnelle et de son fonds de garantie"
+     "Non, mais la CNCC prend en charge l'amende au titre de la solidarité professionnelle, par son fonds de garantie des commissaires aux comptes"
     ],
     "answer": 0
    },
@@ -599,7 +611,7 @@
      "Oui : le fait est délictueux, significatif et délibéré ; le remboursement n'efface pas l'infraction consommée ni l'obligation de révéler",
      "Non : le préjudice ayant été réparé par le remboursement, il n'existe plus de fait délictueux à révéler au procureur",
      "Non : la révélation ne concerne que les infractions ayant une incidence sur les comptes certifiés, ce qui n'est plus le cas après remboursement",
-     "Oui, mais seulement après avoir déclenché la procédure d'alerte, préalable obligatoire à toute révélation au procureur"
+     "Oui, mais après avoir déclenché la procédure d'alerte, qui doit précéder la révélation au procureur"
     ],
     "answer": 0
    },
@@ -632,9 +644,9 @@
    "qcm": {
     "question": "Le secret professionnel s'applique-t-il entre les commissaires aux comptes d'une société mère et celui d'une filiale non consolidée ?",
     "choices": [
-     "Oui : la levée du secret ne joue qu'entre les CAC de l'entité consolidante et ceux des entités consolidées",
-     "Non : les commissaires aux comptes des sociétés d'un même groupe sont toujours libérés du secret les uns à l'égard des autres",
-     "Non : le secret professionnel ne s'applique jamais entre confrères inscrits sur la liste de la même compagnie régionale",
+     "Oui en principe : la levée du secret joue entre CAC de la consolidante et des consolidées (et d'un petit groupe), pas au-delà",
+     "Non : la levée du secret au sein d'un groupe s'étend aux filiales non consolidées dès lors que la mère en détient plus de 10 %",
+     "Non : le secret professionnel ne s'applique pas entre commissaires aux comptes inscrits à la même compagnie régionale",
      "Oui, sauf autorisation écrite du dirigeant de la société mère, qui peut délier les commissaires aux comptes du secret"
     ],
     "answer": 0
@@ -672,7 +684,7 @@
      "Enquêter directement auprès de la société mère, qui contrôle la filiale, et échanger avec les commissaires aux comptes de la mère, libérés du secret à son égard",
      "Saisir le président de la CRCC afin qu'il enjoigne aux commissaires aux comptes de la mère de lui remettre leurs dossiers de travail sous quinzaine",
      "Rien : ses pouvoirs s'arrêtent à la personne dont il certifie les comptes ; il doit formuler une réserve pour limitation de ses travaux",
-     "Demander en référé la désignation d'un expert de gestion, seule voie d'accès aux documents d'une société mère, qui échappe à son droit d'investigation propre"
+     "Demander en référé la désignation d'un expert de gestion, seule voie pour accéder aux documents de la mère"
     ],
     "answer": 0
    },
@@ -743,9 +755,9 @@
     "question": "Qu'est-ce qu'une situation d'autorévision pour le commissaire aux comptes, et quel risque entraîne-t-elle ?",
     "choices": [
      "Situation où le commissaire aux comptes serait conduit à se prononcer sur des éléments établis par lui-même ou son réseau ; risque de perte d'objectivité",
-     "Situation dans laquelle le commissaire aux comptes relit ses propres dossiers de travail avant de signer son rapport ; risque de retard dans l'émission du rapport",
-     "Situation dans laquelle le commissaire aux comptes est contrôlé par un confrère lors du contrôle d'activité ; risque de divulgation du secret professionnel",
-     "Situation dans laquelle le commissaire aux comptes est renouvelé plusieurs fois dans son mandat ; risque de familiarité excessive avec l'entité"
+     "Situation où le commissaire aux comptes ou un membre de son équipe a un lien familial avec un dirigeant de l'entité ; risque de complaisance envers la direction",
+     "Situation où une part importante des honoraires du cabinet provient d'une même entité ; risque de dépendance financière",
+     "Situation où le commissaire aux comptes intervient depuis de nombreuses années auprès de la même entité ; risque de familiarité"
     ],
     "answer": 0
    },
@@ -778,9 +790,9 @@
     "question": "Au sens du code de déontologie des commissaires aux comptes, qu'est-ce qu'un « lien personnel » avec une personne occupant une fonction sensible dans l'entité contrôlée ?",
     "choices": [
      "Un lien familial limité : ascendant et descendant au premier degré, collatéraux au premier degré, conjoints, partenaires de PACS ou concubins",
-     "Uniquement le mariage ou le PACS entre le commissaire aux comptes et la personne occupant la fonction sensible dans l'entité",
-     "Tout lien d'affaires ou financier, tel que la détention de titres de l'entité ou un prêt consenti par celle-ci au commissaire aux comptes",
-     "Tout lien professionnel, tel que l'exercice antérieur de fonctions de salarié ou de dirigeant dans l'entité contrôlée"
+     "Le mariage ou le PACS entre le commissaire aux comptes et cette personne, à l'exclusion des liens de parenté avec ses ascendants et descendants",
+     "Un lien financier, tel que la détention de titres de l'entité ou un prêt consenti par celle-ci au commissaire aux comptes",
+     "Un lien professionnel, tel que l'exercice antérieur de fonctions salariées ou de direction dans l'entité contrôlée"
     ],
     "answer": 0
    },
@@ -1581,11 +1593,12 @@
     "question": "Les conditions générales d'un cabinet limitent à dix mois le délai pour mettre en jeu la responsabilité civile de l'expert-comptable. Qu'en penser ?",
     "choices": [
      "La clause est illicite : la prescription de droit commun (cinq ans) peut être réduite par contrat, mais pas en dessous d'un an",
-     "La clause est valable : les parties fixent librement la durée de la prescription dans un contrat entre professionnels",
+     "La clause est valable : entre professionnels, la prescription peut être réduite jusqu'à six mois",
      "La clause est illicite : la responsabilité de l'expert-comptable se prescrit par dix ans et ce délai est d'ordre public",
-     "La clause est valable : la prescription est de trois ans pour les missions de présentation, et peut être réduite sans limite"
+     "La clause est illicite : la prescription est de trois ans à compter du fait dommageable et ne peut pas être aménagée"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 3
    },
    "qrc": {
     "expected": [
@@ -1654,7 +1667,7 @@
     "choices": [
      "Un compte rendu de travaux, et non une attestation, sauf considérations particulières",
      "Une attestation de présentation identique à celle délivrée en l'absence de commissaire aux comptes",
-     "Aucun document : le rapport du commissaire aux comptes se substitue à l'attestation",
+     "Une attestation d'examen limité, la présence d'un commissaire aux comptes excluant l'attestation de présentation",
      "Une attestation de cohérence et de vraisemblance cosignée par le commissaire aux comptes"
     ],
     "answer": 0
@@ -1686,7 +1699,7 @@
     "question": "Quelle est la différence entre le « déclarant » et le « correspondant » Tracfin au sein d'un cabinet d'expertise comptable ?",
     "choices": [
      "Le déclarant, expert-comptable en charge de la mission, effectue la déclaration ; le correspondant est l'interlocuteur de Tracfin",
-     "Le déclarant est obligatoirement le représentant légal du cabinet ; le correspondant est un salarié désigné par le conseil régional de l'Ordre",
+     "Le déclarant est le représentant légal du cabinet ; le correspondant est un salarié désigné par le conseil régional de l'Ordre",
      "Le déclarant adresse la déclaration à Tracfin, le correspondant en adresse une copie au procureur de la République et au conseil régional",
      "Le correspondant établit les déclarations de soupçon, le déclarant les signe et les transmet au président du conseil régional"
     ],
@@ -1709,6 +1722,17 @@
   },
   {
    "id": "2019-05-EC-06",
+   "intrus": {
+    "q": "Lequel n'est pas une condition de la responsabilité civile de l'expert-comptable ?",
+    "items": [
+     "Une faute",
+     "Un préjudice",
+     "Un lien de causalité entre la faute et le préjudice"
+    ],
+    "leurre": "Une intention de nuire (élément moral)",
+    "cross": false,
+    "why": "L'élément moral (intention) est une condition de la responsabilité pénale, pas de la responsabilité civile."
+   },
    "n": 6,
    "profession": "EC",
    "theme": "responsabilite",
@@ -1757,7 +1781,7 @@
     "question": "À quelles conditions un expert-comptable peut-il exercer un mandat social dans une société non inscrite à l'Ordre ?",
     "choices": [
      "Absence d'atteinte à l'indépendance, déclaration au conseil régional et absence de mission d'expertise comptable dans la même entité",
-     "Le mandat n'est possible que dans des sociétés civiles ou des associations, à l'exclusion de toute société commerciale ou financière",
+     "Le mandat est possible uniquement dans les sociétés civiles et les associations",
      "Le mandat est libre dès lors qu'il n'est pas rémunéré et que la société n'est pas cliente du cabinet ni de ses associés",
      "Le mandat requiert l'autorisation préalable de la chambre régionale de discipline et une assurance spécifique de responsabilité"
     ],
@@ -1795,7 +1819,7 @@
     "choices": [
      "Les missions d'audit d'états financiers d'entités cotées",
      "Les missions de présentation des comptes",
-     "Toutes les missions d'assurance, y compris l'examen limité et les attestations particulières",
+     "Les missions d'assurance sur des comptes complets historiques, examen limité et présentation compris",
      "Les missions réalisées pour des entités dotées d'un commissaire aux comptes"
     ],
     "answer": 0
@@ -1816,6 +1840,18 @@
   },
   {
    "id": "2019-05-EC-09",
+   "intrus": {
+    "q": "Lequel ne caractérise pas le bénéficiaire effectif ?",
+    "items": [
+     "Une personne physique",
+     "Plus de 25 % du capital ou des droits de vote, directement ou indirectement",
+     "Un pouvoir de contrôle exercé par tout autre moyen",
+     "À défaut, le représentant légal"
+    ],
+    "leurre": "Au moins 10 % du capital, détenus par une personne physique ou morale",
+    "cross": false,
+    "why": "Le bénéficiaire effectif est toujours une personne physique, au-delà de 25 % ou exerçant un contrôle ; 10 % est le seuil de la nomination judiciaire d'un CAC."
+   },
    "n": 9,
    "profession": "EC",
    "theme": "deontologie",
@@ -1828,9 +1864,9 @@
     "question": "Qui est le bénéficiaire effectif d'une société au sens de la réglementation anti-blanchiment ?",
     "choices": [
      "Les personnes physiques détenant plus de 25 % du capital ou des droits de vote, ou exerçant un pouvoir de contrôle",
-     "Toute personne, physique ou morale, détenant au moins 10 % du capital de la société ou de ses droits de vote",
-     "Le représentant légal de la société, quelle que soit la répartition du capital ou des droits de vote",
-     "Les personnes physiques détenant plus de 50 % du capital ou des droits de vote, seules à pouvoir contrôler la société"
+     "Les personnes physiques ou morales détenant au moins 10 % du capital ou des droits de vote",
+     "Le représentant légal de la société, même lorsqu'un associé personne physique détient directement la majorité du capital et des droits de vote",
+     "Les seules personnes physiques détenant plus de 50 % du capital ou des droits de vote"
     ],
     "answer": 0
    },
@@ -1899,7 +1935,7 @@
     "question": "Qui élabore les projets de normes de déontologie, de contrôle interne de qualité et d'exercice professionnel des commissaires aux comptes ?",
     "choices": [
      "Une commission de normalisation placée auprès de la H2A, présidée par un membre du collège et composée de deux CAC proposés par la CNCC et d'une personnalité qualifiée",
-     "Le Conseil national de la CNCC seul, le garde des sceaux se bornant à homologuer ses projets sans consulter l'autorité de supervision ni l'Autorité des normes comptables",
+     "Le Conseil national de la CNCC, dont les projets de normes sont ensuite homologués par arrêté du garde des Sceaux, après avis de l'autorité de supervision",
      "Une commission mixte réunissant le Conseil national de l'Ordre des experts-comptables et la CNCC, présidée alternativement par chacun d'eux",
      "Le garde des sceaux lui-même, après avis de l'Autorité des normes comptables, du Conseil d'État et de la Cour des comptes"
     ],
@@ -1939,8 +1975,8 @@
     "choices": [
      "Le suivi de la formation continue et les contrôles d'activité des CAC non-EIP ; l'inscription et la tenue de la liste restent à l'autorité",
      "Les trois missions (inscription, formation continue, contrôles), y compris les contrôles des CAC d'EIP, l'autorité ne conservant que le pouvoir de sanction",
-     "Uniquement les contrôles d'activité des non-EIP, l'inscription et la formation continue restant des prérogatives régaliennes de l'autorité",
-     "Aucune : la loi prévoit la délégation mais aucune convention n'a jamais été homologuée par le garde des sceaux"
+     "Les contrôles d'activité des non-EIP ; le suivi de la formation continue reste exercé par l'autorité elle-même",
+     "Les contrôles d'activité de tous les CAC, y compris ceux des EIP, ainsi que l'inscription sur la liste"
     ],
     "answer": 0
    },
@@ -1974,9 +2010,9 @@
     "question": "Au titre de la lutte anti-blanchiment, quelles diligences le commissaire aux comptes pressenti doit-il accomplir avant d'accepter un mandat ?",
     "choices": [
      "Identifier et vérifier l'identité de l'entité et de ses bénéficiaires effectifs, évaluer le risque de blanchiment et renoncer si l'identification est impossible",
-     "Adresser à Tracfin une déclaration de soupçon préventive pour toute nouvelle entité, avant même l'acceptation du mandat, puis en informer la CNCC par écrit",
-     "Demander au prédécesseur une attestation écrite de conformité anti-blanchiment de l'entité, qui dispense de toute identification propre par le nouveau commissaire aux comptes",
-     "Obtenir du président de la CRCC un avis de non-opposition sur le profil de risque de l'entité, préalable obligatoire à toute acceptation"
+     "Adresser systématiquement à Tracfin une déclaration préventive pour chaque nouvelle entité, avant l'acceptation du mandat, et en informer la CNCC par écrit sous huit jours",
+     "Obtenir du prédécesseur une attestation de conformité anti-blanchiment de l'entité, sur laquelle il peut fonder son acceptation du mandat",
+     "Obtenir du président de la CRCC un avis de non-opposition sur le profil de risque de l'entité, puis l'annexer à sa lettre de mission"
     ],
     "answer": 0
    },
@@ -2011,9 +2047,9 @@
     "question": "Une société de commissaires aux comptes est absorbée par une autre société de commissaires aux comptes. Que deviennent les mandats de la société absorbée ?",
     "choices": [
      "Ils sont poursuivis par la société absorbante jusqu'à leur expiration, l'organe compétent de l'entité pouvant délibérer sur leur maintien à sa première réunion",
-     "Ils prennent fin de plein droit et chaque entité doit désigner un nouveau commissaire aux comptes pour un mandat de six exercices, sous peine de nullité de leur nomination",
+     "Ils prennent fin à la date de l'absorption ; chaque entité désigne un nouveau commissaire aux comptes pour six exercices",
      "Ils sont transmis au signataire personne physique, qui les poursuit à titre individuel jusqu'à l'assemblée suivant l'absorption",
-     "Ils sont suspendus jusqu'à décision de la H2A autorisant le transfert à la société absorbante, après avis de la CNCC et de la compagnie régionale"
+     "Ils sont suspendus jusqu'à la décision de la H2A autorisant leur transfert à la société absorbante, prise après avis de la CNCC et de la compagnie régionale"
     ],
     "answer": 0
    },
@@ -2083,9 +2119,9 @@
     "question": "Le commissaire aux comptes d'une filiale intégrée globalement veut vérifier des frais facturés par la société mère. Quels moyens a-t-il ?",
     "choices": [
      "Étendre ses investigations à la société mère, qui contrôle la filiale, et interroger les commissaires aux comptes de la mère, libérés du secret à son égard",
-     "Demander au commissaire aux comptes de la mère de certifier lui-même les frais facturés, seul habilité à contrôler la société mère et à accéder à ses justificatifs",
+     "Demander au commissaire aux comptes de la mère de vérifier lui-même ces frais et de lui en certifier le montant par une attestation écrite, jointe à son dossier",
      "Se limiter aux explications de la direction de la filiale, ses pouvoirs ne s'exerçant pas en dehors de l'entité auditée elle-même",
-     "Saisir la H2A pour qu'elle ordonne à la société mère de produire les justificatifs, au besoin sous astreinte"
+     "Saisir la H2A pour qu'elle ordonne à la société mère de produire les justificatifs des frais facturés, au besoin sous astreinte"
     ],
     "answer": 0
    },
@@ -2145,6 +2181,18 @@
   },
   {
    "id": "2019-05-CAC-18",
+   "intrus": {
+    "q": "Laquelle n'est pas une vérification du contrôle d'activité sur les missions sélectionnées ?",
+    "items": [
+     "La conformité des travaux aux NEP",
+     "Le respect des règles d'indépendance",
+     "L'adéquation des ressources affectées à la mission",
+     "Les honoraires perçus"
+    ],
+    "leurre": "L'exactitude des comptes certifiés, par un nouvel audit complet",
+    "cross": false,
+    "why": "Le contrôleur vérifie les diligences du CAC ; il ne refait pas l'audit et ne substitue pas son opinion."
+   },
    "n": 18,
    "profession": "CAC",
    "theme": "controle_qualite",
@@ -2196,9 +2244,9 @@
     "question": "Quelle formalité le commissaire aux comptes doit-il accomplir auprès de sa compagnie régionale lorsqu'il obtient un nouveau mandat de certification ?",
     "choices": [
      "Notifier sa nomination au conseil régional de sa compagnie dans les huit jours, par lettre recommandée ou par voie électronique",
-     "Demander à la compagnie régionale l'autorisation préalable d'accepter le mandat, qui dispose d'un mois pour répondre",
-     "Déposer la lettre de mission signée au greffe de la compagnie régionale sous huit jours, avec le justificatif de nomination et une copie de la déclaration d'activité",
-     "Aucune formalité auprès de la compagnie, la nomination étant publiée au registre du commerce et au BODACC"
+     "Notifier sa nomination à la H2A dans le mois, la compagnie régionale en étant ensuite informée par la H2A",
+     "Mentionner le nouveau mandat dans sa déclaration annuelle d'activité, sans notification en cours d'année",
+     "Demander au président de la compagnie régionale un avis préalable sur son indépendance avant d'accepter le mandat, sous peine de nullité de la nomination"
     ],
     "answer": 0
    },
@@ -2235,7 +2283,7 @@
     "choices": [
      "Oui en principe : l'interdiction ne couvre que l'exercice précédant le premier exercice audité (2018), mais elle doit apprécier le risque d'autorévision et prévoir des sauvegardes",
      "Non : un service interdit rendu par le réseau à une EIP entraîne, pour le commissaire aux comptes, une incompatibilité définitive avec le mandat de cette entité",
-     "Oui sans réserve : les services rendus par un autre membre du réseau ne concernent pas l'indépendance du commissaire aux comptes, seuls ses propres services étant pris en compte",
+     "Oui : les services rendus par un autre membre du réseau n'entrent pas en compte, l'interdiction visant le commissaire aux comptes lui-même",
      "Non : elle devra attendre l'expiration d'un délai de viduité de trois ans à compter de la fin de la prestation, soit 2021, avant d'accepter le mandat"
     ],
     "answer": 0
@@ -3704,6 +3752,18 @@
   },
   {
    "id": "2021-05-EC-01",
+   "intrus": {
+    "q": "Lequel n'est pas un critère de classification des risques de la NPLAB ?",
+    "items": [
+     "Les caractéristiques des clients",
+     "L'activité des clients",
+     "La localisation des clients (pays, origine et destination des fonds)",
+     "Les missions proposées par la structure"
+    ],
+    "leurre": "Le montant des honoraires facturés au client",
+    "cross": false,
+    "why": "La NPLAB classe les risques selon les clients (caractéristiques, activité, localisation) et les missions : pas selon les honoraires."
+   },
    "n": 1,
    "profession": "EC",
    "theme": "deontologie",
@@ -3751,7 +3811,7 @@
    "qcm": {
     "question": "Selon la NP 3100, une attestation particulière délivrée par l'expert-comptable peut procurer :",
     "choices": [
-     "Une assurance raisonnable uniquement, comme dans une mission d'audit",
+     "Une assurance raisonnable lorsqu'elle porte sur des comptes, aucune assurance dans les autres cas",
      "Une assurance raisonnable ou une assurance modérée, selon les diligences convenues",
      "Une assurance modérée ou aucune assurance, selon qu'elle porte ou non sur des comptes",
      "Une assurance absolue lorsqu'elle est destinée à un tiers financeur"
@@ -3825,7 +3885,8 @@
      "La non-révélation de faits délictueux au procureur",
      "L'abus de biens sociaux commis par le dirigeant"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 2
    },
    "qrc": {
     "expected": [
@@ -3844,6 +3905,18 @@
   },
   {
    "id": "2021-05-EC-05",
+   "intrus": {
+    "q": "Laquelle n'est pas un apport de la loi Pacte (2019) à l'ordonnance de 1945 ?",
+    "items": [
+     "La présomption de mandat (mandat implicite) devant l'administration fiscale et sociale",
+     "Le recouvrement amiable de créances et le paiement de dettes pour le client",
+     "Les honoraires de succès, hors missions comptables",
+     "L'expert-comptable en entreprise"
+    ],
+    "leurre": "L'ouverture des activités commerciales accessoires",
+    "cross": false,
+    "why": "Les activités commerciales accessoires datent de la loi du 23 juillet 2010, pas de la loi Pacte."
+   },
    "n": 5,
    "profession": "EC",
    "theme": "exercice",
@@ -3900,7 +3973,8 @@
      "D'un conseiller d'État et de deux représentants du ministre chargé du budget, désignés par arrêté",
      "De trois membres du collège de la H2A et du président de la compagnie régionale des commissaires aux comptes de la circonscription"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 3
    },
    "qrc": {
     "expected": [
@@ -3919,6 +3993,17 @@
   },
   {
    "id": "2021-05-EC-07",
+   "intrus": {
+    "q": "Lequel n'est pas un des textes applicables à toutes les missions de l'expert-comptable ?",
+    "items": [
+     "Le code de déontologie des professionnels de l'expertise comptable",
+     "La norme de maîtrise de la qualité (NPMQ)",
+     "La norme anti-blanchiment (NPLAB)"
+    ],
+    "leurre": "Les normes d'exercice professionnel (NEP) homologuées par le garde des Sceaux",
+    "cross": true,
+    "why": "Les NEP sont les normes du commissaire aux comptes. Pour l'EC, le socle commun est : code de déontologie, NPMQ, NPLAB."
+   },
    "n": 7,
    "profession": "EC",
    "theme": "exercice",
@@ -4004,7 +4089,7 @@
      "Non : les missions de conseil ne peuvent être réalisées que pour les clients dont l'EC tient ou présente les comptes annuels",
      "Oui : depuis la loi Macron, les missions de conseil en organisation ne sont plus subordonnées à une mission comptable",
      "Non : cette mission relève des services interdits par le règlement européen de 2014 pour les entités d'intérêt public",
-     "Oui, mais uniquement si la mission est confiée par le commissaire aux comptes de l'entreprise, qui en assure le suivi"
+     "Oui, si la mission est confiée par le commissaire aux comptes de l'entreprise, qui en assure le suivi"
     ],
     "answer": 1
    },
@@ -4073,9 +4158,9 @@
     "question": "Pour l'élection du conseil régional d'une compagnie régionale des commissaires aux comptes, sont électeurs :",
     "choices": [
      "Les commissaires aux comptes personnes physiques inscrits dans le ressort de la compagnie, à jour de leurs cotisations",
-     "Les seuls commissaires aux comptes détenant au moins un mandat de certification en cours dans le ressort",
-     "Les sociétés de commissaires aux comptes uniquement, par l'intermédiaire de leur représentant légal inscrit",
-     "Tous les inscrits, personnes physiques et morales, à condition d'avoir prêté serment depuis plus de trois ans et d'exercer au moins un mandat"
+     "Les commissaires aux comptes détenant au moins un mandat de certification en cours dans le ressort de la compagnie régionale",
+     "Les sociétés de commissaires aux comptes, représentées par leur représentant légal inscrit",
+     "Les personnes physiques et les sociétés inscrites dans le ressort, à condition d'exercer au moins un mandat de certification"
     ],
     "answer": 0
    },
@@ -4145,7 +4230,7 @@
     "choices": [
      "Elle est facultative puisque la mission est définie par la loi et que le CAC est nommé par l'assemblée",
      "Elle est obligatoire selon la NEP 210, afin de définir les termes et conditions de la mission",
-     "Elle est obligatoire uniquement pour les entités d'intérêt public, à la demande du comité d'audit",
+     "Elle est obligatoire uniquement pour les entités d'intérêt public, facultative pour les autres entités",
      "Elle est remplacée par la lettre d'affirmation prévue par la NEP 580, signée par la direction en fin de mission"
     ],
     "answer": 1
@@ -4279,6 +4364,18 @@
   },
   {
    "id": "2021-05-CAC-17",
+   "intrus": {
+    "q": "Lequel n'est pas un critère de l'importance des diligences fondant la rémunération du CAC (art. 12) ?",
+    "items": [
+     "La taille de l'entité",
+     "La nature de ses activités",
+     "La complexité de ses activités",
+     "Les particularités de la mission ou de la prestation"
+    ],
+    "leurre": "Le résultat de l'entité au titre de l'exercice",
+    "cross": false,
+    "why": "Les honoraires subordonnés au résultat sont interdits (art. 13) ; la rémunération suit l'importance des diligences."
+   },
    "n": 17,
    "profession": "CAC",
    "theme": "deontologie",
@@ -4433,12 +4530,13 @@
    "qcm": {
     "question": "Un expert-comptable souhaite faire de la promotion et du démarchage par internet. Quelle affirmation est exacte ?",
     "choices": [
-     "Le démarchage est interdit à l'expert-comptable, seule l'information institutionnelle du cabinet étant tolérée sur son site",
+     "La sollicitation personnalisée est admise par courrier ou courriel, mais le démarchage téléphonique ou physique est exclu",
      "La promotion et le démarchage sont admis s'ils procurent une information utile et ne portent atteinte ni à la dignité ni à la loyauté",
      "Le démarchage n'est autorisé qu'auprès des entreprises ayant déjà un commissaire aux comptes ou une mission d'audit",
-     "La publicité est libre sans aucune contrainte déontologique, comme pour toute autre entreprise commerciale"
+     "La publicité est libre, y compris comparative et sur les prix, dès lors qu'elle reste exacte, loyale et non trompeuse pour le public"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -4472,7 +4570,7 @@
     "choices": [
      "La conciliation vise un accord amiable sans décision imposée ; l'arbitrage aboutit à une sentence qui s'impose aux parties",
      "La conciliation est réservée aux litiges entre confrères, l'arbitrage aux litiges avec les clients",
-     "La conciliation est obligatoire avant toute action en justice, l'arbitrage est interdit aux professions réglementées",
+     "La conciliation aboutit à une décision du président qui s'impose aux parties, l'arbitrage à un simple avis",
      "La conciliation est rendue par la chambre de discipline, l'arbitrage par le commissaire du gouvernement"
     ],
     "answer": 0
@@ -4530,6 +4628,18 @@
   },
   {
    "id": "2021-11-EC-04",
+   "intrus": {
+    "q": "Laquelle n'est pas une sanction spécifique LCB-FT de l'expert-comptable ?",
+    "items": [
+     "Une sanction pécuniaire (1 M€ au plus)",
+     "Une interdiction temporaire de responsabilités dirigeantes",
+     "La publication de la décision",
+     "Une injonction de mettre fin au comportement"
+    ],
+    "leurre": "Le retrait de l'honorariat",
+    "cross": true,
+    "why": "Le retrait de l'honorariat est une sanction du commissaire aux comptes (H2A), pas une sanction LCB-FT de l'expert-comptable."
+   },
    "n": 4,
    "profession": "EC",
    "theme": "responsabilite",
@@ -4544,10 +4654,11 @@
     "choices": [
      "Une sanction pécuniaire, une interdiction temporaire de fonctions dirigeantes et la publication de la décision",
      "Une peine d'emprisonnement ferme et la confiscation des fonds présumés blanchis par le client",
-     "Le retrait de l'agrément délivré par Tracfin et l'interdiction de toute déclaration de soupçon",
-     "Le transfert du dossier à la commission des sanctions de la H2A, seule compétente en matière de LCB-FT"
+     "Les sanctions de la H2A : avertissement, blâme et interdiction d'exercer pour trois ans au plus",
+     "Une amende pénale et une interdiction de gérer prononcées par la chambre régionale"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 2
    },
    "qrc": {
     "expected": [
@@ -4579,11 +4690,12 @@
     "question": "Un expert-comptable stagiaire peut-il être sanctionné disciplinairement par la chambre régionale de discipline de l'Ordre ?",
     "choices": [
      "Oui : quoique non membre de l'Ordre, il est soumis à son contrôle disciplinaire et au code de déontologie",
-     "Non : seuls les membres de l'Ordre inscrits au tableau sont justiciables de la chambre de discipline",
-     "Non : le stagiaire relève exclusivement de la commission des sanctions de la H2A, comme le stagiaire CAC",
-     "Oui, mais uniquement si son maître de stage est lui-même poursuivi devant la chambre de discipline"
+     "Non : n'étant pas membre de l'Ordre, le stagiaire échappe à toute juridiction disciplinaire",
+     "Non : il relève de la commission des sanctions de la H2A, comme les commissaires aux comptes",
+     "Oui, à condition que son maître de stage soit poursuivi pour les mêmes faits"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 2
    },
    "qrc": {
     "expected": [
@@ -4619,7 +4731,8 @@
      "Recours devant la commission des sanctions de la H2A, puis devant le Conseil d'État",
      "Recours gracieux devant le président du Conseil national, puis devant le ministre chargé du budget"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 2
    },
    "qrc": {
     "expected": [
@@ -4673,6 +4786,17 @@
   },
   {
    "id": "2021-11-EC-08",
+   "intrus": {
+    "q": "Lequel n'est pas un thème du serment de l'expert-comptable ?",
+    "items": [
+     "La conscience professionnelle",
+     "La probité",
+     "Le respect des lois dans ses travaux"
+    ],
+    "leurre": "L'indépendance",
+    "cross": true,
+    "why": "L'indépendance figure dans le serment du commissaire aux comptes (honneur, probité, indépendance), prêté devant la cour d'appel ; l'EC jure d'exercer avec conscience et probité et de respecter les lois."
+   },
    "n": 8,
    "profession": "EC",
    "theme": "exercice",
@@ -4690,7 +4814,8 @@
      "La fidélité au Conseil national et le paiement des cotisations ordinales à l'échéance",
      "La dignité, la confraternité et l'obligation de suivre la formation continue"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 1
    },
    "qrc": {
     "expected": [
@@ -4725,7 +4850,7 @@
      "En informer par courrier confidentiel le comité LBC-FT de l'Ordre, qui saisira Tracfin",
      "Adresser lui-même une déclaration de soupçon à Tracfin en qualité de contrôleur qualité de l'Ordre",
      "Prévenir le client du confrère afin qu'il régularise sa situation avant la clôture du contrôle",
-     "Ne rien faire, le secret professionnel du contrôle qualité lui interdisant toute communication"
+     "Signaler les faits au confrère contrôlé, à qui il revient de déclarer à Tracfin"
     ],
     "answer": 0
    },
@@ -4782,6 +4907,18 @@
   },
   {
    "id": "2021-11-CAC-11",
+   "intrus": {
+    "q": "Lequel n'intervient pas dans la procédure de dérogation au barème d'heures ?",
+    "items": [
+     "Le président de la compagnie régionale",
+     "Le président de la CNCC, sur recours",
+     "Le bureau de la H2A, sur recours",
+     "Le tribunal administratif"
+    ],
+    "leurre": "Le président du conseil régional de l'Ordre",
+    "cross": true,
+    "why": "Le président du conseil régional de l'Ordre concilie les litiges des experts-comptables ; le barème d'heures ne concerne que le CAC."
+   },
    "n": 11,
    "profession": "CAC",
    "theme": "exercice",
@@ -4837,7 +4974,8 @@
      "Signalement à l'AMF, enquête de la CNCC, décision du garde des Sceaux, appel devant la cour d'appel de Paris, pourvoi en cassation",
      "Contrôle d'activité, avertissement du président de la CNCC, décision du collège de la H2A, appel devant la cour d'appel, Conseil d'État"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 1
    },
    "qrc": {
     "expected": [
@@ -4869,7 +5007,7 @@
    "qcm": {
     "question": "Depuis sa refonte en 2020, le code de déontologie des commissaires aux comptes est organisé en deux titres :",
     "choices": [
-     "Un titre I applicable à toutes les missions et prestations, un titre II complémentaire pour la certification des comptes",
+     "Un titre I commun aux missions et aux prestations, un titre II complémentaire pour la certification des comptes",
      "Un titre I pour les entités d'intérêt public et un titre II pour les autres entités, avec des règles distinctes d'indépendance",
      "Un titre I pour les personnes physiques et un titre II pour les sociétés de commissaires aux comptes et leurs associés",
      "Un titre I sur l'indépendance et un titre II sur les sanctions disciplinaires et la procédure devant la commission"
@@ -4909,7 +5047,8 @@
      "Le comité d'audit, puis l'assemblée générale, puis le tribunal administratif statuant en premier ressort, avec appel devant la cour administrative",
      "Le commissaire du gouvernement, le garde des Sceaux, puis la Cour de cassation statuant en dernier ressort"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 1
    },
    "qrc": {
     "expected": [
@@ -4929,6 +5068,19 @@
   },
   {
    "id": "2021-11-CAC-15",
+   "intrus": {
+    "q": "Lequel ne peut pas saisir le rapporteur général de la H2A ?",
+    "items": [
+     "Le premier président de la Cour des comptes",
+     "Le procureur général près la cour d'appel",
+     "Le président de l'AMF ou de l'ACPR",
+     "Le président de la CNCC ou d'une CRCC",
+     "Le président de la H2A"
+    ],
+    "leurre": "Le garde des Sceaux, ministre de la Justice",
+    "cross": false,
+    "why": "Le garde des Sceaux ne figure pas dans la liste de L.821-73 ; le rapporteur général peut en outre se saisir des signalements."
+   },
    "n": 15,
    "profession": "CAC",
    "theme": "responsabilite",
@@ -4942,11 +5094,12 @@
     "question": "Qui peut saisir le rapporteur général de la H2A (ex-H3C) en vue d'une procédure disciplinaire contre un commissaire aux comptes ?",
     "choices": [
      "Le premier président de la Cour des comptes, le procureur général près la cour d'appel, les présidents de l'AMF, de l'ACPR et de la CNCC",
-     "Uniquement l'entité contrôlée, par décision de son assemblée générale, ou le président du tribunal de commerce du siège de l'entité",
+     "L'entité contrôlée, par décision de son assemblée générale, ou le président du tribunal de commerce du siège",
      "Le président du Conseil national de l'Ordre des experts-comptables, le commissaire du gouvernement et le garde des sceaux, ministre de la Justice",
-     "Tout actionnaire détenant au moins 5 % du capital de l'entité contrôlée, ainsi que le comité d'audit ou le comité social et économique de celle-ci"
+     "Les actionnaires détenant au moins 5 % du capital, le comité d'audit ou le comité social et économique de l'entité"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 2
    },
    "qrc": {
     "expected": [
@@ -4978,10 +5131,10 @@
    "qcm": {
     "question": "Existe-t-il dans le code de déontologie des commissaires aux comptes un socle commun applicable quelle que soit la mission ou prestation ?",
     "choices": [
-     "Oui : le titre I pose des principes fondamentaux de comportement applicables à toute mission ou prestation",
+     "Oui : le titre I pose des principes fondamentaux de comportement applicables aux missions comme aux prestations",
      "Non : chaque mission relève d'une norme d'exercice professionnel spécifique qui définit sa propre déontologie",
-     "Non : le code ne s'applique qu'à la mission de certification des comptes, les prestations relevant des seules NEP",
-     "Oui, mais uniquement pour les commissaires aux comptes d'entités d'intérêt public, à titre de socle commun"
+     "Non : le code vise la seule mission de certification ; les prestations relèvent des normes d'exercice professionnel",
+     "Oui, mais pour les commissaires aux comptes d'entités d'intérêt public, les autres relevant des NEP"
     ],
     "answer": 0
    },
@@ -5052,8 +5205,8 @@
     "question": "Dans le code de déontologie des commissaires aux comptes, que désignent respectivement les termes mission et prestation ?",
     "choices": [
      "La mission est celle confiée par la loi ou le règlement, dont la certification ; la prestation est la fourniture de services et d'attestations hors mission",
-     "La mission désigne tout travail rémunéré, quel qu'en soit l'objet ; la prestation désigne les travaux effectués gratuitement pour le compte d'un client",
-     "La mission vise les travaux réalisés pour les entités d'intérêt public ; la prestation vise ceux réalisés pour toutes les autres entités",
+     "La mission désigne les travaux rémunérés selon le barème ; la prestation, les travaux effectués gratuitement pour un client ou un confrère",
+     "La mission vise les travaux réalisés pour les entités d'intérêt public ; la prestation, ceux réalisés pour les autres entités",
      "La mission est confiée par l'assemblée générale ; la prestation est confiée par le comité d'audit ou par le conseil d'administration"
     ],
     "answer": 0
@@ -5075,6 +5228,17 @@
   },
   {
    "id": "2021-11-CAC-19",
+   "intrus": {
+    "q": "Laquelle n'est pas une mention de la déclaration d'activité pour une prestation hors certification ?",
+    "items": [
+     "L'identité de l'entité bénéficiaire",
+     "La nature de la prestation",
+     "Le montant des honoraires"
+    ],
+    "leurre": "Le nombre d'heures prévu par le barème",
+    "cross": false,
+    "why": "Le barème d'heures ne s'applique pas aux prestations."
+   },
    "n": 19,
    "profession": "CAC",
    "theme": "exercice",
@@ -5111,6 +5275,20 @@
   },
   {
    "id": "2021-11-CAC-20",
+   "intrus": {
+    "q": "Lequel n'est pas un service interdit au CAC d'une EIP (règlement 537/2014) ?",
+    "items": [
+     "La tenue de la comptabilité",
+     "La paie",
+     "Les services fiscaux",
+     "Les services d'évaluation",
+     "Les services juridiques",
+     "L'audit interne"
+    ],
+    "leurre": "Une attestation demandée par un tiers sur des informations extraites des comptes",
+    "cross": false,
+    "why": "Ce type d'attestation n'est pas sur la liste des services interdits ; elle reste soumise à l'approbation des services autres que la certification par le comité d'audit."
+   },
    "n": 20,
    "profession": "CAC",
    "theme": "deontologie",
@@ -5160,8 +5338,8 @@
     "question": "Au sens de la réglementation LCB-FT, un maire et un député sont-ils des personnes politiquement exposées (PPE) ?",
     "choices": [
      "Le député est une PPE (parlementaire national) ; le maire ne l'est pas en tant que tel",
-     "Tous deux sont des PPE dès lors qu'ils exercent un mandat électif sur le territoire français",
-     "Aucun des deux : seules les personnes exerçant des fonctions à l'étranger sont des PPE",
+     "Les deux sont des PPE, puisqu'ils exercent un mandat électif, national pour l'un, local pour l'autre",
+     "Aucun des deux : la qualité de PPE vise les fonctions exercées dans un État étranger",
      "Le maire est une PPE car il engage des fonds publics communaux ; le député ne l'est pas"
     ],
     "answer": 0
@@ -5234,11 +5412,12 @@
     "question": "Quelles sont les étapes successives du devoir de conseil de l'expert-comptable ?",
     "choices": [
      "Se renseigner sur la situation du client, l'informer, le mettre en garde, lui recommander la solution adaptée et conserver la preuve écrite",
-     "Certifier les comptes, révéler les faits délictueux au procureur, déclencher la procédure d'alerte auprès du président du tribunal et saisir la H2A",
-     "Établir la lettre de mission, tenir la comptabilité, attester les comptes et facturer les honoraires au client",
-     "Conseiller uniquement sur demande expresse du client, le devoir de conseil n'existant pas sans mission comptable"
+     "Prendre connaissance de l'entité, évaluer les risques d'anomalies, puis communiquer ses constats à la direction sans porter de jugement sur la gestion",
+     "Informer le client oralement et lui faire signer une décharge, la preuve d'un manquement au devoir de conseil incombant au client",
+     "Conseiller le client dans le strict périmètre de la lettre de mission, les points voisins relevant d'une mission distincte"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 1
    },
    "qrc": {
     "expected": [
@@ -5270,12 +5449,13 @@
    "qcm": {
     "question": "Lors de la reprise d'un dossier, l'expert-comptable sortant est-il délié du secret professionnel à l'égard du confrère successeur ?",
     "choices": [
-     "Non : aucune levée légale n'existe entre confrères ; il restitue au client ses documents",
+     "Non : la loi ne prévoit pas de levée du secret entre confrères ; il restitue au client ses documents",
      "Oui : la loi lève le secret entre prédécesseur et successeur, comme pour les commissaires aux comptes",
      "Oui, dès que le successeur lui a adressé la lettre d'information préalable prévue par le code de déontologie",
      "Non, sauf autorisation du président du conseil régional ou du Conseil national"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 1
    },
    "qrc": {
     "expected": [
@@ -5310,7 +5490,7 @@
     "choices": [
      "Non : il lui est interdit de révéler l'existence d'une déclaration de soupçon",
      "Oui : la confraternité impose de prévenir le successeur du risque de blanchiment",
-     "Oui, mais uniquement si le successeur est inscrit au même conseil régional de l'Ordre",
+     "Oui, si le successeur s'engage par écrit à garder l'information confidentielle",
      "Non, sauf si Tracfin a accusé réception de la déclaration par courrier"
     ],
     "answer": 0
@@ -5344,11 +5524,12 @@
     "question": "Le non-paiement par un expert-comptable des cotisations dues à sa caisse de retraite (CAVEC) peut-il donner lieu à une sanction disciplinaire ?",
     "choices": [
      "Oui : le non-paiement des cotisations CAVEC pendant deux ans sur les dix dernières années, sans motif valable, entraîne la radiation d'office",
-     "Non : seuls les manquements commis dans l'exécution des missions confiées par les clients sont disciplinairement sanctionnables",
+     "Non : le défaut de paiement relève du recouvrement par la CAVEC, sans conséquence sur l'inscription au tableau",
      "Non : la CAVEC dispose de ses propres sanctions et la chambre de discipline n'est compétente que pour les cotisations ordinales",
-     "Oui, mais seulement par la commission des sanctions de la H2A, après avis du Conseil national de l'Ordre"
+     "Oui : la commission des sanctions de la H2A peut prononcer un blâme pour défaut de paiement, après avis du Conseil national de l'Ordre"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 3
    },
    "qrc": {
     "expected": [
@@ -5560,7 +5741,7 @@
     "question": "Dans un co-commissariat, un cabinet sans compétence dans le secteur ni en consolidation prévoit d'assumer 10 % des travaux et honoraires et de se limiter à une revue des travaux de l'autre cabinet. Peut-il accepter la mission ?",
     "choices": [
      "Non : la répartition doit être équilibrée (NEP 100) et le CAC doit avoir la compétence requise ; une simple revue ne suffit pas",
-     "Oui : la NEP 100 autorise toute répartition dès lors qu'elle est écrite, acceptée par les deux cabinets et communiquée à l'entité",
+     "Oui : la répartition des travaux est libre dès lors qu'elle est écrite et acceptée par les deux cabinets",
      "Oui, car l'examen contradictoire des travaux suffit à engager la responsabilité solidaire des deux cabinets vis-à-vis de l'entité",
      "Non, car le co-commissariat est interdit aux cabinets intervenant dans le secteur sanitaire et social"
     ],
@@ -5584,6 +5765,17 @@
   },
   {
    "id": "2022-05-CAC-13",
+   "intrus": {
+    "q": "Laquelle n'est pas une limite inhérente à l'audit selon la NEP 200 ?",
+    "items": [
+     "Le recours aux sondages",
+     "Les limites inhérentes au contrôle interne",
+     "Des éléments probants qui donnent des présomptions plutôt que des certitudes"
+    ],
+    "leurre": "Le barème d'heures fixé par le code de commerce",
+    "cross": false,
+    "why": "Ces limites expliquent que l'assurance soit raisonnable et non absolue ; le barème n'en fait pas partie."
+   },
    "n": 13,
    "profession": "CAC",
    "theme": "exercice",
@@ -5633,9 +5825,9 @@
     "question": "Comment distinguer le plan de mission du programme de travail du commissaire aux comptes ?",
     "choices": [
      "Le plan de mission décrit l'approche générale (étendue, calendrier, risques) ; le programme de travail détaille les diligences à réaliser, avec heures et intervenants",
-     "Le plan de mission est signé par l'entité contrôlée, tandis que le programme de travail est visé par la compagnie régionale avant le début de la mission",
-     "Le plan de mission fixe le montant des honoraires et la durée du mandat ; le programme de travail n'est autre que la lettre de mission signée avec l'entité",
-     "Le plan de mission ne concerne que les comptes consolidés, alors que le programme de travail est établi uniquement pour les comptes annuels"
+     "Le plan de mission détaille les diligences, avec heures et intervenants ; le programme de travail décrit l'approche générale (étendue, calendrier, risques)",
+     "Le plan de mission couvre les six exercices du mandat ; le programme de travail est la lettre de mission adressée chaque année à l'entité",
+     "Le plan de mission est soumis au comité d'audit pour approbation ; le programme de travail est joint à la déclaration d'activité adressée à la compagnie"
     ],
     "answer": 0
    },
@@ -5656,6 +5848,17 @@
   },
   {
    "id": "2022-05-CAC-15",
+   "intrus": {
+    "q": "Laquelle n'exerce pas une fonction sensible au sens de l'art. 31 du code de déontologie ?",
+    "items": [
+     "Un mandataire social",
+     "Un préposé chargé de tenir les comptes ou d'élaborer les états financiers",
+     "Un cadre dirigeant pouvant influer sur ces états"
+    ],
+    "leurre": "Un membre du comité social et économique",
+    "cross": false,
+    "why": "Les fonctions sensibles visent ceux qui établissent ou peuvent influencer les comptes et les informations de durabilité."
+   },
    "n": 15,
    "profession": "CAC",
    "theme": "deontologie",
@@ -5728,6 +5931,17 @@
   },
   {
    "id": "2022-05-CAC-17",
+   "intrus": {
+    "q": "Lequel ne constitue pas une faute disciplinaire du CAC (L.821-70) ?",
+    "items": [
+     "Un manquement aux conditions légales d'exercice",
+     "Une négligence grave",
+     "Un fait contraire à la probité ou à l'honneur"
+    ],
+    "leurre": "Un manquement aux règles de l'ordonnance de 1945",
+    "cross": true,
+    "why": "L'ordonnance de 1945 régit l'expert-comptable. La faute disciplinaire du CAC est définie par le code de commerce."
+   },
    "n": 17,
    "profession": "CAC",
    "theme": "responsabilite",
@@ -5740,11 +5954,12 @@
     "question": "Selon le code de commerce, constitue une faute disciplinaire du commissaire aux comptes :",
     "choices": [
      "Tout manquement aux conditions légales d'exercice, toute négligence grave et tout fait contraire à la probité ou à l'honneur",
-     "Uniquement le défaut de formation continue et le non-paiement des cotisations à la compagnie régionale ou à la H2A",
-     "Uniquement les infractions pénales définitivement jugées par une juridiction répressive française, à l'exclusion des fautes civiles",
-     "Toute divergence d'appréciation avec l'entité sur l'application des règles comptables ou des normes d'exercice"
+     "Le manquement aux règles professionnelles fixées par l'ordonnance de 1945 et par le code de déontologie des experts-comptables",
+     "Les infractions pénales définitivement jugées, à l'exclusion des simples négligences professionnelles",
+     "Une divergence d'appréciation avec l'entité sur l'application des règles comptables ou des normes d'exercice"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 1
    },
    "qrc": {
     "expected": [
@@ -5852,7 +6067,7 @@
     "question": "Un commissaire aux comptes estime que sa mission requiert moins d'heures que le minimum du barème. Il doit :",
     "choices": [
      "Demander une dérogation motivée au président de la compagnie régionale",
-     "Appliquer librement le nombre d'heures qu'il juge nécessaire, le barème étant indicatif",
+     "Appliquer librement le nombre d'heures qu'il juge nécessaire, le barème n'étant qu'indicatif",
      "Demander l'autorisation préalable de l'assemblée générale de l'entité",
      "Saisir la H2A d'une demande d'avis préalable sur le nombre d'heures"
     ],
@@ -5888,9 +6103,9 @@
    "question": "Dans une société d'expertise comptable, quelles sont les personnes qui ont le droit de signer les lettres de mission portant sur des missions de présentation des comptes ?",
    "qcm": {
     "choices": [
-     "Tout dirigeant mandataire social de la société, même non expert-comptable, dès lors qu'il engage juridiquement la société",
+     "Le dirigeant mandataire social de la société, même s'il n'est pas expert-comptable, puisqu'il engage juridiquement la société",
      "Uniquement les experts-comptables inscrits au tableau exerçant au sein de la société, qui signent personnellement",
-     "Tout collaborateur titulaire du DSCG ayant reçu une délégation écrite du gérant de la société",
+     "Un collaborateur titulaire du DSCG ayant reçu une délégation écrite du gérant de la société",
      "Les experts-comptables inscrits ainsi que les experts-comptables stagiaires de la société"
     ],
     "answer": 1
@@ -5922,10 +6137,10 @@
    "question": "Au sein d'un cabinet d'expertise comptable, quelles sont les conditions à respecter pour pouvoir réaliser une consultation juridique ?",
    "qcm": {
     "choices": [
-     "Aucune condition particulière : l'expert-comptable dispose du même droit de consultation juridique que l'avocat, sans limite de clientèle ni de volume",
-     "La consultation est possible uniquement si le cabinet est inscrit sur la liste des commissaires aux comptes et si elle porte sur une entité contrôlée",
+     "La consultation est possible pour un client sans mission comptable, dès lors qu'une lettre de mission spécifique est signée et la facturation distincte",
+     "La consultation est possible si le cabinet est aussi inscrit sur la liste des commissaires aux comptes et si elle porte sur une entité dont il certifie les comptes",
      "La consultation doit rester accessoire et concerner un client pour lequel le cabinet assure une mission comptable ou déclarative habituelle, ou être directement liée aux travaux comptables",
-     "La consultation est possible pour tout client dès lors qu'elle est facturée séparément et donne lieu à une lettre de mission distincte, même à titre principal"
+     "La consultation est possible à titre principal, dès lors qu'elle fait l'objet d'une lettre de mission distincte et d'une assurance de responsabilité spécifique"
     ],
     "answer": 2
    },
@@ -5958,8 +6173,8 @@
    "qcm": {
     "choices": [
      "La revue indépendante est réalisée par le contrôleur qualité de l'Ordre après la mission, la revue de dossiers par un associé du cabinet",
-     "La revue indépendante est faite avant le rapport par une personne extérieure à l'équipe ; la revue de dossiers se fait tout au long de la mission",
-     "La revue de dossiers est réservée aux missions d'audit, la revue indépendante étant obligatoire pour toutes les missions de la structure",
+     "La revue indépendante est faite avant le rapport par une personne extérieure à l'équipe ; la revue de dossiers se fait au fil de la mission",
+     "La revue de dossiers vise les missions d'audit, la revue indépendante les missions de présentation",
      "Les deux notions sont synonymes : il s'agit du contrôle du dossier par un second expert-comptable avant la signature du rapport"
     ],
     "answer": 1
@@ -6024,7 +6239,7 @@
    "question": "Quels sont les objectifs de la supervision dans le cadre d'une mission d'expertise comptable ?",
    "qcm": {
     "choices": [
-     "Vérifier uniquement que le budget d'heures de la mission n'est pas dépassé par les collaborateurs",
+     "Vérifier que le budget d'heures de la mission n'est pas dépassé et facturer les dépassements au client",
      "Suivre l'avancement des travaux, vérifier que les collaborateurs ont les compétences et le temps requis",
      "Remplacer la revue indépendante lorsque la mission présente un risque élevé ou un enjeu public",
      "Contrôler que le client a transmis l'ensemble des pièces comptables avant la clôture de l'exercice"
@@ -6095,10 +6310,10 @@
    "question": "Le client n'ayant pas respecté le délai prévu pour la résiliation d'une lettre de mission doit-il rémunérer les travaux déjà effectués par le cabinet d'expertise comptable ?",
    "qcm": {
     "choices": [
-     "Non : la rupture irrégulière du contrat par le client fait perdre au cabinet tout droit à honoraires pour les travaux déjà effectués",
+     "Non : la rupture irrégulière par le client fait perdre au cabinet ses honoraires sur les travaux en cours",
      "Oui : les travaux déjà réalisés doivent être rémunérés, sans préjudice d'une éventuelle indemnité de rupture",
      "Non, sauf si le cabinet exerce son droit de rétention sur les documents comptables jusqu'au paiement",
-     "Oui, mais uniquement si l'Ordre a préalablement constaté le manquement du client à son obligation de préavis"
+     "Oui, mais seulement si l'Ordre a préalablement constaté le manquement du client à son obligation de respecter le préavis"
     ],
     "answer": 1
    },
@@ -6129,8 +6344,8 @@
    "question": "Est-ce que la structure d'exercice doit informer son client chaque année de la possibilité de ne pas reconduire le contrat ?",
    "qcm": {
     "choices": [
-     "Oui, pour tous les clients : le code de déontologie impose une information annuelle sur la faculté de non-reconduction",
-     "Non, jamais : la lettre de mission à tacite reconduction se renouvelle sans aucune formalité à chaque échéance",
+     "Oui, pour chaque client, professionnel ou non : le code de déontologie impose cette information annuelle",
+     "Non, jamais : la lettre de mission à tacite reconduction se renouvelle à chaque échéance sans formalité",
      "Oui, mais seulement pour un consommateur ou un non-professionnel (loi Chatel, C. consom. L.215-1)",
      "Oui, et à défaut la lettre de mission devient caduque et les honoraires de l'exercice ne sont plus dus au cabinet"
     ],
@@ -6221,6 +6436,19 @@
   },
   {
    "id": "2022-11-CAC-11",
+   "intrus": {
+    "q": "Laquelle n'est pas une sanction disciplinaire du commissaire aux comptes ?",
+    "items": [
+     "L'avertissement",
+     "Le blâme",
+     "L'interdiction temporaire d'exercer (3 ans au plus)",
+     "La radiation de la liste",
+     "Le retrait de l'honorariat"
+    ],
+    "leurre": "La réprimande",
+    "cross": true,
+    "why": "La réprimande est la première peine de l'expert-comptable ; le CAC commence par l'avertissement."
+   },
    "n": 11,
    "profession": "CAC",
    "theme": "responsabilite",
@@ -6237,7 +6465,8 @@
      "Avertissement, amende pénale, fermeture du cabinet, interdiction de gérer pendant cinq ans",
      "Rappel à l'ordre, blâme, suspension de six mois, exclusion de la compagnie régionale"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -6258,6 +6487,18 @@
   },
   {
    "id": "2022-11-CAC-12",
+   "intrus": {
+    "q": "Lequel n'est pas un motif légitime de démission du CAC (code de déontologie) ?",
+    "items": [
+     "La cessation définitive d'activité",
+     "Un motif personnel impérieux",
+     "Des difficultés insurmontables dans la mission",
+     "Un événement compromettant l'indépendance ou l'objectivité"
+    ],
+    "leurre": "La perte de confiance du client",
+    "cross": true,
+    "why": "La perte de confiance est un motif « juste et raisonnable » d'interruption de mission pour l'expert-comptable, pas un motif légitime de démission du CAC."
+   },
    "n": 12,
    "profession": "CAC",
    "theme": "exercice",
@@ -6311,7 +6552,8 @@
      "Le président du tribunal de commerce statuant en référé",
      "Le président du conseil régional de l'Ordre des experts-comptables du ressort"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 3
    },
    "qrc": {
     "expected": [
@@ -6328,6 +6570,17 @@
   },
   {
    "id": "2022-11-CAC-14",
+   "intrus": {
+    "q": "Lequel n'est pas un obstacle à la démission du commissaire aux comptes ?",
+    "items": [
+     "Se soustraire à la révélation de faits délictueux",
+     "Se soustraire à l'émission de son opinion",
+     "Se soustraire à la procédure d'alerte ou à la déclaration de soupçon"
+    ],
+    "leurre": "Ne pas avoir achevé le troisième exercice du mandat",
+    "cross": false,
+    "why": "Aucune durée minimale ne s'impose : le CAC ne démissionne pas pour se soustraire à ses obligations ni dans des conditions préjudiciables à l'entité."
+   },
    "n": 14,
    "profession": "CAC",
    "theme": "exercice",
@@ -6342,7 +6595,7 @@
     "choices": [
      "Le CAC ne peut démissionner pour échapper à la révélation de faits délictueux, à l'émission de son opinion ou à la procédure d'alerte, ni dans des conditions préjudiciables à l'entité",
      "Le CAC ne peut démissionner avant la fin du troisième exercice de son mandat, ni sans l'accord préalable de l'assemblée générale de l'entité contrôlée",
-     "Le CAC ne peut démissionner qu'avec l'autorisation préalable de la H2A et l'avis conforme du comité d'audit de l'entité, quel que soit le motif invoqué",
+     "Le CAC ne peut démissionner qu'avec l'autorisation préalable de la H2A et l'avis conforme du comité d'audit, après en avoir informé l'assemblée",
      "Le CAC ne peut démissionner tant que ses honoraires n'ont pas été intégralement réglés par l'entité, ni avant l'approbation des comptes de l'exercice"
     ],
     "answer": 0
@@ -6382,7 +6635,8 @@
      "Devant le tribunal de commerce du siège de l'entité contrôlée, dans les quinze jours",
      "Devant le président du conseil régional de l'Ordre des experts-comptables, dans le mois"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 3
    },
    "qrc": {
     "expected": [
@@ -6411,7 +6665,7 @@
    "question": "Devant qui est portée la décision de la formation restreinte du H3C en cas de désaccord sur les honoraires ?",
    "qcm": {
     "choices": [
-     "Devant le Conseil d'État, comme pour toutes les décisions disciplinaires du H3C, que le régime soit antérieur ou postérieur à 2024",
+     "Devant le Conseil d'État, comme les décisions disciplinaires de la formation restreinte du H3C",
      "Devant la cour d'appel de Paris (régime antérieur à 2024) ; depuis 2024, la H2A ne tranche plus ces litiges, relevant du juge de droit commun",
      "Devant la chambre nationale de discipline, qui statue en dernier ressort sur les litiges entre professionnels (régime antérieur à 2024), sans autre recours",
      "Devant le président de la Compagnie nationale des CAC, puis devant le tribunal administratif (régime antérieur à 2024)"
@@ -6445,9 +6699,9 @@
    "question": "Dans quel cadre le commissaire aux comptes peut-il recourir à la publicité ?",
    "qcm": {
     "choices": [
-     "La publicité est totalement interdite au commissaire aux comptes, seule la participation à des colloques ou à des publications scientifiques étant tolérée",
+     "La publicité est réservée aux colloques et aux publications techniques, en raison de l'obligation d'indépendance",
      "La publicité est permise si elle procure au public une nécessaire information, sans élément comparatif ni atteinte à l'indépendance ou à la dignité",
-     "La publicité est libre, y compris comparative, depuis la loi Pacte, sous réserve d'en informer préalablement la H2A et la compagnie régionale",
+     "La publicité est libre, y compris comparative, depuis la loi Pacte, sous réserve d'en informer préalablement la H2A et le président de la compagnie régionale",
      "La publicité est réservée aux sociétés de commissaires aux comptes appartenant à un réseau, à l'exclusion des personnes physiques"
     ],
     "answer": 1
@@ -6481,9 +6735,9 @@
    "question": "Que doit comporter la déclaration d'activité établie en cas de prestation fournie en dehors de toute mission légale ?",
    "qcm": {
     "choices": [
-     "Uniquement le montant global des honoraires perçus, sans identification des clients, afin de préserver le secret professionnel du commissaire aux comptes envers ses clients",
+     "Le seul montant global des honoraires perçus au titre des prestations, sans identification des clients, pour préserver le secret professionnel",
      "Pour les prestations autres que la certification : la liste des entités concernées, la nature des prestations et le montant total des honoraires facturés",
-     "Le programme de travail détaillé et le nombre d'heures, comme pour la certification des comptes, la déclaration étant adressée à la H2A",
+     "Le programme de travail détaillé et le nombre d'heures de chaque prestation, comme pour la certification des comptes, la déclaration étant adressée à la H2A",
      "Une attestation d'indépendance visée par le président de la CNCC et la H2A avant le début de chaque prestation"
     ],
     "answer": 1
@@ -6517,12 +6771,13 @@
    "question": "Un commissaire aux comptes non inscrit à l'ordre des experts-comptables peut-il exercer des activités commerciales accessoires ? Justifier la réponse.",
    "qcm": {
     "choices": [
-     "Oui : depuis la loi Pacte, tout commissaire aux comptes peut exercer des activités commerciales accessoires dans la limite de 10 % de son chiffre d'affaires annuel hors taxes",
+     "Oui : comme l'expert-comptable, il peut exercer des activités commerciales accessoires, dès lors qu'elles ne mettent pas en péril son indépendance",
      "Non : incompatibilité avec toute activité commerciale, sauf celles accessoires à la profession d'expert-comptable (art. 22 de l'ordonnance de 1945) ou exercées par une SPE",
      "Oui, à condition d'en informer la compagnie régionale, de ne pas en faire la publicité et de tenir une comptabilité distincte",
-     "Non, sauf autorisation individuelle de la H2A accordée pour deux exercices, renouvelable une fois après avis du garde des sceaux"
+     "Non, sauf autorisation individuelle de la H2A accordée pour deux exercices, renouvelable une fois après avis du garde des Sceaux et de la compagnie régionale"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -6554,11 +6809,12 @@
    "qcm": {
     "choices": [
      "Intégrité, impartialité, indépendance, esprit critique, compétence et diligence, confraternité, secret professionnel",
-     "Compétence, conscience professionnelle, indépendance d'esprit, probité, honneur et dignité (devoirs de l'expert-comptable)",
+     "Compétence, conscience professionnelle, indépendance d'esprit, probité, honneur et dignité",
      "Non-immixtion dans la gestion, permanence de la mission, révélation des faits délictueux, co-commissariat des comptes",
      "Régularité, sincérité, image fidèle, continuité d'exploitation, indépendance des exercices et prudence"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 1
    },
    "qrc": {
     "expected": [
@@ -7313,7 +7569,8 @@
      "Le Conseil national de l'Ordre des experts-comptables, par délibération, sans intervention ministérielle",
      "La Haute autorité de l'audit, par décision, après avis de la commission de normalisation"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -7343,7 +7600,7 @@
    "question": "Quelles sont les normes professionnelles d'application générale ?",
    "qcm": {
     "choices": [
-     "La NP 2300 et la NP 2400, applicables à tous les comptes annuels",
+     "La NP 2300 (présentation) et la NP 2400 (examen limité) des comptes annuels",
      "La norme de maîtrise de la qualité (NPMQ) et la norme relative à la lutte contre le blanchiment (NPLAB)",
      "Les NEP homologuées par le garde des sceaux, communes aux experts-comptables et aux commissaires aux comptes",
      "La norme de compilation (NP 4410) et la norme de procédures convenues (NP 4400)"
@@ -7448,8 +7705,8 @@
     "choices": [
      "Quatre années consécutives, soit deux mandats de bureau de deux ans",
      "Six années consécutives, soit trois mandats de bureau de deux ans",
-     "Aucune limite : le président est rééligible sans restriction de durée ni interruption",
-     "Huit ans, soit deux mandats consécutifs de conseiller de quatre ans"
+     "Deux années, sans possibilité de réélection immédiate",
+     "Huit années, soit deux mandats consécutifs de conseiller régional de quatre ans"
     ],
     "answer": 0
    },
@@ -7517,7 +7774,7 @@
    "question": "Quelles sont les conditions de validité des pénalités en cas de rupture d'une lettre de mission avant son terme, sans justification, par le client d'un expert-comptable ?",
    "qcm": {
     "choices": [
-     "Elles sont toujours valables dès lors qu'elles ont été mentionnées oralement au client lors de la signature de la lettre",
+     "Elles sont valables dès lors qu'elles ont été annoncées oralement au client lors de la signature de la lettre",
      "Elles doivent être prévues par écrit dans la lettre de mission, rester proportionnées au préjudice et ne pas entraver la liberté du client",
      "Elles sont interdites par le code de déontologie, l'expert-comptable ne pouvant percevoir que les honoraires des travaux effectués, même si le client les a acceptées",
      "Elles doivent être validées préalablement par le conseil régional de l'Ordre, qui en fixe le plafond"
@@ -7541,6 +7798,17 @@
   },
   {
    "id": "2023-11-EC-08",
+   "intrus": {
+    "q": "Laquelle n'est pas une des trois sections du tableau de l'Ordre ?",
+    "items": [
+     "Les experts-comptables personnes physiques",
+     "Les sociétés d'expertise comptable",
+     "Les sociétés de participations d'expertise comptable"
+    ],
+    "leurre": "Les associations de gestion et de comptabilité (AGC)",
+    "cross": false,
+    "why": "Les AGC figurent sur une des listes qui suivent les trois sections du tableau."
+   },
    "n": 8,
    "profession": "EC",
    "theme": "exercice",
@@ -7622,12 +7890,13 @@
    "question": "Un jeune diplômé d'expertise comptable a décidé de créer son cabinet sans rachat de droit de présentation de clientèle. Il s'installe dans des locaux situés en zone d'activité d'une ville moyenne. Afin de se faire connaitre, il diffuse des prospectus dans les boites aux lettres des entreprises installées sur la zone, mentionnant que 150 entreprises lui font déjà confiance et que par ailleurs il est 10 % en dessous des tarifs des autres professionnels. Cette pratique est-elle conforme aux règles déontologiques ? Pour quelle(s) raison(s) ?",
    "qcm": {
     "choices": [
-     "Non, car toute forme de démarchage est interdite à l'expert-comptable par le code de déontologie",
+     "Non, car la sollicitation n'est admise que par courrier ou courriel adressé à un destinataire déterminé, pas par prospectus",
      "Non : le message est mensonger et comparatif sur les prix, contraire à la loyauté et à la confraternité",
-     "Oui : la publicité et le démarchage sont libres et les honoraires sont librement fixés par le professionnel",
+     "Oui : les honoraires étant libres, l'expert-comptable peut annoncer des prix inférieurs à ceux de ses confrères",
      "Oui, à condition que les prospectus aient été visés par le conseil régional de l'Ordre avant diffusion"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -7662,7 +7931,8 @@
      "Devant le président de la Haute autorité de l'audit, par écrit, dans les six mois de son inscription sur la liste",
      "Devant le tribunal de commerce du lieu de son cabinet, par déclaration au greffe, avant son inscription sur la liste des commissaires aux comptes"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -7697,7 +7967,8 @@
      "Un rapporteur désigné par le président de la chambre régionale de discipline, assisté d'un greffier",
      "Les contrôleurs de la Compagnie nationale, dans le cadre du contrôle d'activité périodique du cabinet"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 2
    },
    "qrc": {
     "expected": [
@@ -7732,7 +8003,8 @@
      "Amende civile, interdiction de gérer, faillite personnelle, emprisonnement, confiscation des honoraires perçus",
      "Rappel à la loi, mise en demeure, astreinte, fermeture temporaire du cabinet, retrait de l'agrément de la CNCC"
     ],
-    "answer": 0
+    "answer": 0,
+    "crossProf": 1
    },
    "qrc": {
     "expected": [
@@ -7764,9 +8036,9 @@
    "question": "Quelle est la nature de l'assurance formulée par le commissaire aux comptes dans le cadre de la certification des comptes, en quoi consiste-t-elle ?",
    "qcm": {
     "choices": [
-     "Une assurance modérée sur la cohérence et la vraisemblance des comptes, fondée sur des entretiens et des analyses",
+     "Une assurance modérée sur la cohérence et la vraisemblance des comptes, fondée principalement sur des entretiens avec la direction et des analyses",
      "Une assurance raisonnable, c'est-à-dire élevée mais non absolue, que les comptes ne comportent pas d'anomalies significatives",
-     "Une assurance absolue garantissant l'exactitude de tous les comptes ainsi que la viabilité de l'entité contrôlée à moyen terme",
+     "Une assurance élevée portant sur l'exactitude des comptes et sur la viabilité de l'entité contrôlée",
      "Une assurance limitée exprimée sous forme négative, comme dans l'examen limité, sur la régularité des comptes"
     ],
     "answer": 1
@@ -7835,10 +8107,10 @@
    "question": "Dans le cadre de leurs contrôles, que peuvent demander ou faire les agents du H3C auprès du commissaire aux comptes ou de toute autre personne ?",
    "qcm": {
     "choices": [
-     "Obtenir tout document sur ses missions et prestations, avec copie, et des informations auprès de tiers, contrôler sur place, recourir à des experts, sans se voir opposer le secret",
-     "Uniquement consulter, au siège de la Compagnie nationale et sur convocation du contrôlé, les dossiers que celui-ci accepte de leur communiquer",
+     "Obtenir les documents relatifs à ses missions et prestations, avec copie, et des informations auprès de tiers, contrôler sur place, recourir à des experts, sans se voir opposer le secret",
+     "Consulter, au siège de la CNCC et sur convocation, les dossiers que le contrôlé accepte de leur communiquer, sans pouvoir en prendre copie",
      "Perquisitionner le cabinet et saisir les documents utiles, après autorisation du juge des libertés et de la détention, et entendre sous serment les associés du cabinet",
-     "Interroger le contrôlé par écrit uniquement, celui-ci pouvant opposer le secret professionnel pour les dossiers clients et refuser la copie des documents"
+     "Interroger le contrôlé par écrit et sur rendez-vous, celui-ci pouvant opposer le secret professionnel pour les dossiers de ses clients"
     ],
     "answer": 0
    },
@@ -7860,6 +8132,18 @@
   },
   {
    "id": "2023-11-CAC-17",
+   "intrus": {
+    "q": "Laquelle n'est pas une mission du comité d'audit ?",
+    "items": [
+     "Suivre l'élaboration de l'information financière",
+     "Suivre l'efficacité du contrôle interne et de la gestion des risques",
+     "Recommander les CAC proposés à la désignation",
+     "S'assurer de l'indépendance des CAC"
+    ],
+    "leurre": "Arrêter les comptes annuels",
+    "cross": false,
+    "why": "Les comptes sont arrêtés par l'organe d'administration ou de direction ; le comité d'audit suit et recommande."
+   },
    "n": 17,
    "profession": "CAC",
    "theme": "exercice",
@@ -7908,9 +8192,9 @@
    "qcm": {
     "choices": [
      "Participation à des séminaires ou à l'autoformation encadrée ; assistance à des colloques ; conception ou animation de formations ; rédaction et publication de travaux techniques",
-     "Lecture de la presse professionnelle, veille réglementaire personnelle, abonnement à des bases documentaires et participation aux assemblées de la compagnie régionale",
-     "Stage de trois ans chez un commissaire aux comptes ; obtention du DEC ; réussite du certificat d'aptitude ; expérience acquise lors des missions de certification",
-     "Heures de supervision des collaborateurs ; revue indépendante des dossiers ; participation au contrôle d'activité ; temps passé à la préparation des missions"
+     "Séminaires de formation ; assistance à des colloques ; heures de mission de certification dans un secteur nouveau ; rédaction de travaux techniques",
+     "Formations à distance ; animation de formations ; participation aux assemblées générales de la compagnie régionale ; travaux techniques en commission",
+     "Autoformation encadrée ; conférences ; temps de supervision des collaborateurs sur les dossiers ; publication d'articles techniques"
     ],
     "answer": 0
    },
@@ -7946,7 +8230,7 @@
     "choices": [
      "Le CAC peut se fonder sur l'attestation de présentation de l'expert-comptable, qui constitue un élément probant suffisant dispensant de contrôles propres de sa part",
      "Le CAC prend connaissance de l'étendue de l'intervention de l'expert-comptable, apprécie la qualité de ses travaux et reste seul responsable de son opinion",
-     "Le CAC ne peut en aucun cas utiliser les travaux de l'expert-comptable, qui n'est pas indépendant de l'entité, et doit tout refaire",
+     "Le CAC ne peut jamais utiliser les travaux de l'expert-comptable, qui n'est pas indépendant de l'entité, et doit les refaire",
      "Le CAC doit obtenir l'autorisation du conseil régional de l'Ordre avant de consulter les dossiers de l'expert-comptable de l'entité"
     ],
     "answer": 1
@@ -7968,6 +8252,18 @@
   },
   {
    "id": "2023-11-CAC-20",
+   "intrus": {
+    "q": "Laquelle doit nommer un CAC selon un seuil (et non sans condition de seuil) ?",
+    "items": [
+     "Une entité d'intérêt public (société cotée, établissement de crédit, assureur)",
+     "Une société de financement",
+     "Un OPCVM (SICAV)",
+     "Une fondation reconnue d'utilité publique"
+    ],
+    "leurre": "Une association recevant des subventions publiques",
+    "cross": false,
+    "why": "L'association subventionnée nomme un CAC au-delà de 153 000 € de subventions par an."
+   },
    "n": 20,
    "profession": "CAC",
    "theme": "exercice",
@@ -7980,7 +8276,7 @@
    "question": "Citez quatre entités où la nomination du commissaire aux comptes ne dépend pas d'un seuil.",
    "qcm": {
     "choices": [
-     "Toutes les sociétés anonymes, toutes les SAS, toutes les SARL et toutes les associations déclarées, quelle que soit leur taille",
+     "Les sociétés anonymes et les SAS, ainsi que les SARL et les associations déclarées",
      "Les EIP (sociétés cotées, établissements de crédit, entreprises d'assurance), les sociétés de financement, les OPCVM, les partis politiques",
      "Les commerçants personnes physiques, les micro-entrepreneurs, les sociétés civiles immobilières familiales, les GIE et les sociétés en nom collectif",
      "Les syndicats de copropriétaires, les comités sociaux et économiques, les indivisions, les tontines et les sociétés en participation"
@@ -8085,12 +8381,13 @@
    "question": "Une mission relevant de la prérogative d'exercice exclusive peut-elle être rémunérée par des honoraires complémentaires ou honoraires au succès (success fees) ?",
    "qcm": {
     "choices": [
-     "Oui : depuis la loi Pacte, des honoraires complémentaires liés à un objectif sont possibles pour toutes les missions",
+     "Oui : depuis la loi Pacte, des honoraires complémentaires liés à un objectif sont possibles pour ces missions",
      "Non : exclus pour les missions relevant de la prérogative d'exercice et celles déterminant l'assiette fiscale ou sociale",
      "Oui, à condition que le pourcentage soit fixé dans la lettre de mission et n'excède pas 10 % des honoraires de diligence",
-     "Non, car toute rémunération variable est interdite à l'expert-comptable, y compris pour les missions de conseil"
+     "Non : comme pour le commissaire aux comptes, les honoraires subordonnés au résultat sont interdits, y compris en conseil"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 3
    },
    "qrc": {
     "expected": [
@@ -8118,9 +8415,9 @@
    "question": "Les actions et droits de vote du cabinet (forme juridique SAS) SACOMPTE se répartissent comme suit : Madame A, expert-comptable inscrite au tableau de l'ordre, 25 % ; Madame B, expert-comptable inscrite au tableau de l'ordre, 35 % ; Monsieur C, expert-comptable inscrit au tableau de l'ordre, 30 % ; Monsieur D, informaticien, non expert-comptable, 10 %. À l'occasion de son départ à la retraite, madame B envisage de céder ses actions à madame E, collaboratrice du cabinet non expert-comptable. Que pensez-vous de ce projet de cession ?",
    "qcm": {
     "choices": [
-     "La cession est possible : la SAS étant une forme libre, le capital peut être ouvert aux non-professionnels sans limite de détention ni agrément",
+     "La cession est possible : la SAS est une forme libre et les statuts peuvent ouvrir le capital aux tiers",
      "La cession est impossible en l'état : les experts-comptables ne détiendraient plus que 55 % des droits de vote, en deçà des deux tiers exigés",
-     "La cession est possible à condition que madame E s'inscrive comme expert-comptable stagiaire et que les statuts soient modifiés",
+     "La cession est possible à condition que madame E s'inscrive au tableau comme expert-comptable stagiaire et que les statuts de la SAS soient modifiés",
      "La cession est possible car la règle des deux tiers ne s'applique qu'au capital et non aux droits de vote de la société"
     ],
     "answer": 1
@@ -8158,7 +8455,8 @@
      "Le président du Conseil national de l'Ordre, quatre présidents de conseils régionaux élus par leurs pairs et le commissaire du gouvernement près l'Ordre, désignés pour trois ans renouvelables",
      "Un conseiller d'État président, deux experts-comptables élus par le Conseil national et deux commissaires aux comptes désignés par la CNCC"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -8193,7 +8491,7 @@
      "Oui : le DSCG confère le droit de tenir des comptabilités pour autrui, sous la responsabilité de l'expert-comptable donneur d'ordre qui supervise les travaux, sans condition d'inscription à l'Ordre",
      "Non : la tenue de comptabilité pour des tiers est une prérogative d'exercice réservée aux inscrits au tableau ; le sous-traitant non inscrit commettrait un exercice illégal",
      "Oui, à condition que le sous-traitant souscrive une assurance de responsabilité civile professionnelle et que la lettre de mission le mentionne expressément",
-     "Non, car toute sous-traitance de travaux comptables est interdite aux experts-comptables par le code de déontologie, même entre confrères inscrits"
+     "Non, car la sous-traitance de travaux comptables est interdite par le code de déontologie, y compris entre confrères"
     ],
     "answer": 1
    },
@@ -8214,6 +8512,17 @@
   },
   {
    "id": "2024-05-EC-07",
+   "intrus": {
+    "q": "Laquelle n'est pas une conclusion possible de l'attestation de présentation des comptes ?",
+    "items": [
+     "Attestation sans observation",
+     "Attestation avec observation(s)",
+     "Refus d'attester"
+    ],
+    "leurre": "Certification avec réserve",
+    "cross": true,
+    "why": "La certification (avec ou sans réserve) est l'opinion du commissaire aux comptes. La présentation conduit à une attestation, avec ou sans observation, ou à un refus d'attester."
+   },
    "n": 7,
    "profession": "EC",
    "theme": "exercice",
@@ -8230,7 +8539,8 @@
      "Conclusion favorable, conclusion défavorable, impossibilité de conclure",
      "Assurance raisonnable, assurance modérée, absence d'assurance"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -8263,7 +8573,7 @@
      "Oui : le représentant légal engage la société et la lettre de mission est un simple contrat commercial, sans lien avec la qualité d'inscrit",
      "Non : la mission relève de la prérogative d'exercice et sa lettre de mission doit être signée par un expert-comptable inscrit exerçant dans la société",
      "Oui, si un expert-comptable de la société contresigne ensuite le rapport final et que la lettre de mission est datée avant le début des travaux",
-     "Non, car seule la personne physique titulaire du mandat peut signer, la société d'expertise comptable ne pouvant elle-même être inscrite à l'Ordre"
+     "Non, car la société d'expertise comptable ne peut pas être inscrite au tableau : seul l'associé personne physique l'est"
     ],
     "answer": 1
    },
@@ -8284,6 +8594,18 @@
   },
   {
    "id": "2024-05-EC-09",
+   "intrus": {
+    "q": "Laquelle n'est pas une étape du devoir de conseil de l'expert-comptable ?",
+    "items": [
+     "Informer",
+     "Mettre en garde",
+     "Exiger",
+     "Refuser son concours (voire interrompre la mission)"
+    ],
+    "leurre": "Révéler les faits délictueux au procureur",
+    "cross": true,
+    "why": "La révélation au procureur est une obligation du commissaire aux comptes. L'EC informe, met en garde, exige, puis refuse ou interrompt."
+   },
    "n": 9,
    "profession": "EC",
    "theme": "responsabilite",
@@ -8330,10 +8652,10 @@
    "question": "Un expert-comptable est contacté par un client qui souhaite changer d'expert-comptable. Indiquez la procédure à suivre par l'expert-comptable pressenti vis-à-vis de son confrère avant d'accepter la mission.",
    "qcm": {
     "choices": [
-     "Il peut accepter immédiatement, le libre choix du client excluant toute formalité envers le prédécesseur ou le conseil régional",
+     "Il peut accepter sans aucune formalité dès l'accord du client, le libre choix de celui-ci prévalant sur les relations entre confrères",
      "Il doit informer par écrit le confrère de sa saisine, s'enquérir des motifs du changement et de la situation des honoraires dus",
-     "Il doit obtenir l'autorisation écrite du confrère prédécesseur et du conseil régional de l'Ordre avant toute prise de contact",
-     "Il doit attendre l'expiration de la lettre de mission du confrère et le paiement intégral de ses honoraires avant toute intervention"
+     "Il doit obtenir l'autorisation écrite du confrère prédécesseur et du conseil régional de l'Ordre avant d'accepter",
+     "Il doit attendre l'expiration de la lettre de mission du confrère et le paiement de ses honoraires"
     ],
     "answer": 1
    },
@@ -8366,10 +8688,10 @@
    "question": "Que signifie le terme « mission » au sens de l'article L.821-2 III du code commerce ?",
    "qcm": {
     "choices": [
-     "Uniquement la certification des comptes annuels et consolidés de l'entité dont le CAC est le contrôleur légal, à l'exclusion de toute autre intervention légale",
+     "La certification des comptes annuels et consolidés de l'entité, les autres interventions prévues par la loi constituant des prestations",
      "La mission de certification des comptes, la certification des informations de durabilité et toute autre mission confiée au CAC par la loi ou le règlement",
-     "Tout service, attestation ou conseil fourni par un commissaire aux comptes, qu'il soit ou non prévu par la loi ou le règlement",
-     "Les seules interventions réalisées par le commissaire aux comptes auprès d'entités d'intérêt public, à l'exclusion des autres entités"
+     "Les services, attestations et conseils fournis par le commissaire aux comptes, qu'ils soient ou non prévus par la loi",
+     "Les interventions réalisées par le commissaire aux comptes auprès des entités d'intérêt public, qu'elles soient prévues par la loi ou purement contractuelles"
     ],
     "answer": 1
    },
@@ -8401,10 +8723,10 @@
    "question": "À qui et dans quel cadre s'appliquent les deux normes de déontologie ?",
    "qcm": {
     "choices": [
-     "Aux seuls commissaires aux comptes d'entités d'intérêt public, dans le cadre de la certification des comptes, y compris consolidés",
-     "À tout commissaire aux comptes inscrit intervenant ès qualités, quelle que soit la mission ou la prestation, personne physique ou société",
+     "Aux commissaires aux comptes d'entités d'intérêt public, pour la certification des comptes annuels et consolidés",
+     "Aux commissaires aux comptes inscrits intervenant ès qualités, pour leurs missions comme pour leurs prestations, personnes physiques ou sociétés",
      "Aux experts-comptables et aux commissaires aux comptes, pour l'ensemble de leurs activités, qu'ils agissent ès qualités ou non",
-     "Aux sociétés de commissaires aux comptes uniquement, pour l'organisation de leur contrôle qualité interne et de leurs mandats"
+     "Aux sociétés de commissaires aux comptes, pour l'organisation de leur contrôle qualité interne et de leurs mandats"
     ],
     "answer": 1
    },
@@ -8436,10 +8758,10 @@
    "question": "Dans quelles circonstances s'appliquent les principes fondamentaux de comportement précisés par la norme de déontologie codifiée à l'article A 821-54 du code de commerce ?",
    "qcm": {
     "choices": [
-     "Uniquement pendant l'exécution d'une mission de certification des comptes, à l'exclusion des prestations et des missions légales hors certification",
+     "Pendant l'exécution d'une mission de certification des comptes, les prestations et les autres missions légales relevant d'autres règles",
      "Dans l'exercice de la profession, pour toute mission ou prestation, mais aussi en toute circonstance, y compris hors mission, afin d'éviter tout agissement contraire à l'honneur",
-     "Uniquement dans la vie professionnelle, la vie personnelle du commissaire aux comptes échappant à toute exigence déontologique, même en cas de fait contraire à la probité",
-     "Uniquement lors des contrôles de la H2A et des procédures disciplinaires, c'est-à-dire lorsque le commissaire aux comptes est mis en cause"
+     "Dans la seule vie professionnelle, la vie personnelle du commissaire aux comptes échappant aux exigences déontologiques, même en cas de faute",
+     "Lors des contrôles de la H2A et des procédures disciplinaires, c'est-à-dire lorsque le commissaire aux comptes est mis en cause"
     ],
     "answer": 1
    },
@@ -8472,7 +8794,7 @@
     "choices": [
      "Les missions confiées au CAC par la loi ou le règlement, lorsqu'elles sont exercées auprès d'entités dont il ne certifie pas les comptes",
      "La fourniture de services et d'attestations qui ne relèvent pas d'une mission, à une entité dont le CAC certifie ou non les comptes",
-     "Les seules diligences directement liées à la mission de certification, réalisées uniquement auprès de l'entité contrôlée",
+     "Les diligences directement liées à la mission de certification, réalisées auprès de l'entité contrôlée",
      "Les travaux réalisés par le CAC pour le compte de la Compagnie nationale ou de la H2A, notamment lors des contrôles"
     ],
     "answer": 1
@@ -8542,7 +8864,7 @@
     "choices": [
      "L'obligation de partager ses honoraires avec les confrères membres de la même compagnie régionale et de leur reverser une quote-part de chaque nouveau mandat",
      "Le respect mutuel entre commissaires aux comptes : ne tenir aucun propos déloyal ni acte visant à nuire à un confrère, notamment en cas de co-intervention",
-     "L'interdiction de succéder à un confrère sans son accord écrit préalable, accord que l'entité ne peut en aucun cas suppléer par une décision de son assemblée",
+     "L'obligation d'obtenir l'accord écrit du confrère avant de lui succéder dans un mandat",
      "L'obligation d'adhérer à un réseau et de participer aux travaux de la Compagnie nationale et aux commissions de la compagnie régionale"
     ],
     "answer": 1
@@ -8575,10 +8897,10 @@
    "question": "En quoi consiste l'esprit critique du commissaire aux comptes ?",
    "qcm": {
     "choices": [
-     "À refuser systématiquement les explications de la direction et à privilégier, tout au long de la mission, les contrôles de substance sur les tests de procédures de contrôle interne",
+     "À écarter les explications de la direction et à privilégier les contrôles de substance sur les tests de contrôle interne",
      "À apprécier la source et la pertinence des informations, rester ouvert aux arguments contraires et juger si les éléments recueillis suffisent à fonder ses conclusions",
      "À exprimer des réserves dans son rapport dès qu'un désaccord apparaît avec la direction, sans attendre la fin de ses travaux ni les explications de celle-ci",
-     "À contrôler l'opportunité des décisions de gestion prises par les dirigeants et à les contester lorsqu'elles lui paraissent contraires à l'intérêt social"
+     "À contrôler l'opportunité des décisions de gestion prises par les dirigeants et à les contester devant l'assemblée lorsqu'elles lui paraissent contraires à l'intérêt social"
     ],
     "answer": 1
    },
@@ -8632,6 +8954,18 @@
   },
   {
    "id": "2024-05-CAC-19",
+   "intrus": {
+    "q": "Laquelle n'est pas une situation à risque du code de déontologie (sauvegardes) ?",
+    "items": [
+     "Un risque d'autorévision",
+     "Des liens personnels, financiers ou professionnels",
+     "L'appartenance à un réseau",
+     "La dépendance financière envers l'entité"
+    ],
+    "leurre": "Le risque d'anomalies significatives dans les comptes",
+    "cross": false,
+    "why": "Le risque d'anomalies relève de l'approche d'audit (NEP), non des menaces sur l'indépendance."
+   },
    "n": 19,
    "profession": "CAC",
    "theme": "deontologie",
@@ -8680,12 +9014,13 @@
    "question": "Un commissaire aux comptes peut-il exercer sous la forme d'une association ? Justifiez votre réponse.",
    "qcm": {
     "choices": [
-     "Oui : toute personne morale peut être inscrite sur la liste dès lors que ses dirigeants sont commissaires aux comptes",
+     "Oui : une personne morale peut être inscrite sur la liste dès lors que ses dirigeants sont commissaires aux comptes",
      "Non : la profession est exercée par des personnes physiques ou des sociétés inscrites sur la liste ; l'association n'est pas une société",
-     "Oui, mais uniquement sous la forme d'une association de gestion et de comptabilité inscrite au tableau de l'Ordre",
+     "Oui, sous la forme d'une association de gestion et de comptabilité, comme en expertise comptable",
      "Non, sauf pour les mandats détenus auprès d'associations ou de fondations, qui peuvent être confiés à une association inscrite sur la liste"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 2
    },
    "qrc": {
     "expected": [
@@ -8719,8 +9054,8 @@
     "choices": [
      "Non : l'expertise comptable ne peut être exercée qu'en société d'expertise comptable depuis la loi Pacte",
      "Oui : le statut s'applique aussi aux professions libérales réglementées et sépare de plein droit les patrimoines",
-     "Oui, mais seulement après une déclaration d'affectation de patrimoine (EIRL) déposée auprès du conseil régional de l'Ordre",
-     "Non : seule l'inscription sur la liste de la H2A permet un exercice individuel à responsabilité limitée"
+     "Oui, après une déclaration d'affectation de patrimoine (EIRL) déposée auprès du conseil régional de l'Ordre des experts-comptables",
+     "Non : l'exercice individuel à responsabilité limitée est réservé aux commissaires aux comptes inscrits"
     ],
     "answer": 1
    },
@@ -8758,7 +9093,8 @@
      "Il relève de la chambre régionale de discipline, car il est soumis au contrôle disciplinaire de l'Ordre",
      "Il relève de la commission des sanctions de la H2A, comme les stagiaires commissaires aux comptes"
     ],
-    "answer": 2
+    "answer": 2,
+    "crossProf": 3
    },
    "qrc": {
     "expected": [
@@ -8776,6 +9112,18 @@
   },
   {
    "id": "2024-11-EC-03",
+   "intrus": {
+    "q": "Laquelle n'est pas une condition d'inscription d'une personne physique au tableau de l'Ordre ?",
+    "items": [
+     "Jouir de ses droits civils",
+     "Ne pas avoir été condamné pour des faits entachant l'honorabilité",
+     "Être titulaire du diplôme d'expertise comptable (ou assimilé)",
+     "Présenter les garanties de moralité nécessaires"
+    ],
+    "leurre": "Avoir prêté serment devant le premier président de la cour d'appel",
+    "cross": true,
+    "why": "Le CAC prête serment devant le premier président de la cour d'appel ; l'EC prête serment devant le conseil régional, après son inscription."
+   },
    "n": 3,
    "profession": "EC",
    "theme": "exercice",
@@ -8786,8 +9134,8 @@
    "question": "Quelles sont les conditions nécessaires pour qu'une personne physique puisse solliciter son inscription au tableau de l'Ordre des experts-comptables ?",
    "qcm": {
     "choices": [
-     "Être de nationalité française, titulaire du DEC et avoir prêté serment devant la cour d'appel avant l'inscription",
-     "Jouir de ses droits civils, n'avoir subi aucune condamnation entachant l'honorabilité, être titulaire du DEC, offrir des garanties de moralité",
+     "Être de nationalité française, titulaire du DEC et avoir prêté serment devant la cour d'appel avant de déposer la demande d'inscription",
+     "Jouir de ses droits civils, ne pas avoir été condamné pour des faits entachant l'honorabilité, être titulaire du DEC, offrir des garanties de moralité",
      "Être titulaire du DEC ou du CAFCAC et avoir accompli un stage de trois ans chez un commissaire aux comptes inscrit",
      "Être titulaire du DSCG, justifier d'une assurance de responsabilité civile et d'une expérience professionnelle de dix ans"
     ],
@@ -8810,6 +9158,19 @@
   },
   {
    "id": "2024-11-EC-04",
+   "intrus": {
+    "q": "Laquelle de ces personnes ne peut pas faire appel d'une décision de la chambre régionale de discipline ?",
+    "items": [
+     "Le professionnel sanctionné",
+     "Le plaignant",
+     "Le commissaire du Gouvernement",
+     "Le magistrat chargé des poursuites",
+     "Le président du conseil régional"
+    ],
+    "leurre": "Le rapporteur général de la H2A",
+    "cross": true,
+    "why": "Le rapporteur général de la H2A enquête sur les commissaires aux comptes ; il n'intervient pas dans la discipline de l'expert-comptable."
+   },
    "n": 4,
    "profession": "EC",
    "theme": "responsabilite",
@@ -8859,12 +9220,13 @@
    "question": "Quels motifs doit invoquer un expert-comptable pour interrompre la mission qui le lie à son client ?",
    "qcm": {
     "choices": [
-     "Uniquement l'un des motifs légitimes limitativement énumérés par la loi (cessation d'activité, motif personnel impérieux, difficultés dans l'accomplissement de la mission)",
-     "Aucun motif : la mission peut être interrompue à tout moment, sans préavis",
+     "L'un des motifs légitimes de démission du code de déontologie : cessation d'activité, motif personnel impérieux, difficultés dans la mission",
+     "Il peut interrompre la mission à tout moment, en respectant le préavis prévu par la lettre de mission",
      "Des motifs justes et raisonnables, tels que la perte de confiance du client ou la méconnaissance d'une clause substantielle",
-     "Uniquement le non-paiement des honoraires, après autorisation du président du conseil régional"
+     "Le non-paiement des honoraires, après autorisation du président du conseil régional"
     ],
-    "answer": 2
+    "answer": 2,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -8896,10 +9258,11 @@
     "choices": [
      "Oui : la publicité et le démarchage sont libres depuis 2014, sans autre limite que le droit de la consommation",
      "Oui, à condition que le post soit préalablement visé par le conseil régional de l'Ordre",
-     "Non : toute publicité sur les réseaux sociaux est interdite aux experts-comptables",
+     "Non : la sollicitation doit être personnalisée et adressée à un destinataire déterminé, pas diffusée au public",
      "Non : le message dénigre implicitement les confrères et comporte un élément comparatif"
     ],
-    "answer": 3
+    "answer": 3,
+    "crossProf": 2
    },
    "qrc": {
     "expected": [
@@ -9003,7 +9366,7 @@
      "Mission d'assurance sur des comptes complets historiques, soumise à la NP 2300, à la NPMQ et à la NPLAB",
      "Autre mission d'assurance (attestation particulière), soumise à la NP 3100 ainsi qu'à la NPLAB",
      "Mission sans assurance prévue par un texte légal, sans norme spécifique : déontologie, NPMQ et NPLAB",
-     "Mission de procédures convenues, soumise à la seule NP 4400 et au code de déontologie"
+     "Mission de procédures convenues, soumise à la NP 4400 et au code de déontologie"
     ],
     "answer": 2
    },
@@ -9035,11 +9398,12 @@
    "qcm": {
     "choices": [
      "Oui : un barème d'heures fonction du total du bilan et des produits s'applique, avec dérogation possible",
-     "Non : les honoraires sont fixés librement, par écrit et préalablement, selon les diligences et la difficulté",
+     "Non : les honoraires sont convenus avec le client, par écrit et préalablement, selon les diligences et la difficulté",
      "Oui : le Conseil national fixe chaque année un tarif horaire minimal opposable aux clients",
      "Non, sauf pour la mission de présentation des comptes, qui relève d'un tarif réglementé"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -9069,10 +9433,10 @@
    "question": "Le barème d'heures figurant à l'article D.821-188 du code de commerce est-il applicable à la mission de certification des comptes annuels prévue à l'article L.821-46 du code de commerce (mission ALPE) ? Justifiez votre réponse.",
    "qcm": {
     "choices": [
-     "Non : la mission ALPE est une prestation contractuelle dont les honoraires sont librement fixés",
+     "Non : la mission ALPE est une prestation contractuelle, dont les honoraires sont fixés d'un commun accord avec la société, hors barème",
      "Non : le barème d'heures ne s'applique qu'aux entités d'intérêt public, comme le prévoit l'article D.821-188",
      "Oui : la mission ALPE est une mission de certification des comptes, non exclue du barème (R.821-193 et R.821-194)",
-     "Oui, mais réduit de moitié par rapport au barème de droit commun, la durée du mandat étant de trois exercices seulement"
+     "Oui, mais réduit de moitié par rapport au barème de droit commun, la durée du mandat étant de trois exercices"
     ],
     "answer": 2
    },
@@ -9129,6 +9493,17 @@
   },
   {
    "id": "2024-11-CAC-13",
+   "intrus": {
+    "q": "Lequel n'est pas un seuil de nomination d'un CAC dans un organisme de formation ?",
+    "items": [
+     "3 salariés",
+     "153 000 € de chiffre d'affaires ou de ressources",
+     "230 000 € de total du bilan"
+    ],
+    "leurre": "50 salariés",
+    "cross": false,
+    "why": "50 salariés est un seuil des sociétés commerciales (avec 5 M€ de bilan et 10 M€ de CA)."
+   },
    "n": 13,
    "profession": "CAC",
    "theme": "exercice",
@@ -9141,8 +9516,8 @@
     "choices": [
      "Deux des trois seuils : 5 M€ de bilan, 10 M€ de chiffre d'affaires, 50 salariés",
      "Deux des trois seuils : 230 000 € de bilan, 153 000 € de chiffre d'affaires ou de ressources, 3 salariés",
-     "Ressources annuelles supérieures à 230 000 €, quel que soit l'effectif de l'organisme de formation",
-     "Plus de 153 000 € de subventions publiques annuelles, quel que soit l'effectif"
+     "Ressources annuelles supérieures à 230 000 €, sans critère d'effectif ni de bilan, comme pour un syndicat professionnel",
+     "Plus de 153 000 € de subventions publiques annuelles, comme une association, quel que soit le chiffre d'affaires"
     ],
     "answer": 1
    },
@@ -9263,6 +9638,18 @@
   },
   {
    "id": "2024-11-CAC-17",
+   "intrus": {
+    "q": "Laquelle n'est pas une règle de publicité ou de sollicitation du CAC ?",
+    "items": [
+     "Une information nécessaire au public",
+     "Aucune atteinte à l'indépendance, à la dignité ou au secret",
+     "Aucun élément comparatif",
+     "Le titre de CAC suivi de la compagnie régionale"
+    ],
+    "leurre": "Le démarchage téléphonique, s'il est suivi d'une confirmation écrite",
+    "cross": false,
+    "why": "La sollicitation personnalisée se fait par courrier ou courriel ; le démarchage physique ou téléphonique est exclu."
+   },
    "n": 17,
    "profession": "CAC",
    "theme": "deontologie",
@@ -9337,6 +9724,19 @@
   },
   {
    "id": "2024-11-CAC-19",
+   "intrus": {
+    "q": "Laquelle n'est pas une action de formation éligible pour un CAC ?",
+    "items": [
+     "Séminaires, autoformation encadrée, formation à distance",
+     "Assistance à des colloques ou conférences",
+     "Conception ou animation de formations",
+     "Rédaction et publication de travaux techniques",
+     "Participation à des travaux techniques"
+    ],
+    "leurre": "La réalisation de missions de certification dans un secteur nouveau",
+    "cross": false,
+    "why": "L'expérience acquise en mission n'est pas une action de formation."
+   },
    "n": 19,
    "profession": "CAC",
    "theme": "exercice",
@@ -9385,7 +9785,7 @@
    "question": "Que comporte la déclaration de prestation annuelle obligatoire du commissaire aux comptes prescrite à l'article D.821-186 du code de commerce ?",
    "qcm": {
     "choices": [
-     "La seule liste des formations suivies au cours de l'année, avec le nombre d'heures validées au titre de la formation continue",
+     "La liste des formations suivies au cours de l'année, avec le nombre d'heures validées au titre de la formation continue",
      "La liste des entités certifiées avec bilan, produits et heures, la liste des salariés et de leurs heures, et les autres missions avec honoraires",
      "Le montant global des honoraires perçus au cours de l'année, transmis directement à l'administration fiscale par la compagnie régionale avant le 31 mars",
      "La copie de chaque rapport de certification signé dans l'année, accompagnée des dossiers de travail de chaque mission, transmis à la CNCC"
@@ -9426,7 +9826,8 @@
      "Amende civile, emprisonnement, fermeture du cabinet et publication judiciaire",
      "Rappel à l'ordre par le Conseil national, suspension de la lettre de mission, déchéance du DEC"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -9446,6 +9847,17 @@
   },
   {
    "id": "2025-05-EC-02",
+   "intrus": {
+    "q": "Laquelle n'est pas une des trois natures de missions du cadre de référence de l'Ordre ?",
+    "items": [
+     "Missions d'assurance sur des comptes complets historiques",
+     "Autres missions d'assurance",
+     "Missions sans assurance"
+    ],
+    "leurre": "Missions de certification légale des comptes",
+    "cross": true,
+    "why": "La certification légale est la mission du commissaire aux comptes. Le cadre de référence de l'EC distingue assurance sur comptes complets, autres missions d'assurance et missions sans assurance."
+   },
    "n": 2,
    "profession": "EC",
    "theme": "exercice",
@@ -9491,8 +9903,8 @@
    "question": "Un cabinet d'expertise comptable peut-il référencer le nom et le logo de ses clients sur son site internet ? Justifiez votre réponse.",
    "qcm": {
     "choices": [
-     "Non, jamais : toute mention d'un client constitue une violation du secret professionnel",
-     "Oui, librement, car le nom d'un client n'est pas une information couverte par le secret",
+     "Non : la mention d'un client, même avec son accord, constitue une violation du secret professionnel",
+     "Oui, sans accord, car le nom d'un client n'est pas une information couverte par le secret",
      "Oui, avec l'accord préalable de chaque client, dans le respect du secret professionnel",
      "Oui, après autorisation du conseil régional de l'Ordre, valable pour trois ans"
     ],
@@ -9558,7 +9970,7 @@
    "question": "Un expert-comptable peut-il être agent immobilier ? Justifiez votre réponse.",
    "qcm": {
     "choices": [
-     "Oui, depuis 2010 toute activité commerciale est autorisée sans limite ni déclaration",
+     "Oui : depuis 2010, les activités commerciales accessoires sont ouvertes à l'expert-comptable",
      "Oui, si l'activité est exercée au sein d'une société distincte détenue à plus des deux tiers par des experts-comptables",
      "Non : activité d'intermédiaire commercial impliquant la détention de fonds, incompatible avec l'indépendance",
      "Non, sauf autorisation du commissaire du Gouvernement et du conseil régional"
@@ -9651,6 +10063,19 @@
   },
   {
    "id": "2025-05-EC-08",
+   "intrus": {
+    "q": "Laquelle n'est pas une des cinq conclusions de l'examen limité (NP 2400) ?",
+    "items": [
+     "Conclusion favorable sans observation",
+     "Conclusion favorable avec observation(s)",
+     "Conclusion avec réserve(s)",
+     "Conclusion défavorable",
+     "Impossibilité de conclure"
+    ],
+    "leurre": "Refus d'attester",
+    "cross": false,
+    "why": "Le refus d'attester appartient à la mission de présentation (NP 2300)."
+   },
    "n": 8,
    "profession": "EC",
    "theme": "exercice",
@@ -9702,9 +10127,10 @@
      "Saisir directement le procureur de la République, comme un commissaire aux comptes révélant un fait délictueux",
      "En informer le conseil régional de l'Ordre (son président), qui peut engager des poursuites",
      "Effectuer une déclaration de soupçon à Tracfin sans en informer le client",
-     "Ne rien faire, en raison du secret professionnel qui s'oppose à tout signalement"
+     "Le signaler au client concerné, le secret professionnel lui interdisant d'alerter l'Ordre"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -9733,10 +10159,10 @@
    "question": "À quelles conditions et moyennant quelle précaution un expert-comptable peut-il réaliser une mission à titre gracieux ?",
    "qcm": {
     "choices": [
-     "C'est interdit : les honoraires doivent toujours être la juste rémunération du travail fourni, toute gratuité étant une faute, sans exception possible",
-     "C'est possible sans aucune formalité, la gratuité dispensant de lettre de mission comme de toute information du client",
+     "C'est interdit : les honoraires doivent toujours être la juste rémunération du travail fourni",
+     "C'est possible, la gratuité dispensant d'établir une lettre de mission et d'informer le client des conditions de l'intervention du cabinet",
      "C'est possible si la gratuité n'est pas un procédé de concurrence déloyale ni ne compromet l'indépendance, et sous lettre de mission",
-     "C'est possible uniquement au profit d'associations reconnues d'utilité publique, après accord du Conseil national de l'Ordre"
+     "C'est possible au profit d'associations reconnues d'utilité publique, après accord du Conseil national de l'Ordre"
     ],
     "answer": 2
    },
@@ -9801,7 +10227,7 @@
    "question": "Le recours à la publicité pour un commissaire aux comptes est encadré par le code de déontologie. Citez les conditions et interdiction fixées par ce dernier.",
    "qcm": {
     "choices": [
-     "La publicité est interdite aux commissaires aux comptes, seule la sollicitation personnalisée par courriel étant permise, avec accord de la CRCC",
+     "La publicité est interdite au commissaire aux comptes ; la sollicitation personnalisée par courriel reste permise avec l'accord de la CRCC",
      "La publicité est permise si elle procure une information nécessaire au public, sans atteinte à l'indépendance ni à la dignité, et sans élément comparatif",
      "La publicité est libre, sous réserve d'un dépôt préalable des supports auprès de la CRCC, qui dispose d'un mois pour s'y opposer par décision motivée du conseil régional",
      "La publicité est permise, y compris comparative dès lors qu'elle est loyale, véridique et ne dénigre pas nommément les confrères"
@@ -9905,9 +10331,9 @@
    "qcm": {
     "choices": [
      "Non : la levée du secret entre CAC ne vaut que pour les groupes établissant des comptes consolidés, ce que n'est pas un petit groupe",
-     "Oui, mais seulement avec l'accord écrit du dirigeant de chaque filiale, qui délie son commissaire aux comptes du secret",
+     "Oui, avec l'accord écrit du dirigeant de chaque filiale, qui délie son commissaire aux comptes du secret",
      "Oui : les CAC de la mère d'un petit groupe et ceux des sociétés qu'elle contrôle sont libérés du secret entre eux",
-     "Oui, mais seulement après autorisation préalable de la H2A et information de la compagnie régionale"
+     "Oui, après autorisation préalable de la H2A et information de la compagnie régionale"
     ],
     "answer": 2
    },
@@ -9927,6 +10353,20 @@
   },
   {
    "id": "2025-05-CAC-16",
+   "intrus": {
+    "q": "Lequel n'est pas un principe fondamental de comportement du CAC (titre I) ?",
+    "items": [
+     "L'intégrité",
+     "L'impartialité",
+     "L'indépendance et la prévention des conflits d'intérêts",
+     "L'esprit critique",
+     "La compétence et la diligence",
+     "Le secret professionnel et la discrétion"
+    ],
+    "leurre": "Le devoir de conseil",
+    "cross": true,
+    "why": "Le devoir de conseil est propre à l'expert-comptable ; le CAC est tenu à la non-immixtion."
+   },
    "n": 16,
    "profession": "CAC",
    "theme": "deontologie",
@@ -10009,10 +10449,11 @@
     "choices": [
      "Non : l'article L.821-10 ne vise la révélation au procureur que dans le cadre d'une mission de certification",
      "Oui : l'article L.821-10 vise les faits délictueux connus à l'occasion de sa « mission ou prestation »",
-     "Non : il doit seulement faire une déclaration de soupçon à Tracfin, sans révéler au procureur de la République",
-     "Oui, mais uniquement s'il s'agit d'un fait de blanchiment ou de financement du terrorisme"
+     "Non : comme l'expert-comptable, il n'a pas à révéler ; il déclare à Tracfin s'il soupçonne un blanchiment",
+     "Oui, lorsqu'il s'agit d'un fait de blanchiment ou de financement du terrorisme"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 2
    },
    "qrc": {
     "expected": [
@@ -10046,7 +10487,7 @@
      "Le garde des sceaux, l'AMF, l'ACPR, l'ANC, le CNoCP et la CNCC",
      "Les compagnies régionales et le Conseil national de l'Ordre des experts-comptables",
      "Le ministre de l'économie, la Cour des comptes et le Conseil d'État",
-     "Uniquement la CNCC"
+     "La CNCC, après avis des compagnies régionales"
     ],
     "answer": 0
    },
@@ -10068,6 +10509,18 @@
   },
   {
    "id": "2025-05-CAC-20",
+   "intrus": {
+    "q": "Lequel ne siège pas à la commission des sanctions de la H2A ?",
+    "items": [
+     "Un magistrat de la Cour de cassation, président",
+     "Une personne ayant exercé la profession de CAC",
+     "Une personne qualifiée en durabilité",
+     "Deux personnes qualifiées en droit, économie ou finance"
+    ],
+    "leurre": "Deux membres élus du Conseil national de l'Ordre des experts-comptables",
+    "cross": true,
+    "why": "Les membres élus du Conseil national siègent à la chambre nationale de discipline des experts-comptables."
+   },
    "n": 20,
    "profession": "CAC",
    "theme": "responsabilite",
@@ -10084,7 +10537,8 @@
      "Le président de la H2A, le président de l'AMF, le président de l'ACPR, le directeur général du Trésor et le président de la CNCC",
      "Un président de chambre de la cour d'appel de Paris, deux fonctionnaires désignés par le ministre de l'économie et deux membres du Conseil national de l'Ordre"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 3
    },
    "qrc": {
     "expected": [
@@ -10832,7 +11286,8 @@
      "Devant le Conseil national de l'Ordre",
      "Devant le tribunal judiciaire du lieu de son cabinet"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -10850,6 +11305,19 @@
   },
   {
    "id": "2026-05-EC-02",
+   "intrus": {
+    "q": "Laquelle n'est pas une peine disciplinaire de l'expert-comptable (ord. art. 53) ?",
+    "items": [
+     "La réprimande",
+     "Le blâme avec inscription au dossier",
+     "La suspension avec sursis",
+     "La suspension sans sursis",
+     "La radiation du tableau"
+    ],
+    "leurre": "L'avertissement",
+    "cross": true,
+    "why": "L'avertissement est une sanction du commissaire aux comptes ; chez l'EC, l'avertissement dans le cabinet du président est hors de l'échelle des peines."
+   },
    "n": 2,
    "profession": "EC",
    "theme": "responsabilite",
@@ -10866,7 +11334,8 @@
      "Remontrance, amende civile, suspension temporaire, radiation de la liste",
      "Rappel à l'ordre, sanction pécuniaire de 250 000 €, suspension, radiation de la liste, publication au Journal officiel"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -10902,7 +11371,8 @@
      "Respecter le secret, conseiller le client, refuser d'y participer et déclarer à Tracfin si blanchiment",
      "Informer le Conseil national de l'Ordre, qui saisit le parquet après enquête disciplinaire"
     ],
-    "answer": 2
+    "answer": 2,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -10921,6 +11391,18 @@
   },
   {
    "id": "2026-05-EC-04",
+   "intrus": {
+    "q": "Laquelle n'est pas une activité interdite à l'expert-comptable ?",
+    "items": [
+     "Un emploi salarié hors cabinet (sauf exceptions)",
+     "Une activité commerciale non accessoire",
+     "Un mandat de recevoir, conserver ou délivrer des fonds",
+     "Une activité d'agent d'affaires"
+    ],
+    "leurre": "Un mandat social dans une société non inscrite à l'Ordre",
+    "cross": false,
+    "why": "Les mandats sociaux sont permis, sous le contrôle du conseil régional et sans atteinte à l'indépendance."
+   },
    "n": 4,
    "profession": "EC",
    "theme": "deontologie",
@@ -10969,7 +11451,7 @@
      "Les sociétés par actions simplifiées, y compris unipersonnelles (SAS et SASU)",
      "Les sociétés conférant à leurs associés la qualité de commerçant (SNC, SCS, SCA)",
      "Les sociétés à responsabilité limitée, même unipersonnelles (SARL et EURL)",
-     "Toute société dont le capital n'est pas détenu à 100 % par des experts-comptables inscrits"
+     "Les sociétés dont le capital n'est pas détenu en totalité par des experts-comptables inscrits"
     ],
     "answer": 1
    },
@@ -11002,10 +11484,11 @@
     "choices": [
      "Obtenir l'autorisation écrite du prédécesseur, faute de quoi la mission ne peut être acceptée",
      "Informer le prédécesseur avant d'accepter et vérifier que le changement ne vise pas à éluder la loi",
-     "Saisir le président de la CRCC pour qu'il désigne le successeur parmi les confrères inscrits",
-     "Aucune formalité : la liberté de choix du client prime sur toute considération confraternelle"
+     "Saisir le président de la compagnie régionale pour qu'il désigne le successeur parmi les confrères inscrits",
+     "Informer le conseil régional de l'Ordre, qui avise lui-même le prédécesseur"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 2
    },
    "qrc": {
     "expected": [
@@ -11034,12 +11517,13 @@
    "question": "À quelles conditions, un expert-comptable peut-il interrompre sa mission ?",
    "qcm": {
     "choices": [
-     "Uniquement en cas de cessation définitive d'activité ou de motif personnel impérieux",
+     "Pour l'un des motifs légitimes de démission : cessation définitive d'activité, motif personnel impérieux, difficultés dans la mission",
      "Pour des motifs justes et raisonnables, en s'efforçant de ne pas porter préjudice au client",
-     "Seulement après autorisation préalable du président du conseil régional de l'Ordre",
-     "À tout moment, à condition de restituer les honoraires perçus et de payer une indemnité"
+     "Après autorisation préalable du président du conseil régional de l'Ordre",
+     "À sa convenance, à condition de restituer les honoraires perçus et de payer une indemnité"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -11093,6 +11577,17 @@
   },
   {
    "id": "2026-05-EC-09",
+   "intrus": {
+    "q": "Lequel n'est pas un critère d'une opération atypique (examen renforcé) ?",
+    "items": [
+     "Une opération particulièrement complexe",
+     "Un montant inhabituellement élevé",
+     "L'absence de justification économique ou d'objet licite apparent"
+    ],
+    "leurre": "Une opération réalisée avec une personne politiquement exposée",
+    "cross": false,
+    "why": "Une PPE impose une vigilance renforcée sur la relation, mais n'est pas un critère de l'opération atypique."
+   },
    "n": 9,
    "profession": "EC",
    "theme": "deontologie",
@@ -11103,10 +11598,10 @@
    "question": "Quels sont les critères caractérisant une opération atypique en matière de lutte contre le blanchiment des capitaux et le financement du terrorisme et nécessitant un examen renforcé ?",
    "qcm": {
     "choices": [
-     "Toute opération en espèces supérieure à 1 000 € réalisée par un client occasionnel",
+     "Une opération en espèces supérieure à 1 000 € réalisée par un client occasionnel",
      "Une opération particulièrement complexe, d'un montant inhabituellement élevé ou sans justification économique",
-     "Toute opération réalisée avec une personne politiquement exposée, quel qu'en soit le montant",
-     "Toute opération réalisée avec un pays de l'Union européenne autre que la France, quel que soit son objet"
+     "Toute opération réalisée avec une personne politiquement exposée ou l'un de ses proches",
+     "Une opération réalisée avec un pays de l'Union européenne autre que la France, quel qu'en soit le montant"
     ],
     "answer": 1
    },
@@ -11141,7 +11636,7 @@
      "Un blâme avec inscription au dossier, prononcé par la chambre régionale de discipline",
      "Il est radié d'office du tableau après deux mises en demeure infructueuses",
      "Une suspension de trois mois avec sursis, prononcée par le conseil régional",
-     "Une simple majoration de retard, sans aucune conséquence ordinale"
+     "Une majoration de retard appliquée par la CAVEC, l'Ordre n'intervenant pas"
     ],
     "answer": 1
    },
@@ -11175,8 +11670,8 @@
     "choices": [
      "Ils prennent fin automatiquement à la date de la fusion, l'entité devant procéder à une nouvelle nomination",
      "L'absorbante poursuit les mandats jusqu'à leur expiration ; l'entité peut délibérer sur leur maintien après avoir entendu le CAC",
-     "Ils sont transférés de plein droit au commissaire aux comptes suppléant de la société absorbée, jusqu'à leur terme normal et sans délibération",
-     "Ils sont poursuivis par l'absorbante pour six nouveaux exercices, sans que l'entité contrôlée puisse en délibérer"
+     "Ils sont transférés au commissaire aux comptes suppléant de la société absorbée jusqu'à leur terme",
+     "Ils sont poursuivis par la société absorbante pour six nouveaux exercices, sans que l'entité contrôlée puisse délibérer sur leur maintien"
     ],
     "answer": 1
    },
@@ -11208,10 +11703,10 @@
    "question": "Selon la NEP 9605 - Obligations du commissaire aux comptes en matière de lutte contre le blanchiment des capitaux et le financement du terrorisme, quelle est la définition du bénéficiaire effectif ?",
    "qcm": {
     "choices": [
-     "Toute personne morale détenant plus de 10 % du capital ou des droits de vote, directement ou par une société interposée",
+     "Les personnes morales détenant plus de 10 % du capital ou des droits de vote, directement ou par une société interposée",
      "La ou les personnes physiques qui contrôlent en dernier lieu le client, notamment par plus de 25 % du capital ou des droits de vote",
-     "Le dirigeant de droit de l'entité, toujours seul bénéficiaire effectif, même lorsqu'un associé personne physique détient la majorité du capital",
-     "Tout actionnaire ayant perçu un dividende au cours de l'exercice, quel que soit le pourcentage de capital qu'il détient"
+     "Le dirigeant de droit de l'entité, même lorsqu'un associé personne physique détient la majorité du capital",
+     "Les actionnaires ayant perçu un dividende au cours de l'exercice, quel que soit le pourcentage du capital ou des droits de vote qu'ils détiennent"
     ],
     "answer": 1
    },
@@ -11244,7 +11739,7 @@
     "choices": [
      "… cohérents et vraisemblables dans leur ensemble, au regard des informations recueillies auprès de la direction et des principaux responsables de l'entité",
      "… réguliers et sincères et donnent une image fidèle du résultat des opérations de l'exercice écoulé ainsi que de la situation financière et du patrimoine à la fin de cet exercice",
-     "… exempts de toute erreur et de toute fraude, quelle qu'en soit l'importance, et garantissent la continuité de l'exploitation de la société au-delà de la clôture de l'exercice",
+     "… exacts et exempts de toute erreur, et garantissent la continuité de l'exploitation de la société au-delà de la clôture de l'exercice",
      "… établis, dans tous leurs aspects significatifs, conformément au référentiel comptable identifié, sans observation, au vu des procédures d'examen limité mises en œuvre"
     ],
     "answer": 1
@@ -11299,6 +11794,18 @@
   },
   {
    "id": "2026-05-CAC-15",
+   "intrus": {
+    "q": "Lequel n'est pas sanctionnable par la commission des sanctions de la H2A ?",
+    "items": [
+     "Un commissaire aux comptes, personne physique ou société",
+     "Un salarié du cabinet ayant un lien interdit avec l'entité",
+     "Le dirigeant d'une EIP pour la désignation ou la durée du mandat",
+     "L'entité qui s'oppose aux contrôles de la H2A"
+    ],
+    "leurre": "Un expert-comptable, pour son activité d'expertise comptable",
+    "cross": true,
+    "why": "L'expert-comptable relève des chambres de discipline de l'Ordre pour son activité d'expertise comptable."
+   },
    "n": 15,
    "profession": "CAC",
    "theme": "responsabilite",
@@ -11418,9 +11925,9 @@
    "question": "Selon l'article 29 du code de déontologie de la profession de commissaire aux comptes, quelle est la caractéristique de l'exercice en réseau ?",
    "qcm": {
     "choices": [
-     "Le fait d'exercer avec au moins un autre commissaire aux comptes dans une même société inscrite à la même compagnie régionale, quelle que soit la forme sociale choisie",
+     "Le fait d'exercer avec au moins un autre commissaire aux comptes dans une même société inscrite à la même compagnie régionale",
      "L'appartenance à un réseau national ou international dont les membres ont un intérêt économique commun et qui ne certifie pas exclusivement les comptes",
-     "L'adhésion à une compagnie régionale et à la Compagnie nationale, qui imposent une charte commune à tous leurs membres",
+     "L'adhésion à une compagnie régionale et à la Compagnie nationale, qui fixent une charte commune à l'ensemble de leurs membres et contrôlent leur activité",
      "Le co-commissariat aux comptes, c'est-à-dire la nomination conjointe de deux commissaires aux comptes dans une même entité"
     ],
     "answer": 1
@@ -11458,7 +11965,8 @@
      "Comparution immédiate, citation directe et ordonnance pénale devant le tribunal correctionnel",
      "Médiation devant la CRCC, puis arbitrage du président de la CNCC et homologation par la H2A"
     ],
-    "answer": 1
+    "answer": 1,
+    "crossProf": 0
    },
    "qrc": {
     "expected": [
@@ -11489,10 +11997,10 @@
    "question": "À quelles conditions, un commissaire aux comptes peut-il se faire assister ou représenter par des collaborateurs ou des experts ?",
    "qcm": {
     "choices": [
-     "Librement, en leur déléguant ses pouvoirs de signature, sous réserve d'en informer la compagnie régionale de rattachement et l'entité contrôlée",
+     "En leur déléguant librement ses pouvoirs de signature, après en avoir informé la compagnie régionale et l'entité contrôlée",
      "Sous sa responsabilité, sans leur déléguer ses pouvoirs, en les faisant connaître nommément à l'entité et en s'assurant de leur compétence",
-     "Uniquement après autorisation préalable de la CRCC, qui agrée nominativement chaque collaborateur ou expert concerné",
-     "Uniquement s'ils sont eux-mêmes inscrits sur la liste des CAC et exercent au sein de la même structure que lui, à titre salarié ou associé"
+     "Après autorisation préalable de la CRCC, qui agrée nominativement chaque collaborateur ou expert intervenant dans la mission",
+     "S'ils sont eux-mêmes inscrits sur la liste des commissaires aux comptes et exercent au sein de la même structure que lui, comme associés ou salariés"
     ],
     "answer": 1
    },
@@ -11510,6 +12018,782 @@
    "confidence": "high",
    "session": "2026-05",
    "origFormat": "qrc"
+  },
+  {
+   "id": "transfert-CAC-01",
+   "n": 1,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "discipline_sanctions",
+    "h2a_supervision"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Depuis le 1er janvier 2024, quel organe prononce les sanctions disciplinaires à l'encontre d'un commissaire aux comptes, et quel organe l'a précédé ?",
+   "qcm": {
+    "choices": [
+     "La commission des sanctions de la H2A, qui a succédé à la formation restreinte du H3C",
+     "Le collège de la H2A, qui arrête les griefs puis prononce lui-même la sanction",
+     "La chambre régionale de discipline, avec appel devant la chambre nationale",
+     "La formation restreinte du H3C, maintenue jusqu'à l'achèvement des mandats en cours"
+    ],
+    "answer": 0,
+    "crossProf": 2
+   },
+   "qrc": {
+    "expected": [
+     "Commission des sanctions de la Haute autorité de l'audit (H2A)",
+     "Elle a succédé à la formation restreinte du H3C (procédures en cours transférées)",
+     "Séparée du collège, qui poursuit"
+    ],
+    "model_answer": "C'est la commission des sanctions de la Haute autorité de l'audit, distincte du collège qui engage les poursuites. Elle a remplacé la formation restreinte du Haut conseil du commissariat aux comptes le 1er janvier 2024, les procédures en cours lui ayant été transférées."
+   },
+   "explanation": "La H2A comprend un collège et une commission des sanctions (L.820-2 I) : le collège poursuit, la commission juge. Les chambres régionale et nationale de discipline sont celles de l'expert-comptable, piège classique de confusion entre les deux professions.",
+   "reference": "C. com. L.820-2 I et V, L.821-79 ; ordonnance 2023-1142 (entrée en vigueur au 01/01/2024)",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-02",
+   "n": 2,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "discipline_sanctions",
+    "h2a_supervision"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Dans la procédure de sanction d'un commissaire aux comptes, qui arrête les griefs et qui les notifie à la personne poursuivie ?",
+   "qcm": {
+    "choices": [
+     "La H2A (son collège) arrête les griefs, que son président notifie avant de transmettre le dossier à la commission",
+     "Le rapporteur général arrête et notifie les griefs, puis saisit directement la commission des sanctions",
+     "Le magistrat chargé des poursuites notifie les griefs et saisit la chambre de discipline",
+     "La commission des sanctions arrête les griefs, que son président notifie avant l'audience"
+    ],
+    "answer": 0,
+    "crossProf": 2
+   },
+   "qrc": {
+    "expected": [
+     "La H2A (collège) arrête les griefs au vu du rapport d'enquête",
+     "Le président de la H2A les notifie à la personne",
+     "Puis transmet rapport, observations et griefs à la commission des sanctions"
+    ],
+    "model_answer": "Au vu du rapport d'enquête du rapporteur général et des observations de l'intéressé, la H2A arrête les griefs ; son président les notifie à la personne, qui peut consulter le dossier et présenter ses observations, puis il transmet le dossier à la commission des sanctions."
+   },
+   "explanation": "Séparation des fonctions : le rapporteur général enquête, le collège poursuit (griefs), la commission juge. Le magistrat chargé des poursuites et la chambre de discipline appartiennent à la procédure de l'expert-comptable.",
+   "reference": "C. com. L.821-77",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-03",
+   "n": 3,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "discipline_sanctions",
+    "formation"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "À quels manquements s'applique la procédure simplifiée de sanction de la H2A, et quelle sanction peut-elle aboutir à prononcer ?",
+   "qcm": {
+    "choices": [
+     "Aux manquements simples et établis aux obligations déclaratives et à la formation continue ; une sanction pécuniaire de 15 000 € au plus",
+     "Aux manquements simples de toute nature ; un avertissement ou un blâme, prononcé par une formation restreinte de trois membres",
+     "Aux fautes reconnues par le commissaire aux comptes ; une interdiction d'exercer d'un an au plus, avec sursis",
+     "Aux manquements commis par les entités d'intérêt public ; une sanction pécuniaire plafonnée à 250 000 €"
+    ],
+    "answer": 0
+   },
+   "qrc": {
+    "expected": [
+     "Manquements aux obligations déclaratives (fixées par décret) et à la formation continue",
+     "Manquements simples et établis",
+     "Sanction pécuniaire seulement, 15 000 € au plus",
+     "Décision du président de la commission sans débat ; opposition dans les 30 jours"
+    ],
+    "model_answer": "Elle vise les manquements simples et établis aux obligations déclaratives fixées par décret et à l'obligation de formation continue. Sur proposition de la formation plénière du collège, le président de la commission des sanctions statue seul et sans débat ; il ne peut prononcer qu'une sanction pécuniaire de 15 000 € au plus. L'intéressé ou le président de la H2A peut former opposition dans les 30 jours, l'affaire revenant alors devant la commission."
+   },
+   "explanation": "La procédure simplifiée ne permet ni avertissement, ni blâme, ni interdiction : seulement une somme, dans la limite proposée par le collège. L'opposition ramène l'affaire en audience publique devant la commission (audience un mois au moins après l'opposition).",
+   "reference": "C. com. L.821-81 et L.821-82 ; L.821-24 (formation continue)",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-04",
+   "intrus": {
+    "q": "Laquelle n'est pas une étape de la composition administrative ?",
+    "items": [
+     "Proposition de la H2A après la notification des griefs",
+     "Acceptation par l'intéressé",
+     "Validation de l'accord par la formation plénière du collège",
+     "Homologation par la commission des sanctions"
+    ],
+    "leurre": "Médiation préalable du président de la compagnie régionale",
+    "cross": false,
+    "why": "La compagnie régionale n'intervient pas dans la composition administrative."
+   },
+   "n": 4,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "discipline_sanctions",
+    "h2a_supervision"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Décrivez les étapes de la composition administrative en matière de sanction des commissaires aux comptes.",
+   "qcm": {
+    "question": "Comment se déroule une composition administrative en matière de sanction des commissaires aux comptes ?",
+    "choices": [
+     "Après les griefs, la H2A propose ; l'intéressé accepte la sanction proposée ; l'accord est validé par le collège, homologué par la commission, puis publié",
+     "Le rapporteur général propose une transaction pendant l'enquête ; signée par l'intéressé, elle éteint les poursuites sans homologation ni publication",
+     "Le président de la CRCC organise une médiation entre la H2A et le commissaire aux comptes, puis le président de la CNCC entérine l'accord",
+     "La commission des sanctions propose une sanction réduite à l'audience ; l'accord est consigné dans sa décision, qui n'est pas publiée"
+    ],
+    "answer": 0
+   },
+   "qrc": {
+    "expected": [
+     "Après avoir arrêté les griefs, la H2A propose d'entrer en voie de composition administrative",
+     "Si l'intéressé accepte, le président de la H2A propose une ou plusieurs sanctions",
+     "Accord validé par la formation plénière du collège",
+     "Homologation par la commission des sanctions, puis publication ; à défaut, procédure ordinaire"
+    ],
+    "model_answer": "Une fois les griefs arrêtés, la H2A peut proposer à l'intéressé d'entrer en composition administrative. S'il accepte, le président de la H2A lui propose une ou plusieurs sanctions. L'accord est soumis à la formation plénière du collège puis, s'il est validé, à la commission des sanctions, qui peut l'homologuer ; l'accord homologué est publié. Sans homologation, ou si l'accord n'est pas respecté, la procédure ordinaire reprend."
+   },
+   "explanation": "La composition administrative intervient après la notification des griefs, jamais pendant l'enquête. La décision d'homologation ou de refus peut faire l'objet d'un recours devant le Conseil d'État.",
+   "reference": "C. com. L.821-78, L.821-84, L.821-85",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-05",
+   "n": 5,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "discipline_sanctions"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Une radiation de la liste peut-elle être prononcée à l'issue d'une composition administrative ? Quelles sanctions peuvent être proposées dans ce cadre ?",
+   "qcm": {
+    "choices": [
+     "Non : peuvent être proposés l'avertissement, le blâme, l'interdiction temporaire, le retrait de l'honorariat et les sanctions complémentaires, la somme étant plafonnée",
+     "Oui : toutes les sanctions de l'échelle peuvent être proposées, la radiation comprise, dès lors que l'intéressé l'accepte par écrit",
+     "Non : la composition administrative ne permet qu'une sanction pécuniaire, plafonnée à 15 000 € comme la procédure simplifiée",
+     "Oui, mais la radiation ne prend effet qu'après confirmation par le Conseil d'État, saisi d'office par le président de la H2A"
+    ],
+    "answer": 0
+   },
+   "qrc": {
+    "expected": [
+     "Non, la radiation est exclue",
+     "Avertissement, blâme, interdiction temporaire d'exercer, retrait de l'honorariat",
+     "Sanctions complémentaires (publication, interdiction de fonctions de direction, sanction pécuniaire)",
+     "Somme plafonnée à 50 000 € (personne physique) et 200 000 € (personne morale)"
+    ],
+    "model_answer": "Non. La composition administrative peut porter sur l'avertissement, le blâme, l'interdiction temporaire d'exercer, le retrait de l'honorariat et les sanctions complémentaires (publication, interdiction de fonctions de direction, sanction pécuniaire), mais pas sur la radiation. La sanction pécuniaire proposée est plafonnée à 50 000 € pour une personne physique et 200 000 € pour une personne morale."
+   },
+   "explanation": "L.821-78 renvoie aux 1°, 2°, 3° et 5° du I de L.821-71 : le 4°, la radiation, en est exclu. Le plafond de 15 000 € est celui de la procédure simplifiée.",
+   "reference": "C. com. L.821-78, L.821-71",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-06",
+   "n": 6,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "discipline_sanctions",
+    "h2a_supervision"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Qu'est-ce que la suspension provisoire d'un commissaire aux comptes : qui la prononce, pour combien de temps et s'agit-il d'une sanction ?",
+   "qcm": {
+    "choices": [
+     "Une mesure d'urgence, pour des faits d'une particulière gravité, décidée par la formation plénière du collège pour six mois au plus ; ce n'est pas une sanction",
+     "Une sanction prononcée par la commission des sanctions, pour un an au plus, à l'issue d'une audience publique",
+     "Une peine de suspension avec sursis prononcée par la chambre régionale de discipline, pour une durée déterminée",
+     "Une mesure décidée par le président de la CRCC pour trois mois, renouvelable une fois, en cas de contrôle d'activité défavorable"
+    ],
+    "answer": 0,
+    "crossProf": 2
+   },
+   "qrc": {
+    "expected": [
+     "Faits d'une particulière gravité justifiant des sanctions pénales ou disciplinaires ; urgence et intérêt public",
+     "Demandée par le rapporteur général (ou une autorité de saisine) à la formation plénière du collège",
+     "Six mois au plus, après observations de l'intéressé",
+     "Mesure provisoire, pas une sanction ; cesse quand les actions pénale et disciplinaire sont éteintes"
+    ],
+    "model_answer": "Lorsque des faits d'une particulière gravité paraissent justifier des sanctions pénales ou disciplinaires et que l'urgence et l'intérêt public le justifient, le rapporteur général peut demander à la formation plénière du collège de la H2A de suspendre provisoirement un commissaire aux comptes personne physique, pour six mois au plus, après l'avoir mis en mesure de présenter ses observations. C'est une mesure provisoire, non une sanction : elle peut être levée à tout moment et cesse de plein droit avec l'extinction des actions pénale et disciplinaire."
+   },
+   "explanation": "La suspension avec ou sans sursis est une peine disciplinaire de l'expert-comptable (ord. 1945 art. 53). Pour le CAC, l'échelle des sanctions ne comporte pas de « suspension » : la suspension provisoire est une mesure conservatoire du collège.",
+   "reference": "C. com. L.821-76",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-07",
+   "n": 7,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "discipline_sanctions"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Quelles sont les règles de l'audience devant la commission des sanctions dans la procédure ordinaire (délai, publicité, intervenants) ?",
+   "qcm": {
+    "question": "Devant la commission des sanctions (procédure ordinaire), quelle règle d'audience est exacte ?",
+    "choices": [
+     "L'audience se tient deux mois au moins après la notification des griefs ; elle est publique, sauf huis clos décidé par le président",
+     "L'audience se tient dans le mois de la notification des griefs ; elle se déroule à huis clos pour protéger le secret professionnel",
+     "L'audience se tient quinze jours au moins après les griefs ; le rapporteur général participe au délibéré",
+     "Il n'y a pas d'audience : la commission statue sur pièces, au vu du rapport d'enquête et des observations écrites"
+    ],
+    "answer": 0
+   },
+   "qrc": {
+    "expected": [
+     "Audience deux mois au moins après la notification des griefs",
+     "Audience publique (huis clos possible : ordre public, secrets protégés)",
+     "Président de la CRCC avisé, peut être entendu ; le président de la H2A soutient les griefs et propose une sanction",
+     "Délibéré hors la présence des parties et du rapporteur général ; décision motivée"
+    ],
+    "model_answer": "La personne poursuivie est convoquée à une audience qui se tient deux mois au moins après la notification des griefs. L'audience est publique, sauf huis clos décidé par le président pour l'ordre public ou la protection d'un secret. Le président de la CRCC dont relève l'intéressé est avisé et peut être entendu ; le rapporteur général expose ses conclusions ; le président de la H2A soutient les griefs et propose une sanction. La commission délibère hors la présence des parties et du rapporteur général et rend une décision motivée."
+   },
+   "explanation": "Le délai d'un mois au moins vaut pour l'audience qui suit une opposition dans la procédure simplifiée (L.821-82). Le rapporteur général ne délibère pas : c'est la garantie d'impartialité.",
+   "reference": "C. com. L.821-80, L.821-82",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-08",
+   "n": 8,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "discipline_sanctions"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Qui peut former un recours contre une décision de la commission des sanctions de la H2A, et devant quelle juridiction ?",
+   "qcm": {
+    "choices": [
+     "La personne sanctionnée, ou le président de la H2A après accord du collège, par un recours de pleine juridiction devant le Conseil d'État",
+     "La personne sanctionnée et le plaignant, par un appel devant la chambre nationale de discipline, puis un pourvoi devant le Conseil d'État",
+     "La personne sanctionnée, par un appel devant la cour d'appel de Paris, puis un pourvoi devant la Cour de cassation",
+     "Le président de la CNCC, dans l'intérêt de la profession, devant le tribunal administratif de Paris"
+    ],
+    "answer": 0,
+    "crossProf": 1
+   },
+   "qrc": {
+    "expected": [
+     "La personne sanctionnée",
+     "Le président de la H2A, après accord du collège",
+     "Recours de pleine juridiction devant le Conseil d'État"
+    ],
+    "model_answer": "La personne sanctionnée et le président de la Haute autorité, après accord du collège, peuvent former un recours de pleine juridiction devant le Conseil d'État. La H2A publie sans délai sur son site l'existence de ce recours."
+   },
+   "explanation": "Il n'y a pas d'appel : la décision de la commission est directement contestée devant le Conseil d'État, qui peut réformer la sanction (pleine juridiction). Pour l'expert-comptable, appel devant la chambre nationale puis recours en cassation devant le Conseil d'État.",
+   "reference": "C. com. L.821-85, L.821-84",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-09",
+   "n": 9,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "discipline_sanctions",
+    "eip"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Le dirigeant d'une entité d'intérêt public qui n'est pas commissaire aux comptes peut-il être sanctionné par la commission des sanctions de la H2A ? Dans quels cas ?",
+   "qcm": {
+    "question": "Lequel de ces non-commissaires aux comptes peut être sanctionné par la commission des sanctions de la H2A ?",
+    "choices": [
+     "L'administrateur d'une EIP qui a méconnu les règles de désignation ou de durée du mandat du commissaire aux comptes",
+     "L'expert-comptable qui tient la comptabilité de l'entité contrôlée et commet une erreur de déclaration fiscale",
+     "L'actionnaire minoritaire qui vote contre le renouvellement du commissaire aux comptes en assemblée générale",
+     "Le président de la compagnie régionale qui refuse une dérogation au barème d'heures demandée par un confrère"
+    ],
+    "answer": 0,
+    "crossProf": 1
+   },
+   "qrc": {
+    "expected": [
+     "Oui : les EIP et leurs gérants, administrateurs, membres du directoire ou du conseil de surveillance",
+     "Manquements relatifs aux services fournis par le CAC, à sa désignation, à la durée du mandat, aux honoraires",
+     "Aussi les entités qui s'opposent aux contrôles et enquêtes de la H2A",
+     "Sanctions : interdiction temporaire de fonctions (3 ans au plus), sanction pécuniaire"
+    ],
+    "model_answer": "Oui. Les entités d'intérêt public et leurs gérants, administrateurs, membres du directoire ou du conseil de surveillance sont passibles de sanctions pour les manquements relatifs aux services fournis par le commissaire aux comptes, à sa désignation, à la durée de son mandat et à ses honoraires ; de même pour ceux qui s'opposent aux contrôles et enquêtes de la H2A. Ils encourent une interdiction temporaire de fonctions (trois ans au plus) et une sanction pécuniaire."
+   },
+   "explanation": "La commission des sanctions connaît aussi de l'action contre des personnes autres que les commissaires aux comptes (L.821-79). L'expert-comptable, pour son activité d'expertise comptable, relève des chambres de discipline de l'Ordre.",
+   "reference": "C. com. L.821-70 II, L.821-72, L.821-79",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-10",
+   "n": 10,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "discipline_sanctions"
+   ],
+   "points": 1,
+   "hors_annales": true,
+   "question": "Quel est le montant maximal de la sanction pécuniaire encourue par un commissaire aux comptes personne physique (hors réitération et hors manquement LCB-FT) ?",
+   "qcm": {
+    "choices": [
+     "250 000 €",
+     "1 000 000 €",
+     "15 000 €",
+     "Aucune somme : la sanction pécuniaire est réservée aux manquements à la lutte contre le blanchiment"
+    ],
+    "answer": 0,
+    "crossProf": 3
+   },
+   "qrc": {
+    "expected": [
+     "250 000 € pour une personne physique",
+     "Personne morale : 1 M€ ou la moyenne annuelle des honoraires facturés à l'entité si elle est plus élevée",
+     "Double en cas de réitération dans les 5 ans"
+    ],
+    "model_answer": "250 000 € pour une personne physique. Pour une société de commissaires aux comptes, la plus élevée de 1 M€ ou, pour une faute commise dans une mission de certification, de la moyenne annuelle des honoraires facturés à l'entité. Ces montants peuvent être doublés en cas de faute réitérée dans les cinq ans."
+   },
+   "explanation": "L'expert-comptable n'encourt une sanction pécuniaire qu'en matière de LCB-FT (ord. 1945 art. 53 bis) : c'est la règle de l'autre profession. 15 000 € est le plafond de la procédure simplifiée, 1 M€ celui d'une société de CAC.",
+   "reference": "C. com. L.821-71 II 3°",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-11",
+   "intrus": {
+    "q": "Lequel n'est pas un critère de détermination de la sanction (L.821-83) ?",
+    "items": [
+     "La gravité et la durée du manquement",
+     "Le degré d'implication de la personne",
+     "Sa capacité financière",
+     "Sa coopération pendant l'enquête",
+     "Ses manquements antérieurs"
+    ],
+    "leurre": "L'avis conforme du président de la compagnie régionale",
+    "cross": false,
+    "why": "Le président de la CRCC peut être entendu à l'audience, mais son avis ne lie pas la commission."
+   },
+   "n": 11,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "discipline_sanctions"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Citez les critères dont la commission des sanctions tient compte pour déterminer la sanction d'un commissaire aux comptes.",
+   "qcm": {
+    "question": "Lequel de ces éléments la commission des sanctions doit-elle prendre en compte pour déterminer la sanction ?",
+    "choices": [
+     "Le degré de coopération dont l'intéressé a fait preuve pendant l'enquête",
+     "L'avis du président de la compagnie régionale, qui lie la commission sur le quantum",
+     "L'ancienneté d'inscription sur la liste, qui plafonne la sanction des jeunes inscrits",
+     "Le résultat de l'entité contrôlée, qui sert d'assiette à la sanction pécuniaire"
+    ],
+    "answer": 0
+   },
+   "qrc": {
+    "expected": [
+     "Gravité et durée de la faute ou du manquement",
+     "Qualité et degré d'implication de la personne",
+     "Situation et capacité financière ; gains obtenus ou pertes évitées",
+     "Coopération à l'enquête ; manquements antérieurs"
+    ],
+    "model_answer": "La sanction tient compte de la gravité et de la durée de la faute, de la qualité et du degré d'implication de la personne, de sa situation et de sa capacité financière, des gains obtenus ou des pertes évitées, de son degré de coopération pendant l'enquête et des manquements commis précédemment (et, en LCB-FT, du préjudice subi par les tiers)."
+   },
+   "explanation": "Le président de la CRCC est avisé de l'audience et peut présenter des observations, mais il ne lie pas la commission. Le jury n'exige pas le quantum : retenir les grandes familles de critères.",
+   "reference": "C. com. L.821-83, L.821-80",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-12",
+   "n": 12,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "discipline_sanctions"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Un commissaire aux comptes a été sanctionné d'une interdiction d'exercer d'un an avec sursis. Trois ans plus tard, il commet une faute qui entraîne une nouvelle sanction. Quelle est la conséquence sur la première sanction ?",
+   "qcm": {
+    "choices": [
+     "Sauf décision motivée, la première sanction est exécutée, sans confusion avec la seconde",
+     "Le sursis est perdu de plein droit et la radiation de la liste est prononcée automatiquement",
+     "Aucune : le délai d'épreuve du sursis est de deux ans, déjà écoulé",
+     "Les deux sanctions se confondent et seule la plus forte est exécutée"
+    ],
+    "answer": 0
+   },
+   "qrc": {
+    "expected": [
+     "Délai de cinq ans à compter du prononcé de la sanction",
+     "Nouvelle faute sanctionnée dans ce délai : exécution de la première sanction",
+     "Sauf décision motivée, sans confusion avec la seconde"
+    ],
+    "model_answer": "L'interdiction temporaire (comme la sanction pécuniaire) peut être assortie du sursis. Si, dans les cinq ans du prononcé, la personne commet une faute entraînant une nouvelle sanction, celle-ci entraîne, sauf décision motivée, l'exécution de la première sanction, sans confusion possible avec la seconde."
+   },
+   "explanation": "La révocation du sursis n'est pas automatique : la commission peut l'écarter par une décision motivée. Le délai de cinq ans court à compter du prononcé de la sanction.",
+   "reference": "C. com. L.821-71 III",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-13",
+   "n": 13,
+   "profession": "CAC",
+   "theme": "exercice",
+   "tags": [
+    "durabilite_csrd",
+    "inscription_liste"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Qui peut réaliser la mission de certification des informations en matière de durabilité d'une société soumise à la CSRD ?",
+   "qcm": {
+    "choices": [
+     "Un commissaire aux comptes inscrit sur la liste spéciale tenue par la H2A, ou un auditeur de durabilité exerçant au sein d'un organisme tiers indépendant",
+     "L'expert-comptable de la société, dans le cadre d'une mission de présentation complétée d'une attestation particulière",
+     "Le commissaire aux comptes qui certifie les comptes, d'office et sans autre condition que son inscription sur la liste générale",
+     "Les seuls organismes tiers indépendants accrédités, les commissaires aux comptes en étant écartés pour préserver leur indépendance"
+    ],
+    "answer": 0,
+    "crossProf": 1
+   },
+   "qrc": {
+    "expected": [
+     "Un CAC inscrit sur la liste des CAC habilités à la certification de durabilité (L.821-13 II)",
+     "Conditions : inscription comme CAC, stage d'au moins 8 mois en durabilité, épreuve spécifique",
+     "Ou un auditeur des informations en matière de durabilité exerçant au sein d'un OTI accrédité (L.822-1)"
+    ],
+    "model_answer": "Soit un commissaire aux comptes inscrit sur la liste spéciale tenue par la H2A (déjà inscrit comme CAC, stage d'au moins huit mois en durabilité et réussite d'une épreuve sur cette mission), soit un auditeur des informations en matière de durabilité exerçant au sein d'un organisme tiers indépendant accrédité et inscrit."
+   },
+   "explanation": "La certification de durabilité est ouverte aux CAC habilités et aux OTI : ce n'est pas une mission de l'expert-comptable. Elle donne une assurance limitée (modérée).",
+   "reference": "C. com. L.821-13 II, L.821-18, L.822-1",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-14",
+   "n": 14,
+   "profession": "CAC",
+   "theme": "deontologie",
+   "tags": [
+    "durabilite_csrd",
+    "secret_professionnel"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Le commissaire aux comptes d'une société consolidée peut-il communiquer des informations à l'organisme tiers indépendant qui certifie les informations en matière de durabilité du groupe ?",
+   "qcm": {
+    "choices": [
+     "Oui : les CAC sont libérés du secret à l'égard des OTI qui certifient les informations de durabilité de l'entité consolidante ou consolidée",
+     "Non : l'OTI n'étant pas commissaire aux comptes, le secret lui est opposable sans exception",
+     "Oui, mais seulement si le dirigeant de la société consolidée délie son commissaire aux comptes par écrit",
+     "Non, sauf autorisation préalable du président de la compagnie régionale, saisi par l'OTI"
+    ],
+    "answer": 0
+   },
+   "qrc": {
+    "expected": [
+     "Oui, levée légale du secret",
+     "Les CAC sont libérés du secret à l'égard des OTI certifiant les informations de durabilité de la consolidante ou des consolidées",
+     "Réciproquement, l'OTI peut communiquer les informations strictement nécessaires au CAC (L.822-2)"
+    ],
+    "model_answer": "Oui. Le code de commerce libère les commissaires aux comptes de leur secret professionnel à l'égard des organismes tiers indépendants lorsque ceux-ci certifient les informations en matière de durabilité au sein de l'entité consolidante ou consolidée ; réciproquement, l'OTI peut communiquer au CAC les informations strictement nécessaires à sa mission."
+   },
+   "explanation": "Le dirigeant ne peut jamais délier le CAC : seules les levées prévues par la loi jouent. Celle-ci s'ajoute aux levées entre CAC de la consolidante et des consolidées et entre CAC d'un petit groupe.",
+   "reference": "C. com. L.821-35, L.822-2",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-15",
+   "n": 15,
+   "profession": "CAC",
+   "theme": "exercice",
+   "tags": [
+    "co_commissariat",
+    "durabilite_csrd"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Une société astreinte à publier des comptes consolidés et des informations consolidées en matière de durabilité doit-elle désigner deux certificateurs pour chacune de ces missions ?",
+   "qcm": {
+    "choices": [
+     "Deux CAC au moins sont obligatoires pour les comptes consolidés ; pour la durabilité, plusieurs certificateurs sont une faculté",
+     "Deux certificateurs sont obligatoires pour les deux missions, dont au moins un organisme tiers indépendant pour la durabilité",
+     "Un seul commissaire aux comptes suffit pour les deux missions, le co-commissariat étant réservé aux EIP",
+     "Deux CAC sont obligatoires pour la durabilité, la certification des comptes consolidés pouvant être confiée à un seul"
+    ],
+    "answer": 0
+   },
+   "qrc": {
+    "expected": [
+     "Comptes consolidés : au moins deux commissaires aux comptes (co-commissariat obligatoire)",
+     "Informations consolidées de durabilité : faculté de désigner plusieurs CAC, ou un CAC et un OTI",
+     "Pas d'obligation de co-certification en durabilité"
+    ],
+    "model_answer": "Pour la certification des comptes, les personnes astreintes à publier des comptes consolidés désignent au moins deux commissaires aux comptes. Pour les informations consolidées en matière de durabilité, la loi ouvre seulement une faculté : désigner plusieurs commissaires aux comptes, ou un commissaire aux comptes et un organisme tiers indépendant."
+   },
+   "explanation": "Le co-commissariat obligatoire ne vise que les comptes consolidés. En durabilité, la pluralité est permise, non imposée.",
+   "reference": "C. com. L.821-41",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-16",
+   "n": 16,
+   "profession": "CAC",
+   "theme": "exercice",
+   "tags": [
+    "alpe_petites_entreprises",
+    "nomination_seuils"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Dans quels cas une société peut-elle limiter à trois exercices la durée du mandat de son commissaire aux comptes ?",
+   "qcm": {
+    "choices": [
+     "Lorsque le CAC est désigné volontairement, ou au titre d'un petit groupe (tête de groupe ou filiale significative)",
+     "Lorsque la société dépasse deux des trois seuils légaux, à condition que l'assemblée statue à l'unanimité",
+     "Lorsque la société est une entité d'intérêt public cotée sur un marché réglementé",
+     "Lorsque le commissaire aux comptes le demande, pour se laisser la possibilité de ne pas renouveler"
+    ],
+    "answer": 0
+   },
+   "qrc": {
+    "expected": [
+     "Désignation volontaire (société sous les seuils)",
+     "Désignation au titre des petits groupes : tête de groupe et filiales significatives (L.821-43)",
+     "Demande motivée d'associés représentant au moins le tiers du capital",
+     "Mandat de 3 exercices (ALPE) au lieu de 6"
+    ],
+    "model_answer": "Par dérogation au mandat de six exercices, une société peut limiter le mandat à trois exercices (ALPE) lorsque le commissaire aux comptes est désigné volontairement ou à la demande motivée d'associés représentant au moins le tiers du capital, ou en application du régime des petits groupes (société tête de groupe, filiale significative)."
+   },
+   "explanation": "Une société qui dépasse elle-même les seuils de nomination désigne un CAC pour six exercices. L'ALPE n'est pas ouverte aux EIP.",
+   "reference": "C. com. L.821-44, L.821-46, L.821-43 ; NEP 911 § 02 à 05 (A.821-94)",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-17",
+   "n": 17,
+   "profession": "CAC",
+   "theme": "exercice",
+   "tags": [
+    "alpe_petites_entreprises",
+    "nep"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Dans une mission ALPE (mandat de trois exercices), quel rapport particulier le commissaire aux comptes établit-il et de quels rapports est-il dispensé ?",
+   "qcm": {
+    "choices": [
+     "Un rapport aux dirigeants identifiant les risques financiers, comptables et de gestion ; il est dispensé notamment du rapport spécial sur les conventions réglementées",
+     "Un rapport de durabilité allégé ; il est dispensé du rapport sur les comptes annuels, remplacé par une attestation",
+     "Un rapport sur le contrôle interne adressé à la H2A ; il reste tenu de tous les rapports du droit commun",
+     "Une lettre de recommandations comme celle de l'expert-comptable ; il est dispensé de certifier les comptes"
+    ],
+    "answer": 0,
+    "crossProf": 3
+   },
+   "qrc": {
+    "expected": [
+     "Rapport de certification des comptes (L.821-53), comme dans tout mandat",
+     "Rapport à destination des dirigeants identifiant les risques financiers, comptables et de gestion (sur l'ensemble du petit groupe pour une tête de groupe)",
+     "Dispense de diligences et rapports du droit commun, notamment sur les conventions réglementées"
+    ],
+    "model_answer": "Outre son rapport de certification des comptes, le commissaire aux comptes nommé pour trois exercices établit, à destination des dirigeants, un rapport identifiant les risques financiers, comptables et de gestion de la société (ou de l'ensemble qu'elle forme avec ses filiales pour une tête de petit groupe). Il est dispensé d'une série de diligences et rapports du droit commun, notamment ceux sur les conventions réglementées."
+   },
+   "explanation": "L'ALPE reste une mission de certification des comptes (assurance raisonnable) : le CAC certifie et le barème d'heures s'applique. Le rapport sur les risques remplace des rapports jugés lourds pour une petite entreprise ; la lettre de recommandations relève du devoir de conseil de l'expert-comptable.",
+   "reference": "C. com. L.821-57 (dispense : L.223-19, L.225-40, L.225-88…), L.821-53 ; NEP 911 (A.821-94)",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-18",
+   "n": 18,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "delit_entrave",
+    "responsabilite_penale"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Sur instruction de son supérieur, une comptable salariée refuse de remettre au commissaire aux comptes, sur place, les contrats qu'il demande. Le délit d'entrave peut-il être retenu contre elle ? Quelle peine est encourue ?",
+   "qcm": {
+    "choices": [
+     "Oui : le texte vise le dirigeant et toute personne au service de l'entité ; 5 ans d'emprisonnement et 75 000 € d'amende",
+     "Non : le délit d'entrave ne vise que les dirigeants ; la salariée n'encourt qu'une sanction disciplinaire de son employeur",
+     "Oui, mais la peine est de 2 ans d'emprisonnement et 30 000 € d'amende, comme le défaut de désignation du CAC",
+     "Non : le refus de communication est une faute du commissaire aux comptes, qui doit la mentionner dans son rapport"
+    ],
+    "answer": 0
+   },
+   "qrc": {
+    "expected": [
+     "Oui : L.821-6 3° vise tout dirigeant et toute personne ou entité au service de l'entité",
+     "Faire obstacle aux vérifications ou refuser la communication sur place des pièces utiles",
+     "5 ans d'emprisonnement et 75 000 € d'amende",
+     "Le CAC révèle le délit au procureur et en tire les conséquences dans son rapport"
+    ],
+    "model_answer": "Oui. Le délit d'entrave est commis par tout dirigeant ou toute personne au service de l'entité qui fait obstacle aux vérifications du commissaire aux comptes ou lui refuse la communication sur place des pièces utiles (contrats, livres, documents comptables, procès-verbaux). Il est puni de cinq ans d'emprisonnement et de 75 000 € d'amende. Le CAC doit révéler ce délit au procureur de la République."
+   },
+   "explanation": "Deux ans et 30 000 € punissent le dirigeant qui ne provoque pas la désignation d'un CAC obligatoire ou ne le convoque pas à une assemblée (L.821-6 1°). Le délit d'entrave est commis contre le CAC, pas par lui.",
+   "reference": "C. com. L.821-6 1° et 3° (ex L.820-4), L.821-10",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-19",
+   "n": 19,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "delit_entrave",
+    "nomination_seuils"
+   ],
+   "points": 1,
+   "hors_annales": true,
+   "question": "Quelle peine encourt le dirigeant d'une société tenue d'avoir un commissaire aux comptes qui n'en provoque pas la désignation ?",
+   "qcm": {
+    "choices": [
+     "2 ans d'emprisonnement et 30 000 € d'amende",
+     "5 ans d'emprisonnement et 75 000 € d'amende",
+     "1 an d'emprisonnement et 15 000 € d'amende",
+     "Une amende civile de 3 750 €, sans emprisonnement"
+    ],
+    "answer": 0
+   },
+   "qrc": {
+    "expected": [
+     "2 ans d'emprisonnement et 30 000 € d'amende (L.821-6 1°)",
+     "Même peine pour le défaut de convocation du CAC à une assemblée",
+     "À distinguer de l'entrave (5 ans, 75 000 €)"
+    ],
+    "model_answer": "Deux ans d'emprisonnement et 30 000 € d'amende ; la même peine punit le dirigeant qui ne convoque pas le commissaire aux comptes à une assemblée générale. Faire obstacle aux vérifications du CAC est, lui, puni de cinq ans et 75 000 €."
+   },
+   "explanation": "Trois niveaux de peines à ne pas confondre : 2 ans / 30 000 € (défaut de désignation ou de convocation), 5 ans / 75 000 € (entrave, non-révélation, informations mensongères), 1 an / 15 000 € (usage du titre sans inscription, violation du secret).",
+   "reference": "C. com. L.821-6 1°",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-20",
+   "n": 20,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "responsabilite_civile"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Le dirigeant d'une société a commis un abus de biens sociaux. Le commissaire aux comptes peut-il en être tenu civilement responsable ?",
+   "qcm": {
+    "choices": [
+     "Non, sauf si, en ayant eu connaissance, il ne l'a pas signalé dans son rapport à l'assemblée générale",
+     "Oui, solidairement avec le dirigeant, dès lors que l'infraction a eu une incidence sur les comptes certifiés",
+     "Non, à condition que sa lettre de mission plafonne sa responsabilité, comme celle d'un expert-comptable",
+     "Oui, mais à l'égard de l'entité seulement, les tiers ne pouvant agir contre le commissaire aux comptes"
+    ],
+    "answer": 0,
+    "crossProf": 2
+   },
+   "qrc": {
+    "expected": [
+     "Principe : pas de responsabilité civile pour les infractions des dirigeants",
+     "Sauf si, en ayant eu connaissance, il ne les a pas signalées dans son rapport à l'assemblée",
+     "Responsabilité envers l'entité et les tiers pour ses propres fautes et négligences ; prescription 3 ans",
+     "Aucune limitation contractuelle possible (mission légale)"
+    ],
+    "model_answer": "En principe non : le commissaire aux comptes n'est pas civilement responsable des infractions commises par les dirigeants, sauf si, en ayant eu connaissance, il ne les a pas signalées dans son rapport à l'assemblée générale. Il répond en revanche, envers l'entité comme envers les tiers, des conséquences dommageables de ses propres fautes et négligences."
+   },
+   "explanation": "Le CAC est responsable à l'égard de l'entité comme des tiers (L.821-37) ; sa mission légale interdit tout plafonnement contractuel, que l'expert-comptable peut, lui, prévoir. L'action se prescrit par trois ans (L.821-38 renvoyant à L.225-254).",
+   "reference": "C. com. L.821-37, L.821-38, L.225-254",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
+  },
+  {
+   "id": "transfert-CAC-21",
+   "n": 21,
+   "profession": "CAC",
+   "theme": "responsabilite",
+   "tags": [
+    "responsabilite_civile",
+    "revelation_procureur"
+   ],
+   "points": 2,
+   "hors_annales": true,
+   "question": "Après une révélation au procureur de faits que le parquet a finalement classés sans suite, le dirigeant assigne le commissaire aux comptes en dommages-intérêts. L'action peut-elle prospérer ?",
+   "qcm": {
+    "choices": [
+     "Non : la responsabilité du CAC ne peut être engagée à raison des informations ou divulgations faites en exécution de sa mission",
+     "Oui : le classement sans suite prouve que la révélation était fautive, ce qui suffit à engager sa responsabilité civile",
+     "Oui, sauf si la compagnie régionale a validé la révélation avant sa transmission au procureur",
+     "Non, parce que l'assurance de la CNCC prend en charge les condamnations de ce type, sans recours contre lui"
+    ],
+    "answer": 0
+   },
+   "qrc": {
+    "expected": [
+     "Non",
+     "La responsabilité civile du CAC ne peut être engagée à raison des informations ou divulgations de faits auxquelles il procède en exécution de sa mission ou prestation (L.821-37)",
+     "La révélation est une obligation (L.821-10) ; sa méconnaissance est un délit"
+    ],
+    "model_answer": "Non. Le code de commerce exclut la responsabilité du commissaire aux comptes à raison des informations ou divulgations de faits auxquelles il procède en exécution de sa mission ou de sa prestation. La révélation des faits délictueux est d'ailleurs une obligation, dont l'omission est un délit."
+   },
+   "explanation": "Le classement sans suite ne rend pas la révélation fautive : le CAC révèle les faits délictueux sans avoir à en établir la qualification pénale. Pas d'autorisation préalable de la compagnie régionale.",
+   "reference": "C. com. L.821-37 al. 1, L.821-10, L.821-9",
+   "confidence": "high",
+   "session": "transfert",
+   "origFormat": "transfert"
   }
  ]
 }

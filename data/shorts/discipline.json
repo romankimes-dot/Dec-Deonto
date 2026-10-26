@@ -99,5 +99,28 @@
  { "id": "discipline-14", "type": "cas", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
    "title": "Qui arrête les griefs ?", "situation": "À la H2A, l'enquête sur un CAC est terminée. Il faut engager les poursuites et arrêter les griefs.",
    "quiz": { "q": "Qui arrête les griefs ?", "choices": ["Le rapporteur général", "La commission des sanctions", "Le collège de la H2A", "Le garde des Sceaux"], "answer": 2, "why": "Le **collège** engage les poursuites et arrête les griefs ; son président les notifie. La commission des sanctions, séparée, juge ensuite." },
-   "src": ["Le collège de la H2A engage les poursuites et arrête les griefs, que son président notifie"] }
+   "src": ["Le collège de la H2A engage les poursuites et arrête les griefs, que son président notifie"] },
+
+ { "id": "discipline-15", "type": "liste", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "22-schema-sanctions-h2a.md",
+   "title": "Trois procédures de sanction", "q": "Les trois procédures de sanction de la H2A",
+   "items": [{ "k": "Ordinaire", "v": "La commission des sanctions juge, après audience" }, { "k": "Simplifiée", "v": "Déclarations, formation continue : sanction pécuniaire de 15 000 € au plus" }, { "k": "Composition administrative", "v": "Sanction acceptée, validée par le collège, homologuée par la commission" }],
+   "trap": "La procédure simplifiée ne prononce qu'une somme.",
+   "quiz": { "q": "Quelle sanction la procédure simplifiée peut-elle prononcer ?", "choices": ["Une sanction pécuniaire", "Un avertissement ou un blâme", "Une interdiction d'exercer"], "answer": 0, "why": "Seulement une **sanction pécuniaire**, **15 000 €** au plus, décidée par le **président de la commission** sans débat." },
+   "src": ["Sanction pécuniaire seulement : 15 000 € au plus", "Manquements simples et établis aux obligations déclaratives et à la formation continue"] },
+
+ { "id": "discipline-16", "type": "chiffre", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "22-schema-sanctions-h2a.md",
+   "title": "Suspension provisoire", "big": "6 mois", "label": "Durée maximale de la suspension provisoire d'un CAC, décidée par le collège",
+   "det": "Urgence, faits d'une particulière gravité.", "trap": "Ce n'est pas une sanction.",
+   "quiz": { "q": "La suspension provisoire d'un CAC est-elle une sanction ?", "choices": ["Non, une mesure d'urgence de 6 mois au plus", "Oui, prononcée par la commission des sanctions", "Oui, c'est la suspension avec sursis"], "answer": 0, "why": "Mesure d'**urgence** du **collège**, **6 mois au plus** : pas une sanction. La suspension avec sursis est une peine de l'**EC**." },
+   "src": ["la formation plénière du collège peut suspendre un CAC personne physique pour 6 mois au plus. Ce n'est pas une sanction."] },
+
+ { "id": "discipline-17", "type": "vf", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "22-schema-sanctions-h2a.md",
+   "title": "Composition et radiation", "statement": "Une composition administrative peut aboutir à la radiation du CAC.", "verdict": false,
+   "why": "Faux : la composition administrative exclut la **radiation**. La somme est plafonnée à **50 000 €** pour une personne physique.",
+   "src": ["Sanctions de l'échelle sauf la radiation ; somme plafonnée à 50 000 € (personne physique) ou 200 000 € (personne morale)"] },
+
+ { "id": "discipline-18", "type": "cas", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "22-schema-sanctions-h2a.md",
+   "title": "Délai avant l'audience", "situation": "Les griefs viennent d'être notifiés à un CAC. Il demande quand la commission des sanctions pourra l'entendre.",
+   "quiz": { "q": "Quel délai minimal entre les griefs et l'audience ?", "choices": ["Deux mois", "Quinze jours", "Six mois"], "answer": 0, "why": "L'audience, **publique**, se tient **deux mois au moins** après la notification des griefs ; le président de la H2A y soutient les griefs." },
+   "src": ["Deux mois au moins après les griefs ; publique"] }
 ]}
