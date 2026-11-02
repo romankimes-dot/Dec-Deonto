@@ -1,0 +1,38 @@
+name: Worker Cloudflare
+
+# Déploie le Worker de synchronisation (cloudflare/worker.js, réglages dans wrangler.jsonc).
+# Secrets du dépôt : CLOUDFLARE_API_TOKEN (jeton Cloudflare « Modifier les Workers Cloudflare ») ;
+# SYNC_TOKEN, facultatif : code secret de la synchro, envoyé au Worker sous le nom TOKEN.
+on:
+  push:
+    branches: [main]
+    paths: ['cloudflare/**', 'wrangler.jsonc', '.github/workflows/worker.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deployer:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Déployer
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then echo "::warning::Secret CLOUDFLARE_API_TOKEN absent : déploiement ignoré"; exit 0; fi
+          npx -y wrangler@4.156.1 deploy
+          if [ -n "$SYNC_TOKEN" ]; then printf '%s' "$SYNC_TOKEN" | npx -y wrangler@4.156.1 secret put TOKEN; fi
+      - name: Vérifier
+        if: env.CLOUDFLARE_API_TOKEN != ''
+        run: |
+          sleep 10
+          url="https://dec-deonto.romankimes.workers.dev"
+          echo "Accueil : $(curl -sS "$url/")"
+          code=$(curl -sS -o /dev/null -w '%{http_code}' "$url/progress")
+          echo "/progress sans code secret : $code (attendu 401 ; 500 = secret TOKEN manquant)"
