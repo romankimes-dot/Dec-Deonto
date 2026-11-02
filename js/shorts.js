@@ -129,6 +129,16 @@ export function linkedQuestions(s, fichesIndex, byId, files = []) {
   return [...ids].filter((id) => { const q = byId[id]; return q && q.tags.some((t) => keys.has(`${q.profession}:${t}`)); });
 }
 
+// Part du programme vue (cercle de l'accueil) : questions de la banque répondues au moins une fois
+// (`answered` : map id -> stats) et shorts répondus, sur le total des deux. Entier de 0 à 100.
+export function programCoverage(questions, answered, shorts, memo) {
+  const total = questions.length + shorts.length;
+  if (!total) return 0;
+  const q = questions.filter((x) => answered[x.id]).length;
+  const s = shorts.filter((x) => memo[memoId(x)]).length;
+  return Math.round(((q + s) / total) * 100);
+}
+
 // Avancement : vus, acquis (boîte ≥ 3), à revoir.
 export function shortsStats(shorts, memo, now = Date.now()) {
   let seen = 0, known = 0, due = 0;
