@@ -400,11 +400,13 @@ views.home = () => {
   const has = (id) => !!pr.badges[id];
   const conds = next ? G.gradeConditions(next.n, has, pr.stats, state.gctx) : [];
   const nb = G.nextBadges(state.catalog, pr.stats, pr.badges, 3);
+  // Questions de la banque et shorts répondus (les shorts comptent aussi).
+  const cov = SH.programCoverage(qs, pr.stats.q, state.shorts || [], pr.drills);
   return `${noticeCard()}
   <div class="card hero">
     <div class="hero-top">
       <div><div class="muted">Épreuve n°1 · ${esc(examLabel())}</div><div class="big">${!examDateSet() ? 'Date à définir' : d > 0 ? `J-${d}` : d === 0 ? 'Jour J' : 'Passée'}</div>${examDateSet() ? '' : '<button class="btn sm" data-go="settings">' + ic('calendar') + ' Définir la date de l’examen</button>'}</div>
-      <div class="hero-meta"><div class="ring" style="--p:${Math.round((Object.keys(pr.stats.q).length / qs.length) * 100)}"><span>${Math.round((Object.keys(pr.stats.q).length / qs.length) * 100)} %</span></div><div class="muted">de la banque vue</div></div>
+      <div class="hero-meta"><div class="ring" style="--p:${cov}"><span>${cov} %</span></div><div class="muted">du programme vu</div></div>
     </div>
     ${estimateLine()}
     ${heroCta()}
