@@ -1208,10 +1208,7 @@ views.settings = () => {
       store.snapshotPrev(state.progress); state.progress = prev; initGamify(); persist(); toast('État précédent restauré'); render();
     };
     $('#help-again').onclick = () => { s.helpSeen = false; persist(); go('home'); };
-    $('#update').onclick = async () => {
-      try { const reg = await navigator.serviceWorker?.getRegistration(); await reg?.update(); } catch { /* ignore */ }
-      location.reload();
-    };
+    $('#update').onclick = () => refreshApp();
   }, 0);
   return `<div class="card"><h2>Réglages</h2>
     <label class="field">Date de l’examen (le plan et les révisions s’y adaptent ; vide = parcours générique de 4 semaines)<input type="datetime-local" id="s-exam" value="${esc((s.examDate || '').slice(0, 16))}"></label>
@@ -2182,6 +2179,46 @@ function initGamify() {
   checkBadges();
 }
 
+// ---------- Glisser vers le bas pour recharger (comme Ernest) ----------
+// En haut de page, tirer vers le bas au-delà du seuil recharge l'app et va chercher une nouvelle version.
+function pullToRefresh() {
+  const ind = document.createElement('div'); ind.className = 'ptr'; ind.setAttribute('aria-hidden', 'true'); ind.innerHTML = '<span class="ptr-ic">↻</span>'; document.body.appendChild(ind);
+  const TH = 70; let y0 = null, d = 0, busy = false;
+  const blocked = () => document.body.classList.contains('noscroll') || !!document.querySelector('.sheet.show, .feed.show, .celebrate.show, .gl-pop.show');
+  const reset = () => { ind.style.transition = 'transform .25s, opacity .25s'; ind.style.transform = 'translate(-50%, -48px)'; ind.style.opacity = '0'; ind.classList.remove('ready'); d = 0; };
+  window.addEventListener('touchstart', (e) => {
+    y0 = (busy || window.scrollY > 0 || blocked() || e.touches.length > 1) ? null : e.touches[0].clientY;
+    ind.style.transition = 'none';
+  }, { passive: true });
+  window.addEventListener('touchmove', (e) => {
+    if (y0 === null) return;
+    if (window.scrollY > 0) { y0 = null; reset(); return; }
+    d = Math.max(0, Math.min((e.touches[0].clientY - y0) * 0.5, 110));
+    ind.style.transform = `translate(-50%, ${d - 48}px) rotate(${d * 3}deg)`;
+    ind.style.opacity = String(Math.min(1, d / 50));
+    ind.classList.toggle('ready', d >= TH);
+  }, { passive: true });
+  window.addEventListener('touchend', () => {
+    if (y0 === null) return; y0 = null;
+    if (d < TH) { reset(); return; }
+    busy = true; ind.classList.add('spin'); ind.style.transition = 'transform .2s'; ind.style.transform = `translate(-50%, ${TH - 40}px)`;
+    refreshApp();
+  }, { passive: true });
+  window.addEventListener('touchcancel', () => { y0 = null; reset(); }, { passive: true });
+}
+async function refreshApp() {
+  persist();
+  try {
+    const reg = 'serviceWorker' in navigator ? await navigator.serviceWorker.getRegistration() : null;
+    if (reg) {
+      await reg.update();
+      const sw = reg.installing || reg.waiting;
+      if (sw) await new Promise((res) => { const t = setTimeout(res, 3000); sw.addEventListener('statechange', () => { if (sw.state === 'activated') { clearTimeout(t); res(); } }); });
+    }
+  } catch { /* hors ligne : on recharge quand même */ }
+  setTimeout(() => location.reload(), 300);
+}
+
 const STORE_EXPECTED = 4;
 // Mélange de versions (cache hors ligne d'une ancienne version + code neuf) : on vide les caches, on force
 // le rechargement des fichiers puis on relance, une seule fois par session.
@@ -2249,12 +2286,13 @@ async function init() {
     return;
   }
   render();
+  pullToRefresh();
   if ('serviceWorker' in navigator) {
     try {
       const reg = await navigator.serviceWorker.register('./sw.js');
       reg.addEventListener('updatefound', () => {
         const nw = reg.installing;
-        nw?.addEventListener('statechange', () => { if (nw.state === 'installed' && navigator.serviceWorker.controller) toast('Mise à jour disponible : rechargez l’application'); });
+        nw?.addEventListener('statechange', () => { if (nw.state === 'installed' && navigator.serviceWorker.controller) toast('Mise à jour disponible : tirez l’écran vers le bas pour recharger'); });
       });
     } catch { /* hors ligne ou non supporté */ }
   }
