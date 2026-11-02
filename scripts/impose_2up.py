@@ -2,11 +2,15 @@
 
   python3 -I scripts/impose_2up.py entree-a5.pdf sortie.pdf
       2 par feuille, à 100 %, dans l'ordre : 1-2, 3-4…
-  python3 -I scripts/impose_2up.py entree-a5.pdf sortie.pdf --relie couverture-a4-paysage.pdf 12
+  python3 -I scripts/impose_2up.py entree.pdf sortie.pdf --alterne miroir.pdf
+      Pas d'imposition : pages impaires prises dans entree.pdf, paires dans miroir.pdf (marges et pied de page
+      inversés), pour une impression recto verso page à page.
+  python3 -I scripts/impose_2up.py entree-a5.pdf sortie.pdf --relie couverture-a4-paysage.pdf 12 [miroir-a5.pdf]
       Livret à relier à gauche, recto verso (retourner sur le bord court) : feuille 1 = couverture seule
       (A4 entier), verso blanc ; puis les pages A5 deux par face, 1-2 au recto, 3-4 au verso, etc. Une marge de
       reliure (en mm) est réservée côté reliure : à gauche au recto, à droite au verso. Les pages sont réduites
-      d'autant (environ 96 % pour 12 mm)."""
+      d'autant (environ 96 % pour 12 mm). Avec miroir-a5.pdf, les pages posées au verso viennent de ce fichier
+      (numéro de page et grande marge du côté libre de la feuille)."""
 import sys
 from pypdf import PdfReader, PdfWriter, Transformation
 
@@ -27,7 +31,16 @@ def main():
     src, dst = sys.argv[1], sys.argv[2]
     pages = PdfReader(src).pages
     writer = PdfWriter()
+    if len(sys.argv) > 4 and sys.argv[3] == "--alterne":
+        mirror = PdfReader(sys.argv[4]).pages
+        for i in range(len(pages)):
+            writer.add_page(pages[i] if i % 2 == 0 else mirror[i])
+        writer.compress_identical_objects()
+        with open(dst, "wb") as f:
+            writer.write(f)
+        return
     relie = len(sys.argv) > 5 and sys.argv[3] == "--relie"
+    mirror = PdfReader(sys.argv[6]).pages if relie and len(sys.argv) > 6 else pages
     sides = []  # (liste de pages à poser, marge gauche, marge droite)
     if relie:
         cover = PdfReader(sys.argv[4]).pages[0]
@@ -35,7 +48,7 @@ def main():
         sides += [([cover], 0, 0), ([], 0, 0)]  # couverture seule ; verso blanc
         for i in range(0, len(pages), 2):
             recto = len(sides) % 2 == 0
-            sides.append((pages[i:i + 2], gutter if recto else 0, 0 if recto else gutter))
+            sides.append(((pages if recto else mirror)[i:i + 2], gutter if recto else 0, 0 if recto else gutter))
     else:
         sides = [(pages[i:i + 2], 0, 0) for i in range(0, len(pages), 2)]
     for content, left, right in sides:
