@@ -36,6 +36,8 @@
   --primary-btn: #1d4ed8;
 }
 * { box-sizing: border-box; }
+/* Icônes au trait (js/icons.js) : taille et couleur du texte qui les entoure. */
+.ic { width: 1.15em; height: 1.15em; vertical-align: -.2em; flex-shrink: 0; }
 html { -webkit-text-size-adjust: 100%; }
 /* Focus clavier visible partout (pas au toucher) */
 :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
@@ -355,7 +357,9 @@ body.noscroll { overflow: hidden; }
 .todo li { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin-bottom: 8px; }
 .todo li .btn.sm { margin-top: 8px; width: 100%; }
 .todo li.done { border-color: var(--ok); background: var(--ok-bg); }
-.todo li.done strong::after { content: ' ✔'; color: var(--ok); }
+.todo li.done strong::after { content: ''; display: inline-block; width: 1em; height: 1em; margin-left: .35em; vertical-align: -.12em; background: var(--ok);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat; }
 /* Arbre à trou */
 .tree { list-style: none; padding: 0; margin: 8px 0; }
 .tree li { margin: 4px 0 4px calc(var(--d) * 14px); padding-left: 10px; border-left: 2px solid var(--line); }
@@ -403,7 +407,7 @@ div.estim { margin-top: 10px; }
 #grade { margin-bottom: 24px; scroll-margin-bottom: calc(var(--nav-h) + 16px); }
 .gradebar { margin-bottom: 0; }
 .short-sess { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 8px 0 0; }
-.ctx { margin: -2px 0 8px; font-size: 13px; }
+.ctx { display: block; margin: -2px 0 8px; font-size: 13px; }
 
 /* ---------- Shorts : fil vertical plein écran, papier et personnages ---------- */
 @font-face { font-family: "Bricolage Grotesque"; src: url("../fonts/bricolage-grotesque.woff2") format("woff2"); font-weight: 500 800; font-display: swap; }
@@ -581,3 +585,41 @@ html.feed-open, html.feed-open body { background: #f3eee6; }
 .ptr.ready { color: var(--primary); border-color: var(--primary); }
 .ptr.spin .ptr-ic { display: inline-block; animation: ptrspin .8s linear infinite; }
 @keyframes ptrspin { to { transform: rotate(360deg); } }
+
+/* ---------- Ordinateur : barre latérale à gauche, contenu plus large, survol ---------- */
+@media (min-width: 1024px) {
+  :root { --nav-h: 0px; --side: 232px; }
+  body { padding-bottom: 0; padding-left: var(--side); }
+  header.top { padding: 14px 32px; }
+  header.top h1 { font-size: 20px; }
+  main { max-width: 900px; padding: 28px 32px 48px; }
+  nav.bottom {
+    top: 0; bottom: 0; right: auto; width: var(--side); height: auto; padding: 84px 12px 16px;
+    display: flex; flex-direction: column; gap: 4px; border-top: 0; border-right: 1px solid var(--line); z-index: 6;
+  }
+  nav.bottom::before { content: "DEC UE1"; position: absolute; top: 22px; left: 24px; font-weight: 800; font-size: 18px; letter-spacing: .02em; color: var(--primary); }
+  nav.bottom button {
+    flex-direction: row; justify-content: flex-start; gap: 12px; padding: 11px 14px; border-radius: 10px;
+    font-size: 15px; text-align: left;
+  }
+  nav.bottom button .ico { font-size: 20px; width: 24px; display: inline-flex; justify-content: center; }
+  nav.bottom button.active { background: color-mix(in srgb, var(--primary) 12%, transparent); }
+  .toast { left: calc(50% + var(--side) / 2); bottom: 24px; }
+  .pc-mini-on .toast { bottom: 92px; }
+  .gl-pop { left: calc(var(--side) + 24px); right: 24px; bottom: 24px; }
+  .pc-mini { left: calc(var(--side) + 16px); right: 16px; bottom: 16px; }
+  .sheet { padding-left: 32px; padding-right: 32px; }
+  .sheet-body { max-width: 900px; }
+  .q { font-size: 19px; }
+}
+@media (min-width: 1024px) and (hover: hover) {
+  nav.bottom button:hover:not(.active) { background: var(--bg); color: var(--text); }
+  button.btn:not(:disabled):not(.primary):hover, a.btn:hover, .choice:not(:disabled):hover { border-color: var(--primary); }
+  button.btn.primary:not(:disabled):hover { filter: brightness(1.08); }
+}
+/* Touches de couleur sur les icônes */
+.streak .ic { color: #f97316; }
+.gico, .loci .loc, .card.next strong > .ic, .todo .tbody strong > .ic:first-child { color: var(--primary); }
+.hc .ic, .notice strong > .ic { color: var(--warn); }
+.gfb.ok .ic, .conds li.ok .ic { color: var(--ok); }
+.gfb.ko .ic { color: var(--ko); }

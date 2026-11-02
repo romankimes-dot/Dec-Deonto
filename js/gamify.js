@@ -16,14 +16,14 @@ export const RARITIES = {
 };
 
 export const FAMILIES = [
-  { id: 'couverture', label: 'J’ai tout vu', icon: '📂' },
-  { id: 'series', label: 'Séries', icon: '🔥' },
-  { id: 'maitrise', label: 'Maîtrise', icon: '🎓' },
-  { id: 'repassage', label: 'Repassage', icon: '🔁' },
-  { id: 'anecdotes', label: 'Carrière', icon: '📸' },
-  { id: 'questions', label: 'Chiffres et pièges', icon: '🎯' },
-  { id: 'ecoute', label: 'Écoute', icon: '🎧' },
-  { id: 'caches', label: 'Cachés', icon: '❓' },
+  { id: 'couverture', label: 'J’ai tout vu', icon: 'folder-open' },
+  { id: 'series', label: 'Séries', icon: 'flame' },
+  { id: 'maitrise', label: 'Maîtrise', icon: 'cap' },
+  { id: 'repassage', label: 'Repassage', icon: 'repeat' },
+  { id: 'anecdotes', label: 'Carrière', icon: 'camera' },
+  { id: 'questions', label: 'Chiffres et pièges', icon: 'target' },
+  { id: 'ecoute', label: 'Écoute', icon: 'headphones' },
+  { id: 'caches', label: 'Cachés', icon: 'help' },
 ];
 
 export const THEME_KEYS = [
