@@ -38,8 +38,8 @@ const PARTS = [
 ].filter((p) => p.fiches.length);
 let k = 0; for (const p of PARTS) for (const f of p.fiches) f.id = `F${String(++k).padStart(2, '0')}`;
 const total = k;
-// Sections qui commencent chacune sur une page impaire (A4) ou en haut d'une feuille neuve (2 par feuille),
-// dans l'ordre du document.
+// Sections qui commencent chacune sur une page impaire (A4 : un recto ; 2 par feuille : la moitié gauche d'une
+// face), dans l'ordre du document.
 const SECTIONS = ['C', 'T', ...PARTS.flatMap((p, i) => [`P${i + 1}`, ...p.fiches.map((f) => f.id)])];
 
 const mk = (id) => `<span class="mk">§${id}§</span>`;
@@ -48,7 +48,7 @@ function html(cls, { cover = true, only = false, relie = false } = {}) {
   const parts = PARTS.map((p, i) => `<section class="part" data-sec="P${i + 1}">${mk(`P${i + 1}`)}<div class="num">${i + 1}</div><h2>${esc(p.title).replace(' : ', '&nbsp;:<br>')}</h2><p><strong>${esc(p.sub)}</strong></p><p>${esc(p.intro)}</p><ol>${p.fiches.map((f) => `<li>${esc(f.title)} <span class="muted">· p. <span data-pg="${f.id}"></span></span></li>`).join('')}</ol></section>`
     + p.fiches.map((f, j) => `<article class="fiche print-fiche ${p.prof}" data-sec="${f.id}" data-kind="${p.prof || 'schema'}">${mk(f.id)}<div class="print-label"><span>${esc(p.label(f, j, p.fiches.length))}</span><span>Partie ${i + 1}</span></div><div class="fiche-body">${renderMarkdown(readFileSync(join(ROOT, 'data/fiches', f.file), 'utf8'))}</div>${mk(`E${f.id.slice(1)}`)}</article>`).join('')).join('');
   const how = relie
-    ? 'Chaque fiche commence en haut d’une feuille neuve : collez un onglet sur cette feuille. Marge droite large pour annoter ; pages « Notes » pour compléter.'
+    ? 'Chaque fiche commence sur la moitié gauche d’une face : collez-y un signet. Grande marge côté libre pour annoter ; pages « Notes » pour compléter.'
     : 'Chaque fiche commence sur une page impaire : imprimez seulement celles que vous voulez, collez un onglet sur la première page. Marge droite large pour annoter ; pages « Notes » pour compléter.';
   const coverHtml = `<section class="cover" data-sec="C">${mk('C')}<div class="cover-main"><div class="kicker">DEC · Épreuve 1</div><h1>Réglementation professionnelle et déontologie de l’expert-comptable et du commissaire aux comptes</h1><div class="rule"></div>
 <p><strong>Fiches à imprimer : ${total} fiches en ${PARTS.length} parties.</strong></p><p>${how}</p></div>
@@ -175,8 +175,9 @@ const FORMATS = [
   // A4 : chaque section sur une page impaire (mod 2).
   { out: 'fiches-a-imprimer.pdf', cls: 'a4', format: 'A4', pageH: 841.89, margin: { top: '13mm', bottom: '15mm', left: '18mm', right: '26mm' }, pad: '18mm', font: 10, mod: 2, lift: '4mm' },
   // 2 par feuille, recto verso, à relier à gauche : couverture seule sur la première feuille (A4 entier, verso
-  // blanc), puis chaque section en haut d'une feuille neuve (page A5 de rang 1 modulo 4 = moitié gauche d'un recto).
-  { out: 'fiches-a-imprimer-2-par-feuille.pdf', cls: 'a5', format: 'A5', pageH: 595.28, margin: { top: '9mm', bottom: '11mm', left: '11mm', right: '15mm' }, pad: '11mm', font: 9, mod: 4, relie: true },
+  // blanc), puis chaque section sur la moitié gauche d'une face (page A5 impaire, mod 2) : au plus une page Notes,
+  // jamais une face entière de Notes. Les intercalaires sont des signets collés par le lecteur.
+  { out: 'fiches-a-imprimer-2-par-feuille.pdf', cls: 'a5', format: 'A5', pageH: 595.28, margin: { top: '9mm', bottom: '11mm', left: '11mm', right: '15mm' }, pad: '11mm', font: 9, mod: 2, relie: true },
 ];
 const GUTTER_MM = 12; // marge de reliure, côté gauche au recto, côté droit au verso
 const MAX_FIT = 3; const MAX_TIGHT = 2; const MAX_PASSES = 14;
