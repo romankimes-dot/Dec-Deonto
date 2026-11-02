@@ -15,6 +15,7 @@ import * as SC from './scenes.js';
 import * as GL from './glossaire.js';
 import { matchExpected, highlight } from './qrc.js';
 import * as PC from './podcasts.js';
+import * as SY from './sync.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -86,7 +87,63 @@ function siblings(id) {
   const n = state.clusters.clusterOf[id];
   return n === undefined ? [] : state.clusters.groups[n].filter((x) => x !== id);
 }
-function persist() { if (!store.save(state.progress)) toast('Stockage local indisponible : progression non sauvegardée'); }
+function persist() {
+  state.progress.updatedAt = Date.now();
+  if (!store.save(state.progress)) toast('Stockage local indisponible : progression non sauvegardée');
+  scheduleSync();
+}
+
+// ---------- Synchronisation en ligne (js/sync.js, cloudflare/worker.js) ----------
+// Envoi au plus une fois par minute pendant le travail (quota d'écritures gratuit de Cloudflare), immédiatement quand
+// l'application passe en arrière-plan ; lecture au démarrage et au retour dans l'application. La copie en ligne n'est
+// appliquée ici que hors activité en cours (séance, examen, jeu, shorts) ; elle est sinon reprise à la synchro suivante.
+const SYNC_DELAY = 60 * 1000;
+let syncTimer = null; let syncing = null;
+function scheduleSync() {
+  if (syncTimer || !SY.config()) return;
+  syncTimer = setTimeout(() => { syncTimer = null; runSync(); }, SYNC_DELAY);
+}
+const canApplySync = () => !state.exam && !state.game && !state.feed && !['review', 'train', 'exam', 'jeux'].includes(state.view);
+function applySynced(remote) {
+  state.progress = SY.merge(state.progress, remote);
+  store.save(state.progress);
+  if (state.gctx) initGamify();
+}
+// manual : demandé depuis Réglages (message affiché, copie appliquée) ; boot : avant le premier affichage.
+function runSync({ manual = false, boot = false, timeout = 15000 } = {}) {
+  const cfg = SY.config(); if (!cfg) return Promise.resolve(null);
+  if (syncing) return syncing;
+  clearTimeout(syncTimer); syncTimer = null;
+  syncing = (async () => {
+    try {
+      const r = await SY.syncOnce(cfg, state.progress, { timeout });
+      SY.setStatus({ at: Date.now(), error: null });
+      if (r.changed && (boot || manual || canApplySync())) {
+        applySynced(r.state);
+        if (!boot) render();
+        if (!manual && !boot) toast('Progression mise à jour depuis l’autre appareil');
+      }
+      if (manual) toast(r.changed ? 'Synchronisé : progression des autres appareils récupérée' : 'Synchronisé');
+      return r;
+    } catch (e) {
+      SY.setStatus({ error: e.message });
+      if (manual) toast('Synchronisation impossible : ' + e.message);
+      return null;
+    } finally {
+      syncing = null;
+      if (manual && state.view === 'settings') render();
+    }
+  })();
+  return syncing;
+}
+function watchSync() {
+  document.addEventListener('visibilitychange', () => {
+    if (!SY.config()) return;
+    if (document.visibilityState === 'hidden') { if (syncTimer) runSync(); }
+    else if (Date.now() - (SY.status().at || 0) > 30 * 1000) runSync();
+  });
+  window.addEventListener('online', () => { if (SY.config()) runSync(); });
+}
 
 // ---------- Gamification ----------
 // Toute réponse passe par ici : historique, statistiques, badges.
@@ -393,6 +450,7 @@ function noticeCard() {
 }
 function backupCard() {
   const pr = state.progress; if (!pr.attempts.length) return '';
+  if (SY.config() && Date.now() - (SY.status().at || 0) < 2 * DAY) return '';
   const days = pr.lastExportAt ? (Date.now() - pr.lastExportAt) / DAY : Infinity;
   if (days < 2) return '';
   return `<div class="card notice"><strong>💾 Sauvegarde</strong><p class="muted" style="margin:4px 0 8px">${pr.lastExportAt ? `Dernier export il y a ${Math.floor(days)} jours.` : 'Aucun export pour l’instant.'} Si le navigateur efface les données du site, la progression est perdue.</p><button class="btn" data-go="settings">Exporter ma progression</button></div>`;
@@ -1187,8 +1245,10 @@ function chart(exams) {
 
 views.settings = () => {
   const s = state.progress.settings;
+  // Réglages modifiés ici : datés, pour que la synchro garde les plus récents
+  const persistS = () => { state.progress.settingsAt = Date.now(); persist(); };
   setTimeout(() => {
-    $('#s-new').onchange = (e) => { s.newPerDay = Math.max(0, Number(e.target.value) || 0); persist(); };
+    $('#s-new').onchange = (e) => { s.newPerDay = Math.max(0, Number(e.target.value) || 0); persistS(); };
     $('#s-exam').onchange = (e) => {
       const v = e.target.value;
       if (v) {
@@ -1197,16 +1257,16 @@ views.settings = () => {
       }
       s.examDate = v ? `${v}:00` : '';
       refreshExamBadges(); G.applyOpen(state.progress.stats, Date.now(), state.gctx);
-      state.progress.daily = null; persist(); toast(v ? 'Date enregistrée : plan recalculé' : 'Date effacée : parcours générique'); render();
+      state.progress.daily = null; persistS(); toast(v ? 'Date enregistrée : plan recalculé' : 'Date effacée : parcours générique'); render();
     };
-    $('#s-mode').onchange = (e) => { s.mode = e.target.value; persist(); };
-    $('#s-low').onchange = (e) => { s.showLowConfidence = e.target.checked; persist(); };
-    $('#s-conf').onchange = (e) => { s.confidence = e.target.checked; persist(); };
-    $('#s-hide').onchange = (e) => { s.hideChoices = e.target.checked; persist(); };
-    $('#s-focus').onchange = (e) => { s.focus = e.target.checked; persist(); };
-    $('#s-gl').onchange = (e) => { s.glossary = e.target.checked; persist(); };
-    $('#s-timer').onchange = (e) => { s.gameTimer = e.target.value; persist(); };
-    $('#s-shorts').onchange = (e) => { s.shortsLimit = Number(e.target.value) || 0; persist(); };
+    $('#s-mode').onchange = (e) => { s.mode = e.target.value; persistS(); };
+    $('#s-low').onchange = (e) => { s.showLowConfidence = e.target.checked; persistS(); };
+    $('#s-conf').onchange = (e) => { s.confidence = e.target.checked; persistS(); };
+    $('#s-hide').onchange = (e) => { s.hideChoices = e.target.checked; persistS(); };
+    $('#s-focus').onchange = (e) => { s.focus = e.target.checked; persistS(); };
+    $('#s-gl').onchange = (e) => { s.glossary = e.target.checked; persistS(); };
+    $('#s-timer').onchange = (e) => { s.gameTimer = e.target.value; persistS(); };
+    $('#s-shorts').onchange = (e) => { s.shortsLimit = Number(e.target.value) || 0; persistS(); };
     $('#s-theme').onchange = (e) => { document.documentElement.dataset.theme = e.target.value; try { localStorage.setItem('dec1.theme', e.target.value); } catch { /* ignore */ } };
     $('#export').onclick = exportProgress;
     $('#copy').onclick = async () => {
@@ -1225,6 +1285,20 @@ views.settings = () => {
       store.snapshotPrev(state.progress); state.progress = prev; initGamify(); persist(); toast('État précédent restauré'); render();
     };
     $('#help-again').onclick = () => { s.helpSeen = false; persist(); go('home'); };
+    const sc = $('#sync-connect');
+    if (sc) sc.onclick = async () => {
+      const url = SY.normalizeUrl($('#sync-url').value); const token = $('#sync-token').value.trim();
+      if (!url) return toast('Adresse invalide : elle commence par https://');
+      if (!token) return toast('Saisissez le code secret');
+      if (!SY.setConfig({ url, token })) return toast('Enregistrement impossible sur cet appareil');
+      toast('Connexion…'); await runSync({ manual: true });
+    };
+    const sn = $('#sync-now'); if (sn) sn.onclick = () => runSync({ manual: true });
+    const so = $('#sync-off');
+    if (so) so.onclick = () => {
+      if (!confirm('Déconnecter cet appareil ? La progression reste sur l’appareil et en ligne ; elle ne sera simplement plus synchronisée.')) return;
+      SY.setConfig(null); toast('Synchronisation désactivée sur cet appareil'); render();
+    };
     $('#update').onclick = () => refreshApp();
   }, 0);
   return `<div class="card"><h2>Réglages</h2>
@@ -1239,7 +1313,8 @@ views.settings = () => {
     <label class="field">Chrono des jeux (Vrai / Faux, Sprint chiffres)<select id="s-timer">${[['normal', 'Normal'], ['large', 'Large'], ['off', 'Sans chrono']].map(([k, l]) => `<option value="${k}" ${s.gameTimer === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
     <label class="field">Shorts : pause proposée après<select id="s-shorts">${[[10, '10 shorts'], [15, '15 shorts'], [20, '20 shorts'], [30, '30 shorts'], [0, 'Sans limite']].map(([k, l]) => `<option value="${k}" ${(s.shortsLimit ?? 15) === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
     <label class="field">Thème<select id="s-theme"><option value="">Automatique</option><option value="light" ${document.documentElement.dataset.theme === 'light' ? 'selected' : ''}>Clair</option><option value="dark" ${document.documentElement.dataset.theme === 'dark' ? 'selected' : ''}>Sombre</option></select></label></div>
-    <div class="card"><h2>Données</h2><p class="muted">La progression est stockée uniquement sur ce téléphone. ${s.lastExportAt ? `Dernier export : ${new Date(s.lastExportAt).toLocaleString('fr-FR')}.` : '<strong>Aucun export pour l’instant.</strong>'}</p>
+    ${syncCard()}
+    <div class="card"><h2>Données</h2><p class="muted">${SY.config() ? 'La progression est stockée sur cet appareil et synchronisée en ligne.' : 'La progression est stockée uniquement sur ce téléphone.'} ${s.lastExportAt ? `Dernier export : ${new Date(s.lastExportAt).toLocaleString('fr-FR')}.` : '<strong>Aucun export pour l’instant.</strong>'}</p>
       <div class="btnrow"><button class="btn" id="export">⬇ Exporter</button><button class="btn" id="copy">📋 Copier</button></div>
       <div class="btnrow" style="margin-top:8px"><label class="btn" style="cursor:pointer">⬆ Importer un fichier<input type="file" id="import" accept="application/json,.json" class="hidden"></label></div>
       <details style="margin-top:10px"><summary>Importer un texte collé</summary><textarea id="paste" placeholder="Collez ici le texte de la sauvegarde"></textarea><button class="btn" id="paste-go" style="margin-top:8px">Importer ce texte</button></details>
@@ -1248,6 +1323,20 @@ views.settings = () => {
       <p class="muted" style="margin-top:10px">Protection : ${state.persisted === true ? 'le navigateur a accepté de conserver ces données.' : state.persisted === false ? 'le navigateur peut effacer ces données s’il manque de place.' : 'état de protection inconnu.'} Sur iPhone, <strong>installez l’application sur l’écran d’accueil avant de commencer</strong> : Safari efface les données d’un site resté 7 jours sans visite, pas celles d’une application installée. Une copie automatique est faite toutes les 3 heures.</p></div>
     <div class="card"><h2>Application</h2><p class="muted">Version ${esc(state.bank.generatedAt || '')} · ${state.bank.count} questions. Fonctionne hors ligne une fois chargée.</p><button class="btn" id="update">Vérifier les mises à jour</button><div style="height:8px"></div><button class="btn" id="help-again">❔ Revoir l’aide de départ</button></div>`;
 };
+
+function syncCard() {
+  const cfg = SY.config(); const st = SY.status();
+  if (!cfg) {
+    return `<div class="card"><h2>Synchronisation en ligne</h2><p class="muted">Retrouvez la même progression sur le téléphone et l’ordinateur, et gardez-en une copie en ligne. Il faut votre propre Worker Cloudflare (gratuit) : mode d’emploi dans <code>cloudflare/README.md</code> du dépôt.</p>
+      <label class="field">Adresse du Worker<input type="url" id="sync-url" placeholder="https://dec1-sync.….workers.dev" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+      <label class="field">Code secret<input type="password" id="sync-token" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+      <button class="btn primary" id="sync-connect">Connecter et synchroniser</button></div>`;
+  }
+  const when = st.at ? new Date(st.at).toLocaleString('fr-FR') : 'jamais';
+  return `<div class="card"><h2>Synchronisation en ligne</h2><p class="muted">Connecté à <strong>${esc(new URL(cfg.url).host)}</strong>. Dernière synchronisation réussie : ${when}.${st.error ? `<br><strong>Dernier essai : ${esc(st.error)}.</strong>` : ''}</p>
+    <p class="muted">Envoi automatique pendant le travail (au plus une fois par minute) et à la fermeture de l’application ; récupération à l’ouverture. Les progressions des appareils sont fusionnées : rien n’est perdu.</p>
+    <div class="btnrow"><button class="btn" id="sync-now">🔄 Synchroniser maintenant</button><button class="btn" id="sync-off">Déconnecter cet appareil</button></div></div>`;
+}
 
 // ---------- Shorts ----------
 // Fil vertical, comme un réseau social : une notion animée en 30 secondes, puis une question. La réponse passe
@@ -2245,7 +2334,7 @@ async function recoverFromStaleCache() {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
     await Promise.all((await caches.keys()).filter((k) => k !== PC.AUDIO_CACHE).map((k) => caches.delete(k))); // épisodes téléchargés gardés
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './sw.js']
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './js/sync.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();
@@ -2298,6 +2387,7 @@ async function init() {
     state.glById = Object.fromEntries(state.gloss.map((e) => [e.id, e]));
     state.glMatcher = GL.buildMatcher(state.gloss);
     glObserve();
+    if (SY.config()) await runSync({ boot: true, timeout: 4000 }); // copie en ligne récupérée avant le plan du jour
     initGamify();
     state.notice = store.notices[0] || null;
     const savedExam = store.loadExam();
@@ -2312,6 +2402,7 @@ async function init() {
   }
   render();
   pullToRefresh();
+  watchSync();
   if ('serviceWorker' in navigator) {
     try {
       const reg = await navigator.serviceWorker.register('./sw.js');
