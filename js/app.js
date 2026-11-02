@@ -554,9 +554,11 @@ function lateBanner(d) {
 // Pont vers Ernest (app d'organisation) : le plan du jour, déposé sur le serveur à chaque synchro (sendPont), sans doublon côté Ernest.
 const ERNEST_URL = 'https://romankimes-dot.github.io/Ernest/';
 const ERNEST_EST = { read: 10, shorts: 8, revise: 20, session: 25, weak: 15, sure: 10, game: 10, podcast: 12 };
+// Moment dans la journée d'Ernest : l'effort le matin (apprendre, corriger), le léger qui fixe le soir.
+const ERNEST_SLOT = { read: 'matin', session: 'matin', weak: 'matin', sure: 'matin', revise: 'soir', shorts: 'soir', game: 'soir', podcast: 'soir' };
 function ernestPayload() {
   const pr = state.progress; const d = ensureDaily(); const k = todayKey();
-  const things = dayTasks().filter((x) => !x.done).map((x) => ({ title: `Déonto · ${x.title.replace(/^[^\w]*/, '')}`.slice(0, 120), cat: 'revision', est: x.id === 'session' ? Math.max(10, Math.round((d.target || 20) * 0.8)) : (ERNEST_EST[x.id] || 15), link: ERNEST_URL ? location.href.split('#')[0] : null, day: k, note: x.sub }));
+  const things = dayTasks().filter((x) => !x.done).map((x) => ({ title: `Déonto · ${x.title.replace(/^[^\w]*/, '')}`.slice(0, 120), cat: 'revision', slot: ERNEST_SLOT[x.id] || null, est: x.id === 'session' ? Math.max(10, Math.round((d.target || 20) * 0.8)) : (ERNEST_EST[x.id] || 15), link: ERNEST_URL ? location.href.split('#')[0] : null, day: k, note: x.sub }));
   const byDay = {};
   for (const a of pr.attempts) { const dk = G.dayKey(a.t); byDay[dk] = (byDay[dk] || 0) + 1; }
   const history = Object.entries(byDay).filter(([dk]) => dk < k).map(([day, n]) => ({ day, n: Math.min(3, Math.ceil(n / 20)) }));
