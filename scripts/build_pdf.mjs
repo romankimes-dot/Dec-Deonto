@@ -2,7 +2,8 @@
 // partie (schémas, fiches EC, fiches CAC), chaque fiche sur une page impaire (recto, ou moitié gauche d'une
 // nouvelle feuille en 2 par feuille) pour y coller un onglet, numéros de page en pied.
 // Usage : npm run pdf  →  data/fiches-a-imprimer.pdf (A4) et data/fiches-a-imprimer-2-par-feuille.pdf
-// (pages A5, deux côte à côte sur A4 paysage, à 100 %). À relancer après toute modification d'une fiche.
+// (pages A5 deux côte à côte sur A4 paysage, recto verso, marge de reliure à gauche ; couverture seule en A4
+// entier sur la première feuille). À relancer après toute modification d'une fiche.
 // Besoin : Playwright (Chromium), pdftotext (poppler-utils), pypdf (imposition 2 par feuille).
 //
 // Mise en page itérative : des marqueurs invisibles (§…§, blanc, 1 pt) bornent chaque fiche et chaque bloc
@@ -37,25 +38,29 @@ const PARTS = [
 ].filter((p) => p.fiches.length);
 let k = 0; for (const p of PARTS) for (const f of p.fiches) f.id = `F${String(++k).padStart(2, '0')}`;
 const total = k;
-// Sections qui commencent chacune sur une page impaire, dans l'ordre du document.
+// Sections qui commencent chacune sur une page impaire (A4) ou en haut d'une feuille neuve (2 par feuille),
+// dans l'ordre du document.
 const SECTIONS = ['C', 'T', ...PARTS.flatMap((p, i) => [`P${i + 1}`, ...p.fiches.map((f) => f.id)])];
 
 const mk = (id) => `<span class="mk">§${id}§</span>`;
-function html(cls) {
+function html(cls, { cover = true, only = false, relie = false } = {}) {
   const toc = PARTS.map((p, i) => `<h3>Partie ${i + 1} · ${esc(p.title)} <span class="pg">p. <span data-pg="P${i + 1}"></span></span></h3><ol>${p.fiches.map((f) => `<li><span class="tick"></span><span class="t">${esc(f.title)}</span><span class="dots"></span><span class="p" data-pg="${f.id}"></span></li>`).join('')}</ol>`).join('');
   const parts = PARTS.map((p, i) => `<section class="part" data-sec="P${i + 1}">${mk(`P${i + 1}`)}<div class="num">${i + 1}</div><h2>${esc(p.title).replace(' : ', '&nbsp;:<br>')}</h2><p><strong>${esc(p.sub)}</strong></p><p>${esc(p.intro)}</p><ol>${p.fiches.map((f) => `<li>${esc(f.title)} <span class="muted">· p. <span data-pg="${f.id}"></span></span></li>`).join('')}</ol></section>`
     + p.fiches.map((f, j) => `<article class="fiche print-fiche ${p.prof}" data-sec="${f.id}" data-kind="${p.prof || 'schema'}">${mk(f.id)}<div class="print-label"><span>${esc(p.label(f, j, p.fiches.length))}</span><span>Partie ${i + 1}</span></div><div class="fiche-body">${renderMarkdown(readFileSync(join(ROOT, 'data/fiches', f.file), 'utf8'))}</div>${mk(`E${f.id.slice(1)}`)}</article>`).join('')).join('');
-  return `<!doctype html><html lang="fr" data-theme="light" class="${cls}"><head><meta charset="utf-8"><base href="${pathToFileURL(ROOT).href}/"><title>DEC Épreuve 1 · Fiches à imprimer</title>
-<link rel="stylesheet" href="css/app.css"><link rel="stylesheet" href="scripts/print.css"></head><body>
-<section class="cover" data-sec="C">${mk('C')}<div class="kicker">DEC · Épreuve 1</div><h1>Réglementation professionnelle et déontologie de l’expert-comptable et du commissaire aux comptes</h1><div class="rule"></div>
-<p><strong>Fiches à imprimer : ${total} fiches en ${PARTS.length} parties.</strong></p><p>Chaque fiche commence sur une page impaire : imprimez seulement celles que vous voulez, collez un onglet sur la première page. Marge droite large pour annoter ; pages « Notes » pour compléter.</p>
+  const how = relie
+    ? 'Chaque fiche commence en haut d’une feuille neuve : collez un onglet sur cette feuille. Marge droite large pour annoter ; pages « Notes » pour compléter.'
+    : 'Chaque fiche commence sur une page impaire : imprimez seulement celles que vous voulez, collez un onglet sur la première page. Marge droite large pour annoter ; pages « Notes » pour compléter.';
+  const coverHtml = `<section class="cover" data-sec="C">${mk('C')}<div class="cover-main"><div class="kicker">DEC · Épreuve 1</div><h1>Réglementation professionnelle et déontologie de l’expert-comptable et du commissaire aux comptes</h1><div class="rule"></div>
+<p><strong>Fiches à imprimer : ${total} fiches en ${PARTS.length} parties.</strong></p><p>${how}</p></div>
 <div class="legend"><h3>Expert-comptable ou commissaire aux comptes : lire sans couleur</h3><ul>
 <li><span class="sw ec"></span><strong>Trait simple</strong> à gauche : expert-comptable. Sur toute une fiche de référence EC, sur les passages des schémas propres à l’EC, sur la colonne EC des comparatifs.</li>
 <li><span class="sw cac"></span><strong>Trait double</strong> : commissaire aux comptes, aux mêmes endroits.</li>
 <li><span class="fpill ec">EC</span> <span class="fpill cac">CAC</span> : la règle vise cette profession (encadré simple ou double). <span class="fpill trap">piège</span> : erreur fréquente à l’examen. <span class="fpill check">à vérifier</span> : point à confirmer.</li>
-<li>Arbres : cadre <strong>épais</strong> = question ; <strong>✓</strong> = conclusion ; <strong>✗</strong> en pointillés = interdit ou piège. Échelles : plus la barre est longue, plus le niveau est élevé.</li></ul></div></section>
-<section class="toc" data-sec="T">${mk('T')}<h2>Sommaire</h2><p class="hint">Cochez la case quand la fiche est apprise.</p>${toc}</section>
-${parts}</body></html>`;
+<li>Arbres : cadre <strong>épais</strong> = question ; <strong>✓</strong> = conclusion ; <strong>✗</strong> en pointillés = interdit ou piège. Échelles : plus la barre est longue, plus le niveau est élevé.</li></ul></div></section>`;
+  return `<!doctype html><html lang="fr" data-theme="light" class="${cls}"><head><meta charset="utf-8"><base href="${pathToFileURL(ROOT).href}/"><title>DEC Épreuve 1 · Fiches à imprimer</title>
+<link rel="stylesheet" href="css/app.css"><link rel="stylesheet" href="scripts/print.css"></head><body>
+${cover ? coverHtml : ''}${only ? '</body></html>' : `<section class="toc" data-sec="T">${mk('T')}<h2>Sommaire</h2><p class="hint">Cochez la case quand la fiche est apprise.</p>${toc}</section>
+${parts}</body></html>`}`;
 }
 
 // Préparation dans la page (exécutée par Chromium avant chaque rendu) : classes des tableaux, passages EC / CAC
@@ -149,7 +154,7 @@ function prepare(state) {
     w.insertAdjacentHTML('beforeend', `<span class="mk">§S${b}§</span>`); w.appendChild(el); w.insertAdjacentHTML('beforeend', `<span class="mk">§Z${b}§</span>`);
   });
   document.querySelectorAll('article[data-sec]').forEach((a) => { const t = state.tight[a.dataset.sec]; if (t) a.classList.add(`tight${t}`); });
-  for (const id of state.blanks) document.querySelector(`[data-sec="${id}"]`)?.insertAdjacentHTML('beforebegin', `<section class="notes-page"><h2>Notes</h2><div class="ruled">${'<i></i>'.repeat(40)}</div></section>`);
+  for (const [id, n] of state.blanks) document.querySelector(`[data-sec="${id}"]`)?.insertAdjacentHTML('beforebegin', `<section class="notes-page"><h2>Notes</h2><div class="ruled">${'<i></i>'.repeat(40)}</div></section>`.repeat(n));
   document.querySelectorAll('[data-pg]').forEach((s) => { s.textContent = state.pages[s.dataset.pg] ?? '00'; });
   return b;
 }
@@ -167,9 +172,13 @@ function markers(file) {
 
 const mm = (v) => (parseFloat(v) * 72) / 25.4;
 const FORMATS = [
-  { out: 'fiches-a-imprimer.pdf', cls: 'a4', format: 'A4', pageH: 841.89, margin: { top: '13mm', bottom: '15mm', left: '18mm', right: '26mm' }, pad: '18mm', font: 10 },
-  { out: 'fiches-a-imprimer-2-par-feuille.pdf', cls: 'a5', format: 'A5', pageH: 595.28, margin: { top: '9mm', bottom: '11mm', left: '11mm', right: '15mm' }, pad: '11mm', font: 9, twoUp: true },
+  // A4 : chaque section sur une page impaire (mod 2).
+  { out: 'fiches-a-imprimer.pdf', cls: 'a4', format: 'A4', pageH: 841.89, margin: { top: '13mm', bottom: '15mm', left: '18mm', right: '26mm' }, pad: '18mm', font: 10, mod: 2 },
+  // 2 par feuille, recto verso, à relier à gauche : couverture seule sur la première feuille (A4 entier, verso
+  // blanc), puis chaque section en haut d'une feuille neuve (page A5 de rang 1 modulo 4 = moitié gauche d'un recto).
+  { out: 'fiches-a-imprimer-2-par-feuille.pdf', cls: 'a5', format: 'A5', pageH: 595.28, margin: { top: '9mm', bottom: '11mm', left: '11mm', right: '15mm' }, pad: '11mm', font: 9, mod: 4, relie: true },
 ];
+const GUTTER_MM = 12; // marge de reliure, côté gauche au recto, côté droit au verso
 const MAX_FIT = 3; const MAX_TIGHT = 2; const MAX_PASSES = 14;
 const ZOOM = [1, 0.92, 0.85, 0.78]; // .blk.fit1 à .fit3 dans scripts/print.css
 
@@ -182,8 +191,9 @@ try {
   for (const F of FORMATS) {
     const top = mm(F.margin.top); const H = F.pageH - mm(F.margin.bottom) - top;
     const frac = (y) => (y - top) / H; // position verticale dans la zone utile, de 0 (haut) à 1 (bas)
+    const SECS = F.relie ? SECTIONS.filter((id) => id !== 'C') : SECTIONS;
     const render = async (state, file) => {
-      const src = join(dir, 'fiches.html'); writeFileSync(src, html(F.cls));
+      const src = join(dir, 'fiches.html'); writeFileSync(src, html(F.cls, { cover: !F.relie, relie: F.relie }));
       await page.goto(pathToFileURL(src).href, { waitUntil: 'load' });
       await page.evaluate(prepare, state);
       await page.evaluate(() => document.fonts.ready);
@@ -229,24 +239,33 @@ try {
       if (!fixes.size || passes >= MAX_PASSES) break;
       fixes.forEach((fn) => fn());
     }
-    // 2. Pages « Notes » pour que chaque section commence sur une page impaire, puis numéros du sommaire.
-    const starts = SECTIONS.map((id) => m.at[id]?.page);
+    // 2. Pages « Notes » pour que chaque section commence à une page de rang 1 modulo F.mod, puis sommaire.
+    const starts = SECS.map((id) => m.at[id]?.page);
     if (process.env.PDF_DEBUG) writeFileSync(process.env.PDF_DEBUG, readFileSync(work));
-    if (starts.some((x) => !x)) throw new Error(`${F.out} : marqueurs de section introuvables : ${SECTIONS.filter((id) => !m.at[id]).join(", ")}`);
+    if (starts.some((x) => !x)) throw new Error(`${F.out} : marqueurs de section introuvables : ${SECS.filter((id) => !m.at[id]).join(', ')}`);
     let pos = 1;
-    SECTIONS.forEach((id, i) => {
-      const len = (i + 1 < SECTIONS.length ? starts[i + 1] : m.pages + 1) - starts[i];
-      if (pos % 2 === 0) { state.blanks.push(id); pos++; }
+    SECS.forEach((id, i) => {
+      const len = (i + 1 < SECS.length ? starts[i + 1] : m.pages + 1) - starts[i];
+      const pad = (F.mod - ((pos - 1) % F.mod)) % F.mod;
+      if (pad) { state.blanks.push([id, pad]); pos += pad; }
       state.pages[id] = pos; pos += len;
     });
     const flat = join(dir, 'final.pdf');
     const fin = await render(state, flat);
-    for (const id of SECTIONS) if (fin.at[id]?.page !== state.pages[id]) throw new Error(`${F.out} : ${id} attendu p. ${state.pages[id]}, trouvé p. ${fin.at[id]?.page}`);
+    for (const id of SECS) if (fin.at[id]?.page !== state.pages[id]) throw new Error(`${F.out} : ${id} attendu p. ${state.pages[id]}, trouvé p. ${fin.at[id]?.page}`);
     const OUT = join(ROOT, 'data', F.out);
-    if (F.twoUp) execFileSync('python3', ['-I', join(ROOT, 'scripts', 'impose_2up.py'), flat, OUT], { stdio: 'inherit' });
-    else writeFileSync(OUT, readFileSync(flat));
+    if (F.relie) {
+      // Couverture : une page A4 paysage entière, sans pied de page.
+      const coverSrc = join(dir, 'cover.html'); writeFileSync(coverSrc, html('a4l', { only: true, relie: true }));
+      await page.goto(pathToFileURL(coverSrc).href, { waitUntil: 'load' });
+      await page.evaluate(() => document.fonts.ready);
+      const coverPdf = join(dir, 'cover.pdf');
+      writeFileSync(coverPdf, await page.pdf({ format: 'A4', landscape: true, printBackground: true, margin: { top: '15mm', bottom: '15mm', left: '22mm', right: '18mm' } }));
+      execFileSync('python3', ['-I', join(ROOT, 'scripts', 'impose_2up.py'), flat, OUT, '--relie', coverPdf, String(GUTTER_MM)], { stdio: 'inherit' });
+    } else writeFileSync(OUT, readFileSync(flat));
     const bl = Object.values(state.blocks);
-    console.log(`${F.out} : ${fin.pages} pages${F.twoUp ? ` sur ${Math.ceil(fin.pages / 2)} feuilles` : ''}, ${passes} passes, ${bl.filter((x) => x.fit).length} blocs réduits, ${bl.filter((x) => x.avoid).length} déplacés, ${Object.keys(state.tight).length} fiches resserrées, ${state.blanks.length} pages Notes, ${(readFileSync(OUT).length / 1024).toFixed(0)} Ko`);
+    const notes = state.blanks.reduce((n, [, k]) => n + k, 0);
+    console.log(`${F.out} : ${fin.pages} pages${F.relie ? ` A5, ${1 + Math.ceil(fin.pages / 4)} feuilles recto verso` : ''}, ${passes} passes, ${bl.filter((x) => x.fit).length} blocs réduits, ${bl.filter((x) => x.avoid).length} déplacés, ${Object.keys(state.tight).length} fiches resserrées, ${notes} pages Notes, ${(readFileSync(OUT).length / 1024).toFixed(0)} Ko`);
   }
   writeFileSync(join(ROOT, 'data', 'fiches-a-imprimer.pdf.sha256'), `${inputsHash(ROOT)}\n`);
 } finally { await browser.close(); rmSync(dir, { recursive: true, force: true }); }
