@@ -178,3 +178,11 @@ html.a5 table.wide { font-size: 7.2pt; }
 html.a5 th, html.a5 td { padding: .8mm 1.1mm; }
 html.a5 .vs, html.a5 .arbre, html.a5 .ech-txt, html.a5 .frise li, html.a5 .etapes li { font-size: 8.4pt; }
 html.a5 .arbre ul { padding-left: 12px; }
+
+/* Couverture du livret relié : une page A4 paysage entière, titre à gauche, légende à droite. */
+html.a4l { --page-h: 178mm; }
+html.a4l .cover { display: grid; grid-template-columns: 1.05fr 1fr; grid-auto-flow: column; column-gap: 14mm; align-items: center; }
+html.a4l .cover h1 { font-size: 30pt; }
+html.a4l .legend { margin-top: 0; font-size: 10pt; padding: 5mm 6mm; }
+html.a4l .legend li { margin: 2mm 0; }
+html.a4l .cover > .mk { position: absolute; }
