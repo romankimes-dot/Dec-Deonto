@@ -1,137 +1,174 @@
 /* PDF à imprimer (scripts/build_pdf.mjs) : par-dessus css/app.css, en noir et blanc pour une imprimante
-   monochrome. Rien ne repose sur la couleur : EC = trait plein, CAC = trait double, conclusion = ✓, interdit = ✗,
-   piège = étiquette noire. Fonds blancs pour pouvoir surligner, marge droite large pour annoter. */
+   monochrome. Rien ne repose sur la couleur : EC = trait simple, CAC = trait double (marge, colonnes, pastilles),
+   conclusion = ✓, interdit = ✗, piège = étiquette noire. Fonds blancs pour surligner, marge droite pour annoter. */
 :root, :root[data-theme] {
   --bg: #fff; --card: #fff; --text: #000; --muted: #444; --line: #777;
   --primary: #000; --primary-ink: #fff; --ok: #000; --ok-bg: #fff; --ko: #000; --ko-bg: #fff;
   --warn: #000; --warn-bg: #fff; --ec: #000; --cac: #000;
+  --ec-rule: 1.6pt solid #000; --cac-rule: 4.2pt double #000;
 }
 html, body { background: #fff; color: #000; margin: 0; padding: 0; }
-body { font-family: "Liberation Sans", Arial, "DejaVu Sans", sans-serif; font-size: 10.5pt; line-height: 1.45; padding: 0; }
-.mk { font-size: 1pt; color: #fff; position: absolute; }
+body { font-family: "Liberation Sans", Arial, "DejaVu Sans", sans-serif; font-size: 9.8pt; line-height: 1.4; padding: 0; }
+/* Marqueurs de mise en page : lus par pdftotext, invisibles et sans hauteur. */
+.mk { display: block; height: 1pt; overflow: hidden; font-size: 1pt; line-height: 1pt; color: #fff; white-space: nowrap; }
+.blk { position: relative; }
 section, article { position: relative; }
 
-/* Couverture, sommaire, pages de garde */
+/* Chaque section commence sur une nouvelle page (le script ajoute les pages Notes pour tomber sur une impaire). */
+section.toc, .part, .print-fiche, .notes-page { break-before: page; page-break-before: always; }
+
+/* Couverture */
 .cover { height: var(--page-h); display: flex; flex-direction: column; justify-content: center; }
-.cover .kicker { font-size: 11pt; letter-spacing: .12em; text-transform: uppercase; }
-.cover h1 { font-size: 30pt; line-height: 1.1; margin: 4mm 0 6mm; }
-.cover p { font-size: 12pt; margin: 0 0 3mm; max-width: 140mm; }
+.cover .kicker { font-size: 10.5pt; letter-spacing: .12em; text-transform: uppercase; }
+.cover h1 { font-size: 28pt; line-height: 1.1; margin: 4mm 0 6mm; }
+.cover p { font-size: 11pt; margin: 0 0 3mm; max-width: 140mm; }
 .cover .rule { border-top: 3px solid #000; width: 40mm; margin: 6mm 0; }
-.legend { margin-top: 12mm; border: 1px solid #000; padding: 4mm 5mm; font-size: 9.5pt; max-width: 150mm; }
-.legend h3 { margin: 0 0 2mm; font-size: 10.5pt; }
+.legend { margin-top: 10mm; border: 1px solid #000; padding: 4mm 5mm; font-size: 9pt; max-width: 150mm; }
+.legend h3 { margin: 0 0 2mm; font-size: 10pt; }
 .legend ul { margin: 0; padding-left: 5mm; }
-.legend li { margin: 1.2mm 0; }
-.sw { display: inline-block; width: 5mm; height: 4mm; vertical-align: -0.6mm; margin-right: 1.5mm; }
-.sw.ec { border-left: 2px solid #000; }
-.sw.cac { border-left: 5px double #000; }
-section.toc { break-before: page; page-break-before: always; border: 0; padding: 0; border-radius: 0; background: #fff; margin: 0; }
-.toc h2 { font-size: 18pt; margin: 0 0 5mm; }
-.toc h3 { font-size: 11pt; text-transform: uppercase; letter-spacing: .06em; margin: 6mm 0 2mm; border-bottom: 1.5px solid #000; padding-bottom: 1mm; }
+.legend li { margin: 1.4mm 0; }
+.sw { display: inline-block; width: 4mm; height: 3.6mm; vertical-align: -0.6mm; margin-right: 1.5mm; }
+.sw.ec { border-left: var(--ec-rule); }
+.sw.cac { border-left: var(--cac-rule); }
+
+/* Sommaire */
+section.toc { border: 0; padding: 0; border-radius: 0; background: #fff; margin: 0; }
+.toc h2 { font-size: 18pt; margin: 0 0 4mm; }
+.toc h3 { font-size: 10pt; text-transform: uppercase; letter-spacing: .06em; margin: 5mm 0 2mm; border-bottom: 1.5px solid #000; padding-bottom: 1mm; display: flex; justify-content: space-between; }
 .toc ol { list-style: none; margin: 0; padding: 0; }
-.toc li { display: flex; align-items: baseline; gap: 2mm; margin: 1.6mm 0; font-size: 10.5pt; break-inside: avoid; }
+.toc li { display: flex; align-items: baseline; gap: 2mm; margin: 1.4mm 0; font-size: 10pt; break-inside: avoid; }
 .toc li .t { flex: 0 1 auto; }
 .toc li .dots { flex: 1 1 auto; border-bottom: 1px dotted #000; transform: translateY(-1mm); min-width: 8mm; }
 .toc li .p { flex: 0 0 auto; font-variant-numeric: tabular-nums; font-weight: 700; }
 .toc li .tick { flex: 0 0 auto; width: 3.5mm; height: 3.5mm; border: 1px solid #000; transform: translateY(.6mm); }
 .toc .hint { font-size: 9pt; color: #444; margin: 0 0 3mm; }
-.part { break-before: page; page-break-before: always; height: var(--page-h); display: flex; flex-direction: column; justify-content: center; }
+
+/* Pages de garde */
+.part { height: var(--page-h); display: flex; flex-direction: column; justify-content: center; }
 .part .num { font-size: 60pt; font-weight: 800; line-height: 1; }
 .part h2 { font-size: 26pt; margin: 4mm 0 4mm; border-top: 3px solid #000; padding-top: 4mm; }
-.part p { font-size: 11.5pt; max-width: 140mm; margin: 0 0 3mm; }
-.part ol { font-size: 10.5pt; padding-left: 6mm; margin-top: 4mm; }
+.part p { font-size: 11pt; max-width: 140mm; margin: 0 0 3mm; }
+.part ol { font-size: 10pt; padding-left: 6mm; margin-top: 4mm; }
 
-/* Une fiche = nouvelle page */
-.print-fiche { break-before: page; page-break-before: always; }
+/* Pages Notes (verso laissé libre avant une fiche) */
+.notes-page { height: var(--page-h); display: flex; flex-direction: column; }
+.notes-page h2 { font-size: 11pt; text-transform: uppercase; letter-spacing: .1em; margin: 0 0 4mm; border-bottom: 1px solid #000; padding-bottom: 1.5mm; }
+.notes-page .ruled { flex: 1; background: repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--rule-gap) - .5pt), #aaa calc(var(--rule-gap) - .5pt), #aaa var(--rule-gap)); }
+
+/* Fiches */
 .print-label { font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid #000; padding-bottom: 1.5mm; margin-bottom: 2mm; display: flex; justify-content: space-between; }
-.fiche h2 { font-size: 16pt; margin: 2mm 0 4mm; line-height: 1.2; }
-.fiche h3 { font-size: 12.5pt; margin: 6mm 0 2mm; border-bottom: 1px solid #000; padding-bottom: 1mm; }
-.fiche h4 { font-size: 11pt; margin: 4mm 0 1.5mm; }
+.fiche h2 { font-size: 15pt; margin: 2mm 0 3.5mm; line-height: 1.2; }
+.fiche h3 { font-size: 12pt; margin: 5mm 0 2mm; border-bottom: 1px solid #000; padding-bottom: 1mm; }
+.fiche h4 { font-size: 10.5pt; margin: 3.5mm 0 1.5mm; }
 .fiche h2, .fiche h3, .fiche h4 { break-after: avoid; page-break-after: avoid; }
 .fiche p { margin: 1.5mm 0; orphans: 3; widows: 3; }
 .fiche ul, .fiche ol { margin: 1.5mm 0; padding-left: 6mm; }
-.fiche li { margin: 1mm 0; }
+.fiche li { margin: .9mm 0; }
 .fiche strong { color: #000; }
-.fiche code { font-size: 9.5pt; }
+.fiche code { font-size: 9pt; }
 .muted { color: #444; font-size: inherit; }
+.fiche-body > ul > li, .fiche-body > ol > li, .sec-wrap > ul > li { break-inside: avoid; page-break-inside: avoid; }
+
+/* EC / CAC : trait à gauche, simple (EC) ou double (CAC). Fiche de référence entière, passage d'un schéma
+   propre à une profession, élément de liste ou nœud d'arbre qui commence par la pastille. (Pas dans la marge :
+   Chromium rogne tout ce qui dépasse de la zone de texte.) */
+.print-fiche.ec .fiche-body, .print-fiche.cac .fiche-body, .sec-wrap { padding-left: var(--rule-in); }
+.print-fiche.ec .fiche-body, .sec-ec { border-left: var(--ec-rule); }
+.print-fiche.cac .fiche-body, .sec-cac { border-left: var(--cac-rule); }
+.print-fiche.ec .fiche-body > h2:first-child, .print-fiche.cac .fiche-body > h2:first-child { margin-top: 0; }
+.sec-wrap { margin: 2mm 0; }
+.sec-wrap > h3:first-child, .sec-wrap > h4:first-child { margin-top: 1mm; }
+li.li-ec, li.li-cac { padding-left: 1.8mm; }
+li.li-ec { border-left: var(--ec-rule); }
+li.li-cac { border-left: var(--cac-rule); }
+.arbre .node.node-ec { border-left: var(--ec-rule); }
+.arbre .node.node-cac { border-left: var(--cac-rule); }
+/* Pas de trait de passage à l'intérieur d'une fiche déjà marquée en entier. */
+.print-fiche.ec .sec-wrap, .print-fiche.cac .sec-wrap { border-left: 0; padding-left: 0; }
 
 /* Tableaux : jamais coupés à droite, en-tête répété à chaque page */
 .table-wrap, table { overflow: visible !important; }
-table { display: table !important; width: 100%; border-collapse: collapse; font-size: 9.5pt; margin: 2mm 0; table-layout: auto; }
+table { display: table !important; width: 100%; border-collapse: collapse; font-size: 9pt; margin: 2mm 0; table-layout: auto; }
 .table-wrap table { min-width: 0; }
 thead { display: table-header-group; }
-th, td { border: 0.75pt solid #000; padding: 1.2mm 1.6mm; overflow-wrap: break-word; hyphens: manual; }
-table.short { break-inside: avoid; page-break-inside: avoid; }
-table.wide { font-size: 8.5pt; }
+th, td { border: 0.75pt solid #000; padding: 1.1mm 1.5mm; overflow-wrap: break-word; hyphens: manual; }
 th { background: #e6e6e6; }
-tr, .fiche > ul > li, .fiche > ol > li, .vs-row, .ech-row, .node, .frise li, .etapes li { break-inside: avoid; page-break-inside: avoid; }
-.arbre li { break-inside: auto; page-break-inside: auto; }
+table.short { break-inside: avoid; page-break-inside: avoid; }
+table.wide { font-size: 8pt; }
+td.col-ec, th.col-ec { border-left: var(--ec-rule); }
+td.col-cac, th.col-cac { border-left: var(--cac-rule); }
+tr, .vs-row, .ech-row, .node, .frise li, .etapes li { break-inside: avoid; page-break-inside: avoid; }
+.frise, .etapes { break-inside: avoid; page-break-inside: avoid; }
 
-/* Pastilles en texte, sans couleur */
-.fpill { color: #000 !important; background: #fff !important; border: 1px solid #000; font-size: 7.5pt; padding: .4mm 1.2mm; vertical-align: .3mm; }
-.fpill.cac { border: 2.5px double #000; padding: .2mm 1mm; }
+/* Blocs ajustés par le script : réduits pour tenir sur la page, ou reportés en haut de la suivante. */
+.blk.fit1 { zoom: .92; }
+.blk.fit2 { zoom: .85; }
+.blk.fit3 { zoom: .78; }
+.blk.avoid { break-inside: avoid; page-break-inside: avoid; }
+/* Fiche dont la dernière page n'aurait que quelques lignes : resserrée pour la faire tenir. */
+.print-fiche.tight1 .fiche-body { zoom: .95; }
+.print-fiche.tight2 .fiche-body { zoom: .9; }
+
+/* Pastilles en texte, sans couleur : EC encadré simple, CAC encadré double */
+.fpill { color: #000 !important; background: #fff !important; border: 1px solid #000; border-radius: 1mm; font-size: 7.5pt; padding: .3mm 1.2mm; vertical-align: .3mm; }
+.fpill.cac { border: 3px double #000; padding: 0 1mm; }
 .fpill.trap { background: #000 !important; color: #fff !important; text-transform: uppercase; letter-spacing: .03em; }
 .fpill.check { border-style: dashed; }
 
-/* Comparatif EC / CAC : plein / double */
-.vs { font-size: 9.8pt; margin: 2mm 0; }
-.vs-head span { color: #000 !important; background: #fff !important; border: 1px solid #000; font-size: 9pt; }
-.vs-head .vs-a { border-left: 2px solid #000; }
-.vs-head .vs-b { border-left: 5px double #000; }
+/* Comparatif EC / CAC : colonne EC à trait simple, colonne CAC à trait double */
+.vs { font-size: 9.2pt; margin: 2mm 0; }
+.vs-head span { color: #000 !important; background: #fff !important; border: 1px solid #000; border-radius: 0; font-size: 8.8pt; }
+.vs-head .vs-a { border-left: var(--ec-rule); }
+.vs-head .vs-b { border-left: var(--cac-rule); }
 .vs-row { margin-top: 1mm; }
-.vs-row .vs-k { color: #000; font-size: 8.5pt; margin-top: 1.5mm; }
-.vs-row .vs-a, .vs-row .vs-b { background: #fff; border: 0.5pt solid #666; border-left: 2px solid #000; border-radius: 1.5mm; padding: 1.2mm 2mm; }
-.vs-row .vs-b { border-left: 5px double #000; }
+.vs-row .vs-k { color: #000; font-size: 8pt; margin-top: 1.5mm; }
+.vs-row .vs-a, .vs-row .vs-b { background: #fff; border: 0.5pt solid #666; border-left: var(--ec-rule); border-radius: 0; padding: 1.1mm 2mm; }
+.vs-row .vs-b { border-left: var(--cac-rule); }
 
 /* Échelle : la longueur de la barre dit le niveau */
-.ech-bar { background: #fff; color: #000; border: 1.5px solid #000; border-left-width: 5px; font-size: 9.5pt; padding: 1.5mm 2mm; }
-.ech-txt { font-size: 9.8pt; }
+.ech-bar { background: #fff; color: #000; border: 1.5px solid #000; border-left-width: 5px; font-size: 9pt; padding: 1.4mm 2mm; }
+.ech-txt { font-size: 9.2pt; }
 
 /* Frise, étapes */
-.frise li, .etapes li { font-size: 9.8pt; padding-bottom: 2.5mm; }
-.frise, .etapes { break-inside: avoid; page-break-inside: avoid; }
+.frise li, .etapes li { font-size: 9.2pt; padding-bottom: 2.2mm; }
 .frise li::before, .etapes li::before { background: #000; width: 1px; }
 .frise li::after { background: #000; }
 .fr-k { color: #000; }
 .etapes li::after { background: #000; color: #fff; }
 
 /* Arbre : question en gras encadré, ✓ conclusion, ✗ interdit */
-.arbre { overflow: visible !important; font-size: 9.8pt; }
+.arbre { overflow: visible !important; font-size: 9.2pt; }
 .arbre ul ul li::before, .arbre ul ul li::after { border-color: #000; border-left-width: 1px; border-top-width: 1px; }
-.arbre .node { background: #fff; border: 0.75pt solid #000; border-radius: 1.5mm; padding: 1mm 2mm; }
+.arbre li { break-inside: auto; page-break-inside: auto; }
+.arbre .node { background: #fff; border: 0.75pt solid #000; border-radius: 1.5mm; padding: .9mm 2mm; }
 .arbre .node.q { border-width: 2px; display: block; width: fit-content; break-after: avoid; page-break-after: avoid; }
 .arbre li:has(> .node.q) > ul > li:first-child { break-before: avoid; page-break-before: avoid; }
 .arbre .node.ok { background: #fff; border: 1.5px solid #000; }
 .arbre .node.ok::before { content: "✓ "; font-weight: 800; }
 .arbre .node.ko { background: #fff; border: 1.5px dashed #000; }
 .arbre .node.ko::before { content: "✗ "; font-weight: 800; }
-.toc details, details.toc { display: none; }
+details.toc { display: none; }
 
-/* Hauteur utile d'une page, selon le format (classe posée par build_pdf.mjs). */
-html.a4 { --page-h: 250mm; }
+/* Formats (classe posée par build_pdf.mjs) : hauteur utile, retrait du trait EC / CAC dans la marge. */
+html.a4 { --page-h: 265mm; --rule-in: 3.5mm; --rule-gap: 8mm; }
 /* A5 (version 2 par feuille) : même texte, un peu plus serré, pour une colonne de 12 cm. */
-html.a5 { --page-h: 178mm; }
-html.a5 body { font-size: 9.5pt; line-height: 1.38; }
-html.a5 .cover h1 { font-size: 19pt; }
-html.a5 .cover p { font-size: 10pt; }
-html.a5 .legend { margin-top: 6mm; padding: 2.5mm 3mm; font-size: 8.3pt; }
+html.a5 { --page-h: 186mm; --rule-in: 2.8mm; --rule-gap: 7mm; }
+html.a5 body { font-size: 8.8pt; line-height: 1.36; }
+html.a5 .cover h1 { font-size: 18pt; }
+html.a5 .cover p { font-size: 9.5pt; }
+html.a5 .legend { margin-top: 5mm; padding: 2.5mm 3mm; font-size: 8pt; }
 html.a5 .toc h2 { font-size: 15pt; margin-bottom: 3mm; }
-html.a5 .toc h3 { font-size: 9pt; margin: 4mm 0 1.5mm; }
-html.a5 .toc li { font-size: 9pt; margin: 1mm 0; }
+html.a5 .toc h3 { font-size: 8.5pt; margin: 3.5mm 0 1.5mm; }
+html.a5 .toc li { font-size: 8.6pt; margin: .9mm 0; }
 html.a5 .part .num { font-size: 44pt; }
 html.a5 .part h2 { font-size: 19pt; }
-html.a5 .part p { font-size: 10pt; }
-html.a5 .part ol { font-size: 9pt; }
-html.a5 .fiche h2 { font-size: 14pt; }
-html.a5 .fiche h3 { font-size: 11.5pt; margin-top: 4.5mm; }
-html.a5 .fiche h4 { font-size: 10pt; }
-html.a5 table { font-size: 8.3pt; }
-html.a5 th, html.a5 td { padding: .9mm 1.2mm; }
-html.a5 .vs, html.a5 .arbre, html.a5 .ech-txt, html.a5 .frise li, html.a5 .etapes li { font-size: 9pt; }
+html.a5 .part p { font-size: 9.5pt; }
+html.a5 .part ol { font-size: 8.6pt; }
+html.a5 .fiche h2 { font-size: 13pt; }
+html.a5 .fiche h3 { font-size: 10.8pt; margin-top: 4mm; }
+html.a5 .fiche h4 { font-size: 9.5pt; }
+html.a5 table { font-size: 7.9pt; }
+html.a5 table.wide { font-size: 7.2pt; }
+html.a5 th, html.a5 td { padding: .8mm 1.1mm; }
+html.a5 .vs, html.a5 .arbre, html.a5 .ech-txt, html.a5 .frise li, html.a5 .etapes li { font-size: 8.4pt; }
 html.a5 .arbre ul { padding-left: 12px; }
-
-/* Fiche dont la dernière page n'aurait que quelques lignes : texte un peu resserré pour la faire tenir. */
-.print-fiche.tight { font-size: 10pt; }
-.print-fiche.tight h3 { margin-top: 4mm; }
-.print-fiche.tight li { margin: .5mm 0; }
-html.a5 .print-fiche.tight { font-size: 9pt; }
-html.a5 table.wide { font-size: 7.6pt; }
