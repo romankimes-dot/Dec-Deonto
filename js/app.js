@@ -141,7 +141,7 @@ function runSync({ manual = false, boot = false, timeout = 15000 } = {}) {
 // Plan du jour déposé pour Ernest, qui le récupère tout seul à sa prochaine synchro.
 async function sendPont(cfg) {
   let p; try { p = ernestPayload(); } catch { return; }
-  try { await SY.pushPont(cfg, p); } catch { /* réessayé à la prochaine synchro */ }
+  try { if (await SY.pushPont(cfg, p)) SY.setStatus({ pontAt: Date.now() }); } catch { /* réessayé à la prochaine synchro */ }
 }
 function watchSync() {
   document.addEventListener('visibilitychange', () => {
@@ -1343,6 +1343,7 @@ function syncCard() {
   }
   const when = st.at ? new Date(st.at).toLocaleString('fr-FR') : 'jamais';
   return `<div class="card"><h2>Synchronisation en ligne</h2><p class="muted">Connecté à <strong>${esc(new URL(cfg.url).host)}</strong>. Dernière synchronisation réussie : ${when}.${st.error ? `<br><strong>Dernier essai : ${esc(st.error)}.</strong>` : ''}</p>
+    <p class="muted">Plan du jour pour Ernest : ${st.pontAt ? `envoyé le ${new Date(st.pontAt).toLocaleString('fr-FR')}` : 'pas encore envoyé'}.</p>
     <p class="muted">Envoi automatique pendant le travail (au plus une fois par minute) et à la fermeture de l’application ; récupération à l’ouverture. Les progressions des appareils sont fusionnées : rien n’est perdu.</p>
     <div class="btnrow"><button class="btn" id="sync-now">${ic('refresh')} Synchroniser maintenant</button><button class="btn" id="sync-off">Déconnecter cet appareil</button></div></div>`;
 }
