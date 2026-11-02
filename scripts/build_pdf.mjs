@@ -11,6 +11,7 @@
 // qui commencerait en bas de page passe à la page suivante, une fiche dont la dernière page n'aurait que
 // quelques lignes est resserrée. On recommence jusqu'à stabilité, puis on ajoute les pages « Notes » qui
 // placent chaque fiche sur une page impaire et on remplit le sommaire.
+// PDF_TRACE=1 npm run pdf : affiche, passe par passe, les blocs à cheval sur deux pages et leur réglage.
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -42,7 +43,7 @@ const SECTIONS = ['C', 'T', ...PARTS.flatMap((p, i) => [`P${i + 1}`, ...p.fiches
 const mk = (id) => `<span class="mk">§${id}§</span>`;
 function html(cls) {
   const toc = PARTS.map((p, i) => `<h3>Partie ${i + 1} · ${esc(p.title)} <span class="pg">p. <span data-pg="P${i + 1}"></span></span></h3><ol>${p.fiches.map((f) => `<li><span class="tick"></span><span class="t">${esc(f.title)}</span><span class="dots"></span><span class="p" data-pg="${f.id}"></span></li>`).join('')}</ol>`).join('');
-  const parts = PARTS.map((p, i) => `<section class="part" data-sec="P${i + 1}">${mk(`P${i + 1}`)}<div class="num">${i + 1}</div><h2>${esc(p.title)}</h2><p><strong>${esc(p.sub)}</strong></p><p>${esc(p.intro)}</p><ol>${p.fiches.map((f) => `<li>${esc(f.title)} <span class="muted">· p. <span data-pg="${f.id}"></span></span></li>`).join('')}</ol></section>`
+  const parts = PARTS.map((p, i) => `<section class="part" data-sec="P${i + 1}">${mk(`P${i + 1}`)}<div class="num">${i + 1}</div><h2>${esc(p.title).replace(' : ', '&nbsp;:<br>')}</h2><p><strong>${esc(p.sub)}</strong></p><p>${esc(p.intro)}</p><ol>${p.fiches.map((f) => `<li>${esc(f.title)} <span class="muted">· p. <span data-pg="${f.id}"></span></span></li>`).join('')}</ol></section>`
     + p.fiches.map((f, j) => `<article class="fiche print-fiche ${p.prof}" data-sec="${f.id}" data-kind="${p.prof || 'schema'}">${mk(f.id)}<div class="print-label"><span>${esc(p.label(f, j, p.fiches.length))}</span><span>Partie ${i + 1}</span></div><div class="fiche-body">${renderMarkdown(readFileSync(join(ROOT, 'data/fiches', f.file), 'utf8'))}</div>${mk(`E${f.id.slice(1)}`)}</article>`).join('')).join('');
   return `<!doctype html><html lang="fr" data-theme="light" class="${cls}"><head><meta charset="utf-8"><base href="${pathToFileURL(ROOT).href}/"><title>DEC Épreuve 1 · Fiches à imprimer</title>
 <link rel="stylesheet" href="css/app.css"><link rel="stylesheet" href="scripts/print.css"></head><body>
@@ -101,6 +102,44 @@ function prepare(state) {
       if (first.classList.contains('ec')) nd.classList.add('node-ec'); else if (first.classList.contains('cac')) nd.classList.add('node-cac');
     }
   });
+  // Comparatif dont les colonnes ne sont pas EC / CAC (« EIP | Non-EIP », « Titre I | Titre II »…) : pas de trait
+  // simple ou double, qui dirait à tort EC et CAC.
+  document.querySelectorAll('.fiche-body .vs').forEach((vs) => {
+    const [a, b] = [...vs.querySelectorAll(':scope > .vs-head > span')].map((s) => profOf(s.textContent));
+    if (a !== 'ec' || b !== 'cac') vs.classList.add('vs-plain');
+  });
+  // Typographie française, au rendu seulement (les fiches restent en texte simple pour l'application) :
+  // apostrophe courbe ; espace fine insécable avant ; ! ? et insécable avant : et dans « » (jamais de
+  // ponctuation rejetée seule en début de ligne) ; insécable entre un nombre et ce qui le suit (3 ans, 15 000 €,
+  // L.821-70 I), après art. n° p. et dans les abréviations des codes (C. com.) ; références d'articles, numéros de
+  // textes et dates (L.821-83, 2012-432, 01/01/2024) jamais coupés.
+  const NB = '\u00a0'; const FINE = '\u202f';
+  const typo = (s) => s
+    .replace(/'/g, '’')
+    .replace(/ ([;!?])/g, `${FINE}$1`)
+    .replace(/ :/g, `${NB}:`)
+    .replace(/« /g, `«${NB}`).replace(/ »/g, `${NB}»`)
+    .replace(/(\d) (?=\d{3}(?!\d))/g, `$1${NB}`)
+    .replace(/(\d) (?=[^\s\d|·/+=→–-])/g, `$1${NB}`)
+    .replace(/\b(art\.|n°|p\.|NP|NEP|ISA|IES|loi|décret|ordonnance) (?=\d)/g, `$1${NB}`)
+    .replace(/\b(C\.|Ord\.) (?=[a-zé]+\.)/g, `$1${NB}`)
+    .replace(/(\. ?[a-zé]+\.) (?=[A-Z]\.\d)/g, `$1${NB}`);
+  const NOWRAP = /(?:\b[A-Z]{1,2}\.)?\d+(?:[-/]\d+)+/g;
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode: (n) => (n.parentElement.closest('.mk, code, pre, style, script') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT),
+  });
+  const texts = []; while (walker.nextNode()) texts.push(walker.currentNode);
+  for (const n of texts) {
+    const t = typo(n.data);
+    if (t.search(NOWRAP) < 0) { if (t !== n.data) n.data = t; continue; } // search, pas test : test avancerait lastIndex
+    const frag = document.createDocumentFragment(); let last = 0;
+    for (const m of t.matchAll(NOWRAP)) {
+      frag.append(t.slice(last, m.index));
+      const s = document.createElement('span'); s.className = 'nw'; s.textContent = m[0]; frag.append(s);
+      last = m.index + m[0].length;
+    }
+    frag.append(t.slice(last)); n.replaceWith(frag);
+  }
   // Blocs bornés par des marqueurs.
   let b = 0;
   document.querySelectorAll('.fiche-body .table-wrap, .fiche-body .vs, .fiche-body .arbre, .fiche-body .echelle, .fiche-body .frise, .fiche-body .etapes').forEach((el) => {
@@ -110,7 +149,7 @@ function prepare(state) {
     w.insertAdjacentHTML('beforeend', `<span class="mk">§S${b}§</span>`); w.appendChild(el); w.insertAdjacentHTML('beforeend', `<span class="mk">§Z${b}§</span>`);
   });
   document.querySelectorAll('article[data-sec]').forEach((a) => { const t = state.tight[a.dataset.sec]; if (t) a.classList.add(`tight${t}`); });
-  for (const id of state.blanks) document.querySelector(`[data-sec="${id}"]`)?.insertAdjacentHTML('beforebegin', '<section class="notes-page"><h2>Notes</h2><div class="ruled"></div></section>');
+  for (const id of state.blanks) document.querySelector(`[data-sec="${id}"]`)?.insertAdjacentHTML('beforebegin', `<section class="notes-page"><h2>Notes</h2><div class="ruled">${'<i></i>'.repeat(40)}</div></section>`);
   document.querySelectorAll('[data-pg]').forEach((s) => { s.textContent = state.pages[s.dataset.pg] ?? '00'; });
   return b;
 }
@@ -132,6 +171,7 @@ const FORMATS = [
   { out: 'fiches-a-imprimer-2-par-feuille.pdf', cls: 'a5', format: 'A5', pageH: 595.28, margin: { top: '9mm', bottom: '11mm', left: '11mm', right: '15mm' }, pad: '11mm', font: 9, twoUp: true },
 ];
 const MAX_FIT = 3; const MAX_TIGHT = 2; const MAX_PASSES = 14;
+const ZOOM = [1, 0.92, 0.85, 0.78]; // .blk.fit1 à .fit3 dans scripts/print.css
 
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
@@ -154,7 +194,7 @@ try {
       }));
       return markers(file);
     };
-    const state = { blocks: {}, tight: {}, blanks: [], pages: {} };
+    const state = { blocks: {}, tight: {}, noTight: [], blanks: [], pages: {} };
     const work = join(dir, 'pass.pdf');
     const fiches = PARTS.flatMap((p) => p.fiches);
     let m; let passes = 0;
@@ -169,15 +209,23 @@ try {
         const f = ficheAt(s);
         if (!e || !f || fixes.has(f.id) || e.page !== s.page + 1) continue; // sur une page, ou plus de deux : rien
         const key = `B${n}`; const bs = state.blocks[key] || {};
-        const head = 1 - frac(s.y); const tail = frac(e.y);
-        if (tail <= 0.3 && (bs.fit || 0) < MAX_FIT && !bs.avoid) fixes.set(f.id, () => { state.blocks[key] = { ...bs, fit: (bs.fit || 0) + 1 }; });
-        else if (!bs.avoid && head + tail < 0.97 && head <= 0.45) fixes.set(f.id, () => { state.blocks[key] = { ...bs, avoid: true }; });
+        const head = 1 - frac(s.y); const tail = frac(e.y); const fit = bs.fit || 0;
+        // Un bloc reporté à la page suivante reprend sa taille normale : les réductions essayées avant ne l'ont pas
+        // fait tenir, il n'a pas à rester rapetissé (tableaux de tailles différentes sur une même page).
+        const full = (head + tail) / ZOOM[fit];
+        if (!bs.avoid && tail <= 0.3 && fit < MAX_FIT) fixes.set(f.id, () => { state.blocks[key] = { ...bs, fit: fit + 1 }; });
+        else if (!bs.avoid && full < 0.97 && head <= 0.45) fixes.set(f.id, () => { state.blocks[key] = { avoid: true }; });
       }
       for (const f of fiches) {
         if (fixes.has(f.id)) continue;
         const s = m.at[f.id]; const e = m.at[`E${f.id.slice(1)}`]; const t = state.tight[f.id] || 0;
-        if (s && e && e.page > s.page && frac(e.y) <= 0.2 && t < MAX_TIGHT) fixes.set(f.id, () => { state.tight[f.id] = t + 1; });
+        // Seuil plus haut pour une longue fiche (resserrer 4 pages en gagne davantage) ; si le resserrement maximal
+        // ne suffit pas, la fiche reprend sa taille normale (rien n'est gagné à la garder rapetissée).
+        if (!s || !e || e.page <= s.page || state.noTight.includes(f.id) || frac(e.y) > (e.page - s.page >= 3 ? 0.3 : 0.2)) continue;
+        if (t < MAX_TIGHT) fixes.set(f.id, () => { state.tight[f.id] = t + 1; });
+        else fixes.set(f.id, () => { delete state.tight[f.id]; state.noTight.push(f.id); });
       }
+      if (process.env.PDF_TRACE) for (const id of blocks) { const n = id.slice(1); const e = m.at[`Z${n}`]; if (e && e.page === m.at[id].page + 1) console.log(`  passe ${passes} B${n} (${ficheAt(m.at[id])?.id}) p.${m.at[id].page} tête ${(1 - frac(m.at[id].y)).toFixed(2)} queue ${frac(e.y).toFixed(2)} ${JSON.stringify(state.blocks[`B${n}`] || {})}`); }
       if (!fixes.size || passes >= MAX_PASSES) break;
       fixes.forEach((fn) => fn());
     }
