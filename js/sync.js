@@ -159,8 +159,19 @@ export async function syncOnce(cfg, local, { fetch: f = globalThis.fetch, timeou
 }
 
 // Plan du jour déposé pour Ernest (casier /pont/<src>), envoyé seulement s'il a changé depuis le dernier envoi.
+// Une tâche déjà déposée comme faite (par un autre appareil) reste faite : un appareil en retard ne la décoche pas.
 const PONT_KEY = 'dec1.sync.pont';
 export async function pushPont(cfg, payload, { fetch: f = globalThis.fetch, timeout = 15000 } = {}) {
+  let last0 = null; try { last0 = localStorage.getItem(PONT_KEY); } catch { /* ignore */ }
+  if (last0 === JSON.stringify(payload)) return false;
+  try {
+    const cur = await call(f, `${cfg.url}/pont/${encodeURIComponent(payload.src)}`, { headers: { Authorization: `Bearer ${cfg.token}` } }, timeout);
+    if (cur.status === 200) {
+      const prev = await cur.json();
+      const done = new Set((prev && Array.isArray(prev.things) ? prev.things : []).filter((t) => t && t.done === true).map((t) => `${t.day}|${t.title}`));
+      if (done.size) payload = { ...payload, things: payload.things.map((t) => (!t.done && done.has(`${t.day}|${t.title}`) ? { ...t, done: true } : t)) };
+    }
+  } catch { /* lecture impossible : on dépose tel quel */ }
   const body = JSON.stringify(payload);
   let last = null; try { last = localStorage.getItem(PONT_KEY); } catch { /* ignore */ }
   if (last === body) return false;
