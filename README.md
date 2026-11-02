@@ -24,7 +24,7 @@ Programme officiel (arrêté du 13 février 2019) : exercice de la profession ·
 1. Ouvrir https://romankimes-dot.github.io/Dec-Deonto/ dans Safari (iPhone) ou Chrome (Android).
 2. **Avant de répondre à la moindre question** : « Partager » → « Sur l'écran d'accueil » (iPhone) ou « Installer l'application » (Android), puis lancer l'app depuis l'icône. Sur iPhone, Safari efface les données d'un site resté 7 jours sans visite ; une application installée n'est pas concernée, et ce qui est fait dans un onglet n'est pas transféré à l'application installée.
 3. Au premier lancement en ligne, l'app met tout en cache (questions, fiches). Elle fonctionne ensuite **sans réseau**.
-4. La progression est stockée **sur le téléphone** uniquement. Réglages → Exporter (partage, copie ou fichier) après chaque séance : l'accueil le rappelle au-delà de 2 jours. Une copie automatique est faite toutes les 3 heures, et l'état précédent est gardé avant un import ou un effacement.
+4. La progression est stockée **sur le téléphone**. Option : **synchronisation en ligne** entre appareils via votre propre Worker Cloudflare (Réglages ; mise en place dans [`cloudflare/README.md`](cloudflare/README.md)). sauvegarde manuelle : Réglages → Exporter (partage, copie ou fichier) après chaque séance : l'accueil le rappelle au-delà de 2 jours. Une copie automatique est faite toutes les 3 heures, et l'état précédent est gardé avant un import ou un effacement.
 
 ## Modes
 
