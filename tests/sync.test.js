@@ -134,3 +134,14 @@ test('pont vers Ernest : envoyé seulement s’il a changé', async () => {
   assert.equal(await SY.pushPont(cfg, p, { fetch: f }), false);
   assert.ok(kv.has('pont:deonto'));
 });
+
+test('synchro : une fiche décochée sur un appareil reste décochée après fusion', async () => {
+  const P = await import('../js/plan.js');
+  const base = store.defaults ? store.defaults() : {};
+  const a = { ...base, plan: { done: {}, read: { 'x.md': 100 } } };
+  const b = { ...base, plan: { done: {}, read: { 'x.md': 100 }, unread: { 'x.md': 200 } } };
+  assert.equal(P.isRead(SY.merge(a, b).plan, 'x.md'), false);
+  assert.equal(P.isRead(SY.merge(b, a).plan, 'x.md'), false);
+  const c = { ...base, plan: { done: {}, read: { 'x.md': 300 } } };
+  assert.equal(P.isRead(SY.merge(b, c).plan, 'x.md'), true, 'recochée plus tard ailleurs');
+});
