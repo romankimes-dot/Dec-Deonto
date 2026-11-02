@@ -192,15 +192,18 @@ try {
     const top = mm(F.margin.top); const H = F.pageH - mm(F.margin.bottom) - top;
     const frac = (y) => (y - top) / H; // position verticale dans la zone utile, de 0 (haut) à 1 (bas)
     const SECS = F.relie ? SECTIONS.filter((id) => id !== 'C') : SECTIONS;
-    const render = async (state, file) => {
+    // mirror : marges gauche / droite inversées et pied de page en miroir (numéro côté gauche), pour les pages qui
+    // s'impriment au verso. Même largeur de texte : la mise en page est identique, page pour page.
+    const render = async (state, file, mirror = false) => {
+      const mg = mirror ? { ...F.margin, left: F.margin.right, right: F.margin.left } : F.margin;
       const src = join(dir, 'fiches.html'); writeFileSync(src, html(F.cls, { cover: !F.relie, relie: F.relie }));
       await page.goto(pathToFileURL(src).href, { waitUntil: 'load' });
       await page.evaluate(prepare, state);
       await page.evaluate(() => document.fonts.ready);
       writeFileSync(file, await page.pdf({
-        format: F.format, printBackground: true, displayHeaderFooter: true, margin: F.margin,
+        format: F.format, printBackground: true, displayHeaderFooter: true, margin: mg,
         headerTemplate: '<span></span>',
-        footerTemplate: `<div style="width:100%;font-family:'Liberation Sans',Arial,sans-serif;font-size:${F.font}px;color:#000;padding:0 ${F.pad};display:flex;justify-content:space-between"><span>DEC Épreuve 1 · Déontologie EC / CAC</span><span>page <span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`,
+        footerTemplate: `<div style="width:100%;font-family:'Liberation Sans',Arial,sans-serif;font-size:${F.font}px;color:#000;padding:0 ${mg.right} 0 ${mg.left};display:flex;flex-direction:${mirror ? 'row-reverse' : 'row'};justify-content:space-between"><span>DEC Épreuve 1 · Déontologie EC / CAC</span><span>page <span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`,
       }));
       return markers(file);
     };
@@ -253,6 +256,10 @@ try {
     const flat = join(dir, 'final.pdf');
     const fin = await render(state, flat);
     for (const id of SECS) if (fin.at[id]?.page !== state.pages[id]) throw new Error(`${F.out} : ${id} attendu p. ${state.pages[id]}, trouvé p. ${fin.at[id]?.page}`);
+    // Version miroir pour les pages imprimées au verso ; on vérifie qu'elle est coupée exactement pareil.
+    const flatMirror = join(dir, 'final-miroir.pdf');
+    const mir = await render(state, flatMirror, true);
+    for (const [id, at] of Object.entries(fin.at)) if (mir.at[id]?.page !== at.page) throw new Error(`${F.out} : version miroir décalée (${id})`);
     const OUT = join(ROOT, 'data', F.out);
     if (F.relie) {
       // Couverture : une page A4 paysage entière, sans pied de page.
@@ -261,8 +268,8 @@ try {
       await page.evaluate(() => document.fonts.ready);
       const coverPdf = join(dir, 'cover.pdf');
       writeFileSync(coverPdf, await page.pdf({ format: 'A4', landscape: true, printBackground: true, margin: { top: '15mm', bottom: '15mm', left: '22mm', right: '18mm' } }));
-      execFileSync('python3', ['-I', join(ROOT, 'scripts', 'impose_2up.py'), flat, OUT, '--relie', coverPdf, String(GUTTER_MM)], { stdio: 'inherit' });
-    } else writeFileSync(OUT, readFileSync(flat));
+      execFileSync('python3', ['-I', join(ROOT, 'scripts', 'impose_2up.py'), flat, OUT, '--relie', coverPdf, String(GUTTER_MM), flatMirror], { stdio: 'inherit' });
+    } else execFileSync('python3', ['-I', join(ROOT, 'scripts', 'impose_2up.py'), flat, OUT, '--alterne', flatMirror], { stdio: 'inherit' });
     const bl = Object.values(state.blocks);
     const notes = state.blanks.reduce((n, [, k]) => n + k, 0);
     console.log(`${F.out} : ${fin.pages} pages${F.relie ? ` A5, ${1 + Math.ceil(fin.pages / 4)} feuilles recto verso` : ''}, ${passes} passes, ${bl.filter((x) => x.fit).length} blocs réduits, ${bl.filter((x) => x.avoid).length} déplacés, ${Object.keys(state.tight).length} fiches resserrées, ${notes} pages Notes, ${(readFileSync(OUT).length / 1024).toFixed(0)} Ko`);
