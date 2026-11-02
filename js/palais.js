@@ -2,10 +2,11 @@
 // sur les lieux du bureau (méthode des lieux). Contenu repris des fiches (source indiquée), sans ajout.
 // `ordered` : l'ordre a un sens (gradation, procédure) ; sinon c'est l'ordre de la fiche, que le palais fige.
 
+// Chaque lieu : [nom d'icône (js/icons.js), libellé].
 export const LOCI = [
-  ['🚪', 'la porte'], ['🧥', 'le portemanteau'], ['🪴', 'la plante'], ['🪟', 'la fenêtre'],
-  ['📚', 'l’étagère'], ['🖼', 'le cadre au mur'], ['🖥', 'l’écran'], ['💡', 'la lampe'],
-  ['☎️', 'le téléphone'], ['🗂', 'le classeur'], ['☕', 'la machine à café'], ['🗑', 'la corbeille'],
+  ['door', 'la porte'], ['coat', 'le portemanteau'], ['plant', 'la plante'], ['window', 'la fenêtre'],
+  ['library', 'l’étagère'], ['image', 'le cadre au mur'], ['monitor', 'l’écran'], ['bulb', 'la lampe'],
+  ['phone', 'le téléphone'], ['files', 'le classeur'], ['coffee', 'la machine à café'], ['trash', 'la corbeille'],
 ];
 
 export const LISTS = [

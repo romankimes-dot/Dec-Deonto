@@ -157,3 +157,15 @@ export async function syncOnce(cfg, local, { fetch: f = globalThis.fetch, timeou
   }
   return { state: merged, changed: !same(merged, local), pushed };
 }
+
+// Plan du jour déposé pour Ernest (casier /pont/<src>), envoyé seulement s'il a changé depuis le dernier envoi.
+const PONT_KEY = 'dec1.sync.pont';
+export async function pushPont(cfg, payload, { fetch: f = globalThis.fetch, timeout = 15000 } = {}) {
+  const body = JSON.stringify(payload);
+  let last = null; try { last = localStorage.getItem(PONT_KEY); } catch { /* ignore */ }
+  if (last === body) return false;
+  const res = await call(f, `${cfg.url}/pont/${encodeURIComponent(payload.src)}`, { method: 'PUT', headers: { Authorization: `Bearer ${cfg.token}`, 'Content-Type': 'application/json' }, body }, timeout);
+  if (!res.ok) throw fail(res);
+  try { localStorage.setItem(PONT_KEY, body); } catch { /* ignore */ }
+  return true;
+}
