@@ -516,7 +516,7 @@ function dayCard() {
     <ol class="todo">${tasks.map((x, i) => `<li class="${x.done ? 'done' : x === cur ? 'cur' : ''}"><span class="tick">${x.done ? '✔' : x.optional ? '+' : i + 1}</span><div class="tbody"><div><strong>${x.icon} ${esc(x.title)}</strong>${x === cur ? ' <span class="badge warn">maintenant</span>' : ''}${x.optional ? ' <span class="badge">facultatif</span>' : ''}</div><div class="muted">${esc(x.sub)}</div>${x.done ? '' : x.html || `<button class="btn sm ${x === cur ? 'primary' : ''}" data-task="${x.id}">▶ ${esc(x.cta)}</button>`}</div></li>`).join('')}</ol>
     ${n === req.length ? `<div class="gfb ok">🎉 Plan du jour terminé. Vous pouvez vous arrêter, ou continuer en boucle :</div>${nextCard(true)}` : ''}
     ${tomText ? `<p class="muted" style="margin:6px 0 10px">Demain : ${esc(tomText)}.</p>` : ''}
-    <button class="btn sm" data-go="plan">📅 Mon plan jusqu’au ${esc(examDay())}</button> <button class="btn sm" data-ernest="1">🌱 Envoyer à Ernest</button></div>`;
+    <button class="btn sm" data-go="plan">📅 Mon plan jusqu’au ${esc(examDay())}</button> <button class="btn sm" data-ernest="1">🌱 Copier pour Ernest</button></div>`;
 }
 // Le bouton principal de l'accueil : la prochaine chose à faire, sans réfléchir.
 function heroCta() {
@@ -2235,7 +2235,14 @@ async function init() {
     const b = e.target.closest('[data-open-fiche]'); if (b) return ficheSheet(b.dataset.openFiche);
     const v = e.target.closest('[data-variants]'); if (v) return variantsSheet(v.dataset.variants);
     const tk = e.target.closest('[data-task]'); if (tk) return dayTasks().find((x) => x.id === tk.dataset.task)?.run();
-    const er = e.target.closest('[data-ernest]'); if (er) { window.open(ernestLink(), '_blank'); return; }
+    const er = e.target.closest('[data-ernest]'); if (er) {
+      // Une app installée sur l'iPhone a son propre stockage : un lien ouvrirait Ernest dans Safari, pas l'app installée.
+      // On copie donc le plan ; Ernest le colle (Aujourd'hui › « Coller depuis une app de révision »).
+      const link = ernestLink();
+      const done = () => toast('Plan copié pour Ernest. Ouvre Ernest et touche « Coller depuis une app de révision ».');
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(link).then(done, () => window.open(link, '_blank')); else window.open(link, '_blank');
+      return;
+    }
     const nx = e.target.closest('[data-next]'); if (nx) return state.nextList[Number(nx.dataset.next)]?.run();
     const other = e.target.closest('[data-next-other]'); if (other) { state.nextIdx++; return render(); }
     const g = e.target.closest('[data-game]'); if (g) return startGame(g.dataset.game);
