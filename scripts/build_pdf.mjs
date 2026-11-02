@@ -173,7 +173,7 @@ function markers(file) {
 const mm = (v) => (parseFloat(v) * 72) / 25.4;
 const FORMATS = [
   // A4 : chaque section sur une page impaire (mod 2).
-  { out: 'fiches-a-imprimer.pdf', cls: 'a4', format: 'A4', pageH: 841.89, margin: { top: '13mm', bottom: '15mm', left: '18mm', right: '26mm' }, pad: '18mm', font: 10, mod: 2 },
+  { out: 'fiches-a-imprimer.pdf', cls: 'a4', format: 'A4', pageH: 841.89, margin: { top: '13mm', bottom: '15mm', left: '18mm', right: '26mm' }, pad: '18mm', font: 10, mod: 2, lift: '4mm' },
   // 2 par feuille, recto verso, à relier à gauche : couverture seule sur la première feuille (A4 entier, verso
   // blanc), puis chaque section en haut d'une feuille neuve (page A5 de rang 1 modulo 4 = moitié gauche d'un recto).
   { out: 'fiches-a-imprimer-2-par-feuille.pdf', cls: 'a5', format: 'A5', pageH: 595.28, margin: { top: '9mm', bottom: '11mm', left: '11mm', right: '15mm' }, pad: '11mm', font: 9, mod: 4, relie: true },
@@ -203,7 +203,7 @@ try {
       writeFileSync(file, await page.pdf({
         format: F.format, printBackground: true, displayHeaderFooter: true, margin: mg,
         headerTemplate: '<span></span>',
-        footerTemplate: `<div style="width:100%;font-family:'Liberation Sans',Arial,sans-serif;font-size:${F.font}px;color:#000;padding:0 ${mg.right} 0 ${mg.left};display:flex;flex-direction:${mirror ? 'row-reverse' : 'row'};justify-content:space-between"><span>DEC Épreuve 1 · Déontologie EC / CAC</span><span>page <span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`,
+        footerTemplate: `<div style="width:100%;font-family:'Liberation Sans',Arial,sans-serif;font-size:${F.font}px;color:#000;padding:0 ${mg.right} 0 ${mg.left};margin-bottom:${F.lift || 0};display:flex;flex-direction:${mirror ? 'row-reverse' : 'row'};justify-content:space-between"><span>DEC Épreuve 1 · Déontologie EC / CAC</span><span>page <span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`,
       }));
       return markers(file);
     };
