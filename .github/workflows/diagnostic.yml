@@ -1,0 +1,23 @@
+name: Diagnostic synchro
+# Temporaire : résumé du contenu de l'espace KV (sans données personnelles), sur la branche de travail uniquement.
+on:
+  push:
+    branches: [claude/compassionate-ptolemy-2xzxuj]
+permissions:
+  contents: read
+jobs:
+  lire:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      NS: 076c9fb2a7c34a618925ad5ba6d9f04d
+    steps:
+      - name: Lire l'espace KV
+        run: |
+          W="npx -y wrangler@4.156.1"
+          T=$(TZ=Europe/Paris date +%F)
+          echo "Aujourd'hui : $T"
+          echo "== Clés"; $W kv key list --namespace-id $NS --remote | jq -r '.[].name'
+          echo "== pont:deonto"; $W kv key get pont:deonto --namespace-id $NS --remote --text | jq '{things: [.things[] | {title, day}], goals: [.goals[].title], history: (.history | length)}' || true
+          echo "== progress"; $W kv key get progress --namespace-id $NS --remote --text | jq '{updatedAt, cards: (.cards | length), daily: (.daily.day)}' || true
+          echo "== ernest"; $W kv key get ernest --namespace-id $NS --remote --text | jq --arg T "$T" '{updatedAt, bridges: (.bridges | map_values({hash, last, days: (.days | map_values(.))})), deontoToday: [(.days[$T].things // [])[] | select(.src == "deonto") | .title]}' || true
