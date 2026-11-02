@@ -135,6 +135,15 @@ test('pont vers Ernest : envoyé seulement s’il a changé', async () => {
   assert.ok(kv.has('pont:deonto'));
 });
 
+test('pont : une tâche déposée faite par un autre appareil n’est pas décochée par un appareil en retard', async () => {
+  const { kv, f } = server();
+  const t = (done) => ({ v: 1, src: 'deonto', things: [{ title: 'Déonto · Shorts', day: '2026-11-03', done }, { title: 'Déonto · Jeu', day: '2026-11-03', done: false }], goals: [] });
+  await SY.pushPont(cfg, t(true), { fetch: f });
+  localStorage.removeItem('dec1.sync.pont'); // autre appareil
+  await SY.pushPont(cfg, t(false), { fetch: f });
+  assert.deepEqual(JSON.parse(kv.get('pont:deonto')).things.map((x) => x.done), [true, false]);
+});
+
 test('synchro : une fiche décochée sur un appareil reste décochée après fusion', async () => {
   const P = await import('../js/plan.js');
   const base = store.defaults ? store.defaults() : {};
