@@ -59,8 +59,13 @@ test('adresse du Worker : https obligatoire, / final et /progress retirés', () 
 
 // Worker branché sur un KV en mémoire, appelé à la place du réseau
 function server(token = 'secret') {
-  const kv = new Map();
-  const env = { TOKEN: token, DEC1: { get: async (k) => (kv.has(k) ? kv.get(k) : null), put: async (k, v) => { kv.set(k, v); } } };
+  const kv = new Map(); const meta = new Map();
+  const env = { TOKEN: token, DEC1: {
+    get: async (k) => (kv.has(k) ? kv.get(k) : null),
+    getWithMetadata: async (k) => ({ value: kv.has(k) ? kv.get(k) : null, metadata: meta.get(k) || null }),
+    put: async (k, v, o = {}) => { kv.set(k, v); meta.set(k, o.metadata || null); },
+    list: async ({ prefix }) => ({ keys: [...kv.keys()].filter((k) => k.startsWith(prefix)).map((name) => ({ name })) }),
+  } };
   const f = (url, opts = {}) => worker.fetch(new Request(url, { method: opts.method || 'GET', headers: opts.headers, body: opts.body }), env);
   return { kv, f };
 }
@@ -86,7 +91,7 @@ test('synchro : premier envoi, puis un second appareil récupère et fusionne', 
   const r2 = await SY.syncOnce(cfg, laptop, { fetch: f });
   assert.equal(r2.changed, true); assert.equal(r2.pushed, true);
   assert.deepEqual(Object.keys(r2.state.cards).sort(), ['q1', 'q2']);
-  assert.ok(kv.has(`backup:${new Date().toISOString().slice(0, 10)}`), 'version précédente gardée');
+  assert.ok(kv.has(`backup:progress:${new Date().toISOString().slice(0, 10)}`), 'version précédente gardée');
 
   const r3 = await SY.syncOnce(cfg, phone, { fetch: f });
   assert.deepEqual(Object.keys(r3.state.cards).sort(), ['q1', 'q2']);
@@ -104,4 +109,28 @@ test('synchro : export importé tel quel dans KV accepté ; copie illisible jama
   await assert.rejects(SY.syncOnce(cfg, st(), { fetch: f }), /illisible/);
   assert.equal(kv.get('progress'), '{"cards": {');
   await assert.rejects(SY.syncOnce({ ...cfg, token: 'faux' }, st(), { fetch: f }), /code secret/);
+});
+
+test('Worker : casiers Ernest et ponts, révision vérifiée (If-Match)', async () => {
+  const { f } = server();
+  const H = { Authorization: 'Bearer secret' };
+  const u = 'https://dec1.example.workers.dev';
+  assert.equal((await f(`${u}/ernest`, { headers: H })).status, 204);
+  const p1 = await f(`${u}/ernest`, { method: 'PUT', headers: { ...H, 'If-Match': '' }, body: '{"days":{}}' });
+  assert.equal(p1.status, 200); const rev = p1.headers.get('X-Rev'); assert.ok(rev);
+  assert.equal((await f(`${u}/ernest`, { method: 'PUT', headers: { ...H, 'If-Match': '' }, body: '{"days":{}}' })).status, 412);
+  assert.equal((await f(`${u}/ernest`, { method: 'PUT', headers: { ...H, 'If-Match': rev }, body: '{"days":{"x":1}}' })).status, 200);
+  assert.equal((await f(`${u}/ernest`, { method: 'PUT', headers: H, body: '{"cards":{}}' })).status, 400);
+  assert.equal((await f(`${u}/pont/deonto`, { method: 'PUT', headers: H, body: '{"src":"revision"}' })).status, 400);
+  assert.equal((await f(`${u}/pont/deonto`, { method: 'PUT', headers: H, body: '{"v":1,"src":"deonto","things":[]}' })).status, 200);
+  assert.deepEqual(await (await f(`${u}/ponts`, { headers: H })).json(), { deonto: { v: 1, src: 'deonto', things: [] } });
+  assert.equal((await f(`${u}/ponts`)).status, 401);
+});
+
+test('pont vers Ernest : envoyé seulement s’il a changé', async () => {
+  const { kv, f } = server();
+  const p = { v: 1, src: 'deonto', things: [{ title: 'Déonto · Session', day: '2026-11-03' }], goals: [] };
+  assert.equal(await SY.pushPont(cfg, p, { fetch: f }), true);
+  assert.equal(await SY.pushPont(cfg, p, { fetch: f }), false);
+  assert.ok(kv.has('pont:deonto'));
 });

@@ -29,5 +29,13 @@ Réglages → **Synchronisation en ligne** → adresse du Worker (`https://dec-d
 - Hors ligne : l'app fonctionne comme avant et se synchronise au retour du réseau.
 - L'adresse et le code restent sur l'appareil (jamais dans l'export).
 - Quota gratuit : 1 000 écritures par jour, largement suffisant.
-- Revenir à une copie du serveur : KV → `dec1` → clé `backup:AAAA-MM-JJ` → copiez la valeur, puis collez-la dans
+- Revenir à une copie du serveur : KV → `dec1` → clé `backup:progress:AAAA-MM-JJ` → copiez la valeur, puis collez-la dans
   Réglages → *Importer un texte collé*.
+
+## Ernest
+Le même Worker sert aussi Ernest (dépôt `romankimes-dot/Ernest`) :
+- `/ernest` : l'état d'Ernest, synchronisé entre appareils (copie du jour : `backup:ernest:AAAA-MM-JJ`).
+- `/pont/deonto` : le plan du jour de cette app, déposé à chaque synchro s'il a changé. Ernest le récupère tout seul
+  (les choses du jour, l'objectif Épreuve 1 et ses jalons, les jours travaillés dans la serre), une fois par version ;
+  une chose supprimée dans Ernest n'est jamais remise.
+Dans Ernest : Réglages › Synchronisation, même adresse et même code (pré-remplis si Deonto est connecté dans le même navigateur).

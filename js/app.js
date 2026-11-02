@@ -125,6 +125,7 @@ function runSync({ manual = false, boot = false, timeout = 15000 } = {}) {
         if (!manual && !boot) toast('Progression mise à jour depuis l’autre appareil');
       }
       if (manual) toast(r.changed ? 'Synchronisé : progression des autres appareils récupérée' : 'Synchronisé');
+      if (!boot) await sendPont(cfg);
       return r;
     } catch (e) {
       SY.setStatus({ error: e.message });
@@ -136,6 +137,11 @@ function runSync({ manual = false, boot = false, timeout = 15000 } = {}) {
     }
   })();
   return syncing;
+}
+// Plan du jour déposé pour Ernest, qui le récupère tout seul à sa prochaine synchro.
+async function sendPont(cfg) {
+  let p; try { p = ernestPayload(); } catch { return; }
+  try { await SY.pushPont(cfg, p); } catch { /* réessayé à la prochaine synchro */ }
 }
 function watchSync() {
   document.addEventListener('visibilitychange', () => {
@@ -2406,6 +2412,7 @@ async function init() {
   render();
   pullToRefresh();
   watchSync();
+  if (SY.config()) setTimeout(() => sendPont(SY.config()), 1500);
   if ('serviceWorker' in navigator) {
     try {
       const reg = await navigator.serviceWorker.register('./sw.js');
