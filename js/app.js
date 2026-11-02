@@ -1328,7 +1328,7 @@ function syncCard() {
   const cfg = SY.config(); const st = SY.status();
   if (!cfg) {
     return `<div class="card"><h2>Synchronisation en ligne</h2><p class="muted">Retrouvez la même progression sur le téléphone et l’ordinateur, et gardez-en une copie en ligne. Il faut votre propre Worker Cloudflare (gratuit) : mode d’emploi dans <code>cloudflare/README.md</code> du dépôt.</p>
-      <label class="field">Adresse du Worker<input type="url" id="sync-url" placeholder="https://dec1-sync.….workers.dev" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+      <label class="field">Adresse du Worker<input type="url" id="sync-url" placeholder="https://dec-deonto.….workers.dev" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
       <label class="field">Code secret<input type="password" id="sync-token" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
       <button class="btn primary" id="sync-connect">Connecter et synchroniser</button></div>`;
   }

@@ -1,0 +1,11 @@
+// Déploiement du Worker de synchronisation (cloudflare/worker.js) par Cloudflare Workers Builds, à chaque push sur main.
+// Le secret TOKEN se règle dans le tableau de bord (Paramètres → Variables et secrets) : il est conservé d'un déploiement à l'autre.
+{
+  "name": "dec-deonto",
+  "main": "cloudflare/worker.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "kv_namespaces": [
+    { "binding": "DEC1", "id": "076c9fb2a7c34a618925ad5ba6d9f04d" }
+  ]
+}

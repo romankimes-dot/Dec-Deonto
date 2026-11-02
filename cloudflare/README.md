@@ -10,20 +10,18 @@ appareils sont réunis. Le serveur garde aussi une copie par jour pendant 30 jou
 dash.cloudflare.com → **Storage & Databases → KV** → *Create* → nom : `dec1` → *Add*.
 N'ajoutez aucune entrée : l'app les écrit elle-même.
 
-## 2. Worker
-**Compute (Workers) → Workers & Pages** → *Create* → *Start with Hello World* → nom : `dec1-sync` → *Deploy*.
-Puis *Edit code* : remplacez tout le contenu par celui de [`worker.js`](worker.js) → *Deploy*.
+## 2. Worker (déployé depuis GitHub)
+Le Worker `dec-deonto` est relié au dépôt : Cloudflare le redéploie à chaque push sur `main`, d'après
+[`wrangler.jsonc`](../wrangler.jsonc) (code : `cloudflare/worker.js`, espace KV relié sous le nom `DEC1`).
 
-## 3. Liaison et code secret
-Dans le Worker → **Settings** :
-- **Bindings** → *Add* → *KV namespace* → nom de variable : `DEC1` (majuscules) → espace : `dec1` → *Deploy*.
-- **Variables and Secrets** → *Add* → type *Secret* → nom : `TOKEN` → valeur : un code long à vous
-  (par ex. 30 caractères au hasard, notez-le) → *Deploy*.
+## 3. Code secret
+Worker `dec-deonto` → **Paramètres → Variables et secrets** → *Ajouter* → type *Secret* → nom : `TOKEN` → valeur : un
+code long à vous (par ex. 30 caractères au hasard, notez-le). Il est conservé d'un déploiement à l'autre.
 
-Vérification : ouvrez `https://dec1-sync.<votre-sous-domaine>.workers.dev/` dans le navigateur. La page doit afficher `{"ok":true,"app":"dec1-sync"}`.
+Vérification : ouvrez `https://dec-deonto.<votre-sous-domaine>.workers.dev/` : la page doit afficher `{"ok":true,"app":"dec1-sync"}`.
 
 ## 4. Dans l'app, sur chaque appareil
-Réglages → **Synchronisation en ligne** → adresse du Worker (`https://dec1-sync.….workers.dev`) + code secret →
+Réglages → **Synchronisation en ligne** → adresse du Worker (`https://dec-deonto.….workers.dev`) + code secret →
 *Connecter et synchroniser*. Commencez par le téléphone (celui qui a la progression), puis les autres appareils.
 
 ## Fonctionnement
