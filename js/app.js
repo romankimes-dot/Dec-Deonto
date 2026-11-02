@@ -16,6 +16,7 @@ import * as GL from './glossaire.js';
 import { matchExpected, highlight } from './qrc.js';
 import * as PC from './podcasts.js';
 import * as SY from './sync.js';
+import { ic, paths } from './icons.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -162,7 +163,7 @@ function checkBadges() {
   persist();
   // Mode concentration : badges et souvenirs s'annoncent par un message ; seuls les grades gardent leur animation.
   if (state.progress.settings.focus) {
-    if (fresh.badges.length) toast(fresh.badges.length === 1 ? `🏅 ${fresh.badges[0].name}` : `🏅 ${fresh.badges.length} badges débloqués`);
+    if (fresh.badges.length) toast(fresh.badges.length === 1 ? fresh.badges[0].name : `${fresh.badges.length} badges débloqués`, 'medal');
     for (const g of fresh.grades) state.celebrations.push({ type: 'grade', g });
     if (state.celebrations.length) setTimeout(nextCelebration, 350);
     return;
@@ -175,16 +176,16 @@ function updateStreakBadge() {
   const el = $('#streak'); if (!el || !state.progress.stats) return;
   const s = state.progress.stats.streak;
   el.title = 'Bonnes réponses d’affilée : série en cours et record';
-  el.innerHTML = `<span>🔥 série ${s.cur}</span><span class="muted">record ${s.best}</span>`;
+  el.innerHTML = `<span>${ic('flame')} série ${s.cur}</span><span class="muted">record ${s.best}</span>`;
 }
 function badgeIcon(b, locked = false) {
   const col = G.RARITIES[b.rarity].color;
   const fam = G.FAMILIES.find((f) => f.id === b.family);
-  const glyph = locked && b.hidden ? '?' : fam.icon;
+  const glyph = paths(locked && b.hidden ? 'help' : fam.icon);
   return `<svg class="medal ${locked ? 'locked' : ''} ${b.gold ? 'gold' : ''}" viewBox="0 0 40 40" aria-hidden="true">
     <path d="M12 2 h6 l2 10 h-6z M22 2 h6 l-2 10 h-6z" fill="${col}" opacity=".7"/>
     <circle cx="20" cy="24" r="14" fill="${b.gold ? '#fde68a' : '#fff'}" stroke="${col}" stroke-width="3"/>
-    <text x="20" y="29" font-size="13" text-anchor="middle">${glyph}</text></svg>`;
+    <svg x="13" y="17" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="${col}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${glyph}</svg></svg>`;
 }
 function sceneFor(gradeN, opts = {}) {
   const pr = state.progress; const st = pr.stats;
@@ -216,7 +217,7 @@ function nextCelebration() {
     try { navigator.vibrate?.([60, 40, 120]); } catch { /* ignore */ }
   } else if (c.type === 'anecdote') {
     const d = new Date(state.progress.badges[c.b.id] || Date.now()).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
-    html = `<div class="memory flip"><div class="memory-date">${d}</div><div class="memory-title">📸 ${esc(c.b.name)}</div><p class="memory-text">« ${esc(c.b.desc)} »</p><div class="muted">Souvenir débloqué · ${G.RARITIES[c.b.rarity].label}</div></div>`;
+    html = `<div class="memory flip"><div class="memory-date">${d}</div><div class="memory-title">${ic('camera')} ${esc(c.b.name)}</div><p class="memory-text">« ${esc(c.b.desc)} »</p><div class="muted">Souvenir débloqué · ${G.RARITIES[c.b.rarity].label}</div></div>`;
     try { navigator.vibrate?.(40); } catch { /* ignore */ }
   } else {
     const col = G.RARITIES[c.b.rarity].color;
@@ -244,15 +245,17 @@ function focusBack(el) {
   const b = el._back; el._back = null;
   if (b && b !== document.body && document.contains(b)) try { b.focus({ preventScroll: true }); } catch { /* ignore */ }
 }
-function toast(msg) {
-  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+// icon : nom d'une icône de js/icons.js, affichée avant le message.
+function toast(msg, icon) {
+  const t = $('#toast'); t.innerHTML = `${icon ? `${ic(icon)} ` : ''}${esc(msg)}`; t.classList.add('show');
   clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 2200);
 }
 // Amène un élément au-dessus de la barre d'onglets (fixe) sans cacher son haut sous l'en-tête collant.
 function revealBelow(el, { smooth = true } = {}) {
   if (!el?.getBoundingClientRect) return;
   const r = el.getBoundingClientRect();
-  const navH = $('nav.bottom')?.getBoundingClientRect().height || 0;
+  const nr = $('nav.bottom')?.getBoundingClientRect();
+  const navH = nr && nr.top > window.innerHeight / 2 ? nr.height : 0; // barre latérale sur ordinateur : rien en bas
   const headH = $('header.top')?.getBoundingClientRect().height || 0;
   const bottom = window.innerHeight - navH - 12;
   if (r.bottom <= bottom) return;
@@ -287,24 +290,24 @@ function qHeader(q) {
   const conf = q.confidence === 'low' ? '<span class="badge warn">à vérifier</span>' : q.confidence === 'medium' ? '<span class="badge">confiance moyenne</span>' : '';
   const sib = siblings(q.id).length;
   return `<div class="row" style="justify-content:space-between">
-    <div class="row" style="gap:6px"><span class="badge ${q.profession.toLowerCase()}">${q.profession}</span><span class="badge">${esc(THEMES[q.theme])}</span>${sib ? `<span class="badge rec" title="Notion posée à plusieurs sessions">🔁 posée ${sib + 1}×</span>` : ''}${state.progress.settings.showLowConfidence ? conf : ''}</div>
+    <div class="row" style="gap:6px"><span class="badge ${q.profession.toLowerCase()}">${q.profession}</span><span class="badge">${esc(THEMES[q.theme])}</span>${sib ? `<span class="badge rec" title="Notion posée à plusieurs sessions">${ic('repeat')} posée ${sib + 1}×</span>` : ''}${state.progress.settings.showLowConfidence ? conf : ''}</div>
     <span class="muted">DEC ${esc(q.sessionLabel)} · Q${q.n}</span></div>`;
 }
 function qExplain(q) {
   const sib = siblings(q.id);
-  return `<div class="explain"><strong>Explication.</strong> ${esc(q.explanation)}${q.update_note ? `<div class="muted" style="margin-top:6px">⚠︎ ${esc(q.update_note)}</div>` : ''}</div>
-    <div class="ref">Réf. : ${esc(q.reference)} · <em>réponse rédigée à partir des textes, non officielle</em></div>${relatedFiches(q.id).map((f) => `<button class="btn sm related" data-open-fiche="${esc(f.file)}">📊 Schéma : ${esc(f.title.replace(/^Schéma\s*\d+\s*[–-]\s*/, ''))}</button>`).join('')}${sib.length ? `<button class="btn sm related" data-variants="${esc(q.id)}">🔁 Même notion : ${sib.map((id) => esc(state.byId[id]?.sessionLabel || '')).join(', ')}</button>` : ''}`;
+  return `<div class="explain"><strong>Explication.</strong> ${esc(q.explanation)}${q.update_note ? `<div class="muted" style="margin-top:6px">${ic('alert')} ${esc(q.update_note)}</div>` : ''}</div>
+    <div class="ref">Réf. : ${esc(q.reference)} · <em>réponse rédigée à partir des textes, non officielle</em></div>${relatedFiches(q.id).map((f) => `<button class="btn sm related" data-open-fiche="${esc(f.file)}">${ic('chart')} Schéma : ${esc(f.title.replace(/^Schéma\s*\d+\s*[–-]\s*/, ''))}</button>`).join('')}${sib.length ? `<button class="btn sm related" data-variants="${esc(q.id)}">${ic('repeat')} Même notion : ${sib.map((id) => esc(state.byId[id]?.sessionLabel || '')).join(', ')}</button>` : ''}`;
 }
 // Indice de certitude, demandé avant la correction (calibration, effet d'hypercorrection).
 const CERT = { qcm: [[2, 'Sûr'], [1, 'Hésitant'], [0, 'Au hasard']], qrc: [[2, 'Sûr'], [1, 'Hésitant'], [0, 'Je ne sais pas']] };
 const certRow = (mode, label) => `<div class="cert"><div class="muted">${label}</div><div class="btnrow3">${CERT[mode].map(([c, l]) => `<button class="btn" data-conf="${c}">${l}</button>`).join('')}</div></div>`;
-const hcAlert = () => '<div class="hc">⚠️ <strong>Erreur commise avec certitude.</strong> C’est celle qu’on retient le mieux une fois corrigée : lisez l’explication, la question revient dans la séance.</div>';
+const hcAlert = () => '<div class="hc">' + ic('alert') + ' <strong>Erreur commise avec certitude.</strong> C’est celle qu’on retient le mieux une fois corrigée : lisez l’explication, la question revient dans la séance.</div>';
 // QCM. opts.hide : la question d'abord, les propositions sur demande (rappel avant reconnaissance).
 // onAnswered(ok, conf, pick) ; conf vaut null si la certitude n'est pas demandée ; pick : index d'origine choisi.
 function renderQcm(q, container, onAnswered, { hide = false, askConf = false } = {}) {
   const order = shuffle([0, 1, 2, 3], q.id);
   const qt = q.qcm.question || q.question;
-  container.innerHTML = `${qHeader(q)}<div class="q">${esc(qt)}</div>${hide ? '<div class="recall"><p class="muted">🧠 Formulez votre réponse de tête, puis comparez-la aux propositions.</p><button class="btn primary show-choices">Afficher les propositions</button></div>' : ''}<div class="choices ${hide ? 'hidden' : ''}"></div><div class="pending"></div><div class="after"></div>`;
+  container.innerHTML = `${qHeader(q)}<div class="q">${esc(qt)}</div>${hide ? '<div class="recall"><p class="muted">' + ic('brain') + ' Formulez votre réponse de tête, puis comparez-la aux propositions.</p><button class="btn primary show-choices">Afficher les propositions</button></div>' : ''}<div class="choices ${hide ? 'hidden' : ''}"></div><div class="pending"></div><div class="after"></div>`;
   const box = $('.choices', container);
   if (hide) $('.show-choices', container).onclick = () => { $('.recall', container).remove(); box.classList.remove('hidden'); };
   let chosen = null;
@@ -316,7 +319,7 @@ function renderQcm(q, container, onAnswered, { hide = false, askConf = false } =
       else if (j === chosen) c.classList.add('ko');
     });
     $('.pending', container).innerHTML = '';
-    $('.after', container).innerHTML = `${confidentError(ok, conf) ? hcAlert() : ''}<div class="answer"><strong>${ok ? '✔ Bonne réponse' : '✘ Mauvaise réponse'}.</strong> ${esc(q.qrc.model_answer)}</div>${qExplain(q)}`;
+    $('.after', container).innerHTML = `${confidentError(ok, conf) ? hcAlert() : ''}<div class="answer"><strong>${ok ? ic('check') + ' Bonne réponse' : ic('x') + ' Mauvaise réponse'}.</strong> ${esc(q.qrc.model_answer)}</div>${qExplain(q)}`;
     onAnswered(ok, conf, order[chosen]);
     // La bonne proposition reste visible au-dessus de la correction.
     setTimeout(() => scrollToCorrection(box.children[Math.min(chosen, order.indexOf(q.qcm.answer))]), 30);
@@ -394,7 +397,7 @@ views.home = () => {
   return `${noticeCard()}
   <div class="card hero">
     <div class="hero-top">
-      <div><div class="muted">Épreuve n°1 · ${esc(examLabel())}</div><div class="big">${!examDateSet() ? 'Date à définir' : d > 0 ? `J-${d}` : d === 0 ? 'Jour J' : 'Passée'}</div>${examDateSet() ? '' : '<button class="btn sm" data-go="settings">📅 Définir la date de l’examen</button>'}</div>
+      <div><div class="muted">Épreuve n°1 · ${esc(examLabel())}</div><div class="big">${!examDateSet() ? 'Date à définir' : d > 0 ? `J-${d}` : d === 0 ? 'Jour J' : 'Passée'}</div>${examDateSet() ? '' : '<button class="btn sm" data-go="settings">' + ic('calendar') + ' Définir la date de l’examen</button>'}</div>
       <div class="hero-meta"><div class="ring" style="--p:${Math.round((Object.keys(pr.stats.q).length / qs.length) * 100)}"><span>${Math.round((Object.keys(pr.stats.q).length / qs.length) * 100)} %</span></div><div class="muted">de la banque vue</div></div>
     </div>
     ${estimateLine()}
@@ -408,7 +411,7 @@ views.home = () => {
   <div class="card career-card" data-go="carriere">
     <div class="scene-thumb">${sceneFor(grade.n)}</div>
     <div class="row" style="justify-content:space-between;margin-top:8px"><div><div class="muted">Grade ${grade.n}/8</div><strong>${esc(grade.name)}</strong></div><span class="muted">Ma carrière ›</span></div>
-    ${next ? `<div class="muted" style="margin-top:6px">Prochain grade : <strong>${esc(next.name)}</strong></div><ul class="conds">${conds.map((c) => `<li class="${c.ok ? 'ok' : ''}">${c.ok ? '✔' : '○'} ${esc(c.label)}</li>`).join('')}</ul>` : '<div class="muted">Carrière complète. Bravo.</div>'}
+    ${next ? `<div class="muted" style="margin-top:6px">Prochain grade : <strong>${esc(next.name)}</strong></div><ul class="conds">${conds.map((c) => `<li class="${c.ok ? 'ok' : ''}">${c.ok ? ic('check') : ic('circle')} ${esc(c.label)}</li>`).join('')}</ul>` : '<div class="muted">Carrière complète. Bravo.</div>'}
   </div>
   ${!pr.settings.focus && nb.length ? `<div class="card"><h2>Presque débloqués</h2>${nb.map(({ b, p }) => `<div class="nb">${badgeIcon(b)}<div style="flex:1"><div><strong>${esc(b.name)}</strong></div><div class="progress"><div style="width:${Math.round((p.cur / p.max) * 100)}%"></div></div><div class="muted">${p.cur}/${p.max} · ${esc(b.cond)}</div></div></div>`).join('')}</div>` : ''}
   ${lastExam ? `<div class="card"><h2>Dernier examen blanc</h2><div class="row"><span class="big" style="font-size:28px">${lastExam.note}/20</span><span class="muted">${lastExam.mode.toUpperCase()} · ${new Date(lastExam.t).toLocaleDateString('fr-FR')}</span></div>
@@ -418,7 +421,7 @@ views.home = () => {
     <li>Les candidats confondent les règles EC et CAC : pour chaque règle, demandez-vous « et pour l’autre profession ? ».</li>
     <li>Réponses courtes : un mot, un chiffre, une liste. 3 minutes par question.</li>
     <li>Références d’articles et quantum des sanctions ne sont pas exigés ; les chiffres (seuils, durées, délais) le sont.</li></ul></details>
-    <div style="margin-top:10px"><button class="btn" data-go="stats">📈 Statistiques détaillées</button></div></div>`;
+    <div style="margin-top:10px"><button class="btn" data-go="stats">${ic('trending')} Statistiques détaillées</button></div></div>`;
 };
 function markExported() { state.progress.lastExportAt = Date.now(); persist(); }
 async function exportProgress() {
@@ -453,7 +456,7 @@ function backupCard() {
   if (SY.config() && Date.now() - (SY.status().at || 0) < 2 * DAY) return '';
   const days = pr.lastExportAt ? (Date.now() - pr.lastExportAt) / DAY : Infinity;
   if (days < 2) return '';
-  return `<div class="card notice"><strong>💾 Sauvegarde</strong><p class="muted" style="margin:4px 0 8px">${pr.lastExportAt ? `Dernier export il y a ${Math.floor(days)} jours.` : 'Aucun export pour l’instant.'} Si le navigateur efface les données du site, la progression est perdue.</p><button class="btn" data-go="settings">Exporter ma progression</button></div>`;
+  return `<div class="card notice"><strong>${ic('save')} Sauvegarde</strong><p class="muted" style="margin:4px 0 8px">${pr.lastExportAt ? `Dernier export il y a ${Math.floor(days)} jours.` : 'Aucun export pour l’instant.'} Si le navigateur efface les données du site, la progression est perdue.</p><button class="btn" data-go="settings">Exporter ma progression</button></div>`;
 }
 // ---------- Plan du jour ----------
 // Figé à la première ouverture de la journée, recalculé le lendemain sur ce qui reste et sur les résultats :
@@ -495,29 +498,29 @@ function dayTasks() {
   const files = [...new Set(steps.flatMap((st) => st.fiches))];
   if (files.length) {
     const unread = files.find((f) => !pr.plan.read?.[f]);
-    tasks.push({ id: 'read', icon: '📊', title: files.length > 1 ? `Lire les ${files.length} schémas du jour` : 'Lire le schéma du jour', sub: `${steps.map((st) => st.title).join(' · ')} · 5 à 10 min chacun`, done: !unread, cta: `Lire : ${shortTitle(unread || files[0])}`, run: () => ficheSheet(unread || files[0]), html: files.map((f) => `<button class="btn sm ${pr.plan.read?.[f] ? '' : 'primary'}" data-open-fiche="${esc(f)}">${pr.plan.read?.[f] ? '✔' : '📊'} ${esc(shortTitle(f))}</button>`).join('') });
+    tasks.push({ id: 'read', icon: ic('chart'), title: files.length > 1 ? `Lire les ${files.length} schémas du jour` : 'Lire le schéma du jour', sub: `${steps.map((st) => st.title).join(' · ')} · 5 à 10 min chacun`, done: !unread, cta: `Lire : ${shortTitle(unread || files[0])}`, run: () => ficheSheet(unread || files[0]), html: files.map((f) => `<button class="btn sm ${pr.plan.read?.[f] ? '' : 'primary'}" data-open-fiche="${esc(f)}">${pr.plan.read?.[f] ? ic('check') : ic('chart')} ${esc(shortTitle(f))}</button>`).join('') });
   }
   if (state.shorts?.length) {
     const n = shortsToday(); const need = d.kind === 'veille' ? 5 : 10;
-    tasks.push({ id: 'shorts', icon: '🎬', title: `Shorts du jour : ${need} notions, 30 s chacune`, sub: `${Math.min(n, need)}/${need} aujourd’hui · ${steps.length ? 'les schémas du jour d’abord, puis les shorts à revoir et vos points faibles' : 'les shorts à revoir et vos points faibles'}`, done: n >= need, cta: 'Shorts du jour', run: () => openFeed({ focus: d.steps, goal: need, base: Math.min(n, need) }) });
+    tasks.push({ id: 'shorts', icon: ic('clapper'), title: `Shorts du jour : ${need} notions, 30 s chacune`, sub: `${Math.min(n, need)}/${need} aujourd’hui · ${steps.length ? 'les schémas du jour d’abord, puis les shorts à revoir et vos points faibles' : 'les shorts à revoir et vos points faibles'}`, done: n >= need, cta: 'Shorts du jour', run: () => openFeed({ focus: d.steps, goal: need, base: Math.min(n, need) }) });
   }
   const mergedExams = (d.merged || []).filter((m) => m.kind === 'blanc').map((m) => m.exam);
   const todayExams = pr.exams.filter((e) => e.t >= t0 && isCounted(e)).length; // copie rendue presque blanche : la tâche reste à faire
-  [...mergedExams, ...(d.exam ? [d.exam] : [])].forEach((ex, i) => tasks.push({ id: i ? `exam${i}` : 'exam', icon: '⏱', title: `Examen blanc ${ex.toUpperCase()}${i < mergedExams.length ? ' (regroupé : délai court)' : ''}`, sub: '20 questions, 60 minutes, en conditions réelles', done: todayExams > i, cta: `Examen blanc ${ex.toUpperCase()}`, run: () => go('exam') }));
+  [...mergedExams, ...(d.exam ? [d.exam] : [])].forEach((ex, i) => tasks.push({ id: i ? `exam${i}` : 'exam', icon: ic('timer'), title: `Examen blanc ${ex.toUpperCase()}${i < mergedExams.length ? ' (regroupé : délai court)' : ''}`, sub: '20 questions, 60 minutes, en conditions réelles', done: todayExams > i, cta: `Examen blanc ${ex.toUpperCase()}`, run: () => go('exam') }));
   const reviseSteps = (d.revise || []).map((id) => P.stepById(id)).filter(Boolean);
   if (reviseSteps.length) {
     const rf = reviseSteps.flatMap((st) => st.fiches)[0];
-    tasks.push({ id: 'revise', icon: '📖', title: 'Relire pour fixer', sub: `Révision espacée : ${reviseSteps.map((st) => st.title).join(' · ')}`, done: !!pr.plan.revised?.[d.day], cta: `Relire : ${shortTitle(rf)}`, run: () => { pr.plan.revised = { ...(pr.plan.revised || {}), [d.day]: true }; persist(); ficheSheet(rf); } });
+    tasks.push({ id: 'revise', icon: ic('book'), title: 'Relire pour fixer', sub: `Révision espacée : ${reviseSteps.map((st) => st.title).join(' · ')}`, done: !!pr.plan.revised?.[d.day], cta: `Relire : ${shortTitle(rf)}`, run: () => { pr.plan.revised = { ...(pr.plan.revised || {}), [d.day]: true }; persist(); ficheSheet(rf); } });
   }
   const due = dueNow(); const newLeft = Math.max(0, d.target - (d.newDone || 0));
-  tasks.push({ id: 'session', icon: '🔁', title: d.target ? `Session : ${d.target} nouvelles questions et les cartes à revoir` : 'Session : les cartes à revoir uniquement', sub: `${d.newDone || 0}/${d.target} nouvelles · ${due} à revoir maintenant${steps.length ? ' · les questions des schémas du jour arrivent en premier' : ''}`, done: newLeft === 0 && due === 0, cta: `${d.newDone || state.session ? 'Continuer' : 'Commencer'} la session (${newLeft + due})`, run: () => go('review') });
+  tasks.push({ id: 'session', icon: ic('repeat'), title: d.target ? `Session : ${d.target} nouvelles questions et les cartes à revoir` : 'Session : les cartes à revoir uniquement', sub: `${d.newDone || 0}/${d.target} nouvelles · ${due} à revoir maintenant${steps.length ? ' · les questions des schémas du jour arrivent en premier' : ''}`, done: newLeft === 0 && due === 0, cta: `${d.newDone || state.session ? 'Continuer' : 'Commencer'} la session (${newLeft + due})`, run: () => go('review') });
   if (d.weak) {
     const ids = weakIds(d.weak); const today = pr.attempts.filter((a) => a.t >= t0 && ids.includes(a.id)).length; const need = Math.min(8, ids.length);
-    tasks.push({ id: 'weak', icon: '🎯', title: `Point faible : ${tagLabel(d.weak.tag)} (${d.weak.prof})`, sub: `${d.weak.acc} % de réussite jusqu’ici · ${Math.min(today, need)}/${need} questions aujourd’hui`, done: today >= need, cta: `Point faible : ${tagLabel(d.weak.tag)}`, run: () => trainOn(shuffle(ids, Date.now()).slice(0, 10), `Point faible du jour : ${tagLabel(d.weak.tag)}`) });
+    tasks.push({ id: 'weak', icon: ic('target'), title: `Point faible : ${tagLabel(d.weak.tag)} (${d.weak.prof})`, sub: `${d.weak.acc} % de réussite jusqu’ici · ${Math.min(today, need)}/${need} questions aujourd’hui`, done: today >= need, cta: `Point faible : ${tagLabel(d.weak.tag)}`, run: () => trainOn(shuffle(ids, Date.now()).slice(0, 10), `Point faible du jour : ${tagLabel(d.weak.tag)}`) });
   }
   if (d.kind === 'faibles' || (d.merged || []).some((m) => m.kind === 'faibles')) {
     const sure = confidentErrors(pr.attempts).length;
-    tasks.push({ id: 'sure', icon: '⚠️', title: 'Reprendre les erreurs « j’étais sûr »', sub: `${sure} à reprendre`, done: sure === 0, cta: 'Mes erreurs « j’étais sûr »', run: () => trainOn(confidentErrors(pr.attempts).slice(-20), 'Mes erreurs « j’étais sûr »') });
+    tasks.push({ id: 'sure', icon: ic('alert'), title: 'Reprendre les erreurs « j’étais sûr »', sub: `${sure} à reprendre`, done: sure === 0, cta: 'Mes erreurs « j’étais sûr »', run: () => trainOn(confidentErrors(pr.attempts).slice(-20), 'Mes erreurs « j’étais sûr »') });
   }
   const g = GAMES[d.game];
   // Coché à la fin d'une partie (palais : une liste récitée jusqu'au bout), pas après quelques réponses.
@@ -526,7 +529,7 @@ function dayTasks() {
   // Podcast de l'étape étudiée la veille (disponible et pas encore écouté) : facultatif, ne bloque pas la journée.
   const studied = PC.stepsStudiedOn(PC.prevDay(d.day), pr.plan, { n: d.n, dayKeyOf: G.dayKey });
   const pc = PC.suggestEpisode(state.episodes, studied, pr.podcasts, t0);
-  if (pc) tasks.push({ id: 'podcast', optional: true, icon: '🎧', title: `Podcast : ${pc.ep.title}`, sub: `Facultatif · ${PC.fmtDuration(pc.ep.duration)} · l’étape d’hier en audio, à écouter en marchant ou dans les transports`, done: pc.done, cta: `Écouter l’épisode ${pc.ep.n}`, run: () => { go('podcasts'); pcPlay(pc.ep.id); } });
+  if (pc) tasks.push({ id: 'podcast', optional: true, icon: ic('headphones'), title: `Podcast : ${pc.ep.title}`, sub: `Facultatif · ${PC.fmtDuration(pc.ep.duration)} · l’étape d’hier en audio, à écouter en marchant ou dans les transports`, done: pc.done, cta: `Écouter l’épisode ${pc.ep.n}`, run: () => { go('podcasts'); pcPlay(pc.ep.id); } });
   // Étapes du jour terminées dès que le schéma est lu et la session faite : le lendemain prend la suite.
   const read = tasks.find((x) => x.id === 'read'); const sess = tasks.find((x) => x.id === 'session');
   if (steps.length && read?.done && sess.done && steps.some((st) => !pr.plan.done[st.id])) { steps.forEach((st) => { pr.plan.done[st.id] = pr.plan.done[st.id] || Date.now(); }); persist(); }
@@ -538,8 +541,8 @@ const nextTask = (tasks, skip = '') => tasks.find((x) => !x.done && !x.optional 
 function markGameFinished(kind) { P.markGameDone(state.progress.plan, todayKey(), kind); }
 function lateBanner(d) {
   const parts = [];
-  if (d.late?.length) parts.push(`↩ <strong>Rattrapage</strong> : ${d.late.map((x) => `${esc(P.stepById(x.id)?.title || x.id)} (prévue le ${new Date(`${x.was}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })})`).join(' · ')}.`);
-  if (d.merged?.length) parts.push(`⏩ <strong>Délai court</strong> : ${d.merged.map((m) => m.kind === 'blanc' ? `examen blanc ${m.exam.toUpperCase()}` : m.kind === 'faibles' ? 'points faibles' : 'veille').join(', ')} regroupé${d.merged.length > 1 ? 's' : ''} aujourd’hui, rien n’est supprimé.`);
+  if (d.late?.length) parts.push(`${ic('undo')} <strong>Rattrapage</strong> : ${d.late.map((x) => `${esc(P.stepById(x.id)?.title || x.id)} (prévue le ${new Date(`${x.was}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })})`).join(' · ')}.`);
+  if (d.merged?.length) parts.push(`${ic('forward')} <strong>Délai court</strong> : ${d.merged.map((m) => m.kind === 'blanc' ? `examen blanc ${m.exam.toUpperCase()}` : m.kind === 'faibles' ? 'points faibles' : 'veille').join(', ')} regroupé${d.merged.length > 1 ? 's' : ''} aujourd’hui, rien n’est supprimé.`);
   return parts.length ? `<div class="gfb warn" style="margin:6px 0">${parts.join('<br>')}</div>` : '';
 }
 // Pont vers Ernest (app d'organisation) : le plan du jour en lien profond, sans doublon côté Ernest.
@@ -562,7 +565,7 @@ function ernestLink() {
 const KIND_LABEL = { etude: 'Apprendre', consolidation: 'Consolider', blanc: 'Examen blanc', faibles: 'Points faibles', veille: 'Veille : léger', 'jour-j': 'Jour J', apres: 'Après l’épreuve' };
 function dayCard() {
   const d = ensureDaily();
-  if (d.kind === 'jour-j') return '<div class="card plan-card"><h2>Jour J 🍀</h2><p class="muted">Rien de nouveau. Relisez les chiffres clés, respirez, 3 minutes par question. Partie CAC : soignez-la.</p><button class="btn" data-open-fiche="15-schema-chiffres-cles.md">📊 Les chiffres à connaître</button></div>';
+  if (d.kind === 'jour-j') return '<div class="card plan-card"><h2>Jour J ' + ic('clover') + '</h2><p class="muted">Rien de nouveau. Relisez les chiffres clés, respirez, 3 minutes par question. Partie CAC : soignez-la.</p><button class="btn" data-open-fiche="15-schema-chiffres-cles.md">' + ic('chart') + ' Les chiffres à connaître</button></div>';
   if (d.kind === 'apres') return '';
   const tasks = dayTasks(); const req = tasks.filter((x) => !x.optional); const n = req.filter((x) => x.done).length;
   const date = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
@@ -571,25 +574,25 @@ function dayCard() {
   const tomText = tom ? [...tom.steps.map((id) => P.stepById(id)?.title), tom.exam ? `examen blanc ${tom.exam.toUpperCase()}` : '', tom.kind === 'faibles' ? 'points faibles' : '', tom.kind === 'veille' ? 'veille légère' : '', tom.kind === 'consolidation' ? 'consolidation' : ''].filter(Boolean).join(' · ') : '';
   return `<div class="card plan-card"><div class="row" style="justify-content:space-between"><span class="badge warn">${esc(KIND_LABEL[d.kind])} · J-${d.n}</span><span class="muted">${n}/${req.length} fait</span></div>
     <h2 style="margin:8px 0 2px">Mon plan du ${esc(date)}</h2>${lateBanner(d)}<div class="progress" style="margin:6px 0 10px"><div style="width:${Math.round((n / req.length) * 100)}%"></div></div>
-    <ol class="todo">${tasks.map((x, i) => `<li class="${x.done ? 'done' : x === cur ? 'cur' : ''}"><span class="tick">${x.done ? '✔' : x.optional ? '+' : i + 1}</span><div class="tbody"><div><strong>${x.icon} ${esc(x.title)}</strong>${x === cur ? ' <span class="badge warn">maintenant</span>' : ''}${x.optional ? ' <span class="badge">facultatif</span>' : ''}</div><div class="muted">${esc(x.sub)}</div>${x.done ? '' : x.html || `<button class="btn sm ${x === cur ? 'primary' : ''}" data-task="${x.id}">▶ ${esc(x.cta)}</button>`}</div></li>`).join('')}</ol>
-    ${n === req.length ? `<div class="gfb ok">🎉 Plan du jour terminé. Vous pouvez vous arrêter, ou continuer en boucle :</div>${nextCard(true)}` : ''}
+    <ol class="todo">${tasks.map((x, i) => `<li class="${x.done ? 'done' : x === cur ? 'cur' : ''}"><span class="tick">${x.done ? ic('check') : x.optional ? '+' : i + 1}</span><div class="tbody"><div><strong>${x.icon} ${esc(x.title)}</strong>${x === cur ? ' <span class="badge warn">maintenant</span>' : ''}${x.optional ? ' <span class="badge">facultatif</span>' : ''}</div><div class="muted">${esc(x.sub)}</div>${x.done ? '' : x.html || `<button class="btn sm ${x === cur ? 'primary' : ''}" data-task="${x.id}">${ic('play')} ${esc(x.cta)}</button>`}</div></li>`).join('')}</ol>
+    ${n === req.length ? `<div class="gfb ok">${ic('party')} Plan du jour terminé. Vous pouvez vous arrêter, ou continuer en boucle :</div>${nextCard(true)}` : ''}
     ${tomText ? `<p class="muted" style="margin:6px 0 10px">Demain : ${esc(tomText)}.</p>` : ''}
-    <button class="btn sm" data-go="plan">📅 Mon plan jusqu’au ${esc(examDay())}</button> <button class="btn sm" data-ernest="1">🌱 Copier pour Ernest</button></div>`;
+    <button class="btn sm" data-go="plan">${ic('calendar')} Mon plan jusqu’au ${esc(examDay())}</button> <button class="btn sm" data-ernest="1">${ic('sprout')} Copier pour Ernest</button></div>`;
 }
 // Le bouton principal de l'accueil : la prochaine chose à faire, sans réfléchir.
 function heroCta() {
   const d = ensureDaily();
-  if (d.kind === 'apres') return '<button class="btn primary big-btn" data-go="review">▶ Réviser</button>';
+  if (d.kind === 'apres') return '<button class="btn primary big-btn" data-go="review"><span>' + ic('play') + ' Réviser</span></button>';
   const cur = d.kind === 'jour-j' ? null : nextTask(dayTasks());
-  if (cur) return `<button class="btn primary big-btn" data-task="${cur.id}"><span class="cta-k">À faire maintenant</span>▶ ${esc(cur.cta)}</button>`;
+  if (cur) return `<button class="btn primary big-btn" data-task="${cur.id}"><span class="cta-k">À faire maintenant</span><span>${ic('play')} ${esc(cur.cta)}</span></button>`;
   const a = nextActions(); state.nextList = a;
-  return `<button class="btn primary big-btn" data-next="0"><span class="cta-k">Plan du jour terminé · et maintenant ?</span>${a[0].icon} ${esc(a[0].title)}</button>`;
+  return `<button class="btn primary big-btn" data-next="0"><span class="cta-k">Plan du jour terminé · et maintenant ?</span><span>${a[0].icon} ${esc(a[0].title)}</span></button>`;
 }
 // En fin de séance, de série, de jeu ou d'examen : ce qui suit dans le plan.
 function nextStepBlock() {
   const cur = nextTask(dayTasks());
-  if (cur) return `<div class="card next"><div class="muted">Prochaine étape de votre plan du jour</div><strong>${cur.icon} ${esc(cur.title)}</strong><p class="muted" style="margin:4px 0 8px">${esc(cur.sub)}</p><button class="btn primary" data-task="${cur.id}">▶ ${esc(cur.cta)}</button></div>`;
-  return `<div class="gfb ok">🎉 Plan du jour terminé.</div>${nextCard()}`;
+  if (cur) return `<div class="card next"><div class="muted">Prochaine étape de votre plan du jour</div><strong>${cur.icon} ${esc(cur.title)}</strong><p class="muted" style="margin:4px 0 8px">${esc(cur.sub)}</p><button class="btn primary" data-task="${cur.id}">${ic('play')} ${esc(cur.cta)}</button></div>`;
+  return `<div class="gfb ok">${ic('party')} Plan du jour terminé.</div>${nextCard()}`;
 }
 // Aide de départ : affichée tant qu'on ne l'a pas fermée.
 function helpCard() {
@@ -607,36 +610,36 @@ function helpCard() {
 function nextActions() {
   const pr = state.progress; const out = []; const now = Date.now();
   const due = dueNow();
-  if (due) out.push({ icon: '🔁', title: `${due} carte${due > 1 ? 's' : ''} à revoir maintenant`, why: 'Revues au bon moment, elles tiennent jusqu’à l’épreuve.', run: () => { state.session = null; go('review'); } });
+  if (due) out.push({ icon: ic('repeat'), title: `${due} carte${due > 1 ? 's' : ''} à revoir maintenant`, why: 'Revues au bon moment, elles tiennent jusqu’à l’épreuve.', run: () => { state.session = null; go('review'); } });
   const sure = confidentErrors(pr.attempts);
-  if (sure.length) out.push({ icon: '⚠️', title: `${sure.length} erreur${sure.length > 1 ? 's' : ''} « j’étais sûr »`, why: 'Une erreur commise avec certitude se corrige le mieux si on y revient vite.', run: () => trainOn(sure.slice(-20), 'Mes erreurs « j’étais sûr »') });
+  if (sure.length) out.push({ icon: ic('alert'), title: `${sure.length} erreur${sure.length > 1 ? 's' : ''} « j’étais sûr »`, why: 'Une erreur commise avec certitude se corrige le mieux si on y revient vite.', run: () => trainOn(sure.slice(-20), 'Mes erreurs « j’étais sûr »') });
   const shDue = state.shorts ? SH.shortsStats(state.shorts, pr.drills, now).due : 0;
-  if (shDue) out.push({ icon: '🎬', title: `Shorts : ${shDue} à revoir`, why: 'Les notions ratées dans le fil reviennent : 30 secondes chacune.', run: () => openFeed() });
+  if (shDue) out.push({ icon: ic('clapper'), title: `Shorts : ${shDue} à revoir`, why: 'Les notions ratées dans le fil reviennent : 30 secondes chacune.', run: () => openFeed() });
   for (const w of P.tagStats(pr.attempts, state.byId).weak.slice(0, 3)) {
-    out.push({ icon: '🎯', title: `Point faible : ${tagLabel(w.tag)} (${w.prof}, ${Math.round(w.acc * 100)} %)`, why: 'Votre sous-thème le moins réussi : une série ciblée de 10 questions.', run: () => trainOn(shuffle(weakIds(w), now).slice(0, 10), `Point faible : ${tagLabel(w.tag)}`) });
+    out.push({ icon: ic('target'), title: `Point faible : ${tagLabel(w.tag)} (${w.prof}, ${Math.round(w.acc * 100)} %)`, why: 'Votre sous-thème le moins réussi : une série ciblée de 10 questions.', run: () => trainOn(shuffle(weakIds(w), now).slice(0, 10), `Point faible : ${tagLabel(w.tag)}`) });
   }
   for (const [k, pre] of Object.entries(GAME_PREFIX)) {
     const n = Object.entries(pr.drills).filter(([id, m]) => id.startsWith(pre) && m.due <= now).length;
     if (n) out.push({ icon: GAMES[k].icon, title: `${GAMES[k].name} : ${n} à revoir`, why: 'Les items ratés reviennent : c’est le moment de les reprendre.', run: () => startGame(k) });
   }
   const weakQ = weakest(20);
-  if (weakQ.length) out.push({ icon: '🔥', title: 'Mes questions les plus ratées', why: 'Les 20 questions où vous échouez le plus souvent.', run: () => trainOn(weakQ.map((q) => q.id), 'Mes questions les plus ratées') });
+  if (weakQ.length) out.push({ icon: ic('flame'), title: 'Mes questions les plus ratées', why: 'Les 20 questions où vous échouez le plus souvent.', run: () => trainOn(weakQ.map((q) => q.id), 'Mes questions les plus ratées') });
   const todo = state.clusters.groups.map((g, i) => ({ g, i, ok: g.filter((id) => pr.stats.q[id]?.ok > 0).length })).filter((x) => x.ok < 2 && x.g.some((id) => pr.stats.q[id]));
-  if (todo.length) out.push({ icon: '🔁', title: 'Une notion récurrente, toutes ses variantes', why: 'Posée à plusieurs sessions : réussir chaque formulation prouve qu’on tient la règle.', run: () => trainOn(todo[0].g, 'Même notion, plusieurs sessions') });
+  if (todo.length) out.push({ icon: ic('repeat'), title: 'Une notion récurrente, toutes ses variantes', why: 'Posée à plusieurs sessions : réussir chaque formulation prouve qu’on tient la règle.', run: () => trainOn(todo[0].g, 'Même notion, plusieurs sessions') });
   const unseen = state.bank.questions.filter((q) => !pr.cards[q.id]).length;
-  if (unseen) out.push({ icon: '➕', title: '20 nouvelles questions de plus', why: `Prendre de l’avance : ${unseen} questions jamais vues.`, run: () => { state.bonusNew = true; state.session = null; go('review'); } });
+  if (unseen) out.push({ icon: ic('plus'), title: '20 nouvelles questions de plus', why: `Prendre de l’avance : ${unseen} questions jamais vues.`, run: () => { state.bonusNew = true; state.session = null; go('review'); } });
   const last = pr.exams[pr.exams.length - 1];
-  if (!last || now - last.t > 2 * DAY) out.push({ icon: '⏱', title: 'Un examen blanc', why: last ? 'Le dernier date de plus de deux jours.' : 'Pour situer votre niveau en conditions réelles.', run: () => go('exam') });
-  if (state.shorts?.length) out.push({ icon: '🎬', title: 'Le fil de shorts', why: 'Une notion en 30 secondes, une question à chaque fois : vos points faibles d’abord.', run: () => openFeed() });
-  out.push({ icon: '⚡', title: 'Vrai / Faux éclair', why: '20 propositions de QCM à juger, toujours utile.', run: () => startGame('vf') });
-  out.push({ icon: '🏛', title: 'Réciter une liste du palais', why: 'Les listes à connaître par cœur, posées dans votre bureau.', run: () => startGame('palais') });
+  if (!last || now - last.t > 2 * DAY) out.push({ icon: ic('timer'), title: 'Un examen blanc', why: last ? 'Le dernier date de plus de deux jours.' : 'Pour situer votre niveau en conditions réelles.', run: () => go('exam') });
+  if (state.shorts?.length) out.push({ icon: ic('clapper'), title: 'Le fil de shorts', why: 'Une notion en 30 secondes, une question à chaque fois : vos points faibles d’abord.', run: () => openFeed() });
+  out.push({ icon: ic('zap'), title: 'Vrai / Faux éclair', why: '20 propositions de QCM à juger, toujours utile.', run: () => startGame('vf') });
+  out.push({ icon: ic('landmark'), title: 'Réciter une liste du palais', why: 'Les listes à connaître par cœur, posées dans votre bureau.', run: () => startGame('palais') });
   return out;
 }
 function nextCard(inner = false) {
   const list = nextActions(); state.nextList = list;
   const i = state.nextIdx % list.length; const a = list[i];
   return `<div class="${inner ? 'next-inner' : 'card'} next"><div class="muted">Et maintenant ? (${i + 1}/${list.length})</div><strong>${a.icon} ${esc(a.title)}</strong><p class="muted" style="margin:4px 0 8px">${esc(a.why)}</p>
-    <div class="btnrow"><button class="btn primary" data-next="${i}">C’est parti</button><button class="btn" data-next-other="1">↻ Autre idée</button></div></div>`;
+    <div class="btnrow"><button class="btn primary" data-next="${i}">C’est parti</button><button class="btn" data-next-other="1">${ic('rotate-cw')} Autre idée</button></div></div>`;
 }
 
 // ---------- Estimation du niveau ----------
@@ -656,7 +659,7 @@ function estimateCard() {
   const row = (m, l) => `<tr><td>${l}</td><td><strong>${fr(e[m].note)}</strong> <span class="muted">(${fr(e[m].low)} à ${fr(e[m].high)})</span></td><td>${e[m].ec} %</td><td>${e[m].cac} %</td><td>${e[m].pass} %</td><td>${e[m].risk} %</td></tr>`;
   const weaker = e.qcm.cac < e.qcm.ec ? 'CAC' : 'EC';
   return `<div class="card"><h2>Estimation à l’épreuve</h2><table><thead><tr><th>Format</th><th>Note /20</th><th>EC</th><th>CAC</th><th>≥ 10</th><th>&lt; 6</th></tr></thead><tbody>${row('qcm', 'QCM')}${row('qrc', 'QRC')}</tbody></table>
-    <p class="muted">Le sujet sera inédit : seules ${Math.round(e.repeat * 20)} questions sur 20 environ reprennent presque une annale (moyenne des dernières sessions). La note mêle donc votre mémoire des questions de la banque (pour cette part) et, pour le reste, votre réussite au premier essai sur des questions encore jamais vues du même sous-thème. La fourchette couvre deux tirages sur trois. Les examens blancs des 14 derniers jours comptent pour 50 % (copies répondues à moins de moitié exclues), l’examen inédit pour 60 %${e.qcm.inedit != null || e.qrc.inedit != null ? '' : ' (pas encore passé : onglet ⏱ Examen)'}. ${e.reliable ? '' : `<strong>Estimation indicative</strong> tant que moins de 60 % de la banque est vue (${Math.round(e.coverage * 100)} %).`} Les QCM rédigés par IA peuvent flatter la note QCM.</p>
+    <p class="muted">Le sujet sera inédit : seules ${Math.round(e.repeat * 20)} questions sur 20 environ reprennent presque une annale (moyenne des dernières sessions). La note mêle donc votre mémoire des questions de la banque (pour cette part) et, pour le reste, votre réussite au premier essai sur des questions encore jamais vues du même sous-thème. La fourchette couvre deux tirages sur trois. Les examens blancs des 14 derniers jours comptent pour 50 % (copies répondues à moins de moitié exclues), l’examen inédit pour 60 %${e.qcm.inedit != null || e.qrc.inedit != null ? '' : ' (pas encore passé : onglet ' + ic('timer') + ' Examen)'}. ${e.reliable ? '' : `<strong>Estimation indicative</strong> tant que moins de 60 % de la banque est vue (${Math.round(e.coverage * 100)} %).`} Les QCM rédigés par IA peuvent flatter la note QCM.</p>
     <p class="muted">Le plus rentable : la partie <strong>${weaker}</strong> (${Math.min(e.qcm.ec, e.qcm.cac)} % contre ${Math.max(e.qcm.ec, e.qcm.cac)} %).</p></div>`;
 }
 
@@ -685,31 +688,31 @@ views.plan = () => {
     const done = !!pr.plan.done[st.id]; const isCur = i === cur;
     const prog = st.kind === 'schema' ? P.stepProgress(st, state.fiches, pr.cards, mastery) : null;
     const links = st.kind === 'schema'
-      ? `${st.fiches.map((f) => `<button class="btn sm" data-open-fiche="${esc(f)}">📊 ${esc(shortTitle(f))}</button>`).join('')}${shortsBtn(st.id)}${st.deep.length ? `<div class="muted" style="margin-top:6px">En détail : ${st.deep.map((f) => `<a href="#" data-open-fiche="${esc(f)}">${esc(shortTitle(f))}</a>`).join(' · ')}</div>` : ''}`
-      : `<button class="btn sm" data-go="${st.action === 'weak' ? 'train' : st.action}">${st.action === 'exam' ? '⏱ Aller aux examens' : st.action === 'weak' ? '🎯 Mes questions les plus ratées' : '🔁 Réviser'}</button>`;
+      ? `${st.fiches.map((f) => `<button class="btn sm" data-open-fiche="${esc(f)}">${ic('chart')} ${esc(shortTitle(f))}</button>`).join('')}${shortsBtn(st.id)}${st.deep.length ? `<div class="muted" style="margin-top:6px">En détail : ${st.deep.map((f) => `<a href="#" data-open-fiche="${esc(f)}">${esc(shortTitle(f))}</a>`).join(' · ')}</div>` : ''}`
+      : `<button class="btn sm" data-go="${st.action === 'weak' ? 'train' : st.action}">${st.action === 'exam' ? ic('timer') + ' Aller aux examens' : st.action === 'weak' ? ic('target') + ' Mes questions les plus ratées' : ic('repeat') + ' Réviser'}</button>`;
     return `<div class="card step ${done ? 'done' : ''} ${isCur ? 'cur' : ''}">
-      <div class="row" style="justify-content:space-between"><span class="muted">${done ? 'faite' : stepDay[st.id] ? `prévue ${esc(dayLabel(stepDay[st.id]))}` : finalDay[st.id] && cal.find((x) => x.n === finalDay[st.id]) ? `prévue ${esc(dayLabel(cal.find((x) => x.n === finalDay[st.id])))}` : ''}${st.who ? ` · ${esc(st.who)}` : ''}</span>${done ? '<span class="badge">✔ terminée</span>' : isCur ? '<span class="badge warn">en cours</span>' : ''}</div>
+      <div class="row" style="justify-content:space-between"><span class="muted">${done ? 'faite' : stepDay[st.id] ? `prévue ${esc(dayLabel(stepDay[st.id]))}` : finalDay[st.id] && cal.find((x) => x.n === finalDay[st.id]) ? `prévue ${esc(dayLabel(cal.find((x) => x.n === finalDay[st.id])))}` : ''}${st.who ? ` · ${esc(st.who)}` : ''}</span>${done ? '<span class="badge">' + ic('check') + ' terminée</span>' : isCur ? '<span class="badge warn">en cours</span>' : ''}</div>
       <strong>${i + 1}. ${esc(st.title)}</strong>
       ${prog ? `<div class="progress" style="margin:8px 0 4px"><div style="width:${prog.total ? Math.round((prog.seen / prog.total) * 100) : 0}%"></div></div><div class="muted">${prog.seen}/${prog.total} questions vues · ${prog.known} acquises</div>` : `<p class="muted" style="margin:6px 0">${esc(st.hint)}</p>`}
       <div class="btnrow" style="margin-top:8px;flex-wrap:wrap">${links}</div>
-      <div class="btnrow" style="margin-top:8px"><button class="btn sm" data-step-done="${st.id}">${done ? '↩ Rouvrir' : '✔ Marquer terminée'}</button>${!done && !isCur && st.kind === 'schema' ? `<button class="btn sm" data-step-focus="${st.id}">Commencer par celle-ci</button>` : ''}</div></div>`;
+      <div class="btnrow" style="margin-top:8px"><button class="btn sm" data-step-done="${st.id}">${done ? ic('undo') + ' Rouvrir' : ic('check') + ' Marquer terminée'}</button>${!done && !isCur && st.kind === 'schema' ? `<button class="btn sm" data-step-focus="${st.id}">Commencer par celle-ci</button>` : ''}</div></div>`;
   }).join('');
   const calRows = cal.filter((day) => day.n >= 1).map((day) => {
     const what = [
-      ...day.steps.map((id) => `📊 ${esc(P.stepById(id)?.title || id)}`),
-      day.exam ? `⏱ Examen blanc ${day.exam.toUpperCase()}` : '',
-      day.kind === 'faibles' ? '🎯 Points faibles et erreurs « j’étais sûr »' : '',
-      day.kind === 'veille' ? '🔁 Cartes à revoir uniquement, listes du palais, dormir' : '',
-      day.kind === 'consolidation' ? '🔁 Révisions, points faibles, jeux' : '',
-      ...(day.merged || []).map((m) => m.kind === 'blanc' ? `⏱ Examen blanc ${m.exam.toUpperCase()} (regroupé)` : m.kind === 'faibles' ? '🎯 Points faibles (regroupé)' : '🔁 Veille (regroupée)'),
-      ...(day.revise || []).map((id) => `📖 Relire : ${esc(P.stepById(id)?.title || id)}`),
-      ...(day.late || []).map((x) => `↩ Rattrapage : ${esc(P.stepById(x.id)?.title || x.id)}`),
-      day.today && day.target ? `➕ ${day.target} nouvelles questions` : '',
+      ...day.steps.map((id) => `${ic('chart')} ${esc(P.stepById(id)?.title || id)}`),
+      day.exam ? `${ic('timer')} Examen blanc ${day.exam.toUpperCase()}` : '',
+      day.kind === 'faibles' ? ic('target') + ' Points faibles et erreurs « j’étais sûr »' : '',
+      day.kind === 'veille' ? ic('repeat') + ' Cartes à revoir uniquement, listes du palais, dormir' : '',
+      day.kind === 'consolidation' ? ic('repeat') + ' Révisions, points faibles, jeux' : '',
+      ...(day.merged || []).map((m) => m.kind === 'blanc' ? `${ic('timer')} Examen blanc ${m.exam.toUpperCase()} (regroupé)` : m.kind === 'faibles' ? ic('target') + ' Points faibles (regroupé)' : ic('repeat') + ' Veille (regroupée)'),
+      ...(day.revise || []).map((id) => `${ic('book')} Relire : ${esc(P.stepById(id)?.title || id)}`),
+      ...(day.late || []).map((x) => `${ic('undo')} Rattrapage : ${esc(P.stepById(x.id)?.title || x.id)}`),
+      day.today && day.target ? `${ic('plus')} ${day.target} nouvelles questions` : '',
     ].filter(Boolean);
-    return `<li class="${day.today ? 'today' : ''}"><div class="row" style="justify-content:space-between"><strong>${esc(dayLabel(day))}</strong><span class="badge ${day.today ? 'warn' : ''}">${day.today ? 'aujourd’hui' : esc(KIND_LABEL[day.kind])}</span></div><div class="muted">${what.join('<br>') || '🔁 Révisions'}</div></li>`;
+    return `<li class="${day.today ? 'today' : ''}"><div class="row" style="justify-content:space-between"><strong>${esc(dayLabel(day))}</strong><span class="badge ${day.today ? 'warn' : ''}">${day.today ? 'aujourd’hui' : esc(KIND_LABEL[day.kind])}</span></div><div class="muted">${what.join('<br>') || ic('repeat') + ' Révisions'}</div></li>`;
   }).join('');
   return `<div class="card"><h2>Mon plan jusqu’au ${esc(examDay())}</h2><p class="muted">Recalculé chaque matin d’après ce qui reste et vos résultats : une étape non finie est reportée, le nombre de nouvelles questions est recalé pour tout avoir vu à J-3, le point faible et le jeu du jour suivent vos erreurs. Les quatre derniers jours sont fixes ; si le délai est court, les étapes et examens manquants sont regroupés sur aujourd’hui, rien n’est supprimé.</p>
-    <ol class="cal">${calRows}</ol><button class="btn primary" data-go="home">▶ Faire le plan du jour</button></div>
+    <ol class="cal">${calRows}</ol><button class="btn primary" data-go="home">${ic('play')} Faire le plan du jour</button></div>
     <details class="card"><summary><strong>Les 15 étapes du parcours</strong> <span class="muted">(détail, schémas, marquer une étape)</span></summary><div style="margin-top:10px">${rows}</div></details>`;
 };
 
@@ -725,9 +728,9 @@ views.review = () => {
   if (!s.queue.length) {
     const again = Object.values(state.progress.cards).filter((c) => c.due <= Date.now()).length;
     state.session = null; ensureDaily().sess = null; persist();
-    return `<div class="card center"><h2>Session terminée 🎉</h2><p>${s.done} cartes revues, ${s.ok} réussies du premier coup.</p>
+    return `<div class="card center"><h2>Session terminée ${ic('party')}</h2><p>${s.done} cartes revues, ${s.ok} réussies du premier coup.</p>
       ${again ? `<p class="muted">${again} carte(s) « Encore » reviennent dans 10 min.</p>` : ''}</div>
-      ${nextStepBlock()}<button class="btn" data-go="home">🏠 Voir mon plan du jour</button>`;
+      ${nextStepBlock()}<button class="btn" data-go="home">${ic('home')} Voir mon plan du jour</button>`;
   }
   const q = s.queue[0];
   setTimeout(() => {
@@ -736,8 +739,8 @@ views.review = () => {
   }, 0);
   const d = ensureDaily(); const stepIds = new Set(d.steps.flatMap((id) => P.stepQuestionIds(P.stepById(id), state.fiches)));
   const isNew = !state.progress.cards[q.id];
-  return `<div class="row" style="justify-content:space-between;margin-bottom:6px;flex-wrap:nowrap"><span>${isNew ? '<span class="badge new">🆕 Nouvelle</span>' : '<span class="badge">🔁 À revoir</span>'} <span class="muted">${s.done + 1} / ${s.total}</span></span><span class="muted">${s.queue.length - 1 > 0 ? `encore ${s.queue.length - 1}` : 'dernière'}</span></div>
-    ${stepIds.has(q.id) ? `<div class="muted ctx">📊 Étape du jour : ${esc(d.steps.map((id) => P.stepById(id)?.title).join(', '))}</div>` : ''}
+  return `<div class="row" style="justify-content:space-between;margin-bottom:6px;flex-wrap:nowrap"><span>${isNew ? '<span class="badge new">' + ic('sparkles') + ' Nouvelle</span>' : '<span class="badge">' + ic('repeat') + ' À revoir</span>'} <span class="muted">${s.done + 1} / ${s.total}</span></span><span class="muted">${s.queue.length - 1 > 0 ? `encore ${s.queue.length - 1}` : 'dernière'}</span></div>
+    ${stepIds.has(q.id) ? `<div class="muted ctx">${ic('chart')} Étape du jour : ${esc(d.steps.map((id) => P.stepById(id)?.title).join(', '))}</div>` : ''}
     <div class="progress"><div style="width:${(s.done / Math.max(1, s.total)) * 100}%"></div></div>
     ${s.done === 0 && s.queue.length > SHORT_SESSION + 5 ? `<div class="short-sess"><span class="muted">${s.queue.length} cartes dans cette séance.</span><button class="btn sm" id="short-sess">Faire ${SHORT_SESSION} seulement</button></div>` : ''}
     <div class="card" id="qcard" style="margin-top:12px"></div><div id="grade-peek"></div><div id="grade"></div>`;
@@ -780,7 +783,7 @@ function gradeCurrent(q, g, mode, res = {}) {
   state.progress.cards[q.id] = review(prev, g, Date.now(), reviewOpts(q.id));
   if (mode === 'qrc') {
     answer(q.id, g >= 2, mode, { conf: res.conf ?? null });
-    if (confidentError(g >= 2, res.conf)) toast('⚠️ Erreur commise avec certitude : relisez l’explication, elle revient dans la séance');
+    if (confidentError(g >= 2, res.conf)) toast('Erreur commise avec certitude : relisez l’explication, elle revient dans la séance', 'alert');
   }
   s.queue.shift(); s.done += 1; if (g >= 2 && wasNew) s.ok += 1;
   if (g === 0) { s.queue.push(q); s.total += 1; }
@@ -796,7 +799,7 @@ views.train = () => {
   const t = state.train;
   if (t.queue) {
     const q = t.queue[t.idx];
-    if (!q) { const r = `<div class="card center"><h2>Série terminée</h2><p>${t.ok} / ${t.n} bonnes réponses${t.title ? ` · ${esc(t.title)}` : ''}</p></div>${nextStepBlock()}<div class="btnrow"><button class="btn" id="again">Autre série</button><button class="btn" data-go="home">🏠 Plan du jour</button></div>`; setTimeout(() => { $('#again').onclick = () => { t.queue = null; t.title = null; render(); }; }, 0); return r; }
+    if (!q) { const r = `<div class="card center"><h2>Série terminée</h2><p>${t.ok} / ${t.n} bonnes réponses${t.title ? ` · ${esc(t.title)}` : ''}</p></div>${nextStepBlock()}<div class="btnrow"><button class="btn" id="again">Autre série</button><button class="btn" data-go="home">${ic('home')} Plan du jour</button></div>`; setTimeout(() => { $('#again').onclick = () => { t.queue = null; t.title = null; render(); }; }, 0); return r; }
     setTimeout(() => {
       const box = $('#qcard');
       const next = () => { $('#next').classList.remove('hidden'); };
@@ -809,12 +812,12 @@ views.train = () => {
       }
       $('#next').onclick = () => { t.idx++; render(); };
       $('#sg-ok').onclick = () => { t.n++; t.ok++; answer(q.id, true, 'qrc', { conf: qconf }); t.idx++; render(); };
-      $('#sg-ko').onclick = () => { t.n++; answer(q.id, false, 'qrc', { conf: qconf }); if (confidentError(false, qconf)) toast('⚠️ Erreur commise avec certitude : relisez l’explication'); t.idx++; render(); };
+      $('#sg-ko').onclick = () => { t.n++; answer(q.id, false, 'qrc', { conf: qconf }); if (confidentError(false, qconf)) toast('Erreur commise avec certitude : relisez l’explication', 'alert'); t.idx++; render(); };
       $('#stop').onclick = () => { t.queue = null; t.title = null; render(); };
     }, 0);
-    return `${t.title ? `<div class="muted" style="margin-bottom:6px">🎯 ${esc(t.title)}</div>` : ''}<div class="row" style="justify-content:space-between"><span class="muted">${t.idx + 1} / ${t.queue.length} · ${t.ok}/${t.n} ✔</span><button class="btn sm" id="stop">Arrêter</button></div>
+    return `${t.title ? `<div class="muted" style="margin-bottom:6px">${ic('target')} ${esc(t.title)}</div>` : ''}<div class="row" style="justify-content:space-between"><span class="muted">${t.idx + 1} / ${t.queue.length} · ${t.ok}/${t.n} ${ic('check')}</span><button class="btn sm" id="stop">Arrêter</button></div>
       <div class="card" id="qcard" style="margin-top:10px"></div>
-      <div id="selfgrade" class="btnrow hidden"><button class="btn" id="sg-ko">✘ Je ne savais pas</button><button class="btn primary" id="sg-ok">✔ Je savais</button></div>
+      <div id="selfgrade" class="btnrow hidden"><button class="btn" id="sg-ko">${ic('x')} Je ne savais pas</button><button class="btn primary" id="sg-ok">${ic('check')} Je savais</button></div>
       <button class="btn primary hidden" id="next">Question suivante →</button>`;
   }
   const tags = {};
@@ -837,11 +840,11 @@ views.train = () => {
     <label class="field">Format<select id="f-mode"><option value="qcm" ${t.mode === 'qcm' ? 'selected' : ''}>QCM</option><option value="qrc" ${t.mode === 'qrc' ? 'selected' : ''}>QRC (réponse courte)</option></select></label>
     <p class="muted">${filtered.length} question(s) correspondent. Série de 20 max, sans effet sur la répétition espacée.</p>
     <button class="btn primary" id="start" ${filtered.length ? '' : 'disabled'}>Lancer la série</button>
-    <div style="height:8px"></div><button class="btn" id="weak">🔥 Mes 20 questions les plus ratées</button>
-    <div style="height:8px"></div><button class="btn" id="sure">⚠️ Mes erreurs « j’étais sûr » (${sure})</button>
+    <div style="height:8px"></div><button class="btn" id="weak">${ic('flame')} Mes 20 questions les plus ratées</button>
+    <div style="height:8px"></div><button class="btn" id="sure">${ic('alert')} Mes erreurs « j’étais sûr » (${sure})</button>
     <p class="muted" style="margin-top:8px">Une erreur faite avec certitude se corrige mieux qu’une autre, à condition d’y revenir : c’est la liste à reprendre en priorité.</p></div>`;
 };
-const trainTabs = (cur) => `<div class="tabs">${[['train', '🎯 Séries'], ['jeux', '🎲 Jeux']].map(([k, l]) => `<button class="chip ${cur === k ? 'on' : ''}" data-go="${k}">${l}</button>`).join('')}</div>`;
+const trainTabs = (cur) => `<div class="tabs">${[['train', ic('target') + ' Séries'], ['jeux', ic('dice') + ' Jeux']].map(([k, l]) => `<button class="chip ${cur === k ? 'on' : ''}" data-go="${k}">${l}</button>`).join('')}</div>`;
 function filterQuestions(t) {
   return state.bank.questions.filter((q) => (t.prof === 'all' || q.profession === t.prof) && (t.theme === 'all' || q.theme === t.theme) && (t.tag === 'all' || q.tags.includes(t.tag)));
 }
@@ -876,9 +879,9 @@ views.exam = () => {
       $('#ex-hand').onclick = () => { state.examConfirm = true; resumePaused(ex); persistExam(); startExamTimer(); render(); };
       $('#ex-abandon').onclick = () => abandonExam();
     }, 0);
-    return `<div class="card center"><div class="muted">Examen blanc ${ex.mode.toUpperCase()}${ex.inedit ? ' inédit' : ''} · en pause</div><div class="big">⏸ ${fmtMs(remainingMs(ex))}</div>
+    return `<div class="card center"><div class="muted">Examen blanc ${ex.mode.toUpperCase()}${ex.inedit ? ' inédit' : ''} · en pause</div><div class="big">${ic('pause')} ${fmtMs(remainingMs(ex))}</div>
       <p class="muted">Le chrono est arrêté. ${answered}/${n} questions répondues. L’examen vous attend ici, même après avoir fermé l’application.</p>
-      <div class="btnrow" style="justify-content:center"><button class="btn primary" id="ex-resume">▶ Reprendre l’examen</button></div>
+      <div class="btnrow" style="justify-content:center"><button class="btn primary" id="ex-resume">${ic('play')} Reprendre l’examen</button></div>
       <div class="btnrow" style="justify-content:center;margin-top:8px"><button class="btn" id="ex-hand">Rendre la copie</button><button class="btn" id="ex-abandon">Abandonner (non compté)</button></div></div>`;
   }
   if (state.examConfirm) {
@@ -897,7 +900,7 @@ views.exam = () => {
   }
   const q = examById()[ex.ids[ex.current]];
   setTimeout(() => mountExamQuestion(q), 0);
-  return `<div class="row" style="justify-content:space-between"><span class="muted">Question ${ex.current + 1} / ${n} · <span class="badge ${q.profession.toLowerCase()}">${q.profession}</span></span><span class="row" style="gap:8px"><button class="btn sm" id="ex-pause">⏸ Pause / Quitter</button>${timer}</span></div>
+  return `<div class="row" style="justify-content:space-between"><span class="muted">Question ${ex.current + 1} / ${n} · <span class="badge ${q.profession.toLowerCase()}">${q.profession}</span></span><span class="row" style="gap:8px"><button class="btn sm" id="ex-pause">${ic('pause')} Pause / Quitter</button>${timer}</span></div>
     <div class="card" id="qcard" style="margin-top:10px"></div>
     <div class="btnrow"><button class="btn" id="prev" ${ex.current === 0 ? 'disabled' : ''}>← Précédente</button><button class="btn" id="next">${ex.current === n - 1 ? 'Terminer' : 'Suivante →'}</button></div>
     <div class="chips exam-grid" id="grid">${ex.ids.map((id, i) => `<button class="chip ${i === ex.current ? 'on' : ''} ${hasAnswer(ex, id) ? '' : 'muted'}" data-i="${i}" aria-label="Question ${i + 1}${hasAnswer(ex, id) ? ', répondue' : ', sans réponse'}">${i + 1}${hasAnswer(ex, id) ? ' ✓' : ''}</button>`).join('')}</div>
@@ -948,14 +951,14 @@ function resumeExam(saved) {
   if (saved.pending) { state.view = 'exam'; const { pending, ...ex } = saved; state.examResult = { pending: true, exam: ex }; return; }
   state.exam = saved;
   // En pause : rien ne presse, l'onglet Examen le montre.
-  if (saved.pausedAt) { toast('Un examen blanc est en pause : onglet ⏱ Examen pour le reprendre'); return; }
+  if (saved.pausedAt) { toast('Un examen blanc est en pause : onglet Examen pour le reprendre', 'timer'); return; }
   state.view = 'exam';
   if (remainingMs(saved) <= 0) { toast('Temps écoulé pendant votre absence : copie rendue'); endExam(); return; }
   toast(`Examen en cours : le chrono a continué pendant votre absence (${Math.ceil(remainingMs(saved) / 60000)} min restantes)`);
   startExamTimer();
 }
 // Pause explicite (bouton, ou changement d'onglet) : chrono arrêté, copie gardée.
-function pauseCurrentExam(msg = 'Examen en pause : chrono arrêté. Reprenez-le depuis l’onglet ⏱ Examen.') {
+function pauseCurrentExam(msg = 'Examen en pause : chrono arrêté. Reprenez-le depuis l’onglet Examen.') {
   const ex = state.exam; if (!ex || ex.pausedAt) return;
   pauseExam(ex); state.examConfirm = false; clearInterval(state.timer); persistExam(); toast(msg);
 }
@@ -1031,7 +1034,7 @@ function recordExam(res) {
 // Corrigé d'une question QCM : les 4 propositions dans l'ordre vu à l'examen, bonne réponse et choix.
 function qcmReview(q, chosen) {
   const order = shuffle([0, 1, 2, 3], q.id);
-  return `<div class="choices review">${order.map((idx, i) => `<div class="choice ${idx === q.qcm.answer ? 'ok' : idx === chosen ? 'ko' : ''}"><span class="k">${LETTERS[i]}</span><span>${esc(q.qcm.choices[idx])}${idx === chosen ? ' <em>(votre réponse)</em>' : ''}${idx === q.qcm.answer ? ' ✔' : ''}</span></div>`).join('')}${chosen === undefined ? '<div class="muted">Question laissée en blanc.</div>' : ''}</div>`;
+  return `<div class="choices review">${order.map((idx, i) => `<div class="choice ${idx === q.qcm.answer ? 'ok' : idx === chosen ? 'ko' : ''}"><span class="k">${LETTERS[i]}</span><span>${esc(q.qcm.choices[idx])}${idx === chosen ? ' <em>(votre réponse)</em>' : ''}${idx === q.qcm.answer ? ic('check') : ''}</span></div>`).join('')}${chosen === undefined ? '<div class="muted">Question laissée en blanc.</div>' : ''}</div>`;
 }
 function renderExamResult() {
   const er = state.examResult;
@@ -1071,7 +1074,7 @@ views.fiches = () => {
   if (state.ficheOpen) {
     const meta = state.fiches.find((f) => f.file === state.ficheOpen) || {};
     const n = (meta.questions || []).length;
-    const trainBtn = (id) => n ? `<button class="btn primary" id="${id}">🎯 S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : '';
+    const trainBtn = (id) => n ? `<button class="btn primary" id="${id}">${ic('target')} S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : '';
     setTimeout(async () => {
       $('#back').onclick = () => { state.ficheOpen = null; render(); };
       document.querySelectorAll('#fiche-train, #fiche-train2').forEach((b) => { b.onclick = () => trainOn(shuffle(meta.questions, Date.now()).slice(0, 20), meta.title); });
@@ -1083,13 +1086,13 @@ views.fiches = () => {
   setTimeout(() => { document.querySelectorAll('[data-fiche]').forEach((b) => { b.onclick = () => openFiche(b.dataset.fiche); }); }, 0);
   if (!state.fiches.length) return `<div class="card"><h2>Fiches</h2><p class="muted">Aucune fiche disponible pour l’instant.</p></div>`;
   const read = state.progress.plan.read || {};
-  const item = (f, label = '') => `<button class="btn" data-fiche="${esc(f.file)}"><span>${label ? `<span class="muted">${label}</span><br>` : ''}${esc(f.title)}</span><span>${read[f.file] ? '✔ ' : ''}${f.questions ? `<span class="muted">${f.questions.length} Q</span> ` : ''}›</span></button>`;
+  const item = (f, label = '') => `<button class="btn" data-fiche="${esc(f.file)}"><span>${label ? `<span class="muted">${label}</span><br>` : ''}${esc(f.title)}</span><span>${read[f.file] ? ic('check') : ''}${f.questions ? `<span class="muted">${f.questions.length} Q</span> ` : ''}›</span></button>`;
   // Schémas dans l'ordre du parcours (numéro d'étape), fiches de référence par profession.
   const steps = []; P.STEPS.forEach((st, i) => (st.fiches || []).forEach((file) => { if (!steps.some((x) => x.file === file)) steps.push({ file, n: i + 1 }); }));
   const visuels = state.fiches.filter((f) => f.kind === 'visuel').map((f) => ({ f, n: steps.find((x) => x.file === f.file)?.n || 99 })).sort((a, b) => a.n - b.n);
   const synth = state.fiches.filter((f) => f.kind !== 'visuel');
   const ec = synth.filter((f) => /-ec-/.test(f.file)); const cac = synth.filter((f) => /-cac-/.test(f.file));
-  return `${podcastsEntry()}<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ✔ = déjà lu.</p><div class="btnrow"><button class="btn primary" data-go="plan">🧭 Ouvrir le parcours</button><button class="btn" data-go="glossaire">📖 Glossaire</button></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
+  return `${podcastsEntry()}<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ${ic('check')} = déjà lu.</p><div class="btnrow"><button class="btn primary" data-go="plan">${ic('compass')} Ouvrir le parcours</button><button class="btn" data-go="glossaire">${ic('book')} Glossaire</button></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
     <div class="card"><h2>Fiches de référence</h2><h3>Expert-comptable</h3><div class="list">${ec.map((f) => item(f)).join('')}</div><h3>Commissaire aux comptes</h3><div class="list">${cac.map((f) => item(f)).join('')}</div></div>`;
 };
 // Sommaire déroulant en tête des fiches longues.
@@ -1110,7 +1113,7 @@ function inActivity() {
 }
 function sheet(html) {
   const el = $('#sheet');
-  el.innerHTML = `<div class="sheet-head"><button class="btn sm" id="sheet-close">✕ Fermer et reprendre</button></div><div class="sheet-body">${html}</div>`;
+  el.innerHTML = `<div class="sheet-head"><button class="btn sm" id="sheet-close">${ic('x')} Fermer et reprendre</button></div><div class="sheet-body">${html}</div>`;
   if (!el.classList.contains('show')) { try { history.pushState({ v: state.view, sheet: 1 }, ''); } catch { /* ignore */ } }
   el.classList.add('show'); document.body.classList.add('noscroll');
   $('#sheet-close').onclick = () => closeSheet();
@@ -1143,7 +1146,7 @@ function trackRead(file, scroller) {
     if (!P.readDone({ reachedBottom, fits: P.fitsScreen(m), elapsedMs: Date.now() - t0 })) return;
     stop();
     pr.plan.read = pr.plan.read || {}; pr.plan.read[file] = Date.now(); persist();
-    toast('📊 Schéma lu : noté dans le plan');
+    toast('Schéma lu : noté dans le plan', 'chart');
   }, 1000);
   target.addEventListener('scroll', onScroll, { passive: true });
   state.readStop = stop;
@@ -1153,7 +1156,7 @@ async function ficheSheet(file) {
   const meta = state.fiches.find((f) => f.file === file) || {};
   const n = (meta.questions || []).length;
   const step = P.STEPS.find((st) => st.fiches?.includes(file));
-  sheet(`<div class="card fiche" id="sheet-fiche">Chargement…</div>${n && !inActivity() ? `<button class="btn primary" id="sheet-train">🎯 S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : ''}${step && !inActivity() ? `<div style="margin-top:10px">${shortsBtn(step.id)}</div>` : ''}`);
+  sheet(`<div class="card fiche" id="sheet-fiche">Chargement…</div>${n && !inActivity() ? `<button class="btn primary" id="sheet-train">${ic('target')} S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : ''}${step && !inActivity() ? `<div style="margin-top:10px">${shortsBtn(step.id)}</div>` : ''}`);
   const tb = $('#sheet-train'); if (tb) tb.onclick = () => { closeSheet(true); trainOn(shuffle(meta.questions, Date.now()).slice(0, 20), meta.title); };
   try {
     const box = $('#sheet-fiche'); box.dataset.file = file; box.innerHTML = renderMarkdown(await loadFiche(file)); addToc(box);
@@ -1165,7 +1168,7 @@ function variantsSheet(id) {
   const ids = siblings(id);
   sheet(`<div class="card"><h2>Même notion, autres sessions</h2><p class="muted">Le jury repose les mêmes règles sous d’autres formes : vérifiez que vous sauriez répondre à chaque variante.</p></div>
     ${ids.map((x) => { const q = state.byId[x]; return `<div class="card"><div class="muted">DEC ${esc(q.sessionLabel)} · Q${q.n} · ${q.profession}</div><div class="q" style="font-size:16px">${esc(q.question)}</div><details><summary>Réponse</summary><div class="answer">${esc(q.qrc.model_answer)}</div><div class="ref">Réf. : ${esc(q.reference)}</div></details></div>`; }).join('')}
-    <button class="btn primary" id="sheet-variants">🎯 S’entraîner sur ces ${ids.length + 1} questions</button>`);
+    <button class="btn primary" id="sheet-variants">${ic('target')} S’entraîner sur ces ${ids.length + 1} questions</button>`);
   $('#sheet-variants').onclick = () => { closeSheet(true); trainOn([id, ...ids], 'Même notion, plusieurs sessions', state.train?.mode || 'qcm'); };
 }
 // Schémas qui résument une question (lien affiché sous l'explication)
@@ -1186,8 +1189,8 @@ views.stats = () => {
   const weakTags = Object.entries(tagAcc).filter(([, v]) => v.n >= 3).sort((a, b) => a[1].ok / a[1].n - b[1].ok / b[1].n).slice(0, 8);
   const due7 = Object.values(cards).filter((c) => c.due <= Date.now() + 7 * DAY).length;
   return `<button class="btn sm" data-go="home" style="margin-bottom:12px">← Accueil</button><div class="grid2"><div class="stat"><div class="n">${acc === null ? '–' : acc + ' %'}</div><div class="l">réussite (50 dernières)</div></div><div class="stat"><div class="n">${due7}</div><div class="l">à revoir sous 7 jours</div></div></div>
-    <div class="card"><h2>Maîtrise par thème</h2><div class="muted" style="margin-bottom:8px"><i class="m3" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> acquise <i class="m2" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> en cours <i class="m1" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> apprentissage · gris = jamais vue · chiffre : questions de la barre (couleurs) / total, ✔ = acquises</div>
-      ${rows.map((r) => `<div class="mastery" style="margin:6px 0"><div><span class="badge ${r.p.toLowerCase()}">${r.p}</span> ${THEMES[r.t]}</div><div class="bar">${[3, 2, 1].map((k) => `<i class="m${k}" style="width:${(r.m[k] / Math.max(1, r.n)) * 100}%"></i>`).join('')}</div><div class="muted" title="${r.m[3]} acquise(s)">${r.n - r.m[0]}/${r.n}${r.m[3] ? ` <span class="m3t">(${r.m[3]} ✔)</span>` : ''}</div></div>`).join('')}</div>
+    <div class="card"><h2>Maîtrise par thème</h2><div class="muted" style="margin-bottom:8px"><i class="m3" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> acquise <i class="m2" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> en cours <i class="m1" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> apprentissage · gris = jamais vue · chiffre : questions de la barre (couleurs) / total, ${ic('check')} = acquises</div>
+      ${rows.map((r) => `<div class="mastery" style="margin:6px 0"><div><span class="badge ${r.p.toLowerCase()}">${r.p}</span> ${THEMES[r.t]}</div><div class="bar">${[3, 2, 1].map((k) => `<i class="m${k}" style="width:${(r.m[k] / Math.max(1, r.n)) * 100}%"></i>`).join('')}</div><div class="muted" title="${r.m[3]} acquise(s)">${r.n - r.m[0]}/${r.n}${r.m[3] ? ` <span class="m3t">(${r.m[3]} ${ic('check')})</span>` : ''}</div></div>`).join('')}</div>
     ${estimateCard()}
     ${calibrationCard()}
     ${confusionCard()}
@@ -1315,13 +1318,13 @@ views.settings = () => {
     <label class="field">Thème<select id="s-theme"><option value="">Automatique</option><option value="light" ${document.documentElement.dataset.theme === 'light' ? 'selected' : ''}>Clair</option><option value="dark" ${document.documentElement.dataset.theme === 'dark' ? 'selected' : ''}>Sombre</option></select></label></div>
     ${syncCard()}
     <div class="card"><h2>Données</h2><p class="muted">${SY.config() ? 'La progression est stockée sur cet appareil et synchronisée en ligne.' : 'La progression est stockée uniquement sur ce téléphone.'} ${s.lastExportAt ? `Dernier export : ${new Date(s.lastExportAt).toLocaleString('fr-FR')}.` : '<strong>Aucun export pour l’instant.</strong>'}</p>
-      <div class="btnrow"><button class="btn" id="export">⬇ Exporter</button><button class="btn" id="copy">📋 Copier</button></div>
-      <div class="btnrow" style="margin-top:8px"><label class="btn" style="cursor:pointer">⬆ Importer un fichier<input type="file" id="import" accept="application/json,.json" class="hidden"></label></div>
+      <div class="btnrow"><button class="btn" id="export">${ic('download')} Exporter</button><button class="btn" id="copy">${ic('clipboard')} Copier</button></div>
+      <div class="btnrow" style="margin-top:8px"><label class="btn" style="cursor:pointer">${ic('upload')} Importer un fichier<input type="file" id="import" accept="application/json,.json" class="hidden"></label></div>
       <details style="margin-top:10px"><summary>Importer un texte collé</summary><textarea id="paste" placeholder="Collez ici le texte de la sauvegarde"></textarea><button class="btn" id="paste-go" style="margin-top:8px">Importer ce texte</button></details>
-      ${store.prevInfo() ? `<div style="height:8px"></div><button class="btn" id="undo">↩ Revenir à l’état précédent (${store.prevInfo().cards} cartes, ${new Date(store.prevInfo().t).toLocaleString('fr-FR')})</button>` : ''}
+      ${store.prevInfo() ? `<div style="height:8px"></div><button class="btn" id="undo">${ic('undo')} Revenir à l’état précédent (${store.prevInfo().cards} cartes, ${new Date(store.prevInfo().t).toLocaleString('fr-FR')})</button>` : ''}
       <div style="height:8px"></div><button class="btn" id="reset">Effacer la progression</button>
       <p class="muted" style="margin-top:10px">Protection : ${state.persisted === true ? 'le navigateur a accepté de conserver ces données.' : state.persisted === false ? 'le navigateur peut effacer ces données s’il manque de place.' : 'état de protection inconnu.'} Sur iPhone, <strong>installez l’application sur l’écran d’accueil avant de commencer</strong> : Safari efface les données d’un site resté 7 jours sans visite, pas celles d’une application installée. Une copie automatique est faite toutes les 3 heures.</p></div>
-    <div class="card"><h2>Application</h2><p class="muted">Version ${esc(state.bank.generatedAt || '')} · ${state.bank.count} questions. Fonctionne hors ligne une fois chargée.</p><button class="btn" id="update">Vérifier les mises à jour</button><div style="height:8px"></div><button class="btn" id="help-again">❔ Revoir l’aide de départ</button></div>`;
+    <div class="card"><h2>Application</h2><p class="muted">Version ${esc(state.bank.generatedAt || '')} · ${state.bank.count} questions. Fonctionne hors ligne une fois chargée.</p><button class="btn" id="update">Vérifier les mises à jour</button><div style="height:8px"></div><button class="btn" id="help-again">${ic('help')} Revoir l’aide de départ</button></div>`;
 };
 
 function syncCard() {
@@ -1335,7 +1338,7 @@ function syncCard() {
   const when = st.at ? new Date(st.at).toLocaleString('fr-FR') : 'jamais';
   return `<div class="card"><h2>Synchronisation en ligne</h2><p class="muted">Connecté à <strong>${esc(new URL(cfg.url).host)}</strong>. Dernière synchronisation réussie : ${when}.${st.error ? `<br><strong>Dernier essai : ${esc(st.error)}.</strong>` : ''}</p>
     <p class="muted">Envoi automatique pendant le travail (au plus une fois par minute) et à la fermeture de l’application ; récupération à l’ouverture. Les progressions des appareils sont fusionnées : rien n’est perdu.</p>
-    <div class="btnrow"><button class="btn" id="sync-now">🔄 Synchroniser maintenant</button><button class="btn" id="sync-off">Déconnecter cet appareil</button></div></div>`;
+    <div class="btnrow"><button class="btn" id="sync-now">${ic('refresh')} Synchroniser maintenant</button><button class="btn" id="sync-off">Déconnecter cet appareil</button></div></div>`;
 }
 
 // ---------- Shorts ----------
@@ -1358,13 +1361,13 @@ async function ensureShorts() {
 const shortsToday = () => { const t0 = startOfDay(); return Object.entries(state.progress.drills).filter(([id, m]) => id.startsWith(SH.PREFIX) && m.last >= t0).length; };
 function shortsBtn(step) {
   const n = state.shorts?.filter((s) => s.step === step).length;
-  return n ? `<button class="btn sm" data-shorts-step="${esc(step)}">🎬 ${n} shorts</button>` : '';
+  return n ? `<button class="btn sm" data-shorts-step="${esc(step)}">${ic('clapper')} ${n} shorts</button>` : '';
 }
 
 views.shorts = () => {
   if (!state.shorts) {
     setTimeout(async () => { await ensureShorts(); if (state.view === 'shorts' && state.shorts) render(); }, 0);
-    return '<div class="card"><h2>🎬 Shorts</h2><p class="muted">Les shorts se chargent à la première ouverture en ligne.</p></div>';
+    return '<div class="card"><h2>' + ic('clapper') + ' Shorts</h2><p class="muted">Les shorts se chargent à la première ouverture en ligne.</p></div>';
   }
   const pr = state.progress; const all = SH.shortsStats(state.shorts, pr.drills);
   const cur = P.currentIndex(pr.plan); const lim = pr.settings.shortsLimit ?? 15;
@@ -1374,12 +1377,12 @@ views.shorts = () => {
     return `<div class="sh-step"><div style="flex:1"><div><strong>${i + 1}. ${esc(st.title)}</strong>${i === cur ? ' <span class="badge warn">en cours</span>' : ''}</div>
       <div class="progress" style="margin:6px 0 3px"><div style="width:${Math.round((x.seen / x.total) * 100)}%"></div></div>
       <div class="muted">${x.seen}/${x.total} vus · ${x.known} acquis${x.due ? ` · <strong>${x.due} à revoir</strong>` : ''}</div></div>
-      <button class="btn sm" data-shorts-step="${st.id}">▶</button></div>`;
+      <button class="btn sm" data-shorts-step="${st.id}">${ic('play')}</button></div>`;
   }).join('');
-  return `<div class="card hero"><h2 style="margin:0 0 6px">🎬 Le fil de shorts</h2>
+  return `<div class="card hero"><h2 style="margin:0 0 6px">${ic('clapper')} Le fil de shorts</h2>
     <p class="muted" style="margin:0 0 10px">Une notion en 30 secondes, puis une question. Faites défiler vers le haut. Les shorts ratés reviennent aux bons intervalles et remettent les questions liées dans votre prochaine séance.</p>
     <div class="muted" style="margin-bottom:10px">${all.seen}/${all.total} vus · ${all.known} acquis · ${all.due} à revoir · d’abord : à revoir, étape en cours, points faibles${lim ? ` · pause proposée tous les ${lim} (Réglages)` : ''}</div>
-    <button class="btn primary big-btn" data-shorts-step="">▶ Lancer le fil</button></div>
+    <button class="btn primary big-btn" data-shorts-step=""><span>${ic('play')} Lancer le fil</span></button></div>
     <div class="card"><h2>Par étape du parcours</h2><p class="muted">Un short d’une étape choisie passe en tête du fil, puis le fil continue.</p>${rows}</div>`;
 };
 
@@ -1391,7 +1394,7 @@ function openFeed({ focus = [], goal = 0, base = 0 } = {}) {
   state.feed = { focus: focus.filter(Boolean), served: new Set(), list: [], ok: 0, n: 0, limit: lim, goal: goal ? goal : 0, base: goal ? base : 0, paused: false, active: 0 };
   let el = $('#feed');
   if (!el) { el = document.createElement('div'); el.id = 'feed'; el.className = 'feed'; document.body.appendChild(el); el.addEventListener('click', onFeedClick); }
-  el.innerHTML = `<div class="feed-top"><button class="feed-x" id="feed-close" aria-label="Fermer">✕</button><span id="feed-count"></span></div><div class="feed-scroll" id="feed-scroll"></div>`;
+  el.innerHTML = `<div class="feed-top"><button class="feed-x" id="feed-close" aria-label="Fermer">${ic('x')}</button><span id="feed-count"></span></div><div class="feed-scroll" id="feed-scroll"></div>`;
   el.classList.add('show'); document.body.classList.add('noscroll'); feedChrome(true);
   try { history.pushState({ v: state.view, feed: 1 }, ''); } catch { /* ignore */ }
   $('#feed-close').onclick = () => closeFeed();
@@ -1534,7 +1537,7 @@ function onFeedClick(e) {
     if (good) x.classList.add('okb'); else if (x === b) x.classList.add('ko');
   });
   const why = s.type === 'vf' ? s.why : s.quiz.why;
-  sec.querySelector('.sh-fb').innerHTML = `<div class="gfb ${ok ? 'ok' : 'ko'}">${ok ? '✔ Juste' : `✘ ${s.type === 'vf' ? `C’est ${s.verdict ? 'vrai' : 'faux'}.` : 'Raté.'}`}</div><div class="sh-why">${md(why)}</div>${!ok ? `<div class="muted" style="margin-top:6px">Ce short revient dans 10 minutes${requeued ? `, et ${requeued} question${requeued > 1 ? 's' : ''} liée${requeued > 1 ? 's' : ''} dans votre prochaine séance` : ''}.</div>` : ''}${sec.querySelector('.sh-lesson') ? '<button class="btn sh-next" data-sh-review="1">👁 Revoir la notion</button>' : ''}<button class="btn primary sh-next" data-sh-next="1">Suivant ↓</button>`;
+  sec.querySelector('.sh-fb').innerHTML = `<div class="gfb ${ok ? 'ok' : 'ko'}">${ok ? ic('check') + ' Juste' : `${ic('x')} ${s.type === 'vf' ? `C’est ${s.verdict ? 'vrai' : 'faux'}.` : 'Raté.'}`}</div><div class="sh-why">${md(why)}</div>${!ok ? `<div class="muted" style="margin-top:6px">Ce short revient dans 10 minutes${requeued ? `, et ${requeued} question${requeued > 1 ? 's' : ''} liée${requeued > 1 ? 's' : ''} dans votre prochaine séance` : ''}.</div>` : ''}${sec.querySelector('.sh-lesson') ? '<button class="btn sh-next" data-sh-review="1">' + ic('eye') + ' Revoir la notion</button>' : ''}<button class="btn primary sh-next" data-sh-next="1">Suivant ↓</button>`;
   feedCount();
   if (f.limit && f.n >= f.limit && !f.paused) feedPause(sec);
 }
@@ -1547,8 +1550,8 @@ function feedPause(after) {
   after.insertAdjacentHTML('afterend', `<section class="sh sh-end"><div class="sh-in center">
     <span class="sh-chip" style="align-self:center">Pause</span><div class="sh-big">${f.ok}/${f.n}</div><div class="sh-label">${f.n} shorts, ${f.ok} réponses justes</div>
     <p class="muted">Les shorts ratés reviennent dans 10 minutes, puis aux intervalles de la répétition.</p>
-    ${task ? `<button class="btn primary" data-sh-end="plan">▶ Suite du plan : ${esc(task.title)}</button>` : ''}
-    <button class="btn ${task ? '' : 'primary'}" data-sh-end="more">🎬 Encore ${state.progress.settings.shortsLimit || 15} shorts</button>
+    ${task ? `<button class="btn primary" data-sh-end="plan">${ic('play')} Suite du plan : ${esc(task.title)}</button>` : ''}
+    <button class="btn ${task ? '' : 'primary'}" data-sh-end="more">${ic('clapper')} Encore ${state.progress.settings.shortsLimit || 15} shorts</button>
     <button class="btn" data-sh-end="close">Fermer</button></div></section>`);
 }
 
@@ -1556,12 +1559,12 @@ function feedPause(after) {
 // Items tirés des fiches (relues) et de la banque ; répétition par boîtes de Leitner (drill.js), échéances
 // ramenées avant l'épreuve. Une erreur au Vrai / Faux remet la question d'origine dans la prochaine séance.
 const GAMES = {
-  duel: { icon: '⚔️', name: 'Duel EC / CAC', n: 15, why: 'Une règle, deux professions : à qui est-elle ? Opposer les règles voisines est le moyen le plus sûr de ne plus les confondre.' },
-  vf: { icon: '⚡', name: 'Vrai / Faux éclair', n: 20, why: 'Chaque proposition d’un QCM, jugée seule et en temps limité : quatre rappels par question au lieu d’un.' },
-  chiffres: { icon: '🔢', name: 'Sprint chiffres', why: 'Le plus de seuils, durées, majorités et peines en temps limité (réglable). Les chiffres sont exigés par le jury.' },
-  arbre: { icon: '🌳', name: 'Arbres à trou', n: 10, why: 'Un morceau d’arbre de décision des schémas, avec une case vide : choisissez ce qui la remplit. On apprend la logique de la décision, pas une phrase.' },
-  palais: { icon: '🏛', name: 'Palais de mémoire', why: 'Les listes à réciter, posées une à une sur les objets de votre bureau (méthode des lieux).' },
-  intrus: { icon: '🕵️', name: 'Trouvez l’intrus', n: 12, why: 'Trois éléments d’une liste à connaître et un intrus, souvent la règle de l’autre profession : lequel n’en fait pas partie ? Le QCM de novembre 2025 posait 12 questions sur 20 sous cette forme négative.' },
+  duel: { icon: ic('swords'), name: 'Duel EC / CAC', n: 15, why: 'Une règle, deux professions : à qui est-elle ? Opposer les règles voisines est le moyen le plus sûr de ne plus les confondre.' },
+  vf: { icon: ic('zap'), name: 'Vrai / Faux éclair', n: 20, why: 'Chaque proposition d’un QCM, jugée seule et en temps limité : quatre rappels par question au lieu d’un.' },
+  chiffres: { icon: ic('hash'), name: 'Sprint chiffres', why: 'Le plus de seuils, durées, majorités et peines en temps limité (réglable). Les chiffres sont exigés par le jury.' },
+  arbre: { icon: ic('tree'), name: 'Arbres à trou', n: 10, why: 'Un morceau d’arbre de décision des schémas, avec une case vide : choisissez ce qui la remplit. On apprend la logique de la décision, pas une phrase.' },
+  palais: { icon: ic('landmark'), name: 'Palais de mémoire', why: 'Les listes à réciter, posées une à une sur les objets de votre bureau (méthode des lieux).' },
+  intrus: { icon: ic('search'), name: 'Trouvez l’intrus', n: 12, why: 'Trois éléments d’une liste à connaître et un intrus, souvent la règle de l’autre profession : lequel n’en fait pas partie ? Le QCM de novembre 2025 posait 12 questions sur 20 sous cette forme négative.' },
 };
 // Chronos (Réglages) : secondes pour lire et juger une proposition, durée du sprint.
 const TIMERS = {
@@ -1684,16 +1687,16 @@ function gameView() {
           : g.kind === 'intrus' ? `${esc(it.ask)} → <strong>${esc(it.leurre)}</strong>`
             : `${it.path.map(inline).join(' › ')} → <strong>${inline(it.text)}</strong>`;
     return `<div class="card center"><div class="muted">${meta.icon} ${esc(meta.name)}</div><div class="big">${g.ok}/${g.n}</div>
-      <div class="muted">${g.kind === 'chiffres' && g.limit ? `en ${g.limit} secondes` : `meilleure série : ${g.bestCombo} d’affilée`}${g.record ? ' · 🏆 nouveau record' : ''}</div></div>
-      ${errs.length ? `<div class="card"><h2>À retenir</h2><ul class="errlist">${errs.map((it) => `<li>${line(it)}</li>`).join('')}</ul><p class="muted">Ces items reviennent dans 10 minutes, puis aux intervalles de la répétition.</p></div>` : '<div class="card center"><p>Sans faute. 👏</p></div>'}
+      <div class="muted">${g.kind === 'chiffres' && g.limit ? `en ${g.limit} secondes` : `meilleure série : ${g.bestCombo} d’affilée`}${g.record ? ' · ' + ic('trophy') + ' nouveau record' : ''}</div></div>
+      ${errs.length ? `<div class="card"><h2>À retenir</h2><ul class="errlist">${errs.map((it) => `<li>${line(it)}</li>`).join('')}</ul><p class="muted">Ces items reviennent dans 10 minutes, puis aux intervalles de la répétition.</p></div>` : '<div class="card center"><p>Sans faute. ' + ic('clap') + '</p></div>'}
       ${nextStepBlock()}<div class="btnrow"><button class="btn" id="g-again">Rejouer</button><button class="btn" id="g-home">← Tous les jeux</button></div>`;
   }
   const it = g.items[g.idx];
-  const head = `<div class="row" style="justify-content:space-between;margin-bottom:8px"><span class="muted">${meta.icon} ${g.kind === 'chiffres' && g.endsAt ? `<span id="sprint" class="timer">${Math.ceil(Math.max(0, g.endsAt - (g.pausedAt || Date.now())) / 1000)} s</span>${g.pausedAt ? ' ⏸' : ''}` : `${g.idx + 1} / ${g.items.length}`} · ✔ ${g.ok}${g.combo >= 2 ? ` · <span class="combo">🔥×${g.combo}</span>` : ''}</span><button class="btn sm" id="g-stop">Arrêter</button></div>`;
+  const head = `<div class="row" style="justify-content:space-between;margin-bottom:8px"><span class="muted">${meta.icon} ${g.kind === 'chiffres' && g.endsAt ? `<span id="sprint" class="timer">${Math.ceil(Math.max(0, g.endsAt - (g.pausedAt || Date.now())) / 1000)} s</span>${g.pausedAt ? ic('pause') : ''}` : `${g.idx + 1} / ${g.items.length}`} · ${ic('check')} ${g.ok}${g.combo >= 2 ? ` · <span class="combo">${ic('flame')}×${g.combo}</span>` : ''}</span><button class="btn sm" id="g-stop">Arrêter</button></div>`;
   return head + ({ duel: duelCard, vf: vfCard, chiffres: chiffresCard, arbre: arbreCard, intrus: intrusCard })[g.kind](it, g);
 }
 function fbLine(g, okText, koText) {
-  return `<div class="gfb ${g.last.ok ? 'ok' : 'ko'}">${g.last.ok ? `✔ ${okText}` : `✘ ${g.last.timeout ? 'Temps écoulé. ' : ''}${koText}`}</div>`;
+  return `<div class="gfb ${g.last.ok ? 'ok' : 'ko'}">${g.last.ok ? `${ic('check')} ${okText}` : `${ic('x')} ${g.last.timeout ? 'Temps écoulé. ' : ''}${koText}`}</div>`;
 }
 const nextBtn = () => '<button class="btn primary" id="g-next" style="margin-top:12px">Suivant →</button>';
 
@@ -1706,7 +1709,7 @@ function duelCard(it, g) {
   const cell = (side) => `<div class="vs-cell ${side === it.answer ? 'on' : ''}"><div class="muted">${esc(it.labels[side])}</div>${inline(side === it.answer ? it.text : it.other)}</div>`;
   return `<div class="card">${fbLine(g, `Oui : ${esc(it.labels[it.answer])}.`, `Non : c’est ${esc(it.labels[it.answer])}.`)}<div class="crit">${inline(it.criterion)}</div>
     <div class="vs-pair">${cell(0)}${cell(1)}</div><p class="muted">Et pour l’autre ? La règle d’en face est juste à côté : c’est elle que le jury vous fera confondre.</p>
-    <button class="btn sm" data-open-fiche="${esc(it.file)}">📊 ${esc(it.title)}</button>${nextBtn()}</div>`;
+    <button class="btn sm" data-open-fiche="${esc(it.file)}">${ic('chart')} ${esc(it.title)}</button>${nextBtn()}</div>`;
 }
 function vfCard(it, g) {
   const q = state.byId[it.qid];
@@ -1714,12 +1717,12 @@ function vfCard(it, g) {
     const secs = timer().vf ? timer().vf(it.stem.length + it.text.length) : null;
     g.secs = secs;
     return `<div class="card swipe" id="g-card"><div class="muted">${esc(q ? `DEC ${q.sessionLabel} · ${q.profession}` : '')}${secs ? ` · ${secs} s` : ''}</div><div class="stem">${esc(it.stem)}</div>
-      <div class="prop">${esc(it.text)}</div>${secs ? `<div class="timebar"><div style="animation-duration:${secs}s"></div></div>` : ''}<p class="muted">Est-ce la bonne réponse à cette question ? Balayez ou touchez. Chrono réglable dans ⚙︎.</p></div>
-      <div class="btnrow duel"><button class="btn ko" data-vf="0">✘ Faux</button><button class="btn okb" data-vf="1">✔ Vrai</button></div>`;
+      <div class="prop">${esc(it.text)}</div>${secs ? `<div class="timebar"><div style="animation-duration:${secs}s"></div></div>` : ''}<p class="muted">Est-ce la bonne réponse à cette question ? Balayez ou touchez. Chrono réglable dans ${ic('settings')}.</p></div>
+      <div class="btnrow duel"><button class="btn ko" data-vf="0">${ic('x')} Faux</button><button class="btn okb" data-vf="1">${ic('check')} Vrai</button></div>`;
   }
   return `<div class="card">${fbLine(g, it.answer ? 'Exact : c’est la bonne réponse.' : 'Exact : ce n’est pas la bonne réponse.', it.answer ? 'C’était la bonne réponse.' : 'Ce n’était pas la bonne réponse.')}
     <div class="stem">${esc(it.stem)}</div>${it.answer ? '' : `<div class="muted">Proposition jugée : ${esc(it.text)}</div>`}<div class="answer"><strong>Bonne réponse :</strong> ${esc(it.good)}</div>
-    ${q ? `<details><summary>Explication</summary>${qExplain(q)}</details>` : ''}${g.last.requeued ? '<p class="muted">🔁 Recoupement : la question d’origine revient dans votre prochaine séance.</p>' : ''}${nextBtn()}</div>`;
+    ${q ? `<details><summary>Explication</summary>${qExplain(q)}</details>` : ''}${g.last.requeued ? '<p class="muted">' + ic('repeat') + ' Recoupement : la question d’origine revient dans votre prochaine séance.</p>' : ''}${nextBtn()}</div>`;
 }
 function chiffresCard(it, g) {
   if (!g.choices) g.choices = GM.choicesFor(it.value, it.pool, 4);
@@ -1734,24 +1737,24 @@ function arbreCard(it, g) {
   const done = g.phase === 'fb';
   const kids = [...it.siblings]; kids.splice(it.slot, 0, null);
   const depth = it.path.length;
-  const hole = done ? `<span class="node ok">${inline(it.text)}</span>` : '<span class="node hole">❓ case à compléter</span>';
-  return `<div class="card"><div class="muted">🌳 ${esc(it.title)}</div>
+  const hole = done ? `<span class="node ok">${inline(it.text)}</span>` : '<span class="node hole">' + ic('help') + ' case à compléter</span>';
+  return `<div class="card"><div class="muted">${ic('tree')} ${esc(it.title)}</div>
     <p class="muted" style="margin:6px 0">Extrait d’un arbre de décision du schéma. Chaque niveau découle du précédent ; une case de la dernière branche est vide.</p>
     <ul class="tree">${it.path.map((p, i) => `<li style="--d:${i}"><span class="node ${i === depth - 1 ? 'parent' : ''}">${inline(p)}</span></li>`).join('')}
       ${kids.map((k) => `<li style="--d:${depth}">${k === null ? hole : `<span class="node">${inline(k)}</span>`}</li>`).join('')}</ul>
     <div class="muted" style="margin:8px 0">Qu’est-ce qui remplit la case vide ?</div>
     <div class="choices">${g.choices.map((c, i) => `<button class="choice ${done && c === it.text ? 'ok' : done && i === g.last.pick ? 'ko' : ''}" data-pick="${i}" ${done ? 'disabled' : ''}><span>${inline(c)}</span></button>`).join('')}</div>
-    ${done ? `${fbLine(g, 'C’est bien cette case.', 'Ce n’est pas cette case : la bonne est surlignée.')}<p class="muted">Les autres propositions viennent d’autres branches du même arbre.</p><button class="btn sm" data-open-fiche="${esc(it.file)}">📊 Voir l’arbre entier</button>${nextBtn()}` : ''}</div>`;
+    ${done ? `${fbLine(g, 'C’est bien cette case.', 'Ce n’est pas cette case : la bonne est surlignée.')}<p class="muted">Les autres propositions viennent d’autres branches du même arbre.</p><button class="btn sm" data-open-fiche="${esc(it.file)}">${ic('chart')} Voir l’arbre entier</button>${nextBtn()}` : ''}</div>`;
 }
 // Intrus : trois éléments d'une liste à connaître et un leurre (souvent la règle de l'autre profession).
 function intrusCard(it, g) {
   if (!g.choices) { const r = GM.intrusRound(it); g.choices = r.choices; }
   const done = g.phase === 'fb'; const q = state.byId[it.qid];
-  return `<div class="card"><div class="muted">🕵️ ${esc(q ? `${q.profession} · DEC ${q.sessionLabel}` : it.prof)}</div><div class="q">${esc(it.ask)}</div>
+  return `<div class="card"><div class="muted">${ic('search')} ${esc(q ? `${q.profession} · DEC ${q.sessionLabel}` : it.prof)}</div><div class="q">${esc(it.ask)}</div>
     <div class="choices">${g.choices.map((c, i) => `<button class="choice ${done && c === it.leurre ? 'ok' : done && i === g.last.pick ? 'ko' : ''}" data-pick="${i}" ${done ? 'disabled' : ''}><span>${esc(c)}</span></button>`).join('')}</div>
-    ${done ? `${fbLine(g, 'C’est bien l’intrus.', `L’intrus était : ${esc(it.leurre)}.`)}<p class="muted">${it.cross ? '⚖️ Règle de l’autre profession. ' : ''}${esc(it.why)}</p>
+    ${done ? `${fbLine(g, 'C’est bien l’intrus.', `L’intrus était : ${esc(it.leurre)}.`)}<p class="muted">${it.cross ? ic('scale') + ' Règle de l’autre profession. ' : ''}${esc(it.why)}</p>
       <details><summary>La liste complète</summary><ul>${it.items.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></details>
-      ${g.last.requeued ? '<p class="muted">🔁 La question d’origine revient dans votre prochaine séance.</p>' : ''}${nextBtn()}` : '<p class="muted">Touchez l’élément qui n’en fait pas partie.</p>'}</div>`;
+      ${g.last.requeued ? '<p class="muted">' + ic('repeat') + ' La question d’origine revient dans votre prochaine séance.</p>' : ''}${nextBtn()}` : '<p class="muted">Touchez l’élément qui n’en fait pas partie.</p>'}</div>`;
 }
 function bindGame() {
   const g = state.game; if (!g) return;
@@ -1788,29 +1791,29 @@ function palaisView() {
   if (!p) {
     const grade = G.currentGrade(state.progress);
     return `<div class="card"><div class="scene-thumb">${sceneFor(grade.n)}</div><h2 style="margin-top:8px">Votre bureau, palais de mémoire</h2>
-      <p class="muted">La méthode des lieux : on pose chaque élément d’une liste sur un objet d’un parcours familier, puis on refait le parcours pour réciter. Votre parcours : ${PAL.LOCI.slice(0, 6).map(([e, l]) => `${e} ${esc(l)}`).join(' › ')}…</p></div>
+      <p class="muted">La méthode des lieux : on pose chaque élément d’une liste sur un objet d’un parcours familier, puis on refait le parcours pour réciter. Votre parcours : ${PAL.LOCI.slice(0, 6).map(([e, l]) => `${ic(e)} ${esc(l)}`).join(' › ')}…</p></div>
       ${PAL.LISTS.map((l) => { const s = m[`pal:${l.id}`]; return `<div class="card"><div class="row" style="justify-content:space-between"><strong>${esc(l.title)}</strong><span class="badge ${l.prof === 'EC' ? 'ec' : l.prof === 'CAC' ? 'cac' : ''}">${esc(l.prof)}</span></div>
-        <div class="muted">${l.items.length} éléments · ${s ? (s.box >= 3 ? '✔ acquise' : s.due <= Date.now() ? 'à réciter' : `prochain récit dans ${Math.max(1, Math.round((s.due - Date.now()) / DAY))} j`) : 'jamais récitée'}</div>
+        <div class="muted">${l.items.length} éléments · ${s ? (s.box >= 3 ? ic('check') + ' acquise' : s.due <= Date.now() ? 'à réciter' : `prochain récit dans ${Math.max(1, Math.round((s.due - Date.now()) / DAY))} j`) : 'jamais récitée'}</div>
         <div class="btnrow" style="margin-top:8px"><button class="btn sm" data-pal="${l.id}" data-pal-mode="learn">Apprendre</button><button class="btn sm primary" data-pal="${l.id}" data-pal-mode="test">Réciter</button></div></div>`; }).join('')}`;
   }
   const l = PAL.LISTS.find((x) => x.id === p.id);
   if (p.mode === 'learn') {
     return `<button class="btn sm" id="pal-back">← Listes</button><div class="card" style="margin-top:10px"><h2>${esc(l.title)}</h2><p class="muted">${esc(l.hint)} ${l.ordered ? 'L’ordre compte.' : 'L’ordre est celui de la fiche ; le palais le fige pour vous.'} Initiales : <strong>${esc(PAL.initials(l))}</strong></p>
       <p class="muted">Pour chaque lieu, imaginez l’élément posé dessus : grossissez la scène, rendez-la absurde ou drôle, elle tiendra.</p>
-      <ol class="loci">${l.items.map((x, i) => { const [e, lieu] = PAL.LOCI[i]; return `<li><span class="loc">${e}</span><div><div class="muted">${esc(lieu)}</div><strong>${esc(x)}</strong></div></li>`; }).join('')}</ol>
+      <ol class="loci">${l.items.map((x, i) => { const [e, lieu] = PAL.LOCI[i]; return `<li><span class="loc">${ic(e)}</span><div><div class="muted">${esc(lieu)}</div><strong>${esc(x)}</strong></div></li>`; }).join('')}</ol>
       <p class="muted">Fermez les yeux, refaites le parcours de la porte à ${esc(PAL.LOCI[l.items.length - 1][1])}, puis récitez.</p>
-      <button class="btn primary" data-pal="${l.id}" data-pal-mode="test">Réciter maintenant</button> <button class="btn sm" data-open-fiche="${esc(l.source)}" style="margin-top:8px">📊 Source : la fiche</button></div>`;
+      <button class="btn primary" data-pal="${l.id}" data-pal-mode="test">Réciter maintenant</button> <button class="btn sm" data-open-fiche="${esc(l.source)}" style="margin-top:8px">${ic('chart')} Source : la fiche</button></div>`;
   }
   const done = p.step >= l.items.length;
-  const walk = l.items.slice(0, p.step).map((x, i) => `<li><span class="loc">${PAL.LOCI[i][0]}</span><div><div class="muted">${esc(PAL.LOCI[i][1])}</div><strong>${esc(x)}</strong></div></li>`).join('');
+  const walk = l.items.slice(0, p.step).map((x, i) => `<li><span class="loc">${ic(PAL.LOCI[i][0])}</span><div><div class="muted">${esc(PAL.LOCI[i][1])}</div><strong>${esc(x)}</strong></div></li>`).join('');
   if (done) {
-    return `<button class="btn sm" id="pal-back">← Listes</button><div class="card" style="margin-top:10px"><h2>${p.errors ? `${p.errors} erreur${p.errors > 1 ? 's' : ''}` : 'Parcours sans faute 🏛'}</h2><ol class="loci">${walk}</ol>
+    return `<button class="btn sm" id="pal-back">← Listes</button><div class="card" style="margin-top:10px"><h2>${p.errors ? `${p.errors} erreur${p.errors > 1 ? 's' : ''}` : 'Parcours sans faute ' + ic('landmark')}</h2><ol class="loci">${walk}</ol>
       <p class="muted">${p.errors ? 'Repassez par « Apprendre », puis récitez à nouveau : la liste revient dans 10 minutes.' : 'La liste revient aux intervalles de la répétition, avant le 10 novembre.'}</p>
       <div class="btnrow"><button class="btn" data-pal="${l.id}" data-pal-mode="learn">Apprendre</button><button class="btn primary" data-pal="${l.id}" data-pal-mode="test">Réciter encore</button></div></div>`;
   }
   const [e, lieu] = PAL.LOCI[p.step];
   return `<button class="btn sm" id="pal-back">← Listes</button><div class="card" style="margin-top:10px"><div class="muted">${esc(l.title)} · ${p.step + 1}/${l.items.length} · erreurs : ${p.errors}</div>
-    <ol class="loci">${walk}</ol><div class="q">${e} Sur ${esc(lieu)}, il y a…</div>
+    <ol class="loci">${walk}</ol><div class="q">${ic(e)} Sur ${esc(lieu)}, il y a…</div>
     <div class="choices">${p.options.filter((x) => !l.items.slice(0, p.step).includes(x)).map((x) => `<button class="choice ${p.wrong.includes(x) ? 'ko' : ''}" data-pal-opt="${esc(x)}" ${p.wrong.includes(x) ? 'disabled' : ''}><span>${esc(x)}</span></button>`).join('')}</div></div>`;
 }
 function initPalaisTest() {
@@ -1840,7 +1843,7 @@ function showBadge(id) {
   box.innerHTML = `<div class="cel-badge static" style="--halo:${col}"><div class="cel-medal">${badgeIcon(b, !got)}</div><div class="cel-rarity" style="color:${col}">${G.RARITIES[b.rarity].label}</div>
     <h2>${!got && b.hidden ? '???' : esc(b.name)}</h2><p>${esc(!got && b.hidden ? b.hint : b.desc)}</p>
     <p class="muted">${got ? `Débloqué le ${new Date(got).toLocaleDateString('fr-FR')}` : `Condition : ${esc(b.hidden ? b.hint : b.cond)} · ${p.cur}/${p.max}`}</p>
-    ${b.ids && b.ids.length ? `<button class="btn primary" id="sheet-train">🎯 Réviser ces ${b.ids.length} questions</button>` : ''}</div>`;
+    ${b.ids && b.ids.length ? `<button class="btn primary" id="sheet-train">${ic('target')} Réviser ces ${b.ids.length} questions</button>` : ''}</div>`;
   box.classList.add('show');
   box.onclick = (e) => { if (e.target.id === 'sheet-train') return; box.classList.remove('show'); focusBack(box); };
   box.onkeydown = (e) => { if (e.key === 'Escape') { box.classList.remove('show'); focusBack(box); } };
@@ -1861,7 +1864,7 @@ views.carriere = () => {
     const main = $('#main'); bindProps(main);
   }, 0);
   const total = state.catalog.length, got = Object.keys(state.progress.badges).length;
-  const tabs = `<div class="tabs">${[['carriere', 'Ma carrière'], ['palais', '🏛 Palais'], ['collection', `Collection ${got}/${total}`], ['souvenirs', 'Souvenirs']].map(([k, l]) => `<button class="chip ${tab === k ? 'on' : ''}" data-ctab="${k}">${l}</button>`).join('')}</div>`;
+  const tabs = `<div class="tabs">${[['carriere', 'Ma carrière'], ['palais', ic('landmark') + ' Palais'], ['collection', `Collection ${got}/${total}`], ['souvenirs', 'Souvenirs']].map(([k, l]) => `<button class="chip ${tab === k ? 'on' : ''}" data-ctab="${k}">${l}</button>`).join('')}</div>`;
   return tabs + (tab === 'collection' ? collectionView() : tab === 'souvenirs' ? souvenirsView() : tab === 'palais' ? palaisView() : careerView());
 };
 function careerView() {
@@ -1876,7 +1879,7 @@ function careerView() {
         <div class="tl-dot">${g.n}</div>
         <div class="tl-body">${g.n === cur.n ? '' : `<div class="tl-scene">${sceneFor(g.n, date ? {} : { badgeProps: [] })}</div>`}
           <strong>${esc(g.name)}</strong><div class="muted">${date ? `Atteint le ${new Date(date).toLocaleDateString('fr-FR')}` : 'À débloquer :'}</div>
-          ${date ? '' : `<ul class="conds">${conds.map((c) => `<li class="${c.ok ? 'ok' : ''}">${c.ok ? '✔' : '○'} ${esc(c.label)}</li>`).join('')}</ul>`}</div></div>`;
+          ${date ? '' : `<ul class="conds">${conds.map((c) => `<li class="${c.ok ? 'ok' : ''}">${c.ok ? ic('check') : ic('circle')} ${esc(c.label)}</li>`).join('')}</ul>`}</div></div>`;
     }).join('')}</div>`;
 }
 function badgeCard(b) {
@@ -1889,7 +1892,7 @@ function badgeCard(b) {
 }
 function collectionView() {
   const fam = state.collFamily; const pr = state.progress;
-  const chips = G.FAMILIES.map((f) => { const all = state.catalog.filter((b) => b.family === f.id); const n = all.filter((b) => pr.badges[b.id]).length; return `<button class="chip ${fam === f.id ? 'on' : ''}" data-fam="${f.id}">${f.icon} ${f.label} ${n}/${all.length}</button>`; }).join('');
+  const chips = G.FAMILIES.map((f) => { const all = state.catalog.filter((b) => b.family === f.id); const n = all.filter((b) => pr.badges[b.id]).length; return `<button class="chip ${fam === f.id ? 'on' : ''}" data-fam="${f.id}">${ic(f.icon)} ${f.label} ${n}/${all.length}</button>`; }).join('');
   const list = state.catalog.filter((b) => b.family === fam);
   const main = list.filter((b) => b.sub !== 'tags');
   const tags = list.filter((b) => b.sub === 'tags');
@@ -1906,11 +1909,11 @@ function souvenirsView() {
     const n = items.filter((a) => pr.badges[a.id]).length;
     return `<h3 class="section-title">${label} <span class="muted">${n}/${items.length}</span></h3><div class="memories">${items.map((a) => {
       const got = pr.badges[a.id]; const p = G.progressOf(a, pr.stats);
-      const back = `<div class="memory-back"><div class="muted">Questions liées</div><ul>${a.ids.map((id) => { const q = state.byId[id]; const ok = pr.stats.q[id]?.ok > 0; return `<li>${ok ? '✔' : '○'} DEC ${esc(q?.sessionLabel || '')} Q${q?.n ?? ''} · ${esc((q?.question || '').slice(0, 70))}…</li>`; }).join('')}</ul>
-        ${a.ids.length ? `<button class="btn sm" data-train-anec="${a.id}">🎯 Réviser ces questions</button>` : '<div class="muted">Se débloque avec les blocs EC et CAC maîtrisés.</div>'}</div>`;
+      const back = `<div class="memory-back"><div class="muted">Questions liées</div><ul>${a.ids.map((id) => { const q = state.byId[id]; const ok = pr.stats.q[id]?.ok > 0; return `<li>${ok ? ic('check') : ic('circle')} DEC ${esc(q?.sessionLabel || '')} Q${q?.n ?? ''} · ${esc((q?.question || '').slice(0, 70))}…</li>`; }).join('')}</ul>
+        ${a.ids.length ? `<button class="btn sm" data-train-anec="${a.id}">${ic('target')} Réviser ces questions</button>` : '<div class="muted">Se débloque avec les blocs EC et CAC maîtrisés.</div>'}</div>`;
       return `<div class="memory-card ${got ? 'got' : 'locked'}" data-flip><div class="memory-front">
         ${got ? `<div class="memory-date">${new Date(got).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}</div>` : `<div class="memory-date">${p.cur}/${p.max} questions</div>`}
-        <div class="memory-title">${got ? '📸' : '🔒'} ${esc(a.name)}</div>
+        <div class="memory-title">${got ? ic('camera') : ic('lock')} ${esc(a.name)}</div>
         ${got ? `<p class="memory-text">« ${esc(a.desc)} »</p>` : '<p class="muted">Réussissez les questions liées pour révéler ce souvenir. Touchez la carte pour les voir.</p>'}
       </div>${back}</div>`;
     }).join('')}</div>`;
@@ -1956,7 +1959,7 @@ function glShow(id) {
     });
   }
   el.setAttribute('aria-label', e.terme);
-  el.innerHTML = `<div class="gl-head"><strong>${esc(e.terme)}</strong>${glPills(e)}<button class="gl-x" aria-label="Fermer">✕</button></div><div class="gl-def">${inline(e.def)}</div><div class="gl-act">${e.fiche ? `<button class="btn sm" data-gl-fiche="${esc(e.fiche)}">📚 Voir la fiche</button>` : ''}<button class="btn sm" data-gl-all="${esc(e.id)}">📖 Tout le glossaire</button></div>`;
+  el.innerHTML = `<div class="gl-head"><strong>${esc(e.terme)}</strong>${glPills(e)}<button class="gl-x" aria-label="Fermer">${ic('x')}</button></div><div class="gl-def">${inline(e.def)}</div><div class="gl-act">${e.fiche ? `<button class="btn sm" data-gl-fiche="${esc(e.fiche)}">${ic('library')} Voir la fiche</button>` : ''}<button class="btn sm" data-gl-all="${esc(e.id)}">${ic('book')} Tout le glossaire</button></div>`;
   el.classList.add('show');
 }
 function glHide() { $('#glpop')?.classList.remove('show'); }
@@ -1965,7 +1968,7 @@ function glList() {
   const box = $('#gl-list'); if (!box) return;
   const res = GL.search(state.gloss, state.glQuery, state.glFilter);
   $('#gl-count').textContent = `${res.length} terme${res.length > 1 ? 's' : ''}`;
-  box.innerHTML = res.length ? res.map((e) => `<div class="card gl-item"><div class="gl-head"><strong>${esc(e.terme)}</strong>${glPills(e)}</div>${e.alias.length ? `<div class="muted gl-alias">${e.alias.map(esc).join(' · ')}</div>` : ''}<div class="gl-def">${inline(e.def)}</div>${e.fiche ? `<button class="btn sm" data-open-fiche="${esc(e.fiche)}">📚 Voir la fiche</button>` : ''}</div>`).join('')
+  box.innerHTML = res.length ? res.map((e) => `<div class="card gl-item"><div class="gl-head"><strong>${esc(e.terme)}</strong>${glPills(e)}</div>${e.alias.length ? `<div class="muted gl-alias">${e.alias.map(esc).join(' · ')}</div>` : ''}<div class="gl-def">${inline(e.def)}</div>${e.fiche ? `<button class="btn sm" data-open-fiche="${esc(e.fiche)}">${ic('library')} Voir la fiche</button>` : ''}</div>`).join('')
     : '<div class="card muted">Aucun terme ne correspond. Essayez un sigle (H2A, NEP) ou un mot de la définition.</div>';
 }
 views.glossaire = () => {
@@ -1975,8 +1978,8 @@ views.glossaire = () => {
     document.querySelectorAll('[data-gl-filter]').forEach((b) => { b.onclick = () => { state.glFilter = b.dataset.glFilter; document.querySelectorAll('[data-gl-filter]').forEach((x) => x.classList.toggle('on', x === b)); glList(); }; });
     glList();
   }, 0);
-  if (!state.gloss.length) return '<div class="card"><h2>📖 Glossaire</h2><p class="muted">Glossaire indisponible hors ligne : ouvrez l’application une fois en ligne.</p></div>';
-  return `<div class="card"><h2>📖 Glossaire</h2><p class="muted" style="margin-top:0">${state.gloss.length} définitions clés. Partout dans l’application, les termes <span class="gl" style="cursor:default">soulignés en pointillé</span> s’ouvrent d’un toucher.</p>
+  if (!state.gloss.length) return '<div class="card"><h2>' + ic('book') + ' Glossaire</h2><p class="muted">Glossaire indisponible hors ligne : ouvrez l’application une fois en ligne.</p></div>';
+  return `<div class="card"><h2>${ic('book')} Glossaire</h2><p class="muted" style="margin-top:0">${state.gloss.length} définitions clés. Partout dans l’application, les termes <span class="gl" style="cursor:default">soulignés en pointillé</span> s’ouvrent d’un toucher.</p>
     <input type="search" id="gl-q" placeholder="Rechercher : H2A, rotation, Tracfin…" value="${esc(state.glQuery)}" autocomplete="off" enterkeyhint="search">
     <div class="chips" style="margin-top:10px">${GL_FILTERS.map(([k, l]) => `<button class="chip ${state.glFilter === k ? 'on' : ''}" data-gl-filter="${k}">${l}</button>`).join('')}</div>
     <div class="muted" id="gl-count" style="margin-top:8px;font-size:13px"></div></div><div id="gl-list" data-no-gl></div>`;
@@ -2002,13 +2005,13 @@ const stepsLabel = (ep) => { const n = stepNums(ep); return n.length > 1 ? `Éta
 function podcastsEntry() {
   if (!state.episodes.length) return '';
   const av = pcAvailable(); const heard = state.episodes.filter((ep) => state.progress.podcasts[ep.id]?.done).length;
-  return `<div class="card pc-entry"><div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:12px"><div><strong>🎧 Podcasts</strong><div class="muted">${state.episodes.length} résumés audio du parcours, 10 à 13 min · ${av ? `${av} disponible${av > 1 ? 's' : ''}${heard ? ` · ${heard} écouté${heard > 1 ? 's' : ''}` : ''}` : 'bientôt disponibles'}</div></div><button class="btn sm primary" data-go="podcasts">Écouter ›</button></div></div>`;
+  return `<div class="card pc-entry"><div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:12px"><div><strong>${ic('headphones')} Podcasts</strong><div class="muted">${state.episodes.length} résumés audio du parcours, 10 à 13 min · ${av ? `${av} disponible${av > 1 ? 's' : ''}${heard ? ` · ${heard} écouté${heard > 1 ? 's' : ''}` : ''}` : 'bientôt disponibles'}</div></div><button class="btn sm primary" data-go="podcasts">Écouter ›</button></div></div>`;
 }
 // Lien discret sur l'accueil.
 function podcastsLink() {
   if (!state.episodes.length) return '';
   const av = pcAvailable();
-  return `<p class="pc-link"><button class="linkbtn" data-go="podcasts">🎧 Podcasts du parcours${av ? ` · ${av}/${state.episodes.length} disponibles` : ' · bientôt disponibles'}</button></p>`;
+  return `<p class="pc-link"><button class="linkbtn" data-go="podcasts">${ic('headphones')} Podcasts du parcours${av ? ` · ${av}/${state.episodes.length} disponibles` : ' · bientôt disponibles'}</button></p>`;
 }
 function audioEl() {
   let a = document.getElementById('pc-audio');
@@ -2037,7 +2040,7 @@ function pcSave(force) {
   const next = PC.updateProgress(prev, a.ended ? dur : a.currentTime, dur, now);
   state.progress.podcasts[id] = next; persist();
   if (next.done && !prev?.done) {
-    toast(`🎧 Épisode ${ep.n} écouté`);
+    toast(`Épisode ${ep.n} écouté`, 'headphones');
     G.applyListens(state.progress.stats, state.progress.podcasts);
     if (a.playbackRate >= 1.5) state.progress.stats.flags.pcRapide = true;
     checkBadges();
@@ -2092,7 +2095,7 @@ function pcUi() {
   const seek = $('#pc-seek');
   if (seek && !seek.matches(':active')) { seek.max = String(Math.round(dur)); seek.value = String(Math.round(a.currentTime)); }
   const t = $('#pc-time'); if (t) t.textContent = `${PC.fmtClock(a.currentTime)} / ${PC.fmtClock(dur)}`;
-  const pb = $('#pc-toggle'); if (pb) { pb.textContent = a.paused ? '▶' : '⏸'; pb.setAttribute('aria-label', a.paused ? 'Lecture' : 'Pause'); }
+  const pb = $('#pc-toggle'); if (pb) { pb.innerHTML = ic(a.paused ? 'play' : 'pause'); pb.setAttribute('aria-label', a.paused ? 'Lecture' : 'Pause'); }
   document.querySelectorAll('[data-pc-rate]').forEach((b) => b.classList.toggle('on', Number(b.dataset.pcRate) === a.playbackRate));
   const bar = document.querySelector(`[data-pc-bar="${ep.id}"]`);
   if (bar && !state.progress.podcasts[ep.id]?.done) bar.style.width = `${Math.round((a.currentTime / dur) * 100)}%`;
@@ -2113,7 +2116,7 @@ function pcMini() {
     });
   }
   m.hidden = false;
-  m.innerHTML = `<button class="pc-mini-t" data-pcm="open">🎧 <span>${esc(ep.n)}. ${esc(ep.title)}</span></button><button class="btn sm" data-pcm="toggle" aria-label="${a.paused ? 'Lecture' : 'Pause'}">${a.paused ? '▶' : '⏸'}</button><button class="btn sm" data-pcm="close" aria-label="Fermer le lecteur">✕</button>`;
+  m.innerHTML = `<button class="pc-mini-t" data-pcm="open">${ic('headphones')} <span>${esc(ep.n)}. ${esc(ep.title)}</span></button><button class="btn sm" data-pcm="toggle" aria-label="${a.paused ? 'Lecture' : 'Pause'}">${a.paused ? ic('play') : ic('pause')}</button><button class="btn sm" data-pcm="close" aria-label="Fermer le lecteur">${ic('x')}</button>`;
 }
 // Téléchargement pour l'écoute hors ligne : le fichier entier dans le cache dédié (servi par sw.js, Range compris).
 const audioUrl = (ep) => new URL(ep.file, location.href).href;
@@ -2151,7 +2154,7 @@ async function pcDownload(id) {
     const c = await caches.open(PC.AUDIO_CACHE);
     await c.put(audioUrl(ep), new Response(blob, { headers: { 'Content-Type': blob.type || 'audio/mp4', 'Content-Length': String(blob.size) } }));
     state.pc.sizes[id] = blob.size;
-    toast(`⬇ Épisode ${ep.n} disponible hors ligne (${PC.fmtSize(blob.size)})`);
+    toast(`Épisode ${ep.n} disponible hors ligne (${PC.fmtSize(blob.size)})`, 'download');
   } catch {
     toast('Téléchargement impossible : vérifiez la connexion ou l’espace disponible');
   }
@@ -2167,7 +2170,7 @@ async function pcDelete(id) {
 function pcStateBadge(ep) {
   const s = PC.episodeState(ep, state.progress.podcasts[ep.id]);
   if (s.state === 'soon') return '<span class="badge">Bientôt disponible</span>';
-  if (s.state === 'done') return '<span class="badge ok">✔ Écouté</span>';
+  if (s.state === 'done') return '<span class="badge ok">' + ic('check') + ' Écouté</span>';
   if (s.state === 'progress') return `<span class="badge warn">${Math.round(s.ratio * 100)} % écouté</span>`;
   return '<span class="badge new">Nouveau</span>';
 }
@@ -2175,23 +2178,23 @@ function pcItem(ep) {
   const av = PC.isAvailable(ep); const s = PC.episodeState(ep, state.progress.podcasts[ep.id]);
   const cur = state.pc.current === ep.id; const size = state.pc.sizes[ep.id]; const dl = state.pc.dl[ep.id];
   const resume = s.state === 'progress' && PC.resumeAt(ep, state.progress.podcasts[ep.id]) > 0;
-  const actions = !av ? '' : `<div class="pc-actions">${cur ? '' : `<button class="btn sm primary" data-pc-play="${ep.id}">▶ ${resume ? `Reprendre à ${PC.fmtClock(PC.resumeAt(ep, state.progress.podcasts[ep.id]))}` : s.state === 'done' ? 'Réécouter' : 'Écouter'}</button>${resume ? `<button class="btn sm" data-pc-start="${ep.id}">⏮ Depuis le début</button>` : ''}`}
+  const actions = !av ? '' : `<div class="pc-actions">${cur ? '' : `<button class="btn sm primary" data-pc-play="${ep.id}">${ic('play')} ${resume ? `Reprendre à ${PC.fmtClock(PC.resumeAt(ep, state.progress.podcasts[ep.id]))}` : s.state === 'done' ? 'Réécouter' : 'Écouter'}</button>${resume ? `<button class="btn sm" data-pc-start="${ep.id}">${ic('skip-back')} Depuis le début</button>` : ''}`}
     ${dl != null ? `<span class="muted" data-pc-dl-label="${ep.id}">Téléchargement… ${Math.round(dl * 100)} %</span>`
-      : size ? `<span class="muted">✔ Hors ligne · ${esc(PC.fmtSize(size))}</span><button class="btn sm" data-pc-del="${ep.id}">🗑 Supprimer</button>`
-        : `<button class="btn sm" data-pc-dl="${ep.id}">⬇ Télécharger pour hors ligne</button>`}</div>`;
+      : size ? `<span class="muted">${ic('check')} Hors ligne · ${esc(PC.fmtSize(size))}</span><button class="btn sm" data-pc-del="${ep.id}">${ic('trash')} Supprimer</button>`
+        : `<button class="btn sm" data-pc-dl="${ep.id}">${ic('download')} Télécharger pour hors ligne</button>`}</div>`;
   return `<li class="pc-item ${av ? '' : 'soon'} ${cur ? 'cur' : ''}"><span class="pc-n">${ep.n}</span><div class="pc-body">
     <strong>${esc(ep.title)}</strong>
     <div class="muted">${esc(stepsLabel(ep))}${av ? ` · ${esc(PC.fmtDuration(ep.duration))}` : ''}</div>
     <div class="pc-state">${pcStateBadge(ep)}</div>
     ${av && s.state === 'progress' ? `<div class="progress sm"><div data-pc-bar="${ep.id}" style="width:${Math.round(s.ratio * 100)}%"></div></div>` : ''}
-    ${av && ep.retenir?.length ? `<details class="pc-retenir"><summary>📌 À retenir (${ep.retenir.length})</summary><ul>${ep.retenir.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></details>` : ''}
+    ${av && ep.retenir?.length ? `<details class="pc-retenir"><summary>${ic('pin')} À retenir (${ep.retenir.length})</summary><ul>${ep.retenir.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></details>` : ''}
     ${actions}</div></li>`;
 }
 // Liens vers les schémas des étapes couvertes (étapes « action » : l'écran correspondant).
 function pcStepLinks(ep) {
   return ep.steps.map((id) => P.stepById(id)).filter(Boolean).map((st) => st.kind === 'schema'
-    ? st.fiches.map((f) => `<button class="btn sm" data-open-fiche="${esc(f)}">📊 ${esc(shortTitle(f))}</button>`).join('')
-    : `<button class="btn sm" data-go="${st.action === 'weak' ? 'train' : st.action}">${st.action === 'exam' ? '⏱' : st.action === 'weak' ? '🎯' : '🔁'} ${esc(st.title)}</button>`).join('');
+    ? st.fiches.map((f) => `<button class="btn sm" data-open-fiche="${esc(f)}">${ic('chart')} ${esc(shortTitle(f))}</button>`).join('')
+    : `<button class="btn sm" data-go="${st.action === 'weak' ? 'train' : st.action}">${st.action === 'exam' ? ic('timer') : st.action === 'weak' ? ic('target') : ic('repeat')} ${esc(st.title)}</button>`).join('');
 }
 function pcPlayer() {
   const ep = epById(state.pc.current); if (!ep) return '';
@@ -2200,7 +2203,7 @@ function pcPlayer() {
   return `<div class="card pc-player" id="pc-player"><div class="muted">En lecture · épisode ${ep.n} · ${esc(stepsLabel(ep))}</div><strong class="pc-title" data-no-gl>${esc(ep.title)}</strong>
     <input type="range" id="pc-seek" class="pc-seek" min="0" max="${Math.round(dur)}" step="1" value="${Math.round(pos)}" aria-label="Position dans l’épisode">
     <div class="muted pc-time" id="pc-time">${PC.fmtClock(pos)} / ${PC.fmtClock(dur)}</div>
-    <div class="pc-controls"><button class="btn" data-pc-start="${ep.id}" aria-label="Reprendre depuis le début">⏮</button><button class="btn" data-pc-seek="-15" aria-label="Reculer de 15 secondes">↺ 15 s</button><button class="btn primary pc-toggle" id="pc-toggle" aria-label="${a.paused ? 'Lecture' : 'Pause'}">${a.paused ? '▶' : '⏸'}</button><button class="btn" data-pc-seek="15" aria-label="Avancer de 15 secondes">15 s ↻</button></div>
+    <div class="pc-controls"><button class="btn" data-pc-start="${ep.id}" aria-label="Reprendre depuis le début">${ic('skip-back')}</button><button class="btn" data-pc-seek="-15" aria-label="Reculer de 15 secondes">${ic('rotate')} 15 s</button><button class="btn primary pc-toggle" id="pc-toggle" aria-label="${a.paused ? 'Lecture' : 'Pause'}">${a.paused ? ic('play') : ic('pause')}</button><button class="btn" data-pc-seek="15" aria-label="Avancer de 15 secondes">15 s ${ic('rotate-cw')}</button></div>
     <div class="chips pc-rates" role="group" aria-label="Vitesse">${PC.SPEEDS.map((r) => `<button class="chip ${a.playbackRate === r ? 'on' : ''}" data-pc-rate="${r}">${String(r).replace('.', ',')}×</button>`).join('')}</div>
     <div class="muted" style="margin-top:10px">Les schémas de ${ep.steps.length > 1 ? 'ces étapes' : 'cette étape'} :</div><div class="pc-links">${pcStepLinks(ep)}</div></div>`;
 }
@@ -2230,14 +2233,14 @@ views.podcasts = () => {
   }, 0);
   const av = pcAvailable(); const total = Object.values(state.pc.sizes).reduce((x, y) => x + y, 0);
   return `<button class="btn sm" data-go="fiches">← Fiches</button>
-    <div class="card" style="margin-top:10px"><h2>🎧 Podcasts</h2><p class="muted" style="margin:4px 0 0">${state.episodes.length} résumés audio du parcours, à deux voix (NotebookLM), pour réviser en marchant ou dans les transports : l’épisode pose une question, mettez sur pause, répondez, reprenez. En cas de doute, la fiche fait foi.</p>
+    <div class="card" style="margin-top:10px"><h2>${ic('headphones')} Podcasts</h2><p class="muted" style="margin:4px 0 0">${state.episodes.length} résumés audio du parcours, à deux voix (NotebookLM), pour réviser en marchant ou dans les transports : l’épisode pose une question, mettez sur pause, répondez, reprenez. En cas de doute, la fiche fait foi.</p>
     <p class="muted" style="margin:6px 0 0">${av ? `${av}/${state.episodes.length} disponible${av > 1 ? 's' : ''}` : 'Les épisodes arrivent au fil des jours'}${total ? ` · ${PC.fmtSize(total)} sur le téléphone` : ''}. Téléchargez un épisode pour l’écouter sans réseau ; l’écoute reprend où vous l’aviez laissée.</p></div>
     ${pcPlayer()}
     <div id="pc-list-box">${pcList()}</div>`;
 };
 
 const NAV = [
-  ['home', '🏠', 'Accueil'], ['review', '🔁', 'Réviser'], ['train', '🎯', 'Entraîner'], ['shorts', '🎬', 'Shorts'], ['exam', '⏱', 'Examen'], ['carriere', '🏆', 'Carrière'], ['fiches', '📚', 'Fiches'],
+  ['home', ic('home'), 'Accueil'], ['review', ic('repeat'), 'Réviser'], ['train', ic('target'), 'Entraîner'], ['shorts', ic('clapper'), 'Shorts'], ['exam', ic('timer'), 'Examen'], ['carriere', ic('trophy'), 'Carrière'], ['fiches', ic('library'), 'Fiches'],
 ];
 function render() {
   const main = $('#main');
@@ -2288,7 +2291,7 @@ function initGamify() {
 // ---------- Glisser vers le bas pour recharger (comme Ernest) ----------
 // En haut de page, tirer vers le bas au-delà du seuil recharge l'app et va chercher une nouvelle version.
 function pullToRefresh() {
-  const ind = document.createElement('div'); ind.className = 'ptr'; ind.setAttribute('aria-hidden', 'true'); ind.innerHTML = '<span class="ptr-ic">↻</span>'; document.body.appendChild(ind);
+  const ind = document.createElement('div'); ind.className = 'ptr'; ind.setAttribute('aria-hidden', 'true'); ind.innerHTML = '<span class="ptr-ic">' + ic('rotate-cw') + '</span>'; document.body.appendChild(ind);
   const TH = 70; let y0 = null, d = 0, busy = false;
   const blocked = () => document.body.classList.contains('noscroll') || !!document.querySelector('.sheet.show, .feed.show, .celebrate.show, .gl-pop.show');
   const reset = () => { ind.style.transition = 'transform .25s, opacity .25s'; ind.style.transform = 'translate(-50%, -48px)'; ind.style.opacity = '0'; ind.classList.remove('ready'); d = 0; };
