@@ -180,6 +180,13 @@ export function gameOfDay(today, drills) {
 // ---------- Tâches du plan réellement faites ----------
 // Schéma lu : parcouru jusqu'en bas (au moins READ_MIN_MS d'ouverture, pour qu'un défilement éclair ne compte pas),
 // ou, s'il tient entièrement à l'écran, resté ouvert READ_FIT_MS.
+// Fiche vue : lecture notée (automatique ou bouton « Vu ») et pas annulée depuis (bouton « Vu » décoché).
+export const isRead = (plan, file) => !!plan?.read?.[file] && !(Number(plan?.unread?.[file]) >= Number(plan.read[file]));
+export function setRead(plan, file, on, now = Date.now()) {
+  if (on) { plan.read = { ...(plan.read || {}), [file]: Math.max(now, Number(plan.unread?.[file] || 0) + 1) }; }
+  else { plan.unread = { ...(plan.unread || {}), [file]: Math.max(now, Number(plan.read?.[file] || 0)) }; }
+  return plan;
+}
 export const READ_MIN_MS = 15000;
 export const READ_FIT_MS = 40000;
 const MARGIN = 48; // px : bas de page atteint à une ligne près

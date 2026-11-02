@@ -143,3 +143,13 @@ test('délai long : étapes espacées régulièrement, révisions espacées à +
   assert.ok(days.slice(-4).every((d) => d.revise.length === 0), 'rien à relire pendant les quatre derniers jours');
   assert.deepEqual(days.slice(-4).map((d) => d.kind), ['blanc', 'blanc', 'faibles', 'veille']);
 });
+
+test('bouton « Vu » : cocher, décocher, recocher', async () => {
+  const P = await import('../js/plan.js');
+  const plan = { read: {} };
+  assert.equal(P.isRead(plan, 'a.md'), false);
+  P.setRead(plan, 'a.md', true, 1000); assert.equal(P.isRead(plan, 'a.md'), true);
+  P.setRead(plan, 'a.md', false, 1000); assert.equal(P.isRead(plan, 'a.md'), false, 'décochée dans la même milliseconde');
+  P.setRead(plan, 'a.md', true, 900); assert.equal(P.isRead(plan, 'a.md'), true, 'recochée même si l’horloge recule');
+  assert.equal(P.isRead({}, 'a.md'), false);
+});

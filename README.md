@@ -45,7 +45,7 @@ Programme officiel (arrêté du 13 février 2019) : exercice de la profession ·
   - **Pause** proposée tous les 15 shorts (bilan, suite du plan, encore une série) ; réglable ou supprimable dans Réglages.
 - **Examen** : 10 EC + 10 CAC, 60 min chrono, QCM ou QRC avec auto-correction, note /20, détail par thème, corrigé complet (bonne proposition, votre choix, explication). « Rendre la copie » indique les questions sans réponse ; « Pause / Quitter » arrête le chrono (changer d'onglet aussi) ; « Abandonner » ne compte pas. Une copie répondue à moins de 50 % est corrigée mais exclue de l'estimation, des badges et du plan. Un examen en cours est repris après un rechargement (le chrono a continué, sauf pause).
   - **Examen inédit** : la session la plus récente encore jamais vue (mai 2026 au départ) est tenue à l'écart de toute la révision ; la passer une fois mesure le transfert vers des questions neuves, comme le jour J. Ensuite, ses questions rejoignent la révision.
-- **Fiches** : schémas rangés dans l'ordre du parcours (« Étape N »), fiches de référence par profession. Depuis une question, un jeu ou un examen, une fiche s'ouvre en surimpression : on la ferme et on reprend où l'on en était. La séance, la série et le jeu en cours sont gardés quand on change d'onglet. Synthèses par thème (chiffres, instances, listes) et 13 **schémas** (cadre normatif, niveaux d'assurance, comparatifs EC / CAC, frises, arbres de décision). Chaque schéma lance une série sur les questions qu'il résume, et chaque explication renvoie au schéma correspondant.
+- **Fiches** : schémas rangés dans l'ordre du parcours (« Étape N »), fiches de référence par profession. Depuis une question, un jeu ou un examen, une fiche s'ouvre en surimpression : on la ferme et on reprend où l'on en était. La séance, la série et le jeu en cours sont gardés quand on change d'onglet. Synthèses par thème (chiffres, instances, listes) et 13 **schémas** (cadre normatif, niveaux d'assurance, comparatifs EC / CAC, frises, arbres de décision). Chaque schéma lance une série sur les questions qu'il résume, et chaque explication renvoie au schéma correspondant. Bouton **Vu** dans chaque fiche (cochée automatiquement après lecture, décochable) : le compteur « fiches vues » suit la progression. **PDF à imprimer** (`data/fiches-a-imprimer.pdf`) : noir et blanc, couverture avec légende, sommaire paginé à cocher, une page de garde par partie, une fiche par page, numéros de page, marge droite large pour annoter.
 - **Jeux** (onglet de « Entraîner ») : chacun a sa répétition espacée (boîtes de Leitner, échéances ramenées avant l'épreuve).
   - **Duel EC / CAC** : une règle des comparatifs des schémas, à attribuer à la bonne profession ; la règle d'en face s'affiche ensuite.
   - **Vrai / Faux éclair** : chaque proposition d'un QCM jugée seule, en temps limité ; une erreur remet la question d'origine dans la prochaine séance.
@@ -80,6 +80,7 @@ Les badges sont recalculés à partir de l'historique existant à la première o
 
 ```
 npm test                      # tests du moteur SRS / examen
+npm run pdf                        # régénère data/fiches-a-imprimer.pdf après modification d'une fiche (Playwright + pdftotext)
 python3 -I scripts/build_bank.py   # fusionne data/bank/*.json → data/questions.json, valide, index des fiches
 python3 -m http.server 8080   # puis http://localhost:8080
 ```

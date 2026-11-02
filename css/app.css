@@ -623,3 +623,5 @@ html.feed-open, html.feed-open body { background: #f3eee6; }
 .hc .ic, .notice strong > .ic { color: var(--warn); }
 .gfb.ok .ic, .conds li.ok .ic { color: var(--ok); }
 .gfb.ko .ic { color: var(--ko); }
+/* Bouton « Vu » d'une fiche : coché = vue (progression), un nouveau toucher la décoche. */
+button.btn.seen.on { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); font-weight: 700; }

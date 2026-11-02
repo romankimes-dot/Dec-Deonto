@@ -503,8 +503,8 @@ function dayTasks() {
   const steps = d.steps.map((id) => P.stepById(id)).filter(Boolean);
   const files = [...new Set(steps.flatMap((st) => st.fiches))];
   if (files.length) {
-    const unread = files.find((f) => !pr.plan.read?.[f]);
-    tasks.push({ id: 'read', icon: ic('chart'), title: files.length > 1 ? `Lire les ${files.length} schémas du jour` : 'Lire le schéma du jour', sub: `${steps.map((st) => st.title).join(' · ')} · 5 à 10 min chacun`, done: !unread, cta: `Lire : ${shortTitle(unread || files[0])}`, run: () => ficheSheet(unread || files[0]), html: files.map((f) => `<button class="btn sm ${pr.plan.read?.[f] ? '' : 'primary'}" data-open-fiche="${esc(f)}">${pr.plan.read?.[f] ? ic('check') : ic('chart')} ${esc(shortTitle(f))}</button>`).join('') });
+    const unread = files.find((f) => !P.isRead(pr.plan, f));
+    tasks.push({ id: 'read', icon: ic('chart'), title: files.length > 1 ? `Lire les ${files.length} schémas du jour` : 'Lire le schéma du jour', sub: `${steps.map((st) => st.title).join(' · ')} · 5 à 10 min chacun`, done: !unread, cta: `Lire : ${shortTitle(unread || files[0])}`, run: () => ficheSheet(unread || files[0]), html: files.map((f) => `<button class="btn sm ${P.isRead(pr.plan, f) ? '' : 'primary'}" data-open-fiche="${esc(f)}">${P.isRead(pr.plan, f) ? ic('check') : ic('chart')} ${esc(shortTitle(f))}</button>`).join('') });
   }
   if (state.shorts?.length) {
     const n = shortsToday(); const need = d.kind === 'veille' ? 5 : 10;
@@ -1084,18 +1084,18 @@ views.fiches = () => {
       const file = state.ficheOpen;
       try { $('#fiche').innerHTML = renderMarkdown(await loadFiche(file)); addToc($('#fiche')); trackRead(file, () => (state.view === 'fiches' && state.ficheOpen === file && !$('#sheet')?.classList.contains('show') ? window : null)); } catch { $('#fiche').textContent = 'Fiche indisponible hors ligne (ouvrez-la une fois en ligne).'; }
     }, 0);
-    return `<button class="btn sm" id="back">← Fiches</button>${n ? `<div style="margin-top:10px">${trainBtn('fiche-train')}</div>` : ''}<div class="card fiche" id="fiche" style="margin-top:10px">Chargement…</div>${trainBtn('fiche-train2')}`;
+    return `<div class="row" style="gap:8px"><button class="btn sm" id="back">← Fiches</button>${seenBtn(state.ficheOpen)}</div>${n ? `<div style="margin-top:10px">${trainBtn('fiche-train')}</div>` : ''}<div class="card fiche" id="fiche" style="margin-top:10px">Chargement…</div>${trainBtn('fiche-train2')}`;
   }
   setTimeout(() => { document.querySelectorAll('[data-fiche]').forEach((b) => { b.onclick = () => openFiche(b.dataset.fiche); }); }, 0);
   if (!state.fiches.length) return `<div class="card"><h2>Fiches</h2><p class="muted">Aucune fiche disponible pour l’instant.</p></div>`;
-  const read = state.progress.plan.read || {};
-  const item = (f, label = '') => `<button class="btn" data-fiche="${esc(f.file)}"><span>${label ? `<span class="muted">${label}</span><br>` : ''}${esc(f.title)}</span><span>${read[f.file] ? ic('check') : ''}${f.questions ? `<span class="muted">${f.questions.length} Q</span> ` : ''}›</span></button>`;
+  const item = (f, label = '') => `<button class="btn" data-fiche="${esc(f.file)}"><span>${label ? `<span class="muted">${label}</span><br>` : ''}${esc(f.title)}</span><span>${P.isRead(state.progress.plan, f.file) ? ic('check') : ''}${f.questions ? `<span class="muted">${f.questions.length} Q</span> ` : ''}›</span></button>`;
   // Schémas dans l'ordre du parcours (numéro d'étape), fiches de référence par profession.
   const steps = []; P.STEPS.forEach((st, i) => (st.fiches || []).forEach((file) => { if (!steps.some((x) => x.file === file)) steps.push({ file, n: i + 1 }); }));
   const visuels = state.fiches.filter((f) => f.kind === 'visuel').map((f) => ({ f, n: steps.find((x) => x.file === f.file)?.n || 99 })).sort((a, b) => a.n - b.n);
   const synth = state.fiches.filter((f) => f.kind !== 'visuel');
   const ec = synth.filter((f) => /-ec-/.test(f.file)); const cac = synth.filter((f) => /-cac-/.test(f.file));
-  return `${podcastsEntry()}<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ${ic('check')} = déjà lu.</p><div class="btnrow"><button class="btn primary" data-go="plan">${ic('compass')} Ouvrir le parcours</button><button class="btn" data-go="glossaire">${ic('book')} Glossaire</button></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
+  const seenCount = state.fiches.filter((f) => P.isRead(state.progress.plan, f.file)).length;
+  return `${podcastsEntry()}<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ${ic('check')} = vue (bouton « Vu » dans chaque fiche, décochable).</p><p style="margin:0 0 8px"><strong>${seenCount} / ${state.fiches.length}</strong> fiches vues</p><div class="btnrow"><button class="btn primary" data-go="plan">${ic('compass')} Ouvrir le parcours</button><button class="btn" data-go="glossaire">${ic('book')} Glossaire</button><a class="btn" href="./data/fiches-a-imprimer.pdf" target="_blank" rel="noopener">${ic('library')} PDF à imprimer (noir et blanc)</a></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
     <div class="card"><h2>Fiches de référence</h2><h3>Expert-comptable</h3><div class="list">${ec.map((f) => item(f)).join('')}</div><h3>Commissaire aux comptes</h3><div class="list">${cac.map((f) => item(f)).join('')}</div></div>`;
 };
 // Sommaire déroulant en tête des fiches longues.
@@ -1135,7 +1135,7 @@ function closeSheet(viaPop = false) {
 // s'il tient à l'écran. Ouvrir puis refermer aussitôt ne coche plus la tâche.
 function trackRead(file, scroller) {
   state.readStop?.(); state.readStop = null;
-  const pr = state.progress; if (pr.plan.read?.[file]) return;
+  const pr = state.progress; if (P.isRead(pr.plan, file) || pr.plan.unread?.[file]) return;
   const target = scroller(); if (!target) return;
   const t0 = Date.now(); let reachedBottom = false;
   const measure = () => (target === window
@@ -1148,18 +1148,30 @@ function trackRead(file, scroller) {
     const m = measure(); reachedBottom = reachedBottom || P.atBottom(m);
     if (!P.readDone({ reachedBottom, fits: P.fitsScreen(m), elapsedMs: Date.now() - t0 })) return;
     stop();
-    pr.plan.read = pr.plan.read || {}; pr.plan.read[file] = Date.now(); persist();
-    toast('Schéma lu : noté dans le plan', 'chart');
+    P.setRead(pr.plan, file, true); persist(); refreshSeen(file);
+    toast('Fiche vue : notée dans votre progression', 'chart');
   }, 1000);
   target.addEventListener('scroll', onScroll, { passive: true });
   state.readStop = stop;
 }
+// Bouton « Vu » : coche ou décoche la fiche dans la progression (liste des fiches, parcours, tâches du jour).
+function seenBtn(file) {
+  const on = P.isRead(state.progress.plan, file);
+  return `<button class="btn sm seen ${on ? 'on' : ''}" data-seen="${esc(file)}" aria-pressed="${on}">${on ? ic('check') : ic('eye')} Vu</button>`;
+}
+function refreshSeen(file) { document.querySelectorAll(`[data-seen="${CSS.escape(file)}"]`).forEach((b) => { b.outerHTML = seenBtn(file); }); }
+function toggleSeen(file) {
+  const on = !P.isRead(state.progress.plan, file);
+  state.readStop?.(); P.setRead(state.progress.plan, file, on); persist(); refreshSeen(file);
+  toast(on ? 'Fiche marquée vue' : 'Fiche marquée non vue');
+}
+document.addEventListener('click', (e) => { const b = e.target.closest('[data-seen]'); if (b) toggleSeen(b.dataset.seen); });
 // Fiche en surimpression : la lecture est notée pour le parcours (voir trackRead).
 async function ficheSheet(file) {
   const meta = state.fiches.find((f) => f.file === file) || {};
   const n = (meta.questions || []).length;
   const step = P.STEPS.find((st) => st.fiches?.includes(file));
-  sheet(`<div class="card fiche" id="sheet-fiche">Chargement…</div>${n && !inActivity() ? `<button class="btn primary" id="sheet-train">${ic('target')} S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : ''}${step && !inActivity() ? `<div style="margin-top:10px">${shortsBtn(step.id)}</div>` : ''}`);
+  sheet(`<div style="margin-bottom:10px">${seenBtn(file)}</div><div class="card fiche" id="sheet-fiche">Chargement…</div>${n && !inActivity() ? `<button class="btn primary" id="sheet-train">${ic('target')} S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : ''}${step && !inActivity() ? `<div style="margin-top:10px">${shortsBtn(step.id)}</div>` : ''}`);
   const tb = $('#sheet-train'); if (tb) tb.onclick = () => { closeSheet(true); trainOn(shuffle(meta.questions, Date.now()).slice(0, 20), meta.title); };
   try {
     const box = $('#sheet-fiche'); box.dataset.file = file; box.innerHTML = renderMarkdown(await loadFiche(file)); addToc(box);

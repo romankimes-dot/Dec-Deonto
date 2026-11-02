@@ -88,7 +88,7 @@ export function merge(local, remote) {
   if (isObj(n.stats) && isObj(o.stats) && n.stats.v === o.stats.v) stats = mergeStats(JSON.parse(JSON.stringify(n.stats)), o.stats);
   const pn = obj(n.plan); const po = obj(o.plan);
   const starts = [pn.start, po.start].filter((x) => typeof x === 'string').sort();
-  const plan = { ...po, ...pn, done: unionMin(pn.done, po.done), read: unionMax(pn.read, po.read) };
+  const plan = { ...po, ...pn, done: unionMin(pn.done, po.done), read: unionMax(pn.read, po.read), unread: unionMax(pn.unread, po.unread) };
   if (starts.length) plan.start = starts[0];
   const dn = n.daily; const dd = o.daily;
   const daily = isObj(dn) && isObj(dd) ? (String(dd.day || '') > String(dn.day || '') ? dd : dn) : (dn || dd || null);

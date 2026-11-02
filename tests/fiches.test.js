@@ -67,3 +67,10 @@ test('index des fiches : les schémas pointent vers des questions existantes', (
     for (const id of f.questions) assert.ok(ids.has(id), `${f.file} : ${id}`);
   }
 });
+
+test('PDF à imprimer : régénéré après la dernière modification des fiches (npm run pdf)', async () => {
+  const { inputsHash } = await import('../scripts/pdf_inputs.mjs');
+  const root = new URL('..', import.meta.url).pathname;
+  const saved = readFileSync(new URL('../data/fiches-a-imprimer.pdf.sha256', import.meta.url), 'utf8').trim();
+  assert.equal(saved, inputsHash(root), 'fiches modifiées : relancer « npm run pdf »');
+});
