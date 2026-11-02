@@ -551,7 +551,7 @@ function lateBanner(d) {
   if (d.merged?.length) parts.push(`${ic('forward')} <strong>Délai court</strong> : ${d.merged.map((m) => m.kind === 'blanc' ? `examen blanc ${m.exam.toUpperCase()}` : m.kind === 'faibles' ? 'points faibles' : 'veille').join(', ')} regroupé${d.merged.length > 1 ? 's' : ''} aujourd’hui, rien n’est supprimé.`);
   return parts.length ? `<div class="gfb warn" style="margin:6px 0">${parts.join('<br>')}</div>` : '';
 }
-// Pont vers Ernest (app d'organisation) : le plan du jour en lien profond, sans doublon côté Ernest.
+// Pont vers Ernest (app d'organisation) : le plan du jour, déposé sur le serveur à chaque synchro (sendPont), sans doublon côté Ernest.
 const ERNEST_URL = 'https://romankimes-dot.github.io/Ernest/';
 const ERNEST_EST = { read: 10, shorts: 8, revise: 20, session: 25, weak: 15, sure: 10, game: 10, podcast: 12 };
 function ernestPayload() {
@@ -562,11 +562,6 @@ function ernestPayload() {
   const history = Object.entries(byDay).filter(([dk]) => dk < k).map(([day, n]) => ({ day, n: Math.min(3, Math.ceil(n / 20)) }));
   const goal = examDateSet() ? { title: 'Épreuve 1 · Déontologie', cat: 'revision', due: examKey(), milestones: calendar().filter((c) => c.exam || c.kind === 'faibles' || c.kind === 'veille').map((c) => ({ text: c.exam ? `Examen blanc ${c.exam.toUpperCase()}` : c.kind === 'faibles' ? 'Points faibles' : 'Veille légère', due: c.day, done: c.day < k })) } : null;
   return { v: 1, src: 'deonto', things, goals: goal ? [goal] : [], history };
-}
-function ernestLink() {
-  const json = JSON.stringify(ernestPayload());
-  const b64 = btoa(String.fromCharCode(...new TextEncoder().encode(json))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-  return `${ERNEST_URL}#import=${b64}`;
 }
 const KIND_LABEL = { etude: 'Apprendre', consolidation: 'Consolider', blanc: 'Examen blanc', faibles: 'Points faibles', veille: 'Veille : léger', 'jour-j': 'Jour J', apres: 'Après l’épreuve' };
 function dayCard() {
@@ -583,7 +578,7 @@ function dayCard() {
     <ol class="todo">${tasks.map((x, i) => `<li class="${x.done ? 'done' : x === cur ? 'cur' : ''}"><span class="tick">${x.done ? ic('check') : x.optional ? '+' : i + 1}</span><div class="tbody"><div><strong>${x.icon} ${esc(x.title)}</strong>${x === cur ? ' <span class="badge warn">maintenant</span>' : ''}${x.optional ? ' <span class="badge">facultatif</span>' : ''}</div><div class="muted">${esc(x.sub)}</div>${x.done ? '' : x.html || `<button class="btn sm ${x === cur ? 'primary' : ''}" data-task="${x.id}">${ic('play')} ${esc(x.cta)}</button>`}</div></li>`).join('')}</ol>
     ${n === req.length ? `<div class="gfb ok">${ic('party')} Plan du jour terminé. Vous pouvez vous arrêter, ou continuer en boucle :</div>${nextCard(true)}` : ''}
     ${tomText ? `<p class="muted" style="margin:6px 0 10px">Demain : ${esc(tomText)}.</p>` : ''}
-    <button class="btn sm" data-go="plan">${ic('calendar')} Mon plan jusqu’au ${esc(examDay())}</button> <button class="btn sm" data-ernest="1">${ic('sprout')} Copier pour Ernest</button></div>`;
+    <button class="btn sm" data-go="plan">${ic('calendar')} Mon plan jusqu’au ${esc(examDay())}</button></div>`;
 }
 // Le bouton principal de l'accueil : la prochaine chose à faire, sans réfléchir.
 function heroCta() {
@@ -2371,14 +2366,6 @@ async function init() {
     const b = e.target.closest('[data-open-fiche]'); if (b) return ficheSheet(b.dataset.openFiche);
     const v = e.target.closest('[data-variants]'); if (v) return variantsSheet(v.dataset.variants);
     const tk = e.target.closest('[data-task]'); if (tk) return dayTasks().find((x) => x.id === tk.dataset.task)?.run();
-    const er = e.target.closest('[data-ernest]'); if (er) {
-      // Une app installée sur l'iPhone a son propre stockage : un lien ouvrirait Ernest dans Safari, pas l'app installée.
-      // On copie donc le plan ; Ernest le colle (Aujourd'hui › « Coller depuis une app de révision »).
-      const link = ernestLink();
-      const done = () => toast('Plan copié pour Ernest. Ouvre Ernest et touche « Coller depuis une app de révision ».');
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(link).then(done, () => window.open(link, '_blank')); else window.open(link, '_blank');
-      return;
-    }
     const nx = e.target.closest('[data-next]'); if (nx) return state.nextList[Number(nx.dataset.next)]?.run();
     const other = e.target.closest('[data-next-other]'); if (other) { state.nextIdx++; return render(); }
     const g = e.target.closest('[data-game]'); if (g) return startGame(g.dataset.game);
