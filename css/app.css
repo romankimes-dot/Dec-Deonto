@@ -288,7 +288,6 @@ header.top .sub { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orien
 @keyframes scenein { from { opacity: 0; transform: scale(1.08); filter: blur(6px); } }
 @keyframes cardflip { from { transform: perspective(800px) rotateY(90deg); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .celebrate *, .celebrate { animation: none !important; } }
-.hero-meta { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 12px; text-align: center; }
 
 /* Parcours, notices, sommaire */
 .notice { border-left: 4px solid var(--warn); background: var(--warn-bg); }
@@ -374,14 +373,19 @@ body.noscroll { overflow: hidden; }
 .cal li.today { border-left-color: var(--warn); background: var(--warn-bg); border-radius: 0 10px 10px 0; padding-right: 8px; }
 .next-inner { border: 1px solid var(--line); border-radius: 12px; padding: 12px; margin: 8px 0 12px; }
 .card.next { border-color: var(--primary); }
-button.estim { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 100%; margin-top: 10px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--text); font: inherit; font-size: 15px; text-align: left; cursor: pointer; }
-div.estim { margin-top: 10px; }
+.estim { display: flex; flex-direction: column; align-items: stretch; gap: 8px; width: 100%; margin-top: 12px; padding: 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--text); font: inherit; font-size: 14px; text-align: left; }
+button.estim { cursor: pointer; }
+.kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.kpi { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.kpi + .kpi { border-left: 1px solid var(--line); padding-left: 10px; }
+.kpi-l { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kpi-v { font-size: 24px; font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.kpi-v small { font-size: 13px; font-weight: 600; color: var(--muted); }
+.kpi .progress { height: 5px; }
 
 /* Accueil : bouton « à faire maintenant », anneau, aide */
 .hero { background: linear-gradient(160deg, var(--card) 55%, color-mix(in srgb, var(--primary) 12%, var(--card))); }
 .hero-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
-.ring { --p: 0; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--primary) calc(var(--p) * 1%), var(--line) 0); }
-.ring span { width: 50px; height: 50px; border-radius: 50%; background: var(--card); display: grid; place-items: center; font-weight: 800; font-size: 14px; color: var(--text); }
 .big-btn { flex-direction: column; gap: 2px; line-height: 1.25; }
 .cta-k { font-size: 12px; font-weight: 600; opacity: .85; text-transform: uppercase; letter-spacing: .04em; }
 .help { border-left: 4px solid var(--warn); }
