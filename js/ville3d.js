@@ -237,7 +237,7 @@ export const PLACES = {
 const COLS = { w: { x: -13, nx: 1, nz: 0 }, e: { x: 13, nx: -1, nz: 0 }, cw: { x: -3.9, nx: 1, nz: 0 }, ce: { x: 3.9, nx: -1, nz: 0 } };
 const colOrder = { w: 0, cw: 1, ce: 2, e: 3 };
 export const TOUR3D = [...STREETS].reverse().flatMap((st) => Object.keys(PLACES).filter((id) => PLACES[id][0] === st.id).sort((a, b) => colOrder[PLACES[a][1]] - colOrder[PLACES[b][1]] || PLACES[a][2] - PLACES[b][2]));
-const RH = 2.4, BX = 9, RIVER = { x0: -3.5, x1: 3.5, zn: -9 }, SLOT = 6, FAC = 5, BAND = 18, ZEND = 66, BOUNDS = { x0: -34, x1: 34, z0: -74, z1: 74 }, TERRAIN = { x: 32, z: 74 }, PARVIS = 1.6, ALT = { min: 1.2, max: 40 };
+const RH = 2.4, BX = 9, RIVER = { x0: -3.5, x1: 3.5, zn: -9 }, SLOT = 6, FAC = 5, BAND = 18, ZEND = 66, BOUNDS = { x0: -34, x1: 34, z0: -74, z1: 74 }, TERRAIN = { x: 32, z: 74 }, PARVIS = 1.6;
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const hyp = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const angDiff = (a, b) => { let d = (b - a) % (2 * Math.PI); if (d > Math.PI) d -= 2 * Math.PI; if (d < -Math.PI) d += 2 * Math.PI; return d; };
@@ -291,6 +291,7 @@ export const VILLE3D_CSS = `
 .v3-lb.band { background: var(--bc); color: #fff; border-color: var(--bc); text-transform: uppercase; letter-spacing: .05em; font-size: 11.5px; }
 .v3-lb.small { font-size: 11.5px; padding: 3px 6px; font-weight: 600; }
 .v3-lb.sel { background: var(--text); color: var(--card); border-color: var(--text); }
+.v3-lb.stem::after { content: ''; position: absolute; left: 50%; top: 100%; width: 2px; height: var(--stem, 0px); margin-left: -1px; background: color-mix(in srgb, var(--text) 55%, transparent); }
 .v3-lb i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
 .v3-ui { position: absolute; left: max(10px, env(safe-area-inset-left, 0px)); right: max(10px, env(safe-area-inset-right, 0px)); top: calc(8px + var(--st)); z-index: 3; display: flex; flex-direction: column; gap: 6px; max-height: calc(100% - 24px - var(--st)); }
 .v3-top { display: flex; gap: 6px; align-items: stretch; flex-shrink: 0; }
@@ -333,9 +334,8 @@ export const VILLE3D_CSS = `
 .v3-stick i { position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: var(--primary); opacity: .85; }
 .v3-pad { position: absolute; right: 14px; bottom: calc(30px + var(--sb)); display: none; gap: 10px; z-index: 2; align-items: flex-end; }
 .v3-pad .v3-btn { min-height: 58px; min-width: 88px; border-radius: 29px; -webkit-touch-callout: none; }
-.v3.touch.drive .v3-stick, .v3.touch.drive .v3-pad { display: flex; }
-.v3-alt { position: absolute; left: 50%; transform: translateX(-50%); bottom: calc(14px + var(--sb)); z-index: 2; font-size: 11.5px; font-weight: 600; color: var(--muted); pointer-events: none; padding: 3px 8px; border-radius: 999px; background: color-mix(in srgb, var(--card) 80%, transparent); white-space: nowrap; }
-.v3:not(.drive) .v3-alt, .v3.touch .v3-keys { display: none; }
+.v3.touch:not(.metier) .v3-stick, .v3.touch:not(.metier) .v3-pad { display: flex; }
+.v3.touch .v3-keys { display: none; }
 .v3-keys { position: absolute; left: 10px; bottom: 10px; font-size: 11.5px; color: var(--muted); z-index: 1; pointer-events: none; }
 .v3:not(.drive) .v3-keys { display: none; }
 .v3-sheet { position: absolute; inset: 8px; z-index: 4; overflow: auto; touch-action: pan-y; overscroll-behavior: contain; border-radius: 12px; border: 1px solid var(--line); background: var(--card); padding: 0 12px 12px; }
@@ -358,16 +358,16 @@ export function startVille3D(root, THREE, opts = {}) {
   root.innerHTML = `<canvas class="v3-gl"></canvas><div class="v3-labels" id="v3-labels"></div>
     <div class="v3-ui"><div class="v3-top"><div class="v3-where" id="v3-where"></div><button type="button" class="v3-btn" data-a="opts" aria-label="Options">☰</button>${opts.onQuit ? '<button type="button" class="v3-btn v3-quit" data-a="quit" aria-label="Quitter la visite">✕</button>' : ''}</div>
     <div class="v3-row" id="v3-row"></div><div class="v3-legend" id="v3-legend" hidden></div><div class="v3-drawer" id="v3-drawer" hidden></div></div>
-    <div class="v3-alt" id="v3-alt"></div>
     <div class="v3-stick" id="v3-stick"><i></i></div>
     <div class="v3-pad"><button type="button" class="v3-btn" id="v3-turbo" aria-label="Turbo (maintenir)">Turbo</button></div>
-    <div class="v3-keys">Flèches : voler · Maj : turbo · glisser : hauteur et caméra · Entrée : entrer · L : aller à · M : vue métier</div>
+    <div class="v3-keys">Flèches : voler · Maj : turbo · glisser : regarder autour · Entrée : entrer · L : aller à · M : vue métier</div>
     <div class="v3-sheet" id="v3-sheet" hidden></div>`;
   const $ = (s) => root.querySelector(s);
   if (!document.getElementById('v3-compo-css')) { const st = document.createElement('style'); st.id = 'v3-compo-css'; st.textContent = COMPO_CSS; document.head.appendChild(st); }
-  const canvas = $('.v3-gl'), whereEl = $('#v3-where'), rowEl = $('#v3-row'), legendEl = $('#v3-legend'), drawer = $('#v3-drawer'), sheet = $('#v3-sheet'), turboBtn = $('#v3-turbo'), labelLayer = $('#v3-labels'), altEl = $('#v3-alt');
+  const canvas = $('.v3-gl'), whereEl = $('#v3-where'), rowEl = $('#v3-row'), legendEl = $('#v3-legend'), drawer = $('#v3-drawer'), sheet = $('#v3-sheet'), turboBtn = $('#v3-turbo'), labelLayer = $('#v3-labels');
   // Pas de « tirer pour recharger » ni de défilement de la page derrière la visite : seuls les tiroirs défilent.
   root.addEventListener('touchmove', (e) => { if (!e.target.closest('.v3-drawer, .v3-sheet')) e.preventDefault(); }, { passive: false });
+  for (const ev of ['gesturestart', 'gesturechange', 'dblclick']) root.addEventListener(ev, (e) => e.preventDefault(), { passive: false });
 
   const col = { ec: cssVar('--ec', '#0e7490'), cac: cssVar('--cac', '#7c3aed'), commun: cssVar('--muted', '#64748b'), card: cssVar('--card', '#ffffff'), text: cssVar('--text', '#0f172a'), line: cssVar('--line', '#e2e8f0'), primary: cssVar('--primary', '#1e40af') };
   const th = document.documentElement.dataset.theme;
@@ -435,6 +435,20 @@ export function startVille3D(root, THREE, opts = {}) {
       if (clash) { if (!it.el.hidden) it.el.hidden = true; continue; }
       boxes.push({ x0, x1: x0 + it.w, y0, y1: y0 + it.h }); n++;
       it.el.style.transform = `translate3d(${c.sx.toFixed(1)}px,${c.sy.toFixed(1)}px,0) translate(-50%,-100%) translateY(-4px)`;
+      if (it.el.hidden) it.el.hidden = false;
+    }
+  }
+  function placeStacked(cam, list) {
+    const cands = [];
+    for (const it of list) { vP.copy(it.pos).project(cam); if (vP.z > 1) { if (!it.el.hidden) it.el.hidden = true; continue; } cands.push({ it, sx: clamp((vP.x + 1) / 2 * W, it.w / 2 + 6, W - it.w / 2 - 6), sy: (1 - vP.y) / 2 * H }); }
+    cands.sort((a, b) => b.sy - a.sy);
+    const boxes = [];
+    for (const c of cands) {
+      const { it } = c; let y = c.sy;
+      for (let guard = 0; guard < 12; guard++) { const hit = boxes.find((b) => c.sx - it.w / 2 < b.x1 + 4 && c.sx + it.w / 2 > b.x0 - 4 && y - it.h < b.y1 + 3 && y > b.y0 - 3); if (!hit) break; y = hit.y0 - 3; }
+      boxes.push({ x0: c.sx - it.w / 2, x1: c.sx + it.w / 2, y0: y - it.h, y1: y });
+      it.el.style.transform = `translate3d(${c.sx.toFixed(1)}px,${y.toFixed(1)}px,0) translate(-50%,-100%)`;
+      const stem = Math.max(0, c.sy - y); it.el.classList.toggle('stem', stem > 2); if (stem > 2) it.el.style.setProperty('--stem', `${stem.toFixed(0)}px`);
       if (it.el.hidden) it.el.hidden = false;
     }
   }
@@ -670,6 +684,7 @@ export function startVille3D(root, THREE, opts = {}) {
     return g;
   };
 
+  const walker = figure(col.primary, false); { const ring = new THREE.Mesh(keep(new THREE.RingGeometry(0.55, 0.75, 24).rotateX(-Math.PI / 2)), lam(col.primary)); ring.position.y = 0.04; walker.add(ring); }
   // ---------- Intérieurs : un hémicycle. Le président fait face à l'assemblée, disposée en arcs ; les personnes
   // présentes sans siéger se tiennent debout sur les côtés ; les guichets (pancartes) sont des panneaux au mur du fond.
   const rooms = new Map();
@@ -677,11 +692,14 @@ export function startVille3D(root, THREE, opts = {}) {
     if (rooms.has(lot.id)) return rooms.get(lot.id);
     const { b } = lot, hex = col[b.rive];
     const salle = SALLES[lot.id] || { layout: 'bureau', groupes: [] };
-    const seated = salle.groupes.filter((g) => !g.debout).flatMap((g) => Array.from({ length: g.n }, () => g));
-    const standing = salle.groupes.filter((g) => g.debout).flatMap((g) => Array.from({ length: g.n }, () => g));
-    const seats = []; let rest = seated.length - 1, k = 0, maxR = 0;
-    while (rest > 0) { const r = 3.4 + k * 2.3, span = Math.PI * 0.72, cap = Math.max(3, Math.floor(r * span / 1.5) + 1), n = Math.min(cap, rest); for (let i = 0; i < n; i++) { const a = Math.PI / 2 + (n === 1 ? 0 : (i / (n - 1) - 0.5) * span); seats.push({ x: Math.cos(a) * r, z: Math.sin(a) * r, r, a, k }); } rest -= n; maxR = r; k++; }
-    const Wd = clamp(Math.ceil(2 * (maxR + 2.6)), 14, 40), D = clamp(Math.ceil(maxR + 7.5), 12, 30), zp = -D / 2 + 2.6;
+    // Disposition en blocs : le président (groupe d'une personne en tête) à la tribune, puis un bloc de rangs par
+    // groupe, face à la tribune, sur un tapis de sa couleur ; les présents non membres debout sur le côté droit.
+    const seatedG = salle.groupes.filter((g) => !g.debout), standingG = salle.groupes.filter((g) => g.debout);
+    const head = seatedG[0]?.n === 1 ? seatedG[0] : null, blocksG = head ? seatedG.slice(1) : seatedG;
+    const SP = 1.5, maxCols = Math.max(4, ...blocksG.map((g) => Math.min(g.n, 10)));
+    const blocks = []; let zc = 3.2;
+    for (const g of blocksG) { const cols = Math.min(g.n, 10), rows = Math.ceil(g.n / cols); blocks.push({ g, cols, rows, z0: zc }); zc += rows * SP + 1.6; }
+    const Wd = Math.max(14, Math.ceil(maxCols * SP + (standingG.length ? 7 : 4))), D = Math.max(12, Math.ceil(zc + 4)), zp = -D / 2 + 2.4;
     const sc = new THREE.Scene(); sc.background = new THREE.Color(dark ? '#111827' : '#dfe6f0');
     sc.add(new THREE.HemisphereLight(0xffffff, 0x8892a0, 1.2)); const l = new THREE.DirectionalLight(0xffffff, 0.6); l.position.set(8, 22, 10); l.castShadow = true; l.shadow.mapSize.set(1024, 1024); Object.assign(l.shadow.camera, { left: -22, right: 22, top: 22, bottom: -22, near: 1, far: 60 }); sc.add(l);
     { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'), q = lot.quartier;
@@ -695,38 +713,35 @@ export function startVille3D(root, THREE, opts = {}) {
       const fl = new THREE.Mesh(keep(new THREE.PlaneGeometry(Wd, D)), keep(new THREE.MeshLambertMaterial({ map: t }))); fl.rotation.x = -Math.PI / 2; fl.receiveShadow = true; sc.add(fl); }
     // Murs bas et translucides : on voit la salle de n'importe quel côté.
     const wall = lam(hex, { transparent: true, opacity: 0.35 });
-    box(sc, Wd, 2.6, 0.3, 0, 1.3, -D / 2, lam(hex, { transparent: true, opacity: 0.5 })); box(sc, 0.3, 1.2, D, -Wd / 2, 0.6, 0, wall); box(sc, 0.3, 1.2, D, Wd / 2, 0.6, 0, wall); box(sc, Wd, 1.2, 0.3, 0, 0.6, D / 2, wall);
+    box(sc, Wd, 1.2, 0.3, 0, 0.6, -D / 2, wall); box(sc, 0.3, 1.2, D, -Wd / 2, 0.6, 0, wall); box(sc, 0.3, 1.2, D, Wd / 2, 0.6, 0, wall); box(sc, Wd, 1.2, 0.3, 0, 0.6, D / 2, wall);
     const plinth = lam('#7c5a3a'); box(sc, Wd, 0.5, 0.35, 0, 0.25, -D / 2 + 0.05, plinth);
     const people = [], groups = [], labels = [], wood = lam('#8b5e3c');
-    const put = (g, x, z, face, kind) => {
+    const put = (g, x, z, face, kind, zl) => {
       const c = ROLEC[g.role] || col.commun, f = figure(c, g.role === 'magistrat'); f.position.set(x, 0, z); f.lookAt(face[0], 0, face[1]); sc.add(f);
       const disc = new THREE.Mesh(DISC, lam(c, { transparent: true, opacity: 0.35 })); disc.position.set(x, 0.03, z); sc.add(disc);
       const first = !groups.includes(g); if (first) groups.push(g);
-      const p = { mesh: f, x, z, qui: g.qui, fait: g.fait, label: g.label, g, first, color: c, kind };
-      p.lb = mkLabel(`<i style="background:${c}"></i>${esc(first ? groupLabel(g) : g.label)}`, first ? '' : 'small', new THREE.Vector3(x, 2.5, z), { far: 60, len: (first ? groupLabel(g) : g.label).length + 2, prio: first ? 1 : 0, p }); p.lb.off = true; labels.push(p.lb);
+      const p = { mesh: f, x, z, zl, qui: g.qui, fait: g.fait, label: g.label, g, first, color: c, kind };
       people.push(p); return p;
     };
-    if (seated.length) { box(sc, 4.2, 1, 1.2, 0, 0.5, zp - 0.9, wood); put(seated[0], 0, zp, [0, D], 'siege'); }
-    for (let a = 0; a < k; a++) { const r = 3.4 + a * 2.3, ring = new THREE.Mesh(keep(new THREE.RingGeometry(r - 1.1, r - 0.45, 40, 1, Math.PI / 2 - Math.PI * 0.38, Math.PI * 0.76)), wood); ring.rotation.x = -Math.PI / 2; ring.position.set(0, 0.78, zp); sc.add(ring); }
-    seats.forEach((s, i) => put(seated[i + 1], s.x, zp + s.z, [0, zp], 'siege'));
-    standing.forEach((g, i) => { const s = i % 2 ? 1 : -1; put(g, s * (Wd / 2 - 1.8), zp + 1.5 + Math.floor(i / 2) * 2.2, [0, zp], 'debout'); });
-    const nb = b.pancartes.length, gap = Math.min(4.2, (Wd - 2) / Math.max(1, nb));
-    b.pancartes.forEach((p, i) => {
-      const x = (i - (nb - 1) / 2) * gap, z = -D / 2 + 0.22;
-      box(sc, gap * 0.82, 1.5, 0.12, x, 2.1, z, lam(dark ? '#f8fafc' : '#ffffff'));
-      const short = p.qui.length > 26 ? `${p.qui.slice(0, 24)}…` : p.qui;
-      const e = { x, z: z + 0.6, qui: p.qui, fait: p.fait, label: p.qui, panneau: true, first: true, kind: 'guichet', color: hex };
-      e.lb = mkLabel(`▤ ${esc(short)}`, 'small', new THREE.Vector3(x, 3.1, z), { far: 60, len: short.length + 2, prio: 0, p: e }); e.lb.off = true; labels.push(e.lb);
-      people.push(e);
-    });
-    const title = mkLabel(`<span class="${b.rive}">${svgIcon(lot.id)}</span>${esc(b.nom)}`, '', new THREE.Vector3(0, 4.3, -D / 2 + 0.3), { far: 90, len: b.nom.length + 2, prio: 3 }); title.off = true; labels.push(title);
-    const room = { scene: sc, people, groups, W: Wd, D, zp, labels, center: new THREE.Vector3(0, 1.1, zp + Math.max(2.5, maxR * 0.5)), fit: Math.max(Wd * 0.7, D * 0.8) + 3 };
+    const xOff = standingG.length ? -1.5 : 0;
+    if (head) { box(sc, 4.2, 1, 1.2, xOff, 0.5, zp + 0.9, wood); box(sc, 5.2, 0.25, 3, xOff, 0.12, zp, lam(ROLEC[head.role] || col.commun, { transparent: true, opacity: 0.25 })); put(head, xOff, zp, [xOff, D], 'siege', zp); }
+    for (const bl of blocks) {
+      const z0 = zp + bl.z0, c = ROLEC[bl.g.role] || col.commun, wB = bl.cols * SP, dB = bl.rows * SP;
+      const rug = plane(wB + 0.8, dB + 0.6, c, 0.02); rug.material = lam(c, { transparent: true, opacity: 0.22, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }); rug.position.set(xOff, 0.02, z0 + dB / 2 - SP / 2); sc.add(rug);
+      for (let r = 0; r < bl.rows; r++) box(sc, wB, 0.75, 0.35, xOff, 0.38, z0 + r * SP - 0.55, wood);
+      for (let k = 0; k < bl.g.n; k++) { const r = Math.floor(k / bl.cols), inRow = Math.min(bl.cols, bl.g.n - r * bl.cols), cI = k % bl.cols; put(bl.g, xOff + (cI - (inRow - 1) / 2) * SP, z0 + r * SP, [xOff, zp - 20], 'siege', z0 + (bl.rows - 1) * SP / 2); }
+    }
+    standingG.forEach((g, i) => { const x = Wd / 2 - 1.8, z0 = zp + 1.2 + i * 3.2; for (let k = 0; k < g.n; k++) put(g, x + (k % 2) * 1.1, z0 + Math.floor(k / 2) * 1.2, [xOff, zp], 'debout', z0 + 0.6); });
+    // Une étiquette par groupe, posée au-dessus du bloc, toujours affichée.
+    for (const g of groups) { const ps = people.filter((p) => p.g === g), cx = ps.reduce((a, p) => a + p.x, 0) / ps.length; const it = mkLabel(`<i style="background:${ps[0].color}"></i>${esc(groupLabel(g))}${g.debout ? ' <small>· présent</small>' : ''}`, '', new THREE.Vector3(cx, 2.55, ps[0].zl), { far: 200, len: groupLabel(g).length + (g.debout ? 12 : 2), prio: 1 }); it.off = true; labels.push(it); for (const p of ps) p.lb = it; }
+    for (const p of b.pancartes) people.push({ qui: p.qui, fait: p.fait, label: p.qui, panneau: true, first: true, kind: 'guichet', color: hex });
+    const room = { scene: sc, people, groups, W: Wd, D, zp, labels, center: new THREE.Vector3(0, 0.8, (zp + zp + zc) / 2), fit: Math.max(Wd * 0.85, D * 0.95) + 2, wx0: 0, wz0: D / 2 - 1.6 };
     rooms.set(lot.id, room); return room;
   }
 
   // ---------- État
   const S = {
-    mode: 'drive', pos: new THREE.Vector3(0, 0, ZEND + 6), alt: 6, vx: 0, vz: 0, heading: Math.PI, camYaw: Math.PI, camOff: 0, look: new THREE.Vector3(0, 1, ZEND - 6),
+    mode: 'drive', pos: new THREE.Vector3(0, 0, ZEND + 6), alt: 2.5, tilt: 0.3, vx: 0, vz: 0, heading: Math.PI, camYaw: Math.PI, camOff: 0, look: new THREE.Vector3(0, 1, ZEND - 6),
     inside: null, room: null, focus: null, near: null, route: null, tour: null, instant: false, visited: new Set(),
     orb: { yaw: 0, pitch: 1.2, r: 20, vy: 0, tgt: new THREE.Vector3() }, metier: { rive: 'ec', band: null, cx: 0, cz: 0, hh: 60 }, tab: null, uiBand: null,
   };
@@ -753,10 +768,10 @@ export function startVille3D(root, THREE, opts = {}) {
       legend = true;
     } else if (S.inside) {
       const r = S.room, b = S.inside.b, f = S.focus, t = S.tab;
-      where = `<span class="${b.rive}">${svgIcon(S.inside.id)}</span><div class="tx"><b>${esc(b.nom)}</b><span class="v3-sub">${esc(S.inside.st.nom)} · glissez pour tourner, pincez pour zoomer</span></div><button type="button" class="v3-btn sm" data-a="exit">Sortir</button>`;
+      where = `<span class="${b.rive}">${svgIcon(S.inside.id)}</span><div class="tx"><b>${esc(b.nom)}</b><span class="v3-sub">joystick : marcher · glisser : tourner · pincer : zoomer</span></div><button type="button" class="v3-btn sm" data-a="exit">Sortir</button>`;
       row = tab('qui', `Qui siège (${r.groups.length})`, t === 'qui') + tab('quoi', `Ce qu’on y fait (${b.pancartes.length})`, t === 'quoi') + tab('jumeau', 'Jumeau', t === 'jumeau') + (opts.onFiche ? `<button type="button" class="v3-btn sm" data-a="fiche" data-f="${esc(b.fiche)}">Fiche</button>` : '');
       if (f) body = `<p><strong style="color:${f.color}">${esc(f.qui)}</strong></p><p>${md(f.fait)}</p><div class="v3-acts"><button type="button" class="v3-btn sm" data-a="unfocus">Vue d’ensemble</button>${S.tour ? '<button type="button" class="v3-btn sm primary" data-a="tour-next">Suivant ›</button>' : ''}</div>`;
-      else if (t === 'qui') body = `<p class="v3-sub">Touchez une personne, ici ou dans la salle : elle dit ce qu’elle fait.</p>${peopleList(r)}`;
+      else if (t === 'qui') body = `<p class="v3-sub">Touchez un groupe, ici ou dans la salle : il dit ce qu’il fait.</p>${peopleList(r)}`;
       else if (t === 'quoi') body = `<p class="v3-sub">${md(b.role)}</p>${guichetsHtml(r)}${b.pieges?.length ? `<h5>Pièges</h5>${b.pieges.map((p) => `<p>⚠ ${md(p)}</p>`).join('')}` : ''}`;
       else if (t === 'jumeau') body = twinHtml(b);
       if (S.tour && !f) body = (body || '') + `<div class="v3-acts"><button type="button" class="v3-btn sm primary" data-a="tour-next">Bâtiment suivant ›</button><button type="button" class="v3-btn sm" data-a="tour-stop">Fin du parcours</button></div>${tourBar()}`;
@@ -808,7 +823,7 @@ export function startVille3D(root, THREE, opts = {}) {
       <button type="button" class="v3-btn" data-a="metier">Vue métier (de dessus, par profession)</button>
       <button type="button" class="v3-btn" data-a="compo">Composition de chaque institution</button></div>
       <h4>Les bandes, du sud au nord</h4><div class="v3-sub">${[...STREETS].reverse().map((st) => `<span style="display:inline-flex;gap:5px;align-items:center;margin:2px 10px 2px 0"><i style="width:10px;height:10px;border-radius:3px;background:${st.c};display:inline-block"></i>${esc(st.nom)}</span>`).join('')}</div>
-      <p class="v3-sub">Joystick : voler. Glisser sur la scène : monter ou descendre (vertical), tourner la caméra (horizontal). Turbo : maintenir.</p>
+      <p class="v3-sub">Joystick : voler (le drone passe au-dessus du fleuve). Glisser sur la scène : regarder autour. Turbo : maintenir.</p>
       <h4>Les symboles des façades</h4><div class="v3-list">${TOUR3D.map((id) => `<button type="button" data-a="go" data-id="${id}"><span class="${lotOf(id).b.rive}">${svgIcon(id)}</span><span>${esc(lotOf(id).b.court)}<small>${esc(SYMBOLES[id][1])}</small></span></button>`).join('')}</div>`;
     sheet.hidden = false; sheet.scrollTop = 0;
   }
@@ -816,7 +831,7 @@ export function startVille3D(root, THREE, opts = {}) {
 
   // ---------- Modes : vol, intérieur, vue métier
   function setMode(m) {
-    S.mode = m; root.classList.toggle('drive', m === 'drive');
+    S.mode = m; root.classList.toggle('drive', m === 'drive'); root.classList.toggle('metier', m === 'metier');
     if (m !== 'inside') hideLabels(S.room ? S.room.labels : []);
     if (m !== 'metier') hideLabels(bandLabels.concat(blabels));
   }
@@ -854,8 +869,8 @@ export function startVille3D(root, THREE, opts = {}) {
   }
   function enter(lot) {
     S.inside = lot; S.room = buildRoom(lot); S.focus = null; S.route = null; S.tab = null; S.visited.add(lot.id);
-    const o = S.orb; o.yaw = 0; o.pitch = 1.2; o.r = S.room.fit; o.vy = 0; o.tgt.copy(S.room.center);
-    camera.position.set(0, 6, S.room.D); camera.lookAt(o.tgt);
+    const o = S.orb, R = S.room; S.wp = { x: R.wx0, z: R.wz0 }; S.walkTo = null; S.room.scene.add(walker); walker.position.set(S.wp.x, 0, S.wp.z); walker.rotation.y = Math.PI; o.yaw = 0.25; o.pitch = 1.05; o.r = R.fit; o.vy = 0; o.tgt.copy(R.center);
+    camera.position.set(-4, 9, -S.room.D); camera.lookAt(o.tgt);
     setMode('inside'); setUI(); closeSheets();
   }
   function exit(silent) {
@@ -865,12 +880,12 @@ export function startVille3D(root, THREE, opts = {}) {
     if (!silent) setUI();
   }
   function focusOn(p) {
-    S.focus = p; const o = S.orb; o.tgt.set(p.x, 1.1, p.z); o.r = Math.min(o.r, 6.5);
-    const dz = p.z - S.room.zp, dx = p.x; if (p.kind === 'siege' && (dx || dz)) o.yaw = Math.atan2(dx, dz) + Math.PI; else if (p.kind === 'guichet') o.yaw = 0;
-    for (const q of S.room.people) if (q.lb) q.lb.el.classList.toggle('sel', q === p);
+    S.focus = p; const o = S.orb;
+    if (!p.panneau && !p.auto) { const ps = S.room.people.filter((q) => q.g === p.g), cx = ps.reduce((a, q) => a + q.x, 0) / ps.length, zmax = Math.max(...ps.map((q) => q.z)); S.walkTo = p.kind === 'debout' ? { x: cx - 1.6, z: ps[0].z } : { x: cx, z: zmax + 1.3 }; o.r = Math.min(o.r, 10); }
+    for (const q of S.room.labels) q.el.classList.toggle('sel', q === p.lb);
     setUI();
   }
-  function unfocus() { S.focus = null; const o = S.orb; o.tgt.copy(S.room.center); o.r = S.room.fit; for (const q of S.room.people) if (q.lb) q.lb.el.classList.remove('sel'); setUI(); }
+  function unfocus() { S.focus = null; S.walkTo = null; const o = S.orb; o.r = S.room.fit; for (const q of S.room.labels) q.el.classList.remove('sel'); setUI(); }
   const startTour = (pid) => {
     const p = (VILLE.parcours || []).find((x) => x.id === pid);
     S.tour = p ? { titre: p.titre, ids: p.etapes.map(([id]) => id), etapes: p.etapes, i: 0 } : { titre: 'Tous les bâtiments', ids: TOUR3D, i: 0 };
@@ -899,7 +914,7 @@ export function startVille3D(root, THREE, opts = {}) {
   stickEl.addEventListener('pointermove', (e) => {
     if (!stick || e.pointerId !== stick.id) return;
     let dx = e.clientX - stick.x0, dy = e.clientY - stick.y0; const m = Math.hypot(dx, dy); if (m > 40) { dx *= 40 / m; dy *= 40 / m; }
-    knob.style.transform = `translate(${dx}px,${dy}px)`; stick.jx = dx / 40; stick.jy = dy / 40;
+    knob.style.transform = `translate(${dx}px,${dy}px)`; const mm = Math.hypot(dx, dy) / 40, kk = mm < 0.12 ? 0 : Math.min(1, (mm - 0.12) / 0.8) / mm; stick.jx = dx / 40 * kk; stick.jy = dy / 40 * kk;
   });
   const stickEnd = (e) => { if (!stick || e.pointerId !== stick.id) return; stick = null; knob.style.transform = ''; };
   stickEl.addEventListener('pointerup', stickEnd); stickEl.addEventListener('pointercancel', stickEnd);
@@ -916,7 +931,7 @@ export function startVille3D(root, THREE, opts = {}) {
     else if (a === 'enter' && S.near) enter(S.near); else if (a === 'exit') exit();
     else if (a === 'to' && S.room) focusOn(S.room.people[Number(t.dataset.i)]);
     else if (a === 'unfocus') unfocus();
-    else if (a === 'tab') { S.tab = S.tab === t.dataset.t ? null : t.dataset.t; if (S.focus) { S.focus = null; for (const q of S.room.people) if (q.lb) q.lb.el.classList.remove('sel'); } setUI(); }
+    else if (a === 'tab') { S.tab = S.tab === t.dataset.t ? null : t.dataset.t; if (S.focus) { S.focus = null; if (S.room) for (const q of S.room.labels) q.el.classList.remove('sel'); } setUI(); }
     else if (a === 'stop') { S.route = null; setUI(); }
     else if (a === 'tour') startTour(t.dataset.p); else if (a === 'tour-next') nextTour(); else if (a === 'tour-stop') { S.tour = null; setUI(); }
     else if (a === 'metier') metierOn(); else if (a === 'metier-off') metierOff();
@@ -927,10 +942,10 @@ export function startVille3D(root, THREE, opts = {}) {
     else if (a === 'fiche') opts.onFiche?.(t.dataset.f);
     else if (a === 'quit') opts.onQuit?.();
   });
-  // Gestes sur la scène : en vol, glisser = hauteur (vertical) et caméra (horizontal) ; dedans, orbite et pincement ;
+  // Gestes sur la scène : en vol, glisser = inclinaison (vertical) et caméra (horizontal) ; dedans, orbite et pincement ;
   // en vue métier, déplacement et pincement. Un toucher bref désigne un bâtiment ou une personne.
   const ray = new THREE.Raycaster(); const ptrs = new Map(); let gesture = null;
-  const startGesture = (id, x, y, moved) => ({ id, x0: x, y0: y, x, y, moved, alt: S.alt, off: S.camOff, yaw: S.orb.yaw, pitch: S.orb.pitch, cx: S.metier.cx, cz: S.metier.cz });
+  const startGesture = (id, x, y, moved) => ({ id, x0: x, y0: y, x, y, moved, tilt: S.tilt, off: S.camOff, yaw: S.orb.yaw, pitch: S.orb.pitch, cx: S.metier.cx, cz: S.metier.cz });
   canvas.addEventListener('pointerdown', (e) => {
     ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY }); try { canvas.setPointerCapture(e.pointerId); } catch { /* ignore */ }
     if (ptrs.size === 1) gesture = startGesture(e.pointerId, e.clientX, e.clientY, false);
@@ -945,7 +960,7 @@ export function startVille3D(root, THREE, opts = {}) {
     const ddx = e.clientX - gesture.x; gesture.x = e.clientX; gesture.y = e.clientY;
     if (S.mode === 'inside') { S.orb.yaw = gesture.yaw - dx * 0.007; S.orb.pitch = clamp(gesture.pitch + dy * 0.005, 0.35, 1.35); S.orb.vy = -ddx * 0.007; }
     else if (S.mode === 'metier') { const k = 2 * S.metier.hh / H; S.metier.cx = gesture.cx - dx * k; S.metier.cz = gesture.cz - dy * k; }
-    else { S.alt = clamp(gesture.alt - dy / 12, ALT.min, ALT.max); S.camOff = gesture.off - dx * 0.008; }
+    else { S.tilt = clamp(gesture.tilt + dy / 260, 0, 1); S.camOff = gesture.off - dx * 0.008; }
   });
   const endPtr = (e) => {
     const was = gesture; ptrs.delete(e.pointerId);
@@ -961,19 +976,34 @@ export function startVille3D(root, THREE, opts = {}) {
     const hit = ray.intersectObjects(pick, false)[0]; if (hit) { const l = lotOf(hit.object.userData.id); if (S.mode === 'metier') goTo(l); else if (l === S.near) enter(l); else goTo(l); }
   };
   canvas.addEventListener('pointerup', endPtr); canvas.addEventListener('pointercancel', endPtr);
-  canvas.addEventListener('wheel', (e) => { e.preventDefault(); if (S.mode === 'inside') S.orb.r = clamp(S.orb.r * (1 + Math.sign(e.deltaY) * 0.1), 3.5, S.room.fit * 1.6); else if (S.mode === 'metier') { S.metier.hh = clamp(S.metier.hh * (1 + Math.sign(e.deltaY) * 0.1), 8, 80); setOrtho(); } else S.alt = clamp(S.alt - Math.sign(e.deltaY) * 1.5, ALT.min, ALT.max); }, { passive: false });
+  canvas.addEventListener('wheel', (e) => { e.preventDefault(); if (S.mode === 'inside') S.orb.r = clamp(S.orb.r * (1 + Math.sign(e.deltaY) * 0.1), 3.5, S.room.fit * 1.6); else if (S.mode === 'metier') { S.metier.hh = clamp(S.metier.hh * (1 + Math.sign(e.deltaY) * 0.1), 8, 80); setOrtho(); } else S.tilt = clamp(S.tilt + Math.sign(e.deltaY) * 0.08, 0, 1); }, { passive: false });
   const io = new IntersectionObserver((en) => { visible = en[en.length - 1].isIntersecting; }); io.observe(root);
 
   // ---------- Boucle
   function input() {
     const kf = (keys.arrowup || keys.z || keys.w ? 1 : 0) - (keys.arrowdown || keys.s ? 1 : 0);
     const kt = (keys.arrowleft || keys.q || keys.a ? 1 : 0) - (keys.arrowright || keys.d ? 1 : 0);
-    if (keys.pageup || keys['+']) S.alt = clamp(S.alt + 0.4, ALT.min, ALT.max); if (keys.pagedown || keys['-']) S.alt = clamp(S.alt - 0.4, ALT.min, ALT.max);
+    if (keys.pageup || keys['+']) S.tilt = clamp(S.tilt + 0.02, 0, 1); if (keys.pagedown || keys['-']) S.tilt = clamp(S.tilt - 0.02, 0, 1);
     const jm = stick ? Math.hypot(stick.jx, stick.jy) : 0;
-    const jx = jm > 0.15 ? stick.jx : -kt, jy = jm > 0.15 ? stick.jy : -kf, m = Math.hypot(jx, jy);
-    return { jx, jy, m: Math.min(1, m), turbo: !!keys.shift || turboOn, any: m > 0.15 };
+    const jx = jm > 0.02 ? stick.jx : -kt, jy = jm > 0.02 ? stick.jy : -kf, m = Math.hypot(jx, jy);
+    return { jx, jy, m: Math.min(1, m), turbo: !!keys.shift || turboOn, any: m > 0.02 };
   }
   // Vol : le joystick pousse le drone dans la direction vue par la caméra ; il se tourne vers où il va.
+  // Marche dans la salle : le joystick déplace le visiteur (dans le sens de la caméra), la caméra le suit ;
+  // à moins de 2 m d'un groupe, son texte s'affiche.
+  function stepWalk(dt, I) {
+    const R = S.room, w = S.wp, sp = I.turbo ? 8 : 4.5; let tx = 0, tz = 0;
+    if (I.any) { S.walkTo = null; const a = S.orb.yaw + Math.PI, fx = Math.sin(a), fz = Math.cos(a), rx = -Math.cos(a), rz = Math.sin(a); tx = (fx * -I.jy + rx * I.jx) * I.m * sp; tz = (fz * -I.jy + rz * I.jx) * I.m * sp; S.orb.r += (Math.min(S.orb.r, 11) - S.orb.r) * Math.min(1, dt * 2); }
+    else if (S.walkTo) { const dx = S.walkTo.x - w.x, dz = S.walkTo.z - w.z, d = Math.hypot(dx, dz); if (d < 0.2) S.walkTo = null; else { const v = Math.min(sp * 1.4, d * 3); tx = dx / d * v; tz = dz / d * v; } }
+    w.x = clamp(w.x + tx * dt, -R.W / 2 + 0.8, R.W / 2 - 0.8); w.z = clamp(w.z + tz * dt, -R.D / 2 + 0.8, R.D / 2 - 0.8);
+    for (const q of R.people) if (q.mesh) { const dx = w.x - q.x, dz = w.z - q.z, d = Math.hypot(dx, dz); if (d < 0.8 && d > 1e-4) { w.x = q.x + dx / d * 0.8; w.z = q.z + dz / d * 0.8; } }
+    walker.position.set(w.x, 0, w.z); if (Math.hypot(tx, tz) > 0.3) walker.rotation.y += angDiff(walker.rotation.y, Math.atan2(tx, tz)) * Math.min(1, dt * 10);
+    S.orb.tgt.lerp(V3.set(w.x, 1, w.z), Math.min(1, dt * 5));
+    if (!S.walkTo && Math.hypot(tx, tz) > 0.3) {
+      let best = null, bd = 2; for (const q of R.people) if (q.mesh) { const d = Math.hypot(q.x - w.x, q.z - w.z); if (d < bd) { bd = d; best = q; } }
+      if (best && best.g !== S.focus?.g) focusOn({ ...best, auto: true, lb: best.lb });
+    }
+  }
   function stepFly(dt, I) {
     if (I.any && S.route) { S.route = null; setUI(); }
     const vmax = I.turbo ? 42 : 16; let tx = 0, tz = 0;
@@ -985,7 +1015,10 @@ export function startVille3D(root, THREE, opts = {}) {
         tx = ux * sp; tz = uz * sp;
         const wantAlt = d > 14 ? Math.max(10, S.alt) : 2.5 + (d / 14) * 8; S.alt += (wantAlt - S.alt) * Math.min(1, dt * 2.5);
       }
-    } else if (I.any) {
+    } else {
+      S.alt += (2.5 - S.alt) * Math.min(1, dt * 3);
+    }
+    if (!S.route && I.any) {
       const a = S.camYaw + S.camOff, fx = Math.sin(a), fz = Math.cos(a), rx = -Math.cos(a), rz = Math.sin(a);
       tx = (fx * -I.jy + rx * I.jx) * I.m * vmax; tz = (fz * -I.jy + rz * I.jx) * I.m * vmax;
     }
@@ -1002,7 +1035,6 @@ export function startVille3D(root, THREE, opts = {}) {
       if (best !== S.near) { S.near = best; S.tab = null; setUI(); }
       else if (!best && curBand() !== S.uiBand) setUI();
     }
-    altEl.textContent = `hauteur ${Math.round(S.alt)} m · glissez pour monter`;
   }
   const camTarget = new THREE.Vector3(), lookTarget = new THREE.Vector3();
   function stepCamera(dt) {
@@ -1013,8 +1045,8 @@ export function startVille3D(root, THREE, opts = {}) {
       camera.position.lerp(camTarget, 1 - Math.exp(-dt * 8)); S.look.lerp(lookTarget, 1 - Math.exp(-dt * 8)); camera.lookAt(S.look); return;
     }
     const a = S.camYaw + S.camOff, f = { x: Math.sin(a), z: Math.cos(a) }, sp = Math.hypot(S.vx, S.vz), alt = S.alt;
-    const dist = 6 + alt * 0.3 + sp * 0.08, h = alt + 2.4 + alt * 0.35, ahead = 9 + alt * 0.8;
-    camTarget.set(S.pos.x - f.x * dist, h, S.pos.z - f.z * dist); lookTarget.set(S.pos.x + f.x * ahead, Math.max(0, alt * 0.2), S.pos.z + f.z * ahead);
+    const T = S.tilt, dist = 7 + T * 6 + (alt - 2.5) * 0.4 + sp * 0.08, h = alt + 1.6 + T * 12 + (alt - 2.5) * 0.4, ahead = 14 - T * 8;
+    camTarget.set(S.pos.x - f.x * dist, h, S.pos.z - f.z * dist); lookTarget.set(S.pos.x + f.x * ahead, 1.2 - T * 0.8, S.pos.z + f.z * ahead);
     // À l'arrêt devant une porte : vue de trois quarts sur la façade.
     if (S.near && !S.route && sp < 1.5 && !gesture) { const l = S.near; if (l.sgn) camTarget.set(l.faceX + l.nx * (12 + alt * 0.5), 4.5 + alt * 0.7, l.z + 5); else camTarget.set(l.nx * 4.5, 8.5 + alt * 0.6, l.z + 7 + alt * 0.3); lookTarget.set(l.faceX, l.h * 0.45, l.faceZ); }
     for (const l of LOTS) if (Math.abs(camTarget.x - l.x) < l.w / 2 + 1.5 && Math.abs(camTarget.z - l.z) < l.d / 2 + 1.5) camTarget.y = Math.max(camTarget.y, l.h + 2);
@@ -1034,10 +1066,10 @@ export function startVille3D(root, THREE, opts = {}) {
     const dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (!visible || document.hidden) return;
     const I = input();
-    if (S.mode === 'drive') stepFly(dt, I);
+    if (S.mode === 'drive') stepFly(dt, I); else if (S.mode === 'inside') stepWalk(dt, I);
     stepCamera(dt); watchFps(dt);
     riverTex.offset.y -= dt * 0.08;
-    if (S.mode === 'inside') { renderer.render(S.room.scene, camera); if (frame % 2 === 0) { for (const it of S.room.labels) it.off = false; updateLabels(camera, S.room.labels, 12); } }
+    if (S.mode === 'inside') { renderer.render(S.room.scene, camera); if (frame % 2 === 0) placeStacked(camera, S.room.labels); }
     else if (S.mode === 'metier') {
       ortho.position.set(S.metier.cx, 120, S.metier.cz); ortho.lookAt(S.metier.cx, 0, S.metier.cz);
       renderer.render(city, ortho);
