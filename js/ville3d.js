@@ -177,35 +177,36 @@ export const QUARTIERS_LISTE = [
 // se font face de part et d'autre du pont de leur rue ; la chambre de discipline est en face de son conseil.
 // Le plan imprimable (js/villeplan.js) reprend exactement cette disposition.
 export const STREETS = [
-  { id: 'intl', nom: 'Avenue internationale', z: -60 },
-  { id: 'tutelle', nom: 'Rue des tutelles', z: -40 },
-  { id: 'nat', nom: 'Rue nationale', z: -20 },
+  { id: 'intl', nom: 'Avenue internationale', z: -51 },
+  { id: 'tutelle', nom: 'Rue des tutelles', z: -34 },
+  { id: 'nat', nom: 'Rue nationale', z: -17 },
   { id: 'sup', nom: 'Rue de la supervision', z: 0 },
-  { id: 'reg', nom: 'Rue régionale', z: 20 },
-  { id: 'recours', nom: 'Rue des recours', z: 40 },
-  { id: 'resp', nom: 'Rue des responsabilités', z: 60 },
+  { id: 'reg', nom: 'Rue régionale', z: 17 },
+  { id: 'recours', nom: 'Rue des recours', z: 34 },
+  { id: 'resp', nom: 'Rue des responsabilités', z: 51 },
 ];
 // Bâtiment → [rue, côté de la rue (n = nord, s = sud), x]. x < 0 : rive EC, x > 0 : rive CAC.
 export const PLACES = {
-  ifac: ['intl', 'n', -35], iesba: ['intl', 'n', -25], iaasb: ['intl', 'n', -15], iaesb: ['intl', 'n', 15], aceu: ['intl', 'n', 25], ue: ['intl', 'n', 35],
-  bercy: ['tutelle', 'n', -25], chancellerie: ['tutelle', 'n', 25],
-  cnoec: ['nat', 'n', -25], chnat: ['nat', 's', -25], cncc: ['nat', 'n', 25],
-  terrain: ['sup', 'n', -25], h2a: ['sup', 'n', 15], sanctions: ['sup', 'n', 25], amf: ['sup', 's', 15], anc: ['sup', 's', 25],
-  croec: ['reg', 'n', -25], chreg: ['reg', 's', -25], crcc: ['reg', 'n', 25],
-  ca: ['recours', 'n', -25], cass: ['recours', 'n', -15], ce: ['recours', 'n', 15], ta: ['recours', 'n', 25], ccomptes: ['recours', 's', 25],
-  tj: ['resp', 'n', -25], tcorr: ['resp', 'n', -15], parquet: ['resp', 'n', 15], tracfin: ['resp', 'n', 25], cavec: ['resp', 's', -25],
+  ifac: ['intl', 'n', -29.5], iesba: ['intl', 'n', -21], iaasb: ['intl', 'n', -12.5], iaesb: ['intl', 'n', 12.5], aceu: ['intl', 'n', 21], ue: ['intl', 'n', 29.5],
+  bercy: ['tutelle', 'n', -21], chancellerie: ['tutelle', 'n', 21],
+  cnoec: ['nat', 'n', -21], chnat: ['nat', 's', -21], cncc: ['nat', 'n', 21],
+  terrain: ['sup', 'n', -21], h2a: ['sup', 'n', 12.5], sanctions: ['sup', 'n', 21], amf: ['sup', 's', 12.5], anc: ['sup', 's', 21],
+  croec: ['reg', 'n', -21], chreg: ['reg', 's', -21], crcc: ['reg', 'n', 21],
+  ca: ['recours', 'n', -21], cass: ['recours', 'n', -12.5], ce: ['recours', 'n', 12.5], ta: ['recours', 'n', 21], ccomptes: ['recours', 's', 21],
+  tj: ['resp', 'n', -21], tcorr: ['resp', 'n', -12.5], parquet: ['resp', 'n', 12.5], tracfin: ['resp', 'n', 21], cavec: ['resp', 's', -21],
 };
 export const TOUR3D = Object.keys(PLACES);
-const RH = 2.4, AVENUES = [-44, -6.5, 6.5, 44], RIVER = { x0: -4, x1: 4, z0: -53, z1: 30 }, BOUNDS = { x0: -46, x1: 46, z0: -63, z1: 63 }, CAR_R = 1.3, TERRAIN = { x: 52, z: 76 };
+const RH = 2.4, AVENUES = [-37, -5.4, 5.4, 37], RIVER = { x0: -3, x1: 3, z0: -46, z1: 25.5 }, BOUNDS = { x0: -39, x1: 39, z0: -54, z1: 54 }, CAR_R = 1.3, TERRAIN = { x: 44, z: 63 };
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const hyp = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const angDiff = (a, b) => { let d = (b - a) % (2 * Math.PI); if (d > Math.PI) d -= 2 * Math.PI; if (d < -Math.PI) d += 2 * Math.PI; return d; };
 
 export const LOTS = VILLE.batiments.map((b) => {
   const [sid, side, x] = PLACES[b.id]; const si = STREETS.findIndex((s) => s.id === sid); const st = STREETS[si];
-  const w = clamp(b.w * 0.075, 6, 8.5), d = clamp(b.d * 0.075, 4, 5.5), h = b.style === 'vide' ? 0.2 : 2.2 + b.h * 0.06;
-  const sgn = side === 'n' ? -1 : 1, faceZ = st.z + sgn * (RH + 1), z = faceZ + sgn * d / 2;
-  return { id: b.id, b, st, si, side, sgn, x, z, w, d, h, faceZ, stop: { x, z: st.z + sgn * 1.1 } };
+  const w = clamp(b.w * 0.075, 6, 8.3), d = clamp(b.d * 0.075, 4, 5), h = b.style === 'vide' ? 0.2 : 2.2 + b.h * 0.06;
+  const sgn = side === 'n' ? -1 : 1, faceZ = st.z + sgn * (RH + 0.6), z = faceZ + sgn * d / 2;
+  const quartier = st.id === 'intl' ? 'intl' : ['recours', 'resp'].includes(st.id) ? 'justice' : b.rive;
+  return { id: b.id, b, st, si, side, sgn, x, z, w, d, h, faceZ, quartier, stop: { x, z: st.z + sgn * 1.1 } };
 });
 export const lotOf = (id) => LOTS.find((l) => l.id === id);
 
@@ -217,7 +218,7 @@ const riverRects = () => {
 };
 const OBST = [
   ...LOTS.filter((l) => l.b.style !== 'vide').map((l) => ({ x0: l.x - l.w / 2, x1: l.x + l.w / 2, z0: l.z - l.d / 2, z1: l.z + l.d / 2 })),
-  ...riverRects(), { x: 0, z: 50, r: 2.6 }, { x: 0, z: -67, r: 2.4 },
+  ...riverRects(), { x: 0, z: 42.5, r: 2.4 }, { x: 0, z: -57, r: 2.2 },
 ];
 function pushOut(p, R) {
   let hit = false;
@@ -285,9 +286,6 @@ export const VILLE3D_CSS = `
 .v3-btn.on { background: var(--text); border-color: var(--text); color: var(--card); }
 .v3-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 .v3-mini { position: absolute; right: max(8px, env(safe-area-inset-right, 0px)); top: calc(56px + var(--st)); width: 84px; height: 124px; border-radius: 10px; border: 1px solid var(--line); cursor: pointer; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
-.v3-tilt { position: absolute; right: max(8px, env(safe-area-inset-right, 0px)); top: calc(188px + var(--st)); display: flex; flex-direction: column; gap: 6px; z-index: 2; }
-.v3-tilt .v3-btn { width: 84px; min-height: 40px; flex-direction: column; gap: 0; padding: 4px; font-size: 14px; line-height: 1; }
-.v3-tilt small { font-size: 10.5px; font-weight: 600; color: var(--muted); }
 .v3-card { position: absolute; left: max(8px, env(safe-area-inset-left, 0px)); right: max(8px, env(safe-area-inset-right, 0px)); bottom: calc(8px + var(--sb)); max-height: 40%; overflow: auto; touch-action: pan-y; z-index: 2; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: color-mix(in srgb, var(--card) 95%, transparent); line-height: 1.4; }
 .v3.touch .v3-card { bottom: calc(112px + var(--sb)); max-height: 30%; }
 .v3-card .t { display: flex; gap: 8px; align-items: center; font-weight: 800; font-size: 15px; }
@@ -335,7 +333,6 @@ export function startVille3D(root, THREE, opts = {}) {
   root.innerHTML = `<canvas class="v3-gl"></canvas>
     <div class="v3-top"><div class="v3-where" id="v3-where"></div><button type="button" class="v3-btn primary" data-a="list">Aller à</button><button type="button" class="v3-btn" data-a="opts" aria-label="Options">☰</button>${opts.onQuit ? '<button type="button" class="v3-btn v3-quit" data-a="quit" aria-label="Quitter la visite">✕</button>' : ''}</div>
     <canvas class="v3-mini" id="v3-mini" data-a="map" aria-label="Carte de la ville"></canvas>
-    <div class="v3-tilt"><button type="button" class="v3-btn" data-a="tilt" data-d="-1" aria-label="Voir plus loin">▲<small>loin</small></button><button type="button" class="v3-btn" data-a="tilt" data-d="1" aria-label="Voir de plus haut">▼<small>haut</small></button></div>
     <div class="v3-card" id="v3-card"></div>
     <div class="v3-stick" id="v3-stick"><i></i></div>
     <div class="v3-pad"><button type="button" class="v3-btn" id="v3-turbo" aria-label="Turbo (maintenir)">Turbo</button></div>
@@ -403,29 +400,54 @@ export function startVille3D(root, THREE, opts = {}) {
   const sun = new THREE.DirectionalLight(0xffffff, dark ? 0.55 : 0.85); sun.position.set(50, 90, 30); city.add(sun);
   const C = dark
     ? { ground: '#1a2333', north: '#232c3d', south: '#262a33', ecz: '#103a43', cacz: '#291f47', river: '#1e3d73', road: '#3a4354', walk: '#2b3445' }
-    : { ground: '#d5dde7', north: '#c9d1dc', south: '#d6d0c7', ecz: '#c3e4ea', cacz: '#e0d6f5', river: '#8fb6e8', road: '#8f98a6', walk: '#e7ecf2' };
+    : { ground: '#d5dde7', north: '#cdd8e8', south: '#e2d6c1', ecz: '#c3e4ea', cacz: '#e0d6f5', river: '#8fb6e8', road: '#8f98a6', walk: '#e7ecf2' };
+  const ACC = { intl: col.primary, ec: col.ec, cac: col.cac, justice: dark ? '#d6a65a' : '#a16207' };
+  const zoneKind = (x, z) => (z < RIVER.z0 ? 'intl' : z > RIVER.z1 ? 'justice' : x < 0 ? 'ec' : 'cac');
   const zone = (x0, x1, z0, z1, c, y) => { const m = plane(x1 - x0, z1 - z0, c, y); m.position.set((x0 + x1) / 2, y, (z0 + z1) / 2); city.add(m); };
   const GX = TERRAIN.x, GZ = TERRAIN.z;
   zone(-GX, GX, -GZ, GZ, C.ground, 0);
-  zone(-GX, GX, -GZ, RIVER.z0, C.north, 0.01); zone(-GX, GX, RIVER.z1, GZ, C.south, 0.01);
-  zone(-GX, RIVER.x0, RIVER.z0, RIVER.z1, C.ecz, 0.01); zone(RIVER.x1, GX, RIVER.z0, RIVER.z1, C.cacz, 0.01);
+  // Chaque quartier a son pavage : dalles en losange (international), carreaux (rive EC), briques en quinconce
+  // (rive CAC), grandes dalles de pierre (justice).
+  const paving = (kind, base) => {
+    const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d');
+    x.fillStyle = base; x.fillRect(0, 0, 128, 128); x.strokeStyle = dark ? 'rgba(255,255,255,.08)' : 'rgba(15,23,42,.10)'; x.lineWidth = 3;
+    x.beginPath();
+    if (kind === 'intl') { for (let i = -128; i <= 128; i += 32) { x.moveTo(i, 0); x.lineTo(i + 128, 128); x.moveTo(i + 128, 0); x.lineTo(i, 128); } }
+    else if (kind === 'ec') { for (let i = 0; i <= 128; i += 32) { x.moveTo(i, 0); x.lineTo(i, 128); x.moveTo(0, i); x.lineTo(128, i); } }
+    else if (kind === 'cac') { for (let r = 0; r < 8; r++) { const y = r * 16; x.moveTo(0, y); x.lineTo(128, y); for (let i = (r % 2) * 16; i <= 128; i += 32) { x.moveTo(i, y); x.lineTo(i, y + 16); } } }
+    else { for (let i = 0; i <= 128; i += 64) { x.moveTo(i, 0); x.lineTo(i, 128); x.moveTo(0, i); x.lineTo(128, i); } x.moveTo(32, 64); x.lineTo(32, 128); x.moveTo(96, 0); x.lineTo(96, 64); }
+    x.stroke();
+    const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; return t;
+  };
+  const pzone = (x0, x1, z0, z1, kind, base) => {
+    const t = paving(kind, base); t.repeat.set((x1 - x0) / 8, (z1 - z0) / 8);
+    const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(x1 - x0, z1 - z0)), keep(new THREE.MeshLambertMaterial({ map: t })));
+    m.rotation.x = -Math.PI / 2; m.position.set((x0 + x1) / 2, 0.01, (z0 + z1) / 2); city.add(m);
+  };
+  pzone(-GX, GX, -GZ, RIVER.z0, 'intl', C.north); pzone(-GX, GX, RIVER.z1, GZ, 'justice', C.south);
+  pzone(-GX, RIVER.x0, RIVER.z0, RIVER.z1, 'ec', C.ecz); pzone(RIVER.x1, GX, RIVER.z0, RIVER.z1, 'cac', C.cacz);
   zone(RIVER.x0, RIVER.x1, RIVER.z0, RIVER.z1, C.river, 0.015);
   for (const s of STREETS) zone(AVENUES[0] - RH, AVENUES[3] + RH, s.z - RH, s.z + RH, C.road, 0.03);
   for (const x of AVENUES) zone(x - RH, x + RH, STREETS[0].z - RH, STREETS[6].z + RH, C.road, 0.03);
   const dash = lam(dark ? '#cbd5e1' : '#ffffff');
-  for (const s of STREETS) for (let x = -42; x < 42; x += 4) box(city, 1.6, 0.02, 0.18, x, 0.05, s.z, dash);
-  for (const s of STREETS.filter((t) => t.z > RIVER.z0 && t.z < RIVER.z1)) { const par = lam(dark ? '#94a3b8' : '#475569'); box(city, 8, 0.6, 0.3, 0, 0.3, s.z - RH, par); box(city, 8, 0.6, 0.3, 0, 0.3, s.z + RH, par); }
+  for (const s of STREETS) for (let x = -35; x < 35; x += 4) box(city, 1.6, 0.02, 0.18, x, 0.05, s.z, dash);
+  for (const s of STREETS.filter((t) => t.z > RIVER.z0 && t.z < RIVER.z1)) { const par = lam(dark ? '#94a3b8' : '#475569'); box(city, 6, 0.6, 0.3, 0, 0.3, s.z - RH, par); box(city, 6, 0.6, 0.3, 0, 0.3, s.z + RH, par); }
   // Repères : globe au nord, fontaine de la justice au sud, panneaux des rives.
-  const globe = new THREE.Mesh(keep(new THREE.SphereGeometry(2, 20, 14)), lam(col.primary, { wireframe: true })); globe.position.set(0, 3.2, -67); city.add(globe);
-  box(city, 1.8, 1.2, 1.8, 0, 0.6, -67, lam('#94a3b8'));
-  const fountain = new THREE.Mesh(keep(new THREE.CylinderGeometry(2.6, 2.8, 0.7, 24)), lam('#cbd5e1')); fountain.position.set(0, 0.35, 50); city.add(fountain);
-  const water = new THREE.Mesh(keep(new THREE.CylinderGeometry(2.2, 2.2, 0.2, 24)), lam(C.river)); water.position.set(0, 0.75, 50); city.add(water);
-  box(city, 0.5, 2.4, 0.5, 0, 1.2, 50, lam('#cbd5e1'));
+  const globe = new THREE.Mesh(keep(new THREE.SphereGeometry(2, 20, 14)), lam(col.primary, { wireframe: true })); globe.position.set(0, 3.2, -57); city.add(globe);
+  box(city, 1.8, 1.2, 1.8, 0, 0.6, -57, lam('#94a3b8'));
+  const fountain = new THREE.Mesh(keep(new THREE.CylinderGeometry(2.2, 2.4, 0.7, 24)), lam('#cbd5e1')); fountain.position.set(0, 0.35, 42.5); city.add(fountain);
+  const water = new THREE.Mesh(keep(new THREE.CylinderGeometry(1.9, 1.9, 0.2, 24)), lam(C.river)); water.position.set(0, 0.75, 42.5); city.add(water);
+  box(city, 0.5, 2.4, 0.5, 0, 1.2, 42.5, lam('#cbd5e1'));
   const signs = [];
-  const sign = (text, x, y, z, o = {}) => { const s = label(text, { size: 44, k: 0.012, ...o }); s.position.set(x, y, z); city.add(s); signs.push(s); return s; };
+  const sign = (text, x, y, z, o = {}) => { const s = label(text, { size: 44, k: 0.0085, ...o }); s.position.set(x, y, z); city.add(s); signs.push(s); return s; };
   for (const s of STREETS) sign(s.nom, 0, 4.2, s.z, { bg: col.text, fg: col.card, border: col.text });
-  for (const z of [RIVER.z0 - 1.5, RIVER.z1 + 1]) { sign('Rive EC · expert-comptable', -25, 3, z, { border: col.ec, fg: col.ec }); sign('Rive CAC · commissaire aux comptes', 25, 3, z, { border: col.cac, fg: col.cac }); }
-  sign('Quartier international', 0, 6.4, -67, { size: 40 }); sign('Quartier judiciaire', 0, 4.4, 50, { size: 40 });
+    // Portes des rives : une arche sur chaque quai, à l'entrée nord et à l'entrée sud du quartier.
+  for (const [ax, kind, txt] of [[AVENUES[1], 'ec', 'Rive EC · l’Ordre'], [AVENUES[2], 'cac', 'Rive CAC · l’audit']]) for (const z of [RIVER.z0 + 1.2, RIVER.z1 - 1.2]) {
+    const m = lam(ACC[kind]);
+    box(city, 0.5, 4.2, 0.5, ax - RH - 0.3, 2.1, z, m); box(city, 0.5, 4.2, 0.5, ax + RH + 0.3, 2.1, z, m); box(city, 2 * RH + 1.6, 0.6, 0.6, ax, 4.4, z, m);
+    sign(txt, ax, 5.3, z, { border: ACC[kind], fg: ACC[kind], size: 40, k: 0.0075 });
+  }
+  sign('Quartier international', 0, 6.2, -57, { size: 40 }); sign('Quartier judiciaire', 0, 4.4, 42.5, { size: 40 });
 
   // Bâtiments : petits volumes, façade côté rue avec le symbole, porte, étiquette.
   const sideTex = {};
@@ -444,6 +466,33 @@ export function startVille3D(root, THREE, opts = {}) {
     drawIcon(x, SYMBOLES[lot.id][0], cx - r * 0.62, cy - r * 0.62, r * 1.24, col[lot.b.rive], 2.2);
     return canvasTex(c);
   };
+  // Silhouettes de quartier : dôme et drapeau (international), toit à deux pans (rive EC), couronne de verre
+  // (rive CAC), colonnade et fronton (justice).
+  const PRISM = (() => { const sh = new THREE.Shape(); sh.moveTo(-0.5, 0); sh.lineTo(0.5, 0); sh.lineTo(0, 1); sh.lineTo(-0.5, 0); return keep(new THREE.ExtrudeGeometry(sh, { depth: 1, bevelEnabled: false }).translate(0, 0, -0.5)); })();
+  const DOME = keep(new THREE.SphereGeometry(1, 18, 10, 0, Math.PI * 2, 0, Math.PI / 2)), COL = keep(new THREE.CylinderGeometry(0.17, 0.2, 1, 8));
+  const FLAGS = ['#dc2626', '#f59e0b', '#16a34a', '#2563eb', '#7c3aed', '#0891b2'];
+  let flagI = 0;
+  function archi(lot) {
+    const { x, z, w, d, h, sgn, faceZ } = lot, top = h + 0.25;
+    if (lot.quartier === 'intl') {
+      const r = Math.min(w, d) * 0.34, dome = new THREE.Mesh(DOME, lam(dark ? '#cbd5e1' : '#e2e8f0')); dome.scale.set(r, r * 0.9, r); dome.position.set(x, top, z); city.add(dome);
+      box(city, 0.08, 2.2, 0.08, x + w / 2 - 0.6, top + 1.1, z, lam('#94a3b8'));
+      box(city, 0.05, 0.6, 1, x + w / 2 - 0.6, top + 1.9, z + 0.5, lam(FLAGS[flagI++ % FLAGS.length]));
+    } else if (lot.quartier === 'ec') {
+      const roof = new THREE.Mesh(PRISM, lam(dark ? '#0b4f5c' : '#0b5563')); roof.rotation.y = Math.PI / 2; roof.scale.set(d + 0.5, Math.min(2.2, d * 0.45), w + 0.5); roof.position.set(x, top, z); city.add(roof);
+      box(city, 0.6, 1, 0.6, x - w * 0.3, top + 0.9, z, lam('#7c5a3a'));
+    } else if (lot.quartier === 'cac') {
+      const glass = lam(dark ? '#a5b4fc' : '#c4b5fd', { transparent: true, opacity: 0.85 });
+      box(city, w * 0.62, h * 0.28, d * 0.62, x, top + h * 0.14, z, glass);
+      box(city, 0.06, 1.6, 0.06, x, top + h * 0.28 + 0.8, z, lam('#94a3b8'));
+    } else {
+      const stone = lam(dark ? '#e7e5e4' : '#f5f0e6'), fz = faceZ - sgn * 0.55;
+      for (const k of [-0.4, -0.2, 0.2, 0.4]) { const c = new THREE.Mesh(COL, stone); c.scale.set(1, h, 1); c.position.set(x + k * w, h / 2, fz); city.add(c); }
+      box(city, w + 0.4, 0.35, 1.3, x, h + 0.05, faceZ - sgn * 0.45, stone);
+      const ped = new THREE.Mesh(PRISM, stone); ped.scale.set(w + 0.4, 1.3, 0.5); ped.position.set(x, h + 0.22, faceZ - sgn * 0.6); city.add(ped);
+      box(city, w + 1.2, 0.3, 1.6, x, 0.15, faceZ - sgn * 0.6, stone);
+    }
+  }
   const pick = [], blabels = [];
   for (const lot of LOTS) {
     const { b } = lot;
@@ -460,27 +509,49 @@ export function startVille3D(root, THREE, opts = {}) {
       const m = new THREE.Mesh(BOX, [side, side, roof, roof, lot.sgn < 0 ? front : side, lot.sgn < 0 ? side : front]);
       m.scale.set(lot.w, lot.h, lot.d); m.position.set(lot.x, lot.h / 2, lot.z); m.userData.id = lot.id; city.add(m); pick.push(m);
       box(city, lot.w + 0.3, 0.25, lot.d + 0.3, lot.x, lot.h + 0.12, lot.z, lam(col[b.rive]));
+      archi(lot);
       box(city, 1.6, 2, 0.2, lot.x, 1, lot.faceZ - lot.sgn * 0.11, lam(dark ? '#e2e8f0' : '#1e293b'));
     }
     const lb = label(b.court, { border: col[b.rive], icon: SYMBOLES[lot.id][0], iconColor: col[b.rive], k: 0.0095 }); lb.position.set(lot.x, Math.max(lot.h, 2.6) + 1.5, lot.z); lb.userData.id = lot.id; city.add(lb); pick.push(lb); blabels.push(lb);
   }
 
-  // Arbres dans les cœurs d'îlot (un seul appel de dessin), hors rues, fleuve et bâtiments.
+  // Végétation par quartier (un appel de dessin par espèce) : massifs fleuris (international), arbres ronds
+  // (rive EC), conifères (rive CAC), cyprès (justice). Puis réverbères aux couleurs du quartier.
+  const M4 = new THREE.Matrix4(), Q0 = new THREE.Quaternion(), V3 = new THREE.Vector3(), S3 = new THREE.Vector3();
+  const instanced = (geo, mat, items) => { if (!items.length) return; const im = new THREE.InstancedMesh(geo, mat, items.length); items.forEach(([x, y, z, sx, sy, sz], i) => { M4.compose(V3.set(x, y, z), Q0, S3.set(sx, sy ?? sx, sz ?? sx)); im.setMatrixAt(i, M4); }); city.add(im); };
   {
     const spots = []; let seed = 7; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
-    for (let x = AVENUES[0] + 4; x <= AVENUES[3] - 4; x += 3.4) for (let z = STREETS[0].z - 6; z <= STREETS[6].z + 6; z += 3.4) {
-      const px = x + (rnd() - 0.5) * 1.6, pz = z + (rnd() - 0.5) * 1.6;
-      if (STREETS.some((t) => Math.abs(pz - t.z) < RH + 1.6) || AVENUES.some((ax) => Math.abs(px - ax) < RH + 1.2)) continue;
+    for (let x = AVENUES[0] + 3.5; x <= AVENUES[3] - 3.5; x += 3) for (let z = STREETS[0].z - 6; z <= STREETS[6].z + 6; z += 3) {
+      const px = x + (rnd() - 0.5) * 1.4, pz = z + (rnd() - 0.5) * 1.4;
+      if (STREETS.some((t) => Math.abs(pz - t.z) < RH + 1.4) || AVENUES.some((ax) => Math.abs(px - ax) < RH + 1)) continue;
       if (px > RIVER.x0 - 1 && px < RIVER.x1 + 1 && pz > RIVER.z0 - 1 && pz < RIVER.z1 + 1) continue;
-      if (blocked(px, pz, 1.6) || LOTS.some((l) => Math.abs(px - l.x) < l.w / 2 + 1.6 && Math.abs(pz - l.z) < l.d / 2 + 1.6)) continue;
-      if (rnd() < 0.35) continue;
-      spots.push([px, pz, 0.7 + rnd() * 0.35]);
+      if (blocked(px, pz, 1.4) || LOTS.some((l) => Math.abs(px - l.x) < l.w / 2 + 1.4 && Math.abs(pz - l.z) < l.d / 2 + 1.4)) continue;
+      if (rnd() < 0.45) continue;
+      spots.push([px, pz, 0.75 + rnd() * 0.35, zoneKind(px, pz)]);
     }
-    const crown = new THREE.InstancedMesh(keep(new THREE.ConeGeometry(0.6, 1.5, 7)), lam(dark ? '#166534' : '#4d9a5b'), spots.length);
-    const trunk = new THREE.InstancedMesh(keep(new THREE.CylinderGeometry(0.14, 0.18, 0.8, 5)), lam('#7c5a3a'), spots.length);
-    const M = new THREE.Matrix4(), Q = new THREE.Quaternion(), V = new THREE.Vector3(), Sc = new THREE.Vector3();
-    spots.forEach(([x, z, k], i) => { Sc.set(k, k, k); M.compose(V.set(x, 0.8 * k + 0.75 * k, z), Q, Sc); crown.setMatrixAt(i, M); M.compose(V.set(x, 0.4 * k, z), Q, Sc); trunk.setMatrixAt(i, M); });
-    city.add(crown, trunk);
+    const trunks = spots.filter((p) => p[3] !== 'intl').map(([x, z, k]) => [x, 0.4 * k, z, k]);
+    instanced(keep(new THREE.CylinderGeometry(0.13, 0.17, 0.8, 5)), lam('#7c5a3a'), trunks);
+    instanced(keep(new THREE.SphereGeometry(0.75, 10, 8)), lam(dark ? '#15803d' : '#5aa55f'), spots.filter((p) => p[3] === 'ec').map(([x, z, k]) => [x, 1.3 * k, z, k]));
+    instanced(keep(new THREE.ConeGeometry(0.6, 1.6, 7)), lam(dark ? '#166534' : '#3f8a52'), spots.filter((p) => p[3] === 'cac').map(([x, z, k]) => [x, 1.5 * k, z, k]));
+    instanced(keep(new THREE.ConeGeometry(0.32, 2.4, 7)), lam(dark ? '#14532d' : '#2f6b3f'), spots.filter((p) => p[3] === 'justice').map(([x, z, k]) => [x, 1.6 * k, z, k]));
+    const beds = spots.filter((p) => p[3] === 'intl');
+    instanced(keep(new THREE.CylinderGeometry(0.9, 0.9, 0.35, 10)), lam(dark ? '#334155' : '#94a3b8'), beds.map(([x, z]) => [x, 0.17, z, 1]));
+    instanced(keep(new THREE.SphereGeometry(0.75, 8, 6)), lam('#f472b6'), beds.map(([x, z, k]) => [x, 0.45, z, k, 0.5 * k, k]));
+  }
+  {
+    const lamps = { intl: [], ec: [], cac: [], justice: [] }, posts = [];
+    for (const st of STREETS) for (const side of [-1, 1]) for (let x = AVENUES[0] + 4; x <= AVENUES[3] - 4; x += 6) {
+      const z = st.z + side * (RH + 0.25);
+      if (Math.abs(x) < RIVER.x1 + 1 && st.z > RIVER.z0 && st.z < RIVER.z1) continue;
+      if (LOTS.some((l) => l.st === st && l.sgn === side && Math.abs(x - l.x) < 1.6)) continue;
+      posts.push([x, 1.3, z, 1, 2.6, 1]); lamps[zoneKind(x, z)].push([x, 2.7, z, 1]);
+    }
+    instanced(keep(new THREE.CylinderGeometry(0.06, 0.08, 1, 6)), lam(dark ? '#94a3b8' : '#475569'), posts);
+    const head = keep(new THREE.SphereGeometry(0.24, 10, 8));
+    for (const k of Object.keys(lamps)) instanced(head, lam(ACC[k], { emissive: ACC[k], emissiveIntensity: dark ? 0.7 : 0.25 }), lamps[k]);
+    // Place du globe : mâts et drapeaux ; place de la justice : quatre colonnes autour de la fontaine.
+    FLAGS.forEach((c, i) => { const a = (i / FLAGS.length) * Math.PI * 2, x = Math.cos(a) * 4.2, z = -57 + Math.sin(a) * 3.2; box(city, 0.07, 3, 0.07, x, 1.5, z, lam('#94a3b8')); box(city, 0.05, 0.55, 0.9, x, 2.7, z + 0.45, lam(c)); });
+    for (const [dx, dz] of [[-3.6, -2.2], [3.6, -2.2], [-3.6, 2.2], [3.6, 2.2]]) { const c = new THREE.Mesh(COL, lam(dark ? '#e7e5e4' : '#f5f0e6')); c.scale.set(1.3, 3, 1.3); c.position.set(dx, 1.5, 42.5 + dz); city.add(c); }
   }
 
   // Véhicule
@@ -627,7 +698,7 @@ export function startVille3D(root, THREE, opts = {}) {
 
   // ---------- État
   const S = {
-    pos: new THREE.Vector3(0, 0, 33), heading: Math.PI, v: 0, camYaw: Math.PI, view: 'chase', look: new THREE.Vector3(0, 1, 40),
+    pos: new THREE.Vector3(0, 0, 29), heading: Math.PI, v: 0, camYaw: Math.PI, view: 'chase', look: new THREE.Vector3(0, 1, 40),
     tilt: 0.45, enterCd: { id: null, until: 0 }, inside: null, room: null, wv: { x: 0, z: 0 }, walkTo: null, focus: null, near: null, route: null, tour: null, quiz: null, wantHeading: null, instant: false,
   };
   let lastWhere = '';
@@ -653,7 +724,7 @@ export function startVille3D(root, THREE, opts = {}) {
         <div class="v3-acts"><button type="button" class="v3-btn primary" data-a="enter">Entrer</button>${opts.onFiche ? `<button type="button" class="v3-btn" data-a="fiche" data-f="${esc(b.fiche)}">Fiche</button>` : ''}${twin ? `<button type="button" class="v3-btn" data-a="go" data-id="${twin.id}">Jumeau : ${esc(twin.b.court)}</button>` : ''}${S.tour ? '<button type="button" class="v3-btn" data-a="tour-next">Suivant ›</button><button type="button" class="v3-btn" data-a="tour-stop">Fin du parcours</button>' : ''}</div>${tourBar()}`;
     } else {
       const st = STREETS.reduce((a, t) => (Math.abs(t.z - S.pos.z) < Math.abs(a.z - S.pos.z) ? t : a));
-      h = `${S.quiz ? '<div class="t">Trouvez le bon bâtiment</div>' : ''}<p class="v3-sub" style="margin:0 0 6px">Pour entrer : foncez dans n’importe quel mur, ou « Entrer » devant la porte.</p><div class="v3-acts" style="margin-top:0"><button type="button" class="v3-btn primary" data-a="list">Aller à…</button>${S.quiz ? '<button type="button" class="v3-btn" data-a="quiz-stop">Arrêter le jeu</button>' : '<button type="button" class="v3-btn" data-a="tour">Parcours du palais</button><button type="button" class="v3-btn" data-a="quiz">Qui fait quoi ?</button>'}</div>
+      h = `${S.quiz ? '<div class="t">Trouvez le bon bâtiment</div>' : ''}<p class="v3-sub" style="margin:0 0 6px">Entrer : foncez dans un mur. Glissez le doigt sur la scène, de haut en bas, pour voir plus loin ou de plus haut.</p><div class="v3-acts" style="margin-top:0"><button type="button" class="v3-btn primary" data-a="list">Aller à…</button>${S.quiz ? '<button type="button" class="v3-btn" data-a="quiz-stop">Arrêter le jeu</button>' : '<button type="button" class="v3-btn" data-a="tour">Parcours du palais</button><button type="button" class="v3-btn" data-a="quiz">Qui fait quoi ?</button>'}</div>
         <div class="v3-sub" style="margin-top:8px">${esc(st.nom)} :</div>${streetChips(st, null)}`;
     }
     card.innerHTML = h; card.scrollTop = 0; reframe();
@@ -784,7 +855,6 @@ export function startVille3D(root, THREE, opts = {}) {
     else if (a === 'mode') { S.instant = t.dataset.v === 'instant'; openList(); }
     else if (a === 'fiche') opts.onFiche?.(t.dataset.f);
     else if (a === 'quit') opts.onQuit?.();
-    else if (a === 'tilt') S.tilt = clamp(S.tilt + Number(t.dataset.d) * 0.2, 0, 1);
   });
   big.addEventListener('click', (e) => {
     const r = big.getBoundingClientRect(), x = (e.clientX - r.left - r.width / 2) / bigScale, z = (e.clientY - r.top - r.height / 2) / bigScale;
@@ -910,7 +980,7 @@ export function startVille3D(root, THREE, opts = {}) {
     if (S.inside) stepInside(dt, I); else stepCity(dt, I);
     stepCamera(dt);
     globe.rotation.y += dt * 0.4;
-    if (!S.inside) { for (const sg of signs) sg.visible = camera.position.distanceTo(sg.position) > 11; for (const lb of blabels) lb.visible = camera.position.distanceTo(lb.position) > 9; }
+    if (!S.inside) { for (const sg of signs) sg.visible = camera.position.distanceTo(sg.position) > 9; for (const lb of blabels) lb.visible = camera.position.distanceTo(lb.position) > 12; }
     else for (const lb of S.room.labels) lb.visible = camera.position.distanceTo(lb.position) > 4.5; // trop proches, ils masqueraient la route
     renderer.render(S.inside ? S.room.scene : city, camera);
     if (++frame % 3 === 0) drawMini();
