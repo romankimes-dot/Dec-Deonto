@@ -271,21 +271,26 @@ const streetName = (z) => { const s = STREETS.reduce((a, t) => (Math.abs(t.z - z
 const zoneName = (x, z) => (z < RIVER.z0 ? 'Quartier international' : z > RIVER.z1 ? 'Quartier judiciaire' : x < RIVER.x0 ? 'Rive EC' : x > RIVER.x1 ? 'Rive CAC' : 'Sur le pont');
 
 export const VILLE3D_CSS = `
-.v3 { position: relative; height: min(calc(100dvh - 150px), 760px); min-height: 440px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--card); color: var(--text); touch-action: none; user-select: none; -webkit-user-select: none; outline: none; font-size: 14px; }
+.v3 { --st: env(safe-area-inset-top, 0px); --sb: env(safe-area-inset-bottom, 0px); position: relative; height: min(calc(100dvh - 150px), 760px); min-height: 440px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--card); color: var(--text); touch-action: none; user-select: none; -webkit-user-select: none; outline: none; font-size: 14px; }
 .v3 [hidden] { display: none !important; }
+.v3.v3-full { position: fixed; inset: 0; height: auto; min-height: 0; z-index: 15; border-radius: 0; border: 0; }
 .v3 .v3-gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.v3-top { position: absolute; left: 8px; right: 8px; top: 8px; display: flex; gap: 6px; align-items: flex-start; z-index: 2; }
+.v3-top { position: absolute; left: max(8px, env(safe-area-inset-left, 0px)); right: max(8px, env(safe-area-inset-right, 0px)); top: calc(8px + var(--st)); display: flex; gap: 6px; align-items: flex-start; z-index: 2; }
 .v3-where { flex: 1; min-width: 0; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--line); background: color-mix(in srgb, var(--card) 90%, transparent); font-size: 12.5px; line-height: 1.3; }
 .v3-where b { display: block; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .v3-where .q { display: block; color: var(--primary); font-weight: 700; margin-top: 2px; }
+.v3-where > .v3-sub { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .v3-btn { font: 600 13px/1.1 inherit; min-height: 38px; padding: 6px 11px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
 .v3-btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
 .v3-btn.on { background: var(--text); border-color: var(--text); color: var(--card); }
 .v3-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
-.v3-mini { position: absolute; right: 8px; top: 60px; width: 84px; height: 124px; border-radius: 10px; border: 1px solid var(--line); cursor: pointer; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
-.v3-card { position: absolute; left: 8px; right: 8px; bottom: 8px; max-height: 46%; overflow: auto; touch-action: pan-y; z-index: 2; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: color-mix(in srgb, var(--card) 95%, transparent); line-height: 1.4; }
-.v3.touch .v3-card { bottom: 118px; max-height: 34%; }
+.v3-mini { position: absolute; right: max(8px, env(safe-area-inset-right, 0px)); top: calc(56px + var(--st)); width: 84px; height: 124px; border-radius: 10px; border: 1px solid var(--line); cursor: pointer; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+.v3-card { position: absolute; left: max(8px, env(safe-area-inset-left, 0px)); right: max(8px, env(safe-area-inset-right, 0px)); bottom: calc(8px + var(--sb)); max-height: 40%; overflow: auto; touch-action: pan-y; z-index: 2; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: color-mix(in srgb, var(--card) 95%, transparent); line-height: 1.4; }
+.v3.touch .v3-card { bottom: calc(112px + var(--sb)); max-height: 30%; }
 .v3-card .t { display: flex; gap: 8px; align-items: center; font-weight: 800; font-size: 15px; }
+.v3-card .clamp { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.v3-more { margin-top: 4px; font-size: 12.5px; color: var(--muted); } .v3-more summary { cursor: pointer; font-weight: 600; }
+.v3-quit { min-width: 38px; font-size: 16px; }
 .v3-card .t svg { width: 24px; height: 24px; flex-shrink: 0; }
 .v3 .ec { color: var(--ec); } .v3 .cac { color: var(--cac); } .v3 .commun { color: var(--muted); }
 .v3-card p { margin: 4px 0; }
@@ -295,13 +300,13 @@ export const VILLE3D_CSS = `
 .v3-chips button { flex-shrink: 0; font: 600 12px/1 inherit; padding: 7px 9px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; display: inline-flex; gap: 5px; align-items: center; }
 .v3-chips button i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
 .v3-chips button svg { width: 14px; height: 14px; }
-.v3-stick { position: absolute; left: 14px; bottom: 14px; width: 100px; height: 100px; border-radius: 50%; border: 2px solid color-mix(in srgb, var(--text) 25%, transparent); background: color-mix(in srgb, var(--card) 45%, transparent); display: none; z-index: 2; }
+.v3-stick { position: absolute; left: 14px; bottom: calc(10px + var(--sb)); width: 100px; height: 100px; border-radius: 50%; border: 2px solid color-mix(in srgb, var(--text) 25%, transparent); background: color-mix(in srgb, var(--card) 45%, transparent); display: none; z-index: 2; }
 .v3-stick i { position: absolute; left: 50%; top: 50%; width: 42px; height: 42px; margin: -21px 0 0 -21px; border-radius: 50%; background: var(--primary); opacity: .85; }
-.v3-pad { position: absolute; right: 12px; bottom: 26px; display: none; gap: 8px; z-index: 2; }
+.v3-pad { position: absolute; right: 12px; bottom: calc(22px + var(--sb)); display: none; gap: 8px; z-index: 2; }
 .v3-pad .v3-btn { min-height: 54px; min-width: 76px; border-radius: 27px; }
 .v3.touch .v3-stick, .v3.touch .v3-pad { display: flex; }
 .v3-keys { position: absolute; left: 10px; bottom: 10px; font-size: 11.5px; color: var(--muted); z-index: 1; pointer-events: none; }
-.v3:not(.touch) .v3-card { bottom: 30px; }
+.v3:not(.touch) .v3-card { bottom: calc(30px + var(--sb)); }
 .v3.touch .v3-keys { display: none; }
 .v3-sheet { position: absolute; inset: 8px; z-index: 4; overflow: auto; touch-action: pan-y; border-radius: 12px; border: 1px solid var(--line); background: var(--card); padding: 0 12px 12px; }
 .v3-sheet-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; position: sticky; top: 0; background: var(--card); padding: 10px 0 8px; z-index: 1; flex-wrap: wrap; }
@@ -322,10 +327,10 @@ export const VILLE3D_CSS = `
 `;
 
 export function startVille3D(root, THREE, opts = {}) {
-  root.classList.add('v3'); root.tabIndex = 0;
+  root.classList.add('v3'); root.classList.toggle('v3-full', !!opts.full); root.tabIndex = 0;
   const touch = matchMedia('(pointer: coarse)').matches; root.classList.toggle('touch', touch);
   root.innerHTML = `<canvas class="v3-gl"></canvas>
-    <div class="v3-top"><div class="v3-where" id="v3-where"></div><button type="button" class="v3-btn primary" data-a="list">Aller à</button><button type="button" class="v3-btn" data-a="opts" aria-label="Options">☰</button></div>
+    <div class="v3-top"><div class="v3-where" id="v3-where"></div><button type="button" class="v3-btn primary" data-a="list">Aller à</button><button type="button" class="v3-btn" data-a="opts" aria-label="Options">☰</button>${opts.onQuit ? '<button type="button" class="v3-btn v3-quit" data-a="quit" aria-label="Quitter la visite">✕</button>' : ''}</div>
     <canvas class="v3-mini" id="v3-mini" data-a="map" aria-label="Carte de la ville"></canvas>
     <div class="v3-card" id="v3-card"></div>
     <div class="v3-stick" id="v3-stick"><i></i></div>
@@ -346,7 +351,15 @@ export function startVille3D(root, THREE, opts = {}) {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
   const camera = new THREE.PerspectiveCamera(58, 1, 0.5, 600);
   const resize = () => { const w = root.clientWidth || 1, h = root.clientHeight || 1; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); };
-  resize(); const ro = new ResizeObserver(resize); ro.observe(root);
+  // Décale l'image pour que le centre de la vue (la voiture, le marcheur) tombe au milieu de la zone dégagée.
+  const reframe = () => {
+    const W = root.clientWidth || 1, H = root.clientHeight || 1, rr0 = root.getBoundingClientRect();
+    const top = (root.querySelector('.v3-top')?.getBoundingClientRect().bottom ?? rr0.top) - rr0.top;
+    const cardEl = root.querySelector('.v3-card'), cardTop = cardEl && cardEl.offsetHeight ? cardEl.getBoundingClientRect().top - rr0.top : H;
+    const dy = clamp(H / 2 - (top + cardTop) / 2, 0, H * 0.32);
+    camera.setViewOffset(W, H, 0, dy, W, H); camera.updateProjectionMatrix();
+  };
+  resize(); const ro = new ResizeObserver(() => { resize(); reframe(); }); ro.observe(root);
 
   // ---------- Ressources partagées (géométries, matériaux, textures d'étiquettes)
   const disposables = [];
@@ -625,28 +638,27 @@ export function startVille3D(root, THREE, opts = {}) {
       const r = S.room, b = S.inside.b, f = S.focus;
       const chips = `<div class="v3-chips">${r.people.filter((p) => p.first).map((p) => `<button type="button" data-a="to" data-i="${r.people.indexOf(p)}">${p.panneau ? '▤' : `<i style="background:${p.color}"></i>`} ${esc(p.panneau ? p.qui.slice(0, 26) : groupLabel(p.g))}</button>`).join('')}</div>`;
       h = f ? `<div class="t"><span class="${b.rive}">${svgIcon(S.inside.id)}</span>${esc(f.qui)}</div><p>${md(f.fait)}</p>${chips}`
-        : `<div class="t"><span class="${b.rive}">${svgIcon(S.inside.id)}</span>${esc(b.nom)}</div>${pill(b)}<p class="v3-sub">Marchez vers une personne ou un panneau, ou touchez-les ci-dessous. Symbole : ${esc(SYMBOLES[S.inside.id][1])}.</p>${chips}`;
+        : `<div class="t"><span class="${b.rive}">${svgIcon(S.inside.id)}</span>${esc(b.nom)}</div><p class="v3-sub">Qui est là ? Touchez une personne ou un panneau.</p>${chips}`;
       h += `<div class="v3-acts"><button type="button" class="v3-btn" data-a="exit">Sortir</button>${opts.onFiche ? `<button type="button" class="v3-btn" data-a="fiche" data-f="${esc(b.fiche)}">Lire la fiche${opts.fiches?.[b.fiche] ? ` : ${esc(opts.fiches[b.fiche])}` : ''}</button>` : ''}${S.tour ? '<button type="button" class="v3-btn primary" data-a="tour-next">Bâtiment suivant ›</button>' : ''}</div>${tourBar()}`;
     } else if (S.route) {
       const b = S.route.lot.b;
-      h = `<div class="t"><span class="${b.rive}">${svgIcon(b.id)}</span>En route : ${esc(b.nom)}</div><p class="v3-sub">${esc(S.route.lot.st.nom)} · ${zoneName(S.route.lot.x, S.route.lot.z)}. Touchez les commandes pour reprendre le volant.</p><div class="v3-acts"><button type="button" class="v3-btn" data-a="stop">Arrêter</button></div>${tourBar()}`;
+      h = `<div class="t"><span class="${b.rive}">${svgIcon(b.id)}</span>En route : ${esc(b.court)}</div><div class="v3-acts"><button type="button" class="v3-btn" data-a="stop">Arrêter</button></div>${tourBar()}`;
     } else if (S.near) {
       const l = S.near, b = l.b, twin = b.jumeau && lotOf(b.jumeau);
-      h = `<div class="t"><span class="${b.rive}">${svgIcon(l.id)}</span>${esc(b.nom)}</div>${pill(b)}<p>${md(b.role)}</p>${b.chiffres?.length ? `<p class="v3-sub">${b.chiffres.map(esc).join(' · ')}</p>` : ''}<p class="v3-sub">Symbole : ${esc(SYMBOLES[l.id][1])}.</p>
+      h = `<div class="t"><span class="${b.rive}">${svgIcon(l.id)}</span>${esc(b.nom)}</div><p class="clamp">${md(b.role)}</p><details class="v3-more"><summary>Détails</summary>${pill(b)}${b.chiffres?.length ? `<br>${b.chiffres.map(esc).join(' · ')}` : ''}<br>Symbole : ${esc(SYMBOLES[l.id][1])}.</details>
         <div class="v3-acts"><button type="button" class="v3-btn primary" data-a="enter">Entrer</button>${opts.onFiche ? `<button type="button" class="v3-btn" data-a="fiche" data-f="${esc(b.fiche)}">Fiche</button>` : ''}${twin ? `<button type="button" class="v3-btn" data-a="go" data-id="${twin.id}">Jumeau : ${esc(twin.b.court)}</button>` : ''}${S.tour ? '<button type="button" class="v3-btn" data-a="tour-next">Suivant ›</button><button type="button" class="v3-btn" data-a="tour-stop">Fin du parcours</button>' : ''}</div>${tourBar()}`;
     } else {
       const st = STREETS.reduce((a, t) => (Math.abs(t.z - S.pos.z) < Math.abs(a.z - S.pos.z) ? t : a));
-      h = `<div class="t">${S.quiz ? 'Trouvez le bon bâtiment' : 'La ville des institutions'}</div><p class="v3-sub">Rive gauche l’expert-comptable, rive droite le commissaire aux comptes ; au nord l’international, au sud la justice. Chaque rue est un niveau : les jumeaux se font face de part et d’autre du pont.</p>
-        <div class="v3-acts"><button type="button" class="v3-btn primary" data-a="list">Aller à…</button>${S.quiz ? '<button type="button" class="v3-btn" data-a="quiz-stop">Arrêter le jeu</button>' : '<button type="button" class="v3-btn" data-a="tour">Parcours du palais</button><button type="button" class="v3-btn" data-a="quiz">Qui fait quoi ?</button>'}</div>
+      h = `${S.quiz ? '<div class="t">Trouvez le bon bâtiment</div>' : ''}<div class="v3-acts" style="margin-top:0"><button type="button" class="v3-btn primary" data-a="list">Aller à…</button>${S.quiz ? '<button type="button" class="v3-btn" data-a="quiz-stop">Arrêter le jeu</button>' : '<button type="button" class="v3-btn" data-a="tour">Parcours du palais</button><button type="button" class="v3-btn" data-a="quiz">Qui fait quoi ?</button>'}</div>
         <div class="v3-sub" style="margin-top:8px">${esc(st.nom)} :</div>${streetChips(st, null)}`;
     }
-    card.innerHTML = h; card.scrollTop = 0;
+    card.innerHTML = h; card.scrollTop = 0; reframe();
   }
   function setWhere(force) {
     const x = S.inside ? S.inside.x : S.pos.x, z = S.inside ? S.inside.z : S.pos.z;
     const head = S.inside ? `Dans : ${S.inside.b.court}` : `${zoneName(x, z)}${streetName(z) ? ` · ${streetName(z)}` : ''}`;
     const q = S.quiz ? `<span class="q">Q${S.quiz.i + 1}/${S.quiz.order.length} · ${md(S.quiz.order[S.quiz.i].q)}</span>` : '';
-    const html = `<b>${esc(head)}</b>${q || `<span class="v3-sub">${S.inside ? esc(S.inside.st.nom) : 'Aller à : liste par profession · carte : en haut à droite'}</span>`}`;
+    const html = `<b>${esc(head)}</b>${q || `<span class="v3-sub">${S.inside ? esc(S.inside.st.nom) : 'EC ◀ fleuve ▶ CAC · ▲ monde · ▼ justice'}</span>`}`;
     if (force || html !== lastWhere) { whereEl.innerHTML = html; lastWhere = html; }
   }
   const flashMsg = (txt, ok) => { flash.textContent = txt; flash.className = `v3-flash ${ok ? 'ok' : 'ko'}`; clearTimeout(flashMsg.t); flashMsg.t = setTimeout(() => { flash.className = 'v3-flash'; }, 1500); };
@@ -761,6 +773,7 @@ export function startVille3D(root, THREE, opts = {}) {
     else if (a === 'view') { S.view = S.view === 'top' ? 'chase' : 'top'; closeSheets(); }
     else if (a === 'mode') { S.instant = t.dataset.v === 'instant'; openList(); }
     else if (a === 'fiche') opts.onFiche?.(t.dataset.f);
+    else if (a === 'quit') opts.onQuit?.();
   });
   big.addEventListener('click', (e) => {
     const r = big.getBoundingClientRect(), x = (e.clientX - r.left - r.width / 2) / bigScale, z = (e.clientY - r.top - r.height / 2) / bigScale;
@@ -846,8 +859,10 @@ export function startVille3D(root, THREE, opts = {}) {
     else if (S.view === 'top') { S.camYaw = Math.PI; camTarget.set(S.pos.x, 52, S.pos.z + 16); lookTarget.set(S.pos.x, 0, S.pos.z); }
     else {
       S.camYaw += angDiff(S.camYaw, S.heading) * (1 - Math.exp(-dt * 2.6));
-      const f = { x: Math.sin(S.camYaw), z: Math.cos(S.camYaw) }, sp = Math.abs(S.v), dist = 10 + sp * 0.15, h = 6.2 + sp * 0.11;
-      camTarget.set(S.pos.x - f.x * dist, h, S.pos.z - f.z * dist); lookTarget.set(S.pos.x + f.x * 5, 1.2, S.pos.z + f.z * 5);
+      const f = { x: Math.sin(S.camYaw), z: Math.cos(S.camYaw) }, sp = Math.abs(S.v), dist = 13 - Math.min(sp, 12) * 0.2 + sp * 0.15, h = 9 - Math.min(sp, 12) * 0.15 + sp * 0.12;
+      camTarget.set(S.pos.x - f.x * dist, h, S.pos.z - f.z * dist); lookTarget.set(S.pos.x + f.x * 7, 0.8, S.pos.z + f.z * 7);
+      // À l'arrêt devant un bâtiment : vue plongeante sur sa façade, au-dessus des toits d'en face.
+      if (S.near && !S.route && sp < 2) { const l = S.near; camTarget.set(S.pos.x - f.x * 9, 15, S.pos.z - f.z * 9); lookTarget.set(l.x, l.h * 0.4, l.faceZ); }
       // La caméra passe au-dessus d'un bâtiment plutôt qu'au travers.
       for (const l of LOTS) if (Math.abs(camTarget.x - l.x) < l.w / 2 + 2 && Math.abs(camTarget.z - l.z) < l.d / 2 + 2) camTarget.y = Math.max(camTarget.y, l.h + 5);
     }
@@ -862,12 +877,13 @@ export function startVille3D(root, THREE, opts = {}) {
     if (S.inside) stepInside(dt, I); else stepCity(dt, I);
     stepCamera(dt);
     globe.rotation.y += dt * 0.4;
-    if (!S.inside) { for (const sg of signs) sg.visible = camera.position.distanceTo(sg.position) > 11; for (const lb of blabels) lb.visible = camera.position.distanceTo(lb.position) > 6.5; } // trop proches, ils masqueraient la route
+    if (!S.inside) { for (const sg of signs) sg.visible = camera.position.distanceTo(sg.position) > 11; for (const lb of blabels) lb.visible = camera.position.distanceTo(lb.position) > 9; } // trop proches, ils masqueraient la route
     renderer.render(S.inside ? S.room.scene : city, camera);
     if (++frame % 3 === 0) drawMini();
     whereT += dt; if (whereT > 0.3) { whereT = 0; setWhere(); }
   }
   snapCamera(); setWhere(true); setCard(); drawMini();
+  ro.observe(card); card.addEventListener('toggle', reframe, true);
   requestAnimationFrame(loop);
 
   return {
