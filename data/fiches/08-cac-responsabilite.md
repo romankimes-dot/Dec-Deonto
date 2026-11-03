@@ -55,7 +55,7 @@
 | Délit | Contenu | Peine |
 |---|---|---|
 | **Informations mensongères** (L.821-9, ex L.820-7) | **Donner ou confirmer** des informations mensongères sur la situation de l'entité. Exemple : **certifier sans réserve** des comptes alors qu'il sait que des dépréciations sont **manifestement infondées** | **5 ans** et **75 000 €** |
-| **Non-révélation de faits délictueux** au procureur (L.821-9, ex L.820-7) | Omettre **sciemment** de révéler | **5 ans** et **75 000 €** |
+| **Non-révélation de faits délictueux** au procureur (L.821-9, ex L.820-7) | **Ne pas révéler** au procureur les faits délictueux connus. C'est un délit intentionnel (C. pén. 121-3), même si le mot « sciemment » ne figure pas dans L.821-9 | **5 ans** et **75 000 €** |
 | **Exercice malgré une incompatibilité** (L.821-8, ex L.820-6) | Exercer la profession **nonobstant les incompatibilités légales**, en son nom ou comme associé d'une société de CAC : c'est **un délit** | **6 mois** et **7 500 €** |
 | **Usurpation du titre** ou exercice sans inscription (L.821-7, ex L.820-5) | Usage du titre de CAC **sans être inscrit** | **1 an** et **15 000 €** |
 | **Violation du secret professionnel** | C. pén. **226-13** (rendu applicable par L.821-7). Révélation **intentionnelle** : l'intention résulte de C. pén. 121-3, le texte de 226-13 ne dit pas « sciemment » | **1 an** et **15 000 €** |
@@ -71,9 +71,9 @@
 2. Toute **négligence grave** et tout **fait contraire à la probité ou à l'honneur**.
 
 ### Personnes sanctionnables par la commission des sanctions (L.820-2, L.821-70 et L.821-79)
-- Les **commissaires aux comptes**, personnes physiques et sociétés, ainsi que les **auditeurs de durabilité**.
+- Les **commissaires aux comptes**, personnes physiques et sociétés. Les **auditeurs de durabilité** et les organismes tiers indépendants ont leur propre régime (L.822-30 à L.822-32), jugé aussi par la commission des sanctions.
 - Les **contrôleurs et entités d'audit de pays tiers** inscrits.
-- Les **membres des comités spécialisés** (comités d'audit, L.821-67 à L.821-69).
+- Les **membres des comités spécialisés** (comités d'audit), en tant qu'administrateurs ou membres du conseil de surveillance d'une **EIP**, pour les manquements relatifs aux services, à la désignation, à la durée du mandat et aux honoraires (L.821-70 II 2°, L.821-67).
 - Les **associés, dirigeants et salariés** de la société de CAC qui ont participé aux manquements.
 - Les **EIP** et leurs **dirigeants** pour les manquements relatifs aux **services** fournis par le CAC, à sa **désignation**, à la **durée du mandat** et aux **honoraires** (L.821-70 II 2°).
 - **L'expert-comptable n'en relève pas** : il dépend des chambres de l'Ordre.
@@ -113,7 +113,7 @@
 |---|---|
 | **Ordinaire** (droit commun) | Les étapes ci-dessus, avec un débat contradictoire complet |
 | **Simplifiée** (L.821-81 et L.821-82) | Pour les manquements **répétés**, **simples et établis**, aux **obligations déclaratives** fixées par décret et à la **formation continue**. La formation plénière du collège saisit le **président de la commission des sanctions**, qui statue **seul et sans débat** : **sanction pécuniaire** seulement, **15 000 € au plus** (et pas plus que la proposition du collège). **Opposition** possible dans les **30 jours** (intéressé ou président de la H2A) : l'affaire revient alors devant la commission, en audience publique |
-| **Composition administrative** (L.821-78) | Après la notification des griefs, la H2A **propose** d'entrer en composition ; si l'intéressé accepte, le président de la H2A lui propose une ou plusieurs sanctions (sanction pécuniaire plafonnée à **50 000 €** pour une personne physique, **200 000 €** pour une personne morale). L'accord est **validé par la formation plénière du collège**, puis **homologué** par la commission des sanctions et **publié** ; sans homologation, retour à la procédure ordinaire |
+| **Composition administrative** (L.821-78) | Une fois les griefs **arrêtés**, la H2A **propose** d'entrer en composition ; si l'intéressé accepte, le président de la H2A lui propose une ou plusieurs sanctions (sanction pécuniaire plafonnée à **50 000 €** pour une personne physique, **200 000 €** pour une personne morale). L'accord est **validé par la formation plénière du collège**, puis **homologué** par la commission des sanctions et **publié** ; sans homologation, retour à la procédure ordinaire |
 
 - La « **comparution immédiate** » **n'existe pas** : c'est une procédure pénale.
 - **Audience** (L.821-80) : **deux mois au moins** après la notification des griefs ; **publique** (huis clos possible) ; le **président de la CRCC** dont relève la personne est **avisé** et peut être entendu ; le **président de la H2A** représente le collège et **propose une sanction** ; la commission délibère hors la présence des parties et du rapporteur général.
@@ -124,7 +124,7 @@
 ### Sanctions : personnes physiques
 1. **Avertissement**.
 2. **Blâme**.
-3. **Interdiction temporaire d'exercer** la fonction de CAC, **3 ans au plus** depuis le **1er janvier 2024** (**L.821-71** ; décision H2A CS 2025-13). Elle était de **5 ans** auparavant (H3C). Elle peut être assortie du sursis.
+3. **Interdiction d'exercer tout ou partie des missions**, ou d'en accepter de nouvelles, **3 ans au plus** depuis le **1er janvier 2024** (**L.821-71** ; décision H2A CS 2025-13). Elle était de **5 ans** auparavant (H3C). Elle peut être assortie du sursis.
 4. **Radiation** de la liste.
 5. **Retrait de l'honorariat**.
 6. **Interdiction temporaire d'exercer des fonctions d'administration ou de direction** dans une société de CAC ou une EIP (**3 ans au plus**).

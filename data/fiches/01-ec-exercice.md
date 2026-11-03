@@ -7,7 +7,7 @@
 | **Ordonnance n° 45-2138 du 19 septembre 1945** | Institue l'**Ordre** et réglemente le titre et la profession (monopole art. 2, interdictions art. 22, secret art. 21, discipline art. 49 à 53) |
 | **Décret n° 2012-432 du 30 mars 2012** | Exercice de l'activité ; contient le **code de déontologie** (art. **141 à 169**) |
 | **Loi Macron n° 2015-990** | Ouvre le périmètre : missions sociales et fiscales sans mission comptable, accompagnement des personnes physiques, création d'entreprise |
-| **Loi Pacte n° 2019-486 du 22 mai 2019** | **Mandat implicite** (présomption de mandat), recouvrement amiable de créances et paiement de dettes pour le compte des clients, honoraires de succès hors missions comptables, expert-comptable en entreprise |
+| **Loi Pacte n° 2019-486 du 22 mai 2019** | **Présomption de mandat** (dite « mandat implicite »), recouvrement amiable de créances et paiement de dettes pour le compte des clients, honoraires de succès hors missions comptables, expert-comptable en entreprise |
 | **Loi n° 2022-172 du 14 février 2022** | Statut de l'**entrepreneur individuel** (séparation des patrimoines), ouvert à l'EC ; Conseil supérieur renommé **Conseil national** |
 | **Normes professionnelles (NP)** | Élaborées par le Conseil national, **agréées par arrêté du ministre chargé de l'économie** |
 
@@ -23,7 +23,7 @@
   - **coordonne les conseils régionaux** et organise le **contrôle de qualité** ;
   - gère les **ressources** de l'Ordre (cotisations perçues par les CROEC et reversées en partie).
 - Ce qu'il **ne fait pas** : **collecter lui-même les cotisations** des membres, qui sont appelées par les **CROEC**.
-- Élections de **2020** : les membres du Conseil national sont élus au **suffrage direct** par les experts-comptables. Avant cette date, ils étaient élus par les membres des conseils régionaux.
+- **Composition** (ord. art. 33) : les **présidents des conseils régionaux**, membres de droit, et des **membres élus** au scrutin de liste. Depuis les élections de **2020**, ces membres élus le sont au **suffrage direct** par les experts-comptables ; avant, ils étaient élus par les membres des conseils régionaux.
 - Mandat : **4 ans**.
 
 ### Conseils régionaux (CROEC)
@@ -37,7 +37,7 @@
 ### Commissaire du gouvernement
 - Il est placé auprès du **Conseil national** et de **chaque CROEC** et représente la **tutelle** (ministre chargé de l'économie).
 - Il **assiste aux séances**, **reçoit les décisions** et peut les **contester**.
-- **Inscription au tableau** : la décision du CROEC lui est notifiée. Il peut **former un recours** contre une inscription ou un refus d'inscription devant le **comité national du tableau**.
+- **Inscription au tableau** : la décision du CROEC lui est notifiée. Contre une **inscription**, c'est lui qui peut la déférer au **comité national du tableau** ; contre un **refus d'inscription**, c'est l'**intéressé** qui saisit ce comité (ordonnance, titre du tableau). La décision du comité peut ensuite être portée devant le Conseil d'État.
 - **Discipline** : il peut être **à l'origine d'une plainte** devant la chambre régionale, en reçoit communication et peut **faire appel** de ses décisions. Il n'est pas membre de la chambre ; les poursuites relèvent du **magistrat chargé des poursuites** (ord. art. 49).
 
 ## 3. Inscription au tableau
@@ -46,8 +46,8 @@
 - **Jouir de ses droits civils**.
 - N'avoir subi **aucune condamnation criminelle ou correctionnelle** de nature à entacher l'**honorabilité**.
 - Présenter des **garanties de moralité** jugées suffisantes par le conseil régional.
-- Être titulaire du **diplôme d'expertise comptable (DEC)**, ou bénéficier d'une **reconnaissance** (UE ou équivalence) ou d'une **autorisation** (art. 7 bis / art. 26).
-- **Aucune condition de nationalité** : le 1° de l'art. 3 II, qui l'imposait, est **abrogé**.
+- Être titulaire du **diplôme d'expertise comptable (DEC)**, ou bénéficier d'une **reconnaissance** (UE ou équivalence) ou d'une **autorisation** : au titre de l'expérience (art. 7 bis), reconnaissance des qualifications d'un ressortissant de l'**UE ou de l'EEE** (art. 26), ressortissant d'un **État tiers** titulaire d'un diplôme équivalent, **sous réserve de réciprocité** (art. 27).
+- **Plus de condition de nationalité** : le 1° de l'art. 3 II, qui l'imposait, est **abrogé** ; la réciprocité ne joue que pour l'autorisation de l'art. 27.
 
 ### Serment
 - Prêté **devant le conseil régional** de l'Ordre **dans les six mois de l'inscription** au tableau (décret 2012-432, art. 143).
@@ -106,7 +106,7 @@
   - le mandat ne doit pas porter **atteinte à l'indépendance** ;
   - le mandat ne doit pas servir à exercer indirectement une **activité interdite**.
 
-### Missions juridiques et consultations (loi 1971 art. 59)
+### Missions juridiques et consultations (ord. art. 22 ; principe posé par la loi de 1971, art. 59)
 - Les **consultations juridiques et la rédaction d'actes sous seing privé** sont permises **à titre accessoire**, pour des entreprises chez qui l'EC assure une mission **d'ordre comptable ou d'accompagnement déclaratif et administratif de caractère permanent ou habituel**, ou lorsqu'elles sont **directement liées aux travaux comptables** dont il est chargé.
 - La **rédaction d'un contrat de travail** pour un client chez qui l'EC fait **habituellement la paie** est **possible**.
 - La rédaction d'un contrat de travail ou une consultation pour un **prospect sans autre mission** n'est **pas possible**.
@@ -156,7 +156,7 @@
   - son montant est **raisonnable** ;
   - le **juge peut la modérer**, car c'est une clause pénale (C. civ. art. 1231-5).
 - Une clause réduisant la **prescription** de la responsabilité civile est **possible**, mais pas en dessous de **1 an** (C. civ. art. 2254). Voir la fiche « Responsabilité de l'expert-comptable ».
-- **Reconduction tacite** : l'information annuelle du client sur la possibilité de ne pas reconduire (loi Chatel, C. consom. L.215-1) ne concerne que les **clients consommateurs**, c'est-à-dire les personnes physiques non professionnelles. Elle ne s'applique pas aux entreprises.
+- **Reconduction tacite** : l'information annuelle du client sur la possibilité de ne pas reconduire (loi Chatel, C. consom. L.215-1) concerne les **consommateurs** et aussi les **non-professionnels**, c'est-à-dire les personnes morales qui n'agissent pas à des fins professionnelles, comme une association ou un CSE (C. consom. L.215-3). Elle ne s'applique pas aux entreprises.
 
 ### Mise à jour obligatoire de la lettre de mission
 - Changement de la **nature ou de l'étendue** de la mission.
@@ -205,7 +205,7 @@
   2. **avec observation(s)** ;
   3. **refus d'attester**.
 - Formulation de l'attestation sans observation : « … nous **n'avons pas relevé d'éléments remettant en cause la cohérence et la vraisemblance** des comptes annuels pris dans leur ensemble ».
-- Entité **dotée d'un CAC** : l'EC ne délivre **pas d'attestation**, il délivre un **compte rendu de travaux**.
+- Entité **dotée d'un CAC** : l'EC **n'a pas à délivrer**, **sauf considérations particulières**, d'attestation ; il remet en principe un **compte rendu de travaux** (NP 2300 § A10).
 - **Recommandations** à la direction : elles sont communiquées dans un **document distinct** de l'attestation (lettre de recommandations ou note de synthèse), ou **oralement**. Elles ne figurent **jamais** dans l'attestation normée.
 
 ### Examen limité (NP 2400) : 5 conclusions
@@ -244,7 +244,7 @@
   2. **Mettre en garde** ;
   3. **Exiger** ;
   4. **Refuser** (son concours, voire interrompre la mission).
-- **Mandat implicite** : mandat **non écrit** qui résulte des **circonstances** et du comportement des parties (C. civ. art. 1985), par exemple le dépôt de déclarations au nom du client. L'EC engage alors sa responsabilité de **mandataire**. Il faut le **formaliser dans la lettre de mission**.
+- **Présomption de mandat** (loi Pacte, ord. art. 2), souvent appelée « mandat implicite » : l'EC est **présumé** avoir reçu mandat de son client pour les **démarches déclaratives** fiscales et sociales et pour l'assistance lors des contrôles et des réclamations ; il n'a pas à produire de mandat écrit distinct. C'est une **présomption simple**, que le client peut renverser. Elle ne se confond pas avec le **mandat tacite** de droit commun (C. civ. art. 1985). L'EC répond de ces démarches comme **mandataire** ; préciser l'étendue du mandat dans la **lettre de mission** reste prudent.
 - Si l'EC relève des **faits délictueux** : il n'a **pas d'obligation de révélation au procureur**, contrairement au CAC. Il doit :
   - exercer son **devoir de conseil** (informer, mettre en garde) ;
   - **refuser de prêter son concours** ;
@@ -252,8 +252,8 @@
   - en cas de soupçon de blanchiment, faire une **déclaration à Tracfin**.
 
 ## 11. Loi Pacte (2019) : apports pour les EC
-- **Mandat implicite** (présomption simple de mandat pour les démarches fiscales et sociales).
-- **Élection au suffrage direct** des membres du Conseil national.
+- **Présomption de mandat** (« mandat implicite » : présomption simple pour les démarches fiscales et sociales).
+- **Élection au suffrage direct** des membres élus du Conseil national (les présidents des CROEC y siègent de droit).
 - Possibilité de **recouvrement amiable de créances** et de **paiement de dettes** pour le compte des clients.
 - **Honoraires de succès** hors missions comptables, et statut d'**expert-comptable en entreprise**.
 - Attention : les **activités commerciales accessoires** existaient déjà avant la loi Pacte, et le renommage en **Conseil national** vient de la loi **2022-172**.
@@ -265,7 +265,7 @@
 | **IFAC** (International Federation of Accountants) | Fédération mondiale ; le CNOEC et la CNCC en sont membres |
 | **IESBA** | Rédige le **Code of Ethics** international |
 | **IAASB** | Rédige les normes **ISA, ISRE 2400, ISAE 3000/3400, ISRS 4400/4410**, qui inspirent les NP |
-| **IAESB** | Normes de formation |
+| **IAESB** | Normes de formation (IES). L'IAESB a **cessé ses activités en 2019** : les IES restent en vigueur, sous la responsabilité de l'**IFAC**, conseillée par l'International Panel on Accountancy Education |
 | **Accountancy Europe** (ex-FEE) | Fédération européenne |
 
 ## 13. Formation continue (EC)

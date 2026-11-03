@@ -22,13 +22,14 @@ export const groupLabel = (g) => `${g.label}${g.n > 1 && !g.approx ? ` ×${g.n}`
 export const SALLES = {
   cnoec: { layout: 'table', groupes: [
     { n: 1, label: 'Président', role: 'elu_ec', qui: 'Le président du Conseil national', fait: 'Élu par le conseil. Le Conseil national **représente la profession** auprès des pouvoirs publics, **élabore les normes** (agréées par arrêté du ministre) et le **code de déontologie** (adopté par décret), organise la **formation** et **coordonne les CROEC**.' },
+    { approx: true, n: 6, label: 'Présidents des CROEC', role: 'elu_ec', qui: 'Un président de conseil régional', fait: 'Les **présidents des conseils régionaux** sont membres **de droit** du Conseil national (ord. art. 33).' },
     { approx: true, n: 14, label: 'Élus', role: 'elu_ec', qui: 'Un membre élu du Conseil national', fait: 'Élu **au suffrage direct** par les experts-comptables **depuis 2020** (avant : par les conseils régionaux), pour **4 ans**. L’effectif du conseil n’est pas au programme : retenir le mode d’élection et la durée.' },
-    { n: 1, label: 'Commissaire du gouvernement', role: 'gouvernement', debout: true, qui: 'Le commissaire du gouvernement', fait: 'Représente le **ministre chargé de l’économie**. Il **assiste aux séances** sans être membre, **reçoit les décisions** et peut les contester. Il peut saisir le **comité national du tableau** contre une inscription, porter plainte et faire appel en discipline.' },
+    { n: 1, label: 'Commissaire du gouvernement', role: 'gouvernement', debout: true, qui: 'Le commissaire du gouvernement', fait: 'Représente le **ministre chargé de l’économie**. Il **assiste aux séances** sans être membre, **reçoit les décisions** et peut les contester. Il peut saisir le **comité national du tableau** contre une **inscription** (contre un refus, c’est l’intéressé), porter plainte et faire appel en discipline.' },
   ] },
   croec: { layout: 'table', groupes: [
     { n: 1, label: 'Président du CROEC', role: 'elu_ec', qui: 'Le président du conseil régional', fait: '**4 années consécutives au plus**, puis **2 ans** d’interruption. **Conciliateur** (accord amiable) ou **arbitre** (sentence) ; désigne le **remplaçant provisoire** d’un confrère décédé ou empêché ; **conclut** chaque contrôle de qualité au vu du rapport.' },
     { approx: true, n: 10, label: 'Élus', role: 'elu_ec', qui: 'Un membre élu du conseil régional', fait: 'Élu pour **4 ans** ; le **bureau** est élu pour **2 ans**. Le conseil **tient le tableau**, statue sur les **inscriptions**, appelle les **cotisations**, organise le **contrôle de qualité**, reçoit le **serment** (dans les **6 mois** de l’inscription).' },
-    { n: 1, label: 'Commissaire du gouvernement', role: 'gouvernement', debout: true, qui: 'Le commissaire du gouvernement', fait: 'Placé auprès de **chaque CROEC** comme auprès du Conseil national : assiste aux séances, reçoit les décisions ; recours devant le **comité national du tableau** contre une inscription ou un refus.' },
+    { n: 1, label: 'Commissaire du gouvernement', role: 'gouvernement', debout: true, qui: 'Le commissaire du gouvernement', fait: 'Placé auprès de **chaque CROEC** comme auprès du Conseil national : assiste aux séances, reçoit les décisions ; recours devant le **comité national du tableau** contre une **inscription** ; contre un **refus**, c’est l’intéressé qui le saisit.' },
     { approx: true, n: 2, label: 'Contrôleurs qualité', role: 'pro', debout: true, qui: 'Un contrôleur de qualité', fait: 'Expert-comptable **désigné 3 ans** renouvelables par le conseil régional, **50 heures par an** au moins. Il rédige le rapport ; le **président** conclut : sans observation, simples observations, ou observations **et nouveau contrôle à un an**.' },
   ] },
   chreg: { layout: 'tribunal', groupes: [
@@ -44,17 +45,17 @@ export const SALLES = {
   ] },
   cncc: { layout: 'rangs', groupes: [
     { n: 1, label: 'Président de la CNCC', role: 'elu_cac', qui: 'Le président de la CNCC', fait: 'Élu par le Conseil national, qui élit aussi le **bureau**. Il peut **saisir le rapporteur général** de la H2A et reçoit sous **10 jours** le recours contre une décision d’un président de CRCC sur le **barème d’heures**.' },
-    { n: 17, label: 'Président de CRCC', role: 'eip', qui: 'Un président de compagnie régionale', fait: '**Tous les présidents de CRCC** (17 depuis le 1er novembre 2020) siègent de droit au Conseil national, comptés dans les **30 sièges** du collège de leur catégorie.' },
+    { n: 17, label: 'Président de CRCC', role: 'pro', qui: 'Un président de compagnie régionale', fait: '**Tous les présidents de CRCC** (17 depuis le 1er novembre 2020) siègent de droit au Conseil national, comptés dans les **30 sièges** du collège de leur catégorie.' },
     { n: 42, label: 'CAC élu', role: 'elu_cac', qui: 'Un CAC élu au Conseil national', fait: 'Deux collèges de **30 sièges** chacun, présidents de CRCC compris : **CAC d’EIP** et **CAC sans mandat d’EIP**. Chaque collège élit 30 CAC moins le nombre de présidents de CRCC de sa catégorie. **60 membres** en tout, pour **4 ans**.' },
   ] },
   crcc: { layout: 'table', groupes: [
     { n: 1, label: 'Président de la CRCC', role: 'elu_cac', qui: 'Le président de la compagnie régionale', fait: 'Exerce au moins **une mission de certification**. Statue sous **15 jours** sur les **dérogations au barème**, **concilie** co-commissaires et litiges d’**honoraires** (**3 mois**), peut **saisir le rapporteur général**, est **avisé** des audiences de la commission des sanctions.' },
-    { n: 21, label: 'Élu', role: 'elu_cac', qui: 'Un membre élu du conseil régional', fait: '**22 membres au plus** (compagnie d’au moins 900 membres). Électeurs et éligibles : **personnes physiques à jour de cotisations**, exerçant au **30 juin** ; les **sociétés** ne sont **ni électrices ni éligibles**.' },
+    { approx: true, n: 21, label: 'Élus (22 au plus avec le président)', role: 'elu_cac', qui: 'Un membre élu du conseil régional', fait: '**22 membres au plus** (compagnie d’au moins 900 membres). Électeurs et éligibles : **personnes physiques à jour de cotisations**, exerçant au **30 juin** ; les **sociétés** ne sont **ni électrices ni éligibles**.' },
   ] },
   h2a: { layout: 'table', groupes: [
     { n: 1, label: 'Président (Cour de cassation)', role: 'magistrat', qui: 'Le président de la H2A', fait: '**Magistrat de la Cour de cassation**. Le collège **poursuit** : il **arrête les griefs**, que le président **notifie** ; il soutient les griefs à l’audience et **propose une sanction** ; il peut proposer une **composition administrative**.' },
     { approx: true, n: 5, label: 'CE · Cour des comptes · AMF · ACPR · Trésor', role: 'fonctionnaire', qui: 'Un membre venu du Conseil d’État, de la Cour des comptes, de l’AMF, de l’ACPR ou du Trésor', fait: 'Le collège est composé de **non-praticiens majoritaires**. En urgence, sa formation plénière peut **suspendre provisoirement** un CAC **6 mois au plus** (pas une sanction).' },
-    { approx: true, n: 2, label: 'Personnalités qualifiées', role: 'qualifie', qui: 'Une personnalité qualifiée', fait: 'Le collège adopte aussi les **NEP** et la déontologie (homologuées par arrêté du garde des Sceaux) et délègue à la CNCC les contrôles des **non-EIP** et le **suivi de la formation**.' },
+    { approx: true, n: 2, label: 'Personnalités qualifiées', role: 'qualifie', qui: 'Une personnalité qualifiée', fait: 'Le collège adopte aussi les **NEP** et les **normes** de déontologie (homologuées par arrêté du garde des Sceaux ; le code de déontologie, lui, est un décret) et délègue à la CNCC les contrôles des **non-EIP** et le **suivi de la formation**.' },
     { n: 2, label: 'Ancien CAC', role: 'ancien_cac', qui: 'Un ancien commissaire aux comptes', fait: '**2 anciens CAC** siègent au collège. Nul ne siège **à la fois** au collège et à la commission des sanctions.' },
     { n: 1, label: 'Rapporteur général', role: 'agent', debout: true, qui: 'Le rapporteur général', fait: 'Dirige le **service des enquêtes**. Saisi par la Cour des comptes, le procureur général, les présidents de l’AMF, de l’ACPR, de la H2A, de la CNCC ou d’une CRCC ; **autosaisine** sur signalement ; **pas le garde des Sceaux**. Secret **non opposable**.' },
     { approx: true, n: 2, label: 'Contrôleurs', role: 'agent', debout: true, qui: 'Un contrôleur de la H2A', fait: '**Salarié de la H2A**, il contrôle les CAC d’**EIP** ; les non-EIP sont contrôlés par la **CNCC par délégation**. Un soupçon de blanchiment en contrôle : il informe **lui-même Tracfin**.' },
@@ -67,10 +68,10 @@ export const SALLES = {
   ] },
   bercy: { layout: 'bureau', groupes: [
     { n: 1, label: 'Ministre de l’Économie', role: 'ministre', qui: 'Le ministre chargé de l’économie', fait: '**Tutelle** de l’Ordre. **Agrée** par **arrêté** les normes professionnelles ; le code de déontologie des EC est adopté par **décret**. Il désigne les **2 fonctionnaires** de la chambre nationale de discipline.' },
-    { n: 1, label: 'Commissaire du gouvernement', role: 'gouvernement', debout: true, qui: 'Le commissaire du gouvernement', fait: 'Il part d’ici siéger (sans voix) auprès du **Conseil national** et de **chaque CROEC**. Recours au **comité national du tableau**, plainte et appel en discipline ; **jamais membre** des chambres.' },
+    { n: 1, label: 'Commissaire du gouvernement', role: 'gouvernement', debout: true, qui: 'Le commissaire du gouvernement', fait: 'Il part d’ici assister aux séances du **Conseil national** et de **chaque CROEC**. Recours au **comité national du tableau**, plainte et appel en discipline ; **jamais membre** des chambres.' },
   ] },
   chancellerie: { layout: 'bureau', groupes: [
-    { n: 1, label: 'Garde des Sceaux', role: 'ministre', qui: 'Le garde des Sceaux', fait: 'La **CNCC** est placée auprès de lui. Il **homologue par arrêté** les **NEP** adoptées par la H2A et les **conventions de délégation** ; peut **demander une NEP** ; **ne saisit pas** le rapporteur général ; désigne le président de la **chambre nationale** de discipline des EC.' },
+    { n: 1, label: 'Garde des Sceaux', role: 'ministre', qui: 'Le garde des Sceaux', fait: 'La **CNCC** est placée auprès de lui. Il **homologue par arrêté** les **NEP** adoptées par la H2A ; peut **demander une NEP** ; **ne saisit pas** le rapporteur général ; désigne le président de la **chambre nationale** de discipline des EC.' },
   ] },
   ce: { layout: 'tribunal', groupes: [
     { approx: true, n: 3, label: 'Conseillers d’État', role: 'magistrat', qui: 'Un conseiller d’État', fait: 'Pour l’**EC** : **cassation** contre la chambre nationale de discipline. Pour le **CAC** : **recours de pleine juridiction** contre la commission des sanctions, par la personne sanctionnée ou le président de la H2A après accord du collège.' },
@@ -78,7 +79,7 @@ export const SALLES = {
   ca: { layout: 'tribunal', groupes: [
     { n: 1, label: 'Premier président', role: 'magistrat', qui: 'Le premier président de la cour d’appel', fait: 'Reçoit le **serment du CAC**, **avant tout exercice**. Désigne le **magistrat qui préside la chambre régionale** de discipline des EC. Les CRCC sont établies dans le **ressort des cours d’appel**.' },
   ] },
-  ta: { layout: 'tribunal', groupes: [{ n: 1, label: 'Juge administratif', role: 'magistrat', qui: 'Le juge administratif', fait: 'Recours contre l’**inscription** ou le **refus d’inscription** sur la **liste** des CAC, tenue par la H2A. Chez l’EC : comité national du tableau, saisi par le commissaire du gouvernement.' }] },
+  ta: { layout: 'tribunal', groupes: [{ n: 1, label: 'Juge administratif', role: 'magistrat', qui: 'Le juge administratif', fait: 'Recours contre l’**inscription** ou le **refus d’inscription** sur la **liste** des CAC, tenue par la H2A. Chez l’EC : comité national du tableau, saisi par le commissaire du gouvernement contre une inscription, par l’intéressé contre un refus.' }] },
   amf: { layout: 'bureau', groupes: [
     { n: 1, label: 'Président de l’AMF', role: 'fonctionnaire', qui: 'Le président de l’AMF', fait: 'Peut **demander une NEP**, **saisir le rapporteur général** de la H2A, **demander le relèvement** d’un CAC d’une société cotée. Le **secret** du CAC lui est **levé**.' },
     { n: 1, label: 'ACPR', role: 'fonctionnaire', qui: 'Un représentant de l’ACPR', fait: 'Même rôle pour les **banques** et les **assurances**. Des membres de l’AMF et de l’ACPR siègent au **collège** de la H2A.' },
@@ -95,7 +96,7 @@ export const SALLES = {
   ifac: { layout: 'table', groupes: [{ approx: true, n: 2, label: 'CNOEC · CNCC', role: 'pro', qui: 'Un délégué du CNOEC ou de la CNCC', fait: 'Les deux institutions françaises sont **membres** de l’IFAC, fédération mondiale. Aucune norme IFAC ne s’impose directement en France.' }] },
   iesba: { layout: 'bureau', groupes: [{ n: 1, label: 'Rédacteur du Code of Ethics', role: 'pro', qui: 'Un rédacteur de l’IESBA', fait: 'Le **Code of Ethics** et sa typologie des menaces (intérêt personnel, défense, familiarité, intimidation) **ne figurent pas** dans le code ni les normes français.' }] },
   iaasb: { layout: 'bureau', groupes: [{ n: 1, label: 'Rédacteur des ISA', role: 'pro', qui: 'Un rédacteur de l’IAASB', fait: '**ISA**, **ISRE 2400**, **ISAE 3000/3400**, **ISRS 4400/4410** : elles **inspirent** les NP et les NEP, sans s’appliquer directement.' }] },
-  iaesb: { layout: 'bureau', groupes: [{ n: 1, label: 'Normes de formation', role: 'pro', qui: 'Un rédacteur de l’IAESB', fait: 'Normes **IES** de formation ; **IES 7** inspire la recommandation de **120 h sur 3 ans** de l’Ordre.' }] },
+  iaesb: { layout: 'bureau', groupes: [{ n: 1, label: 'Archiviste', role: 'pro', qui: 'L’archiviste de l’IAESB', fait: 'L’IAESB a **cessé ses activités en 2019**. Ses normes **IES** de formation restent en vigueur sous la responsabilité de l’**IFAC** ; **IES 7** inspire la recommandation de **120 h sur 3 ans** de l’Ordre.' }] },
   aceu: { layout: 'bureau', groupes: [{ n: 1, label: 'Accountancy Europe', role: 'pro', qui: 'Un représentant d’Accountancy Europe', fait: 'Ex-**FEE** : fédération **européenne** de la profession, représentation sans pouvoir normatif en France.' }] },
   ue: { layout: 'table', groupes: [{ approx: true, n: 3, label: 'CEAOB', role: 'fonctionnaire', qui: 'Un superviseur européen du CEAOB', fait: 'La **H2A** coopère ici avec ses homologues. Textes : **directive 2006/43/CE** modifiée par **2014/56/UE**, **règlement 537/2014** (EIP).' }] },
 };
@@ -134,7 +135,7 @@ export const SYMBOLES = {
   ifac: ['globe', 'le globe : la fédération mondiale'],
   iesba: ['book', 'le livre : le Code of Ethics'],
   iaasb: ['clipboard', 'la feuille de travail : les normes ISA'],
-  iaesb: ['cap', 'la toque : les normes de formation'],
+  iaesb: ['cap', 'la toque : les normes de formation (organe dissous en 2019)'],
   aceu: ['stars', 'les étoiles : la fédération européenne'],
   ue: ['flag', 'le drapeau : directives, règlement EIP, CEAOB'],
   bercy: ['euro', 'l’euro : le ministre de l’économie, tutelle de l’Ordre'],

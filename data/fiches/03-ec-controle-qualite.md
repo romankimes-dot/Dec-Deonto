@@ -1,15 +1,33 @@
-# Maîtrise et contrôle de la qualité (expertise comptable)
+# Management et contrôle de la qualité (expertise comptable)
 
 ## 1. Deux dispositifs à ne pas confondre
 
 | | **NPMQ** | **Contrôle de qualité de l'Ordre** |
 |---|---|---|
-| Nature | **Norme professionnelle** de maîtrise de la qualité, interne au cabinet | **Contrôle externe** organisé par l'Ordre |
+| Nature | **Norme professionnelle de management de la qualité** (en vigueur depuis le 1er janvier 2025 ; avant : « maîtrise de la qualité »), interne au cabinet | **Contrôle externe** organisé par l'Ordre |
 | Qui l'applique | **La structure d'exercice** (cabinet, AGC) | **Contrôleurs** désignés par l'Ordre (CROEC, sous l'égide du Conseil national) |
 | Objet | Procédures internes qui garantissent la qualité de **toutes** les missions | Vérifier le **respect des normes** (NPMQ, NP, NPLAB, déontologie) |
 | Statut | Norme **d'application générale** (avec la NPLAB et le code de déontologie) | Obligation réglementaire (D. 2012-432) |
 
-## 2. NPMQ : norme professionnelle de maîtrise de la qualité
+## 2. NPMQ : norme professionnelle de management de la qualité
+
+### La norme en vigueur (depuis le 1er janvier 2025)
+- Adoptée par le Conseil national le 20 mars 2024, **agréée par arrêté du 30 mai 2024** (JO du 17 juillet 2024). Elle **remplace** la norme de **maîtrise** de la qualité de 2011.
+- Elle est calquée sur la norme internationale **ISQM 1** : une **approche par les risques**. La structure fixe ses **objectifs qualité**, **identifie et évalue les risques** qui les menacent, puis conçoit les **réponses**.
+- **8 composantes** au lieu de 6 (intitulés d'ISQM 1, à confirmer sur le texte français {?}) :
+  1. le **processus d'évaluation des risques** de la structure ;
+  2. la **gouvernance et le leadership** ;
+  3. les **règles d'éthique** applicables ;
+  4. l'**acceptation et le maintien** des relations clients et des missions ;
+  5. la **réalisation des missions** ;
+  6. les **ressources** (humaines, technologiques, intellectuelles) ;
+  7. l'**information et la communication** ;
+  8. le **processus de suivi et de mesures correctives**.
+- La **LCB-FT** n'est plus traitée dans cette norme : elle relève de la **NPLAB**.
+- Elle s'applique toujours à **toute structure d'exercice**, quelle que soit sa taille, et à **toutes les missions**.
+
+### L'ancienne norme de maîtrise de la qualité (jusqu'au 31 décembre 2024)
+Les annales de 2018 à 2024 l'interrogent ; les numéros de paragraphe ci-dessous (§, A…) renvoient à cette ancienne norme.
 
 ### Principes
 - Elle s'applique à **toute structure d'exercice**, **quelle que soit sa taille**, et à **toutes les missions** du cabinet : comptables, sociales, juridiques, conseil…
@@ -17,7 +35,7 @@
 - Le **manuel de procédures** rappelle les **règles de déontologie** applicables, même si elles paraissent évidentes.
 - L'**indépendance** du personnel est **confirmée par écrit au moins une fois par an** : la structure obtient de tout son personnel technique une confirmation écrite du respect des règles internes d'indépendance (NPMQ § 24).
 
-### Éléments du système de qualité
+### Éléments du système de qualité (ancienne norme : 6 éléments)
 1. **Responsabilités** de la direction en matière de qualité.
 2. **Règles d'éthique** : déontologie et indépendance.
 3. **Acceptation et maintien** des clients et des missions, avec l'identification LCB-FT.

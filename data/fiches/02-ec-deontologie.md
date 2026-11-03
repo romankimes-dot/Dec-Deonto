@@ -25,11 +25,11 @@
 - **Levées** (non opposabilité) :
   - **contrôle de qualité** de l'Ordre ;
   - contrôles et enquêtes de l'**AMF** ;
-  - **audition ou témoignage en justice** en matière pénale ;
+  - **audition ou témoignage** en matière pénale {?} : la clé de l'annale 2025-11 Q4 le traite comme une levée ; un corrigé publié (Revue française de comptabilité) soutient au contraire que le secret reste **opposable** au témoin (CPP art. 109, qui réserve les art. 226-13 et 226-14 ; ord. art. 21 al. 4, qui ne délie l'EC que lorsqu'une information est ouverte ou des poursuites engagées **contre lui**) ;
   - **Tracfin** (déclaration de soupçon, droit de communication) ;
   - **administration fiscale** au titre de son droit de communication, dans les limites prévues ;
   - **défense** de l'EC poursuivi (procédure disciplinaire ou instance qui le met en cause).
-- **Opposable** à la **CNIL** {?} (annale 2025-11 Q4).
+- **CNIL** {?} : la clé de l'annale 2025-11 Q4 retient que le secret lui est **opposable** ; mais la loi 78-17 (art. 19 III) ne permet d'opposer aux agents de la CNIL que trois secrets (avocat-client, sources des journalistes, secret médical), ce qui ne comprend pas celui de l'EC. Au QCM, connaître la réponse de la clé ; en rédaction, citer l'art. 19 III.
 - **Reprise de dossier** : l'EC sortant **n'est pas délié** du secret à l'égard de son successeur. Il doit en revanche **restituer les documents** du client.
 - **Déclaration de soupçon** : il est **interdit de la révéler**, y compris au client et au confrère successeur. La violation est un délit (C. mon. fin. **L.561-18** et **L.574-1**).
 
@@ -181,7 +181,7 @@
 
 | Rôle | Fonction |
 |---|---|
-| **Expert-comptable en charge de la mission** | Il fait **personnellement** la déclaration de soupçon, quel que soit son mode d'exercice (C. mon. fin. **R.561-23 IV**, NPLAB § 47), et répond au **droit de communication** de Tracfin (NPLAB § 11). Il n'existe **pas de « déclarant désigné »** pour l'EC |
+| **Expert-comptable en charge de la mission** | Il fait **personnellement** la déclaration de soupçon, quel que soit son mode d'exercice (C. mon. fin. **R.561-23 I**, al. 2, NPLAB § 47), et répond au **droit de communication** de Tracfin (NPLAB § 11). Il n'existe **pas de « déclarant désigné »** pour l'EC |
 | **Correspondant Tracfin** | Désigné par la structure au plus tard lors de la première déclaration (à défaut, le **représentant légal**) ; il n'est **pas forcément EC**. Il répond aux demandes de Tracfin **autres** que celles qui portent sur une déclaration ou un droit de communication, diffuse les informations générales, et **ne déclare pas** (C. mon. fin. R.561-24, NPLAB § 12, 13, A12) |
 
 ### Contrôle par l'Ordre
@@ -197,7 +197,7 @@
 - Prononcées par la **chambre de discipline** : ord. **art. 53 bis**, qui renvoie au C. mon. fin. **L.561-36-3**.
 
 ## Pièges EC vs CAC
-- **Déclarant Tracfin** : pour le CAC, le **CAC signataire** déclare personnellement (NEP 9605 § 61) ; pour l'EC, c'est l'**EC en charge de la mission**, personnellement (C. mon. fin. R.561-23 IV, NPLAB § 47). Le **correspondant Tracfin** ne déclare pas.
+- **Déclarant Tracfin** : pour le CAC, le **CAC signataire** déclare personnellement (NEP 9605 § 61) ; pour l'EC, c'est l'**EC en charge de la mission**, personnellement (C. mon. fin. R.561-23 I, al. 2, NPLAB § 47). Le **correspondant Tracfin** ne déclare pas.
 - **Norme anti-blanchiment** : NPLAB pour l'EC, **NEP 9605** pour le CAC.
 - **Niveaux de vigilance** : au cours de la relation, la NPLAB n'en prévoit que **2**, **standard et renforcée** ; elle reprend toutefois des **mesures d'identification simplifiées** (société cotée : pas d'identification du bénéficiaire effectif). Côté CAC, la NEP 9605 en retient **trois** : vigilance **simplifiée** (risque faible, par exemple société cotée), **standard** et **renforcée**.
 - **Secret** : il est d'ordre public pour les deux professions. Mais le CAC bénéficie de **levées spécifiques** (CAC de la consolidante et des consolidées, président du tribunal dans l'alerte, H2A, AMF, comité d'audit) qui n'existent pas pour l'EC. Le CAC **successeur** accède aux documents de son prédécesseur en vertu de **L.821-44**, pas d'une levée du secret écrite à L.821-35.
@@ -207,6 +207,6 @@
 - **Honoraires au succès** : pour l'EC, ils sont interdits pour le monopole et pour les missions qui participent à la détermination de l'**assiette fiscale ou sociale** (ord. art. 24) ; pour le **CAC**, les honoraires **subordonnés au résultat** sont **interdits** pour toute mission ou prestation (code de déontologie CAC **art. 13**, titre I).
 
 ## À vérifier
-- **Liste exacte des levées du secret** de l'EC : la formule « audition pénale en qualité de témoin ou de suspect libre » est donnée comme levée par des supports de révision, sans texte retrouvé. L'opposabilité à la **CNIL** est déduite de l'annale 2025-11 Q4.
+- **Liste exacte des levées du secret** de l'EC : audition pénale comme témoin ou suspect libre et contrôle de la CNIL. La clé de l'annale 2025-11 Q4 (CNIL opposable) et les textes (CPP art. 109, ord. art. 21 al. 4, loi 78-17 art. 19 III) ne vont pas dans le même sens : voir la section 3. Textes lus en extrait seulement (vérification du 3 novembre 2026).
 - **Cas où la lettre de l'art. 163 n'est pas obligatoire** (annale 2024-11 Q7).
 - **Référencement par une société commerciale non inscrite, notation par les clients, parrainage** : quelle pratique est interdite (annale 2025-11 Q2) ? La fiche retient le **comparatif** (« premier réseau »).

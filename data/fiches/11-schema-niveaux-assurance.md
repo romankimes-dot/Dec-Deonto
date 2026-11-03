@@ -35,7 +35,7 @@ Apprécier | Cohérence et vraisemblance des comptes pris dans leur ensemble
 Conclure | Attestation (3 formes). Les **recommandations** vont dans un **document distinct** ou sont données **oralement**, jamais dans l'attestation
 ```
 
-- {!} Entité **dotée d'un CAC** : l'EC ne délivre **pas d'attestation** de présentation, il délivre un **compte rendu de travaux**.
+- {!} Entité **dotée d'un CAC** : l'EC **n'a pas à délivrer**, sauf considérations particulières, d'attestation de présentation ; il remet en principe un **compte rendu de travaux** (NP 2300 § A10).
 
 ## Même mot, deux professions
 

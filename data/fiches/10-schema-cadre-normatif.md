@@ -10,7 +10,7 @@ questions: EC:referentiel_normatif EC:missions_assurance EC:missions_legales
 ? Référentiel normatif de l'Ordre
   Textes applicables à **toutes** les missions
     = **Code de déontologie** (D. 2012-432, art. 141 à 169)
-    = **NPMQ** : maîtrise de la qualité
+    = **NPMQ** : management de la qualité (depuis le 01/01/2025 ; « maîtrise de la qualité » avant)
     = **NPLAB** : lutte anti-blanchiment
   **Cadre de référence des missions** : 3 natures de missions, plus les autres prestations
     Missions d'**assurance** sur des **comptes complets historiques**
