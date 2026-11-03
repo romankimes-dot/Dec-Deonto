@@ -1,208 +1,103 @@
-// Plans imprimables de la ville des institutions, un par profession, dessinés comme un plan d'appartement : les rues
-// (un pont par bande) sont les couloirs, les bâtiments les pièces (murs pleins, porte ouvrant sur la rue, mobilier = les sièges du
-// conseil), la ligne centrale sépare les deux professions. La disposition est celle de la maquette (js/maquette.js) : même rangée,
-// même rive, même ordre. Dans chaque pièce : symbole de façade, fiche à relire, qui y siège, chiffres, ce qui s'y
-// fait, piège. Les pièces de l'autre profession restent en pointillé, nommées seulement.
+// Plans imprimables de la ville des institutions : la maquette (js/maquette.js) vue de dessus, sur une page A4 par
+// profession. Une version légère, pour visualiser : chaque institution est une tuile à sa place, avec son symbole,
+// son nom (qui y siège et la fiche à relire sont dans l'info-bulle, à l'écran). Rangées 1 (en bas) à 4 : l'EC à gauche, le
+// CAC à droite, le nom de la rangée dans l'allée centrale ; rangées 5 à 7 (en haut) : le quartier commun. Les tuiles
+// de l'autre profession restent en gris clair, nommées seulement. En noir et blanc, la profession se lit à la bordure :
+// pleine (EC), en tirets (CAC), double (commun), comme dans la maquette.
 // Fonctions pures (chaînes HTML) : vue « Plans à imprimer » de l'app et scripts/build_ville_pdf.mjs (PDF A4, 2 pages).
 
-import { SALLES, SYMBOLES, svgIcon, groupLabel } from './ville3d.js';
-import { PLAN_RANGS as STREETS, PLAN_LOTS as LOTS } from './maquette.js';
-import { batiment } from './ville.js';
+import { SALLES, svgIcon, groupLabel } from './ville3d.js';
+import { RANGS, MLOTS, NOMS } from './maquette.js';
 
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const md = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
-const plain = (s) => String(s ?? '').replace(/\*\*/g, '');
-const RIVER_STREETS = new Set(['tut', 'sup', 'nat', 'reg']); // rangées 1 à 4 : EC d'un côté, CAC de l'autre
-const PAGE = { w: 190, h: 248 }; // mm : zone du plan sur une feuille A4 (en-tête et légende en plus)
-const STRIP = 6, GAP = 1.6, RIVER_W = 10, HC = 4.6, HG = 7.5, LINE = 2.2;
+const PAGE = { w: 190, h: 248 }; // mm : zone du plan sur une feuille A4 (titre et légende en plus)
+const TW = 27, TH = 15, SLOT = 29.5, ALLEE = 26, GAPY = 2, BAND_S = 2 * TH + 3 * GAPY + 2, BAND_N = TH + 9, BOULEVARD = 9, HEAD = 9;
+const BADGE = { ec: 'EC', cac: 'CAC', commun: 'commun' };
 
 export const TITRES = { ec: 'Expert-comptable', cac: 'Commissaire aux comptes' };
+const nom = (b) => NOMS[b.id] || b.court;
 
-// Disposition en millimètres : pièces, couloirs (rues), fleuve.
+// Disposition en millimètres : bandes (rangées), tuiles.
 export function planLayout(rive) {
-  const other = rive === 'ec' ? 'cac' : 'ec';
-  const kind = (l) => (l.b.rive === other ? 'ghost' : 'full');
-  const byX = (a, b) => a.x - b.x;
-  const rows = STREETS.map((st) => {
-    const ls = LOTS.filter((l) => l.st === st);
-    const n = ls.filter((l) => l.side === 'n').sort(byX), s = ls.filter((l) => l.side === 's').sort(byX);
-    const t = (arr) => (arr.some((l) => kind(l) === 'full') ? 'full' : arr.length ? 'ghost' : null);
-    return { st, n, s, tn: t(n), ts: t(s), river: RIVER_STREETS.has(st.id) };
-  });
-  const fulls = rows.reduce((k, r) => k + (r.tn === 'full') + (r.ts === 'full'), 0);
-  const ghosts = rows.reduce((k, r) => k + (r.tn === 'ghost') + (r.ts === 'ghost'), 0);
-  const HR = Math.min(28, (PAGE.h - ghosts * HG - rows.length * HC) / fulls);
-  const H = (t) => (t === 'full' ? HR : t === 'ghost' ? HG : 0);
-  const W = PAGE.w - STRIP, mainW = Math.round((W - RIVER_W) * 0.66), otherW = W - RIVER_W - mainW;
-  const cols = rive === 'ec'
-    ? { main: [STRIP, STRIP + mainW], river: [STRIP + mainW, STRIP + mainW + RIVER_W], other: [STRIP + mainW + RIVER_W, PAGE.w] }
-    : { other: [STRIP, STRIP + otherW], river: [STRIP + otherW, STRIP + otherW + RIVER_W], main: [STRIP + otherW + RIVER_W, PAGE.w] };
-  const rooms = [], corridors = [];
-  const pack = (arr, [a, b], side, edge, rowH) => {
-    if (!arr.length) return;
-    const wt = (l) => (kind(l) === 'full' ? 1 : 0.5), sum = arr.reduce((k, l) => k + wt(l), 0), free = b - a - GAP * (arr.length - 1);
-    let x = a;
-    for (const l of arr) {
-      const w = free * wt(l) / sum, h = kind(l) === 'full' ? rowH : HG;
-      rooms.push({ lot: l, kind: kind(l), side, x, w, h, y: side === 'n' ? edge - h : edge });
-      x += w + GAP;
-    }
-  };
-  const place = (r, arr, side, edge, rowH) => {
-    if (r.river) { pack(arr.filter((l) => l.b.rive !== other), cols.main, side, edge, rowH); pack(arr.filter((l) => l.b.rive === other), cols.other, side, edge, rowH); }
-    else pack(arr, [STRIP, PAGE.w], side, edge, rowH);
-  };
+  const other = rive === 'ec' ? 'cac' : 'ec', rooms = [], bands = [];
+  const cx = PAGE.w / 2;
   let y = 0;
-  for (const r of rows) {
-    r.y0 = y; const yc = y + H(r.tn);
-    place(r, r.n, 'n', yc, H(r.tn));
-    corridors.push({ st: r.st, y: yc, river: r.river });
-    place(r, r.s, 's', yc + HC, H(r.ts));
-    r.y1 = yc + HC + H(r.ts); y = r.y1;
+  bands.push({ kind: 'head', label: 'Commun aux deux professions', y, h: HEAD, rive: 'commun' }); y += HEAD;
+  for (const r of [...RANGS].reverse()) {
+    const south = r.n <= 4, h = south ? BAND_S : BAND_N, lots = MLOTS.filter((l) => l.rang === r);
+    bands.push({ kind: 'row', r, y, h, south });
+    if (south) {
+      const front = (l) => l.z >= Math.max(...lots.filter((k) => k.b.rive === l.b.rive).map((k) => k.z)) - 1; // devant (en bas) ou derrière (en haut)
+      for (const l of lots) {
+        const s = l.b.rive === 'ec' ? -1 : 1, outer = Math.abs(l.x) > 10, back = !front(l);
+        const x = s < 0 ? cx - ALLEE / 2 - (outer ? SLOT : 0) - TW : cx + ALLEE / 2 + (outer ? SLOT : 0);
+        rooms.push({ lot: l, kind: l.b.rive === other ? 'ghost' : 'full', x, w: TW, y: y + (back ? GAPY + 1 : GAPY * 2 + TH + 1), h: TH });
+      }
+    } else {
+      const n = lots.length, step = Math.min(SLOT + 2, (PAGE.w - 4) / n), w = Math.min(TW + 3, step - 2.5);
+      lots.forEach((l, i) => rooms.push({ lot: l, kind: l.b.rive === other ? 'ghost' : 'full', x: cx + (i - (n - 1) / 2) * step - w / 2, w, y: y + 7, h: TH }));
+    }
+    y += h;
+    if (r.n === 5) { bands.push({ kind: 'boulevard', y, h: BOULEVARD }); y += BOULEVARD; }
   }
-  const rv = rows.filter((r) => r.river);
-  return { rive, rooms, corridors, rows, cols, height: y, river: { x0: cols.river[0], x1: cols.river[1], y0: rv[0].y0, y1: rv[rv.length - 1].y1 }, HR };
+  return { rive, rooms, bands, height: y };
 }
 
-// Mobilier de la pièce : les sièges du conseil ou de la juridiction, vus de dessus.
-function furniture(id) {
-  const salle = SALLES[id]; if (!salle) return '';
-  const seated = salle.groupes.filter((g) => !g.debout).reduce((k, g) => k + g.n, 0), standing = salle.groupes.filter((g) => g.debout).reduce((k, g) => k + g.n, 0);
-  if (!seated) return '';
-  const dot = (x, y) => `<circle cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r=".85" fill="#000"/>`;
-  let s = '';
-  if (salle.layout === 'table') {
-    s += '<ellipse cx="14" cy="11" rx="8.5" ry="5" fill="none" stroke="#000" stroke-width=".5"/>';
-    for (let i = 0; i < Math.min(seated, 26); i++) { const a = -Math.PI / 2 + (i / Math.min(seated, 26)) * Math.PI * 2; s += dot(14 + Math.cos(a) * 10.6, 11 + Math.sin(a) * 6.8); }
-  } else if (salle.layout === 'rangs') {
-    s += '<rect x="9" y="1" width="10" height="2.4" fill="none" stroke="#000" stroke-width=".5"/>' + dot(14, 2.2);
-    for (let i = 0; i < Math.min(seated - 1, 60); i++) s += dot(2.2 + (i % 12) * 2.15, 6 + Math.floor(i / 12) * 3.3);
-  } else {
-    const n = Math.min(seated, 7), wd = Math.max(10, n * 3.4);
-    s += `<rect x="${(14 - wd / 2).toFixed(2)}" y="7" width="${wd.toFixed(2)}" height="${salle.layout === 'tribunal' ? 3 : 4}" fill="none" stroke="#000" stroke-width=".5"/>`;
-    for (let i = 0; i < n; i++) s += dot(14 + (i - (n - 1) / 2) * 3.4, 4.6);
-  }
-  for (let i = 0; i < Math.min(standing, 3); i++) s += `<circle cx="${26.5}" cy="${15 + i * 2.6}" r=".85" fill="none" stroke="#000" stroke-width=".4"/>`;
-  return `<svg class="furn" viewBox="0 0 28 22" aria-hidden="true">${s}</svg>`;
-}
+const qui = (id) => (SALLES[id]?.groupes || []).filter((g) => !g.debout).map((g) => groupLabel(g)).join(' · ');
 
 function roomHtml(r, fiches) {
   const { lot, kind, x, y, w, h } = r, b = lot.b;
   const box = `left:${x.toFixed(2)}mm;top:${y.toFixed(2)}mm;width:${w.toFixed(2)}mm;height:${h.toFixed(2)}mm`;
-  if (kind === 'ghost') return `<div class="vp-room ghost" data-id="${lot.id}" style="${box}"><div class="hd">${svgIcon(lot.id)}<span>${esc(plain(b.court))}</span></div></div>`;
-  const furn = w >= 44 ? furniture(lot.id) : '';
-  const salle = SALLES[lot.id];
-  const qui = salle ? salle.groupes.map((g) => plain(groupLabel(g))).join(' · ') : '';
-  const twin = b.jumeau && batiment(b.jumeau);
-  // Budget de lignes : fiche, qui, piège, ce qui s'y fait, puis 2e ligne de « qui », chiffres, et le reste pour le contenu.
-  let budget = Math.floor((h - 1.9 - 3.1) / LINE);
-  const take = (n) => { const t = Math.max(0, Math.min(n, budget)); budget -= t; return t; };
-  const L = { fi: take(1), qui: qui ? take(1) : 0, pg: b.pieges?.length ? take(1) : 0, pc: take(1) };
-  if (qui && budget >= 3) L.qui += take(1);
-  L.ch = b.chiffres?.length && budget >= 2 ? take(1) : 0;
-  L.pc += take(budget);
-  const clamp = (n) => `style="-webkit-line-clamp:${n}"`;
-  const fiche = fiches[b.fiche] || b.fiche;
-  const sym = w >= 50 ? ` · ${esc(SYMBOLES[lot.id][1])}` : '';
-  const pc = b.pancartes.map((p) => `<b>${esc(plain(p.qui))}</b> : ${md(p.fait)}`).join(' ▪ ');
-  return `<div class="vp-room ${furn ? 'has-furn' : ''} ${r.side}" data-id="${lot.id}" style="${box}">
-    <div class="hd">${svgIcon(lot.id)}<span>${esc(plain(b.nom))}</span>${twin && w >= 40 ? `<small>en face : ${esc(plain(twin.court))}</small>` : ''}</div>
-    ${furn}
-    <div class="txt">
-      ${L.fi ? `<div class="fi cl" ${clamp(1)}>Fiche : ${esc(fiche)}${sym}</div>` : ''}
-      ${L.qui ? `<div class="qui cl" ${clamp(L.qui)}><b>Qui :</b> ${esc(qui)}</div>` : ''}
-      ${L.ch ? `<div class="ch cl" ${clamp(1)}>${b.chiffres.map((c) => esc(plain(c))).join(' · ')}</div>` : ''}
-      ${L.pc ? `<div class="pc cl" ${clamp(L.pc)}>${pc}</div>` : ''}
-      ${L.pg ? `<div class="pg cl" ${clamp(1)}>${md(b.pieges[0])}</div>` : ''}
-    </div></div>`;
+  if (kind === 'ghost') return `<div class="vp-room ghost ${b.rive}" data-id="${lot.id}" style="${box}"><span class="ic">${svgIcon(lot.id)}</span><b>${esc(nom(b))}</b></div>`;
+  const f = fiches[b.fiche] || '', tip = [qui(lot.id) && `Qui siège : ${qui(lot.id)}`, f && `Fiche : ${f}`].filter(Boolean).join(' — ');
+  return `<div class="vp-room ${b.rive}" data-id="${lot.id}" style="${box}" title="${esc(tip)}"><span class="ic">${svgIcon(lot.id)}</span><b>${esc(nom(b))}</b></div>`;
 }
 
-function underSvg(L) {
-  const { river: R, corridors, rows } = L, Hh = L.height.toFixed(2);
-  let s = `<svg class="vp-under" viewBox="0 0 ${PAGE.w} ${Hh}" style="width:${PAGE.w}mm;height:${Hh}mm" aria-hidden="true">
-    <defs><pattern id="vp-wave-${L.rive}" width="4" height="3" patternUnits="userSpaceOnUse"><path d="M0 1.5 Q1 .5 2 1.5 T4 1.5" fill="none" stroke="#000" stroke-width=".22"/></pattern>
-    <pattern id="vp-intl-${L.rive}" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 2.5L2.5 0L5 2.5L2.5 5z" fill="none" stroke="#bbb" stroke-width=".18"/></pattern>
-    <pattern id="vp-ec-${L.rive}" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 0H4M0 0V4" fill="none" stroke="#bbb" stroke-width=".18"/></pattern>
-    <pattern id="vp-cac-${L.rive}" width="4" height="2.4" patternUnits="userSpaceOnUse"><path d="M0 0H4M0 1.2H4M0 0V1.2M2 1.2V2.4" fill="none" stroke="#bbb" stroke-width=".18"/></pattern>
-    <pattern id="vp-jus-${L.rive}" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 0H8M0 0V8M0 4H4M4 4V8" fill="none" stroke="#bbb" stroke-width=".2"/></pattern></defs>
-    ${(() => { const ecC = L.rive === 'ec' ? L.cols.main : L.cols.other, cacC = L.rive === 'ec' ? L.cols.other : L.cols.main, y0 = rows[0].y0, y1 = rows[rows.length - 1].y1;
-      const rect = (x0, x1, a, b, id) => `<rect x="${x0}" y="${a.toFixed(2)}" width="${(x1 - x0).toFixed(2)}" height="${(b - a).toFixed(2)}" fill="url(#vp-${id}-${L.rive})"/>`;
-      return rect(ecC[0], ecC[1], y0, y1, 'ec') + rect(cacC[0], cacC[1], y0, y1, 'cac'); })()}
-    <rect x="${R.x0}" y="${R.y0.toFixed(2)}" width="${R.x1 - R.x0}" height="${(R.y1 - R.y0).toFixed(2)}" fill="url(#vp-wave-${L.rive})"/>
-    <text x="${(R.x0 + R.x1) / 2}" y="${((R.y0 + R.y1) / 2).toFixed(2)}" font-size="2.6" font-weight="700" letter-spacing=".9" text-anchor="middle" transform="rotate(-90 ${(R.x0 + R.x1) / 2} ${((R.y0 + R.y1) / 2).toFixed(2)})" fill="#000" style="paint-order:stroke" stroke="#fff" stroke-width="1.4">EC · CAC</text>`;
-  for (const c of corridors) {
-    const y = c.y, m = y + HC / 2;
-    s += `<rect x="${STRIP}" y="${y.toFixed(2)}" width="${PAGE.w - STRIP}" height="${HC}" fill="#ececec"/>`;
-    s += `<line x1="${STRIP}" y1="${m.toFixed(2)}" x2="${PAGE.w}" y2="${m.toFixed(2)}" stroke="#888" stroke-width=".2" stroke-dasharray="1.6 1.2"/>`;
-    if (c.river) s += `<line x1="${R.x0}" y1="${y.toFixed(2)}" x2="${R.x1}" y2="${y.toFixed(2)}" stroke="#000" stroke-width=".45"/><line x1="${R.x0}" y1="${(y + HC).toFixed(2)}" x2="${R.x1}" y2="${(y + HC).toFixed(2)}" stroke="#000" stroke-width=".45"/>`;
-    const name = plain(c.st.nom).toUpperCase(), cx = c.river ? (R.x0 + R.x1) / 2 : (STRIP + PAGE.w) / 2, tw = name.length * 1.32 + 3;
-    s += `<rect x="${(cx - tw / 2).toFixed(2)}" y="${(m - 1.45).toFixed(2)}" width="${tw.toFixed(2)}" height="2.9" rx="1.4" fill="#000"/><text x="${cx.toFixed(2)}" y="${(m + 0.72).toFixed(2)}" font-size="2" font-weight="700" letter-spacing=".25" text-anchor="middle" fill="#fff">${esc(name)}</text>`;
-  }
-  // Bandeau des bandes (niveaux), à gauche : une par rangée, du nord au sud.
-  const band = (y0, y1, t) => { const cy = ((y0 + y1) / 2).toFixed(2); return `<line x1="${STRIP - 1.4}" y1="${(y0 + 0.6).toFixed(2)}" x2="${STRIP - 1.4}" y2="${(y1 - 0.6).toFixed(2)}" stroke="#000" stroke-width=".3"/><text x="2.2" y="${cy}" font-size="2" font-weight="700" letter-spacing=".3" text-anchor="middle" transform="rotate(-90 2.2 ${cy})">${t}</text>`; };
-  for (const r of rows) s += band(r.y0, r.y1, plain(r.st.nom).toUpperCase());
-  return `${s}</svg>`;
-}
-
-// Portes : sur le mur côté rue, battant ouvert vers la rue (comme sur un plan d'appartement).
-function overSvg(L) {
-  const Hh = L.height.toFixed(2);
-  let s = `<svg class="vp-over" viewBox="0 0 ${PAGE.w} ${Hh}" style="width:${PAGE.w}mm;height:${Hh}mm" aria-hidden="true">`;
-  for (const r of L.rooms) {
-    const dw = r.kind === 'full' ? 3.2 : 2.4, x1 = r.x + Math.min(r.w * 0.5, 4.5), x2 = x1 + dw, sw = r.kind === 'full' ? 0.9 : 0.6, st = r.kind === 'full' ? 0.32 : 0.22;
-    if (r.side === 'n') {
-      const yb = r.y + r.h;
-      s += `<line x1="${x1.toFixed(2)}" y1="${yb.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${yb.toFixed(2)}" stroke="#fff" stroke-width="${sw}"/>`;
-      s += `<line x1="${x1.toFixed(2)}" y1="${yb.toFixed(2)}" x2="${x1.toFixed(2)}" y2="${(yb + dw).toFixed(2)}" stroke="#000" stroke-width="${st}"/><path d="M${x1.toFixed(2)} ${(yb + dw).toFixed(2)} A${dw} ${dw} 0 0 0 ${x2.toFixed(2)} ${yb.toFixed(2)}" fill="none" stroke="#000" stroke-width="${st * 0.7}" stroke-dasharray=".6 .4"/>`;
-    } else {
-      const yt = r.y;
-      s += `<line x1="${x1.toFixed(2)}" y1="${yt.toFixed(2)}" x2="${x2.toFixed(2)}" y2="${yt.toFixed(2)}" stroke="#fff" stroke-width="${sw}"/>`;
-      s += `<line x1="${x1.toFixed(2)}" y1="${yt.toFixed(2)}" x2="${x1.toFixed(2)}" y2="${(yt - dw).toFixed(2)}" stroke="#000" stroke-width="${st}"/><path d="M${x1.toFixed(2)} ${(yt - dw).toFixed(2)} A${dw} ${dw} 0 0 1 ${x2.toFixed(2)} ${yt.toFixed(2)}" fill="none" stroke="#000" stroke-width="${st * 0.7}" stroke-dasharray=".6 .4"/>`;
-    }
-  }
-  return `${s}</svg>`;
+function bandHtml(bd, rive) {
+  if (bd.kind === 'head') return `<div class="vp-band head" style="top:${bd.y}mm;height:${bd.h}mm"><span class="vp-badge commun">commun</span> Le quartier commun aux deux professions</div>`;
+  if (bd.kind === 'boulevard') return `<div class="vp-band boulevard" style="top:${bd.y}mm;height:${bd.h}mm"><span class="vp-badge ec">EC</span> ${esc(TITRES.ec)}<span class="sp"></span>${esc(TITRES.cac)} <span class="vp-badge cac">CAC</span></div>`;
+  const { r } = bd;
+  return `<div class="vp-band row ${bd.south ? 'south' : 'north'}" style="top:${bd.y}mm;height:${bd.h}mm"><span class="vp-rang"><b>${r.n}</b>${esc(r.nom)}</span></div>`;
 }
 
 export const PLAN_CSS = `
 .vp-page { width: 190mm; color: #000; background: #fff; font-family: "Liberation Sans", Arial, "Helvetica Neue", sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .vp-page + .vp-page { break-before: page; page-break-before: always; }
-.vp-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 4mm; margin-bottom: 2.4mm; }
-.vp-head h1 { font-size: 13pt; margin: 0; line-height: 1.1; }
-.vp-head p { font-size: 6.5pt; margin: .8mm 0 0; color: #222; max-width: 158mm; line-height: 1.3; }
-.vp-head svg { width: 11mm; height: 11mm; flex-shrink: 0; }
+.vp-head { margin-bottom: 3mm; }
+.vp-head h1 { font-size: 15pt; margin: 0; line-height: 1.15; }
+.vp-head p { font-size: 8pt; margin: 1mm 0 0; color: #333; }
 .vp-sheet { position: relative; width: 190mm; }
-.vp-sheet > svg { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
-.vp-sheet > svg.vp-over { z-index: 2; }
-.vp-room { position: absolute; box-sizing: border-box; border: .55mm solid #000; background: #fff; padding: .8mm 1.1mm; overflow: hidden; font-size: 5.3pt; line-height: 1.24; cursor: pointer; z-index: 1; }
-.vp-room.ghost { border: .25mm dashed #555; color: #444; background: repeating-linear-gradient(45deg, #fff 0 1.2mm, #eee 1.2mm 1.5mm); padding: .6mm .8mm; }
-.vp-room .hd { display: flex; gap: .9mm; align-items: center; font-weight: 700; font-size: 6.5pt; line-height: 1.15; white-space: nowrap; overflow: hidden; height: 3.1mm; }
-.vp-room.ghost .hd { font-size: 5.4pt; font-weight: 600; white-space: normal; height: auto; }
-.vp-room .hd span { overflow: hidden; text-overflow: ellipsis; }
-.vp-room .hd svg { width: 3.3mm; height: 3.3mm; flex-shrink: 0; }
-.vp-room .hd small { font-weight: 400; font-size: 5pt; margin-left: auto; padding-left: 1mm; }
-.vp-room .txt { margin-top: .2mm; }
-.vp-room.has-furn .txt { padding-right: 16mm; }
-.vp-room .cl { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
-.vp-room .fi { font-style: italic; }
-.vp-room .ch { font-variant-numeric: tabular-nums; }
-.vp-room .pg::before { content: '⚠ '; }
-.vp-room .furn { position: absolute; right: .9mm; width: 15mm; height: 11.8mm; }
-.vp-room.n .furn { top: 4mm; } .vp-room.s .furn { bottom: 1mm; }
-.vp-legend { margin-top: 2.4mm; font-size: 6pt; display: flex; flex-wrap: wrap; gap: 1mm 5mm; align-items: center; }
-.vp-legend i { display: inline-block; width: 5mm; height: 3mm; vertical-align: -.6mm; margin-right: 1mm; box-sizing: border-box; }
-.vp-legend i.full { border: .5mm solid #000; } .vp-legend i.ghost { border: .25mm dashed #555; }
+.vp-band { position: absolute; left: 0; width: 190mm; box-sizing: border-box; }
+.vp-band.row { border-top: .25mm solid #bbb; }
+.vp-band.row.south::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: .6mm; margin-left: -.3mm; background: #000; }
+.vp-band.head { display: flex; align-items: center; gap: 2mm; font-size: 9pt; font-weight: 700; border-bottom: .5mm solid #000; }
+.vp-band.boulevard { display: flex; align-items: center; gap: 2mm; font-size: 9pt; font-weight: 700; border-top: .6mm solid #000; border-bottom: .25mm solid #bbb; background: #f2f2f2; padding: 0 2mm; }
+.vp-band.boulevard .sp { flex: 1; }
+.vp-rang { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 23mm; display: flex; flex-direction: column; align-items: center; gap: .6mm; padding: 1.2mm 1mm; border-radius: 2mm; background: #000; color: #fff; font-size: 7.5pt; font-weight: 700; text-align: center; line-height: 1.15; z-index: 2; }
+.vp-band.north .vp-rang { top: 1mm; transform: translate(-50%, 0); width: auto; flex-direction: row; gap: 1.5mm; padding: .6mm 2.5mm .6mm .8mm; border-radius: 3mm; white-space: nowrap; }
+.vp-rang b { display: inline-flex; width: 4.4mm; height: 4.4mm; border-radius: 50%; background: #fff; color: #000; align-items: center; justify-content: center; font-size: 8pt; }
+.vp-room { position: absolute; box-sizing: border-box; padding: .8mm 1.2mm; border-radius: 1.6mm; background: #fff; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: .5mm; cursor: pointer; z-index: 1; }
+.vp-room.ec { border: .6mm solid #000; } .vp-room.cac { border: .6mm dashed #000; } .vp-room.commun { border: 1.2mm double #000; padding: .9mm 1.2mm; }
+.vp-room .ic svg { width: 4.6mm; height: 4.6mm; display: block; }
+.vp-room b { font-size: 7.8pt; line-height: 1.1; }
+.vp-room small { font-size: 5.6pt; line-height: 1.2; color: #333; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.vp-room i { font-size: 5.2pt; color: #555; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; overflow: hidden; }
+.vp-room.ghost { background: #f3f3f3; color: #777; justify-content: center; }
+.vp-room.ghost.ec, .vp-room.ghost.cac { border-color: #999; } .vp-room.ghost b { font-weight: 600; font-size: 6.8pt; }
+.vp-room.ghost .ic svg { width: 3.6mm; height: 3.6mm; opacity: .6; }
+.vp-badge { display: inline-block; font-size: 7pt; font-weight: 800; padding: .3mm 1.2mm; border-radius: .8mm; }
+.vp-badge.ec { background: #000; color: #fff; border: .4mm solid #000; } .vp-badge.cac { border: .4mm dashed #000; } .vp-badge.commun { border: .9mm double #000; padding: 0 1mm; }
+.vp-legend { margin-top: 3mm; font-size: 7.5pt; display: flex; flex-wrap: wrap; gap: 1.5mm 5mm; align-items: center; }
 @media screen { .vp-room:hover { outline: .6mm solid #2563eb; } }
 `;
 
-const compass = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8.5" fill="none" stroke="#000" stroke-width=".8"/><path d="M12 5.5l2.6 7.5H9.4z" fill="#000"/><path d="M12 20.5l-2.6-7.5h5.2z" fill="none" stroke="#000" stroke-width=".6"/><text x="12" y="3.6" font-size="4.2" font-weight="700" text-anchor="middle" font-family="Arial">N</text></svg>';
-
 // Une page (A4 portrait) pour une profession. `fiches` : titre de chaque fiche, par nom de fichier.
 export function planHtml(rive, fiches = {}) {
-  const L = planLayout(rive), titre = TITRES[rive], other = rive === 'ec' ? 'commissaire aux comptes' : 'expert-comptable';
+  const L = planLayout(rive), titre = TITRES[rive], other = rive === 'ec' ? 'cac' : 'ec';
   return `<section class="vp-page" data-rive="${rive}">
-    <div class="vp-head"><div><h1>Plan de la ville · ${esc(titre)}</h1><p>La maquette de la visite 3D, à plat. Une rangée par niveau, numérotée de 1 (en bas, l’échelon régional) à 7 (en haut, l’international). Rangées 1 à 4 : l’EC d’un côté de la ligne centrale, le CAC de l’autre, les jumeaux face à face. Rangées 5 à 7 : le quartier commun aux deux professions. Murs pleins : les lieux du ${esc(titre.toLowerCase())} et les lieux communs ; tirets : ceux du ${esc(other)}. Les symboles sont ceux des façades.</p></div>${compass}</div>
-    <div class="vp-sheet" style="height:${L.height.toFixed(2)}mm">${underSvg(L)}${L.rooms.map((r) => roomHtml(r, fiches)).join('')}${overSvg(L)}</div>
-    <div class="vp-legend"><span><i class="full"></i>${esc(titre)} et lieux communs</span><span><i class="ghost"></i>Autre profession</span><span>● siège · ○ debout · ellipse : table du conseil · barre : banc des juges</span><span>Fonds : carreaux (rive EC), briques (rive CAC), comme le pavage de la 3D ; à gauche, le niveau de chaque bande</span><span>⚠ piège qui revient</span></div>
+    <div class="vp-head"><h1>La ville des institutions · ${esc(titre)}</h1><p>La maquette vue de dessus. En bas, les rangées 1 à 4 : l’EC à gauche, le CAC à droite, le nom de la rangée au milieu. En haut, le quartier commun. En gris : le ${esc(TITRES[other].toLowerCase())}.</p></div>
+    <div class="vp-sheet" style="height:${L.height.toFixed(2)}mm">${L.bands.map((bd) => bandHtml(bd, rive)).join('')}${L.rooms.map((r) => roomHtml(r, fiches)).join('')}</div>
+    <div class="vp-legend"><span><span class="vp-badge ec">EC</span> bordure pleine</span><span><span class="vp-badge cac">CAC</span> bordure en tirets</span><span><span class="vp-badge commun">commun</span> bordure double</span><span>Dans l’app, toucher une tuile ouvre l’institution en 3D</span></div>
   </section>`;
 }
 // Les deux pages, EC puis CAC.
