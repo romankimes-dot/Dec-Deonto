@@ -406,9 +406,8 @@ views.home = () => {
   <div class="card hero">
     <div class="hero-top">
       <div><div class="muted">Épreuve n°1 · ${esc(examLabel())}</div><div class="big">${!examDateSet() ? 'Date à définir' : d > 0 ? `J-${d}` : d === 0 ? 'Jour J' : 'Passée'}</div>${examDateSet() ? '' : '<button class="btn sm" data-go="settings">' + ic('calendar') + ' Définir la date de l’examen</button>'}</div>
-      <div class="hero-meta"><div class="ring" style="--p:${cov}"><span>${cov} %</span></div><div class="muted">du programme vu</div></div>
     </div>
-    ${estimateLine()}
+    ${estimateLine(cov)}
     ${heroCta()}
   </div>
   ${helpCard()}
@@ -654,10 +653,14 @@ function currentEstimate() {
   return estimate({ questions: state.bank.questions, stats: pr.stats, cards: pr.cards, attempts: pr.attempts, exams: pr.exams });
 }
 const fr = (x) => String(x).replace('.', ',');
-function estimateLine() {
-  if (!state.progress.attempts.length) return '<div class="estim muted">Niveau estimé : répondez à quelques questions pour l’obtenir.</div>';
-  const e = currentEstimate();
-  return `<button class="estim" data-go="stats"><span>Niveau estimé <strong>${fr(e.qcm.note)}</strong>/20 en QCM · <strong>${fr(e.qrc.note)}</strong>/20 en QRC</span><span class="muted">risque &lt; 6 : ${e.qcm.risk} % (QCM) · ${e.reliable ? 'fiable' : `indicatif, ${Math.round(e.coverage * 100)} % de la banque vue`} ›</span></button>`;
+// Encart de l'accueil : trois chiffres alignés (QCM, QRC, programme vu), un seul pourcentage de couverture.
+function estimateLine(cov) {
+  const has = state.progress.attempts.length > 0;
+  const e = has ? currentEstimate() : null;
+  const kpi = (label, v, unit, extra = '') => `<div class="kpi"><span class="kpi-l">${label}</span><span class="kpi-v">${v}<small>${unit}</small></span>${extra}</div>`;
+  const tiles = `<div class="kpis">${kpi('QCM', has ? fr(e.qcm.note) : '–', '/20')}${kpi('QRC', has ? fr(e.qrc.note) : '–', '/20')}${kpi('Programme', cov, ' %', `<div class="progress"><div style="width:${cov}%"></div></div>`)}</div>`;
+  const sub = has ? `Niveau estimé · risque &lt; 6 : ${e.qcm.risk} % (QCM) · ${e.reliable ? 'fiable' : 'indicatif'} ›` : 'Niveau estimé : répondez à quelques questions pour l’obtenir.';
+  return has ? `<button class="estim" data-go="stats">${tiles}<span class="muted">${sub}</span></button>` : `<div class="estim">${tiles}<span class="muted">${sub}</span></div>`;
 }
 function estimateCard() {
   if (!state.progress.attempts.length) return '';
