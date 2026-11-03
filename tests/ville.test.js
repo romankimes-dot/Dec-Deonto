@@ -104,24 +104,20 @@ test('ville 3D : rues, emplacements, symboles et liste rapide couvrent les 29 b�
   assert.ok(LOTS.every((l) => l.h <= 12), 'bâtiments bas');
 });
 
-test('plans imprimables : deux pages (EC, CAC), toutes les pièces, disposition de la visite 3D, PDF présent', async () => {
-  const { planHtml, planLayout, plansHtml } = await import('../js/villeplan.js');
-  for (const rive of ['ec', 'cac']) {
-    const L = planLayout(rive);
-    assert.equal(L.rooms.length, VILLE.batiments.length, `${rive} : une pièce par bâtiment`);
-    assert.ok(L.height <= 248.01, `${rive} : tient sur une page (${L.height} mm)`);
-    for (const r of L.rooms) {
-      assert.equal(r.kind === 'ghost', r.lot.b.rive !== rive && r.lot.b.rive !== 'commun', `${r.lot.id} : style`);
-      assert.ok(r.x >= 0 && r.x + r.w <= 190.01 && r.w > 5 && r.h > 5, `${r.lot.id} : dans la page`);
-    }
-    for (let i = 0; i < L.rooms.length; i++) for (let j = i + 1; j < L.rooms.length; j++) {
-      const a = L.rooms[i], b = L.rooms[j];
-      assert.ok(a.x + a.w <= b.x + 0.01 || b.x + b.w <= a.x + 0.01 || a.y + a.h <= b.y + 0.01 || b.y + b.h <= a.y + 0.01, `${rive} : ${a.lot.id} et ${b.lot.id} se chevauchent`);
-    }
-    const html = planHtml(rive, { '01-ec-exercice.md': 'Exercice EC' });
-    assert.ok(html.includes('class="vp-page"') && html.includes('Fiche : Exercice EC'));
+test('plan imprimable : une page, toutes les institutions, sans chevauchement ; PDF du plan et des compositions présents', async () => {
+  const { planHtml, planLayout } = await import('../js/villeplan.js');
+  const L = planLayout();
+  assert.equal(L.rooms.length, VILLE.batiments.length, 'une tuile par institution');
+  assert.ok(L.height <= 248.01, `tient sur une page (${L.height} mm)`);
+  for (const r of L.rooms) assert.ok(r.x >= 0 && r.x + r.w <= 190.01 && r.w > 5 && r.h > 5, `${r.lot.id} : dans la page`);
+  for (let i = 0; i < L.rooms.length; i++) for (let j = i + 1; j < L.rooms.length; j++) {
+    const a = L.rooms[i], b = L.rooms[j];
+    assert.ok(a.x + a.w <= b.x + 0.01 || b.x + b.w <= a.x + 0.01 || a.y + a.h <= b.y + 0.01 || b.y + b.h <= a.y + 0.01, `${a.lot.id} et ${b.lot.id} se chevauchent`);
   }
-  assert.equal((plansHtml().match(/class="vp-page"/g) || []).length, 2);
+  const html = planHtml({ '01-ec-exercice.md': 'Exercice EC' });
+  assert.equal((html.match(/class="vp-page"/g) || []).length, 1);
+  assert.ok(html.includes('Fiche : Exercice EC') && !html.includes('ghost'));
+  assert.ok(existsSync(new URL('../data/ville-compositions.pdf', import.meta.url)), 'PDF des compositions absent (npm run pdf:ville)');
   assert.ok(existsSync(new URL('../data/ville-plan.pdf', import.meta.url)), 'PDF absent (npm run pdf:ville)');
   const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
   for (const f of ['./js/ville3d.js', './js/villeplan.js', './js/vendor/three.module.min.js']) assert.ok(sw.includes(`'${f}'`), `${f} non précaché`);

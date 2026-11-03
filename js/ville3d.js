@@ -168,14 +168,14 @@ export const svgIcon = (id, attrs = '') => `<svg viewBox="0 0 24 24" fill="none"
 // Liste rapide : où aller, rangé par profession.
 // Composition de chaque institution, en liste claire : membres (avec l'effectif quand les fiches le donnent),
 // puis les personnes présentes qui ne sont pas membres (commissaire du gouvernement, rapporteur, contrôleurs…).
-const ROLE_CSS = { elu_ec: 'var(--ec, #0e7490)', elu_cac: 'var(--cac, #7c3aed)' };
+const ROLE_CSS = { elu_ec: '#1E6B3A', elu_cac: '#0072B2' };
 const roleCss = (r) => ROLE_CSS[r] || ROLE[r] || '#64748b';
 const escH = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
 export const COMPO_CSS = `
 .cp-sec { margin: 0 0 14px; }
 .cp-h { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; margin: 14px 0 8px; display: flex; align-items: center; gap: 8px; }
 .cp-h::before { content: ''; width: 10px; height: 10px; border-radius: 3px; background: currentColor; }
-.cp-h.ec { color: var(--ec, #0e7490); } .cp-h.cac { color: var(--cac, #7c3aed); } .cp-h.commun { color: var(--muted, #64748b); }
+.cp-h.ec { color: #1E6B3A; } .cp-h.cac { color: #0072B2; } .cp-h.commun { color: var(--muted, #64748b); }
 .cp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; }
 .cp-b { border: 1px solid var(--line, #e2e8f0); border-radius: 12px; padding: 10px 12px; background: var(--card, #fff); cursor: pointer; min-width: 0; }
 .cp-t { display: flex; gap: 8px; align-items: center; font-weight: 800; font-size: 14.5px; line-height: 1.2; }
@@ -187,6 +187,9 @@ export const COMPO_CSS = `
 .cp-b li.hors { color: var(--muted, #64748b); }
 .cp-sub { font-size: 12px; color: var(--muted, #64748b); margin: 6px 0 0; }
 .cp-tot { font-size: 12.5px; font-weight: 700; margin: 6px 0 0; }
+.cp-role { font-size: 12.5px; font-style: italic; margin: 4px 0 0; color: var(--text, #0f172a); } @media print { .cp-role { font-size: 8.5pt; } }
+@media print { .cp-grid { grid-template-columns: 1fr 1fr; gap: 3mm; } .cp-b { break-inside: avoid; border-color: #999; padding: 2mm 3mm; } .cp-sec { break-inside: auto; } .cp-h { break-after: avoid; } .cp-b li { font-size: 9pt; } .cp-t { font-size: 10.5pt; } }
+.cp-ptitle { display: none; } @media print { .cp-ptitle { display: block; font-size: 15pt; margin: 0 0 3mm; } }
 `;
 export function compositionItems(id) {
   const salle = SALLES[id]; if (!salle) return '';
@@ -198,7 +201,7 @@ export function compositionItems(id) {
 export function compositionHtml() {
   return QUARTIERS_LISTE.map((q) => `<section class="cp-sec"><h3 class="cp-h ${q.rive}">${escH(q.titre)}</h3><div class="cp-grid">${q.ids.map((id) => {
     const b = batiment(id);
-    return `<article class="cp-b" data-id="${id}"><div class="cp-t"><span style="color:${b.rive === 'ec' ? 'var(--ec, #0e7490)' : b.rive === 'cac' ? 'var(--cac, #7c3aed)' : 'var(--muted, #64748b)'}">${svgIcon(id)}</span>${escH(b.nom)}</div>${compositionItems(id)}${b.chiffres?.length ? `<p class="cp-sub">${b.chiffres.map(escH).join(' · ')}</p>` : ''}</article>`;
+    return `<article class="cp-b" data-id="${id}"><div class="cp-t"><span style="color:${b.rive === 'ec' ? '#1E6B3A' : b.rive === 'cac' ? '#0072B2' : 'var(--muted, #64748b)'}">${svgIcon(id)}</span>${escH(b.nom)}</div><p class="cp-role">${escH(b.role)}</p>${compositionItems(id)}${b.chiffres?.length ? `<p class="cp-sub">${b.chiffres.map(escH).join(' · ')}</p>` : ''}</article>`;
   }).join('')}</div></section>`).join('');
 }
 

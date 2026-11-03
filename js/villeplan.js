@@ -1,10 +1,8 @@
-// Plans imprimables de la ville des institutions : la maquette (js/maquette.js) vue de dessus, sur une page A4 par
-// profession. Une version légère, pour visualiser : chaque institution est une tuile à sa place, avec son symbole,
+// Plan imprimable de la ville des institutions : la maquette (js/maquette.js) vue de dessus, sur une seule page A4. Une version légère, pour visualiser : chaque institution est une tuile à sa place, avec son symbole,
 // son nom (qui y siège et la fiche à relire sont dans l'info-bulle, à l'écran). Rangées 1 (en bas) à 4 : l'EC à gauche, le
-// CAC à droite, le nom de la rangée dans l'allée centrale ; rangées 5 à 7 (en haut) : le quartier commun. Les tuiles
-// de l'autre profession restent en gris clair, nommées seulement. Bordure verte (EC), bleue (CAC), double (commun),
-// comme dans la maquette ; imprimée en noir et blanc, la page reste lisible (l'autre profession est en gris).
-// Fonctions pures (chaînes HTML) : vue « Plans à imprimer » de l'app et scripts/build_ville_pdf.mjs (PDF A4, 2 pages).
+// CAC à droite, le nom de la rangée dans l'allée centrale ; rangées 5 à 7 (en haut) : le quartier commun. Bordure
+// verte (EC), bleue (CAC), double (commun), comme dans la maquette.
+// Fonctions pures (chaînes HTML) : vue « À imprimer » de l'app et scripts/build_ville_pdf.mjs (PDF A4, 1 page).
 
 import { SALLES, svgIcon, groupLabel } from './ville3d.js';
 import { RANGS, MLOTS, NOMS } from './maquette.js';
@@ -18,8 +16,8 @@ export const TITRES = { ec: 'Expert-comptable', cac: 'Commissaire aux comptes' }
 const nom = (b) => NOMS[b.id] || b.court;
 
 // Disposition en millimètres : bandes (rangées), tuiles.
-export function planLayout(rive) {
-  const other = rive === 'ec' ? 'cac' : 'ec', rooms = [], bands = [];
+export function planLayout() {
+  const rooms = [], bands = [];
   const cx = PAGE.w / 2;
   let y = 0;
   bands.push({ kind: 'head', label: 'Commun aux deux professions', y, h: HEAD, rive: 'commun' }); y += HEAD;
@@ -32,16 +30,16 @@ export function planLayout(rive) {
       for (const l of lots) {
         const s = l.b.rive === 'ec' ? -1 : 1, outer = Math.abs(l.x) > 10, back = !front(l);
         const x = s < 0 ? cx - ALLEE / 2 - (outer ? SLOT : 0) - TW : cx + ALLEE / 2 + (outer ? SLOT : 0);
-        rooms.push({ lot: l, kind: l.b.rive === other ? 'ghost' : 'full', x, w: TW, y: y + 1 + (back ? GAPY : deux ? 2 * GAPY + TH : GAPY), h: TH });
+        rooms.push({ lot: l, kind: 'full', x, w: TW, y: y + 1 + (back ? GAPY : deux ? 2 * GAPY + TH : GAPY), h: TH });
       }
     } else {
       const n = lots.length, step = Math.min(SLOT + 2, (PAGE.w - 4) / n), w = Math.min(TW + 3, step - 2.5);
-      lots.forEach((l, i) => rooms.push({ lot: l, kind: l.b.rive === other ? 'ghost' : 'full', x: cx + (i - (n - 1) / 2) * step - w / 2, w, y: y + 7, h: TH }));
+      lots.forEach((l, i) => rooms.push({ lot: l, kind: 'full', x: cx + (i - (n - 1) / 2) * step - w / 2, w, y: y + 7, h: TH }));
     }
     y += h;
     if (r.n === 5) { bands.push({ kind: 'boulevard', y, h: BOULEVARD }); y += BOULEVARD; }
   }
-  return { rive, rooms, bands, height: y };
+  return { rooms, bands, height: y };
 }
 
 const qui = (id) => (SALLES[id]?.groupes || []).filter((g) => !g.debout).map((g) => groupLabel(g)).join(' · ');
@@ -55,7 +53,7 @@ function roomHtml(r, fiches) {
   return `<div class="vp-room ${b.rive}" data-id="${lot.id}" style="${box}" title="${esc(tip)}"><span class="ic">${svgIcon(lot.id)}</span><b>${esc(nom(b))}</b></div>`;
 }
 
-function bandHtml(bd, rive) {
+function bandHtml(bd) {
   if (bd.kind === 'head') return `<div class="vp-band head" style="top:${bd.y}mm;height:${bd.h}mm"><span class="vp-badge commun">commun</span> Le quartier commun aux deux professions</div>`;
   if (bd.kind === 'boulevard') return `<div class="vp-band boulevard" style="top:${bd.y}mm;height:${bd.h}mm"><span class="vp-badge ec">EC</span> ${esc(TITRES.ec)}<span class="sp"></span>${esc(TITRES.cac)} <span class="vp-badge cac">CAC</span></div>`;
   const { r } = bd;
@@ -94,14 +92,13 @@ export const PLAN_CSS = `
 @media screen { .vp-room:hover { outline: .6mm solid #2563eb; } }
 `;
 
-// Une page (A4 portrait) pour une profession. `fiches` : titre de chaque fiche, par nom de fichier.
-export function planHtml(rive, fiches = {}) {
-  const L = planLayout(rive), titre = TITRES[rive], other = rive === 'ec' ? 'cac' : 'ec';
-  return `<section class="vp-page" data-rive="${rive}">
-    <div class="vp-head"><h1>La ville des institutions · ${esc(titre)}</h1><p>La maquette vue de dessus. En bas, les rangées 1 à 4 : l’EC à gauche, le CAC à droite, le nom de la rangée au milieu. En haut, le quartier commun. En gris : le ${esc(TITRES[other].toLowerCase())}.</p></div>
-    <div class="vp-sheet" style="height:${L.height.toFixed(2)}mm">${L.bands.map((bd) => bandHtml(bd, rive)).join('')}${L.rooms.map((r) => roomHtml(r, fiches)).join('')}</div>
-    <div class="vp-legend"><span><span class="vp-badge ec">EC</span> bordure verte</span><span><span class="vp-badge cac">CAC</span> bordure bleue</span><span><span class="vp-badge commun">commun</span> bordure double</span><span>Dans l’app, toucher une tuile ouvre l’institution en 3D</span></div>
+// Une seule page (A4 portrait) : les deux professions en couleur. `fiches` : titre de chaque fiche, par nom de fichier.
+export function planHtml(fiches = {}) {
+  const L = planLayout();
+  return `<section class="vp-page">
+    <div class="vp-head"><h1>La ville des institutions</h1><p>La maquette vue de dessus. En bas, les rangées 1 à 4 : l’expert-comptable à gauche, le commissaire aux comptes à droite, le nom de la rangée au milieu. En haut, le quartier commun aux deux professions.</p></div>
+    <div class="vp-sheet" style="height:${L.height.toFixed(2)}mm">${L.bands.map((bd) => bandHtml(bd)).join('')}${L.rooms.map((r) => roomHtml(r, fiches)).join('')}</div>
+    <div class="vp-legend"><span><span class="vp-badge ec">EC</span> bordure verte</span><span><span class="vp-badge cac">CAC</span> bordure bleue</span><span><span class="vp-badge commun">commun</span> bordure double</span></div>
   </section>`;
 }
-// Les deux pages, EC puis CAC.
-export const plansHtml = (fiches = {}) => planHtml('ec', fiches) + planHtml('cac', fiches);
+export const plansHtml = planHtml;
