@@ -357,7 +357,7 @@ export function startMaquette(root, THREE, opts = {}) {
     if (cur.length) lines.push(cur);
     let z = head ? 7 : 1.4; const placed = [];
     for (const ln of lines) { const tw = ln.reduce((a, p) => a + p.w, 0) + (ln.length - 1) * 2; let x = -tw / 2; const dmax = Math.max(...ln.map((p) => p.d)); for (const p of ln) { placed.push({ ...p, cx: x + p.w / 2, cz: z + p.d / 2 }); x += p.w + 2; } z += dmax + 3.4; }
-    const galZ = z + 0.4; if (hors.length) z += 4.2;
+    const galZ = z + 0.4; if (hors.length) z += 1.6 + hors.length * 2.9;
     const RW = Math.max(12, ...lines.map((ln) => ln.reduce((a, p) => a + p.w, 0) + (ln.length - 1) * 2 + 2), hors.reduce((a, g) => a + g.n * 1.2 + 2.5, 0) + 1), RD = Math.max(11, z + 0.8), x0 = -RW / 2, z0 = -RD / 2, cxHall = 0;
     const sc = new THREE.Scene(); sc.background = new THREE.Color('#e9edf2');
     lights(sc, Math.max(RW, RD) * 0.75);
@@ -384,7 +384,7 @@ export function startMaquette(root, THREE, opts = {}) {
       // La galerie : ceux qui sont là sans siéger, au premier plan, derrière une rambarde.
       box(sc, RW - 1, 0.45, 0.1, 0, 0.23, z0 + galZ - 0.2, std('#64748b'));
       { const pts = [[x0 + 0.6, galZ + 0.2], [-x0 - 0.6, galZ + 0.2], [-x0 - 0.6, RD - 0.6], [x0 + 0.6, RD - 0.6], [x0 + 0.6, galZ + 0.2]].map(([a, c]) => new THREE.Vector3(a, 0.05, z0 + c)); const ln = new THREE.Line(keep(new THREE.BufferGeometry().setFromPoints(pts)), keep(new THREE.LineDashedMaterial({ color: '#334155', dashSize: 0.4, gapSize: 0.3 }))); ln.computeLineDistances(); sc.add(ln); }
-      let gx = x0 + 2.2; for (const g of hors) { for (let k = 0; k < g.n; k++) add(g, gx + k * 1.2, z0 + galZ + 1.1); tag(g, gx + (g.n - 1) * 0.6, z0 + galZ + 2.1); gx += g.n * 1.2 + 2.5; }
+      hors.forEach((g, i) => { const gz = z0 + galZ + 1.1 + i * 2.9; for (let k = 0; k < g.n; k++) add(g, (k - (g.n - 1) / 2) * 1.1 - RW / 4, gz); tag(g, 0.6, gz - 0.55); }); // une ligne par groupe : figurines à gauche, étiquette à droite
     }
     const room = { scene: sc, people, labels, groups, RW, RD, home: { x: 0, z: 1, d: 30 } };
     rooms.set(lot.id, room); return room;

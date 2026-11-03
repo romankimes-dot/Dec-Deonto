@@ -2382,7 +2382,7 @@ views.ville = () => {
     <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 0">Un palais mental des institutions de l’expert-comptable et du commissaire aux comptes.</p></div>
     <div class="list">${choix.map(([id, i, t, d]) => `<button class="card pc-entry" data-ville-tab="${id}" style="text-align:left;width:100%;display:block;cursor:pointer"><strong>${i} ${t}</strong><div class="muted">${d}</div></button>`).join('')}</div></div>`;
   const pdf = tab === 'plan' ? './data/ville-plan.pdf' : './data/ville-compositions.pdf';
-  return `<div class="no-print ville-bar"><button class="btn sm" data-ville-tab="hub">← Retour</button><button class="btn sm primary" id="ville-print">${ic('files')} Imprimer</button><a class="btn sm" href="${pdf}" download>${ic('download')} PDF</a>${tab === 'plan' ? '' : `<button class="btn sm" data-ville-tab="plan">${ic('library')} Plan</button>`}${tab === 'compo' ? '' : `<button class="btn sm" data-ville-tab="compo">${ic('clipboard')} Compositions</button>`}</div>
+  return `<div class="no-print ville-bar"><button class="btn sm" data-ville-tab="hub">← Retour</button><button class="btn sm primary" id="ville-print" data-pdf="${pdf}">${ic('files')} Imprimer</button><button class="btn sm" id="ville-pdf" data-pdf="${pdf}">${ic('download')} PDF</button>${tab === 'plan' ? '' : `<button class="btn sm" data-ville-tab="plan">${ic('library')} Plan</button>`}${tab === 'compo' ? '' : `<button class="btn sm" data-ville-tab="compo">${ic('clipboard')} Compositions</button>`}</div>
     <p class="muted no-print" style="margin:6px 0">${tab === 'compo' ? 'Touchez une institution pour l’ouvrir dans la maquette.' : 'Touchez une tuile pour l’ouvrir dans la maquette.'}</p>
     <div id="ville"></div>`;
 };
@@ -2399,7 +2399,19 @@ function render() {
   main.querySelectorAll('[data-ville-tab]').forEach((b) => { b.onclick = () => { state.villeTab = b.dataset.villeTab; state.v3open = state.villeTab === '3d'; window.scrollTo(0, 0); render(); }; });
   main.querySelectorAll('[data-ville-open]').forEach((b) => { b.onclick = () => { state.v3open = true; render(); }; });
   main.querySelectorAll('[data-ville-rive]').forEach((b) => { b.onclick = () => { state.villeRive = b.dataset.villeRive; render(); }; });
-  const vp = $('#ville-print'); if (vp) vp.onclick = () => window.print();
+  // Imprimer, PDF : dans l'app installée sur iPhone, ni window.print() ni les téléchargements ne marchent. On ouvre donc la
+  // feuille de partage avec le PDF (elle propose Imprimer et Enregistrer dans Fichiers). Le fichier est chargé dès
+  // l'ouverture de la page, pour que le partage parte directement du toucher. Ailleurs : impression du navigateur, téléchargement.
+  const vp = $('#ville-print'), vd = $('#ville-pdf');
+  if (vp || vd) {
+    const url = (vp || vd).dataset.pdf, name = url.split('/').pop(); let file = null;
+    fetch(url).then((r) => (r.ok ? r.blob() : null)).then((b) => { if (b) file = new File([b], name, { type: 'application/pdf' }); }).catch(() => {});
+    const share = () => { if (file && navigator.canShare?.({ files: [file] })) { navigator.share({ files: [file], title: name }).catch(() => {}); return true; } return false; };
+    const download = () => { const a = document.createElement('a'); a.href = file ? URL.createObjectURL(file) : url; a.download = name; document.body.appendChild(a); a.click(); a.remove(); };
+    const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+    if (vp) vp.onclick = () => { if (standalone && share()) return; window.print(); };
+    if (vd) vd.onclick = () => { if (share()) return; download(); };
+  }
 }
 // pop : navigation venue du bouton Retour du téléphone (pas de nouvelle entrée d'historique).
 function go(v, { pop = false } = {}) {
