@@ -119,7 +119,14 @@ function roomHtml(r, fiches) {
 function underSvg(L) {
   const { river: R, corridors, rows } = L, Hh = L.height.toFixed(2);
   let s = `<svg class="vp-under" viewBox="0 0 ${PAGE.w} ${Hh}" style="width:${PAGE.w}mm;height:${Hh}mm" aria-hidden="true">
-    <defs><pattern id="vp-wave-${L.rive}" width="4" height="3" patternUnits="userSpaceOnUse"><path d="M0 1.5 Q1 .5 2 1.5 T4 1.5" fill="none" stroke="#000" stroke-width=".22"/></pattern></defs>
+    <defs><pattern id="vp-wave-${L.rive}" width="4" height="3" patternUnits="userSpaceOnUse"><path d="M0 1.5 Q1 .5 2 1.5 T4 1.5" fill="none" stroke="#000" stroke-width=".22"/></pattern>
+    <pattern id="vp-intl-${L.rive}" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 2.5L2.5 0L5 2.5L2.5 5z" fill="none" stroke="#bbb" stroke-width=".18"/></pattern>
+    <pattern id="vp-ec-${L.rive}" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 0H4M0 0V4" fill="none" stroke="#bbb" stroke-width=".18"/></pattern>
+    <pattern id="vp-cac-${L.rive}" width="4" height="2.4" patternUnits="userSpaceOnUse"><path d="M0 0H4M0 1.2H4M0 0V1.2M2 1.2V2.4" fill="none" stroke="#bbb" stroke-width=".18"/></pattern>
+    <pattern id="vp-jus-${L.rive}" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 0H8M0 0V8M0 4H4M4 4V8" fill="none" stroke="#bbb" stroke-width=".2"/></pattern></defs>
+    ${(() => { const ecC = L.rive === 'ec' ? L.cols.main : L.cols.other, cacC = L.rive === 'ec' ? L.cols.other : L.cols.main, r0 = rows[0], jr = rows.slice(-2), rv = rows.filter((r) => r.river), y0 = rv[0].y0, y1 = rv[rv.length - 1].y1;
+      const rect = (x0, x1, a, b, id) => `<rect x="${x0}" y="${a.toFixed(2)}" width="${(x1 - x0).toFixed(2)}" height="${(b - a).toFixed(2)}" fill="url(#vp-${id}-${L.rive})"/>`;
+      return rect(STRIP, PAGE.w, r0.y0, r0.y1, 'intl') + rect(ecC[0], ecC[1], y0, y1, 'ec') + rect(cacC[0], cacC[1], y0, y1, 'cac') + rect(STRIP, PAGE.w, jr[0].y0, jr[1].y1, 'jus'); })()}
     <rect x="${R.x0}" y="${R.y0.toFixed(2)}" width="${R.x1 - R.x0}" height="${(R.y1 - R.y0).toFixed(2)}" fill="url(#vp-wave-${L.rive})"/>
     <text x="${(R.x0 + R.x1) / 2}" y="${((R.y0 + R.y1) / 2).toFixed(2)}" font-size="2.6" font-weight="700" letter-spacing=".9" text-anchor="middle" transform="rotate(-90 ${(R.x0 + R.x1) / 2} ${((R.y0 + R.y1) / 2).toFixed(2)})" fill="#000" style="paint-order:stroke" stroke="#fff" stroke-width="1.4">FLEUVE</text>`;
   for (const c of corridors) {
@@ -195,7 +202,7 @@ export function planHtml(rive, fiches = {}) {
   return `<section class="vp-page" data-rive="${rive}">
     <div class="vp-head"><div><h1>Plan de la ville · ${esc(titre)}</h1><p>Chaque rue est un niveau, du monde (au nord) à la justice (au sud). Rive EC à gauche du fleuve, rive CAC à droite : les jumeaux se font face de part et d’autre du pont. Murs pleins : les lieux du ${esc(titre.toLowerCase())} et les lieux communs ; tirets : ceux du ${esc(other)}. Les symboles sont ceux des façades de la visite 3D.</p></div>${compass}</div>
     <div class="vp-sheet" style="height:${L.height.toFixed(2)}mm">${underSvg(L)}${L.rooms.map((r) => roomHtml(r, fiches)).join('')}${overSvg(L)}</div>
-    <div class="vp-legend"><span><i class="full"></i>${esc(titre)} et lieux communs</span><span><i class="ghost"></i>Autre profession</span><span>● siège · ○ debout · ellipse : table du conseil · barre : banc des juges</span><span>⚠ piège qui revient</span></div>
+    <div class="vp-legend"><span><i class="full"></i>${esc(titre)} et lieux communs</span><span><i class="ghost"></i>Autre profession</span><span>● siège · ○ debout · ellipse : table du conseil · barre : banc des juges</span><span>Fonds : losanges (international), carreaux (rive EC), briques (rive CAC), dalles (justice), comme le pavage de la 3D</span><span>⚠ piège qui revient</span></div>
   </section>`;
 }
 // Les deux pages, EC puis CAC.
