@@ -187,6 +187,7 @@ export const COMPO_CSS = `
 .cp-b li.hors { color: var(--muted, #64748b); }
 .cp-sub { font-size: 12px; color: var(--muted, #64748b); margin: 6px 0 0; }
 .cp-tot { font-size: 12.5px; font-weight: 700; margin: 6px 0 0; }
+.cp-role { font-size: 12.5px; font-style: italic; margin: 4px 0 0; color: var(--text, #0f172a); } @media print { .cp-role { font-size: 8.5pt; } }
 @media print { .cp-grid { grid-template-columns: 1fr 1fr; gap: 3mm; } .cp-b { break-inside: avoid; border-color: #999; padding: 2mm 3mm; } .cp-sec { break-inside: auto; } .cp-h { break-after: avoid; } .cp-b li { font-size: 9pt; } .cp-t { font-size: 10.5pt; } }
 .cp-ptitle { display: none; } @media print { .cp-ptitle { display: block; font-size: 15pt; margin: 0 0 3mm; } }
 `;
@@ -200,7 +201,7 @@ export function compositionItems(id) {
 export function compositionHtml() {
   return QUARTIERS_LISTE.map((q) => `<section class="cp-sec"><h3 class="cp-h ${q.rive}">${escH(q.titre)}</h3><div class="cp-grid">${q.ids.map((id) => {
     const b = batiment(id);
-    return `<article class="cp-b" data-id="${id}"><div class="cp-t"><span style="color:${b.rive === 'ec' ? '#1E6B3A' : b.rive === 'cac' ? '#0072B2' : 'var(--muted, #64748b)'}">${svgIcon(id)}</span>${escH(b.nom)}</div>${compositionItems(id)}${b.chiffres?.length ? `<p class="cp-sub">${b.chiffres.map(escH).join(' · ')}</p>` : ''}</article>`;
+    return `<article class="cp-b" data-id="${id}"><div class="cp-t"><span style="color:${b.rive === 'ec' ? '#1E6B3A' : b.rive === 'cac' ? '#0072B2' : 'var(--muted, #64748b)'}">${svgIcon(id)}</span>${escH(b.nom)}</div><p class="cp-role">${escH(b.role)}</p>${compositionItems(id)}${b.chiffres?.length ? `<p class="cp-sub">${b.chiffres.map(escH).join(' · ')}</p>` : ''}</article>`;
   }).join('')}</div></section>`).join('');
 }
 
