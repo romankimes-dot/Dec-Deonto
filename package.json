@@ -7,6 +7,7 @@
     "build": "python3 -I scripts/build_bank.py && python3 -I scripts/build_badges.py",
     "check": "python3 -I scripts/build_bank.py --check && python3 -I scripts/build_badges.py --check",
     "pdf": "node scripts/build_pdf.mjs",
+    "pdf:ville": "node scripts/build_ville_pdf.mjs",
     "serve": "python3 -m http.server 8080"
   }
 }
