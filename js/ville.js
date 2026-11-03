@@ -177,7 +177,7 @@ export const VILLE = {
     {
       id: 'sanctions', rive: 'cac', nom: 'Commission des sanctions de la H2A', court: 'Sanctions H2A', type: 'Discipline · instance unique, sans appel',
       role: 'Séparée du collège qui poursuit : elle juge le CAC et homologue les compositions administratives.',
-      x: 60, y: 62, w: 60, d: 46, h: 40, style: 'palais', jumeau: 'chnat', fiche: '22-schema-sanctions-h2a.md',
+      x: 60, y: 62, w: 60, d: 46, h: 40, style: 'palais', jumeau: 'chnat', jumeaux: ['chreg', 'chnat'], fiche: '22-schema-sanctions-h2a.md',
       chiffres: ['1 magistrat + 4 qualifiés', 'nommés 6 ans, renouvelables 1 fois', 'audience 2 mois après les griefs', 'simplifiée : 15 000 € max', 'prescription 6 ans'],
       pancartes: [
         { qui: 'La salle d’audience', fait: 'Un **magistrat de la Cour de cassation** (président) et **4 personnes qualifiées** : un **ancien CAC**, une en **durabilité**, deux en matière **juridique, économique ou financière** ; nommés par **décret** pour **6 ans**, renouvelables une fois. **Incompatible** avec le collège. Audience **publique**, **2 mois au moins** après la notification des griefs ; le **président de la H2A** soutient les griefs et **propose une sanction** ; le président de la **CRCC** est avisé.' },
@@ -237,7 +237,7 @@ export const VILLE = {
     {
       id: 'ue', rive: 'cac', nom: 'Union européenne · CEAOB', court: 'UE · CEAOB', type: 'International',
       role: 'Directives et règlement du contrôle légal ; coopération des superviseurs européens.',
-      x: 92, y: 5, w: 56, d: 34, h: 48, style: 'ministere', jumeau: 'terrain', fiche: '05-cac-exercice.md',
+      x: 92, y: 5, w: 56, d: 34, h: 48, style: 'ministere', fiche: '05-cac-exercice.md',
       pancartes: [
         { qui: 'Le bureau des textes', fait: '**Directive 2006/43/CE**, modifiée par la **directive 2014/56/UE** : contrôle légal des comptes dans l’UE. **Règlement (UE) 537/2014** : exigences propres aux **EIP** (services interdits, rotation, comité d’audit, revue indépendante).' },
         { qui: 'Le CEAOB', fait: 'Comité des organes européens de supervision de l’audit : la **H2A** y **coopère** avec ses homologues et avec les autorités de pays tiers.' },
@@ -364,6 +364,12 @@ export const VILLE = {
       ['Degré', '**Appel** des chambres régionales (dans le mois, suspensif)', '**Instance unique**, pas d’appel'],
       ['Peines', 'Réprimande, blâme, suspension, **radiation**', 'Avertissement, blâme, interdiction **3 ans**, radiation, **amende**, publication'],
       ['Recours', 'Conseil d’État en **cassation**', 'Conseil d’État en **pleine juridiction**'],
+    ],
+    'chreg|sanctions': [
+      ['Degré', 'Première instance', '**Instance unique** : ni première instance régionale, ni appel'],
+      ['Composition', '1 **magistrat** + 2 **élus** du conseil régional', '1 **magistrat** (Cour de cassation) + **4** personnes qualifiées'],
+      ['Qui poursuit', 'Le **magistrat chargé des poursuites**, sur plainte', 'Le **collège** de la H2A, après l’enquête du **rapporteur général**'],
+      ['Ensuite', '**Appel** devant la chambre nationale, dans le mois', 'Recours de **pleine juridiction** devant le Conseil d’État'],
     ],
   },
   // Fils rouges : un dossier suit son chemin de bâtiment en bâtiment (parcours courts, à refaire de mémoire).

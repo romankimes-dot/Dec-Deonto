@@ -13,8 +13,8 @@
 import { VILLE, batiment } from './ville.js';
 import { SALLES, SYMBOLES, svgIcon, groupLabel, compositionItems } from './ville3d.js';
 
-// Palette sûre pour les daltoniens (Okabe et Ito) : bleu et orange se distinguent aussi par leur luminosité.
-export const PAL = { ec: '#0072B2', cac: '#E69F00', commun: '#7A7A7A' };
+// Couleurs des professions : elles ne portent jamais seules l'information (badge écrit, bordure, forme du toit).
+export const PAL = { ec: '#1E6B3A', cac: '#0072B2', commun: '#7A7A7A' }; // EC vert foncé, CAC bleu (choix de l'utilisateur, daltonien)
 const BADGE = { ec: 'EC', cac: 'CAC', commun: 'commun' };
 export const RANGS = [
   { id: 'reg', n: 1, nom: 'Régional' },
@@ -69,10 +69,10 @@ export const ROLES = {
   elu_ec: ['Élu expert-comptable', 'écharpe', PAL.ec],
   elu_cac: ['Élu commissaire aux comptes', 'écharpe', PAL.cac],
   eip: ['CAC d’EIP', 'écharpe', '#D55E00'],
-  pro: ['Professionnel', 'porte-documents', '#009E73'],
+  pro: ['Professionnel', 'porte-documents', '#8c564b'],
   qualifie: ['Personnalité qualifiée', 'livre', '#CC79A7'],
   durabilite: ['Qualifié durabilité', 'livre', '#009E73'],
-  ancien_cac: ['Ancien CAC', 'cheveux gris', '#56B4E9'],
+  ancien_cac: ['Ancien CAC', 'cheveux gris', '#7fb2dd'],
   ministre: ['Ministre', 'écharpe tricolore', '#1e3a8a'],
   gouvernement: ['Représentant du gouvernement', 'dossier, debout', '#334155'],
   agent: ['Agent', 'casquette', '#56B4E9'],
@@ -93,6 +93,8 @@ export const NOMS = {
   cavec: 'CAVEC (retraite)', ue: 'UE · CEAOB',
 };
 const nomTuile = (b) => NOMS[b.id] || b.court;
+// Jumeaux d'une institution (la commission des sanctions en a deux : la chambre régionale et la chambre nationale).
+export const twinsOf = (b) => (b.jumeaux || (b.jumeau ? [b.jumeau] : [])).map((id) => batiment(id));
 // Nom court mais sans ambiguïté, pour les tuiles vues de loin.
 const COURTS = { chreg: 'Chambre régionale', chnat: 'Chambre nationale', sanctions: 'Commission des sanctions', h2a: 'H2A', bercy: 'Bercy', chancellerie: 'Chancellerie', ta: 'Tribunal administratif', tj: 'Tribunal judiciaire', tcorr: 'Tribunal correctionnel', parquet: 'Procureur', cavec: 'CAVEC', anc: 'ANC · CNoCP' };
 
@@ -111,14 +113,14 @@ export const MAQUETTE_CSS = `
 .mq-lb .nc { display: none; }
 .mq-lb.compact { font-size: 10px; padding: 3px 2px; gap: 1px; flex-direction: column; justify-content: center; width: var(--mw, 80px); box-sizing: border-box; white-space: normal; text-align: center; line-height: 1.1; min-height: calc(var(--mw, 80px) * .5); hyphens: auto; -webkit-hyphens: auto; overflow-wrap: anywhere; }
 .mq-lb.compact .nm, .mq-lb.compact svg { display: none; } .mq-lb.compact .nc { display: block; } .mq-lb.compact .nm { white-space: normal; } .mq-lb.compact .mq-badge { display: none; } .mq-lb.compact svg { width: 14px; height: 14px; }
-.mq-lb.compact.ec { border: 2px solid var(--ec); } .mq-lb.compact.cac { border: 2px dashed #a86d00; } .mq-lb.compact.commun { border: 3px double #6b7280; }
+.mq-lb.compact.ec { border: 2px solid var(--ec); } .mq-lb.compact.cac { border: 2px solid #0072B2; } .mq-lb.compact.commun { border: 3px double #6b7280; }
 .mq-lb.chip { padding: 3px; border-width: 2.5px; border-radius: 50%; box-shadow: none; }
 .mq-lb.chip svg { width: 14px; height: 14px; }
 .mq-row.short span, .mq-colh.short .t { display: none; }
 .mq-colh.short { padding: 3px; }
 .mq-lb .two span, .mq-lb .two small { white-space: normal; max-width: 230px; }
 .mq-lb.chip .nm, .mq-lb.chip .mq-badge { display: none; }
-.mq-lb.chip.ec { border: 2.5px solid var(--ec); } .mq-lb.chip.cac { border: 2.5px dashed #a86d00; } .mq-lb.chip.commun { border: 4px double #6b7280; }
+.mq-lb.chip.ec { border: 2.5px solid var(--ec); } .mq-lb.chip.cac { border: 2.5px solid #0072B2; } .mq-lb.chip.commun { border: 4px double #6b7280; }
 .mq-lb:not(.compact):not(.chip) .nm { white-space: normal; }
 .mq-lb .two { display: flex; flex-direction: column; line-height: 1.15; }
 .mq-lb .two small { font-weight: 500; font-size: 11.5px; color: #475569; }
@@ -126,7 +128,7 @@ export const MAQUETTE_CSS = `
 .mq-lb.stem::after { content: ''; position: absolute; left: 50%; top: 100%; width: 2px; height: var(--stem, 0px); margin-left: -1px; background: #475569; }
 .mq-badge { display: inline-flex; align-items: center; justify-content: center; font: 800 10.5px/1 inherit; padding: 3px 5px; border-radius: 4px; letter-spacing: .02em; flex-shrink: 0; }
 .mq-badge.ec { background: var(--ec); color: #fff; border: 1.5px solid var(--ec); }
-.mq-badge.cac { background: #fff; color: #7a4f00; border: 1.5px dashed #a86d00; }
+.mq-badge.cac { background: #fff; color: #00508a; border: 1.5px solid #0072B2; }
 .mq-badge.commun { background: #e5e7eb; color: #374151; border: 1.5px double #6b7280; border-width: 3px; padding: 1px 4px; }
 .mq-row { position: absolute; left: 0; top: 0; z-index: 1; will-change: transform; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 3px 6px 4px; border-radius: 10px; background: #0f172a; color: #fff; font-weight: 700; font-size: 11.5px; line-height: 1.1; text-align: center; max-width: 92px; }
 .mq-row.narrow { max-width: 64px; font-size: 10.5px; }
@@ -270,7 +272,7 @@ export function startMaquette(root, THREE, opts = {}) {
   const ground = (x0, x1, z0, z1, mat, y = 0.01) => { const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(x1 - x0, z1 - z0)), mat); m.rotation.x = -Math.PI / 2; m.position.set((x0 + x1) / 2, y, (z0 + z1) / 2); m.receiveShadow = true; city.add(m); return m; };
   ground(-SX, SX, -SZ, SZ, std('#f8fafc'), 0.005);
   const z1 = rowZ(1) + 6.5, zN = rowZ(7) - 6.5;
-  for (const [kind, x0, x1, za, zb, base] of [['ec', -ZX, 0, ZB, z1, '#e1edf7'], ['cac', 0, ZX, ZB, z1, '#f8eedd'], ['commun', -ZX, ZX, zN, ZB - 1.5, '#f1efea']]) { const t = zoneTex(kind, base); t.repeat.set((x1 - x0) / 6, (zb - za) / 6); ground(x0, x1, za, zb, keep(new THREE.MeshStandardMaterial({ map: t, roughness: 0.95 }))); }
+  for (const [kind, x0, x1, za, zb, base] of [['ec', -ZX, 0, ZB, z1, '#e7f2ea'], ['cac', 0, ZX, ZB, z1, '#e5eef8'], ['commun', -ZX, ZX, zN, ZB - 1.5, '#f1efea']]) { const t = zoneTex(kind, base); t.repeat.set((x1 - x0) / 6, (zb - za) / 6); ground(x0, x1, za, zb, keep(new THREE.MeshStandardMaterial({ map: t, roughness: 0.95 }))); }
   // Les lignes du tableau : entre les colonnes, entre les rangées.
   const ink = std('#334155');
   // Les lignes : la ligne centrale entre EC et CAC (épaisse), les bords, et une ligne fine entre les rangées.
@@ -281,9 +283,6 @@ export function startMaquette(root, THREE, opts = {}) {
   ground(-ZX, ZX, ZB - 1.5, ZB, std('#cbd5e1'), 0.015);
   // Allée devant chaque rangée, et numéro de rangée peint dans la marge gauche.
 
-  // Arbres en boule le long du bord : la touche « maquette ».
-  { const trunk = std('#8b6b4a'), leaf = std('#7fb069'), G = keep(new THREE.SphereGeometry(0.9, 14, 10)), T = keep(new THREE.CylinderGeometry(0.12, 0.15, 0.8, 6));
-    for (let z = -SZ + 3; z <= SZ - 3; z += 6) for (const x of [ZX + 3.5]) { const t = new THREE.Mesh(T, trunk); t.position.set(x, 0.4, z); city.add(t); const l = new THREE.Mesh(G, leaf); l.position.set(x, 1.3, z); l.castShadow = true; city.add(l); } }
 
   // Chaque institution est une tuile posée sur le plateau, comme dans un jeu de société : le nom est écrit sur la
   // tuile, une maisonnette au fond rappelle la profession par sa forme (EC : toit à deux pans ; CAC : couronne de
@@ -300,18 +299,19 @@ export function startMaquette(root, THREE, opts = {}) {
   const pick = [], blabels = [], houses = new THREE.Group(); city.add(houses);
   for (const lot of MLOTS) {
     const { x, z, b } = lot, r = b.rive, hz = z - TD / 2 + 1.05
-    const tile = box(city, TW, 0.28, TD, x, 0.14, z, std(r === 'ec' ? '#d9e9f6' : r === 'cac' ? '#fbe9c7' : '#efefec'), false); tile.receiveShadow = true; tile.userData.id = lot.id; pick.push(tile);
+    if (b.style === 'vide') { frame(city, x, z, TW - 0.3, TD - 0.3, 0.12, std('#64748b'), true, 0.05); continue; } // l'absence de superviseur public chez l'EC : un carré vide
+    const tile = box(city, TW, 0.28, TD, x, 0.14, z, std(r === 'ec' ? '#dcefe2' : r === 'cac' ? '#dceaf7' : '#efefec'), false); tile.receiveShadow = true; tile.userData.id = lot.id; pick.push(tile);
     if (r === 'ec') frame(city, x, z, TW - 0.3, TD - 0.3, 0.16, std(PAL.ec));
-    else if (r === 'cac') frame(city, x, z, TW - 0.3, TD - 0.3, 0.16, std('#b7791f'), true);
+    else if (r === 'cac') frame(city, x, z, TW - 0.3, TD - 0.3, 0.16, std('#0072B2'));
     else { frame(city, x, z, TW - 0.25, TD - 0.25, 0.08, std('#6b7280')); frame(city, x, z, TW - 0.6, TD - 0.6, 0.08, std('#6b7280')); }
     const n0 = city.children.length; // ce qui est ajouté ensuite (la maisonnette) passe dans `houses`
     if (b.style === 'vide') { frame(city, x, hz, 2.2, 1.3, 0.07, std('#334155'), true); }
     else {
-      const wall = std(r === 'ec' ? '#eef5fb' : r === 'cac' ? '#fdf3df' : '#fafaf9'), bh = 0.95, top = 0.28 + bh;
+      const wall = std(r === 'ec' ? '#eef7f1' : r === 'cac' ? '#eef4fb' : '#fafaf9'), bh = 0.95, top = 0.28 + bh;
       const m = box(city, 2.2, bh, 1.3, x, 0.28 + bh / 2, hz, wall); m.userData.id = lot.id; pick.push(m);
       box(city, 0.45, 0.6, 0.04, x, 0.28 + 0.3, hz + 0.66, std('#334155'), false);
-      if (r === 'ec') { const roof = new THREE.Mesh(PRISM, std('#2f6f9f')); roof.scale.set(2.5, 0.85, 1.55); roof.position.set(x, top, hz); roof.castShadow = true; city.add(roof); }
-      else if (r === 'cac') { box(city, 2.35, 0.12, 1.45, x, top + 0.06, hz, std('#b7791f')); box(city, 1.3, 0.5, 0.8, x, top + 0.37, hz, std('#fcd38d', { transparent: true, opacity: 0.9, roughness: 0.3 })); }
+      if (r === 'ec') { const roof = new THREE.Mesh(PRISM, std('#2e7d4f')); roof.scale.set(2.5, 0.85, 1.55); roof.position.set(x, top, hz); roof.castShadow = true; city.add(roof); }
+      else if (r === 'cac') { box(city, 2.35, 0.12, 1.45, x, top + 0.06, hz, std('#0072B2')); box(city, 1.3, 0.5, 0.8, x, top + 0.37, hz, std('#9cc9ee', { transparent: true, opacity: 0.9, roughness: 0.3 })); }
       else if (lot.rang.id === 'intl') { const d = new THREE.Mesh(DOME, std('#e5e7eb')); d.scale.set(0.75, 0.6, 0.6); d.position.set(x, top, hz); d.castShadow = true; city.add(d); }
       else { const stone = std('#ffffff'); for (const k of [-0.8, -0.27, 0.27, 0.8]) { const c = new THREE.Mesh(COL, stone); c.scale.set(1, bh, 1); c.position.set(x + k, 0.28 + bh / 2, hz + 0.8); city.add(c); } const ped = new THREE.Mesh(PRISM, stone); ped.scale.set(2.5, 0.5, 1.7); ped.position.set(x, top, hz + 0.1); ped.castShadow = true; city.add(ped); }
     }
@@ -363,7 +363,7 @@ export function startMaquette(root, THREE, opts = {}) {
     lights(sc, Math.max(RW, RD) * 0.75);
     box(sc, 400, 1, 400, 0, -1.6, 0, std('#d8cdb8'), false);
     box(sc, RW + 1, 1.2, RD + 1, 0, -0.6, 0, std('#f8fafc'), false);
-    const floor = new THREE.Mesh(keep(new THREE.PlaneGeometry(RW, RD)), std(b.rive === 'ec' ? '#e1edf7' : b.rive === 'cac' ? '#f8eedd' : '#f1efea')); floor.rotation.x = -Math.PI / 2; floor.position.y = 0.01; floor.receiveShadow = true; sc.add(floor);
+    const floor = new THREE.Mesh(keep(new THREE.PlaneGeometry(RW, RD)), std(b.rive === 'ec' ? '#e7f2ea' : b.rive === 'cac' ? '#e5eef8' : '#f1efea')); floor.rotation.x = -Math.PI / 2; floor.position.y = 0.01; floor.receiveShadow = true; sc.add(floor);
     const wallM = std('#cbd5e1'); box(sc, RW, 0.8, 0.2, 0, 0.4, z0, wallM); box(sc, 0.2, 0.8, RD, x0, 0.4, 0, wallM); box(sc, 0.2, 0.8, RD, -x0, 0.4, 0, wallM);
     const people = [], labels = [], groups = [];
     const add = (g, x, zz, y = 0.2) => { const f = figure(g.role); f.position.set(x, y, zz); f.rotation.y = Math.PI; sc.add(f); people.push({ mesh: f, g, x, z: zz }); };
@@ -408,13 +408,17 @@ export function startMaquette(root, THREE, opts = {}) {
   const tabBtn = (id, txt) => `<button type="button" class="mq-btn sm ${S.tab === id ? 'on' : ''}" data-a="tab" data-t="${id}">${txt}</button>`;
   const closeBtn = '<button type="button" class="mq-btn sm x" data-a="close-drawer" aria-label="Fermer">✕</button>';
   const twinHtml = (b) => {
-    const t = b.jumeau && batiment(b.jumeau); if (!t) return '<p>Pas de jumeau : cette institution est commune aux deux professions, ou propre à l’une sans équivalent.</p>';
-    const rows = VILLE.jumeaux?.[twinKey(b.id, t.id)] || [], e = b.rive === 'ec' ? b : t, c = b.rive === 'ec' ? t : b;
-    return `${rows.length ? `<table class="mq-cmp"><tr><th></th><th>${badge('ec')} ${esc(e.court)}</th><th>${badge('cac')} ${esc(c.court)}</th></tr>${rows.map(([k, x, y]) => `<tr><td>${esc(k)}</td><td>${md(x)}</td><td>${md(y)}</td></tr>`).join('')}</table>` : ''}
-      <h5>Qui siège chez le jumeau</h5><div class="cp-b" style="cursor:auto;padding:4px 10px">${compositionItems(t.id)}</div><p><button type="button" class="mq-btn sm" data-a="go" data-id="${t.id}">Aller chez ${esc(t.court)}</button></p>`;
+    const ts = twinsOf(b); if (!ts.length) return '<p>Pas de jumeau : cette institution est commune aux deux professions, ou propre à l’une sans équivalent.</p>';
+    return ts.map((t) => {
+      const rows = VILLE.jumeaux?.[twinKey(b.id, t.id)] || [], e = b.rive === 'ec' ? b : t, c = b.rive === 'ec' ? t : b;
+      return `${ts.length > 1 ? `<h5>Face à ${esc(nomTuile(t))}</h5>` : ''}${rows.length ? `<table class="mq-cmp"><tr><th></th><th>${badge('ec')} ${esc(e.court)}</th><th>${badge('cac')} ${esc(c.court)}</th></tr>${rows.map(([k, x, y]) => `<tr><td>${esc(k)}</td><td>${md(x)}</td><td>${md(y)}</td></tr>`).join('')}</table>` : ''}
+        ${t.style === 'vide' ? '' : `<h5>Qui siège chez ${esc(t.court)}</h5><div class="cp-b" style="cursor:auto;padding:4px 10px">${compositionItems(t.id)}</div><p><button type="button" class="mq-btn sm" data-a="go" data-id="${t.id}">Aller chez ${esc(t.court)}</button></p>`}`;
+    }).join('');
   };
   // En-têtes fixes sous les onglets : quelle profession est de quel côté (ou le quartier commun).
   function setCols() {
+    colsEl.hidden = true; return; // en-têtes retirés : les badges des tuiles et l'allée centrale suffisent
+    // eslint-disable-next-line no-unreachable
     if (S.scene === 'room' || S.tour) { colsEl.hidden = true; return; }
     const v = S.vue || 'face', chipC = (c) => `<span class="mq-colh">${badge(c.id)}<span class="t">${esc(c.titre)}</span></span>`, [ec, cac, cm] = COLONNES;
     colsEl.innerHTML = S.cam.z < ZB ? `<span></span>${chipC(cm)}<span></span>` : v === 'ec' ? `${chipC(ec)}<span></span>` : v === 'cac' ? `<span></span>${chipC(cac)}` : `${chipC(ec)}${chipC(cac)}`;
@@ -434,7 +438,7 @@ export function startMaquette(root, THREE, opts = {}) {
     } else if (S.sel) {
       const l = S.sel, b = l.b;
       where = `${badge(b.rive)}<div class="tx"><b>${esc(b.nom)}</b><small>Rangée ${l.rang.n} · ${esc(l.rang.nom)} · ${esc(b.type)}</small></div><button type="button" class="mq-btn sm primary" data-a="enter">Entrer</button>`;
-      tabs = tabBtn('role', 'À quoi ça sert') + tabBtn('jumeau', b.jumeau ? `Jumeau : ${esc(batiment(b.jumeau).court)}` : 'Jumeau') + (opts.onFiche ? `<button type="button" class="mq-btn sm" data-a="fiche" data-f="${esc(b.fiche)}">Fiche</button>` : '');
+      tabs = tabBtn('role', 'À quoi ça sert') + tabBtn('jumeau', twinsOf(b).length ? `Jumeau : ${twinsOf(b).map((t) => esc(t.style === 'vide' ? 'aucun' : t.court)).join(' et ')}` : 'Jumeau') + (opts.onFiche ? `<button type="button" class="mq-btn sm" data-a="fiche" data-f="${esc(b.fiche)}">Fiche</button>` : '');
       if (S.tab === 'role') body = `${closeBtn}<p>${md(b.role)}</p>${b.chiffres?.length ? `<p><small>${b.chiffres.map(esc).join(' · ')}</small></p>` : ''}<p><small>Symbole : ${esc(SYMBOLES[l.id][1])}.</small></p>${b.pieges?.length ? b.pieges.map((p) => `<p>⚠ ${md(p)}</p>`).join('') : ''}`;
       else if (S.tab === 'jumeau') body = closeBtn + twinHtml(b);
     } else {
@@ -453,15 +457,17 @@ export function startMaquette(root, THREE, opts = {}) {
   }
   const hint = (txt) => { hintEl.textContent = txt; hintEl.style.opacity = '1'; clearTimeout(hint.t); hint.t = setTimeout(() => { hintEl.style.opacity = '0'; }, 3500); };
 
+  const twinLines = [];
   function select(lot, fly = false) {
-    S.sel = lot; S.tab = null; selG.clear(); twinG.clear(); twinLine.visible = false;
-    const t = lot && lot.b.jumeau && mlot(lot.b.jumeau);
-    for (const it of blabels) { it.el.classList.toggle('sel', it.lot === lot); it.el.classList.toggle('twin', !!t && it.lot === t); }
+    S.sel = lot; S.tab = null; selG.clear(); twinG.clear(); twinLine.visible = false; for (const m of twinLines) city.remove(m); twinLines.length = 0;
+    const ts = lot ? twinsOf(lot.b).map((b) => mlot(b.id)) : [];
+    for (const it of blabels) { it.el.classList.toggle('sel', it.lot === lot); it.el.classList.toggle('twin', ts.includes(it.lot)); }
     if (lot) {
       frame(selG, lot.x, lot.z, TW + 0.7, TD + 0.7, 0.32, std('#0f172a'), false, 0.05);
-      if (t) {
+      for (const t of ts) {
         frame(twinG, t.x, t.z, TW + 0.7, TD + 0.7, 0.32, std('#0f172a'), true, 0.05);
-        const dx = t.x - lot.x, dz = t.z - lot.z, L = Math.hypot(dx, dz); twinLine.scale.set(Math.max(0.01, L - TW - 0.8), 0.05, 0.14); twinLine.position.set((lot.x + t.x) / 2, 0.06, (lot.z + t.z) / 2); twinLine.rotation.y = -Math.atan2(dz, dx); twinLine.visible = L > TW + 1;
+        const dx = t.x - lot.x, dz = t.z - lot.z, L = Math.hypot(dx, dz); if (L < TW + 1) continue;
+        const m = new THREE.Mesh(BOX, std('#0f172a')); const u = (TW / 2 + 0.4) / L; m.scale.set(L - TW - 0.8, 0.05, 0.14); m.position.set((lot.x + t.x) / 2, 0.06, (lot.z + t.z) / 2); m.rotation.y = -Math.atan2(dz, dx); city.add(m); twinLines.push(m);
       }
       if (fly) glide({ x: lot.x, z: lot.z + 1 }, 0.6);
     }
@@ -524,7 +530,7 @@ export function startMaquette(root, THREE, opts = {}) {
     sheet.hidden = false; sheet.scrollTop = 0;
   }
   function openLegend() {
-    sheet.innerHTML = sheetHead('Légende') + `<div class="mq-ghead">Les colonnes</div><ul class="mq-list">${COLONNES.map((c) => `<li><button type="button" style="cursor:auto">${badge(c.id)}<span class="tx"><b>${esc(c.titre)}</b><small>${c.id === 'ec' ? 'toit à deux pans, badge plein' : c.id === 'cac' ? 'couronne de verre, badge en pointillé' : 'colonnade (dôme à l’international), badge à double trait'}</small></span></button></li>`).join('')}</ul>
+    sheet.innerHTML = sheetHead('Légende') + `<div class="mq-ghead">Les colonnes</div><ul class="mq-list">${COLONNES.map((c) => `<li><button type="button" style="cursor:auto">${badge(c.id)}<span class="tx"><b>${esc(c.titre)}</b><small>${c.id === 'ec' ? 'toit à deux pans, bordure verte' : c.id === 'cac' ? 'couronne de verre, bordure bleue' : 'colonnade (dôme à l’international), badge à double trait'}</small></span></button></li>`).join('')}</ul>
       <div class="mq-ghead">Les rangées, du premier plan au fond</div><ul class="mq-list">${RANGS.map((r) => `<li><button type="button" data-a="row" data-n="${r.n}"><b style="display:inline-flex;width:26px;height:26px;border-radius:50%;background:#0f172a;color:#fff;align-items:center;justify-content:center;flex-shrink:0">${r.n}</b><span class="tx"><b>${esc(r.nom)}</b><small>${Object.values(PLAN[r.id]).flat().map((id) => esc(batiment(id).court)).join(' · ')}</small></span></button></li>`).join('')}</ul>
       <div class="mq-ghead">Les rôles dans les salles</div><ul class="mq-list">${Object.entries(ROLES).map(([k, [n, a]]) => `<li><button type="button" style="cursor:auto">${figureSvg(k)}<span class="tx"><b>${esc(n)}</b><small>${esc(a)}</small></span></button></li>`).join('')}</ul>
       <div class="mq-ghead">Les symboles des façades</div>${COLONNES.map((c) => `<p style="margin:10px 0 0">${badge(c.id)} <b>${esc(c.titre)}</b></p><ul class="mq-list">${MLOTS.filter((l) => l.col === c.id).map(lotRow).join('')}</ul>`).join('')}`;
@@ -601,7 +607,7 @@ export function startMaquette(root, THREE, opts = {}) {
     if (S.scene === 'room') { place(S.room.labels); return; }
     const ppw = W / (2 * S.cam.d * TANF * (W / H)), tpx = TW * ppw, chip = tpx < 38 || S.vue === 'tout', compact = !chip && tpx < 150, north = S.cam.z < ZB;
     layer.style.setProperty('--mw', `${Math.max(40, tpx - 2).toFixed(0)}px`);
-    houses.visible = !chip && !compact; for (const it of blabels) { it.pos.z = it.lot.z + (chip || compact ? 0 : 0.75); it.el.classList.toggle('chip', chip); it.el.classList.toggle('compact', compact); it.off = !S.tour && it.lot !== S.sel && ((S.vue !== 'tout' && it.lot.nord !== north) || (S.vue === 'ec' && it.lot.b.rive === 'cac') || (S.vue === 'cac' && it.lot.b.rive === 'ec')); }
+    houses.visible = !chip && !compact; for (const it of blabels) { it.pos.z = it.lot.z + (chip || compact ? 0 : 0.75); it.el.classList.toggle('chip', chip); it.el.classList.toggle('compact', compact); it.off = false; }
     place(blabels.concat(tourTags), true);
     if (north !== S.north) { S.north = north; setCols(); }
     // Noms des rangées : dans l'allée centrale, entre l'EC et le CAC (rangées 1 à 4) ; au-dessus de la rangée dans le quartier commun.

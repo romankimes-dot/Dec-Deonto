@@ -68,7 +68,7 @@ test('ville 3D : chaque salle désigne un bâtiment existant, chaque personne di
   const cncc = SALLES.cncc.groupes.reduce((n, g) => n + g.n, 0); assert.equal(cncc, 60, 'CNCC : 60 membres');
   // Un nombre affiché est un nombre des fiches : les effectifs de mise en scène sont marqués `approx` et jamais affichés.
   const { groupLabel } = await import('../js/ville3d.js');
-  for (const [k, rows] of Object.entries(VILLE.jumeaux)) { const [a, b] = k.split('|'); assert.ok(ids.has(a) && ids.has(b) && batiment(a).jumeau === b && batiment(b).jumeau === a, `jumeaux : ${k}`); for (const r of rows) assert.equal(r.length, 3, `jumeaux ${k} : sujet, EC, CAC`); }
+  for (const [k, rows] of Object.entries(VILLE.jumeaux)) { const [a, b] = k.split('|'); const tw = (x) => batiment(x).jumeaux || [batiment(x).jumeau]; assert.ok(ids.has(a) && ids.has(b) && (tw(a).includes(b) || tw(b).includes(a)), `jumeaux : ${k}`); for (const r of rows) assert.equal(r.length, 3, `jumeaux ${k} : sujet, EC, CAC`); }
   for (const p of VILLE.parcours) { assert.ok(p.id && p.titre && p.etapes.length >= 3, `parcours ${p.id}`); for (const [id, txt] of p.etapes) assert.ok(ids.has(id) && txt, `parcours ${p.id} : étape ${id}`); }
   for (const salle of Object.values(SALLES)) for (const g of salle.groupes) if (g.approx) assert.ok(!/×/.test(groupLabel(g)), `${g.label} : effectif illustratif affiché`);
   assert.equal(groupLabel(SALLES.cncc.groupes[1]), 'Président de CRCC ×17');
