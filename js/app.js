@@ -2440,7 +2440,7 @@ function initGamify() {
 function pullToRefresh() {
   const ind = document.createElement('div'); ind.className = 'ptr'; ind.setAttribute('aria-hidden', 'true'); ind.innerHTML = '<span class="ptr-ic">' + ic('rotate-cw') + '</span>'; document.body.appendChild(ind);
   const TH = 70; let y0 = null, d = 0, busy = false;
-  const blocked = () => document.body.classList.contains('noscroll') || !!document.querySelector('.sheet.show, .feed.show, .celebrate.show, .gl-pop.show');
+  const blocked = () => document.body.classList.contains('noscroll') || document.body.classList.contains('v3-lock') || !!document.querySelector('.v3, .sheet.show, .feed.show, .celebrate.show, .gl-pop.show');
   const reset = () => { ind.style.transition = 'transform .25s, opacity .25s'; ind.style.transform = 'translate(-50%, -48px)'; ind.style.opacity = '0'; ind.classList.remove('ready'); d = 0; };
   window.addEventListener('touchstart', (e) => {
     y0 = (busy || window.scrollY > 0 || blocked() || e.touches.length > 1) ? null : e.touches[0].clientY;
