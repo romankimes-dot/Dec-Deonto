@@ -18,6 +18,7 @@ import * as PC from './podcasts.js';
 import * as SY from './sync.js';
 import * as CN from './carnet.js';
 import { ic, paths } from './icons.js';
+import { renderVille, VILLE_CSS } from './ville.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -1110,7 +1111,7 @@ views.fiches = () => {
       const file = state.ficheOpen;
       try { $('#fiche').innerHTML = renderMarkdown(await loadFiche(file)); addToc($('#fiche')); trackRead(file, () => (state.view === 'fiches' && state.ficheOpen === file && !$('#sheet')?.classList.contains('show') ? window : null)); } catch { $('#fiche').textContent = 'Fiche indisponible hors ligne (ouvrez-la une fois en ligne).'; }
     }, 0);
-    return `<div class="row" style="gap:8px"><button class="btn sm" id="back">← Fiches</button>${seenBtn(state.ficheOpen)}</div>${n ? `<div style="margin-top:10px">${trainBtn('fiche-train')}</div>` : ''}<div class="card fiche" id="fiche" style="margin-top:10px">Chargement…</div>${trainBtn('fiche-train2')}`;
+    return `<div class="row" style="gap:8px"><button class="btn sm" id="back">← Fiches</button>${seenBtn(state.ficheOpen)}${villeBtn(state.ficheOpen)}</div>${n ? `<div style="margin-top:10px">${trainBtn('fiche-train')}</div>` : ''}<div class="card fiche" id="fiche" style="margin-top:10px">Chargement…</div>${trainBtn('fiche-train2')}`;
   }
   setTimeout(() => { document.querySelectorAll('[data-fiche]').forEach((b) => { b.onclick = () => openFiche(b.dataset.fiche); }); }, 0);
   if (!state.fiches.length) return `<div class="card"><h2>Fiches</h2><p class="muted">Aucune fiche disponible pour l’instant.</p></div>`;
@@ -1121,7 +1122,7 @@ views.fiches = () => {
   const synth = state.fiches.filter((f) => f.kind !== 'visuel');
   const ec = synth.filter((f) => /-ec-/.test(f.file)); const cac = synth.filter((f) => /-cac-/.test(f.file));
   const seenCount = state.fiches.filter((f) => P.isRead(state.progress.plan, f.file)).length;
-  return `${podcastsEntry()}<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ${ic('check')} = vue (bouton « Vu » dans chaque fiche, décochable).</p><p style="margin:0 0 8px"><strong>${seenCount} / ${state.fiches.length}</strong> fiches vues</p><div class="btnrow"><button class="btn primary" data-go="plan">${ic('compass')} Ouvrir le parcours</button><button class="btn" data-go="glossaire">${ic('book')} Glossaire</button><a class="btn" href="./data/fiches-a-imprimer.pdf" target="_blank" rel="noopener">${ic('library')} PDF à imprimer (A4, noir et blanc)</a><a class="btn" href="./data/fiches-a-imprimer-2-par-feuille.pdf" target="_blank" rel="noopener">${ic('library')} PDF livret à relier (2 pages par feuille, recto verso)</a></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
+  return `${podcastsEntry()}${villeEntry()}<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ${ic('check')} = vue (bouton « Vu » dans chaque fiche, décochable).</p><p style="margin:0 0 8px"><strong>${seenCount} / ${state.fiches.length}</strong> fiches vues</p><div class="btnrow"><button class="btn primary" data-go="plan">${ic('compass')} Ouvrir le parcours</button><button class="btn" data-go="glossaire">${ic('book')} Glossaire</button><a class="btn" href="./data/fiches-a-imprimer.pdf" target="_blank" rel="noopener">${ic('library')} PDF à imprimer (A4, noir et blanc)</a><a class="btn" href="./data/fiches-a-imprimer-2-par-feuille.pdf" target="_blank" rel="noopener">${ic('library')} PDF livret à relier (2 pages par feuille, recto verso)</a></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
     <div class="card"><h2>Fiches de référence</h2><h3>Expert-comptable</h3><div class="list">${ec.map((f) => item(f)).join('')}</div><h3>Commissaire aux comptes</h3><div class="list">${cac.map((f) => item(f)).join('')}</div></div>`;
 };
 // Sommaire déroulant en tête des fiches longues.
@@ -1134,6 +1135,9 @@ function addToc(root) {
   toc.querySelectorAll('[data-toc]').forEach((b) => { b.onclick = () => { toc.open = false; hs[Number(b.dataset.toc)].scrollIntoView({ behavior: 'smooth', block: 'start' }); }; });
 }
 function openFiche(file) { state.ficheOpen = file; go('fiches'); }
+// Fiches qui ont leur quartier dans la ville des institutions : bouton vers la vue 3D.
+const VILLE_FICHES = ['12-schema-institutions-ec-cac.md', '13-schema-discipline.md', '22-schema-sanctions-h2a.md', '21-schema-responsabilites.md', '17-schema-secret-signalements.md'];
+function villeBtn(file) { return VILLE_FICHES.includes(file) ? `<button class="btn sm" data-go="ville">${ic('landmark')} Voir la ville des institutions</button>` : ''; }
 // Une séance, une série, un jeu ou un examen est en cours : les liens s'ouvrent par-dessus, sans le quitter.
 function inActivity() {
   const v = state.view;
@@ -1197,8 +1201,9 @@ async function ficheSheet(file) {
   const meta = state.fiches.find((f) => f.file === file) || {};
   const n = (meta.questions || []).length;
   const step = P.STEPS.find((st) => st.fiches?.includes(file));
-  sheet(`<div style="margin-bottom:10px">${seenBtn(file)}</div><div class="card fiche" id="sheet-fiche">Chargement…</div>${n && !inActivity() ? `<button class="btn primary" id="sheet-train">${ic('target')} S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : ''}${step && !inActivity() ? `<div style="margin-top:10px">${shortsBtn(step.id)}</div>` : ''}`);
+  sheet(`<div class="row" style="gap:8px;margin-bottom:10px">${seenBtn(file)}${VILLE_FICHES.includes(file) && !inActivity() ? `<button class="btn sm" id="sheet-ville">${ic('landmark')} La ville des institutions</button>` : ''}</div><div class="card fiche" id="sheet-fiche">Chargement…</div>${n && !inActivity() ? `<button class="btn primary" id="sheet-train">${ic('target')} S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : ''}${step && !inActivity() ? `<div style="margin-top:10px">${shortsBtn(step.id)}</div>` : ''}`);
   const tb = $('#sheet-train'); if (tb) tb.onclick = () => { closeSheet(true); trainOn(shuffle(meta.questions, Date.now()).slice(0, 20), meta.title); };
+  const vb = $('#sheet-ville'); if (vb) vb.onclick = () => { closeSheet(true); go('ville'); };
   try {
     const box = $('#sheet-fiche'); box.dataset.file = file; box.innerHTML = renderMarkdown(await loadFiche(file)); addToc(box);
     trackRead(file, () => { const el = $('#sheet'); return el?.classList.contains('show') && $('#sheet-fiche')?.dataset.file === file ? el : null; });
@@ -2001,7 +2006,7 @@ function souvenirsView() {
 
 // ---------- Glossaire ----------
 // Termes clés soulignés partout (première occurrence par carte, fiche ou short) ; un toucher ouvre la définition.
-const GL_SKIP = 'button, a, textarea, input, select, label, code, pre, h1, h2, h3, nav, header, svg, .gl, .gl-pop, .fpill, .toast, .celebrate, .sheet-head, .feed-top, [data-no-gl]';
+const GL_SKIP = 'button, a, textarea, input, select, label, code, pre, h1, h2, h3, nav, header, svg, .gl, .gl-pop, .fpill, .toast, .celebrate, .sheet-head, .feed-top, .vl-floor summary, .vl-pill, .vl-chips, .vl-quiz .q, .vl-sign, [data-no-gl]';
 const glScope = (el) => el.closest('.card, section, .sheet-body') || document.body;
 // Pas d'aide pendant un examen blanc ni dans les jeux : la définition donnerait la réponse.
 const glActive = () => !!state.glMatcher && state.progress.settings.glossary !== false
@@ -2318,13 +2323,29 @@ views.podcasts = () => {
     <div id="pc-list-box">${pcList()}</div>`;
 };
 
+// La ville des institutions (js/ville.js) : chaque bâtiment est une instance, ses pancartes disent qui fait quoi.
+function villeEntry() {
+  return `<div class="card pc-entry"><div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:12px"><div><strong>${ic('landmark')} La ville des institutions</strong><div class="muted">Ordre, H2A, CNCC, chambres, tribunaux, quartier international : en 3D, qui siège où et qui fait quoi</div></div><button class="btn sm primary" data-go="ville">Visiter ›</button></div></div>`;
+}
+views.ville = () => {
+  if (!$('#ville-css')) { const st = document.createElement('style'); st.id = 'ville-css'; st.textContent = VILLE_CSS; document.head.appendChild(st); }
+  setTimeout(() => {
+    const root = $('#ville'); if (!root) return;
+    const titles = Object.fromEntries(state.fiches.map((f) => [f.file, f.title.replace(/^(Schéma|Fiche)\s*\d+\s*[–-]\s*/, '')]));
+    renderVille(root, { fiches: titles, onFiche: (file) => ficheSheet(file), onQuizEnd: (score, n) => toast(`Ville : ${score} / ${n}`, score === n ? 'party' : 'landmark') });
+  }, 0);
+  return `<button class="btn sm" data-go="fiches">← Fiches</button>
+    <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 0">Chaque bâtiment est une instance. Rive gauche, l’expert-comptable et son Ordre ; rive droite, le commissaire aux comptes, la H2A et la Compagnie ; en haut, le quartier international ; en bas, les tribunaux et les autres autorités. Touchez un bâtiment : ses pancartes disent qui s’y trouve et ce qu’il y fait, et le bâtiment jumeau montre l’équivalent de l’autre profession.</p></div>
+    <div id="ville"></div>`;
+};
+
 const NAV = [
   ['home', ic('home'), 'Accueil'], ['review', ic('repeat'), 'Réviser'], ['train', ic('target'), 'Entraîner'], ['shorts', ic('clapper'), 'Shorts'], ['exam', ic('timer'), 'Examen'], ['carriere', ic('trophy'), 'Carrière'], ['fiches', ic('library'), 'Fiches'],
 ];
 function render() {
   const main = $('#main');
   main.innerHTML = views[state.view]();
-  document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view || (state.view === 'plan' && b.dataset.view === 'home') || (state.view === 'jeux' && b.dataset.view === 'train') || (state.view === 'podcasts' && b.dataset.view === 'fiches')));
+  document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view || (state.view === 'plan' && b.dataset.view === 'home') || (state.view === 'jeux' && b.dataset.view === 'train') || ((state.view === 'podcasts' || state.view === 'ville') && b.dataset.view === 'fiches')));
   pcMini();
   updateStreakBadge();
   main.querySelectorAll('[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
@@ -2416,7 +2437,7 @@ async function recoverFromStaleCache() {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
     await Promise.all((await caches.keys()).filter((k) => k !== PC.AUDIO_CACHE).map((k) => caches.delete(k))); // épisodes téléchargés gardés
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './js/sync.js', './sw.js']
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './js/sync.js', './js/ville.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();
