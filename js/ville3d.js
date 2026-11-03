@@ -306,7 +306,7 @@ export const VILLE3D_CSS = `
 .v3-stick { position: absolute; left: 14px; bottom: calc(10px + var(--sb)); width: 100px; height: 100px; border-radius: 50%; border: 2px solid color-mix(in srgb, var(--text) 25%, transparent); background: color-mix(in srgb, var(--card) 45%, transparent); display: none; z-index: 2; }
 .v3-stick i { position: absolute; left: 50%; top: 50%; width: 42px; height: 42px; margin: -21px 0 0 -21px; border-radius: 50%; background: var(--primary); opacity: .85; }
 .v3-pad { position: absolute; right: 12px; bottom: calc(22px + var(--sb)); display: none; gap: 8px; z-index: 2; }
-.v3-pad .v3-btn { min-height: 54px; min-width: 76px; border-radius: 27px; }
+.v3-pad .v3-btn { min-height: 58px; min-width: 86px; border-radius: 29px; -webkit-touch-callout: none; }
 .v3.touch .v3-stick, .v3.touch .v3-pad { display: flex; }
 .v3-keys { position: absolute; left: 10px; bottom: 10px; font-size: 11.5px; color: var(--muted); z-index: 1; pointer-events: none; }
 .v3:not(.touch) .v3-card { bottom: calc(30px + var(--sb)); }
@@ -338,14 +338,13 @@ export function startVille3D(root, THREE, opts = {}) {
     <div class="v3-tilt"><button type="button" class="v3-btn" data-a="tilt" data-d="-1" aria-label="Voir plus loin">▲<small>loin</small></button><button type="button" class="v3-btn" data-a="tilt" data-d="1" aria-label="Voir de plus haut">▼<small>haut</small></button></div>
     <div class="v3-card" id="v3-card"></div>
     <div class="v3-stick" id="v3-stick"><i></i></div>
-    <div class="v3-pad"><button type="button" class="v3-btn" id="v3-back" aria-label="Marche arrière (maintenir)">◀ Recul</button><button type="button" class="v3-btn" id="v3-turbo" aria-pressed="false">Turbo</button></div>
-    <div class="v3-keys">Flèches : conduire (↓ recul) · Maj : turbo · + / − ou molette : inclinaison · Entrée : entrer · L : aller à · M : carte</div>
+    <div class="v3-pad"><button type="button" class="v3-btn" id="v3-turbo" aria-label="Turbo (maintenir)">Turbo</button></div>
+    <div class="v3-keys">Flèches : conduire (↓ recul) · Maj : turbo · + / − ou molette : inclinaison · foncer dans un mur ou Entrée : entrer · L : aller à · M : carte</div>
     <div class="v3-flash" id="v3-flash"></div>
     <div class="v3-sheet" id="v3-sheet" hidden></div>
     <div class="v3-sheet v3-map" id="v3-map" hidden><div class="v3-sheet-head"><strong>Carte · touchez un bâtiment pour y aller</strong><button type="button" class="v3-btn" data-a="close">Fermer</button></div><div class="v3-mapwrap"><canvas id="v3-bigmap"></canvas></div></div>`;
   const $ = (s) => root.querySelector(s);
-  const backBtn = $('#v3-back'); let backHeld = false;
-  const canvas = $('.v3-gl'), whereEl = $('#v3-where'), card = $('#v3-card'), flash = $('#v3-flash'), sheet = $('#v3-sheet'), mapSheet = $('#v3-map'), mini = $('#v3-mini'), big = $('#v3-bigmap'), turboBtn = $('#v3-turbo');
+    const canvas = $('.v3-gl'), whereEl = $('#v3-where'), card = $('#v3-card'), flash = $('#v3-flash'), sheet = $('#v3-sheet'), mapSheet = $('#v3-map'), mini = $('#v3-mini'), big = $('#v3-bigmap'), turboBtn = $('#v3-turbo');
 
   const col = { ec: cssVar('--ec', '#0e7490'), cac: cssVar('--cac', '#7c3aed'), commun: cssVar('--muted', '#64748b'), card: cssVar('--card', '#ffffff'), text: cssVar('--text', '#0f172a'), line: cssVar('--line', '#e2e8f0'), primary: cssVar('--primary', '#1e40af') };
   const th = document.documentElement.dataset.theme;
@@ -629,7 +628,7 @@ export function startVille3D(root, THREE, opts = {}) {
   // ---------- État
   const S = {
     pos: new THREE.Vector3(0, 0, 33), heading: Math.PI, v: 0, camYaw: Math.PI, view: 'chase', look: new THREE.Vector3(0, 1, 40),
-    tilt: 0.45, inside: null, room: null, wv: { x: 0, z: 0 }, walkTo: null, focus: null, near: null, route: null, tour: null, quiz: null, wantHeading: null, instant: false,
+    tilt: 0.45, enterCd: { id: null, until: 0 }, inside: null, room: null, wv: { x: 0, z: 0 }, walkTo: null, focus: null, near: null, route: null, tour: null, quiz: null, wantHeading: null, instant: false,
   };
   let lastWhere = '';
 
@@ -654,7 +653,7 @@ export function startVille3D(root, THREE, opts = {}) {
         <div class="v3-acts"><button type="button" class="v3-btn primary" data-a="enter">Entrer</button>${opts.onFiche ? `<button type="button" class="v3-btn" data-a="fiche" data-f="${esc(b.fiche)}">Fiche</button>` : ''}${twin ? `<button type="button" class="v3-btn" data-a="go" data-id="${twin.id}">Jumeau : ${esc(twin.b.court)}</button>` : ''}${S.tour ? '<button type="button" class="v3-btn" data-a="tour-next">Suivant ›</button><button type="button" class="v3-btn" data-a="tour-stop">Fin du parcours</button>' : ''}</div>${tourBar()}`;
     } else {
       const st = STREETS.reduce((a, t) => (Math.abs(t.z - S.pos.z) < Math.abs(a.z - S.pos.z) ? t : a));
-      h = `${S.quiz ? '<div class="t">Trouvez le bon bâtiment</div>' : ''}<div class="v3-acts" style="margin-top:0"><button type="button" class="v3-btn primary" data-a="list">Aller à…</button>${S.quiz ? '<button type="button" class="v3-btn" data-a="quiz-stop">Arrêter le jeu</button>' : '<button type="button" class="v3-btn" data-a="tour">Parcours du palais</button><button type="button" class="v3-btn" data-a="quiz">Qui fait quoi ?</button>'}</div>
+      h = `${S.quiz ? '<div class="t">Trouvez le bon bâtiment</div>' : ''}<p class="v3-sub" style="margin:0 0 6px">Pour entrer : foncez dans n’importe quel mur, ou « Entrer » devant la porte.</p><div class="v3-acts" style="margin-top:0"><button type="button" class="v3-btn primary" data-a="list">Aller à…</button>${S.quiz ? '<button type="button" class="v3-btn" data-a="quiz-stop">Arrêter le jeu</button>' : '<button type="button" class="v3-btn" data-a="tour">Parcours du palais</button><button type="button" class="v3-btn" data-a="quiz">Qui fait quoi ?</button>'}</div>
         <div class="v3-sub" style="margin-top:8px">${esc(st.nom)} :</div>${streetChips(st, null)}`;
     }
     card.innerHTML = h; card.scrollTop = 0; reframe();
@@ -726,7 +725,7 @@ export function startVille3D(root, THREE, opts = {}) {
   }
   function exit(silent) {
     const lot = S.inside; if (!lot) return;
-    S.inside = null; S.room = null; S.focus = null; S.walkTo = null;
+    S.inside = null; S.room = null; S.focus = null; S.walkTo = null; S.enterCd = { id: lot.id, until: performance.now() + 1500 };
     S.pos.set(lot.stop.x, 0, lot.stop.z); S.heading = lot.sgn < 0 ? 0 : Math.PI; S.camYaw = S.heading; S.v = 0; S.near = lot; snapCamera();
     if (!silent) { setCard(); setWhere(); }
   }
@@ -766,12 +765,11 @@ export function startVille3D(root, THREE, opts = {}) {
   });
   const stickEnd = (e) => { if (!stick || e.pointerId !== stick.id) return; stick = null; knob.style.transform = ''; };
   stickEl.addEventListener('pointerup', stickEnd); stickEl.addEventListener('pointercancel', stickEnd);
-  // pointerdown (et non click) : réagit même quand un autre doigt tient le joystick.
-  const setTurbo = (on) => { turboOn = on; turboBtn.classList.toggle('on', on); turboBtn.setAttribute('aria-pressed', String(on)); turboBtn.textContent = on ? 'Turbo ✓' : 'Turbo'; };
-  turboBtn.addEventListener('pointerdown', (e) => { e.preventDefault(); setTurbo(!turboOn); });
-  backBtn.addEventListener('pointerdown', (e) => { e.preventDefault(); backHeld = true; backBtn.classList.add('on'); try { backBtn.setPointerCapture(e.pointerId); } catch { /* ignore */ } });
-  const backUp = () => { backHeld = false; backBtn.classList.remove('on'); };
-  backBtn.addEventListener('pointerup', backUp); backBtn.addEventListener('pointercancel', backUp); backBtn.addEventListener('lostpointercapture', backUp);
+  // Turbo tant que le doigt reste dessus (pointerdown, et non click : réagit même quand un autre doigt tient le joystick).
+  const setTurbo = (on) => { turboOn = on; turboBtn.classList.toggle('on', on); };
+  turboBtn.addEventListener('pointerdown', (e) => { e.preventDefault(); setTurbo(true); try { turboBtn.setPointerCapture(e.pointerId); } catch { /* ignore */ } });
+  for (const ev of ['pointerup', 'pointercancel', 'lostpointercapture']) turboBtn.addEventListener(ev, () => setTurbo(false));
+  turboBtn.addEventListener('contextmenu', (e) => e.preventDefault());
   root.addEventListener('click', (e) => {
     const t = e.target.closest('[data-a]'); if (!t || !root.contains(t)) return;
     const a = t.dataset.a;
@@ -819,7 +817,7 @@ export function startVille3D(root, THREE, opts = {}) {
     const kf = (keys.arrowup || keys.z || keys.w ? 1 : 0) - (keys.arrowdown || keys.s ? 1 : 0);
     const kt = (keys.arrowleft || keys.q || keys.a ? 1 : 0) - (keys.arrowright || keys.d ? 1 : 0);
     const jm = stick ? Math.hypot(stick.jx, stick.jy) : 0;
-    return { kf, kt, jx: stick?.jx || 0, jy: stick?.jy || 0, jm, back: backHeld, turbo: !!keys.shift || turboOn, any: kf !== 0 || kt !== 0 || jm > 0.15 || backHeld };
+    return { kf, kt, jx: stick?.jx || 0, jy: stick?.jy || 0, jm, turbo: !!keys.shift || turboOn, any: kf !== 0 || kt !== 0 || jm > 0.15 };
   }
   function stepCity(dt, I) {
     if (I.any && S.route) { S.route = null; setCard(); }
@@ -837,9 +835,9 @@ export function startVille3D(root, THREE, opts = {}) {
         if (!last) { const n = R.pts[R.i + 1], turn = Math.abs(angDiff(want, Math.atan2(n.x - w.x, n.z - w.z))); if (turn > 0.6) vt = Math.min(vt, 8 + dw * 1.3); }
         vt = Math.min(vt, Math.sqrt(2 * 22 * rem) + 0.8);
       }
-    } else if (I.back || (I.jm > 0.15 && I.jy > 0.45 && Math.abs(I.jx) < I.jy)) {
-      // Marche arrière : bouton « Recul » maintenu, ou joystick tiré vers le bas ; le joystick (gauche, droite) braque.
-      vt = -vmax * 0.45 * (I.back ? 1 : Math.min(1, I.jm));
+    } else if (I.jm > 0.15 && I.jy > 0.45 && Math.abs(I.jx) < I.jy) {
+      // Marche arrière : joystick tiré vers le bas ; incliné à gauche ou à droite, il braque.
+      vt = -vmax * 0.45 * Math.min(1, I.jm);
       S.heading += I.jx * 2.4 * clamp(0.4 + Math.abs(S.v) / 8, 0.4, 1) * dt;
     } else if (I.jm > 0.15) {
       const a = S.camYaw, fx = Math.sin(a), fz = Math.cos(a), rx = -Math.cos(a), rz = Math.sin(a);
@@ -853,6 +851,17 @@ export function startVille3D(root, THREE, opts = {}) {
     S.v += (vt - S.v) * Math.min(1, dt * (Math.abs(vt) < Math.abs(S.v) ? 4 : 2.2));
     if (Math.abs(S.v) < 0.03 && !vt) S.v = 0;
     S.pos.x += Math.sin(S.heading) * S.v * dt; S.pos.z += Math.cos(S.heading) * S.v * dt;
+    // Entrer par n'importe quel mur : toucher un bâtiment en roulant vers lui (ou rouler sur le terrain vague).
+    if (!S.route && Math.abs(S.v) > 2) {
+      const mx = Math.sin(S.heading) * Math.sign(S.v), mz = Math.cos(S.heading) * Math.sign(S.v);
+      for (const l of LOTS) {
+        const m = l.b.style === 'vide' ? 0 : CAR_R - 0.02;
+        if ((l.id === S.enterCd.id && performance.now() < S.enterCd.until) || Math.abs(S.pos.x - l.x) >= l.w / 2 + m || Math.abs(S.pos.z - l.z) >= l.d / 2 + m) continue;
+        const dx = l.x - S.pos.x, dz = l.z - S.pos.z, d = Math.hypot(dx, dz) || 1;
+        if ((mx * dx + mz * dz) / d < 0.15) continue;
+        S.enterCd = { id: l.id, until: performance.now() + 1500 }; S.v = 0; pushOut(S.pos, CAR_R); S.near = l; enter(l); return;
+      }
+    }
     if (pushOut(S.pos, CAR_R)) S.v *= Math.pow(0.15, dt);
     car.position.set(S.pos.x, 0, S.pos.z); car.rotation.y = S.heading;
     if (!S.route) {
