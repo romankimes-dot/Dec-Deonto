@@ -285,6 +285,9 @@ export const VILLE3D_CSS = `
 .v3-btn.on { background: var(--text); border-color: var(--text); color: var(--card); }
 .v3-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 .v3-mini { position: absolute; right: max(8px, env(safe-area-inset-right, 0px)); top: calc(56px + var(--st)); width: 84px; height: 124px; border-radius: 10px; border: 1px solid var(--line); cursor: pointer; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+.v3-tilt { position: absolute; right: max(8px, env(safe-area-inset-right, 0px)); top: calc(188px + var(--st)); display: flex; flex-direction: column; gap: 6px; z-index: 2; }
+.v3-tilt .v3-btn { width: 84px; min-height: 40px; flex-direction: column; gap: 0; padding: 4px; font-size: 14px; line-height: 1; }
+.v3-tilt small { font-size: 10.5px; font-weight: 600; color: var(--muted); }
 .v3-card { position: absolute; left: max(8px, env(safe-area-inset-left, 0px)); right: max(8px, env(safe-area-inset-right, 0px)); bottom: calc(8px + var(--sb)); max-height: 40%; overflow: auto; touch-action: pan-y; z-index: 2; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: color-mix(in srgb, var(--card) 95%, transparent); line-height: 1.4; }
 .v3.touch .v3-card { bottom: calc(112px + var(--sb)); max-height: 30%; }
 .v3-card .t { display: flex; gap: 8px; align-items: center; font-weight: 800; font-size: 15px; }
@@ -332,14 +335,16 @@ export function startVille3D(root, THREE, opts = {}) {
   root.innerHTML = `<canvas class="v3-gl"></canvas>
     <div class="v3-top"><div class="v3-where" id="v3-where"></div><button type="button" class="v3-btn primary" data-a="list">Aller à</button><button type="button" class="v3-btn" data-a="opts" aria-label="Options">☰</button>${opts.onQuit ? '<button type="button" class="v3-btn v3-quit" data-a="quit" aria-label="Quitter la visite">✕</button>' : ''}</div>
     <canvas class="v3-mini" id="v3-mini" data-a="map" aria-label="Carte de la ville"></canvas>
+    <div class="v3-tilt"><button type="button" class="v3-btn" data-a="tilt" data-d="-1" aria-label="Voir plus loin">▲<small>loin</small></button><button type="button" class="v3-btn" data-a="tilt" data-d="1" aria-label="Voir de plus haut">▼<small>haut</small></button></div>
     <div class="v3-card" id="v3-card"></div>
     <div class="v3-stick" id="v3-stick"><i></i></div>
-    <div class="v3-pad"><button type="button" class="v3-btn" id="v3-turbo">Turbo</button></div>
-    <div class="v3-keys">Flèches : conduire · Maj : turbo · Entrée : entrer, sortir · L : aller à · M : carte</div>
+    <div class="v3-pad"><button type="button" class="v3-btn" id="v3-back" aria-label="Marche arrière (maintenir)">◀ Recul</button><button type="button" class="v3-btn" id="v3-turbo" aria-pressed="false">Turbo</button></div>
+    <div class="v3-keys">Flèches : conduire (↓ recul) · Maj : turbo · + / − ou molette : inclinaison · Entrée : entrer · L : aller à · M : carte</div>
     <div class="v3-flash" id="v3-flash"></div>
     <div class="v3-sheet" id="v3-sheet" hidden></div>
     <div class="v3-sheet v3-map" id="v3-map" hidden><div class="v3-sheet-head"><strong>Carte · touchez un bâtiment pour y aller</strong><button type="button" class="v3-btn" data-a="close">Fermer</button></div><div class="v3-mapwrap"><canvas id="v3-bigmap"></canvas></div></div>`;
   const $ = (s) => root.querySelector(s);
+  const backBtn = $('#v3-back'); let backHeld = false;
   const canvas = $('.v3-gl'), whereEl = $('#v3-where'), card = $('#v3-card'), flash = $('#v3-flash'), sheet = $('#v3-sheet'), mapSheet = $('#v3-map'), mini = $('#v3-mini'), big = $('#v3-bigmap'), turboBtn = $('#v3-turbo');
 
   const col = { ec: cssVar('--ec', '#0e7490'), cac: cssVar('--cac', '#7c3aed'), commun: cssVar('--muted', '#64748b'), card: cssVar('--card', '#ffffff'), text: cssVar('--text', '#0f172a'), line: cssVar('--line', '#e2e8f0'), primary: cssVar('--primary', '#1e40af') };
@@ -503,16 +508,16 @@ export function startVille3D(root, THREE, opts = {}) {
   const rooms = new Map();
   function buildRoom(lot) {
     if (rooms.has(lot.id)) return rooms.get(lot.id);
-    const { b } = lot, hex = col[b.rive], W = 36, D = 28;
+    const { b } = lot, hex = col[b.rive], W = 24, D = 18;
     const sc = new THREE.Scene(); sc.background = new THREE.Color(dark ? '#111827' : '#eef2f7');
     sc.add(new THREE.HemisphereLight(0xffffff, 0x8892a0, 1.25)); const l = new THREE.DirectionalLight(0xffffff, 0.45); l.position.set(8, 30, 12); sc.add(l);
     sc.add(plane(W, D, dark ? '#1f2937' : '#e2e8f0'));
     const wall = lam(hex, { transparent: true, opacity: 0.55 });
     box(sc, W, 2.4, 0.4, 0, 1.2, -D / 2, wall); box(sc, 0.4, 2.4, D, -W / 2, 1.2, 0, wall); box(sc, 0.4, 2.4, D, W / 2, 1.2, 0, wall);
-    box(sc, W / 2 - 2.5, 2.4, 0.4, -(W / 4 + 1.25), 1.2, D / 2, wall); box(sc, W / 2 - 2.5, 2.4, 0.4, W / 4 + 1.25, 1.2, D / 2, wall);
-    box(sc, 5, 0.03, 2, 0, 0.02, D / 2 - 0.8, lam(dark ? '#e2e8f0' : '#1e293b'));
+    box(sc, W / 2 - 2, 2.4, 0.4, -(W / 4 + 1), 1.2, D / 2, wall); box(sc, W / 2 - 2, 2.4, 0.4, W / 4 + 1, 1.2, D / 2, wall);
+    box(sc, 4, 0.03, 1.6, 0, 0.02, D / 2 - 0.7, lam(dark ? '#e2e8f0' : '#1e293b'));
     const ex = label('Sortie', { size: 34, k: 0.009 }); ex.position.set(0, 2.2, D / 2 - 0.5); sc.add(ex);
-    const title = label(b.nom, { border: hex, size: 50, k: 0.011, icon: SYMBOLES[lot.id][0], iconColor: hex }); title.position.set(0, 4.4, -D / 2 + 0.6); sc.add(title);
+    const title = label(b.nom, { border: hex, size: 50, k: 0.011, icon: SYMBOLES[lot.id][0], iconColor: hex }); title.position.set(0, 3.8, -D / 2 + 0.6); sc.add(title);
     const people = [], groups = [];
     const wood = lam('#8b5e3c');
     const put = (g, x, z, face) => {
@@ -525,33 +530,33 @@ export function startVille3D(root, THREE, opts = {}) {
     const seated = salle.groupes.filter((g) => !g.debout).flatMap((g) => Array.from({ length: g.n }, () => g));
     const standing = salle.groupes.filter((g) => g.debout);
     if (salle.layout === 'rangs') {
-      box(sc, 10, 0.5, 2.6, 0, 0.25, -D / 2 + 3.5, wood);
+      box(sc, 7, 0.5, 2, 0, 0.25, -D / 2 + 2.4, wood);
       seated.forEach((g, i) => {
-        if (i === 0) return put(g, 0, -D / 2 + 3.5, [0, 0]);
-        const k = i - 1, cols = 12, r = Math.floor(k / cols), c = k % cols; put(g, (c - (cols - 1) / 2) * 2.5, -5.5 + r * 2.4, [(c - (cols - 1) / 2) * 2.5, -D]);
+        if (i === 0) return put(g, 0, -D / 2 + 2.4, [0, 0]);
+        const k = i - 1, cols = 12, r = Math.floor(k / cols), c = k % cols; put(g, (c - (cols - 1) / 2) * 1.75, -3.6 + r * 1.75, [(c - (cols - 1) / 2) * 1.75, -D]);
       });
     } else if (salle.layout === 'tribunal') {
-      box(sc, Math.max(8, seated.length * 2.8), 1.1, 1.8, 0, 0.55, -8, wood);
-      seated.forEach((g, i) => put(g, (i - (seated.length - 1) / 2) * 2.8, -9.6, [(i - (seated.length - 1) / 2) * 2.8, 10]));
+      box(sc, Math.max(6, seated.length * 2.3), 1.1, 1.5, 0, 0.55, -4.8, wood);
+      seated.forEach((g, i) => put(g, (i - (seated.length - 1) / 2) * 2.3, -6.1, [(i - (seated.length - 1) / 2) * 2.3, 10]));
     } else if (salle.layout === 'table') {
-      const n = seated.length, rx = clamp(n * 0.65, 4.5, 15), rz = clamp(n * 0.42, 3, 9);
+      const n = seated.length, rx = clamp(n * 0.48, 3.4, 10), rz = clamp(n * 0.3, 2.4, 5.8);
       const tb = new THREE.Mesh(keep(new THREE.CylinderGeometry(1, 1, 0.25, 32)), wood); tb.scale.set(Math.max(2, rx - 1.6), 1, Math.max(1.5, rz - 1.6)); tb.position.set(0, 1, -1); sc.add(tb);
       seated.forEach((g, i) => { const a = -Math.PI / 2 + (i / n) * Math.PI * 2; put(g, Math.cos(a) * rx, Math.sin(a) * rz - 1, [0, -1]); });
     } else {
-      box(sc, Math.max(6, seated.length * 3.4), 1, 2, 0, 0.5, -7, wood);
-      seated.forEach((g, i) => put(g, (i - (seated.length - 1) / 2) * 3.4, -8.6, [(i - (seated.length - 1) / 2) * 3.4, 10]));
+      box(sc, Math.max(5, seated.length * 2.7), 1, 1.6, 0, 0.5, -4.4, wood);
+      seated.forEach((g, i) => put(g, (i - (seated.length - 1) / 2) * 2.7, -5.7, [(i - (seated.length - 1) / 2) * 2.7, 10]));
     }
-    standing.forEach((g, i) => { for (let k = 0; k < g.n; k++) put(g, W / 2 - 3 - k * 2, -4 + i * 4.5, [0, 0]); });
+    standing.forEach((g, i) => { for (let k = 0; k < g.n; k++) put(g, W / 2 - 2.2 - k * 1.6, -2.4 + i * 3.2, [0, 0]); });
     // Panneaux des pancartes, le long du mur ouest.
-    const gap = Math.min(3.6, (D - 8) / Math.max(1, b.pancartes.length));
+    const gap = Math.min(2.8, (D - 5) / Math.max(1, b.pancartes.length));
     b.pancartes.forEach((p, i) => {
-      const z = -D / 2 + 4 + i * gap;
+      const z = -D / 2 + 2.8 + i * gap;
       box(sc, 0.2, 1.5, gap * 0.8, -W / 2 + 0.35, 1.5, z, lam(dark ? '#f8fafc' : '#ffffff'));
-      const lb = label(p.qui.length > 30 ? `${p.qui.slice(0, 28)}…` : p.qui, { size: 30, k: 0.0062, border: hex }); lb.position.set(-W / 2 + 1.6, 2.7, z); sc.add(lb);
-      people.push({ x: -W / 2 + 2.2, z, qui: p.qui, fait: p.fait, label: p.qui, panneau: true, first: true });
+      const lb = label(p.qui.length > 30 ? `${p.qui.slice(0, 28)}…` : p.qui, { size: 30, k: 0.0062, border: hex }); lb.position.set(-W / 2 + 1.4, 2.6, z); sc.add(lb);
+      people.push({ x: -W / 2 + 1.8, z, qui: p.qui, fait: p.fait, label: p.qui, panneau: true, first: true });
     });
     sc.add(walker);
-    const room = { scene: sc, people, groups, W, D };
+    const room = { scene: sc, people, groups, W, D, labels: sc.children.filter((o) => o.isSprite) };
     rooms.set(lot.id, room); return room;
   }
 
@@ -624,7 +629,7 @@ export function startVille3D(root, THREE, opts = {}) {
   // ---------- État
   const S = {
     pos: new THREE.Vector3(0, 0, 33), heading: Math.PI, v: 0, camYaw: Math.PI, view: 'chase', look: new THREE.Vector3(0, 1, 40),
-    inside: null, room: null, wv: { x: 0, z: 0 }, walkTo: null, focus: null, near: null, route: null, tour: null, quiz: null, wantHeading: null, instant: false,
+    tilt: 0.45, inside: null, room: null, wv: { x: 0, z: 0 }, walkTo: null, focus: null, near: null, route: null, tour: null, quiz: null, wantHeading: null, instant: false,
   };
   let lastWhere = '';
 
@@ -716,7 +721,7 @@ export function startVille3D(root, THREE, opts = {}) {
       } else { setWhere(true); if (!ok) { card.innerHTML = `<div class="t">Ce n’était pas ${esc(lot.b.court)}</div><p>La bonne réponse : <strong>${esc(good.b.nom)}</strong>, ${esc(good.st.nom)}.</p><div class="v3-acts"><button type="button" class="v3-btn primary" data-a="go" data-id="${good.id}">Y aller</button></div>`; return; } }
     }
     S.inside = lot; S.room = buildRoom(lot); S.room.scene.add(walker); S.focus = null; S.walkTo = null; S.wv = { x: 0, z: 0 }; S.route = null;
-    S.pos.set(0, 0, S.room.D / 2 - 3); walker.position.copy(S.pos); walker.rotation.y = Math.PI;
+    S.pos.set(0, 0, S.room.D / 2 - 2); walker.position.copy(S.pos); walker.rotation.y = Math.PI;
     snapCamera(); setCard(); setWhere(); closeSheets();
   }
   function exit(silent) {
@@ -747,6 +752,8 @@ export function startVille3D(root, THREE, opts = {}) {
     else if (k === 'l') { if (sheet.hidden) openList(); else closeSheets(); }
     else if (k === 'm') { if (mapSheet.hidden) openMap(); else closeSheets(); }
     else if (k === 'v') { S.view = S.view === 'top' ? 'chase' : 'top'; }
+    else if (k === 'pageup' || k === '+') S.tilt = clamp(S.tilt - 0.15, 0, 1);
+    else if (k === 'pagedown' || k === '-') S.tilt = clamp(S.tilt + 0.15, 0, 1);
   };
   const onUp = (e) => { keys[e.key.toLowerCase()] = false; };
   window.addEventListener('keydown', onDown); window.addEventListener('keyup', onUp);
@@ -759,14 +766,19 @@ export function startVille3D(root, THREE, opts = {}) {
   });
   const stickEnd = (e) => { if (!stick || e.pointerId !== stick.id) return; stick = null; knob.style.transform = ''; };
   stickEl.addEventListener('pointerup', stickEnd); stickEl.addEventListener('pointercancel', stickEnd);
-  turboBtn.onclick = () => { turboOn = !turboOn; turboBtn.classList.toggle('on', turboOn); };
+  // pointerdown (et non click) : réagit même quand un autre doigt tient le joystick.
+  const setTurbo = (on) => { turboOn = on; turboBtn.classList.toggle('on', on); turboBtn.setAttribute('aria-pressed', String(on)); turboBtn.textContent = on ? 'Turbo ✓' : 'Turbo'; };
+  turboBtn.addEventListener('pointerdown', (e) => { e.preventDefault(); setTurbo(!turboOn); });
+  backBtn.addEventListener('pointerdown', (e) => { e.preventDefault(); backHeld = true; backBtn.classList.add('on'); try { backBtn.setPointerCapture(e.pointerId); } catch { /* ignore */ } });
+  const backUp = () => { backHeld = false; backBtn.classList.remove('on'); };
+  backBtn.addEventListener('pointerup', backUp); backBtn.addEventListener('pointercancel', backUp); backBtn.addEventListener('lostpointercapture', backUp);
   root.addEventListener('click', (e) => {
     const t = e.target.closest('[data-a]'); if (!t || !root.contains(t)) return;
     const a = t.dataset.a;
     if (a === 'list') openList(); else if (a === 'opts') openOpts(); else if (a === 'map') openMap(); else if (a === 'close') closeSheets();
     else if (a === 'go') goTo(lotOf(t.dataset.id));
     else if (a === 'enter' && S.near) enter(S.near); else if (a === 'exit') exit();
-    else if (a === 'to' && S.room) { const p = S.room.people[Number(t.dataset.i)]; const dx = S.pos.x - p.x, dz = S.pos.z - p.z, d = Math.hypot(dx, dz) || 1; S.walkTo = { x: p.x + dx / d * 1.8, z: p.z + dz / d * 1.8 }; }
+    else if (a === 'to' && S.room) { const p = S.room.people[Number(t.dataset.i)]; const dx = S.pos.x - p.x, dz = S.pos.z - p.z, d = Math.hypot(dx, dz) || 1; S.walkTo = { x: p.x + dx / d * 1.4, z: p.z + dz / d * 1.4 }; }
     else if (a === 'stop') { S.route = null; setCard(); }
     else if (a === 'tour') startTour(); else if (a === 'tour-next') nextTour(); else if (a === 'tour-stop') { S.tour = null; setCard(); }
     else if (a === 'quiz') startQuiz(); else if (a === 'quiz-stop') { S.quiz = null; setWhere(true); setCard(); }
@@ -774,6 +786,7 @@ export function startVille3D(root, THREE, opts = {}) {
     else if (a === 'mode') { S.instant = t.dataset.v === 'instant'; openList(); }
     else if (a === 'fiche') opts.onFiche?.(t.dataset.f);
     else if (a === 'quit') opts.onQuit?.();
+    else if (a === 'tilt') S.tilt = clamp(S.tilt + Number(t.dataset.d) * 0.2, 0, 1);
   });
   big.addEventListener('click', (e) => {
     const r = big.getBoundingClientRect(), x = (e.clientX - r.left - r.width / 2) / bigScale, z = (e.clientY - r.top - r.height / 2) / bigScale;
@@ -781,9 +794,14 @@ export function startVille3D(root, THREE, opts = {}) {
     if (best) goTo(best);
   });
   // Toucher un bâtiment (ville) ou une personne (intérieur) dans la scène.
-  const ray = new THREE.Raycaster(); let downAt = null;
-  canvas.addEventListener('pointerdown', (e) => { downAt = [e.clientX, e.clientY]; });
+  const ray = new THREE.Raycaster(); let downAt = null, drag = null;
+  canvas.addEventListener('pointerdown', (e) => { downAt = [e.clientX, e.clientY]; drag = { id: e.pointerId, y: e.clientY, t: S.tilt }; });
+  canvas.addEventListener('pointermove', (e) => { if (drag && e.pointerId === drag.id && Math.abs(e.clientY - drag.y) > 8) S.tilt = clamp(drag.t + (e.clientY - drag.y) / 260, 0, 1); });
+  const endDrag = (e) => { if (drag && e.pointerId === drag.id) drag = null; };
+  canvas.addEventListener('pointercancel', endDrag); canvas.addEventListener('pointerleave', endDrag);
+  canvas.addEventListener('wheel', (e) => { e.preventDefault(); S.tilt = clamp(S.tilt + Math.sign(e.deltaY) * 0.08, 0, 1); }, { passive: false });
   canvas.addEventListener('pointerup', (e) => {
+    endDrag(e);
     if (!downAt || Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) > 8) return; downAt = null;
     const r = canvas.getBoundingClientRect(); ray.setFromCamera(new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), camera);
     if (S.inside) {
@@ -801,12 +819,12 @@ export function startVille3D(root, THREE, opts = {}) {
     const kf = (keys.arrowup || keys.z || keys.w ? 1 : 0) - (keys.arrowdown || keys.s ? 1 : 0);
     const kt = (keys.arrowleft || keys.q || keys.a ? 1 : 0) - (keys.arrowright || keys.d ? 1 : 0);
     const jm = stick ? Math.hypot(stick.jx, stick.jy) : 0;
-    return { kf, kt, jx: stick?.jx || 0, jy: stick?.jy || 0, jm, turbo: !!keys.shift || turboOn, any: kf !== 0 || kt !== 0 || jm > 0.15 };
+    return { kf, kt, jx: stick?.jx || 0, jy: stick?.jy || 0, jm, back: backHeld, turbo: !!keys.shift || turboOn, any: kf !== 0 || kt !== 0 || jm > 0.15 || backHeld };
   }
   function stepCity(dt, I) {
     if (I.any && S.route) { S.route = null; setCard(); }
     if (I.any) S.wantHeading = null;
-    const vmax = I.turbo ? 44 : 20; let vt = 0;
+    const vmax = I.turbo ? 48 : 20; let vt = 0;
     if (S.route) {
       const R = S.route, p = S.pos;
       while (R.i < R.pts.length - 1 && hyp(R.pts[R.i], p) < Math.max(1.6, Math.abs(S.v) * 0.16)) R.i++;
@@ -815,10 +833,14 @@ export function startVille3D(root, THREE, opts = {}) {
         let rem = dw; for (let k = R.i; k < R.pts.length - 1; k++) rem += hyp(R.pts[k], R.pts[k + 1]);
         const want = Math.atan2(w.x - p.x, w.z - p.z), diff = angDiff(S.heading, want);
         S.heading += clamp(diff, -3.6 * dt, 3.6 * dt);
-        vt = (rem > 40 ? 48 : 24) * clamp(Math.cos(diff), 0.15, 1);
+        vt = (rem > 40 ? (I.turbo ? 75 : 48) : (I.turbo ? 34 : 24)) * clamp(Math.cos(diff), 0.15, 1);
         if (!last) { const n = R.pts[R.i + 1], turn = Math.abs(angDiff(want, Math.atan2(n.x - w.x, n.z - w.z))); if (turn > 0.6) vt = Math.min(vt, 8 + dw * 1.3); }
         vt = Math.min(vt, Math.sqrt(2 * 22 * rem) + 0.8);
       }
+    } else if (I.back || (I.jm > 0.15 && I.jy > 0.45 && Math.abs(I.jx) < I.jy)) {
+      // Marche arrière : bouton « Recul » maintenu, ou joystick tiré vers le bas ; le joystick (gauche, droite) braque.
+      vt = -vmax * 0.45 * (I.back ? 1 : Math.min(1, I.jm));
+      S.heading += I.jx * 2.4 * clamp(0.4 + Math.abs(S.v) / 8, 0.4, 1) * dt;
     } else if (I.jm > 0.15) {
       const a = S.camYaw, fx = Math.sin(a), fz = Math.cos(a), rx = -Math.cos(a), rz = Math.sin(a);
       const want = Math.atan2(fx * -I.jy + rx * I.jx, fz * -I.jy + rz * I.jx), diff = angDiff(S.heading, want);
@@ -840,32 +862,34 @@ export function startVille3D(root, THREE, opts = {}) {
   }
   function stepInside(dt, I) {
     if (I.any) S.walkTo = null;
-    const sp = I.turbo ? 11 : 6.5, r = S.room; let tx = 0, tz = 0;
+    const sp = I.turbo ? 8 : 4.8, r = S.room; let tx = 0, tz = 0;
     if (S.walkTo) { const dx = S.walkTo.x - S.pos.x, dz = S.walkTo.z - S.pos.z, d = Math.hypot(dx, dz); if (d < 0.25) S.walkTo = null; else { const s = Math.min(sp, d * 3); tx = dx / d * s; tz = dz / d * s; } }
     else if (I.jm > 0.15) { const m = Math.min(1, I.jm) / I.jm; tx = I.jx * m * sp; tz = I.jy * m * sp; }
     else { const kx = -I.kt, kz = -I.kf, m = Math.hypot(kx, kz); if (m) { tx = kx / m * sp; tz = kz / m * sp; } }
     const k = Math.min(1, dt * 9); S.wv.x += (tx - S.wv.x) * k; S.wv.z += (tz - S.wv.z) * k;
     S.pos.x += S.wv.x * dt; S.pos.z += S.wv.z * dt;
-    if (S.pos.z > r.D / 2 - 0.7 && Math.abs(S.pos.x) < 2.4 && S.wv.z > 0.5) { exit(); return; }
-    S.pos.x = clamp(S.pos.x, -r.W / 2 + 1, r.W / 2 - 1); S.pos.z = clamp(S.pos.z, -r.D / 2 + 1, Math.abs(S.pos.x) < 2.4 ? r.D / 2 : r.D / 2 - 1);
+    if (S.pos.z > r.D / 2 - 0.6 && Math.abs(S.pos.x) < 1.9 && S.wv.z > 0.5) { exit(); return; }
+    S.pos.x = clamp(S.pos.x, -r.W / 2 + 0.8, r.W / 2 - 0.8); S.pos.z = clamp(S.pos.z, -r.D / 2 + 0.8, Math.abs(S.pos.x) < 1.9 ? r.D / 2 : r.D / 2 - 0.8);
     walker.position.set(S.pos.x, 0, S.pos.z);
     if (Math.hypot(S.wv.x, S.wv.z) > 0.4) walker.rotation.y += angDiff(walker.rotation.y, Math.atan2(S.wv.x, S.wv.z)) * Math.min(1, dt * 10);
-    let best = null, bd = 2.7; for (const p of r.people) { const d = Math.hypot(p.x - S.pos.x, p.z - S.pos.z); if (d < bd) { bd = d; best = p; } }
+    let best = null, bd = 2.2; for (const p of r.people) { const d = Math.hypot(p.x - S.pos.x, p.z - S.pos.z); if (d < bd) { bd = d; best = p; } }
     if (best !== S.focus) { S.focus = best; setCard(); }
   }
   const camTarget = new THREE.Vector3(), lookTarget = new THREE.Vector3();
   function stepCamera(dt) {
-    if (S.inside) { camTarget.set(S.pos.x, 14, S.pos.z + 11); lookTarget.set(S.pos.x, 0, S.pos.z - 3); }
+    const T = S.tilt, mix = (a, b) => a + (b - a) * T; // 0 : au ras du sol, voit loin ; 1 : vue plongeante
+    if (S.inside) { camTarget.set(S.pos.x, mix(4, 14), S.pos.z + mix(6.5, 8)); lookTarget.set(S.pos.x, mix(1.4, 0), S.pos.z - mix(9, 2)); }
     else if (S.view === 'top') { S.camYaw = Math.PI; camTarget.set(S.pos.x, 52, S.pos.z + 16); lookTarget.set(S.pos.x, 0, S.pos.z); }
     else {
       S.camYaw += angDiff(S.camYaw, S.heading) * (1 - Math.exp(-dt * 2.6));
-      const f = { x: Math.sin(S.camYaw), z: Math.cos(S.camYaw) }, sp = Math.abs(S.v), dist = 13 - Math.min(sp, 12) * 0.2 + sp * 0.15, h = 9 - Math.min(sp, 12) * 0.15 + sp * 0.12;
-      camTarget.set(S.pos.x - f.x * dist, h, S.pos.z - f.z * dist); lookTarget.set(S.pos.x + f.x * 7, 0.8, S.pos.z + f.z * 7);
+      const f = { x: Math.sin(S.camYaw), z: Math.cos(S.camYaw) }, sp = Math.abs(S.v), dist = mix(9, 13) + sp * 0.12, h = mix(3, 16) + sp * 0.1, ahead = mix(30, 5);
+      camTarget.set(S.pos.x - f.x * dist, h, S.pos.z - f.z * dist); lookTarget.set(S.pos.x + f.x * ahead, mix(2.2, 0.6), S.pos.z + f.z * ahead);
       // À l'arrêt devant un bâtiment : vue plongeante sur sa façade, au-dessus des toits d'en face.
-      if (S.near && !S.route && sp < 2) { const l = S.near; camTarget.set(S.pos.x - f.x * 9, 15, S.pos.z - f.z * 9); lookTarget.set(l.x, l.h * 0.4, l.faceZ); }
+      if (S.near && !S.route && sp < 2) { const l = S.near; camTarget.set(S.pos.x - f.x * 9, mix(9, 18), S.pos.z - f.z * 9); lookTarget.set(l.x, l.h * mix(0.55, 0.3), l.faceZ); }
       // La caméra passe au-dessus d'un bâtiment plutôt qu'au travers.
-      for (const l of LOTS) if (Math.abs(camTarget.x - l.x) < l.w / 2 + 2 && Math.abs(camTarget.z - l.z) < l.d / 2 + 2) camTarget.y = Math.max(camTarget.y, l.h + 5);
+      for (const l of LOTS) if (Math.abs(camTarget.x - l.x) < l.w / 2 + 2 && Math.abs(camTarget.z - l.z) < l.d / 2 + 2) camTarget.y = Math.max(camTarget.y, l.h + 3);
     }
+    const fov = 58 + clamp((Math.abs(S.v) - 22) / 30, 0, 1) * 10; if (!S.inside && Math.abs(camera.fov - fov) > 0.2) { camera.fov += (fov - camera.fov) * Math.min(1, dt * 3); camera.updateProjectionMatrix(); }
     camera.position.lerp(camTarget, 1 - Math.exp(-dt * 6)); S.look.lerp(lookTarget, 1 - Math.exp(-dt * 9)); camera.lookAt(S.look);
   }
   let alive = true, last = performance.now(), frame = 0, whereT = 0;
@@ -877,7 +901,8 @@ export function startVille3D(root, THREE, opts = {}) {
     if (S.inside) stepInside(dt, I); else stepCity(dt, I);
     stepCamera(dt);
     globe.rotation.y += dt * 0.4;
-    if (!S.inside) { for (const sg of signs) sg.visible = camera.position.distanceTo(sg.position) > 11; for (const lb of blabels) lb.visible = camera.position.distanceTo(lb.position) > 9; } // trop proches, ils masqueraient la route
+    if (!S.inside) { for (const sg of signs) sg.visible = camera.position.distanceTo(sg.position) > 11; for (const lb of blabels) lb.visible = camera.position.distanceTo(lb.position) > 9; }
+    else for (const lb of S.room.labels) lb.visible = camera.position.distanceTo(lb.position) > 4.5; // trop proches, ils masqueraient la route
     renderer.render(S.inside ? S.room.scene : city, camera);
     if (++frame % 3 === 0) drawMini();
     whereT += dt; if (whereT > 0.3) { whereT = 0; setWhere(); }
