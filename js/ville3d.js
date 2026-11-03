@@ -1016,7 +1016,7 @@ export function startVille3D(root, THREE, opts = {}) {
     const dist = 6 + alt * 0.3 + sp * 0.08, h = alt + 2.4 + alt * 0.35, ahead = 9 + alt * 0.8;
     camTarget.set(S.pos.x - f.x * dist, h, S.pos.z - f.z * dist); lookTarget.set(S.pos.x + f.x * ahead, Math.max(0, alt * 0.2), S.pos.z + f.z * ahead);
     // À l'arrêt devant une porte : vue de trois quarts sur la façade.
-    if (S.near && !S.route && sp < 1.5 && !gesture) { const l = S.near; if (l.sgn) camTarget.set(l.faceX + l.nx * (12 + alt * 0.5), 4.5 + alt * 0.7, l.z + 5); else camTarget.set(0, 4.5 + alt * 0.7, l.z + 11 + alt * 0.4); lookTarget.set(l.faceX, l.h * 0.45, l.faceZ); }
+    if (S.near && !S.route && sp < 1.5 && !gesture) { const l = S.near; if (l.sgn) camTarget.set(l.faceX + l.nx * (12 + alt * 0.5), 4.5 + alt * 0.7, l.z + 5); else camTarget.set(l.nx * 4.5, 8.5 + alt * 0.6, l.z + 7 + alt * 0.3); lookTarget.set(l.faceX, l.h * 0.45, l.faceZ); }
     for (const l of LOTS) if (Math.abs(camTarget.x - l.x) < l.w / 2 + 1.5 && Math.abs(camTarget.z - l.z) < l.d / 2 + 1.5) camTarget.y = Math.max(camTarget.y, l.h + 2);
     const fov = 56 + clamp((sp - 20) / 30, 0, 1) * 10; if (Math.abs(camera.fov - fov) > 0.2) { camera.fov += (fov - camera.fov) * Math.min(1, dt * 3); camera.updateProjectionMatrix(); }
     camera.position.lerp(camTarget, 1 - Math.exp(-dt * 6)); S.look.lerp(lookTarget, 1 - Math.exp(-dt * 9)); camera.lookAt(S.look);
