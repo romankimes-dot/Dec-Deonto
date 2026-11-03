@@ -68,6 +68,8 @@ test('ville 3D : chaque salle désigne un bâtiment existant, chaque personne di
   const cncc = SALLES.cncc.groupes.reduce((n, g) => n + g.n, 0); assert.equal(cncc, 60, 'CNCC : 60 membres');
   // Un nombre affiché est un nombre des fiches : les effectifs de mise en scène sont marqués `approx` et jamais affichés.
   const { groupLabel } = await import('../js/ville3d.js');
+  for (const [k, rows] of Object.entries(VILLE.jumeaux)) { const [a, b] = k.split('|'); assert.ok(ids.has(a) && ids.has(b) && batiment(a).jumeau === b && batiment(b).jumeau === a, `jumeaux : ${k}`); for (const r of rows) assert.equal(r.length, 3, `jumeaux ${k} : sujet, EC, CAC`); }
+  for (const p of VILLE.parcours) { assert.ok(p.id && p.titre && p.etapes.length >= 3, `parcours ${p.id}`); for (const [id, txt] of p.etapes) assert.ok(ids.has(id) && txt, `parcours ${p.id} : étape ${id}`); }
   for (const salle of Object.values(SALLES)) for (const g of salle.groupes) if (g.approx) assert.ok(!/×/.test(groupLabel(g)), `${g.label} : effectif illustratif affiché`);
   assert.equal(groupLabel(SALLES.cncc.groupes[1]), 'Président de CRCC ×17');
   assert.equal(SALLES.crcc.groupes.reduce((n, g) => n + g.n, 0), 22, 'CRCC : 22 au plus');
@@ -76,7 +78,7 @@ test('ville 3D : chaque salle désigne un bâtiment existant, chaque personne di
   assert.equal(SALLES.chreg.groupes.filter((g) => !g.debout).reduce((n, g) => n + g.n, 0), 3, 'chambre régionale : 1 + 2');
 });
 
-test('ville 3D : rues, emplacements, symboles et liste rapide couvrent les 29 bâtiments, sans chevauchement', async () => {
+test('ville 3D : rues, emplacements, symboles et liste rapide couvrent les 30 bâtiments, sans chevauchement', async () => {
   const { LOTS, PLACES, SYMBOLES, ICONES, QUARTIERS_LISTE, STREETS, route, lotOf } = await import('../js/ville3d.js');
   assert.equal(LOTS.length, VILLE.batiments.length);
   for (const b of VILLE.batiments) {
@@ -91,13 +93,15 @@ test('ville 3D : rues, emplacements, symboles et liste rapide couvrent les 29 b�
     assert.ok(l.edge >= 0, `${l.id} : porte hors des rues`);
     if (l.b.rive === 'ec') assert.ok(l.x < 0, `${l.id} : rive EC à l’ouest`);
     if (l.b.rive === 'cac' && STREETS.indexOf(l.st) > 0) assert.ok(l.x > 0, `${l.id} : rive CAC à l’est`);
-    const r = route({ x: 0, z: 50 }, l); assert.ok(r.length >= 1 && r[r.length - 1] === l.stop, `${l.id} : itinéraire`);
+    const r = route({ x: -9, z: 66 }, l); assert.ok(r.length >= 1 && r[r.length - 1] === l.stop, `${l.id} : itinéraire`);
   }
   for (let i = 0; i < LOTS.length; i++) for (let j = i + 1; j < LOTS.length; j++) {
     const a = LOTS[i], b = LOTS[j];
     assert.ok(!(Math.abs(a.x - b.x) < (a.w + b.w) / 2 + 1 && Math.abs(a.z - b.z) < (a.d + b.d) / 2 + 1), `${a.id} et ${b.id} se chevauchent`);
   }
-  for (const [a, b] of [['cnoec', 'cncc'], ['croec', 'crcc'], ['bercy', 'chancellerie']]) assert.equal(lotOf(a).st, lotOf(b).st, `${a} et ${b} : même rue`);
+  for (const [a, b] of [['cnoec', 'cncc'], ['croec', 'crcc'], ['bercy', 'chancellerie'], ['chreg', 'sansch'], ['h2a', 'terrain']]) assert.equal(lotOf(a).st, lotOf(b).st, `${a} et ${b} : même bande`);
+  assert.deepEqual(STREETS.map((s) => s.id), ['intl', 'resp', 'recours', 'tutelle', 'sup', 'nat', 'reg'], 'bandes du nord au sud');
+  for (const st of STREETS) assert.ok(/^#[0-9a-f]{6}$/.test(st.c), `${st.id} : couleur de bande`);
   assert.ok(LOTS.every((l) => l.h <= 12), 'bâtiments bas');
 });
 

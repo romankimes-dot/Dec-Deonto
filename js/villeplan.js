@@ -1,7 +1,7 @@
 // Plans imprimables de la ville des institutions, un par profession, dessinés comme un plan d'appartement : les rues
-// sont les couloirs, les bâtiments les pièces (murs pleins, porte ouvrant sur la rue, mobilier = les sièges du
-// conseil), le fleuve sépare les deux rives. La disposition est celle de la visite 3D (js/ville3d.js) : même rue,
-// même côté, même ordre. Dans chaque pièce : symbole de façade, fiche à relire, qui y siège, chiffres, ce qui s'y
+// (un pont par bande) sont les couloirs, les bâtiments les pièces (murs pleins, porte ouvrant sur la rue, mobilier = les sièges du
+// conseil), le fleuve sépare les deux rives. La disposition est celle de la visite 3D (js/ville3d.js) : même bande,
+// même rive, même ordre. Dans chaque pièce : symbole de façade, fiche à relire, qui y siège, chiffres, ce qui s'y
 // fait, piège. Les pièces de l'autre profession restent en pointillé, nommées seulement.
 // Fonctions pures (chaînes HTML) : vue « Plans à imprimer » de l'app et scripts/build_ville_pdf.mjs (PDF A4, 2 pages).
 
@@ -11,7 +11,7 @@ import { batiment } from './ville.js';
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const md = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
 const plain = (s) => String(s ?? '').replace(/\*\*/g, '');
-const RIVER_STREETS = new Set(['tutelle', 'nat', 'sup', 'reg']);
+const RIVER_STREETS = new Set(['intl', 'resp', 'recours', 'tutelle', 'sup', 'nat', 'reg']);
 const PAGE = { w: 190, h: 248 }; // mm : zone du plan sur une feuille A4 (en-tête et légende en plus)
 const STRIP = 6, GAP = 1.6, RIVER_W = 10, HC = 4.6, HG = 7.5, LINE = 2.2;
 
@@ -124,9 +124,9 @@ function underSvg(L) {
     <pattern id="vp-ec-${L.rive}" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 0H4M0 0V4" fill="none" stroke="#bbb" stroke-width=".18"/></pattern>
     <pattern id="vp-cac-${L.rive}" width="4" height="2.4" patternUnits="userSpaceOnUse"><path d="M0 0H4M0 1.2H4M0 0V1.2M2 1.2V2.4" fill="none" stroke="#bbb" stroke-width=".18"/></pattern>
     <pattern id="vp-jus-${L.rive}" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 0H8M0 0V8M0 4H4M4 4V8" fill="none" stroke="#bbb" stroke-width=".2"/></pattern></defs>
-    ${(() => { const ecC = L.rive === 'ec' ? L.cols.main : L.cols.other, cacC = L.rive === 'ec' ? L.cols.other : L.cols.main, r0 = rows[0], jr = rows.slice(-2), rv = rows.filter((r) => r.river), y0 = rv[0].y0, y1 = rv[rv.length - 1].y1;
+    ${(() => { const ecC = L.rive === 'ec' ? L.cols.main : L.cols.other, cacC = L.rive === 'ec' ? L.cols.other : L.cols.main, y0 = rows[0].y0, y1 = rows[rows.length - 1].y1;
       const rect = (x0, x1, a, b, id) => `<rect x="${x0}" y="${a.toFixed(2)}" width="${(x1 - x0).toFixed(2)}" height="${(b - a).toFixed(2)}" fill="url(#vp-${id}-${L.rive})"/>`;
-      return rect(STRIP, PAGE.w, r0.y0, r0.y1, 'intl') + rect(ecC[0], ecC[1], y0, y1, 'ec') + rect(cacC[0], cacC[1], y0, y1, 'cac') + rect(STRIP, PAGE.w, jr[0].y0, jr[1].y1, 'jus'); })()}
+      return rect(ecC[0], ecC[1], y0, y1, 'ec') + rect(cacC[0], cacC[1], y0, y1, 'cac'); })()}
     <rect x="${R.x0}" y="${R.y0.toFixed(2)}" width="${R.x1 - R.x0}" height="${(R.y1 - R.y0).toFixed(2)}" fill="url(#vp-wave-${L.rive})"/>
     <text x="${(R.x0 + R.x1) / 2}" y="${((R.y0 + R.y1) / 2).toFixed(2)}" font-size="2.6" font-weight="700" letter-spacing=".9" text-anchor="middle" transform="rotate(-90 ${(R.x0 + R.x1) / 2} ${((R.y0 + R.y1) / 2).toFixed(2)})" fill="#000" style="paint-order:stroke" stroke="#fff" stroke-width="1.4">FLEUVE</text>`;
   for (const c of corridors) {
@@ -137,10 +137,9 @@ function underSvg(L) {
     const name = plain(c.st.nom).toUpperCase(), cx = c.river ? (R.x0 + R.x1) / 2 : (STRIP + PAGE.w) / 2, tw = name.length * 1.32 + 3;
     s += `<rect x="${(cx - tw / 2).toFixed(2)}" y="${(m - 1.45).toFixed(2)}" width="${tw.toFixed(2)}" height="2.9" rx="1.4" fill="#000"/><text x="${cx.toFixed(2)}" y="${(m + 0.72).toFixed(2)}" font-size="2" font-weight="700" letter-spacing=".25" text-anchor="middle" fill="#fff">${esc(name)}</text>`;
   }
-  // Bandeau des quartiers, à gauche.
-  const band = (y0, y1, t) => { const cy = ((y0 + y1) / 2).toFixed(2); return `<line x1="${STRIP - 1.4}" y1="${(y0 + 0.6).toFixed(2)}" x2="${STRIP - 1.4}" y2="${(y1 - 0.6).toFixed(2)}" stroke="#000" stroke-width=".3"/><text x="2.2" y="${cy}" font-size="2.3" font-weight="700" letter-spacing=".5" text-anchor="middle" transform="rotate(-90 2.2 ${cy})">${t}</text>`; };
-  const rv = rows.filter((r) => r.river);
-  s += band(rows[0].y0, rows[0].y1, 'INTERNATIONAL') + band(rv[0].y0, rv[rv.length - 1].y1, L.rive === 'ec' ? 'RIVE EC  ·  RIVE CAC' : 'RIVE EC  ·  RIVE CAC') + band(rows[rows.length - 2].y0, rows[rows.length - 1].y1, 'JUSTICE');
+  // Bandeau des bandes (niveaux), à gauche : une par rangée, du nord au sud.
+  const band = (y0, y1, t) => { const cy = ((y0 + y1) / 2).toFixed(2); return `<line x1="${STRIP - 1.4}" y1="${(y0 + 0.6).toFixed(2)}" x2="${STRIP - 1.4}" y2="${(y1 - 0.6).toFixed(2)}" stroke="#000" stroke-width=".3"/><text x="2.2" y="${cy}" font-size="2" font-weight="700" letter-spacing=".3" text-anchor="middle" transform="rotate(-90 2.2 ${cy})">${t}</text>`; };
+  for (const r of rows) s += band(r.y0, r.y1, plain(r.st.nom).toUpperCase());
   return `${s}</svg>`;
 }
 
@@ -200,9 +199,9 @@ const compass = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy=
 export function planHtml(rive, fiches = {}) {
   const L = planLayout(rive), titre = TITRES[rive], other = rive === 'ec' ? 'commissaire aux comptes' : 'expert-comptable';
   return `<section class="vp-page" data-rive="${rive}">
-    <div class="vp-head"><div><h1>Plan de la ville · ${esc(titre)}</h1><p>Chaque rue est un niveau, du monde (au nord) à la justice (au sud). Rive EC à gauche du fleuve, rive CAC à droite : les jumeaux se font face de part et d’autre du pont. Murs pleins : les lieux du ${esc(titre.toLowerCase())} et les lieux communs ; tirets : ceux du ${esc(other)}. Les symboles sont ceux des façades de la visite 3D.</p></div>${compass}</div>
+    <div class="vp-head"><div><h1>Plan de la ville · ${esc(titre)}</h1><p>Chaque bande est un niveau, du monde (en haut, au nord) à l’échelon régional (en bas, au sud) ; la bande grise est le pont de ce niveau. Rive EC à gauche du fleuve, rive CAC à droite : les jumeaux se font face. Murs pleins : les lieux du ${esc(titre.toLowerCase())} et les lieux communs ; tirets : ceux du ${esc(other)}. Les symboles sont ceux des façades de la visite 3D.</p></div>${compass}</div>
     <div class="vp-sheet" style="height:${L.height.toFixed(2)}mm">${underSvg(L)}${L.rooms.map((r) => roomHtml(r, fiches)).join('')}${overSvg(L)}</div>
-    <div class="vp-legend"><span><i class="full"></i>${esc(titre)} et lieux communs</span><span><i class="ghost"></i>Autre profession</span><span>● siège · ○ debout · ellipse : table du conseil · barre : banc des juges</span><span>Fonds : losanges (international), carreaux (rive EC), briques (rive CAC), dalles (justice), comme le pavage de la 3D</span><span>⚠ piège qui revient</span></div>
+    <div class="vp-legend"><span><i class="full"></i>${esc(titre)} et lieux communs</span><span><i class="ghost"></i>Autre profession</span><span>● siège · ○ debout · ellipse : table du conseil · barre : banc des juges</span><span>Fonds : carreaux (rive EC), briques (rive CAC), comme le pavage de la 3D ; à gauche, le niveau de chaque bande</span><span>⚠ piège qui revient</span></div>
   </section>`;
 }
 // Les deux pages, EC puis CAC.
