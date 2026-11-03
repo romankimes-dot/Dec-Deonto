@@ -246,7 +246,7 @@ export function startMaquette(root, THREE, opts = {}) {
     cands.sort((a, b) => b.sy - a.sy);
     const boxes = [];
     for (const c of cands) {
-      let y = c.sy; c.sx = clamp(c.sx, c.w / 2 + 4, W - c.w / 2 - 4);
+      let y = c.sy;
       for (let g = 0; g < (loose ? 0 : 10); g++) { const hit = boxes.find((b) => c.sx - c.w / 2 < b.x1 + 3 && c.sx + c.w / 2 > b.x0 - 3 && y - c.h < b.y1 + 2 && y > b.y0 - 2); if (!hit) break; y = hit.y0 - 2; }
       boxes.push({ x0: c.sx - c.w / 2, x1: c.sx + c.w / 2, y0: y - c.h, y1: y });
       c.it.el.style.transform = `translate3d(${(c.sx - c.w / 2).toFixed(1)}px,${(y - c.h).toFixed(1)}px,0)`;

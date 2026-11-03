@@ -2334,18 +2334,18 @@ const injectCss = (id, css) => { if (!$(`#${id}`)) { const st = document.createE
 // remis en place tel quel, avec sa position et son contexte WebGL ; elle s'arrête seulement en quittant la vue ou l'onglet.
 function stopVille3D() { if (state.v3) { try { state.v3.stop(); } catch { /* ignore */ } state.v3 = null; state.v3el = null; } document.body.classList.remove('print-plan', 'v3-lock'); }
 views.ville = () => {
-  const tab = ['plan', 'compo'].includes(state.villeTab) ? state.villeTab : '3d';
+  const tab = ['plan', 'compo', '3d'].includes(state.villeTab) ? state.villeTab : 'hub';
   const titles = Object.fromEntries(state.fiches.map((f) => [f.file, f.title.replace(/^(Schéma|Fiche)\s*\d+\s*[–-]\s*/, '')]));
   const rive = state.villeRive || 'ec';
   // La visite 3D s'ouvre en plein écran (✕ pour en sortir) ; la page de la ville reste derrière.
-  const open3d = tab === '3d' && state.v3open !== false;
+  const open3d = tab === '3d' && state.v3open === true;
   if (!open3d) stopVille3D();
-  document.body.classList.toggle('print-plan', tab === 'plan');
+  document.body.classList.toggle('print-plan', tab === 'plan' || tab === 'compo');
   document.body.classList.toggle('v3-lock', open3d);
   // Plan d'une profession, réduit à la largeur de l'écran ; toucher une pièce ouvre la visite 3D devant ce bâtiment.
   const showPlan = (root) => {
     injectCss('villeplan-css', PLAN_CSS); document.body.classList.add('print-plan');
-    root.innerHTML = planHtml(rive, titles);
+    root.innerHTML = planHtml(titles);
     const pg = root.querySelector('.vp-page');
     const fit = () => { pg.style.zoom = ''; pg.style.zoom = String(Math.min(1, root.clientWidth / pg.offsetWidth)); };
     fit(); window.addEventListener('resize', fit, { once: true });
@@ -2355,7 +2355,7 @@ views.ville = () => {
     const root = $('#ville'); if (!root) return;
     if (tab === 'plan') return showPlan(root);
     if (tab === 'compo') {
-      injectCss('v3-compo-css', COMPO_CSS); root.innerHTML = `<div class="card">${compositionHtml()}</div>`;
+      injectCss('v3-compo-css', COMPO_CSS); root.innerHTML = `<div class="card"><h1 class="cp-ptitle">Qui compose chaque institution</h1>${compositionHtml()}</div>`;
       root.onclick = (e) => { const c = e.target.closest('.cp-b[data-id]'); if (!c) return; state.villeTab = '3d'; state.v3open = true; state.villeGoto = c.dataset.id; render(); };
       return;
     }
@@ -2365,7 +2365,7 @@ views.ville = () => {
     try {
       const THREE = await import('./vendor/three.module.min.js');
       if (!$('#ville') || state.view !== 'ville' || state.villeTab === 'plan') return;
-      state.v3 = startMaquette(root, THREE, { full: true, onQuit: () => { state.v3open = false; stopVille3D(); render(); }, fiches: titles, onFiche: (file) => ficheSheet(file) });
+      state.v3 = startMaquette(root, THREE, { full: true, onQuit: () => { state.v3open = false; state.villeTab = 'hub'; stopVille3D(); render(); }, fiches: titles, onFiche: (file) => ficheSheet(file) });
       state.v3el = root;
       if (state.villeGoto) { state.v3.goto(state.villeGoto); state.villeGoto = null; }
     } catch (e) {
@@ -2374,11 +2374,16 @@ views.ville = () => {
       showPlan($('#ville-alt'));
     }
   }, 0);
-  const tabs = [['3d', ic('landmark'), 'Ouvrir la maquette (3D)'], ['compo', ic('clipboard'), 'Compositions'], ['plan', ic('library'), 'Plans à imprimer']];
-  return `<div class="no-print"><button class="btn sm" data-go="fiches">← Fiches</button>
-    <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 8px">${tab === '3d' ? 'Une maquette : au premier plan, l’EC à gauche et le CAC à droite, face à face, rangée par rangée (1 Régional à 4 Tutelle et normes) ; au fond, le quartier commun (5 à 7). Touchez un bâtiment pour l’ouvrir, « Entrer » pour voir qui y siège.' : tab === 'compo' ? 'Qui siège dans chaque institution, rangé par profession : les membres (avec l’effectif quand les fiches le donnent), puis les personnes présentes qui ne sont pas membres. Touchez une institution pour y aller en 3D.' : 'La maquette vue de dessus, une page par profession, pour visualiser d’un coup d’œil : rangées 1 à 4 avec l’EC à gauche et le CAC à droite, le quartier commun en haut ; l’autre profession en gris. Touchez une tuile pour l’ouvrir en 3D.'}</p>
-    <div class="btnrow">${tabs.map(([id, i, t]) => `<button class="btn sm ${tab === id && (id !== '3d' || open3d) ? 'primary' : ''}" data-ville-tab="${id}">${i} ${t}</button>`).join('')}</div>
-    ${tab === 'plan' ? `<div class="btnrow" style="margin-top:8px"><button class="btn sm ${rive === 'ec' ? 'primary' : ''}" data-ville-rive="ec">Expert-comptable</button><button class="btn sm ${rive === 'cac' ? 'primary' : ''}" data-ville-rive="cac">Commissaire aux comptes</button><button class="btn sm" id="ville-print">${ic('files')} Imprimer ce plan</button><a class="btn sm" href="./data/ville-plan.pdf" target="_blank" rel="noopener">${ic('download')} PDF des deux plans (A4)</a></div>` : ''}</div></div>
+  // Accueil de la ville : trois choix. Les pages « Compositions » et « Plan » ont une barre (retour, imprimer, PDF).
+  const choix = [['3d', ic('landmark'), 'Visiter la maquette (3D)', 'L’EC à gauche, le CAC à droite, rangée par rangée ; le quartier commun au fond. On entre dans chaque institution pour voir qui y siège.'],
+    ['compo', ic('clipboard'), 'Les compositions', 'Qui siège dans chaque institution, rangé par profession. À lire ou à imprimer.'],
+    ['plan', ic('library'), 'Le plan à imprimer', 'La maquette vue de dessus, sur une page A4.']];
+  if (tab === 'hub') return `<div class="no-print"><button class="btn sm" data-go="fiches">← Fiches</button>
+    <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 0">Un palais mental des institutions de l’expert-comptable et du commissaire aux comptes.</p></div>
+    <div class="list">${choix.map(([id, i, t, d]) => `<button class="card pc-entry" data-ville-tab="${id}" style="text-align:left;width:100%;display:block;cursor:pointer"><strong>${i} ${t}</strong><div class="muted">${d}</div></button>`).join('')}</div></div>`;
+  const pdf = tab === 'plan' ? './data/ville-plan.pdf' : './data/ville-compositions.pdf';
+  return `<div class="no-print ville-bar"><button class="btn sm" data-ville-tab="hub">← Retour</button><button class="btn sm primary" id="ville-print">${ic('files')} Imprimer</button><a class="btn sm" href="${pdf}" download>${ic('download')} PDF</a>${tab === 'plan' ? '' : `<button class="btn sm" data-ville-tab="plan">${ic('library')} Plan</button>`}${tab === 'compo' ? '' : `<button class="btn sm" data-ville-tab="compo">${ic('clipboard')} Compositions</button>`}</div>
+    <p class="muted no-print" style="margin:6px 0">${tab === 'compo' ? 'Touchez une institution pour l’ouvrir dans la maquette.' : 'Touchez une tuile pour l’ouvrir dans la maquette.'}</p>
     <div id="ville"></div>`;
 };
 const NAV = [
@@ -2391,7 +2396,7 @@ function render() {
   pcMini();
   updateStreakBadge();
   main.querySelectorAll('[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
-  main.querySelectorAll('[data-ville-tab]').forEach((b) => { b.onclick = () => { state.villeTab = b.dataset.villeTab; if (state.villeTab === '3d') state.v3open = true; render(); }; });
+  main.querySelectorAll('[data-ville-tab]').forEach((b) => { b.onclick = () => { state.villeTab = b.dataset.villeTab; state.v3open = state.villeTab === '3d'; window.scrollTo(0, 0); render(); }; });
   main.querySelectorAll('[data-ville-open]').forEach((b) => { b.onclick = () => { state.v3open = true; render(); }; });
   main.querySelectorAll('[data-ville-rive]').forEach((b) => { b.onclick = () => { state.villeRive = b.dataset.villeRive; render(); }; });
   const vp = $('#ville-print'); if (vp) vp.onclick = () => window.print();
@@ -2407,7 +2412,7 @@ function go(v, { pop = false } = {}) {
   if (state.feed) closeFeed(true);
   glHide();
   const changed = v !== state.view;
-  if (v === 'ville' && changed) state.v3open = true;
+  if (v === 'ville' && changed) { state.v3open = false; state.villeTab = 'hub'; }
   state.view = v; window.scrollTo(0, 0); render();
   if (!pop && changed) { try { history.pushState({ v }, ''); } catch { /* ignore */ } }
 }

@@ -101,7 +101,7 @@ export const VILLE = {
       pieges: ['La H2A **n’adopte pas** la déontologie des EC et ne juge **jamais** un expert-comptable pour son activité d’EC.', 'Interdiction temporaire **3 ans** au plus : les **5 ans** sont l’ancien régime H3C.', '**Réprimande** et **suspension** sont des peines d’EC, pas de CAC.'],
     },
     {
-      id: 'terrain', rive: 'ec', nom: 'Terrain vague', court: 'Pas de H2A', type: 'Supervision publique',
+      id: 'terrain', rive: 'ec', nom: 'Pas de H2A (aucun superviseur public)', court: 'Pas de H2A', type: 'Supervision publique',
       role: 'Aucune autorité publique indépendante chez l’expert-comptable : c’est l’Ordre qui contrôle.',
       x: 34, y: 46, w: 60, d: 60, h: 3, style: 'vide', jumeau: 'h2a', fiche: '12-schema-institutions-ec-cac.md',
       pancartes: [

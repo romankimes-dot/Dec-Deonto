@@ -642,6 +642,8 @@ button.btn.seen.on { background: var(--ok-bg); border-color: var(--ok); color: v
 .carnet-item .btn { align-self: flex-start; }
 
 /* Visite 3D de la ville en plein écran : la page derrière ne défile plus. */
+.ville-bar .btn { width: auto; flex: 0 0 auto; margin: 0; }
+.ville-bar { position: sticky; top: 0; z-index: 5; display: flex; gap: 6px; flex-wrap: wrap; padding: 8px 0; background: var(--bg, #f8fafc); }
 body.v3-lock { overflow: hidden; position: fixed; inset: 0; width: 100%; overscroll-behavior: none; }
 html { overscroll-behavior-y: none; }
 /* Plan de la ville à imprimer (vue Fiches → Ville → Plan à imprimer) : seule la page du plan s'imprime. */
