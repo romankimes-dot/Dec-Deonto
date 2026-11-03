@@ -19,6 +19,8 @@ import * as SY from './sync.js';
 import * as CN from './carnet.js';
 import { ic, paths } from './icons.js';
 import { renderVille, VILLE_CSS } from './ville.js';
+import { startVille3D, VILLE3D_CSS } from './ville3d.js';
+import { planHtml, PLAN_CSS } from './villeplan.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -2327,18 +2329,42 @@ views.podcasts = () => {
 function villeEntry() {
   return `<div class="card pc-entry"><div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:12px"><div><strong>${ic('landmark')} La ville des institutions</strong><div class="muted">Ordre, H2A, CNCC, chambres, tribunaux, quartier international : en 3D, qui siège où et qui fait quoi</div></div><button class="btn sm primary" data-go="ville">Visiter ›</button></div></div>`;
 }
+const injectCss = (id, css) => { if (!$(`#${id}`)) { const st = document.createElement('style'); st.id = id; st.textContent = css; document.head.appendChild(st); } };
+function stopVille3D() { if (state.v3) { try { state.v3.stop(); } catch { /* ignore */ } state.v3 = null; } document.body.classList.remove('print-plan'); }
 views.ville = () => {
-  if (!$('#ville-css')) { const st = document.createElement('style'); st.id = 'ville-css'; st.textContent = VILLE_CSS; document.head.appendChild(st); }
-  setTimeout(() => {
+  const tab = state.villeTab || '3d';
+  const titles = Object.fromEntries(state.fiches.map((f) => [f.file, f.title.replace(/^(Schéma|Fiche)\s*\d+\s*[–-]\s*/, '')]));
+  stopVille3D();
+  setTimeout(async () => {
     const root = $('#ville'); if (!root) return;
-    const titles = Object.fromEntries(state.fiches.map((f) => [f.file, f.title.replace(/^(Schéma|Fiche)\s*\d+\s*[–-]\s*/, '')]));
-    renderVille(root, { fiches: titles, onFiche: (file) => ficheSheet(file), onQuizEnd: (score, n) => toast(`Ville : ${score} / ${n}`, score === n ? 'party' : 'landmark') });
+    if (tab === '3d') {
+      injectCss('ville3d-css', VILLE3D_CSS);
+      try {
+        const THREE = await import('./vendor/three.module.min.js');
+        if (!$('#ville') || state.view !== 'ville' || (state.villeTab || '3d') !== '3d') return;
+        state.v3 = startVille3D(root, THREE, { onQuizEnd: (score, n) => toast(`Ville : ${score} / ${n}`, score === n ? 'party' : 'landmark') });
+        root.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      } catch (e) {
+        root.classList.remove('v3'); root.innerHTML = `<div class="card"><p class="muted">La visite 3D n’a pas pu démarrer sur cet appareil (${esc(e?.message || 'WebGL indisponible')}). Le plan 2D ci-dessous donne le même contenu.</p></div>`;
+        injectCss('ville-css', VILLE_CSS); const alt = document.createElement('div'); root.appendChild(alt);
+        renderVille(alt, { fiches: titles, onFiche: (file) => ficheSheet(file) });
+      }
+    } else if (tab === 'plan') {
+      injectCss('ville-css', VILLE_CSS);
+      renderVille(root, { fiches: titles, onFiche: (file) => ficheSheet(file), onQuizEnd: (score, n) => toast(`Ville : ${score} / ${n}`, score === n ? 'party' : 'landmark') });
+    } else {
+      injectCss('villeplan-css', PLAN_CSS); document.body.classList.add('print-plan');
+      root.innerHTML = planHtml(state.villeRive || 'ec', titles);
+    }
   }, 0);
-  return `<button class="btn sm" data-go="fiches">← Fiches</button>
-    <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 0">Chaque bâtiment est une instance. Rive gauche, l’expert-comptable et son Ordre ; rive droite, le commissaire aux comptes, la H2A et la Compagnie ; en haut, le quartier international ; en bas, les tribunaux et les autres autorités. Touchez un bâtiment : ses pancartes disent qui s’y trouve et ce qu’il y fait, et le bâtiment jumeau montre l’équivalent de l’autre profession.</p></div>
+  const tabs = [['3d', ic('landmark'), 'Visite 3D'], ['plan', ic('chart'), 'Plan 2D'], ['print', ic('library'), 'Plan à imprimer']];
+  const rive = state.villeRive || 'ec';
+  return `<div class="no-print"><button class="btn sm" data-go="fiches">← Fiches</button>
+    <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 8px">${tab === '3d' ? 'Un palais mental que l’on parcourt : conduisez, entrez dans les bâtiments, marchez vers les gens qui les composent.' : tab === 'plan' ? 'Vue d’ensemble : rive gauche l’expert-comptable, rive droite le commissaire aux comptes, en haut l’international, en bas la justice. Touchez un bâtiment pour ses pancartes et son jumeau.' : 'Une page par profession : la carte numérotée, puis les annotations qui replacent les fiches, les personnes et les chiffres dans les bâtiments. À imprimer, ou PDF prêt à télécharger.'}</p>
+    <div class="btnrow">${tabs.map(([id, i, t]) => `<button class="btn sm ${tab === id ? 'primary' : ''}" data-ville-tab="${id}">${i} ${t}</button>`).join('')}</div>
+    ${tab === 'print' ? `<div class="btnrow" style="margin-top:8px"><button class="btn sm ${rive === 'ec' ? 'primary' : ''}" data-ville-rive="ec">Expert-comptable</button><button class="btn sm ${rive === 'cac' ? 'primary' : ''}" data-ville-rive="cac">Commissaire aux comptes</button><button class="btn sm" id="ville-print">${ic('files')} Imprimer / enregistrer en PDF</button><a class="btn sm" href="./data/ville-plan-${rive}.pdf" target="_blank" rel="noopener">${ic('download')} PDF A4 (${rive === 'ec' ? 'EC' : 'CAC'})</a></div>` : ''}</div></div>
     <div id="ville"></div>`;
 };
-
 const NAV = [
   ['home', ic('home'), 'Accueil'], ['review', ic('repeat'), 'Réviser'], ['train', ic('target'), 'Entraîner'], ['shorts', ic('clapper'), 'Shorts'], ['exam', ic('timer'), 'Examen'], ['carriere', ic('trophy'), 'Carrière'], ['fiches', ic('library'), 'Fiches'],
 ];
@@ -2349,6 +2375,9 @@ function render() {
   pcMini();
   updateStreakBadge();
   main.querySelectorAll('[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
+  main.querySelectorAll('[data-ville-tab]').forEach((b) => { b.onclick = () => { state.villeTab = b.dataset.villeTab; render(); }; });
+  main.querySelectorAll('[data-ville-rive]').forEach((b) => { b.onclick = () => { state.villeRive = b.dataset.villeRive; render(); }; });
+  const vp = $('#ville-print'); if (vp) vp.onclick = () => window.print();
 }
 // pop : navigation venue du bouton Retour du téléphone (pas de nouvelle entrée d'historique).
 function go(v, { pop = false } = {}) {
@@ -2356,6 +2385,7 @@ function go(v, { pop = false } = {}) {
   if (state.exam && v !== 'exam') pauseCurrentExam();
   // La séance, la série et le jeu en cours sont gardés : on les retrouve en revenant sur l'onglet.
   if (v !== 'jeux') stopGameTimer();
+  if (v !== 'ville') stopVille3D();
   closeSheet(true);
   if (state.feed) closeFeed(true);
   glHide();
@@ -2437,7 +2467,7 @@ async function recoverFromStaleCache() {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
     await Promise.all((await caches.keys()).filter((k) => k !== PC.AUDIO_CACHE).map((k) => caches.delete(k))); // épisodes téléchargés gardés
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './js/sync.js', './js/ville.js', './sw.js']
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './js/sync.js', './js/ville.js', './js/ville3d.js', './js/villeplan.js', './js/vendor/three.module.min.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();

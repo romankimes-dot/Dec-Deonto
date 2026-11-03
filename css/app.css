@@ -640,3 +640,10 @@ button.btn.seen.on { background: var(--ok-bg); border-color: var(--ok); color: v
 .carnet-item summary { cursor: pointer; color: var(--primary); font-size: 14px; }
 .carnet-note { width: 100%; box-sizing: border-box; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--text); font: inherit; font-size: 14px; }
 .carnet-item .btn { align-self: flex-start; }
+
+/* Plan de la ville à imprimer (vue Fiches → Ville → Plan à imprimer) : seule la page du plan s'imprime. */
+@media print {
+  body.print-plan { padding: 0; background: #fff; }
+  body.print-plan header.top, body.print-plan nav.bottom, body.print-plan .no-print, body.print-plan .toast, body.print-plan .pc-mini { display: none !important; }
+  body.print-plan main { max-width: none; padding: 0; }
+}
