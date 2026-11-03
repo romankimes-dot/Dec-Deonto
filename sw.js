@@ -7,7 +7,7 @@
 // AUDIO_CACHE, conservé d'une version à l'autre ; servis depuis ce cache s'il les contient (réponses 206 construites
 // depuis le blob pour les requêtes Range, exigées par Safari iOS), sinon depuis le réseau, sans mise en cache.
 // Toute modification du code impose d'incrémenter VERSION.
-const VERSION = 'dec1-v41';
+const VERSION = 'dec1-v42';
 const AUDIO_CACHE = 'dec1-audio';
 const CORE = [
   './',
@@ -28,6 +28,7 @@ const CORE = [
   './js/games.js',
   './js/palais.js',
   './js/estimate.js',
+  './js/carnet.js',
   './js/shorts.js',
   './js/scenes.js',
   './js/glossaire.js',
