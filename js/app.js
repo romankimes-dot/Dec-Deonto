@@ -18,7 +18,6 @@ import * as PC from './podcasts.js';
 import * as SY from './sync.js';
 import * as CN from './carnet.js';
 import { ic, paths } from './icons.js';
-import { renderVille, VILLE_CSS } from './ville.js';
 import { startVille3D, VILLE3D_CSS } from './ville3d.js';
 import { planHtml, PLAN_CSS } from './villeplan.js';
 
@@ -2332,37 +2331,40 @@ function villeEntry() {
 const injectCss = (id, css) => { if (!$(`#${id}`)) { const st = document.createElement('style'); st.id = id; st.textContent = css; document.head.appendChild(st); } };
 function stopVille3D() { if (state.v3) { try { state.v3.stop(); } catch { /* ignore */ } state.v3 = null; } document.body.classList.remove('print-plan'); }
 views.ville = () => {
-  const tab = state.villeTab || '3d';
+  const tab = state.villeTab === 'plan' ? 'plan' : '3d';
   const titles = Object.fromEntries(state.fiches.map((f) => [f.file, f.title.replace(/^(Schéma|Fiche)\s*\d+\s*[–-]\s*/, '')]));
+  const rive = state.villeRive || 'ec';
   stopVille3D();
+  // Plan d'une profession, réduit à la largeur de l'écran ; toucher une pièce ouvre la visite 3D devant ce bâtiment.
+  const showPlan = (root) => {
+    injectCss('villeplan-css', PLAN_CSS); document.body.classList.add('print-plan');
+    root.innerHTML = planHtml(rive, titles);
+    const pg = root.querySelector('.vp-page');
+    const fit = () => { pg.style.zoom = ''; pg.style.zoom = String(Math.min(1, root.clientWidth / pg.offsetWidth)); };
+    fit(); window.addEventListener('resize', fit, { once: true });
+    root.onclick = (e) => { const r = e.target.closest('.vp-room[data-id]'); if (!r) return; state.villeTab = '3d'; state.villeGoto = r.dataset.id; render(); };
+  };
   setTimeout(async () => {
     const root = $('#ville'); if (!root) return;
-    if (tab === '3d') {
-      injectCss('ville3d-css', VILLE3D_CSS);
-      try {
-        const THREE = await import('./vendor/three.module.min.js');
-        if (!$('#ville') || state.view !== 'ville' || (state.villeTab || '3d') !== '3d') return;
-        state.v3 = startVille3D(root, THREE, { onQuizEnd: (score, n) => toast(`Ville : ${score} / ${n}`, score === n ? 'party' : 'landmark') });
-        root.scrollIntoView({ block: 'start', behavior: 'smooth' });
-      } catch (e) {
-        root.classList.remove('v3'); root.innerHTML = `<div class="card"><p class="muted">La visite 3D n’a pas pu démarrer sur cet appareil (${esc(e?.message || 'WebGL indisponible')}). Le plan 2D ci-dessous donne le même contenu.</p></div>`;
-        injectCss('ville-css', VILLE_CSS); const alt = document.createElement('div'); root.appendChild(alt);
-        renderVille(alt, { fiches: titles, onFiche: (file) => ficheSheet(file) });
-      }
-    } else if (tab === 'plan') {
-      injectCss('ville-css', VILLE_CSS);
-      renderVille(root, { fiches: titles, onFiche: (file) => ficheSheet(file), onQuizEnd: (score, n) => toast(`Ville : ${score} / ${n}`, score === n ? 'party' : 'landmark') });
-    } else {
-      injectCss('villeplan-css', PLAN_CSS); document.body.classList.add('print-plan');
-      root.innerHTML = planHtml(state.villeRive || 'ec', titles);
+    if (tab === 'plan') return showPlan(root);
+    injectCss('ville3d-css', VILLE3D_CSS);
+    try {
+      const THREE = await import('./vendor/three.module.min.js');
+      if (!$('#ville') || state.view !== 'ville' || state.villeTab === 'plan') return;
+      state.v3 = startVille3D(root, THREE, { onQuizEnd: (score, n) => toast(`Ville : ${score} / ${n}`, score === n ? 'party' : 'landmark') });
+      if (state.villeGoto) { state.v3.place(state.villeGoto); state.villeGoto = null; }
+      root.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    } catch (e) {
+      root.classList.remove('v3', 'touch');
+      root.innerHTML = `<div class="card"><p class="muted">La visite 3D n’a pas pu démarrer sur cet appareil (${esc(e?.message || 'WebGL indisponible')}). Le plan ci-dessous a la même disposition.</p></div><div id="ville-alt"></div>`;
+      showPlan($('#ville-alt'));
     }
   }, 0);
-  const tabs = [['3d', ic('landmark'), 'Visite 3D'], ['plan', ic('chart'), 'Plan 2D'], ['print', ic('library'), 'Plan à imprimer']];
-  const rive = state.villeRive || 'ec';
+  const tabs = [['3d', ic('landmark'), 'Visite 3D'], ['plan', ic('library'), 'Plans à imprimer']];
   return `<div class="no-print"><button class="btn sm" data-go="fiches">← Fiches</button>
-    <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 8px">${tab === '3d' ? 'Un palais mental que l’on parcourt : conduisez, entrez dans les bâtiments, marchez vers les gens qui les composent.' : tab === 'plan' ? 'Vue d’ensemble : rive gauche l’expert-comptable, rive droite le commissaire aux comptes, en haut l’international, en bas la justice. Touchez un bâtiment pour ses pancartes et son jumeau.' : 'Une page par profession : la carte numérotée, puis les annotations qui replacent les fiches, les personnes et les chiffres dans les bâtiments. À imprimer, ou PDF prêt à télécharger.'}</p>
+    <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 8px">${tab === '3d' ? 'Un palais mental que l’on parcourt : « Aller à » mène au bâtiment (liste par profession), on entre, on marche vers ceux qui y siègent.' : 'Deux plans, comme un plan d’appartement : les rues sont les couloirs, les bâtiments les pièces, avec la fiche à relire, qui y siège et ce qu’on y fait. Touchez une pièce pour y aller en 3D.'}</p>
     <div class="btnrow">${tabs.map(([id, i, t]) => `<button class="btn sm ${tab === id ? 'primary' : ''}" data-ville-tab="${id}">${i} ${t}</button>`).join('')}</div>
-    ${tab === 'print' ? `<div class="btnrow" style="margin-top:8px"><button class="btn sm ${rive === 'ec' ? 'primary' : ''}" data-ville-rive="ec">Expert-comptable</button><button class="btn sm ${rive === 'cac' ? 'primary' : ''}" data-ville-rive="cac">Commissaire aux comptes</button><button class="btn sm" id="ville-print">${ic('files')} Imprimer / enregistrer en PDF</button><a class="btn sm" href="./data/ville-plan-${rive}.pdf" target="_blank" rel="noopener">${ic('download')} PDF A4 (${rive === 'ec' ? 'EC' : 'CAC'})</a></div>` : ''}</div></div>
+    ${tab === 'plan' ? `<div class="btnrow" style="margin-top:8px"><button class="btn sm ${rive === 'ec' ? 'primary' : ''}" data-ville-rive="ec">Expert-comptable</button><button class="btn sm ${rive === 'cac' ? 'primary' : ''}" data-ville-rive="cac">Commissaire aux comptes</button><button class="btn sm" id="ville-print">${ic('files')} Imprimer ce plan</button><a class="btn sm" href="./data/ville-plan.pdf" target="_blank" rel="noopener">${ic('download')} PDF des deux plans (A4)</a></div>` : ''}</div></div>
     <div id="ville"></div>`;
 };
 const NAV = [

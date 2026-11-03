@@ -73,17 +73,50 @@ test('ville 3D : chaque salle désigne un bâtiment existant, chaque personne di
   assert.equal(SALLES.chreg.groupes.filter((g) => !g.debout).reduce((n, g) => n + g.n, 0), 3, 'chambre régionale : 1 + 2');
 });
 
-test('plan imprimable : une page par profession, bâtiments numérotés, fiches replacées, PDF présents', async () => {
-  const { planHtml, planBuildings } = await import('../js/villeplan.js');
-  for (const rive of ['ec', 'cac']) {
-    const list = planBuildings(rive);
-    assert.ok(list.every((b) => b.rive === rive || b.rive === 'commun'));
-    const html = planHtml(rive, { '01-ec-exercice.md': 'Exercice EC' });
-    assert.ok(html.includes('<svg') && html.includes('class="notes"'));
-    assert.ok(list.every((b, i) => html.includes(`<span class="num">${i + 1}</span>`)), `${rive} : numéros`);
-    assert.ok(html.includes('Fiche : '));
-    assert.ok(existsSync(new URL(`../data/ville-plan-${rive}.pdf`, import.meta.url)), `PDF ${rive} absent (npm run pdf:ville)`);
+test('ville 3D : rues, emplacements, symboles et liste rapide couvrent les 29 bâtiments, sans chevauchement', async () => {
+  const { LOTS, PLACES, SYMBOLES, ICONES, QUARTIERS_LISTE, STREETS, route, lotOf } = await import('../js/ville3d.js');
+  assert.equal(LOTS.length, VILLE.batiments.length);
+  for (const b of VILLE.batiments) {
+    assert.ok(PLACES[b.id], `${b.id} : pas d’emplacement`);
+    assert.ok(SYMBOLES[b.id] && ICONES[SYMBOLES[b.id][0]], `${b.id} : symbole`);
   }
+  const listed = QUARTIERS_LISTE.flatMap((q) => q.ids);
+  assert.deepEqual([...listed].sort(), [...ids].sort(), 'liste « Aller à » : chaque bâtiment une fois');
+  assert.deepEqual(QUARTIERS_LISTE.map((q) => q.titre.split(' ')[0]), ['Expert-comptable', 'Commissaire', 'Juridictions', 'International']);
+  for (const q of QUARTIERS_LISTE.slice(0, 2)) for (const id of q.ids) assert.equal(lotOf(id).b.rive, q.rive, `${id} rangé côté ${q.rive}`);
+  for (const l of LOTS) {
+    assert.ok(l.edge >= 0, `${l.id} : porte hors des rues`);
+    if (l.b.rive === 'ec') assert.ok(l.x < 0, `${l.id} : rive EC à l’ouest`);
+    if (l.b.rive === 'cac' && STREETS.indexOf(l.st) > 0) assert.ok(l.x > 0, `${l.id} : rive CAC à l’est`);
+    const r = route({ x: 0, z: 50 }, l); assert.ok(r.length >= 1 && r[r.length - 1] === l.stop, `${l.id} : itinéraire`);
+  }
+  for (let i = 0; i < LOTS.length; i++) for (let j = i + 1; j < LOTS.length; j++) {
+    const a = LOTS[i], b = LOTS[j];
+    assert.ok(!(Math.abs(a.x - b.x) < (a.w + b.w) / 2 + 1 && Math.abs(a.z - b.z) < (a.d + b.d) / 2 + 1), `${a.id} et ${b.id} se chevauchent`);
+  }
+  for (const [a, b] of [['cnoec', 'cncc'], ['croec', 'crcc'], ['bercy', 'chancellerie']]) assert.equal(lotOf(a).st, lotOf(b).st, `${a} et ${b} : même rue`);
+  assert.ok(LOTS.every((l) => l.h <= 12), 'bâtiments bas');
+});
+
+test('plans imprimables : deux pages (EC, CAC), toutes les pièces, disposition de la visite 3D, PDF présent', async () => {
+  const { planHtml, planLayout, plansHtml } = await import('../js/villeplan.js');
+  for (const rive of ['ec', 'cac']) {
+    const L = planLayout(rive);
+    assert.equal(L.rooms.length, VILLE.batiments.length, `${rive} : une pièce par bâtiment`);
+    assert.ok(L.height <= 248.01, `${rive} : tient sur une page (${L.height} mm)`);
+    for (const r of L.rooms) {
+      assert.equal(r.kind === 'ghost', r.lot.b.rive !== rive && r.lot.b.rive !== 'commun', `${r.lot.id} : style`);
+      assert.ok(r.x >= 0 && r.x + r.w <= 190.01 && r.w > 5 && r.h > 5, `${r.lot.id} : dans la page`);
+    }
+    for (let i = 0; i < L.rooms.length; i++) for (let j = i + 1; j < L.rooms.length; j++) {
+      const a = L.rooms[i], b = L.rooms[j];
+      assert.ok(a.x + a.w <= b.x + 0.01 || b.x + b.w <= a.x + 0.01 || a.y + a.h <= b.y + 0.01 || b.y + b.h <= a.y + 0.01, `${rive} : ${a.lot.id} et ${b.lot.id} se chevauchent`);
+    }
+    const html = planHtml(rive, { '01-ec-exercice.md': 'Exercice EC' });
+    assert.ok(html.includes('class="vp-page"') && html.includes('Fiche : Exercice EC'));
+  }
+  assert.equal((plansHtml().match(/class="vp-page"/g) || []).length, 2);
+  assert.ok(existsSync(new URL('../data/ville-plan.pdf', import.meta.url)), 'PDF absent (npm run pdf:ville)');
   const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
   for (const f of ['./js/ville3d.js', './js/villeplan.js', './js/vendor/three.module.min.js']) assert.ok(sw.includes(`'${f}'`), `${f} non précaché`);
 });
