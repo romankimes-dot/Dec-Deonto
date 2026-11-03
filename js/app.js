@@ -400,8 +400,8 @@ views.home = () => {
   const has = (id) => !!pr.badges[id];
   const conds = next ? G.gradeConditions(next.n, has, pr.stats, state.gctx) : [];
   const nb = G.nextBadges(state.catalog, pr.stats, pr.badges, 3);
-  // Questions de la banque et shorts répondus (les shorts comptent aussi).
-  const cov = SH.programCoverage(qs, pr.stats.q, state.shorts || [], pr.drills);
+  // Annales vues : questions de la banque déjà répondues (même mesure que la fiabilité du niveau estimé).
+  const cov = Math.round((qs.filter((q) => pr.stats.q[q.id]?.seen > 0).length / Math.max(1, qs.length)) * 100);
   return `${noticeCard()}
   <div class="card hero">
     <div class="hero-top">
@@ -653,12 +653,12 @@ function currentEstimate() {
   return estimate({ questions: state.bank.questions, stats: pr.stats, cards: pr.cards, attempts: pr.attempts, exams: pr.exams });
 }
 const fr = (x) => String(x).replace('.', ',');
-// Encart de l'accueil : trois chiffres alignés (QCM, QRC, programme vu), un seul pourcentage de couverture.
+// Encart de l'accueil : trois chiffres alignés (QCM, QRC, annales vues).
 function estimateLine(cov) {
   const has = state.progress.attempts.length > 0;
   const e = has ? currentEstimate() : null;
   const kpi = (label, v, unit, extra = '') => `<div class="kpi"><span class="kpi-l">${label}</span><span class="kpi-v">${v}<small>${unit}</small></span>${extra}</div>`;
-  const tiles = `<div class="kpis">${kpi('QCM', has ? fr(e.qcm.note) : '–', '/20')}${kpi('QRC', has ? fr(e.qrc.note) : '–', '/20')}${kpi('Programme', cov, ' %', `<div class="progress"><div style="width:${cov}%"></div></div>`)}</div>`;
+  const tiles = `<div class="kpis">${kpi('QCM', has ? fr(e.qcm.note) : '–', '/20')}${kpi('QRC', has ? fr(e.qrc.note) : '–', '/20')}${kpi('Annales vues', cov, ' %', `<div class="progress"><div style="width:${cov}%"></div></div>`)}</div>`;
   const sub = has ? `Niveau estimé · risque &lt; 6 : ${e.qcm.risk} % (QCM) · ${e.reliable ? 'fiable' : 'indicatif'} ›` : 'Niveau estimé : répondez à quelques questions pour l’obtenir.';
   return has ? `<button class="estim" data-go="stats">${tiles}<span class="muted">${sub}</span></button>` : `<div class="estim">${tiles}<span class="muted">${sub}</span></div>`;
 }
