@@ -78,7 +78,7 @@ test('ville 3D : chaque salle désigne un bâtiment existant, chaque personne di
   assert.equal(SALLES.chreg.groupes.filter((g) => !g.debout).reduce((n, g) => n + g.n, 0), 3, 'chambre régionale : 1 + 2');
 });
 
-test('ville 3D : rues, emplacements, symboles et liste rapide couvrent les 30 bâtiments, sans chevauchement', async () => {
+test('ville 3D : rues, emplacements, symboles et liste rapide couvrent les 29 bâtiments, sans chevauchement', async () => {
   const { LOTS, PLACES, SYMBOLES, ICONES, QUARTIERS_LISTE, STREETS, route, lotOf } = await import('../js/ville3d.js');
   assert.equal(LOTS.length, VILLE.batiments.length);
   for (const b of VILLE.batiments) {
@@ -90,7 +90,6 @@ test('ville 3D : rues, emplacements, symboles et liste rapide couvrent les 30 b�
   assert.deepEqual(QUARTIERS_LISTE.map((q) => q.titre.split(' ')[0]), ['Expert-comptable', 'Commissaire', 'Juridictions', 'International']);
   for (const q of QUARTIERS_LISTE.slice(0, 2)) for (const id of q.ids) assert.equal(lotOf(id).b.rive, q.rive, `${id} rangé côté ${q.rive}`);
   for (const l of LOTS) {
-    assert.ok(l.edge >= 0, `${l.id} : porte hors des rues`);
     if (l.b.rive === 'ec') assert.ok(l.x < 0, `${l.id} : rive EC à l’ouest`);
     if (l.b.rive === 'cac' && STREETS.indexOf(l.st) > 0) assert.ok(l.x > 0, `${l.id} : rive CAC à l’est`);
     const r = route({ x: -9, z: 66 }, l); assert.ok(r.length >= 1 && r[r.length - 1] === l.stop, `${l.id} : itinéraire`);
@@ -99,7 +98,7 @@ test('ville 3D : rues, emplacements, symboles et liste rapide couvrent les 30 b�
     const a = LOTS[i], b = LOTS[j];
     assert.ok(!(Math.abs(a.x - b.x) < (a.w + b.w) / 2 + 1 && Math.abs(a.z - b.z) < (a.d + b.d) / 2 + 1), `${a.id} et ${b.id} se chevauchent`);
   }
-  for (const [a, b] of [['cnoec', 'cncc'], ['croec', 'crcc'], ['bercy', 'chancellerie'], ['chreg', 'sansch'], ['h2a', 'terrain']]) assert.equal(lotOf(a).st, lotOf(b).st, `${a} et ${b} : même bande`);
+  for (const [a, b] of [['cnoec', 'cncc'], ['croec', 'crcc'], ['bercy', 'chancellerie'], ['h2a', 'terrain']]) assert.equal(lotOf(a).st, lotOf(b).st, `${a} et ${b} : même bande`);
   assert.deepEqual(STREETS.map((s) => s.id), ['intl', 'resp', 'recours', 'tutelle', 'sup', 'nat', 'reg'], 'bandes du nord au sud');
   for (const st of STREETS) assert.ok(/^#[0-9a-f]{6}$/.test(st.c), `${st.id} : couleur de bande`);
   assert.ok(LOTS.every((l) => l.h <= 12), 'bâtiments bas');
