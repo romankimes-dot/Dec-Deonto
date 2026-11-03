@@ -57,6 +57,9 @@ for (const r of RANGS) {
 // Une étiquette sur deux est posée un peu plus en avant, pour que deux voisines ne se recouvrent pas.
 for (const r of RANGS) MLOTS.filter((l) => l.rang === r).sort((a, b) => a.x - b.x).forEach((l, i) => { l.alt = i % 2; });
 export const mlot = (id) => MLOTS.find((l) => l.id === id);
+// Pour les plans imprimables (js/villeplan.js) : les rangées du fond (7) au premier plan (1), une pièce par bâtiment.
+export const PLAN_RANGS = [...RANGS].reverse().map((r) => ({ id: r.id, nom: `${r.n} · ${r.nom}`, z: rowZ(r.n) }));
+export const PLAN_LOTS = MLOTS.map((l) => ({ id: l.id, b: l.b, st: PLAN_RANGS.find((s) => s.id === l.rang.id), side: 'n', x: l.x }));
 
 // Rôles : nom affiché et accessoire (la forme qui distingue sans la couleur).
 export const ROLES = {

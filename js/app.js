@@ -18,7 +18,8 @@ import * as PC from './podcasts.js';
 import * as SY from './sync.js';
 import * as CN from './carnet.js';
 import { ic, paths } from './icons.js';
-import { startVille3D, VILLE3D_CSS, compositionHtml, COMPO_CSS } from './ville3d.js';
+import { compositionHtml, COMPO_CSS } from './ville3d.js';
+import { startMaquette, MAQUETTE_CSS } from './maquette.js';
 import { planHtml, PLAN_CSS } from './villeplan.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -2007,7 +2008,7 @@ function souvenirsView() {
 
 // ---------- Glossaire ----------
 // Termes clés soulignés partout (première occurrence par carte, fiche ou short) ; un toucher ouvre la définition.
-const GL_SKIP = 'button, a, textarea, input, select, label, code, pre, h1, h2, h3, nav, header, svg, .gl, .gl-pop, .fpill, .toast, .celebrate, .sheet-head, .feed-top, .v3, .vp-page, .cp-sec, [data-no-gl]';
+const GL_SKIP = 'button, a, textarea, input, select, label, code, pre, h1, h2, h3, nav, header, svg, .gl, .gl-pop, .fpill, .toast, .celebrate, .sheet-head, .feed-top, .v3, .mq, .vp-page, .cp-sec, [data-no-gl]';
 const glScope = (el) => el.closest('.card, section, .sheet-body') || document.body;
 // Pas d'aide pendant un examen blanc ni dans les jeux : la définition donnerait la réponse.
 const glActive = () => !!state.glMatcher && state.progress.settings.glossary !== false
@@ -2360,22 +2361,22 @@ views.ville = () => {
     }
     if (!open3d) return;
     if (state.v3 && state.v3el) { root.replaceWith(state.v3el); return; }
-    injectCss('ville3d-css', VILLE3D_CSS);
+    injectCss('maquette-css', MAQUETTE_CSS); injectCss('v3-compo-css', COMPO_CSS);
     try {
       const THREE = await import('./vendor/three.module.min.js');
       if (!$('#ville') || state.view !== 'ville' || state.villeTab === 'plan') return;
-      state.v3 = startVille3D(root, THREE, { full: true, onQuit: () => { state.v3open = false; stopVille3D(); render(); }, fiches: titles, onFiche: (file) => ficheSheet(file) });
+      state.v3 = startMaquette(root, THREE, { full: true, onQuit: () => { state.v3open = false; stopVille3D(); render(); }, fiches: titles, onFiche: (file) => ficheSheet(file) });
       state.v3el = root;
-      if (state.villeGoto) { state.v3.place(state.villeGoto); state.villeGoto = null; }
+      if (state.villeGoto) { state.v3.goto(state.villeGoto); state.villeGoto = null; }
     } catch (e) {
-      root.classList.remove('v3', 'touch');
+      root.classList.remove('mq', 'mq-full');
       root.innerHTML = `<div class="card"><p class="muted">La visite 3D n’a pas pu démarrer sur cet appareil (${esc(e?.message || 'WebGL indisponible')}). Le plan ci-dessous a la même disposition.</p></div><div id="ville-alt"></div>`;
       showPlan($('#ville-alt'));
     }
   }, 0);
-  const tabs = [['3d', ic('landmark'), 'Entrer dans la ville (3D)'], ['compo', ic('clipboard'), 'Compositions'], ['plan', ic('library'), 'Plans à imprimer']];
+  const tabs = [['3d', ic('landmark'), 'Ouvrir la maquette (3D)'], ['compo', ic('clipboard'), 'Compositions'], ['plan', ic('library'), 'Plans à imprimer']];
   return `<div class="no-print"><button class="btn sm" data-go="fiches">← Fiches</button>
-    <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 8px">${tab === '3d' ? 'Un palais mental survolé en drone : au sud, la rive EC (gauche) et la rive CAC (droite) de part et d’autre du fleuve, du régional à la tutelle ; au nord, les esplanades des juridictions et de l’international, communes aux deux. « Aller à » mène au bâtiment, on entre, on tourne autour de ceux qui y siègent ; « Vue métier » montre une profession de dessus.' : tab === 'compo' ? 'Qui siège dans chaque institution, rangé par profession : les membres (avec l’effectif quand les fiches le donnent), puis les personnes présentes qui ne sont pas membres. Touchez une institution pour y aller en 3D.' : 'Deux plans, comme un plan d’appartement : une bande par niveau (du monde en haut au régional en bas), le fleuve entre les deux rives, les bâtiments en pièces avec la fiche à relire, qui y siège et ce qu’on y fait. Touchez une pièce pour y aller en 3D.'}</p>
+    <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 8px">${tab === '3d' ? 'Une maquette : au premier plan, l’EC à gauche et le CAC à droite, face à face, rangée par rangée (1 Régional à 4 Tutelle et normes) ; au fond, le quartier commun (5 à 7). Touchez un bâtiment pour l’ouvrir, « Entrer » pour voir qui y siège.' : tab === 'compo' ? 'Qui siège dans chaque institution, rangé par profession : les membres (avec l’effectif quand les fiches le donnent), puis les personnes présentes qui ne sont pas membres. Touchez une institution pour y aller en 3D.' : 'Deux plans, comme un plan d’appartement : une bande par niveau (du monde en haut au régional en bas), le fleuve entre les deux rives, les bâtiments en pièces avec la fiche à relire, qui y siège et ce qu’on y fait. Touchez une pièce pour y aller en 3D.'}</p>
     <div class="btnrow">${tabs.map(([id, i, t]) => `<button class="btn sm ${tab === id && (id !== '3d' || open3d) ? 'primary' : ''}" data-ville-tab="${id}">${i} ${t}</button>`).join('')}</div>
     ${tab === 'plan' ? `<div class="btnrow" style="margin-top:8px"><button class="btn sm ${rive === 'ec' ? 'primary' : ''}" data-ville-rive="ec">Expert-comptable</button><button class="btn sm ${rive === 'cac' ? 'primary' : ''}" data-ville-rive="cac">Commissaire aux comptes</button><button class="btn sm" id="ville-print">${ic('files')} Imprimer ce plan</button><a class="btn sm" href="./data/ville-plan.pdf" target="_blank" rel="noopener">${ic('download')} PDF des deux plans (A4)</a></div>` : ''}</div></div>
     <div id="ville"></div>`;
@@ -2440,7 +2441,7 @@ function initGamify() {
 function pullToRefresh() {
   const ind = document.createElement('div'); ind.className = 'ptr'; ind.setAttribute('aria-hidden', 'true'); ind.innerHTML = '<span class="ptr-ic">' + ic('rotate-cw') + '</span>'; document.body.appendChild(ind);
   const TH = 70; let y0 = null, d = 0, busy = false;
-  const blocked = () => document.body.classList.contains('noscroll') || document.body.classList.contains('v3-lock') || !!document.querySelector('.v3, .sheet.show, .feed.show, .celebrate.show, .gl-pop.show');
+  const blocked = () => document.body.classList.contains('noscroll') || document.body.classList.contains('v3-lock') || !!document.querySelector('.v3, .mq, .sheet.show, .feed.show, .celebrate.show, .gl-pop.show');
   const reset = () => { ind.style.transition = 'transform .25s, opacity .25s'; ind.style.transform = 'translate(-50%, -48px)'; ind.style.opacity = '0'; ind.classList.remove('ready'); d = 0; };
   window.addEventListener('touchstart', (e) => {
     y0 = (busy || window.scrollY > 0 || blocked() || e.touches.length > 1) ? null : e.touches[0].clientY;
@@ -2484,7 +2485,7 @@ async function recoverFromStaleCache() {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
     await Promise.all((await caches.keys()).filter((k) => k !== PC.AUDIO_CACHE).map((k) => caches.delete(k))); // épisodes téléchargés gardés
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './js/sync.js', './js/ville.js', './js/ville3d.js', './js/villeplan.js', './js/vendor/three.module.min.js', './sw.js']
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './js/sync.js', './js/ville.js', './js/ville3d.js', './js/villeplan.js', './js/maquette.js', './js/vendor/three.module.min.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();

@@ -126,3 +126,20 @@ test('plans imprimables : deux pages (EC, CAC), toutes les pièces, disposition 
   const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
   for (const f of ['./js/ville3d.js', './js/villeplan.js', './js/vendor/three.module.min.js']) assert.ok(sw.includes(`'${f}'`), `${f} non précaché`);
 });
+
+test('maquette : chaque bâtiment une fois, EC à gauche et CAC à droite (rangées 1 à 4), quartier commun au fond, sans chevauchement', async () => {
+  const { MLOTS, RANGS, PLAN, ROLES, PLAN_LOTS } = await import('../js/maquette.js');
+  const { SALLES } = await import('../js/ville3d.js');
+  assert.deepEqual(MLOTS.map((l) => l.id).sort(), [...ids].sort(), 'chaque bâtiment une fois');
+  assert.deepEqual(RANGS.map((r) => r.n), [1, 2, 3, 4, 5, 6, 7]);
+  for (const l of MLOTS) {
+    if (l.rang.n <= 4) { assert.ok(!PLAN[l.rang.id].commun, `${l.rang.id} : pas de commun au premier plan`); assert.ok(l.b.rive === 'ec' ? l.x < 0 : l.x > 0, `${l.id} : côté de sa profession`); }
+    else assert.ok(l.nord, `${l.id} : quartier commun`);
+    if (l.b.rive === 'commun') assert.ok(l.rang.n >= 5, `${l.id} : commun au fond`);
+  }
+  for (let i = 0; i < MLOTS.length; i++) for (let j = i + 1; j < MLOTS.length; j++) { const a = MLOTS[i], b = MLOTS[j]; assert.ok(Math.abs(a.x - b.x) >= 5.6 || Math.abs(a.z - b.z) >= 5, `${a.id} et ${b.id} se chevauchent`); }
+  for (const [a, b] of [['cnoec', 'cncc'], ['croec', 'crcc'], ['bercy', 'chancellerie'], ['terrain', 'h2a']]) { const A = MLOTS.find((l) => l.id === a), B = MLOTS.find((l) => l.id === b); assert.equal(A.rang, B.rang, `${a} et ${b} : même rangée`); assert.ok(Math.abs(A.x + B.x) < 0.01, `${a} et ${b} : face à face`); }
+  for (const s of Object.values(SALLES)) for (const g of s.groupes) assert.ok(ROLES[g.role], `rôle sans accessoire : ${g.role}`);
+  assert.equal(PLAN_LOTS.length, MLOTS.length);
+  const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8'); assert.ok(sw.includes("'./js/maquette.js'"), 'maquette non précachée');
+});

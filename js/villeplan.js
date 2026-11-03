@@ -1,17 +1,18 @@
 // Plans imprimables de la ville des institutions, un par profession, dessinés comme un plan d'appartement : les rues
 // (un pont par bande) sont les couloirs, les bâtiments les pièces (murs pleins, porte ouvrant sur la rue, mobilier = les sièges du
-// conseil), le fleuve sépare les deux rives. La disposition est celle de la visite 3D (js/ville3d.js) : même bande,
+// conseil), la ligne centrale sépare les deux professions. La disposition est celle de la maquette (js/maquette.js) : même rangée,
 // même rive, même ordre. Dans chaque pièce : symbole de façade, fiche à relire, qui y siège, chiffres, ce qui s'y
 // fait, piège. Les pièces de l'autre profession restent en pointillé, nommées seulement.
 // Fonctions pures (chaînes HTML) : vue « Plans à imprimer » de l'app et scripts/build_ville_pdf.mjs (PDF A4, 2 pages).
 
-import { SALLES, STREETS, LOTS, SYMBOLES, svgIcon, groupLabel } from './ville3d.js';
+import { SALLES, SYMBOLES, svgIcon, groupLabel } from './ville3d.js';
+import { PLAN_RANGS as STREETS, PLAN_LOTS as LOTS } from './maquette.js';
 import { batiment } from './ville.js';
 
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const md = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
 const plain = (s) => String(s ?? '').replace(/\*\*/g, '');
-const RIVER_STREETS = new Set(['tutelle', 'sup', 'nat', 'reg']);
+const RIVER_STREETS = new Set(['tut', 'sup', 'nat', 'reg']); // rangées 1 à 4 : EC d'un côté, CAC de l'autre
 const PAGE = { w: 190, h: 248 }; // mm : zone du plan sur une feuille A4 (en-tête et légende en plus)
 const STRIP = 6, GAP = 1.6, RIVER_W = 10, HC = 4.6, HG = 7.5, LINE = 2.2;
 
@@ -128,7 +129,7 @@ function underSvg(L) {
       const rect = (x0, x1, a, b, id) => `<rect x="${x0}" y="${a.toFixed(2)}" width="${(x1 - x0).toFixed(2)}" height="${(b - a).toFixed(2)}" fill="url(#vp-${id}-${L.rive})"/>`;
       return rect(ecC[0], ecC[1], y0, y1, 'ec') + rect(cacC[0], cacC[1], y0, y1, 'cac'); })()}
     <rect x="${R.x0}" y="${R.y0.toFixed(2)}" width="${R.x1 - R.x0}" height="${(R.y1 - R.y0).toFixed(2)}" fill="url(#vp-wave-${L.rive})"/>
-    <text x="${(R.x0 + R.x1) / 2}" y="${((R.y0 + R.y1) / 2).toFixed(2)}" font-size="2.6" font-weight="700" letter-spacing=".9" text-anchor="middle" transform="rotate(-90 ${(R.x0 + R.x1) / 2} ${((R.y0 + R.y1) / 2).toFixed(2)})" fill="#000" style="paint-order:stroke" stroke="#fff" stroke-width="1.4">FLEUVE</text>`;
+    <text x="${(R.x0 + R.x1) / 2}" y="${((R.y0 + R.y1) / 2).toFixed(2)}" font-size="2.6" font-weight="700" letter-spacing=".9" text-anchor="middle" transform="rotate(-90 ${(R.x0 + R.x1) / 2} ${((R.y0 + R.y1) / 2).toFixed(2)})" fill="#000" style="paint-order:stroke" stroke="#fff" stroke-width="1.4">EC · CAC</text>`;
   for (const c of corridors) {
     const y = c.y, m = y + HC / 2;
     s += `<rect x="${STRIP}" y="${y.toFixed(2)}" width="${PAGE.w - STRIP}" height="${HC}" fill="#ececec"/>`;
@@ -199,7 +200,7 @@ const compass = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy=
 export function planHtml(rive, fiches = {}) {
   const L = planLayout(rive), titre = TITRES[rive], other = rive === 'ec' ? 'commissaire aux comptes' : 'expert-comptable';
   return `<section class="vp-page" data-rive="${rive}">
-    <div class="vp-head"><div><h1>Plan de la ville · ${esc(titre)}</h1><p>Chaque bande est un niveau, du monde (en haut, au nord) à l’échelon régional (en bas, au sud) ; la bande grise est le pont de ce niveau. Rive EC à gauche du fleuve, rive CAC à droite : les jumeaux se font face. Murs pleins : les lieux du ${esc(titre.toLowerCase())} et les lieux communs ; tirets : ceux du ${esc(other)}. Les symboles sont ceux des façades de la visite 3D.</p></div>${compass}</div>
+    <div class="vp-head"><div><h1>Plan de la ville · ${esc(titre)}</h1><p>La maquette de la visite 3D, à plat. Une rangée par niveau, numérotée de 1 (en bas, l’échelon régional) à 7 (en haut, l’international). Rangées 1 à 4 : l’EC d’un côté de la ligne centrale, le CAC de l’autre, les jumeaux face à face. Rangées 5 à 7 : le quartier commun aux deux professions. Murs pleins : les lieux du ${esc(titre.toLowerCase())} et les lieux communs ; tirets : ceux du ${esc(other)}. Les symboles sont ceux des façades.</p></div>${compass}</div>
     <div class="vp-sheet" style="height:${L.height.toFixed(2)}mm">${underSvg(L)}${L.rooms.map((r) => roomHtml(r, fiches)).join('')}${overSvg(L)}</div>
     <div class="vp-legend"><span><i class="full"></i>${esc(titre)} et lieux communs</span><span><i class="ghost"></i>Autre profession</span><span>● siège · ○ debout · ellipse : table du conseil · barre : banc des juges</span><span>Fonds : carreaux (rive EC), briques (rive CAC), comme le pavage de la 3D ; à gauche, le niveau de chaque bande</span><span>⚠ piège qui revient</span></div>
   </section>`;
