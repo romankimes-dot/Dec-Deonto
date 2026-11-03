@@ -2331,13 +2331,16 @@ function villeEntry() {
 const injectCss = (id, css) => { if (!$(`#${id}`)) { const st = document.createElement('style'); st.id = id; st.textContent = css; document.head.appendChild(st); } };
 // La visite 3D survit aux rafraîchissements de l'écran (synchronisation, fiche refermée…) : son élément est
 // remis en place tel quel, avec sa position et son contexte WebGL ; elle s'arrête seulement en quittant la vue ou l'onglet.
-function stopVille3D() { if (state.v3) { try { state.v3.stop(); } catch { /* ignore */ } state.v3 = null; state.v3el = null; } document.body.classList.remove('print-plan'); }
+function stopVille3D() { if (state.v3) { try { state.v3.stop(); } catch { /* ignore */ } state.v3 = null; state.v3el = null; } document.body.classList.remove('print-plan', 'v3-lock'); }
 views.ville = () => {
   const tab = state.villeTab === 'plan' ? 'plan' : '3d';
   const titles = Object.fromEntries(state.fiches.map((f) => [f.file, f.title.replace(/^(Schéma|Fiche)\s*\d+\s*[–-]\s*/, '')]));
   const rive = state.villeRive || 'ec';
-  if (tab === 'plan') stopVille3D();
+  // La visite 3D s'ouvre en plein écran (✕ pour en sortir) ; la page de la ville reste derrière.
+  const open3d = tab === '3d' && state.v3open !== false;
+  if (!open3d) stopVille3D();
   document.body.classList.toggle('print-plan', tab === 'plan');
+  document.body.classList.toggle('v3-lock', open3d);
   // Plan d'une profession, réduit à la largeur de l'écran ; toucher une pièce ouvre la visite 3D devant ce bâtiment.
   const showPlan = (root) => {
     injectCss('villeplan-css', PLAN_CSS); document.body.classList.add('print-plan');
@@ -2345,30 +2348,30 @@ views.ville = () => {
     const pg = root.querySelector('.vp-page');
     const fit = () => { pg.style.zoom = ''; pg.style.zoom = String(Math.min(1, root.clientWidth / pg.offsetWidth)); };
     fit(); window.addEventListener('resize', fit, { once: true });
-    root.onclick = (e) => { const r = e.target.closest('.vp-room[data-id]'); if (!r) return; state.villeTab = '3d'; state.villeGoto = r.dataset.id; render(); };
+    root.onclick = (e) => { const r = e.target.closest('.vp-room[data-id]'); if (!r) return; state.villeTab = '3d'; state.v3open = true; state.villeGoto = r.dataset.id; render(); };
   };
   setTimeout(async () => {
     const root = $('#ville'); if (!root) return;
     if (tab === 'plan') return showPlan(root);
+    if (!open3d) return;
     if (state.v3 && state.v3el) { root.replaceWith(state.v3el); return; }
     injectCss('ville3d-css', VILLE3D_CSS);
     try {
       const THREE = await import('./vendor/three.module.min.js');
       if (!$('#ville') || state.view !== 'ville' || state.villeTab === 'plan') return;
-      state.v3 = startVille3D(root, THREE, { onQuizEnd: (score, n) => toast(`Ville : ${score} / ${n}`, score === n ? 'party' : 'landmark'), fiches: titles, onFiche: (file) => ficheSheet(file) });
+      state.v3 = startVille3D(root, THREE, { full: true, onQuit: () => { state.v3open = false; stopVille3D(); render(); }, onQuizEnd: (score, n) => toast(`Ville : ${score} / ${n}`, score === n ? 'party' : 'landmark'), fiches: titles, onFiche: (file) => ficheSheet(file) });
       state.v3el = root;
       if (state.villeGoto) { state.v3.place(state.villeGoto); state.villeGoto = null; }
-      root.scrollIntoView({ block: 'start', behavior: 'smooth' });
     } catch (e) {
       root.classList.remove('v3', 'touch');
       root.innerHTML = `<div class="card"><p class="muted">La visite 3D n’a pas pu démarrer sur cet appareil (${esc(e?.message || 'WebGL indisponible')}). Le plan ci-dessous a la même disposition.</p></div><div id="ville-alt"></div>`;
       showPlan($('#ville-alt'));
     }
   }, 0);
-  const tabs = [['3d', ic('landmark'), 'Visite 3D'], ['plan', ic('library'), 'Plans à imprimer']];
+  const tabs = [['3d', ic('landmark'), 'Entrer dans la ville (3D)'], ['plan', ic('library'), 'Plans à imprimer']];
   return `<div class="no-print"><button class="btn sm" data-go="fiches">← Fiches</button>
     <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 8px">${tab === '3d' ? 'Un palais mental que l’on parcourt : « Aller à » mène au bâtiment (liste par profession), on entre, on marche vers ceux qui y siègent.' : 'Deux plans, comme un plan d’appartement : les rues sont les couloirs, les bâtiments les pièces, avec la fiche à relire, qui y siège et ce qu’on y fait. Touchez une pièce pour y aller en 3D.'}</p>
-    <div class="btnrow">${tabs.map(([id, i, t]) => `<button class="btn sm ${tab === id ? 'primary' : ''}" data-ville-tab="${id}">${i} ${t}</button>`).join('')}</div>
+    <div class="btnrow">${tabs.map(([id, i, t]) => `<button class="btn sm ${tab === id && (id !== '3d' || open3d) ? 'primary' : ''}" data-ville-tab="${id}">${i} ${t}</button>`).join('')}</div>
     ${tab === 'plan' ? `<div class="btnrow" style="margin-top:8px"><button class="btn sm ${rive === 'ec' ? 'primary' : ''}" data-ville-rive="ec">Expert-comptable</button><button class="btn sm ${rive === 'cac' ? 'primary' : ''}" data-ville-rive="cac">Commissaire aux comptes</button><button class="btn sm" id="ville-print">${ic('files')} Imprimer ce plan</button><a class="btn sm" href="./data/ville-plan.pdf" target="_blank" rel="noopener">${ic('download')} PDF des deux plans (A4)</a></div>` : ''}</div></div>
     <div id="ville"></div>`;
 };
@@ -2382,7 +2385,8 @@ function render() {
   pcMini();
   updateStreakBadge();
   main.querySelectorAll('[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
-  main.querySelectorAll('[data-ville-tab]').forEach((b) => { b.onclick = () => { state.villeTab = b.dataset.villeTab; render(); }; });
+  main.querySelectorAll('[data-ville-tab]').forEach((b) => { b.onclick = () => { state.villeTab = b.dataset.villeTab; if (state.villeTab === '3d') state.v3open = true; render(); }; });
+  main.querySelectorAll('[data-ville-open]').forEach((b) => { b.onclick = () => { state.v3open = true; render(); }; });
   main.querySelectorAll('[data-ville-rive]').forEach((b) => { b.onclick = () => { state.villeRive = b.dataset.villeRive; render(); }; });
   const vp = $('#ville-print'); if (vp) vp.onclick = () => window.print();
 }
@@ -2397,6 +2401,7 @@ function go(v, { pop = false } = {}) {
   if (state.feed) closeFeed(true);
   glHide();
   const changed = v !== state.view;
+  if (v === 'ville' && changed) state.v3open = true;
   state.view = v; window.scrollTo(0, 0); render();
   if (!pop && changed) { try { history.pushState({ v }, ''); } catch { /* ignore */ } }
 }
