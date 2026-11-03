@@ -629,3 +629,14 @@ html.feed-open, html.feed-open body { background: #f3eee6; }
 .gfb.ko .ic { color: var(--ko); }
 /* Bouton « Vu » d'une fiche : coché = vue (progression), un nouveau toucher la décoche. */
 button.btn.seen.on { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); font-weight: 700; }
+
+/* Carnet d'erreurs */
+.carnet-card { cursor: pointer; }
+.carnet-btn { margin-right: 6px; }
+.carnet-btn.on { border-color: var(--primary); color: var(--primary); }
+.carnet-list { list-style: none; margin: 0; padding: 0; }
+.carnet-item { display: flex; flex-direction: column; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.carnet-item:last-child { border-bottom: 0; }
+.carnet-item summary { cursor: pointer; color: var(--primary); font-size: 14px; }
+.carnet-note { width: 100%; box-sizing: border-box; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--text); font: inherit; font-size: 14px; }
+.carnet-item .btn { align-self: flex-start; }

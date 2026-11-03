@@ -16,6 +16,7 @@ import * as GL from './glossaire.js';
 import { matchExpected, highlight } from './qrc.js';
 import * as PC from './podcasts.js';
 import * as SY from './sync.js';
+import * as CN from './carnet.js';
 import { ic, paths } from './icons.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -302,7 +303,25 @@ function qHeader(q) {
 function qExplain(q) {
   const sib = siblings(q.id);
   return `<div class="explain"><strong>Explication.</strong> ${esc(q.explanation)}${q.update_note ? `<div class="muted" style="margin-top:6px">${ic('alert')} ${esc(q.update_note)}</div>` : ''}</div>
-    <div class="ref">Réf. : ${esc(q.reference)} · <em>réponse rédigée à partir des textes, non officielle</em></div>${relatedFiches(q.id).map((f) => `<button class="btn sm related" data-open-fiche="${esc(f.file)}">${ic('chart')} Schéma : ${esc(f.title.replace(/^Schéma\s*\d+\s*[–-]\s*/, ''))}</button>`).join('')}${sib.length ? `<button class="btn sm related" data-variants="${esc(q.id)}">${ic('repeat')} Même notion : ${sib.map((id) => esc(state.byId[id]?.sessionLabel || '')).join(', ')}</button>` : ''}`;
+    <div class="ref">Réf. : ${esc(q.reference)} · <em>réponse rédigée à partir des textes, non officielle</em></div>${carnetBtn(q.id)}${relatedFiches(q.id).map((f) => `<button class="btn sm related" data-open-fiche="${esc(f.file)}">${ic('chart')} Schéma : ${esc(f.title.replace(/^Schéma\s*\d+\s*[–-]\s*/, ''))}</button>`).join('')}${sib.length ? `<button class="btn sm related" data-variants="${esc(q.id)}">${ic('repeat')} Même notion : ${sib.map((id) => esc(state.byId[id]?.sessionLabel || '')).join(', ')}</button>` : ''}`;
+}
+// ---------- Carnet d'erreurs ----------
+// Bouton présent sur chaque correction (questions et shorts) : on y range ce que l'on sait ne pas avoir retenu.
+function carnetBtn(id) {
+  const on = CN.has(state.progress.carnet, id);
+  return `<button class="btn sm related carnet-btn ${on ? 'on' : ''}" data-carnet="${esc(id)}" aria-pressed="${on}">${ic(on ? 'check' : 'bookmark')} ${on ? 'Dans le carnet' : 'Ajouter au carnet'}</button>`;
+}
+function toggleCarnet(id) {
+  const e = CN.toggle(state.progress.carnet, id); persist();
+  document.querySelectorAll(`[data-carnet="${CSS.escape(id)}"]`).forEach((b) => { b.outerHTML = carnetBtn(id); });
+  toast(e.on ? 'Ajouté au carnet d’erreurs (Accueil)' : 'Retiré du carnet', 'bookmark');
+  if (state.view === 'carnet') render();
+}
+document.addEventListener('click', (e) => { const b = e.target.closest('[data-carnet]'); if (b) toggleCarnet(b.dataset.carnet); });
+function carnetCard() {
+  const n = CN.entries(state.progress.carnet, state.byId).length;
+  if (!n) return '';
+  return `<div class="card carnet-card" data-go="carnet"><div class="row" style="justify-content:space-between"><div><strong>${ic('bookmark')} Carnet d’erreurs</strong><div class="muted">${n} élément${n > 1 ? 's' : ''} à repasser et à relire</div></div><span class="muted">›</span></div></div>`;
 }
 // Indice de certitude, demandé avant la correction (calibration, effet d'hypercorrection).
 const CERT = { qcm: [[2, 'Sûr'], [1, 'Hésitant'], [0, 'Au hasard']], qrc: [[2, 'Sûr'], [1, 'Hésitant'], [0, 'Je ne sais pas']] };
@@ -412,6 +431,7 @@ views.home = () => {
   </div>
   ${helpCard()}
   ${dayCard()}
+  ${carnetCard()}
   ${podcastsLink()}
   ${gamesCard()}
   ${backupCard()}
@@ -1386,6 +1406,42 @@ function shortsBtn(step) {
   return n ? `<button class="btn sm" data-shorts-step="${esc(step)}">${ic('clapper')} ${n} shorts</button>` : '';
 }
 
+views.carnet = () => {
+  const pr = state.progress;
+  const list = CN.entries(pr.carnet, state.byId);
+  const shortIds = list.filter((x) => x.short);
+  if (shortIds.length && !state.shorts) setTimeout(async () => { await ensureShorts(); if (state.view === 'carnet' && state.shorts) render(); }, 0);
+  const shortOf = (id) => state.shorts?.find((s) => SH.memoId(s) === id);
+  const qs = list.filter((x) => !x.short);
+  const shs = shortIds.map((x) => shortOf(x.id)).filter(Boolean);
+  const item = (x) => {
+    let head; let ans;
+    if (x.short) {
+      const s = shortOf(x.id);
+      head = s ? `<span class="badge">Short</span> ${md(s.title)}` : '<span class="badge">Short</span> <span class="muted">chargement…</span>';
+      ans = s ? md(s.type === 'vf' ? `${s.verdict ? 'Vrai' : 'Faux'}. ${s.why}` : s.quiz.why) : '';
+    } else {
+      const q = state.byId[x.id];
+      head = `<span class="badge ${q.profession.toLowerCase()}">${q.profession}</span> <span class="muted">DEC ${esc(q.sessionLabel)} · Q${q.n}</span><div>${esc(q.qrc.question || q.question)}</div>`;
+      ans = `<strong>Réponse.</strong> ${esc(q.qrc.model_answer)}`;
+    }
+    return `<li class="carnet-item"><div>${head}</div><details><summary>Voir la réponse</summary><div class="muted" style="margin-top:4px">${ans}</div></details>
+      <input class="carnet-note" data-carnet-note="${esc(x.id)}" maxlength="200" value="${esc(x.note)}" placeholder="L’élément manqué, en une ligne (ex. : 6 exercices, pas 3)">
+      <button class="btn sm" data-carnet="${esc(x.id)}">${ic('check')} Retenu : retirer</button></li>`;
+  };
+  if (!list.length) return `<div class="card"><h2>${ic('bookmark')} Carnet d’erreurs</h2><p class="muted">Vide pour l’instant. Sur chaque correction (questions et shorts), « Ajouter au carnet » y range ce que vous savez ne pas avoir retenu.</p></div>`;
+  setTimeout(() => document.querySelectorAll('[data-carnet-note]').forEach((el) => { el.onchange = () => { CN.setNote(pr.carnet, el.dataset.carnetNote, el.value.trim()); persist(); toast('Note enregistrée', 'check'); }; }), 0);
+  setTimeout(() => {
+    const tq = $('#carnet-q'); if (tq) tq.onclick = () => trainOn(qs.map((x) => x.id), 'Carnet d’erreurs', 'qrc');
+    const ts = $('#carnet-s'); if (ts) ts.onclick = () => openFeed({ only: shs });
+  }, 0);
+  return `<div class="card hero"><h2 style="margin:0 0 6px">${ic('bookmark')} Carnet d’erreurs</h2>
+    <p class="muted" style="margin:0 0 10px">Ce que vous savez ne pas avoir retenu. Notez l’élément manqué en une ligne, relisez le soir et le matin du jour J. Retirez une entrée quand elle est sue.</p>
+    ${qs.length ? `<button class="btn primary big-btn" id="carnet-q"><span>${ic('play')} Repasser ${qs.length} question${qs.length > 1 ? 's' : ''} en QRC</span></button>` : ''}
+    ${shs.length ? `<button class="btn" id="carnet-s" style="margin-top:8px">${ic('clapper')} Revoir ${shs.length} short${shs.length > 1 ? 's' : ''}</button>` : ''}</div>
+    <div class="card"><ul class="carnet-list">${list.map(item).join('')}</ul></div>`;
+};
+
 views.shorts = () => {
   if (!state.shorts) {
     setTimeout(async () => { await ensureShorts(); if (state.view === 'shorts' && state.shorts) render(); }, 0);
@@ -1409,11 +1465,11 @@ views.shorts = () => {
 };
 
 // goal / base : « Shorts du jour » du plan ; le compteur et la pause suivent l'objectif du plan (base = déjà faits aujourd'hui).
-function openFeed({ focus = [], goal = 0, base = 0 } = {}) {
+function openFeed({ focus = [], goal = 0, base = 0, only = null } = {}) {
   if (!state.shorts?.length) return toast('Shorts indisponibles : ouvrez l’application une fois en ligne');
   closeSheet(true);
   const lim = goal ? Math.max(1, goal - base) : state.progress.settings.shortsLimit ?? 15;
-  state.feed = { focus: focus.filter(Boolean), served: new Set(), list: [], ok: 0, n: 0, limit: lim, goal: goal ? goal : 0, base: goal ? base : 0, paused: false, active: 0 };
+  state.feed = { only, focus: focus.filter(Boolean), served: new Set(), list: [], ok: 0, n: 0, limit: lim, goal: goal ? goal : 0, base: goal ? base : 0, paused: false, active: 0 };
   let el = $('#feed');
   if (!el) { el = document.createElement('div'); el.id = 'feed'; el.className = 'feed'; document.body.appendChild(el); el.addEventListener('click', onFeedClick); }
   el.innerHTML = `<div class="feed-top"><button class="feed-x" id="feed-close" aria-label="Fermer">${ic('x')}</button><span id="feed-count"></span></div><div class="feed-scroll" id="feed-scroll"></div>`;
@@ -1446,7 +1502,7 @@ function feedChrome(on) {
 function feedCount() {
   const f = state.feed; const c = $('#feed-count'); if (!f || !c) return;
   const prog = f.goal ? ` · ${Math.min(f.base + f.n, f.goal)}/${f.goal} du jour` : f.limit ? ` · ${Math.min(f.n, f.limit)}/${f.limit}` : '';
-  c.textContent = f.n ? `${f.ok}/${f.n} juste${f.ok > 1 ? 's' : ''}${prog}` : f.goal ? `Shorts du jour · ${f.base}/${f.goal}` : f.focus.length ? (P.stepById(f.focus[0])?.title || '') : 'Shorts';
+  c.textContent = f.n ? `${f.ok}/${f.n} juste${f.ok > 1 ? 's' : ''}${prog}` : f.only ? 'Carnet d’erreurs' : f.goal ? `Shorts du jour · ${f.base}/${f.goal}` : f.focus.length ? (P.stepById(f.focus[0])?.title || '') : 'Shorts';
 }
 // Ajoute les prochains shorts au fil ; tout servi : on recommence (en évitant les derniers vus).
 function feedAppend() {
@@ -1454,8 +1510,9 @@ function feedAppend() {
   const pr = state.progress;
   const opts = () => ({ steps: P.STEPS.map((s) => s.id), cur: P.currentIndex(pr.plan), done: pr.plan.done, focus: f.focus,
     weak: new Set(P.tagStats(pr.attempts, state.byId).weak.map((w) => `${w.prof}:${w.tag}`)), served: f.served, now: Date.now() });
-  let more = SH.buildFeed(state.shorts, pr.drills, opts()).slice(0, 6);
-  if (!more.length) { f.served = new Set(f.list.slice(-5).map((s) => s.id)); more = SH.buildFeed(state.shorts, pr.drills, opts()).slice(0, 6); }
+  // Carnet : seulement les shorts choisis, une fois chacun.
+  let more = f.only ? f.only.filter((s) => !f.served.has(s.id)).slice(0, 6) : SH.buildFeed(state.shorts, pr.drills, opts()).slice(0, 6);
+  if (!more.length && !f.only) { f.served = new Set(f.list.slice(-5).map((s) => s.id)); more = SH.buildFeed(state.shorts, pr.drills, opts()).slice(0, 6); }
   const box = $('#feed-scroll'); if (!box) return;
   for (const s of more) {
     f.served.add(s.id); f.list.push(s);
@@ -1559,7 +1616,7 @@ function onFeedClick(e) {
     if (good) x.classList.add('okb'); else if (x === b) x.classList.add('ko');
   });
   const why = s.type === 'vf' ? s.why : s.quiz.why;
-  sec.querySelector('.sh-fb').innerHTML = `<div class="gfb ${ok ? 'ok' : 'ko'}">${ok ? ic('check') + ' Juste' : `${ic('x')} ${s.type === 'vf' ? `C’est ${s.verdict ? 'vrai' : 'faux'}.` : 'Raté.'}`}</div><div class="sh-why">${md(why)}</div>${!ok ? `<div class="muted" style="margin-top:6px">Ce short revient dans 10 minutes${requeued ? `, et ${requeued} question${requeued > 1 ? 's' : ''} liée${requeued > 1 ? 's' : ''} dans votre prochaine séance` : ''}.</div>` : ''}${sec.querySelector('.sh-lesson') ? '<button class="btn sh-next" data-sh-review="1">' + ic('eye') + ' Revoir la notion</button>' : ''}<button class="btn primary sh-next" data-sh-next="1">Suivant ↓</button>`;
+  sec.querySelector('.sh-fb').innerHTML = `<div class="gfb ${ok ? 'ok' : 'ko'}">${ok ? ic('check') + ' Juste' : `${ic('x')} ${s.type === 'vf' ? `C’est ${s.verdict ? 'vrai' : 'faux'}.` : 'Raté.'}`}</div><div class="sh-why">${md(why)}</div>${!ok ? `<div class="muted" style="margin-top:6px">Ce short revient dans 10 minutes${requeued ? `, et ${requeued} question${requeued > 1 ? 's' : ''} liée${requeued > 1 ? 's' : ''} dans votre prochaine séance` : ''}.</div>` : ''}${carnetBtn(SH.memoId(s))}${sec.querySelector('.sh-lesson') ? '<button class="btn sh-next" data-sh-review="1">' + ic('eye') + ' Revoir la notion</button>' : ''}<button class="btn primary sh-next" data-sh-next="1">Suivant ↓</button>`;
   feedCount();
   if (f.limit && f.n >= f.limit && !f.paused) feedPause(sec);
 }
@@ -2359,7 +2416,7 @@ async function recoverFromStaleCache() {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
     await Promise.all((await caches.keys()).filter((k) => k !== PC.AUDIO_CACHE).map((k) => caches.delete(k))); // épisodes téléchargés gardés
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './js/sync.js', './sw.js']
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './js/sync.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();

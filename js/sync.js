@@ -109,6 +109,7 @@ export function merge(local, remote) {
     lastExportAt: Math.max(num(n.lastExportAt), num(o.lastExportAt)),
     plan,
     drills: byLast(n.drills, o.drills),
+    carnet: byLast(n.carnet, o.carnet),
     games: { ...obj(o.games), ...obj(n.games), best: unionMax(obj(n.games).best, obj(o.games).best) },
     podcasts: mergePodcasts(n.podcasts, o.podcasts),
     daily,
