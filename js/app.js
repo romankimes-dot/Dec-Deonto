@@ -382,9 +382,9 @@ function renderQrc(q, container, onRevealed, onCheck = () => {}, { askConf = fal
 function pickMode(q) {
   const m = state.progress.settings.mode;
   if (m === 'qcm' || m === 'qrc') return m;
-  // mixte : alterne selon la carte et le nombre de révisions
+  // mixte : QCM pour découvrir une question, QRC dès qu'elle a été vue une fois (le jour J, il faut produire).
   const c = state.progress.cards[q.id];
-  return ((c ? c.reps : 0) + q.n) % 2 === 0 ? 'qcm' : 'qrc';
+  return (c && c.reps > 0) || state.progress.stats.q[q.id]?.seen > 0 ? 'qrc' : 'qcm';
 }
 
 // ---------- Vues ----------
@@ -1328,7 +1328,7 @@ views.settings = () => {
   return `<div class="card"><h2>Réglages</h2>
     <label class="field">Date de l’examen (le plan et les révisions s’y adaptent ; vide = parcours générique de 4 semaines)<input type="datetime-local" id="s-exam" value="${esc((s.examDate || '').slice(0, 16))}"></label>
     <label class="field">Nouvelles cartes par jour, au minimum (le plan en demande plus s’il le faut pour tout voir à J-3)<input type="number" id="s-new" min="0" max="100" value="${s.newPerDay}"></label>
-    <label class="field">Format de révision<select id="s-mode"><option value="mixte" ${s.mode === 'mixte' ? 'selected' : ''}>Mixte (alterne QCM / QRC)</option><option value="qcm" ${s.mode === 'qcm' ? 'selected' : ''}>QCM uniquement</option><option value="qrc" ${s.mode === 'qrc' ? 'selected' : ''}>QRC uniquement</option></select></label>
+    <label class="field">Format de révision<select id="s-mode"><option value="mixte" ${s.mode === 'mixte' ? 'selected' : ''}>Mixte (QCM pour découvrir, puis QRC)</option><option value="qcm" ${s.mode === 'qcm' ? 'selected' : ''}>QCM uniquement</option><option value="qrc" ${s.mode === 'qrc' ? 'selected' : ''}>QRC uniquement</option></select></label>
     <label class="field"><input type="checkbox" id="s-low" ${s.showLowConfidence ? 'checked' : ''}> Afficher le badge « à vérifier » sur les réponses de confiance faible</label>
     <label class="field"><input type="checkbox" id="s-conf" ${s.confidence ? 'checked' : ''}> Indice de certitude avant la correction (sûr / hésitant / au hasard)</label>
     <label class="field"><input type="checkbox" id="s-hide" ${s.hideChoices ? 'checked' : ''}> QCM : réfléchir avant d’afficher les propositions</label>
