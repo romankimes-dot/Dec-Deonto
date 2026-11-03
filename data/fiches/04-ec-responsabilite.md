@@ -73,7 +73,7 @@
 - **Escroquerie** aux aides publiques ou à la TVA.
 
 ### Sanctions fiscales spécifiques
-- **CGI 1740 A** et **1753** : amende et interdiction pour les professionnels qui ont **sciemment** aidé à établir des actes frauduleux (à vérifier).
+- **CGI 1740 A bis** (loi 2018-898) : amende pour le tiers qui a **intentionnellement** fourni une prestation ayant permis un abus de droit ou une fraude sanctionnée par une majoration de 80 %. L'**interdiction professionnelle** est une peine complémentaire prononcée par le juge pénal (CGI **1750**). L'art. 1740 A vise, lui, la délivrance irrégulière de documents ouvrant droit à un avantage fiscal.
 
 ## 4. Responsabilité disciplinaire
 
@@ -88,6 +88,7 @@
 
 ### Saisine de la chambre régionale
 - La **plainte** est adressée **à la chambre régionale de discipline** par toute **personne ayant intérêt à agir** : client, tiers, **conseil régional** (ord. art. 31), **commissaire du gouvernement** (D. 2012-432 art. 179 et 182).
+- **Différend entre professionnels** : depuis le **12 juin 2025** (D. 2025-506, D. 2012-432 art. 161), la **conciliation** est un **préalable obligatoire**. La plainte n'est recevable qu'à défaut de conciliation ou d'arbitrage engagé dans les **2 mois**, ou à l'expiration d'un délai de **4 mois**.
 - Le **magistrat chargé des poursuites** la communique au président du conseil régional et au commissaire du gouvernement ; il la **classe sans suite** (ordonnance susceptible de recours) ou **nomme un rapporteur** (ord. art. 49 ; D. art. 179 et 181).
 
 ### Procédure
@@ -113,7 +114,7 @@
 
 ### Personnes justiciables
 - **Experts-comptables** inscrits et **sociétés** inscrites.
-- **AGC**.
+- **AGC** : elles relèvent d'une **commission nationale** (ord. art. 49 bis), et non de la chambre régionale ; l'appel va devant la chambre nationale.
 - **Salariés autorisés (83 ter / quater)**.
 - **Experts-comptables stagiaires** : ils sont **soumis à la juridiction disciplinaire** et peuvent être **sanctionnés**.
 
@@ -143,4 +144,4 @@
 ## À vérifier
 - **Prescription de l'action disciplinaire** contre un EC : aucun délai dans l'ord. 45-2138, le D. 2012-432 ni le règlement intérieur de l'Ordre (recueil réglementaire de l'Ordre, édition 2024, interrogé en octobre 2026). Un avocat spécialisé écrit qu'aucun texte n'en fixe ; aucune source officielle ne le confirme expressément.
 - **Montant minimal** de l'assurance RC obligatoire de l'EC.
-- **Sanctions fiscales** CGI 1740 A / 1753 applicables aux professionnels.
+- **Sanctions fiscales** des conseils : texte de CGI 1740 A bis et 1750 lu en extrait seulement.

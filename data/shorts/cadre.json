@@ -3,7 +3,7 @@
    "title": "Textes valables pour toutes les missions", "q": "Trois textes s'appliquent à toutes les missions de l'EC",
    "items": [
      { "k": "Code de déontologie", "v": "Décret 2012-432" },
-     { "k": "NPMQ", "v": "Maîtrise de la qualité" },
+     { "k": "NPMQ", "v": "Management de la qualité" },
      { "k": "NPLAB", "v": "Lutte anti-blanchiment" } ],
    "trap": "NPMQ et NPLAB ne sont pas des missions : elles s'appliquent à toutes les missions.",
    "quiz": { "q": "Lequel n'est PAS applicable à toutes les missions ?", "choices": ["NPMQ", "NPLAB", "Code de déontologie", "NP 2400"], "answer": 3, "why": "La **NP 2400** est la norme de l'**examen limité**, une mission parmi d'autres. Code de déontologie, NPMQ et NPLAB couvrent toutes les missions." },
@@ -73,10 +73,7 @@
    "quiz": { "q": "Quelle forme de conclusion retient-il ?", "choices": ["Refus d'attester", "Impossibilité de conclure", "Conclusion défavorable", "Sans réserve avec observation"], "answer": 1, "why": "L'examen limité compte **cinq** formes : sans réserve, sans réserve avec observation, avec réserve(s), défavorable, **impossibilité de conclure**. « Refus d'attester » est une forme de la présentation." },
    "src": ["1. Sans réserve · 2. Sans réserve avec observation · 3. Avec réserve(s) · 4. Défavorable · 5. Impossibilité de conclure"] },
 
- { "id": "cadre-12", "type": "vf", "prof": "EC", "tags": ["missions_assurance"], "fiche": "11-schema-niveaux-assurance.md",
-   "title": "Présentation et CAC en place", "statement": "Pour une entité dotée d'un commissaire aux comptes, l'EC délivre l'attestation de présentation habituelle.", "verdict": false,
-   "why": "L'EC ne délivre **pas** d'attestation de présentation. Il délivre un **compte rendu de travaux**.",
-   "src": ["Entité dotée d'un CAC : l'EC ne délivre pas d'attestation de présentation, il délivre un compte rendu de travaux."] },
+ {"id": "cadre-12", "type": "vf", "prof": "EC", "tags": ["missions_assurance"], "fiche": "11-schema-niveaux-assurance.md", "title": "Présentation et CAC en place", "statement": "Pour une entité dotée d'un commissaire aux comptes, l'EC délivre l'attestation de présentation habituelle.", "verdict": false, "why": "L'EC **n'a pas à délivrer**, sauf considérations particulières, d'attestation de présentation : il remet en principe un **compte rendu de travaux** (NP 2300 § A10).", "src": ["Entité dotée d'un CAC : l'EC n'a pas à délivrer, sauf considérations particulières, d'attestation de présentation ; il remet en principe un compte rendu de travaux"]},
 
  { "id": "cadre-13", "type": "cas", "prof": "EC", "tags": ["missions_assurance"], "fiche": "11-schema-niveaux-assurance.md",
    "title": "Présentation : les recommandations", "situation": "En mission de présentation des comptes, l'EC a des recommandations à faire à son client sur son organisation comptable.",

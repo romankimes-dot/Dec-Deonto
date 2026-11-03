@@ -23,13 +23,7 @@
    "quiz": { "q": "Qui tient aujourd'hui la liste des commissaires aux comptes ?", "choices": ["La CNCC", "La H2A", "La CRCC", "Le CROEC"], "answer": 1, "why": "La **H2A** tient la liste elle-même. Elle l'avait déléguée à la CNCC de 2017 à 2020. Le tableau, lui, est tenu par le CROEC (EC)." },
    "src": ["Liste tenue par la H2A elle-même (déléguée à la CNCC de 2017 à 2020)", "Tableau tenu par le CROEC : 3 sections suivies de 11 listes"] },
 
- { "id": "institutions-04", "type": "duel", "prof": "EC+CAC", "tags": ["inscription_tableau", "inscription_liste"], "fiche": "12-schema-institutions-ec-cac.md",
-   "title": "Recours sur l'inscription", "q": "Où conteste-t-on l'inscription ou son refus ?",
-   "ec": { "main": "**Comité national du tableau**", "det": "Saisi par le **commissaire du gouvernement**." },
-   "cac": { "main": "**Tribunal administratif**", "det": "**Juridiction administrative**, contre la décision d'inscription." },
-   "trap": "Comité national du tableau pour l'EC, juridiction administrative pour le CAC.",
-   "quiz": { "q": "Contre une inscription au tableau, le commissaire du gouvernement saisit…", "choices": ["Le comité national du tableau", "Le tribunal administratif", "Le Conseil d'État"], "answer": 0, "why": "Le commissaire du gouvernement saisit le **comité national du tableau**. Le tribunal administratif est le recours du CAC contre la H2A." },
-   "src": ["Le commissaire du gouvernement saisit le comité national du tableau", "Juridiction administrative (tribunal administratif)"] },
+ {"id": "institutions-04", "type": "duel", "prof": "EC+CAC", "tags": ["inscription_tableau", "inscription_liste"], "fiche": "12-schema-institutions-ec-cac.md", "title": "Recours sur l'inscription", "q": "Où conteste-t-on l'inscription ou son refus ?", "ec": {"main": "**Comité national du tableau**", "det": "Saisi par le **commissaire du gouvernement** contre une inscription, par l'**intéressé** contre un refus."}, "cac": {"main": "**Juridiction administrative**", "det": "Contre la décision d'inscription de la H2A (R.821-68) : tribunal administratif selon la banque, Conseil d'État selon d'autres sources."}, "trap": "Comité national du tableau pour l'EC, juridiction administrative pour le CAC.", "quiz": {"q": "Contre une inscription au tableau, le commissaire du gouvernement saisit…", "choices": ["Le comité national du tableau", "Le tribunal administratif", "Le Conseil d'État"], "answer": 0, "why": "Contre une **inscription**, le commissaire du gouvernement saisit le **comité national du tableau** ; contre un **refus**, c'est l'intéressé qui le saisit."}, "src": ["saisi par le commissaire du gouvernement contre une inscription, par l'intéressé contre un refus", "Juridiction administrative (R.821-68)"]},
 
  { "id": "institutions-05", "type": "duel", "prof": "EC+CAC", "tags": ["h2a_supervision", "ordre_organisation"], "fiche": "12-schema-institutions-ec-cac.md",
    "title": "Les normes", "q": "Qui élabore et adopte les normes ?",
@@ -114,10 +108,7 @@
    "why": "Le renommage vient de la loi **2022-172**, pas de la loi Pacte.",
    "src": ["Le renommage en Conseil national vient de la loi 2022-172, pas de la loi Pacte"] },
 
- { "id": "institutions-17", "type": "vf", "prof": "EC", "tags": ["ordre_organisation"], "fiche": "12-schema-institutions-ec-cac.md",
-   "title": "Élection du Conseil national", "statement": "Depuis 2020, les membres du Conseil national de l'Ordre sont élus au suffrage direct par les EC.", "verdict": true,
-   "why": "Vrai : élus au **suffrage direct** par les experts-comptables depuis **2020**.",
-   "src": ["Membres du Conseil national de l'Ordre : élus au suffrage direct par les EC depuis 2020"] },
+ {"id": "institutions-17", "type": "vf", "prof": "EC", "tags": ["ordre_organisation"], "fiche": "12-schema-institutions-ec-cac.md", "title": "Élection du Conseil national", "statement": "Depuis 2020, les membres élus du Conseil national de l'Ordre le sont au suffrage direct par les EC ; les présidents des CROEC y siègent de droit.", "verdict": true, "why": "Vrai : les **présidents des CROEC** siègent de droit ; les autres membres sont élus au **suffrage direct** depuis **2020**.", "src": ["les présidents des CROEC y siègent de droit ; les autres membres sont élus au suffrage direct par les EC depuis 2020"]},
 
  { "id": "institutions-18", "type": "cas", "prof": "CAC", "tags": ["h2a_supervision", "cncc_crcc_organisation"], "fiche": "12-schema-institutions-ec-cac.md",
    "title": "Demander une NEP", "situation": "La CRCC de Lyon souhaite qu'une nouvelle NEP soit élaborée sur un point de pratique.",
@@ -274,19 +265,12 @@
    "why": "Pas d'exercice sous forme d'association : un CAC exerce **à titre individuel** ou en **société**.",
    "src": ["Pas d'exercice sous forme d'association : un CAC exerce à titre individuel ou en société"] },
 
- { "id": "institutions-42", "type": "chiffre", "prof": "CAC", "tags": ["formation"], "fiche": "05-cac-exercice.md",
-   "title": "Formation continue du CAC", "big": "120 heures", "label": "Formation continue du CAC sur 3 années consécutives",
-   "det": "Au moins **20 heures par an**. Déclaration annuelle des heures à la **CRCC**.", "trap": "Après 3 ans sans exercer (obligation non respectée) : **40 heures** de formation particulière.",
-   "quiz": { "q": "Combien d'heures de formation continue sur 3 années consécutives ?", "choices": ["120 heures", "60 heures", "40 heures"], "answer": 0, "why": "**120 heures** sur 3 années consécutives, avec au moins **20 heures par an**. Les 40 heures concernent le CAC qui n'a pas exercé pendant 3 ans." },
-   "src": ["120 heures sur 3 années consécutives, avec au moins 20 heures par an", "Déclaration annuelle des heures à la CRCC", "n'a pas exercé pendant 3 ans et n'a pas respecté l'obligation : 40 heures"] },
+ {"id": "institutions-42", "type": "chiffre", "prof": "CAC", "tags": ["formation"], "fiche": "05-cac-exercice.md", "title": "Formation continue du CAC", "big": "120 heures", "label": "Formation continue du CAC sur 3 années consécutives", "det": "Au moins **20 heures par an**. Déclaration annuelle des heures, au plus tard le **31 mars**, sur le portail de la **CNCC**.", "trap": "Après 3 ans sans exercer (obligation non respectée) : **40 heures** de formation particulière.", "quiz": {"q": "Combien d'heures de formation continue sur 3 années consécutives ?", "choices": ["120 heures", "60 heures", "40 heures"], "answer": 0, "why": "**120 heures** sur 3 années consécutives, avec au moins **20 heures par an**. Les 40 heures concernent le CAC qui n'a pas exercé pendant 3 ans."}, "src": ["120 heures sur 3 années consécutives, avec au moins 20 heures par an", "Déclaration annuelle des heures, au plus tard le 31 mars, sur le portail de la CNCC", "n'a pas exercé pendant 3 ans et n'a pas respecté l'obligation : 40 heures"]},
 
  { "id": "institutions-43", "type": "cas", "prof": "EC", "tags": ["personnes_physiques", "lettre_mission"], "fiche": "01-ec-exercice.md",
    "title": "IR du dirigeant d'un client", "situation": "Un cabinet, déjà chargé de la SARL dirigée par M. Zen, doit établir la déclaration d'impôt sur le revenu de M. Zen.",
    "quiz": { "q": "Que prévoit le cabinet pour cette mission ?", "choices": ["Une lettre de mission propre, signée avec M. Zen", "Rien : la lettre de mission de la SARL suffit", "Rien : la mission n'est pas permise à l'EC"], "answer": 0, "why": "Les missions déclaratives des **personnes physiques** (ex. l'IR d'un dirigeant) se font avec une **lettre de mission propre**, signée avec cette personne." },
    "src": ["missions déclaratives (fiscales, sociales, administratives) des personnes physiques, par exemple l'IR d'un dirigeant, avec une lettre de mission propre signée avec cette personne"] },
 
- { "id": "institutions-44", "type": "vf", "prof": "EC", "tags": ["personnes_physiques", "lettre_mission"], "fiche": "01-ec-exercice.md",
-   "title": "Reconduction tacite", "statement": "Chaque année, l'EC doit informer tous ses clients, entreprises comprises, de la possibilité de ne pas reconduire la lettre de mission.", "verdict": false,
-   "why": "Cette information annuelle ne concerne que les **clients consommateurs** : personnes physiques non professionnelles. Elle ne s'applique pas aux entreprises.",
-   "src": ["ne concerne que les clients consommateurs, c'est-à-dire les personnes physiques non professionnelles. Elle ne s'applique pas aux entreprises"] }
+ {"id": "institutions-44", "type": "vf", "prof": "EC", "tags": ["personnes_physiques", "lettre_mission"], "fiche": "01-ec-exercice.md", "title": "Reconduction tacite", "statement": "Chaque année, l'EC doit informer tous ses clients, entreprises comprises, de la possibilité de ne pas reconduire la lettre de mission.", "verdict": false, "why": "Cette information annuelle vise les **consommateurs** et les **non-professionnels** (association, CSE…). Elle ne s'applique pas aux entreprises.", "src": ["concerne les consommateurs et aussi les non-professionnels", "Elle ne s'applique pas aux entreprises"]}
 ]}

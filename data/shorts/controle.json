@@ -56,16 +56,7 @@
    "why": "Le secret est **inopposable** aux contrôleurs, pour les **missions et** pour les **prestations**. Refuser de communiquer est un manquement.",
    "src": ["Inopposable, pour les missions et les prestations", "Faire obstacle au contrôle est un manquement sanctionnable."] },
 
- { "id": "controle-10", "type": "liste", "prof": "CAC", "tags": ["controle_activite"], "fiche": "20-schema-controle-qualite.md",
-   "title": "Pouvoirs des contrôleurs du CAC", "q": "Que peuvent faire les contrôleurs d'activité ?",
-   "items": [
-     { "k": "Obtenir tout document", "v": "Dossiers de travail compris" },
-     { "k": "Convoquer et entendre", "v": "Toute personne" },
-     { "k": "Accéder aux locaux", "v": "Les locaux professionnels, pas le domicile" },
-     { "k": "Interroger", "v": "L'entité contrôlée et le réseau" } ],
-   "trap": "Faire obstacle au contrôle est un manquement sanctionnable.",
-   "quiz": { "q": "Où les contrôleurs peuvent-ils accéder ?", "choices": ["Au domicile du CAC, avec son accord seulement", "Aux seuls documents que le CAC choisit de produire", "Aux locaux professionnels, pas au domicile"], "answer": 2, "why": "Ils accèdent aux **locaux professionnels**, **pas au domicile**. Ils obtiennent aussi tout document, dossiers de travail compris." },
-   "src": ["Obtenir tout document, dossiers de travail compris", "Convoquer et entendre toute personne", "Accéder aux locaux professionnels (pas au domicile)", "Interroger l'entité contrôlée et le réseau"] },
+ {"id": "controle-10", "type": "liste", "prof": "CAC", "tags": ["controle_activite"], "fiche": "20-schema-controle-qualite.md", "title": "Pouvoirs des contrôleurs du CAC", "q": "Que peuvent faire les contrôleurs d'activité ?", "items": [{"k": "Obtenir tout document", "v": "Dossiers de travail compris"}, {"k": "Interroger des tiers", "v": "Obtenir des informations de toute autre personne"}, {"k": "Accéder aux locaux", "v": "Les locaux professionnels, pas le domicile"}, {"k": "Interroger", "v": "L'entité contrôlée et le réseau"}], "trap": "Convoquer et entendre : pouvoir d'enquête du rapporteur général, pas des contrôleurs.", "quiz": {"q": "Où les contrôleurs peuvent-ils accéder ?", "choices": ["Au domicile du CAC, avec son accord seulement", "Aux seuls documents que le CAC choisit de produire", "Aux locaux professionnels, pas au domicile"], "answer": 2, "why": "Ils accèdent aux **locaux professionnels**, **pas au domicile**. Ils obtiennent aussi tout document, dossiers de travail compris."}, "src": ["Obtenir tout document, dossiers de travail compris", "Obtenir des informations de toute autre personne", "Accéder aux locaux professionnels (pas au domicile)", "Interroger l'entité contrôlée et le réseau"]},
 
  { "id": "controle-11", "type": "cas", "prof": "CAC", "tags": ["controle_activite"], "fiche": "20-schema-controle-qualite.md",
    "title": "Blanchiment découvert en contrôle", "situation": "Lors d'un contrôle d'activité, un contrôleur de la H2A découvre chez un CAC des faits qui relèvent du blanchiment.",

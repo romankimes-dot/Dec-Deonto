@@ -210,6 +210,6 @@
 - **Services interdits** : il n'en existe **aucune liste** chez l'EC. Pour le CAC : la **liste UE** pour les EIP ; pour les non-EIP, le **risque d'autorévision** ou l'**indépendance compromise** sans sauvegarde possible (L.821-28 IV), la **non-immixtion** étant une règle distincte (L.821-54).
 - **Doute déontologique** : l'EC **consulte le CROEC** ; le CAC **saisit la H2A** pour avis.
 - **Successeur** : l'EC **informe** son prédécesseur (lettre art. 163) ; le CAC **doit s'assurer auprès de son prédécesseur** des motifs du non-renouvellement (art. 26), et le prédécesseur lui donne **accès aux documents** (L.821-44), sans levée du secret écrite à L.821-35.
-- **Déclarant Tracfin** : le **CAC signataire** chez le CAC (NEP 9605 § 61) ; l'**EC en charge de la mission**, personnellement, dans le cabinet d'EC (C. mon. fin. R.561-23 IV, NPLAB § 47). Le correspondant Tracfin ne déclare pas.
+- **Déclarant Tracfin** : le **CAC signataire** chez le CAC (NEP 9605 § 61) ; l'**EC en charge de la mission**, personnellement, dans le cabinet d'EC (C. mon. fin. R.561-23 I, al. 2, NPLAB § 47). Le correspondant Tracfin ne déclare pas.
 - **Sollicitation** : chez le CAC, il faut **préciser les modalités des honoraires** ; les deux professions interdisent le comparatif et le dénigrement.
 - **Honoraires conditionnels** : **interdits** au CAC pour toute mission ou prestation (art. 13, titre I) ; possibles pour l'EC **hors monopole** et hors missions qui participent à la détermination de l'**assiette fiscale ou sociale** (ord. art. 24).

@@ -9,7 +9,7 @@ questions: EC:discipline_sanctions CAC:discipline_sanctions
 ### {EC} Expert-comptable
 
 ```etapes
-Saisine | **Plainte** adressée **à la chambre régionale** par toute personne ayant **intérêt à agir** : client, tiers, **conseil régional**, **commissaire du gouvernement**
+Saisine | **Plainte** adressée **à la chambre régionale** par toute personne ayant **intérêt à agir** : client, tiers, **conseil régional**, **commissaire du gouvernement** ; entre confrères, **conciliation préalable obligatoire** depuis le 12 juin 2025
 Instruction | Le **magistrat chargé des poursuites** classe ou nomme un **rapporteur**, qui instruit, puis **notifie les griefs** ; procédure **contradictoire** (accès au dossier, conseil de son choix)
 1re instance | **Chambre régionale de discipline**, présidée par un **magistrat de l'ordre judiciaire**, avec des membres élus
 Appel | **Chambre nationale de discipline** : un **magistrat** (président de chambre de la cour d'appel de Paris), **2 fonctionnaires**, **2 membres du Conseil national**
@@ -34,7 +34,7 @@ Recours | **Conseil d'État**, recours de pleine juridiction
 ```vs
 Liste | 1. **Réprimande** · 2. **Blâme** avec inscription au dossier · 3. **Suspension** à durée déterminée **avec sursis** · 4. Suspension **sans sursis** · 5. **Radiation** du tableau avec interdiction définitive d'exercer | **Avertissement** · **Blâme** · **Interdiction temporaire** d'exercer (**3 ans au plus** depuis 2024) · **Radiation** · Retrait de l'**honorariat** · Interdiction temporaire de fonctions de direction · **Sanction pécuniaire** · Publication
 Sanction pécuniaire | **Non**, sauf en matière **LCB-FT** (sanction pécuniaire, interdiction temporaire, publication) | **Oui** : **250 000 €** au plus (personne physique) ; société : **1 M€**, ou la **moyenne annuelle des honoraires** facturés à l'entité sur 3 exercices si elle est plus élevée (faute en mission de certification)
-Qui est justiciable ? | EC et sociétés inscrites, **AGC**, salariés autorisés (83 ter / quater), **stagiaires** | CAC (personnes et sociétés), auditeurs de durabilité, membres des comités d'audit, contrôleurs de pays tiers… **Pas l'EC**
+Qui est justiciable ? | EC et sociétés inscrites, **AGC** (devant une **commission nationale**, ord. art. 49 bis), salariés autorisés (83 ter / quater), **stagiaires** | CAC (personnes et sociétés), auditeurs de durabilité, membres des comités d'audit, contrôleurs de pays tiers… **Pas l'EC**
 Faute sanctionnable | Manquement aux règles professionnelles (ord. art. 49 s.) | **2 catégories** : manquement aux **conditions légales d'exercice** ; **négligence grave** ou fait contraire à la **probité ou à l'honneur**
 Prescription | {?} Aucun délai trouvé dans l'ordonnance, le décret ni le règlement intérieur (recueil de l'Ordre, 2024) | **6 ans**, interrompue par un acte de recherche, de constatation ou de sanction
 Nature | Disciplinaire (juridictions ordinales) | Sanctions **administratives** d'une autorité publique indépendante

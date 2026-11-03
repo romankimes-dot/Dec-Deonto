@@ -49,7 +49,7 @@ Réseau | Les interdictions **s'étendent au réseau** | Les services du réseau
 | **Personnel** | Pas de lien personnel entre une personne en **fonction sensible** dans l'entité et le CAC ou un dirigeant de la société de CAC. Lien personnel : parent et enfant, frères et sœurs (1er degré), conjoint, partenaire de PACS, concubin |
 | **Financier** | Aucun intérêt (actions, prêts, garanties) dans l'entité ou les entités liées : CAC, associés, équipe, proches |
 | **Professionnel** | Pas d'emploi, de mandat social ni de relation d'affaires significative |
-| **Après le mandat** | Le CAC ne peut pas devenir **dirigeant, administrateur, membre du conseil de surveillance ou occuper un poste de direction** de l'entité (ni de celles qu'elle contrôle) **moins de 3 ans** après la fin de sa mission (L.821-32) |
+| **Après le mandat** | Le CAC ne peut pas devenir **dirigeant, administrateur, membre du conseil de surveillance ou occuper un poste de direction** de l'entité (ni de celles qu'elle contrôle ou qui la contrôlent, L.233-3) **moins de 3 ans** après la fin de sa mission (L.821-32) |
 | **Avant le mandat** | Un ancien dirigeant ou salarié ne peut pas être CAC de l'entité **moins de 5 ans** après la fin de ses fonctions (L.821-33) |
 
 ## Réseau : les indices

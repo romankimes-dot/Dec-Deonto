@@ -15,7 +15,7 @@ Instance nationale | **Conseil national de l'Ordre** (ex-Conseil supérieur, ren
 Instance régionale | **CROEC** : tient le tableau, inscrit, appelle les cotisations, contrôle la qualité | **CRCC**, dans le ressort des cours d'appel
 Supervision publique | Aucune autorité indépendante : c'est l'**Ordre** qui contrôle | **H2A** (ex-H3C), autorité publique indépendante
 Inscription | **Tableau** tenu par le **CROEC** : 3 sections suivies de 11 listes | **Liste** tenue par la **H2A** elle-même (déléguée à la CNCC de 2017 à 2020)
-Recours contre l'inscription ou le refus | Le commissaire du gouvernement saisit le **comité national du tableau** | **Juridiction administrative** (tribunal administratif)
+Recours contre l'inscription ou le refus | **Comité national du tableau** : saisi par le **commissaire du gouvernement** contre une inscription, par l'**intéressé** contre un refus | **Juridiction administrative** (R.821-68) : tribunal administratif selon la banque de questions, Conseil d'État en premier ressort selon d'autres sources {?}
 Serment | Devant le **conseil régional de l'Ordre** | Devant le **premier président de la cour d'appel**
 Normes | Élaborées par le **Conseil national**, **agréées par arrêté** ministériel | **NEP** adoptées par la **H2A**, **homologuées par arrêté du garde des Sceaux**
 Contrôle de la qualité | **Contrôle de qualité** par l'Ordre (CROEC) | **Contrôle d'activité** : H2A (EIP) ; délégué à la **CNCC** (non-EIP)
@@ -47,6 +47,6 @@ Doute déontologique | Consulter le **CROEC** | Saisir la **H2A** pour avis
 - {!} Le Conseil national de l'Ordre **ne collecte pas** lui-même les cotisations : ce sont les **CROEC**.
 - {!} Les **sociétés** ne sont **ni électrices ni éligibles** aux conseils des CRCC.
 - {!} **Peuvent demander l'élaboration d'une NEP** : le garde des Sceaux, l'AMF, l'ACPR, l'Autorité des normes comptables, le Conseil de normalisation des comptes publics, la CNCC. **Pas la CRCC**.
-- {!} Membres du Conseil national de l'Ordre : élus au **suffrage direct** par les EC depuis **2020**.
+- {!} Conseil national de l'Ordre : les **présidents des CROEC** y siègent de droit ; les autres membres sont élus au **suffrage direct** par les EC depuis **2020**.
 - {!} Présidence d'un conseil de l'Ordre : **4 années consécutives** au plus, puis **2 ans** d'interruption.
 - {!} Le renommage en **Conseil national** vient de la loi **2022-172**, pas de la loi Pacte.

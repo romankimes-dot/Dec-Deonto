@@ -31,16 +31,16 @@ Conclusion | Par le **président du conseil régional** : **sans observation** �
 ## NPMQ : le système de qualité du cabinet
 
 ```arbre
-? **NPMQ** : toute structure, toute taille, toutes les missions
-  Responsabilités de la **direction**
-  Règles d'**éthique** et indépendance (confirmées périodiquement)
-  **Acceptation et maintien** des clients et des missions
-  **Ressources humaines** : recrutement, formation, évaluation, affectation
+? **NPMQ** (management de la qualité, depuis le 01/01/2025) : toute structure, toute taille, toutes les missions
+  **Approche par les risques** : objectifs qualité, risques, réponses
+  **8 composantes** (calquées sur ISQM 1)
+    Évaluation des risques · gouvernance et leadership · éthique
+    Acceptation et maintien des clients et des missions · réalisation des missions
+    Ressources · information et communication · suivi et mesures correctives
+  ! Ancienne norme de **maîtrise** de la qualité (2011-2024) : 6 éléments (direction, éthique, acceptation, RH, réalisation, suivi), celle des annales 2018-2024
   **Réalisation** des missions
-    Supervision
     **Revue de dossiers** : par l'équipe, sur **toutes** les missions
     **Revue indépendante** : par une personne **extérieure à la mission**, **avant** le rapport, sur certaines missions
-  **Suivi** du système
 ```
 
 ## Contrôle d'activité du CAC : modalités et pouvoirs
@@ -48,11 +48,11 @@ Conclusion | Par le **président du conseil régional** : **sans observation** �
 | Modalités | Pouvoirs des contrôleurs |
 |---|---|
 | Contrôles **périodiques** (programme) | Obtenir **tout document**, dossiers de travail compris |
-| Contrôles **occasionnels** | **Convoquer et entendre** toute personne |
+| Contrôles **occasionnels** | Obtenir des **informations de toute autre personne** ; recourir à des **experts** |
 | Contrôles **thématiques** | Accéder aux **locaux professionnels** (pas au domicile) |
 | **Suivi** des recommandations | Interroger l'entité contrôlée et le **réseau** |
 
-- {!} L'**enquête** du rapporteur général est une procédure **distincte**, à visée disciplinaire.
+- {!} L'**enquête** du rapporteur général est une procédure **distincte**, à visée disciplinaire : c'est elle, et non le contrôle, qui permet de **convoquer et entendre** (L.821-74).
 - {!} Faire **obstacle** au contrôle est un **manquement** sanctionnable.
 - {!} Contrôle **LCB-FT** de l'Ordre : c'est le **comité LBC-FT** qui conclut, et il peut saisir l'instance disciplinaire.
 - {!} Blanchiment découvert par un contrôleur de la H2A : il **informe lui-même Tracfin**.

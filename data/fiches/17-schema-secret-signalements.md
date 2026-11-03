@@ -35,9 +35,9 @@ Fondement | **Ord. art. 21** et C. pén. 226-13 : 1 an, 15 000 € | C. com. liv
 Le client peut-il délier ? | **Non** : le secret est d'**ordre public** | **Non**
 Contrôleurs | **Contrôle de qualité** de l'Ordre | **H2A** (contrôleurs et enquêteurs), CNCC par délégation, pour les missions **et** les prestations
 Autorités | **AMF** ; **Tracfin** ; administration fiscale (droit de communication, dans ses limites) | **AMF**, **ACPR**, **Tracfin**
-Justice | Audition ou témoignage en matière **pénale** ; défense de l'EC poursuivi | **Procureur** (révélation), juge d'instruction
+Justice | Information ou poursuites engagées **contre l'EC lui-même**, et sa **défense** (ord. art. 21 al. 4) ; audition pénale comme témoin : levée selon la clé de 2025-11 Q4, opposable selon CPP 109 {?} | **Procureur** (révélation), juge d'instruction
 Entre professionnels | **Non levé** envers le **successeur** : l'EC restitue seulement les documents du client | Levé entre CAC de la **consolidante** et des **consolidées** (dans les deux sens), entre **co-commissaires** ; le **successeur** accède aux documents (L.821-44), sans levée écrite à L.821-35
-Opposable | À la **CNIL** {?} | Au **CAC** d'une filiale **non consolidée**, sauf **petit groupe** (L.821-35)
+Opposable | **CNIL** : opposable selon la clé de 2025-11 Q4, mais la loi 78-17 art. 19 III ne réserve que les secrets de l'avocat, des journalistes et le secret médical {?} | Au **CAC** d'une filiale **non consolidée**, sauf **petit groupe** (L.821-35)
 ```
 
 ## LCB-FT : les deux normes

@@ -80,12 +80,7 @@
    "quiz": { "q": "Omettre sciemment de révéler des faits délictueux au procureur est un délit…", "choices": ["Pour l'EC et le CAC", "Propre au CAC", "Propre à l'EC"], "answer": 1, "why": "C'est un délit **propre au CAC**. Il n'existe pas d'obligation équivalente pour l'expert-comptable." },
    "src": ["Auteur (secret, faux, blanchiment, escroquerie, exercice illégal) ou complice (comptes infidèles, ABS, fraude fiscale)", "Délits propres : non-révélation, informations mensongères, exercice malgré une incompatibilité, usage du titre ; et complicité"] },
 
- { "id": "responsabilites-13", "type": "chiffre", "prof": "CAC", "tags": ["responsabilite_penale"], "fiche": "08-cac-responsabilite.md",
-   "title": "Peine de la non-révélation", "big": "5 ans · 75 000 €", "label": "Peine de la non-révélation et des informations mensongères",
-   "det": "Les deux délits sont punis de la même peine.",
-   "trap": "1 an et 15 000 € : secret ou usage du titre. 6 mois et 7 500 € : incompatibilité.",
-   "quiz": { "q": "Quelle est la peine de la non-révélation de faits délictueux par le CAC ?", "choices": ["1 an et 15 000 €", "6 mois et 7 500 €", "5 ans et 75 000 €"], "answer": 2, "why": "**5 ans et 75 000 €**, comme pour les informations mensongères. Les chiffres voisins sont ceux du secret et de l'usurpation du titre, ou de l'incompatibilité." },
-   "src": ["Omettre sciemment de révéler", "5 ans et 75 000 €", "6 mois et 7 500 €"] },
+ {"id": "responsabilites-13", "type": "chiffre", "prof": "CAC", "tags": ["responsabilite_penale"], "fiche": "08-cac-responsabilite.md", "title": "Peine de la non-révélation", "big": "5 ans · 75 000 €", "label": "Peine de la non-révélation et des informations mensongères", "det": "Les deux délits sont punis de la même peine.", "trap": "1 an et 15 000 € : secret ou usage du titre. 6 mois et 7 500 € : incompatibilité.", "quiz": {"q": "Quelle est la peine de la non-révélation de faits délictueux par le CAC ?", "choices": ["1 an et 15 000 €", "6 mois et 7 500 €", "5 ans et 75 000 €"], "answer": 2, "why": "**5 ans et 75 000 €**, comme pour les informations mensongères. Les chiffres voisins sont ceux du secret et de l'usurpation du titre, ou de l'incompatibilité."}, "src": ["Ne pas révéler au procureur les faits délictueux connus", "5 ans et 75 000 €", "6 mois et 7 500 €"]},
 
  { "id": "responsabilites-14", "type": "cas", "prof": "EC", "tags": ["responsabilite_civile", "responsabilite_penale"], "fiche": "21-schema-responsabilites.md",
    "title": "Erreur de déclaration fiscale", 

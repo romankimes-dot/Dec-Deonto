@@ -85,7 +85,7 @@
 
 ## 4. Nomination : seuils et cas
 
-### Sociétés commerciales (décret **2024-152** du 24 février 2024, **D.221-5**, exercices ouverts à compter du **01/01/2024**)
+### Sociétés commerciales (décret **2024-152** du 28 février 2024, **D.221-5**, exercices ouverts à compter du **01/01/2024**)
 | Critère | Seuil de nomination | Ancien seuil (Pacte) |
 |---|---|---|
 | **Total bilan** | **5 M€** | 4 M€ |
@@ -271,7 +271,7 @@
 
 ## 11. Durabilité (CSRD)
 - La **certification des informations en matière de durabilité** est réalisée par un **CAC** inscrit comme **auditeur de durabilité**, ou par un **organisme tiers indépendant (OTI)** accrédité (L.822-x).
-- **Assurance limitée (modérée)**. Le passage à une assurance raisonnable est **envisagé**, sans être prévu à ce jour.
+- **Assurance limitée (modérée)**. La directive **Omnibus I** (2026/470) a supprimé la perspective d'un passage à l'assurance raisonnable : l'assurance limitée devient le régime durable.
 - **Calendrier en droit français** (ordonnance 2023-1142 art. 33, modifié par la **loi n° 2025-391 du 30 avril 2025**, qui transpose la directive « **stop-the-clock** » 2025/794) :
   - **vague 1** (grandes entités d'intérêt public de plus de 500 salariés) : exercices ouverts à compter du **1er janvier 2024** ;
   - **vague 2** (autres grandes entreprises) : reportée de deux ans, exercices ouverts à compter du **1er janvier 2027** ;
@@ -287,7 +287,7 @@
   4. **formations dispensées** et enseignement ;
   5. **publications** et travaux d'ordre technique ;
   6. **participation à des groupes de travail** ou commissions techniques.
-- **Déclaration annuelle** des heures à la **CRCC**.
+- **Déclaration annuelle** des heures, au plus tard le **31 mars**, sur le portail de la **CNCC**, à qui la H2A délègue le suivi de la formation continue.
 - **Formation particulière** : obligatoire pour un CAC qui **n'a pas exercé pendant 3 ans** et n'a pas respecté l'obligation : **40 heures**, accomplies dans les **18 mois qui précèdent l'acceptation** d'une mission (R.821-71).
 
 ## 13. Déclarations

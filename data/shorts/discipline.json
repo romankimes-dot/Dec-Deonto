@@ -15,13 +15,7 @@
    "quiz": { "q": "Quel est le plafond de la sanction pécuniaire d'un CAC personne physique ?", "choices": ["250 000 €", "500 000 €", "50 000 €"], "answer": 0, "why": "Plafond : **250 000 €** pour un CAC personne physique. Chez l'EC, pas de sanction pécuniaire, sauf en matière LCB-FT." },
    "src": ["250 000 € au plus (personne physique)", "Non, sauf en matière LCB-FT (sanction pécuniaire, interdiction temporaire, publication)"] },
 
- { "id": "discipline-03", "type": "duel", "prof": "EC+CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
-   "title": "Qui est justiciable ?", "q": "Qui peut être sanctionné ?",
-   "ec": { "main": "**EC, sociétés, stagiaires**", "det": "Aussi les **AGC** et les salariés autorisés (83 ter / quater)." },
-   "cac": { "main": "**CAC et auditeurs de durabilité**", "det": "Personnes et sociétés, membres des comités d'audit, contrôleurs de pays tiers… **Pas l'EC**." },
-   "trap": "Un stagiaire EC peut être sanctionné.",
-   "quiz": { "q": "Qui est justiciable du régime de sanctions de la H2A ?", "choices": ["Les CAC et auditeurs de durabilité", "Les EC et les CAC", "Les stagiaires EC seulement"], "answer": 0, "why": "Le régime H2A vise les **CAC**, les auditeurs de durabilité, les membres des comités d'audit, etc. **Pas l'EC**, qui relève de la discipline ordinale." },
-   "src": ["EC et sociétés inscrites, AGC, salariés autorisés (83 ter / quater), stagiaires", "CAC (personnes et sociétés), auditeurs de durabilité, membres des comités d'audit, contrôleurs de pays tiers… Pas l'EC"] },
+ {"id": "discipline-03", "type": "duel", "prof": "EC+CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md", "title": "Qui est justiciable ?", "q": "Qui peut être sanctionné ?", "ec": {"main": "**EC, sociétés, stagiaires**", "det": "Aussi les **AGC** (devant une commission nationale) et les salariés autorisés (83 ter / quater)."}, "cac": {"main": "**CAC et auditeurs de durabilité**", "det": "Personnes et sociétés, membres des comités d'audit, contrôleurs de pays tiers… **Pas l'EC**."}, "trap": "Un stagiaire EC peut être sanctionné.", "quiz": {"q": "Qui est justiciable du régime de sanctions de la H2A ?", "choices": ["Les CAC et auditeurs de durabilité", "Les EC et les CAC", "Les stagiaires EC seulement"], "answer": 0, "why": "Le régime H2A vise les **CAC**, les auditeurs de durabilité, les membres des comités d'audit, etc. **Pas l'EC**, qui relève de la discipline ordinale."}, "src": ["EC et sociétés inscrites, AGC (devant une commission nationale, ord. art. 49 bis), salariés autorisés (83 ter / quater), stagiaires", "CAC (personnes et sociétés), auditeurs de durabilité, membres des comités d'audit, contrôleurs de pays tiers… Pas l'EC"]},
 
  { "id": "discipline-04", "type": "liste", "prof": "EC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
    "title": "Les sanctions de l'EC", "q": "Les cinq sanctions de l'EC, de la plus légère à la plus lourde",

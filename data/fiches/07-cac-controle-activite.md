@@ -46,7 +46,7 @@
 ### Pouvoirs des contrôleurs et agents de la H2A
 - **Obtenir communication de tout document ou information**, sous toute forme : **dossiers de travail**, procédures, comptabilité du cabinet.
 - **Le secret professionnel ne leur est pas opposable**, ni pour les **missions** ni pour les **prestations**.
-- **Convoquer et entendre** toute personne utile.
+- **Obtenir de toute autre personne des informations** liées aux missions et prestations contrôlées (L.820-17 2°). « **Convoquer et entendre** » est un pouvoir d'**enquête** du rapporteur général (L.821-74), pas un pouvoir des contrôleurs.
 - **Accéder aux locaux professionnels** du cabinet, mais **pas** au domicile, et **prendre copie** des documents.
 - **Demander des informations** aux **entités contrôlées** par le CAC et aux **membres du réseau**.
 - Se faire **assister d'experts**.
@@ -60,12 +60,11 @@
 ### Déroulement et suites
 1. **Notification** du contrôle et demande d'informations préalables.
 2. **Contrôle** : examen des procédures du cabinet et revue de dossiers.
-3. **Rapport provisoire**, avec **observations écrites du contrôlé** (procédure contradictoire).
-4. **Rapport définitif** contenant des **recommandations**, avec un **délai de mise en œuvre**.
+3. **Pré-rapport** communiqué au contrôlé, qui a **un mois** pour présenter ses **observations** (R.820-47).
+4. **Rapport définitif** : conclusions du contrôle et observations du contrôlé. Les **recommandations**, avec leur **délai de mise en œuvre**, sont formulées par la **formation d'examen des contrôles** de la H2A (L.820-2 III 3°) et notifiées à part.
 5. **Suites possibles** :
    - **classement** ;
    - **recommandations** et **suivi** ;
-   - **injonction ou mise en demeure** (à vérifier) ;
    - **transmission au rapporteur général**, qui peut ouvrir une **enquête**, puis **saisine du collège** et **poursuites** devant la **commission des sanctions**.
 - Si les contrôleurs constatent des **faits susceptibles de blanchiment** : ils en **informent eux-mêmes Tracfin** (L.820-18).
 
@@ -84,7 +83,7 @@
   - **documentation**.
 
 ## 4. Système interne de qualité des cabinets
-- Le cabinet met en place un **système de gestion de la qualité**. Les normes de **contrôle interne de qualité** sont adoptées par la H2A ; la CNCC a transposé **ISQM 1 et 2** (à vérifier).
+- Le cabinet met en place un **système de gestion de la qualité**. Les normes de **contrôle interne de qualité** sont adoptées par la **H2A** (L.820-1 I 2°), la CNCC ne donnant qu'un avis, puis homologuées par arrêté. Leur alignement sur **ISQM 1 et 2** reste à vérifier : aucun arrêté d'homologation trouvé.
 - Ce système comprend :
   - **acceptation et maintien** des missions ;
   - **indépendance** ;
@@ -118,5 +117,5 @@
 
 ## À vérifier
 - **Les quatre modalités** du contrôle d'activité (annale 2023-11 Q15) : la fiche retient périodique, occasionnel, thématique et suivi, typologie qu'aucun texte lu ne formule. Lecture possible fondée sur L.820-14 : contrôleurs de la H2A pour les EIP, contrôleurs de la H2A pour les non-EIP, délégation à la CNCC, concours de l'AMF ou de l'ACPR.
-- **Mesures post-contrôle** dont dispose la H2A (recommandations, injonctions, mises en demeure).
+- **Mesures post-contrôle** : tranché. Seule la **recommandation** assortie d'un délai est prévue après un contrôle (L.820-1 I 5°, R.820-47) ; l'**injonction** relève de la commission des sanctions (L.821-80) ou du régime LCB-FT (L.821-71 V).
 - **Normes de qualité applicables** (ISQM 1 / 2 homologuées ?).

@@ -33,7 +33,7 @@ Recours | **Conseil d'État**, recours de **pleine juridiction** : la personne s
 
 | | Ordinaire | Simplifiée | Composition administrative |
 |---|---|---|---|
-| **Pour quoi ?** | Toute faute ou tout manquement | Manquements **répétés**, **simples et établis**, aux **obligations déclaratives** et à la **formation continue** | Après la notification des griefs, si l'intéressé **accepte** d'entrer en composition |
+| **Pour quoi ?** | Toute faute ou tout manquement | Manquements **répétés**, **simples et établis**, aux **obligations déclaratives** et à la **formation continue** | Une fois les griefs **arrêtés**, si l'intéressé **accepte** d'entrer en composition |
 | **Qui décide ?** | La **commission des sanctions**, après audience | Le **président de la commission**, **seul et sans débat** ; **opposition** possible dans les **30 jours**, puis audience | Le **président de la H2A** propose ; accord **validé par le collège**, puis **homologué** par la commission |
 | **Sanctions** | Toute l'échelle (ci-dessous) | **Sanction pécuniaire** seulement : **15 000 €** au plus | Sanctions de l'échelle sauf la **radiation** ; somme plafonnée à **50 000 €** (personne physique) ou **200 000 €** (personne morale) |
 
