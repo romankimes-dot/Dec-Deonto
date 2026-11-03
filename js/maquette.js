@@ -36,7 +36,7 @@ export const PLAN = {
   resp: { commun: ['tj', 'tcorr', 'parquet', 'tracfin'] },
   intl: { commun: ['ifac', 'iesba', 'iaasb', 'iaesb', 'aceu'], cac: ['ue'] },
 };
-const SLOT = 6.2, ROW = 12, BW = 4.6, BD = 3.6, ZX = 22, NORD = 4.5 - 0.5;
+const SLOT = 6.4, ROW = 12, BW = 4.6, BD = 3.6, SP0 = 7.8, ZX = 19.8, NORD = 4.5 - 0.5;
 const rowZ = (n) => (4 - n) * ROW - (n > 4 ? 5 : 0); // un boulevard sépare les deux quartiers
 const ZB = (rowZ(4) + rowZ(5)) / 2; // limite entre le quartier des deux professions (sud) et le quartier commun (nord)
 // Deux quartiers. Au premier plan (rangées 1 à 4), l'expert-comptable à gauche et le commissaire aux comptes à
@@ -50,9 +50,10 @@ export const COLONNES = [
 export const MLOTS = [];
 for (const r of RANGS) {
   const P = PLAN[r.id], nord = r.n > 4, row = nord ? [...(P.commun || []), ...(P.cac || []), ...(P.ec || [])] : null;
-  const put = (id, x, col) => { const b = batiment(id); MLOTS.push({ id, b, rang: r, col, nord, x, z: rowZ(r.n) - 1.2, h: b.style === 'vide' ? 0.15 : 2.4 + Math.min(2.2, b.h * 0.018) }); };
+  const put = (id, x, col, z = rowZ(r.n) + 0.4) => { const b = batiment(id); MLOTS.push({ id, b, rang: r, col, nord, x, z, h: b.style === 'vide' ? 0.15 : 2.4 + Math.min(2.2, b.h * 0.018) }); };
   if (nord) row.forEach((id, i) => put(id, (i - (row.length - 1) / 2) * SLOT, batiment(id).rive));
-  else for (const side of ['ec', 'cac']) (P[side] || []).forEach((id, i) => put(id, (side === 'ec' ? -1 : 1) * (4.6 + i * SLOT), side));
+  // Côtés EC et CAC : le premier (le jumeau) contre l'allée centrale, devant ; le deuxième à côté ; le troisième derrière le premier.
+  else for (const side of ['ec', 'cac']) (P[side] || []).forEach((id, i) => put(id, (side === 'ec' ? -1 : 1) * (SP0 + (i === 1 ? SLOT : 0)), side, i === 2 ? rowZ(r.n) - 3.6 : rowZ(r.n) + 1.6));
 }
 // Une étiquette sur deux est posée un peu plus en avant, pour que deux voisines ne se recouvrent pas.
 for (const r of RANGS) MLOTS.filter((l) => l.rang === r).sort((a, b) => a.x - b.x).forEach((l, i) => { l.alt = i % 2; });
@@ -83,6 +84,17 @@ const md = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2);
 const badge = (rive) => `<span class="mq-badge ${rive}">${BADGE[rive]}</span>`;
 const twinKey = (a, b) => [a, b].sort().join('|');
+// Nom écrit sur la tuile : explicite (pas d'abréviation ambiguë), assez court pour tenir sur deux ou trois lignes.
+export const NOMS = {
+  chreg: 'Chambre régionale de discipline', chnat: 'Chambre nationale de discipline', sanctions: 'Commission des sanctions (H2A)',
+  terrain: 'Pas de H2A', h2a: 'H2A (Haute autorité de l’audit)', amf: 'AMF · ACPR', anc: 'ANC · CNoCP', bercy: 'Bercy (ministre de l’Économie)', chancellerie: 'Chancellerie (garde des Sceaux)',
+  ca: 'Cour d’appel', ce: 'Conseil d’État', cass: 'Cour de cassation', ta: 'Tribunal administratif', ccomptes: 'Cour des comptes',
+  tj: 'Tribunal judiciaire ou de commerce', tcorr: 'Tribunal correctionnel', parquet: 'Procureur de la République', tracfin: 'Tracfin',
+  cavec: 'CAVEC (retraite)', ue: 'UE · CEAOB',
+};
+const nomTuile = (b) => NOMS[b.id] || b.court;
+// Nom court mais sans ambiguïté, pour les tuiles vues de loin.
+const COURTS = { chreg: 'Chambre régionale', chnat: 'Chambre nationale', sanctions: 'Commission des sanctions', h2a: 'H2A', bercy: 'Bercy', chancellerie: 'Chancellerie', ta: 'Tribunal administratif', tj: 'Tribunal judiciaire', tcorr: 'Tribunal correctionnel', parquet: 'Procureur', cavec: 'CAVEC', anc: 'ANC · CNoCP' };
 
 export const MAQUETTE_CSS = `
 .mq { --st: env(safe-area-inset-top, 0px); --sb: env(safe-area-inset-bottom, 0px); --ec: ${PAL.ec}; --cac: ${PAL.cac}; --cm: ${PAL.commun}; position: relative; height: min(calc(100dvh - 150px), 760px); min-height: 440px; overflow: hidden; background: #e9edf2; color: var(--text, #0f172a); touch-action: none; user-select: none; -webkit-user-select: none; outline: none; font: 14px/1.35 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; overscroll-behavior: none; }
@@ -92,10 +104,13 @@ export const MAQUETTE_CSS = `
 .mq-fade { position: absolute; inset: 0; background: #e9edf2; opacity: 0; pointer-events: none; transition: opacity .25s; z-index: 5; }
 .mq-fade.on { opacity: 1; }
 .mq-layer { position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
-.mq-lb { position: absolute; left: 0; top: 0; will-change: transform; white-space: nowrap; display: flex; align-items: center; gap: 5px; padding: 4px 8px 4px 5px; border-radius: 8px; background: #fff; color: #0f172a; border: 1.5px solid #cbd5e1; box-shadow: 0 1px 4px rgba(0,0,0,.15); font-weight: 700; font-size: 14px; pointer-events: auto; cursor: pointer; }
+.mq-lb { position: absolute; left: 0; top: 0; will-change: transform; white-space: nowrap; max-width: 220px; display: flex; align-items: center; gap: 5px; padding: 4px 8px 4px 5px; border-radius: 8px; background: #fff; color: #0f172a; border: 1.5px solid #cbd5e1; box-shadow: 0 1px 4px rgba(0,0,0,.15); font-weight: 700; font-size: 14px; pointer-events: auto; cursor: pointer; }
 .mq-lb svg { width: 16px; height: 16px; flex-shrink: 0; }
 .mq-lb.sel { background: #0f172a; color: #fff; border-color: #0f172a; }
-.mq-lb.compact { font-size: 11.5px; padding: 3px 4px; gap: 1px; flex-direction: column; max-width: var(--mw, 80px); white-space: normal; text-align: center; line-height: 1.1; } .mq-lb.compact .nm { white-space: normal; } .mq-lb.compact .mq-badge { display: none; } .mq-lb.compact svg { width: 14px; height: 14px; }
+.mq-lb.twin { outline: 2.5px dashed #0f172a; outline-offset: 2px; }
+.mq-lb .nc { display: none; }
+.mq-lb.compact { font-size: 10px; padding: 3px 2px; gap: 1px; flex-direction: column; justify-content: center; width: var(--mw, 80px); box-sizing: border-box; white-space: normal; text-align: center; line-height: 1.1; min-height: calc(var(--mw, 80px) * .5); hyphens: auto; -webkit-hyphens: auto; overflow-wrap: anywhere; }
+.mq-lb.compact .nm, .mq-lb.compact svg { display: none; } .mq-lb.compact .nc { display: block; } .mq-lb.compact .nm { white-space: normal; } .mq-lb.compact .mq-badge { display: none; } .mq-lb.compact svg { width: 14px; height: 14px; }
 .mq-lb.compact.ec { border: 2px solid var(--ec); } .mq-lb.compact.cac { border: 2px dashed #a86d00; } .mq-lb.compact.commun { border: 3px double #6b7280; }
 .mq-lb.chip { padding: 3px; border-width: 2.5px; border-radius: 50%; box-shadow: none; }
 .mq-lb.chip svg { width: 14px; height: 14px; }
@@ -104,6 +119,7 @@ export const MAQUETTE_CSS = `
 .mq-lb .two span, .mq-lb .two small { white-space: normal; max-width: 230px; }
 .mq-lb.chip .nm, .mq-lb.chip .mq-badge { display: none; }
 .mq-lb.chip.ec { border: 2.5px solid var(--ec); } .mq-lb.chip.cac { border: 2.5px dashed #a86d00; } .mq-lb.chip.commun { border: 4px double #6b7280; }
+.mq-lb:not(.compact):not(.chip) .nm { white-space: normal; }
 .mq-lb .two { display: flex; flex-direction: column; line-height: 1.15; }
 .mq-lb .two small { font-weight: 500; font-size: 11.5px; color: #475569; }
 .mq-lb.sel .two small { color: #cbd5e1; }
@@ -112,16 +128,19 @@ export const MAQUETTE_CSS = `
 .mq-badge.ec { background: var(--ec); color: #fff; border: 1.5px solid var(--ec); }
 .mq-badge.cac { background: #fff; color: #7a4f00; border: 1.5px dashed #a86d00; }
 .mq-badge.commun { background: #e5e7eb; color: #374151; border: 1.5px double #6b7280; border-width: 3px; padding: 1px 4px; }
-.mq-row { position: absolute; left: 0; top: 0; z-index: 2; will-change: transform; pointer-events: none; display: flex; align-items: center; gap: 5px; padding: 3px 10px 3px 3px; border-radius: 999px; background: rgba(15,23,42,.9); color: #fff; font-weight: 700; font-size: 12.5px; white-space: nowrap; }
-.mq-row b { display: inline-flex; width: 26px; height: 26px; border-radius: 50%; background: #fff; color: #0f172a; align-items: center; justify-content: center; font-size: 12px; }
-.mq-colh { position: absolute; top: 0; left: 0; z-index: 2; will-change: transform; pointer-events: none; display: flex; align-items: center; gap: 5px; padding: 4px 8px; border-radius: 8px; background: rgba(255,255,255,.95); border: 1px solid #cbd5e1; font-weight: 700; font-size: 12px; white-space: nowrap; }
-.mq-ui { position: absolute; left: max(10px, env(safe-area-inset-left, 0px)); right: max(10px, env(safe-area-inset-right, 0px)); top: calc(8px + var(--st)); z-index: 3; display: flex; flex-direction: column; gap: 6px; }
+.mq-row { position: absolute; left: 0; top: 0; z-index: 1; will-change: transform; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 3px 6px 4px; border-radius: 10px; background: #0f172a; color: #fff; font-weight: 700; font-size: 11.5px; line-height: 1.1; text-align: center; max-width: 92px; }
+.mq-row.narrow { max-width: 64px; font-size: 10.5px; }
+.mq-row.wide { flex-direction: row; max-width: none; white-space: nowrap; gap: 5px; padding: 2px 9px 2px 3px; border-radius: 999px; }
+.mq-row b { display: inline-flex; width: 20px; height: 20px; border-radius: 50%; background: #fff; color: #0f172a; align-items: center; justify-content: center; font-size: 12px; }
+.mq-cols { display: flex; justify-content: space-between; gap: 6px; pointer-events: none; }
+.mq-colh { pointer-events: none; display: flex; align-items: center; gap: 5px; padding: 4px 8px; border-radius: 8px; background: rgba(255,255,255,.95); border: 1px solid #cbd5e1; font-weight: 700; font-size: 12px; white-space: nowrap; }
+.mq-ui { position: absolute; left: max(10px, env(safe-area-inset-left, 0px)); right: max(10px, env(safe-area-inset-right, 0px)); top: calc(22px + var(--st)); z-index: 3; display: flex; flex-direction: column; gap: 6px; }
 .mq-top { display: flex; gap: 6px; align-items: stretch; }
 .mq-where { flex: 1; min-width: 0; display: flex; gap: 8px; align-items: center; padding: 5px 6px 5px 10px; min-height: 46px; border-radius: 12px; border: 1px solid #cbd5e1; background: #fff; }
 .mq-where > svg { width: 22px; height: 22px; flex-shrink: 0; }
 .mq-where .tx { flex: 1; min-width: 0; line-height: 1.25; }
-.mq-where b { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: 15px; line-height: 1.2; }
-.mq-where small { display: block; color: #475569; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mq-where b { display: block; font-size: 15px; line-height: 1.2; }
+.mq-where small { display: block; color: #475569; font-size: 12px; }
 .mq-btn { font: 600 13.5px/1.1 inherit; min-height: 44px; min-width: 44px; padding: 6px 12px; border-radius: 10px; border: 1px solid #cbd5e1; background: #fff; color: #0f172a; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; flex-shrink: 0; }
 .mq-btn.primary { background: #0f172a; border-color: #0f172a; color: #fff; }
 .mq-btn.on { background: #0f172a; border-color: #0f172a; color: #fff; }
@@ -176,12 +195,12 @@ export function startMaquette(root, THREE, opts = {}) {
   root.classList.add('mq'); root.classList.toggle('mq-full', !!opts.full); root.tabIndex = 0;
   root.innerHTML = `<canvas class="mq-gl"></canvas><div class="mq-layer" id="mq-layer"></div>
     <div class="mq-ui"><div class="mq-top"><div class="mq-where" id="mq-where"></div><button type="button" class="mq-btn" data-a="menu" aria-label="Menu">☰</button>${opts.onQuit ? '<button type="button" class="mq-btn" data-a="quit" aria-label="Quitter">✕</button>' : ''}</div>
-    <div class="mq-tabs" id="mq-tabs"></div><div class="mq-drawer" id="mq-drawer" hidden></div></div>
+    <div class="mq-tabs" id="mq-tabs"></div><div class="mq-drawer" id="mq-drawer" hidden></div><div class="mq-cols" id="mq-cols"></div></div>
     <div class="mq-zoom"><button type="button" class="mq-btn" data-a="zin" aria-label="Zoomer">+</button><button type="button" class="mq-btn" data-a="zout" aria-label="Dézoomer">−</button><button type="button" class="mq-btn" data-a="home" aria-label="Vue d’ensemble">⌂</button><button type="button" class="mq-btn" data-a="legend" aria-label="Légende">?</button></div>
     <div class="mq-hint" id="mq-hint">Glissez pour vous déplacer</div>
     <div class="mq-rkey" id="mq-rkey" hidden><span><i class="t"></i>tribune : préside</span><span><i class="e"></i>estrade : membres</span><span><i class="g"></i>galerie : présents, sans siéger</span></div><div class="mq-sheet" id="mq-sheet" hidden></div><div class="mq-fade" id="mq-fade"></div>`;
   const $ = (s) => root.querySelector(s);
-  const rkey = $('#mq-rkey'), canvas = $('.mq-gl'), layer = $('#mq-layer'), whereEl = $('#mq-where'), tabsEl = $('#mq-tabs'), drawer = $('#mq-drawer'), sheet = $('#mq-sheet'), fadeEl = $('#mq-fade'), hintEl = $('#mq-hint');
+  const colsEl = $('#mq-cols'), rkey = $('#mq-rkey'), canvas = $('.mq-gl'), layer = $('#mq-layer'), whereEl = $('#mq-where'), tabsEl = $('#mq-tabs'), drawer = $('#mq-drawer'), sheet = $('#mq-sheet'), fadeEl = $('#mq-fade'), hintEl = $('#mq-hint');
   // Ni défilement de la page, ni « tirer pour recharger », ni zoom de page : seuls les tiroirs défilent.
   root.addEventListener('touchmove', (e) => { const sc = e.target.closest('.mq-drawer, .mq-sheet'); if (!sc || sc.scrollHeight <= sc.clientHeight) e.preventDefault(); }, { passive: false });
   for (const ev of ['gesturestart', 'gesturechange', 'dblclick']) root.addEventListener(ev, (e) => e.preventDefault(), { passive: false });
@@ -220,7 +239,7 @@ export function startMaquette(root, THREE, opts = {}) {
       const sx = (vP.x + 1) / 2 * W, sy = (1 - vP.y) / 2 * H;
       if (vP.z > 1 || sx < -60 || sx > W + 60 || sy < uiTop - 10 || sy > H + 40) { if (!it.el.hidden) it.el.hidden = true; continue; }
       if (it.el.hidden) it.el.hidden = false;
-      const hh = it.el.offsetHeight || 26; cands.push({ it, sx, sy: it.below ? sy + hh : sy, w: it.el.offsetWidth || 90, h: hh });
+      const hh = it.el.offsetHeight || 26; cands.push({ it, sx, sy: it.below ? sy + hh : it.center ? sy + hh / 2 : sy, w: it.el.offsetWidth || 90, h: hh });
     }
     cands.sort((a, b) => b.sy - a.sy);
     const boxes = [];
@@ -261,59 +280,49 @@ export function startMaquette(root, THREE, opts = {}) {
   for (const r of RANGS) if (r.n !== 4 && r.n !== 7) box(city, ZX * 2, 0.05, 0.12, 0, 0.03, rowZ(r.n) - 6, std('#94a3b8'), false);
   ground(-ZX, ZX, ZB - 1.5, ZB, std('#cbd5e1'), 0.015);
   // Allée devant chaque rangée, et numéro de rangée peint dans la marge gauche.
-  const pathMat = std('#ffffff');
-  for (const r of RANGS) {
-    ground(-ZX, ZX, rowZ(r.n) + 2.6, rowZ(r.n) + 4.2, pathMat, 0.02);
-  }
+
   // Arbres en boule le long du bord : la touche « maquette ».
   { const trunk = std('#8b6b4a'), leaf = std('#7fb069'), G = keep(new THREE.SphereGeometry(0.9, 14, 10)), T = keep(new THREE.CylinderGeometry(0.12, 0.15, 0.8, 6));
     for (let z = -SZ + 3; z <= SZ - 3; z += 6) for (const x of [ZX + 3.5]) { const t = new THREE.Mesh(T, trunk); t.position.set(x, 0.4, z); city.add(t); const l = new THREE.Mesh(G, leaf); l.position.set(x, 1.3, z); l.castShadow = true; city.add(l); } }
 
-  // Bâtiments. Profession = forme : EC, toit à deux pans ; CAC, couronne de verre ; commun, colonnade et fronton
-  // (dôme pour l'international). La façade (côté caméra) porte le symbole et le badge écrit.
-  const facadeTex = (lot) => {
-    const c = document.createElement('canvas'), Wp = 256, Hp = Math.round(256 * lot.h / BW); c.width = Wp; c.height = Hp; const x = c.getContext('2d');
-    x.fillStyle = lot.b.rive === 'ec' ? '#d6e6f3' : lot.b.rive === 'cac' ? '#f6e2bd' : '#ece8e0'; x.fillRect(0, 0, Wp, Hp);
-    x.fillStyle = 'rgba(15,23,42,.10)'; for (let yy = 10; yy < Hp - 60; yy += 26) for (let xx = 14; xx < Wp - 14; xx += 30) x.fillRect(xx, yy, 14, 16);
-    const r = Math.min(Wp * 0.26, Hp * 0.32), cx = Wp / 2, cy = Hp * 0.42;
-    x.fillStyle = '#fff'; x.beginPath(); x.arc(cx, cy, r, 0, Math.PI * 2); x.fill(); x.lineWidth = 6; x.strokeStyle = PAL[lot.b.rive]; x.stroke();
-    drawIcon(x, lot.id, cx - r * 0.62, cy - r * 0.62, r * 1.24, '#0f172a', 2.4);
-    const txt = BADGE[lot.b.rive].toUpperCase(); x.font = '800 30px -apple-system, Arial, sans-serif'; const tw = x.measureText(txt).width + 18, by = Math.min(Hp - 40, cy + r + 10);
-    x.fillStyle = lot.b.rive === 'ec' ? PAL.ec : '#fff'; x.fillRect(cx - tw / 2, by, tw, 34); if (lot.b.rive !== 'ec') { x.setLineDash(lot.b.rive === 'cac' ? [8, 5] : []); x.lineWidth = 4; x.strokeStyle = lot.b.rive === 'cac' ? '#a86d00' : '#6b7280'; x.strokeRect(cx - tw / 2, by, tw, 34); x.setLineDash([]); }
-    x.fillStyle = lot.b.rive === 'ec' ? '#fff' : '#0f172a'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(txt, cx, by + 18);
-    return canvasTex(c);
-  };
+  // Chaque institution est une tuile posée sur le plateau, comme dans un jeu de société : le nom est écrit sur la
+  // tuile, une maisonnette au fond rappelle la profession par sa forme (EC : toit à deux pans ; CAC : couronne de
+  // verre ; commun : colonnade, ou dôme à l'international). La bordure de la tuile dit aussi la profession : pleine
+  // (EC), en tirets (CAC), double (commun). Rien ne dépasse assez pour masquer une autre tuile.
+  const TW = 5.8, TD = 4.4;
   const PRISM = (() => { const sh = new THREE.Shape(); sh.moveTo(-0.5, 0); sh.lineTo(0.5, 0); sh.lineTo(0, 1); sh.lineTo(-0.5, 0); return keep(new THREE.ExtrudeGeometry(sh, { depth: 1, bevelEnabled: false }).translate(0, 0, -0.5)); })();
-  const COL = keep(new THREE.CylinderGeometry(0.16, 0.18, 1, 10)), DOME = keep(new THREE.SphereGeometry(1, 20, 12, 0, Math.PI * 2, 0, Math.PI / 2));
-  const pick = [], blabels = [];
+  const COL = keep(new THREE.CylinderGeometry(0.1, 0.11, 1, 8)), DOME = keep(new THREE.SphereGeometry(1, 18, 10, 0, Math.PI * 2, 0, Math.PI / 2));
+  const frame = (sc, x, z, w, d, th, mat, dashed = false, y = 0.32) => {
+    const seg = (x0, z0, x1, z1) => { const L = Math.hypot(x1 - x0, z1 - z0), n = dashed ? Math.max(2, Math.round(L / 0.9)) : 1;
+      for (let k = 0; k < n; k++) { if (dashed && k % 2) continue; const t0 = k / n, t1 = dashed ? (k + 1) / n : 1, mx = x0 + (x1 - x0) * (t0 + t1) / 2, mz = z0 + (z1 - z0) * (t0 + t1) / 2, l = L * (t1 - t0); const m = box(sc, x1 !== x0 ? l : th, 0.06, x1 !== x0 ? th : l, mx, y, mz, mat, false); m.castShadow = false; } };
+    const a = w / 2, c = d / 2; seg(x - a, z - c, x + a, z - c); seg(x - a, z + c, x + a, z + c); seg(x - a, z - c, x - a, z + c); seg(x + a, z - c, x + a, z + c);
+  };
+  const pick = [], blabels = [], houses = new THREE.Group(); city.add(houses);
   for (const lot of MLOTS) {
-    const { x, z, h, b } = lot, fz = z + BD / 2;
-    box(city, BW + 0.8, 0.12, BD + 0.8, x, 0.06, z, std('#ffffff'), false);
-    if (b.style === 'vide') {
-      const pts = [[-1, -1], [1, -1], [1, 1], [-1, 1], [-1, -1]].map(([a, c]) => new THREE.Vector3(x + a * BW / 2, 0.14, z + c * BD / 2));
-      const ln = new THREE.Line(keep(new THREE.BufferGeometry().setFromPoints(pts)), keep(new THREE.LineDashedMaterial({ color: '#0f172a', dashSize: 0.5, gapSize: 0.35 }))); ln.computeLineDistances(); city.add(ln);
-      box(city, 0.14, 1.6, 0.14, x, 0.8, fz - 0.3, std('#475569'));
-      const mats = [std('#fff'), std('#fff'), std('#fff'), std('#fff'), keep(new THREE.MeshStandardMaterial({ map: facadeTex({ ...lot, h: 2.4 }), roughness: 0.9 })), std('#fff')];
-      const board = new THREE.Mesh(BOX, mats); board.scale.set(BW * 0.8, 1.9, 0.12); board.position.set(x, 2.1, fz - 0.3); board.castShadow = true; board.userData.id = lot.id; city.add(board); pick.push(board);
-      const hit = box(city, BW, 0.3, BD, x, 0.15, z, std('#ffffff', { transparent: true, opacity: 0 }), false); hit.userData.id = lot.id; pick.push(hit);
-    } else {
-      const wall = std(b.rive === 'ec' ? '#d6e6f3' : b.rive === 'cac' ? '#f6e2bd' : '#ece8e0'), front = keep(new THREE.MeshStandardMaterial({ map: facadeTex(lot), roughness: 0.9 }));
-      const m = new THREE.Mesh(BOX, [wall, wall, std('#f1f5f9'), wall, front, wall]); m.scale.set(BW, h, BD); m.position.set(x, h / 2 + 0.12, z); m.castShadow = m.receiveShadow = true; m.userData.id = lot.id; city.add(m); pick.push(m);
-      const top = h + 0.12;
-      if (b.rive === 'ec') { const roof = new THREE.Mesh(PRISM, std('#2f6f9f')); roof.scale.set(BW + 0.4, 1.5, BD + 0.4); roof.position.set(x, top, z); roof.castShadow = true; city.add(roof); }
-      else if (b.rive === 'cac') { box(city, BW + 0.2, 0.18, BD + 0.2, x, top + 0.09, z, std('#b7791f')); box(city, BW * 0.6, 0.9, BD * 0.6, x, top + 0.63, z, std('#fcd38d', { transparent: true, opacity: 0.9, roughness: 0.3 })); }
-      else if (lot.rang.id === 'intl') { const d = new THREE.Mesh(DOME, std('#e5e7eb')); d.scale.setScalar(1.35); d.position.set(x, top, z); d.castShadow = true; city.add(d); }
-      else { const stone = std('#fafaf9'); for (const k of [-0.38, -0.13, 0.13, 0.38]) { const c = new THREE.Mesh(COL, stone); c.scale.set(1, h, 1); c.position.set(x + k * BW, h / 2 + 0.12, fz + 0.3); c.castShadow = true; city.add(c); } box(city, BW + 0.4, 0.3, 0.8, x, top + 0.05, fz + 0.2, stone); const ped = new THREE.Mesh(PRISM, stone); ped.scale.set(BW + 0.4, 0.9, 0.7); ped.position.set(x, top + 0.2, fz + 0.2); city.add(ped); }
-      box(city, 1.1, 1.5, 0.06, x, 0.87, fz + 0.03, std('#334155'), false);
+    const { x, z, b } = lot, r = b.rive, hz = z - TD / 2 + 1.05
+    const tile = box(city, TW, 0.28, TD, x, 0.14, z, std(r === 'ec' ? '#d9e9f6' : r === 'cac' ? '#fbe9c7' : '#efefec'), false); tile.receiveShadow = true; tile.userData.id = lot.id; pick.push(tile);
+    if (r === 'ec') frame(city, x, z, TW - 0.3, TD - 0.3, 0.16, std(PAL.ec));
+    else if (r === 'cac') frame(city, x, z, TW - 0.3, TD - 0.3, 0.16, std('#b7791f'), true);
+    else { frame(city, x, z, TW - 0.25, TD - 0.25, 0.08, std('#6b7280')); frame(city, x, z, TW - 0.6, TD - 0.6, 0.08, std('#6b7280')); }
+    const n0 = city.children.length; // ce qui est ajouté ensuite (la maisonnette) passe dans `houses`
+    if (b.style === 'vide') { frame(city, x, hz, 2.2, 1.3, 0.07, std('#334155'), true); }
+    else {
+      const wall = std(r === 'ec' ? '#eef5fb' : r === 'cac' ? '#fdf3df' : '#fafaf9'), bh = 0.95, top = 0.28 + bh;
+      const m = box(city, 2.2, bh, 1.3, x, 0.28 + bh / 2, hz, wall); m.userData.id = lot.id; pick.push(m);
+      box(city, 0.45, 0.6, 0.04, x, 0.28 + 0.3, hz + 0.66, std('#334155'), false);
+      if (r === 'ec') { const roof = new THREE.Mesh(PRISM, std('#2f6f9f')); roof.scale.set(2.5, 0.85, 1.55); roof.position.set(x, top, hz); roof.castShadow = true; city.add(roof); }
+      else if (r === 'cac') { box(city, 2.35, 0.12, 1.45, x, top + 0.06, hz, std('#b7791f')); box(city, 1.3, 0.5, 0.8, x, top + 0.37, hz, std('#fcd38d', { transparent: true, opacity: 0.9, roughness: 0.3 })); }
+      else if (lot.rang.id === 'intl') { const d = new THREE.Mesh(DOME, std('#e5e7eb')); d.scale.set(0.75, 0.6, 0.6); d.position.set(x, top, hz); d.castShadow = true; city.add(d); }
+      else { const stone = std('#ffffff'); for (const k of [-0.8, -0.27, 0.27, 0.8]) { const c = new THREE.Mesh(COL, stone); c.scale.set(1, bh, 1); c.position.set(x + k, 0.28 + bh / 2, hz + 0.8); city.add(c); } const ped = new THREE.Mesh(PRISM, stone); ped.scale.set(2.5, 0.5, 1.7); ped.position.set(x, top, hz + 0.1); ped.castShadow = true; city.add(ped); }
     }
-    const it = mkLabel(`${badge(b.rive)}<span style="display:inline-flex">${svgIcon(lot.id)}</span><span class="nm">${esc(b.court)}</span>`, new THREE.Vector3(x, 0.2, z + BD / 2 + 0.6), { lot, below: true });
-    it.el.dataset.id = lot.id; it.el.classList.add(b.rive); blabels.push(it);
+    for (const o of city.children.slice(n0)) houses.add(o);
+    const it = mkLabel(`${badge(r)}<span style="display:inline-flex">${svgIcon(lot.id)}</span><span class="nm">${esc(nomTuile(b))}</span><span class="nc">${esc(COURTS[b.id] || nomTuile(b))}</span>`, new THREE.Vector3(x, 0.3, z + 0.75), { lot, center: true });
+    it.el.dataset.id = lot.id; it.el.classList.add(r); blabels.push(it);
   }
-  // Repères du tableau, collés aux bords de l'écran : numéro et nom de chaque rangée à gauche, titre des colonnes en haut.
+  // Rangées : une réglette discrète au bord gauche (numéros), le nom de la rangée regardée en clair.
   const rowTags = RANGS.map((r) => { const el = document.createElement('div'); el.className = 'mq-row'; el.innerHTML = `<b>${r.n}</b><span>${esc(r.nom)}</span>`; root.appendChild(el); return { el, r }; });
-  const colTags = COLONNES.map((c) => { const el = document.createElement('div'); el.className = 'mq-colh'; el.innerHTML = `${badge(c.id)}<span class="t">${esc(c.titre)}</span>`; root.appendChild(el); return { el, c }; });
-  // Surbrillance : anneau autour du bâtiment choisi, trait vers son jumeau.
-  const selRing = new THREE.Mesh(keep(new THREE.RingGeometry(3.5, 3.75, 48).rotateX(-Math.PI / 2)), std('#0f172a')); selRing.position.y = 0.16; selRing.visible = false; city.add(selRing);
+  // Surbrillance : cadre épais autour de la tuile choisie, cadre en tirets autour de son jumeau, trait entre les deux.
+  const selG = new THREE.Group(), twinG = new THREE.Group(); city.add(selG, twinG);
   const twinLine = new THREE.Mesh(BOX, std('#0f172a')); twinLine.visible = false; city.add(twinLine);
   // Parcours : arcs numérotés au-dessus de la maquette.
   const tourGroup = new THREE.Group(); city.add(tourGroup); let tourTags = [];
@@ -361,7 +370,7 @@ export function startMaquette(root, THREE, opts = {}) {
     // Étiquette posée devant son groupe (dans l'allée), pas au-dessus des autres.
     const tag = (g, x, zz) => {
       const r = ROLES[g.role] || ['Membre', '', '#64748b'];
-      const it = mkLabel(`${figureSvg(g.role).replace('mq-fig', 'mq-fig" style="width:22px;height:22px')}<span class="two"><span>${esc(groupLabel(g))}</span><small>${esc(r[0])}${g.debout ? ' · présent, non membre' : ''}</small></span>`, new THREE.Vector3(x, 0.3, zz), { g, below: true });
+      const it = mkLabel(`${figureSvg(g.role).replace('mq-fig', 'mq-fig" style="width:22px;height:22px')}<span class="two"><span>${esc(groupLabel(g))}${g.approx && g.n > 1 && !/\d/.test(g.label) ? ' · plusieurs' : ''}</span><small>${esc(r[0])}${g.debout ? ' · présent, non membre' : ''}</small></span>`, new THREE.Vector3(x, 0.3, zz), { g, below: true });
       labels.push(it); groups.push(g); it.el.dataset.g = String(groups.length - 1);
     };
     const dais = (w, d, x, zz, h, col) => { box(sc, w, h, d, x, h / 2, zz, std(col)); box(sc, w + 0.1, 0.04, d + 0.1, x, h + 0.02, zz, std('#ffffff')); };
@@ -385,7 +394,7 @@ export function startMaquette(root, THREE, opts = {}) {
   const S = { scene: 'city', lot: null, room: null, sel: null, group: null, tab: null, tour: null, visited: new Set(),
     cam: { x: 0, z: 6, d: 0 }, anim: null, bounds: { x0: -SX, x1: SX, z0: -SZ, z1: SZ } };
   const fitW = (w) => w / (2 * TANF * (W / H));
-  const VUES = { ec: { x: -16, z: rowZ(2.5) + 2, w: 34 }, cac: { x: 11, z: rowZ(2.5) + 2, w: 26 }, face: { x: 0, z: rowZ(2.5) + 2, w: 2 * ZX + 3 }, commun: { x: 0, z: rowZ(6) + 4, w: 38 }, tout: { x: -4, z: (rowZ(1) + rowZ(7)) / 2, w: 2 * ZX + 16 } };
+  const VUES = { ec: { x: -9, z: rowZ(2.5) + 2, w: 24 }, cac: { x: 9, z: rowZ(2.5) + 2, w: 24 }, face: { x: 0, z: rowZ(2.5) + 2, w: 2 * ZX - 4 }, commun: { x: 0, z: rowZ(6) + 4, w: 38 }, tout: { x: -4, z: (rowZ(1) + rowZ(7)) / 2, w: 2 * ZX + 16 } };
   const cityHome = (v = S.vue || 'face') => ({ x: VUES[v].x, z: VUES[v].z, d: clamp(fitW(VUES[v].w), 30, D_MAX) });
   const D_MIN = 9, D_MAX = 320;
   function applyCam() {
@@ -404,6 +413,13 @@ export function startMaquette(root, THREE, opts = {}) {
     return `${rows.length ? `<table class="mq-cmp"><tr><th></th><th>${badge('ec')} ${esc(e.court)}</th><th>${badge('cac')} ${esc(c.court)}</th></tr>${rows.map(([k, x, y]) => `<tr><td>${esc(k)}</td><td>${md(x)}</td><td>${md(y)}</td></tr>`).join('')}</table>` : ''}
       <h5>Qui siège chez le jumeau</h5><div class="cp-b" style="cursor:auto;padding:4px 10px">${compositionItems(t.id)}</div><p><button type="button" class="mq-btn sm" data-a="go" data-id="${t.id}">Aller chez ${esc(t.court)}</button></p>`;
   };
+  // En-têtes fixes sous les onglets : quelle profession est de quel côté (ou le quartier commun).
+  function setCols() {
+    if (S.scene === 'room' || S.tour) { colsEl.hidden = true; return; }
+    const v = S.vue || 'face', chipC = (c) => `<span class="mq-colh">${badge(c.id)}<span class="t">${esc(c.titre)}</span></span>`, [ec, cac, cm] = COLONNES;
+    colsEl.innerHTML = S.cam.z < ZB ? `<span></span>${chipC(cm)}<span></span>` : v === 'ec' ? `${chipC(ec)}<span></span>` : v === 'cac' ? `<span></span>${chipC(cac)}` : `${chipC(ec)}${chipC(cac)}`;
+    colsEl.hidden = false;
+  }
   function setUI() {
     let where, tabs = '', body = null;
     if (S.scene === 'room') {
@@ -412,7 +428,7 @@ export function startMaquette(root, THREE, opts = {}) {
       where = `${badge(b.rive)}<div class="tx"><b>${esc(b.nom)}</b><small>${tot}rangée ${S.lot.rang.n} · ${esc(S.lot.rang.nom)}</small></div><button type="button" class="mq-btn sm" data-a="exit">Sortir</button>`;
       tabs = tabBtn('qui', 'Qui siège') + tabBtn('quoi', 'Ce qu’on y fait') + tabBtn('jumeau', 'Jumeau') + (opts.onFiche ? `<button type="button" class="mq-btn sm" data-a="fiche" data-f="${esc(b.fiche)}">Fiche</button>` : '');
       if (S.group) { const g = S.group, r = ROLES[g.role] || ['', '']; body = `${closeBtn}<p style="display:flex;gap:8px;align-items:center">${figureSvg(g.role)}<span><b>${esc(g.qui)}</b><br><small>${esc(r[0])} · ${esc(r[1])}${g.debout ? ' · présent, non membre' : ''}</small></span></p><p>${md(g.fait)}</p>`; }
-      else if (S.tab === 'qui') body = `${closeBtn}<ul class="mq-list">${R.groups.map((g, i) => `<li><button type="button" data-a="group" data-i="${i}">${figureSvg(g.role)}<span class="tx"><b>${esc(groupLabel(g))}</b><small>${esc((ROLES[g.role] || ['Membre'])[0])} · ${esc((ROLES[g.role] || ['', ''])[1])}${g.debout ? ' · présent, non membre' : ''}</small></span></button></li>`).join('')}</ul>`;
+      else if (S.tab === 'qui') body = `${closeBtn}<ul class="mq-list">${R.groups.map((g, i) => `<li><button type="button" data-a="group" data-i="${i}">${figureSvg(g.role)}<span class="tx"><b>${esc(groupLabel(g))}${g.approx && g.n > 1 && !/\d/.test(g.label) ? ' · plusieurs' : ''}</b><small>${esc((ROLES[g.role] || ['Membre'])[0])} · ${esc((ROLES[g.role] || ['', ''])[1])}${g.debout ? ' · présent, non membre' : ''}</small></span></button></li>`).join('')}</ul>`;
       else if (S.tab === 'quoi') body = `${closeBtn}<p>${md(b.role)}</p>${b.pancartes.map((p) => `<h5>${esc(p.qui)}</h5><p>${md(p.fait)}</p>`).join('')}${b.pieges?.length ? `<h5>Pièges</h5>${b.pieges.map((p) => `<p>⚠ ${md(p)}</p>`).join('')}` : ''}`;
       else if (S.tab === 'jumeau') body = closeBtn + twinHtml(b);
     } else if (S.sel) {
@@ -422,7 +438,7 @@ export function startMaquette(root, THREE, opts = {}) {
       if (S.tab === 'role') body = `${closeBtn}<p>${md(b.role)}</p>${b.chiffres?.length ? `<p><small>${b.chiffres.map(esc).join(' · ')}</small></p>` : ''}<p><small>Symbole : ${esc(SYMBOLES[l.id][1])}.</small></p>${b.pieges?.length ? b.pieges.map((p) => `<p>⚠ ${md(p)}</p>`).join('') : ''}`;
       else if (S.tab === 'jumeau') body = closeBtn + twinHtml(b);
     } else {
-      where = `<div class="tx"><b>La ville des institutions</b><small>Touchez un bâtiment pour l’ouvrir</small></div><button type="button" class="mq-btn sm" data-a="list">Aller à</button>`;
+      where = `<div class="tx"><b>La ville des institutions</b><small class="row">${S.curRow ? `Rangée ${S.curRow.n} · ${esc(S.curRow.nom)}` : 'Touchez un bâtiment pour l’ouvrir'}</small></div><button type="button" class="mq-btn sm" data-a="list">Aller à</button>`;
       const v = S.vue || 'face', sb = (id, t) => `<button type="button" data-a="vue" data-v="${id}" class="${v === id ? 'on' : ''}">${t}</button>`;
       tabs = `<div class="mq-seg">${sb('ec', 'EC')}${sb('face', 'EC ↔ CAC')}${sb('cac', 'CAC')}${sb('commun', 'Commun')}</div><button type="button" class="mq-btn sm" data-a="tours">Parcours</button>`;
     }
@@ -431,30 +447,32 @@ export function startMaquette(root, THREE, opts = {}) {
       body = `<p style="display:flex;justify-content:space-between;align-items:center;gap:6px;margin:0"><b>${esc(t.titre)}</b><small>étape ${t.i + 1} / ${t.etapes.length}</small></p><p><b>${t.i + 1}. ${esc(batiment(id).court)}</b> : ${md(txt)}</p><p style="display:flex;gap:6px"><button type="button" class="mq-btn sm" data-a="tour-prev" ${t.i ? '' : 'disabled'}>‹ Précédent</button><button type="button" class="mq-btn sm primary" data-a="tour-next">${t.i + 1 < t.etapes.length ? 'Suivant ›' : 'Terminer'}</button><button type="button" class="mq-btn sm" data-a="tour-stop">Quitter</button></p>`;
       tabs = '';
     }
-    rkey.hidden = S.scene !== 'room'; whereEl.innerHTML = where; tabsEl.innerHTML = tabs; tabsEl.hidden = !tabs;
+    rkey.hidden = S.scene !== 'room'; for (const t of rowTags) t.el.style.display = S.scene === 'room' ? 'none' : ''; whereEl.innerHTML = where; S.north = undefined; setCols(); tabsEl.innerHTML = tabs; tabsEl.hidden = !tabs;
     drawer.hidden = body == null; if (body != null) { drawer.innerHTML = body; drawer.scrollTop = 0; }
     requestAnimationFrame(() => { uiTop = $('.mq-ui').getBoundingClientRect().bottom - root.getBoundingClientRect().top; dirty = true; });
   }
   const hint = (txt) => { hintEl.textContent = txt; hintEl.style.opacity = '1'; clearTimeout(hint.t); hint.t = setTimeout(() => { hintEl.style.opacity = '0'; }, 3500); };
 
-  function select(lot, fly = true) {
-    S.sel = lot; S.tab = null;
-    for (const it of blabels) it.el.classList.toggle('sel', it.lot === lot);
-    selRing.visible = !!lot; twinLine.visible = false;
+  function select(lot, fly = false) {
+    S.sel = lot; S.tab = null; selG.clear(); twinG.clear(); twinLine.visible = false;
+    const t = lot && lot.b.jumeau && mlot(lot.b.jumeau);
+    for (const it of blabels) { it.el.classList.toggle('sel', it.lot === lot); it.el.classList.toggle('twin', !!t && it.lot === t); }
     if (lot) {
-      selRing.position.set(lot.x, 0.16, lot.z);
-      const t = lot.b.jumeau && mlot(lot.b.jumeau);
-      if (t) { const dx = t.x - lot.x, dz = t.z - lot.z, L = Math.hypot(dx, dz); twinLine.scale.set(Math.max(0.01, L - 7.4), 0.05, 0.12); twinLine.position.set((lot.x + t.x) / 2, 0.17, (lot.z + t.z) / 2); twinLine.rotation.y = -Math.atan2(dz, dx); twinLine.visible = L > 7.8; }
-      if (fly) glide({ x: lot.x, z: lot.z + 1, d: Math.min(S.cam.d, Math.max(26, fitW(16))) });
+      frame(selG, lot.x, lot.z, TW + 0.7, TD + 0.7, 0.32, std('#0f172a'), false, 0.05);
+      if (t) {
+        frame(twinG, t.x, t.z, TW + 0.7, TD + 0.7, 0.32, std('#0f172a'), true, 0.05);
+        const dx = t.x - lot.x, dz = t.z - lot.z, L = Math.hypot(dx, dz); twinLine.scale.set(Math.max(0.01, L - TW - 0.8), 0.05, 0.14); twinLine.position.set((lot.x + t.x) / 2, 0.06, (lot.z + t.z) / 2); twinLine.rotation.y = -Math.atan2(dz, dx); twinLine.visible = L > TW + 1;
+      }
+      if (fly) glide({ x: lot.x, z: lot.z + 1 }, 0.6);
     }
-    setUI();
+    setUI(); dirty = true;
   }
   function fadeSwap(fn) { fadeEl.classList.add('on'); setTimeout(() => { fn(); fadeEl.classList.remove('on'); }, 260); }
   function enter(lot) {
     fadeSwap(() => {
       if (S.room) { hideAll(S.room.labels); for (const it of S.room.labels) it.el.classList.remove('sel'); } else S.cityCam = { ...S.cam };
       S.scene = 'room'; S.lot = lot; S.room = buildRoom(lot); S.group = null; S.tab = null; S.visited.add(lot.id); S.tour = null; clearTour();
-      hideAll(blabels); for (const t of rowTags.concat(colTags)) t.el.hidden = true;
+      hideAll(blabels);
       S.bounds = { x0: -S.room.RW / 2, x1: S.room.RW / 2, z0: -S.room.RD / 2, z1: S.room.RD / 2 };
       S.room.home.d = Math.max(fitW(S.room.RW * 1.12), S.room.RD * 1.3, 14);
       S.cam = { ...S.room.home }; S.anim = null; applyCam(); setUI(); hint('Touchez un groupe pour savoir ce qu’il fait');
@@ -464,8 +482,7 @@ export function startMaquette(root, THREE, opts = {}) {
     fadeSwap(() => {
       hideAll(S.room.labels); for (const it of S.room.labels) it.el.classList.remove('sel');
       const lot = S.lot; S.scene = 'city'; S.room = null; S.group = null; S.tab = null; S.bounds = { x0: -SX, x1: SX, z0: -SZ, z1: SZ };
-      for (const t of rowTags.concat(colTags)) t.el.hidden = false;
-      S.cam = S.cityCam || { x: lot.x, z: lot.z + 1, d: 30 }; S.anim = null; applyCam(); select(lot, false);
+            S.cam = S.cityCam || { x: lot.x, z: lot.z + 1, d: 30 }; S.anim = null; applyCam(); select(lot, false);
     });
   }
   function focusGroup(i) {
@@ -481,11 +498,11 @@ export function startMaquette(root, THREE, opts = {}) {
     closeSheet(); S.tour = { titre: p.titre, etapes: p.etapes, i: 0 }; clearTour();
     const lots = p.etapes.map(([id]) => mlot(id)), mat = std('#0f172a');
     for (let i = 0; i < lots.length - 1; i++) {
-      const a = lots[i], b = lots[i + 1], A = new THREE.Vector3(a.x, a.h + 2.4, a.z), B = new THREE.Vector3(b.x, b.h + 2.4, b.z), M = A.clone().lerp(B, 0.5); M.y += 3 + A.distanceTo(B) * 0.12;
+      const a = lots[i], b = lots[i + 1], A = new THREE.Vector3(a.x, 2.6, a.z), B = new THREE.Vector3(b.x, 2.6, b.z), M = A.clone().lerp(B, 0.5); M.y += 3 + A.distanceTo(B) * 0.12;
       tourGroup.add(new THREE.Mesh(keep(new THREE.TubeGeometry(new THREE.QuadraticBezierCurve3(A, M, B), 32, 0.12, 6)), mat));
       const cone = new THREE.Mesh(keep(new THREE.ConeGeometry(0.4, 0.9, 10)), mat); const dir = B.clone().sub(M).normalize(); cone.position.copy(B).addScaledVector(dir, -0.4); cone.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir); tourGroup.add(cone);
     }
-    tourTags = lots.map((l, i) => { const it = mkLabel(`<span style="font-size:12px">étape</span><b style="display:inline-flex;min-width:22px;height:22px;border-radius:6px;background:#0f172a;color:#fff;align-items:center;justify-content:center">${i + 1}</b>`, new THREE.Vector3(l.x, l.h + 3.4, l.z)); it.el.style.padding = '2px 3px 2px 7px'; return it; });
+    tourTags = lots.map((l, i) => { const it = mkLabel(`<span style="font-size:12px">étape</span><b style="display:inline-flex;min-width:22px;height:22px;border-radius:6px;background:#0f172a;color:#fff;align-items:center;justify-content:center">${i + 1}</b>`, new THREE.Vector3(l.x, 3.4, l.z)); it.el.style.padding = '2px 3px 2px 7px'; return it; });
     tourGo();
   }
   function tourGo() { const t = S.tour, l = mlot(t.etapes[t.i][0]), n = mlot((t.etapes[t.i + 1] || t.etapes[t.i])[0]); select(l, false); const dx = Math.abs(n.x - l.x), dz = Math.abs(n.z - l.z); glide({ x: (l.x + n.x) / 2, z: (l.z + n.z) / 2 + 3, d: Math.max(fitW(dx + 18), (dz + 20) * 1.5, 55) }); setUI(); }
@@ -493,7 +510,7 @@ export function startMaquette(root, THREE, opts = {}) {
   // ---------- Feuilles : Aller à, Parcours, Légende
   const closeSheet = () => { sheet.hidden = true; };
   const sheetHead = (t) => `<div class="mq-sheet-head"><strong>${t}</strong><button type="button" class="mq-btn sm" data-a="close-sheet">Fermer</button></div>`;
-  const lotRow = (l) => `<li><button type="button" data-a="go" data-id="${l.id}"><span>${svgIcon(l.id)}</span><span class="tx"><b>${esc(l.b.court)}${S.visited.has(l.id) ? ' <span class="seen">· vu</span>' : ''}</b><small>Rangée ${l.rang.n} · ${esc(SYMBOLES[l.id][1])}</small></span></button></li>`;
+  const lotRow = (l) => `<li><button type="button" data-a="go" data-id="${l.id}"><span>${svgIcon(l.id)}</span><span class="tx"><b>${esc(nomTuile(l.b))}${S.visited.has(l.id) ? ' <span class="seen">· vu</span>' : ''}</b><small>Rangée ${l.rang.n} · ${esc(SYMBOLES[l.id][1])}</small></span></button></li>`;
   function openList() {
     sheet.innerHTML = sheetHead(`Aller à · ${S.visited.size} / ${MLOTS.length} visités`) + COLONNES.map((c) => `<div class="mq-ghead">${badge(c.id)}${esc(c.titre)}</div><ul class="mq-list">${RANGS.flatMap((r) => (PLAN[r.id][c.id] || []).map(mlot)).map(lotRow).join('')}</ul>`).join('');
     sheet.hidden = false; sheet.scrollTop = 0;
@@ -520,11 +537,11 @@ export function startMaquette(root, THREE, opts = {}) {
     if (lb && lb.dataset.g != null && S.room) return focusGroup(Number(lb.dataset.g));
     const t = e.target.closest('[data-a]'); if (!t) return; const a = t.dataset.a;
     if (a === 'menu') openMenu(); else if (a === 'list') openList(); else if (a === 'tours') openTours(); else if (a === 'legend') openLegend(); else if (a === 'close-sheet') closeSheet();
-    else if (a === 'go') { closeSheet(); const l = mlot(t.dataset.id); if (S.scene === 'room') { exit(); setTimeout(() => select(l), 300); } else select(l); }
+    else if (a === 'go') { closeSheet(); const l = mlot(t.dataset.id); if (S.scene === 'room') { exit(); setTimeout(() => select(l, true), 300); } else select(l, true); }
     else if (a === 'row') { closeSheet(); glide({ x: 0, z: rowZ(Number(t.dataset.n)) + 1, d: 60 }); }
     else if (a === 'enter' && S.sel) enter(S.sel); else if (a === 'exit') exit();
     else if (a === 'tab') { S.tab = S.tab === t.dataset.t ? null : t.dataset.t; S.group = null; if (S.room) for (const it of S.room.labels) it.el.classList.remove('sel'); setUI(); }
-    else if (a === 'close-drawer') { S.tab = null; S.group = null; if (S.room) for (const it of S.room.labels) it.el.classList.remove('sel'); setUI(); }
+    else if (a === 'close-drawer') { const wasG = S.group; S.tab = null; S.group = null; if (S.room) { for (const it of S.room.labels) it.el.classList.remove('sel'); if (wasG) glide(S.room.home, 0.6); } setUI(); }
     else if (a === 'group') focusGroup(Number(t.dataset.i));
     else if (a === 'tour') startTour(t.dataset.p);
     else if (a === 'tour-next') { if (S.tour.i + 1 < S.tour.etapes.length) { S.tour.i++; tourGo(); } else { S.tour = null; clearTour(); setUI(); } }
@@ -558,8 +575,8 @@ export function startMaquette(root, THREE, opts = {}) {
     if (ptrs.size === 0) gest = null; else if (g?.pinch && ptrs.size === 1) { const [[id, p]] = [...ptrs.entries()]; gest = { id, x0: p.x, y0: p.y, cx: S.cam.x, cz: S.cam.z, t: performance.now(), moved: true }; }
     if (e.type !== 'pointerup' || !g || g.pinch || g.moved || g.id !== e.pointerId) return;
     const r = canvas.getBoundingClientRect(); ray.setFromCamera(new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), camera);
-    if (S.scene === 'room') { const ms = S.room.people.map((p) => p.mesh), hit = ray.intersectObjects(ms, true)[0]; if (!hit) return; let o = hit.object; while (o.parent && !ms.includes(o)) o = o.parent; const p = S.room.people.find((q) => q.mesh === o); if (p) focusGroup(S.room.groups.indexOf(p.g)); return; }
-    const hit = ray.intersectObjects(pick, false)[0]; if (hit) { const l = mlot(hit.object.userData.id); if (S.sel === l) enter(l); else select(l); }
+    if (S.scene === 'room') { const ms = S.room.people.map((p) => p.mesh), hit = ray.intersectObjects(ms, true)[0]; if (!hit) { if (S.group || S.tab) { S.group = null; S.tab = null; for (const it of S.room.labels) it.el.classList.remove('sel'); setUI(); glide(S.room.home, 0.6); } return; } let o = hit.object; while (o.parent && !ms.includes(o)) o = o.parent; const p = S.room.people.find((q) => q.mesh === o); if (p) focusGroup(S.room.groups.indexOf(p.g)); return; }
+    const hit = ray.intersectObjects(pick, false)[0]; if (hit) { const l = mlot(hit.object.userData.id); if (S.sel === l) enter(l); else select(l); } else if (S.sel && !S.tour) select(null);
   };
   canvas.addEventListener('pointerup', endPtr); canvas.addEventListener('pointercancel', endPtr);
   canvas.addEventListener('wheel', (e) => { e.preventDefault(); S.anim = null; S.cam.d *= 1 + Math.sign(e.deltaY) * 0.1; applyCam(); }, { passive: false });
@@ -582,15 +599,21 @@ export function startMaquette(root, THREE, opts = {}) {
     if (!dirty) return; dirty = false;
     renderer.render(S.scene === 'room' ? S.room.scene : city, camera);
     if (S.scene === 'room') { place(S.room.labels); return; }
-    const ppw = W / (2 * S.cam.d * TANF * (W / H)), chip = SLOT * ppw < 42 || S.vue === 'tout', compact = !chip && SLOT * ppw < 110, north = S.cam.z < ZB;
-    layer.style.setProperty('--mw', `${Math.max(48, SLOT * ppw - 8).toFixed(0)}px`);
-    for (const it of blabels) { it.el.classList.toggle('chip', chip); it.el.classList.toggle('compact', compact); it.off = !S.tour && it.lot !== S.sel && ((S.vue !== 'tout' && it.lot.nord !== north) || (S.vue === 'ec' && it.lot.b.rive === 'cac') || (S.vue === 'cac' && it.lot.b.rive === 'ec')); }
-    for (const it of blabels) it.pos.z = it.lot.z + BD / 2 + 0.6 + (compact || chip ? it.lot.alt * (chip ? 1.6 : 2.6) : 0);
-    place(blabels.concat(tourTags), chip || compact);
-    for (const t of colTags) t.el.classList.toggle('short', chip);
-    // Repères collés aux bords : rangées à gauche (à la hauteur de leur rangée), colonnes en haut (au-dessus de leur colonne).
-    for (const t of rowTags) { vP.set(-GUT + 0.4, 0, rowZ(t.r.n) - 1.2).project(camera); const y = (1 - vP.y) / 2 * H, x = Math.max(4, (vP.x + 1) / 2 * W); t.el.classList.toggle('short', (vP.x + 1) / 2 * W + (GUT - ZX) * ppw < 130); t.el.hidden = y < uiTop + 34 || y > H - 20 || x > W - 60; if (!t.el.hidden) t.el.style.transform = `translate3d(${x.toFixed(0)}px,${(y - 13).toFixed(0)}px,0)`; }
-    for (const t of colTags) { if (t.c.nord !== north) { t.el.hidden = true; continue; } vP.set(t.c.x, 0, S.cam.z).project(camera); const x = (vP.x + 1) / 2 * W, w = t.el.offsetWidth || 120; t.el.hidden = x < -w / 2 || x > W + w / 2; if (!t.el.hidden) t.el.style.transform = `translate3d(${clamp(x - w / 2, 4, W - w - 4).toFixed(0)}px,${(uiTop + 4).toFixed(0)}px,0)`; }
+    const ppw = W / (2 * S.cam.d * TANF * (W / H)), tpx = TW * ppw, chip = tpx < 38 || S.vue === 'tout', compact = !chip && tpx < 150, north = S.cam.z < ZB;
+    layer.style.setProperty('--mw', `${Math.max(40, tpx - 2).toFixed(0)}px`);
+    houses.visible = !chip && !compact; for (const it of blabels) { it.pos.z = it.lot.z + (chip || compact ? 0 : 0.75); it.el.classList.toggle('chip', chip); it.el.classList.toggle('compact', compact); it.off = !S.tour && it.lot !== S.sel && ((S.vue !== 'tout' && it.lot.nord !== north) || (S.vue === 'ec' && it.lot.b.rive === 'cac') || (S.vue === 'cac' && it.lot.b.rive === 'ec')); }
+    place(blabels.concat(tourTags), true);
+    if (north !== S.north) { S.north = north; setCols(); }
+    // Noms des rangées : dans l'allée centrale, entre l'EC et le CAC (rangées 1 à 4) ; au-dessus de la rangée dans le quartier commun.
+    let best = null, bd = Infinity; const mid = (uiTop + H) / 2;
+    for (const t of rowTags) {
+      const south = t.r.n <= 4; t.el.classList.toggle('wide', !south); vP.set(0, 0, south ? rowZ(t.r.n) + 0.6 : rowZ(t.r.n) - 2.2).project(camera);
+      const w = t.el.offsetWidth || 90, h = t.el.offsetHeight || 24, sx = (vP.x + 1) / 2 * W, sy = (1 - vP.y) / 2 * H;
+      t.el.hidden = sy < uiTop + 12 || sy > H - 12 || sx < -w || sx > W + w; t.el.classList.toggle('narrow', south && 2 * (SP0 - TW / 2) * ppw < 96);
+      if (!t.el.hidden) t.el.style.transform = `translate3d(${(sx - w / 2).toFixed(0)}px,${(south ? sy - h / 2 : sy - h - 2).toFixed(0)}px,0)`;
+      const d = Math.abs(sy - mid); if (!t.el.hidden && d < bd) { bd = d; best = t; }
+    }
+    const cr = best && !S.sel && !S.tour ? best.r : null; if (cr !== S.curRow) { S.curRow = cr; const sm = whereEl.querySelector('small.row'); if (sm) sm.textContent = cr ? `Rangée ${cr.n} · ${cr.nom}` : 'Touchez un bâtiment pour l’ouvrir'; }
   }
   resize(); S.vue = 'face'; S.cam = cityHome('face'); applyCam(); setUI(); setTimeout(() => { hintEl.style.opacity = '0'; }, 5000);
   ro.observe($('.mq-ui'));
