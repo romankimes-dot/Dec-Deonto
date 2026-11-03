@@ -2364,7 +2364,7 @@ views.ville = () => {
     try {
       const THREE = await import('./vendor/three.module.min.js');
       if (!$('#ville') || state.view !== 'ville' || state.villeTab === 'plan') return;
-      state.v3 = startVille3D(root, THREE, { full: true, onQuit: () => { state.v3open = false; stopVille3D(); render(); }, onQuizEnd: (score, n) => toast(`Ville : ${score} / ${n}`, score === n ? 'party' : 'landmark'), fiches: titles, onFiche: (file) => ficheSheet(file) });
+      state.v3 = startVille3D(root, THREE, { full: true, onQuit: () => { state.v3open = false; stopVille3D(); render(); }, fiches: titles, onFiche: (file) => ficheSheet(file) });
       state.v3el = root;
       if (state.villeGoto) { state.v3.place(state.villeGoto); state.villeGoto = null; }
     } catch (e) {
@@ -2375,7 +2375,7 @@ views.ville = () => {
   }, 0);
   const tabs = [['3d', ic('landmark'), 'Entrer dans la ville (3D)'], ['compo', ic('clipboard'), 'Compositions'], ['plan', ic('library'), 'Plans à imprimer']];
   return `<div class="no-print"><button class="btn sm" data-go="fiches">← Fiches</button>
-    <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 8px">${tab === '3d' ? 'Un palais mental que l’on parcourt : « Aller à » mène au bâtiment (liste par profession), on entre, on marche vers ceux qui y siègent.' : tab === 'compo' ? 'Qui siège dans chaque institution, rangé par profession : les membres (avec l’effectif quand les fiches le donnent), puis les personnes présentes qui ne sont pas membres. Touchez une institution pour y aller en 3D.' : 'Deux plans, comme un plan d’appartement : les rues sont les couloirs, les bâtiments les pièces, avec la fiche à relire, qui y siège et ce qu’on y fait. Touchez une pièce pour y aller en 3D.'}</p>
+    <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 8px">${tab === '3d' ? 'Un palais mental : deux boulevards le long du fleuve (EC à gauche, CAC à droite), sept bandes du régional à l’international, les jumeaux face à face. « Aller à » mène au bâtiment, on entre, on tourne autour de ceux qui y siègent ; « Drone » montre une profession de dessus.' : tab === 'compo' ? 'Qui siège dans chaque institution, rangé par profession : les membres (avec l’effectif quand les fiches le donnent), puis les personnes présentes qui ne sont pas membres. Touchez une institution pour y aller en 3D.' : 'Deux plans, comme un plan d’appartement : une bande par niveau (du monde en haut au régional en bas), le fleuve entre les deux rives, les bâtiments en pièces avec la fiche à relire, qui y siège et ce qu’on y fait. Touchez une pièce pour y aller en 3D.'}</p>
     <div class="btnrow">${tabs.map(([id, i, t]) => `<button class="btn sm ${tab === id && (id !== '3d' || open3d) ? 'primary' : ''}" data-ville-tab="${id}">${i} ${t}</button>`).join('')}</div>
     ${tab === 'plan' ? `<div class="btnrow" style="margin-top:8px"><button class="btn sm ${rive === 'ec' ? 'primary' : ''}" data-ville-rive="ec">Expert-comptable</button><button class="btn sm ${rive === 'cac' ? 'primary' : ''}" data-ville-rive="cac">Commissaire aux comptes</button><button class="btn sm" id="ville-print">${ic('files')} Imprimer ce plan</button><a class="btn sm" href="./data/ville-plan.pdf" target="_blank" rel="noopener">${ic('download')} PDF des deux plans (A4)</a></div>` : ''}</div></div>
     <div id="ville"></div>`;

@@ -152,7 +152,7 @@ export const VILLE = {
     {
       id: 'chreg', rive: 'ec', nom: 'Chambre régionale de discipline', court: 'Ch. régionale', type: 'Discipline · 1re instance',
       role: 'Auprès de chaque CROEC : juge l’expert-comptable en première instance.',
-      x: 36, y: 70, w: 60, d: 44, h: 34, style: 'palais', jumeau: 'sanctions', fiche: '04-ec-responsabilite.md',
+      x: 36, y: 70, w: 60, d: 44, h: 34, style: 'palais', jumeau: 'sansch', fiche: '04-ec-responsabilite.md',
       chiffres: ['1 magistrat + 2 élus', 'appel dans le mois', 'appel suspensif'],
       pancartes: [
         { qui: 'La salle d’audience', fait: 'Présidée par un **magistrat de l’ordre judiciaire** (désigné par le **premier président de la cour d’appel**), avec **2 membres élus** du conseil régional. Décision motivée après audience.' },
@@ -161,6 +161,16 @@ export const VILLE = {
         { qui: 'Le tableau des peines', fait: '1. **Réprimande** · 2. **Blâme** avec inscription au dossier · 3. **Suspension** avec sursis · 4. **Suspension** sans sursis · 5. **Radiation** du tableau. **Pas de sanction pécuniaire** (sauf LCB-FT). L’**avertissement dans le cabinet du président** existe, hors des peines. Un **stagiaire** peut être sanctionné.' },
       ],
       pieges: ['Le commissaire du gouvernement **n’en est pas membre** : il porte plainte et fait appel.', '« Remontrance », « amende », « avertissement » ne figurent **pas** dans la liste des peines de l’EC.', 'Aucune « chambre régionale » n’existe pour le **CAC**.'],
+    },
+    {
+      id: 'sansch', rive: 'cac', nom: 'Pas de chambre régionale', court: 'Pas de chambre', type: 'Discipline · 1re instance',
+      role: 'Aucune chambre régionale de discipline chez le CAC : tout remonte à la H2A.',
+      x: 84, y: 70, w: 60, d: 44, h: 3, style: 'vide', jumeau: 'chreg', fiche: '13-schema-discipline.md',
+      pancartes: [
+        { qui: 'Panneau sur la grille', fait: 'Rien à construire ici : la **CRCC ne juge pas**. Un manquement du CAC est signalé au **rapporteur général de la H2A** (le président de la CRCC peut le saisir) ; après enquête, le **collège** arrête les griefs et la **commission des sanctions** juge, en **instance unique**.' },
+        { qui: 'Ce que cela change', fait: 'Pas de première instance régionale, **pas d’appel** : la commission des sanctions, puis le **Conseil d’État** en pleine juridiction. Chez l’EC : chambre régionale, puis chambre nationale (appel), puis Conseil d’État (cassation).' },
+      ],
+      pieges: ['« Chambre régionale de discipline des CAC » n’existe pas : c’est la **H2A** qui sanctionne.'],
     },
     {
       id: 'chnat', rive: 'ec', nom: 'Chambre nationale de discipline', court: 'Ch. nationale', type: 'Discipline · appel',
@@ -177,7 +187,7 @@ export const VILLE = {
     {
       id: 'sanctions', rive: 'cac', nom: 'Commission des sanctions de la H2A', court: 'Sanctions H2A', type: 'Discipline · instance unique, sans appel',
       role: 'Séparée du collège qui poursuit : elle juge le CAC et homologue les compositions administratives.',
-      x: 60, y: 62, w: 60, d: 46, h: 40, style: 'palais', jumeau: 'chreg', fiche: '22-schema-sanctions-h2a.md',
+      x: 60, y: 62, w: 60, d: 46, h: 40, style: 'palais', jumeau: 'chnat', fiche: '22-schema-sanctions-h2a.md',
       chiffres: ['1 magistrat + 4 qualifiés', 'nommés 6 ans, renouvelables 1 fois', 'audience 2 mois après les griefs', 'simplifiée : 15 000 € max', 'prescription 6 ans'],
       pancartes: [
         { qui: 'La salle d’audience', fait: 'Un **magistrat de la Cour de cassation** (président) et **4 personnes qualifiées** : un **ancien CAC**, une en **durabilité**, deux en matière **juridique, économique ou financière** ; nommés par **décret** pour **6 ans**, renouvelables une fois. **Incompatible** avec le collège. Audience **publique**, **2 mois au moins** après la notification des griefs ; le **président de la H2A** soutient les griefs et **propose une sanction** ; le président de la **CRCC** est avisé.' },
@@ -332,6 +342,78 @@ export const VILLE = {
     },
   ],
   // « Qui fait quoi ? » : une affirmation, toucher le bon bâtiment.
+  // Face à face des jumeaux : la même question, la réponse EC et la réponse CAC (pour le tiroir « Jumeau » de la 3D).
+  jumeaux: {
+    'bercy|chancellerie': [
+      ['Ministre de tutelle', 'Ministre chargé de l’**économie**', '**Garde des Sceaux**'],
+      ['Normes', '**Agrée** les normes par arrêté', '**Homologue** par arrêté les NEP adoptées par la H2A'],
+      ['Code de déontologie', 'Décret (2012-432)', 'Décret (annexe 8-1 du livre VIII)'],
+      ['Représentant', '**Commissaire du gouvernement** auprès du CNOEC et des CROEC', 'Aucun ; la H2A est une autorité indépendante'],
+    ],
+    'cncc|cnoec': [
+      ['Membres', 'Présidents des CROEC **de droit** + élus au **suffrage direct** (2020), 4 ans', '**60** : présidents de CRCC + CAC élus, **30 EIP / 30 non-EIP**, 4 ans'],
+      ['Normes', '**Élabore** les normes et le code de déontologie', 'Donne un **avis** ; peut **demander une NEP**'],
+      ['Contrôle', 'Définit le **programme** du contrôle de qualité', 'Contrôles des **non-EIP** et suivi de la formation, par **délégation** de la H2A'],
+      ['Discipline', 'Chambre nationale **auprès de lui** (appel)', '**Aucune** : la H2A sanctionne'],
+    ],
+    'crcc|croec': [
+      ['Inscription', '**Tient le tableau**, inscrit, radie d’office', 'N’inscrit pas : **liste tenue par la H2A**'],
+      ['Serment', 'Devant le **conseil régional**, dans les 6 mois', 'Devant le **premier président de la cour d’appel**'],
+      ['Cotisations', 'Appelées par le CROEC', 'Appelées par la CRCC'],
+      ['Conciliation', 'Président **conciliateur ou arbitre**', 'Co-commissaires et honoraires, **3 mois**, puis le juge'],
+      ['Discipline', 'Chambre régionale **auprès de lui**', 'Rien : saisine du **rapporteur général** de la H2A'],
+    ],
+    'h2a|terrain': [
+      ['Superviseur public', '**Aucun** : l’Ordre se contrôle lui-même', '**H2A**, autorité publique indépendante'],
+      ['Contrôle', 'Contrôle de **qualité** par les **CROEC**', 'Contrôle d’**activité** par la **H2A** (EIP) ou la **CNCC** (non-EIP)'],
+      ['Sanction pécuniaire', '**Non** (sauf LCB-FT)', '**Oui**, jusqu’à 250 000 € (1 M€ société)'],
+      ['Prescription', 'Aucun texte', '**6 ans**'],
+    ],
+    'chnat|sanctions': [
+      ['Composition', '1 **magistrat** (CA de Paris) + 2 **fonctionnaires** + 2 **membres du Conseil national**', '1 **magistrat** (Cour de cassation) + **4** personnes qualifiées'],
+      ['Degré', '**Appel** des chambres régionales (dans le mois, suspensif)', '**Instance unique**, pas d’appel'],
+      ['Peines', 'Réprimande, blâme, suspension, **radiation**', 'Avertissement, blâme, interdiction **3 ans**, radiation, **amende**, publication'],
+      ['Recours', 'Conseil d’État en **cassation**', 'Conseil d’État en **pleine juridiction**'],
+    ],
+    'chreg|sansch': [
+      ['Première instance', 'Chambre régionale : **1 magistrat + 2 élus**', '**Aucune** : rapporteur général → collège → commission des sanctions'],
+      ['Qui saisit', 'Client, tiers, conseil régional, **commissaire du gouvernement**', 'Cour des comptes, procureur général, AMF, ACPR, H2A, **CNCC, CRCC**'],
+      ['Instruction', 'Magistrat chargé des poursuites, rapporteur', '**Rapporteur général** (service des enquêtes), secret **non opposable**'],
+    ],
+  },
+  // Fils rouges : un dossier suit son chemin de bâtiment en bâtiment (parcours courts, à refaire de mémoire).
+  parcours: [
+    { id: 'sanction-ec', titre: 'Une sanction contre un EC', rive: 'ec', etapes: [
+      ['croec', 'Le client se plaint. Entre confrères, **conciliation obligatoire** d’abord.'],
+      ['chreg', 'Le magistrat chargé des poursuites **notifie les griefs** ; la chambre juge : réprimande → radiation.'],
+      ['chnat', '**Appel** dans le mois, suspensif, devant la chambre nationale.'],
+      ['ce', '**Cassation** devant le Conseil d’État.'],
+    ] },
+    { id: 'sanction-cac', titre: 'Une sanction contre un CAC', rive: 'cac', etapes: [
+      ['crcc', 'Le président de la CRCC (ou l’AMF, le procureur général…) **saisit le rapporteur général**.'],
+      ['h2a', 'Enquête ; le **collège arrête les griefs** ou propose une **composition administrative**.'],
+      ['sanctions', 'La commission juge en **instance unique** : jusqu’à la radiation et 250 000 €.'],
+      ['ce', 'Recours de **pleine juridiction** devant le Conseil d’État.'],
+    ] },
+    { id: 'controle-ec', titre: 'Qui contrôle l’EC', rive: 'ec', etapes: [
+      ['bercy', 'Le ministre **agrée** les normes ; son commissaire du gouvernement assiste aux séances.'],
+      ['cnoec', 'Le Conseil national **définit le programme** du contrôle de qualité.'],
+      ['croec', 'Les **contrôleurs** du CROEC (3 ans, 50 h) contrôlent ; le président conclut.'],
+      ['terrain', 'Aucun superviseur public : l’**Ordre se contrôle lui-même**.'],
+    ] },
+    { id: 'controle-cac', titre: 'Qui contrôle le CAC', rive: 'cac', etapes: [
+      ['chancellerie', 'Le garde des Sceaux **homologue** les NEP et les conventions de délégation.'],
+      ['h2a', 'La H2A **inscrit**, adopte les normes, **contrôle** les CAC d’EIP.'],
+      ['cncc', 'Par **délégation**, la CNCC contrôle les **non-EIP** et suit la formation.'],
+      ['amf', 'L’AMF peut **saisir** la H2A et demander le relèvement d’un CAC de société cotée.'],
+    ] },
+    { id: 'secret', titre: 'Secret et signalements', rive: 'commun', etapes: [
+      ['tracfin', 'Déclaration de **soupçon** : par l’EC en charge de la mission, par le CAC signataire.'],
+      ['parquet', 'Le **CAC révèle** les faits délictueux ; l’EC n’y est pas tenu.'],
+      ['tcorr', 'Violer le secret, ne pas révéler (CAC) : des **délits**.'],
+      ['tj', 'La faute civile se **répare** : 5 ans (EC, aménageable), 3 ans (CAC, ni plafond ni aménagement).'],
+    ] },
+  ],
   quiz: [
     { q: 'L’expert-comptable prête serment ici, dans les 6 mois de son inscription.', r: 'croec' },
     { q: 'Le commissaire aux comptes prête serment ici, avant tout exercice.', r: 'ca' },
