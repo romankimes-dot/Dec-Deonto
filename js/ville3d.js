@@ -86,7 +86,6 @@ export const SALLES = {
     { n: 1, label: 'ACPR', role: 'fonctionnaire', qui: 'Un représentant de l’ACPR', fait: 'Même rôle pour les **banques** et les **assurances**. Des membres de l’AMF et de l’ACPR siègent au **collège** de la H2A.' },
   ] },
   terrain: { layout: 'bureau', groupes: [{ n: 1, label: 'Gardien du terrain', role: 'pro', debout: true, qui: 'Le gardien du terrain vague', fait: 'Personne ne construira ici : chez l’**EC**, **aucune autorité publique indépendante** ne supervise la profession. C’est **l’Ordre** qui contrôle (CROEC) et juge (chambres) ; la tutelle passe par le **commissaire du gouvernement**.' }] },
-  sansch: { layout: 'bureau', groupes: [{ n: 1, label: 'Gardien du terrain', role: 'pro', debout: true, qui: 'Le gardien du terrain', fait: 'Rien à construire : la **CRCC ne juge pas**. Un manquement du CAC va au **rapporteur général de la H2A** ; le **collège** arrête les griefs, la **commission des sanctions** juge en **instance unique**, puis le **Conseil d’État**.' }] },
   tj: { layout: 'tribunal', groupes: [{ n: 1, label: 'Juge civil', role: 'magistrat', qui: 'Le juge du tribunal judiciaire ou de commerce', fait: 'Répare le **préjudice** : faute, préjudice, lien de causalité. **EC** : 5 ans, réductible à 1 an, plafonnement possible. **CAC** : **3 ans** (révélation si dissimulé, 10 ans pour un crime), **ni plafond ni aménagement**.' }] },
   tcorr: { layout: 'tribunal', groupes: [{ n: 1, label: 'Juge correctionnel', role: 'magistrat', qui: 'Le juge correctionnel', fait: 'Punit une **infraction** : texte, acte, intention. CAC : **informations mensongères**, **non-révélation** (5 ans, 75 000 €), incompatibilité, usurpation du titre. EC : secret, blanchiment, faux, complicité de fraude fiscale ou d’ABS.' }] },
   parquet: { layout: 'bureau', groupes: [{ n: 1, label: 'Procureur', role: 'magistrat', qui: 'Le procureur de la République', fait: 'Le **CAC** lui **révèle les faits délictueux**, même régularisés ; omettre sciemment est un **délit**. L’**EC** n’y est **pas tenu** : devoir de conseil, refus, interruption. Le **procureur général** peut saisir le rapporteur général de la H2A.' }] },
@@ -162,7 +161,6 @@ export const SYMBOLES = {
   tcorr: ['lock', 'le cadenas : punir l’infraction (pénal)'],
   parquet: ['bell', 'la cloche : révéler les faits délictueux'],
   tracfin: ['search', 'la loupe : la déclaration de soupçon'],
-  sansch: ['eyeoff', 'l’œil barré : pas de chambre régionale pour le CAC'],
   cavec: ['coins', 'les pièces : les cotisations de retraite'],
 };
 export const svgIcon = (id, attrs = '') => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${attrs}><path d="${ICONES[SYMBOLES[id]?.[0]] || ICONES.columns}"/></svg>`;
@@ -206,17 +204,17 @@ export function compositionHtml() {
 
 export const QUARTIERS_LISTE = [
   { titre: 'Expert-comptable', rive: 'ec', ids: ['croec', 'chreg', 'cavec', 'cnoec', 'chnat', 'terrain', 'bercy'] },
-  { titre: 'Commissaire aux comptes', rive: 'cac', ids: ['crcc', 'sansch', 'cncc', 'h2a', 'sanctions', 'amf', 'chancellerie', 'anc'] },
-  { titre: 'Juridictions (et Tracfin)', rive: 'commun', ids: ['ce', 'ca', 'cass', 'ta', 'ccomptes', 'tj', 'tracfin', 'parquet', 'tcorr'] },
+  { titre: 'Commissaire aux comptes', rive: 'cac', ids: ['crcc', 'cncc', 'h2a', 'sanctions', 'amf', 'chancellerie', 'anc'] },
+  { titre: 'Juridictions (et Tracfin)', rive: 'commun', ids: ['ce', 'ca', 'cass', 'ta', 'ccomptes', 'tj', 'tcorr', 'parquet', 'tracfin'] },
   { titre: 'International', rive: 'commun', ids: ['ifac', 'iesba', 'iaasb', 'iaesb', 'aceu', 'ue'] },
 ];
 
 // ---------------------------------------------------------------------------------------------------------
-// Plan de la ville : un fleuve nord-sud, un boulevard sur chaque rive (EC à l'ouest, CAC à l'est), sept bandes de
-// terrain qui sont les niveaux de l'organisation, lues du sud (régional) au nord (international), un pont par bande.
-// Chaque bâtiment est au bord de son boulevard, façade vers le fleuve ; les jumeaux se font face de part et d'autre
-// du pont. La couleur d'une bande est la même sur les deux rives : c'est la fonction, pas la profession.
-// Le plan imprimable (js/villeplan.js) reprend cette disposition, bande par bande.
+// Plan de la ville, survolée en drone. Au sud, les quatre bandes des professions : un fleuve entre la rive EC
+// (ouest) et la rive CAC (est), un boulevard et un pont par bande, les jumeaux face à face. Au nord, le fleuve
+// s'arrête : l'esplanade des juridictions (deux bandes) et l'esplanade internationale accueillent, au centre, ce qui
+// est commun aux deux professions ; ce qui n'est propre qu'au CAC reste sur sa rive. Les bandes se lisent du sud
+// (régional) au nord (international) ; la couleur d'une bande est celle de sa fonction, la même sur les deux rives.
 export const STREETS = [
   { id: 'intl', nom: 'International', z: -54, c: '#4f46e5' },
   { id: 'resp', nom: 'Responsabilités', z: -36, c: '#b45309' },
@@ -226,41 +224,41 @@ export const STREETS = [
   { id: 'nat', nom: 'Échelon national', z: 36, c: '#0f766e' },
   { id: 'reg', nom: 'Échelon régional', z: 54, c: '#15803d' },
 ];
-// Bâtiment → [bande, rive (w = ouest / EC, e = est / CAC), rang dans la bande (-1 nord, 0 milieu, 1 sud)].
+// Bâtiment → [bande, colonne (w = rive EC, e = rive CAC, cw / ce = de part et d'autre de l'allée centrale des esplanades), rang (-1 nord, 0, 1 sud)].
 export const PLACES = {
-  croec: ['reg', 'w', 0], chreg: ['reg', 'w', 1], cavec: ['reg', 'w', -1], crcc: ['reg', 'e', 0], sansch: ['reg', 'e', 1],
+  croec: ['reg', 'w', 0], chreg: ['reg', 'w', 1], cavec: ['reg', 'w', -1], crcc: ['reg', 'e', 0],
   cnoec: ['nat', 'w', 0], chnat: ['nat', 'w', 1], cncc: ['nat', 'e', 0],
   terrain: ['sup', 'w', 0], h2a: ['sup', 'e', 0], sanctions: ['sup', 'e', 1], amf: ['sup', 'e', -1],
   bercy: ['tutelle', 'w', 0], chancellerie: ['tutelle', 'e', 0], anc: ['tutelle', 'e', -1],
-  ce: ['recours', 'w', 0], ca: ['recours', 'w', 1], ta: ['recours', 'e', 0], cass: ['recours', 'e', 1], ccomptes: ['recours', 'e', -1],
-  tj: ['resp', 'w', 0], tracfin: ['resp', 'w', 1], parquet: ['resp', 'e', 0], tcorr: ['resp', 'e', 1],
-  ifac: ['intl', 'w', 0], iesba: ['intl', 'w', 1], iaasb: ['intl', 'w', -1], iaesb: ['intl', 'e', 0], aceu: ['intl', 'e', 1], ue: ['intl', 'e', -1],
+  ce: ['recours', 'cw', 0], ca: ['recours', 'cw', 1], cass: ['recours', 'ce', 0], ta: ['recours', 'e', 0], ccomptes: ['recours', 'e', -1],
+  tj: ['resp', 'cw', 0], tcorr: ['resp', 'cw', 1], parquet: ['resp', 'ce', 0], tracfin: ['resp', 'ce', 1],
+  ifac: ['intl', 'cw', 0], iesba: ['intl', 'cw', 1], iaasb: ['intl', 'cw', -1], iaesb: ['intl', 'ce', 0], aceu: ['intl', 'ce', -1], ue: ['intl', 'e', 0],
 };
-export const TOUR3D = [...STREETS].reverse().flatMap((st) => Object.keys(PLACES).filter((id) => PLACES[id][0] === st.id).sort((a, b) => (PLACES[a][1] === PLACES[b][1] ? PLACES[a][2] - PLACES[b][2] : PLACES[a][1] === 'w' ? -1 : 1)));
-const RH = 2.4, BX = 9, RIVER = { x0: -3.5, x1: 3.5 }, FACE = BX + RH + 1.6, SLOT = 6, FAC = 5, BAND = 18, ZEND = 66, BOUNDS = { x0: -30, x1: 30, z0: -70, z1: 70 }, CAR_R = 1.3, TERRAIN = { x: 32, z: 74 }, PARVIS = 1.6;
+const COLS = { w: { x: -13, nx: 1, nz: 0 }, e: { x: 13, nx: -1, nz: 0 }, cw: { x: -3.9, nx: 1, nz: 0 }, ce: { x: 3.9, nx: -1, nz: 0 } };
+const colOrder = { w: 0, cw: 1, ce: 2, e: 3 };
+export const TOUR3D = [...STREETS].reverse().flatMap((st) => Object.keys(PLACES).filter((id) => PLACES[id][0] === st.id).sort((a, b) => colOrder[PLACES[a][1]] - colOrder[PLACES[b][1]] || PLACES[a][2] - PLACES[b][2]));
+const RH = 2.4, BX = 9, RIVER = { x0: -3.5, x1: 3.5, zn: -9 }, SLOT = 6, FAC = 5, BAND = 18, ZEND = 66, BOUNDS = { x0: -34, x1: 34, z0: -74, z1: 74 }, TERRAIN = { x: 32, z: 74 }, PARVIS = 1.6, ALT = { min: 1.2, max: 40 };
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const hyp = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const angDiff = (a, b) => { let d = (b - a) % (2 * Math.PI); if (d > Math.PI) d -= 2 * Math.PI; if (d < -Math.PI) d += 2 * Math.PI; return d; };
 
 export const LOTS = VILLE.batiments.map((b) => {
-  const [sid, rive, slot] = PLACES[b.id]; const si = STREETS.findIndex((s) => s.id === sid); const st = STREETS[si];
-  const sgn = rive === 'w' ? -1 : 1, w = clamp(b.d * 0.075, 4.2, 6.6), d = FAC, h = b.style === 'vide' ? 0.2 : 2.2 + b.h * 0.06;
-  const faceX = sgn * FACE, x = faceX + sgn * w / 2, z = st.z + slot * SLOT;
+  const [sid, cid, slot] = PLACES[b.id]; const si = STREETS.findIndex((s) => s.id === sid); const st = STREETS[si], c = COLS[cid];
+  const h = b.style === 'vide' ? 0.2 : 2.2 + b.h * 0.06, axis = c.nx ? 'x' : 'z';
+  const w = axis === 'x' ? clamp(b.d * 0.075, 4.2, 6.6) : 4.6, d = axis === 'x' ? FAC : clamp(b.d * 0.075, 4.2, 5);
+  const zc = st.z + slot * SLOT, x = axis === 'x' ? c.x - c.nx * w / 2 : c.x, z = zc;
+  const faceX = x + c.nx * w / 2, faceZ = z + c.nz * d / 2;
   const quartier = b.rive === 'commun' ? (st.id === 'intl' ? 'intl' : 'justice') : b.rive;
-  return { id: b.id, b, st, si, side: slot < 0 ? 'n' : 's', slot, sgn, x, z, w, d, h, faceX, quartier, stop: { x: sgn * (BX + RH - 0.6), z } };
+  const sgn = cid === 'w' ? -1 : cid === 'e' ? 1 : 0;
+  return { id: b.id, b, st, si, col: cid, side: slot < 0 ? 'n' : 's', slot, sgn, nx: c.nx, nz: c.nz, axis, x, z, w, d, h, faceX, faceZ, quartier, stop: { x: faceX + c.nx * 2.8, z: faceZ + c.nz * 2.8 } };
 });
 export const lotOf = (id) => LOTS.find((l) => l.id === id);
-
-// Obstacles (bâtiments, fleuve hors des ponts) et réseau de voirie (deux boulevards, un pont par bande).
-const riverRects = () => {
-  const out = []; let z = -ZEND - 4;
-  for (const s of STREETS) { out.push({ x0: RIVER.x0, x1: RIVER.x1, z0: z, z1: s.z - RH }); z = s.z + RH; }
-  out.push({ x0: RIVER.x0, x1: RIVER.x1, z0: z, z1: ZEND + 4 }); return out;
-};
-const OBST = [...LOTS.filter((l) => l.b.style !== 'vide').map((l) => ({ x0: l.x - l.w / 2, x1: l.x + l.w / 2, z0: l.z - l.d / 2, z1: l.z + l.d / 2 })), ...riverRects()];
-function pushOut(p, R) {
+// Obstacles : les bâtiments seulement (le drone passe au-dessus de tout, mais pas au travers d'un mur).
+const OBST = LOTS.filter((l) => l.b.style !== 'vide').map((l) => ({ x0: l.x - l.w / 2, x1: l.x + l.w / 2, z0: l.z - l.d / 2, z1: l.z + l.d / 2, h: l.h }));
+function pushOut(p, R, alt) {
   let hit = false;
   for (const o of OBST) {
+    if (alt > o.h + 0.5) continue;
     const cx = clamp(p.x, o.x0, o.x1), cz = clamp(p.z, o.z0, o.z1), dx = p.x - cx, dz = p.z - cz, d2 = dx * dx + dz * dz;
     if (d2 >= R * R) continue;
     hit = true;
@@ -272,74 +270,49 @@ function pushOut(p, R) {
   p.x = clamp(p.x, BOUNDS.x0, BOUNDS.x1); p.z = clamp(p.z, BOUNDS.z0, BOUNDS.z1);
   return hit;
 }
-const blocked = (x, z, R) => OBST.some((o) => x > o.x0 - R && x < o.x1 + R && z > o.z0 - R && z < o.z1 + R);
-const ZS = [-ZEND, ...STREETS.map((s) => s.z), ZEND];
-const NODES = []; ZS.forEach((z) => { NODES.push({ x: -BX, z }, { x: BX, z }); });
-const EDGES = [];
-for (let i = 0; i < ZS.length - 1; i++) { EDGES.push([2 * i, 2 * i + 2]); EDGES.push([2 * i + 1, 2 * i + 3]); }
-STREETS.forEach((s, i) => EDGES.push([2 * (i + 1), 2 * (i + 1) + 1]));
-const ADJ = NODES.map(() => []);
-EDGES.forEach(([a, b]) => { const d = hyp(NODES[a], NODES[b]); ADJ[a].push([b, d]); ADJ[b].push([a, d]); });
-for (const l of LOTS) l.edge = EDGES.findIndex(([a, b]) => NODES[a].x === l.sgn * BX && NODES[b].x === l.sgn * BX && Math.min(NODES[a].z, NODES[b].z) <= l.z && Math.max(NODES[a].z, NODES[b].z) >= l.z);
-const project = (p, a, b) => { const dx = b.x - a.x, dz = b.z - a.z, t = clamp(((p.x - a.x) * dx + (p.z - a.z) * dz) / (dx * dx + dz * dz), 0, 1); return { x: a.x + dx * t, z: a.z + dz * t }; };
-const clearPath = (p, q) => { const n = Math.ceil(hyp(p, q) / 0.8); for (let i = 1; i <= n; i++) { const t = i / n; if (blocked(p.x + (q.x - p.x) * t, p.z + (q.z - p.z) * t, CAR_R * 0.9)) return false; } return true; };
-// Itinéraire par la voirie, de la position actuelle jusqu'à la porte du bâtiment.
-export function route(from, lot) {
-  const to = lot.stop; let best = null;
-  EDGES.forEach((e, i) => { const q = project(from, NODES[e[0]], NODES[e[1]]); const d = hyp(from, q); if ((!best || d < best.d) && clearPath(from, q)) best = { i, q, d }; });
-  if (!best) return [to];
-  const pts = best.d > 0.5 ? [best.q] : [];
-  if (best.i === lot.edge) return [...pts, to];
-  const dist = NODES.map(() => Infinity), prev = NODES.map(() => -1), done = NODES.map(() => false);
-  const [a, b] = EDGES[best.i]; dist[a] = hyp(best.q, NODES[a]); dist[b] = hyp(best.q, NODES[b]);
-  for (;;) {
-    let u = -1; for (let k = 0; k < NODES.length; k++) if (!done[k] && dist[k] < Infinity && (u < 0 || dist[k] < dist[u])) u = k;
-    if (u < 0) break; done[u] = true;
-    for (const [v, w] of ADJ[u]) if (dist[u] + w < dist[v]) { dist[v] = dist[u] + w; prev[v] = u; }
-  }
-  const [c, d] = EDGES[lot.edge]; const end = dist[c] + hyp(NODES[c], to) <= dist[d] + hyp(NODES[d], to) ? c : d;
-  const chain = []; for (let u = end; u >= 0; u = prev[u]) chain.unshift(u);
-  return [...pts, ...chain.map((u) => ({ x: NODES[u].x, z: NODES[u].z })), to];
-}
+// Itinéraire du drone : tout droit, au-dessus des toits, jusqu'à la porte du bâtiment.
+export function route(from, lot) { return [{ x: from.x, z: from.z }, lot.stop]; }
 
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const md = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 const cssVar = (name, fb) => { try { return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fb; } catch { return fb; } };
 const bandOf = (z) => STREETS.reduce((a, t) => (Math.abs(t.z - z) < Math.abs(a.z - z) ? t : a));
-const bankName = (x) => (x < RIVER.x0 ? 'Rive EC' : x > RIVER.x1 ? 'Rive CAC' : 'Sur le pont');
+const zoneName = (x, z) => (z < RIVER.zn ? (z < -45 ? 'Esplanade internationale' : 'Esplanade des juridictions') : x < RIVER.x0 ? 'Rive EC' : x > RIVER.x1 ? 'Rive CAC' : 'Au-dessus du fleuve');
 const twinKey = (a, b) => [a, b].sort().join('|');
 
 export const VILLE3D_CSS = `
-.v3 { --st: env(safe-area-inset-top, 0px); --sb: env(safe-area-inset-bottom, 0px); position: relative; height: min(calc(100dvh - 150px), 760px); min-height: 440px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--card); color: var(--text); touch-action: none; user-select: none; -webkit-user-select: none; outline: none; font-size: 14px; }
+.v3 { --st: env(safe-area-inset-top, 0px); --sb: env(safe-area-inset-bottom, 0px); position: relative; height: min(calc(100dvh - 150px), 760px); min-height: 440px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--card); color: var(--text); touch-action: none; user-select: none; -webkit-user-select: none; outline: none; font-size: 14px; overscroll-behavior: none; }
 .v3 [hidden] { display: none !important; }
 .v3.v3-full { position: fixed; inset: 0; height: auto; min-height: 0; z-index: 15; border-radius: 0; border: 0; }
 .v3 .v3-gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .v3-labels { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 1; }
-.v3-lb { position: absolute; left: 0; top: 0; will-change: transform; white-space: nowrap; font: 700 13px/1 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; padding: 5px 8px; border-radius: 8px; background: color-mix(in srgb, var(--card) 94%, transparent); color: var(--text); border: 1.5px solid var(--line); box-shadow: 0 1px 4px rgba(0,0,0,.18); display: flex; gap: 5px; align-items: center; }
+.v3-lb { position: absolute; left: 0; top: 0; will-change: transform; white-space: nowrap; font: 700 13px/1 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; padding: 5px 8px; border-radius: 8px; background: var(--card); color: var(--text); border: 1.5px solid var(--line); box-shadow: 0 1px 4px rgba(0,0,0,.18); display: flex; gap: 5px; align-items: center; }
 .v3-lb svg { width: 14px; height: 14px; flex-shrink: 0; }
 .v3-lb.band { background: var(--bc); color: #fff; border-color: var(--bc); text-transform: uppercase; letter-spacing: .05em; font-size: 11.5px; }
 .v3-lb.small { font-size: 11.5px; padding: 3px 6px; font-weight: 600; }
 .v3-lb.sel { background: var(--text); color: var(--card); border-color: var(--text); }
 .v3-lb i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
-.v3-top { position: absolute; left: max(10px, env(safe-area-inset-left, 0px)); right: max(10px, env(safe-area-inset-right, 0px)); top: calc(8px + var(--st)); display: flex; gap: 6px; align-items: flex-start; z-index: 3; }
-.v3-where { flex: 1; min-width: 0; padding: 6px 10px; min-height: 44px; border-radius: 10px; border: 1px solid var(--line); background: color-mix(in srgb, var(--card) 92%, transparent); font-size: 12.5px; line-height: 1.3; display: flex; flex-direction: column; justify-content: center; }
-.v3-where b { display: block; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.v3-where .v3-sub { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.v3-btn { font: 600 13px/1.1 inherit; min-height: 44px; padding: 6px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.v3-ui { position: absolute; left: max(10px, env(safe-area-inset-left, 0px)); right: max(10px, env(safe-area-inset-right, 0px)); top: calc(8px + var(--st)); z-index: 3; display: flex; flex-direction: column; gap: 6px; max-height: calc(100% - 24px - var(--st)); }
+.v3-top { display: flex; gap: 6px; align-items: stretch; flex-shrink: 0; }
+.v3-where { flex: 1; min-width: 0; padding: 5px 6px 5px 10px; min-height: 44px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); display: flex; gap: 8px; align-items: center; }
+.v3-where > svg { width: 20px; height: 20px; flex-shrink: 0; }
+.v3-where .tx { flex: 1; min-width: 0; line-height: 1.25; }
+.v3-where b { display: block; font-size: 14.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.v3-where .v3-sub { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px; }
+.v3-btn { font: 600 13px/1.1 inherit; min-height: 44px; padding: 6px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; flex-shrink: 0; }
 .v3-btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
 .v3-btn.on { background: var(--text); border-color: var(--text); color: var(--card); }
 .v3-btn.sm { min-height: 36px; padding: 4px 10px; font-size: 12.5px; }
 .v3-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 .v3-quit { min-width: 44px; font-size: 16px; }
-.v3-dock { position: absolute; left: max(10px, env(safe-area-inset-left, 0px)); right: max(10px, env(safe-area-inset-right, 0px)); bottom: calc(10px + var(--sb)); z-index: 2; border-radius: 12px; border: 1px solid var(--line); background: color-mix(in srgb, var(--card) 94%, transparent); display: flex; flex-direction: column; max-height: 42%; }
-.v3.touch .v3-dock { bottom: calc(118px + var(--sb)); max-height: 40%; }
-.v3-line { display: flex; gap: 6px; align-items: center; padding: 6px 8px 6px 10px; min-height: 44px; flex-shrink: 0; }
-.v3-line .t { flex: 1; min-width: 0; font-weight: 800; font-size: 14.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; gap: 6px; align-items: center; }
-.v3-line .t svg { width: 20px; height: 20px; flex-shrink: 0; }
-.v3-line .t small { font-weight: 500; color: var(--muted); font-size: 12px; }
-.v3-tabs { display: flex; gap: 6px; padding: 0 8px 8px; flex-wrap: wrap; flex-shrink: 0; }
-.v3-tabs .v3-btn { flex: 1 1 auto; }
-.v3-drawer { overflow: auto; touch-action: pan-y; overscroll-behavior: contain; padding: 0 12px 10px; line-height: 1.4; border-top: 1px solid var(--line); }
+.v3-row { display: flex; gap: 6px; flex-wrap: wrap; flex-shrink: 0; }
+.v3-row .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--card); }
+.v3-row .seg button { font: 600 12.5px/1 inherit; min-height: 36px; padding: 6px 10px; border: 0; background: transparent; color: var(--text); cursor: pointer; }
+.v3-row .seg button.on { background: var(--text); color: var(--card); }
+.v3-legend { display: flex; flex-wrap: wrap; gap: 3px; font-size: 11px; font-weight: 600; pointer-events: none; flex-shrink: 0; }
+.v3-legend span { display: inline-flex; align-items: center; gap: 5px; padding: 2px 6px; border-radius: 6px; background: color-mix(in srgb, var(--card) 88%, transparent); }
+.v3-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.v3-drawer { overflow: auto; touch-action: pan-y; overscroll-behavior: contain; padding: 4px 12px 10px; line-height: 1.4; border-radius: 12px; border: 1px solid var(--line); background: color-mix(in srgb, var(--card) 96%, transparent); max-height: 46vh; }
 .v3-drawer p { margin: 6px 0; }
 .v3-drawer h5 { margin: 8px 0 4px; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .v3 .ec { color: var(--ec); } .v3 .cac { color: var(--cac); } .v3 .commun { color: var(--muted); }
@@ -353,21 +326,18 @@ export const VILLE3D_CSS = `
 .v3-people .face.hat::before { content: ''; position: absolute; left: 8px; top: 3px; width: 14px; height: 4px; border-radius: 2px; background: #1f2937; z-index: 1; }
 .v3-people .n { font-weight: 800; }
 .v3-people em { font-style: normal; font-weight: 400; color: var(--muted); font-size: 11.5px; display: block; }
-.v3-chips { display: flex; gap: 6px; overflow-x: auto; touch-action: pan-x; padding: 0 8px 8px; scrollbar-width: none; flex-shrink: 0; }
-.v3-chips button { flex-shrink: 0; font: 600 12.5px/1 inherit; min-height: 36px; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; display: inline-flex; gap: 5px; align-items: center; }
-.v3-chips button.here { border-color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary); }
-.v3-chips button svg { width: 14px; height: 14px; }
 .v3-cmp { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
 .v3-cmp th, .v3-cmp td { border: 1px solid var(--line); padding: 5px 6px; vertical-align: top; text-align: left; }
 .v3-cmp th { font-size: 11.5px; } .v3-cmp td:first-child { font-weight: 700; width: 26%; }
-.v3-steps { margin: 6px 0 0; padding-left: 22px; } .v3-steps li { margin: 4px 0; } .v3-steps li.cur { font-weight: 700; }
-.v3-stick { position: absolute; left: max(18px, env(safe-area-inset-left, 0px)); bottom: calc(14px + var(--sb)); width: 104px; height: 104px; border-radius: 50%; border: 2px solid color-mix(in srgb, var(--text) 25%, transparent); background: color-mix(in srgb, var(--card) 45%, transparent); display: none; z-index: 2; }
+.v3-stick { position: absolute; left: max(18px, env(safe-area-inset-left, 0px)); bottom: calc(22px + var(--sb)); width: 104px; height: 104px; border-radius: 50%; border: 2px solid color-mix(in srgb, var(--text) 25%, transparent); background: color-mix(in srgb, var(--card) 45%, transparent); display: none; z-index: 2; }
 .v3-stick i { position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: var(--primary); opacity: .85; }
-.v3-pad { position: absolute; right: 14px; bottom: calc(26px + var(--sb)); display: none; gap: 10px; z-index: 2; }
+.v3-pad { position: absolute; right: 14px; bottom: calc(30px + var(--sb)); display: none; gap: 10px; z-index: 2; align-items: flex-end; }
 .v3-pad .v3-btn { min-height: 58px; min-width: 88px; border-radius: 29px; -webkit-touch-callout: none; }
 .v3.touch.drive .v3-stick, .v3.touch.drive .v3-pad { display: flex; }
+.v3-alt { position: absolute; left: 50%; transform: translateX(-50%); bottom: calc(14px + var(--sb)); z-index: 2; font-size: 11.5px; font-weight: 600; color: var(--muted); pointer-events: none; padding: 3px 8px; border-radius: 999px; background: color-mix(in srgb, var(--card) 80%, transparent); white-space: nowrap; }
+.v3:not(.drive) .v3-alt, .v3.touch .v3-keys { display: none; }
 .v3-keys { position: absolute; left: 10px; bottom: 10px; font-size: 11.5px; color: var(--muted); z-index: 1; pointer-events: none; }
-.v3.touch .v3-keys, .v3:not(.drive) .v3-keys { display: none; }
+.v3:not(.drive) .v3-keys { display: none; }
 .v3-sheet { position: absolute; inset: 8px; z-index: 4; overflow: auto; touch-action: pan-y; overscroll-behavior: contain; border-radius: 12px; border: 1px solid var(--line); background: var(--card); padding: 0 12px 12px; }
 .v3-sheet-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; position: sticky; top: 0; background: var(--card); padding: 10px 0 8px; z-index: 1; flex-wrap: wrap; }
 .v3-sheet h4 { margin: 12px 0 6px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
@@ -380,35 +350,24 @@ export const VILLE3D_CSS = `
 .v3-list button.here { border-color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary); }
 .v3-list button.seen::after { content: '✓'; margin-left: auto; color: var(--ok, #15803d); font-weight: 800; }
 .v3-opt { display: flex; gap: 6px; flex-wrap: wrap; }
-.v3-drone { position: absolute; left: max(10px, env(safe-area-inset-left, 0px)); right: max(10px, env(safe-area-inset-right, 0px)); top: calc(60px + var(--st)); z-index: 2; display: flex; gap: 6px; flex-wrap: wrap; }
-.v3-drone .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--card); }
-.v3-drone .seg button { font: 600 13px/1 inherit; min-height: 40px; padding: 6px 12px; border: 0; background: transparent; color: var(--text); cursor: pointer; }
-.v3-drone .seg button.on { background: var(--text); color: var(--card); }
-.v3-legend { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 3px; font-size: 11px; font-weight: 600; pointer-events: none; }
-.v3-legend span { display: inline-flex; align-items: center; gap: 5px; padding: 2px 6px; border-radius: 6px; background: color-mix(in srgb, var(--card) 85%, transparent); }
-.v3-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
-.v3-step { position: absolute; right: max(10px, env(safe-area-inset-right, 0px)); bottom: calc(10px + var(--sb)); z-index: 2; display: flex; gap: 6px; align-items: center; }
-.v3-step .v3-btn { min-width: 56px; min-height: 56px; border-radius: 28px; font-size: 20px; }
-.v3-step b { font-size: 12.5px; padding: 0 4px; max-width: 120px; text-align: center; }
-.v3-hint { position: absolute; left: 50%; top: calc(64px + var(--st)); transform: translateX(-50%); z-index: 2; padding: 6px 12px; border-radius: 999px; background: color-mix(in srgb, var(--text) 85%, transparent); color: var(--card); font-size: 12.5px; font-weight: 600; pointer-events: none; opacity: 0; transition: opacity .3s; white-space: nowrap; }
-.v3-hint.show { opacity: 1; }
 `;
 
 export function startVille3D(root, THREE, opts = {}) {
   root.classList.add('v3', 'drive'); root.classList.toggle('v3-full', !!opts.full); root.tabIndex = 0;
   const touch = matchMedia('(pointer: coarse)').matches; root.classList.toggle('touch', touch);
   root.innerHTML = `<canvas class="v3-gl"></canvas><div class="v3-labels" id="v3-labels"></div>
-    <div class="v3-top"><div class="v3-where" id="v3-where"></div><button type="button" class="v3-btn primary" data-a="list">Aller à</button><button type="button" class="v3-btn" data-a="opts" aria-label="Options">☰</button>${opts.onQuit ? '<button type="button" class="v3-btn v3-quit" data-a="quit" aria-label="Quitter la visite">✕</button>' : ''}</div>
-    <div class="v3-drone" id="v3-dronebar" hidden></div><div class="v3-step" id="v3-step" hidden></div>
-    <div class="v3-hint" id="v3-hint"></div>
-    <div class="v3-dock" id="v3-dock"><div class="v3-line" id="v3-line"></div><div class="v3-tabs" id="v3-tabs"></div><div class="v3-chips" id="v3-chips"></div><div class="v3-drawer" id="v3-drawer" hidden></div></div>
+    <div class="v3-ui"><div class="v3-top"><div class="v3-where" id="v3-where"></div><button type="button" class="v3-btn" data-a="opts" aria-label="Options">☰</button>${opts.onQuit ? '<button type="button" class="v3-btn v3-quit" data-a="quit" aria-label="Quitter la visite">✕</button>' : ''}</div>
+    <div class="v3-row" id="v3-row"></div><div class="v3-legend" id="v3-legend" hidden></div><div class="v3-drawer" id="v3-drawer" hidden></div></div>
+    <div class="v3-alt" id="v3-alt"></div>
     <div class="v3-stick" id="v3-stick"><i></i></div>
     <div class="v3-pad"><button type="button" class="v3-btn" id="v3-turbo" aria-label="Turbo (maintenir)">Turbo</button></div>
-    <div class="v3-keys">Flèches : conduire (↓ recul) · Maj : turbo · glisser : caméra · Entrée : entrer · L : aller à · D : drone</div>
+    <div class="v3-keys">Flèches : voler · Maj : turbo · glisser : hauteur et caméra · Entrée : entrer · L : aller à · M : vue métier</div>
     <div class="v3-sheet" id="v3-sheet" hidden></div>`;
   const $ = (s) => root.querySelector(s);
   if (!document.getElementById('v3-compo-css')) { const st = document.createElement('style'); st.id = 'v3-compo-css'; st.textContent = COMPO_CSS; document.head.appendChild(st); }
-  const canvas = $('.v3-gl'), whereEl = $('#v3-where'), lineEl = $('#v3-line'), tabsEl = $('#v3-tabs'), chipsEl = $('#v3-chips'), drawer = $('#v3-drawer'), sheet = $('#v3-sheet'), turboBtn = $('#v3-turbo'), labelLayer = $('#v3-labels'), droneBar = $('#v3-dronebar'), stepEl = $('#v3-step'), hintEl = $('#v3-hint');
+  const canvas = $('.v3-gl'), whereEl = $('#v3-where'), rowEl = $('#v3-row'), legendEl = $('#v3-legend'), drawer = $('#v3-drawer'), sheet = $('#v3-sheet'), turboBtn = $('#v3-turbo'), labelLayer = $('#v3-labels'), altEl = $('#v3-alt');
+  // Pas de « tirer pour recharger » ni de défilement de la page derrière la visite : seuls les tiroirs défilent.
+  root.addEventListener('touchmove', (e) => { if (!e.target.closest('.v3-drawer, .v3-sheet')) e.preventDefault(); }, { passive: false });
 
   const col = { ec: cssVar('--ec', '#0e7490'), cac: cssVar('--cac', '#7c3aed'), commun: cssVar('--muted', '#64748b'), card: cssVar('--card', '#ffffff'), text: cssVar('--text', '#0f172a'), line: cssVar('--line', '#e2e8f0'), primary: cssVar('--primary', '#1e40af') };
   const th = document.documentElement.dataset.theme;
@@ -417,17 +376,17 @@ export function startVille3D(root, THREE, opts = {}) {
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = dark ? 1.05 : 1.15;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = dark ? 1 : 1.05;
   renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  const camera = new THREE.PerspectiveCamera(56, 1, 0.5, 420);
+  const camera = new THREE.PerspectiveCamera(56, 1, 0.5, 520);
   const ortho = new THREE.OrthographicCamera(-1, 1, 1, -1, 1, 300); ortho.up.set(0, 0, -1);
   let W = 1, H = 1;
   const resize = () => { W = root.clientWidth || 1; H = root.clientHeight || 1; renderer.setSize(W, H, false); camera.aspect = W / H; camera.updateProjectionMatrix(); setOrtho(); };
-  // Décale l'image pour que le centre de la vue tombe au milieu de la zone dégagée, entre la barre du haut et le dock.
+  // Décale l'image pour que le centre de la vue tombe au milieu de la zone dégagée, sous les encarts du haut.
   const reframe = () => {
-    const rr0 = root.getBoundingClientRect(), top = ($('.v3-top')?.getBoundingClientRect().bottom ?? rr0.top) - rr0.top;
-    const dockEl = $('#v3-dock'), dockTop = dockEl && dockEl.offsetHeight ? dockEl.getBoundingClientRect().top - rr0.top : H;
-    const dy = clamp(H / 2 - (top + dockTop) / 2, 0, H * 0.3);
+    const rr0 = root.getBoundingClientRect(), ui = $('.v3-ui'), top = ui ? ui.getBoundingClientRect().bottom - rr0.top : 0;
+    const bottom = touch && S.mode === 'drive' ? H - 130 : H;
+    const dy = clamp(H / 2 - (top + bottom) / 2, -H * 0.3, H * 0.3);
     camera.setViewOffset(W, H, 0, dy, W, H); camera.updateProjectionMatrix();
   };
   const ro = new ResizeObserver(() => { resize(); reframe(); }); ro.observe(root);
@@ -446,7 +405,6 @@ export function startVille3D(root, THREE, opts = {}) {
   const box = (sc, w, h, d, x, y, z, mat) => { const m = new THREE.Mesh(BOX, mat); m.scale.set(w, h, d); m.position.set(x, y, z); sc.add(m); return m; };
   const texPlane = (sc, w, d, tex, x, z, rotZ = 0, order = 1) => { const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(w, d)), keep(new THREE.MeshLambertMaterial({ map: tex, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -6, polygonOffsetUnits: -6 }))); m.rotation.x = -Math.PI / 2; m.rotation.z = rotZ; m.position.set(x, 0.06, z); m.renderOrder = order; sc.add(m); return m; };
   const FONT = '-apple-system, "Segoe UI", Roboto, Arial, sans-serif';
-  // Texte peint au sol (nom d'un bâtiment sur son parvis, nom d'une bande sur le boulevard).
   const textTex = (txt, fs, color, icon, iconColor) => {
     const c = document.createElement('canvas'), x = c.getContext('2d'); x.font = `800 ${fs}px ${FONT}`; const tw = x.measureText(txt).width, iw = icon ? fs * 1.3 : 0;
     c.width = Math.ceil(tw + fs * 0.6 + iw); c.height = Math.round(fs * 1.45);
@@ -484,29 +442,28 @@ export function startVille3D(root, THREE, opts = {}) {
 
   // ---------- La ville
   const city = new THREE.Scene();
-  const horizon = dark ? '#1e293b' : '#e6eef7';
-  city.background = new THREE.Color(horizon); city.fog = new THREE.Fog(horizon, 90, 280);
+  const horizon = dark ? '#1e293b' : '#cfe0f3';
+  city.background = new THREE.Color(horizon); city.fog = new THREE.Fog(horizon, 170, 520);
   {
     const c = document.createElement('canvas'); c.width = 4; c.height = 256; const x = c.getContext('2d'), gr = x.createLinearGradient(0, 0, 0, 256);
-    gr.addColorStop(0, dark ? '#020617' : '#5b8fd6'); gr.addColorStop(0.55, dark ? '#0f1b33' : '#a9c7ec'); gr.addColorStop(1, horizon); x.fillStyle = gr; x.fillRect(0, 0, 4, 256);
-    const sky = new THREE.Mesh(keep(new THREE.SphereGeometry(380, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2)), keep(new THREE.MeshBasicMaterial({ map: canvasTex(c), side: THREE.BackSide, fog: false, depthWrite: false })));
+    gr.addColorStop(0, dark ? '#020617' : '#3b78c9'); gr.addColorStop(0.5, dark ? '#0f1b33' : '#8db6e6'); gr.addColorStop(1, horizon); x.fillStyle = gr; x.fillRect(0, 0, 4, 256);
+    const sky = new THREE.Mesh(keep(new THREE.SphereGeometry(480, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2)), keep(new THREE.MeshBasicMaterial({ map: canvasTex(c), side: THREE.BackSide, fog: false, depthWrite: false })));
     sky.renderOrder = -1; city.add(sky);
     const cc = document.createElement('canvas'); cc.width = 128; cc.height = 64; const cx = cc.getContext('2d');
     for (let i = 0; i < 9; i++) { const g2 = cx.createRadialGradient(20 + i * 11, 34 + (i % 3) * 4, 2, 20 + i * 11, 34 + (i % 3) * 4, 22); g2.addColorStop(0, 'rgba(255,255,255,.85)'); g2.addColorStop(1, 'rgba(255,255,255,0)'); cx.fillStyle = g2; cx.fillRect(0, 0, 128, 64); }
     const cm = keep(new THREE.SpriteMaterial({ map: canvasTex(cc), transparent: true, depthWrite: false, fog: false, opacity: dark ? 0.15 : 0.8 }));
-    for (let i = 0; i < 9; i++) { const a = (i / 9) * Math.PI * 2 + 0.3, r = 230 + (i % 3) * 40, cl = new THREE.Sprite(cm); cl.scale.set(90 + (i % 4) * 25, 40, 1); cl.position.set(Math.cos(a) * r, 70 + (i % 4) * 18, Math.sin(a) * r); cl.renderOrder = -1; city.add(cl); }
+    for (let i = 0; i < 9; i++) { const a = (i / 9) * Math.PI * 2 + 0.3, r = 260 + (i % 3) * 40, cl = new THREE.Sprite(cm); cl.scale.set(90 + (i % 4) * 25, 40, 1); cl.position.set(Math.cos(a) * r, 80 + (i % 4) * 18, Math.sin(a) * r); cl.renderOrder = -1; city.add(cl); }
   }
   city.add(new THREE.HemisphereLight(0xffffff, 0x7a8698, dark ? 1 : 1.15));
   const sun = new THREE.DirectionalLight(dark ? 0xc7d2fe : 0xfff1d6, dark ? 0.6 : 1.25); sun.position.set(45, 70, 35); city.add(sun, sun.target);
   sun.castShadow = true; sun.shadow.mapSize.set(1024, 1024); sun.shadow.bias = -0.0008; sun.shadow.normalBias = 0.02;
   Object.assign(sun.shadow.camera, { left: -45, right: 45, top: 85, bottom: -85, near: 10, far: 220 }); sun.shadow.camera.updateProjectionMatrix();
   const C = dark
-    ? { ground: '#1a2333', ecz: '#103a43', cacz: '#291f47', river: '#1e3d73', road: '#3a4354', walk: '#2b3445', quay: '#26303f' }
-    : { ground: '#d5dde7', ecz: '#c9e6eb', cacz: '#e3daf6', river: '#8fb6e8', road: '#8f98a6', walk: '#e7ecf2', quay: '#dfe6ee' };
+    ? { ground: '#1a2333', ecz: '#103a43', cacz: '#291f47', north: '#262a33', intl: '#232c3d', river: '#1e3d73', road: '#3a4354', walk: '#2b3445', quay: '#26303f' }
+    : { ground: '#d5dde7', ecz: '#c9e6eb', cacz: '#e3daf6', north: '#e6dcc8', intl: '#d6dcea', river: '#7fb0e8', road: '#8f98a6', walk: '#e7ecf2', quay: '#dfe6ee' };
   const GX = TERRAIN.x, GZ = TERRAIN.z;
-  { const m = plane(GX * 2, GZ * 2, C.ground, 0); city.add(m); }
-  // Campagne : prairie, collines, bosquets.
-  { const g = new THREE.Mesh(keep(new THREE.PlaneGeometry(900, 900)), lam(dark ? '#14281c' : '#9fc58f', { polygonOffset: true, polygonOffsetFactor: 2, polygonOffsetUnits: 2 })); g.rotation.x = -Math.PI / 2; g.position.y = -0.05; g.receiveShadow = true; city.add(g);
+  city.add(plane(GX * 2, GZ * 2, C.ground, 0));
+  { const g = new THREE.Mesh(keep(new THREE.PlaneGeometry(1000, 1000)), lam(dark ? '#14281c' : '#9fc58f', { polygonOffset: true, polygonOffsetFactor: 2, polygonOffsetUnits: 2 })); g.rotation.x = -Math.PI / 2; g.position.y = -0.05; g.receiveShadow = true; city.add(g);
     let sd = 3; const r2 = () => ((sd = (sd * 16807) % 2147483647) / 2147483647);
     const hills = new THREE.InstancedMesh(keep(new THREE.SphereGeometry(1, 14, 8, 0, Math.PI * 2, 0, Math.PI / 2)), lam(dark ? '#1c3326' : '#86b07a'), 22);
     const M = new THREE.Matrix4(), Q = new THREE.Quaternion(), V = new THREE.Vector3(), Sc = new THREE.Vector3();
@@ -515,14 +472,15 @@ export function startVille3D(root, THREE, opts = {}) {
     const grove = []; for (let i = 0; i < 70; i++) { const a = r2() * Math.PI * 2, r = 60 + r2() * 70; grove.push([Math.cos(a) * r * 0.9, Math.sin(a) * r * 1.4, 1 + r2() * 1.2]); }
     const gc = new THREE.InstancedMesh(keep(new THREE.ConeGeometry(1.6, 4.5, 7)), lam(dark ? '#14532d' : '#4f8a4a'), grove.length);
     grove.forEach(([x, z, k], i) => { if (Math.abs(x) < GX + 3 && Math.abs(z) < GZ + 3) { x = Math.sign(x || 1) * (GX + 6 + r2() * 30); } M.compose(V.set(x, 2.2 * k, z), Q, Sc.set(k, k, k)); gc.setMatrixAt(i, M); }); city.add(gc); }
-  // Pavages : carreaux (rive EC), briques (rive CAC), dalles sur les quais.
+  // Pavages : carreaux (rive EC), briques (rive CAC), dalles (esplanade des juridictions), losanges (international).
   const paving = (kind, base) => {
     const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d');
     x.fillStyle = base; x.fillRect(0, 0, 128, 128); x.strokeStyle = dark ? 'rgba(255,255,255,.08)' : 'rgba(15,23,42,.10)'; x.lineWidth = 3;
     x.beginPath();
     if (kind === 'ec') { for (let i = 0; i <= 128; i += 32) { x.moveTo(i, 0); x.lineTo(i, 128); x.moveTo(0, i); x.lineTo(128, i); } }
     else if (kind === 'cac') { for (let r = 0; r < 8; r++) { const y = r * 16; x.moveTo(0, y); x.lineTo(128, y); for (let i = (r % 2) * 16; i <= 128; i += 32) { x.moveTo(i, y); x.lineTo(i, y + 16); } } }
-    else { for (let i = 0; i <= 128; i += 64) { x.moveTo(i, 0); x.lineTo(i, 128); x.moveTo(0, i); x.lineTo(128, i); } }
+    else if (kind === 'intl') { for (let i = -128; i <= 128; i += 32) { x.moveTo(i, 0); x.lineTo(i + 128, 128); x.moveTo(i + 128, 0); x.lineTo(i, 128); } }
+    else { for (let i = 0; i <= 128; i += 64) { x.moveTo(i, 0); x.lineTo(i, 128); x.moveTo(0, i); x.lineTo(128, i); } x.moveTo(32, 64); x.lineTo(32, 128); x.moveTo(96, 0); x.lineTo(96, 64); }
     x.stroke(); grain(x, 128, 128, 700, 0.07);
     const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; return t;
   };
@@ -531,36 +489,41 @@ export function startVille3D(root, THREE, opts = {}) {
     const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(x1 - x0, z1 - z0)), keep(new THREE.MeshLambertMaterial({ map: t, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 })));
     m.rotation.x = -Math.PI / 2; m.position.set((x0 + x1) / 2, y, (z0 + z1) / 2); m.receiveShadow = true; city.add(m);
   };
-  pzone(-GX, RIVER.x0, -GZ, GZ, 'ec', C.ecz); pzone(RIVER.x1, GX, -GZ, GZ, 'cac', C.cacz);
-  pzone(RIVER.x0 - 3, RIVER.x0, -GZ, GZ, 'quay', C.quay, 0.012); pzone(RIVER.x1, RIVER.x1 + 3, -GZ, GZ, 'quay', C.quay, 0.012);
-  // Bandes : liseré de la couleur du niveau en travers des deux rives, à la limite sud de chaque bande.
-  for (const st of STREETS) { const m = lam(st.c); box(city, GX * 2, 0.04, 0.5, 0, 0.04, st.z + BAND / 2, m); }
+  pzone(-GX, RIVER.x0, RIVER.zn, GZ, 'ec', C.ecz); pzone(RIVER.x1, GX, RIVER.zn, GZ, 'cac', C.cacz);
+  pzone(-GX, GX, -45, RIVER.zn, 'justice', C.north); pzone(-GX, GX, -GZ, -45, 'intl', C.intl);
+  pzone(RIVER.x0 - 3, RIVER.x0, RIVER.zn, GZ, 'quay', C.quay, 0.012); pzone(RIVER.x1, RIVER.x1 + 3, RIVER.zn, GZ, 'quay', C.quay, 0.012);
+  for (const st of STREETS) box(city, GX * 2, 0.04, 0.5, 0, 0.04, st.z + BAND / 2, lam(st.c));
   const riverTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'); x.fillStyle = C.river; x.fillRect(0, 0, 128, 128);
     x.strokeStyle = 'rgba(255,255,255,.35)'; x.lineWidth = 2; for (let y = 8; y < 128; y += 16) { x.beginPath(); for (let i = 0; i <= 128; i += 8) x.lineTo(i, y + Math.sin((i + y) / 10) * 3); x.stroke(); }
-    const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(1, GZ / 4); return t; })();
-  { const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(RIVER.x1 - RIVER.x0, GZ * 2 + 200)), keep(new THREE.MeshLambertMaterial({ map: riverTex, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }))); m.rotation.x = -Math.PI / 2; m.position.set(0, 0.015, 0); m.receiveShadow = true; city.add(m); }
+    const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(1, 30); return t; })();
+  { const len = GZ + 120 - RIVER.zn, m = new THREE.Mesh(keep(new THREE.PlaneGeometry(RIVER.x1 - RIVER.x0, len)), keep(new THREE.MeshLambertMaterial({ map: riverTex, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }))); m.rotation.x = -Math.PI / 2; m.position.set(0, 0.015, RIVER.zn + len / 2); m.receiveShadow = true; city.add(m);
+    // Bassin au bout du fleuve, sur l'esplanade.
+    const pond = new THREE.Mesh(keep(new THREE.CircleGeometry(4.5, 28)), lam(C.river, { polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 })); pond.rotation.x = -Math.PI / 2; pond.position.set(0, 0.02, RIVER.zn - 0.5); city.add(pond); }
   const asphalt = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'); x.fillStyle = C.road; x.fillRect(0, 0, 128, 128); grain(x, 128, 128, 1600, 0.12);
     const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; return t; })();
   const road = (x0, x1, z0, z1, y = 0.03) => { const t = keep(asphalt.clone()); t.needsUpdate = true; t.repeat.set((x1 - x0) / 6, (z1 - z0) / 6);
     const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(x1 - x0, z1 - z0)), keep(new THREE.MeshLambertMaterial({ map: t, polygonOffset: true, polygonOffsetFactor: -3, polygonOffsetUnits: -3 }))); m.rotation.x = -Math.PI / 2; m.position.set((x0 + x1) / 2, y, (z0 + z1) / 2); m.receiveShadow = true; city.add(m); };
-  for (const s of [-1, 1]) road(s * BX - RH, s * BX + RH, -ZEND - RH, ZEND + RH);
+  for (const s of [-1, 1]) road(s * BX - RH, s * BX + RH, RIVER.zn, ZEND + RH);
   const dash = lam(dark ? '#cbd5e1' : '#ffffff');
-  for (const s of [-1, 1]) for (let z = -ZEND; z < ZEND; z += 4) box(city, 0.18, 0.02, 1.6, s * BX, 0.05, z, dash);
-  // Ponts : chaussée surélevée, parapets, nom de la bande peint sur les deux boulevards à l'entrée sud de la bande.
+  for (const s of [-1, 1]) for (let z = RIVER.zn + 2; z < ZEND; z += 4) box(city, 0.18, 0.02, 1.6, s * BX, 0.05, z, dash);
   const par = lam(dark ? '#94a3b8' : '#475569');
-  for (const st of STREETS) {
+  const southBands = STREETS.filter((st) => st.z > RIVER.zn);
+  for (const st of southBands) {
     road(-BX, BX, st.z - RH, st.z + RH, 0.05); box(city, 2 * BX - 1, 0.6, 0.3, 0, 0.3, st.z - RH, par); box(city, 2 * BX - 1, 0.6, 0.3, 0, 0.3, st.z + RH, par);
     for (const s of [-1, 1]) { const { t, ratio } = textTex(st.nom.toUpperCase(), 64, '#ffffff'); const wpl = 2 * RH - 0.6, hpl = wpl * ratio; texPlane(city, wpl, hpl, t, s * BX, st.z + BAND / 2 - 1.6 - hpl / 2, Math.PI / 2 * (s < 0 ? 1 : -1)); }
   }
-  // Panneaux d'entrée au sud : « Rive EC · l'Ordre », « Rive CAC · l'audit ».
+  // Esplanades du nord : allée centrale et nom de la bande peint en travers, à l'entrée sud de chaque bande.
+  for (const st of STREETS.filter((s) => s.z < RIVER.zn)) {
+    road(-2, 2, st.z - BAND / 2, st.z + BAND / 2, 0.03);
+    const { t, ratio } = textTex(st.nom.toUpperCase(), 64, '#ffffff'); const wpl = 22, hpl = wpl * ratio; texPlane(city, wpl, hpl, t, 0, st.z + BAND / 2 - 0.6 - hpl / 2, 0);
+  }
   for (const [s, kind, txt] of [[-1, 'ec', 'RIVE EC · L’ORDRE'], [1, 'cac', 'RIVE CAC · L’AUDIT']]) {
     const m = lam(col[kind]); box(city, 0.5, 4.2, 0.5, s * BX - RH - 0.3, 2.1, ZEND + 3, m); box(city, 0.5, 4.2, 0.5, s * BX + RH + 0.3, 2.1, ZEND + 3, m); box(city, 2 * RH + 1.6, 0.6, 0.6, s * BX, 4.4, ZEND + 3, m);
-    mkLabel(`${svgIcon(kind === 'ec' ? 'cnoec' : 'cncc')} ${txt}`, `band`, new THREE.Vector3(s * BX, 5.2, ZEND + 3), { far: 70, len: txt.length, prio: 2 }).el.style.setProperty('--bc', col[kind]);
+    mkLabel(`${svgIcon(kind === 'ec' ? 'cnoec' : 'cncc')} ${txt}`, 'band', new THREE.Vector3(s * BX, 5.2, ZEND + 3), { far: 80, len: txt.length, prio: 2 }).el.style.setProperty('--bc', col[kind]);
   }
-  // Étiquettes des bandes : une par pont, en HTML, de la couleur du niveau.
-  const bandLabels = STREETS.map((st) => { const it = mkLabel(esc(st.nom), 'band', new THREE.Vector3(0, 2.2, st.z), { far: 75, len: st.nom.length, prio: 1, st }); it.el.style.setProperty('--bc', st.c); return it; });
+  const bandLabels = STREETS.map((st) => { const it = mkLabel(esc(st.nom), 'band', new THREE.Vector3(0, 2.2, st.z + BAND / 2 - 1), { far: 90, len: st.nom.length, prio: 1, st }); it.el.style.setProperty('--bc', st.c); return it; });
 
-  // Bâtiments : façade vers le boulevard (côté fleuve), symbole, porte, nom peint sur le parvis.
+  // Bâtiments : façade vers le boulevard (rives) ou vers le sud (esplanades), symbole, porte, nom peint sur le parvis.
   const wallPattern = (x, Wd, Ht, quartier) => {
     x.strokeStyle = 'rgba(0,0,0,.16)'; x.lineWidth = 1; x.beginPath();
     if (quartier === 'ec') for (let y = 0, r = 0; y < Ht; y += 6, r++) { x.moveTo(0, y); x.lineTo(Wd, y); for (let i = (r % 2) * 6; i < Wd; i += 12) { x.moveTo(i, y); x.lineTo(i, y + 6); } }
@@ -584,7 +547,7 @@ export function startVille3D(root, THREE, opts = {}) {
   const gravel = (() => { const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d'); x.fillStyle = dark ? '#334155' : '#e2e8f0'; x.fillRect(0, 0, 64, 64); grain(x, 64, 64, 900, 0.14);
     const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(2, 2); return t; })();
   const roofMat = keep(new THREE.MeshLambertMaterial({ map: gravel }));
-  const facade = (lot, fw = lot.d, fh = lot.h) => {
+  const facade = (lot, fw, fh) => {
     const c = document.createElement('canvas'), Wd = 256, Ht = clamp(Math.round(256 * fh / fw), 140, 360); c.width = Wd; c.height = Ht; const x = c.getContext('2d');
     x.fillStyle = col[lot.b.rive]; x.fillRect(0, 0, Wd, Ht); wallPattern(x, Wd, Ht, lot.quartier); x.fillStyle = lot.quartier === 'cac' ? 'rgba(220,230,255,.4)' : 'rgba(255,255,255,.26)';
     for (let yy = 14; yy < Ht - 70; yy += 30) for (let xx = 16; xx < Wd - 16; xx += 32) x.fillRect(xx, yy, 14, 18);
@@ -597,87 +560,103 @@ export function startVille3D(root, THREE, opts = {}) {
   const DOME = keep(new THREE.SphereGeometry(1, 18, 10, 0, Math.PI * 2, 0, Math.PI / 2)), COL = keep(new THREE.CylinderGeometry(0.17, 0.2, 1, 8));
   const FLAGS = ['#dc2626', '#f59e0b', '#16a34a', '#2563eb', '#7c3aed', '#0891b2'];
   let flagI = 0;
-  // Silhouettes : dôme et drapeau (international), toit à deux pans (rive EC), couronne de verre (rive CAC), colonnade (justice).
+  // Index de la face du cube qui porte la façade : [+x, -x, +y, -y, +z, -z].
+  const frontIndex = (lot) => (lot.nx > 0 ? 0 : lot.nx < 0 ? 1 : lot.nz > 0 ? 4 : 5);
+  const facadeLen = (lot) => (lot.axis === 'x' ? lot.d : lot.w);
+  // Point sur la ligne de façade (k le long, t vers l'extérieur).
+  const onFace = (lot, k, t) => (lot.axis === 'x' ? { x: lot.faceX + lot.nx * t, z: lot.z + k } : { x: lot.x + k, z: lot.faceZ + lot.nz * t });
   function archi(lot) {
-    const { x, z, w, d, h, sgn, faceX } = lot, top = h + 0.25;
+    const { x, z, w, d, h } = lot, top = h + 0.25, L = facadeLen(lot);
     if (lot.quartier === 'intl') {
       const r = Math.min(w, d) * 0.34, dome = new THREE.Mesh(DOME, lam(dark ? '#cbd5e1' : '#e2e8f0')); dome.scale.set(r, r * 0.9, r); dome.position.set(x, top, z); city.add(dome);
-      box(city, 0.08, 2.2, 0.08, x, top + 1.1, z + d / 2 - 0.6, lam('#94a3b8'));
-      box(city, 0.05, 0.6, 1, x, top + 1.9, z + d / 2 - 0.1, lam(FLAGS[flagI++ % FLAGS.length]));
+      const f = onFace(lot, L / 2 - 0.6, -0.8);
+      box(city, 0.08, 2.2, 0.08, f.x, top + 1.1, f.z, lam('#94a3b8')); box(city, 0.05, 0.6, 1, f.x, top + 1.9, f.z + 0.5, lam(FLAGS[flagI++ % FLAGS.length]));
     } else if (lot.quartier === 'ec') {
-      const roof = new THREE.Mesh(PRISM, keep(new THREE.MeshLambertMaterial({ map: roofTex }))); roof.scale.set(w + 0.5, Math.min(2.2, w * 0.45), d + 0.5); roof.position.set(x, top, z); city.add(roof);
-      box(city, 0.6, 1, 0.6, x, top + 0.9, z - d * 0.3, lam('#7c5a3a'));
+      const roof = new THREE.Mesh(PRISM, keep(new THREE.MeshLambertMaterial({ map: roofTex }))); if (lot.axis === 'z') { roof.rotation.y = Math.PI / 2; roof.scale.set(d + 0.5, Math.min(2.2, d * 0.45), w + 0.5); } else roof.scale.set(w + 0.5, Math.min(2.2, w * 0.45), d + 0.5);
+      roof.position.set(x, top, z); city.add(roof);
+      box(city, 0.6, 1, 0.6, x - w * 0.3, top + 0.9, z - d * 0.3, lam('#7c5a3a'));
     } else if (lot.quartier === 'cac') {
       const glass = lam(dark ? '#a5b4fc' : '#c4b5fd', { transparent: true, opacity: 0.85 });
       box(city, w * 0.62, h * 0.28, d * 0.62, x, top + h * 0.14, z, glass);
       box(city, 0.06, 1.6, 0.06, x, top + h * 0.28 + 0.8, z, lam('#94a3b8'));
     } else {
-      const stone = lam(dark ? '#e7e5e4' : '#f5f0e6'), fx = faceX - sgn * 0.35;
-      for (const k of [-0.4, -0.2, 0.2, 0.4]) { const c = new THREE.Mesh(COL, stone); c.scale.set(1, h, 1); c.position.set(fx, h / 2, z + k * d); city.add(c); }
-      box(city, 0.9, 0.35, d + 0.4, faceX - sgn * 0.3, h + 0.05, z, stone);
-      const ped = new THREE.Mesh(PRISM, stone); ped.rotation.y = Math.PI / 2; ped.scale.set(d + 0.4, 1.3, 0.5); ped.position.set(faceX - sgn * 0.45, h + 0.22, z); city.add(ped);
-      box(city, 0.6, 0.12, d + 0.6, faceX - sgn * 0.3, 0.06, z, stone);
+      const stone = lam(dark ? '#e7e5e4' : '#f5f0e6');
+      for (const k of [-0.4, -0.2, 0.2, 0.4]) { const f = onFace(lot, k * L, 0.35), c = new THREE.Mesh(COL, stone); c.scale.set(1, h, 1); c.position.set(f.x, h / 2, f.z); city.add(c); }
+      const f = onFace(lot, 0, 0.3), ped = new THREE.Mesh(PRISM, stone);
+      if (lot.axis === 'x') { box(city, 0.9, 0.35, L + 0.4, f.x, h + 0.05, f.z, stone); ped.rotation.y = Math.PI / 2; ped.scale.set(L + 0.4, 1.3, 0.5); box(city, 0.6, 0.12, L + 0.6, f.x, 0.06, f.z, stone); }
+      else { box(city, L + 0.4, 0.35, 0.9, f.x, h + 0.05, f.z, stone); ped.scale.set(L + 0.4, 1.3, 0.5); box(city, L + 0.6, 0.12, 0.6, f.x, 0.06, f.z, stone); }
+      ped.position.set(f.x, h + 0.22, f.z); city.add(ped);
     }
   }
   const pick = [], blabels = [];
   for (const lot of LOTS) {
     const { b } = lot;
-    const plot = plane(lot.w + 1.2 + PARVIS, lot.d + 1.1, C.walk, 0.02); plot.position.set(lot.x - lot.sgn * PARVIS / 2, 0.02, lot.z); city.add(plot);
+    const plot = plane(lot.w + 1.1 + Math.abs(lot.nx) * PARVIS, lot.d + 1.1 + Math.abs(lot.nz) * PARVIS, C.walk, 0.02); plot.position.set(lot.x + lot.nx * PARVIS / 2, 0.02, lot.z + lot.nz * PARVIS / 2); city.add(plot);
+    const fi = frontIndex(lot), door = onFace(lot, 0, -0.11), rotY = lot.axis === 'x' ? 0 : Math.PI / 2;
     if (b.style === 'vide') {
       const pts = [[-1, -1], [1, -1], [1, 1], [-1, 1], [-1, -1]].map(([a, c]) => new THREE.Vector3(lot.x + a * lot.w / 2, 0.1, lot.z + c * lot.d / 2));
       const line = new THREE.Line(keep(new THREE.BufferGeometry().setFromPoints(pts)), keep(new THREE.LineDashedMaterial({ color: col[b.rive], dashSize: 1, gapSize: 0.6 }))); line.computeLineDistances(); city.add(line);
-      const post = box(city, 0.25, 2.2, 0.25, lot.faceX - lot.sgn * 0.4, 1.1, lot.z, lam('#64748b')); post.userData.id = lot.id; pick.push(post);
-      const ft = new THREE.MeshLambertMaterial({ map: facade(lot, 3.5, 3) });
-      const board = new THREE.Mesh(BOX, [lot.sgn < 0 ? ft : lam('#fff'), lot.sgn < 0 ? lam('#fff') : ft, lam('#fff'), lam('#fff'), lam('#fff'), lam('#fff')]);
-      board.scale.set(0.2, 2.4, 3.5); board.position.set(lot.faceX - lot.sgn * 0.4, 2.6, lot.z); board.userData.id = lot.id; city.add(board); pick.push(board);
+      const pf = onFace(lot, 0, -0.4), post = box(city, 0.25, 2.2, 0.25, pf.x, 1.1, pf.z, lam('#64748b')); post.userData.id = lot.id; pick.push(post);
+      const mats = Array.from({ length: 6 }, () => lam('#fff')); mats[fi] = new THREE.MeshLambertMaterial({ map: facade(lot, 3.5, 3) });
+      const board = new THREE.Mesh(BOX, mats); board.scale.set(lot.axis === 'x' ? 0.2 : 3.5, 2.4, lot.axis === 'x' ? 3.5 : 0.2); board.position.set(pf.x, 2.6, pf.z); board.userData.id = lot.id; city.add(board); pick.push(board);
     } else {
       const st = sideTexOf(b.rive, lot.quartier).clone(); st.repeat.set(Math.max(1, lot.w / 2.6), Math.max(1, lot.h / 2.6)); st.needsUpdate = true; keep(st);
-      const side = keep(new THREE.MeshLambertMaterial({ map: st })), front = keep(new THREE.MeshLambertMaterial({ map: facade(lot) }));
-      const m = new THREE.Mesh(BOX, [lot.sgn < 0 ? front : side, lot.sgn < 0 ? side : front, roofMat, roofMat, side, side]);
+      const side = keep(new THREE.MeshLambertMaterial({ map: st })), front = keep(new THREE.MeshLambertMaterial({ map: facade(lot, facadeLen(lot), lot.h) }));
+      const mats = [side, side, roofMat, roofMat, side, side]; mats[fi] = front;
+      const m = new THREE.Mesh(BOX, mats);
       m.scale.set(lot.w, lot.h, lot.d); m.position.set(lot.x, lot.h / 2, lot.z); m.userData.id = lot.id; m.castShadow = true; m.receiveShadow = true; city.add(m); pick.push(m);
       box(city, lot.w + 0.3, 0.25, lot.d + 0.3, lot.x, lot.h + 0.12, lot.z, lam(col[b.rive]));
       archi(lot);
-      box(city, 0.2, 2, 1.6, lot.faceX - lot.sgn * 0.11, 1, lot.z, lam(dark ? '#e2e8f0' : '#1e293b'));
+      const dm = box(city, 0.2, 2, 1.6, door.x, 1, door.z, lam(dark ? '#e2e8f0' : '#1e293b')); dm.rotation.y = rotY;
     }
-    // Nom peint sur le parvis, lisible depuis le boulevard (le haut des lettres vers la façade).
-    { const { t, ratio } = textTex(b.court.toUpperCase(), 64, 'rgba(255,255,255,.95)', SYMBOLES[lot.id][0], '#ffffff'); let wpl = lot.d + 0.4, hpl = wpl * ratio; if (hpl > PARVIS - 0.3) { wpl *= (PARVIS - 0.3) / hpl; hpl = PARVIS - 0.3; }
-      texPlane(city, wpl, hpl, t, lot.faceX - lot.sgn * PARVIS / 2, lot.z, lot.sgn < 0 ? Math.PI / 2 : -Math.PI / 2); }
-    const lb = mkLabel(`<span class="${b.rive}">${svgIcon(lot.id)}</span>${esc(b.court)}`, '', new THREE.Vector3(lot.x, Math.max(lot.h, 2.6) + 1.3, lot.z), { far: 62, len: b.court.length + 2, lot }); blabels.push(lb);
+    { const { t, ratio } = textTex(b.court.toUpperCase(), 64, 'rgba(255,255,255,.95)', SYMBOLES[lot.id][0], '#ffffff'); let wpl = facadeLen(lot) + 0.4, hpl = wpl * ratio; if (hpl > PARVIS - 0.3) { wpl *= (PARVIS - 0.3) / hpl; hpl = PARVIS - 0.3; }
+      const pp = onFace(lot, 0, PARVIS / 2); texPlane(city, wpl, hpl, t, pp.x, pp.z, lot.nx > 0 ? Math.PI / 2 : lot.nx < 0 ? -Math.PI / 2 : 0); }
+    const lb = mkLabel(`<span class="${b.rive}">${svgIcon(lot.id)}</span>${esc(b.court)}`, '', new THREE.Vector3(lot.x, Math.max(lot.h, 2.6) + 1.3, lot.z), { far: 70, len: b.court.length + 2, lot }); blabels.push(lb);
   }
 
   // Végétation et réverbères.
   const M4 = new THREE.Matrix4(), Q0 = new THREE.Quaternion(), V3 = new THREE.Vector3(), S3 = new THREE.Vector3();
   const instanced = (geo, mat, items) => { if (!items.length) return; const im = new THREE.InstancedMesh(geo, mat, items.length); im.castShadow = true; items.forEach(([x, y, z, sx, sy, sz], i) => { M4.compose(V3.set(x, y, z), Q0, S3.set(sx, sy ?? sx, sz ?? sx)); im.setMatrixAt(i, M4); }); city.add(im); };
-  const onRoad = (x, z) => Math.abs(Math.abs(x) - BX) < RH + 1.2 || (Math.abs(x) < BX + RH + 1 && STREETS.some((t) => Math.abs(z - t.z) < RH + 1.2));
+  const onRoad = (x, z) => (z > RIVER.zn - 1 && Math.abs(Math.abs(x) - BX) < RH + 1.2) || (Math.abs(x) < BX + RH + 1 && southBands.some((t) => Math.abs(z - t.z) < RH + 1.2)) || (z < RIVER.zn && Math.abs(x) < 3.2);
   {
     const spots = []; let seed = 7; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
     for (let x = -GX + 2; x <= GX - 2; x += 3) for (let z = -GZ + 2; z <= GZ - 2; z += 3) {
       const px = x + (rnd() - 0.5) * 1.6, pz = z + (rnd() - 0.5) * 1.6;
-      if (onRoad(px, pz) || Math.abs(px) < RIVER.x1 + 1.2) continue;
-      if (LOTS.some((l) => Math.abs(px - l.x) < l.w / 2 + 1.6 + (l.sgn * (px - l.x) < 0 ? PARVIS : 0) && Math.abs(pz - l.z) < l.d / 2 + 1.4)) continue;
+      if (onRoad(px, pz) || (pz > RIVER.zn - 5 && Math.abs(px) < RIVER.x1 + 1.2)) continue;
+      if (LOTS.some((l) => Math.abs(px - l.x - l.nx * PARVIS / 2) < l.w / 2 + 1.6 + Math.abs(l.nx) * PARVIS / 2 && Math.abs(pz - l.z - l.nz * PARVIS / 2) < l.d / 2 + 1.6 + Math.abs(l.nz) * PARVIS / 2)) continue;
       if (rnd() < 0.5) continue;
-      spots.push([px, pz, 0.75 + rnd() * 0.35, px < 0 ? 'ec' : 'cac']);
+      spots.push([px, pz, 0.75 + rnd() * 0.35, pz < RIVER.zn ? (pz < -45 ? 'intl' : 'justice') : px < 0 ? 'ec' : 'cac']);
     }
-    instanced(keep(new THREE.CylinderGeometry(0.13, 0.17, 0.8, 5)), lam('#7c5a3a'), spots.map(([x, z, k]) => [x, 0.4 * k, z, k]));
+    instanced(keep(new THREE.CylinderGeometry(0.13, 0.17, 0.8, 5)), lam('#7c5a3a'), spots.filter((p) => p[3] !== 'intl').map(([x, z, k]) => [x, 0.4 * k, z, k]));
     instanced(keep(new THREE.SphereGeometry(0.75, 10, 8)), lam(dark ? '#15803d' : '#5aa55f'), spots.filter((p) => p[3] === 'ec').map(([x, z, k]) => [x, 1.3 * k, z, k]));
     instanced(keep(new THREE.ConeGeometry(0.6, 1.6, 7)), lam(dark ? '#166534' : '#3f8a52'), spots.filter((p) => p[3] === 'cac').map(([x, z, k]) => [x, 1.5 * k, z, k]));
+    instanced(keep(new THREE.ConeGeometry(0.32, 2.4, 7)), lam(dark ? '#14532d' : '#2f6b3f'), spots.filter((p) => p[3] === 'justice').map(([x, z, k]) => [x, 1.6 * k, z, k]));
+    const beds = spots.filter((p) => p[3] === 'intl');
+    instanced(keep(new THREE.CylinderGeometry(0.9, 0.9, 0.35, 10)), lam(dark ? '#334155' : '#94a3b8'), beds.map(([x, z]) => [x, 0.17, z, 1]));
+    instanced(keep(new THREE.SphereGeometry(0.75, 8, 6)), lam('#f472b6'), beds.map(([x, z, k]) => [x, 0.45, z, k, 0.5 * k, k]));
   }
   {
-    const posts = [], heads = { ec: [], cac: [] };
-    for (const s of [-1, 1]) for (let z = -ZEND + 3; z <= ZEND - 3; z += 9) { const x = s * (BX + RH + 0.4); if (LOTS.some((l) => Math.abs(z - l.z) < 1.4 && l.sgn === s)) continue; posts.push([x, 1.3, z, 1, 2.6, 1]); heads[s < 0 ? 'ec' : 'cac'].push([x, 2.7, z, 1]); }
+    const posts = [], heads = { ec: [], cac: [], commun: [] };
+    for (const s of [-1, 1]) for (let z = RIVER.zn + 4; z <= ZEND - 3; z += 9) { const x = s * (BX + RH + 0.4); if (LOTS.some((l) => Math.abs(z - l.z) < 1.4 && l.sgn === s)) continue; posts.push([x, 1.3, z, 1, 2.6, 1]); heads[s < 0 ? 'ec' : 'cac'].push([x, 2.7, z, 1]); }
+    for (let z = RIVER.zn - 6; z > -GZ; z -= 9) for (const s of [-1, 1]) { posts.push([s * 2.4, 1.3, z, 1, 2.6, 1]); heads.commun.push([s * 2.4, 2.7, z, 1]); }
     instanced(keep(new THREE.CylinderGeometry(0.06, 0.08, 1, 6)), lam(dark ? '#94a3b8' : '#475569'), posts);
     const head = keep(new THREE.SphereGeometry(0.24, 10, 8));
-    for (const k of ['ec', 'cac']) instanced(head, lam(col[k], { emissive: col[k], emissiveIntensity: dark ? 0.7 : 0.25 }), heads[k]);
+    for (const k of ['ec', 'cac', 'commun']) instanced(head, lam(k === 'commun' ? '#a16207' : col[k], { emissive: k === 'commun' ? '#a16207' : col[k], emissiveIntensity: dark ? 0.7 : 0.25 }), heads[k]);
+    // Place de la justice : quatre colonnes autour du bassin ; place internationale : mâts et drapeaux.
+    for (const [dx, dz] of [[-6, -3], [6, -3], [-6, 3], [6, 3]]) { const c = new THREE.Mesh(COL, lam(dark ? '#e7e5e4' : '#f5f0e6')); c.scale.set(1.3, 3, 1.3); c.position.set(dx, 1.5, RIVER.zn - 0.5 + dz); city.add(c); }
+    FLAGS.forEach((c, i) => { const x = (i - 2.5) * 2.2; box(city, 0.07, 3, 0.07, x, 1.5, -GZ + 4, lam('#94a3b8')); box(city, 0.05, 0.55, 0.9, x, 2.7, -GZ + 4.45, lam(c)); });
   }
 
-  // Véhicule
-  const car = new THREE.Group();
-  box(car, 1.9, 0.75, 3.6, 0, 0.75, 0, lam(col.primary));
-  box(car, 1.6, 0.65, 1.7, 0, 1.45, -0.25, lam(dark ? '#cbd5e1' : '#1e293b'));
-  const wheelG = keep(new THREE.CylinderGeometry(0.38, 0.38, 0.32, 12));
-  for (const [sx, sz] of [[-0.95, 1.15], [0.95, 1.15], [-0.95, -1.15], [0.95, -1.15]]) { const w = new THREE.Mesh(wheelG, lam('#111827')); w.rotation.z = Math.PI / 2; w.position.set(sx, 0.38, sz); car.add(w); }
-  box(car, 1.5, 0.2, 0.1, 0, 0.9, 1.82, lam('#fde68a'));
-  car.scale.setScalar(0.75); city.add(car);
+  // Le drone : corps, quatre bras, quatre hélices qui tournent, une ombre portée au sol.
+  const drone = new THREE.Group(), rotors = [];
+  box(drone, 1.1, 0.32, 1.1, 0, 0, 0, lam(col.primary)); box(drone, 0.5, 0.2, 0.3, 0, -0.1, 0.62, lam('#111827'));
+  const arm = lam(dark ? '#cbd5e1' : '#1e293b'), rotorG = keep(new THREE.CylinderGeometry(0.55, 0.55, 0.04, 10)), rotorM = lam('#94a3b8', { transparent: true, opacity: 0.55 });
+  for (const [sx, sz] of [[-1, 1], [1, 1], [-1, -1], [1, -1]]) {
+    const a = box(drone, 1.1, 0.08, 0.08, sx * 0.6, 0.08, sz * 0.6, arm); a.rotation.y = sx * sz > 0 ? -Math.PI / 4 : Math.PI / 4;
+    box(drone, 0.1, 0.3, 0.1, sx * 0.95, 0.2, sz * 0.95, arm);
+    const r = new THREE.Mesh(rotorG, rotorM); r.position.set(sx * 0.95, 0.38, sz * 0.95); drone.add(r); rotors.push(r);
+  }
+  city.add(drone);
   city.traverse((o) => { if (o.isMesh && o.geometry?.type !== 'PlaneGeometry' && o.material?.fog !== false && !o.material?.transparent) o.castShadow = true; });
 
   // Personnages
@@ -700,11 +679,10 @@ export function startVille3D(root, THREE, opts = {}) {
     const salle = SALLES[lot.id] || { layout: 'bureau', groupes: [] };
     const seated = salle.groupes.filter((g) => !g.debout).flatMap((g) => Array.from({ length: g.n }, () => g));
     const standing = salle.groupes.filter((g) => g.debout).flatMap((g) => Array.from({ length: g.n }, () => g));
-    // Arcs autour du président : rayon croissant, places espacées de 1.5.
     const seats = []; let rest = seated.length - 1, k = 0, maxR = 0;
     while (rest > 0) { const r = 3.4 + k * 2.3, span = Math.PI * 0.72, cap = Math.max(3, Math.floor(r * span / 1.5) + 1), n = Math.min(cap, rest); for (let i = 0; i < n; i++) { const a = Math.PI / 2 + (n === 1 ? 0 : (i / (n - 1) - 0.5) * span); seats.push({ x: Math.cos(a) * r, z: Math.sin(a) * r, r, a, k }); } rest -= n; maxR = r; k++; }
     const Wd = clamp(Math.ceil(2 * (maxR + 2.6)), 14, 40), D = clamp(Math.ceil(maxR + 7.5), 12, 30), zp = -D / 2 + 2.6;
-    const sc = new THREE.Scene(); sc.background = new THREE.Color(dark ? '#111827' : '#eef2f7');
+    const sc = new THREE.Scene(); sc.background = new THREE.Color(dark ? '#111827' : '#dfe6f0');
     sc.add(new THREE.HemisphereLight(0xffffff, 0x8892a0, 1.2)); const l = new THREE.DirectionalLight(0xffffff, 0.6); l.position.set(8, 22, 10); l.castShadow = true; l.shadow.mapSize.set(1024, 1024); Object.assign(l.shadow.camera, { left: -22, right: 22, top: 22, bottom: -22, near: 1, far: 60 }); sc.add(l);
     { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'), q = lot.quartier;
       x.fillStyle = q === 'ec' ? (dark ? '#5b4636' : '#c9a27a') : q === 'cac' ? (dark ? '#3b2f5c' : '#cfc3ea') : q === 'intl' ? (dark ? '#334155' : '#e2e8f0') : (dark ? '#44403c' : '#f1ede4'); x.fillRect(0, 0, 128, 128);
@@ -715,9 +693,10 @@ export function startVille3D(root, THREE, opts = {}) {
       grain(x, 128, 128, q === 'cac' ? 2600 : 900, q === 'cac' ? 0.1 : 0.06);
       const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(Wd / 5, D / 5);
       const fl = new THREE.Mesh(keep(new THREE.PlaneGeometry(Wd, D)), keep(new THREE.MeshLambertMaterial({ map: t }))); fl.rotation.x = -Math.PI / 2; fl.receiveShadow = true; sc.add(fl); }
-    const wall = lam(hex, { transparent: true, opacity: 0.45 });
-    box(sc, Wd, 2.6, 0.3, 0, 1.3, -D / 2, wall); box(sc, 0.3, 2.6, D, -Wd / 2, 1.3, 0, wall); box(sc, 0.3, 2.6, D, Wd / 2, 1.3, 0, wall); box(sc, Wd, 2.6, 0.3, 0, 1.3, D / 2, wall);
-    const plinth = lam('#7c5a3a'); box(sc, Wd, 0.5, 0.35, 0, 0.25, -D / 2 + 0.05, plinth); box(sc, 0.35, 0.5, D, -Wd / 2 + 0.05, 0.25, 0, plinth); box(sc, 0.35, 0.5, D, Wd / 2 - 0.05, 0.25, 0, plinth);
+    // Murs bas et translucides : on voit la salle de n'importe quel côté.
+    const wall = lam(hex, { transparent: true, opacity: 0.35 });
+    box(sc, Wd, 2.6, 0.3, 0, 1.3, -D / 2, lam(hex, { transparent: true, opacity: 0.5 })); box(sc, 0.3, 1.2, D, -Wd / 2, 0.6, 0, wall); box(sc, 0.3, 1.2, D, Wd / 2, 0.6, 0, wall); box(sc, Wd, 1.2, 0.3, 0, 0.6, D / 2, wall);
+    const plinth = lam('#7c5a3a'); box(sc, Wd, 0.5, 0.35, 0, 0.25, -D / 2 + 0.05, plinth);
     const people = [], groups = [], labels = [], wood = lam('#8b5e3c');
     const put = (g, x, z, face, kind) => {
       const c = ROLEC[g.role] || col.commun, f = figure(c, g.role === 'magistrat'); f.position.set(x, 0, z); f.lookAt(face[0], 0, face[1]); sc.add(f);
@@ -728,11 +707,9 @@ export function startVille3D(root, THREE, opts = {}) {
       people.push(p); return p;
     };
     if (seated.length) { box(sc, 4.2, 1, 1.2, 0, 0.5, zp - 0.9, wood); put(seated[0], 0, zp, [0, D], 'siege'); }
-    // Pupitres courbes, un par arc.
     for (let a = 0; a < k; a++) { const r = 3.4 + a * 2.3, ring = new THREE.Mesh(keep(new THREE.RingGeometry(r - 1.1, r - 0.45, 40, 1, Math.PI / 2 - Math.PI * 0.38, Math.PI * 0.76)), wood); ring.rotation.x = -Math.PI / 2; ring.position.set(0, 0.78, zp); sc.add(ring); }
     seats.forEach((s, i) => put(seated[i + 1], s.x, zp + s.z, [0, zp], 'siege'));
     standing.forEach((g, i) => { const s = i % 2 ? 1 : -1; put(g, s * (Wd / 2 - 1.8), zp + 1.5 + Math.floor(i / 2) * 2.2, [0, zp], 'debout'); });
-    // Guichets : panneaux au mur du fond, derrière le président.
     const nb = b.pancartes.length, gap = Math.min(4.2, (Wd - 2) / Math.max(1, nb));
     b.pancartes.forEach((p, i) => {
       const x = (i - (nb - 1) / 2) * gap, z = -D / 2 + 0.22;
@@ -743,24 +720,21 @@ export function startVille3D(root, THREE, opts = {}) {
       people.push(e);
     });
     const title = mkLabel(`<span class="${b.rive}">${svgIcon(lot.id)}</span>${esc(b.nom)}`, '', new THREE.Vector3(0, 4.3, -D / 2 + 0.3), { far: 90, len: b.nom.length + 2, prio: 3 }); title.off = true; labels.push(title);
-    const room = { scene: sc, people, groups, W: Wd, D, zp, labels, center: new THREE.Vector3(0, 0.8, zp + Math.max(2.5, maxR * 0.55)), fit: Math.max(Wd, D) * 0.95 + 4 };
+    const room = { scene: sc, people, groups, W: Wd, D, zp, labels, center: new THREE.Vector3(0, 1.1, zp + Math.max(2.5, maxR * 0.5)), fit: Math.max(Wd * 0.7, D * 0.8) + 3 };
     rooms.set(lot.id, room); return room;
   }
 
   // ---------- État
   const S = {
-    mode: 'drive', pos: new THREE.Vector3(-BX, 0, ZEND - 2), heading: Math.PI, v: 0, camYaw: Math.PI, camOff: 0, look: new THREE.Vector3(-BX, 1, ZEND - 12),
-    tilt: 0.35, inside: null, room: null, focus: null, near: null, route: null, tour: null, wantHeading: null, instant: false, visited: new Set(),
-    orb: { yaw: 0, pitch: 0.95, r: 20, vy: 0, tgt: new THREE.Vector3() }, drone: { rive: 'ec', band: null, cx: 0, cz: 0, hh: 60 }, tab: null,
+    mode: 'drive', pos: new THREE.Vector3(0, 0, ZEND + 6), alt: 6, vx: 0, vz: 0, heading: Math.PI, camYaw: Math.PI, camOff: 0, look: new THREE.Vector3(0, 1, ZEND - 6),
+    inside: null, room: null, focus: null, near: null, route: null, tour: null, instant: false, visited: new Set(),
+    orb: { yaw: 0, pitch: 1.2, r: 20, vy: 0, tgt: new THREE.Vector3() }, metier: { rive: 'ec', band: null, cx: 0, cz: 0, hh: 60 }, tab: null, uiBand: null,
   };
-  let lastWhere = '', lastLine = '';
   const curBand = () => bandOf(S.inside ? S.inside.z : S.pos.z);
 
-  // ---------- Dock (ligne, onglets, tiroir)
-  const bandChips = (st) => `${LOTS.filter((l) => l.st === st).sort((a, b) => a.sgn - b.sgn || a.slot - b.slot).map((l) => `<button type="button" data-a="go" data-id="${l.id}" class="${l === S.near || l === S.inside ? 'here' : ''}"><span class="${l.b.rive}">${svgIcon(l.id)}</span>${esc(l.b.court)}${S.visited.has(l.id) ? ' ✓' : ''}</button>`).join('')}`;
-  const tourBar = () => (S.tour ? `<div class="v3-sub" style="margin-top:6px">${esc(S.tour.titre)} · étape ${S.tour.i + 1} / ${S.tour.ids.length}</div>` : '');
+  // ---------- Encarts du haut : une ligne de contexte, une rangée d'onglets, un tiroir fermé par défaut.
   const tab = (id, txt, on) => `<button type="button" class="v3-btn sm ${on ? 'on' : ''}" data-a="tab" data-t="${id}">${txt}</button>`;
-  const peopleList = (r, sel) => `<ul class="v3-people">${r.people.filter((p) => p.first && !p.panneau).map((p) => `<li><button type="button" data-a="to" data-i="${r.people.indexOf(p)}" class="${p === sel ? 'sel' : ''}"><span class="face ${p.g.role === 'magistrat' ? 'hat' : ''}" style="--fc:${p.color}"></span><span><span class="n">${p.g.approx ? '' : `${p.g.n} `}</span>${esc(p.g.label)}${p.g.debout ? '<em>présent, non membre</em>' : ''}</span></button></li>`).join('')}</ul>`;
+  const peopleList = (r) => `<ul class="v3-people">${r.people.filter((p) => p.first && !p.panneau).map((p) => `<li><button type="button" data-a="to" data-i="${r.people.indexOf(p)}"><span class="face ${p.g.role === 'magistrat' ? 'hat' : ''}" style="--fc:${p.color}"></span><span><span class="n">${p.g.approx ? '' : `${p.g.n} `}</span>${esc(p.g.label)}${p.g.debout ? '<em>présent, non membre</em>' : ''}</span></button></li>`).join('')}</ul>`;
   const twinHtml = (b) => {
     const twin = b.jumeau && lotOf(b.jumeau); if (!twin) return '<p class="v3-sub">Pas de jumeau : cette institution est commune aux deux professions, ou propre à l’une sans équivalent.</p>';
     const rows = VILLE.jumeaux?.[twinKey(b.id, twin.id)] || [], ecB = b.rive === 'ec' ? b : twin.b, cacB = b.rive === 'ec' ? twin.b : b;
@@ -768,56 +742,52 @@ export function startVille3D(root, THREE, opts = {}) {
       <h5>Qui siège chez le jumeau</h5><div class="cp-b" style="cursor:auto;padding:4px 10px">${compositionItems(twin.id)}</div><div class="v3-acts"><button type="button" class="v3-btn sm primary" data-a="go" data-id="${twin.id}">Aller chez ${esc(twin.b.court)}</button></div>`;
   };
   const guichetsHtml = (r) => `<ul class="v3-people">${r.people.filter((p) => p.panneau).map((p) => `<li><button type="button" data-a="to" data-i="${r.people.indexOf(p)}"><span>▤ ${esc(p.qui)}</span></button></li>`).join('')}</ul>`;
-  function setDock() {
-    let line, tabs = '', chips = '', body = null;
-    if (S.mode === 'drone') {
-      const st = S.drone.band;
-      const i = st ? STREETS.indexOf(st) : -1;
-      line = `<div class="t">${st ? `<i style="width:12px;height:12px;border-radius:3px;background:${st.c};flex-shrink:0"></i>${esc(st.nom)}<small>${STREETS.length - i} / ${STREETS.length}</small>` : `Vue du dessus · ${S.drone.rive === 'ec' ? 'EC' : S.drone.rive === 'cac' ? 'CAC' : 'les deux rives'}<small>touchez un bâtiment</small>`}</div>${st ? `<button type="button" class="v3-btn sm" data-a="drone-step" data-v="1" aria-label="Bande au sud">▼</button><button type="button" class="v3-btn sm primary" data-a="drone-step" data-v="-1" aria-label="Bande au nord">▲</button>` : ''}<button type="button" class="v3-btn sm" data-a="drone-off">Redescendre</button>`;
-      chips = st ? bandChips(st) : '';
+  const tourBar = () => (S.tour ? `<p class="v3-sub">${esc(S.tour.titre)} · étape ${S.tour.i + 1} / ${S.tour.ids.length}</p>` : '');
+  const seg = (a, v, cur, t) => `<button type="button" data-a="${a}" data-v="${v}" class="${cur === v ? 'on' : ''}">${t}</button>`;
+  function setUI() {
+    let where, row = '', body = null, legend = false;
+    if (S.mode === 'metier') {
+      const st = S.metier.band, i = st ? STREETS.indexOf(st) : -1, m = S.metier;
+      where = `<div class="tx"><b>${st ? esc(st.nom) : `Vue métier · ${m.rive === 'ec' ? 'Expert-comptable' : m.rive === 'cac' ? 'Commissaire aux comptes' : 'les deux rives'}`}</b><span class="v3-sub">${st ? `bande ${STREETS.length - i} / ${STREETS.length} · touchez un bâtiment pour y aller` : 'touchez un bâtiment pour y aller'}</span></div>${st ? `<button type="button" class="v3-btn sm" data-a="metier-step" data-v="1" aria-label="Bande au sud">▼</button><button type="button" class="v3-btn sm" data-a="metier-step" data-v="-1" aria-label="Bande au nord">▲</button>` : ''}<button type="button" class="v3-btn sm primary" data-a="metier-off">Voler</button>`;
+      row = `<div class="seg">${seg('metier-rive', 'ec', m.rive, 'EC')}${seg('metier-rive', 'cac', m.rive, 'CAC')}${seg('metier-rive', 'tout', m.rive, 'Tout')}</div><div class="seg">${seg('metier-zoom', 'col', st ? 'band' : 'col', 'Toute la rive')}${seg('metier-zoom', 'band', st ? 'band' : 'col', 'Bande par bande')}</div>`;
+      legend = true;
     } else if (S.inside) {
-      const r = S.room, b = S.inside.b, f = S.focus;
-      line = `<div class="t"><span class="${b.rive}">${svgIcon(S.inside.id)}</span>${esc(b.nom)}</div><button type="button" class="v3-btn sm" data-a="exit">Sortir</button>`;
-      const t = S.tab;
-      tabs = tab('qui', `Qui siège (${r.groups.length})`, t === 'qui') + tab('quoi', `Ce qu’on y fait (${b.pancartes.length})`, t === 'quoi') + tab('jumeau', 'Jumeau', t === 'jumeau') + (opts.onFiche ? `<button type="button" class="v3-btn sm" data-a="fiche" data-f="${esc(b.fiche)}">Fiche</button>` : '');
+      const r = S.room, b = S.inside.b, f = S.focus, t = S.tab;
+      where = `<span class="${b.rive}">${svgIcon(S.inside.id)}</span><div class="tx"><b>${esc(b.nom)}</b><span class="v3-sub">${esc(S.inside.st.nom)} · glissez pour tourner, pincez pour zoomer</span></div><button type="button" class="v3-btn sm" data-a="exit">Sortir</button>`;
+      row = tab('qui', `Qui siège (${r.groups.length})`, t === 'qui') + tab('quoi', `Ce qu’on y fait (${b.pancartes.length})`, t === 'quoi') + tab('jumeau', 'Jumeau', t === 'jumeau') + (opts.onFiche ? `<button type="button" class="v3-btn sm" data-a="fiche" data-f="${esc(b.fiche)}">Fiche</button>` : '');
       if (f) body = `<p><strong style="color:${f.color}">${esc(f.qui)}</strong></p><p>${md(f.fait)}</p><div class="v3-acts"><button type="button" class="v3-btn sm" data-a="unfocus">Vue d’ensemble</button>${S.tour ? '<button type="button" class="v3-btn sm primary" data-a="tour-next">Suivant ›</button>' : ''}</div>`;
-      else if (t === 'qui') body = `<p class="v3-sub" style="margin-top:8px">Touchez une personne (ici ou dans la salle) : elle dit ce qu’elle fait.</p>${peopleList(r, null)}`;
-      else if (t === 'quoi') body = `<p class="v3-sub" style="margin-top:8px">${md(b.role)}</p>${guichetsHtml(r)}${b.pieges?.length ? `<h5>Pièges</h5>${b.pieges.map((p) => `<p>⚠ ${md(p)}</p>`).join('')}` : ''}`;
+      else if (t === 'qui') body = `<p class="v3-sub">Touchez une personne, ici ou dans la salle : elle dit ce qu’elle fait.</p>${peopleList(r)}`;
+      else if (t === 'quoi') body = `<p class="v3-sub">${md(b.role)}</p>${guichetsHtml(r)}${b.pieges?.length ? `<h5>Pièges</h5>${b.pieges.map((p) => `<p>⚠ ${md(p)}</p>`).join('')}` : ''}`;
       else if (t === 'jumeau') body = twinHtml(b);
       if (S.tour && !f) body = (body || '') + `<div class="v3-acts"><button type="button" class="v3-btn sm primary" data-a="tour-next">Bâtiment suivant ›</button><button type="button" class="v3-btn sm" data-a="tour-stop">Fin du parcours</button></div>${tourBar()}`;
     } else if (S.route) {
       const b = S.route.lot.b;
-      line = `<div class="t"><span class="${b.rive}">${svgIcon(b.id)}</span>En route : ${esc(b.court)}<small>${esc(S.route.lot.st.nom)}</small></div><button type="button" class="v3-btn sm" data-a="stop">Arrêter</button>`;
+      where = `<span class="${b.rive}">${svgIcon(b.id)}</span><div class="tx"><b>En vol vers ${esc(b.court)}</b><span class="v3-sub">${esc(S.route.lot.st.nom)} · ${S.route.lot.sgn < 0 ? 'rive EC' : S.route.lot.sgn > 0 ? 'rive CAC' : 'esplanade'}</span></div><button type="button" class="v3-btn sm" data-a="stop">Arrêter</button>`;
       if (S.tour) body = `<p>${md(S.tour.etapes?.[S.tour.i]?.[1] || '')}</p>${tourBar()}`;
     } else if (S.near) {
-      const l = S.near, b = l.b, twin = b.jumeau && lotOf(b.jumeau);
-      line = `<div class="t"><span class="${b.rive}">${svgIcon(l.id)}</span>${esc(b.nom)}</div><button type="button" class="v3-btn sm primary" data-a="enter">Entrer</button>`;
-      tabs = tab('role', 'À quoi ça sert', S.tab === 'role') + tab('jumeau', twin ? `Jumeau : ${esc(twin.b.court)}` : 'Jumeau', S.tab === 'jumeau') + (opts.onFiche ? `<button type="button" class="v3-btn sm" data-a="fiche" data-f="${esc(b.fiche)}">Fiche</button>` : '');
-      if (S.tab === 'role') body = `<p>${md(b.role)}</p><p class="v3-sub"><span class="${b.rive}">●</span> ${VILLE.rives[b.rive]} · ${esc(b.type)}${b.chiffres?.length ? ` · ${b.chiffres.map(esc).join(' · ')}` : ''}<br>Symbole : ${esc(SYMBOLES[l.id][1])}.</p>${b.pieges?.length ? b.pieges.map((p) => `<p>⚠ ${md(p)}</p>`).join('') : ''}`;
-      else if (S.tab === 'jumeau') body = twinHtml(b);
+      const l = S.near, b = l.b, twin = b.jumeau && lotOf(b.jumeau), t = S.tab;
+      where = `<span class="${b.rive}">${svgIcon(l.id)}</span><div class="tx"><b>${esc(b.nom)}</b><span class="v3-sub">${esc(l.st.nom)} · ${esc(b.type)}</span></div><button type="button" class="v3-btn sm primary" data-a="enter">Entrer</button>`;
+      row = tab('role', 'À quoi ça sert', t === 'role') + tab('jumeau', twin ? `Jumeau : ${esc(twin.b.court)}` : 'Jumeau', t === 'jumeau') + (opts.onFiche ? `<button type="button" class="v3-btn sm" data-a="fiche" data-f="${esc(b.fiche)}">Fiche</button>` : '');
+      if (t === 'role') body = `<p>${md(b.role)}</p><p class="v3-sub"><span class="${b.rive}">●</span> ${VILLE.rives[b.rive]}${b.chiffres?.length ? ` · ${b.chiffres.map(esc).join(' · ')}` : ''}<br>Symbole : ${esc(SYMBOLES[l.id][1])}.</p>${b.pieges?.length ? b.pieges.map((p) => `<p>⚠ ${md(p)}</p>`).join('') : ''}`;
+      else if (t === 'jumeau') body = twinHtml(b);
       if (S.tour) body = (body || `<p>${md(S.tour.etapes?.[S.tour.i]?.[1] || '')}</p>`) + `<div class="v3-acts"><button type="button" class="v3-btn sm primary" data-a="tour-next">Suivant ›</button><button type="button" class="v3-btn sm" data-a="tour-stop">Fin du parcours</button></div>${tourBar()}`;
     } else {
       const st = curBand();
-      line = `<div class="t"><i style="width:12px;height:12px;border-radius:3px;background:${st.c};flex-shrink:0"></i>${esc(st.nom)}<small>${bankName(S.pos.x)}</small></div><button type="button" class="v3-btn sm" data-a="drone">Drone</button><button type="button" class="v3-btn sm" data-a="tours">Parcours</button>`;
-      chips = bandChips(st);
+      where = `<i style="width:12px;height:12px;border-radius:3px;background:${st.c};flex-shrink:0"></i><div class="tx"><b>${esc(st.nom)}</b><span class="v3-sub">${zoneName(S.pos.x, S.pos.z)} · approchez d’une porte pour entrer</span></div><button type="button" class="v3-btn sm primary" data-a="list">Aller à</button>`;
+      row = `<button type="button" class="v3-btn sm" data-a="metier">Vue métier</button><button type="button" class="v3-btn sm" data-a="tours">Parcours</button>`;
     }
-    lineEl.innerHTML = line; tabsEl.innerHTML = tabs; tabsEl.hidden = !tabs; chipsEl.innerHTML = chips; chipsEl.hidden = !chips;
+    whereEl.innerHTML = where; rowEl.innerHTML = row; rowEl.hidden = !row;
+    legendEl.hidden = !legend; if (legend) legendEl.innerHTML = [...STREETS].reverse().map((st) => `<span><i style="background:${st.c}"></i>${esc(st.nom)}</span>`).join('');
     drawer.hidden = body == null; if (body != null) { drawer.innerHTML = body; drawer.scrollTop = 0; }
+    S.uiBand = S.mode === 'drive' && !S.near && !S.route ? curBand() : null;
     reframe();
   }
-  function setWhere(force) {
-    const x = S.inside ? S.inside.x : S.pos.x, z = S.inside ? S.inside.z : S.pos.z, st = bandOf(z);
-    const head = S.inside ? `Dans : ${S.inside.b.court}` : S.mode === 'drone' ? 'Vue du dessus' : `${bankName(x)} · ${st.nom}`;
-    const html = `<b>${esc(head)}</b><span class="v3-sub">${S.inside ? `${esc(st.nom)} · glissez pour tourner, pincez pour zoomer` : S.mode === 'drone' ? 'glissez pour vous déplacer, pincez pour zoomer' : 'EC ◀ fleuve ▶ CAC · ▲ nord : international'}</span>`;
-    if (force || html !== lastWhere) { whereEl.innerHTML = html; lastWhere = html; }
-  }
-  const hint = (txt) => { hintEl.textContent = txt; hintEl.classList.add('show'); clearTimeout(hint.t); hint.t = setTimeout(() => hintEl.classList.remove('show'), 2200); };
 
   // ---------- Feuilles (Aller à, parcours, options)
   function openList() {
     const cur = S.inside || S.near;
-    sheet.innerHTML = `<div class="v3-sheet-head"><strong>Aller à <span class="v3-sub">· ${S.visited.size} / ${LOTS.length} visités</span></strong><div class="v3-opt"><button type="button" class="v3-btn sm ${S.instant ? '' : 'on'}" data-a="mode" data-v="drive">En voiture</button><button type="button" class="v3-btn sm ${S.instant ? 'on' : ''}" data-a="mode" data-v="instant">Instantané</button><button type="button" class="v3-btn sm" data-a="close">Fermer</button></div></div>
-      ${QUARTIERS_LISTE.map((q) => `<h4><i style="background:${col[q.rive]}"></i>${esc(q.titre)}</h4><div class="v3-list">${q.ids.map((id) => { const l = lotOf(id); return `<button type="button" data-a="go" data-id="${id}" class="${l === cur ? 'here' : ''} ${S.visited.has(id) ? 'seen' : ''}"><span class="${l.b.rive}">${svgIcon(id)}</span><span>${esc(l.b.court)}<small>${esc(l.st.nom)} · ${l.sgn < 0 ? 'rive EC' : 'rive CAC'}</small></span></button>`; }).join('')}</div>`).join('')}`;
+    sheet.innerHTML = `<div class="v3-sheet-head"><strong>Aller à <span class="v3-sub">· ${S.visited.size} / ${LOTS.length} visités</span></strong><div class="v3-opt"><button type="button" class="v3-btn sm ${S.instant ? '' : 'on'}" data-a="mode" data-v="drive">En vol</button><button type="button" class="v3-btn sm ${S.instant ? 'on' : ''}" data-a="mode" data-v="instant">Instantané</button><button type="button" class="v3-btn sm" data-a="close">Fermer</button></div></div>
+      ${QUARTIERS_LISTE.map((q) => `<h4><i style="background:${col[q.rive]}"></i>${esc(q.titre)}</h4><div class="v3-list">${q.ids.map((id) => { const l = lotOf(id); return `<button type="button" data-a="go" data-id="${id}" class="${l === cur ? 'here' : ''} ${S.visited.has(id) ? 'seen' : ''}"><span class="${l.b.rive}">${svgIcon(id)}</span><span>${esc(l.b.court)}<small>${esc(l.st.nom)}</small></span></button>`; }).join('')}</div>`).join('')}`;
     sheet.hidden = false; sheet.scrollTop = 0;
   }
   function openTours() {
@@ -833,84 +803,80 @@ export function startVille3D(root, THREE, opts = {}) {
   function openOpts() {
     sheet.innerHTML = `<div class="v3-sheet-head"><strong>Options</strong><button type="button" class="v3-btn sm" data-a="close">Fermer</button></div>
       <div class="v3-acts" style="flex-direction:column;align-items:stretch">
-      <button type="button" class="v3-btn primary" data-a="tours">Parcours (fils rouges)</button>
-      <button type="button" class="v3-btn" data-a="drone">Vue du dessus par profession (drone)</button>
+      <button type="button" class="v3-btn primary" data-a="list">Aller à un bâtiment</button>
+      <button type="button" class="v3-btn" data-a="tours">Parcours (fils rouges)</button>
+      <button type="button" class="v3-btn" data-a="metier">Vue métier (de dessus, par profession)</button>
       <button type="button" class="v3-btn" data-a="compo">Composition de chaque institution</button></div>
       <h4>Les bandes, du sud au nord</h4><div class="v3-sub">${[...STREETS].reverse().map((st) => `<span style="display:inline-flex;gap:5px;align-items:center;margin:2px 10px 2px 0"><i style="width:10px;height:10px;border-radius:3px;background:${st.c};display:inline-block"></i>${esc(st.nom)}</span>`).join('')}</div>
+      <p class="v3-sub">Joystick : voler. Glisser sur la scène : monter ou descendre (vertical), tourner la caméra (horizontal). Turbo : maintenir.</p>
       <h4>Les symboles des façades</h4><div class="v3-list">${TOUR3D.map((id) => `<button type="button" data-a="go" data-id="${id}"><span class="${lotOf(id).b.rive}">${svgIcon(id)}</span><span>${esc(lotOf(id).b.court)}<small>${esc(SYMBOLES[id][1])}</small></span></button>`).join('')}</div>`;
     sheet.hidden = false; sheet.scrollTop = 0;
   }
   const closeSheets = () => { sheet.hidden = true; };
 
-  // ---------- Modes : conduite, intérieur, drone
+  // ---------- Modes : vol, intérieur, vue métier
   function setMode(m) {
-    S.mode = m; root.classList.toggle('drive', m === 'drive'); droneBar.hidden = stepEl.hidden = m !== 'drone';
+    S.mode = m; root.classList.toggle('drive', m === 'drive');
     if (m !== 'inside') hideLabels(S.room ? S.room.labels : []);
-    if (m !== 'drone') hideLabels(bandLabels.concat(blabels));
+    if (m !== 'metier') hideLabels(bandLabels.concat(blabels));
   }
   function setOrtho() {
-    const hh = S.drone.hh, aspect = W / H; ortho.left = -hh * aspect; ortho.right = hh * aspect; ortho.top = hh; ortho.bottom = -hh; ortho.updateProjectionMatrix();
+    const hh = S.metier.hh, aspect = W / H; ortho.left = -hh * aspect; ortho.right = hh * aspect; ortho.top = hh; ortho.bottom = -hh; ortho.updateProjectionMatrix();
   }
-  // Drone : cadre une rive entière (ou une bande), vue de dessus, le nord en haut.
-  function droneFrame(rive, band) {
-    S.drone.rive = rive; S.drone.band = band;
-    const aspect = W / H, xr = rive === 'ec' ? [-27, -2] : rive === 'cac' ? [2, 27] : [-27, 27];
-    S.drone.cx = (xr[0] + xr[1]) / 2;
-    if (band) { S.drone.cz = band.z; S.drone.hh = Math.max(BAND / 2 + 1.5, (xr[1] - xr[0]) / 2 / aspect + 1); }
-    else { S.drone.cz = 0; S.drone.hh = Math.max(ZEND + 4, (xr[1] - xr[0]) / 2 / aspect + 1); }
-    setOrtho(); setDroneBar(); setDock(); setWhere(true);
+  // Vue métier : une rive entière (ou une bande), de dessus, le nord en haut.
+  function metierFrame(rive, band) {
+    S.metier.rive = rive; S.metier.band = band;
+    const aspect = W / H, xr = rive === 'ec' ? [-27, 7] : rive === 'cac' ? [-7, 27] : [-27, 27];
+    S.metier.cx = (xr[0] + xr[1]) / 2;
+    if (band) { S.metier.cz = band.z; S.metier.hh = Math.max(BAND / 2 + 1.5, (xr[1] - xr[0]) / 2 / aspect + 1); }
+    else { S.metier.cz = 0; S.metier.hh = Math.max(ZEND + 4, (xr[1] - xr[0]) / 2 / aspect + 1); }
+    setOrtho(); setUI();
   }
-  function setDroneBar() {
-    const d = S.drone, seg = (v, t) => `<button type="button" data-a="drone-rive" data-v="${v}" class="${d.rive === v ? 'on' : ''}">${t}</button>`;
-    droneBar.innerHTML = `<div class="seg">${seg('ec', 'EC')}${seg('cac', 'CAC')}${seg('tout', 'Tout')}</div><div class="seg"><button type="button" data-a="drone-zoom" data-v="col" class="${d.band ? '' : 'on'}">Toute la rive</button><button type="button" data-a="drone-zoom" data-v="band" class="${d.band ? 'on' : ''}">Bande par bande</button></div><div class="v3-legend">${[...STREETS].reverse().map((st) => `<span><i style="background:${st.c}"></i>${esc(st.nom)}</span>`).join('')}</div>`;
-    const i = d.band ? STREETS.indexOf(d.band) : -1;
-    stepEl.innerHTML = '';
-  }
-  function droneOn() { if (S.inside) exit(true); closeSheets(); S.route = null; S.v = 0; setMode('drone'); droneFrame(S.pos.x > 0 ? 'cac' : 'ec', null); }
-  function droneOff() { setMode('drive'); snapCamera(); setDock(); setWhere(true); }
+  function metierOn() { if (S.inside) exit(true); closeSheets(); S.route = null; S.vx = S.vz = 0; setMode('metier'); metierFrame(S.pos.x > 0 ? 'cac' : 'ec', null); }
+  function metierOff() { setMode('drive'); snapCamera(); setUI(); }
 
   function snapCamera() {
     const f = { x: Math.sin(S.camYaw), z: Math.cos(S.camYaw) };
-    camera.position.set(S.pos.x - f.x * 9, 5, S.pos.z - f.z * 9); S.look.set(S.pos.x + f.x * 5, 1.2, S.pos.z + f.z * 5); camera.lookAt(S.look);
+    camera.position.set(S.pos.x - f.x * 8, S.alt + 3, S.pos.z - f.z * 8); S.look.set(S.pos.x + f.x * 6, S.alt * 0.4, S.pos.z + f.z * 6); camera.lookAt(S.look);
   }
-  const faceHeading = (lot) => (lot.sgn < 0 ? -Math.PI / 2 : Math.PI / 2);
-  function placeAt(lot) { S.pos.set(lot.stop.x, 0, lot.stop.z); S.heading = faceHeading(lot); S.camYaw = S.heading; S.camOff = 0; S.v = 0; S.near = lot; S.route = null; S.tab = null; snapCamera(); }
+  const faceHeading = (lot) => Math.atan2(-lot.nx, -lot.nz);
+  function placeAt(lot) { S.pos.set(lot.stop.x, 0, lot.stop.z); S.alt = 2.5; S.heading = faceHeading(lot); S.camYaw = S.heading; S.camOff = 0; S.vx = S.vz = 0; S.near = lot; S.route = null; S.tab = null; snapCamera(); }
   function goTo(lot, then = null) {
     closeSheets();
-    if (S.mode === 'drone') { setMode('drive'); placeAt(lot); setDock(); setWhere(true); if (then === 'enter') enter(lot); return; }
+    if (S.mode === 'metier') { setMode('drive'); placeAt(lot); setUI(); if (then === 'enter') enter(lot); return; }
     if (S.inside) exit(true);
-    if (S.instant) { placeAt(lot); setDock(); setWhere(); if (then === 'enter') enter(lot); return; }
-    S.route = { pts: route(S.pos, lot), i: 0, lot, then }; S.near = null; S.wantHeading = null; S.tab = null; setDock();
+    if (S.instant) { placeAt(lot); setUI(); if (then === 'enter') enter(lot); return; }
+    S.route = { lot, then }; S.near = null; S.tab = null; setUI();
   }
   function arrive() {
-    const { lot, then } = S.route; S.route = null; S.v = 0; S.near = lot; S.wantHeading = faceHeading(lot); S.tab = null; setDock(); setWhere();
+    const { lot, then } = S.route; S.route = null; S.vx = S.vz = 0; S.near = lot; S.tab = null; S.pos.set(lot.stop.x, 0, lot.stop.z); setUI();
     if (then === 'enter') enter(lot);
   }
   function enter(lot) {
     S.inside = lot; S.room = buildRoom(lot); S.focus = null; S.route = null; S.tab = null; S.visited.add(lot.id);
-    const o = S.orb; o.yaw = 0; o.pitch = 0.9; o.r = S.room.fit; o.vy = 0; o.tgt.copy(S.room.center);
-    camera.position.set(0, 10, S.room.D); camera.lookAt(o.tgt);
-    setMode('inside'); setDock(); setWhere(true); closeSheets();
+    const o = S.orb; o.yaw = 0; o.pitch = 1.2; o.r = S.room.fit; o.vy = 0; o.tgt.copy(S.room.center);
+    camera.position.set(0, 6, S.room.D); camera.lookAt(o.tgt);
+    setMode('inside'); setUI(); closeSheets();
   }
   function exit(silent) {
     const lot = S.inside; if (!lot) return;
     hideLabels(S.room.labels); S.inside = null; S.room = null; S.focus = null; S.tab = null;
-    S.pos.set(lot.stop.x, 0, lot.stop.z); S.heading = faceHeading(lot); S.camYaw = S.heading; S.camOff = 0; S.v = 0; S.near = lot; setMode('drive'); snapCamera();
-    if (!silent) { setDock(); setWhere(true); }
+    S.pos.set(lot.stop.x, 0, lot.stop.z); S.alt = 2.5; S.heading = faceHeading(lot); S.camYaw = S.heading; S.camOff = 0; S.vx = S.vz = 0; S.near = lot; setMode('drive'); snapCamera();
+    if (!silent) setUI();
   }
   function focusOn(p) {
-    S.focus = p; const o = S.orb; o.tgt.set(p.x, 1.1, p.z); o.r = Math.min(o.r, 7);
+    S.focus = p; const o = S.orb; o.tgt.set(p.x, 1.1, p.z); o.r = Math.min(o.r, 6.5);
     const dz = p.z - S.room.zp, dx = p.x; if (p.kind === 'siege' && (dx || dz)) o.yaw = Math.atan2(dx, dz) + Math.PI; else if (p.kind === 'guichet') o.yaw = 0;
     for (const q of S.room.people) if (q.lb) q.lb.el.classList.toggle('sel', q === p);
-    setDock();
+    setUI();
   }
-  function unfocus() { S.focus = null; const o = S.orb; o.tgt.copy(S.room.center); o.r = S.room.fit; for (const q of S.room.people) if (q.lb) q.lb.el.classList.remove('sel'); setDock(); }
+  function unfocus() { S.focus = null; const o = S.orb; o.tgt.copy(S.room.center); o.r = S.room.fit; for (const q of S.room.people) if (q.lb) q.lb.el.classList.remove('sel'); setUI(); }
   const startTour = (pid) => {
     const p = (VILLE.parcours || []).find((x) => x.id === pid);
     S.tour = p ? { titre: p.titre, ids: p.etapes.map(([id]) => id), etapes: p.etapes, i: 0 } : { titre: 'Tous les bâtiments', ids: TOUR3D, i: 0 };
-    setWhere(true); goTo(lotOf(S.tour.ids[0]));
+    goTo(lotOf(S.tour.ids[0]));
   };
-  const nextTour = () => { if (!S.tour) return; S.tour.i++; if (S.tour.i >= S.tour.ids.length) { S.tour = null; if (S.inside) exit(true); setDock(); drawer.hidden = false; drawer.innerHTML = '<p><strong>Parcours terminé.</strong> Refaites-le de mémoire : nommez chaque bâtiment avant d’y arriver.</p>'; return; } goTo(lotOf(S.tour.ids[S.tour.i])); };
+  const nextTour = () => { if (!S.tour) return; S.tour.i++; if (S.tour.i >= S.tour.ids.length) { S.tour = null; if (S.inside) exit(true); setUI(); drawer.hidden = false; drawer.innerHTML = '<p><strong>Parcours terminé.</strong> Refaites-le de mémoire : nommez chaque bâtiment avant d’y arriver.</p>'; return; } goTo(lotOf(S.tour.ids[S.tour.i])); };
 
   // ---------- Commandes
   const keys = {};
@@ -922,11 +888,9 @@ export function startVille3D(root, THREE, opts = {}) {
     if (e.repeat) { keys[k] = true; return; }
     keys[k] = true;
     if (k === 'enter' || k === 'e') { e.preventDefault(); if (!sheet.hidden) return; if (S.inside) exit(); else if (S.near) enter(S.near); }
-    else if (k === 'escape') { if (!sheet.hidden) closeSheets(); else if (S.inside) exit(); else if (S.mode === 'drone') droneOff(); }
+    else if (k === 'escape') { if (!sheet.hidden) closeSheets(); else if (S.inside) exit(); else if (S.mode === 'metier') metierOff(); }
     else if (k === 'l') { if (sheet.hidden) openList(); else closeSheets(); }
-    else if (k === 'd') { if (S.mode === 'drone') droneOff(); else droneOn(); }
-    else if (k === 'pageup' || k === '+') S.tilt = clamp(S.tilt - 0.15, 0, 1);
-    else if (k === 'pagedown' || k === '-') S.tilt = clamp(S.tilt + 0.15, 0, 1);
+    else if (k === 'm') { if (S.mode === 'metier') metierOff(); else metierOn(); }
   };
   const onUp = (e) => { keys[e.key.toLowerCase()] = false; };
   window.addEventListener('keydown', onDown); window.addEventListener('keyup', onUp);
@@ -952,119 +916,111 @@ export function startVille3D(root, THREE, opts = {}) {
     else if (a === 'enter' && S.near) enter(S.near); else if (a === 'exit') exit();
     else if (a === 'to' && S.room) focusOn(S.room.people[Number(t.dataset.i)]);
     else if (a === 'unfocus') unfocus();
-    else if (a === 'tab') { S.tab = S.tab === t.dataset.t ? null : t.dataset.t; if (S.focus) { S.focus = null; for (const q of S.room.people) if (q.lb) q.lb.el.classList.remove('sel'); } setDock(); }
-    else if (a === 'stop') { S.route = null; setDock(); }
-    else if (a === 'tour') startTour(t.dataset.p); else if (a === 'tour-next') nextTour(); else if (a === 'tour-stop') { S.tour = null; setDock(); }
-    else if (a === 'drone') droneOn(); else if (a === 'drone-off') droneOff();
-    else if (a === 'drone-rive') droneFrame(t.dataset.v, S.drone.band ? S.drone.band : null);
-    else if (a === 'drone-zoom') droneFrame(S.drone.rive, t.dataset.v === 'band' ? (S.drone.band || bandOf(S.pos.z)) : null);
-    else if (a === 'drone-step') { const i = clamp(STREETS.indexOf(S.drone.band) + Number(t.dataset.v), 0, STREETS.length - 1); droneFrame(S.drone.rive, STREETS[i]); }
+    else if (a === 'tab') { S.tab = S.tab === t.dataset.t ? null : t.dataset.t; if (S.focus) { S.focus = null; for (const q of S.room.people) if (q.lb) q.lb.el.classList.remove('sel'); } setUI(); }
+    else if (a === 'stop') { S.route = null; setUI(); }
+    else if (a === 'tour') startTour(t.dataset.p); else if (a === 'tour-next') nextTour(); else if (a === 'tour-stop') { S.tour = null; setUI(); }
+    else if (a === 'metier') metierOn(); else if (a === 'metier-off') metierOff();
+    else if (a === 'metier-rive') metierFrame(t.dataset.v, S.metier.band);
+    else if (a === 'metier-zoom') metierFrame(S.metier.rive, t.dataset.v === 'band' ? (S.metier.band || bandOf(S.pos.z)) : null);
+    else if (a === 'metier-step') { const i = clamp(STREETS.indexOf(S.metier.band) + Number(t.dataset.v), 0, STREETS.length - 1); metierFrame(S.metier.rive, STREETS[i]); }
     else if (a === 'mode') { S.instant = t.dataset.v === 'instant'; openList(); }
     else if (a === 'fiche') opts.onFiche?.(t.dataset.f);
     else if (a === 'quit') opts.onQuit?.();
   });
-  // Gestes sur la scène : dehors, glisser = incliner (vertical) et tourner la caméra (horizontal) ; dedans, orbite
-  // et pincement ; en drone, déplacement et pincement. Un toucher bref désigne un bâtiment ou une personne.
+  // Gestes sur la scène : en vol, glisser = hauteur (vertical) et caméra (horizontal) ; dedans, orbite et pincement ;
+  // en vue métier, déplacement et pincement. Un toucher bref désigne un bâtiment ou une personne.
   const ray = new THREE.Raycaster(); const ptrs = new Map(); let gesture = null;
+  const startGesture = (id, x, y, moved) => ({ id, x0: x, y0: y, x, y, moved, alt: S.alt, off: S.camOff, yaw: S.orb.yaw, pitch: S.orb.pitch, cx: S.metier.cx, cz: S.metier.cz });
   canvas.addEventListener('pointerdown', (e) => {
     ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY }); try { canvas.setPointerCapture(e.pointerId); } catch { /* ignore */ }
-    if (ptrs.size === 1) gesture = { id: e.pointerId, x0: e.clientX, y0: e.clientY, x: e.clientX, y: e.clientY, moved: false, tilt: S.tilt, off: S.camOff, yaw: S.orb.yaw, pitch: S.orb.pitch, cx: S.drone.cx, cz: S.drone.cz };
-    else if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; gesture = { pinch: true, d0: Math.hypot(a.x - b.x, a.y - b.y), r0: S.orb.r, hh0: S.drone.hh, moved: true }; }
+    if (ptrs.size === 1) gesture = startGesture(e.pointerId, e.clientX, e.clientY, false);
+    else if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; gesture = { pinch: true, d0: Math.hypot(a.x - b.x, a.y - b.y), r0: S.orb.r, hh0: S.metier.hh, moved: true }; }
   });
   canvas.addEventListener('pointermove', (e) => {
     const p = ptrs.get(e.pointerId); if (!p) return; p.x = e.clientX; p.y = e.clientY;
     if (!gesture) return;
-    if (gesture.pinch) { const [a, b] = [...ptrs.values()]; const k = gesture.d0 / Math.max(10, Math.hypot(a.x - b.x, a.y - b.y)); if (S.mode === 'inside') S.orb.r = clamp(gesture.r0 * k, 3.5, S.room.fit * 1.5); else if (S.mode === 'drone') { S.drone.hh = clamp(gesture.hh0 * k, 8, 80); setOrtho(); } return; }
+    if (gesture.pinch) { const [a, b] = [...ptrs.values()]; const k = gesture.d0 / Math.max(10, Math.hypot(a.x - b.x, a.y - b.y)); if (S.mode === 'inside') S.orb.r = clamp(gesture.r0 * k, 3.5, S.room.fit * 1.6); else if (S.mode === 'metier') { S.metier.hh = clamp(gesture.hh0 * k, 8, 80); setOrtho(); } return; }
     if (e.pointerId !== gesture.id) return;
     const dx = e.clientX - gesture.x0, dy = e.clientY - gesture.y0; if (!gesture.moved && Math.hypot(dx, dy) < 8) return; gesture.moved = true;
-    const ddx = e.clientX - gesture.x, ddy = e.clientY - gesture.y; gesture.x = e.clientX; gesture.y = e.clientY;
-    if (S.mode === 'inside') { S.orb.yaw = gesture.yaw - dx * 0.007; S.orb.pitch = clamp(gesture.pitch + dy * 0.005, 0.3, 1.3); S.orb.vy = -ddx * 0.007; }
-    else if (S.mode === 'drone') { const k = 2 * S.drone.hh / H; S.drone.cx = gesture.cx - dx * k; S.drone.cz = gesture.cz - dy * k; }
-    else { S.tilt = clamp(gesture.tilt + dy / 260, 0, 1); S.camOff = gesture.off - dx * 0.008; }
+    const ddx = e.clientX - gesture.x; gesture.x = e.clientX; gesture.y = e.clientY;
+    if (S.mode === 'inside') { S.orb.yaw = gesture.yaw - dx * 0.007; S.orb.pitch = clamp(gesture.pitch + dy * 0.005, 0.35, 1.35); S.orb.vy = -ddx * 0.007; }
+    else if (S.mode === 'metier') { const k = 2 * S.metier.hh / H; S.metier.cx = gesture.cx - dx * k; S.metier.cz = gesture.cz - dy * k; }
+    else { S.alt = clamp(gesture.alt - dy / 12, ALT.min, ALT.max); S.camOff = gesture.off - dx * 0.008; }
   });
   const endPtr = (e) => {
     const was = gesture; ptrs.delete(e.pointerId);
-    if (ptrs.size === 0) gesture = null; else if (ptrs.size === 1 && was?.pinch) { const [[id, p]] = [...ptrs.entries()]; gesture = { id, x0: p.x, y0: p.y, x: p.x, y: p.y, moved: true, tilt: S.tilt, off: S.camOff, yaw: S.orb.yaw, pitch: S.orb.pitch, cx: S.drone.cx, cz: S.drone.cz }; }
+    if (ptrs.size === 0) gesture = null; else if (ptrs.size === 1 && was?.pinch) { const [[id, p]] = [...ptrs.entries()]; gesture = startGesture(id, p.x, p.y, true); }
     if (e.type !== 'pointerup' || !was || was.pinch || was.id !== e.pointerId || was.moved) return;
-    const r = canvas.getBoundingClientRect(), cam = S.mode === 'drone' ? ortho : camera;
+    const r = canvas.getBoundingClientRect(), cam = S.mode === 'metier' ? ortho : camera;
     ray.setFromCamera(new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1), cam);
     if (S.inside) {
       const ms = S.room.people.filter((p) => p.mesh).map((p) => p.mesh); const hit = ray.intersectObjects(ms, true)[0]; if (!hit) return;
       let o = hit.object; while (o.parent && !ms.includes(o)) o = o.parent; const p = S.room.people.find((q) => q.mesh === o); if (p) focusOn(p);
       return;
     }
-    const hit = ray.intersectObjects(pick, false)[0]; if (hit) { const l = lotOf(hit.object.userData.id); if (S.mode === 'drone') goTo(l); else if (l === S.near) enter(l); else goTo(l); }
+    const hit = ray.intersectObjects(pick, false)[0]; if (hit) { const l = lotOf(hit.object.userData.id); if (S.mode === 'metier') goTo(l); else if (l === S.near) enter(l); else goTo(l); }
   };
   canvas.addEventListener('pointerup', endPtr); canvas.addEventListener('pointercancel', endPtr);
-  canvas.addEventListener('wheel', (e) => { e.preventDefault(); if (S.mode === 'inside') S.orb.r = clamp(S.orb.r * (1 + Math.sign(e.deltaY) * 0.1), 3.5, S.room.fit * 1.5); else if (S.mode === 'drone') { S.drone.hh = clamp(S.drone.hh * (1 + Math.sign(e.deltaY) * 0.1), 8, 80); setOrtho(); } else S.tilt = clamp(S.tilt + Math.sign(e.deltaY) * 0.08, 0, 1); }, { passive: false });
+  canvas.addEventListener('wheel', (e) => { e.preventDefault(); if (S.mode === 'inside') S.orb.r = clamp(S.orb.r * (1 + Math.sign(e.deltaY) * 0.1), 3.5, S.room.fit * 1.6); else if (S.mode === 'metier') { S.metier.hh = clamp(S.metier.hh * (1 + Math.sign(e.deltaY) * 0.1), 8, 80); setOrtho(); } else S.alt = clamp(S.alt - Math.sign(e.deltaY) * 1.5, ALT.min, ALT.max); }, { passive: false });
   const io = new IntersectionObserver((en) => { visible = en[en.length - 1].isIntersecting; }); io.observe(root);
 
   // ---------- Boucle
   function input() {
     const kf = (keys.arrowup || keys.z || keys.w ? 1 : 0) - (keys.arrowdown || keys.s ? 1 : 0);
     const kt = (keys.arrowleft || keys.q || keys.a ? 1 : 0) - (keys.arrowright || keys.d ? 1 : 0);
+    if (keys.pageup || keys['+']) S.alt = clamp(S.alt + 0.4, ALT.min, ALT.max); if (keys.pagedown || keys['-']) S.alt = clamp(S.alt - 0.4, ALT.min, ALT.max);
     const jm = stick ? Math.hypot(stick.jx, stick.jy) : 0;
-    return { kf, kt, jx: stick?.jx || 0, jy: stick?.jy || 0, jm, turbo: !!keys.shift || turboOn, any: kf !== 0 || kt !== 0 || jm > 0.15 };
+    const jx = jm > 0.15 ? stick.jx : -kt, jy = jm > 0.15 ? stick.jy : -kf, m = Math.hypot(jx, jy);
+    return { jx, jy, m: Math.min(1, m), turbo: !!keys.shift || turboOn, any: m > 0.15 };
   }
-  function stepCity(dt, I) {
-    if (I.any && S.route) { S.route = null; setDock(); }
-    if (I.any) S.wantHeading = null;
-    const vmax = I.turbo ? 48 : 20; let vt = 0;
+  // Vol : le joystick pousse le drone dans la direction vue par la caméra ; il se tourne vers où il va.
+  function stepFly(dt, I) {
+    if (I.any && S.route) { S.route = null; setUI(); }
+    const vmax = I.turbo ? 42 : 16; let tx = 0, tz = 0;
     if (S.route) {
-      const R = S.route, p = S.pos;
-      while (R.i < R.pts.length - 1 && hyp(R.pts[R.i], p) < Math.max(1.6, Math.abs(S.v) * 0.16)) R.i++;
-      const w = R.pts[R.i], dw = hyp(w, p), last = R.i === R.pts.length - 1;
-      if (last && dw < 0.9) { arrive(); vt = 0; } else {
-        let rem = dw; for (let k = R.i; k < R.pts.length - 1; k++) rem += hyp(R.pts[k], R.pts[k + 1]);
-        const want = Math.atan2(w.x - p.x, w.z - p.z), diff = angDiff(S.heading, want);
-        S.heading += clamp(diff, -3.6 * dt, 3.6 * dt);
-        vt = (rem > 40 ? (I.turbo ? 75 : 48) : (I.turbo ? 34 : 24)) * clamp(Math.cos(diff), 0.15, 1);
-        if (!last) { const n = R.pts[R.i + 1], turn = Math.abs(angDiff(want, Math.atan2(n.x - w.x, n.z - w.z))); if (turn > 0.6) vt = Math.min(vt, 8 + dw * 1.3); }
-        vt = Math.min(vt, Math.sqrt(2 * 22 * rem) + 0.8);
+      const to = S.route.lot.stop, d = hyp(to, S.pos);
+      if (d < 0.7 && Math.abs(S.alt - 2.5) < 0.6) { arrive(); }
+      else {
+        const sp = Math.min(I.turbo ? 60 : 36, Math.sqrt(2 * 16 * d) + 1), ux = (to.x - S.pos.x) / (d || 1), uz = (to.z - S.pos.z) / (d || 1);
+        tx = ux * sp; tz = uz * sp;
+        const wantAlt = d > 14 ? Math.max(10, S.alt) : 2.5 + (d / 14) * 8; S.alt += (wantAlt - S.alt) * Math.min(1, dt * 2.5);
       }
-    } else if (I.jm > 0.15 && I.jy > 0.45 && Math.abs(I.jx) < I.jy) {
-      vt = -vmax * 0.45 * Math.min(1, I.jm);
-      S.heading += I.jx * 2.4 * clamp(0.4 + Math.abs(S.v) / 8, 0.4, 1) * dt;
-    } else if (I.jm > 0.15) {
+    } else if (I.any) {
       const a = S.camYaw + S.camOff, fx = Math.sin(a), fz = Math.cos(a), rx = -Math.cos(a), rz = Math.sin(a);
-      const want = Math.atan2(fx * -I.jy + rx * I.jx, fz * -I.jy + rz * I.jx), diff = angDiff(S.heading, want);
-      S.heading += clamp(diff, -3.2 * dt, 3.2 * dt); vt = Math.min(1, I.jm) * vmax * clamp(Math.cos(diff), 0.1, 1);
-    } else {
-      vt = I.kf * vmax * (I.kf < 0 ? 0.4 : 1);
-      S.heading += I.kt * 2.5 * clamp(0.45 + Math.abs(S.v) / 12, 0.45, 1) * (S.v < -0.5 ? -1 : 1) * dt;
-      if (S.wantHeading != null) { const d = angDiff(S.heading, S.wantHeading); S.heading += clamp(d, -2.5 * dt, 2.5 * dt); if (Math.abs(d) < 0.01) S.wantHeading = null; }
+      tx = (fx * -I.jy + rx * I.jx) * I.m * vmax; tz = (fz * -I.jy + rz * I.jx) * I.m * vmax;
     }
-    S.v += (vt - S.v) * Math.min(1, dt * (Math.abs(vt) < Math.abs(S.v) ? 4 : 2.2));
-    if (Math.abs(S.v) < 0.03 && !vt) S.v = 0;
-    S.pos.x += Math.sin(S.heading) * S.v * dt; S.pos.z += Math.cos(S.heading) * S.v * dt;
-    if (pushOut(S.pos, CAR_R)) S.v *= Math.pow(0.15, dt);
-    car.position.set(S.pos.x, 0, S.pos.z); car.rotation.y = S.heading;
-    if (Math.abs(S.v) > 3 && !gesture) S.camOff *= Math.exp(-dt * 1.5);
+    const k = Math.min(1, dt * (tx || tz ? 3 : 4)); S.vx += (tx - S.vx) * k; S.vz += (tz - S.vz) * k;
+    S.pos.x += S.vx * dt; S.pos.z += S.vz * dt;
+    if (pushOut(S.pos, 1, S.alt)) { S.vx *= 0.3; S.vz *= 0.3; }
+    const sp = Math.hypot(S.vx, S.vz);
+    if (sp > 1.5) { S.heading += angDiff(S.heading, Math.atan2(S.vx, S.vz)) * Math.min(1, dt * 5); S.camYaw += angDiff(S.camYaw, S.heading) * (1 - Math.exp(-dt * 2)); if (!gesture) S.camOff *= Math.exp(-dt * 1.5); }
+    else if (S.near && !S.route) { S.heading += angDiff(S.heading, faceHeading(S.near)) * Math.min(1, dt * 3); }
+    drone.position.set(S.pos.x, S.alt + Math.sin(performance.now() / 600) * 0.08, S.pos.z); drone.rotation.set(clamp(-S.vz * 0.012, -0.3, 0.3) * Math.cos(S.heading) + clamp(-S.vx * 0.012, -0.3, 0.3) * Math.sin(S.heading), S.heading, 0);
+    for (const r of rotors) r.rotation.y += dt * 40;
     if (!S.route) {
-      let best = null, bd = 4.2; for (const l of LOTS) { const d = hyp(l.stop, S.pos); if (d < bd) { bd = d; best = l; } }
-      if (best !== S.near) { S.near = best; S.tab = null; setDock(); }
-      else if (!best) { const st = curBand(); if (st !== S.dockBand) { S.dockBand = st; setDock(); } }
+      let best = null, bd = 4.5; for (const l of LOTS) { const d = hyp(l.stop, S.pos); if (d < bd && S.alt < l.h + 6) { bd = d; best = l; } }
+      if (best !== S.near) { S.near = best; S.tab = null; setUI(); }
+      else if (!best && curBand() !== S.uiBand) setUI();
     }
+    altEl.textContent = `hauteur ${Math.round(S.alt)} m · glissez pour monter`;
   }
   const camTarget = new THREE.Vector3(), lookTarget = new THREE.Vector3();
   function stepCamera(dt) {
-    const T = S.tilt, mix = (a, b) => a + (b - a) * T;
     if (S.mode === 'inside') {
       const o = S.orb; if (!gesture) { o.yaw += o.vy; o.vy *= Math.exp(-dt * 6); }
       camTarget.set(o.tgt.x + Math.sin(o.yaw) * Math.sin(o.pitch) * o.r, o.tgt.y + Math.cos(o.pitch) * o.r, o.tgt.z + Math.cos(o.yaw) * Math.sin(o.pitch) * o.r);
-      camTarget.y = Math.max(camTarget.y, 1.4); lookTarget.copy(o.tgt);
+      camTarget.y = Math.max(camTarget.y, 1.5); lookTarget.copy(o.tgt);
       camera.position.lerp(camTarget, 1 - Math.exp(-dt * 8)); S.look.lerp(lookTarget, 1 - Math.exp(-dt * 8)); camera.lookAt(S.look); return;
     }
-    S.camYaw += angDiff(S.camYaw, S.heading) * (1 - Math.exp(-dt * 2.6));
-    const a = S.camYaw + S.camOff, f = { x: Math.sin(a), z: Math.cos(a) }, sp = Math.abs(S.v), dist = mix(7.5, 12) + sp * 0.1, h = mix(2.6, 15) + sp * 0.08, ahead = mix(26, 4);
-    camTarget.set(S.pos.x - f.x * dist, h, S.pos.z - f.z * dist); lookTarget.set(S.pos.x + f.x * ahead, mix(2, 0.6), S.pos.z + f.z * ahead);
-    // À l'arrêt devant un bâtiment : vue de trois quarts sur sa façade.
-    if (S.near && !S.route && sp < 2 && !gesture) { const l = S.near; camTarget.set(l.faceX - l.sgn * mix(13, 15), mix(4.5, 13), l.z + 6); lookTarget.set(l.faceX, l.h * mix(0.45, 0.3), l.z); }
-    for (const l of LOTS) if (Math.abs(camTarget.x - l.x) < l.w / 2 + 2 && Math.abs(camTarget.z - l.z) < l.d / 2 + 2) camTarget.y = Math.max(camTarget.y, l.h + 3);
-    const fov = 56 + clamp((Math.abs(S.v) - 22) / 30, 0, 1) * 10; if (Math.abs(camera.fov - fov) > 0.2) { camera.fov += (fov - camera.fov) * Math.min(1, dt * 3); camera.updateProjectionMatrix(); }
+    const a = S.camYaw + S.camOff, f = { x: Math.sin(a), z: Math.cos(a) }, sp = Math.hypot(S.vx, S.vz), alt = S.alt;
+    const dist = 6 + alt * 0.3 + sp * 0.08, h = alt + 2.4 + alt * 0.35, ahead = 9 + alt * 0.8;
+    camTarget.set(S.pos.x - f.x * dist, h, S.pos.z - f.z * dist); lookTarget.set(S.pos.x + f.x * ahead, Math.max(0, alt * 0.2), S.pos.z + f.z * ahead);
+    // À l'arrêt devant une porte : vue de trois quarts sur la façade.
+    if (S.near && !S.route && sp < 1.5 && !gesture) { const l = S.near; if (l.sgn) camTarget.set(l.faceX + l.nx * (12 + alt * 0.5), 4.5 + alt * 0.7, l.z + 5); else camTarget.set(0, 4.5 + alt * 0.7, l.z + 11 + alt * 0.4); lookTarget.set(l.faceX, l.h * 0.45, l.faceZ); }
+    for (const l of LOTS) if (Math.abs(camTarget.x - l.x) < l.w / 2 + 1.5 && Math.abs(camTarget.z - l.z) < l.d / 2 + 1.5) camTarget.y = Math.max(camTarget.y, l.h + 2);
+    const fov = 56 + clamp((sp - 20) / 30, 0, 1) * 10; if (Math.abs(camera.fov - fov) > 0.2) { camera.fov += (fov - camera.fov) * Math.min(1, dt * 3); camera.updateProjectionMatrix(); }
     camera.position.lerp(camTarget, 1 - Math.exp(-dt * 6)); S.look.lerp(lookTarget, 1 - Math.exp(-dt * 9)); camera.lookAt(S.look);
   }
-  // Dégradation automatique : si l'image saccade, les ombres s'arrêtent puis la définition baisse.
   let fpsAcc = 0, fpsN = 0, degrade = 0;
   function watchFps(dt) {
     fpsAcc += dt; fpsN++; if (fpsAcc < 2) return;
@@ -1072,29 +1028,28 @@ export function startVille3D(root, THREE, opts = {}) {
     if (fps < 38 && degrade === 0) { degrade = 1; renderer.shadowMap.autoUpdate = false; renderer.shadowMap.needsUpdate = true; sun.castShadow = false; }
     else if (fps < 38 && degrade === 1) { degrade = 2; renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25)); resize(); }
   }
-  let alive = true, last = performance.now(), frame = 0, whereT = 0;
+  let alive = true, last = performance.now(), frame = 0;
   function loop(now) {
     if (!alive) return; requestAnimationFrame(loop);
     const dt = Math.min(0.05, (now - last) / 1000); last = now;
     if (!visible || document.hidden) return;
     const I = input();
-    if (S.mode === 'drive') stepCity(dt, I);
+    if (S.mode === 'drive') stepFly(dt, I);
     stepCamera(dt); watchFps(dt);
     riverTex.offset.y -= dt * 0.08;
     if (S.mode === 'inside') { renderer.render(S.room.scene, camera); if (frame % 2 === 0) { for (const it of S.room.labels) it.off = false; updateLabels(camera, S.room.labels, 12); } }
-    else if (S.mode === 'drone') {
-      ortho.position.set(S.drone.cx, 120, S.drone.cz); ortho.lookAt(S.drone.cx, 0, S.drone.cz); car.position.set(S.pos.x, 0, S.pos.z);
+    else if (S.mode === 'metier') {
+      ortho.position.set(S.metier.cx, 120, S.metier.cz); ortho.lookAt(S.metier.cx, 0, S.metier.cz);
       renderer.render(city, ortho);
-      if (frame % 2 === 0) { for (const it of blabels) { it.off = false; it.prio = 1; it.near = 0; it.h = 22; it.w = it.len * 6.6 + 20; it.el.classList.add('small'); } for (const it of bandLabels) { it.off = false; it.prio = 0; it.near = 0; } updateLabels(ortho, bandLabels.concat(blabels), 40); }
+      if (frame % 2 === 0) { for (const it of blabels) { it.off = S.metier.rive !== 'tout' && it.lot.b.rive !== 'commun' && it.lot.b.rive !== S.metier.rive; it.prio = 1; it.near = 0; it.h = 22; it.w = it.len * 6.6 + 20; it.el.classList.add('small'); } for (const it of bandLabels) { it.off = false; it.prio = 0; it.near = 0; } updateLabels(ortho, bandLabels.concat(blabels), 40); }
     } else {
       renderer.render(city, camera);
-      if (frame % 2 === 0) { const st = curBand(); for (const it of blabels) { it.off = false; it.near = 7; it.h = 26; it.w = it.len * 7.6 + 24; it.el.classList.remove('small'); it.prio = it.lot === S.near ? 3 : it.lot.st === st ? 1 : 0; } for (const it of bandLabels) { it.off = false; it.prio = it.st === st ? 2 : 1; it.near = 4; } updateLabels(camera, bandLabels.concat(blabels), 9); }
+      if (frame % 2 === 0) { const st = curBand(); for (const it of blabels) { it.off = false; it.near = 6; it.h = 26; it.w = it.len * 7.6 + 24; it.el.classList.remove('small'); it.prio = it.lot === S.near ? 3 : it.lot.st === st ? 1 : 0; } for (const it of bandLabels) { it.off = false; it.prio = it.st === st ? 2 : 1; it.near = 4; } updateLabels(camera, bandLabels.concat(blabels), 10); }
     }
     frame++;
-    whereT += dt; if (whereT > 0.3) { whereT = 0; setWhere(); }
   }
-  resize(); snapCamera(); setMode('drive'); setWhere(true); setDock();
-  ro.observe($('#v3-dock'));
+  resize(); snapCamera(); setMode('drive'); setUI();
+  ro.observe($('.v3-ui'));
   requestAnimationFrame(loop);
 
   return {
@@ -1105,9 +1060,9 @@ export function startVille3D(root, THREE, opts = {}) {
       renderer.dispose();
     },
     goto(id, then) { const l = lotOf(id); if (l) goTo(l, then); },
-    place(id) { const l = lotOf(id); if (l) { if (S.inside) exit(true); if (S.mode === 'drone') setMode('drive'); placeAt(l); setDock(); setWhere(true); } },
-    enter(id) { const l = lotOf(id); if (l) { if (S.inside) exit(true); if (S.mode === 'drone') setMode('drive'); placeAt(l); enter(l); } },
-    drone() { droneOn(); },
+    place(id) { const l = lotOf(id); if (l) { if (S.inside) exit(true); if (S.mode === 'metier') setMode('drive'); placeAt(l); setUI(); } },
+    enter(id) { const l = lotOf(id); if (l) { if (S.inside) exit(true); if (S.mode === 'metier') setMode('drive'); placeAt(l); enter(l); } },
+    metier() { metierOn(); },
     state: S,
   };
 }

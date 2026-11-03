@@ -152,7 +152,7 @@ export const VILLE = {
     {
       id: 'chreg', rive: 'ec', nom: 'Chambre régionale de discipline', court: 'Ch. régionale', type: 'Discipline · 1re instance',
       role: 'Auprès de chaque CROEC : juge l’expert-comptable en première instance.',
-      x: 36, y: 70, w: 60, d: 44, h: 34, style: 'palais', jumeau: 'sansch', fiche: '04-ec-responsabilite.md',
+      x: 36, y: 70, w: 60, d: 44, h: 34, style: 'palais', jumeau: 'sanctions', fiche: '04-ec-responsabilite.md',
       chiffres: ['1 magistrat + 2 élus', 'appel dans le mois', 'appel suspensif'],
       pancartes: [
         { qui: 'La salle d’audience', fait: 'Présidée par un **magistrat de l’ordre judiciaire** (désigné par le **premier président de la cour d’appel**), avec **2 membres élus** du conseil régional. Décision motivée après audience.' },
@@ -161,16 +161,6 @@ export const VILLE = {
         { qui: 'Le tableau des peines', fait: '1. **Réprimande** · 2. **Blâme** avec inscription au dossier · 3. **Suspension** avec sursis · 4. **Suspension** sans sursis · 5. **Radiation** du tableau. **Pas de sanction pécuniaire** (sauf LCB-FT). L’**avertissement dans le cabinet du président** existe, hors des peines. Un **stagiaire** peut être sanctionné.' },
       ],
       pieges: ['Le commissaire du gouvernement **n’en est pas membre** : il porte plainte et fait appel.', '« Remontrance », « amende », « avertissement » ne figurent **pas** dans la liste des peines de l’EC.', 'Aucune « chambre régionale » n’existe pour le **CAC**.'],
-    },
-    {
-      id: 'sansch', rive: 'cac', nom: 'Pas de chambre régionale', court: 'Pas de chambre', type: 'Discipline · 1re instance',
-      role: 'Aucune chambre régionale de discipline chez le CAC : tout remonte à la H2A.',
-      x: 84, y: 70, w: 60, d: 44, h: 3, style: 'vide', jumeau: 'chreg', fiche: '13-schema-discipline.md',
-      pancartes: [
-        { qui: 'Panneau sur la grille', fait: 'Rien à construire ici : la **CRCC ne juge pas**. Un manquement du CAC est signalé au **rapporteur général de la H2A** (le président de la CRCC peut le saisir) ; après enquête, le **collège** arrête les griefs et la **commission des sanctions** juge, en **instance unique**.' },
-        { qui: 'Ce que cela change', fait: 'Pas de première instance régionale, **pas d’appel** : la commission des sanctions, puis le **Conseil d’État** en pleine juridiction. Chez l’EC : chambre régionale, puis chambre nationale (appel), puis Conseil d’État (cassation).' },
-      ],
-      pieges: ['« Chambre régionale de discipline des CAC » n’existe pas : c’est la **H2A** qui sanctionne.'],
     },
     {
       id: 'chnat', rive: 'ec', nom: 'Chambre nationale de discipline', court: 'Ch. nationale', type: 'Discipline · appel',
@@ -374,11 +364,6 @@ export const VILLE = {
       ['Degré', '**Appel** des chambres régionales (dans le mois, suspensif)', '**Instance unique**, pas d’appel'],
       ['Peines', 'Réprimande, blâme, suspension, **radiation**', 'Avertissement, blâme, interdiction **3 ans**, radiation, **amende**, publication'],
       ['Recours', 'Conseil d’État en **cassation**', 'Conseil d’État en **pleine juridiction**'],
-    ],
-    'chreg|sansch': [
-      ['Première instance', 'Chambre régionale : **1 magistrat + 2 élus**', '**Aucune** : rapporteur général → collège → commission des sanctions'],
-      ['Qui saisit', 'Client, tiers, conseil régional, **commissaire du gouvernement**', 'Cour des comptes, procureur général, AMF, ACPR, H2A, **CNCC, CRCC**'],
-      ['Instruction', 'Magistrat chargé des poursuites, rapporteur', '**Rapporteur général** (service des enquêtes), secret **non opposable**'],
     ],
   },
   // Fils rouges : un dossier suit son chemin de bâtiment en bâtiment (parcours courts, à refaire de mémoire).

@@ -642,7 +642,8 @@ button.btn.seen.on { background: var(--ok-bg); border-color: var(--ok); color: v
 .carnet-item .btn { align-self: flex-start; }
 
 /* Visite 3D de la ville en plein écran : la page derrière ne défile plus. */
-body.v3-lock { overflow: hidden; }
+body.v3-lock { overflow: hidden; position: fixed; inset: 0; width: 100%; overscroll-behavior: none; }
+html { overscroll-behavior-y: none; }
 /* Plan de la ville à imprimer (vue Fiches → Ville → Plan à imprimer) : seule la page du plan s'imprime. */
 @media print {
   body.print-plan { padding: 0; background: #fff; }

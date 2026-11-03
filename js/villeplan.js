@@ -11,7 +11,7 @@ import { batiment } from './ville.js';
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const md = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
 const plain = (s) => String(s ?? '').replace(/\*\*/g, '');
-const RIVER_STREETS = new Set(['intl', 'resp', 'recours', 'tutelle', 'sup', 'nat', 'reg']);
+const RIVER_STREETS = new Set(['tutelle', 'sup', 'nat', 'reg']);
 const PAGE = { w: 190, h: 248 }; // mm : zone du plan sur une feuille A4 (en-tête et légende en plus)
 const STRIP = 6, GAP = 1.6, RIVER_W = 10, HC = 4.6, HG = 7.5, LINE = 2.2;
 
