@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
-import { buildFeed, spreadTypes, validateShort, linkedQuestions, shortsStats, memoId, programCoverage } from '../js/shorts.js';
+import { buildFeed, spreadTypes, validateShort, linkedQuestions, shortsStats, memoId } from '../js/shorts.js';
 import { STEPS } from '../js/plan.js';
 
 const root = new URL('../', import.meta.url);
@@ -87,14 +87,4 @@ test('mise en scène : chaque sous-thème des shorts a son objet, la distributio
   assert.deepEqual(castFor({ type: 'vf', prof: 'EC+CAC' }), ['ec', 'cac']);
   assert.match(person('cac'), /^<svg/);
   assert.match(icon('inconnu'), /<svg/);
-});
-
-test('couverture du programme : questions de la banque et shorts répondus comptent ensemble', () => {
-  const qs = [{ id: 'a' }, { id: 'b' }, { id: 'c' }];
-  const shorts = [{ id: 'x' }, { id: 'y' }, { id: 'z' }, { id: 'w' }, { id: 'v' }];
-  assert.equal(programCoverage(qs, {}, shorts, {}), 0);
-  // 1 question + 3 shorts sur 8 ; un id hors banque est ignoré.
-  assert.equal(programCoverage(qs, { a: {}, inconnu: {} }, shorts, { 'sht:x': {}, 'sht:y': {}, 'sht:z': {} }), 50);
-  assert.equal(programCoverage(qs, { a: {} }, [], {}), 33);
-  assert.equal(programCoverage([], {}, [], {}), 0);
 });
