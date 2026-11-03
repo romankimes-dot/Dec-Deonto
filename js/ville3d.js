@@ -9,6 +9,7 @@
 
 import { VILLE, batiment } from './ville.js';
 
+// `approx` : nombre de figurants choisi pour la mise en scène, sans valeur à retenir (jamais affiché).
 // Couleurs des personnages, par rôle.
 const ROLE = {
   magistrat: '#b91c1c', elu_ec: '#0e7490', elu_cac: '#7c3aed', fonctionnaire: '#64748b', qualifie: '#d97706',
@@ -17,17 +18,18 @@ const ROLE = {
 
 // Qui siège dans chaque bâtiment : groupes de personnes (n sièges), disposées autour d'une table ou en rangs.
 // `fait` est ce que dit la personne quand on s'approche. Les pancartes du bâtiment deviennent des guichets le long du mur.
+export const groupLabel = (g) => `${g.label}${g.n > 1 && !g.approx ? ` ×${g.n}` : ''}`;
 export const SALLES = {
   cnoec: { layout: 'table', groupes: [
     { n: 1, label: 'Président', role: 'elu_ec', qui: 'Le président du Conseil national', fait: 'Élu par le conseil. Le Conseil national **représente la profession** auprès des pouvoirs publics, **élabore les normes** (agréées par arrêté du ministre) et le **code de déontologie** (adopté par décret), organise la **formation** et **coordonne les CROEC**.' },
-    { n: 14, label: 'Élu', role: 'elu_ec', qui: 'Un membre élu du Conseil national', fait: 'Élu **au suffrage direct** par les experts-comptables **depuis 2020** (avant : par les conseils régionaux), pour **4 ans**. Les fiches ne donnent pas l’effectif du conseil : retenir le mode d’élection et la durée.' },
+    { approx: true, n: 14, label: 'Élus', role: 'elu_ec', qui: 'Un membre élu du Conseil national', fait: 'Élu **au suffrage direct** par les experts-comptables **depuis 2020** (avant : par les conseils régionaux), pour **4 ans**. L’effectif du conseil n’est pas au programme : retenir le mode d’élection et la durée.' },
     { n: 1, label: 'Commissaire du gouvernement', role: 'gouvernement', debout: true, qui: 'Le commissaire du gouvernement', fait: 'Représente le **ministre chargé de l’économie**. Il **assiste aux séances** sans être membre, **reçoit les décisions** et peut les contester. Il peut saisir le **comité national du tableau** contre une inscription, porter plainte et faire appel en discipline.' },
   ] },
   croec: { layout: 'table', groupes: [
     { n: 1, label: 'Président du CROEC', role: 'elu_ec', qui: 'Le président du conseil régional', fait: '**4 années consécutives au plus**, puis **2 ans** d’interruption. **Conciliateur** (accord amiable) ou **arbitre** (sentence) ; désigne le **remplaçant provisoire** d’un confrère décédé ou empêché ; **conclut** chaque contrôle de qualité au vu du rapport.' },
-    { n: 10, label: 'Élu', role: 'elu_ec', qui: 'Un membre élu du conseil régional', fait: 'Élu pour **4 ans** ; le **bureau** est élu pour **2 ans**. Le conseil **tient le tableau**, statue sur les **inscriptions**, appelle les **cotisations**, organise le **contrôle de qualité**, reçoit le **serment** (dans les **6 mois** de l’inscription).' },
+    { approx: true, n: 10, label: 'Élus', role: 'elu_ec', qui: 'Un membre élu du conseil régional', fait: 'Élu pour **4 ans** ; le **bureau** est élu pour **2 ans**. Le conseil **tient le tableau**, statue sur les **inscriptions**, appelle les **cotisations**, organise le **contrôle de qualité**, reçoit le **serment** (dans les **6 mois** de l’inscription).' },
     { n: 1, label: 'Commissaire du gouvernement', role: 'gouvernement', debout: true, qui: 'Le commissaire du gouvernement', fait: 'Placé auprès de **chaque CROEC** comme auprès du Conseil national : assiste aux séances, reçoit les décisions ; recours devant le **comité national du tableau** contre une inscription ou un refus.' },
-    { n: 2, label: 'Contrôleur qualité', role: 'pro', debout: true, qui: 'Un contrôleur de qualité', fait: 'Expert-comptable **désigné 3 ans** renouvelables par le conseil régional, **50 heures par an** au moins. Il rédige le rapport ; le **président** conclut : sans observation, simples observations, ou observations **et nouveau contrôle à un an**.' },
+    { approx: true, n: 2, label: 'Contrôleurs qualité', role: 'pro', debout: true, qui: 'Un contrôleur de qualité', fait: 'Expert-comptable **désigné 3 ans** renouvelables par le conseil régional, **50 heures par an** au moins. Il rédige le rapport ; le **président** conclut : sans observation, simples observations, ou observations **et nouveau contrôle à un an**.' },
   ] },
   chreg: { layout: 'tribunal', groupes: [
     { n: 1, label: 'Magistrat président', role: 'magistrat', qui: 'Le président de la chambre régionale', fait: 'Un **magistrat de l’ordre judiciaire**, désigné par le **premier président de la cour d’appel**. Peines possibles : **réprimande, blâme, suspension** (avec ou sans sursis), **radiation**. Pas de sanction pécuniaire hors LCB-FT.' },
@@ -41,10 +43,9 @@ export const SALLES = {
     { n: 2, label: 'Membre du Conseil national', role: 'elu_ec', qui: 'Un membre élu du Conseil national', fait: '**2 membres du Conseil national** élus (ord. art. 50). Chez le CAC, rien de tel : pas d’appel, la commission des sanctions puis le Conseil d’État.' },
   ] },
   cncc: { layout: 'rangs', groupes: [
-    { n: 1, label: 'Président de la CNCC', role: 'elu_cac', qui: 'Le président de la CNCC', fait: 'Élu par le Conseil national avec le **bureau**. Il peut **saisir le rapporteur général** de la H2A et reçoit sous **10 jours** le recours contre une décision d’un président de CRCC sur le **barème d’heures**.' },
-    { n: 17, label: 'Président de CRCC', role: 'eip', qui: 'Un président de compagnie régionale', fait: '**Tous les présidents de CRCC** (17 depuis le 1er novembre 2020) siègent de droit au Conseil national, comptés dans les **30 sièges** de leur collège.' },
-    { n: 21, label: 'CAC d’EIP élu', role: 'eip', qui: 'Un CAC d’EIP élu', fait: 'Collège des CAC **d’entités d’intérêt public** : **30 sièges** (présidents de CRCC compris). Mandat **4 ans**.' },
-    { n: 21, label: 'CAC non-EIP élu', role: 'elu_cac', qui: 'Un CAC sans mandat d’EIP élu', fait: 'Collège des CAC **sans mandat d’EIP** : **30 sièges** (présidents de CRCC compris). **60 membres** en tout, pour **4 ans**.' },
+    { n: 1, label: 'Président de la CNCC', role: 'elu_cac', qui: 'Le président de la CNCC', fait: 'Élu par le Conseil national, qui élit aussi le **bureau**. Il peut **saisir le rapporteur général** de la H2A et reçoit sous **10 jours** le recours contre une décision d’un président de CRCC sur le **barème d’heures**.' },
+    { n: 17, label: 'Président de CRCC', role: 'eip', qui: 'Un président de compagnie régionale', fait: '**Tous les présidents de CRCC** (17 depuis le 1er novembre 2020) siègent de droit au Conseil national, comptés dans les **30 sièges** du collège de leur catégorie.' },
+    { n: 42, label: 'CAC élu', role: 'elu_cac', qui: 'Un CAC élu au Conseil national', fait: 'Deux collèges de **30 sièges** chacun, présidents de CRCC compris : **CAC d’EIP** et **CAC sans mandat d’EIP**. Chaque collège élit 30 CAC moins le nombre de présidents de CRCC de sa catégorie. **60 membres** en tout, pour **4 ans**.' },
   ] },
   crcc: { layout: 'table', groupes: [
     { n: 1, label: 'Président de la CRCC', role: 'elu_cac', qui: 'Le président de la compagnie régionale', fait: 'Exerce au moins **une mission de certification**. Statue sous **15 jours** sur les **dérogations au barème**, **concilie** co-commissaires et litiges d’**honoraires** (**3 mois**), peut **saisir le rapporteur général**, est **avisé** des audiences de la commission des sanctions.' },
@@ -52,11 +53,11 @@ export const SALLES = {
   ] },
   h2a: { layout: 'table', groupes: [
     { n: 1, label: 'Président (Cour de cassation)', role: 'magistrat', qui: 'Le président de la H2A', fait: '**Magistrat de la Cour de cassation**. Le collège **poursuit** : il **arrête les griefs**, que le président **notifie** ; il soutient les griefs à l’audience et **propose une sanction** ; il peut proposer une **composition administrative**.' },
-    { n: 5, label: 'CE · Cour des comptes · AMF · ACPR · Trésor', role: 'fonctionnaire', qui: 'Un membre venu du Conseil d’État, de la Cour des comptes, de l’AMF, de l’ACPR ou du Trésor', fait: 'Le collège est composé de **non-praticiens majoritaires**. En urgence, sa formation plénière peut **suspendre provisoirement** un CAC **6 mois au plus** (pas une sanction).' },
-    { n: 2, label: 'Personnalité qualifiée', role: 'qualifie', qui: 'Une personnalité qualifiée', fait: 'Le collège adopte aussi les **NEP** et la déontologie (homologuées par arrêté du garde des Sceaux) et délègue à la CNCC les contrôles des **non-EIP** et le **suivi de la formation**.' },
+    { approx: true, n: 5, label: 'CE · Cour des comptes · AMF · ACPR · Trésor', role: 'fonctionnaire', qui: 'Un membre venu du Conseil d’État, de la Cour des comptes, de l’AMF, de l’ACPR ou du Trésor', fait: 'Le collège est composé de **non-praticiens majoritaires**. En urgence, sa formation plénière peut **suspendre provisoirement** un CAC **6 mois au plus** (pas une sanction).' },
+    { approx: true, n: 2, label: 'Personnalités qualifiées', role: 'qualifie', qui: 'Une personnalité qualifiée', fait: 'Le collège adopte aussi les **NEP** et la déontologie (homologuées par arrêté du garde des Sceaux) et délègue à la CNCC les contrôles des **non-EIP** et le **suivi de la formation**.' },
     { n: 2, label: 'Ancien CAC', role: 'ancien_cac', qui: 'Un ancien commissaire aux comptes', fait: '**2 anciens CAC** siègent au collège. Nul ne siège **à la fois** au collège et à la commission des sanctions.' },
     { n: 1, label: 'Rapporteur général', role: 'agent', debout: true, qui: 'Le rapporteur général', fait: 'Dirige le **service des enquêtes**. Saisi par la Cour des comptes, le procureur général, les présidents de l’AMF, de l’ACPR, de la H2A, de la CNCC ou d’une CRCC ; **autosaisine** sur signalement ; **pas le garde des Sceaux**. Secret **non opposable**.' },
-    { n: 2, label: 'Contrôleur', role: 'agent', debout: true, qui: 'Un contrôleur de la H2A', fait: '**Salarié de la H2A**, il contrôle les CAC d’**EIP** ; les non-EIP sont contrôlés par la **CNCC par délégation**. Un soupçon de blanchiment en contrôle : il informe **lui-même Tracfin**.' },
+    { approx: true, n: 2, label: 'Contrôleurs', role: 'agent', debout: true, qui: 'Un contrôleur de la H2A', fait: '**Salarié de la H2A**, il contrôle les CAC d’**EIP** ; les non-EIP sont contrôlés par la **CNCC par délégation**. Un soupçon de blanchiment en contrôle : il informe **lui-même Tracfin**.' },
   ] },
   sanctions: { layout: 'tribunal', groupes: [
     { n: 1, label: 'Président (Cour de cassation)', role: 'magistrat', qui: 'Le président de la commission des sanctions', fait: '**Magistrat de la Cour de cassation**. Seul et **sans débat**, il prononce en **procédure simplifiée** une sanction pécuniaire de **15 000 €** au plus (obligations déclaratives, formation continue) ; **opposition** sous 30 jours.' },
@@ -72,7 +73,7 @@ export const SALLES = {
     { n: 1, label: 'Garde des Sceaux', role: 'ministre', qui: 'Le garde des Sceaux', fait: 'La **CNCC** est placée auprès de lui. Il **homologue par arrêté** les **NEP** adoptées par la H2A et les **conventions de délégation** ; peut **demander une NEP** ; **ne saisit pas** le rapporteur général ; désigne le président de la **chambre nationale** de discipline des EC.' },
   ] },
   ce: { layout: 'tribunal', groupes: [
-    { n: 3, label: 'Conseiller d’État', role: 'magistrat', qui: 'Un conseiller d’État', fait: 'Pour l’**EC** : **cassation** contre la chambre nationale de discipline. Pour le **CAC** : **recours de pleine juridiction** contre la commission des sanctions, par la personne sanctionnée ou le président de la H2A après accord du collège.' },
+    { approx: true, n: 3, label: 'Conseillers d’État', role: 'magistrat', qui: 'Un conseiller d’État', fait: 'Pour l’**EC** : **cassation** contre la chambre nationale de discipline. Pour le **CAC** : **recours de pleine juridiction** contre la commission des sanctions, par la personne sanctionnée ou le président de la H2A après accord du collège.' },
   ] },
   ca: { layout: 'tribunal', groupes: [
     { n: 1, label: 'Premier président', role: 'magistrat', qui: 'Le premier président de la cour d’appel', fait: 'Reçoit le **serment du CAC**, **avant tout exercice**. Désigne le **magistrat qui préside la chambre régionale** de discipline des EC. Les CRCC sont établies dans le **ressort des cours d’appel**.' },
@@ -86,17 +87,17 @@ export const SALLES = {
   tj: { layout: 'tribunal', groupes: [{ n: 1, label: 'Juge civil', role: 'magistrat', qui: 'Le juge du tribunal judiciaire ou de commerce', fait: 'Répare le **préjudice** : faute, préjudice, lien de causalité. **EC** : 5 ans, réductible à 1 an, plafonnement possible. **CAC** : **3 ans** (révélation si dissimulé, 10 ans pour un crime), **ni plafond ni aménagement**.' }] },
   tcorr: { layout: 'tribunal', groupes: [{ n: 1, label: 'Juge correctionnel', role: 'magistrat', qui: 'Le juge correctionnel', fait: 'Punit une **infraction** : texte, acte, intention. CAC : **informations mensongères**, **non-révélation** (5 ans, 75 000 €), incompatibilité, usurpation du titre. EC : secret, blanchiment, faux, complicité de fraude fiscale ou d’ABS.' }] },
   parquet: { layout: 'bureau', groupes: [{ n: 1, label: 'Procureur', role: 'magistrat', qui: 'Le procureur de la République', fait: 'Le **CAC** lui **révèle les faits délictueux**, même régularisés ; omettre sciemment est un **délit**. L’**EC** n’y est **pas tenu** : devoir de conseil, refus, interruption. Le **procureur général** peut saisir le rapporteur général de la H2A.' }] },
-  cass: { layout: 'tribunal', groupes: [{ n: 2, label: 'Magistrat de la Cour de cassation', role: 'magistrat', qui: 'Un magistrat de la Cour de cassation', fait: 'Deux d’entre eux **président** le **collège** et la **commission des sanctions** de la H2A. La 2e chambre civile définit la faute **dolosive**, exclue de l’assurance RC.' }] },
+  cass: { layout: 'tribunal', groupes: [{ approx: true, n: 2, label: 'Magistrats de la Cour de cassation', role: 'magistrat', qui: 'Un magistrat de la Cour de cassation', fait: 'Deux d’entre eux **président** le **collège** et la **commission des sanctions** de la H2A. La 2e chambre civile définit la faute **dolosive**, exclue de l’assurance RC.' }] },
   ccomptes: { layout: 'tribunal', groupes: [{ n: 1, label: 'Premier président', role: 'magistrat', qui: 'Le premier président de la Cour des comptes', fait: 'Peut **saisir le rapporteur général** de la H2A, comme le président d’une **chambre régionale des comptes**. Des membres de la Cour siègent au **collège** de la H2A.' }] },
-  tracfin: { layout: 'bureau', groupes: [{ n: 2, label: 'Agent Tracfin', role: 'agent', qui: 'Un agent de Tracfin', fait: 'Reçoit la **déclaration de soupçon** : de l’**EC en charge de la mission** (pas le correspondant Tracfin, pas de copie au CROEC) ou du **CAC signataire** (NEP 9605). En contrôle : l’**Ordre** informe Tracfin chez l’EC ; les **contrôleurs eux-mêmes** chez le CAC.' }] },
+  tracfin: { layout: 'bureau', groupes: [{ approx: true, n: 2, label: 'Agents Tracfin', role: 'agent', qui: 'Un agent de Tracfin', fait: 'Reçoit la **déclaration de soupçon** : de l’**EC en charge de la mission** (pas le correspondant Tracfin, pas de copie au CROEC) ou du **CAC signataire** (NEP 9605). En contrôle : l’**Ordre** informe Tracfin chez l’EC ; les **contrôleurs eux-mêmes** chez le CAC.' }] },
   cavec: { layout: 'bureau', groupes: [{ n: 1, label: 'Guichet CAVEC', role: 'fonctionnaire', qui: 'L’agent de la caisse', fait: 'Cotisations impayées **2 ans sur 10** (ordinales ou sociales, **CAVEC comprise**) : **radiation d’office** par le conseil régional, qui n’est **pas** une sanction disciplinaire.' }] },
-  anc: { layout: 'bureau', groupes: [{ n: 2, label: 'ANC · CNoCP', role: 'fonctionnaire', qui: 'Un normalisateur comptable', fait: 'L’**ANC** et le **CNoCP** peuvent **demander une NEP** à la H2A, avec le garde des Sceaux, l’AMF, l’ACPR et la CNCC. **Pas une CRCC.**' }] },
-  ifac: { layout: 'table', groupes: [{ n: 2, label: 'CNOEC · CNCC', role: 'pro', qui: 'Un délégué du CNOEC ou de la CNCC', fait: 'Les deux institutions françaises sont **membres** de l’IFAC, fédération mondiale. Aucune norme IFAC ne s’impose directement en France.' }] },
+  anc: { layout: 'bureau', groupes: [{ approx: true, n: 2, label: 'ANC · CNoCP', role: 'fonctionnaire', qui: 'Un normalisateur comptable', fait: 'L’**ANC** et le **CNoCP** peuvent **demander une NEP** à la H2A, avec le garde des Sceaux, l’AMF, l’ACPR et la CNCC. **Pas une CRCC.**' }] },
+  ifac: { layout: 'table', groupes: [{ approx: true, n: 2, label: 'CNOEC · CNCC', role: 'pro', qui: 'Un délégué du CNOEC ou de la CNCC', fait: 'Les deux institutions françaises sont **membres** de l’IFAC, fédération mondiale. Aucune norme IFAC ne s’impose directement en France.' }] },
   iesba: { layout: 'bureau', groupes: [{ n: 1, label: 'Rédacteur du Code of Ethics', role: 'pro', qui: 'Un rédacteur de l’IESBA', fait: 'Le **Code of Ethics** et sa typologie des menaces (intérêt personnel, défense, familiarité, intimidation) **ne figurent pas** dans le code ni les normes français.' }] },
   iaasb: { layout: 'bureau', groupes: [{ n: 1, label: 'Rédacteur des ISA', role: 'pro', qui: 'Un rédacteur de l’IAASB', fait: '**ISA**, **ISRE 2400**, **ISAE 3000/3400**, **ISRS 4400/4410** : elles **inspirent** les NP et les NEP, sans s’appliquer directement.' }] },
   iaesb: { layout: 'bureau', groupes: [{ n: 1, label: 'Normes de formation', role: 'pro', qui: 'Un rédacteur de l’IAESB', fait: 'Normes **IES** de formation ; **IES 7** inspire la recommandation de **120 h sur 3 ans** de l’Ordre.' }] },
   aceu: { layout: 'bureau', groupes: [{ n: 1, label: 'Accountancy Europe', role: 'pro', qui: 'Un représentant d’Accountancy Europe', fait: 'Ex-**FEE** : fédération **européenne** de la profession, représentation sans pouvoir normatif en France.' }] },
-  ue: { layout: 'table', groupes: [{ n: 3, label: 'CEAOB', role: 'fonctionnaire', qui: 'Un superviseur européen du CEAOB', fait: 'La **H2A** coopère ici avec ses homologues. Textes : **directive 2006/43/CE** modifiée par **2014/56/UE**, **règlement 537/2014** (EIP).' }] },
+  ue: { layout: 'table', groupes: [{ approx: true, n: 3, label: 'CEAOB', role: 'fonctionnaire', qui: 'Un superviseur européen du CEAOB', fait: 'La **H2A** coopère ici avec ses homologues. Textes : **directive 2006/43/CE** modifiée par **2014/56/UE**, **règlement 537/2014** (EIP).' }] },
 };
 
 // ---------------------------------------------------------------------------------------------------------
@@ -504,7 +505,7 @@ export function startVille3D(root, THREE, opts = {}) {
     const put = (g, x, z, face) => {
       const f = figure(ROLEC[g.role] || col.commun, g.role === 'magistrat'); f.position.set(x, 0, z); f.lookAt(face[0], 0, face[1]); sc.add(f);
       const first = !groups.includes(g);
-      if (first) { groups.push(g); const lb = label(`${g.label}${g.n > 1 ? ` ×${g.n}` : ''}`, { border: ROLEC[g.role] || col.commun, size: 34, k: 0.0072 }); lb.position.set(x, 2.55, z); sc.add(lb); }
+      if (first) { groups.push(g); const lb = label(groupLabel(g), { border: ROLEC[g.role] || col.commun, size: 34, k: 0.0072 }); lb.position.set(x, 2.55, z); sc.add(lb); }
       people.push({ mesh: f, x, z, qui: g.qui, fait: g.fait, label: g.label, g, first, color: ROLEC[g.role] || col.commun });
     };
     const salle = SALLES[lot.id] || { layout: 'bureau', groupes: [] };
@@ -622,17 +623,17 @@ export function startVille3D(root, THREE, opts = {}) {
     let h;
     if (S.inside) {
       const r = S.room, b = S.inside.b, f = S.focus;
-      const chips = `<div class="v3-chips">${r.people.filter((p) => p.first).map((p) => `<button type="button" data-a="to" data-i="${r.people.indexOf(p)}">${p.panneau ? '▤' : `<i style="background:${p.color}"></i>`} ${esc(p.panneau ? p.qui.slice(0, 26) : `${p.g.label}${p.g.n > 1 ? ` ×${p.g.n}` : ''}`)}</button>`).join('')}</div>`;
+      const chips = `<div class="v3-chips">${r.people.filter((p) => p.first).map((p) => `<button type="button" data-a="to" data-i="${r.people.indexOf(p)}">${p.panneau ? '▤' : `<i style="background:${p.color}"></i>`} ${esc(p.panneau ? p.qui.slice(0, 26) : groupLabel(p.g))}</button>`).join('')}</div>`;
       h = f ? `<div class="t"><span class="${b.rive}">${svgIcon(S.inside.id)}</span>${esc(f.qui)}</div><p>${md(f.fait)}</p>${chips}`
         : `<div class="t"><span class="${b.rive}">${svgIcon(S.inside.id)}</span>${esc(b.nom)}</div>${pill(b)}<p class="v3-sub">Marchez vers une personne ou un panneau, ou touchez-les ci-dessous. Symbole : ${esc(SYMBOLES[S.inside.id][1])}.</p>${chips}`;
-      h += `<div class="v3-acts"><button type="button" class="v3-btn" data-a="exit">Sortir</button>${S.tour ? '<button type="button" class="v3-btn primary" data-a="tour-next">Bâtiment suivant ›</button>' : ''}</div>${tourBar()}`;
+      h += `<div class="v3-acts"><button type="button" class="v3-btn" data-a="exit">Sortir</button>${opts.onFiche ? `<button type="button" class="v3-btn" data-a="fiche" data-f="${esc(b.fiche)}">Lire la fiche${opts.fiches?.[b.fiche] ? ` : ${esc(opts.fiches[b.fiche])}` : ''}</button>` : ''}${S.tour ? '<button type="button" class="v3-btn primary" data-a="tour-next">Bâtiment suivant ›</button>' : ''}</div>${tourBar()}`;
     } else if (S.route) {
       const b = S.route.lot.b;
       h = `<div class="t"><span class="${b.rive}">${svgIcon(b.id)}</span>En route : ${esc(b.nom)}</div><p class="v3-sub">${esc(S.route.lot.st.nom)} · ${zoneName(S.route.lot.x, S.route.lot.z)}. Touchez les commandes pour reprendre le volant.</p><div class="v3-acts"><button type="button" class="v3-btn" data-a="stop">Arrêter</button></div>${tourBar()}`;
     } else if (S.near) {
       const l = S.near, b = l.b, twin = b.jumeau && lotOf(b.jumeau);
       h = `<div class="t"><span class="${b.rive}">${svgIcon(l.id)}</span>${esc(b.nom)}</div>${pill(b)}<p>${md(b.role)}</p>${b.chiffres?.length ? `<p class="v3-sub">${b.chiffres.map(esc).join(' · ')}</p>` : ''}<p class="v3-sub">Symbole : ${esc(SYMBOLES[l.id][1])}.</p>
-        <div class="v3-acts"><button type="button" class="v3-btn primary" data-a="enter">Entrer</button>${twin ? `<button type="button" class="v3-btn" data-a="go" data-id="${twin.id}">Jumeau : ${esc(twin.b.court)}</button>` : ''}${S.tour ? '<button type="button" class="v3-btn" data-a="tour-next">Suivant ›</button><button type="button" class="v3-btn" data-a="tour-stop">Fin du parcours</button>' : ''}</div>${tourBar()}`;
+        <div class="v3-acts"><button type="button" class="v3-btn primary" data-a="enter">Entrer</button>${opts.onFiche ? `<button type="button" class="v3-btn" data-a="fiche" data-f="${esc(b.fiche)}">Fiche</button>` : ''}${twin ? `<button type="button" class="v3-btn" data-a="go" data-id="${twin.id}">Jumeau : ${esc(twin.b.court)}</button>` : ''}${S.tour ? '<button type="button" class="v3-btn" data-a="tour-next">Suivant ›</button><button type="button" class="v3-btn" data-a="tour-stop">Fin du parcours</button>' : ''}</div>${tourBar()}`;
     } else {
       const st = STREETS.reduce((a, t) => (Math.abs(t.z - S.pos.z) < Math.abs(a.z - S.pos.z) ? t : a));
       h = `<div class="t">${S.quiz ? 'Trouvez le bon bâtiment' : 'La ville des institutions'}</div><p class="v3-sub">Rive gauche l’expert-comptable, rive droite le commissaire aux comptes ; au nord l’international, au sud la justice. Chaque rue est un niveau : les jumeaux se font face de part et d’autre du pont.</p>
@@ -702,7 +703,7 @@ export function startVille3D(root, THREE, opts = {}) {
         if (!ok) return;
       } else { setWhere(true); if (!ok) { card.innerHTML = `<div class="t">Ce n’était pas ${esc(lot.b.court)}</div><p>La bonne réponse : <strong>${esc(good.b.nom)}</strong>, ${esc(good.st.nom)}.</p><div class="v3-acts"><button type="button" class="v3-btn primary" data-a="go" data-id="${good.id}">Y aller</button></div>`; return; } }
     }
-    S.inside = lot; S.room = buildRoom(lot); S.focus = null; S.walkTo = null; S.wv = { x: 0, z: 0 }; S.route = null;
+    S.inside = lot; S.room = buildRoom(lot); S.room.scene.add(walker); S.focus = null; S.walkTo = null; S.wv = { x: 0, z: 0 }; S.route = null;
     S.pos.set(0, 0, S.room.D / 2 - 3); walker.position.copy(S.pos); walker.rotation.y = Math.PI;
     snapCamera(); setCard(); setWhere(); closeSheets();
   }
@@ -759,6 +760,7 @@ export function startVille3D(root, THREE, opts = {}) {
     else if (a === 'quiz') startQuiz(); else if (a === 'quiz-stop') { S.quiz = null; setWhere(true); setCard(); }
     else if (a === 'view') { S.view = S.view === 'top' ? 'chase' : 'top'; closeSheets(); }
     else if (a === 'mode') { S.instant = t.dataset.v === 'instant'; openList(); }
+    else if (a === 'fiche') opts.onFiche?.(t.dataset.f);
   });
   big.addEventListener('click', (e) => {
     const r = big.getBoundingClientRect(), x = (e.clientX - r.left - r.width / 2) / bigScale, z = (e.clientY - r.top - r.height / 2) / bigScale;
@@ -779,7 +781,7 @@ export function startVille3D(root, THREE, opts = {}) {
     }
     const hit = ray.intersectObjects(pick, false)[0]; if (hit) { const l = lotOf(hit.object.userData.id); if (l === S.near) enter(l); else goTo(l); }
   });
-  const io = new IntersectionObserver((en) => { visible = en[0]?.isIntersecting !== false; }); io.observe(root);
+  const io = new IntersectionObserver((en) => { visible = en[en.length - 1].isIntersecting; }); io.observe(root); // plusieurs entrées possibles (détaché puis remis) : la dernière fait foi
 
   // ---------- Boucle
   function input() {

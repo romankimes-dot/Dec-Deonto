@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
-import { VILLE, batiment, VILLE_CSS } from '../js/ville.js';
+import { VILLE, batiment } from '../js/ville.js';
 
 const ids = new Set(VILLE.batiments.map((b) => b.id));
 
@@ -50,7 +50,6 @@ test('ville : les chiffres des pancartes concordent avec les fiches (échantillo
   assert.match(h2a, /\*\*4 personnes qualifiées\*\*/); assert.match(batiment('sanctions').pancartes[0].fait, /\*\*4 personnes qualifiées\*\*/);
   assert.match(h2a, /\*\*3 ans au plus\*\*/); assert.match(batiment('sanctions').pancartes[3].fait, /\*\*3 ans au plus\*\*/);
   assert.match(ec, /suffrage direct/); assert.match(batiment('cnoec').pancartes[0].fait, /suffrage direct/);
-  assert.ok(VILLE_CSS.includes('.vl-scene'));
 });
 
 test('ville : précachée par le service worker', () => {
@@ -67,6 +66,10 @@ test('ville 3D : chaque salle désigne un bâtiment existant, chaque personne di
   }
   for (const b of VILLE.batiments) assert.ok(SALLES[b.id], `${b.id} : personne à l’intérieur`);
   const cncc = SALLES.cncc.groupes.reduce((n, g) => n + g.n, 0); assert.equal(cncc, 60, 'CNCC : 60 membres');
+  // Un nombre affiché est un nombre des fiches : les effectifs de mise en scène sont marqués `approx` et jamais affichés.
+  const { groupLabel } = await import('../js/ville3d.js');
+  for (const salle of Object.values(SALLES)) for (const g of salle.groupes) if (g.approx) assert.ok(!/×/.test(groupLabel(g)), `${g.label} : effectif illustratif affiché`);
+  assert.equal(groupLabel(SALLES.cncc.groupes[1]), 'Président de CRCC ×17');
   assert.equal(SALLES.crcc.groupes.reduce((n, g) => n + g.n, 0), 22, 'CRCC : 22 au plus');
   assert.equal(SALLES.sanctions.groupes.reduce((n, g) => n + g.n, 0), 5, 'commission des sanctions : 1 + 4');
   assert.equal(SALLES.chnat.groupes.reduce((n, g) => n + g.n, 0), 5, 'chambre nationale : 1 + 2 + 2');

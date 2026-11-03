@@ -719,7 +719,7 @@ views.plan = () => {
     const done = !!pr.plan.done[st.id]; const isCur = i === cur;
     const prog = st.kind === 'schema' ? P.stepProgress(st, state.fiches, pr.cards, mastery) : null;
     const links = st.kind === 'schema'
-      ? `${st.fiches.map((f) => `<button class="btn sm" data-open-fiche="${esc(f)}">${ic('chart')} ${esc(shortTitle(f))}</button>`).join('')}${shortsBtn(st.id)}${st.deep.length ? `<div class="muted" style="margin-top:6px">En détail : ${st.deep.map((f) => `<a href="#" data-open-fiche="${esc(f)}">${esc(shortTitle(f))}</a>`).join(' · ')}</div>` : ''}`
+      ? `${st.fiches.map((f) => `<button class="btn sm" data-open-fiche="${esc(f)}">${ic('chart')} ${esc(shortTitle(f))}</button>`).join('')}${st.fiches.some((f) => VILLE_FICHES.includes(f)) ? `<button class="btn sm" data-go="ville">${ic('landmark')} Ville des institutions</button>` : ''}${shortsBtn(st.id)}${st.deep.length ? `<div class="muted" style="margin-top:6px">En détail : ${st.deep.map((f) => `<a href="#" data-open-fiche="${esc(f)}">${esc(shortTitle(f))}</a>`).join(' · ')}</div>` : ''}`
       : `<button class="btn sm" data-go="${st.action === 'weak' ? 'train' : st.action}">${st.action === 'exam' ? ic('timer') + ' Aller aux examens' : st.action === 'weak' ? ic('target') + ' Mes questions les plus ratées' : ic('repeat') + ' Réviser'}</button>`;
     return `<div class="card step ${done ? 'done' : ''} ${isCur ? 'cur' : ''}">
       <div class="row" style="justify-content:space-between"><span class="muted">${done ? 'faite' : stepDay[st.id] ? `prévue ${esc(dayLabel(stepDay[st.id]))}` : finalDay[st.id] && cal.find((x) => x.n === finalDay[st.id]) ? `prévue ${esc(dayLabel(cal.find((x) => x.n === finalDay[st.id])))}` : ''}${st.who ? ` · ${esc(st.who)}` : ''}</span>${done ? '<span class="badge">' + ic('check') + ' terminée</span>' : isCur ? '<span class="badge warn">en cours</span>' : ''}</div>
@@ -2007,7 +2007,7 @@ function souvenirsView() {
 
 // ---------- Glossaire ----------
 // Termes clés soulignés partout (première occurrence par carte, fiche ou short) ; un toucher ouvre la définition.
-const GL_SKIP = 'button, a, textarea, input, select, label, code, pre, h1, h2, h3, nav, header, svg, .gl, .gl-pop, .fpill, .toast, .celebrate, .sheet-head, .feed-top, .vl-floor summary, .vl-pill, .vl-chips, .vl-quiz .q, .vl-sign, [data-no-gl]';
+const GL_SKIP = 'button, a, textarea, input, select, label, code, pre, h1, h2, h3, nav, header, svg, .gl, .gl-pop, .fpill, .toast, .celebrate, .sheet-head, .feed-top, .v3, .vp-page, [data-no-gl]';
 const glScope = (el) => el.closest('.card, section, .sheet-body') || document.body;
 // Pas d'aide pendant un examen blanc ni dans les jeux : la définition donnerait la réponse.
 const glActive = () => !!state.glMatcher && state.progress.settings.glossary !== false
@@ -2329,12 +2329,15 @@ function villeEntry() {
   return `<div class="card pc-entry"><div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:12px"><div><strong>${ic('landmark')} La ville des institutions</strong><div class="muted">Ordre, H2A, CNCC, chambres, tribunaux, quartier international : en 3D, qui siège où et qui fait quoi</div></div><button class="btn sm primary" data-go="ville">Visiter ›</button></div></div>`;
 }
 const injectCss = (id, css) => { if (!$(`#${id}`)) { const st = document.createElement('style'); st.id = id; st.textContent = css; document.head.appendChild(st); } };
-function stopVille3D() { if (state.v3) { try { state.v3.stop(); } catch { /* ignore */ } state.v3 = null; } document.body.classList.remove('print-plan'); }
+// La visite 3D survit aux rafraîchissements de l'écran (synchronisation, fiche refermée…) : son élément est
+// remis en place tel quel, avec sa position et son contexte WebGL ; elle s'arrête seulement en quittant la vue ou l'onglet.
+function stopVille3D() { if (state.v3) { try { state.v3.stop(); } catch { /* ignore */ } state.v3 = null; state.v3el = null; } document.body.classList.remove('print-plan'); }
 views.ville = () => {
   const tab = state.villeTab === 'plan' ? 'plan' : '3d';
   const titles = Object.fromEntries(state.fiches.map((f) => [f.file, f.title.replace(/^(Schéma|Fiche)\s*\d+\s*[–-]\s*/, '')]));
   const rive = state.villeRive || 'ec';
-  stopVille3D();
+  if (tab === 'plan') stopVille3D();
+  document.body.classList.toggle('print-plan', tab === 'plan');
   // Plan d'une profession, réduit à la largeur de l'écran ; toucher une pièce ouvre la visite 3D devant ce bâtiment.
   const showPlan = (root) => {
     injectCss('villeplan-css', PLAN_CSS); document.body.classList.add('print-plan');
@@ -2347,11 +2350,13 @@ views.ville = () => {
   setTimeout(async () => {
     const root = $('#ville'); if (!root) return;
     if (tab === 'plan') return showPlan(root);
+    if (state.v3 && state.v3el) { root.replaceWith(state.v3el); return; }
     injectCss('ville3d-css', VILLE3D_CSS);
     try {
       const THREE = await import('./vendor/three.module.min.js');
       if (!$('#ville') || state.view !== 'ville' || state.villeTab === 'plan') return;
-      state.v3 = startVille3D(root, THREE, { onQuizEnd: (score, n) => toast(`Ville : ${score} / ${n}`, score === n ? 'party' : 'landmark') });
+      state.v3 = startVille3D(root, THREE, { onQuizEnd: (score, n) => toast(`Ville : ${score} / ${n}`, score === n ? 'party' : 'landmark'), fiches: titles, onFiche: (file) => ficheSheet(file) });
+      state.v3el = root;
       if (state.villeGoto) { state.v3.place(state.villeGoto); state.villeGoto = null; }
       root.scrollIntoView({ block: 'start', behavior: 'smooth' });
     } catch (e) {

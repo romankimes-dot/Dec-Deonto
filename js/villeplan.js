@@ -5,7 +5,7 @@
 // fait, piège. Les pièces de l'autre profession restent en pointillé, nommées seulement.
 // Fonctions pures (chaînes HTML) : vue « Plans à imprimer » de l'app et scripts/build_ville_pdf.mjs (PDF A4, 2 pages).
 
-import { SALLES, STREETS, LOTS, SYMBOLES, svgIcon } from './ville3d.js';
+import { SALLES, STREETS, LOTS, SYMBOLES, svgIcon, groupLabel } from './ville3d.js';
 import { batiment } from './ville.js';
 
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -91,7 +91,7 @@ function roomHtml(r, fiches) {
   if (kind === 'ghost') return `<div class="vp-room ghost" data-id="${lot.id}" style="${box}"><div class="hd">${svgIcon(lot.id)}<span>${esc(plain(b.court))}</span></div></div>`;
   const furn = w >= 44 ? furniture(lot.id) : '';
   const salle = SALLES[lot.id];
-  const qui = salle ? salle.groupes.map((g) => `${plain(g.label)}${g.n > 1 ? ` ×${g.n}` : ''}`).join(' · ') : '';
+  const qui = salle ? salle.groupes.map((g) => plain(groupLabel(g))).join(' · ') : '';
   const twin = b.jumeau && batiment(b.jumeau);
   // Budget de lignes : fiche, qui, piège, ce qui s'y fait, puis 2e ligne de « qui », chiffres, et le reste pour le contenu.
   let budget = Math.floor((h - 1.9 - 3.1) / LINE);
