@@ -164,6 +164,42 @@ export const SYMBOLES = {
 export const svgIcon = (id, attrs = '') => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${attrs}><path d="${ICONES[SYMBOLES[id]?.[0]] || ICONES.columns}"/></svg>`;
 
 // Liste rapide : où aller, rangé par profession.
+// Composition de chaque institution, en liste claire : membres (avec l'effectif quand les fiches le donnent),
+// puis les personnes présentes qui ne sont pas membres (commissaire du gouvernement, rapporteur, contrôleurs…).
+const ROLE_CSS = { elu_ec: 'var(--ec, #0e7490)', elu_cac: 'var(--cac, #7c3aed)' };
+const roleCss = (r) => ROLE_CSS[r] || ROLE[r] || '#64748b';
+const escH = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+export const COMPO_CSS = `
+.cp-sec { margin: 0 0 14px; }
+.cp-h { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; margin: 14px 0 8px; display: flex; align-items: center; gap: 8px; }
+.cp-h::before { content: ''; width: 10px; height: 10px; border-radius: 3px; background: currentColor; }
+.cp-h.ec { color: var(--ec, #0e7490); } .cp-h.cac { color: var(--cac, #7c3aed); } .cp-h.commun { color: var(--muted, #64748b); }
+.cp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; }
+.cp-b { border: 1px solid var(--line, #e2e8f0); border-radius: 12px; padding: 10px 12px; background: var(--card, #fff); cursor: pointer; min-width: 0; }
+.cp-t { display: flex; gap: 8px; align-items: center; font-weight: 800; font-size: 14.5px; line-height: 1.2; }
+.cp-t svg { width: 20px; height: 20px; flex-shrink: 0; }
+.cp-b ul { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 4px; }
+.cp-b li { display: flex; gap: 8px; align-items: baseline; font-size: 13.5px; line-height: 1.3; }
+.cp-b li i { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; transform: translateY(1px); }
+.cp-b li .n { min-width: 2.2em; font-weight: 800; font-variant-numeric: tabular-nums; text-align: right; }
+.cp-b li.hors { color: var(--muted, #64748b); }
+.cp-sub { font-size: 12px; color: var(--muted, #64748b); margin: 6px 0 0; }
+.cp-tot { font-size: 12.5px; font-weight: 700; margin: 6px 0 0; }
+`;
+export function compositionItems(id) {
+  const salle = SALLES[id]; if (!salle) return '';
+  const row = (g, hors) => `<li class="${hors ? 'hors' : ''}"><i style="background:${roleCss(g.role)}"></i><span class="n">${g.approx ? '' : g.n}</span><span><b>${escH(g.label)}</b>${hors ? ' · présent, non membre' : ''}</span></li>`;
+  const mem = salle.groupes.filter((g) => !g.debout), hors = salle.groupes.filter((g) => g.debout);
+  const tot = mem.every((g) => !g.approx) && mem.length > 1 ? `<p class="cp-tot">${mem.reduce((k, g) => k + g.n, 0)} membres</p>` : (mem.some((g) => g.approx) ? '<p class="cp-sub">Effectif total non précisé par les fiches.</p>' : '');
+  return `<ul>${mem.map((g) => row(g, false)).join('')}${hors.map((g) => row(g, true)).join('')}</ul>${tot}`;
+}
+export function compositionHtml() {
+  return QUARTIERS_LISTE.map((q) => `<section class="cp-sec"><h3 class="cp-h ${q.rive}">${escH(q.titre)}</h3><div class="cp-grid">${q.ids.map((id) => {
+    const b = batiment(id);
+    return `<article class="cp-b" data-id="${id}"><div class="cp-t"><span style="color:${b.rive === 'ec' ? 'var(--ec, #0e7490)' : b.rive === 'cac' ? 'var(--cac, #7c3aed)' : 'var(--muted, #64748b)'}">${svgIcon(id)}</span>${escH(b.nom)}</div>${compositionItems(id)}${b.chiffres?.length ? `<p class="cp-sub">${b.chiffres.map(escH).join(' · ')}</p>` : ''}</article>`;
+  }).join('')}</div></section>`).join('');
+}
+
 export const QUARTIERS_LISTE = [
   { titre: 'Expert-comptable', rive: 'ec', ids: ['bercy', 'cnoec', 'chnat', 'croec', 'chreg', 'terrain', 'cavec'] },
   { titre: 'Commissaire aux comptes', rive: 'cac', ids: ['chancellerie', 'cncc', 'h2a', 'sanctions', 'crcc', 'amf', 'anc'] },
@@ -177,13 +213,13 @@ export const QUARTIERS_LISTE = [
 // se font face de part et d'autre du pont de leur rue ; la chambre de discipline est en face de son conseil.
 // Le plan imprimable (js/villeplan.js) reprend exactement cette disposition.
 export const STREETS = [
-  { id: 'intl', nom: 'Avenue internationale', z: -51 },
-  { id: 'tutelle', nom: 'Rue des tutelles', z: -34 },
-  { id: 'nat', nom: 'Rue nationale', z: -17 },
+  { id: 'intl', nom: 'Avenue internationale', z: -54 },
+  { id: 'tutelle', nom: 'Rue des tutelles', z: -36 },
+  { id: 'nat', nom: 'Rue nationale', z: -18 },
   { id: 'sup', nom: 'Rue de la supervision', z: 0 },
-  { id: 'reg', nom: 'Rue régionale', z: 17 },
-  { id: 'recours', nom: 'Rue des recours', z: 34 },
-  { id: 'resp', nom: 'Rue des responsabilités', z: 51 },
+  { id: 'reg', nom: 'Rue régionale', z: 18 },
+  { id: 'recours', nom: 'Rue des recours', z: 36 },
+  { id: 'resp', nom: 'Rue des responsabilités', z: 54 },
 ];
 // Bâtiment → [rue, côté de la rue (n = nord, s = sud), x]. x < 0 : rive EC, x > 0 : rive CAC.
 export const PLACES = {
@@ -196,15 +232,15 @@ export const PLACES = {
   tj: ['resp', 'n', -21], tcorr: ['resp', 'n', -12.5], parquet: ['resp', 'n', 12.5], tracfin: ['resp', 'n', 21], cavec: ['resp', 's', -21],
 };
 export const TOUR3D = Object.keys(PLACES);
-const RH = 2.4, AVENUES = [-37, -5.4, 5.4, 37], RIVER = { x0: -3, x1: 3, z0: -46, z1: 25.5 }, BOUNDS = { x0: -39, x1: 39, z0: -54, z1: 54 }, CAR_R = 1.3, TERRAIN = { x: 44, z: 63 };
+const RH = 2.4, AVENUES = [-37, -5.4, 5.4, 37], RIVER = { x0: -3, x1: 3, z0: -48, z1: 27 }, BOUNDS = { x0: -39, x1: 39, z0: -57, z1: 57 }, CAR_R = 1.3, TERRAIN = { x: 44, z: 67 }, PARVIS = 1.6;
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const hyp = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const angDiff = (a, b) => { let d = (b - a) % (2 * Math.PI); if (d > Math.PI) d -= 2 * Math.PI; if (d < -Math.PI) d += 2 * Math.PI; return d; };
 
 export const LOTS = VILLE.batiments.map((b) => {
   const [sid, side, x] = PLACES[b.id]; const si = STREETS.findIndex((s) => s.id === sid); const st = STREETS[si];
-  const w = clamp(b.w * 0.075, 6, 8.3), d = clamp(b.d * 0.075, 4, 5), h = b.style === 'vide' ? 0.2 : 2.2 + b.h * 0.06;
-  const sgn = side === 'n' ? -1 : 1, faceZ = st.z + sgn * (RH + 0.6), z = faceZ + sgn * d / 2;
+  const w = clamp(b.w * 0.075, 6, 8.3), d = clamp(b.d * 0.075, 4, 4.4), h = b.style === 'vide' ? 0.2 : 2.2 + b.h * 0.06;
+  const sgn = side === 'n' ? -1 : 1, faceZ = st.z + sgn * (RH + PARVIS), z = faceZ + sgn * d / 2;
   const quartier = st.id === 'intl' ? 'intl' : ['recours', 'resp'].includes(st.id) ? 'justice' : b.rive;
   return { id: b.id, b, st, si, side, sgn, x, z, w, d, h, faceZ, quartier, stop: { x, z: st.z + sgn * 1.1 } };
 });
@@ -218,7 +254,7 @@ const riverRects = () => {
 };
 const OBST = [
   ...LOTS.filter((l) => l.b.style !== 'vide').map((l) => ({ x0: l.x - l.w / 2, x1: l.x + l.w / 2, z0: l.z - l.d / 2, z1: l.z + l.d / 2 })),
-  ...riverRects(), { x: 0, z: 42.5, r: 2.4 }, { x: 0, z: -57, r: 2.2 },
+  ...riverRects(), { x: 0, z: 45, r: 2.4 }, { x: 0, z: -61, r: 2.2 },
 ];
 function pushOut(p, R) {
   let hit = false;
@@ -297,6 +333,11 @@ export const VILLE3D_CSS = `
 .v3-card p { margin: 4px 0; }
 .v3-sub { color: var(--muted); font-size: 12.5px; }
 .v3-acts { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.v3-compo { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 3px; }
+.v3-compo button { width: 100%; display: flex; gap: 8px; align-items: baseline; text-align: left; font: 600 13px/1.3 inherit; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; }
+.v3-compo i { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; transform: translateY(1px); }
+.v3-compo .n { min-width: 1.8em; text-align: right; font-weight: 800; font-variant-numeric: tabular-nums; }
+.v3-compo em { font-style: normal; font-weight: 400; color: var(--muted); }
 .v3-chips { display: flex; gap: 6px; overflow-x: auto; touch-action: pan-x; margin-top: 8px; padding-bottom: 2px; scrollbar-width: none; }
 .v3-chips button { flex-shrink: 0; font: 600 12px/1 inherit; padding: 7px 9px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; display: inline-flex; gap: 5px; align-items: center; }
 .v3-chips button i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
@@ -341,6 +382,7 @@ export function startVille3D(root, THREE, opts = {}) {
     <div class="v3-sheet" id="v3-sheet" hidden></div>
     <div class="v3-sheet v3-map" id="v3-map" hidden><div class="v3-sheet-head"><strong>Carte · touchez un bâtiment pour y aller</strong><button type="button" class="v3-btn" data-a="close">Fermer</button></div><div class="v3-mapwrap"><canvas id="v3-bigmap"></canvas></div></div>`;
   const $ = (s) => root.querySelector(s);
+  if (!document.getElementById('v3-compo-css')) { const st = document.createElement('style'); st.id = 'v3-compo-css'; st.textContent = COMPO_CSS; document.head.appendChild(st); }
     const canvas = $('.v3-gl'), whereEl = $('#v3-where'), card = $('#v3-card'), flash = $('#v3-flash'), sheet = $('#v3-sheet'), mapSheet = $('#v3-map'), mini = $('#v3-mini'), big = $('#v3-bigmap'), turboBtn = $('#v3-turbo');
 
   const col = { ec: cssVar('--ec', '#0e7490'), cac: cssVar('--cac', '#7c3aed'), commun: cssVar('--muted', '#64748b'), card: cssVar('--card', '#ffffff'), text: cssVar('--text', '#0f172a'), line: cssVar('--line', '#e2e8f0'), primary: cssVar('--primary', '#1e40af') };
@@ -370,6 +412,9 @@ export function startVille3D(root, THREE, opts = {}) {
   const BOX = keep(new THREE.BoxGeometry(1, 1, 1));
   const drawIcon = (x, name, X, Y, size, color, lw = 2) => { x.save(); x.translate(X, Y); x.scale(size / 24, size / 24); x.lineWidth = lw; x.strokeStyle = color; x.lineCap = 'round'; x.lineJoin = 'round'; x.stroke(new Path2D(ICONES[name])); x.restore(); };
   const rr = (x, X, Y, W, H, R) => { x.beginPath(); x.moveTo(X + R, Y); x.arcTo(X + W, Y, X + W, Y + H, R); x.arcTo(X + W, Y + H, X, Y + H, R); x.arcTo(X, Y + H, X, Y, R); x.arcTo(X, Y, X + W, Y, R); x.closePath(); };
+  // Grain : points clairs et sombres semés au hasard, pour que rien ne soit d'un aplat parfait.
+  let grainSeed = 11; const grnd = () => ((grainSeed = (grainSeed * 16807) % 2147483647) / 2147483647);
+  const grain = (x, W, H, n = 900, a = 0.08) => { for (let i = 0; i < n; i++) { x.fillStyle = grnd() < 0.5 ? `rgba(0,0,0,${a})` : `rgba(255,255,255,${a})`; x.fillRect(grnd() * W, grnd() * H, 1 + grnd() * 2, 1 + grnd() * 2); } };
   const canvasTex = (c) => { const t = keep(new THREE.CanvasTexture(c)); t.colorSpace = THREE.SRGBColorSpace; return t; };
   const labels = new Map();
   function label(text, o = {}) {
@@ -416,7 +461,7 @@ export function startVille3D(root, THREE, opts = {}) {
     else if (kind === 'ec') { for (let i = 0; i <= 128; i += 32) { x.moveTo(i, 0); x.lineTo(i, 128); x.moveTo(0, i); x.lineTo(128, i); } }
     else if (kind === 'cac') { for (let r = 0; r < 8; r++) { const y = r * 16; x.moveTo(0, y); x.lineTo(128, y); for (let i = (r % 2) * 16; i <= 128; i += 32) { x.moveTo(i, y); x.lineTo(i, y + 16); } } }
     else { for (let i = 0; i <= 128; i += 64) { x.moveTo(i, 0); x.lineTo(i, 128); x.moveTo(0, i); x.lineTo(128, i); } x.moveTo(32, 64); x.lineTo(32, 128); x.moveTo(96, 0); x.lineTo(96, 64); }
-    x.stroke();
+    x.stroke(); grain(x, 128, 128, 700, 0.07);
     const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; return t;
   };
   const pzone = (x0, x1, z0, z1, kind, base) => {
@@ -426,18 +471,25 @@ export function startVille3D(root, THREE, opts = {}) {
   };
   pzone(-GX, GX, -GZ, RIVER.z0, 'intl', C.north); pzone(-GX, GX, RIVER.z1, GZ, 'justice', C.south);
   pzone(-GX, RIVER.x0, RIVER.z0, RIVER.z1, 'ec', C.ecz); pzone(RIVER.x1, GX, RIVER.z0, RIVER.z1, 'cac', C.cacz);
-  zone(RIVER.x0, RIVER.x1, RIVER.z0, RIVER.z1, C.river, 0.015);
-  for (const s of STREETS) zone(AVENUES[0] - RH, AVENUES[3] + RH, s.z - RH, s.z + RH, C.road, 0.03);
-  for (const x of AVENUES) zone(x - RH, x + RH, STREETS[0].z - RH, STREETS[6].z + RH, C.road, 0.03);
+  const riverTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'); x.fillStyle = C.river; x.fillRect(0, 0, 128, 128);
+    x.strokeStyle = 'rgba(255,255,255,.35)'; x.lineWidth = 2; for (let y = 8; y < 128; y += 16) { x.beginPath(); for (let i = 0; i <= 128; i += 8) x.lineTo(i, y + Math.sin((i + y) / 10) * 3); x.stroke(); }
+    const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(1, (RIVER.z1 - RIVER.z0) / 8); return t; })();
+  { const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(RIVER.x1 - RIVER.x0, RIVER.z1 - RIVER.z0)), keep(new THREE.MeshLambertMaterial({ map: riverTex }))); m.rotation.x = -Math.PI / 2; m.position.set(0, 0.015, (RIVER.z0 + RIVER.z1) / 2); city.add(m); }
+  const asphalt = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'); x.fillStyle = C.road; x.fillRect(0, 0, 128, 128); grain(x, 128, 128, 1600, 0.12);
+    const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; return t; })();
+  const road = (x0, x1, z0, z1) => { const t = keep(asphalt.clone()); t.needsUpdate = true; t.repeat.set((x1 - x0) / 6, (z1 - z0) / 6);
+    const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(x1 - x0, z1 - z0)), keep(new THREE.MeshLambertMaterial({ map: t }))); m.rotation.x = -Math.PI / 2; m.position.set((x0 + x1) / 2, 0.03, (z0 + z1) / 2); city.add(m); };
+  for (const s of STREETS) road(AVENUES[0] - RH, AVENUES[3] + RH, s.z - RH, s.z + RH);
+  for (const x of AVENUES) road(x - RH, x + RH, STREETS[0].z - RH, STREETS[6].z + RH);
   const dash = lam(dark ? '#cbd5e1' : '#ffffff');
   for (const s of STREETS) for (let x = -35; x < 35; x += 4) box(city, 1.6, 0.02, 0.18, x, 0.05, s.z, dash);
   for (const s of STREETS.filter((t) => t.z > RIVER.z0 && t.z < RIVER.z1)) { const par = lam(dark ? '#94a3b8' : '#475569'); box(city, 6, 0.6, 0.3, 0, 0.3, s.z - RH, par); box(city, 6, 0.6, 0.3, 0, 0.3, s.z + RH, par); }
   // Repères : globe au nord, fontaine de la justice au sud, panneaux des rives.
-  const globe = new THREE.Mesh(keep(new THREE.SphereGeometry(2, 20, 14)), lam(col.primary, { wireframe: true })); globe.position.set(0, 3.2, -57); city.add(globe);
-  box(city, 1.8, 1.2, 1.8, 0, 0.6, -57, lam('#94a3b8'));
-  const fountain = new THREE.Mesh(keep(new THREE.CylinderGeometry(2.2, 2.4, 0.7, 24)), lam('#cbd5e1')); fountain.position.set(0, 0.35, 42.5); city.add(fountain);
-  const water = new THREE.Mesh(keep(new THREE.CylinderGeometry(1.9, 1.9, 0.2, 24)), lam(C.river)); water.position.set(0, 0.75, 42.5); city.add(water);
-  box(city, 0.5, 2.4, 0.5, 0, 1.2, 42.5, lam('#cbd5e1'));
+  const globe = new THREE.Mesh(keep(new THREE.SphereGeometry(2, 20, 14)), lam(col.primary, { wireframe: true })); globe.position.set(0, 3.2, -61); city.add(globe);
+  box(city, 1.8, 1.2, 1.8, 0, 0.6, -61, lam('#94a3b8'));
+  const fountain = new THREE.Mesh(keep(new THREE.CylinderGeometry(2.2, 2.4, 0.7, 24)), lam('#cbd5e1')); fountain.position.set(0, 0.35, 45); city.add(fountain);
+  const water = new THREE.Mesh(keep(new THREE.CylinderGeometry(1.9, 1.9, 0.2, 24)), lam(C.river)); water.position.set(0, 0.75, 45); city.add(water);
+  box(city, 0.5, 2.4, 0.5, 0, 1.2, 45, lam('#cbd5e1'));
   const signs = [];
   const sign = (text, x, y, z, o = {}) => { const s = label(text, { size: 44, k: 0.0085, ...o }); s.position.set(x, y, z); city.add(s); signs.push(s); return s; };
   for (const s of STREETS) sign(s.nom, 0, 4.2, s.z, { bg: col.text, fg: col.card, border: col.text });
@@ -447,19 +499,37 @@ export function startVille3D(root, THREE, opts = {}) {
     box(city, 0.5, 4.2, 0.5, ax - RH - 0.3, 2.1, z, m); box(city, 0.5, 4.2, 0.5, ax + RH + 0.3, 2.1, z, m); box(city, 2 * RH + 1.6, 0.6, 0.6, ax, 4.4, z, m);
     sign(txt, ax, 5.3, z, { border: ACC[kind], fg: ACC[kind], size: 40, k: 0.0075 });
   }
-  sign('Quartier international', 0, 6.2, -57, { size: 40 }); sign('Quartier judiciaire', 0, 4.4, 42.5, { size: 40 });
+  sign('Quartier international', 0, 6.2, -61, { size: 40 }); sign('Quartier judiciaire', 0, 4.4, 45, { size: 40 });
 
   // Bâtiments : petits volumes, façade côté rue avec le symbole, porte, étiquette.
+  // Matière des murs selon le quartier : brique (rive EC), mur-rideau de verre (rive CAC), panneaux de béton
+  // (international), assises de pierre (justice) ; fenêtres par-dessus.
+  const wallPattern = (x, W, H, quartier) => {
+    x.strokeStyle = 'rgba(0,0,0,.16)'; x.lineWidth = 1; x.beginPath();
+    if (quartier === 'ec') for (let y = 0, r = 0; y < H; y += 6, r++) { x.moveTo(0, y); x.lineTo(W, y); for (let i = (r % 2) * 6; i < W; i += 12) { x.moveTo(i, y); x.lineTo(i, y + 6); } }
+    else if (quartier === 'cac') { x.strokeStyle = 'rgba(255,255,255,.22)'; for (let i = 0; i < W; i += 10) { x.moveTo(i, 0); x.lineTo(i, H); } for (let y = 0; y < H; y += 14) { x.moveTo(0, y); x.lineTo(W, y); } }
+    else if (quartier === 'intl') for (let i = 0; i < W; i += 32) { x.moveTo(i, 0); x.lineTo(i, H); for (let y = 0; y < H; y += 32) { x.moveTo(0, y); x.lineTo(W, y); } }
+    else for (let y = 0; y < H; y += 10) { x.moveTo(0, y); x.lineTo(W, y); }
+    x.stroke(); grain(x, W, H, Math.round(W * H / 6), 0.07);
+  };
   const sideTex = {};
-  for (const r of ['ec', 'cac', 'commun']) {
+  const sideTexOf = (rive, quartier) => {
+    const k = `${rive}|${quartier}`; if (sideTex[k]) return sideTex[k];
     const c = document.createElement('canvas'); c.width = 64; c.height = 64; const x = c.getContext('2d');
-    x.fillStyle = col[r]; x.fillRect(0, 0, 64, 64); x.fillStyle = 'rgba(255,255,255,.3)';
-    for (let yy = 10; yy < 64; yy += 22) for (let xx = 8; xx < 64; xx += 22) x.fillRect(xx, yy, 9, 11);
-    const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; sideTex[r] = t;
-  }
+    x.fillStyle = col[rive]; x.fillRect(0, 0, 64, 64); wallPattern(x, 64, 64, quartier);
+    x.fillStyle = quartier === 'cac' ? 'rgba(220,230,255,.42)' : 'rgba(255,255,255,.3)';
+    for (let yy = 10; yy < 64; yy += 22) for (let xx = 8; xx < 64; xx += 22) x.fillRect(xx, yy, quartier === 'cac' ? 14 : 9, 11);
+    const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; return (sideTex[k] = t);
+  };
+  const roofTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d'); x.fillStyle = dark ? '#0b4f5c' : '#0b5563'; x.fillRect(0, 0, 64, 64);
+    x.strokeStyle = 'rgba(0,0,0,.25)'; x.lineWidth = 1.5; for (let y = 0, r = 0; y < 64; y += 8, r++) { x.beginPath(); x.moveTo(0, y); x.lineTo(64, y); x.stroke(); for (let i = (r % 2) * 8; i < 64; i += 16) { x.beginPath(); x.moveTo(i, y); x.lineTo(i, y + 8); x.stroke(); } }
+    grain(x, 64, 64, 500, 0.08); const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(3, 3); return t; })();
+  const gravel = (() => { const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d'); x.fillStyle = dark ? '#334155' : '#e2e8f0'; x.fillRect(0, 0, 64, 64); grain(x, 64, 64, 900, 0.14);
+    const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(2, 2); return t; })();
+  const roofMat = keep(new THREE.MeshLambertMaterial({ map: gravel }));
   const facade = (lot) => {
     const c = document.createElement('canvas'), W = 256, H = clamp(Math.round(256 * lot.h / lot.w), 140, 360); c.width = W; c.height = H; const x = c.getContext('2d');
-    x.fillStyle = col[lot.b.rive]; x.fillRect(0, 0, W, H); x.fillStyle = 'rgba(255,255,255,.26)';
+    x.fillStyle = col[lot.b.rive]; x.fillRect(0, 0, W, H); wallPattern(x, W, H, lot.quartier); x.fillStyle = lot.quartier === 'cac' ? 'rgba(220,230,255,.4)' : 'rgba(255,255,255,.26)';
     for (let yy = 14; yy < H - 70; yy += 30) for (let xx = 16; xx < W - 16; xx += 32) x.fillRect(xx, yy, 14, 18);
     const r = Math.min(W * 0.3, (H - 56) * 0.42), cx = W / 2, cy = Math.max(r + 8, (H - 56) / 2);
     x.fillStyle = '#ffffff'; x.beginPath(); x.arc(cx, cy, r, 0, Math.PI * 2); x.fill();
@@ -479,24 +549,39 @@ export function startVille3D(root, THREE, opts = {}) {
       box(city, 0.08, 2.2, 0.08, x + w / 2 - 0.6, top + 1.1, z, lam('#94a3b8'));
       box(city, 0.05, 0.6, 1, x + w / 2 - 0.6, top + 1.9, z + 0.5, lam(FLAGS[flagI++ % FLAGS.length]));
     } else if (lot.quartier === 'ec') {
-      const roof = new THREE.Mesh(PRISM, lam(dark ? '#0b4f5c' : '#0b5563')); roof.rotation.y = Math.PI / 2; roof.scale.set(d + 0.5, Math.min(2.2, d * 0.45), w + 0.5); roof.position.set(x, top, z); city.add(roof);
+      const roof = new THREE.Mesh(PRISM, keep(new THREE.MeshLambertMaterial({ map: roofTex }))); roof.rotation.y = Math.PI / 2; roof.scale.set(d + 0.5, Math.min(2.2, d * 0.45), w + 0.5); roof.position.set(x, top, z); city.add(roof);
       box(city, 0.6, 1, 0.6, x - w * 0.3, top + 0.9, z, lam('#7c5a3a'));
     } else if (lot.quartier === 'cac') {
       const glass = lam(dark ? '#a5b4fc' : '#c4b5fd', { transparent: true, opacity: 0.85 });
       box(city, w * 0.62, h * 0.28, d * 0.62, x, top + h * 0.14, z, glass);
       box(city, 0.06, 1.6, 0.06, x, top + h * 0.28 + 0.8, z, lam('#94a3b8'));
     } else {
-      const stone = lam(dark ? '#e7e5e4' : '#f5f0e6'), fz = faceZ - sgn * 0.55;
+      const stone = lam(dark ? '#e7e5e4' : '#f5f0e6'), fz = faceZ - sgn * 0.35;
       for (const k of [-0.4, -0.2, 0.2, 0.4]) { const c = new THREE.Mesh(COL, stone); c.scale.set(1, h, 1); c.position.set(x + k * w, h / 2, fz); city.add(c); }
-      box(city, w + 0.4, 0.35, 1.3, x, h + 0.05, faceZ - sgn * 0.45, stone);
-      const ped = new THREE.Mesh(PRISM, stone); ped.scale.set(w + 0.4, 1.3, 0.5); ped.position.set(x, h + 0.22, faceZ - sgn * 0.6); city.add(ped);
-      box(city, w + 1.2, 0.3, 1.6, x, 0.15, faceZ - sgn * 0.6, stone);
+      box(city, w + 0.4, 0.35, 0.9, x, h + 0.05, faceZ - sgn * 0.3, stone);
+      const ped = new THREE.Mesh(PRISM, stone); ped.scale.set(w + 0.4, 1.3, 0.5); ped.position.set(x, h + 0.22, faceZ - sgn * 0.45); city.add(ped);
+      box(city, w + 0.6, 0.12, 0.6, x, 0.06, faceZ - sgn * 0.3, stone);
     }
+  }
+  // Nom peint sur le parvis de chaque bâtiment, entre le trottoir et la façade (le haut des lettres vers la façade).
+  function groundName(lot) {
+    const c = document.createElement('canvas'), x = c.getContext('2d'), txt = lot.b.court.toUpperCase(), fs = 64;
+    x.font = `800 ${fs}px -apple-system, "Segoe UI", Roboto, Arial, sans-serif`; const tw = x.measureText(txt).width;
+    c.width = Math.ceil(tw + fs * 1.6); c.height = Math.round(fs * 1.5);
+    x.font = `800 ${fs}px -apple-system, "Segoe UI", Roboto, Arial, sans-serif`; x.textBaseline = 'middle';
+    drawIcon(x, SYMBOLES[lot.id][0], fs * 0.2, fs * 0.28, fs * 0.95, '#ffffff', 2.6);
+    x.lineWidth = 8; x.strokeStyle = 'rgba(15,23,42,.45)'; x.strokeText(txt, fs * 1.35, c.height / 2 + 2); x.fillStyle = 'rgba(255,255,255,.92)'; x.fillText(txt, fs * 1.35, c.height / 2 + 2);
+    x.fillStyle = col[lot.b.rive]; x.fillRect(fs * 1.35, c.height - 10, tw, 7);
+    const t = canvasTex(c); t.anisotropy = 4;
+    let wpl = Math.min(lot.w + 1.2, 8), hpl = wpl * c.height / c.width; if (hpl > PARVIS - 0.35) { wpl *= (PARVIS - 0.35) / hpl; hpl = PARVIS - 0.35; }
+    const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(wpl, hpl)), keep(new THREE.MeshLambertMaterial({ map: t, transparent: true, depthWrite: false })));
+    m.rotation.x = -Math.PI / 2; if (lot.sgn > 0) m.rotation.z = Math.PI;
+    m.position.set(lot.x, 0.06, lot.st.z + lot.sgn * (RH + PARVIS / 2)); m.renderOrder = 1; city.add(m);
   }
   const pick = [], blabels = [];
   for (const lot of LOTS) {
     const { b } = lot;
-    const plot = plane(lot.w + 1.6, lot.d + 1.6, C.walk, 0.02); plot.position.set(lot.x, 0.02, lot.z); city.add(plot);
+    const plot = plane(lot.w + 1.6, lot.d + 1.6 + PARVIS, C.walk, 0.02); plot.position.set(lot.x, 0.02, lot.z - lot.sgn * PARVIS / 2); city.add(plot);
     if (b.style === 'vide') {
       const pts = [[-1, -1], [1, -1], [1, 1], [-1, 1], [-1, -1]].map(([a, c]) => new THREE.Vector3(lot.x + a * lot.w / 2, 0.1, lot.z + c * lot.d / 2));
       const line = new THREE.Line(keep(new THREE.BufferGeometry().setFromPoints(pts)), keep(new THREE.LineDashedMaterial({ color: col.ec, dashSize: 1, gapSize: 0.6 }))); line.computeLineDistances(); city.add(line);
@@ -504,14 +589,15 @@ export function startVille3D(root, THREE, opts = {}) {
       const board = new THREE.Mesh(BOX, [lam('#ffffff'), lam('#ffffff'), lam('#ffffff'), lam('#ffffff'), new THREE.MeshLambertMaterial({ map: facade({ ...lot, h: 3, w: 3.5 }) }), new THREE.MeshLambertMaterial({ map: facade({ ...lot, h: 3, w: 3.5 }) })]);
       board.scale.set(3.5, 2.4, 0.2); board.position.set(lot.x, 2.6, lot.faceZ - lot.sgn * 0.4); board.userData.id = lot.id; city.add(board); pick.push(board);
     } else {
-      const st = sideTex[b.rive].clone(); st.repeat.set(Math.max(1, lot.w / 2.6), Math.max(1, lot.h / 2.6)); st.needsUpdate = true; keep(st);
-      const side = keep(new THREE.MeshLambertMaterial({ map: st })), front = keep(new THREE.MeshLambertMaterial({ map: facade(lot) })), roof = lam(dark ? '#334155' : '#f1f5f9');
+      const st = sideTexOf(b.rive, lot.quartier).clone(); st.repeat.set(Math.max(1, lot.w / 2.6), Math.max(1, lot.h / 2.6)); st.needsUpdate = true; keep(st);
+      const side = keep(new THREE.MeshLambertMaterial({ map: st })), front = keep(new THREE.MeshLambertMaterial({ map: facade(lot) })), roof = roofMat;
       const m = new THREE.Mesh(BOX, [side, side, roof, roof, lot.sgn < 0 ? front : side, lot.sgn < 0 ? side : front]);
       m.scale.set(lot.w, lot.h, lot.d); m.position.set(lot.x, lot.h / 2, lot.z); m.userData.id = lot.id; city.add(m); pick.push(m);
       box(city, lot.w + 0.3, 0.25, lot.d + 0.3, lot.x, lot.h + 0.12, lot.z, lam(col[b.rive]));
       archi(lot);
       box(city, 1.6, 2, 0.2, lot.x, 1, lot.faceZ - lot.sgn * 0.11, lam(dark ? '#e2e8f0' : '#1e293b'));
     }
+    groundName(lot);
     const lb = label(b.court, { border: col[b.rive], icon: SYMBOLES[lot.id][0], iconColor: col[b.rive], k: 0.0095 }); lb.position.set(lot.x, Math.max(lot.h, 2.6) + 1.5, lot.z); lb.userData.id = lot.id; city.add(lb); pick.push(lb); blabels.push(lb);
   }
 
@@ -550,8 +636,8 @@ export function startVille3D(root, THREE, opts = {}) {
     const head = keep(new THREE.SphereGeometry(0.24, 10, 8));
     for (const k of Object.keys(lamps)) instanced(head, lam(ACC[k], { emissive: ACC[k], emissiveIntensity: dark ? 0.7 : 0.25 }), lamps[k]);
     // Place du globe : mâts et drapeaux ; place de la justice : quatre colonnes autour de la fontaine.
-    FLAGS.forEach((c, i) => { const a = (i / FLAGS.length) * Math.PI * 2, x = Math.cos(a) * 4.2, z = -57 + Math.sin(a) * 3.2; box(city, 0.07, 3, 0.07, x, 1.5, z, lam('#94a3b8')); box(city, 0.05, 0.55, 0.9, x, 2.7, z + 0.45, lam(c)); });
-    for (const [dx, dz] of [[-3.6, -2.2], [3.6, -2.2], [-3.6, 2.2], [3.6, 2.2]]) { const c = new THREE.Mesh(COL, lam(dark ? '#e7e5e4' : '#f5f0e6')); c.scale.set(1.3, 3, 1.3); c.position.set(dx, 1.5, 42.5 + dz); city.add(c); }
+    FLAGS.forEach((c, i) => { const a = (i / FLAGS.length) * Math.PI * 2, x = Math.cos(a) * 4.2, z = -61 + Math.sin(a) * 3.2; box(city, 0.07, 3, 0.07, x, 1.5, z, lam('#94a3b8')); box(city, 0.05, 0.55, 0.9, x, 2.7, z + 0.45, lam(c)); });
+    for (const [dx, dz] of [[-3.6, -2.2], [3.6, -2.2], [-3.6, 2.2], [3.6, 2.2]]) { const c = new THREE.Mesh(COL, lam(dark ? '#e7e5e4' : '#f5f0e6')); c.scale.set(1.3, 3, 1.3); c.position.set(dx, 1.5, 45 + dz); city.add(c); }
   }
 
   // Véhicule
@@ -564,6 +650,7 @@ export function startVille3D(root, THREE, opts = {}) {
   car.scale.setScalar(0.75); city.add(car);
 
   // Personnages (géométries partagées)
+  const DISC = keep(new THREE.CircleGeometry(0.62, 18).rotateX(-Math.PI / 2));
   const ROBE = keep(new THREE.CylinderGeometry(0.36, 0.48, 1.35, 10)), HEAD = keep(new THREE.SphereGeometry(0.28, 12, 10)), HAT = keep(new THREE.CylinderGeometry(0.3, 0.3, 0.2, 10));
   const figure = (c, hat = false) => {
     const g = new THREE.Group();
@@ -581,11 +668,21 @@ export function startVille3D(root, THREE, opts = {}) {
     const { b } = lot, hex = col[b.rive], W = 24, D = 18;
     const sc = new THREE.Scene(); sc.background = new THREE.Color(dark ? '#111827' : '#eef2f7');
     sc.add(new THREE.HemisphereLight(0xffffff, 0x8892a0, 1.25)); const l = new THREE.DirectionalLight(0xffffff, 0.45); l.position.set(8, 30, 12); sc.add(l);
-    sc.add(plane(W, D, dark ? '#1f2937' : '#e2e8f0'));
+    // Sol selon le quartier : parquet (EC), moquette (CAC), carrelage (international), damier de marbre (justice).
+    { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'), q = lot.quartier;
+      x.fillStyle = q === 'ec' ? (dark ? '#5b4636' : '#c9a27a') : q === 'cac' ? (dark ? '#3b2f5c' : '#cfc3ea') : q === 'intl' ? (dark ? '#334155' : '#e2e8f0') : (dark ? '#44403c' : '#f1ede4'); x.fillRect(0, 0, 128, 128);
+      x.strokeStyle = 'rgba(0,0,0,.16)'; x.lineWidth = 2;
+      if (q === 'ec') for (let y = 0, r = 0; y < 128; y += 16, r++) { x.beginPath(); x.moveTo(0, y); x.lineTo(128, y); x.stroke(); for (let i = (r % 3) * 21; i < 128; i += 64) { x.beginPath(); x.moveTo(i, y); x.lineTo(i, y + 16); x.stroke(); } }
+      else if (q === 'justice') { x.fillStyle = dark ? 'rgba(0,0,0,.25)' : 'rgba(0,0,0,.09)'; for (let i = 0; i < 4; i++) for (let j = 0; j < 4; j++) if ((i + j) % 2) x.fillRect(i * 32, j * 32, 32, 32); }
+      else if (q === 'intl') for (let i = 0; i <= 128; i += 32) { x.beginPath(); x.moveTo(i, 0); x.lineTo(i, 128); x.moveTo(0, i); x.lineTo(128, i); x.stroke(); }
+      grain(x, 128, 128, q === 'cac' ? 2600 : 900, q === 'cac' ? 0.1 : 0.06);
+      const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(W / 5, D / 5);
+      const fl = new THREE.Mesh(keep(new THREE.PlaneGeometry(W, D)), keep(new THREE.MeshLambertMaterial({ map: t }))); fl.rotation.x = -Math.PI / 2; sc.add(fl); }
     const wall = lam(hex, { transparent: true, opacity: 0.55 });
     box(sc, W, 2.4, 0.4, 0, 1.2, -D / 2, wall); box(sc, 0.4, 2.4, D, -W / 2, 1.2, 0, wall); box(sc, 0.4, 2.4, D, W / 2, 1.2, 0, wall);
     box(sc, W / 2 - 2, 2.4, 0.4, -(W / 4 + 1), 1.2, D / 2, wall); box(sc, W / 2 - 2, 2.4, 0.4, W / 4 + 1, 1.2, D / 2, wall);
     box(sc, 4, 0.03, 1.6, 0, 0.02, D / 2 - 0.7, lam(dark ? '#e2e8f0' : '#1e293b'));
+    const plinth = lam('#7c5a3a'); box(sc, W, 0.5, 0.45, 0, 0.25, -D / 2 + 0.05, plinth); box(sc, 0.45, 0.5, D, -W / 2 + 0.05, 0.25, 0, plinth); box(sc, 0.45, 0.5, D, W / 2 - 0.05, 0.25, 0, plinth);
     const ex = label('Sortie', { size: 34, k: 0.009 }); ex.position.set(0, 2.2, D / 2 - 0.5); sc.add(ex);
     const title = label(b.nom, { border: hex, size: 50, k: 0.011, icon: SYMBOLES[lot.id][0], iconColor: hex }); title.position.set(0, 3.8, -D / 2 + 0.6); sc.add(title);
     const people = [], groups = [];
@@ -593,8 +690,14 @@ export function startVille3D(root, THREE, opts = {}) {
     const put = (g, x, z, face) => {
       const f = figure(ROLEC[g.role] || col.commun, g.role === 'magistrat'); f.position.set(x, 0, z); f.lookAt(face[0], 0, face[1]); sc.add(f);
       const first = !groups.includes(g);
-      if (first) { groups.push(g); const lb = label(groupLabel(g), { border: ROLEC[g.role] || col.commun, size: 34, k: 0.0072 }); lb.position.set(x, 2.55, z); sc.add(lb); }
-      people.push({ mesh: f, x, z, qui: g.qui, fait: g.fait, label: g.label, g, first, color: ROLEC[g.role] || col.commun });
+      const c = ROLEC[g.role] || col.commun;
+      // Pastille au sol de la couleur du rôle, et une étiquette pour chacun (la première du groupe porte l'effectif).
+      const disc = new THREE.Mesh(DISC, lam(c, { transparent: true, opacity: 0.35 })); disc.position.set(x, 0.03, z); sc.add(disc);
+      let lb;
+      if (first) { groups.push(g); lb = label(groupLabel(g), { border: c, size: 34, k: 0.0072 }); lb.position.set(x, 2.55, z); }
+      else { lb = label(g.label.length > 24 ? `${g.label.slice(0, 22)}…` : g.label, { border: c, size: 28, k: 0.0052 }); lb.position.set(x, 2.3, z); lb.userData.near = true; }
+      sc.add(lb);
+      people.push({ mesh: f, x, z, qui: g.qui, fait: g.fait, label: g.label, g, first, color: c, lb });
     };
     const salle = SALLES[lot.id] || { layout: 'bureau', groupes: [] };
     const seated = salle.groupes.filter((g) => !g.debout).flatMap((g) => Array.from({ length: g.n }, () => g));
@@ -626,12 +729,23 @@ export function startVille3D(root, THREE, opts = {}) {
       people.push({ x: -W / 2 + 1.8, z, qui: p.qui, fait: p.fait, label: p.qui, panneau: true, first: true });
     });
     sc.add(walker);
-    const room = { scene: sc, people, groups, W, D, labels: sc.children.filter((o) => o.isSprite) };
+    // Tableau des présents, au mur du fond : qui est qui, à quelle couleur.
+    if (groups.length) {
+      const c = document.createElement('canvas'), x = c.getContext('2d'), lh = 46; c.width = 720; c.height = 70 + groups.length * lh;
+      x.fillStyle = dark ? '#0f172a' : '#ffffff'; x.fillRect(0, 0, c.width, c.height); x.strokeStyle = hex; x.lineWidth = 8; x.strokeRect(4, 4, c.width - 8, c.height - 8);
+      x.font = '800 32px -apple-system, "Segoe UI", Roboto, Arial, sans-serif'; x.fillStyle = dark ? '#e2e8f0' : '#0f172a'; x.textBaseline = 'middle'; x.fillText('Qui siège ici', 28, 38);
+      x.font = '600 28px -apple-system, "Segoe UI", Roboto, Arial, sans-serif';
+      groups.forEach((g, i) => { const y = 70 + i * lh + lh / 2 - 6; x.fillStyle = ROLEC[g.role] || col.commun; x.beginPath(); x.arc(44, y, 13, 0, Math.PI * 2); x.fill(); x.fillStyle = dark ? '#e2e8f0' : '#0f172a'; const t = groupLabel(g); x.fillText(t.length > 40 ? `${t.slice(0, 38)}…` : t, 72, y); });
+      const t = canvasTex(c), bw = 6.2, bh = bw * c.height / c.width;
+      const bd = new THREE.Mesh(keep(new THREE.PlaneGeometry(bw, bh)), keep(new THREE.MeshLambertMaterial({ map: t }))); bd.position.set(W / 2 - bw / 2 - 0.6, Math.max(1.3, 2.3 - bh / 4), -D / 2 + 0.22); sc.add(bd);
+    }
+    const room = { scene: sc, people, groups, W, D, labels: sc.children.filter((o) => o.isSprite && !o.userData.near) };
     rooms.set(lot.id, room); return room;
   }
 
   // ---------- Carte (minicarte et grande carte, même dessin)
   const MAP = { w: TERRAIN.x * 2, h: TERRAIN.z * 2 };
+  const GXm = TERRAIN.x - 1, GZm = TERRAIN.z - 1;
   function drawMap(ctx, Wp, Hp, scale, withNames) {
     const X = (x) => Wp / 2 + x * scale, Z = (z) => Hp / 2 + z * scale;
     ctx.fillStyle = C.ground; ctx.fillRect(0, 0, Wp, Hp);
@@ -646,6 +760,9 @@ export function startVille3D(root, THREE, opts = {}) {
       else R(l.x - l.w / 2, l.z - l.d / 2, l.x + l.w / 2, l.z + l.d / 2, col[l.b.rive]);
     }
     if (!withNames) return;
+    ctx.save(); ctx.globalAlpha = 0.55; ctx.textAlign = 'left'; ctx.textBaseline = 'top'; ctx.font = `800 ${Math.round(scale * 2.6)}px -apple-system, "Segoe UI", Roboto, Arial, sans-serif`;
+    for (const [t, x, z, c] of [['QUARTIER INTERNATIONAL', -GXm, -GZm, col.primary], ['RIVE EC · L’ORDRE', -GXm, RIVER.z0 + 0.6, col.ec], ['RIVE CAC · L’AUDIT', RIVER.x1 + 0.6, RIVER.z0 + 0.6, col.cac], ['QUARTIER JUDICIAIRE', -GXm, RIVER.z1 + 0.6, '#a16207']]) { ctx.fillStyle = c; ctx.fillText(t, X(x) + 4, Z(z) + 3); }
+    ctx.restore();
     const fs = Math.round(scale * 1.9);
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     for (const s of STREETS) {
@@ -698,7 +815,7 @@ export function startVille3D(root, THREE, opts = {}) {
 
   // ---------- État
   const S = {
-    pos: new THREE.Vector3(0, 0, 29), heading: Math.PI, v: 0, camYaw: Math.PI, view: 'chase', look: new THREE.Vector3(0, 1, 40),
+    pos: new THREE.Vector3(0, 0, 31), heading: Math.PI, v: 0, camYaw: Math.PI, view: 'chase', look: new THREE.Vector3(0, 1, 40),
     tilt: 0.45, enterCd: { id: null, until: 0 }, inside: null, room: null, wv: { x: 0, z: 0 }, walkTo: null, focus: null, near: null, route: null, tour: null, quiz: null, wantHeading: null, instant: false,
   };
   let lastWhere = '';
@@ -711,9 +828,11 @@ export function startVille3D(root, THREE, opts = {}) {
     let h;
     if (S.inside) {
       const r = S.room, b = S.inside.b, f = S.focus;
-      const chips = `<div class="v3-chips">${r.people.filter((p) => p.first).map((p) => `<button type="button" data-a="to" data-i="${r.people.indexOf(p)}">${p.panneau ? '▤' : `<i style="background:${p.color}"></i>`} ${esc(p.panneau ? p.qui.slice(0, 26) : groupLabel(p.g))}</button>`).join('')}</div>`;
+      const firsts = r.people.filter((p) => p.first && !p.panneau), boards = r.people.filter((p) => p.panneau);
+      const compo = `<ul class="v3-compo">${firsts.map((p) => `<li><button type="button" data-a="to" data-i="${r.people.indexOf(p)}"><i style="background:${p.color}"></i><span class="n">${p.g.approx ? '' : p.g.n}</span><span>${esc(p.g.label)}${p.g.debout ? ' <em>· présent, non membre</em>' : ''}</span></button></li>`).join('')}</ul>`;
+      const chips = `${f ? '' : compo}<div class="v3-chips">${boards.map((p) => `<button type="button" data-a="to" data-i="${r.people.indexOf(p)}">▤ ${esc(p.qui.slice(0, 26))}</button>`).join('')}${f ? `<button type="button" data-a="unfocus">Composition</button>` : ''}</div>`;
       h = f ? `<div class="t"><span class="${b.rive}">${svgIcon(S.inside.id)}</span>${esc(f.qui)}</div><p>${md(f.fait)}</p>${chips}`
-        : `<div class="t"><span class="${b.rive}">${svgIcon(S.inside.id)}</span>${esc(b.nom)}</div><p class="v3-sub">Qui est là ? Touchez une personne ou un panneau.</p>${chips}`;
+        : `<div class="t"><span class="${b.rive}">${svgIcon(S.inside.id)}</span>${esc(b.nom)}</div><p class="v3-sub">Composition (touchez une ligne pour aller vers la personne) :</p>${chips}`;
       h += `<div class="v3-acts"><button type="button" class="v3-btn" data-a="exit">Sortir</button>${opts.onFiche ? `<button type="button" class="v3-btn" data-a="fiche" data-f="${esc(b.fiche)}">Lire la fiche${opts.fiches?.[b.fiche] ? ` : ${esc(opts.fiches[b.fiche])}` : ''}</button>` : ''}${S.tour ? '<button type="button" class="v3-btn primary" data-a="tour-next">Bâtiment suivant ›</button>' : ''}</div>${tourBar()}`;
     } else if (S.route) {
       const b = S.route.lot.b;
@@ -745,11 +864,16 @@ export function startVille3D(root, THREE, opts = {}) {
       ${QUARTIERS_LISTE.map((q) => `<h4><i style="background:${col[q.rive]}"></i>${esc(q.titre)}</h4><div class="v3-list">${q.ids.map((id) => { const l = lotOf(id); return `<button type="button" data-a="go" data-id="${id}" class="${l === cur ? 'here' : ''}"><span class="${l.b.rive}">${svgIcon(id)}</span><span>${esc(l.b.court)}<small>${esc(l.st.nom)} · ${zoneName(l.x, l.z)}</small></span></button>`; }).join('')}</div>`).join('')}`;
     sheet.hidden = false; sheet.scrollTop = 0;
   }
+  function openCompo() {
+    sheet.innerHTML = `<div class="v3-sheet-head"><strong>Qui compose chaque institution</strong><button type="button" class="v3-btn" data-a="close">Fermer</button></div><p class="v3-sub" style="margin:0 0 4px">Touchez une institution pour y aller.</p>${compositionHtml()}`;
+    sheet.hidden = false; sheet.scrollTop = 0;
+  }
   function openOpts() {
     sheet.innerHTML = `<div class="v3-sheet-head"><strong>Options</strong><button type="button" class="v3-btn" data-a="close">Fermer</button></div>
       <div class="v3-acts" style="flex-direction:column;align-items:stretch">
       <button type="button" class="v3-btn primary" data-a="tour">Parcours du palais (29 bâtiments, dans l’ordre des rues)</button>
       <button type="button" class="v3-btn" data-a="quiz">Qui fait quoi ? (12 questions)</button>
+      <button type="button" class="v3-btn" data-a="compo">Composition de chaque institution</button>
       <button type="button" class="v3-btn" data-a="map">Carte de la ville</button>
       <button type="button" class="v3-btn" data-a="view">Caméra : ${S.view === 'top' ? 'vue du dessus' : 'derrière la voiture'} (changer)</button></div>
       <h4>Les symboles des façades</h4><div class="v3-list">${TOUR3D.map((id) => `<button type="button" data-a="go" data-id="${id}"><span class="${lotOf(id).b.rive}">${svgIcon(id)}</span><span>${esc(lotOf(id).b.court)}<small>${esc(SYMBOLES[id][1])}</small></span></button>`).join('')}</div>`;
@@ -842,6 +966,7 @@ export function startVille3D(root, THREE, opts = {}) {
   for (const ev of ['pointerup', 'pointercancel', 'lostpointercapture']) turboBtn.addEventListener(ev, () => setTurbo(false));
   turboBtn.addEventListener('contextmenu', (e) => e.preventDefault());
   root.addEventListener('click', (e) => {
+    const cpb = e.target.closest('#v3-sheet .cp-b[data-id]'); if (cpb) return goTo(lotOf(cpb.dataset.id));
     const t = e.target.closest('[data-a]'); if (!t || !root.contains(t)) return;
     const a = t.dataset.a;
     if (a === 'list') openList(); else if (a === 'opts') openOpts(); else if (a === 'map') openMap(); else if (a === 'close') closeSheets();
@@ -855,6 +980,9 @@ export function startVille3D(root, THREE, opts = {}) {
     else if (a === 'mode') { S.instant = t.dataset.v === 'instant'; openList(); }
     else if (a === 'fiche') opts.onFiche?.(t.dataset.f);
     else if (a === 'quit') opts.onQuit?.();
+    else if (a === 'unfocus') { S.focus = null; S.walkTo = null; setCard(); }
+    else if (a === 'compo') openCompo();
+    else if (e.target.closest('#v3-sheet .cp-b[data-id]')) goTo(lotOf(e.target.closest('.cp-b').dataset.id));
   });
   big.addEventListener('click', (e) => {
     const r = big.getBoundingClientRect(), x = (e.clientX - r.left - r.width / 2) / bigScale, z = (e.clientY - r.top - r.height / 2) / bigScale;
@@ -979,9 +1107,9 @@ export function startVille3D(root, THREE, opts = {}) {
     const I = input();
     if (S.inside) stepInside(dt, I); else stepCity(dt, I);
     stepCamera(dt);
-    globe.rotation.y += dt * 0.4;
+    globe.rotation.y += dt * 0.4; riverTex.offset.y -= dt * 0.08;
     if (!S.inside) { for (const sg of signs) sg.visible = camera.position.distanceTo(sg.position) > 9; for (const lb of blabels) lb.visible = camera.position.distanceTo(lb.position) > 12; }
-    else for (const lb of S.room.labels) lb.visible = camera.position.distanceTo(lb.position) > 4.5; // trop proches, ils masqueraient la route
+    else { for (const lb of S.room.labels) lb.visible = camera.position.distanceTo(lb.position) > 4.5; for (const p of S.room.people) if (p.lb?.userData.near) p.lb.visible = Math.hypot(p.x - S.pos.x, p.z - S.pos.z) < 4.2; } // trop proches, ils masqueraient la route
     renderer.render(S.inside ? S.room.scene : city, camera);
     if (++frame % 3 === 0) drawMini();
     whereT += dt; if (whereT > 0.3) { whereT = 0; setWhere(); }

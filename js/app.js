@@ -18,7 +18,7 @@ import * as PC from './podcasts.js';
 import * as SY from './sync.js';
 import * as CN from './carnet.js';
 import { ic, paths } from './icons.js';
-import { startVille3D, VILLE3D_CSS } from './ville3d.js';
+import { startVille3D, VILLE3D_CSS, compositionHtml, COMPO_CSS } from './ville3d.js';
 import { planHtml, PLAN_CSS } from './villeplan.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -2007,7 +2007,7 @@ function souvenirsView() {
 
 // ---------- Glossaire ----------
 // Termes clés soulignés partout (première occurrence par carte, fiche ou short) ; un toucher ouvre la définition.
-const GL_SKIP = 'button, a, textarea, input, select, label, code, pre, h1, h2, h3, nav, header, svg, .gl, .gl-pop, .fpill, .toast, .celebrate, .sheet-head, .feed-top, .v3, .vp-page, [data-no-gl]';
+const GL_SKIP = 'button, a, textarea, input, select, label, code, pre, h1, h2, h3, nav, header, svg, .gl, .gl-pop, .fpill, .toast, .celebrate, .sheet-head, .feed-top, .v3, .vp-page, .cp-sec, [data-no-gl]';
 const glScope = (el) => el.closest('.card, section, .sheet-body') || document.body;
 // Pas d'aide pendant un examen blanc ni dans les jeux : la définition donnerait la réponse.
 const glActive = () => !!state.glMatcher && state.progress.settings.glossary !== false
@@ -2333,7 +2333,7 @@ const injectCss = (id, css) => { if (!$(`#${id}`)) { const st = document.createE
 // remis en place tel quel, avec sa position et son contexte WebGL ; elle s'arrête seulement en quittant la vue ou l'onglet.
 function stopVille3D() { if (state.v3) { try { state.v3.stop(); } catch { /* ignore */ } state.v3 = null; state.v3el = null; } document.body.classList.remove('print-plan', 'v3-lock'); }
 views.ville = () => {
-  const tab = state.villeTab === 'plan' ? 'plan' : '3d';
+  const tab = ['plan', 'compo'].includes(state.villeTab) ? state.villeTab : '3d';
   const titles = Object.fromEntries(state.fiches.map((f) => [f.file, f.title.replace(/^(Schéma|Fiche)\s*\d+\s*[–-]\s*/, '')]));
   const rive = state.villeRive || 'ec';
   // La visite 3D s'ouvre en plein écran (✕ pour en sortir) ; la page de la ville reste derrière.
@@ -2353,6 +2353,11 @@ views.ville = () => {
   setTimeout(async () => {
     const root = $('#ville'); if (!root) return;
     if (tab === 'plan') return showPlan(root);
+    if (tab === 'compo') {
+      injectCss('v3-compo-css', COMPO_CSS); root.innerHTML = `<div class="card">${compositionHtml()}</div>`;
+      root.onclick = (e) => { const c = e.target.closest('.cp-b[data-id]'); if (!c) return; state.villeTab = '3d'; state.v3open = true; state.villeGoto = c.dataset.id; render(); };
+      return;
+    }
     if (!open3d) return;
     if (state.v3 && state.v3el) { root.replaceWith(state.v3el); return; }
     injectCss('ville3d-css', VILLE3D_CSS);
@@ -2368,9 +2373,9 @@ views.ville = () => {
       showPlan($('#ville-alt'));
     }
   }, 0);
-  const tabs = [['3d', ic('landmark'), 'Entrer dans la ville (3D)'], ['plan', ic('library'), 'Plans à imprimer']];
+  const tabs = [['3d', ic('landmark'), 'Entrer dans la ville (3D)'], ['compo', ic('clipboard'), 'Compositions'], ['plan', ic('library'), 'Plans à imprimer']];
   return `<div class="no-print"><button class="btn sm" data-go="fiches">← Fiches</button>
-    <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 8px">${tab === '3d' ? 'Un palais mental que l’on parcourt : « Aller à » mène au bâtiment (liste par profession), on entre, on marche vers ceux qui y siègent.' : 'Deux plans, comme un plan d’appartement : les rues sont les couloirs, les bâtiments les pièces, avec la fiche à relire, qui y siège et ce qu’on y fait. Touchez une pièce pour y aller en 3D.'}</p>
+    <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 8px">${tab === '3d' ? 'Un palais mental que l’on parcourt : « Aller à » mène au bâtiment (liste par profession), on entre, on marche vers ceux qui y siègent.' : tab === 'compo' ? 'Qui siège dans chaque institution, rangé par profession : les membres (avec l’effectif quand les fiches le donnent), puis les personnes présentes qui ne sont pas membres. Touchez une institution pour y aller en 3D.' : 'Deux plans, comme un plan d’appartement : les rues sont les couloirs, les bâtiments les pièces, avec la fiche à relire, qui y siège et ce qu’on y fait. Touchez une pièce pour y aller en 3D.'}</p>
     <div class="btnrow">${tabs.map(([id, i, t]) => `<button class="btn sm ${tab === id && (id !== '3d' || open3d) ? 'primary' : ''}" data-ville-tab="${id}">${i} ${t}</button>`).join('')}</div>
     ${tab === 'plan' ? `<div class="btnrow" style="margin-top:8px"><button class="btn sm ${rive === 'ec' ? 'primary' : ''}" data-ville-rive="ec">Expert-comptable</button><button class="btn sm ${rive === 'cac' ? 'primary' : ''}" data-ville-rive="cac">Commissaire aux comptes</button><button class="btn sm" id="ville-print">${ic('files')} Imprimer ce plan</button><a class="btn sm" href="./data/ville-plan.pdf" target="_blank" rel="noopener">${ic('download')} PDF des deux plans (A4)</a></div>` : ''}</div></div>
     <div id="ville"></div>`;
