@@ -377,7 +377,7 @@ export function startVille3D(root, THREE, opts = {}) {
     <div class="v3-card" id="v3-card"></div>
     <div class="v3-stick" id="v3-stick"><i></i></div>
     <div class="v3-pad"><button type="button" class="v3-btn" id="v3-turbo" aria-label="Turbo (maintenir)">Turbo</button></div>
-    <div class="v3-keys">Flèches : conduire (↓ recul) · Maj : turbo · + / − ou molette : inclinaison · foncer dans un mur ou Entrée : entrer · L : aller à · M : carte</div>
+    <div class="v3-keys">Flèches : conduire (↓ recul) · Maj : turbo · + / − ou molette : inclinaison · Entrée : entrer · L : aller à · M : carte</div>
     <div class="v3-flash" id="v3-flash"></div>
     <div class="v3-sheet" id="v3-sheet" hidden></div>
     <div class="v3-sheet v3-map" id="v3-map" hidden><div class="v3-sheet-head"><strong>Carte · touchez un bâtiment pour y aller</strong><button type="button" class="v3-btn" data-a="close">Fermer</button></div><div class="v3-mapwrap"><canvas id="v3-bigmap"></canvas></div></div>`;
@@ -392,7 +392,9 @@ export function startVille3D(root, THREE, opts = {}) {
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
-  const camera = new THREE.PerspectiveCamera(58, 1, 0.5, 600);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = dark ? 1.05 : 1.15;
+  renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  const camera = new THREE.PerspectiveCamera(58, 1, 0.8, 420);
   const resize = () => { const w = root.clientWidth || 1, h = root.clientHeight || 1; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); };
   // Décale l'image pour que le centre de la vue (la voiture, le marcheur) tombe au milieu de la zone dégagée.
   const reframe = () => {
@@ -435,14 +437,30 @@ export function startVille3D(root, THREE, opts = {}) {
     }
     const sp = new THREE.Sprite(L.mat); sp.scale.set(L.w * k, L.h * k, 1); sp.renderOrder = 2; return sp;
   }
-  const plane = (w, d, c, y = 0) => { const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(w, d)), lam(c)); m.rotation.x = -Math.PI / 2; m.position.y = y; return m; };
+  // Sols superposés : décalage de profondeur par couche pour éviter le scintillement à distance.
+  const plane = (w, d, c, y = 0) => { const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(w, d)), lam(c, { polygonOffset: true, polygonOffsetFactor: -Math.round(y * 100), polygonOffsetUnits: -Math.round(y * 100) })); m.rotation.x = -Math.PI / 2; m.position.y = y; m.receiveShadow = true; return m; };
   const box = (sc, w, h, d, x, y, z, mat) => { const m = new THREE.Mesh(BOX, mat); m.scale.set(w, h, d); m.position.set(x, y, z); sc.add(m); return m; };
 
   // ---------- La ville
   const city = new THREE.Scene();
-  city.background = new THREE.Color(dark ? '#0d1424' : '#dce8f5'); city.fog = new THREE.Fog(city.background, 70, 200);
+  // Ciel en dégradé (dôme peint), brume à l'horizon, soleil bas qui projette les ombres des bâtiments.
+  const horizon = dark ? '#1e293b' : '#e6eef7';
+  city.background = new THREE.Color(horizon); city.fog = new THREE.Fog(horizon, 80, 260);
+  {
+    const c = document.createElement('canvas'); c.width = 4; c.height = 256; const x = c.getContext('2d'), gr = x.createLinearGradient(0, 0, 0, 256);
+    gr.addColorStop(0, dark ? '#020617' : '#5b8fd6'); gr.addColorStop(0.55, dark ? '#0f1b33' : '#a9c7ec'); gr.addColorStop(1, horizon); x.fillStyle = gr; x.fillRect(0, 0, 4, 256);
+    const sky = new THREE.Mesh(keep(new THREE.SphereGeometry(380, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2)), keep(new THREE.MeshBasicMaterial({ map: canvasTex(c), side: THREE.BackSide, fog: false, depthWrite: false })));
+    sky.renderOrder = -1; city.add(sky);
+    // Nuages : quelques taches claires sur le dôme.
+    const cc = document.createElement('canvas'); cc.width = 128; cc.height = 64; const cx = cc.getContext('2d');
+    for (let i = 0; i < 9; i++) { const g2 = cx.createRadialGradient(20 + i * 11, 34 + (i % 3) * 4, 2, 20 + i * 11, 34 + (i % 3) * 4, 22); g2.addColorStop(0, 'rgba(255,255,255,.85)'); g2.addColorStop(1, 'rgba(255,255,255,0)'); cx.fillStyle = g2; cx.fillRect(0, 0, 128, 64); }
+    const cm = keep(new THREE.SpriteMaterial({ map: canvasTex(cc), transparent: true, depthWrite: false, fog: false, opacity: dark ? 0.15 : 0.8 }));
+    for (let i = 0; i < 9; i++) { const a = (i / 9) * Math.PI * 2 + 0.3, r = 230 + (i % 3) * 40, cl = new THREE.Sprite(cm); cl.scale.set(90 + (i % 4) * 25, 40, 1); cl.position.set(Math.cos(a) * r, 70 + (i % 4) * 18, Math.sin(a) * r); cl.renderOrder = -1; city.add(cl); }
+  }
   city.add(new THREE.HemisphereLight(0xffffff, 0x7a8698, dark ? 1 : 1.15));
-  const sun = new THREE.DirectionalLight(0xffffff, dark ? 0.55 : 0.85); sun.position.set(50, 90, 30); city.add(sun);
+  const sun = new THREE.DirectionalLight(dark ? 0xc7d2fe : 0xfff1d6, dark ? 0.6 : 1.25); sun.position.set(45, 70, 35); city.add(sun, sun.target);
+  sun.castShadow = true; sun.shadow.mapSize.set(1024, 1024); sun.shadow.bias = -0.0008; sun.shadow.normalBias = 0.02;
+  Object.assign(sun.shadow.camera, { left: -60, right: 60, top: 75, bottom: -75, near: 10, far: 220 }); sun.shadow.camera.updateProjectionMatrix();
   const C = dark
     ? { ground: '#1a2333', north: '#232c3d', south: '#262a33', ecz: '#103a43', cacz: '#291f47', river: '#1e3d73', road: '#3a4354', walk: '#2b3445' }
     : { ground: '#d5dde7', north: '#cdd8e8', south: '#e2d6c1', ecz: '#c3e4ea', cacz: '#e0d6f5', river: '#8fb6e8', road: '#8f98a6', walk: '#e7ecf2' };
@@ -451,6 +469,16 @@ export function startVille3D(root, THREE, opts = {}) {
   const zone = (x0, x1, z0, z1, c, y) => { const m = plane(x1 - x0, z1 - z0, c, y); m.position.set((x0 + x1) / 2, y, (z0 + z1) / 2); city.add(m); };
   const GX = TERRAIN.x, GZ = TERRAIN.z;
   zone(-GX, GX, -GZ, GZ, C.ground, 0);
+  // Campagne autour de la ville : prairie, bosquets et collines lointaines, pour que la ville ne flotte plus dans le vide.
+  { const g = new THREE.Mesh(keep(new THREE.PlaneGeometry(900, 900)), lam(dark ? '#14281c' : '#9fc58f', { polygonOffset: true, polygonOffsetFactor: 2, polygonOffsetUnits: 2 })); g.rotation.x = -Math.PI / 2; g.position.y = -0.05; g.receiveShadow = true; city.add(g);
+    let sd = 3; const r2 = () => ((sd = (sd * 16807) % 2147483647) / 2147483647);
+    const hills = new THREE.InstancedMesh(keep(new THREE.SphereGeometry(1, 14, 8, 0, Math.PI * 2, 0, Math.PI / 2)), lam(dark ? '#1c3326' : '#86b07a'), 22);
+    const M = new THREE.Matrix4(), Q = new THREE.Quaternion(), V = new THREE.Vector3(), Sc = new THREE.Vector3();
+    for (let i = 0; i < 22; i++) { const a = (i / 22) * Math.PI * 2, r = 170 + r2() * 70; M.compose(V.set(Math.cos(a) * r, -1, Math.sin(a) * r * 1.2), Q, Sc.set(40 + r2() * 45, 12 + r2() * 22, 40 + r2() * 45)); hills.setMatrixAt(i, M); }
+    city.add(hills);
+    const grove = []; for (let i = 0; i < 70; i++) { const a = r2() * Math.PI * 2, r = 80 + r2() * 70; grove.push([Math.cos(a) * r, Math.sin(a) * r * 1.15, 1 + r2() * 1.2]); }
+    const gc = new THREE.InstancedMesh(keep(new THREE.ConeGeometry(1.6, 4.5, 7)), lam(dark ? '#14532d' : '#4f8a4a'), grove.length);
+    grove.forEach(([x, z, k], i) => { M.compose(V.set(x, 2.2 * k, z), Q, Sc.set(k, k, k)); gc.setMatrixAt(i, M); }); city.add(gc); }
   // Chaque quartier a son pavage : dalles en losange (international), carreaux (rive EC), briques en quinconce
   // (rive CAC), grandes dalles de pierre (justice).
   const paving = (kind, base) => {
@@ -466,19 +494,19 @@ export function startVille3D(root, THREE, opts = {}) {
   };
   const pzone = (x0, x1, z0, z1, kind, base) => {
     const t = paving(kind, base); t.repeat.set((x1 - x0) / 8, (z1 - z0) / 8);
-    const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(x1 - x0, z1 - z0)), keep(new THREE.MeshLambertMaterial({ map: t })));
-    m.rotation.x = -Math.PI / 2; m.position.set((x0 + x1) / 2, 0.01, (z0 + z1) / 2); city.add(m);
+    const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(x1 - x0, z1 - z0)), keep(new THREE.MeshLambertMaterial({ map: t, polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 })));
+    m.rotation.x = -Math.PI / 2; m.position.set((x0 + x1) / 2, 0.01, (z0 + z1) / 2); m.receiveShadow = true; city.add(m);
   };
   pzone(-GX, GX, -GZ, RIVER.z0, 'intl', C.north); pzone(-GX, GX, RIVER.z1, GZ, 'justice', C.south);
   pzone(-GX, RIVER.x0, RIVER.z0, RIVER.z1, 'ec', C.ecz); pzone(RIVER.x1, GX, RIVER.z0, RIVER.z1, 'cac', C.cacz);
   const riverTex = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'); x.fillStyle = C.river; x.fillRect(0, 0, 128, 128);
     x.strokeStyle = 'rgba(255,255,255,.35)'; x.lineWidth = 2; for (let y = 8; y < 128; y += 16) { x.beginPath(); for (let i = 0; i <= 128; i += 8) x.lineTo(i, y + Math.sin((i + y) / 10) * 3); x.stroke(); }
     const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(1, (RIVER.z1 - RIVER.z0) / 8); return t; })();
-  { const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(RIVER.x1 - RIVER.x0, RIVER.z1 - RIVER.z0)), keep(new THREE.MeshLambertMaterial({ map: riverTex }))); m.rotation.x = -Math.PI / 2; m.position.set(0, 0.015, (RIVER.z0 + RIVER.z1) / 2); city.add(m); }
+  { const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(RIVER.x1 - RIVER.x0, RIVER.z1 - RIVER.z0)), keep(new THREE.MeshLambertMaterial({ map: riverTex, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }))); m.rotation.x = -Math.PI / 2; m.position.set(0, 0.015, (RIVER.z0 + RIVER.z1) / 2); m.receiveShadow = true; city.add(m); }
   const asphalt = (() => { const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d'); x.fillStyle = C.road; x.fillRect(0, 0, 128, 128); grain(x, 128, 128, 1600, 0.12);
     const t = canvasTex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; return t; })();
   const road = (x0, x1, z0, z1) => { const t = keep(asphalt.clone()); t.needsUpdate = true; t.repeat.set((x1 - x0) / 6, (z1 - z0) / 6);
-    const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(x1 - x0, z1 - z0)), keep(new THREE.MeshLambertMaterial({ map: t }))); m.rotation.x = -Math.PI / 2; m.position.set((x0 + x1) / 2, 0.03, (z0 + z1) / 2); city.add(m); };
+    const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(x1 - x0, z1 - z0)), keep(new THREE.MeshLambertMaterial({ map: t, polygonOffset: true, polygonOffsetFactor: -3, polygonOffsetUnits: -3 }))); m.rotation.x = -Math.PI / 2; m.position.set((x0 + x1) / 2, 0.03, (z0 + z1) / 2); m.receiveShadow = true; city.add(m); };
   for (const s of STREETS) road(AVENUES[0] - RH, AVENUES[3] + RH, s.z - RH, s.z + RH);
   for (const x of AVENUES) road(x - RH, x + RH, STREETS[0].z - RH, STREETS[6].z + RH);
   const dash = lam(dark ? '#cbd5e1' : '#ffffff');
@@ -492,14 +520,19 @@ export function startVille3D(root, THREE, opts = {}) {
   box(city, 0.5, 2.4, 0.5, 0, 1.2, 45, lam('#cbd5e1'));
   const signs = [];
   const sign = (text, x, y, z, o = {}) => { const s = label(text, { size: 44, k: 0.0085, ...o }); s.position.set(x, y, z); city.add(s); signs.push(s); return s; };
-  for (const s of STREETS) sign(s.nom, 0, 4.2, s.z, { bg: col.text, fg: col.card, border: col.text });
+  // Plaques de rue au coin des carrefours (quais et avenues extérieures), sur un poteau, lisibles de près.
+  for (const s of STREETS) for (const ax of AVENUES) {
+    const cx = ax + Math.sign(ax) * (RH + 0.5), cz = s.z - RH - 0.5;
+    box(city, 0.08, 2.4, 0.08, cx, 1.2, cz, lam(dark ? '#94a3b8' : '#475569'));
+    const pl = sign(s.nom, cx, 2.75, cz, { bg: col.text, fg: col.card, border: col.text, size: 40, k: 0.0048 }); pl.userData.far = 30;
+  }
     // Portes des rives : une arche sur chaque quai, à l'entrée nord et à l'entrée sud du quartier.
   for (const [ax, kind, txt] of [[AVENUES[1], 'ec', 'Rive EC · l’Ordre'], [AVENUES[2], 'cac', 'Rive CAC · l’audit']]) for (const z of [RIVER.z0 + 1.2, RIVER.z1 - 1.2]) {
     const m = lam(ACC[kind]);
     box(city, 0.5, 4.2, 0.5, ax - RH - 0.3, 2.1, z, m); box(city, 0.5, 4.2, 0.5, ax + RH + 0.3, 2.1, z, m); box(city, 2 * RH + 1.6, 0.6, 0.6, ax, 4.4, z, m);
-    sign(txt, ax, 5.3, z, { border: ACC[kind], fg: ACC[kind], size: 40, k: 0.0075 });
+    sign(txt, ax, 5.1, z, { border: ACC[kind], fg: ACC[kind], size: 40, k: 0.0058 }).userData.far = 60;
   }
-  sign('Quartier international', 0, 6.2, -61, { size: 40 }); sign('Quartier judiciaire', 0, 4.4, 45, { size: 40 });
+  sign('Quartier international', 0, 6.2, -61, { size: 40, k: 0.0065 }).userData.far = 70; sign('Quartier judiciaire', 0, 4.4, 45, { size: 40, k: 0.0065 }).userData.far = 70;
 
   // Bâtiments : petits volumes, façade côté rue avec le symbole, porte, étiquette.
   // Matière des murs selon le quartier : brique (rive EC), mur-rideau de verre (rive CAC), panneaux de béton
@@ -574,7 +607,7 @@ export function startVille3D(root, THREE, opts = {}) {
     x.fillStyle = col[lot.b.rive]; x.fillRect(fs * 1.35, c.height - 10, tw, 7);
     const t = canvasTex(c); t.anisotropy = 4;
     let wpl = Math.min(lot.w + 1.2, 8), hpl = wpl * c.height / c.width; if (hpl > PARVIS - 0.35) { wpl *= (PARVIS - 0.35) / hpl; hpl = PARVIS - 0.35; }
-    const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(wpl, hpl)), keep(new THREE.MeshLambertMaterial({ map: t, transparent: true, depthWrite: false })));
+    const m = new THREE.Mesh(keep(new THREE.PlaneGeometry(wpl, hpl)), keep(new THREE.MeshLambertMaterial({ map: t, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -6, polygonOffsetUnits: -6 })));
     m.rotation.x = -Math.PI / 2; if (lot.sgn > 0) m.rotation.z = Math.PI;
     m.position.set(lot.x, 0.06, lot.st.z + lot.sgn * (RH + PARVIS / 2)); m.renderOrder = 1; city.add(m);
   }
@@ -592,7 +625,7 @@ export function startVille3D(root, THREE, opts = {}) {
       const st = sideTexOf(b.rive, lot.quartier).clone(); st.repeat.set(Math.max(1, lot.w / 2.6), Math.max(1, lot.h / 2.6)); st.needsUpdate = true; keep(st);
       const side = keep(new THREE.MeshLambertMaterial({ map: st })), front = keep(new THREE.MeshLambertMaterial({ map: facade(lot) })), roof = roofMat;
       const m = new THREE.Mesh(BOX, [side, side, roof, roof, lot.sgn < 0 ? front : side, lot.sgn < 0 ? side : front]);
-      m.scale.set(lot.w, lot.h, lot.d); m.position.set(lot.x, lot.h / 2, lot.z); m.userData.id = lot.id; city.add(m); pick.push(m);
+      m.scale.set(lot.w, lot.h, lot.d); m.position.set(lot.x, lot.h / 2, lot.z); m.userData.id = lot.id; m.castShadow = true; m.receiveShadow = true; city.add(m); pick.push(m);
       box(city, lot.w + 0.3, 0.25, lot.d + 0.3, lot.x, lot.h + 0.12, lot.z, lam(col[b.rive]));
       archi(lot);
       box(city, 1.6, 2, 0.2, lot.x, 1, lot.faceZ - lot.sgn * 0.11, lam(dark ? '#e2e8f0' : '#1e293b'));
@@ -604,7 +637,7 @@ export function startVille3D(root, THREE, opts = {}) {
   // Végétation par quartier (un appel de dessin par espèce) : massifs fleuris (international), arbres ronds
   // (rive EC), conifères (rive CAC), cyprès (justice). Puis réverbères aux couleurs du quartier.
   const M4 = new THREE.Matrix4(), Q0 = new THREE.Quaternion(), V3 = new THREE.Vector3(), S3 = new THREE.Vector3();
-  const instanced = (geo, mat, items) => { if (!items.length) return; const im = new THREE.InstancedMesh(geo, mat, items.length); items.forEach(([x, y, z, sx, sy, sz], i) => { M4.compose(V3.set(x, y, z), Q0, S3.set(sx, sy ?? sx, sz ?? sx)); im.setMatrixAt(i, M4); }); city.add(im); };
+  const instanced = (geo, mat, items) => { if (!items.length) return; const im = new THREE.InstancedMesh(geo, mat, items.length); im.castShadow = true; items.forEach(([x, y, z, sx, sy, sz], i) => { M4.compose(V3.set(x, y, z), Q0, S3.set(sx, sy ?? sx, sz ?? sx)); im.setMatrixAt(i, M4); }); city.add(im); };
   {
     const spots = []; let seed = 7; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
     for (let x = AVENUES[0] + 3.5; x <= AVENUES[3] - 3.5; x += 3) for (let z = STREETS[0].z - 6; z <= STREETS[6].z + 6; z += 3) {
@@ -648,6 +681,8 @@ export function startVille3D(root, THREE, opts = {}) {
   for (const [sx, sz] of [[-0.95, 1.15], [0.95, 1.15], [-0.95, -1.15], [0.95, -1.15]]) { const w = new THREE.Mesh(wheelG, lam('#111827')); w.rotation.z = Math.PI / 2; w.position.set(sx, 0.38, sz); car.add(w); }
   box(car, 1.5, 0.2, 0.1, 0, 0.9, 1.82, lam('#fde68a'));
   car.scale.setScalar(0.75); city.add(car);
+  // Tout ce qui a du volume projette une ombre (les sols la reçoivent).
+  city.traverse((o) => { if (o.isMesh && o.geometry?.type !== 'PlaneGeometry' && o.material?.fog !== false && !o.material?.transparent) o.castShadow = true; });
 
   // Personnages (géométries partagées)
   const DISC = keep(new THREE.CircleGeometry(0.62, 18).rotateX(-Math.PI / 2));
@@ -843,7 +878,7 @@ export function startVille3D(root, THREE, opts = {}) {
         <div class="v3-acts"><button type="button" class="v3-btn primary" data-a="enter">Entrer</button>${opts.onFiche ? `<button type="button" class="v3-btn" data-a="fiche" data-f="${esc(b.fiche)}">Fiche</button>` : ''}${twin ? `<button type="button" class="v3-btn" data-a="go" data-id="${twin.id}">Jumeau : ${esc(twin.b.court)}</button>` : ''}${S.tour ? '<button type="button" class="v3-btn" data-a="tour-next">Suivant ›</button><button type="button" class="v3-btn" data-a="tour-stop">Fin du parcours</button>' : ''}</div>${tourBar()}`;
     } else {
       const st = STREETS.reduce((a, t) => (Math.abs(t.z - S.pos.z) < Math.abs(a.z - S.pos.z) ? t : a));
-      h = `${S.quiz ? '<div class="t">Trouvez le bon bâtiment</div>' : ''}<p class="v3-sub" style="margin:0 0 6px">Entrer : foncez dans un mur. Glissez le doigt sur la scène, de haut en bas, pour voir plus loin ou de plus haut.</p><div class="v3-acts" style="margin-top:0"><button type="button" class="v3-btn primary" data-a="list">Aller à…</button>${S.quiz ? '<button type="button" class="v3-btn" data-a="quiz-stop">Arrêter le jeu</button>' : '<button type="button" class="v3-btn" data-a="tour">Parcours du palais</button><button type="button" class="v3-btn" data-a="quiz">Qui fait quoi ?</button>'}</div>
+      h = `${S.quiz ? '<div class="t">Trouvez le bon bâtiment</div>' : ''}<p class="v3-sub" style="margin:0 0 6px">Arrêtez-vous devant un bâtiment puis touchez « Entrer ». Glissez le doigt sur la scène, de haut en bas, pour voir plus loin ou de plus haut.</p><div class="v3-acts" style="margin-top:0"><button type="button" class="v3-btn primary" data-a="list">Aller à…</button>${S.quiz ? '<button type="button" class="v3-btn" data-a="quiz-stop">Arrêter le jeu</button>' : '<button type="button" class="v3-btn" data-a="tour">Parcours du palais</button><button type="button" class="v3-btn" data-a="quiz">Qui fait quoi ?</button>'}</div>
         <div class="v3-sub" style="margin-top:8px">${esc(st.nom)} :</div>${streetChips(st, null)}`;
     }
     card.innerHTML = h; card.scrollTop = 0; reframe();
@@ -1049,22 +1084,12 @@ export function startVille3D(root, THREE, opts = {}) {
     S.v += (vt - S.v) * Math.min(1, dt * (Math.abs(vt) < Math.abs(S.v) ? 4 : 2.2));
     if (Math.abs(S.v) < 0.03 && !vt) S.v = 0;
     S.pos.x += Math.sin(S.heading) * S.v * dt; S.pos.z += Math.cos(S.heading) * S.v * dt;
-    // Entrer par n'importe quel mur : toucher un bâtiment en roulant vers lui (ou rouler sur le terrain vague).
-    if (!S.route && Math.abs(S.v) > 2) {
-      const mx = Math.sin(S.heading) * Math.sign(S.v), mz = Math.cos(S.heading) * Math.sign(S.v);
-      for (const l of LOTS) {
-        const m = l.b.style === 'vide' ? 0 : CAR_R - 0.02;
-        if ((l.id === S.enterCd.id && performance.now() < S.enterCd.until) || Math.abs(S.pos.x - l.x) >= l.w / 2 + m || Math.abs(S.pos.z - l.z) >= l.d / 2 + m) continue;
-        const dx = l.x - S.pos.x, dz = l.z - S.pos.z, d = Math.hypot(dx, dz) || 1;
-        if ((mx * dx + mz * dz) / d < 0.15) continue;
-        S.enterCd = { id: l.id, until: performance.now() + 1500 }; S.v = 0; pushOut(S.pos, CAR_R); S.near = l; enter(l); return;
-      }
-    }
     if (pushOut(S.pos, CAR_R)) S.v *= Math.pow(0.15, dt);
     car.position.set(S.pos.x, 0, S.pos.z); car.rotation.y = S.heading;
     if (!S.route) {
       let best = null, bd = 4.5; for (const l of LOTS) { const d = hyp(l.stop, S.pos); if (d < bd) { bd = d; best = l; } }
       if (best !== S.near) { S.near = best; setCard(); }
+      else if (!best) { const st = STREETS.reduce((a2, t) => (Math.abs(t.z - S.pos.z) < Math.abs(a2.z - S.pos.z) ? t : a2)); if (st !== S.cardStreet) { S.cardStreet = st; setCard(); } }
     }
   }
   function stepInside(dt, I) {
@@ -1108,7 +1133,7 @@ export function startVille3D(root, THREE, opts = {}) {
     if (S.inside) stepInside(dt, I); else stepCity(dt, I);
     stepCamera(dt);
     globe.rotation.y += dt * 0.4; riverTex.offset.y -= dt * 0.08;
-    if (!S.inside) { for (const sg of signs) sg.visible = camera.position.distanceTo(sg.position) > 9; for (const lb of blabels) lb.visible = camera.position.distanceTo(lb.position) > 12; }
+    if (!S.inside) { for (const sg of signs) { const d = camera.position.distanceTo(sg.position); sg.visible = d > 6 && d < (sg.userData.far || 60); } for (const lb of blabels) { const d = camera.position.distanceTo(lb.position); lb.visible = d > 16 && d < 48; } }
     else { for (const lb of S.room.labels) lb.visible = camera.position.distanceTo(lb.position) > 4.5; for (const p of S.room.people) if (p.lb?.userData.near) p.lb.visible = Math.hypot(p.x - S.pos.x, p.z - S.pos.z) < 4.2; } // trop proches, ils masqueraient la route
     renderer.render(S.inside ? S.room.scene : city, camera);
     if (++frame % 3 === 0) drawMini();
