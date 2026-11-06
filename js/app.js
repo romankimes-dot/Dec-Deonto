@@ -2332,11 +2332,11 @@ function villeEntry() {
 }
 // ---------- Carte des notions ----------
 // Un sous-thème par profession (js/carte.js) : poids aux annales (nombre de questions) et état de la révision.
-// Trois présentations à l'essai : mosaïque par thème, face-à-face EC / CAC, priorités.
+// Mosaïque de tuiles, rangée par thème ou triée par priorité ; une profession à la fois ou les deux.
 function carteEntry() {
   return `<div class="card pc-entry"><div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:12px"><div><strong>${ic('brain')} Carte des notions</strong><div class="muted">Tous les sous-thèmes, EC face au CAC : ce qui pèse aux annales et où vous en êtes</div></div><button class="btn sm primary" data-go="carte">Ouvrir ›</button></div></div>`;
 }
-const CARTE_MODES = [['mosaique', 'Mosaïque'], ['face', 'Face-à-face'], ['prio', 'Priorités']];
+const CARTE_SORTS = [['theme', 'Par thème'], ['prio', 'Priorité']];
 function carteData() {
   if (!state.carte) state.carte = CA.buildGraph(state.bank.questions);
   const acc = P.tagStats(state.progress.attempts, state.byId).byKey;
@@ -2346,9 +2346,9 @@ function carteData() {
 const carteName = (n) => tagLabel(n.tag);
 const pctS = (x) => (x === null ? '–' : `${Math.round(x * 100)} %`);
 // Tuile : nom, nombre de questions, part vue (barre), couleur de l'état
-function carteTile(n, s, { prof = false } = {}) {
-  return `<button class="ctile ${s.level}" data-cn="${esc(n.id)}" aria-label="${esc(`${carteName(n)} (${n.prof}) : ${CA.LEVELS[s.level]}, ${s.seen} questions vues sur ${s.n}`)}">
-    <span class="ctile-name">${prof ? `<span class="badge ${n.prof.toLowerCase()}">${n.prof}</span> ` : ''}${esc(carteName(n))}</span>
+function carteTile(n, s, { prof = false, rank = 0 } = {}) {
+  return `<button class="ctile ${s.level}" data-cn="${esc(n.id)}" aria-label="${esc(`${rank ? `${rank}. ` : ''}${carteName(n)} (${n.prof}) : ${CA.LEVELS[s.level]}, ${s.seen} questions vues sur ${s.n}`)}">
+    <span class="ctile-name">${rank ? `<span class="ctile-k">${rank}</span> ` : ''}${prof ? `<span class="badge ${n.prof.toLowerCase()}">${n.prof}</span> ` : ''}${esc(carteName(n))}</span>
     <span class="ctile-meta"><strong>${n.ids.length}</strong> Q · ${CA.LEVELS[s.level]}</span>
     <span class="ctile-bar"><i style="width:${Math.round(s.cover * 100)}%"></i></span></button>`;
 }
@@ -2360,45 +2360,29 @@ function carteMosaique(g, states, prof) {
     return `<div class="card"><h2>${esc(THEMES[t])}</h2><div class="cmosa">${['EC', 'CAC'].map((p) => `<div><div class="cmosa-h"><span class="badge ${p.toLowerCase()}">${p}</span></div>${col(p).map((n) => carteTile(n, states[n.id])).join('') || '<p class="muted">—</p>'}</div>`).join('')}</div></div>`;
   }).join('');
 }
-// Une ligne par sous-thème : barre EC vers la gauche, CAC vers la droite (longueur = questions, couleur = état)
-function carteFace(g, states) {
-  const max = Math.max(...g.nodes.map((n) => n.ids.length));
-  const byKey = Object.fromEntries(g.nodes.map((n) => [n.id, n]));
-  const side = (n) => (n ? `<button class="cbar ${states[n.id].level}" data-cn="${esc(n.id)}" style="width:${Math.max(14, Math.round((n.ids.length / max) * 100))}%" aria-label="${esc(`${carteName(n)} (${n.prof}) : ${CA.LEVELS[states[n.id].level]}`)}">${n.ids.length}</button>` : '');
-  return CA.THEME_ORDER.map((t) => {
-    const tags = [...new Set(g.nodes.filter((n) => n.theme === t).map((n) => n.tag))];
-    const rows = tags.map((tag) => ({ tag, ec: byKey[`EC:${tag}`], cac: byKey[`CAC:${tag}`] }))
-      .sort((a, b) => (!!(b.ec && b.cac) - !!(a.ec && a.cac)) || ((b.ec?.ids.length || 0) + (b.cac?.ids.length || 0)) - ((a.ec?.ids.length || 0) + (a.cac?.ids.length || 0)));
-    return `<div class="card"><h2>${esc(THEMES[t])}</h2><div class="cface-h"><span class="badge ec">EC</span><span></span><span class="badge cac">CAC</span></div>${rows.map((r) => `<div class="cface${r.ec && r.cac ? ' twin' : ''}"><div class="l">${side(r.ec)}</div><div class="m">${esc(G.TAG_LABELS[r.tag] || r.tag)}${r.ec && r.cac ? ' <span title="Même sous-thème dans les deux professions : risque de confusion">⇄</span>' : ''}</div><div class="r">${side(r.cac)}</div></div>`).join('')}</div>`;
-  }).join('');
-}
-// Ce qui rapporte le plus à travailler maintenant : poids aux annales × ce qui reste à acquérir
-function cartePrio(g, states, prof) {
-  const rows = g.nodes.filter((n) => !prof || n.prof === prof).map((n) => { const s = states[n.id]; return { n, s, gain: n.ids.length * (1 - s.score) * (s.level === 'fragile' ? 1.5 : 1) }; }).sort((a, b) => b.gain - a.gain);
-  const max = rows[0]?.gain || 1;
-  const row = ({ n, s, gain }, i) => `<button class="cprio ${s.level}" data-cn="${esc(n.id)}"><span class="k">${i + 1}</span><span class="t">${prof ? '' : `<span class="badge ${n.prof.toLowerCase()}">${n.prof}</span> `}${esc(carteName(n))}<span class="muted"> · ${n.ids.length} Q · ${CA.LEVELS[s.level]}${s.answers ? ` · ${pctS(s.acc)}` : ''}</span></span><span class="g"><i style="width:${Math.round((gain / max) * 100)}%"></i></span></button>`;
-  return `<div class="card"><h2>À travailler d’abord</h2><p class="muted">Classement : nombre de questions des annales × ce qui reste à acquérir (les sous-thèmes fragiles comptent une fois et demie).</p><div class="list">${rows.slice(0, 12).map(row).join('')}</div>
-    <details style="margin-top:10px"><summary class="muted">Les ${rows.length - 12} autres</summary><div class="list" style="margin-top:8px">${rows.slice(12).map((r, i) => row(r, i + 12)).join('')}</div></details></div>`;
-}
+// Gain à travailler un sous-thème : poids aux annales × ce qui reste à acquérir (fragile : une fois et demie)
+const carteGain = (n, s) => n.ids.length * (1 - s.score) * (s.level === 'fragile' ? 1.5 : 1);
 views.carte = () => {
   const { g, states } = carteData();
-  const mode = CARTE_MODES.some(([k]) => k === state.carteMode) ? state.carteMode : 'mosaique';
-  // Une profession à la fois (plus léger) ou les deux ; le face-à-face montre toujours les deux
-  const prof = mode === 'face' ? null : ['EC', 'CAC'].includes(state.carteProf) ? state.carteProf : state.carteProf === 'tout' ? null : 'EC';
+  const sort = state.carteSort === 'prio' ? 'prio' : 'theme';
+  // Une profession à la fois (plus léger) ou les deux
+  const prof = ['EC', 'CAC'].includes(state.carteProf) ? state.carteProf : state.carteProf === 'tout' ? null : 'EC';
   const inView = g.nodes.filter((n) => !prof || n.prof === prof);
   const count = (l) => inView.filter((n) => states[n.id].level === l).length;
   setTimeout(() => {
-    document.querySelectorAll('[data-cmode]').forEach((b) => { b.onclick = () => { state.carteMode = b.dataset.cmode; render(); }; });
+    document.querySelectorAll('[data-csort]').forEach((b) => { b.onclick = () => { state.carteSort = b.dataset.csort; render(); }; });
     document.querySelectorAll('[data-cprof]').forEach((b) => { b.onclick = () => { state.carteProf = b.dataset.cprof; state.carteSel = null; render(); }; });
     document.querySelectorAll('#main [data-cn]').forEach((b) => { b.onclick = () => carteDetail(g, states, b.dataset.cn); });
     if (state.carteSel) carteDetail(g, states, state.carteSel);
   }, 0);
   const legend = Object.entries(CA.LEVELS).map(([k, l]) => `<span class="cleg"><i class="${k}"></i>${l} <span class="muted">${count(k)}</span></span>`).join('');
-  const body = mode === 'face' ? carteFace(g, states) : mode === 'prio' ? cartePrio(g, states, prof) : carteMosaique(g, states, prof);
-  const profTabs = mode === 'face' ? '' : `<div class="tabs" style="margin-top:6px">${[['EC', 'EC'], ['CAC', 'CAC'], ['tout', 'Les deux']].map(([k, l]) => `<button class="chip ${(prof || 'tout') === k ? 'on' : ''}" data-cprof="${k}">${l}</button>`).join('')}</div>`;
+  const chips = (list, cur, attr) => `<div class="tabs">${list.map(([k, l]) => `<button class="chip ${cur === k ? 'on' : ''}" data-${attr}="${k}">${l}</button>`).join('')}</div>`;
+  const body = sort === 'prio'
+    ? `<div class="card"><h2>À travailler d’abord</h2><p class="muted">Nombre de questions des annales × ce qui reste à acquérir ; les sous-thèmes fragiles comptent une fois et demie.</p><div class="cmosa one">${inView.map((n) => ({ n, gain: carteGain(n, states[n.id]) })).sort((a, b) => b.gain - a.gain).map(({ n }, i) => carteTile(n, states[n.id], { prof: !prof, rank: i + 1 })).join('')}</div></div>`
+    : carteMosaique(g, states, prof);
   return `<button class="btn sm" data-go="fiches" style="margin-bottom:12px">← Fiches</button>
-    <div class="card"><h2>${ic('brain')} Carte des notions</h2><div class="cleg-row">${legend}</div><p class="muted" style="margin:6px 0 0">Chiffre : questions des annales sur ce sous-thème. Barre : part déjà vue.</p>
-      <div class="tabs" style="margin-top:10px">${CARTE_MODES.map(([k, l]) => `<button class="chip ${mode === k ? 'on' : ''}" data-cmode="${k}">${l}</button>`).join('')}</div>${profTabs}</div>
+    <div class="card"><h2>${ic('brain')} Carte des notions</h2><div class="cleg-row">${legend}</div><p class="muted" style="margin:6px 0 10px">Chiffre : questions des annales sur ce sous-thème. Barre : part déjà vue.</p>
+      <div class="ctools">${chips([['EC', 'EC'], ['CAC', 'CAC'], ['tout', 'Les deux']], prof || 'tout', 'cprof')}${chips(CARTE_SORTS, sort, 'csort')}</div></div>
     ${body}
     <div id="carte-panel" class="carte-panel" aria-live="polite" hidden></div>`;
 };
