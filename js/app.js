@@ -21,6 +21,7 @@ import { ic, paths } from './icons.js';
 import { compositionHtml, COMPO_CSS } from './ville3d.js';
 import { startMaquette, MAQUETTE_CSS } from './maquette.js';
 import { planHtml, PLAN_CSS } from './villeplan.js';
+import * as CA from './carte.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -1124,7 +1125,7 @@ views.fiches = () => {
   const synth = state.fiches.filter((f) => f.kind !== 'visuel');
   const ec = synth.filter((f) => /-ec-/.test(f.file)); const cac = synth.filter((f) => /-cac-/.test(f.file));
   const seenCount = state.fiches.filter((f) => P.isRead(state.progress.plan, f.file)).length;
-  return `${podcastsEntry()}${villeEntry()}<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ${ic('check')} = vue (bouton « Vu » dans chaque fiche, décochable).</p><p style="margin:0 0 8px"><strong>${seenCount} / ${state.fiches.length}</strong> fiches vues</p><div class="btnrow"><button class="btn primary" data-go="plan">${ic('compass')} Ouvrir le parcours</button><button class="btn" data-go="glossaire">${ic('book')} Glossaire</button><a class="btn" href="./data/fiches-a-imprimer.pdf" target="_blank" rel="noopener">${ic('library')} PDF à imprimer (A4, noir et blanc)</a><a class="btn" href="./data/fiches-a-imprimer-2-par-feuille.pdf" target="_blank" rel="noopener">${ic('library')} PDF livret à relier (2 pages par feuille, recto verso)</a></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
+  return `${podcastsEntry()}${villeEntry()}${carteEntry()}<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ${ic('check')} = vue (bouton « Vu » dans chaque fiche, décochable).</p><p style="margin:0 0 8px"><strong>${seenCount} / ${state.fiches.length}</strong> fiches vues</p><div class="btnrow"><button class="btn primary" data-go="plan">${ic('compass')} Ouvrir le parcours</button><button class="btn" data-go="glossaire">${ic('book')} Glossaire</button><a class="btn" href="./data/fiches-a-imprimer.pdf" target="_blank" rel="noopener">${ic('library')} PDF à imprimer (A4, noir et blanc)</a><a class="btn" href="./data/fiches-a-imprimer-2-par-feuille.pdf" target="_blank" rel="noopener">${ic('library')} PDF livret à relier (2 pages par feuille, recto verso)</a></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
     <div class="card"><h2>Fiches de référence</h2><h3>Expert-comptable</h3><div class="list">${ec.map((f) => item(f)).join('')}</div><h3>Commissaire aux comptes</h3><div class="list">${cac.map((f) => item(f)).join('')}</div></div>`;
 };
 // Sommaire déroulant en tête des fiches longues.
@@ -1236,7 +1237,7 @@ views.stats = () => {
   for (const a of state.progress.attempts) { const q = state.byId[a.id]; if (!q) continue; for (const tg of q.tags) { tagAcc[tg] = tagAcc[tg] || { ok: 0, n: 0 }; tagAcc[tg].n++; if (a.ok) tagAcc[tg].ok++; } }
   const weakTags = Object.entries(tagAcc).filter(([, v]) => v.n >= 3).sort((a, b) => a[1].ok / a[1].n - b[1].ok / b[1].n).slice(0, 8);
   const due7 = Object.values(cards).filter((c) => c.due <= Date.now() + 7 * DAY).length;
-  return `<button class="btn sm" data-go="home" style="margin-bottom:12px">← Accueil</button><div class="grid2"><div class="stat"><div class="n">${acc === null ? '–' : acc + ' %'}</div><div class="l">réussite (50 dernières)</div></div><div class="stat"><div class="n">${due7}</div><div class="l">à revoir sous 7 jours</div></div></div>
+  return `<div class="row" style="gap:8px;margin-bottom:12px"><button class="btn sm" data-go="home">← Accueil</button><button class="btn sm" data-go="carte">${ic('brain')} Carte des notions</button></div><div class="grid2"><div class="stat"><div class="n">${acc === null ? '–' : acc + ' %'}</div><div class="l">réussite (50 dernières)</div></div><div class="stat"><div class="n">${due7}</div><div class="l">à revoir sous 7 jours</div></div></div>
     <div class="card"><h2>Maîtrise par thème</h2><div class="muted" style="margin-bottom:8px"><i class="m3" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> acquise <i class="m2" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> en cours <i class="m1" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> apprentissage · gris = jamais vue · chiffre : questions de la barre (couleurs) / total, ${ic('check')} = acquises</div>
       ${rows.map((r) => `<div class="mastery" style="margin:6px 0"><div><span class="badge ${r.p.toLowerCase()}">${r.p}</span> ${THEMES[r.t]}</div><div class="bar">${[3, 2, 1].map((k) => `<i class="m${k}" style="width:${(r.m[k] / Math.max(1, r.n)) * 100}%"></i>`).join('')}</div><div class="muted" title="${r.m[3]} acquise(s)">${r.n - r.m[0]}/${r.n}${r.m[3] ? ` <span class="m3t">(${r.m[3]} ${ic('check')})</span>` : ''}</div></div>`).join('')}</div>
     ${estimateCard()}
@@ -2329,6 +2330,76 @@ views.podcasts = () => {
 function villeEntry() {
   return `<div class="card pc-entry"><div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:12px"><div><strong>${ic('landmark')} La ville des institutions</strong><div class="muted">Ordre, H2A, CNCC, chambres, tribunaux, quartier international : en 3D, qui siège où et qui fait quoi</div></div><button class="btn sm primary" data-go="ville">Visiter ›</button></div></div>`;
 }
+// ---------- Carte des notions ----------
+// Graphe des sous-thèmes (js/carte.js) : disposition calculée une fois, état recalculé à chaque affichage.
+function carteEntry() {
+  return `<div class="card pc-entry"><div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:12px"><div><strong>${ic('brain')} Carte des notions</strong><div class="muted">Tous les sous-thèmes, EC face au CAC : taille = poids aux annales, couleur = où vous en êtes</div></div><button class="btn sm primary" data-go="carte">Ouvrir ›</button></div></div>`;
+}
+const CARTE_COLOR = { vierge: 'var(--card)', fragile: 'var(--ko)', en_cours: 'var(--warn)', solide: 'var(--ok)' };
+function carteData() {
+  if (!state.carte) state.carte = CA.layout(CA.buildGraph(state.bank.questions));
+  const acc = P.tagStats(state.progress.attempts, state.byId).byKey;
+  const states = Object.fromEntries(state.carte.nodes.map((n) => [n.id, CA.nodeState(n, state.progress.cards, acc, mastery)]));
+  return { g: state.carte, states };
+}
+const carteName = (n) => tagLabel(n.tag);
+views.carte = () => {
+  const { g, states } = carteData();
+  const byId = Object.fromEntries(g.nodes.map((n) => [n.id, n]));
+  const count = (l) => g.nodes.filter((n) => states[n.id].level === l).length;
+  const pick = CA.priority(g, states);
+  const bands = g.bands.map((b, i) => `<rect x="0" y="${b.y0}" width="${CA.W}" height="${b.y1 - b.y0}" class="cb${i % 2}"/><text x="${CA.W / 2}" y="${b.y0 + 18}" class="ct">${esc(THEMES[b.theme])}</text>`).join('');
+  const edges = g.edges.map((e) => { const a = byId[e.a], b = byId[e.b]; return `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" data-e="${esc(e.a)}|${esc(e.b)}" class="${e.twin ? 'twin' : 'co'}${a.theme !== b.theme ? ' far' : ''}" stroke-width="${e.twin ? 1 : Math.min(4, 0.6 + e.w * 0.35)}"/>`; }).join('');
+  const nodes = g.nodes.map((n) => {
+    const s = states[n.id]; const c = 2 * Math.PI * (n.r + 3);
+    const lines = CA.wrapLabel(carteName(n));
+    return `<g class="cn ${s.level}" data-node="${esc(n.id)}" tabindex="0" role="button" aria-label="${esc(`${carteName(n)} (${n.prof}) : ${CA.LEVELS[s.level]}, ${s.seen} questions vues sur ${s.n}`)}">
+      <circle cx="${n.x}" cy="${n.y}" r="${n.r + 3}" class="ring-bg"/><circle cx="${n.x}" cy="${n.y}" r="${n.r + 3}" class="ring" stroke-dasharray="${(s.cover * c).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 ${n.x} ${n.y})"/>
+      <circle cx="${n.x}" cy="${n.y}" r="${n.r}" fill="${CARTE_COLOR[s.level]}" class="dot ${n.prof.toLowerCase()}"/><text x="${n.x}" y="${n.y + 3.5}" class="cnum">${n.ids.length}</text>
+      ${lines.map((l, i) => `<text x="${n.x}" y="${n.y + n.r + 13 + i * 10}" class="cl">${esc(l)}</text>`).join('')}</g>`;
+  }).join('');
+  setTimeout(() => {
+    const svg = $('#carte'); if (!svg) return;
+    const select = (id) => { state.carteSel = id; carteSelect(svg, g, states, id); };
+    svg.querySelectorAll('[data-node]').forEach((el) => {
+      el.onclick = (ev) => { ev.stopPropagation(); select(el.dataset.node); };
+      el.onkeydown = (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); select(el.dataset.node); } };
+    });
+    svg.onclick = () => select(null);
+    $('#carte-pick')?.addEventListener('click', () => { if (!pick) return; select(pick.id); svg.querySelector(`[data-node="${CSS.escape(pick.id)}"]`)?.scrollIntoView({ block: 'center', behavior: 'smooth' }); });
+    if (state.carteSel && byId[state.carteSel]) select(state.carteSel);
+  }, 0);
+  const legend = Object.entries(CA.LEVELS).map(([k, l]) => `<span class="cleg"><i class="${k}" style="background:${CARTE_COLOR[k]}"></i>${l} <span class="muted">${count(k)}</span></span>`).join('');
+  return `<button class="btn sm" data-go="fiches" style="margin-bottom:12px">← Fiches</button>
+    <div class="card"><h2>${ic('brain')} Carte des notions</h2><p class="muted" style="margin:4px 0 8px">Un rond par sous-thème : sa taille et son chiffre donnent le nombre de questions des annales, sa couleur votre état, l’anneau la part déjà vue. Les traits relient les sous-thèmes posés ensemble ; les pointillés traversent le fleuve vers le même sous-thème dans l’autre profession, là où se font les confusions.</p>
+      <div class="cleg-row">${legend}</div>
+      ${pick ? `<button class="btn primary" id="carte-pick" style="margin-top:10px">${ic('target')} Par où commencer : ${esc(carteName(pick))} (${pick.prof})</button>` : ''}</div>
+    <div class="carte-head"><span class="badge ec">Expert-comptable</span><span class="badge cac">Commissaire aux comptes</span></div>
+    <svg id="carte" class="carte" viewBox="0 0 ${CA.W} ${g.H}" role="group" aria-label="Carte des notions">${bands}<rect x="${CA.W / 2 - 6}" y="0" width="12" height="${g.H}" class="river"/><g class="edges">${edges}</g>${nodes}</svg>
+    <div id="carte-panel" class="carte-panel" aria-live="polite"><p class="muted" style="margin:0">Touchez un rond pour voir le détail et réviser ses questions.</p></div>`;
+};
+function carteSelect(svg, g, states, id) {
+  svg.classList.toggle('has-sel', !!id);
+  const nb = id ? CA.neighbours(g, id) : { links: [], twin: null };
+  const near = new Set([id, nb.twin, ...nb.links.map((l) => l.id)]);
+  svg.querySelectorAll('[data-node]').forEach((el) => { el.classList.toggle('sel', el.dataset.node === id); el.classList.toggle('near', near.has(el.dataset.node)); });
+  svg.querySelectorAll('[data-e]').forEach((el) => { const [a, b] = el.dataset.e.split('|'); el.classList.toggle('on', a === id || b === id); });
+  const panel = $('#carte-panel'); if (!panel) return;
+  if (!id) { panel.innerHTML = '<p class="muted" style="margin:0">Touchez un rond pour voir le détail et réviser ses questions.</p>'; return; }
+  const n = g.nodes.find((x) => x.id === id); const s = states[id];
+  const name = (k) => { const x = g.nodes.find((y) => y.id === k); return x ? `${carteName(x)} (${x.prof})` : k; };
+  const fiche = (() => { const sc = {}; for (const f of state.fiches) { if (f.kind !== 'visuel' || !f.questions) continue; const k = n.ids.filter((q) => f.questions.includes(q)).length; if (k) sc[f.file] = k; } return Object.entries(sc).sort((a, b) => b[1] - a[1])[0]?.[0]; })();
+  const pctS = (x) => (x === null ? '–' : `${Math.round(x * 100)} %`);
+  panel.innerHTML = `<div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:8px"><strong><span class="badge ${n.prof.toLowerCase()}">${n.prof}</span> ${esc(carteName(n))}</strong><button class="btn sm" id="cp-x" aria-label="Fermer">${ic('x')}</button></div>
+    <div class="muted" style="margin:4px 0">${esc(THEMES[n.theme])} · <strong style="color:inherit">${CA.LEVELS[s.level]}</strong> · ${s.seen}/${s.n} vues · réussite ${pctS(s.acc)}${s.answers ? ` (${s.answers})` : ''} · ${s.m[3]} acquise${s.m[3] > 1 ? 's' : ''}</div>
+    ${nb.twin || nb.links.length ? `<div class="cp-links" aria-label="Sous-thèmes liés">${nb.twin ? `<button class="chip" data-cn="${esc(nb.twin)}">⇄ ${esc(name(nb.twin))}</button>` : ''}${nb.links.slice(0, 4).map((l) => `<button class="chip" data-cn="${esc(l.id)}">${esc(name(l.id))} · ${l.w}</button>`).join('')}</div>` : ''}
+    <div class="cp-act"><button class="btn sm primary" id="cp-train">${ic('target')} Réviser (${Math.min(20, n.ids.length)})</button>${fiche ? `<button class="btn sm" id="cp-fiche" title="${esc(shortTitle(fiche))}">${ic('chart')} Schéma</button>` : ''}</div>`;
+  $('#cp-x').onclick = () => { state.carteSel = null; carteSelect(svg, g, states, null); };
+  // Les moins sûres d'abord : jamais vues et ratées en tête
+  $('#cp-train').onclick = () => trainOn(n.ids.slice().sort((a, b) => mastery(state.progress.cards[a]) - mastery(state.progress.cards[b])).slice(0, 20), `Carte : ${carteName(n)} (${n.prof})`);
+  if (fiche) $('#cp-fiche').onclick = () => openFiche(fiche);
+  panel.querySelectorAll('[data-cn]').forEach((b) => { b.onclick = () => { state.carteSel = b.dataset.cn; carteSelect(svg, g, states, b.dataset.cn); svg.querySelector(`[data-node="${CSS.escape(b.dataset.cn)}"]`)?.scrollIntoView({ block: 'center', behavior: 'smooth' }); }; });
+}
 const injectCss = (id, css) => { if (!$(`#${id}`)) { const st = document.createElement('style'); st.id = id; st.textContent = css; document.head.appendChild(st); } };
 // La visite 3D survit aux rafraîchissements de l'écran (synchronisation, fiche refermée…) : son élément est
 // remis en place tel quel, avec sa position et son contexte WebGL ; elle s'arrête seulement en quittant la vue ou l'onglet.
@@ -2392,7 +2463,7 @@ const NAV = [
 function render() {
   const main = $('#main');
   main.innerHTML = views[state.view]();
-  document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view || (state.view === 'plan' && b.dataset.view === 'home') || (state.view === 'jeux' && b.dataset.view === 'train') || ((state.view === 'podcasts' || state.view === 'ville') && b.dataset.view === 'fiches')));
+  document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view || (state.view === 'plan' && b.dataset.view === 'home') || (state.view === 'jeux' && b.dataset.view === 'train') || ((state.view === 'podcasts' || state.view === 'ville' || state.view === 'carte') && b.dataset.view === 'fiches')));
   pcMini();
   updateStreakBadge();
   main.querySelectorAll('[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
