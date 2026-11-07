@@ -393,21 +393,18 @@ export function gateLevel(r) {
   for (let k = 2; k <= GRADES.length; k++) { if (gateConditions(k, r).every((c) => c.ok)) n = k; else break; }
   return n;
 }
-// État de carrière complet : grade = min(points, paliers de résultats) ; barre de points dans le grade ;
-// conditions du grade suivant (blocked : les points y sont déjà, seuls les résultats manquent).
+// État de carrière : le grade ne dépend que des résultats (annales vues, examens blancs, réussite) ; la barre est
+// l'avancement moyen vers les conditions du grade suivant ; les points sont un score d'effort, affiché mais sans effet
+// sur le grade (revu le 8 novembre 2026 : un score élevé ne doit jamais promettre un grade que les résultats refusent).
 export function careerState(stats, ctx, drills = {}) {
   const { total, parts } = xpOf(stats, ctx, drills);
   const r = readiness(stats, ctx);
-  const byXp = levelOf(total); const byGate = gateLevel(r);
-  const n = Math.min(byXp, byGate);
-  const from = LEVELS[n - 1]; const to = LEVELS[n] ?? null;
-  const blocked = byXp > n;
+  const n = gateLevel(r);
   const conds = n < GRADES.length ? gateConditions(n + 1, r) : [];
-  // Barre affichée : les points dans le palier ; quand ils y sont déjà, l'avancement moyen des résultats exigés
-  const pct = to === null ? 1 : Math.min(1, (total - from) / (to - from));
-  const gatePct = conds.length ? conds.reduce((a, c) => a + c.ratio, 0) / conds.length : 1;
-  const info = { n, xp: total, from, to, pct, barPct: blocked ? gatePct : pct, left: to === null ? 0 : Math.max(0, to - total) };
-  return { info, parts, readiness: r, blocked, conds };
+  const pct = conds.length ? conds.reduce((a, c) => a + c.ratio, 0) / conds.length : 1;
+  const met = conds.filter((c) => c.ok).length;
+  const info = { n, xp: total, pct, barPct: pct, met, total: conds.length, from: 0, to: null, left: 0 };
+  return { info, parts, readiness: r, blocked: false, conds };
 }
 export function levelOf(xp) {
   let n = 1;
