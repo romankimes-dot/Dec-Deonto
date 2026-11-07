@@ -11,11 +11,13 @@ test('chaque objet de badge existe dans la scène', () => {
   for (const b of catalog) if (b.prop) assert.ok(PROP_NAMES.has(b.prop) || SPECIAL_PROPS.has(b.prop), `${b.id} → ${b.prop}`);
 });
 
-test('chaque grade produit un SVG valide avec le personnage', () => {
+test('chaque grade produit un plan SVG valide, avec autant de pièces ouvertes que de grades', () => {
   for (const gr of GRADES) {
     const svg = renderScene(gr.n, { decor: gr.decor });
     assert.match(svg, /^<svg[\s\S]*<\/svg>$/);
-    assert.match(svg, /class="person"/);
+    assert.match(svg, /class="plan"/);
+    assert.equal((svg.match(/class="room open"/g) || []).length, gr.n);
+    assert.equal((svg.match(/class="room locked"/g) || []).length, 8 - gr.n);
     assert.equal((svg.match(/<g/g) || []).length >= (svg.match(/<\/g>/g) || []).length, true);
   }
 });

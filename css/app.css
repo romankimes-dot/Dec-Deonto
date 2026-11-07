@@ -688,47 +688,52 @@ html { overscroll-behavior-y: none; }
 .cp-act { display: flex; gap: 8px; margin-top: 8px; }
 .cp-act .btn { flex: 1; justify-content: center; }
 
-/* ---------- Carrière : carte de niveau, frise, vitrine (style des shorts : papier, personnage plat) ---------- */
-.card.paper { background: #f3eee6; color: #1c1b1a; border-color: #e6dfd3; font-family: "Bricolage Grotesque", -apple-system, "Segoe UI", Roboto, sans-serif; }
-:root[data-theme="dark"] .card.paper, :root:not([data-theme="light"]) .card.paper { color-scheme: light; }
-.lvl { display: grid; grid-template-columns: 116px 1fr; gap: 14px; align-items: center; }
-.lvl.compact { grid-template-columns: 84px 1fr; gap: 12px; }
-.lvl-fig { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 18px; }
-.lvl-disc { position: absolute; inset: 8% 4% -30%; border-radius: 50%; background: var(--soft); }
-.lvl-pers { position: absolute; left: 50%; bottom: -4%; height: 86%; translate: -50% 0; aspect-ratio: 164 / 240; }
-.lvl-pers .pers { display: block; height: 100%; width: auto; }
-.lvl-stamp { position: absolute; left: 6px; bottom: 6px; background: #ffc93c; border: 2px solid #1c1b1a; border-radius: 8px; padding: 3px 7px; font-size: 12px; font-weight: 800; line-height: 1.1; transform: rotate(-3deg); box-shadow: 0 2px 0 #1c1b1a; white-space: nowrap; }
-.lvl-stamp span { font-weight: 600; opacity: .7; font-size: 10px; margin-left: 2px; }
-.lvl.compact .lvl-stamp { font-size: 11px; padding: 2px 6px; left: 4px; bottom: 4px; }
-.lvl-kicker { font-size: 12px; font-weight: 700; color: #6f675d; text-transform: uppercase; letter-spacing: .04em; }
-.lvl-name { margin: 2px 0 8px; font-size: 22px; line-height: 1.05; font-weight: 800; letter-spacing: -.02em; }
-.lvl.compact .lvl-name { font-size: 18px; margin-bottom: 6px; }
-.lvl-bar { height: 12px; border-radius: 999px; background: #e6dfd3; overflow: hidden; border: 2px solid #1c1b1a; }
-.lvl-bar > div { height: 100%; border-radius: 999px; transition: width .6s cubic-bezier(.2, .9, .25, 1); min-width: 4px; }
-.lvl-bar.sm { height: 8px; margin-top: 6px; border-width: 1.5px; }
-.lvl-line { margin-top: 6px; font-size: 14px; color: #6f675d; }
-.lvl-line strong { color: #1c1b1a; font-weight: 800; }
-.lvl-today { display: inline-block; margin-top: 6px; padding: 2px 9px; border-radius: 999px; background: #1e7a5f; color: #f3eee6; font-size: 12px; font-weight: 800; }
-.lvl-gate { margin-top: 10px; padding: 8px 10px; border-radius: 12px; background: #fff; border: 1.5px solid #e6dfd3; font-size: 13px; }
-.lvl-gate.blocked { border-color: #d4532b; }
-.lvl-gate-h { font-weight: 800; margin-bottom: 4px; }
-.lvl-gate.blocked .lvl-gate-h { color: #d4532b; }
+/* ---------- Carrière : plan du cabinet, cartouche de niveau, frise (esprit dossier d'architecte) ---------- */
+:root { --pl-paper: #f4efe4; --pl-ink: #1f2a44; --pl-line: #6b7590; --pl-soft: #e4ddcc; --pl-room: #fbf8f1; --pl-locked: #ebe5d6; --pl-accent: #b8552e; --pl-gold: #c99a2e; --pl-green: #3b7d5a; --pl-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --pl-paper: #10213f; --pl-ink: #dbe7fb; --pl-line: #7f9bc8; --pl-soft: #1f3560; --pl-room: #15294d; --pl-locked: #0d1b33; --pl-accent: #f0a07a; --pl-gold: #e8c46a; --pl-green: #7fd0a6; } }
+:root[data-theme="dark"] { --pl-paper: #10213f; --pl-ink: #dbe7fb; --pl-line: #7f9bc8; --pl-soft: #1f3560; --pl-room: #15294d; --pl-locked: #0d1b33; --pl-accent: #f0a07a; --pl-gold: #e8c46a; --pl-green: #7fd0a6; }
+.card.paper { background: var(--pl-paper); color: var(--pl-ink); border-color: var(--pl-line); }
+.plan-big svg, .scene-thumb svg, .cel-plan svg { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--pl-line); }
+.plan-big .prop { cursor: pointer; } .plan-big .prop:hover { opacity: .75; }
+.plan-big .room.locked { opacity: .9; }
+.lvl { font-family: inherit; }
+.lvl-head { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; margin-bottom: 10px; }
+.lvl-no { font-family: var(--pl-mono); font-size: 30px; font-weight: 700; line-height: 1; letter-spacing: -.02em; border: 1.5px solid var(--pl-ink); padding: 6px 8px; min-width: 44px; text-align: center; }
+.lvl-no small { display: block; font-size: 10px; font-weight: 600; letter-spacing: .08em; color: var(--pl-line); margin-top: 3px; }
+.lvl.compact .lvl-no { font-size: 22px; padding: 4px 6px; min-width: 36px; }
+.lvl-kicker { font-family: var(--pl-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--pl-line); }
+.lvl-name { margin: 2px 0 0; font-size: 20px; line-height: 1.1; font-weight: 800; letter-spacing: -.01em; text-wrap: balance; }
+.lvl.compact .lvl-name { font-size: 17px; }
+.lvl-today { font-family: var(--pl-mono); font-size: 13px; font-weight: 700; color: var(--pl-accent); text-align: right; line-height: 1.1; }
+.lvl-today small { display: block; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; }
+.lvl-bar { height: 10px; background: var(--pl-soft); border: 1px solid var(--pl-ink); overflow: hidden; position: relative; }
+.lvl-bar > div { height: 100%; background: repeating-linear-gradient(135deg, var(--pl-ink) 0 3px, transparent 3px 6px); transition: width .6s cubic-bezier(.2, .9, .25, 1); min-width: 3px; }
+.lvl-bar.sm { height: 7px; margin-top: 6px; }
+.lvl-line { margin-top: 6px; font-size: 14px; color: var(--pl-line); font-variant-numeric: tabular-nums; }
+.lvl-line strong { color: var(--pl-ink); font-weight: 800; }
+.lvl-gate { margin-top: 10px; padding: 8px 10px; border: 1px solid var(--pl-line); font-size: 13px; }
+.lvl-gate.blocked { border-color: var(--pl-accent); }
+.lvl-gate-h { font-family: var(--pl-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--pl-line); margin-bottom: 4px; }
+.lvl-gate.blocked .lvl-gate-h { color: var(--pl-accent); }
 .lvl-gate ul, .fr-conds { list-style: none; margin: 0; padding: 0; }
-.lvl-gate li, .fr-conds li { padding: 1px 0; color: #6f675d; }
-.lvl-gate li.ok, .fr-conds li.ok { color: #1e7a5f; }
+.lvl-gate li, .fr-conds li { padding: 1px 0; color: var(--pl-line); }
+.lvl-gate li span, .fr-conds li span { font-family: var(--pl-mono); margin-right: 2px; }
+.lvl-gate li.ok { color: var(--pl-green); }
 .fr-conds { margin-top: 4px; font-size: 13px; }
 .fr-conds li { color: var(--muted); }
 .fr-conds li.ok { color: var(--ok); }
-.lvl-parts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-.lvl-chip { font-size: 12px; font-weight: 800; padding: 3px 8px; border-radius: 999px; background: #fff; border: 1.5px solid #1c1b1a; }
-.lvl-chip span { font-weight: 600; color: #6f675d; }
+.lvl-parts { display: grid; grid-template-columns: repeat(auto-fit, minmax(76px, 1fr)); gap: 0; margin: 12px 0 0; border: 1px solid var(--pl-line); }
+.lvl-parts > div { padding: 6px 8px; border-right: 1px solid var(--pl-line); }
+.lvl-parts > div:last-child { border-right: 0; }
+.lvl-parts dt { font-family: var(--pl-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--pl-line); }
+.lvl-parts dd { margin: 0; font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; }
 .parcours { list-style: none; margin: 4px 0 0; padding: 0; position: relative; }
-.parcours::before { content: ""; position: absolute; left: 15px; top: 14px; bottom: 14px; width: 3px; background: var(--line); border-radius: 2px; }
+.parcours::before { content: ""; position: absolute; left: 17px; top: 14px; bottom: 14px; width: 1.5px; background: var(--line); }
 .fr-item { position: relative; display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; }
-.fr-dot { flex: none; width: 33px; height: 33px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 14px; background: var(--card); color: var(--muted); border: 3px solid var(--line); z-index: 1; }
-.fr-item.done .fr-dot { background: var(--c); color: #fff; border-color: var(--c); }
-.fr-item.cur .fr-dot { box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 25%, transparent); }
-.fr-body { flex: 1; min-width: 0; padding-top: 5px; }
+.fr-dot { flex: none; width: 35px; height: 26px; display: grid; place-items: center; font-family: var(--pl-mono); font-weight: 700; font-size: 13px; background: var(--card); color: var(--muted); border: 1.5px solid var(--line); z-index: 1; }
+.fr-item.done .fr-dot { background: var(--text); color: var(--bg); border-color: var(--text); }
+.fr-item.cur .fr-dot { background: var(--primary); color: var(--primary-ink); border-color: var(--primary); }
+.fr-body { flex: 1; min-width: 0; padding-top: 3px; }
 .fr-item.todo .fr-body strong { color: var(--muted); font-weight: 600; }
 .fr-item.cur .fr-body strong { font-size: 17px; }
 .fr-sub { font-size: 13px; color: var(--muted); }
@@ -737,12 +742,12 @@ html { overscroll-behavior-y: none; }
 .vit .medal { width: 40px; height: 40px; }
 .vit span { font-size: 11px; line-height: 1.15; text-align: center; color: var(--muted); }
 /* Passage de niveau */
-.cel-level { background: #f3eee6; color: #1c1b1a; border-radius: 22px; padding: 22px 18px 16px; max-width: 360px; width: 100%; text-align: center; font-family: "Bricolage Grotesque", -apple-system, "Segoe UI", Roboto, sans-serif; }
-.cel-level .lvl-fig.big { width: 180px; margin: 0 auto 10px; animation: scenein .7s ease-out both; }
-.cel-level .lvl-stamp { position: static; display: inline-block; font-size: 15px; padding: 6px 12px; animation: sh-stamp .45s .3s both; }
-.cel-level h2 { margin: 10px 0 4px; font-size: 24px; line-height: 1.05; font-weight: 800; letter-spacing: -.02em; }
-.cel-level p { margin: 0; color: #6f675d; font-weight: 600; }
-.cel-level .cel-hint { font-size: 12px; margin-top: 14px; font-weight: 500; }
+.cel-level { background: var(--pl-paper); color: var(--pl-ink); border: 1px solid var(--pl-line); border-radius: 10px; padding: 16px 16px 14px; max-width: 420px; width: 100%; text-align: center; }
+.cel-plan { margin-bottom: 12px; animation: scenein .7s ease-out both; }
+.cel-level .lvl-stamp { display: inline-block; font-family: var(--pl-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; border: 1.5px solid var(--pl-accent); color: var(--pl-accent); padding: 5px 10px; transform: rotate(-2deg); animation: sh-stamp .45s .3s both; }
+.cel-level h2 { margin: 10px 0 2px; font-size: 22px; line-height: 1.1; font-weight: 800; letter-spacing: -.01em; }
+.cel-level p { margin: 0; color: var(--pl-line); font-weight: 600; }
+.cel-level .cel-hint { font-size: 12px; margin-top: 12px; font-weight: 500; }
 /* Minuteur par question (3 minutes, le budget de l'épreuve) */
 .qtimer { font-variant-numeric: tabular-nums; font-weight: 800; font-size: 13px; padding: 2px 9px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); white-space: nowrap; }
 .qtimer.warn { color: var(--warn); border-color: var(--warn); }

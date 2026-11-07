@@ -209,10 +209,10 @@ function sceneFor(gradeN, opts = {}) {
     seenProps.add(b.prop); badgeProps.push([b.id, b.prop, b.name]);
   }
   const seenCount = Object.keys(st.q).length;
-  const grade = G.GRADES[gradeN - 1];
   const h = new Date().getHours();
+  const xp = G.xpOf(st, state.gctx, pr.drills).total;
   return renderScene(gradeN, {
-    decor: grade.decor, badgeProps, bestStreak: st.streak.best,
+    badgeProps, bestStreak: st.streak.best, gates: CR.gateSummaries(), xp,
     coverage: seenCount / Math.max(1, state.gctx.all.length),
     stickers: state.catalog.filter((b) => b.sub === 'tags' && pr.badges[b.id]).length,
     glow: !!pr.badges['mast-total'], night: !!pr.badges['hid-couche-tard'] && (h >= 21 || h < 6),
@@ -227,7 +227,7 @@ function nextCelebration() {
   const close = () => { box.classList.remove('show'); focusBack(box); state.celebrating = false; setTimeout(nextCelebration, 250); };
   let html = '';
   if (c.type === 'grade') {
-    html = CR.levelUpHtml(c.g.n);
+    html = CR.levelUpHtml(c.g.n, sceneFor(c.g.n));
     try { navigator.vibrate?.([60, 40, 120]); } catch { /* ignore */ }
   } else if (c.type === 'anecdote') {
     const d = new Date(state.progress.badges[c.b.id] || Date.now()).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -1993,7 +1993,7 @@ function xpInfo() {
 function careerView() {
   const pr = state.progress; const lv = xpInfo();
   const vitrine = state.catalog.filter((b) => b.prop && pr.badges[b.id] && !b.hidden);
-  return `<div class="card paper">${CR.levelCardHtml(lv.info, { today: lv.today, parts: lv.parts, conds: lv.conds, blocked: lv.blocked })}</div>
+  return `<div class="card paper"><div class="plan-big">${sceneFor(lv.info.n)}</div><p class="muted" style="margin:6px 0 10px;font-size:13px">Le plan du cabinet : une pièce par grade. Les pièces hachurées attendent leurs résultats ; touchez un objet pour voir le badge qui l’a posé.</p>${CR.levelCardHtml(lv.info, { today: lv.today, parts: lv.parts, conds: lv.conds, blocked: lv.blocked })}</div>
     <div class="card"><h2>Comment on avance</h2><p class="muted" style="margin:4px 0 0"><strong>Les points font avancer</strong> dans un grade : chaque réponse (+1, +2 si juste, jusqu’à 3 réponses et 3 réussites par question, le double sur une question difficile), chaque examen blanc (+20 et la note), chaque short, les records de série et les journées d’au moins 10 réponses. <strong>Les résultats font franchir</strong> le grade suivant : annales vues, examens blancs, taux de réussite. On peut donc redescendre si une règle était trop généreuse, jamais perdre ses points.</p></div>
     <div class="card"><h2>Le parcours</h2>${CR.timelineHtml(lv.info, pr.grades, lv.readiness)}</div>
     <div class="card"><h2>Vitrine · ${vitrine.length}</h2><p class="muted" style="margin:4px 0 10px">Les objets gagnés avec les badges. Touchez-en un pour voir le badge.</p>
