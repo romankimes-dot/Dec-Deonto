@@ -2,6 +2,27 @@
 // sur les lieux du bureau (méthode des lieux). Contenu repris des fiches (source indiquée), sans ajout.
 // `ordered` : l'ordre a un sens (gradation, procédure) ; sinon c'est l'ordre de la fiche, que le palais fige.
 
+// Un parcours par liste : un lieu différent par exercice, pour que les souvenirs ne se chevauchent pas d'une liste à
+// l'autre. ROUTES[id] = { place: le lieu, loci: [[icône (js/icons.js), libellé], …] } ; LOCI reste le parcours de repli.
+export const ROUTES = {
+  'sanctions-ec': { place: 'la chambre de discipline', loci: [['door', 'la porte de la chambre'], ['coat', 'le vestiaire'], ['folder', 'le dossier sur la table'], ['scale', 'la balance'], ['lock', 'le cadenas de la sortie']] },
+  'sanctions-cac': { place: 'la salle des sanctions de la H2A', loci: [['landmark', 'le hall'], ['clipboard', 'le pupitre'], ['timer', 'la pendule'], ['library', 'la bibliothèque'], ['medal', 'la médaille au mur'], ['cap', 'le fauteuil du dirigeant'], ['save', 'le coffre'], ['camera', 'le panneau d’affichage']] },
+  'poursuite-ec': { place: 'le palais de justice, étage par étage', loci: [['bookmark', 'la boîte aux lettres'], ['search', 'la loupe du rapporteur'], ['door', 'la salle régionale'], ['landmark', 'la grande salle nationale'], ['compass', 'la coupole du Conseil d’État']] },
+  'poursuite-cac': { place: 'le couloir de la H2A', loci: [['phone', 'le standard'], ['search', 'le bureau de l’enquêteur'], ['clipboard', 'le tableau des griefs'], ['scale', 'la salle de la commission'], ['undo', 'la porte des recours']] },
+  'demission': { place: 'le cabinet que l’on quitte', loci: [['door', 'la porte fermée à clé'], ['home', 'la maison'], ['alert', 'le signal rouge'], ['lock', 'le cadenas']] },
+  'obstacles-demission': { place: 'la fenêtre que l’on ne ferme pas', loci: [['eye', 'l’œil'], ['flame', 'la flamme'], ['bookmark', 'le formulaire'], ['files', 'le rapport relié']] },
+  'derogation-bareme': { place: 'l’escalier des recours', loci: [['cap', 'la première marche'], ['trophy', 'le palier'], ['landmark', 'le bureau du haut'], ['scale', 'la terrasse du tribunal']] },
+  'principes-cac': { place: 'le hall du code de déontologie', loci: [['medal', 'la médaille'], ['scale', 'la balance'], ['lock', 'le verrou'], ['eye', 'la loupe'], ['cap', 'le diplôme'], ['coat', 'le portemanteau'], ['folder', 'le dossier scellé']] },
+  'devoir-conseil': { place: 'le bureau du client', loci: [['phone', 'le téléphone'], ['alert', 'le voyant'], ['clipboard', 'la lettre exigée'], ['door', 'la porte']] },
+  'assurance': { place: 'l’étagère des normes', loci: [['trophy', 'le trophée'], ['search', 'la loupe'], ['image', 'le cadre']] },
+  'cadre-missions': { place: 'les quatre tiroirs', loci: [['files', 'le premier tiroir'], ['folder', 'le deuxième tiroir'], ['clipboard', 'le troisième tiroir'], ['plus', 'le tiroir du bas']] },
+  'npmq': { place: 'le tour du cabinet', loci: [['target', 'la cible'], ['cap', 'le bureau de direction'], ['scale', 'la balance'], ['door', 'la porte d’entrée'], ['play', 'la salle de travail'], ['coffee', 'la machine à café'], ['phone', 'le standard'], ['refresh', 'le tableau de bord']] },
+  'responsabilites': { place: 'les quatre portes', loci: [['home', 'la porte de la maison'], ['lock', 'la porte blindée'], ['scale', 'la porte de la chambre'], ['landmark', 'la porte de l’administration']] },
+  'seuils-cac': { place: 'la vitrine des chiffres', loci: [['save', 'le coffre'], ['trending', 'la courbe'], ['cap', 'les casiers du personnel']] },
+};
+export const routeOf = (list) => ROUTES[list.id] || { place: 'le bureau', loci: LOCI };
+export const lociOf = (list) => { const r = routeOf(list).loci; return r.length >= list.items.length ? r : [...r, ...LOCI.filter((l) => !r.some((x) => x[0] === l[0]))]; };
+
 // Chaque lieu : [nom d'icône (js/icons.js), libellé].
 export const LOCI = [
   ['door', 'la porte'], ['coat', 'le portemanteau'], ['plant', 'la plante'], ['window', 'la fenêtre'],

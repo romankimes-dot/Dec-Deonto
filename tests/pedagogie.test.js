@@ -153,4 +153,12 @@ test('palais : chaque liste tient dans le bureau, cite une fiche existante, leur
     for (const d of PAL.decoys(l, 2, () => 0.4)) assert.ok(!l.items.includes(d));
   }
   assert.equal(PAL.initials(PAL.LISTS[0]), 'R-B-S-S-R');
+  // Un parcours par liste : assez de lieux, des icônes distinctes dans le parcours, un lieu nommé
+  for (const l of PAL.LISTS) {
+    const r = PAL.routeOf(l); const loci = PAL.lociOf(l);
+    assert.ok(PAL.ROUTES[l.id], `parcours manquant : ${l.id}`);
+    assert.ok(loci.length >= l.items.length, l.id);
+    assert.equal(new Set(r.loci.map((x) => x[0])).size, r.loci.length, `icônes répétées : ${l.id}`);
+    assert.ok(r.place.length > 3);
+  }
 });

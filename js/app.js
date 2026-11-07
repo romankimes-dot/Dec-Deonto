@@ -1953,27 +1953,28 @@ function palaisView() {
   }, 0);
   if (!p) {
     return `<div class="card"><h2>Votre bureau, palais de mémoire</h2>
-      <p class="muted">La méthode des lieux : on pose chaque élément d’une liste sur un objet d’un parcours familier, puis on refait le parcours pour réciter. Votre parcours : ${PAL.LOCI.slice(0, 6).map(([e, l]) => `${ic(e)} ${esc(l)}`).join(' › ')}…</p></div>
+      <p class="muted">La méthode des lieux : on pose chaque élément d’une liste sur un objet d’un parcours, puis on refait le parcours pour réciter. Chaque liste a son propre lieu, pour que les souvenirs ne se mélangent pas.</p></div>
       ${PAL.LISTS.map((l) => { const s = m[`pal:${l.id}`]; return `<div class="card"><div class="row" style="justify-content:space-between"><strong>${esc(l.title)}</strong><span class="badge ${l.prof === 'EC' ? 'ec' : l.prof === 'CAC' ? 'cac' : ''}">${esc(l.prof)}</span></div>
-        <div class="muted">${l.items.length} éléments · ${s ? (s.box >= 3 ? ic('check') + ' acquise' : s.due <= Date.now() ? 'à réciter' : `prochain récit dans ${Math.max(1, Math.round((s.due - Date.now()) / DAY))} j`) : 'jamais récitée'}</div>
+        <div class="muted">${esc(PAL.routeOf(l).place)} · ${l.items.length} éléments · ${s ? (s.box >= 3 ? ic('check') + ' acquise' : s.due <= Date.now() ? 'à réciter' : `prochain récit dans ${Math.max(1, Math.round((s.due - Date.now()) / DAY))} j`) : 'jamais récitée'}</div>
         <div class="btnrow" style="margin-top:8px"><button class="btn sm" data-pal="${l.id}" data-pal-mode="learn">Apprendre</button><button class="btn sm primary" data-pal="${l.id}" data-pal-mode="test">Réciter</button></div></div>`; }).join('')}`;
   }
   const l = PAL.LISTS.find((x) => x.id === p.id);
   if (p.mode === 'learn') {
     return `<button class="btn sm" id="pal-back">← Listes</button><div class="card" style="margin-top:10px"><h2>${esc(l.title)}</h2><p class="muted">${esc(l.hint)} ${l.ordered ? 'L’ordre compte.' : 'L’ordre est celui de la fiche ; le palais le fige pour vous.'} Initiales : <strong>${esc(PAL.initials(l))}</strong></p>
       <p class="muted">Pour chaque lieu, imaginez l’élément posé dessus : grossissez la scène, rendez-la absurde ou drôle, elle tiendra.</p>
-      <ol class="loci">${l.items.map((x, i) => { const [e, lieu] = PAL.LOCI[i]; return `<li><span class="loc">${ic(e)}</span><div><div class="muted">${esc(lieu)}</div><strong>${esc(x)}</strong></div></li>`; }).join('')}</ol>
-      <p class="muted">Fermez les yeux, refaites le parcours de la porte à ${esc(PAL.LOCI[l.items.length - 1][1])}, puis récitez.</p>
+      <p class="muted">Le lieu : <strong>${esc(PAL.routeOf(l).place)}</strong>.</p>
+      <ol class="loci">${l.items.map((x, i) => { const [e, lieu] = PAL.lociOf(l)[i]; return `<li><span class="loc">${ic(e)}</span><div><div class="muted">${esc(lieu)}</div><strong>${esc(x)}</strong></div></li>`; }).join('')}</ol>
+      <p class="muted">Fermez les yeux, refaites le parcours de ${esc(PAL.lociOf(l)[0][1])} à ${esc(PAL.lociOf(l)[l.items.length - 1][1])}, puis récitez.</p>
       <button class="btn primary" data-pal="${l.id}" data-pal-mode="test">Réciter maintenant</button> <button class="btn sm" data-open-fiche="${esc(l.source)}" style="margin-top:8px">${ic('chart')} Source : la fiche</button></div>`;
   }
   const done = p.step >= l.items.length;
-  const walk = l.items.slice(0, p.step).map((x, i) => `<li><span class="loc">${ic(PAL.LOCI[i][0])}</span><div><div class="muted">${esc(PAL.LOCI[i][1])}</div><strong>${esc(x)}</strong></div></li>`).join('');
+  const walk = l.items.slice(0, p.step).map((x, i) => `<li><span class="loc">${ic(PAL.lociOf(l)[i][0])}</span><div><div class="muted">${esc(PAL.lociOf(l)[i][1])}</div><strong>${esc(x)}</strong></div></li>`).join('');
   if (done) {
     return `<button class="btn sm" id="pal-back">← Listes</button><div class="card" style="margin-top:10px"><h2>${p.errors ? `${p.errors} erreur${p.errors > 1 ? 's' : ''}` : 'Parcours sans faute ' + ic('landmark')}</h2><ol class="loci">${walk}</ol>
       <p class="muted">${p.errors ? 'Repassez par « Apprendre », puis récitez à nouveau : la liste revient dans 10 minutes.' : 'La liste revient aux intervalles de la répétition, avant le 10 novembre.'}</p>
       <div class="btnrow"><button class="btn" data-pal="${l.id}" data-pal-mode="learn">Apprendre</button><button class="btn primary" data-pal="${l.id}" data-pal-mode="test">Réciter encore</button></div></div>`;
   }
-  const [e, lieu] = PAL.LOCI[p.step];
+  const [e, lieu] = PAL.lociOf(l)[p.step];
   return `<button class="btn sm" id="pal-back">← Listes</button><div class="card" style="margin-top:10px"><div class="muted">${esc(l.title)} · ${p.step + 1}/${l.items.length} · erreurs : ${p.errors}</div>
     <ol class="loci">${walk}</ol><div class="q">${ic(e)} Sur ${esc(lieu)}, il y a…</div>
     <div class="choices">${p.options.filter((x) => !l.items.slice(0, p.step).includes(x)).map((x) => `<button class="choice ${p.wrong.includes(x) ? 'ko' : ''}" data-pal-opt="${esc(x)}" ${p.wrong.includes(x) ? 'disabled' : ''}><span>${esc(x)}</span></button>`).join('')}</div></div>`;
@@ -2089,23 +2090,23 @@ function collectionView() {
     <div class="bgrid">${(fam === 'anecdotes' ? main : sorted(main)).map(badgeCard).join('')}</div>
     ${tags.length ? `<details class="card" style="margin-top:12px"><summary>Sous-thèmes ${tags.filter((b) => pr.badges[b.id]).length}/${tags.length}</summary><div class="bgrid" style="margin-top:10px">${sorted(tags).map(badgeCard).join('')}</div></details>` : ''}`;
 }
+// Souvenirs : l'album se lit, il ne se parcourt pas. En haut, les trois souvenirs les plus proches (ce qu'il faut
+// réviser pour les débloquer) ; puis l'album des souvenirs acquis, en récit daté ; les autres restent comptés par chapitre
+// et se déplient à la demande.
 function souvenirsView() {
   const pr = state.progress;
   const anecs = state.catalog.filter((b) => b.family === 'anecdotes');
-  return PARTS.map(([k, label]) => {
-    const items = anecs.filter((a) => a.part === k);
-    const n = items.filter((a) => pr.badges[a.id]).length;
-    return `<h3 class="section-title">${label} <span class="muted">${n}/${items.length}</span></h3><div class="memories">${items.map((a) => {
-      const got = pr.badges[a.id]; const p = G.progressOf(a, pr.stats);
-      const back = `<div class="memory-back"><div class="muted">Questions liées</div><ul>${a.ids.map((id) => { const q = state.byId[id]; const ok = pr.stats.q[id]?.ok > 0; return `<li>${ok ? ic('check') : ic('circle')} DEC ${esc(q?.sessionLabel || '')} Q${q?.n ?? ''} · ${esc((q?.question || '').slice(0, 70))}…</li>`; }).join('')}</ul>
-        ${a.ids.length ? `<button class="btn sm" data-train-anec="${a.id}">${ic('target')} Réviser ces questions</button>` : '<div class="muted">Se débloque avec les blocs EC et CAC maîtrisés.</div>'}</div>`;
-      return `<div class="memory-card ${got ? 'got' : 'locked'}" data-flip><div class="memory-front">
-        ${got ? `<div class="memory-date">${new Date(got).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })}</div>` : `<div class="memory-date">${p.cur}/${p.max} questions</div>`}
-        <div class="memory-title">${got ? ic('camera') : ic('lock')} ${esc(a.name)}</div>
-        ${got ? `<p class="memory-text">« ${esc(a.desc)} »</p>` : '<p class="muted">Réussissez les questions liées pour révéler ce souvenir. Touchez la carte pour les voir.</p>'}
-      </div>${back}</div>`;
-    }).join('')}</div>`;
-  }).join('');
+  const got = anecs.filter((a) => pr.badges[a.id]); const left = anecs.filter((a) => !pr.badges[a.id]);
+  const prog = (a) => { const p = G.progressOf(a, pr.stats); return p.max ? p.cur / p.max : 0; };
+  const next = left.filter((a) => a.ids.length).map((a) => ({ a, r: prog(a), p: G.progressOf(a, pr.stats) })).sort((x, y) => y.r - x.r || x.p.max - y.p.max).slice(0, 3);
+  const chapters = PARTS.map(([k, label]) => { const items = anecs.filter((a) => a.part === k); return { k, label, items, n: items.filter((a) => pr.badges[a.id]).length }; });
+  const story = (a) => `<li class="mem"><span class="mem-date">${new Date(pr.badges[a.id]).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}</span><div><strong>${esc(a.name)}</strong><p>« ${esc(a.desc)} »</p></div></li>`;
+  const album = chapters.filter((c) => c.n).map((c) => `<h3 class="section-title">${esc(c.label)} <span class="muted">${c.n}/${c.items.length}</span></h3><ol class="mem-list">${c.items.filter((a) => pr.badges[a.id]).sort((x, y) => pr.badges[x.id] - pr.badges[y.id]).map(story).join('')}</ol>`).join('');
+  const rest = chapters.map((c) => { const miss = c.items.filter((a) => !pr.badges[a.id]); if (!miss.length) return ''; return `<details class="mem-rest"><summary>${esc(c.label)} · ${miss.length} à découvrir</summary><ul>${miss.map((a) => { const p = G.progressOf(a, pr.stats); return `<li><span>${esc(a.name)}</span><span class="muted">${a.ids.length ? `${p.cur}/${p.max}` : 'blocs EC et CAC'}</span>${a.ids.length ? `<button class="linkbtn" data-train-anec="${a.id}">réviser ›</button>` : ''}</li>`; }).join('')}</ul></details>`; }).join('');
+  return `<div class="card"><h2>Album</h2><div class="mem-sum"><span class="g-no">${got.length}</span><div><div class="g-line"><strong>${got.length}</strong> souvenir${got.length > 1 ? 's' : ''} sur ${anecs.length}</div><div class="mem-chapters">${chapters.map((c) => `<span class="badge">${esc(c.label)} ${c.n}/${c.items.length}</span>`).join('')}</div></div></div></div>
+    ${next.length ? `<div class="card"><h2>Les prochains</h2><p class="muted" style="margin:0 0 10px">Réussir ces questions révèle un souvenir.</p><div class="mem-next">${next.map(({ a, p }) => `<div class="mem-next__item"><div><strong>${esc(a.name)}</strong><div class="progress sm"><div style="width:${Math.round((p.cur / Math.max(1, p.max)) * 100)}%"></div></div><span class="muted">${p.cur}/${p.max} question${p.max > 1 ? 's' : ''} réussie${p.cur > 1 ? 's' : ''}</span></div><button class="btn sm primary" data-train-anec="${a.id}">${ic('target')} Réviser</button></div>`).join('')}</div></div>` : ''}
+    ${album ? `<div class="card">${album}</div>` : '<div class="card"><p class="muted" style="margin:0">Aucun souvenir pour l’instant : les premiers viennent avec les questions du stage.</p></div>'}
+    ${rest ? `<div class="card"><h2>À découvrir</h2>${rest}</div>` : ''}`;
 }
 
 // ---------- Glossaire ----------

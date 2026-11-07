@@ -864,3 +864,23 @@ html { overscroll-behavior-y: none; }
 :root[data-look="bilan"] .todo li.cur .todo-row strong { font-size: 17px; }
 :root[data-look="bilan"] .plan-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 6px; font-size: 13px; color: var(--muted); }
 :root[data-look="bilan"] .plan-foot .linkbtn { color: var(--primary); font-weight: 700; text-decoration: none; padding: 6px 0; white-space: nowrap; }
+
+/* Souvenirs : résumé, prochains, album en récit, reste replié */
+.mem-sum { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; }
+.mem-sum .g-no { color: var(--primary); }
+.mem-chapters { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.mem-next { display: grid; gap: 10px; }
+.mem-next__item { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.mem-next__item:last-child { border-bottom: 0; }
+.mem-next__item .progress.sm { margin: 6px 0 4px; max-width: 220px; }
+.mem-next__item .muted { font-size: 13px; }
+.mem-list { list-style: none; margin: 0 0 8px; padding: 0; }
+.mem { display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.mem:last-child { border-bottom: 0; }
+.mem-date { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--primary); padding-top: 3px; }
+.mem strong { font-size: 15px; }
+.mem p { margin: 3px 0 0; font-size: 14.5px; line-height: 1.4; color: var(--muted); font-style: italic; }
+.mem-rest summary { cursor: pointer; font-weight: 600; padding: 8px 0; }
+.mem-rest ul { list-style: none; margin: 0 0 6px; padding: 0; }
+.mem-rest li { display: grid; grid-template-columns: 1fr auto auto; gap: 10px; align-items: center; padding: 6px 0; border-bottom: 1px dashed var(--line); font-size: 14px; }
+.mem-rest li .linkbtn { color: var(--primary); font-weight: 700; text-decoration: none; padding: 0; }
