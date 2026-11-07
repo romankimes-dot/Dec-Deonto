@@ -161,11 +161,12 @@ function answer(id, ok, mode, { defer = false, t = Date.now(), conf = null, pick
   if (conf !== null) att.conf = conf;
   if (Number.isInteger(pick)) att.pick = pick; // QCM : proposition choisie (index d'origine), pour la confusion EC / CAC
   if (typeof navigator !== 'undefined' && navigator.onLine === false) att.off = 1;
-  const ms = takeQMs(); if (ms) att.ms = ms; // temps passé sur la question (minuteur de 3 minutes)
+  const ms = takeQMs(); if (ms && (state.view === 'review' || state.view === 'train')) att.ms = ms; // temps passé sur la question (minuteur de 3 minutes)
   store.pushAttempt(state.progress, att);
-  const before = isBilan() ? G.xpOf(state.progress.stats, state.gctx, state.progress.drills).total : 0;
+  const fly = isBilan() && !defer && !!document.querySelector('.g-strip__pts') && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const before = fly ? G.xpOf(state.progress.stats, state.gctx, state.progress.drills).total : 0;
   G.applyAnswer(state.progress.stats, att, state.gctx);
-  if (isBilan()) flyPoints(G.xpOf(state.progress.stats, state.gctx, state.progress.drills).total - before);
+  if (fly) flyPoints(G.xpOf(state.progress.stats, state.gctx, state.progress.drills).total - before);
   if (!defer) checkBadges();
   updateStreakBadge();
 }
@@ -224,7 +225,7 @@ function nextCelebration() {
   const close = () => { box.classList.remove('show'); focusBack(box); state.celebrating = false; setTimeout(nextCelebration, 250); };
   let html = '';
   if (c.type === 'grade') {
-    { const cs = G.careerState(state.progress.stats, state.gctx, state.progress.drills); html = CR.levelUpHtml(c.g.n, cs.readiness, cs.info.xp); }
+    { const cs = G.careerState(state.progress.stats, state.gctx, state.progress.drills, G.heldGrade(state.progress)); html = CR.levelUpHtml(c.g.n, cs.readiness, cs.info.xp); }
     try { navigator.vibrate?.([60, 40, 120]); } catch { /* ignore */ }
   } else if (c.type === 'anecdote') {
     const d = new Date(state.progress.badges[c.b.id] || Date.now()).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -846,6 +847,9 @@ views.review = () => {
   }, 0);
   const d = ensureDaily(); const stepIds = new Set(d.steps.flatMap((id) => P.stepQuestionIds(P.stepById(id), state.fiches)));
   const isNew = !state.progress.cards[q.id];
+  if (isBilan()) return `${sessionStrip()}<div class="sess-line"><span>${isNew ? 'Nouvelle' : 'À revoir'} · <strong>${s.done + 1}</strong> / ${s.total}</span>${s.done === 0 && s.queue.length > SHORT_SESSION + 5 ? `<button class="linkbtn" id="short-sess">Faire ${SHORT_SESSION} seulement</button>` : ''}</div>
+    <div class="progress sm sess-bar"><div style="width:${(s.done / Math.max(1, s.total)) * 100}%"></div></div>
+    <div class="card" id="qcard" style="margin-top:12px"></div><div id="grade-peek"></div><div id="grade"></div>`;
   return `${sessionStrip()}<div class="row" style="justify-content:space-between;margin-bottom:6px;flex-wrap:nowrap"><span>${isNew ? '<span class="badge new">' + ic('sparkles') + ' Nouvelle</span>' : '<span class="badge">' + ic('repeat') + ' À revoir</span>'} <span class="muted">${s.done + 1} / ${s.total}</span></span><span class="muted">${s.queue.length - 1 > 0 ? `encore ${s.queue.length - 1}` : 'dernière'}</span></div>
     ${stepIds.has(q.id) ? `<div class="muted ctx">${ic('chart')} Étape du jour : ${esc(d.steps.map((id) => P.stepById(id)?.title).join(', '))}</div>` : ''}
     <div class="progress"><div style="width:${(s.done / Math.max(1, s.total)) * 100}%"></div></div>
@@ -1544,16 +1548,25 @@ views.shorts = () => {
   return `<div class="card hero"><h2 style="margin:0 0 6px">${ic('clapper')} Le fil de shorts</h2>
     <p class="muted" style="margin:0 0 10px">Une notion en 30 secondes, puis une question. Faites défiler vers le haut. Les shorts ratés reviennent aux bons intervalles et remettent les questions liées dans votre prochaine séance.</p>
     <div class="muted" style="margin-bottom:10px">${all.seen}/${all.total} vus · ${all.known} acquis · ${all.due} à revoir · d’abord : à revoir, étape en cours, points faibles${lim ? ` · pause proposée tous les ${lim} (Réglages)` : ''}</div>
-    <button class="btn primary big-btn" data-shorts-step=""><span>${ic('play')} Lancer le fil</span></button></div>
+    <button class="btn primary big-btn" data-shorts-step=""><span>${ic('play')} Lancer le fil</span></button>
+    <div class="sh-pools"><button class="btn" data-shorts-pool="new" ${all.total - all.seen ? '' : 'disabled'}>${ic('sparkles')} Jamais vus <span class="muted">${all.total - all.seen}</span></button><button class="btn" data-shorts-pool="due" ${all.due ? '' : 'disabled'}>${ic('repeat')} À revoir <span class="muted">${all.due}</span></button></div></div>
     <div class="card"><h2>Par étape du parcours</h2><p class="muted">Un short d’une étape choisie passe en tête du fil, puis le fil continue.</p>${rows}</div>`;
 };
 
 // goal / base : « Shorts du jour » du plan ; le compteur et la pause suivent l'objectif du plan (base = déjà faits aujourd'hui).
-function openFeed({ focus = [], goal = 0, base = 0, only = null } = {}) {
+// Fil restreint : seulement les shorts jamais vus, ou seulement ceux à revoir (ordre du fil conservé).
+function openPool(kind) {
+  const pr = state.progress; const now = Date.now();
+  const pick = state.shorts.filter((s) => { const m = pr.drills[SH.memoId(s)]; return kind === 'new' ? !m : !!m && m.due <= now; });
+  if (!pick.length) return toast(kind === 'new' ? 'Tous les shorts ont déjà été vus' : 'Aucun short à revoir pour l’instant');
+  const order = SH.buildFeed(pick, pr.drills, { steps: P.STEPS.map((x) => x.id), cur: P.currentIndex(pr.plan), done: pr.plan.done, now });
+  openFeed({ only: order, label: kind === 'new' ? 'Jamais vus' : 'À revoir' });
+}
+function openFeed({ focus = [], goal = 0, base = 0, only = null, label = '' } = {}) {
   if (!state.shorts?.length) return toast('Shorts indisponibles : ouvrez l’application une fois en ligne');
   closeSheet(true);
   const lim = goal ? Math.max(1, goal - base) : state.progress.settings.shortsLimit ?? 15;
-  state.feed = { only, focus: focus.filter(Boolean), served: new Set(), list: [], ok: 0, n: 0, limit: lim, goal: goal ? goal : 0, base: goal ? base : 0, paused: false, active: 0 };
+  state.feed = { only, label, focus: focus.filter(Boolean), served: new Set(), list: [], ok: 0, n: 0, limit: lim, goal: goal ? goal : 0, base: goal ? base : 0, paused: false, active: 0 };
   let el = $('#feed');
   if (!el) { el = document.createElement('div'); el.id = 'feed'; el.className = 'feed'; document.body.appendChild(el); el.addEventListener('click', onFeedClick); }
   el.innerHTML = `<div class="feed-top"><button class="feed-x" id="feed-close" aria-label="Fermer">${ic('x')}</button><span id="feed-count"></span></div><div class="feed-scroll" id="feed-scroll"></div>`;
@@ -1586,7 +1599,7 @@ function feedChrome(on) {
 function feedCount() {
   const f = state.feed; const c = $('#feed-count'); if (!f || !c) return;
   const prog = f.goal ? ` · ${Math.min(f.base + f.n, f.goal)}/${f.goal} du jour` : f.limit ? ` · ${Math.min(f.n, f.limit)}/${f.limit}` : '';
-  c.textContent = f.n ? `${f.ok}/${f.n} juste${f.ok > 1 ? 's' : ''}${prog}` : f.only ? 'Carnet d’erreurs' : f.goal ? `Shorts du jour · ${f.base}/${f.goal}` : f.focus.length ? (P.stepById(f.focus[0])?.title || '') : 'Shorts';
+  c.textContent = f.n ? `${f.ok}/${f.n} juste${f.ok > 1 ? 's' : ''}${prog}` : f.only ? (f.label || 'Carnet d’erreurs') : f.goal ? `Shorts du jour · ${f.base}/${f.goal}` : f.focus.length ? (P.stepById(f.focus[0])?.title || '') : 'Shorts';
 }
 // Ajoute les prochains shorts au fil ; tout servi : on recommence (en évitant les derniers vus).
 function feedAppend() {
@@ -1958,23 +1971,23 @@ function palaisView() {
         <div class="muted">${esc(PAL.routeOf(l).place)} · ${l.items.length} éléments · ${s ? (s.box >= 3 ? ic('check') + ' acquise' : s.due <= Date.now() ? 'à réciter' : `prochain récit dans ${Math.max(1, Math.round((s.due - Date.now()) / DAY))} j`) : 'jamais récitée'}</div>
         <div class="btnrow" style="margin-top:8px"><button class="btn sm" data-pal="${l.id}" data-pal-mode="learn">Apprendre</button><button class="btn sm primary" data-pal="${l.id}" data-pal-mode="test">Réciter</button></div></div>`; }).join('')}`;
   }
-  const l = PAL.LISTS.find((x) => x.id === p.id);
+  const l = PAL.LISTS.find((x) => x.id === p.id); const loci = PAL.lociOf(l);
   if (p.mode === 'learn') {
     return `<button class="btn sm" id="pal-back">← Listes</button><div class="card" style="margin-top:10px"><h2>${esc(l.title)}</h2><p class="muted">${esc(l.hint)} ${l.ordered ? 'L’ordre compte.' : 'L’ordre est celui de la fiche ; le palais le fige pour vous.'} Initiales : <strong>${esc(PAL.initials(l))}</strong></p>
       <p class="muted">Pour chaque lieu, imaginez l’élément posé dessus : grossissez la scène, rendez-la absurde ou drôle, elle tiendra.</p>
       <p class="muted">Le lieu : <strong>${esc(PAL.routeOf(l).place)}</strong>.</p>
-      <ol class="loci">${l.items.map((x, i) => { const [e, lieu] = PAL.lociOf(l)[i]; return `<li><span class="loc">${ic(e)}</span><div><div class="muted">${esc(lieu)}</div><strong>${esc(x)}</strong></div></li>`; }).join('')}</ol>
-      <p class="muted">Fermez les yeux, refaites le parcours de ${esc(PAL.lociOf(l)[0][1])} à ${esc(PAL.lociOf(l)[l.items.length - 1][1])}, puis récitez.</p>
+      <ol class="loci">${l.items.map((x, i) => { const [e, lieu] = loci[i]; return `<li><span class="loc">${ic(e)}</span><div><div class="muted">${esc(lieu)}</div><strong>${esc(x)}</strong></div></li>`; }).join('')}</ol>
+      <p class="muted">Fermez les yeux, refaites le parcours de ${esc(loci[0][1])} à ${esc(loci[l.items.length - 1][1])}, puis récitez.</p>
       <button class="btn primary" data-pal="${l.id}" data-pal-mode="test">Réciter maintenant</button> <button class="btn sm" data-open-fiche="${esc(l.source)}" style="margin-top:8px">${ic('chart')} Source : la fiche</button></div>`;
   }
   const done = p.step >= l.items.length;
-  const walk = l.items.slice(0, p.step).map((x, i) => `<li><span class="loc">${ic(PAL.lociOf(l)[i][0])}</span><div><div class="muted">${esc(PAL.lociOf(l)[i][1])}</div><strong>${esc(x)}</strong></div></li>`).join('');
+  const walk = l.items.slice(0, p.step).map((x, i) => `<li><span class="loc">${ic(loci[i][0])}</span><div><div class="muted">${esc(loci[i][1])}</div><strong>${esc(x)}</strong></div></li>`).join('');
   if (done) {
     return `<button class="btn sm" id="pal-back">← Listes</button><div class="card" style="margin-top:10px"><h2>${p.errors ? `${p.errors} erreur${p.errors > 1 ? 's' : ''}` : 'Parcours sans faute ' + ic('landmark')}</h2><ol class="loci">${walk}</ol>
       <p class="muted">${p.errors ? 'Repassez par « Apprendre », puis récitez à nouveau : la liste revient dans 10 minutes.' : 'La liste revient aux intervalles de la répétition, avant le 10 novembre.'}</p>
       <div class="btnrow"><button class="btn" data-pal="${l.id}" data-pal-mode="learn">Apprendre</button><button class="btn primary" data-pal="${l.id}" data-pal-mode="test">Réciter encore</button></div></div>`;
   }
-  const [e, lieu] = PAL.lociOf(l)[p.step];
+  const [e, lieu] = loci[p.step];
   return `<button class="btn sm" id="pal-back">← Listes</button><div class="card" style="margin-top:10px"><div class="muted">${esc(l.title)} · ${p.step + 1}/${l.items.length} · erreurs : ${p.errors}</div>
     <ol class="loci">${walk}</ol><div class="q">${ic(e)} Sur ${esc(lieu)}, il y a…</div>
     <div class="choices">${p.options.filter((x) => !l.items.slice(0, p.step).includes(x)).map((x) => `<button class="choice ${p.wrong.includes(x) ? 'ko' : ''}" data-pal-opt="${esc(x)}" ${p.wrong.includes(x) ? 'disabled' : ''}><span>${esc(x)}</span></button>`).join('')}</div></div>`;
@@ -2036,12 +2049,13 @@ views.carriere = () => {
 function applyLook() { document.documentElement.dataset.look = state.progress?.settings?.look || 'bilan'; buildNav(); }
 function sessionStrip() {
   const lv = xpInfo();
-  if (state.stripBase === undefined || state.stripView !== state.view) { state.stripBase = lv.info.xp; state.stripView = state.view; }
+  const ref = state.view === 'train' ? state.train : state.session;
+  if (state.stripBase === undefined || state.stripView !== state.view || state.stripRef !== ref) { state.stripBase = lv.info.xp; state.stripView = state.view; state.stripRef = ref; }
   return CR.stripHtml(lv.info, { gain: lv.info.xp - state.stripBase });
 }
 function xpInfo() {
   const pr = state.progress;
-  const cs = G.careerState(pr.stats, state.gctx, pr.drills); const total = cs.info.xp;
+  const cs = G.careerState(pr.stats, state.gctx, pr.drills, G.heldGrade(pr)); const total = cs.info.xp;
   const k = todayKey();
   if (!pr.xpDay || pr.xpDay.day !== k) pr.xpDay = { day: k, start: total };
   return { ...cs, today: Math.max(0, total - pr.xpDay.start) };
@@ -2078,7 +2092,7 @@ function careerView() {
   return `<div class="card g-hero-card">${CR.heroHtml(lv.info, lv.readiness)}</div>
     ${weekCard()}
     <div class="card">${CR.levelCardHtml(lv.info, { today: lv.today, conds: lv.conds })}</div>
-    <div class="card"><h2>Comment on avance</h2><p class="muted" style="margin:4px 0 0"><strong>Les points font avancer</strong> dans un grade : chaque réponse (+1, +2 si juste, jusqu’à 3 réponses et 3 réussites par question, le double sur une question difficile), chaque examen blanc (+20 et la note), chaque short, les records de série et les journées d’au moins 10 réponses. <strong>Les résultats font passer</strong> au grade suivant : annales vues, examens blancs, taux de réussite.</p></div>
+    <div class="card"><h2>Comment on avance</h2><p class="muted" style="margin:4px 0 0"><strong>Le grade suit vos résultats</strong> : annales vues, examens blancs, taux de réussite. La barre montre où vous en êtes des conditions du grade suivant. Le <strong>score</strong> mesure l’effort (chaque réponse, examen, short, série et journée de travail) ; il s’affiche, mais ne fait pas monter de grade.</p></div>
     <div class="card"><h2>Le parcours</h2>${CR.timelineHtml(lv.info, pr.grades, lv.readiness)}</div>
     <div class="card"><h2>Vitrine · ${vitrine.length}</h2><p class="muted" style="margin:4px 0 10px">Les objets gagnés avec les badges. Touchez-en un pour voir le badge.</p>
       ${vitrine.length ? `<div class="vitrine">${vitrine.map((b) => `<button class="vit" data-badge-card="${b.id}" title="${esc(b.name)}">${badgeIcon(b)}<span>${esc(b.name)}</span></button>`).join('')}</div>` : '<p class="muted">Encore vide : le premier badge y posera son objet.</p>'}</div>`;
@@ -2316,6 +2330,14 @@ views.ville = () => {
   const choix = [['3d', ic('landmark'), 'Visiter la maquette (3D)', 'L’EC à gauche, le CAC à droite, rangée par rangée ; le quartier commun au fond. On entre dans chaque institution pour voir qui y siège.'],
     ['compo', ic('clipboard'), 'Les compositions', 'Qui siège dans chaque institution, rangé par profession. À lire ou à imprimer.'],
     ['plan', ic('library'), 'Le plan à imprimer', 'La maquette vue de dessus, sur une page A4.']];
+  if (tab === 'hub' && isBilan()) return `<div class="no-print">
+    <section class="bh vh"><span class="bh-eyebrow">Apprendre · Institutions</span><div class="vh-title">La ville des institutions</div>
+      <p class="vh-sub">Un palais mental : chaque institution de l’expert-comptable et du commissaire aux comptes a sa place, sa rue et ses membres.</p>
+      <div class="bh-kpis vh-kpis"><div class="bh-kpi"><span class="bh-kpi__l">Rive gauche</span><span class="bh-kpi__v">EC</span></div><div class="bh-kpi"><span class="bh-kpi__l">Rive droite</span><span class="bh-kpi__v">CAC</span></div><div class="bh-kpi"><span class="bh-kpi__l">Au fond</span><span class="bh-kpi__v">Commun</span></div></div>
+      <button class="btn primary big-btn" data-ville-tab="3d"><span class="cta-k">Le plus parlant</span><span>${ic('landmark')} Visiter la maquette 3D</span></button></section>
+    <h3 class="section-title plus-h">Lire et imprimer</h3>
+    <div class="plus">${choix.slice(1).map(([id, i, t, d]) => `<button class="plus-row" data-ville-tab="${id}"><span class="plus-row__i">${i}</span><span class="plus-row__t"><strong>${esc(t)}</strong><span>${esc(d)}</span></span><span class="plus-row__c">›</span></button>`).join('')}</div>
+    <button class="linkbtn vh-back" data-go="plus">← Plus</button></div>`;
   if (tab === 'hub') return `<div class="no-print"><button class="btn sm" data-go="fiches">← Fiches</button>
     <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 0">Un palais mental des institutions de l’expert-comptable et du commissaire aux comptes.</p></div>
     <div class="list">${choix.map(([id, i, t, d]) => `<button class="card pc-entry" data-ville-tab="${id}" style="text-align:left;width:100%;display:block;cursor:pointer"><strong>${i} ${t}</strong><div class="muted">${d}</div></button>`).join('')}</div></div>`;
@@ -2349,7 +2371,6 @@ views.plus = () => {
       ['shorts', ic('clapper'), 'Shorts', shDue ? `${shDue} à revoir` : 'Une notion en 30 secondes, puis une question'],
       ['ville', ic('landmark'), 'Ville des institutions', 'Qui siège où, qui fait quoi'],
       ['carte', ic('brain'), 'Carte des notions', 'Les sous-thèmes, EC face au CAC'],
-      ['glossaire', ic('book'), 'Glossaire', 'Les termes clés'],
     ]],
     ['S’entraîner', [
       ['train', ic('target'), 'Séries ciblées', 'Par profession, thème ou sujet précis'],
@@ -2360,9 +2381,6 @@ views.plus = () => {
     ['Mesurer', [
       ['stats', ic('trending'), 'Statistiques', 'Niveau estimé, réussite par thème'],
       ['plan', ic('calendar'), 'Plan jusqu’à l’examen', `Jour par jour, jusqu’au ${examDay()}`],
-    ]],
-    ['Régler', [
-      ['settings', ic('settings'), 'Réglages', 'Date de l’examen, apparence, sauvegarde'],
     ]],
   ];
   return groups.map(([title, rows]) => `<h3 class="section-title plus-h">${esc(title)}</h3><div class="plus">${rows.map(([v, i, t, sub]) => `<button class="plus-row" data-go="${v}"><span class="plus-row__i">${i}</span><span class="plus-row__t"><strong>${esc(t)}</strong><span>${esc(sub)}</span></span><span class="plus-row__c">›</span></button>`).join('')}</div>`).join('');
@@ -2403,6 +2421,7 @@ function go(v, { pop = false } = {}) {
   if (state.feed) closeFeed(true);
   glHide();
   const changed = v !== state.view;
+  if (changed) { stopQTimer(); qTimer.ms = 0; }
   if (v === 'ville' && changed) { state.v3open = false; state.villeTab = 'hub'; }
   state.view = v; window.scrollTo(0, 0); render();
   if (!pop && changed) { try { history.pushState({ v }, ''); } catch { /* ignore */ } }
@@ -2480,7 +2499,7 @@ async function recoverFromStaleCache() {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
     await Promise.all((await caches.keys()).map((k) => caches.delete(k)));
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/career.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/sync.js', './js/ville.js', './js/ville3d.js', './js/villeplan.js', './js/maquette.js', './js/vendor/three.module.min.js', './sw.js']
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/career.js', './js/icons.js', './js/carte.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/sync.js', './js/ville.js', './js/ville3d.js', './js/villeplan.js', './js/maquette.js', './js/vendor/three.module.min.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();
@@ -2510,6 +2529,7 @@ async function init() {
     const other = e.target.closest('[data-next-other]'); if (other) { state.nextIdx++; return render(); }
     const g = e.target.closest('[data-game]'); if (g) return startGame(g.dataset.game);
     const f = e.target.closest('[data-shorts-step]'); if (f) return openFeed({ focus: f.dataset.shortsStep ? [f.dataset.shortsStep] : [] });
+    const pl = e.target.closest('[data-shorts-pool]'); if (pl && !pl.disabled) return openPool(pl.dataset.shortsPool);
   });
   try {
     // Chargements en parallèle (banque, index des fiches, shorts, glossaire)

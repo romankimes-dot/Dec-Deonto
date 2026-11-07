@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   buildContext, buildCatalog, emptyStats, applyAnswer, applyExam, applyOpen, rebuildStats,
-  evaluate, progressOf, currentGrade, themeMastery, dayKey, examInfo, mergeStats, xpOf, levelOf, levelInfo, LEVELS, GRADES, careerState, readiness, gateLevel,
+  evaluate, progressOf, currentGrade, themeMastery, dayKey, examInfo, mergeStats, xpOf, GRADES, heldGrade, gateLevel as gl, careerState, readiness, gateLevel,
 } from '../js/gamify.js';
 import { ANECDOTES, QBADGES } from '../js/catalog-data.js';
 
@@ -250,14 +250,18 @@ test('points : chaque source compte, calcul rétroactif depuis les statistiques 
   assert.equal(xpOf(st, ctx, drills).total, 10 + 33 + 15 + 10 + 9);
 });
 
-test('niveaux : seuils croissants, 8 grades, position dans le palier', () => {
-  assert.equal(LEVELS.length, GRADES.length);
-  for (let i = 1; i < LEVELS.length; i++) assert.ok(LEVELS[i] > LEVELS[i - 1]);
-  assert.equal(levelOf(0), 1); assert.equal(levelOf(LEVELS[1]), 2); assert.equal(levelOf(LEVELS[1] - 1), 1); assert.equal(levelOf(99999), 8);
-  const li = levelInfo(LEVELS[2] + 10);
-  assert.equal(li.n, 3); assert.equal(li.left, LEVELS[3] - LEVELS[2] - 10); assert.ok(li.pct > 0 && li.pct < 1);
-  assert.equal(levelInfo(99999).to, null);
+test('grades : tolérance sur la réussite pour le grade détenu, pas de seconde cérémonie', () => {
+  const r = { cov: 95, acc: 63.5, exams: 3, best: 15 };
+  assert.equal(gl(r, 0), 5, 'non détenu : 65 % exigés pour le grade 6');
+  assert.equal(gl(r, 6), 6, 'détenu : 62 % suffisent pour le garder');
+  const p = { stats: emptyStats(), drills: {}, grades: { 1: T0, 2: T0, 3: T0 }, gradesSeen: { 4: true } };
+  ctx.all.slice(0, Math.round(ctx.all.length * 0.55)).forEach((id, i) => applyAnswer(p.stats, { id, ok: true, t: T0 + i }, ctx));
+  applyExam(p.stats, { t: T0 + 99999, mode: 'qcm', note: 11, durationMs: 3600000, byProf: {} });
+  const f = evaluate(p, catalog, ctx, T0 + 100000);
+  assert.equal(heldGrade(p), 4);
+  assert.equal(f.grades.length, 0, 'le grade 4 a déjà été fêté une fois');
 });
+
 
 test('grades : les points font avancer, les résultats font franchir ; jamais par le seul volume', () => {
   const progress = { attempts: [], exams: [], stats: emptyStats(), drills: {} };
@@ -267,7 +271,7 @@ test('grades : les points font avancer, les résultats font franchir ; jamais pa
   for (let i = 0; i < 2000; i++) applyAnswer(progress.stats, { id: ctx.all[i % ctx.all.length], ok: false, t: T0 + i }, ctx);
   evaluate(progress, catalog, ctx, T0 + 3000);
   const cs = careerState(progress.stats, ctx);
-  assert.ok(cs.info.xp >= LEVELS[3], 'un score élevé…');
+  assert.ok(cs.info.xp >= 900, 'un score élevé…');
   assert.equal(currentGrade(progress).n, 3, '…ne change rien au grade : les résultats seuls comptent');
   assert.ok(cs.conds.some((c) => !c.ok && /examen blanc/.test(c.label)));
   assert.equal(cs.info.total, cs.conds.length); assert.ok(cs.info.pct > 0 && cs.info.pct < 1);

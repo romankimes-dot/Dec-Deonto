@@ -274,7 +274,7 @@ Affichés « ??? » dans la collection jusqu'au déblocage, avec un indice d'une
 
 ## 9. Carrière : grades et scènes
 
-La carrière suit le parcours réel (section 0). Un grade se débloque par une **combinaison de badges et de maîtrise**, jamais par le seul volume de réponses.
+La carrière suit le parcours réel (section 0). Un grade se débloque par les **résultats** seuls (voir ci-dessous) ; les badges restent une collection à côté.
 
 La carrière avance **aux points**, calculés à tout moment depuis l'ensemble des statistiques : rétroactifs (tout ce qui a déjà été fait compte le jour de la mise à jour) et jamais perdus. Un grade accordé par une règle antérieure plus généreuse est repris au recalcul, sans cérémonie.
 
@@ -286,9 +286,9 @@ La carrière avance **aux points**, calculés à tout moment depuis l'ensemble d
 | Journée d'au moins 10 réponses | +10 |
 | Short répondu | +2, +1 par boîte gagnée (jusqu'à 3) |
 
-**Le grade ne dépend que des résultats** (révision du 8 novembre 2026 : un score élevé ne doit jamais promettre un grade que les résultats refusent). Les points restent un **score d'effort**, affiché sur le bandeau de session et la carte-bilan, sans effet sur le grade. La barre d'un grade est l'avancement moyen vers les conditions du suivant. Par question, 3 réponses et 3 réussites au plus sont comptées : le volume seul ne mène nulle part. Seuils recalibrés le 7 novembre 2026 sur un parcours complet (3 500 à 4 000 points) ; quand les points dépassent le palier, la barre affiche l'avancement des résultats exigés.
+**Le grade ne dépend que des résultats**, avec 3 points de tolérance sur la réussite pour un grade déjà détenu, et une seule célébration par grade (révision du 8 novembre 2026 : un score élevé ne doit jamais promettre un grade que les résultats refusent). Les points restent un **score d'effort**, affiché sur le bandeau de session et la carte-bilan, sans effet sur le grade. La barre d'un grade est l'avancement moyen vers les conditions du suivant. Par question, 3 réponses et 3 réussites au plus sont comptées : le volume seul ne mène nulle part. Seuils recalibrés le 7 novembre 2026 sur un parcours complet (3 500 à 4 000 points) ; quand les points dépassent le palier, la barre affiche l'avancement des résultats exigés.
 
-| # | Grade | Score indicatif | Résultats exigés (seuls comptés) | Décor |
+| # | Grade | Score indicatif (sans effet) | Résultats exigés (seuls comptés) | Décor |
 |---|---|---|---|---|
 | 1 | **Expert-comptable stagiaire, 1re année** | départ | — | Open space, poste partagé |
 | 2 | **Stagiaire, 2e année** | 200 pts | 15 % des annales vues | Open space, poste attitré |

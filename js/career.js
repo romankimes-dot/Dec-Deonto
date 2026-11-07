@@ -2,7 +2,7 @@
 // (une couleur signature, de grands chiffres, des cartes pleines). Fonctions pures qui renvoient du HTML ;
 // la couleur et la typographie viennent des variables CSS --g-* (thème « bilan » ou « classique »).
 // Le grade ne dépend que des résultats ; les points sont un score d'effort, affiché sans promesse.
-import { GRADES, GATES, levelInfo, gateConditions } from './gamify.js';
+import { GRADES, GATES, gateConditions } from './gamify.js';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const fmtDate = (t) => new Date(t).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
@@ -92,4 +92,3 @@ export function levelUpHtml(n, readiness = null, xp = null) {
   </div>`;
 }
 
-export { levelInfo };
