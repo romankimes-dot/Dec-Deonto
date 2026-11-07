@@ -61,18 +61,6 @@ function unionList(a, b, key, limit = Infinity) {
   const all = [...seen.values()].sort((x, y) => num(x.t) - num(y.t));
   return all.length > limit ? all.slice(-limit) : all;
 }
-function mergePodcasts(a, b) {
-  const out = { ...obj(a) };
-  for (const [id, v] of Object.entries(obj(b))) {
-    const u = out[id];
-    if (!isObj(u)) { out[id] = v; continue; }
-    if (!isObj(v)) continue;
-    const r = num(v.t) > num(u.t) ? { ...v } : { ...u };
-    if (u.done || v.done) r.done = true;
-    out[id] = r;
-  }
-  return out;
-}
 
 // Fusionne deux progressions. `local` l'emporte à égalité ; ni l'une ni l'autre n'est modifiée.
 export function merge(local, remote) {
@@ -111,7 +99,6 @@ export function merge(local, remote) {
     drills: byLast(n.drills, o.drills),
     carnet: byLast(n.carnet, o.carnet),
     games: { ...obj(o.games), ...obj(n.games), best: unionMax(obj(n.games).best, obj(o.games).best) },
-    podcasts: mergePodcasts(n.podcasts, o.podcasts),
     daily,
   };
 }

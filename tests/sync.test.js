@@ -40,14 +40,13 @@ test('fusion : un appareil neuf ne remplace pas les réglages de l’autre', () 
   assert.equal(SY.merge(phone, changed).settings.mode, 'qrc');
 });
 
-test('fusion : 400 réponses au plus, podcasts écoutés et records conservés', () => {
+test('fusion : 400 réponses au plus et records conservés', () => {
   const many = (from) => Array.from({ length: 300 }, (_, i) => ({ id: `q${i}`, ok: true, mode: 'qcm', t: from + i }));
-  const a = st({ attempts: many(0), podcasts: { e1: { pos: 10, done: true, t: 5 } }, games: { best: { vf: 12 } } });
-  const b = st({ attempts: many(1000), podcasts: { e1: { pos: 40, done: false, t: 9 } }, games: { best: { vf: 8, chiffres: 3 } } });
+  const a = st({ attempts: many(0), games: { best: { vf: 12 } } });
+  const b = st({ attempts: many(1000), games: { best: { vf: 8, chiffres: 3 } } });
   const m = SY.merge(a, b);
   assert.equal(m.attempts.length, 400);
   assert.equal(m.attempts.at(-1).t, 1299);
-  assert.deepEqual(m.podcasts.e1, { pos: 40, done: true, t: 9 });
   assert.deepEqual(m.games.best, { vf: 12, chiffres: 3 });
 });
 

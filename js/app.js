@@ -13,7 +13,6 @@ import * as SH from './shorts.js';
 import * as SC from './scenes.js';
 import * as GL from './glossaire.js';
 import { matchExpected, highlight } from './qrc.js';
-import * as PC from './podcasts.js';
 import * as SY from './sync.js';
 import * as CN from './carnet.js';
 import { ic, paths } from './icons.js';
@@ -56,8 +55,6 @@ const state = {
   feed: null,      // fil de shorts ouvert
   gloss: [], glById: {}, glMatcher: null, // glossaire (data/glossaire.json)
   glQuery: '', glFilter: 'tout',
-  episodes: [],    // podcasts (data/podcasts.json)
-  pc: { current: null, sizes: {}, dl: {}, lastSave: 0 }, // épisode chargé dans le lecteur, téléchargements
 };
 
 // Nouvelles cartes : le reste de l'objectif du jour (ou 20 de plus sur demande), sous-thèmes faibles en tête.
@@ -469,7 +466,6 @@ views.home = () => {
     <div class="muted" style="margin-top:8px;text-align:right">Ma carrière ›</div>
   </div>
   ${carnetCard()}
-  ${podcastsLink()}
   ${gamesCard()}
   ${backupCard()}
   ${!pr.settings.focus && nb.length ? `<div class="card"><h2>Presque débloqués</h2>${nb.map(({ b, p }) => `<div class="nb">${badgeIcon(b)}<div style="flex:1"><div><strong>${esc(b.name)}</strong></div><div class="progress"><div style="width:${Math.round((p.cur / p.max) * 100)}%"></div></div><div class="muted">${p.cur}/${p.max} · ${esc(b.cond)}</div></div></div>`).join('')}</div>` : ''}
@@ -486,13 +482,11 @@ const isBilan = () => (state.progress?.settings?.look || 'bilan') === 'bilan';
 // Accueil « bilan » : un seul objet en haut (le bilan du jour), le plan comme liste, le reste en tuiles.
 function homeBilan({ d, lv, nb, cov, lastExam }) {
   const pr = state.progress; const has = pr.attempts.length > 0; const e = has ? currentEstimate() : null;
-  const g = G.GRADES[lv.info.n - 1];
   const tile = (label, v, unit = '') => `<div class="bh-kpi"><span class="bh-kpi__l">${label}</span><span class="bh-kpi__v">${v}<small>${unit}</small></span></div>`;
   const hero = `<section class="bh">
     <div class="bh-top"><span class="bh-eyebrow">Épreuve n°1 · ${esc(examLabel())}</span><span class="bh-grade" data-go="carriere">Grade ${lv.info.n} · ${esc(CR.SHORT[lv.info.n])} ›</span></div>
     <div class="bh-big">${!examDateSet() ? 'Date à définir' : d > 0 ? `J-${d}` : d === 0 ? 'Jour J' : 'Passée'}</div>
     <div class="bh-kpis">${tile('QCM estimé', has ? fr(e.qcm.note) : '–', '/20')}${tile('QRC estimé', has ? fr(e.qrc.note) : '–', '/20')}${tile('Annales vues', cov, ' %')}${tile('Points du jour', lv.today > 0 ? `+${lv.today}` : '0', '')}</div>
-    <div class="bh-bar"><span>${esc(g.name)}</span><span>${lv.blocked ? `${lv.info.xp} pts · il manque : ${esc(lv.conds.find((c) => !c.ok)?.label || '')}` : `${lv.info.xp}${lv.info.to ? ` / ${lv.info.to}` : ''} pts`}</span><div class="g-bar g-bar--light"><div style="width:${Math.round((lv.info.barPct ?? lv.info.pct) * 100)}%"></div></div></div>
     ${heroCta()}
     ${has ? `<button class="bh-link" data-go="stats">Niveau estimé · risque &lt; 6 : ${e.qcm.risk} % (QCM) · ${e.reliable ? 'fiable' : 'indicatif'} ›</button>` : ''}
     ${examDateSet() ? '' : `<button class="bh-link" data-go="settings">${ic('calendar')} Définir la date de l’examen ›</button>`}
@@ -501,7 +495,6 @@ function homeBilan({ d, lv, nb, cov, lastExam }) {
     ['carnet', ic('bookmark'), 'Carnet d’erreurs', `${CN.entries(pr.carnet).length} élément${CN.entries(pr.carnet).length > 1 ? 's' : ''}`],
     ['shorts', ic('clapper'), 'Shorts', state.shorts ? `${SH.shortsStats(state.shorts, pr.drills).due} à revoir` : '30 s par notion'],
     ['jeux', ic('dice'), 'Jeux express', '5 minutes'],
-    ['podcasts', ic('headphones'), 'Podcasts', `${pcAvailable()}/${state.episodes.length} disponibles`],
     ['exam', ic('timer'), 'Examen blanc', lastExam ? `dernier : ${lastExam.note}/20` : 'pas encore passé'],
     ['fiches', ic('library'), 'Fiches et schémas', `${state.fiches.filter((f) => P.isRead(pr.plan, f.file)).length} / ${state.fiches.length} vues`],
   ].map(([v, i, t, sub]) => `<button class="bh-tile" data-go="${v}"><span class="bh-tile__i">${i}</span><strong>${esc(t)}</strong><span>${esc(sub)}</span></button>`).join('');
@@ -620,16 +613,12 @@ function dayTasks() {
   // Coché à la fin d'une partie (palais : une liste récitée jusqu'au bout), pas après quelques réponses.
   const played = d.game === 'palais' ? Object.entries(pr.drills).some(([id, m]) => id.startsWith(GAME_PREFIX.palais) && m.last >= t0) : !!pr.plan.gamesDone?.[d.day]?.includes(d.game);
   tasks.push({ id: 'game', icon: g.icon, title: `Jeu du jour : ${g.name}`, sub: d.kind === 'veille' ? 'Réciter les listes, sans rien apprendre de nouveau' : '5 minutes · choisi parmi ceux où vous vous trompez le plus', done: played, cta: `Jeu du jour : ${g.name}`, run: () => startGame(d.game) });
-  // Podcast de l'étape étudiée la veille (disponible et pas encore écouté) : facultatif, ne bloque pas la journée.
-  const studied = PC.stepsStudiedOn(PC.prevDay(d.day), pr.plan, { n: d.n, dayKeyOf: G.dayKey });
-  const pc = PC.suggestEpisode(state.episodes, studied, pr.podcasts, t0);
-  if (pc) tasks.push({ id: 'podcast', optional: true, icon: ic('headphones'), title: `Podcast : ${pc.ep.title}`, sub: `Facultatif · ${PC.fmtDuration(pc.ep.duration)} · l’étape d’hier en audio, à écouter en marchant ou dans les transports`, done: pc.done, cta: `Écouter l’épisode ${pc.ep.n}`, run: () => { go('podcasts'); pcPlay(pc.ep.id); } });
   // Étapes du jour terminées dès que le schéma est lu et la session faite : le lendemain prend la suite.
   const read = tasks.find((x) => x.id === 'read'); const sess = tasks.find((x) => x.id === 'session');
   if (steps.length && read?.done && sess.done && steps.some((st) => !pr.plan.done[st.id])) { steps.forEach((st) => { pr.plan.done[st.id] = pr.plan.done[st.id] || Date.now(); }); persist(); }
   return tasks;
 }
-// Prochaine tâche obligatoire du plan (les tâches facultatives, comme le podcast, ne bloquent pas la journée).
+// Prochaine tâche obligatoire du plan (les tâches facultatives ne bloquent pas la journée).
 const nextTask = (tasks, skip = '') => tasks.find((x) => !x.done && !x.optional && x.id !== skip);
 // Jeu du jour : noté à la fin de la partie (voir endGame).
 function markGameFinished(kind) { P.markGameDone(state.progress.plan, todayKey(), kind); }
@@ -663,9 +652,9 @@ function lateBanner(d) {
 // Pont vers Ernest (app d'organisation) : le plan du jour, déposé sur le serveur à chaque synchro (sendPont), sans doublon côté Ernest.
 // Chaque tâche porte son état (done) : faite ici, elle est cochée dans Ernest.
 const ERNEST_URL = 'https://romankimes-dot.github.io/Ernest/';
-const ERNEST_EST = { read: 10, shorts: 8, revise: 20, session: 25, weak: 15, sure: 10, game: 10, podcast: 12 };
+const ERNEST_EST = { read: 10, shorts: 8, revise: 20, session: 25, weak: 15, sure: 10, game: 10 };
 // Moment dans la journée d'Ernest : l'effort le matin (apprendre, corriger), le léger qui fixe le soir.
-const ERNEST_SLOT = { read: 'matin', session: 'matin', weak: 'matin', sure: 'matin', revise: 'soir', shorts: 'soir', game: 'soir', podcast: 'soir' };
+const ERNEST_SLOT = { read: 'matin', session: 'matin', weak: 'matin', sure: 'matin', revise: 'soir', shorts: 'soir', game: 'soir' };
 function ernestPayload() {
   const pr = state.progress; const d = ensureDaily(); const k = todayKey();
   const things = dayTasks().map((x) => ({ done: !!x.done, title: `Déonto · ${x.title.replace(/^[^\w]*/, '')}`.slice(0, 120), cat: 'revision', slot: ERNEST_SLOT[x.id] || null, est: x.id === 'session' ? Math.max(10, Math.round((d.target || 20) * 0.8)) : (ERNEST_EST[x.id] || 15), link: ERNEST_URL ? location.href.split('#')[0] : null, day: k, note: x.sub }));
@@ -1210,7 +1199,7 @@ views.fiches = () => {
   const synth = state.fiches.filter((f) => f.kind !== 'visuel');
   const ec = synth.filter((f) => /-ec-/.test(f.file)); const cac = synth.filter((f) => /-cac-/.test(f.file));
   const seenCount = state.fiches.filter((f) => P.isRead(state.progress.plan, f.file)).length;
-  return `${podcastsEntry()}${villeEntry()}${carteEntry()}<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ${ic('check')} = vue (bouton « Vu » dans chaque fiche, décochable).</p><p style="margin:0 0 8px"><strong>${seenCount} / ${state.fiches.length}</strong> fiches vues</p><div class="btnrow"><button class="btn primary" data-go="plan">${ic('compass')} Ouvrir le parcours</button><button class="btn" data-go="glossaire">${ic('book')} Glossaire</button><a class="btn" href="./data/fiches-a-imprimer.pdf" target="_blank" rel="noopener">${ic('library')} PDF à imprimer (A4, noir et blanc)</a><a class="btn" href="./data/fiches-a-imprimer-2-par-feuille.pdf" target="_blank" rel="noopener">${ic('library')} PDF livret à relier (2 pages par feuille, recto verso)</a></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
+  return `${villeEntry()}${carteEntry()}<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ${ic('check')} = vue (bouton « Vu » dans chaque fiche, décochable).</p><p style="margin:0 0 8px"><strong>${seenCount} / ${state.fiches.length}</strong> fiches vues</p><div class="btnrow"><button class="btn primary" data-go="plan">${ic('compass')} Ouvrir le parcours</button><button class="btn" data-go="glossaire">${ic('book')} Glossaire</button><a class="btn" href="./data/fiches-a-imprimer.pdf" target="_blank" rel="noopener">${ic('library')} PDF à imprimer (A4, noir et blanc)</a><a class="btn" href="./data/fiches-a-imprimer-2-par-feuille.pdf" target="_blank" rel="noopener">${ic('library')} PDF livret à relier (2 pages par feuille, recto verso)</a></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
     <div class="card"><h2>Fiches de référence</h2><h3>Expert-comptable</h3><div class="list">${ec.map((f) => item(f)).join('')}</div><h3>Commissaire aux comptes</h3><div class="list">${cac.map((f) => item(f)).join('')}</div></div>`;
 };
 // Sommaire déroulant en tête des fiches longues.
@@ -2184,258 +2173,6 @@ views.glossaire = () => {
     <div class="muted" id="gl-count" style="margin-top:8px;font-size:13px"></div></div><div id="gl-list" data-no-gl></div>`;
 };
 
-// ---------- Podcasts ----------
-// 10 résumés audio (NotebookLM) qui suivent le parcours. Un épisode est disponible quand data/podcasts.json renseigne
-// son fichier et sa durée. Lecteur : un seul <audio> natif, gardé hors de #main (l'écoute continue d'un onglet à
-// l'autre), reprise à la dernière position, écouté à 90 %, commandes de l'écran verrouillé (Media Session).
-async function loadEpisodes() {
-  try {
-    const r = await fetch('./data/podcasts.json');
-    const list = r.ok ? await r.json() : [];
-    return Array.isArray(list) ? list.filter((ep) => ep && ep.id).sort((a, b) => a.n - b.n) : [];
-  } catch { return []; }
-}
-const epById = (id) => state.episodes.find((ep) => ep.id === id);
-const pcAvailable = () => state.episodes.filter(PC.isAvailable).length;
-const pcRate = () => (PC.SPEEDS.includes(state.progress.settings.podcastRate) ? state.progress.settings.podcastRate : 1);
-const stepNums = (ep) => ep.steps.map((id) => P.STEPS.findIndex((st) => st.id === id) + 1).filter((n) => n > 0);
-const stepsLabel = (ep) => { const n = stepNums(ep); return n.length > 1 ? `Étapes ${n.slice(0, -1).join(', ')} et ${n[n.length - 1]}` : `Étape ${n[0]}`; };
-// En tête de l'onglet Fiches.
-function podcastsEntry() {
-  if (!state.episodes.length) return '';
-  const av = pcAvailable(); const heard = state.episodes.filter((ep) => state.progress.podcasts[ep.id]?.done).length;
-  return `<div class="card pc-entry"><div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:12px"><div><strong>${ic('headphones')} Podcasts</strong><div class="muted">${state.episodes.length} résumés audio du parcours, 10 à 13 min · ${av ? `${av} disponible${av > 1 ? 's' : ''}${heard ? ` · ${heard} écouté${heard > 1 ? 's' : ''}` : ''}` : 'bientôt disponibles'}</div></div><button class="btn sm primary" data-go="podcasts">Écouter ›</button></div></div>`;
-}
-// Lien discret sur l'accueil.
-function podcastsLink() {
-  if (!state.episodes.length) return '';
-  const av = pcAvailable();
-  return `<p class="pc-link"><button class="linkbtn" data-go="podcasts">${ic('headphones')} Podcasts du parcours${av ? ` · ${av}/${state.episodes.length} disponibles` : ' · bientôt disponibles'}</button></p>`;
-}
-function audioEl() {
-  let a = document.getElementById('pc-audio');
-  if (a) return a;
-  a = document.createElement('audio'); a.id = 'pc-audio'; a.preload = 'metadata';
-  a.setAttribute('playsinline', '');
-  document.body.appendChild(a);
-  a.addEventListener('loadedmetadata', () => {
-    if (state.pc.seekTo) { try { a.currentTime = state.pc.seekTo; } catch { /* ignore */ } state.pc.seekTo = 0; }
-    a.playbackRate = pcRate(); pcUi();
-  });
-  a.addEventListener('timeupdate', () => { pcSave(false); pcUi(); });
-  a.addEventListener('play', () => { state.pc.miniOff = false; pcUi(); pcMini(); if (navigator.mediaSession) navigator.mediaSession.playbackState = 'playing'; });
-  a.addEventListener('pause', () => { pcSave(true); pcUi(); pcMini(); if (navigator.mediaSession) navigator.mediaSession.playbackState = 'paused'; });
-  a.addEventListener('ended', () => { pcSave(true); pcUi(); pcMini(); });
-  a.addEventListener('ratechange', () => pcUi());
-  return a;
-}
-// Position enregistrée toutes les 5 s, à la pause et à la fin ; écouté à 90 %.
-function pcSave(force) {
-  const a = audioEl(); const id = state.pc.current; const ep = epById(id); if (!ep) return;
-  const now = Date.now(); if (!force && now - state.pc.lastSave < 5000) return;
-  state.pc.lastSave = now;
-  const dur = a.duration && Number.isFinite(a.duration) ? a.duration : ep.duration;
-  const prev = state.progress.podcasts[id];
-  const next = PC.updateProgress(prev, a.ended ? dur : a.currentTime, dur, now);
-  state.progress.podcasts[id] = next; persist();
-  if (next.done && !prev?.done) {
-    toast(`Épisode ${ep.n} écouté`, 'headphones');
-    if (state.view === 'podcasts') pcRefreshList();
-  }
-}
-function pcMediaSession(ep) {
-  const ms = navigator.mediaSession; if (!ms) return;
-  try {
-    ms.metadata = new MediaMetadata({ title: `${ep.n}. ${ep.title}`, artist: 'DEC · Épreuve 1', album: 'Podcasts du parcours', artwork: [{ src: new URL('./icons/icon-192.png', location.href).href, sizes: '192x192', type: 'image/png' }, { src: new URL('./icons/icon-512.png', location.href).href, sizes: '512x512', type: 'image/png' }] });
-  } catch { /* MediaMetadata absent */ }
-  const a = audioEl();
-  const set = (k, fn) => { try { ms.setActionHandler(k, fn); } catch { /* action non prise en charge */ } };
-  set('play', () => a.play());
-  set('pause', () => a.pause());
-  set('seekbackward', (e) => pcSeek(-(e?.seekOffset || 15)));
-  set('seekforward', (e) => pcSeek(e?.seekOffset || 15));
-  set('seekto', (e) => { if (e?.fastSeek && 'fastSeek' in a) a.fastSeek(e.seekTime); else a.currentTime = e.seekTime; pcUi(); });
-  set('stop', () => a.pause());
-}
-function pcPosition() {
-  const ms = navigator.mediaSession; const a = audioEl();
-  if (!ms?.setPositionState || !Number.isFinite(a.duration) || !a.duration) return;
-  try { ms.setPositionState({ duration: a.duration, playbackRate: a.playbackRate, position: Math.min(a.currentTime, a.duration) }); } catch { /* ignore */ }
-}
-function pcPlay(id, { play = true, fromStart = false } = {}) {
-  const ep = epById(id); if (!PC.isAvailable(ep)) return;
-  const a = audioEl();
-  if (state.pc.current === id && fromStart) { a.currentTime = 0; pcUi(); }
-  if (state.pc.current !== id) {
-    pcSave(true);
-    state.pc.current = id; state.pc.lastSave = Date.now();
-    state.pc.seekTo = fromStart ? 0 : PC.resumeAt(ep, state.progress.podcasts[id]);
-    a.src = new URL(ep.file, location.href).href;
-    a.defaultPlaybackRate = pcRate(); a.playbackRate = pcRate();
-    pcMediaSession(ep);
-  }
-  if (play) a.play().catch(() => { /* lecture refusée sans geste : bouton ▶ */ });
-  if (state.view === 'podcasts') render(); else pcMini();
-}
-function pcSeek(delta) {
-  const a = audioEl(); if (!state.pc.current) return;
-  const max = Number.isFinite(a.duration) ? a.duration : epById(state.pc.current)?.duration || 0;
-  a.currentTime = Math.max(0, Math.min(max, a.currentTime + delta)); pcUi();
-}
-// Met à jour le lecteur affiché sans redessiner l'écran.
-function pcUi() {
-  const a = document.getElementById('pc-audio'); if (!a) return;
-  pcPosition();
-  const ep = epById(state.pc.current); if (!ep) return;
-  const dur = Number.isFinite(a.duration) && a.duration ? a.duration : ep.duration;
-  const seek = $('#pc-seek');
-  if (seek && !seek.matches(':active')) { seek.max = String(Math.round(dur)); seek.value = String(Math.round(a.currentTime)); }
-  const t = $('#pc-time'); if (t) t.textContent = `${PC.fmtClock(a.currentTime)} / ${PC.fmtClock(dur)}`;
-  const pb = $('#pc-toggle'); if (pb) { pb.innerHTML = ic(a.paused ? 'play' : 'pause'); pb.setAttribute('aria-label', a.paused ? 'Lecture' : 'Pause'); }
-  document.querySelectorAll('[data-pc-rate]').forEach((b) => b.classList.toggle('on', Number(b.dataset.pcRate) === a.playbackRate));
-  const bar = document.querySelector(`[data-pc-bar="${ep.id}"]`);
-  if (bar && !state.progress.podcasts[ep.id]?.done) bar.style.width = `${Math.round((a.currentTime / dur) * 100)}%`;
-}
-// Mini-lecteur au-dessus de la barre d'onglets, quand un épisode est chargé et qu'on a quitté l'écran Podcasts.
-function pcMini() {
-  let m = document.getElementById('pc-mini');
-  const a = document.getElementById('pc-audio'); const ep = epById(state.pc.current);
-  const show = !!(ep && a && state.view !== 'podcasts' && !state.feed && !state.pc.miniOff && (!a.paused || a.currentTime > 0) && !a.ended);
-  document.body.classList.toggle('pc-mini-on', show);
-  if (!show) { if (m) m.hidden = true; return; }
-  if (!m) {
-    m = document.createElement('div'); m.id = 'pc-mini'; m.className = 'pc-mini'; document.body.appendChild(m);
-    m.addEventListener('click', (e) => {
-      const b = e.target.closest('[data-pcm]'); if (!b) return;
-      const aa = audioEl();
-      if (b.dataset.pcm === 'toggle') { if (aa.paused) aa.play(); else aa.pause(); } else if (b.dataset.pcm === 'close') { state.pc.miniOff = true; aa.pause(); pcMini(); } else go('podcasts');
-    });
-  }
-  m.hidden = false;
-  m.innerHTML = `<button class="pc-mini-t" data-pcm="open">${ic('headphones')} <span>${esc(ep.n)}. ${esc(ep.title)}</span></button><button class="btn sm" data-pcm="toggle" aria-label="${a.paused ? 'Lecture' : 'Pause'}">${a.paused ? ic('play') : ic('pause')}</button><button class="btn sm" data-pcm="close" aria-label="Fermer le lecteur">${ic('x')}</button>`;
-}
-// Téléchargement pour l'écoute hors ligne : le fichier entier dans le cache dédié (servi par sw.js, Range compris).
-const audioUrl = (ep) => new URL(ep.file, location.href).href;
-async function pcRefreshSizes() {
-  if (!('caches' in window)) return;
-  try {
-    const c = await caches.open(PC.AUDIO_CACHE); const sizes = {};
-    for (const ep of state.episodes.filter(PC.isAvailable)) {
-      const r = await c.match(audioUrl(ep), { ignoreSearch: true });
-      if (r) sizes[ep.id] = Number(r.headers.get('Content-Length')) || (await r.blob()).size;
-    }
-    const changed = JSON.stringify(sizes) !== JSON.stringify(state.pc.sizes);
-    state.pc.sizes = sizes; state.pc.sizesLoaded = true;
-    if (changed && state.view === 'podcasts') pcRefreshList();
-  } catch { /* stockage indisponible */ }
-}
-async function pcDownload(id) {
-  const ep = epById(id); if (!PC.isAvailable(ep) || state.pc.dl[id] != null) return;
-  if (!('caches' in window)) { toast('Téléchargement impossible sur ce navigateur'); return; }
-  state.pc.dl[id] = 0; pcRefreshList();
-  try {
-    const res = await fetch(audioUrl(ep), { cache: 'no-store' });
-    if (!res.ok) throw new Error(String(res.status));
-    const total = Number(res.headers.get('Content-Length')) || 0;
-    let blob;
-    if (res.body?.getReader && total) {
-      const reader = res.body.getReader(); const chunks = []; let got = 0;
-      for (;;) {
-        const { done, value } = await reader.read(); if (done) break;
-        chunks.push(value); got += value.length; state.pc.dl[id] = got / total;
-        const el = document.querySelector(`[data-pc-dl-label="${id}"]`); if (el) el.textContent = `Téléchargement… ${Math.round((got / total) * 100)} %`;
-      }
-      blob = new Blob(chunks, { type: res.headers.get('Content-Type') || 'audio/mp4' });
-    } else blob = await res.blob();
-    const c = await caches.open(PC.AUDIO_CACHE);
-    await c.put(audioUrl(ep), new Response(blob, { headers: { 'Content-Type': blob.type || 'audio/mp4', 'Content-Length': String(blob.size) } }));
-    state.pc.sizes[id] = blob.size;
-    toast(`Épisode ${ep.n} disponible hors ligne (${PC.fmtSize(blob.size)})`, 'download');
-  } catch {
-    toast('Téléchargement impossible : vérifiez la connexion ou l’espace disponible');
-  }
-  delete state.pc.dl[id];
-  if (state.view === 'podcasts') pcRefreshList();
-}
-async function pcDelete(id) {
-  const ep = epById(id); if (!ep) return;
-  try { await (await caches.open(PC.AUDIO_CACHE)).delete(audioUrl(ep), { ignoreSearch: true }); } catch { /* ignore */ }
-  delete state.pc.sizes[id]; toast(`Épisode ${ep.n} retiré du téléphone`);
-  if (state.view === 'podcasts') pcRefreshList();
-}
-function pcStateBadge(ep) {
-  const s = PC.episodeState(ep, state.progress.podcasts[ep.id]);
-  if (s.state === 'soon') return '<span class="badge">Bientôt disponible</span>';
-  if (s.state === 'done') return '<span class="badge ok">' + ic('check') + ' Écouté</span>';
-  if (s.state === 'progress') return `<span class="badge warn">${Math.round(s.ratio * 100)} % écouté</span>`;
-  return '<span class="badge new">Nouveau</span>';
-}
-function pcItem(ep) {
-  const av = PC.isAvailable(ep); const s = PC.episodeState(ep, state.progress.podcasts[ep.id]);
-  const cur = state.pc.current === ep.id; const size = state.pc.sizes[ep.id]; const dl = state.pc.dl[ep.id];
-  const resume = s.state === 'progress' && PC.resumeAt(ep, state.progress.podcasts[ep.id]) > 0;
-  const actions = !av ? '' : `<div class="pc-actions">${cur ? '' : `<button class="btn sm primary" data-pc-play="${ep.id}">${ic('play')} ${resume ? `Reprendre à ${PC.fmtClock(PC.resumeAt(ep, state.progress.podcasts[ep.id]))}` : s.state === 'done' ? 'Réécouter' : 'Écouter'}</button>${resume ? `<button class="btn sm" data-pc-start="${ep.id}">${ic('skip-back')} Depuis le début</button>` : ''}`}
-    ${dl != null ? `<span class="muted" data-pc-dl-label="${ep.id}">Téléchargement… ${Math.round(dl * 100)} %</span>`
-      : size ? `<span class="muted">${ic('check')} Hors ligne · ${esc(PC.fmtSize(size))}</span><button class="btn sm" data-pc-del="${ep.id}">${ic('trash')} Supprimer</button>`
-        : `<button class="btn sm" data-pc-dl="${ep.id}">${ic('download')} Télécharger pour hors ligne</button>`}</div>`;
-  return `<li class="pc-item ${av ? '' : 'soon'} ${cur ? 'cur' : ''}"><span class="pc-n">${ep.n}</span><div class="pc-body">
-    <strong>${esc(ep.title)}</strong>
-    <div class="muted">${esc(stepsLabel(ep))}${av ? ` · ${esc(PC.fmtDuration(ep.duration))}` : ''}</div>
-    <div class="pc-state">${pcStateBadge(ep)}</div>
-    ${av && s.state === 'progress' ? `<div class="progress sm"><div data-pc-bar="${ep.id}" style="width:${Math.round(s.ratio * 100)}%"></div></div>` : ''}
-    ${av && ep.retenir?.length ? `<details class="pc-retenir"><summary>${ic('pin')} À retenir (${ep.retenir.length})</summary><ul>${ep.retenir.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></details>` : ''}
-    ${actions}</div></li>`;
-}
-// Liens vers les schémas des étapes couvertes (étapes « action » : l'écran correspondant).
-function pcStepLinks(ep) {
-  return ep.steps.map((id) => P.stepById(id)).filter(Boolean).map((st) => st.kind === 'schema'
-    ? st.fiches.map((f) => `<button class="btn sm" data-open-fiche="${esc(f)}">${ic('chart')} ${esc(shortTitle(f))}</button>`).join('')
-    : `<button class="btn sm" data-go="${st.action === 'weak' ? 'train' : st.action}">${st.action === 'exam' ? ic('timer') : st.action === 'weak' ? ic('target') : ic('repeat')} ${esc(st.title)}</button>`).join('');
-}
-function pcPlayer() {
-  const ep = epById(state.pc.current); if (!ep) return '';
-  const a = audioEl(); const dur = Number.isFinite(a.duration) && a.duration ? a.duration : ep.duration;
-  const pos = a.currentTime || state.pc.seekTo || 0;
-  return `<div class="card pc-player" id="pc-player"><div class="muted">En lecture · épisode ${ep.n} · ${esc(stepsLabel(ep))}</div><strong class="pc-title" data-no-gl>${esc(ep.title)}</strong>
-    <input type="range" id="pc-seek" class="pc-seek" min="0" max="${Math.round(dur)}" step="1" value="${Math.round(pos)}" aria-label="Position dans l’épisode">
-    <div class="muted pc-time" id="pc-time">${PC.fmtClock(pos)} / ${PC.fmtClock(dur)}</div>
-    <div class="pc-controls"><button class="btn" data-pc-start="${ep.id}" aria-label="Reprendre depuis le début">${ic('skip-back')}</button><button class="btn" data-pc-seek="-15" aria-label="Reculer de 15 secondes">${ic('rotate')} 15 s</button><button class="btn primary pc-toggle" id="pc-toggle" aria-label="${a.paused ? 'Lecture' : 'Pause'}">${a.paused ? ic('play') : ic('pause')}</button><button class="btn" data-pc-seek="15" aria-label="Avancer de 15 secondes">15 s ${ic('rotate-cw')}</button></div>
-    <div class="chips pc-rates" role="group" aria-label="Vitesse">${PC.SPEEDS.map((r) => `<button class="chip ${a.playbackRate === r ? 'on' : ''}" data-pc-rate="${r}">${String(r).replace('.', ',')}×</button>`).join('')}</div>
-    <div class="muted" style="margin-top:10px">Les schémas de ${ep.steps.length > 1 ? 'ces étapes' : 'cette étape'} :</div><div class="pc-links">${pcStepLinks(ep)}</div></div>`;
-}
-function pcList() {
-  return `<ol class="pc-list" data-no-gl>${state.episodes.map(pcItem).join('')}</ol>`;
-}
-function pcRefreshList() {
-  const box = $('#pc-list-box'); if (box) { box.innerHTML = pcList(); return; }
-  if (state.view === 'podcasts') render();
-}
-views.podcasts = () => {
-  setTimeout(() => {
-    const seek = $('#pc-seek'); if (seek) seek.oninput = () => { audioEl().currentTime = Number(seek.value); pcUi(); };
-    const tg = $('#pc-toggle'); if (tg) tg.onclick = () => { const a = audioEl(); if (a.paused) a.play().catch(() => {}); else a.pause(); };
-    document.querySelectorAll('[data-pc-seek]').forEach((b) => { b.onclick = () => pcSeek(Number(b.dataset.pcSeek)); });
-    const ps = $('#pc-player [data-pc-start]'); if (ps) ps.onclick = () => pcPlay(ps.dataset.pcStart, { fromStart: true });
-    document.querySelectorAll('[data-pc-rate]').forEach((b) => { b.onclick = () => { const r = Number(b.dataset.pcRate); state.progress.settings.podcastRate = r; persist(); const a = audioEl(); a.defaultPlaybackRate = r; a.playbackRate = r; pcPosition(); }; });
-    const box = $('#pc-list-box');
-    if (box) box.onclick = (e) => {
-      const p = e.target.closest('[data-pc-play]'); if (p) { pcPlay(p.dataset.pcPlay); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
-      const st = e.target.closest('[data-pc-start]'); if (st) { pcPlay(st.dataset.pcStart, { fromStart: true }); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
-      const d = e.target.closest('[data-pc-dl]'); if (d) return pcDownload(d.dataset.pcDl);
-      const x = e.target.closest('[data-pc-del]'); if (x) return pcDelete(x.dataset.pcDel);
-    };
-    pcUi();
-    if (!state.pc.sizesLoaded || !Object.keys(state.pc.dl).length) pcRefreshSizes();
-  }, 0);
-  const av = pcAvailable(); const total = Object.values(state.pc.sizes).reduce((x, y) => x + y, 0);
-  return `<button class="btn sm" data-go="fiches">← Fiches</button>
-    <div class="card" style="margin-top:10px"><h2>${ic('headphones')} Podcasts</h2><p class="muted" style="margin:4px 0 0">${state.episodes.length} résumés audio du parcours, à deux voix (NotebookLM), pour réviser en marchant ou dans les transports : l’épisode pose une question, mettez sur pause, répondez, reprenez. En cas de doute, la fiche fait foi.</p>
-    <p class="muted" style="margin:6px 0 0">${av ? `${av}/${state.episodes.length} disponible${av > 1 ? 's' : ''}` : 'Les épisodes arrivent au fil des jours'}${total ? ` · ${PC.fmtSize(total)} sur le téléphone` : ''}. Téléchargez un épisode pour l’écouter sans réseau ; l’écoute reprend où vous l’aviez laissée.</p></div>
-    ${pcPlayer()}
-    <div id="pc-list-box">${pcList()}</div>`;
-};
-
-// La ville des institutions (js/ville.js) : chaque bâtiment est une instance, ses pancartes disent qui fait quoi.
 function villeEntry() {
   return `<div class="card pc-entry"><div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:12px"><div><strong>${ic('landmark')} La ville des institutions</strong><div class="muted">Ordre, H2A, CNCC, chambres, tribunaux, quartier international : en 3D, qui siège où et qui fait quoi</div></div><button class="btn sm primary" data-go="ville">Visiter ›</button></div></div>`;
 }
@@ -2581,7 +2318,7 @@ const NAV_BILAN = [
   ['home', ic('home'), 'Accueil'], ['review', ic('repeat'), 'Réviser'], ['train', ic('target'), 'Entraîner'], ['carriere', ic('trophy'), 'Carrière'], ['plus', ic('menu'), 'Plus'],
 ];
 // Vues rangées sous « Plus » (apparence bilan) : l'onglet reste allumé quand on y est.
-const PLUS_VIEWS = new Set(['plus', 'shorts', 'exam', 'fiches', 'podcasts', 'ville', 'carte', 'stats', 'settings', 'glossaire', 'carnet']);
+const PLUS_VIEWS = new Set(['plus', 'shorts', 'exam', 'fiches', 'ville', 'carte', 'stats', 'settings', 'glossaire', 'carnet']);
 function buildNav() {
   const nav = $('nav.bottom'); if (!nav) return;
   const list = isBilan() ? NAV_BILAN : NAV;
@@ -2594,7 +2331,6 @@ views.plus = () => {
     ['shorts', ic('clapper'), 'Shorts', 'Une notion en 30 secondes, puis une question'],
     ['exam', ic('timer'), 'Examen blanc', '20 questions, 60 minutes, en conditions'],
     ['fiches', ic('library'), 'Fiches et schémas', `${state.fiches.filter((f) => P.isRead(pr.plan, f.file)).length} / ${state.fiches.length} vues`],
-    ['podcasts', ic('headphones'), 'Podcasts', 'Les résumés audio du parcours'],
     ['ville', ic('landmark'), 'Ville des institutions', 'Qui siège où, qui fait quoi'],
     ['carte', ic('brain'), 'Carte des notions', 'Les sous-thèmes, EC face au CAC'],
     ['glossaire', ic('book'), 'Glossaire', 'Les termes clés'],
@@ -2607,10 +2343,9 @@ views.plus = () => {
 function render() {
   const main = $('#main');
   main.innerHTML = views[state.view]();
-  document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view || (state.view === 'plan' && b.dataset.view === 'home') || (state.view === 'jeux' && b.dataset.view === 'train') || ((state.view === 'podcasts' || state.view === 'ville' || state.view === 'carte') && b.dataset.view === 'fiches') || (b.dataset.view === 'plus' && PLUS_VIEWS.has(state.view))));
+  document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view || (state.view === 'plan' && b.dataset.view === 'home') || (state.view === 'jeux' && b.dataset.view === 'train') || ((state.view === 'ville' || state.view === 'carte') && b.dataset.view === 'fiches') || (b.dataset.view === 'plus' && PLUS_VIEWS.has(state.view))));
   // Transition d'écran (apparence bilan) : le contenu arrive en fondu, relancé à chaque rendu
   main.classList.remove('g-page'); void main.offsetWidth; main.classList.add('g-page');
-  pcMini();
   updateStreakBadge();
   main.querySelectorAll('[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
   main.querySelectorAll('[data-ville-tab]').forEach((b) => { b.onclick = () => { state.villeTab = b.dataset.villeTab; state.v3open = state.villeTab === '3d'; window.scrollTo(0, 0); render(); }; });
@@ -2717,8 +2452,8 @@ async function recoverFromStaleCache() {
   try {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
-    await Promise.all((await caches.keys()).filter((k) => k !== PC.AUDIO_CACHE).map((k) => caches.delete(k))); // épisodes téléchargés gardés
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/career.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './js/sync.js', './js/ville.js', './js/ville3d.js', './js/villeplan.js', './js/maquette.js', './js/vendor/three.module.min.js', './sw.js']
+    await Promise.all((await caches.keys()).map((k) => caches.delete(k)));
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/career.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/sync.js', './js/ville.js', './js/ville3d.js', './js/villeplan.js', './js/maquette.js', './js/vendor/three.module.min.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();
@@ -2751,8 +2486,7 @@ async function init() {
   });
   try {
     // Chargements en parallèle (banque, index des fiches, shorts, glossaire)
-    const [bank, fiches, , gloss, episodes] = await Promise.all([loadBank(), loadFichesIndex(), ensureShorts(), GL.loadGlossary().catch(() => []), loadEpisodes()]);
-    state.episodes = episodes;
+    const [bank, fiches, , gloss] = await Promise.all([loadBank(), loadFichesIndex(), ensureShorts(), GL.loadGlossary().catch(() => [])]);
     state.bank = bank;
     setupHeldOut();
     state.bank.questions.forEach((q) => { state.byId[q.id] = q; });
