@@ -934,3 +934,6 @@ html { overscroll-behavior-y: none; }
 :root[data-look="bilan"][data-theme="dark"] .bh .btn.primary.big-btn .cta-k { color: #fff; }
 :root[data-look="bilan"][data-theme="dark"] .g-bar--light { background: #3a2c24; } :root[data-look="bilan"][data-theme="dark"] .g-bar--light > div { background: #e0855d; }
 :root[data-look="bilan"][data-theme="dark"] .bh-kpis, :root[data-look="bilan"][data-theme="dark"] .g-stats { border-top-color: #3a2c24; }
+.prev-q { color: var(--primary); font-weight: 700; text-decoration: none; padding: 0; font-size: 13px; white-space: nowrap; }
+.prev-exp { margin: 0; padding-left: 18px; font-size: 15px; }
+.prev-exp li { margin: 3px 0; }

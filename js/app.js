@@ -244,6 +244,7 @@ function nextCelebration() {
   focusIn(box);
 }
 function trainOn(ids, title, mode = 'qcm') {
+  state.prevQ = null;
   const qs = ids.map((id) => state.byId[id]).filter(Boolean);
   state.train = { prof: 'all', theme: 'all', tag: 'all', mode, queue: qs, idx: 0, ok: 0, n: 0, title };
   go('train');
@@ -844,10 +845,11 @@ views.review = () => {
   setTimeout(() => {
     mountReviewCard(q);
     const sh = $('#short-sess'); if (sh) sh.onclick = () => { s.queue = s.queue.slice(0, SHORT_SESSION); s.total = s.done + s.queue.length; render(); };
+    const pq = $('#prev-q'); if (pq) pq.onclick = prevQuestionSheet;
   }, 0);
   const d = ensureDaily(); const stepIds = new Set(d.steps.flatMap((id) => P.stepQuestionIds(P.stepById(id), state.fiches)));
   const isNew = !state.progress.cards[q.id];
-  if (isBilan()) return `${sessionStrip()}<div class="sess-line"><span>${isNew ? 'Nouvelle' : 'À revoir'} · <strong>${s.done + 1}</strong> / ${s.total}</span>${s.done === 0 && s.queue.length > SHORT_SESSION + 5 ? `<button class="linkbtn" id="short-sess">Faire ${SHORT_SESSION} seulement</button>` : ''}</div>
+  if (isBilan()) return `${sessionStrip()}<div class="sess-line"><span>${isNew ? 'Nouvelle' : 'À revoir'} · <strong>${s.done + 1}</strong> / ${s.total}</span>${prevLink()}${s.done === 0 && s.queue.length > SHORT_SESSION + 5 ? `<button class="linkbtn" id="short-sess">Faire ${SHORT_SESSION} seulement</button>` : ''}</div>
     <div class="progress sm sess-bar"><div style="width:${(s.done / Math.max(1, s.total)) * 100}%"></div></div>
     <div class="card" id="qcard" style="margin-top:12px"></div><div id="grade-peek"></div><div id="grade"></div>`;
   return `${sessionStrip()}<div class="row" style="justify-content:space-between;margin-bottom:6px;flex-wrap:nowrap"><span>${isNew ? '<span class="badge new">' + ic('sparkles') + ' Nouvelle</span>' : '<span class="badge">' + ic('repeat') + ' À revoir</span>'} <span class="muted">${s.done + 1} / ${s.total}</span></span><span class="muted">${s.queue.length - 1 > 0 ? `encore ${s.queue.length - 1}` : 'dernière'}</span></div>
@@ -888,7 +890,7 @@ function mountReviewCard(q) {
   }
 }
 function gradeCurrent(q, g, mode, res = {}) {
-  const s = state.session;
+  const s = state.session; state.prevQ = { id: q.id, mode, ok: g >= 2 };
   const prev = state.progress.cards[q.id] || newCard();
   const wasNew = !state.progress.cards[q.id];
   state.progress.cards[q.id] = review(prev, g, Date.now(), reviewOpts(q.id));
@@ -921,12 +923,13 @@ views.train = () => {
           $('#sg-ok').classList.toggle('primary', ratio >= 1); $('#sg-ko').classList.toggle('primary', ratio < 1);
         }, { askConf: set.confidence });
       }
-      $('#next').onclick = () => { t.idx++; render(); };
-      $('#sg-ok').onclick = () => { t.n++; t.ok++; answer(q.id, true, 'qrc', { conf: qconf }); t.idx++; render(); };
-      $('#sg-ko').onclick = () => { t.n++; answer(q.id, false, 'qrc', { conf: qconf }); if (confidentError(false, qconf)) toast('Erreur commise avec certitude : relisez l’explication', 'alert'); t.idx++; render(); };
+      $('#next').onclick = () => { state.prevQ = { id: q.id, mode: 'qcm' }; t.idx++; render(); };
+      $('#sg-ok').onclick = () => { state.prevQ = { id: q.id, mode: 'qrc' }; t.n++; t.ok++; answer(q.id, true, 'qrc', { conf: qconf }); t.idx++; render(); };
+      $('#sg-ko').onclick = () => { state.prevQ = { id: q.id, mode: 'qrc' }; t.n++; answer(q.id, false, 'qrc', { conf: qconf }); if (confidentError(false, qconf)) toast('Erreur commise avec certitude : relisez l’explication', 'alert'); t.idx++; render(); };
       $('#stop').onclick = () => { t.queue = null; t.title = null; render(); };
+      const pq = $('#prev-q'); if (pq) pq.onclick = prevQuestionSheet;
     }, 0);
-    return `${sessionStrip()}${t.title ? `<div class="muted" style="margin-bottom:6px">${ic('target')} ${esc(t.title)}</div>` : ''}<div class="row" style="justify-content:space-between"><span class="muted">${t.idx + 1} / ${t.queue.length} · ${t.ok}/${t.n} ${ic('check')}</span><button class="btn sm" id="stop">Arrêter</button></div>
+    return `${sessionStrip()}${prevLink() ? `<div class="sess-line"><span></span>${prevLink()}</div>` : ''}${t.title ? `<div class="muted" style="margin-bottom:6px">${ic('target')} ${esc(t.title)}</div>` : ''}<div class="row" style="justify-content:space-between"><span class="muted">${t.idx + 1} / ${t.queue.length} · ${t.ok}/${t.n} ${ic('check')}</span><button class="btn sm" id="stop">Arrêter</button></div>
       <div class="card" id="qcard" style="margin-top:10px"></div>
       <div id="selfgrade" class="btnrow hidden"><button class="btn" id="sg-ko">${ic('x')} Je ne savais pas</button><button class="btn primary" id="sg-ok">${ic('check')} Je savais</button></div>
       <button class="btn primary hidden" id="next">Question suivante →</button>`;
@@ -1225,6 +1228,17 @@ function inActivity() {
   return (v === 'review' && !!state.session) || (v === 'train' && !!state.train?.queue) || (v === 'jeux' && !!state.game)
     || v === 'exam' || (v === 'carriere' && !!state.palais);
 }
+// Revoir la question précédente (session ou série) : énoncé, bonne réponse, éléments attendus, explication.
+function prevQuestionSheet() {
+  const p = state.prevQ; const q = p && state.byId[p.id]; if (!q) return;
+  const good = q.qcm.choices[q.qcm.answer];
+  sheet(`<div class="card">${qHeader(q)}<div class="q">${esc(q.qcm.question || q.question)}</div>
+    <div class="choice ok" style="pointer-events:none">${ic('check')} <span>${esc(good)}</span></div>
+    ${q.qrc?.expected?.length ? `<div class="muted" style="margin:12px 0 4px">Éléments attendus (QRC)</div><ul class="prev-exp">${q.qrc.expected.map((x) => `<li>${esc(typeof x === 'string' ? x : x.text || x.label || '')}</li>`).join('')}</ul>` : ''}
+    ${q.qrc?.model_answer ? `<div class="muted" style="margin:12px 0 4px">Réponse type</div><p style="margin:0">${esc(q.qrc.model_answer)}</p>` : ''}
+    <div style="margin-top:12px">${qExplain(q)}</div></div>`);
+}
+const prevLink = () => (state.prevQ && state.byId[state.prevQ.id] ? '<button class="linkbtn prev-q" id="prev-q">‹ Question précédente</button>' : '');
 function sheet(html) {
   const el = $('#sheet');
   el.innerHTML = `<div class="sheet-head"><button class="btn sm" id="sheet-close">${ic('x')} Fermer et reprendre</button></div><div class="sheet-body">${html}</div>`;
