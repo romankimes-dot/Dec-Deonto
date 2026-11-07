@@ -900,3 +900,40 @@ html { overscroll-behavior-y: none; }
 .week-detail { margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: var(--bg); font-size: 14px; display: grid; gap: 2px; }
 .week-detail strong { font-size: 15px; }
 .week-detail .muted { font-size: 13px; }
+.sh-pools { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.sh-pools .btn { justify-content: center; gap: 6px; white-space: nowrap; font-size: 15px; padding-left: 8px; padding-right: 8px; }
+.sh-pools .btn .muted { font-weight: 600; }
+/* Ville (bilan) : en-tête plein, choix secondaires en liste */
+.vh { gap: 12px; }
+.vh-title { font-size: clamp(30px, 9vw, 44px); font-weight: 800; line-height: 1; letter-spacing: -.035em; text-wrap: balance; }
+.vh-sub { margin: 0; font-size: 15px; line-height: 1.4; opacity: .92; max-width: 46ch; }
+.vh-kpis { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+.vh-kpis .bh-kpi__v { font-size: 20px; }
+.vh-back { display: inline-block; margin-top: 4px; color: var(--muted); font-weight: 600; text-decoration: none; }
+:root[data-look="bilan"] .ville-bar { background: var(--bg); }
+
+/* Session (bilan) : une ligne sous le bandeau de grade */
+.sess-line { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 13px; color: var(--muted); margin-top: 2px; }
+.sess-line strong { color: var(--text); }
+.sess-line .linkbtn { color: var(--primary); font-weight: 700; text-decoration: none; padding: 0; font-size: 13px; }
+.sess-bar { margin: 6px 0 0; height: 3px; }
+/* Sombre (bilan) adouci : orange désaturé, aplats pleins remplacés par une surface chaude et un accent */
+@media (prefers-color-scheme: dark) {
+  :root[data-look="bilan"]:not([data-theme="light"]) { --primary: #ef9a76; --primary-btn: #d9693f; --g-accent: #e0855d; }
+  :root[data-look="bilan"]:not([data-theme="light"]) .bh, :root[data-look="bilan"]:not([data-theme="light"]) .g-hero, :root[data-look="bilan"]:not([data-theme="light"]) .cel-level { background: linear-gradient(160deg, #2a201b, #1f1916); color: var(--text); box-shadow: inset 0 0 0 1px #3a2c24; }
+  :root[data-look="bilan"]:not([data-theme="light"]) .bh-big, :root[data-look="bilan"]:not([data-theme="light"]) .g-big, :root[data-look="bilan"]:not([data-theme="light"]) .bh-kpi__v, :root[data-look="bilan"]:not([data-theme="light"]) .g-stats b { color: #f2a582; }
+  :root[data-look="bilan"]:not([data-theme="light"]) .bh .btn.primary.big-btn { background: var(--primary-btn); color: #fff; border-color: var(--primary-btn); }
+  :root[data-look="bilan"]:not([data-theme="light"]) .bh .btn.primary.big-btn .cta-k { color: #fff; }
+  :root[data-look="bilan"]:not([data-theme="light"]) .g-bar--light { background: #3a2c24; } :root[data-look="bilan"]:not([data-theme="light"]) .g-bar--light > div { background: #e0855d; }
+  :root[data-look="bilan"]:not([data-theme="light"]) .bh-kpis, :root[data-look="bilan"]:not([data-theme="light"]) .g-stats { border-top-color: #3a2c24; }
+}
+:root[data-look="bilan"][data-theme="dark"] { --primary: #ef9a76; --primary-btn: #d9693f; --g-accent: #e0855d; }
+:root[data-look="bilan"][data-theme="dark"] .bh, :root[data-look="bilan"][data-theme="dark"] .g-hero, :root[data-look="bilan"][data-theme="dark"] .cel-level { background: linear-gradient(160deg, #2a201b, #1f1916); color: var(--text); box-shadow: inset 0 0 0 1px #3a2c24; }
+:root[data-look="bilan"][data-theme="dark"] .bh-big, :root[data-look="bilan"][data-theme="dark"] .g-big, :root[data-look="bilan"][data-theme="dark"] .bh-kpi__v, :root[data-look="bilan"][data-theme="dark"] .g-stats b { color: #f2a582; }
+:root[data-look="bilan"][data-theme="dark"] .bh .btn.primary.big-btn { background: var(--primary-btn); color: #fff; border-color: var(--primary-btn); }
+:root[data-look="bilan"][data-theme="dark"] .bh .btn.primary.big-btn .cta-k { color: #fff; }
+:root[data-look="bilan"][data-theme="dark"] .g-bar--light { background: #3a2c24; } :root[data-look="bilan"][data-theme="dark"] .g-bar--light > div { background: #e0855d; }
+:root[data-look="bilan"][data-theme="dark"] .bh-kpis, :root[data-look="bilan"][data-theme="dark"] .g-stats { border-top-color: #3a2c24; }
+.prev-q { color: var(--primary); font-weight: 700; text-decoration: none; padding: 0; font-size: 13px; white-space: nowrap; }
+.prev-exp { margin: 0; padding-left: 18px; font-size: 15px; }
+.prev-exp li { margin: 3px 0; }

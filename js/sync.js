@@ -92,6 +92,7 @@ export function merge(local, remote) {
     lastSession: Math.max(num(n.lastSession), num(o.lastSession)) || null,
     stats,
     badges: unionMin(n.badges, o.badges),
+    gradesSeen: { ...obj(o.gradesSeen), ...obj(n.gradesSeen) },
     grades: unionMin(n.grades, o.grades),
     seenAnecdotes: unionMin(n.seenAnecdotes, o.seenAnecdotes),
     lastExportAt: Math.max(num(n.lastExportAt), num(o.lastExportAt)),

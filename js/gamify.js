@@ -338,18 +338,15 @@ export const GRADES = [
   { n: 8, name: 'Expert-comptable installé', decor: 'cabinet' },
 ];
 
-// ---------- Points et niveaux ----------
-// La carrière avance aux points, calculés à tout moment depuis l'ensemble des statistiques (donc rétroactifs et
-// jamais perdus) : tout ce qui a été fait compte, le jour même comme les semaines précédentes.
+// ---------- Score d'effort ----------
+// Les points mesurent l'effort, calculés à tout moment depuis l'ensemble des statistiques (rétroactifs, jamais
+// perdus). Ils sont affichés, mais le grade ne dépend que des résultats (voir careerState).
 //   question : +1 par réponse, +1 de plus si juste (3 réponses et 3 réussites comptées au plus par question) ;
 //              doublé pour une question difficile
 //   examen blanc : +20 par copie comptée, + la note sur 20
 //   séries : record de 5 / 10 / 20 / 30 / 50 bonnes réponses d'affilée : +5 / +10 / +20 / +30 / +50 (cumulés)
 //   journées : +10 par jour d'au moins 10 réponses
 //   shorts : +2 par short répondu, +1 par boîte gagnée (jusqu'à 3)
-// Seuils calibrés sur un parcours complet (banque vue et réussie 3 fois, une dizaine d'examens blancs, les shorts,
-// trois semaines de travail : 3 500 à 4 000 points) ; le dernier palier demande l'essentiel de ce travail.
-export const LEVELS = [0, 200, 500, 900, 1400, 2000, 2700, 3600];
 export const SHORT_PREFIX = 'sht:';
 export function xpOf(stats, ctx, drills = {}) {
   const parts = { questions: 0, exams: 0, series: 0, days: 0, shorts: 0 };
@@ -378,44 +375,39 @@ export function readiness(stats, ctx) {
   const best = (stats.exams || []).reduce((m, e) => Math.max(m, e.note || 0), 0);
   return { cov: (100 * seenN) / Math.max(1, ctx.all.length), acc: n ? (100 * ok) / n : 0, exams: (stats.exams || []).length, best };
 }
-export function gateConditions(n, r) {
+// Tolérance sur la réussite pour un grade déjà détenu : une réponse fausse ne fait pas perdre un grade.
+export const ACC_SLACK = 3;
+export function gateConditions(n, r, { held = false } = {}) {
   const g = GATES[n]; if (!g) return [];
-  // ratio : avancement vers la condition (0 à 1), pour la barre quand les points sont déjà là
+  // ratio : avancement vers la condition (0 à 1), pour la barre du grade
   const C = (label, cur, need) => ({ label, ok: cur >= need, ratio: Math.max(0, Math.min(1, need > 0 ? cur / need : 1)) });
   const out = [C(`${g.cov} % des annales vues (${Math.floor(r.cov)} %)`, r.cov, g.cov)];
   if (g.exams) out.push(C('un examen blanc terminé', r.exams, g.exams));
   if (g.exam) out.push(C(`un examen blanc ≥ ${g.exam} (meilleur : ${r.best})`, r.best, g.exam));
-  if (g.acc) out.push(C(`${g.acc} % de réussite sur l’ensemble (${Math.round(r.acc)} %)`, r.acc, g.acc));
+  if (g.acc) out.push(C(`${g.acc} % de réussite sur l’ensemble (${Math.floor(r.acc)} %)`, r.acc, held ? g.acc - ACC_SLACK : g.acc));
   return out;
 }
-export function gateLevel(r) {
+// held : grade actuellement détenu (ses paliers profitent de la tolérance sur la réussite).
+export function gateLevel(r, held = 0) {
   let n = 1;
-  for (let k = 2; k <= GRADES.length; k++) { if (gateConditions(k, r).every((c) => c.ok)) n = k; else break; }
+  for (let k = 2; k <= GRADES.length; k++) { if (gateConditions(k, r, { held: k <= held }).every((c) => c.ok)) n = k; else break; }
   return n;
+}
+// Grade détenu d'après progress.grades (le plus haut renseigné).
+export function heldGrade(progress) {
+  let n = 0; for (const g of GRADES) if (progress?.grades?.[g.n]) n = g.n; return n;
 }
 // État de carrière : le grade ne dépend que des résultats (annales vues, examens blancs, réussite) ; la barre est
 // l'avancement moyen vers les conditions du grade suivant ; les points sont un score d'effort, affiché mais sans effet
 // sur le grade (revu le 8 novembre 2026 : un score élevé ne doit jamais promettre un grade que les résultats refusent).
-export function careerState(stats, ctx, drills = {}) {
+export function careerState(stats, ctx, drills = {}, held = 0) {
   const { total, parts } = xpOf(stats, ctx, drills);
   const r = readiness(stats, ctx);
-  const n = gateLevel(r);
+  const n = gateLevel(r, held);
   const conds = n < GRADES.length ? gateConditions(n + 1, r) : [];
   const pct = conds.length ? conds.reduce((a, c) => a + c.ratio, 0) / conds.length : 1;
   const met = conds.filter((c) => c.ok).length;
-  const info = { n, xp: total, pct, barPct: pct, met, total: conds.length, from: 0, to: null, left: 0 };
-  return { info, parts, readiness: r, blocked: false, conds };
-}
-export function levelOf(xp) {
-  let n = 1;
-  for (let i = 0; i < LEVELS.length; i++) if (xp >= LEVELS[i]) n = i + 1;
-  return n;
-}
-// Position dans l'échelle : niveau, points, seuil suivant, part du palier franchie.
-export function levelInfo(xp) {
-  const n = levelOf(xp);
-  const from = LEVELS[n - 1]; const to = LEVELS[n] ?? null;
-  return { n, xp, from, to, pct: to === null ? 1 : Math.min(1, (xp - from) / (to - from)), left: to === null ? 0 : to - xp };
+  return { info: { n, xp: total, pct, met, total: conds.length }, parts, readiness: r, conds };
 }
 
 // ---------- Évaluation ----------
@@ -430,13 +422,17 @@ export function evaluate(progress, catalog, ctx, t = Date.now()) {
     if (progress.badges[b.id]) continue;
     if (progressOf(b, st).done) { progress.badges[b.id] = t; fresh.badges.push(b); }
   }
-  // Grades : points et paliers de résultats. Le grade courant est recalculé (un grade accordé par une règle
-  // antérieure plus généreuse est repris sans cérémonie) ; les dates des grades gardés sont conservées.
-  const lv = careerState(st, ctx, progress.drills).info.n;
+  // Grades : par les résultats seuls, avec tolérance sur la réussite pour le grade détenu (pas d'oscillation sur une
+  // réponse). Un grade au-dessus des résultats est repris sans cérémonie ; un grade déjà fêté une fois ne l'est plus.
+  const lv = careerState(st, ctx, progress.drills, heldGrade(progress)).info.n;
+  progress.gradesSeen = progress.gradesSeen || {};
+  for (const g of GRADES) if (progress.grades[g.n]) progress.gradesSeen[g.n] = true;
   for (const g of GRADES) {
     if (g.n > lv) { delete progress.grades[g.n]; continue; }
     if (progress.grades[g.n]) continue;
-    progress.grades[g.n] = t; if (g.n > 1) fresh.grades.push(g);
+    progress.grades[g.n] = t;
+    if (g.n > 1 && !progress.gradesSeen[g.n]) fresh.grades.push(g);
+    progress.gradesSeen[g.n] = true;
   }
   return fresh;
 }
