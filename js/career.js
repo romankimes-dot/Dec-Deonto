@@ -19,9 +19,9 @@ const condList = (conds, cls = 'g-conds') => `<ul class="${cls}">${conds.map((c)
 // Carte de grade (accueil, compacte ; carrière, complète) : numéro, nom, barre vers le suivant, conditions.
 export function levelCardHtml(info, { today = 0, conds = [], blocked = false, compact = false } = {}) {
   const g = GRADES[info.n - 1]; const next = GRADES[info.n];
-  const line = next
-    ? `<strong>${info.xp}</strong> / ${info.to} pts · encore <strong>${info.left}</strong> pour « ${esc(next.name)} »`
-    : `<strong>${info.xp}</strong> pts · dernier grade atteint`;
+  const line = !next ? `<strong>${info.xp}</strong> pts · dernier grade atteint`
+    : blocked ? `<strong>${info.xp}</strong> pts · les points y sont, il manque des résultats pour « ${esc(next.name)} »`
+    : `<strong>${info.xp}</strong> / ${info.to} pts · encore <strong>${info.left}</strong> pour « ${esc(next.name)} »`;
   const gate = conds.length && (!compact || blocked)
     ? `<div class="g-gate ${blocked ? 'blocked' : ''}"><div class="g-gate__h">${blocked ? 'Points acquis · résultats manquants' : 'Pour passer'}${next ? ` au grade ${pad2(next.n)}` : ''}</div>${condList(conds)}</div>` : '';
   return `<div class="g-card ${compact ? 'compact' : ''}">
@@ -30,7 +30,7 @@ export function levelCardHtml(info, { today = 0, conds = [], blocked = false, co
       <div class="g-card__text"><span class="g-kicker">Grade ${info.n} sur ${GRADES.length}</span><span class="g-name">${esc(g.name)}</span></div>
       ${today > 0 ? `<span class="g-today">+${today}<small>pts aujourd’hui</small></span>` : ''}
     </div>
-    ${bar(info.pct)}
+    ${bar(info.barPct ?? info.pct)}
     <div class="g-line">${line}</div>
     ${gate}
   </div>`;
@@ -49,7 +49,7 @@ export function heroHtml(info, readiness, { parts = null } = {}) {
       <span><b>${readiness.best ? readiness.best : '—'}</b>meilleur examen</span>
       ${parts ? `<span><b>${parts.exams ? Math.round(parts.exams) : 0}</b>pts d’examens</span>` : ''}
     </div>
-    ${next ? `<div class="g-next"><span class="g-next__k">Prochain · ${esc(next.name)}</span><span class="g-next__v">${info.xp - info.from} / ${info.to - info.from}</span>${bar(info.pct, 'g-bar--light')}</div>` : '<div class="g-next"><span class="g-next__k">Les huit grades sont atteints.</span></div>'}
+    ${next ? `<div class="g-next"><span class="g-next__k">Prochain · ${esc(next.name)}</span><span class="g-next__v">${info.barPct !== undefined && info.barPct !== info.pct ? `${Math.round(info.barPct * 100)} % des résultats` : `${Math.min(info.xp, info.to) - info.from} / ${info.to - info.from} pts`}</span>${bar(info.barPct ?? info.pct, 'g-bar--light')}</div>` : '<div class="g-next"><span class="g-next__k">Les huit grades sont atteints.</span></div>'}
   </div>`;
 }
 
@@ -57,8 +57,8 @@ export function heroHtml(info, readiness, { parts = null } = {}) {
 export function stripHtml(info, { gain = 0 } = {}) {
   return `<div class="g-strip">
     <div class="g-strip__text"><span class="g-kicker">Grade ${info.n} <span class="g-sep">/</span> ${GRADES.length}</span><span class="g-strip__name">${esc(SHORT[info.n])}</span></div>
-    <span class="g-strip__pts">${gain > 0 ? `<em>+${gain}</em>` : ''}<strong>${info.xp}</strong><small> / ${info.to ?? '—'}</small></span>
-    ${bar(info.pct, 'g-bar--thin')}
+    <span class="g-strip__pts">${gain > 0 ? `<em>+${gain}</em>` : ''}<strong>${info.xp}</strong><small> pts</small></span>
+    ${bar(info.barPct ?? info.pct, 'g-bar--thin')}
   </div>`;
 }
 

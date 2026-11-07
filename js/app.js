@@ -166,9 +166,28 @@ function answer(id, ok, mode, { defer = false, t = Date.now(), conf = null, pick
   if (typeof navigator !== 'undefined' && navigator.onLine === false) att.off = 1;
   const ms = takeQMs(); if (ms) att.ms = ms; // temps passé sur la question (minuteur de 3 minutes)
   store.pushAttempt(state.progress, att);
+  const before = isBilan() ? G.xpOf(state.progress.stats, state.gctx, state.progress.drills).total : 0;
   G.applyAnswer(state.progress.stats, att, state.gctx);
+  if (isBilan()) flyPoints(G.xpOf(state.progress.stats, state.gctx, state.progress.drills).total - before);
   if (!defer) checkBadges();
   updateStreakBadge();
+}
+// « +n » qui part du dernier toucher et monte vers les points du bandeau de grade.
+let lastTap = null;
+document.addEventListener('pointerdown', (e) => { lastTap = { x: e.clientX, y: e.clientY }; }, { passive: true });
+function flyPoints(n) {
+  if (!(n > 0) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const to = $('.g-strip__pts'); if (!to) return;
+  const r = to.getBoundingClientRect();
+  const from = lastTap || { x: r.left + r.width / 2, y: window.innerHeight / 2 };
+  const el = document.createElement('span'); el.className = 'g-fly'; el.textContent = `+${n}`;
+  el.style.left = `${from.x}px`; el.style.top = `${from.y}px`;
+  document.body.appendChild(el);
+  const anim = el.animate([
+    { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+    { transform: `translate(calc(-50% + ${r.left + r.width / 2 - from.x}px), calc(-50% + ${r.top + r.height / 2 - from.y}px)) scale(.7)`, opacity: .2 },
+  ], { duration: 700, easing: 'cubic-bezier(.2, .8, .2, 1)' });
+  anim.onfinish = () => el.remove();
 }
 function checkBadges() {
   const fresh = G.evaluate(state.progress, state.catalog, state.gctx, Date.now());
@@ -434,6 +453,7 @@ views.home = () => {
   const nb = G.nextBadges(state.catalog, pr.stats, pr.badges, 3);
   // Annales vues : questions de la banque déjà répondues (même mesure que la fiabilité du niveau estimé).
   const cov = Math.round((qs.filter((q) => pr.stats.q[q.id]?.seen > 0).length / Math.max(1, qs.length)) * 100);
+  if (isBilan()) return homeBilan({ d, lv, nb, cov, lastExam });
   return `${noticeCard()}
   <div class="card hero">
     <div class="hero-top">
@@ -462,6 +482,40 @@ views.home = () => {
     <li>Références d’articles et quantum des sanctions ne sont pas exigés ; les chiffres (seuils, durées, délais) le sont.</li></ul></details>
     <div style="margin-top:10px"><button class="btn" data-go="stats">${ic('trending')} Statistiques détaillées</button></div></div>`;
 };
+const isBilan = () => (state.progress?.settings?.look || 'bilan') === 'bilan';
+// Accueil « bilan » : un seul objet en haut (le bilan du jour), le plan comme liste, le reste en tuiles.
+function homeBilan({ d, lv, nb, cov, lastExam }) {
+  const pr = state.progress; const has = pr.attempts.length > 0; const e = has ? currentEstimate() : null;
+  const g = G.GRADES[lv.info.n - 1];
+  const tile = (label, v, unit = '') => `<div class="bh-kpi"><span class="bh-kpi__l">${label}</span><span class="bh-kpi__v">${v}<small>${unit}</small></span></div>`;
+  const hero = `<section class="bh">
+    <div class="bh-top"><span class="bh-eyebrow">Épreuve n°1 · ${esc(examLabel())}</span><span class="bh-grade" data-go="carriere">Grade ${lv.info.n} · ${esc(CR.SHORT[lv.info.n])} ›</span></div>
+    <div class="bh-big">${!examDateSet() ? 'Date à définir' : d > 0 ? `J-${d}` : d === 0 ? 'Jour J' : 'Passée'}</div>
+    <div class="bh-kpis">${tile('QCM estimé', has ? fr(e.qcm.note) : '–', '/20')}${tile('QRC estimé', has ? fr(e.qrc.note) : '–', '/20')}${tile('Annales vues', cov, ' %')}${tile('Points du jour', lv.today > 0 ? `+${lv.today}` : '0', '')}</div>
+    <div class="bh-bar"><span>${esc(g.name)}</span><span>${lv.blocked ? `${lv.info.xp} pts · résultats ${Math.round(lv.info.barPct * 100)} %` : `${lv.info.xp}${lv.info.to ? ` / ${lv.info.to}` : ''} pts`}</span><div class="g-bar g-bar--light"><div style="width:${Math.round((lv.info.barPct ?? lv.info.pct) * 100)}%"></div></div></div>
+    ${heroCta()}
+    ${has ? `<button class="bh-link" data-go="stats">Niveau estimé · risque &lt; 6 : ${e.qcm.risk} % (QCM) · ${e.reliable ? 'fiable' : 'indicatif'} ›</button>` : ''}
+    ${examDateSet() ? '' : `<button class="bh-link" data-go="settings">${ic('calendar')} Définir la date de l’examen ›</button>`}
+  </section>`;
+  const tiles = [
+    ['carnet', ic('bookmark'), 'Carnet d’erreurs', `${CN.entries(pr.carnet).length} élément${CN.entries(pr.carnet).length > 1 ? 's' : ''}`],
+    ['shorts', ic('clapper'), 'Shorts', state.shorts ? `${SH.shortsStats(state.shorts, pr.drills).due} à revoir` : '30 s par notion'],
+    ['jeux', ic('dice'), 'Jeux express', '5 minutes'],
+    ['podcasts', ic('headphones'), 'Podcasts', `${pcAvailable()}/${state.episodes.length} disponibles`],
+    ['exam', ic('timer'), 'Examen blanc', lastExam ? `dernier : ${lastExam.note}/20` : 'pas encore passé'],
+    ['fiches', ic('library'), 'Fiches et schémas', `${state.fiches.filter((f) => P.isRead(pr.plan, f.file)).length} / ${state.fiches.length} vues`],
+  ].map(([v, i, t, sub]) => `<button class="bh-tile" data-go="${v}"><span class="bh-tile__i">${i}</span><strong>${esc(t)}</strong><span>${esc(sub)}</span></button>`).join('');
+  return `<div class="home">${noticeCard()}${hero}${helpCard()}${dayCard()}
+  <section class="bh-tiles">${tiles}</section>
+  ${!pr.settings.focus && nb.length ? `<div class="card"><h2>Presque débloqués</h2>${nb.map(({ b, p }) => `<div class="nb">${badgeIcon(b)}<div style="flex:1"><div><strong>${esc(b.name)}</strong></div><div class="progress"><div style="width:${Math.round((p.cur / p.max) * 100)}%"></div></div><div class="muted">${p.cur}/${p.max} · ${esc(b.cond)}</div></div></div>`).join('')}</div>` : ''}
+  ${backupCard()}
+  <div class="card"><h2>Conseil du jury</h2><p class="muted" style="margin:4px 0 8px">La partie CAC est systématiquement moins bien réussie, et les candidats confondent les règles EC et CAC : pour chaque règle, demandez-vous « et pour l’autre profession ? ».</p><details><summary>Tous les conseils</summary><ul class="muted" style="margin:6px 0 0;padding-left:18px">
+    <li>La partie CAC est systématiquement moins bien réussie : travaillez-la en priorité.</li>
+    <li>Les candidats confondent les règles EC et CAC : pour chaque règle, demandez-vous « et pour l’autre profession ? ».</li>
+    <li>Réponses courtes : un mot, un chiffre, une liste. 3 minutes par question.</li>
+    <li>Références d’articles et quantum des sanctions ne sont pas exigés ; les chiffres (seuils, durées, délais) le sont.</li></ul></details>
+    <div style="margin-top:10px"><button class="btn" data-go="stats">${ic('trending')} Statistiques détaillées</button></div></div></div>`;
+}
 function markExported() { state.progress.lastExportAt = Date.now(); persist(); }
 async function exportProgress() {
   const text = store.exportJSON(state.progress);
@@ -634,7 +688,7 @@ function nextStepBlock() {
 // Aide de départ : affichée tant qu'on ne l'a pas fermée.
 function helpCard() {
   const s = state.progress.settings;
-  if (s.helpSeen) return '';
+  if (s.helpSeen || (isBilan() && state.progress.attempts.length >= 20)) return '';
   setTimeout(() => { const b = $('#help-ok'); if (b) b.onclick = () => { s.helpSeen = true; persist(); render(); }; }, 0);
   return `<div class="card help"><h2>Comment ça marche</h2><ol>
     <li><strong>Suivez le plan du jour</strong>, juste en dessous : le gros bouton en couleur lance toujours la prochaine chose à faire.</li>
@@ -798,7 +852,7 @@ function mountReviewCard(q) {
   // un rappel compact reste au-dessus des onglets et y mène.
   let seen = false;
   const showGrades = (suggest) => {
-    $('#grade').innerHTML = `<div class="card gradebar"><div class="muted" style="margin-bottom:8px">Comment c’était ? <strong>En bleu : la note proposée</strong>${mode === 'qrc' ? ', d’après les éléments cochés' : ''} · sous chaque note, quand la question reviendra</div><div class="btnrow4">${GRADES.map((g) => `<button class="btn ${g.g === suggest ? 'primary' : ''}" data-g="${g.g}">${g.label}<small>${intervalLabel(card, g.g, q.id)}</small></button>`).join('')}</div></div>`;
+    $('#grade').innerHTML = `<div class="card gradebar"><div class="muted" style="margin-bottom:8px">Comment c’était ? <strong>La note proposée est surlignée</strong>${mode === 'qrc' ? ', d’après les éléments cochés' : ''} · sous chaque note, quand la question reviendra</div><div class="btnrow4">${GRADES.map((g) => `<button class="btn ${g.g === suggest ? 'primary' : ''}" data-g="${g.g}">${g.label}<small>${intervalLabel(card, g.g, q.id)}</small></button>`).join('')}</div></div>`;
     $('#grade').querySelectorAll('button[data-g]').forEach((b) => { b.onclick = () => gradeCurrent(q, Number(b.dataset.g), mode, res); });
     const peek = $('#grade-peek');
     if (peek && !seen) {
@@ -1327,7 +1381,7 @@ views.settings = () => {
     $('#s-gl').onchange = (e) => { s.glossary = e.target.checked; persistS(); };
     $('#s-timer').onchange = (e) => { s.gameTimer = e.target.value; persistS(); };
     $('#s-shorts').onchange = (e) => { s.shortsLimit = Number(e.target.value) || 0; persistS(); };
-    $('#s-look').onchange = (e) => { s.look = e.target.value; applyLook(); persistS(); };
+    $('#s-look').onchange = (e) => { s.look = e.target.value; applyLook(); persistS(); render(); };
     $('#s-theme').onchange = (e) => { document.documentElement.dataset.theme = e.target.value; try { localStorage.setItem('dec1.theme', e.target.value); } catch { /* ignore */ } };
     $('#export').onclick = exportProgress;
     $('#copy').onclick = async () => {
@@ -1966,7 +2020,7 @@ views.carriere = () => {
 // Points et niveau : calculés depuis toutes les statistiques (rétroactifs). « Aujourd'hui » = écart avec le total
 // relevé à la première ouverture du jour.
 // Bandeau de grade au-dessus des questions : les points gagnés depuis l'ouverture de la vue s'affichent en « +n ».
-function applyLook() { document.documentElement.dataset.look = state.progress?.settings?.look || 'bilan'; }
+function applyLook() { document.documentElement.dataset.look = state.progress?.settings?.look || 'bilan'; buildNav(); }
 function sessionStrip() {
   const lv = xpInfo();
   if (state.stripBase === undefined || state.stripView !== state.view) { state.stripBase = lv.info.xp; state.stripView = state.view; }
@@ -1979,10 +2033,25 @@ function xpInfo() {
   if (!pr.xpDay || pr.xpDay.day !== k) pr.xpDay = { day: k, start: total };
   return { ...cs, today: Math.max(0, total - pr.xpDay.start) };
 }
+// Bilan de la semaine : réponses par jour (7 derniers jours), total, examens, partage en texte.
+function weekCard() {
+  const st = state.progress.stats; const days = [];
+  for (let i = 6; i >= 0; i--) { const k = G.dayKey(Date.now() - i * DAY); days.push({ k, n: st.days[k] || 0, label: new Date(Date.now() - i * DAY).toLocaleDateString('fr-FR', { weekday: 'narrow' }) }); }
+  const total = days.reduce((a, d) => a + d.n, 0); const max = Math.max(1, ...days.map((d) => d.n));
+  const weekExams = st.exams.filter((e) => e.t >= Date.now() - 7 * DAY);
+  const best = weekExams.reduce((m, e) => Math.max(m, e.note), 0);
+  const active = days.filter((d) => d.n > 0).length;
+  setTimeout(() => { const b = $('#week-share'); if (b) b.onclick = async () => { const text = `DEC épreuve 1 · ma semaine : ${total} réponses sur ${active} jour${active > 1 ? 's' : ''}${weekExams.length ? `, ${weekExams.length} examen${weekExams.length > 1 ? 's' : ''} blanc${weekExams.length > 1 ? 's' : ''} (meilleur : ${best}/20)` : ''}.`; try { if (navigator.share) await navigator.share({ text }); else { await navigator.clipboard.writeText(text); toast('Bilan copié'); } } catch { /* annulé */ } }; }, 0);
+  return `<div class="card week"><h2>Ma semaine</h2>
+    <div class="week-bars">${days.map((d) => `<div class="week-day"><i style="height:${Math.round((d.n / max) * 100)}%"></i><span>${esc(d.label)}</span></div>`).join('')}</div>
+    <div class="g-stats week-stats"><span><b>${total}</b>réponses</span><span><b>${active}</b>jour${active > 1 ? 's' : ''} actif${active > 1 ? 's' : ''}</span><span><b>${weekExams.length ? `${best}` : '—'}</b>meilleur examen</span></div>
+    <button class="btn sm" id="week-share">${ic('external')} Partager</button></div>`;
+}
 function careerView() {
   const pr = state.progress; const lv = xpInfo();
   const vitrine = state.catalog.filter((b) => b.prop && pr.badges[b.id] && !b.hidden);
   return `<div class="card g-hero-card">${CR.heroHtml(lv.info, lv.readiness)}</div>
+    ${weekCard()}
     <div class="card">${CR.levelCardHtml(lv.info, { today: lv.today, conds: lv.conds, blocked: lv.blocked })}</div>
     <div class="card"><h2>Comment on avance</h2><p class="muted" style="margin:4px 0 0"><strong>Les points font avancer</strong> dans un grade : chaque réponse (+1, +2 si juste, jusqu’à 3 réponses et 3 réussites par question, le double sur une question difficile), chaque examen blanc (+20 et la note), chaque short, les records de série et les journées d’au moins 10 réponses. <strong>Les résultats font passer</strong> au grade suivant : annales vues, examens blancs, taux de réussite.</p></div>
     <div class="card"><h2>Le parcours</h2>${CR.timelineHtml(lv.info, pr.grades, lv.readiness)}</div>
@@ -2485,10 +2554,39 @@ views.ville = () => {
 const NAV = [
   ['home', ic('home'), 'Accueil'], ['review', ic('repeat'), 'Réviser'], ['train', ic('target'), 'Entraîner'], ['shorts', ic('clapper'), 'Shorts'], ['exam', ic('timer'), 'Examen'], ['carriere', ic('trophy'), 'Carrière'], ['fiches', ic('library'), 'Fiches'],
 ];
+const NAV_BILAN = [
+  ['home', ic('home'), 'Accueil'], ['review', ic('repeat'), 'Réviser'], ['train', ic('target'), 'Entraîner'], ['carriere', ic('trophy'), 'Carrière'], ['plus', ic('menu'), 'Plus'],
+];
+// Vues rangées sous « Plus » (apparence bilan) : l'onglet reste allumé quand on y est.
+const PLUS_VIEWS = new Set(['plus', 'shorts', 'exam', 'fiches', 'podcasts', 'ville', 'carte', 'stats', 'settings', 'glossaire', 'carnet']);
+function buildNav() {
+  const nav = $('nav.bottom'); if (!nav) return;
+  const list = isBilan() ? NAV_BILAN : NAV;
+  nav.innerHTML = list.map(([v, ico, label]) => `<button data-view="${v}"><span class="ico" aria-hidden="true">${ico}</span>${label}</button>`).join('');
+  nav.querySelectorAll('button').forEach((b) => { b.onclick = () => go(b.dataset.view); });
+}
+views.plus = () => {
+  const pr = state.progress;
+  const rows = [
+    ['shorts', ic('clapper'), 'Shorts', 'Une notion en 30 secondes, puis une question'],
+    ['exam', ic('timer'), 'Examen blanc', '20 questions, 60 minutes, en conditions'],
+    ['fiches', ic('library'), 'Fiches et schémas', `${state.fiches.filter((f) => P.isRead(pr.plan, f.file)).length} / ${state.fiches.length} vues`],
+    ['podcasts', ic('headphones'), 'Podcasts', 'Les résumés audio du parcours'],
+    ['ville', ic('landmark'), 'Ville des institutions', 'Qui siège où, qui fait quoi'],
+    ['carte', ic('brain'), 'Carte des notions', 'Les sous-thèmes, EC face au CAC'],
+    ['glossaire', ic('book'), 'Glossaire', 'Les termes clés'],
+    ['carnet', ic('bookmark'), 'Carnet d’erreurs', 'Ce que vous savez ne pas avoir retenu'],
+    ['stats', ic('trending'), 'Statistiques', 'Niveau estimé, réussite par thème'],
+    ['settings', ic('settings'), 'Réglages', 'Date de l’examen, apparence, sauvegarde'],
+  ];
+  return `<div class="plus">${rows.map(([v, i, t, sub]) => `<button class="plus-row" data-go="${v}"><span class="plus-row__i">${i}</span><span class="plus-row__t"><strong>${esc(t)}</strong><span>${esc(sub)}</span></span><span class="plus-row__c">›</span></button>`).join('')}</div>`;
+};
 function render() {
   const main = $('#main');
   main.innerHTML = views[state.view]();
-  document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view || (state.view === 'plan' && b.dataset.view === 'home') || (state.view === 'jeux' && b.dataset.view === 'train') || ((state.view === 'podcasts' || state.view === 'ville' || state.view === 'carte') && b.dataset.view === 'fiches')));
+  document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view || (state.view === 'plan' && b.dataset.view === 'home') || (state.view === 'jeux' && b.dataset.view === 'train') || ((state.view === 'podcasts' || state.view === 'ville' || state.view === 'carte') && b.dataset.view === 'fiches') || (b.dataset.view === 'plus' && PLUS_VIEWS.has(state.view))));
+  // Transition d'écran (apparence bilan) : le contenu arrive en fondu, relancé à chaque rendu
+  main.classList.remove('g-page'); void main.offsetWidth; main.classList.add('g-page');
   pcMini();
   updateStreakBadge();
   main.querySelectorAll('[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
@@ -2608,9 +2706,7 @@ async function init() {
   if (store.STORE_VERSION !== STORE_EXPECTED && await recoverFromStaleCache()) return;
   try { const th = localStorage.getItem('dec1.theme'); if (th) document.documentElement.dataset.theme = th; } catch { /* ignore */ }
   document.documentElement.dataset.look = 'bilan';
-  const nav = $('nav.bottom');
-  nav.innerHTML = NAV.map(([v, ico, label]) => `<button data-view="${v}"><span class="ico" aria-hidden="true">${ico}</span>${label}</button>`).join('');
-  nav.querySelectorAll('button').forEach((b) => { b.onclick = () => go(b.dataset.view); });
+  buildNav();
   $('#settingsBtn').onclick = () => go('settings');
   $('#glossBtn').onclick = () => go('glossaire');
   try { history.replaceState({ v: state.view }, ''); } catch { /* ignore */ }

@@ -286,18 +286,18 @@ La carrière avance **aux points**, calculés à tout moment depuis l'ensemble d
 | Journée d'au moins 10 réponses | +10 |
 | Short répondu | +2, +1 par boîte gagnée (jusqu'à 3) |
 
-Les points font avancer **dans** un grade ; les **résultats** font franchir le suivant (grade = le plus bas des deux). Par question, 3 réponses et 3 réussites au plus sont comptées : le volume seul ne mène nulle part.
+Les points font avancer **dans** un grade ; les **résultats** font franchir le suivant (grade = le plus bas des deux). Par question, 3 réponses et 3 réussites au plus sont comptées : le volume seul ne mène nulle part. Seuils recalibrés le 7 novembre 2026 sur un parcours complet (3 500 à 4 000 points) ; quand les points dépassent le palier, la barre affiche l'avancement des résultats exigés.
 
 | # | Grade | Seuil de points | Résultats exigés | Décor |
 |---|---|---|---|---|
 | 1 | **Expert-comptable stagiaire, 1re année** | départ | — | Open space, poste partagé |
-| 2 | **Stagiaire, 2e année** | 50 pts | 15 % des annales vues | Open space, poste attitré |
-| 3 | **Stagiaire, 3e année** | 150 pts | 30 % vues | Bureau partagé à deux |
-| 4 | **Mémorialiste, candidat au DEC** | 300 pts | 50 % vues, un examen blanc terminé | Tableau blanc couvert de schémas |
-| 5 | **Diplômé d'expertise comptable** | 500 pts | 65 % vues, un examen blanc ≥ 10 | Bureau personnel, fenêtre |
-| 6 | **Expert-comptable inscrit au tableau** | 750 pts | 80 % vues, examen ≥ 12, réussite ≥ 65 % | Bibliothèque, médaille de l'Ordre |
-| 7 | **Commissaire aux comptes** | 1 050 pts | 90 % vues, examen ≥ 14, réussite ≥ 70 % | Porte vitrée, mallette d'audit |
-| 8 | **Expert-comptable installé** | 1 400 pts | 100 % vues, examen ≥ 16, réussite ≥ 80 % | Cabinet, plaque sur la porte |
+| 2 | **Stagiaire, 2e année** | 200 pts | 15 % des annales vues | Open space, poste attitré |
+| 3 | **Stagiaire, 3e année** | 500 pts | 30 % vues | Bureau partagé à deux |
+| 4 | **Mémorialiste, candidat au DEC** | 900 pts | 50 % vues, un examen blanc terminé | Tableau blanc couvert de schémas |
+| 5 | **Diplômé d'expertise comptable** | 1 400 pts | 65 % vues, un examen blanc ≥ 10 | Bureau personnel, fenêtre |
+| 6 | **Expert-comptable inscrit au tableau** | 2 000 pts | 80 % vues, examen ≥ 12, réussite ≥ 65 % | Bibliothèque, médaille de l'Ordre |
+| 7 | **Commissaire aux comptes** | 2 700 pts | 90 % vues, examen ≥ 14, réussite ≥ 70 % | Porte vitrée, mallette d'audit |
+| 8 | **Expert-comptable installé** | 3 600 pts | 100 % vues, examen ≥ 16, réussite ≥ 80 % | Cabinet, plaque sur la porte |
 
 Historique : la première version (23 octobre 2026) débloquait les grades par combinaisons de badges (« Deuxième lecture », thèmes maîtrisés) ; elle bloquait au premier grade. Revue le 7 novembre 2026 : points rétroactifs, les badges restent une collection à côté et ne conditionnent plus la carrière. Les podcasts sont sortis de la gamification (famille « Écoute » supprimée).
 
