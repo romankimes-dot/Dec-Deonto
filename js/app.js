@@ -22,6 +22,7 @@ import { compositionHtml, COMPO_CSS } from './ville3d.js';
 import { startMaquette, MAQUETTE_CSS } from './maquette.js';
 import { planHtml, PLAN_CSS } from './villeplan.js';
 import * as CA from './carte.js';
+import * as CR from './career.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -164,6 +165,7 @@ function answer(id, ok, mode, { defer = false, t = Date.now(), conf = null, pick
   if (conf !== null) att.conf = conf;
   if (Number.isInteger(pick)) att.pick = pick; // QCM : proposition choisie (index d'origine), pour la confusion EC / CAC
   if (typeof navigator !== 'undefined' && navigator.onLine === false) att.off = 1;
+  const ms = takeQMs(); if (ms) att.ms = ms; // temps passé sur la question (minuteur de 3 minutes)
   store.pushAttempt(state.progress, att);
   G.applyAnswer(state.progress.stats, att, state.gctx);
   if (!defer) checkBadges();
@@ -171,6 +173,7 @@ function answer(id, ok, mode, { defer = false, t = Date.now(), conf = null, pick
 }
 function checkBadges() {
   const fresh = G.evaluate(state.progress, state.catalog, state.gctx, Date.now());
+  if (fresh.grades.length > 1) fresh.grades.splice(0, fresh.grades.length - 1); // rattrapage : on fête le plus haut
   persist();
   // Mode concentration : badges et souvenirs s'annoncent par un message ; seuls les grades gardent leur animation.
   if (state.progress.settings.focus) {
@@ -224,7 +227,7 @@ function nextCelebration() {
   const close = () => { box.classList.remove('show'); focusBack(box); state.celebrating = false; setTimeout(nextCelebration, 250); };
   let html = '';
   if (c.type === 'grade') {
-    html = `<div class="cel-grade"><div class="cel-scene">${sceneFor(c.g.n)}</div><div class="cel-ribbon">Nouveau grade</div><h2>${esc(c.g.name)}</h2><p class="muted">Votre bureau a changé. Touchez pour continuer.</p></div>`;
+    html = CR.levelUpHtml(c.g.n);
     try { navigator.vibrate?.([60, 40, 120]); } catch { /* ignore */ }
   } else if (c.type === 'anecdote') {
     const d = new Date(state.progress.badges[c.b.id] || Date.now()).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -297,13 +300,37 @@ function intervalLabel(card, g, id) {
 }
 
 // ---------- Rendu commun d'une question ----------
-function qHeader(q) {
+function qHeader(q, { timer = false } = {}) {
   const conf = q.confidence === 'low' ? '<span class="badge warn">à vérifier</span>' : q.confidence === 'medium' ? '<span class="badge">confiance moyenne</span>' : '';
   const sib = siblings(q.id).length;
   return `<div class="row" style="justify-content:space-between">
     <div class="row" style="gap:6px"><span class="badge ${q.profession.toLowerCase()}">${q.profession}</span><span class="badge">${esc(THEMES[q.theme])}</span>${sib ? `<span class="badge rec" title="Notion posée à plusieurs sessions">${ic('repeat')} posée ${sib + 1}×</span>` : ''}${state.progress.settings.showLowConfidence ? conf : ''}</div>
-    <span class="muted">DEC ${esc(q.sessionLabel)} · Q${q.n}</span></div>`;
+    <span class="row" style="gap:6px;flex-wrap:nowrap"><span class="muted">DEC ${esc(q.sessionLabel)} · Q${q.n}</span>${timer ? '<span class="qtimer" aria-label="Temps restant sur la question">3:00</span>' : ''}</span></div>`;
 }
+// Minuteur par question : 3 minutes, le budget de l'épreuve (20 questions en 1 h). Il démarre à l'affichage,
+// s'arrête à la réponse (QCM) ou à la correction (QRC) et affiche alors le temps mis ; le temps est gardé dans l'historique.
+const Q_BUDGET = 3 * 60 * 1000;
+const qTimer = { t0: 0, iv: null, el: null, ms: 0 };
+const fmtQ = (ms) => { const s = Math.round(Math.abs(ms) / 1000); return `${ms < 0 ? "−" : ""}${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; };
+function startQTimer(container) {
+  stopQTimer();
+  const el = $('.qtimer', container); if (!el) return;
+  qTimer.el = el; qTimer.t0 = Date.now(); qTimer.ms = 0;
+  const tick = () => {
+    const left = Q_BUDGET - (Date.now() - qTimer.t0);
+    el.textContent = fmtQ(left);
+    el.classList.toggle('warn', left <= 60000 && left > 0); el.classList.toggle('over', left <= 0);
+  };
+  tick(); qTimer.iv = setInterval(tick, 500);
+}
+function stopQTimer() {
+  if (qTimer.iv) { clearInterval(qTimer.iv); qTimer.iv = null; }
+  if (!qTimer.t0) return;
+  qTimer.ms = Date.now() - qTimer.t0; qTimer.t0 = 0;
+  const el = qTimer.el; qTimer.el = null;
+  if (el && el.isConnected) { el.classList.remove('warn'); el.classList.toggle('over', qTimer.ms > Q_BUDGET); el.classList.add('done'); el.textContent = `${qTimer.ms > Q_BUDGET ? 'Répondu en' : 'En'} ${fmtQ(qTimer.ms)}`; }
+}
+const takeQMs = () => { const ms = qTimer.ms; qTimer.ms = 0; return ms; };
 function qExplain(q) {
   const sib = siblings(q.id);
   return `<div class="explain"><strong>Explication.</strong> ${esc(q.explanation)}${q.update_note ? `<div class="muted" style="margin-top:6px">${ic('alert')} ${esc(q.update_note)}</div>` : ''}</div>
@@ -336,11 +363,13 @@ const hcAlert = () => '<div class="hc">' + ic('alert') + ' <strong>Erreur commis
 function renderQcm(q, container, onAnswered, { hide = false, askConf = false } = {}) {
   const order = shuffle([0, 1, 2, 3], q.id);
   const qt = q.qcm.question || q.question;
-  container.innerHTML = `${qHeader(q)}<div class="q">${esc(qt)}</div>${hide ? '<div class="recall"><p class="muted">' + ic('brain') + ' Formulez votre réponse de tête, puis comparez-la aux propositions.</p><button class="btn primary show-choices">Afficher les propositions</button></div>' : ''}<div class="choices ${hide ? 'hidden' : ''}"></div><div class="pending"></div><div class="after"></div>`;
+  container.innerHTML = `${qHeader(q, { timer: true })}<div class="q">${esc(qt)}</div>${hide ? '<div class="recall"><p class="muted">' + ic('brain') + ' Formulez votre réponse de tête, puis comparez-la aux propositions.</p><button class="btn primary show-choices">Afficher les propositions</button></div>' : ''}<div class="choices ${hide ? 'hidden' : ''}"></div><div class="pending"></div><div class="after"></div>`;
   const box = $('.choices', container);
   if (hide) $('.show-choices', container).onclick = () => { $('.recall', container).remove(); box.classList.remove('hidden'); };
   let chosen = null;
+  startQTimer(container);
   const reveal = (conf) => {
+    stopQTimer();
     const ok = order[chosen] === q.qcm.answer;
     [...box.children].forEach((c, j) => {
       c.disabled = true; c.classList.remove('sel');
@@ -373,10 +402,12 @@ function renderQcm(q, container, onAnswered, { hide = false, askConf = false } =
 // QRC. onRevealed(conf) à l'affichage du corrigé ; onCheck(ratio, conf) à chaque élément coché ou décoché.
 function renderQrc(q, container, onRevealed, onCheck = () => {}, { askConf = false } = {}) {
   const qt = q.qrc.question || q.question;
-  container.innerHTML = `${qHeader(q)}<div class="q">${esc(qt)}</div>
+  container.innerHTML = `${qHeader(q, { timer: true })}<div class="q">${esc(qt)}</div>
     <textarea placeholder="Votre réponse (facultatif : vous pouvez répondre de tête)…"></textarea>
     <div style="margin-top:10px" class="reveal-box">${askConf ? certRow('qrc', 'Voir la réponse. Vous êtes…') : '<button class="btn primary reveal">Voir la réponse</button>'}</div><div class="after"></div>`;
+  startQTimer(container);
   const reveal = (conf) => {
+    stopQTimer();
     $('.reveal-box', container).innerHTML = '';
     // Réponse tapée : mots-clés des éléments attendus surlignés ; seuls les éléments retrouvés sont pré-cochés.
     const typed = $('textarea', container).value.trim();
@@ -418,10 +449,7 @@ views.home = () => {
   const pr = state.progress;
   const lastExam = pr.exams[pr.exams.length - 1];
   const d = daysToExam();
-  const grade = G.currentGrade(pr);
-  const next = G.GRADES[grade.n];
-  const has = (id) => !!pr.badges[id];
-  const conds = next ? G.gradeConditions(next.n, has, pr.stats, state.gctx) : [];
+  const lv = xpInfo();
   const nb = G.nextBadges(state.catalog, pr.stats, pr.badges, 3);
   // Annales vues : questions de la banque déjà répondues (même mesure que la fiabilité du niveau estimé).
   const cov = Math.round((qs.filter((q) => pr.stats.q[q.id]?.seen > 0).length / Math.max(1, qs.length)) * 100);
@@ -435,15 +463,14 @@ views.home = () => {
   </div>
   ${helpCard()}
   ${dayCard()}
+  <div class="card career-card paper" data-go="carriere">
+    ${CR.levelCardHtml(lv.info, { today: lv.today, compact: true })}
+    <div class="muted" style="margin-top:8px;text-align:right">Ma carrière ›</div>
+  </div>
   ${carnetCard()}
   ${podcastsLink()}
   ${gamesCard()}
   ${backupCard()}
-  <div class="card career-card" data-go="carriere">
-    <div class="scene-thumb">${sceneFor(grade.n)}</div>
-    <div class="row" style="justify-content:space-between;margin-top:8px"><div><div class="muted">Grade ${grade.n}/8</div><strong>${esc(grade.name)}</strong></div><span class="muted">Ma carrière ›</span></div>
-    ${next ? `<div class="muted" style="margin-top:6px">Prochain grade : <strong>${esc(next.name)}</strong></div><ul class="conds">${conds.map((c) => `<li class="${c.ok ? 'ok' : ''}">${c.ok ? ic('check') : ic('circle')} ${esc(c.label)}</li>`).join('')}</ul>` : '<div class="muted">Carrière complète. Bravo.</div>'}
-  </div>
   ${!pr.settings.focus && nb.length ? `<div class="card"><h2>Presque débloqués</h2>${nb.map(({ b, p }) => `<div class="nb">${badgeIcon(b)}<div style="flex:1"><div><strong>${esc(b.name)}</strong></div><div class="progress"><div style="width:${Math.round((p.cur / p.max) * 100)}%"></div></div><div class="muted">${p.cur}/${p.max} · ${esc(b.cond)}</div></div></div>`).join('')}</div>` : ''}
   ${lastExam ? `<div class="card"><h2>Dernier examen blanc</h2><div class="row"><span class="big" style="font-size:28px">${lastExam.note}/20</span><span class="muted">${lastExam.mode.toUpperCase()} · ${new Date(lastExam.t).toLocaleDateString('fr-FR')}</span></div>
     <div class="muted">EC ${pct(lastExam.byProf.EC)} · CAC ${pct(lastExam.byProf.CAC)}</div></div>` : ''}
@@ -1954,20 +1981,23 @@ views.carriere = () => {
   const tabs = `<div class="tabs">${[['carriere', 'Ma carrière'], ['palais', ic('landmark') + ' Palais'], ['collection', `Collection ${got}/${total}`], ['souvenirs', 'Souvenirs']].map(([k, l]) => `<button class="chip ${tab === k ? 'on' : ''}" data-ctab="${k}">${l}</button>`).join('')}</div>`;
   return tabs + (tab === 'collection' ? collectionView() : tab === 'souvenirs' ? souvenirsView() : tab === 'palais' ? palaisView() : careerView());
 };
+// Points et niveau : calculés depuis toutes les statistiques (rétroactifs). « Aujourd'hui » = écart avec le total
+// relevé à la première ouverture du jour.
+function xpInfo() {
+  const pr = state.progress;
+  const { total, parts } = G.xpOf(pr.stats, state.gctx, pr.drills);
+  const k = todayKey();
+  if (!pr.xpDay || pr.xpDay.day !== k) pr.xpDay = { day: k, start: total };
+  return { info: G.levelInfo(total), parts, today: Math.max(0, total - pr.xpDay.start) };
+}
 function careerView() {
-  const pr = state.progress; const cur = G.currentGrade(pr);
-  const has = (id) => !!pr.badges[id];
-  return `<div class="card"><div class="scene-big">${sceneFor(cur.n)}</div>
-    <div class="muted" style="margin-top:6px">Touchez un objet du bureau pour voir le badge qui l’a apporté.</div></div>
-    <div class="timeline">${G.GRADES.map((g) => {
-      const date = pr.grades[g.n];
-      const conds = G.gradeConditions(g.n, has, pr.stats, state.gctx);
-      return `<div class="tl-item ${date ? 'done' : 'locked'} ${g.n === cur.n ? 'current' : ''}">
-        <div class="tl-dot">${g.n}</div>
-        <div class="tl-body">${g.n === cur.n ? '' : `<div class="tl-scene">${sceneFor(g.n, date ? {} : { badgeProps: [] })}</div>`}
-          <strong>${esc(g.name)}</strong><div class="muted">${date ? `Atteint le ${new Date(date).toLocaleDateString('fr-FR')}` : 'À débloquer :'}</div>
-          ${date ? '' : `<ul class="conds">${conds.map((c) => `<li class="${c.ok ? 'ok' : ''}">${c.ok ? ic('check') : ic('circle')} ${esc(c.label)}</li>`).join('')}</ul>`}</div></div>`;
-    }).join('')}</div>`;
+  const pr = state.progress; const lv = xpInfo();
+  const vitrine = state.catalog.filter((b) => b.prop && pr.badges[b.id] && !b.hidden);
+  return `<div class="card paper">${CR.levelCardHtml(lv.info, { today: lv.today, parts: lv.parts })}</div>
+    <div class="card"><h2>Comment on avance</h2><p class="muted" style="margin:4px 0 0">Chaque réponse compte (+1, +2 si elle est juste, le double sur une question difficile), chaque examen blanc (+20 et la note), chaque short (+2), les records de série et les journées d’au moins 10 réponses. Rien ne se perd : tout ce que vous avez déjà fait est compté.</p></div>
+    <div class="card"><h2>Le parcours</h2>${CR.timelineHtml(lv.info, pr.grades)}</div>
+    <div class="card"><h2>Vitrine · ${vitrine.length}</h2><p class="muted" style="margin:4px 0 10px">Les objets gagnés avec les badges. Touchez-en un pour voir le badge.</p>
+      ${vitrine.length ? `<div class="vitrine">${vitrine.map((b) => `<button class="vit" data-badge-card="${b.id}" title="${esc(b.name)}">${badgeIcon(b)}<span>${esc(b.name)}</span></button>`).join('')}</div>` : '<p class="muted">Encore vide : le premier badge y posera son objet.</p>'}</div>`;
 }
 function badgeCard(b) {
   const pr = state.progress; const got = pr.badges[b.id]; const p = G.progressOf(b, pr.stats);
@@ -2128,9 +2158,6 @@ function pcSave(force) {
   state.progress.podcasts[id] = next; persist();
   if (next.done && !prev?.done) {
     toast(`Épisode ${ep.n} écouté`, 'headphones');
-    G.applyListens(state.progress.stats, state.progress.podcasts);
-    if (a.playbackRate >= 1.5) state.progress.stats.flags.pcRapide = true;
-    checkBadges();
     if (state.view === 'podcasts') pcRefreshList();
   }
 }
@@ -2528,7 +2555,6 @@ function initGamify() {
     persist();
   }
   G.applyOpen(pr.stats, Date.now(), state.gctx);
-  G.applyListens(pr.stats, pr.podcasts);
   checkBadges();
 }
 
@@ -2581,7 +2607,7 @@ async function recoverFromStaleCache() {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
     await Promise.all((await caches.keys()).filter((k) => k !== PC.AUDIO_CACHE).map((k) => caches.delete(k))); // épisodes téléchargés gardés
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './js/sync.js', './js/ville.js', './js/ville3d.js', './js/villeplan.js', './js/maquette.js', './js/vendor/three.module.min.js', './sw.js']
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/career.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './js/sync.js', './js/ville.js', './js/ville3d.js', './js/villeplan.js', './js/maquette.js', './js/vendor/three.module.min.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();

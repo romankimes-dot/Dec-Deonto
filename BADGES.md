@@ -276,18 +276,28 @@ Affichés « ??? » dans la collection jusqu'au déblocage, avec un indice d'une
 
 La carrière suit le parcours réel (section 0). Un grade se débloque par une **combinaison de badges et de maîtrise**, jamais par le seul volume de réponses.
 
-| # | Grade | Condition de déblocage | Décor | Objets ajoutés au décor |
-|---|---|---|---|---|
-| 1 | **Expert-comptable stagiaire, 1re année** | au départ | Open space, poste partagé, écran unique | Diplôme DSCG punaisé |
-| 2 | **Stagiaire, 2e année** | « Le quart du cabinet » + 3 anecdotes du stage (A1 à A17) + « Main chaude » (série de 5) | Open space, poste attitré avec plante | Badge d'accès, planning de formation |
-| 3 | **Stagiaire, 3e année** | « Mi-parcours » + 8 anecdotes du stage + 1 « Deuxième lecture » (un thème vu 2 jours différents) | Bureau partagé à deux | Cadre « Entretien de 2e année » |
-| 4 | **Mémorialiste, candidat au DEC** | « Les trois quarts » + « Sans réserve » (série 10) + 1 « Dossier assaini » + un examen blanc ≥ 10 | Bureau partagé, tableau blanc couvert de schémas | Attestation de fin de stage encadrée |
-| 5 | **Diplômé d'expertise comptable** | « J'ai tout vu » + 1 thème maîtrisé + un examen blanc ≥ 12 | Bureau personnel, fenêtre | Diplôme DEC au mur |
-| 6 | **Expert-comptable inscrit au tableau** | A19 + A20 + 3 thèmes maîtrisés | Bureau personnel, bibliothèque | Certificat d'inscription, médaille de l'Ordre |
-| 7 | **Commissaire aux comptes** | A44 + A45 + 2 thèmes CAC maîtrisés + un examen blanc ≥ 14 | Bureau personnel, porte vitrée | Carte professionnelle, Code de commerce rouge, mallette d'audit |
-| 8 | **Expert-comptable installé** | « Bloc EC maîtrisé » ou « Bloc CAC maîtrisé » + 6 thèmes maîtrisés + A23 + A24 + un examen blanc ≥ 16 | **Cabinet** avec accueil, salle de réunion, **plaque sur la porte** | Plaque gravée à votre nom, machine à café, trophées |
+La carrière avance **aux points**, calculés à tout moment depuis l'ensemble des statistiques : rétroactifs (tout ce qui a déjà été fait compte le jour de la mise à jour) et jamais perdus. Un grade atteint reste acquis.
 
-Échelle revue le 7 novembre 2026 : la première version exigeait une « Deuxième lecture » (un thème entier vu deux jours différents, jusqu'à 79 questions) dès la 2e année et deux thèmes maîtrisés dès la 3e, ce qui bloquait au premier grade. Les grades 2 à 4 ne dépendent plus que de badges communs ou rares ; la maîtrise des thèmes n'intervient qu'à partir du diplôme.
+| Source | Points |
+|---|---|
+| Réponse à une question (tous modes) | +1, +1 de plus si juste ; doublé pour une question difficile |
+| Examen blanc compté | +20, plus la note sur 20 |
+| Record de série (5 / 10 / 20 / 30 / 50) | +5 / +10 / +20 / +30 / +50, cumulés |
+| Journée d'au moins 10 réponses | +10 |
+| Short répondu | +2, +1 par boîte gagnée (jusqu'à 3) |
+
+| # | Grade | Seuil | Décor |
+|---|---|---|---|
+| 1 | **Expert-comptable stagiaire, 1re année** | départ | Open space, poste partagé |
+| 2 | **Stagiaire, 2e année** | 50 pts | Open space, poste attitré |
+| 3 | **Stagiaire, 3e année** | 150 pts | Bureau partagé à deux |
+| 4 | **Mémorialiste, candidat au DEC** | 300 pts | Tableau blanc couvert de schémas |
+| 5 | **Diplômé d'expertise comptable** | 500 pts | Bureau personnel, fenêtre |
+| 6 | **Expert-comptable inscrit au tableau** | 750 pts | Bibliothèque, médaille de l'Ordre |
+| 7 | **Commissaire aux comptes** | 1 050 pts | Porte vitrée, mallette d'audit |
+| 8 | **Expert-comptable installé** | 1 400 pts | Cabinet, plaque sur la porte |
+
+Historique : la première version (23 octobre 2026) débloquait les grades par combinaisons de badges (« Deuxième lecture », thèmes maîtrisés) ; elle bloquait au premier grade. Revue le 7 novembre 2026 : points rétroactifs, les badges restent une collection à côté et ne conditionnent plus la carrière. Les podcasts sont sortis de la gamification (famille « Écoute » supprimée).
 
 ### Les scènes SVG
 
@@ -299,8 +309,9 @@ La carrière suit le parcours réel (section 0). Un grade se débloque par une *
 
 ### Écran « Ma carrière »
 
-- Frise verticale des 8 grades : scène débloquée en couleur avec sa date, scènes suivantes en silhouette floutée, avec la condition à remplir.
-- La scène du grade actuel est en grand, interactive : toucher un objet ouvre le badge correspondant.
+- Carte de niveau dans le style des shorts (papier, personnage plat, tampon « Niveau n ») : grade, barre de points vers le suivant, points du jour, répartition par source.
+- Frise verticale des 8 grades : acquis datés, grade courant avec sa barre, suivants avec leur seuil.
+- Vitrine : les objets gagnés par les badges, en grille ; toucher ouvre le badge. Le dessin du bureau reste utilisé par le palais de mémoire.
 
 ### Animations
 

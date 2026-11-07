@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   buildContext, buildCatalog, emptyStats, applyAnswer, applyExam, applyOpen, rebuildStats,
-  evaluate, progressOf, currentGrade, gradeConditions, themeMastery, dayKey, examInfo, applyListens, mergeStats,
+  evaluate, progressOf, currentGrade, themeMastery, dayKey, examInfo, mergeStats, xpOf, levelOf, levelInfo, LEVELS, GRADES,
 } from '../js/gamify.js';
 import { ANECDOTES, QBADGES } from '../js/catalog-data.js';
 
@@ -31,7 +31,7 @@ function sim() {
 test('catalogue : ids uniques, familles et raretés valides, toutes les questions citées existent', () => {
   assert.equal(new Set(catalog.map((b) => b.id)).size, catalog.length);
   for (const b of catalog) {
-    assert.ok(['couverture', 'series', 'maitrise', 'repassage', 'anecdotes', 'questions', 'ecoute', 'caches'].includes(b.family), b.id);
+    assert.ok(['couverture', 'series', 'maitrise', 'repassage', 'anecdotes', 'questions', 'caches'].includes(b.family), b.id);
     assert.ok(['commun', 'rare', 'epique', 'legendaire'].includes(b.rarity), b.id);
     for (const id of b.ids || []) assert.ok(ctx.known.has(id), `${b.id} → ${id}`);
   }
@@ -231,45 +231,47 @@ test('cachés liés aux examens : mention, rattrapage, chrono, CAC parfaite', ()
   assert.equal(p('hid-mention'), true);
 });
 
-test('grades : progression séquentielle, par badges et maîtrise, pas par volume', () => {
-  const progress = { attempts: [], exams: [], stats: emptyStats() };
-  evaluate(progress, catalog, ctx, T0);
-  assert.equal(currentGrade(progress).n, 1);
-  // Gros volume de réponses fausses : aucun grade gagné
-  for (let i = 0; i < 2000; i++) applyAnswer(progress.stats, { id: ctx.all[i % ctx.all.length], ok: false, t: T0 + i }, ctx);
-  evaluate(progress, catalog, ctx, T0 + 3000);
-  assert.equal(currentGrade(progress).n, 1);
-  // Tout réussi trois jours de suite + examens ≥ 16 → dernier grade
-  const p2 = { attempts: [], exams: [], stats: emptyStats() };
-  for (let d = 1; d <= 3; d++) for (const id of ctx.all) applyAnswer(p2.stats, { id, ok: true, t: D(2026, 10, d) }, ctx);
-  applyExam(p2.stats, { t: D(2026, 10, 3, 20), mode: 'qcm', note: 17, durationMs: 3600000, byProf: {} });
-  const fresh = evaluate(p2, catalog, ctx, D(2026, 10, 3, 21));
-  assert.equal(currentGrade(p2).n, 8);
-  assert.equal(fresh.grades.length, 7);
-  // Conditions décrites et toutes remplies
-  const has = (id) => !!p2.badges[id];
-  for (let n = 1; n <= 8; n++) assert.ok(gradeConditions(n, has, p2.stats, ctx).every((c) => c.ok), `grade ${n}`);
+test('points : chaque source compte, calcul rétroactif depuis les statistiques seules', () => {
+  const st = emptyStats();
+  assert.equal(xpOf(st, ctx).total, 0);
+  const easy = ctx.all.find((id) => !ctx.hardList.has(id)); const hard = [...ctx.hardList][0];
+  applyAnswer(st, { id: easy, ok: false, t: T0 }, ctx); // +1
+  applyAnswer(st, { id: easy, ok: true, t: T0 + 1 }, ctx); // +2
+  applyAnswer(st, { id: hard, ok: true, t: T0 + 2 }, ctx); // +4 (difficile)
+  assert.deepEqual(xpOf(st, ctx).parts.questions, 7);
+  applyExam(st, { t: T0 + 10, mode: 'qcm', note: 13, durationMs: 3600000, byProf: {} });
+  assert.equal(xpOf(st, ctx).parts.exams, 33);
+  st.streak.best = 12; assert.equal(xpOf(st, ctx).parts.series, 15);
+  st.days[dayKey(T0)] = 10; assert.equal(xpOf(st, ctx).parts.days, 10);
+  const drills = { 'sht:cadre-01': { box: 2, last: T0, due: T0 }, 'sht:cadre-02': { box: 5, last: T0, due: T0 }, 'pal:x': { box: 3 } };
+  assert.equal(xpOf(st, ctx, drills).parts.shorts, 4 + 5);
+  assert.equal(xpOf(st, ctx, drills).total, 7 + 33 + 15 + 10 + 9);
 });
 
-test('grades : la 2e année vient sans relecture ; la 3e exige une « Deuxième lecture » même avec 50 % de la banque vue', () => {
-  const p = { stats: emptyStats() };
-  const excluded = new Set(ctx.themes['EC:controle_qualite'].ids);
-  const half = ctx.all.filter((id) => !excluded.has(id)).slice(0, Math.ceil(ctx.all.length / 2));
-  for (const id of half) applyAnswer(p.stats, { id, ok: false, t: T0 }, ctx);
-  for (const a of catalog.filter((b) => b.family === 'anecdotes' && b.part === 'stage')) for (const id of a.ids) applyAnswer(p.stats, { id, ok: true, t: T0 + 1 }, ctx);
-  evaluate(p, catalog, ctx, T0 + DAY);
-  assert.equal(p.badges['cov-50'] > 0, true);
-  assert.equal(p.badges['ser-5'] > 0, true);
-  assert.equal(currentGrade(p).n, 2, 'quart vu, 3 anecdotes, série de 5 : 2e année');
-  assert.equal(gradeConditions(3, (id) => !!p.badges[id], p.stats, ctx).filter((c) => !c.ok).length, 1, 'il ne manque que la relecture');
-  // Le plus petit thème vu deux jours différents suffit (aucune maîtrise exigée)
-  for (const d of [2, 3]) for (const id of ctx.themes['EC:controle_qualite'].ids) applyAnswer(p.stats, { id, ok: false, t: T0 + DAY * d }, ctx);
-  evaluate(p, catalog, ctx, T0 + DAY * 4);
-  assert.equal(p.badges['rep-lect-EC-controle_qualite'] > 0, true);
-  assert.equal(currentGrade(p).n, 3);
-  // Aucun grade avant le diplôme (5) ne dépend d'un badge épique ou légendaire
-  const epic = new Set(catalog.filter((b) => b.rarity === 'epique' || b.rarity === 'legendaire').map((b) => b.name));
-  for (let n = 2; n <= 4; n++) for (const c of gradeConditions(n, () => false, emptyStats(), ctx)) for (const name of epic) assert.ok(!c.label.includes(`« ${name} »`), `grade ${n} : ${c.label}`);
+test('niveaux : seuils croissants, 8 grades, position dans le palier', () => {
+  assert.equal(LEVELS.length, GRADES.length);
+  for (let i = 1; i < LEVELS.length; i++) assert.ok(LEVELS[i] > LEVELS[i - 1]);
+  assert.equal(levelOf(0), 1); assert.equal(levelOf(LEVELS[1]), 2); assert.equal(levelOf(LEVELS[1] - 1), 1); assert.equal(levelOf(99999), 8);
+  const li = levelInfo(LEVELS[2] + 10);
+  assert.equal(li.n, 3); assert.equal(li.left, LEVELS[3] - LEVELS[2] - 10); assert.ok(li.pct > 0 && li.pct < 1);
+  assert.equal(levelInfo(99999).to, null);
+});
+
+test('grades : aux points, rétroactifs, jamais repris ; un seul passage d’un coup si plusieurs niveaux sont franchis', () => {
+  const progress = { attempts: [], exams: [], stats: emptyStats(), drills: {} };
+  evaluate(progress, catalog, ctx, T0);
+  assert.equal(currentGrade(progress).n, 1);
+  // Une semaine de travail déjà faite : tout compte d'un coup
+  for (let d = 1; d <= 3; d++) for (const id of ctx.all) applyAnswer(progress.stats, { id, ok: d > 1, t: D(2026, 10, d) }, ctx);
+  applyExam(progress.stats, { t: D(2026, 10, 3, 20), mode: 'qcm', note: 17, durationMs: 3600000, byProf: {} });
+  const fresh = evaluate(progress, catalog, ctx, D(2026, 10, 3, 21));
+  assert.equal(currentGrade(progress).n, 8);
+  assert.equal(fresh.grades.length, 7);
+  for (let n = 1; n <= 8; n++) assert.ok(progress.grades[n], `grade ${n} daté`);
+  // Un grade acquis sous une ancienne règle reste acquis même si les points ne l'atteignent pas
+  const p2 = { stats: emptyStats(), drills: {}, grades: { 1: T0, 2: T0, 3: T0 } };
+  evaluate(p2, catalog, ctx, T0);
+  assert.equal(currentGrade(p2).n, 3);
 });
 
 test('rétroactif : reconstruire depuis attempts et exams = calcul au fil de l’eau', () => {
@@ -308,23 +310,4 @@ test('évaluation idempotente : un badge débloqué garde sa date', () => {
   const f2 = evaluate(p, catalog, ctx, 222);
   assert.equal(f2.badges.length, 0);
   assert.equal(p.badges['cov-1'], 111);
-});
-
-test('Écoute : badges des podcasts écoutés, rétroactifs et conservés à la fusion', () => {
-  const st = emptyStats();
-  const done = (b) => progressOf(byId[b], st).done;
-  assert.equal(done('pc-1'), false);
-  applyListens(st, { '01-cadre-institutions': { pos: 700, done: true, t: T0 }, '02-activites-lettre': { pos: 100, done: false, t: T0 } });
-  assert.equal(done('pc-1'), true);
-  assert.equal(done('pc-jour'), false);
-  applyListens(st, { '03-mandat': { pos: 600, done: true, t: T0 + 3600000 } });
-  assert.equal(done('pc-jour'), true);
-  applyListens(st, { '02-activites-lettre': { pos: 1100, done: true, t: T0 + DAY } });
-  assert.equal(done('pc-3'), true);
-  assert.equal(st.pc['01-cadre-institutions'], dayKey(T0), 'le jour de la première écoute ne change pas');
-  assert.deepEqual(progressOf(byId['pc-tous'], st), { cur: 3, max: 10, done: false, rate: undefined });
-  st.flags.pcRapide = true; assert.equal(done('pc-rapide'), true);
-  const re = rebuildStats({ attempts: [], exams: [], podcasts: { '03-mandat': { pos: 600, done: true, t: T0 } } }, ctx);
-  assert.equal(Object.keys(re.pc).length, 1);
-  assert.equal(Object.keys(mergeStats(emptyStats(), st).pc).length, 3);
 });
