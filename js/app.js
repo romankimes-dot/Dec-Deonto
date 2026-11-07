@@ -482,13 +482,11 @@ const isBilan = () => (state.progress?.settings?.look || 'bilan') === 'bilan';
 // Accueil « bilan » : un seul objet en haut (le bilan du jour), le plan comme liste, le reste en tuiles.
 function homeBilan({ d, lv, nb, cov, lastExam }) {
   const pr = state.progress; const has = pr.attempts.length > 0; const e = has ? currentEstimate() : null;
-  const g = G.GRADES[lv.info.n - 1];
   const tile = (label, v, unit = '') => `<div class="bh-kpi"><span class="bh-kpi__l">${label}</span><span class="bh-kpi__v">${v}<small>${unit}</small></span></div>`;
   const hero = `<section class="bh">
     <div class="bh-top"><span class="bh-eyebrow">Épreuve n°1 · ${esc(examLabel())}</span><span class="bh-grade" data-go="carriere">Grade ${lv.info.n} · ${esc(CR.SHORT[lv.info.n])} ›</span></div>
     <div class="bh-big">${!examDateSet() ? 'Date à définir' : d > 0 ? `J-${d}` : d === 0 ? 'Jour J' : 'Passée'}</div>
     <div class="bh-kpis">${tile('QCM estimé', has ? fr(e.qcm.note) : '–', '/20')}${tile('QRC estimé', has ? fr(e.qrc.note) : '–', '/20')}${tile('Annales vues', cov, ' %')}${tile('Points du jour', lv.today > 0 ? `+${lv.today}` : '0', '')}</div>
-    <div class="bh-bar"><span>${esc(g.name)}</span><span>${lv.blocked ? `${lv.info.xp} pts · il manque : ${esc(lv.conds.find((c) => !c.ok)?.label || '')}` : `${lv.info.xp}${lv.info.to ? ` / ${lv.info.to}` : ''} pts`}</span><div class="g-bar g-bar--light"><div style="width:${Math.round((lv.info.barPct ?? lv.info.pct) * 100)}%"></div></div></div>
     ${heroCta()}
     ${has ? `<button class="bh-link" data-go="stats">Niveau estimé · risque &lt; 6 : ${e.qcm.risk} % (QCM) · ${e.reliable ? 'fiable' : 'indicatif'} ›</button>` : ''}
     ${examDateSet() ? '' : `<button class="bh-link" data-go="settings">${ic('calendar')} Définir la date de l’examen ›</button>`}

@@ -777,8 +777,6 @@ html { overscroll-behavior-y: none; }
 .bh-kpi__l { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; opacity: .85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .bh-kpi__v { font-size: 24px; font-weight: 800; line-height: 1.05; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
 .bh-kpi__v small { font-size: 12px; font-weight: 600; opacity: .85; margin-left: 1px; }
-.bh-bar { display: grid; grid-template-columns: 1fr auto; column-gap: 10px; row-gap: 6px; font-size: 13px; font-weight: 600; }
-.bh-bar .g-bar { grid-column: 1 / -1; height: 6px; }
 .bh .btn.primary.big-btn { background: #fff; color: var(--primary-btn); border-color: #fff; margin-top: 4px; }
 .bh .btn.primary.big-btn .cta-k { color: var(--primary-btn); opacity: .8; }
 .bh-link { all: unset; cursor: pointer; font-size: 13px; opacity: .9; text-decoration: underline; text-underline-offset: 3px; }
