@@ -694,8 +694,6 @@ html { overscroll-behavior-y: none; }
 .g-card__text { display: grid; gap: 2px; min-width: 0; }
 .g-name { font-size: 20px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; text-wrap: balance; }
 .g-card.compact .g-name { font-size: 17px; }
-.g-today { font-size: 18px; font-weight: 800; color: var(--g-accent); text-align: right; line-height: 1; font-variant-numeric: tabular-nums; }
-.g-today small { display: block; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--g-muted); margin-top: 3px; }
 .g-line { margin-top: 8px; font-size: 14px; color: var(--g-muted); font-variant-numeric: tabular-nums; }
 .g-line strong { color: var(--g-ink); font-weight: 800; }
 .g-gate { margin-top: 12px; padding: 10px 12px; border-radius: 10px; background: var(--bg); font-size: 13px; }
@@ -722,9 +720,6 @@ html { overscroll-behavior-y: none; }
 .g-strip__text { display: grid; gap: 1px; min-width: 0; }
 .g-strip .g-kicker { font-size: 11px; }
 .g-strip__name { font-size: 15px; font-weight: 800; letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.g-strip__pts { font-size: 15px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--g-accent); }
-.g-strip__pts em { font-style: normal; margin-right: 8px; animation: g-up .5s cubic-bezier(.2, .8, .2, 1) both; }
-.g-strip__pts small { font-size: 12px; font-weight: 600; color: var(--g-muted); }
 .g-strip .g-bar { grid-column: 1 / -1; }
 @keyframes g-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 /* Frise */
@@ -831,7 +826,6 @@ html { overscroll-behavior-y: none; }
 .week-stats b { color: var(--text); }
 .week .btn.sm { margin-top: 12px; }
 /* Points qui montent, transition d'écran */
-.g-fly { position: fixed; z-index: 40; pointer-events: none; font-weight: 800; font-size: 18px; color: var(--primary-btn); font-variant-numeric: tabular-nums; }
 @media (prefers-reduced-motion: no-preference) { :root[data-look="bilan"] #main.g-page { animation: g-page .28s cubic-bezier(.2, .8, .2, 1) both; } }
 @keyframes g-page { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 /* Ordinateur : deux colonnes sur l'accueil, barre latérale */

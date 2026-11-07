@@ -1,7 +1,7 @@
 // Carrière : carte de grade, bandeau de session, frise et passage de niveau, dans l'esprit « bilan éditorial »
 // (une couleur signature, de grands chiffres, des cartes pleines). Fonctions pures qui renvoient du HTML ;
 // la couleur et la typographie viennent des variables CSS --g-* (thème « bilan » ou « classique »).
-// Le grade ne dépend que des résultats ; les points sont un score d'effort, affiché sans promesse.
+// Le grade ne dépend que des résultats ; aucun point n'est affiché.
 import { GRADES, GATES, gateConditions } from './gamify.js';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -19,10 +19,10 @@ const condList = (conds, cls = 'g-conds') => `<ul class="${cls}">${conds.map((c)
 const condsLine = (info) => `${info.met} / ${info.total} condition${info.total > 1 ? 's' : ''}`;
 
 // Carte de grade (accueil, compacte ; carrière, complète) : numéro, nom, barre vers le suivant, conditions.
-export function levelCardHtml(info, { today = 0, conds = [], compact = false } = {}) {
+export function levelCardHtml(info, { conds = [], compact = false } = {}) {
   const g = GRADES[info.n - 1]; const next = GRADES[info.n];
   const missing = conds.find((c) => !c.ok);
-  const line = !next ? 'Dernier grade atteint' : `<strong>${condsLine(info)}</strong> pour « ${esc(next.name)} » · score <strong>${info.xp}</strong>`;
+  const line = !next ? 'Dernier grade atteint' : `<strong>${condsLine(info)}</strong> pour « ${esc(next.name)} »`;
   const detail = !next ? '' : compact
     ? (missing ? `<div class="g-line">Prochaine étape : ${esc(missing.label)}</div>` : '')
     : `<div class="g-gate"><div class="g-gate__h">Pour passer au grade ${pad2(next.n)}</div>${condList(conds)}</div>`;
@@ -30,7 +30,6 @@ export function levelCardHtml(info, { today = 0, conds = [], compact = false } =
     <div class="g-card__top">
       <span class="g-no">${pad2(info.n)}</span>
       <div class="g-card__text"><span class="g-kicker">Grade ${info.n} sur ${GRADES.length}</span><span class="g-name">${esc(g.name)}</span></div>
-      ${today > 0 ? `<span class="g-today">+${today}<small>pts aujourd’hui</small></span>` : ''}
     </div>
     ${bar(info.pct)}
     <div class="g-line">${line}</div>
@@ -49,17 +48,15 @@ export function heroHtml(info, readiness) {
       <span><b>${Math.floor(readiness.cov)} %</b>annales vues</span>
       <span><b>${readiness.best ? readiness.best : '—'}</b>meilleur examen</span>
       <span><b>${Math.round(readiness.acc)} %</b>réussite</span>
-      <span><b>${info.xp}</b>score</span>
     </div>
     ${next ? `<div class="g-next"><span class="g-next__k">Prochain · ${esc(next.name)}</span><span class="g-next__v">${condsLine(info)}</span>${bar(info.pct, 'g-bar--light')}</div>` : '<div class="g-next"><span class="g-next__k">Les huit grades sont atteints.</span></div>'}
   </div>`;
 }
 
-// Bandeau de session : le grade et sa progression au-dessus de la question. gain = points gagnés depuis l'ouverture de la vue.
-export function stripHtml(info, { gain = 0 } = {}) {
+// Bandeau de session : le grade et sa progression au-dessus de la question.
+export function stripHtml(info) {
   return `<div class="g-strip">
     <div class="g-strip__text"><span class="g-kicker">Grade ${info.n} <span class="g-sep">/</span> ${GRADES.length}</span><span class="g-strip__name">${esc(SHORT[info.n])}</span></div>
-    <span class="g-strip__pts">${gain > 0 ? `<em>+${gain}</em>` : ''}<strong>${info.xp}</strong><small> pts</small></span>
     ${bar(info.pct, 'g-bar--thin')}
   </div>`;
 }
@@ -80,13 +77,13 @@ export function timelineHtml(info, dates = {}, readiness = null) {
 }
 
 // Passage de grade (célébration) : la carte-bilan pleine page.
-export function levelUpHtml(n, readiness = null, xp = null) {
+export function levelUpHtml(n, readiness = null) {
   const g = GRADES[n - 1]; const next = GRADES[n];
   return `<div class="cel-level">
     <span class="g-kicker">Nouveau grade</span>
     <span class="g-big">${pad2(n)}</span>
     <span class="g-hero__name">${esc(g.name)}</span>
-    ${readiness ? `<div class="g-stats"><span><b>${Math.floor(readiness.cov)} %</b>annales vues</span><span><b>${readiness.best || '—'}</b>meilleur examen</span>${xp !== null ? `<span><b>${xp}</b>score</span>` : ''}</div>` : ''}
+    ${readiness ? `<div class="g-stats"><span><b>${Math.floor(readiness.cov)} %</b>annales vues</span><span><b>${readiness.best || '—'}</b>meilleur examen</span></div>` : ''}
     ${next ? `<div class="g-next"><span class="g-next__k">Prochain · ${esc(next.name)}</span><span class="g-next__v">${esc(gateSummary(n + 1))}</span></div>` : ''}
     <p class="cel-hint">Touchez pour continuer</p>
   </div>`;
