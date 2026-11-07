@@ -359,22 +359,27 @@ export const GRADES = [
   { n: 8, name: 'Expert-comptable installé', decor: 'cabinet' },
 ];
 
+// L'échelle monte par paliers : couverture et séries d'abord (quelques jours), relecture et dossiers assainis
+// ensuite (une à deux semaines), la maîtrise des thèmes (chaque question réussie 2 jours différents) seulement
+// à partir du diplôme. Un grade ne doit jamais dépendre d'un badge « épique » avant la deuxième moitié de l'échelle.
 export function gradeConditions(n, has, st, ctx) {
   const stageCount = count(Array.from({ length: 17 }, (_, i) => `anec-A${i + 1}`), has);
   const masteredKeys = Object.keys(ctx.themes).filter((k) => themeMastery(st, ctx.themes[k].ids).done);
   const masteredCac = masteredKeys.filter((k) => k.startsWith('CAC:')).length;
   const bestExam = st.exams.reduce((m, e) => Math.max(m, e.note), 0);
-  const anyLecture = Object.keys(ctx.themes).some((k) => has(`rep-lect-${k.replace(':', '-')}`));
+  const themeSlugs = Object.keys(ctx.themes).map((k) => k.replace(':', '-'));
+  const lectures = count(themeSlugs, (s) => has(`rep-lect-${s}`));
+  const assainis = count(themeSlugs, (s) => has(`rep-sain-${s}`));
   const C = (label, ok) => ({ label, ok: !!ok });
   switch (n) {
     case 1: return [C('Début du stage', true)];
-    case 2: return [C('Badge « Le quart du cabinet »', has('cov-25')), C(`3 anecdotes du stage (${stageCount}/3)`, stageCount >= 3), C('Une « Deuxième lecture »', anyLecture)];
-    case 3: return [C('Badge « Mi-parcours »', has('cov-50')), C(`8 anecdotes du stage (${stageCount}/8)`, stageCount >= 8), C(`2 thèmes maîtrisés (${masteredKeys.length}/2)`, masteredKeys.length >= 2)];
-    case 4: return [C('Badge « Les trois quarts »', has('cov-75')), C('Série de 10 (« Sans réserve »)', has('ser-10')), C(`4 thèmes maîtrisés dont 2 CAC (${masteredKeys.length}/4, CAC ${masteredCac}/2)`, masteredKeys.length >= 4 && masteredCac >= 2)];
-    case 5: return [C('Badge « J’ai tout vu »', has('cov-100')), C('Bloc EC ou Bloc CAC maîtrisé', has('mast-bloc-ec') || has('mast-bloc-cac')), C(`Un examen blanc ≥ 12 (meilleur : ${bestExam})`, bestExam >= 12)];
-    case 6: return [C('Anecdote « Dossier d’inscription au tableau »', has('anec-A19')), C('Anecdote « Prestation de serment »', has('anec-A20')), C(`6 thèmes maîtrisés (${masteredKeys.length}/6)`, masteredKeys.length >= 6)];
-    case 7: return [C('Anecdote « Inscription sur la liste H2A »', has('anec-A44')), C('Anecdote « Serment devant la cour d’appel »', has('anec-A45')), C('Bloc CAC maîtrisé', has('mast-bloc-cac'))];
-    case 8: return [C('Maîtrise totale', has('mast-total')), C('Anecdote « Création de la société »', has('anec-A23')), C('Anecdote « La plaque sur la porte »', has('anec-A24')), C(`Un examen blanc ≥ 16 (meilleur : ${bestExam})`, bestExam >= 16)];
+    case 2: return [C('Badge « Le quart du cabinet »', has('cov-25')), C(`3 anecdotes du stage (${stageCount}/3)`, stageCount >= 3), C('Série de 5 (« Main chaude »)', has('ser-5'))];
+    case 3: return [C('Badge « Mi-parcours »', has('cov-50')), C(`8 anecdotes du stage (${stageCount}/8)`, stageCount >= 8), C('Une « Deuxième lecture » (un thème vu 2 jours différents)', lectures >= 1)];
+    case 4: return [C('Badge « Les trois quarts »', has('cov-75')), C('Série de 10 (« Sans réserve »)', has('ser-10')), C('Un « Dossier assaini »', assainis >= 1), C(`Un examen blanc ≥ 10 (meilleur : ${bestExam})`, bestExam >= 10)];
+    case 5: return [C('Badge « J’ai tout vu »', has('cov-100')), C(`1 thème maîtrisé (${masteredKeys.length}/1)`, masteredKeys.length >= 1), C(`Un examen blanc ≥ 12 (meilleur : ${bestExam})`, bestExam >= 12)];
+    case 6: return [C('Anecdote « Dossier d’inscription au tableau »', has('anec-A19')), C('Anecdote « Prestation de serment »', has('anec-A20')), C(`3 thèmes maîtrisés (${masteredKeys.length}/3)`, masteredKeys.length >= 3)];
+    case 7: return [C('Anecdote « Inscription sur la liste H2A »', has('anec-A44')), C('Anecdote « Serment devant la cour d’appel »', has('anec-A45')), C(`2 thèmes CAC maîtrisés (${masteredCac}/2)`, masteredCac >= 2), C(`Un examen blanc ≥ 14 (meilleur : ${bestExam})`, bestExam >= 14)];
+    case 8: return [C('Bloc EC ou Bloc CAC maîtrisé', has('mast-bloc-ec') || has('mast-bloc-cac')), C(`6 thèmes maîtrisés (${masteredKeys.length}/6)`, masteredKeys.length >= 6), C('Anecdote « Création de la société »', has('anec-A23')), C('Anecdote « La plaque sur la porte »', has('anec-A24')), C(`Un examen blanc ≥ 16 (meilleur : ${bestExam})`, bestExam >= 16)];
     default: return [];
   }
 }

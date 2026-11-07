@@ -251,19 +251,25 @@ test('grades : progression séquentielle, par badges et maîtrise, pas par volum
   for (let n = 1; n <= 8; n++) assert.ok(gradeConditions(n, has, p2.stats, ctx).every((c) => c.ok), `grade ${n}`);
 });
 
-test('grades : le grade 3 exige 2 thèmes maîtrisés même avec 50 % de la banque vue', () => {
+test('grades : la 2e année vient sans relecture ; la 3e exige une « Deuxième lecture » même avec 50 % de la banque vue', () => {
   const p = { stats: emptyStats() };
-  const excluded = new Set([...ctx.themes['EC:controle_qualite'].ids, ...ctx.themes['CAC:controle_qualite'].ids]);
+  const excluded = new Set(ctx.themes['EC:controle_qualite'].ids);
   const half = ctx.all.filter((id) => !excluded.has(id)).slice(0, Math.ceil(ctx.all.length / 2));
   for (const id of half) applyAnswer(p.stats, { id, ok: false, t: T0 }, ctx);
   for (const a of catalog.filter((b) => b.family === 'anecdotes' && b.part === 'stage')) for (const id of a.ids) applyAnswer(p.stats, { id, ok: true, t: T0 + 1 }, ctx);
-  for (const d of [2, 3]) for (const id of ctx.themes['EC:controle_qualite'].ids) applyAnswer(p.stats, { id, ok: true, t: T0 + DAY * d }, ctx);
-  evaluate(p, catalog, ctx, T0 + DAY * 4);
+  evaluate(p, catalog, ctx, T0 + DAY);
   assert.equal(p.badges['cov-50'] > 0, true);
-  assert.equal(currentGrade(p).n, 2, 'un seul thème maîtrisé : reste en 2e année');
-  for (const d of [5, 6]) for (const id of ctx.themes['CAC:controle_qualite'].ids) applyAnswer(p.stats, { id, ok: true, t: T0 + DAY * d }, ctx);
-  evaluate(p, catalog, ctx, T0 + DAY * 7);
+  assert.equal(p.badges['ser-5'] > 0, true);
+  assert.equal(currentGrade(p).n, 2, 'quart vu, 3 anecdotes, série de 5 : 2e année');
+  assert.equal(gradeConditions(3, (id) => !!p.badges[id], p.stats, ctx).filter((c) => !c.ok).length, 1, 'il ne manque que la relecture');
+  // Le plus petit thème vu deux jours différents suffit (aucune maîtrise exigée)
+  for (const d of [2, 3]) for (const id of ctx.themes['EC:controle_qualite'].ids) applyAnswer(p.stats, { id, ok: false, t: T0 + DAY * d }, ctx);
+  evaluate(p, catalog, ctx, T0 + DAY * 4);
+  assert.equal(p.badges['rep-lect-EC-controle_qualite'] > 0, true);
   assert.equal(currentGrade(p).n, 3);
+  // Aucun grade avant le diplôme (5) ne dépend d'un badge épique ou légendaire
+  const epic = new Set(catalog.filter((b) => b.rarity === 'epique' || b.rarity === 'legendaire').map((b) => b.name));
+  for (let n = 2; n <= 4; n++) for (const c of gradeConditions(n, () => false, emptyStats(), ctx)) for (const name of epic) assert.ok(!c.label.includes(`« ${name} »`), `grade ${n} : ${c.label}`);
 });
 
 test('rétroactif : reconstruire depuis attempts et exams = calcul au fil de l’eau', () => {

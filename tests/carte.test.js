@@ -43,3 +43,13 @@ test('carte : état vierge, fragile, en cours, solide', () => {
   const st = CA.nodeState(n, { a: solid, b: solid, c: solid }, { 'EC:x': { ok: 9, n: 10 } }, mastery);
   assert.equal(st.level, 'solide'); assert.equal(st.cover, 1); assert.deepEqual(st.m, [0, 0, 0, 3]);
 });
+
+test('carte : une question répondue hors session (entraînement, examen) compte comme vue', () => {
+  const n = { id: 'EC:x', ids: ['a', 'b', 'c'] };
+  const seenFn = (id) => id === 'b';
+  const st = CA.nodeState(n, {}, {}, mastery, seenFn);
+  assert.equal(st.seen, 1); assert.equal(st.level, 'en_cours');
+  // Carte de répétition et réponse hors session ne se comptent pas deux fois
+  assert.equal(CA.nodeState(n, { b: { reps: 1, interval: 1, lapses: 0 } }, {}, mastery, seenFn).seen, 1);
+  assert.equal(CA.nodeState(n, {}, {}, mastery).level, 'vierge');
+});
