@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   buildContext, buildCatalog, emptyStats, applyAnswer, applyExam, applyOpen, rebuildStats,
-  evaluate, progressOf, currentGrade, themeMastery, dayKey, examInfo, mergeStats, xpOf, levelOf, levelInfo, LEVELS, GRADES,
+  evaluate, progressOf, currentGrade, themeMastery, dayKey, examInfo, mergeStats, xpOf, levelOf, levelInfo, LEVELS, GRADES, careerState, readiness, gateLevel,
 } from '../js/gamify.js';
 import { ANECDOTES, QBADGES } from '../js/catalog-data.js';
 
@@ -239,13 +239,15 @@ test('points : chaque source compte, calcul rétroactif depuis les statistiques 
   applyAnswer(st, { id: easy, ok: true, t: T0 + 1 }, ctx); // +2
   applyAnswer(st, { id: hard, ok: true, t: T0 + 2 }, ctx); // +4 (difficile)
   assert.deepEqual(xpOf(st, ctx).parts.questions, 7);
+  for (let i = 0; i < 20; i++) applyAnswer(st, { id: easy, ok: true, t: T0 + 100 + i }, ctx); // plafond : 3 réponses + 3 réussites
+  assert.deepEqual(xpOf(st, ctx).parts.questions, 6 + 4);
   applyExam(st, { t: T0 + 10, mode: 'qcm', note: 13, durationMs: 3600000, byProf: {} });
   assert.equal(xpOf(st, ctx).parts.exams, 33);
   st.streak.best = 12; assert.equal(xpOf(st, ctx).parts.series, 15);
   st.days[dayKey(T0)] = 10; assert.equal(xpOf(st, ctx).parts.days, 10);
   const drills = { 'sht:cadre-01': { box: 2, last: T0, due: T0 }, 'sht:cadre-02': { box: 5, last: T0, due: T0 }, 'pal:x': { box: 3 } };
   assert.equal(xpOf(st, ctx, drills).parts.shorts, 4 + 5);
-  assert.equal(xpOf(st, ctx, drills).total, 7 + 33 + 15 + 10 + 9);
+  assert.equal(xpOf(st, ctx, drills).total, 10 + 33 + 15 + 10 + 9);
 });
 
 test('niveaux : seuils croissants, 8 grades, position dans le palier', () => {
@@ -257,21 +259,36 @@ test('niveaux : seuils croissants, 8 grades, position dans le palier', () => {
   assert.equal(levelInfo(99999).to, null);
 });
 
-test('grades : aux points, rétroactifs, jamais repris ; un seul passage d’un coup si plusieurs niveaux sont franchis', () => {
+test('grades : les points font avancer, les résultats font franchir ; jamais par le seul volume', () => {
   const progress = { attempts: [], exams: [], stats: emptyStats(), drills: {} };
   evaluate(progress, catalog, ctx, T0);
   assert.equal(currentGrade(progress).n, 1);
-  // Une semaine de travail déjà faite : tout compte d'un coup
-  for (let d = 1; d <= 3; d++) for (const id of ctx.all) applyAnswer(progress.stats, { id, ok: d > 1, t: D(2026, 10, d) }, ctx);
-  applyExam(progress.stats, { t: D(2026, 10, 3, 20), mode: 'qcm', note: 17, durationMs: 3600000, byProf: {} });
-  const fresh = evaluate(progress, catalog, ctx, D(2026, 10, 3, 21));
-  assert.equal(currentGrade(progress).n, 8);
+  // Toute la banque ratée 2 000 fois : des points, mais ni examen ni réussite → bloqué au grade 3 (50 % vus, pas d'examen)
+  for (let i = 0; i < 2000; i++) applyAnswer(progress.stats, { id: ctx.all[i % ctx.all.length], ok: false, t: T0 + i }, ctx);
+  evaluate(progress, catalog, ctx, T0 + 3000);
+  const cs = careerState(progress.stats, ctx);
+  assert.ok(cs.info.xp >= LEVELS[3], 'les points dépassent le palier 4');
+  assert.equal(currentGrade(progress).n, 3);
+  assert.equal(cs.blocked, true);
+  assert.ok(cs.conds.some((c) => !c.ok && /examen blanc/.test(c.label)));
+  // Tout réussi trois jours de suite + examen à 17 → dernier grade
+  const p2 = { attempts: [], exams: [], stats: emptyStats(), drills: {} };
+  for (let d = 1; d <= 3; d++) for (const id of ctx.all) applyAnswer(p2.stats, { id, ok: true, t: D(2026, 10, d) }, ctx);
+  applyExam(p2.stats, { t: D(2026, 10, 3, 20), mode: 'qcm', note: 17, durationMs: 3600000, byProf: {} });
+  const fresh = evaluate(p2, catalog, ctx, D(2026, 10, 3, 21));
+  assert.equal(currentGrade(p2).n, 8);
   assert.equal(fresh.grades.length, 7);
-  for (let n = 1; n <= 8; n++) assert.ok(progress.grades[n], `grade ${n} daté`);
-  // Un grade acquis sous une ancienne règle reste acquis même si les points ne l'atteignent pas
-  const p2 = { stats: emptyStats(), drills: {}, grades: { 1: T0, 2: T0, 3: T0 } };
-  evaluate(p2, catalog, ctx, T0);
-  assert.equal(currentGrade(p2).n, 3);
+  const r = readiness(p2.stats, ctx);
+  assert.equal(Math.round(r.cov), 100); assert.equal(Math.round(r.acc), 100); assert.equal(gateLevel(r), 8);
+  // Un grade accordé par une règle plus généreuse est repris : 63 % vus, examen à 11, réussite 66 % → grade 4, pas 8
+  const p3 = { stats: emptyStats(), drills: {}, grades: Object.fromEntries(GRADES.map((g) => [g.n, T0])) };
+  ctx.all.slice(0, Math.round(ctx.all.length * 0.63)).forEach((id, i) => { for (let k = 0; k < 3; k++) applyAnswer(p3.stats, { id, ok: k > 0, t: T0 + i * 10 + k }, ctx); });
+  applyExam(p3.stats, { t: T0 + 99999, mode: 'qcm', note: 11, durationMs: 3600000, byProf: {} });
+  const f3 = evaluate(p3, catalog, ctx, T0 + 100000);
+  assert.equal(currentGrade(p3).n, 4);
+  assert.equal(f3.grades.length, 0, 'aucune cérémonie pour une reprise');
+  assert.equal(p3.grades[5], undefined);
+  assert.equal(p3.grades[4], T0, 'la date d’un grade gardé est conservée');
 });
 
 test('rétroactif : reconstruire depuis attempts et exams = calcul au fil de l’eau', () => {
