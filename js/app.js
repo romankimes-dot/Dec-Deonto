@@ -163,29 +163,9 @@ function answer(id, ok, mode, { defer = false, t = Date.now(), conf = null, pick
   if (typeof navigator !== 'undefined' && navigator.onLine === false) att.off = 1;
   const ms = takeQMs(); if (ms && (state.view === 'review' || state.view === 'train')) att.ms = ms; // temps passé sur la question (minuteur de 3 minutes)
   store.pushAttempt(state.progress, att);
-  const fly = isBilan() && !defer && !!document.querySelector('.g-strip__pts') && !matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const before = fly ? G.xpOf(state.progress.stats, state.gctx, state.progress.drills).total : 0;
   G.applyAnswer(state.progress.stats, att, state.gctx);
-  if (fly) flyPoints(G.xpOf(state.progress.stats, state.gctx, state.progress.drills).total - before);
   if (!defer) checkBadges();
   updateStreakBadge();
-}
-// « +n » qui part du dernier toucher et monte vers les points du bandeau de grade.
-let lastTap = null;
-document.addEventListener('pointerdown', (e) => { lastTap = { x: e.clientX, y: e.clientY }; }, { passive: true });
-function flyPoints(n) {
-  if (!(n > 0) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const to = $('.g-strip__pts'); if (!to) return;
-  const r = to.getBoundingClientRect();
-  const from = lastTap || { x: r.left + r.width / 2, y: window.innerHeight / 2 };
-  const el = document.createElement('span'); el.className = 'g-fly'; el.textContent = `+${n}`;
-  el.style.left = `${from.x}px`; el.style.top = `${from.y}px`;
-  document.body.appendChild(el);
-  const anim = el.animate([
-    { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
-    { transform: `translate(calc(-50% + ${r.left + r.width / 2 - from.x}px), calc(-50% + ${r.top + r.height / 2 - from.y}px)) scale(.7)`, opacity: .2 },
-  ], { duration: 700, easing: 'cubic-bezier(.2, .8, .2, 1)' });
-  anim.onfinish = () => el.remove();
 }
 function checkBadges() {
   const fresh = G.evaluate(state.progress, state.catalog, state.gctx, Date.now());
@@ -225,7 +205,7 @@ function nextCelebration() {
   const close = () => { box.classList.remove('show'); focusBack(box); state.celebrating = false; setTimeout(nextCelebration, 250); };
   let html = '';
   if (c.type === 'grade') {
-    { const cs = G.careerState(state.progress.stats, state.gctx, state.progress.drills, G.heldGrade(state.progress)); html = CR.levelUpHtml(c.g.n, cs.readiness, cs.info.xp); }
+    { const cs = G.careerState(state.progress.stats, state.gctx, state.progress.drills, G.heldGrade(state.progress)); html = CR.levelUpHtml(c.g.n, cs.readiness); }
     try { navigator.vibrate?.([60, 40, 120]); } catch { /* ignore */ }
   } else if (c.type === 'anecdote') {
     const d = new Date(state.progress.badges[c.b.id] || Date.now()).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -464,7 +444,7 @@ views.home = () => {
   ${helpCard()}
   ${dayCard()}
   <div class="card career-card" data-go="carriere">
-    ${CR.levelCardHtml(lv.info, { today: lv.today, compact: true, conds: lv.conds })}
+    ${CR.levelCardHtml(lv.info, { compact: true, conds: lv.conds })}
     <div class="muted" style="margin-top:8px;text-align:right">Ma carrière ›</div>
   </div>
   ${carnetCard()}
@@ -488,7 +468,7 @@ function homeBilan({ d, lv, nb, cov, lastExam }) {
   const hero = `<section class="bh">
     <div class="bh-top"><span class="bh-eyebrow">Épreuve n°1 · ${esc(examLabel())}</span><span class="bh-grade" data-go="carriere">Grade ${lv.info.n} · ${esc(CR.SHORT[lv.info.n])} ›</span></div>
     <div class="bh-big">${!examDateSet() ? 'Date à définir' : d > 0 ? `J-${d}` : d === 0 ? 'Jour J' : 'Passée'}</div>
-    <div class="bh-kpis">${tile('QCM estimé', has ? fr(e.qcm.note) : '–', '/20')}${tile('QRC estimé', has ? fr(e.qrc.note) : '–', '/20')}${tile('Annales vues', cov, ' %')}${tile('Points du jour', lv.today > 0 ? `+${lv.today}` : '0', '')}</div>
+    <div class="bh-kpis">${tile('QCM estimé', has ? fr(e.qcm.note) : '–', '/20')}${tile('QRC estimé', has ? fr(e.qrc.note) : '–', '/20')}${tile('Annales vues', cov, ' %')}${tile('Réponses du jour', String(pr.stats.days?.[todayKey()] || 0), '')}</div>
     ${heroCta()}
     ${has ? `<button class="bh-link" data-go="stats">Niveau estimé · risque &lt; 6 : ${e.qcm.risk} % (QCM) · ${e.reliable ? 'fiable' : 'indicatif'} ›</button>` : ''}
     ${examDateSet() ? '' : `<button class="bh-link" data-go="settings">${ic('calendar')} Définir la date de l’examen ›</button>`}
@@ -2057,22 +2037,16 @@ views.carriere = () => {
   const tabs = `<div class="tabs">${[['carriere', 'Ma carrière'], ['palais', ic('landmark') + ' Palais'], ['collection', `Collection ${got}/${total}`], ['souvenirs', 'Souvenirs']].map(([k, l]) => `<button class="chip ${tab === k ? 'on' : ''}" data-ctab="${k}">${l}</button>`).join('')}</div>`;
   return tabs + (tab === 'collection' ? collectionView() : tab === 'souvenirs' ? souvenirsView() : tab === 'palais' ? palaisView() : careerView());
 };
-// Points et niveau : calculés depuis toutes les statistiques (rétroactifs). « Aujourd'hui » = écart avec le total
-// relevé à la première ouverture du jour.
-// Bandeau de grade au-dessus des questions : les points gagnés depuis l'ouverture de la vue s'affichent en « +n ».
+// Bandeau de grade au-dessus des questions (sans points : le grade ne dépend que des résultats).
 function applyLook() { document.documentElement.dataset.look = state.progress?.settings?.look || 'bilan'; buildNav(); }
 function sessionStrip() {
   const lv = xpInfo();
-  const ref = state.view === 'train' ? state.train : state.session;
-  if (state.stripBase === undefined || state.stripView !== state.view || state.stripRef !== ref) { state.stripBase = lv.info.xp; state.stripView = state.view; state.stripRef = ref; }
-  return CR.stripHtml(lv.info, { gain: lv.info.xp - state.stripBase });
+  return CR.stripHtml(lv.info);
 }
 function xpInfo() {
   const pr = state.progress;
-  const cs = G.careerState(pr.stats, state.gctx, pr.drills, G.heldGrade(pr)); const total = cs.info.xp;
-  const k = todayKey();
-  if (!pr.xpDay || pr.xpDay.day !== k) pr.xpDay = { day: k, start: total };
-  return { ...cs, today: Math.max(0, total - pr.xpDay.start) };
+  const cs = G.careerState(pr.stats, state.gctx, pr.drills, G.heldGrade(pr));
+  return cs;
 }
 // Bilan de la semaine : réponses par jour (7 derniers jours), total, examens, partage en texte.
 function weekCard() {
@@ -2105,8 +2079,8 @@ function careerView() {
   const vitrine = state.catalog.filter((b) => b.prop && pr.badges[b.id] && !b.hidden);
   return `<div class="card g-hero-card">${CR.heroHtml(lv.info, lv.readiness)}</div>
     ${weekCard()}
-    <div class="card">${CR.levelCardHtml(lv.info, { today: lv.today, conds: lv.conds })}</div>
-    <div class="card"><h2>Comment on avance</h2><p class="muted" style="margin:4px 0 0"><strong>Le grade suit vos résultats</strong> : annales vues, examens blancs, taux de réussite. La barre montre où vous en êtes des conditions du grade suivant. Le <strong>score</strong> mesure l’effort (chaque réponse, examen, short, série et journée de travail) ; il s’affiche, mais ne fait pas monter de grade.</p></div>
+    <div class="card">${CR.levelCardHtml(lv.info, { conds: lv.conds })}</div>
+    <div class="card"><h2>Comment on avance</h2><p class="muted" style="margin:4px 0 0"><strong>Le grade suit vos résultats</strong> : annales vues, examens blancs, taux de réussite. La barre montre où vous en êtes des conditions du grade suivant.</p></div>
     <div class="card"><h2>Le parcours</h2>${CR.timelineHtml(lv.info, pr.grades, lv.readiness)}</div>
     <div class="card"><h2>Vitrine · ${vitrine.length}</h2><p class="muted" style="margin:4px 0 10px">Les objets gagnés avec les badges. Touchez-en un pour voir le badge.</p>
       ${vitrine.length ? `<div class="vitrine">${vitrine.map((b) => `<button class="vit" data-badge-card="${b.id}" title="${esc(b.name)}">${badgeIcon(b)}<span>${esc(b.name)}</span></button>`).join('')}</div>` : '<p class="muted">Encore vide : le premier badge y posera son objet.</p>'}</div>`;
