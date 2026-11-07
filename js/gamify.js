@@ -22,7 +22,6 @@ export const FAMILIES = [
   { id: 'repassage', label: 'Repassage', icon: 'repeat' },
   { id: 'anecdotes', label: 'Carrière', icon: 'camera' },
   { id: 'questions', label: 'Chiffres et pièges', icon: 'target' },
-  { id: 'ecoute', label: 'Écoute', icon: 'headphones' },
   { id: 'caches', label: 'Cachés', icon: 'help' },
 ];
 
@@ -147,14 +146,6 @@ export function applyExam(stats, ex) {
 }
 
 // Ouverture de l'app (pour « Jour J ») : le jour de l'épreuve, avant son heure de début.
-// Podcasts écoutés (progress.podcasts : id -> { pos, done, t }) : stats.pc[id] = jour de la première écoute complète.
-export const PC_EPISODES = 10;
-export function applyListens(stats, podcasts) {
-  stats.pc = stats.pc || {};
-  for (const [id, p] of Object.entries(podcasts || {})) if (p?.done && !stats.pc[id]) stats.pc[id] = dayKey(p.t || Date.now());
-  return stats;
-}
-
 export function applyOpen(stats, t, ctx) {
   const d = new Date(t); const ex = ctx?.exam || examInfo();
   if (dayKey(t) === ex.day && d.getHours() * 60 + d.getMinutes() < ex.min) stats.flags.jourJ = true;
@@ -172,7 +163,6 @@ export function rebuildStats(progress, ctx) {
     if (ev.k === 'a') { if (ctx.known.has(ev.a.id)) applyAnswer(stats, { id: ev.a.id, ok: !!ev.a.ok, t: ev.a.t, off: ev.a.off }, ctx); }
     else applyExam(stats, ev.e);
   }
-  applyListens(stats, progress.podcasts);
   // L'historique est tronqué (400 réponses) : les statistiques déjà acquises ne doivent pas reculer.
   return progress.stats ? mergeStats(stats, progress.stats) : stats;
 }
@@ -195,7 +185,6 @@ export function mergeStats(stats, prev) {
   s.best = Math.max(s.best, num(ps.best)); s.hardBest = Math.max(s.hardBest, num(ps.hardBest));
   for (const k of ['days', 'offlineDays']) for (const [d, n] of Object.entries(prev[k] || {})) stats[k][d] = Math.max(stats[k][d] || 0, num(n));
   for (const [f, v] of Object.entries(prev.flags || {})) if (v) stats.flags[f] = true;
-  for (const [id, d] of Object.entries(prev.pc || {})) if (typeof d === 'string' && (!stats.pc?.[id] || d < stats.pc[id])) (stats.pc = stats.pc || {})[id] = d;
   const ts = new Set(stats.exams.map((e) => e.t));
   for (const e of Array.isArray(prev.exams) ? prev.exams : []) if (e && !ts.has(e.t)) stats.exams.push(e);
   stats.exams.sort((a, b) => a.t - b.t);
@@ -307,16 +296,6 @@ export function buildCatalog(ctx) {
     add({ id: `${b.id}-or`, family: 'questions', rarity: b.rarity === 'commun' ? 'rare' : b.rarity === 'rare' ? 'epique' : 'legendaire', gold: true, name: `${b.title} (or)`, desc: `${b.desc} Deux fois, deux jours différents.`, ids, cond: 'chaque question réussie 2 jours différents', check: (st) => all(ids, (id) => okTwoDays(st, id)) });
   }
 
-  // Famille 7 — Écoute (podcasts écoutés à 90 %)
-  const listened = (st) => Object.keys(st.pc || {}).length;
-  const sameDay = (st) => Math.max(0, ...Object.values(Object.values(st.pc || {}).reduce((m, d) => ({ ...m, [d]: (m[d] || 0) + 1 }), {})));
-  const L = (id, rarity, name, desc, cond, check) => add({ id, family: 'ecoute', rarity, name, desc, cond, check });
-  L('pc-1', 'commun', 'Premier entretien', 'Un épisode écouté jusqu’au bout.', '1 épisode écouté (90 %)', (st) => ({ cur: Math.min(1, listened(st)), max: 1 }));
-  L('pc-3', 'rare', 'Auditeur assidu', 'Trois épisodes, trois étapes du parcours en audio.', '3 épisodes écoutés', (st) => ({ cur: Math.min(3, listened(st)), max: 3 }));
-  L('pc-jour', 'rare', 'Aller-retour', 'Un épisode à l’aller, un au retour.', '2 épisodes écoutés le même jour', (st) => ({ cur: Math.min(2, sameDay(st)), max: 2 }));
-  L('pc-rapide', 'rare', 'Lecture accélérée', 'Le jury parle vite, vous aussi.', 'un épisode terminé à 1,5× ou plus', (st) => ({ cur: st.flags.pcRapide ? 1 : 0, max: 1 }));
-  L('pc-tous', 'epique', 'L’intégrale du parcours', 'Les dix épisodes, de bout en bout.', `les ${PC_EPISODES} épisodes écoutés`, (st) => ({ cur: Math.min(PC_EPISODES, listened(st)), max: PC_EPISODES }));
-
   // Famille 8 — Cachés
   const flag = (k) => (st) => ({ cur: st.flags[k] ? 1 : 0, max: 1 });
   const exams = (fn) => (st) => ({ cur: st.exams.some(fn) ? 1 : 0, max: 1 });
@@ -359,29 +338,40 @@ export const GRADES = [
   { n: 8, name: 'Expert-comptable installé', decor: 'cabinet' },
 ];
 
-// L'échelle monte par paliers : couverture et séries d'abord (quelques jours), relecture et dossiers assainis
-// ensuite (une à deux semaines), la maîtrise des thèmes (chaque question réussie 2 jours différents) seulement
-// à partir du diplôme. Un grade ne doit jamais dépendre d'un badge « épique » avant la deuxième moitié de l'échelle.
-export function gradeConditions(n, has, st, ctx) {
-  const stageCount = count(Array.from({ length: 17 }, (_, i) => `anec-A${i + 1}`), has);
-  const masteredKeys = Object.keys(ctx.themes).filter((k) => themeMastery(st, ctx.themes[k].ids).done);
-  const masteredCac = masteredKeys.filter((k) => k.startsWith('CAC:')).length;
-  const bestExam = st.exams.reduce((m, e) => Math.max(m, e.note), 0);
-  const themeSlugs = Object.keys(ctx.themes).map((k) => k.replace(':', '-'));
-  const lectures = count(themeSlugs, (s) => has(`rep-lect-${s}`));
-  const assainis = count(themeSlugs, (s) => has(`rep-sain-${s}`));
-  const C = (label, ok) => ({ label, ok: !!ok });
-  switch (n) {
-    case 1: return [C('Début du stage', true)];
-    case 2: return [C('Badge « Le quart du cabinet »', has('cov-25')), C(`3 anecdotes du stage (${stageCount}/3)`, stageCount >= 3), C('Série de 5 (« Main chaude »)', has('ser-5'))];
-    case 3: return [C('Badge « Mi-parcours »', has('cov-50')), C(`8 anecdotes du stage (${stageCount}/8)`, stageCount >= 8), C('Une « Deuxième lecture » (un thème vu 2 jours différents)', lectures >= 1)];
-    case 4: return [C('Badge « Les trois quarts »', has('cov-75')), C('Série de 10 (« Sans réserve »)', has('ser-10')), C('Un « Dossier assaini »', assainis >= 1), C(`Un examen blanc ≥ 10 (meilleur : ${bestExam})`, bestExam >= 10)];
-    case 5: return [C('Badge « J’ai tout vu »', has('cov-100')), C(`1 thème maîtrisé (${masteredKeys.length}/1)`, masteredKeys.length >= 1), C(`Un examen blanc ≥ 12 (meilleur : ${bestExam})`, bestExam >= 12)];
-    case 6: return [C('Anecdote « Dossier d’inscription au tableau »', has('anec-A19')), C('Anecdote « Prestation de serment »', has('anec-A20')), C(`3 thèmes maîtrisés (${masteredKeys.length}/3)`, masteredKeys.length >= 3)];
-    case 7: return [C('Anecdote « Inscription sur la liste H2A »', has('anec-A44')), C('Anecdote « Serment devant la cour d’appel »', has('anec-A45')), C(`2 thèmes CAC maîtrisés (${masteredCac}/2)`, masteredCac >= 2), C(`Un examen blanc ≥ 14 (meilleur : ${bestExam})`, bestExam >= 14)];
-    case 8: return [C('Bloc EC ou Bloc CAC maîtrisé', has('mast-bloc-ec') || has('mast-bloc-cac')), C(`6 thèmes maîtrisés (${masteredKeys.length}/6)`, masteredKeys.length >= 6), C('Anecdote « Création de la société »', has('anec-A23')), C('Anecdote « La plaque sur la porte »', has('anec-A24')), C(`Un examen blanc ≥ 16 (meilleur : ${bestExam})`, bestExam >= 16)];
-    default: return [];
+// ---------- Points et niveaux ----------
+// La carrière avance aux points, calculés à tout moment depuis l'ensemble des statistiques (donc rétroactifs et
+// jamais perdus) : tout ce qui a été fait compte, le jour même comme les semaines précédentes.
+//   question : +1 par réponse, +1 de plus si juste ; doublé pour une question difficile
+//   examen blanc : +20 par copie comptée, + la note sur 20
+//   séries : record de 5 / 10 / 20 / 30 / 50 bonnes réponses d'affilée : +5 / +10 / +20 / +30 / +50 (cumulés)
+//   journées : +10 par jour d'au moins 10 réponses
+//   shorts : +2 par short répondu, +1 par boîte gagnée (jusqu'à 3)
+export const LEVELS = [0, 50, 150, 300, 500, 750, 1050, 1400];
+export const SHORT_PREFIX = 'sht:';
+export function xpOf(stats, ctx, drills = {}) {
+  const parts = { questions: 0, exams: 0, series: 0, days: 0, shorts: 0 };
+  for (const [id, q] of Object.entries(stats.q || {})) {
+    const hard = ctx && (ctx.hardList.has(id) || (q.ko || 0) >= 2);
+    parts.questions += ((q.seen || 0) + (q.ok || 0)) * (hard ? 2 : 1);
   }
+  for (const e of stats.exams || []) parts.exams += 20 + Math.max(0, Math.round(e.note || 0));
+  const best = stats.streak?.best || 0;
+  for (const [n, pts] of [[5, 5], [10, 10], [20, 20], [30, 30], [50, 50]]) if (best >= n) parts.series += pts;
+  for (const n of Object.values(stats.days || {})) if (n >= 10) parts.days += 10;
+  for (const [id, m] of Object.entries(drills || {})) if (id.startsWith(SHORT_PREFIX) && m) parts.shorts += 2 + Math.min(3, m.box || 0);
+  const total = Object.values(parts).reduce((a, b) => a + b, 0);
+  return { total, parts };
+}
+export function levelOf(xp) {
+  let n = 1;
+  for (let i = 0; i < LEVELS.length; i++) if (xp >= LEVELS[i]) n = i + 1;
+  return n;
+}
+// Position dans l'échelle : niveau, points, seuil suivant, part du palier franchie.
+export function levelInfo(xp) {
+  const n = levelOf(xp);
+  const from = LEVELS[n - 1]; const to = LEVELS[n] ?? null;
+  return { n, xp, from, to, pct: to === null ? 1 : Math.min(1, (xp - from) / (to - from)), left: to === null ? 0 : to - xp };
 }
 
 // ---------- Évaluation ----------
@@ -396,12 +386,11 @@ export function evaluate(progress, catalog, ctx, t = Date.now()) {
     if (progress.badges[b.id]) continue;
     if (progressOf(b, st).done) { progress.badges[b.id] = t; fresh.badges.push(b); }
   }
-  const has = (id) => !!progress.badges[id];
+  // Grades : aux points, jamais repris ; un grade déjà atteint sous une ancienne règle reste acquis.
+  const lv = levelOf(xpOf(st, ctx, progress.drills).total);
   for (const g of GRADES) {
-    if (progress.grades[g.n]) continue;
-    if (!progress.grades[g.n - 1]) break;
-    if (gradeConditions(g.n, has, st, ctx).every((c) => c.ok)) { progress.grades[g.n] = t; fresh.grades.push(g); }
-    else break;
+    if (g.n > lv || progress.grades[g.n]) continue;
+    progress.grades[g.n] = t; fresh.grades.push(g);
   }
   return fresh;
 }
