@@ -591,7 +591,8 @@ function dayTasks() {
   const files = [...new Set(steps.flatMap((st) => st.fiches))];
   if (files.length) {
     const unread = files.find((f) => !P.isRead(pr.plan, f));
-    tasks.push({ id: 'read', icon: ic('chart'), title: files.length > 1 ? `Lire les ${files.length} schémas du jour` : 'Lire le schéma du jour', sub: `${steps.map((st) => st.title).join(' · ')} · 5 à 10 min chacun`, done: !unread, cta: `Lire : ${shortTitle(unread || files[0])}`, run: () => ficheSheet(unread || files[0]), html: files.map((f) => `<button class="btn sm ${P.isRead(pr.plan, f) ? '' : 'primary'}" data-open-fiche="${esc(f)}">${P.isRead(pr.plan, f) ? ic('check') : ic('chart')} ${esc(shortTitle(f))}</button>`).join('') });
+    const readN = files.filter((f) => P.isRead(pr.plan, f)).length;
+    tasks.push({ id: 'read', icon: ic('chart'), title: files.length > 1 ? `Lire les ${files.length} schémas du jour` : 'Lire le schéma du jour', sub: `${steps.map((st) => st.title).join(' · ')} · 5 à 10 min chacun`, short: files.length > 1 ? `${readN} / ${files.length} lus · 5 à 10 min chacun` : '5 à 10 min', done: !unread, cta: `Lire : ${shortTitle(unread || files[0])}`, run: () => ficheSheet(unread || files[0]), html: files.map((f) => `<button class="btn sm ${P.isRead(pr.plan, f) ? '' : 'primary'}" data-open-fiche="${esc(f)}">${P.isRead(pr.plan, f) ? ic('check') : ic('chart')} ${esc(shortTitle(f))}</button>`).join('') });
   }
   if (state.shorts?.length) {
     const n = shortsToday(); const need = d.kind === 'veille' ? 5 : 10;
@@ -632,6 +633,27 @@ function dayTasks() {
 const nextTask = (tasks, skip = '') => tasks.find((x) => !x.done && !x.optional && x.id !== skip);
 // Jeu du jour : noté à la fin de la partie (voir endGame).
 function markGameFinished(kind) { P.markGameDone(state.progress.plan, todayKey(), kind); }
+// Plan du jour « bilan » : une ligne par tâche, toute la ligne se touche ; seul le détail de la tâche en cours est
+// affiché ; rattrapage et demain tiennent en une ligne discrète chacun.
+function dayCardBilan({ d, tasks, req, n, cur, tomText }) {
+  const weekday = new Date().toLocaleDateString('fr-FR', { weekday: 'long' });
+  const late = [];
+  if (d.late?.length) late.push(`Rattrapage : ${d.late.map((x) => P.stepById(x.id)?.title || x.id).join(', ')}`);
+  if (d.merged?.length) late.push(`Regroupé aujourd’hui : ${d.merged.map((m) => m.kind === 'blanc' ? `examen blanc ${m.exam.toUpperCase()}` : m.kind === 'faibles' ? 'points faibles' : 'veille').join(', ')}`);
+  const row = (x, i) => {
+    const isCur = x === cur; const state = x.done ? 'done' : isCur ? 'cur' : '';
+    const inner = `<span class="tick">${x.done ? ic('check') : x.optional ? '+' : i + 1}</span>
+      <span class="tbody"><strong>${esc(x.title)}</strong>${isCur ? `<span class="muted">${esc(x.short || x.sub)}</span><span class="todo-go">${esc(x.cta)} ›</span>` : ''}</span>
+      <span class="tmeta">${x.done ? '' : x.optional && !isCur ? 'facultatif' : isCur ? '' : '›'}</span>`;
+    return `<li class="${state}">${x.done ? `<div class="todo-row">${inner}</div>` : `<button class="todo-row" data-task="${x.id}">${inner}</button>`}</li>`;
+  };
+  return `<div class="card plan-card bilan"><div class="plan-head"><h2>Plan du jour</h2><span class="plan-meta">${esc(weekday)} · ${esc(KIND_LABEL[d.kind].toLowerCase())} · <strong>${n}/${req.length}</strong></span></div>
+    <div class="progress sm"><div style="width:${Math.round((n / Math.max(1, req.length)) * 100)}%"></div></div>
+    ${late.length ? `<p class="plan-late">${late.map(esc).join(' · ')}</p>` : ''}
+    <ol class="todo">${tasks.map(row).join('')}</ol>
+    ${n === req.length ? `<div class="gfb ok">${ic('party')} Plan du jour terminé.</div>${nextCard(true)}` : ''}
+    <div class="plan-foot">${tomText ? `<span>Demain : ${esc(tomText)}</span>` : '<span></span>'}<button class="linkbtn" data-go="plan">Plan complet ›</button></div></div>`;
+}
 function lateBanner(d) {
   const parts = [];
   if (d.late?.length) parts.push(`${ic('undo')} <strong>Rattrapage</strong> : ${d.late.map((x) => `${esc(P.stepById(x.id)?.title || x.id)} (prévue le ${new Date(`${x.was}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })})`).join(' · ')}.`);
@@ -663,6 +685,7 @@ function dayCard() {
   const cur = nextTask(tasks);
   const tom = calendar()[1];
   const tomText = tom ? [...tom.steps.map((id) => P.stepById(id)?.title), tom.exam ? `examen blanc ${tom.exam.toUpperCase()}` : '', tom.kind === 'faibles' ? 'points faibles' : '', tom.kind === 'veille' ? 'veille légère' : '', tom.kind === 'consolidation' ? 'consolidation' : ''].filter(Boolean).join(' · ') : '';
+  if (isBilan()) return dayCardBilan({ d, tasks, req, n, cur, tomText });
   return `<div class="card plan-card"><div class="row" style="justify-content:space-between"><span class="badge warn">${esc(KIND_LABEL[d.kind])} · J-${d.n}</span><span class="muted">${n}/${req.length} fait</span></div>
     <h2 style="margin:8px 0 2px">Mon plan du ${esc(date)}</h2>${lateBanner(d)}<div class="progress" style="margin:6px 0 10px"><div style="width:${Math.round((n / req.length) * 100)}%"></div></div>
     <ol class="todo">${tasks.map((x, i) => `<li class="${x.done ? 'done' : x === cur ? 'cur' : ''}"><span class="tick">${x.done ? ic('check') : x.optional ? '+' : i + 1}</span><div class="tbody"><div><strong>${x.icon} ${esc(x.title)}</strong>${x === cur ? ' <span class="badge warn">maintenant</span>' : ''}${x.optional ? ' <span class="badge">facultatif</span>' : ''}</div><div class="muted">${esc(x.sub)}</div>${x.done ? '' : x.html || `<button class="btn sm ${x === cur ? 'primary' : ''}" data-task="${x.id}">${ic('play')} ${esc(x.cta)}</button>`}</div></li>`).join('')}</ol>

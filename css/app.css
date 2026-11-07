@@ -882,3 +882,24 @@ html { overscroll-behavior-y: none; }
   :root[data-look="bilan"] nav.bottom::before { color: var(--primary-btn); }
   :root[data-look="bilan"] nav.bottom button.active { background: var(--primary-btn); color: #fff; }
 }
+/* Plan du jour « bilan » : lignes nettes, un seul détail (la tâche en cours), pied discret */
+:root[data-look="bilan"] .plan-card.bilan .plan-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+:root[data-look="bilan"] .plan-card.bilan h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0; }
+:root[data-look="bilan"] .plan-meta { font-size: 13px; color: var(--muted); }
+:root[data-look="bilan"] .plan-meta strong { color: var(--text); }
+:root[data-look="bilan"] .plan-card.bilan .progress.sm { margin: 10px 0 2px; height: 3px; }
+:root[data-look="bilan"] .plan-late { margin: 10px 0 0; font-size: 13px; color: var(--warn); }
+:root[data-look="bilan"] .plan-card.bilan .todo { margin: 4px 0 0; }
+:root[data-look="bilan"] .plan-card.bilan .todo li { display: block; padding: 0; }
+:root[data-look="bilan"] .todo-row { all: unset; box-sizing: border-box; width: 100%; display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: start; padding: 13px 0; cursor: pointer; color: var(--text); }
+:root[data-look="bilan"] div.todo-row { cursor: default; }
+:root[data-look="bilan"] .todo-row:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; border-radius: 8px; }
+:root[data-look="bilan"] .todo-row .tbody { display: grid; gap: 3px; min-width: 0; }
+:root[data-look="bilan"] .todo-row strong { font-size: 16px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; }
+:root[data-look="bilan"] .todo-row .tbody .muted { font-size: 13px; line-height: 1.35; }
+:root[data-look="bilan"] .todo-row .tmeta { font-size: 13px; color: var(--muted); padding-top: 2px; white-space: nowrap; }
+:root[data-look="bilan"] .todo-go { color: var(--primary); font-weight: 700; font-size: 14px; margin-top: 4px; }
+:root[data-look="bilan"] .todo li.done .todo-row strong { color: var(--muted); font-weight: 600; text-decoration: line-through; text-decoration-color: var(--line); }
+:root[data-look="bilan"] .todo li.cur .todo-row strong { font-size: 17px; }
+:root[data-look="bilan"] .plan-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 6px; font-size: 13px; color: var(--muted); }
+:root[data-look="bilan"] .plan-foot .linkbtn { color: var(--primary); font-weight: 700; text-decoration: none; padding: 6px 0; white-space: nowrap; }
