@@ -1,66 +1,91 @@
-// Carrière : cartouche de niveau, frise des grades et passage de niveau, dans l'esprit d'un dossier d'architecte
-// (cartouche de plan, cotes, capitales espacées). Fonctions pures qui renvoient du HTML.
+// Carrière : carte de grade, bandeau de session, frise et passage de niveau, dans l'esprit « bilan éditorial »
+// (une couleur signature, de grands chiffres, des cartes pleines). Fonctions pures qui renvoient du HTML ;
+// la couleur et la typographie viennent des variables CSS --g-* (thème « bilan » ou « classique »).
 import { GRADES, LEVELS, GATES, levelInfo, gateConditions } from './gamify.js';
-import { ROOMS } from './scene.js';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const fmtDate = (t) => new Date(t).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 const pad2 = (n) => String(n).padStart(2, '0');
-export const roomOf = (n) => ROOMS.find((r) => r.n === n);
 
-// Résumé des points par source, pour le cartouche (ordre d'affichage fixe).
-const PART_LABELS = [['questions', 'questions'], ['exams', 'examens'], ['shorts', 'shorts'], ['series', 'séries'], ['days', 'journées']];
+// Noms courts, pour les bandeaux étroits.
+export const SHORT = ['', '1re année', '2e année', '3e année', 'Mémorialiste', 'Diplômé d’EC', 'Inscrit au tableau', 'Commissaire aux comptes', 'Installé'];
 
-// Condition courte d'une pièce fermée (pour le plan et la frise).
+// Condition courte d'un grade (frise).
 export const gateSummary = (n) => { const g = GATES[n]; if (!g) return ''; const p = [`${g.cov} % vues`]; if (g.exams) p.push('un examen blanc'); if (g.exam) p.push(`examen ≥ ${g.exam}`); if (g.acc) p.push(`réussite ≥ ${g.acc} %`); return p.join(' · '); };
-export const gateSummaries = () => Object.fromEntries(GRADES.map((g) => [g.n, gateSummary(g.n)]));
 
-// Cartouche de niveau : grade, pièce, barre de points, conditions du grade suivant.
-export function levelCardHtml(info, { today = 0, parts = null, compact = false, conds = [], blocked = false } = {}) {
-  const g = GRADES[info.n - 1]; const next = GRADES[info.n]; const room = roomOf(info.n);
-  const pct = Math.round(info.pct * 100);
-  const bar = `<div class="lvl-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}"><div style="width:${pct}%"></div></div>`;
+const bar = (pct, cls = '') => `<div class="g-bar ${cls}" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(pct * 100)}"><div style="width:${Math.round(pct * 100)}%"></div></div>`;
+const condList = (conds, cls = 'g-conds') => `<ul class="${cls}">${conds.map((c) => `<li class="${c.ok ? 'ok' : ''}"><span>${c.ok ? '✓' : '○'}</span> ${esc(c.label)}</li>`).join('')}</ul>`;
+
+// Carte de grade (accueil, compacte ; carrière, complète) : numéro, nom, barre vers le suivant, conditions.
+export function levelCardHtml(info, { today = 0, conds = [], blocked = false, compact = false } = {}) {
+  const g = GRADES[info.n - 1]; const next = GRADES[info.n];
   const line = next
     ? `<strong>${info.xp}</strong> / ${info.to} pts · encore <strong>${info.left}</strong> pour « ${esc(next.name)} »`
-    : `<strong>${info.xp}</strong> pts · les huit pièces sont ouvertes`;
-  const gate = conds.length
-    ? `<div class="lvl-gate ${blocked ? 'blocked' : ''}"><div class="lvl-gate-h">${blocked ? 'Points acquis · résultats manquants' : 'Pour ouvrir'} ${next ? `la pièce ${pad2(next.n)}` : ''}</div><ul>${conds.map((c) => `<li class="${c.ok ? 'ok' : ''}"><span>${c.ok ? '■' : '□'}</span> ${esc(c.label)}</li>`).join('')}</ul></div>` : '';
-  const chips = parts && !compact
-    ? `<dl class="lvl-parts">${PART_LABELS.filter(([k]) => parts[k]).map(([k, l]) => `<div><dt>${l}</dt><dd>${parts[k]}</dd></div>`).join('')}</dl>` : '';
-  return `<div class="lvl ${compact ? 'compact' : ''}">
-    <div class="lvl-head"><span class="lvl-no">${pad2(info.n)}<small>/ ${pad2(GRADES.length)}</small></span>
-      <div><div class="lvl-kicker">Pièce ${pad2(info.n)} · ${esc(room.name)}</div><h2 class="lvl-name">${esc(g.name)}</h2></div>
-      ${today > 0 ? `<span class="lvl-today">+${today} pts<small>aujourd’hui</small></span>` : ''}</div>
-    ${bar}
-    <div class="lvl-line">${line}</div>
-    ${compact && !blocked ? '' : gate}
-    ${chips}
+    : `<strong>${info.xp}</strong> pts · dernier grade atteint`;
+  const gate = conds.length && (!compact || blocked)
+    ? `<div class="g-gate ${blocked ? 'blocked' : ''}"><div class="g-gate__h">${blocked ? 'Points acquis · résultats manquants' : 'Pour passer'}${next ? ` au grade ${pad2(next.n)}` : ''}</div>${condList(conds)}</div>` : '';
+  return `<div class="g-card ${compact ? 'compact' : ''}">
+    <div class="g-card__top">
+      <span class="g-no">${pad2(info.n)}</span>
+      <div class="g-card__text"><span class="g-kicker">Grade ${info.n} sur ${GRADES.length}</span><span class="g-name">${esc(g.name)}</span></div>
+      ${today > 0 ? `<span class="g-today">+${today}<small>pts aujourd’hui</small></span>` : ''}
+    </div>
+    ${bar(info.pct)}
+    <div class="g-line">${line}</div>
+    ${gate}
   </div>`;
 }
 
-// Frise : les 8 pièces, ouvertes (datées), courante, fermées (seuil et conditions). dates = progress.grades.
+// Carte-bilan pleine (haut de l'écran Carrière) : le grade en très grand, trois chiffres, le grade suivant.
+export function heroHtml(info, readiness, { parts = null } = {}) {
+  const g = GRADES[info.n - 1]; const next = GRADES[info.n];
+  return `<div class="g-hero">
+    <span class="g-kicker">Grade</span>
+    <span class="g-big">${pad2(info.n)}</span>
+    <span class="g-hero__name">${esc(g.name)}</span>
+    <div class="g-stats">
+      <span><b>${info.xp}</b>pts</span>
+      <span><b>${Math.floor(readiness.cov)} %</b>annales vues</span>
+      <span><b>${readiness.best ? readiness.best : '—'}</b>meilleur examen</span>
+      ${parts ? `<span><b>${parts.exams ? Math.round(parts.exams) : 0}</b>pts d’examens</span>` : ''}
+    </div>
+    ${next ? `<div class="g-next"><span class="g-next__k">Prochain · ${esc(next.name)}</span><span class="g-next__v">${info.xp - info.from} / ${info.to - info.from}</span>${bar(info.pct, 'g-bar--light')}</div>` : '<div class="g-next"><span class="g-next__k">Les huit grades sont atteints.</span></div>'}
+  </div>`;
+}
+
+// Bandeau de session : le grade et sa barre au-dessus de la question. gain = points gagnés depuis l'ouverture de la vue.
+export function stripHtml(info, { gain = 0 } = {}) {
+  return `<div class="g-strip">
+    <div class="g-strip__text"><span class="g-kicker">Grade ${info.n} <span class="g-sep">/</span> ${GRADES.length}</span><span class="g-strip__name">${esc(SHORT[info.n])}</span></div>
+    <span class="g-strip__pts">${gain > 0 ? `<em>+${gain}</em>` : ''}<strong>${info.xp}</strong><small> / ${info.to ?? '—'}</small></span>
+    ${bar(info.pct, 'g-bar--thin')}
+  </div>`;
+}
+
+// Frise : les 8 grades, atteints (datés), courant, à venir (seuil et conditions). dates = progress.grades.
 export function timelineHtml(info, dates = {}, readiness = null) {
   return `<ol class="parcours">${GRADES.map((g) => {
-    const done = g.n <= info.n; const cur = g.n === info.n; const room = roomOf(g.n);
-    const when = dates[g.n] ? `ouverte le ${fmtDate(dates[g.n])}` : g.n === 1 ? 'départ' : `${LEVELS[g.n - 1]} pts · ${gateSummary(g.n)}`;
+    const done = g.n <= info.n; const cur = g.n === info.n;
+    const when = dates[g.n] ? `atteint le ${fmtDate(dates[g.n])}` : g.n === 1 ? 'départ' : `${LEVELS[g.n - 1]} pts · ${gateSummary(g.n)}`;
     const sub = cur && GRADES[info.n] ? `${info.xp} / ${info.to} pts` : when;
-    const next = g.n === info.n + 1 && readiness ? `<ul class="fr-conds">${gateConditions(g.n, readiness).map((c) => `<li class="${c.ok ? 'ok' : ''}"><span>${c.ok ? '■' : '□'}</span> ${esc(c.label)}</li>`).join('')}</ul>` : '';
+    const next = g.n === info.n + 1 && readiness ? condList(gateConditions(g.n, readiness), 'g-conds fr-conds') : '';
     return `<li class="fr-item ${done ? 'done' : 'todo'} ${cur ? 'cur' : ''}">
       <span class="fr-dot">${pad2(g.n)}</span>
-      <div class="fr-body"><strong>${esc(g.name)}</strong><div class="fr-sub">${esc(room.name)} · ${esc(sub)}</div>
-      ${cur && GRADES[info.n] ? `<div class="lvl-bar sm"><div style="width:${Math.round(info.pct * 100)}%"></div></div>` : ''}${next}</div>
+      <div class="fr-body"><strong>${esc(g.name)}</strong><div class="fr-sub">${esc(sub)}</div>
+      ${cur && GRADES[info.n] ? bar(info.pct, 'g-bar--thin') : ''}${next}</div>
     </li>`;
   }).join('')}</ol>`;
 }
 
-// Écran de passage de niveau (célébration) : une pièce de plus sur le plan.
-export function levelUpHtml(n, sceneSvg = '') {
-  const g = GRADES[n - 1]; const room = roomOf(n);
+// Passage de grade (célébration) : la carte-bilan pleine page.
+export function levelUpHtml(n, readiness = null, xp = null) {
+  const g = GRADES[n - 1]; const next = GRADES[n];
   return `<div class="cel-level">
-    ${sceneSvg ? `<div class="cel-plan">${sceneSvg}</div>` : ''}
-    <span class="lvl-stamp">Pièce ${pad2(n)} ouverte</span>
-    <h2>${esc(g.name)}</h2>
-    <p>${esc(room.name)}</p>
+    <span class="g-kicker">Nouveau grade</span>
+    <span class="g-big">${pad2(n)}</span>
+    <span class="g-hero__name">${esc(g.name)}</span>
+    ${readiness ? `<div class="g-stats"><span><b>${xp ?? LEVELS[n - 1]}</b>pts</span><span><b>${Math.floor(readiness.cov)} %</b>annales vues</span><span><b>${readiness.best || '—'}</b>meilleur examen</span></div>` : ''}
+    ${next ? `<div class="g-next"><span class="g-next__k">Prochain · ${esc(next.name)}</span><span class="g-next__v">${LEVELS[n] - LEVELS[n - 1]} pts</span></div>` : ''}
     <p class="cel-hint">Touchez pour continuer</p>
   </div>`;
 }
