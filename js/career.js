@@ -49,7 +49,7 @@ export function heroHtml(info, readiness, { parts = null } = {}) {
       <span><b>${readiness.best ? readiness.best : '—'}</b>meilleur examen</span>
       ${parts ? `<span><b>${parts.exams ? Math.round(parts.exams) : 0}</b>pts d’examens</span>` : ''}
     </div>
-    ${next ? `<div class="g-next"><span class="g-next__k">Prochain · ${esc(next.name)}</span><span class="g-next__v">${info.barPct !== undefined && info.barPct !== info.pct ? `${Math.round(info.barPct * 100)} % des résultats` : `${Math.min(info.xp, info.to) - info.from} / ${info.to - info.from} pts`}</span>${bar(info.barPct ?? info.pct, 'g-bar--light')}</div>` : '<div class="g-next"><span class="g-next__k">Les huit grades sont atteints.</span></div>'}
+    ${next ? `<div class="g-next"><span class="g-next__k">Prochain · ${esc(next.name)}</span><span class="g-next__v">${info.barPct !== undefined && info.barPct !== info.pct ? 'points acquis · résultats en cours' : `${Math.min(info.xp, info.to) - info.from} / ${info.to - info.from} pts`}</span>${bar(info.barPct ?? info.pct, 'g-bar--light')}</div>` : '<div class="g-next"><span class="g-next__k">Les huit grades sont atteints.</span></div>'}
   </div>`;
 }
 
