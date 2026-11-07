@@ -637,7 +637,7 @@ function helpCard() {
   if (s.helpSeen) return '';
   setTimeout(() => { const b = $('#help-ok'); if (b) b.onclick = () => { s.helpSeen = true; persist(); render(); }; }, 0);
   return `<div class="card help"><h2>Comment ça marche</h2><ol>
-    <li><strong>Suivez le plan du jour</strong>, juste en dessous : le gros bouton bleu lance toujours la prochaine chose à faire.</li>
+    <li><strong>Suivez le plan du jour</strong>, juste en dessous : le gros bouton en couleur lance toujours la prochaine chose à faire.</li>
     <li><strong>Une session</strong> mêle vos nouvelles questions et celles à revoir : notez honnêtement, l’app calcule quand chaque question reviendra (toujours avant le 10 novembre).</li>
     <li><strong>Un lien vers un schéma</strong> s’ouvre par-dessus : « Fermer et reprendre » vous ramène où vous en étiez.</li>
     <li>Plan fini ? <strong>« Et maintenant ? »</strong> propose la suite, autant que vous voulez. Le plan se recale chaque matin sur vos résultats.</li></ol>
@@ -1373,7 +1373,7 @@ views.settings = () => {
     <label class="field"><input type="checkbox" id="s-gl" ${s.glossary !== false ? 'checked' : ''}> Glossaire : définition au toucher des termes clés (soulignés en pointillé), hors examen blanc et jeux</label>
     <label class="field">Chrono des jeux (Vrai / Faux, Sprint chiffres)<select id="s-timer">${[['normal', 'Normal'], ['large', 'Large'], ['off', 'Sans chrono']].map(([k, l]) => `<option value="${k}" ${s.gameTimer === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
     <label class="field">Shorts : pause proposée après<select id="s-shorts">${[[10, '10 shorts'], [15, '15 shorts'], [20, '20 shorts'], [30, '30 shorts'], [0, 'Sans limite']].map(([k, l]) => `<option value="${k}" ${(s.shortsLimit ?? 15) === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
-    <label class="field">Carrière et points : apparence<select id="s-look"><option value="bilan" ${(s.look || 'bilan') === 'bilan' ? 'selected' : ''}>Bilan (orange, grands chiffres)</option><option value="classique" ${s.look === 'classique' ? 'selected' : ''}>Classique (bleu de l’app)</option></select></label>
+    <label class="field">Apparence<select id="s-look"><option value="bilan" ${(s.look || 'bilan') === 'bilan' ? 'selected' : ''}>Bilan (orange signature, grands chiffres)</option><option value="classique" ${s.look === 'classique' ? 'selected' : ''}>Classique (bleu, interface d’origine)</option></select></label>
     <label class="field">Thème<select id="s-theme"><option value="">Automatique</option><option value="light" ${document.documentElement.dataset.theme === 'light' ? 'selected' : ''}>Clair</option><option value="dark" ${document.documentElement.dataset.theme === 'dark' ? 'selected' : ''}>Sombre</option></select></label></div>
     ${syncCard()}
     <div class="card"><h2>Données</h2><p class="muted">${SY.config() ? 'La progression est stockée sur cet appareil et synchronisée en ligne.' : 'La progression est stockée uniquement sur ce téléphone.'} ${s.lastExportAt ? `Dernier export : ${new Date(s.lastExportAt).toLocaleString('fr-FR')}.` : '<strong>Aucun export pour l’instant.</strong>'}</p>
