@@ -267,10 +267,10 @@ test('grades : les points font avancer, les résultats font franchir ; jamais pa
   for (let i = 0; i < 2000; i++) applyAnswer(progress.stats, { id: ctx.all[i % ctx.all.length], ok: false, t: T0 + i }, ctx);
   evaluate(progress, catalog, ctx, T0 + 3000);
   const cs = careerState(progress.stats, ctx);
-  assert.ok(cs.info.xp >= LEVELS[3], 'les points dépassent le palier 4');
-  assert.equal(currentGrade(progress).n, 3);
-  assert.equal(cs.blocked, true);
+  assert.ok(cs.info.xp >= LEVELS[3], 'un score élevé…');
+  assert.equal(currentGrade(progress).n, 3, '…ne change rien au grade : les résultats seuls comptent');
   assert.ok(cs.conds.some((c) => !c.ok && /examen blanc/.test(c.label)));
+  assert.equal(cs.info.total, cs.conds.length); assert.ok(cs.info.pct > 0 && cs.info.pct < 1);
   // Tout réussi trois jours de suite + examen à 17 → dernier grade
   const p2 = { attempts: [], exams: [], stats: emptyStats(), drills: Object.fromEntries(Array.from({ length: 250 }, (_, i) => [`sht:x-${i}`, { box: 3, last: T0, due: T0 }])) };
   for (let d = 1; d <= 3; d++) for (const id of ctx.all) applyAnswer(p2.stats, { id, ok: true, t: D(2026, 10, d) }, ctx);

@@ -462,7 +462,7 @@ views.home = () => {
   ${helpCard()}
   ${dayCard()}
   <div class="card career-card" data-go="carriere">
-    ${CR.levelCardHtml(lv.info, { today: lv.today, compact: true, conds: lv.conds, blocked: lv.blocked })}
+    ${CR.levelCardHtml(lv.info, { today: lv.today, compact: true, conds: lv.conds })}
     <div class="muted" style="margin-top:8px;text-align:right">Ma carrière ›</div>
   </div>
   ${carnetCard()}
@@ -2048,15 +2048,27 @@ function xpInfo() {
 }
 // Bilan de la semaine : réponses par jour (7 derniers jours), total, examens, partage en texte.
 function weekCard() {
-  const st = state.progress.stats; const days = [];
-  for (let i = 6; i >= 0; i--) { const k = G.dayKey(Date.now() - i * DAY); days.push({ k, n: st.days[k] || 0, label: new Date(Date.now() - i * DAY).toLocaleDateString('fr-FR', { weekday: 'narrow' }) }); }
+  const pr = state.progress; const st = pr.stats; const days = [];
+  for (let i = 6; i >= 0; i--) { const t = Date.now() - i * DAY; const k = G.dayKey(t); days.push({ k, n: st.days[k] || 0, label: new Date(t).toLocaleDateString('fr-FR', { weekday: 'narrow' }), full: new Date(t).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) }); }
   const total = days.reduce((a, d) => a + d.n, 0); const max = Math.max(1, ...days.map((d) => d.n));
   const weekExams = st.exams.filter((e) => e.t >= Date.now() - 7 * DAY);
   const best = weekExams.reduce((m, e) => Math.max(m, e.note), 0);
   const active = days.filter((d) => d.n > 0).length;
-  setTimeout(() => { const b = $('#week-share'); if (b) b.onclick = async () => { const text = `DEC épreuve 1 · ma semaine : ${total} réponses sur ${active} jour${active > 1 ? 's' : ''}${weekExams.length ? `, ${weekExams.length} examen${weekExams.length > 1 ? 's' : ''} blanc${weekExams.length > 1 ? 's' : ''} (meilleur : ${best}/20)` : ''}.`; try { if (navigator.share) await navigator.share({ text }); else { await navigator.clipboard.writeText(text); toast('Bilan copié'); } } catch { /* annulé */ } }; }, 0);
+  const sel = days.find((d) => d.k === state.weekDay) || [...days].reverse().find((d) => d.n > 0) || days[6];
+  // Détail du jour : réussite d'après l'historique (400 dernières réponses), examens du jour
+  const atts = pr.attempts.filter((a) => G.dayKey(a.t) === sel.k); const ok = atts.filter((a) => a.ok).length;
+  const exams = st.exams.filter((e) => G.dayKey(e.t) === sel.k);
+  const detail = `<div class="week-detail"><strong>${esc(sel.full)}</strong>
+    <span>${sel.n ? `${sel.n} réponse${sel.n > 1 ? 's' : ''}${atts.length ? ` · ${Math.round((ok / atts.length) * 100)} % de réussite` : ''}` : 'Pas de réponse ce jour-là'}</span>
+    ${exams.length ? `<span>${exams.map((e) => `Examen blanc ${e.mode.toUpperCase()} : ${e.note}/20`).join(' · ')}</span>` : ''}
+    ${sel.n && !atts.length ? '<span class="muted">Réussite non conservée (historique limité aux 400 dernières réponses).</span>' : ''}</div>`;
+  setTimeout(() => {
+    document.querySelectorAll('[data-week]').forEach((b) => { b.onclick = () => { state.weekDay = b.dataset.week; render(); }; });
+    const b = $('#week-share'); if (b) b.onclick = async () => { const text = `DEC épreuve 1 · ma semaine : ${total} réponses sur ${active} jour${active > 1 ? 's' : ''}${weekExams.length ? `, ${weekExams.length} examen${weekExams.length > 1 ? 's' : ''} blanc${weekExams.length > 1 ? 's' : ''} (meilleur : ${best}/20)` : ''}.`; try { if (navigator.share) await navigator.share({ text }); else { await navigator.clipboard.writeText(text); toast('Bilan copié'); } } catch { /* annulé */ } };
+  }, 0);
   return `<div class="card week"><h2>Ma semaine</h2>
-    <div class="week-bars">${days.map((d) => `<div class="week-day"><i style="height:${Math.round((d.n / max) * 100)}%"></i><span>${esc(d.label)}</span></div>`).join('')}</div>
+    <div class="week-bars">${days.map((d) => `<button class="week-day" data-week="${d.k}" ${d.k === sel.k ? 'data-on' : ''} aria-label="${esc(d.full)} : ${d.n} réponses"><i style="height:${Math.round((d.n / max) * 100)}%"></i><span>${esc(d.label)}</span></button>`).join('')}</div>
+    ${detail}
     <div class="g-stats week-stats"><span><b>${total}</b>réponses</span><span><b>${active}</b>jour${active > 1 ? 's' : ''} actif${active > 1 ? 's' : ''}</span><span><b>${weekExams.length ? `${best}` : '—'}</b>meilleur examen</span></div>
     <button class="btn sm" id="week-share">${ic('external')} Partager</button></div>`;
 }
@@ -2065,7 +2077,7 @@ function careerView() {
   const vitrine = state.catalog.filter((b) => b.prop && pr.badges[b.id] && !b.hidden);
   return `<div class="card g-hero-card">${CR.heroHtml(lv.info, lv.readiness)}</div>
     ${weekCard()}
-    <div class="card">${CR.levelCardHtml(lv.info, { today: lv.today, conds: lv.conds, blocked: lv.blocked })}</div>
+    <div class="card">${CR.levelCardHtml(lv.info, { today: lv.today, conds: lv.conds })}</div>
     <div class="card"><h2>Comment on avance</h2><p class="muted" style="margin:4px 0 0"><strong>Les points font avancer</strong> dans un grade : chaque réponse (+1, +2 si juste, jusqu’à 3 réponses et 3 réussites par question, le double sur une question difficile), chaque examen blanc (+20 et la note), chaque short, les records de série et les journées d’au moins 10 réponses. <strong>Les résultats font passer</strong> au grade suivant : annales vues, examens blancs, taux de réussite.</p></div>
     <div class="card"><h2>Le parcours</h2>${CR.timelineHtml(lv.info, pr.grades, lv.readiness)}</div>
     <div class="card"><h2>Vitrine · ${vitrine.length}</h2><p class="muted" style="margin:4px 0 10px">Les objets gagnés avec les badges. Touchez-en un pour voir le badge.</p>

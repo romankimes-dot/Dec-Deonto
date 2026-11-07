@@ -286,9 +286,9 @@ La carrière avance **aux points**, calculés à tout moment depuis l'ensemble d
 | Journée d'au moins 10 réponses | +10 |
 | Short répondu | +2, +1 par boîte gagnée (jusqu'à 3) |
 
-Les points font avancer **dans** un grade ; les **résultats** font franchir le suivant (grade = le plus bas des deux). Par question, 3 réponses et 3 réussites au plus sont comptées : le volume seul ne mène nulle part. Seuils recalibrés le 7 novembre 2026 sur un parcours complet (3 500 à 4 000 points) ; quand les points dépassent le palier, la barre affiche l'avancement des résultats exigés.
+**Le grade ne dépend que des résultats** (révision du 8 novembre 2026 : un score élevé ne doit jamais promettre un grade que les résultats refusent). Les points restent un **score d'effort**, affiché sur le bandeau de session et la carte-bilan, sans effet sur le grade. La barre d'un grade est l'avancement moyen vers les conditions du suivant. Par question, 3 réponses et 3 réussites au plus sont comptées : le volume seul ne mène nulle part. Seuils recalibrés le 7 novembre 2026 sur un parcours complet (3 500 à 4 000 points) ; quand les points dépassent le palier, la barre affiche l'avancement des résultats exigés.
 
-| # | Grade | Seuil de points | Résultats exigés | Décor |
+| # | Grade | Score indicatif | Résultats exigés (seuls comptés) | Décor |
 |---|---|---|---|---|
 | 1 | **Expert-comptable stagiaire, 1re année** | départ | — | Open space, poste partagé |
 | 2 | **Stagiaire, 2e année** | 200 pts | 15 % des annales vues | Open space, poste attitré |
