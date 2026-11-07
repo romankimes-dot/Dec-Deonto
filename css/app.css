@@ -428,12 +428,14 @@ nav.bottom button { font-size: 10px; }
 .feed-top { position: absolute; top: 0; left: 0; right: 0; z-index: 3; display: flex; align-items: center; gap: 12px;
   padding: calc(8px + var(--top-safe)) 14px 8px; background: linear-gradient(var(--f-paper) 70%, rgba(243, 238, 230, 0)); font-size: 14px; color: var(--f-muted); font-weight: 700; }
 .feed-x { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--f-ink); background: #fff; color: var(--f-ink); font-size: 15px; font-weight: 800; cursor: pointer; }
-.feed-scroll { height: 100%; overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
-/* Un short = un écran : la scène se réduit pour laisser la place au texte et à la question ; au-delà, le short défile. */
+.feed-scroll { height: 100%; overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.feed-scroll::-webkit-scrollbar, .sh-in::-webkit-scrollbar { display: none; }
+/* Un short = un écran : la scène est le seul élément qui se réduit pour laisser la place au texte et à la question ;
+   quand elle est à son minimum, le short défile à l'intérieur de son écran (sans barre visible), rien n'est recouvert. */
 .sh { height: 100%; scroll-snap-align: start; scroll-snap-stop: always; display: flex; position: relative; overflow: hidden;
   padding: calc(64px + var(--top-safe)) 0 0; }
 .sh-in { position: relative; width: 100%; max-width: 520px; height: 100%; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;
-  overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0 20px calc(16px + env(safe-area-inset-bottom)); }
+  overflow-y: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 0 20px calc(16px + env(safe-area-inset-bottom)); }
 .sh-in > *, .sh-lesson > * { flex-shrink: 0; }
 .sh-in.center { justify-content: center; text-align: center; align-items: stretch; }
 .sh-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; color: var(--f-muted); }
@@ -442,8 +444,6 @@ nav.bottom button { font-size: 10px; }
 .sh-title { margin: 0; font-size: clamp(26px, 7.6vw, 34px); line-height: 1.03; font-weight: 800; letter-spacing: -.02em; }
 /* Scène */
 .sh-stage { position: relative; flex: 1 1 260px; min-height: 130px; max-height: 300px; margin: 0 -20px; overflow: hidden; }
-.sh-lesson { flex: 1 1 auto; min-height: 0; }
-.sh.asking .sh-lesson { flex: none; }
 .sh-ground { position: absolute; left: -10%; right: -10%; bottom: 0; height: 24%; background: var(--f-ground); border-radius: 50% 50% 0 0 / 40% 40% 0 0; }
 .sh-disc { position: absolute; bottom: 4%; height: 96%; aspect-ratio: 1; border-radius: 50%; }
 .sh-disc.l { left: -12%; } .sh-disc.r { right: -12%; } .sh-disc.c { left: 50%; translate: -50% 0; }
@@ -502,11 +502,13 @@ nav.bottom button { font-size: 10px; }
 .sh-foot { order: 6; margin-top: auto; padding-top: 6px; display: flex; justify-content: space-between; gap: 10px; font-size: 12px; color: var(--f-muted); }
 .sh-end .btn { margin-top: 8px; }
 .sh-end .sh-big { color: var(--f-ink); margin: 6px 0; }
-/* Leçon, puis question de mémoire */
-.sh-lesson { display: flex; flex-direction: column; gap: 12px; }
+/* Leçon, puis question de mémoire. La leçon n'est pas une boîte : ses éléments sont posés directement dans la colonne
+   du short, si bien que seule la scène peut se comprimer et que le bouton ne recouvre jamais l'encart ou le détail. */
+.sh-lesson { display: contents; }
 .sh .sh-quiz.later, .sh.asking .sh-lesson, .sh.asking .sh-ask { display: none; }
 .sh.asking .sh-quiz.later { display: block; animation: sh-up .4s ease both; }
-.sh.asking.review .sh-lesson { display: flex; order: 5; }
+.sh.asking.review .sh-lesson { display: contents; }
+.sh.asking.review .sh-lesson > * { order: 5; }
 /* Animation : chaque élément entre à son tour (--d), quand le short arrive à l'écran. */
 .sh .a { animation: sh-up .6s cubic-bezier(.2, .9, .25, 1.15) var(--d, 0s) both paused; }
 .sh .a.inL { animation-name: sh-inL; } .sh .a.inR { animation-name: sh-inR; } .sh .a.pop { animation-name: sh-pop; } .sh .a.stampIn { animation-name: sh-stamp; animation-duration: .45s; }
@@ -520,7 +522,11 @@ nav.bottom button { font-size: 10px; }
 @keyframes sh-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
 @keyframes sh-think { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
 @media (prefers-reduced-motion: reduce) { .sh .a, .sh .idle, .sh-think { animation: none; } }
-@media (max-height: 740px) { .sh-title { font-size: 24px; } .sh-sign { font-size: 16px; } .sh-bubble { font-size: 16px; } .sh-narr { font-size: 15px; } .sh-big { font-size: 48px; } }
+@media (max-height: 740px) { .sh-title { font-size: 24px; } .sh-sign { font-size: 16px; } .sh-bubble { font-size: 16px; } .sh-narr { font-size: 15px; } .sh-big { font-size: 48px; } .sh-stage { min-height: 110px; flex-basis: 200px; } .sh { padding-top: calc(54px + var(--top-safe)); } .sh-in { gap: 10px; } .sh-stamp { font-size: 15px; padding: 7px 10px; } .sh-flow { gap: 7px; } .sh-flow li { font-size: 16px; } .sh-propHead { width: 44px; } .sh-det { font-size: 14px; } }
+/* Ordinateur : colonne un peu plus large (les textes tiennent sur moins de lignes), scène plafonnée pour que le short tienne
+   dans une fenêtre de navigateur sans défiler. */
+@media (min-width: 900px) { .sh-in { max-width: 600px; padding-left: 24px; padding-right: 24px; } .sh-stage { margin: 0 -24px; max-height: 260px; } .sh-title { font-size: 30px; } .feed .btn.sh-ask { display: flex; width: 100%; max-width: 420px; margin: 0 auto; } }
+@media (min-width: 900px) and (max-height: 820px) { .sh-stage { max-height: 220px; flex-basis: 200px; } }
 html.feed-open, html.feed-open body { background: #f3eee6; }
 .feed .btn.primary { border-color: var(--f-ink); }
 .sh-foot .linkbtn { white-space: nowrap; }

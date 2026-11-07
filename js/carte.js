@@ -39,10 +39,12 @@ export function buildGraph(questions, { minLink = MIN_LINK } = {}) {
 
 // État d'un nœud : vierge (aucune question vue), fragile (réussite < 60 % sur 3 réponses au moins),
 // en cours, solide (maîtrise moyenne ≥ 2/3 et réussite ≥ 80 %). masteryFn : srs.mastery (0 à 3).
-export function nodeState(node, cards, tagAcc, masteryFn) {
+// seenFn : une question compte comme vue dès qu'une réponse est enregistrée, quel que soit le mode (session de
+// répétition, entraînement, examen blanc) ; par défaut, seule l'existence d'une carte de répétition est connue.
+export function nodeState(node, cards, tagAcc, masteryFn, seenFn = (id) => !!cards[id]) {
   const n = node.ids.length;
   const levels = node.ids.map((id) => masteryFn(cards[id]));
-  const seen = node.ids.filter((id) => cards[id]).length;
+  const seen = node.ids.filter((id) => cards[id] || seenFn(id)).length;
   const score = levels.reduce((s, x) => s + x, 0) / (3 * n);
   const a = tagAcc?.[node.id] || { ok: 0, n: 0 };
   const acc = a.n ? a.ok / a.n : null;

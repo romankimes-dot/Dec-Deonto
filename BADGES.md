@@ -279,13 +279,15 @@ La carrière suit le parcours réel (section 0). Un grade se débloque par une *
 | # | Grade | Condition de déblocage | Décor | Objets ajoutés au décor |
 |---|---|---|---|---|
 | 1 | **Expert-comptable stagiaire, 1re année** | au départ | Open space, poste partagé, écran unique | Diplôme DSCG punaisé |
-| 2 | **Stagiaire, 2e année** | badges « Le quart du cabinet » + 3 anecdotes du stage (A1 à A17) + 1 « Deuxième lecture » | Open space, poste attitré avec plante | Badge d'accès, planning de formation |
-| 3 | **Stagiaire, 3e année** | « Mi-parcours » + 8 anecdotes du stage + 2 thèmes maîtrisés | Bureau partagé à deux | Cadre « Entretien de 2e année » |
-| 4 | **Mémorialiste, candidat au DEC** | « Les trois quarts » + « Sans réserve » (série 10) + 4 thèmes maîtrisés dont 2 CAC | Bureau partagé, tableau blanc couvert de schémas | Attestation de fin de stage encadrée |
-| 5 | **Diplômé d'expertise comptable** | « J'ai tout vu » + « Bloc EC maîtrisé » ou « Bloc CAC maîtrisé » + un examen blanc ≥ 12 | Bureau personnel, fenêtre | Diplôme DEC au mur |
-| 6 | **Expert-comptable inscrit au tableau** | A19 + A20 + 6 thèmes maîtrisés | Bureau personnel, bibliothèque | Certificat d'inscription, médaille de l'Ordre |
-| 7 | **Commissaire aux comptes** | A44 + A45 + « Bloc CAC maîtrisé » | Bureau personnel, porte vitrée | Carte professionnelle, Code de commerce rouge, mallette d'audit |
-| 8 | **Expert-comptable installé** | « Maîtrise totale » + A23 + A24 + un examen blanc ≥ 16 | **Cabinet** avec accueil, salle de réunion, **plaque sur la porte** | Plaque gravée à votre nom, machine à café, trophées |
+| 2 | **Stagiaire, 2e année** | « Le quart du cabinet » + 3 anecdotes du stage (A1 à A17) + « Main chaude » (série de 5) | Open space, poste attitré avec plante | Badge d'accès, planning de formation |
+| 3 | **Stagiaire, 3e année** | « Mi-parcours » + 8 anecdotes du stage + 1 « Deuxième lecture » (un thème vu 2 jours différents) | Bureau partagé à deux | Cadre « Entretien de 2e année » |
+| 4 | **Mémorialiste, candidat au DEC** | « Les trois quarts » + « Sans réserve » (série 10) + 1 « Dossier assaini » + un examen blanc ≥ 10 | Bureau partagé, tableau blanc couvert de schémas | Attestation de fin de stage encadrée |
+| 5 | **Diplômé d'expertise comptable** | « J'ai tout vu » + 1 thème maîtrisé + un examen blanc ≥ 12 | Bureau personnel, fenêtre | Diplôme DEC au mur |
+| 6 | **Expert-comptable inscrit au tableau** | A19 + A20 + 3 thèmes maîtrisés | Bureau personnel, bibliothèque | Certificat d'inscription, médaille de l'Ordre |
+| 7 | **Commissaire aux comptes** | A44 + A45 + 2 thèmes CAC maîtrisés + un examen blanc ≥ 14 | Bureau personnel, porte vitrée | Carte professionnelle, Code de commerce rouge, mallette d'audit |
+| 8 | **Expert-comptable installé** | « Bloc EC maîtrisé » ou « Bloc CAC maîtrisé » + 6 thèmes maîtrisés + A23 + A24 + un examen blanc ≥ 16 | **Cabinet** avec accueil, salle de réunion, **plaque sur la porte** | Plaque gravée à votre nom, machine à café, trophées |
+
+Échelle revue le 7 novembre 2026 : la première version exigeait une « Deuxième lecture » (un thème entier vu deux jours différents, jusqu'à 79 questions) dès la 2e année et deux thèmes maîtrisés dès la 3e, ce qui bloquait au premier grade. Les grades 2 à 4 ne dépendent plus que de badges communs ou rares ; la maîtrise des thèmes n'intervient qu'à partir du diplôme.
 
 ### Les scènes SVG
 

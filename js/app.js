@@ -2340,7 +2340,9 @@ const CARTE_SORTS = [['theme', 'Par thème'], ['prio', 'Priorité']];
 function carteData() {
   if (!state.carte) state.carte = CA.buildGraph(state.bank.questions);
   const acc = P.tagStats(state.progress.attempts, state.byId).byKey;
-  const states = Object.fromEntries(state.carte.nodes.map((n) => [n.id, CA.nodeState(n, state.progress.cards, acc, mastery)]));
+  // Vue = au moins une réponse enregistrée (session, entraînement depuis la carte ou une fiche, examen blanc), pas seulement une carte de répétition.
+  const seenFn = (id) => (state.progress.stats?.q?.[id]?.seen || 0) > 0;
+  const states = Object.fromEntries(state.carte.nodes.map((n) => [n.id, CA.nodeState(n, state.progress.cards, acc, mastery, seenFn)]));
   return { g: state.carte, states };
 }
 const carteName = (n) => tagLabel(n.tag);
