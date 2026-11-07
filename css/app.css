@@ -36,6 +36,34 @@
   --primary-btn: #1d4ed8;
 }
 * { box-sizing: border-box; }
+/* ---------- Apparence « bilan » (Réglages) : toute l'app prend la couleur signature, des titres plus denses et des
+   coins un peu plus serrés ; « classique » garde les jetons ci-dessus. Textes en orange foncé (lisible), aplats en orange vif. */
+:root[data-look="bilan"] {
+  --bg: #faf8f4; --card: #ffffff; --text: #141414; --muted: #6f6b63; --line: #e8e3d9;
+  --primary: #cf3a0c; --primary-btn: #ff4d1c; --primary-ink: #ffffff; --radius: 12px;
+  --ok: #157347; --ok-bg: #e4f3ea; --ko: #b3261e; --ko-bg: #fde7e4; --warn: #9a5b00; --warn-bg: #fdf0d5;
+  --g-track: #ece7dd;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-look="bilan"]:not([data-theme="light"]) {
+    --bg: #121110; --card: #1b1917; --text: #f1ede6; --muted: #a39d93; --line: #2d2a25;
+    --primary: #ff7a4d; --primary-btn: #ff4d1c; --ok-bg: #0f2a1c; --ko-bg: #3a1410; --warn-bg: #3a2a08;
+    --ok: #5fd39a; --ko: #ff8a80; --warn: #ffc466; --g-track: #2d2a25;
+  }
+}
+:root[data-look="bilan"][data-theme="dark"] {
+  --bg: #121110; --card: #1b1917; --text: #f1ede6; --muted: #a39d93; --line: #2d2a25;
+  --primary: #ff7a4d; --primary-btn: #ff4d1c; --ok-bg: #0f2a1c; --ko-bg: #3a1410; --warn-bg: #3a2a08;
+  --ok: #5fd39a; --ko: #ff8a80; --warn: #ffc466; --g-track: #2d2a25;
+}
+:root[data-look="bilan"] header.top h1, :root[data-look="bilan"] .card h2, :root[data-look="bilan"] .card h3 { font-weight: 800; letter-spacing: -.015em; }
+:root[data-look="bilan"] .big { font-weight: 800; letter-spacing: -.04em; font-size: 46px; }
+:root[data-look="bilan"] .stat .n { letter-spacing: -.03em; }
+:root[data-look="bilan"] .progress > div, :root[data-look="bilan"] .chip.on, :root[data-look="bilan"] nav.bottom button.active .ic { color: var(--primary-btn); }
+:root[data-look="bilan"] .progress > div { background: var(--primary-btn); }
+:root[data-look="bilan"] .chip.on { background: var(--primary-btn); border-color: var(--primary-btn); color: #fff; }
+:root[data-look="bilan"] .hero { background: linear-gradient(160deg, var(--card) 55%, color-mix(in srgb, var(--primary-btn) 14%, var(--card))); }
+:root[data-look="bilan"] .badge.ec { color: #0e6b64; border-color: #0e6b64; } :root[data-look="bilan"] .badge.cac { color: #6b3fd4; border-color: #6b3fd4; }
 /* Icônes au trait (js/icons.js) : taille et couleur du texte qui les entoure. */
 .ic { width: 1.15em; height: 1.15em; vertical-align: -.2em; flex-shrink: 0; }
 html { -webkit-text-size-adjust: 100%; }
