@@ -2315,11 +2315,12 @@ views.ville = () => {
 const NAV = [
   ['home', ic('home'), 'Accueil'], ['review', ic('repeat'), 'Réviser'], ['train', ic('target'), 'Entraîner'], ['shorts', ic('clapper'), 'Shorts'], ['exam', ic('timer'), 'Examen'], ['carriere', ic('trophy'), 'Carrière'], ['fiches', ic('library'), 'Fiches'],
 ];
+// Menu principal (apparence bilan) : ce qu'on ouvre chaque jour. Le reste est dans « Plus », rangé par intention.
 const NAV_BILAN = [
-  ['home', ic('home'), 'Accueil'], ['review', ic('repeat'), 'Réviser'], ['train', ic('target'), 'Entraîner'], ['carriere', ic('trophy'), 'Carrière'], ['plus', ic('menu'), 'Plus'],
+  ['home', ic('home'), 'Accueil'], ['review', ic('repeat'), 'Réviser'], ['carriere', ic('trophy'), 'Carrière'], ['plus', ic('menu'), 'Plus'],
 ];
 // Vues rangées sous « Plus » (apparence bilan) : l'onglet reste allumé quand on y est.
-const PLUS_VIEWS = new Set(['plus', 'shorts', 'exam', 'fiches', 'ville', 'carte', 'stats', 'settings', 'glossaire', 'carnet']);
+const PLUS_VIEWS = new Set(['plus', 'train', 'jeux', 'shorts', 'exam', 'fiches', 'ville', 'carte', 'stats', 'settings', 'glossaire', 'carnet', 'plan']);
 function buildNav() {
   const nav = $('nav.bottom'); if (!nav) return;
   const list = isBilan() ? NAV_BILAN : NAV;
@@ -2328,18 +2329,31 @@ function buildNav() {
 }
 views.plus = () => {
   const pr = state.progress;
-  const rows = [
-    ['shorts', ic('clapper'), 'Shorts', 'Une notion en 30 secondes, puis une question'],
-    ['exam', ic('timer'), 'Examen blanc', '20 questions, 60 minutes, en conditions'],
-    ['fiches', ic('library'), 'Fiches et schémas', `${state.fiches.filter((f) => P.isRead(pr.plan, f.file)).length} / ${state.fiches.length} vues`],
-    ['ville', ic('landmark'), 'Ville des institutions', 'Qui siège où, qui fait quoi'],
-    ['carte', ic('brain'), 'Carte des notions', 'Les sous-thèmes, EC face au CAC'],
-    ['glossaire', ic('book'), 'Glossaire', 'Les termes clés'],
-    ['carnet', ic('bookmark'), 'Carnet d’erreurs', 'Ce que vous savez ne pas avoir retenu'],
-    ['stats', ic('trending'), 'Statistiques', 'Niveau estimé, réussite par thème'],
-    ['settings', ic('settings'), 'Réglages', 'Date de l’examen, apparence, sauvegarde'],
+  const shDue = state.shorts ? SH.shortsStats(state.shorts, pr.drills).due : 0;
+  const lastExam = pr.exams[pr.exams.length - 1];
+  const groups = [
+    ['Apprendre', [
+      ['fiches', ic('library'), 'Fiches et schémas', `${state.fiches.filter((f) => P.isRead(pr.plan, f.file)).length} / ${state.fiches.length} vues`],
+      ['shorts', ic('clapper'), 'Shorts', shDue ? `${shDue} à revoir` : 'Une notion en 30 secondes, puis une question'],
+      ['ville', ic('landmark'), 'Ville des institutions', 'Qui siège où, qui fait quoi'],
+      ['carte', ic('brain'), 'Carte des notions', 'Les sous-thèmes, EC face au CAC'],
+      ['glossaire', ic('book'), 'Glossaire', 'Les termes clés'],
+    ]],
+    ['S’entraîner', [
+      ['train', ic('target'), 'Séries ciblées', 'Par profession, thème ou sujet précis'],
+      ['exam', ic('timer'), 'Examen blanc', lastExam ? `dernier : ${lastExam.note}/20` : '20 questions, 60 minutes'],
+      ['jeux', ic('dice'), 'Jeux express', 'Duel, vrai / faux, chiffres, arbres, intrus'],
+      ['carnet', ic('bookmark'), 'Carnet d’erreurs', `${CN.entries(pr.carnet).length} à repasser`],
+    ]],
+    ['Mesurer', [
+      ['stats', ic('trending'), 'Statistiques', 'Niveau estimé, réussite par thème'],
+      ['plan', ic('calendar'), 'Plan jusqu’à l’examen', `Jour par jour, jusqu’au ${examDay()}`],
+    ]],
+    ['Régler', [
+      ['settings', ic('settings'), 'Réglages', 'Date de l’examen, apparence, sauvegarde'],
+    ]],
   ];
-  return `<div class="plus">${rows.map(([v, i, t, sub]) => `<button class="plus-row" data-go="${v}"><span class="plus-row__i">${i}</span><span class="plus-row__t"><strong>${esc(t)}</strong><span>${esc(sub)}</span></span><span class="plus-row__c">›</span></button>`).join('')}</div>`;
+  return groups.map(([title, rows]) => `<h3 class="section-title plus-h">${esc(title)}</h3><div class="plus">${rows.map(([v, i, t, sub]) => `<button class="plus-row" data-go="${v}"><span class="plus-row__i">${i}</span><span class="plus-row__t"><strong>${esc(t)}</strong><span>${esc(sub)}</span></span><span class="plus-row__c">›</span></button>`).join('')}</div>`).join('');
 };
 function render() {
   const main = $('#main');
