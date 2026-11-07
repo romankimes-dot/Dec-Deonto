@@ -272,7 +272,7 @@ test('grades : les points font avancer, les résultats font franchir ; jamais pa
   assert.equal(cs.blocked, true);
   assert.ok(cs.conds.some((c) => !c.ok && /examen blanc/.test(c.label)));
   // Tout réussi trois jours de suite + examen à 17 → dernier grade
-  const p2 = { attempts: [], exams: [], stats: emptyStats(), drills: {} };
+  const p2 = { attempts: [], exams: [], stats: emptyStats(), drills: Object.fromEntries(Array.from({ length: 250 }, (_, i) => [`sht:x-${i}`, { box: 3, last: T0, due: T0 }])) };
   for (let d = 1; d <= 3; d++) for (const id of ctx.all) applyAnswer(p2.stats, { id, ok: true, t: D(2026, 10, d) }, ctx);
   applyExam(p2.stats, { t: D(2026, 10, 3, 20), mode: 'qcm', note: 17, durationMs: 3600000, byProf: {} });
   const fresh = evaluate(p2, catalog, ctx, D(2026, 10, 3, 21));

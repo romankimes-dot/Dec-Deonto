@@ -347,7 +347,9 @@ export const GRADES = [
 //   séries : record de 5 / 10 / 20 / 30 / 50 bonnes réponses d'affilée : +5 / +10 / +20 / +30 / +50 (cumulés)
 //   journées : +10 par jour d'au moins 10 réponses
 //   shorts : +2 par short répondu, +1 par boîte gagnée (jusqu'à 3)
-export const LEVELS = [0, 50, 150, 300, 500, 750, 1050, 1400];
+// Seuils calibrés sur un parcours complet (banque vue et réussie 3 fois, une dizaine d'examens blancs, les shorts,
+// trois semaines de travail : 3 500 à 4 000 points) ; le dernier palier demande l'essentiel de ce travail.
+export const LEVELS = [0, 200, 500, 900, 1400, 2000, 2700, 3600];
 export const SHORT_PREFIX = 'sht:';
 export function xpOf(stats, ctx, drills = {}) {
   const parts = { questions: 0, exams: 0, series: 0, days: 0, shorts: 0 };
@@ -378,11 +380,12 @@ export function readiness(stats, ctx) {
 }
 export function gateConditions(n, r) {
   const g = GATES[n]; if (!g) return [];
-  const C = (label, ok) => ({ label, ok: !!ok });
-  const out = [C(`${g.cov} % des annales vues (${Math.floor(r.cov)} %)`, r.cov >= g.cov)];
-  if (g.exams) out.push(C('un examen blanc terminé', r.exams >= g.exams));
-  if (g.exam) out.push(C(`un examen blanc ≥ ${g.exam} (meilleur : ${r.best})`, r.best >= g.exam));
-  if (g.acc) out.push(C(`${g.acc} % de réussite sur l’ensemble (${Math.round(r.acc)} %)`, r.acc >= g.acc));
+  // ratio : avancement vers la condition (0 à 1), pour la barre quand les points sont déjà là
+  const C = (label, cur, need) => ({ label, ok: cur >= need, ratio: Math.max(0, Math.min(1, need > 0 ? cur / need : 1)) });
+  const out = [C(`${g.cov} % des annales vues (${Math.floor(r.cov)} %)`, r.cov, g.cov)];
+  if (g.exams) out.push(C('un examen blanc terminé', r.exams, g.exams));
+  if (g.exam) out.push(C(`un examen blanc ≥ ${g.exam} (meilleur : ${r.best})`, r.best, g.exam));
+  if (g.acc) out.push(C(`${g.acc} % de réussite sur l’ensemble (${Math.round(r.acc)} %)`, r.acc, g.acc));
   return out;
 }
 export function gateLevel(r) {
@@ -398,8 +401,13 @@ export function careerState(stats, ctx, drills = {}) {
   const byXp = levelOf(total); const byGate = gateLevel(r);
   const n = Math.min(byXp, byGate);
   const from = LEVELS[n - 1]; const to = LEVELS[n] ?? null;
-  const info = { n, xp: total, from, to, pct: to === null ? 1 : Math.min(1, (total - from) / (to - from)), left: to === null ? 0 : Math.max(0, to - total) };
-  return { info, parts, readiness: r, blocked: byXp > n, conds: n < GRADES.length ? gateConditions(n + 1, r) : [] };
+  const blocked = byXp > n;
+  const conds = n < GRADES.length ? gateConditions(n + 1, r) : [];
+  // Barre affichée : les points dans le palier ; quand ils y sont déjà, l'avancement moyen des résultats exigés
+  const pct = to === null ? 1 : Math.min(1, (total - from) / (to - from));
+  const gatePct = conds.length ? conds.reduce((a, c) => a + c.ratio, 0) / conds.length : 1;
+  const info = { n, xp: total, from, to, pct, barPct: blocked ? gatePct : pct, left: to === null ? 0 : Math.max(0, to - total) };
+  return { info, parts, readiness: r, blocked, conds };
 }
 export function levelOf(xp) {
   let n = 1;

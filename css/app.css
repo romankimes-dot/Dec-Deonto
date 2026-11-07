@@ -791,3 +791,94 @@ html { overscroll-behavior-y: none; }
 .qtimer.over { color: var(--ko); border-color: var(--ko); }
 .qtimer.done { font-weight: 600; color: var(--muted); }
 .qtimer.done.over { color: var(--ko); }
+
+/* ======================= Apparence « bilan » : la mise en page (au-delà des couleurs) ======================= */
+/* Sections plutôt que cartes : fond blanc sans bordure, titres en capitales espacées ; les bordures restent sur ce qui se touche. */
+:root[data-look="bilan"] .card { border: 0; padding: 18px 16px; margin-bottom: 12px; }
+:root[data-look="bilan"] .card h2 { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+:root[data-look="bilan"] .card h2 .ic { width: 1em; height: 1em; }
+:root[data-look="bilan"] .card.next, :root[data-look="bilan"] .card.notice, :root[data-look="bilan"] .card.help { border: 1px solid var(--line); }
+:root[data-look="bilan"] .card.plan-card { border-left: 0; }
+:root[data-look="bilan"] .card.g-hero-card { padding: 0; }
+:root[data-look="bilan"] .card.career-card { border: 1px solid var(--line); }
+:root[data-look="bilan"] .plan-card h2 { font-size: 20px; text-transform: none; letter-spacing: -.015em; color: var(--text); }
+/* Accueil : le bilan du jour */
+.bh { background: var(--primary-btn); color: #fff; border-radius: 16px; padding: 18px 16px 16px; margin-bottom: 12px; display: grid; gap: 10px; }
+.bh-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.bh-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: .85; }
+.bh-grade { font-size: 13px; font-weight: 700; cursor: pointer; opacity: .95; }
+.bh-big { font-size: clamp(64px, 20vw, 96px); font-weight: 800; line-height: .9; letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
+.bh-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, .4); }
+@media (max-width: 420px) { .bh-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.bh-kpi { display: grid; gap: 2px; min-width: 0; }
+.bh-kpi__l { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; opacity: .85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bh-kpi__v { font-size: 24px; font-weight: 800; line-height: 1.05; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.bh-kpi__v small { font-size: 12px; font-weight: 600; opacity: .85; margin-left: 1px; }
+.bh-bar { display: grid; grid-template-columns: 1fr auto; column-gap: 10px; row-gap: 6px; font-size: 13px; font-weight: 600; }
+.bh-bar .g-bar { grid-column: 1 / -1; height: 6px; }
+.bh .btn.primary.big-btn { background: #fff; color: var(--primary-btn); border-color: #fff; margin-top: 4px; }
+.bh .btn.primary.big-btn .cta-k { color: var(--primary-btn); opacity: .8; }
+.bh-link { all: unset; cursor: pointer; font-size: 13px; opacity: .9; text-decoration: underline; text-underline-offset: 3px; }
+/* Plan du jour : liste sans bordures */
+:root[data-look="bilan"] .todo li { border: 0; border-radius: 0; padding: 12px 0; margin: 0; border-bottom: 1px solid var(--line); background: transparent; }
+:root[data-look="bilan"] .todo li:last-child { border-bottom: 0; }
+:root[data-look="bilan"] .todo li.done { background: transparent; }
+:root[data-look="bilan"] .todo li.cur { border: 0; border-bottom: 1px solid var(--line); box-shadow: none; }
+:root[data-look="bilan"] .todo li.cur .tick { background: var(--primary-btn); border-color: var(--primary-btn); color: #fff; }
+:root[data-look="bilan"] .todo li .btn.sm { width: auto; }
+/* Tuiles rapides */
+.bh-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }
+@media (max-width: 360px) { .bh-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.bh-tile { all: unset; box-sizing: border-box; cursor: pointer; display: grid; gap: 4px; padding: 12px; border-radius: 12px; background: var(--card); color: var(--text); min-width: 0; }
+.bh-tile:focus-visible { outline: 2px solid var(--primary); }
+.bh-tile__i { color: var(--primary-btn); font-size: 20px; line-height: 1; }
+.bh-tile strong { font-size: 14px; font-weight: 800; letter-spacing: -.01em; line-height: 1.15; }
+.bh-tile span:last-child { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* « Plus » */
+.plus { display: grid; gap: 2px; background: var(--card); border-radius: 14px; overflow: hidden; }
+.plus-row { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: 36px 1fr auto; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--line); color: var(--text); }
+.plus-row:last-child { border-bottom: 0; }
+.plus-row:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+.plus-row__i { color: var(--primary-btn); font-size: 22px; line-height: 1; }
+.plus-row__t { display: grid; gap: 1px; min-width: 0; }
+.plus-row__t strong { font-size: 16px; font-weight: 700; }
+.plus-row__t span { font-size: 13px; color: var(--muted); }
+.plus-row__c { color: var(--muted); font-size: 20px; }
+/* Session plein écran : la question sans carte, les réponses en lignes */
+:root[data-look="bilan"] #qcard.card { background: transparent; padding: 4px 0 0; margin-bottom: 8px; }
+:root[data-look="bilan"] .q { font-size: 22px; font-weight: 800; letter-spacing: -.02em; line-height: 1.25; margin: 12px 0 18px; }
+:root[data-look="bilan"] .choices { display: grid; gap: 8px; }
+:root[data-look="bilan"] .choice { border-radius: 12px; padding: 14px 14px; font-size: 16px; }
+:root[data-look="bilan"] .choice .k { color: var(--primary-btn); }
+:root[data-look="bilan"] .choice.sel { border-color: var(--primary-btn); }
+:root[data-look="bilan"] .gradebar { border-radius: 16px 16px 0 0; box-shadow: 0 -8px 30px rgba(0, 0, 0, .08); animation: g-up .35s cubic-bezier(.2, .8, .2, 1) both; }
+:root[data-look="bilan"] .qtimer { background: var(--card); }
+/* Collection : tuiles au trait */
+:root[data-look="bilan"] .bcard { border: 0; border-radius: 12px; padding: 12px 8px; gap: 4px; }
+:root[data-look="bilan"] .bcard .medal path:first-child { display: none; }
+:root[data-look="bilan"] .bcard .medal { width: 36px; height: 36px; }
+:root[data-look="bilan"] .bcard.got.r-rare, :root[data-look="bilan"] .bcard.got.r-epique, :root[data-look="bilan"] .bcard.got.r-legendaire { border: 0; box-shadow: inset 0 0 0 1.5px var(--primary-btn); }
+:root[data-look="bilan"] .bcard.locked { opacity: .55; }
+:root[data-look="bilan"] .bcard .bmeta { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; }
+/* Semaine */
+.week-bars { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; height: 72px; align-items: end; margin: 4px 0 8px; }
+.week-day { display: grid; grid-template-rows: 1fr auto; height: 100%; gap: 4px; justify-items: center; }
+.week-day i { align-self: end; width: 100%; max-width: 28px; min-height: 3px; border-radius: 4px 4px 2px 2px; background: var(--primary-btn); opacity: .9; }
+.week-day span { font-size: 11px; color: var(--muted); text-transform: uppercase; }
+.week-stats { border-top-color: var(--line); color: var(--muted); margin-top: 8px; }
+.week-stats b { color: var(--text); }
+.week .btn.sm { margin-top: 12px; }
+/* Points qui montent, transition d'écran */
+.g-fly { position: fixed; z-index: 40; pointer-events: none; font-weight: 800; font-size: 18px; color: var(--primary-btn); font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: no-preference) { :root[data-look="bilan"] #main.g-page { animation: g-page .28s cubic-bezier(.2, .8, .2, 1) both; } }
+@keyframes g-page { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+/* Ordinateur : deux colonnes sur l'accueil, barre latérale */
+@media (min-width: 1024px) {
+  :root[data-look="bilan"] .home { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 0 16px; align-items: start; }
+  :root[data-look="bilan"] .home > .bh, :root[data-look="bilan"] .home > .notice { grid-column: 1 / -1; }
+  :root[data-look="bilan"] .home > .plan-card { grid-column: 1; grid-row: span 4; }
+  :root[data-look="bilan"] .home > .bh-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  :root[data-look="bilan"] main { max-width: 1040px; }
+  :root[data-look="bilan"] nav.bottom::before { color: var(--primary-btn); }
+  :root[data-look="bilan"] nav.bottom button.active { background: var(--primary-btn); color: #fff; }
+}
