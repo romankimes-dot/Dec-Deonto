@@ -3,7 +3,6 @@ import * as store from './store.js';
 import { loadBank, loadFichesIndex, loadFiche, renderMarkdown, inline, THEMES } from './bank.js';
 import { startExam, remainingMs, finishExam, pauseExam, resumePaused, answeredCount, isCounted } from './exam.js';
 import * as G from './gamify.js';
-import { renderScene, PROP_NAMES } from './scene.js';
 import * as P from './plan.js';
 import { buildClusters } from './cluster.js';
 import { recordDrill, pickDrill, drillStats } from './drill.js';
@@ -201,24 +200,6 @@ function badgeIcon(b, locked = false) {
     <circle cx="20" cy="24" r="14" fill="${b.gold ? '#fde68a' : '#fff'}" stroke="${col}" stroke-width="3"/>
     <svg x="13" y="17" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="${col}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${glyph}</svg></svg>`;
 }
-function sceneFor(gradeN, opts = {}) {
-  const pr = state.progress; const st = pr.stats;
-  const seenProps = new Set(); const badgeProps = [];
-  for (const b of state.catalog) {
-    if (!b.prop || !pr.badges[b.id] || seenProps.has(b.prop) || !PROP_NAMES.has(b.prop)) continue;
-    seenProps.add(b.prop); badgeProps.push([b.id, b.prop, b.name]);
-  }
-  const seenCount = Object.keys(st.q).length;
-  const grade = G.GRADES[gradeN - 1];
-  const h = new Date().getHours();
-  return renderScene(gradeN, {
-    decor: grade.decor, badgeProps, bestStreak: st.streak.best,
-    coverage: seenCount / Math.max(1, state.gctx.all.length),
-    stickers: state.catalog.filter((b) => b.sub === 'tags' && pr.badges[b.id]).length,
-    glow: !!pr.badges['mast-total'], night: !!pr.badges['hid-couche-tard'] && (h >= 21 || h < 6),
-    ...opts,
-  });
-}
 function nextCelebration() {
   if (state.celebrating) return;
   const c = state.celebrations.shift(); if (!c) return;
@@ -227,7 +208,7 @@ function nextCelebration() {
   const close = () => { box.classList.remove('show'); focusBack(box); state.celebrating = false; setTimeout(nextCelebration, 250); };
   let html = '';
   if (c.type === 'grade') {
-    html = CR.levelUpHtml(c.g.n);
+    { const cs = G.careerState(state.progress.stats, state.gctx, state.progress.drills); html = CR.levelUpHtml(c.g.n, cs.readiness, cs.info.xp); }
     try { navigator.vibrate?.([60, 40, 120]); } catch { /* ignore */ }
   } else if (c.type === 'anecdote') {
     const d = new Date(state.progress.badges[c.b.id] || Date.now()).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -463,7 +444,7 @@ views.home = () => {
   </div>
   ${helpCard()}
   ${dayCard()}
-  <div class="card career-card paper" data-go="carriere">
+  <div class="card career-card" data-go="carriere">
     ${CR.levelCardHtml(lv.info, { today: lv.today, compact: true, conds: lv.conds, blocked: lv.blocked })}
     <div class="muted" style="margin-top:8px;text-align:right">Ma carrière ›</div>
   </div>
@@ -799,7 +780,7 @@ views.review = () => {
   }, 0);
   const d = ensureDaily(); const stepIds = new Set(d.steps.flatMap((id) => P.stepQuestionIds(P.stepById(id), state.fiches)));
   const isNew = !state.progress.cards[q.id];
-  return `<div class="row" style="justify-content:space-between;margin-bottom:6px;flex-wrap:nowrap"><span>${isNew ? '<span class="badge new">' + ic('sparkles') + ' Nouvelle</span>' : '<span class="badge">' + ic('repeat') + ' À revoir</span>'} <span class="muted">${s.done + 1} / ${s.total}</span></span><span class="muted">${s.queue.length - 1 > 0 ? `encore ${s.queue.length - 1}` : 'dernière'}</span></div>
+  return `${sessionStrip()}<div class="row" style="justify-content:space-between;margin-bottom:6px;flex-wrap:nowrap"><span>${isNew ? '<span class="badge new">' + ic('sparkles') + ' Nouvelle</span>' : '<span class="badge">' + ic('repeat') + ' À revoir</span>'} <span class="muted">${s.done + 1} / ${s.total}</span></span><span class="muted">${s.queue.length - 1 > 0 ? `encore ${s.queue.length - 1}` : 'dernière'}</span></div>
     ${stepIds.has(q.id) ? `<div class="muted ctx">${ic('chart')} Étape du jour : ${esc(d.steps.map((id) => P.stepById(id)?.title).join(', '))}</div>` : ''}
     <div class="progress"><div style="width:${(s.done / Math.max(1, s.total)) * 100}%"></div></div>
     ${s.done === 0 && s.queue.length > SHORT_SESSION + 5 ? `<div class="short-sess"><span class="muted">${s.queue.length} cartes dans cette séance.</span><button class="btn sm" id="short-sess">Faire ${SHORT_SESSION} seulement</button></div>` : ''}
@@ -875,7 +856,7 @@ views.train = () => {
       $('#sg-ko').onclick = () => { t.n++; answer(q.id, false, 'qrc', { conf: qconf }); if (confidentError(false, qconf)) toast('Erreur commise avec certitude : relisez l’explication', 'alert'); t.idx++; render(); };
       $('#stop').onclick = () => { t.queue = null; t.title = null; render(); };
     }, 0);
-    return `${t.title ? `<div class="muted" style="margin-bottom:6px">${ic('target')} ${esc(t.title)}</div>` : ''}<div class="row" style="justify-content:space-between"><span class="muted">${t.idx + 1} / ${t.queue.length} · ${t.ok}/${t.n} ${ic('check')}</span><button class="btn sm" id="stop">Arrêter</button></div>
+    return `${sessionStrip()}${t.title ? `<div class="muted" style="margin-bottom:6px">${ic('target')} ${esc(t.title)}</div>` : ''}<div class="row" style="justify-content:space-between"><span class="muted">${t.idx + 1} / ${t.queue.length} · ${t.ok}/${t.n} ${ic('check')}</span><button class="btn sm" id="stop">Arrêter</button></div>
       <div class="card" id="qcard" style="margin-top:10px"></div>
       <div id="selfgrade" class="btnrow hidden"><button class="btn" id="sg-ko">${ic('x')} Je ne savais pas</button><button class="btn primary" id="sg-ok">${ic('check')} Je savais</button></div>
       <button class="btn primary hidden" id="next">Question suivante →</button>`;
@@ -1346,6 +1327,7 @@ views.settings = () => {
     $('#s-gl').onchange = (e) => { s.glossary = e.target.checked; persistS(); };
     $('#s-timer').onchange = (e) => { s.gameTimer = e.target.value; persistS(); };
     $('#s-shorts').onchange = (e) => { s.shortsLimit = Number(e.target.value) || 0; persistS(); };
+    $('#s-look').onchange = (e) => { s.look = e.target.value; applyLook(); persistS(); };
     $('#s-theme').onchange = (e) => { document.documentElement.dataset.theme = e.target.value; try { localStorage.setItem('dec1.theme', e.target.value); } catch { /* ignore */ } };
     $('#export').onclick = exportProgress;
     $('#copy').onclick = async () => {
@@ -1391,6 +1373,7 @@ views.settings = () => {
     <label class="field"><input type="checkbox" id="s-gl" ${s.glossary !== false ? 'checked' : ''}> Glossaire : définition au toucher des termes clés (soulignés en pointillé), hors examen blanc et jeux</label>
     <label class="field">Chrono des jeux (Vrai / Faux, Sprint chiffres)<select id="s-timer">${[['normal', 'Normal'], ['large', 'Large'], ['off', 'Sans chrono']].map(([k, l]) => `<option value="${k}" ${s.gameTimer === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
     <label class="field">Shorts : pause proposée après<select id="s-shorts">${[[10, '10 shorts'], [15, '15 shorts'], [20, '20 shorts'], [30, '30 shorts'], [0, 'Sans limite']].map(([k, l]) => `<option value="${k}" ${(s.shortsLimit ?? 15) === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
+    <label class="field">Carrière et points : apparence<select id="s-look"><option value="bilan" ${(s.look || 'bilan') === 'bilan' ? 'selected' : ''}>Bilan (orange, grands chiffres)</option><option value="classique" ${s.look === 'classique' ? 'selected' : ''}>Classique (bleu de l’app)</option></select></label>
     <label class="field">Thème<select id="s-theme"><option value="">Automatique</option><option value="light" ${document.documentElement.dataset.theme === 'light' ? 'selected' : ''}>Clair</option><option value="dark" ${document.documentElement.dataset.theme === 'dark' ? 'selected' : ''}>Sombre</option></select></label></div>
     ${syncCard()}
     <div class="card"><h2>Données</h2><p class="muted">${SY.config() ? 'La progression est stockée sur cet appareil et synchronisée en ligne.' : 'La progression est stockée uniquement sur ce téléphone.'} ${s.lastExportAt ? `Dernier export : ${new Date(s.lastExportAt).toLocaleString('fr-FR')}.` : '<strong>Aucun export pour l’instant.</strong>'}</p>
@@ -1903,8 +1886,7 @@ function palaisView() {
     document.querySelectorAll('[data-pal-opt]').forEach((b) => { b.onclick = () => palaisPick(b.dataset.palOpt, b); });
   }, 0);
   if (!p) {
-    const grade = G.currentGrade(state.progress);
-    return `<div class="card"><div class="scene-thumb">${sceneFor(grade.n)}</div><h2 style="margin-top:8px">Votre bureau, palais de mémoire</h2>
+    return `<div class="card"><h2>Votre bureau, palais de mémoire</h2>
       <p class="muted">La méthode des lieux : on pose chaque élément d’une liste sur un objet d’un parcours familier, puis on refait le parcours pour réciter. Votre parcours : ${PAL.LOCI.slice(0, 6).map(([e, l]) => `${ic(e)} ${esc(l)}`).join(' › ')}…</p></div>
       ${PAL.LISTS.map((l) => { const s = m[`pal:${l.id}`]; return `<div class="card"><div class="row" style="justify-content:space-between"><strong>${esc(l.title)}</strong><span class="badge ${l.prof === 'EC' ? 'ec' : l.prof === 'CAC' ? 'cac' : ''}">${esc(l.prof)}</span></div>
         <div class="muted">${l.items.length} éléments · ${s ? (s.box >= 3 ? ic('check') + ' acquise' : s.due <= Date.now() ? 'à réciter' : `prochain récit dans ${Math.max(1, Math.round((s.due - Date.now()) / DAY))} j`) : 'jamais récitée'}</div>
@@ -1983,6 +1965,13 @@ views.carriere = () => {
 };
 // Points et niveau : calculés depuis toutes les statistiques (rétroactifs). « Aujourd'hui » = écart avec le total
 // relevé à la première ouverture du jour.
+// Bandeau de grade au-dessus des questions : les points gagnés depuis l'ouverture de la vue s'affichent en « +n ».
+function applyLook() { document.documentElement.dataset.look = state.progress?.settings?.look || 'bilan'; }
+function sessionStrip() {
+  const lv = xpInfo();
+  if (state.stripBase === undefined || state.stripView !== state.view) { state.stripBase = lv.info.xp; state.stripView = state.view; }
+  return CR.stripHtml(lv.info, { gain: lv.info.xp - state.stripBase });
+}
 function xpInfo() {
   const pr = state.progress;
   const cs = G.careerState(pr.stats, state.gctx, pr.drills); const total = cs.info.xp;
@@ -1993,8 +1982,9 @@ function xpInfo() {
 function careerView() {
   const pr = state.progress; const lv = xpInfo();
   const vitrine = state.catalog.filter((b) => b.prop && pr.badges[b.id] && !b.hidden);
-  return `<div class="card paper">${CR.levelCardHtml(lv.info, { today: lv.today, parts: lv.parts, conds: lv.conds, blocked: lv.blocked })}</div>
-    <div class="card"><h2>Comment on avance</h2><p class="muted" style="margin:4px 0 0"><strong>Les points font avancer</strong> dans un grade : chaque réponse (+1, +2 si juste, jusqu’à 3 réponses et 3 réussites par question, le double sur une question difficile), chaque examen blanc (+20 et la note), chaque short, les records de série et les journées d’au moins 10 réponses. <strong>Les résultats font franchir</strong> le grade suivant : annales vues, examens blancs, taux de réussite. On peut donc redescendre si une règle était trop généreuse, jamais perdre ses points.</p></div>
+  return `<div class="card g-hero-card">${CR.heroHtml(lv.info, lv.readiness)}</div>
+    <div class="card">${CR.levelCardHtml(lv.info, { today: lv.today, conds: lv.conds, blocked: lv.blocked })}</div>
+    <div class="card"><h2>Comment on avance</h2><p class="muted" style="margin:4px 0 0"><strong>Les points font avancer</strong> dans un grade : chaque réponse (+1, +2 si juste, jusqu’à 3 réponses et 3 réussites par question, le double sur une question difficile), chaque examen blanc (+20 et la note), chaque short, les records de série et les journées d’au moins 10 réponses. <strong>Les résultats font passer</strong> au grade suivant : annales vues, examens blancs, taux de réussite.</p></div>
     <div class="card"><h2>Le parcours</h2>${CR.timelineHtml(lv.info, pr.grades, lv.readiness)}</div>
     <div class="card"><h2>Vitrine · ${vitrine.length}</h2><p class="muted" style="margin:4px 0 10px">Les objets gagnés avec les badges. Touchez-en un pour voir le badge.</p>
       ${vitrine.length ? `<div class="vitrine">${vitrine.map((b) => `<button class="vit" data-badge-card="${b.id}" title="${esc(b.name)}">${badgeIcon(b)}<span>${esc(b.name)}</span></button>`).join('')}</div>` : '<p class="muted">Encore vide : le premier badge y posera son objet.</p>'}</div>`;
@@ -2544,7 +2534,7 @@ function onPop(e) {
 
 function initGamify() {
   state.gctx = G.buildContext(state.bank);
-  refreshExamBadges();
+  refreshExamBadges(); applyLook();
   const pr = state.progress;
   pr.badges = pr.badges || {}; pr.grades = pr.grades || {};
   if (!pr.stats || pr.stats.v !== G.STATS_VERSION) {
@@ -2607,7 +2597,7 @@ async function recoverFromStaleCache() {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
     await Promise.all((await caches.keys()).filter((k) => k !== PC.AUDIO_CACHE).map((k) => caches.delete(k))); // épisodes téléchargés gardés
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/scene.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/career.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './js/sync.js', './js/ville.js', './js/ville3d.js', './js/villeplan.js', './js/maquette.js', './js/vendor/three.module.min.js', './sw.js']
+    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/career.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/podcasts.js', './js/sync.js', './js/ville.js', './js/ville3d.js', './js/villeplan.js', './js/maquette.js', './js/vendor/three.module.min.js', './sw.js']
       .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();
@@ -2617,6 +2607,7 @@ async function recoverFromStaleCache() {
 async function init() {
   if (store.STORE_VERSION !== STORE_EXPECTED && await recoverFromStaleCache()) return;
   try { const th = localStorage.getItem('dec1.theme'); if (th) document.documentElement.dataset.theme = th; } catch { /* ignore */ }
+  document.documentElement.dataset.look = 'bilan';
   const nav = $('nav.bottom');
   nav.innerHTML = NAV.map(([v, ico, label]) => `<button data-view="${v}"><span class="ico" aria-hidden="true">${ico}</span>${label}</button>`).join('');
   nav.querySelectorAll('button').forEach((b) => { b.onclick = () => go(b.dataset.view); });

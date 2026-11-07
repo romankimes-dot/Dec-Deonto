@@ -309,11 +309,14 @@ Historique : la première version (23 octobre 2026) débloquait les grades par c
 - **Salle des trophées** : chaque badge ayant un « objet dans la scène » l'ajoute au décor du grade courant (diplômes au mur, dossiers sur l'étagère, plante qui grandit, tampon, coffre, Code de commerce, carte CAC, tasse puis machine à café au-delà de « Période fiscale »).
 - Format : 9 SVG de 360 × 240 (un par grade + le cabinet de nuit pour « Clôture tardive »), objets en calques nommés, affichés ou non selon les badges.
 
-### Écran « Ma carrière »
+### Écran « Ma carrière » (direction « bilan éditorial », 7 novembre 2026)
 
-- Carte de niveau dans le style des shorts (papier, personnage plat, tampon « Niveau n ») : grade, barre de points vers le suivant, points du jour, répartition par source.
-- Frise verticale des 8 grades : acquis datés, grade courant avec sa barre, suivants avec leur seuil.
-- Vitrine : les objets gagnés par les badges, en grille ; toucher ouvre le badge. Le dessin du bureau reste utilisé par le palais de mémoire.
+- Aucune scène dessinée ni personnage. Une couleur signature (orange ; « classique » = le bleu de l'app, au choix dans Réglages) et de grands chiffres.
+- Carte-bilan pleine : le numéro du grade en très grand, le nom, trois chiffres (points, annales vues, meilleur examen), le grade suivant et sa barre.
+- Carte de grade : numéro, nom, barre de points, conditions de résultats du grade suivant (en orange quand seuls les résultats manquent).
+- Bandeau de session au-dessus de chaque question : grade, barre, points avec « +n » gagnés dans la vue.
+- Frise verticale des 8 grades : atteints datés, courant avec sa barre, suivants avec seuil et conditions. Vitrine des objets de badges.
+- Passage de grade : la carte-bilan en plein écran.
 
 ### Animations
 
