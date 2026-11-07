@@ -826,7 +826,7 @@ html { overscroll-behavior-y: none; }
 .week-stats b { color: var(--text); }
 .week .btn.sm { margin-top: 12px; }
 /* Points qui montent, transition d'écran */
-@media (prefers-reduced-motion: no-preference) { :root[data-look="bilan"] #main.g-page { animation: g-page .28s cubic-bezier(.2, .8, .2, 1) both; } }
+@media (prefers-reduced-motion: no-preference) { :root[data-look="bilan"] #main.g-page { animation: g-page .28s cubic-bezier(.2, .8, .2, 1) backwards; } }
 @keyframes g-page { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 /* Ordinateur : deux colonnes sur l'accueil, barre latérale */
 @media (min-width: 1024px) {
