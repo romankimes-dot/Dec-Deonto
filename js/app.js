@@ -464,7 +464,7 @@ views.home = () => {
   ${helpCard()}
   ${dayCard()}
   <div class="card career-card paper" data-go="carriere">
-    ${CR.levelCardHtml(lv.info, { today: lv.today, compact: true })}
+    ${CR.levelCardHtml(lv.info, { today: lv.today, compact: true, conds: lv.conds, blocked: lv.blocked })}
     <div class="muted" style="margin-top:8px;text-align:right">Ma carrière ›</div>
   </div>
   ${carnetCard()}
@@ -1985,17 +1985,17 @@ views.carriere = () => {
 // relevé à la première ouverture du jour.
 function xpInfo() {
   const pr = state.progress;
-  const { total, parts } = G.xpOf(pr.stats, state.gctx, pr.drills);
+  const cs = G.careerState(pr.stats, state.gctx, pr.drills); const total = cs.info.xp;
   const k = todayKey();
   if (!pr.xpDay || pr.xpDay.day !== k) pr.xpDay = { day: k, start: total };
-  return { info: G.levelInfo(total), parts, today: Math.max(0, total - pr.xpDay.start) };
+  return { ...cs, today: Math.max(0, total - pr.xpDay.start) };
 }
 function careerView() {
   const pr = state.progress; const lv = xpInfo();
   const vitrine = state.catalog.filter((b) => b.prop && pr.badges[b.id] && !b.hidden);
-  return `<div class="card paper">${CR.levelCardHtml(lv.info, { today: lv.today, parts: lv.parts })}</div>
-    <div class="card"><h2>Comment on avance</h2><p class="muted" style="margin:4px 0 0">Chaque réponse compte (+1, +2 si elle est juste, le double sur une question difficile), chaque examen blanc (+20 et la note), chaque short (+2), les records de série et les journées d’au moins 10 réponses. Rien ne se perd : tout ce que vous avez déjà fait est compté.</p></div>
-    <div class="card"><h2>Le parcours</h2>${CR.timelineHtml(lv.info, pr.grades)}</div>
+  return `<div class="card paper">${CR.levelCardHtml(lv.info, { today: lv.today, parts: lv.parts, conds: lv.conds, blocked: lv.blocked })}</div>
+    <div class="card"><h2>Comment on avance</h2><p class="muted" style="margin:4px 0 0"><strong>Les points font avancer</strong> dans un grade : chaque réponse (+1, +2 si juste, jusqu’à 3 réponses et 3 réussites par question, le double sur une question difficile), chaque examen blanc (+20 et la note), chaque short, les records de série et les journées d’au moins 10 réponses. <strong>Les résultats font franchir</strong> le grade suivant : annales vues, examens blancs, taux de réussite. On peut donc redescendre si une règle était trop généreuse, jamais perdre ses points.</p></div>
+    <div class="card"><h2>Le parcours</h2>${CR.timelineHtml(lv.info, pr.grades, lv.readiness)}</div>
     <div class="card"><h2>Vitrine · ${vitrine.length}</h2><p class="muted" style="margin:4px 0 10px">Les objets gagnés avec les badges. Touchez-en un pour voir le badge.</p>
       ${vitrine.length ? `<div class="vitrine">${vitrine.map((b) => `<button class="vit" data-badge-card="${b.id}" title="${esc(b.name)}">${badgeIcon(b)}<span>${esc(b.name)}</span></button>`).join('')}</div>` : '<p class="muted">Encore vide : le premier badge y posera son objet.</p>'}</div>`;
 }

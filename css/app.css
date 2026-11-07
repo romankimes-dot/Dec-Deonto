@@ -709,6 +709,16 @@ html { overscroll-behavior-y: none; }
 .lvl-line { margin-top: 6px; font-size: 14px; color: #6f675d; }
 .lvl-line strong { color: #1c1b1a; font-weight: 800; }
 .lvl-today { display: inline-block; margin-top: 6px; padding: 2px 9px; border-radius: 999px; background: #1e7a5f; color: #f3eee6; font-size: 12px; font-weight: 800; }
+.lvl-gate { margin-top: 10px; padding: 8px 10px; border-radius: 12px; background: #fff; border: 1.5px solid #e6dfd3; font-size: 13px; }
+.lvl-gate.blocked { border-color: #d4532b; }
+.lvl-gate-h { font-weight: 800; margin-bottom: 4px; }
+.lvl-gate.blocked .lvl-gate-h { color: #d4532b; }
+.lvl-gate ul, .fr-conds { list-style: none; margin: 0; padding: 0; }
+.lvl-gate li, .fr-conds li { padding: 1px 0; color: #6f675d; }
+.lvl-gate li.ok, .fr-conds li.ok { color: #1e7a5f; }
+.fr-conds { margin-top: 4px; font-size: 13px; }
+.fr-conds li { color: var(--muted); }
+.fr-conds li.ok { color: var(--ok); }
 .lvl-parts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .lvl-chip { font-size: 12px; font-weight: 800; padding: 3px 8px; border-radius: 999px; background: #fff; border: 1.5px solid #1c1b1a; }
 .lvl-chip span { font-weight: 600; color: #6f675d; }

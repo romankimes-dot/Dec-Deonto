@@ -341,7 +341,8 @@ export const GRADES = [
 // ---------- Points et niveaux ----------
 // La carrière avance aux points, calculés à tout moment depuis l'ensemble des statistiques (donc rétroactifs et
 // jamais perdus) : tout ce qui a été fait compte, le jour même comme les semaines précédentes.
-//   question : +1 par réponse, +1 de plus si juste ; doublé pour une question difficile
+//   question : +1 par réponse, +1 de plus si juste (3 réponses et 3 réussites comptées au plus par question) ;
+//              doublé pour une question difficile
 //   examen blanc : +20 par copie comptée, + la note sur 20
 //   séries : record de 5 / 10 / 20 / 30 / 50 bonnes réponses d'affilée : +5 / +10 / +20 / +30 / +50 (cumulés)
 //   journées : +10 par jour d'au moins 10 réponses
@@ -352,7 +353,7 @@ export function xpOf(stats, ctx, drills = {}) {
   const parts = { questions: 0, exams: 0, series: 0, days: 0, shorts: 0 };
   for (const [id, q] of Object.entries(stats.q || {})) {
     const hard = ctx && (ctx.hardList.has(id) || (q.ko || 0) >= 2);
-    parts.questions += ((q.seen || 0) + (q.ok || 0)) * (hard ? 2 : 1);
+    parts.questions += (Math.min(3, q.seen || 0) + Math.min(3, q.ok || 0)) * (hard ? 2 : 1);
   }
   for (const e of stats.exams || []) parts.exams += 20 + Math.max(0, Math.round(e.note || 0));
   const best = stats.streak?.best || 0;
@@ -361,6 +362,44 @@ export function xpOf(stats, ctx, drills = {}) {
   for (const [id, m] of Object.entries(drills || {})) if (id.startsWith(SHORT_PREFIX) && m) parts.shorts += 2 + Math.min(3, m.box || 0);
   const total = Object.values(parts).reduce((a, b) => a + b, 0);
   return { total, parts };
+}
+// Paliers de résultats : les points font avancer dans un grade, les résultats font franchir le suivant.
+// Un grade n exige, en plus des points, les conditions GATES[n] (cumulatives par construction).
+export const GATES = {
+  2: { cov: 15 }, 3: { cov: 30 }, 4: { cov: 50, exams: 1 }, 5: { cov: 65, exam: 10 },
+  6: { cov: 80, exam: 12, acc: 65 }, 7: { cov: 90, exam: 14, acc: 70 }, 8: { cov: 100, exam: 16, acc: 80 },
+};
+// Où en sont les résultats : couverture des annales (%), réussite sur l'ensemble des réponses (%), examens blancs comptés, meilleure note.
+export function readiness(stats, ctx) {
+  let seenN = 0, ok = 0, n = 0;
+  for (const id of ctx.all) { const q = stats.q[id]; if (q && q.seen > 0) { seenN++; ok += q.ok || 0; n += q.seen || 0; } }
+  const best = (stats.exams || []).reduce((m, e) => Math.max(m, e.note || 0), 0);
+  return { cov: (100 * seenN) / Math.max(1, ctx.all.length), acc: n ? (100 * ok) / n : 0, exams: (stats.exams || []).length, best };
+}
+export function gateConditions(n, r) {
+  const g = GATES[n]; if (!g) return [];
+  const C = (label, ok) => ({ label, ok: !!ok });
+  const out = [C(`${g.cov} % des annales vues (${Math.floor(r.cov)} %)`, r.cov >= g.cov)];
+  if (g.exams) out.push(C('un examen blanc terminé', r.exams >= g.exams));
+  if (g.exam) out.push(C(`un examen blanc ≥ ${g.exam} (meilleur : ${r.best})`, r.best >= g.exam));
+  if (g.acc) out.push(C(`${g.acc} % de réussite sur l’ensemble (${Math.round(r.acc)} %)`, r.acc >= g.acc));
+  return out;
+}
+export function gateLevel(r) {
+  let n = 1;
+  for (let k = 2; k <= GRADES.length; k++) { if (gateConditions(k, r).every((c) => c.ok)) n = k; else break; }
+  return n;
+}
+// État de carrière complet : grade = min(points, paliers de résultats) ; barre de points dans le grade ;
+// conditions du grade suivant (blocked : les points y sont déjà, seuls les résultats manquent).
+export function careerState(stats, ctx, drills = {}) {
+  const { total, parts } = xpOf(stats, ctx, drills);
+  const r = readiness(stats, ctx);
+  const byXp = levelOf(total); const byGate = gateLevel(r);
+  const n = Math.min(byXp, byGate);
+  const from = LEVELS[n - 1]; const to = LEVELS[n] ?? null;
+  const info = { n, xp: total, from, to, pct: to === null ? 1 : Math.min(1, (total - from) / (to - from)), left: to === null ? 0 : Math.max(0, to - total) };
+  return { info, parts, readiness: r, blocked: byXp > n, conds: n < GRADES.length ? gateConditions(n + 1, r) : [] };
 }
 export function levelOf(xp) {
   let n = 1;
@@ -386,11 +425,13 @@ export function evaluate(progress, catalog, ctx, t = Date.now()) {
     if (progress.badges[b.id]) continue;
     if (progressOf(b, st).done) { progress.badges[b.id] = t; fresh.badges.push(b); }
   }
-  // Grades : aux points, jamais repris ; un grade déjà atteint sous une ancienne règle reste acquis.
-  const lv = levelOf(xpOf(st, ctx, progress.drills).total);
+  // Grades : points et paliers de résultats. Le grade courant est recalculé (un grade accordé par une règle
+  // antérieure plus généreuse est repris sans cérémonie) ; les dates des grades gardés sont conservées.
+  const lv = careerState(st, ctx, progress.drills).info.n;
   for (const g of GRADES) {
-    if (g.n > lv || progress.grades[g.n]) continue;
-    progress.grades[g.n] = t; fresh.grades.push(g);
+    if (g.n > lv) { delete progress.grades[g.n]; continue; }
+    if (progress.grades[g.n]) continue;
+    progress.grades[g.n] = t; if (g.n > 1) fresh.grades.push(g);
   }
   return fresh;
 }
