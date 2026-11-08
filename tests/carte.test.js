@@ -53,3 +53,13 @@ test('carte : une question répondue hors session (entraînement, examen) compte
   assert.equal(CA.nodeState(n, { b: { reps: 1, interval: 1, lapses: 0 } }, {}, mastery, seenFn).seen, 1);
   assert.equal(CA.nodeState(n, {}, {}, mastery).level, 'vierge');
 });
+
+test('trainOrder : les jamais vues passent devant, même dans un bloc de plus de 20 questions', () => {
+  const ids = Array.from({ length: 23 }, (_, i) => `q${i}`);
+  const seen = new Set(ids.slice(0, 22)); // seule la dernière n'a jamais été vue, aucune n'a de carte
+  const out = CA.trainOrder(ids, {}, mastery, (id) => seen.has(id));
+  assert.equal(out.length, 20);
+  assert.equal(out[0], 'q22');
+  const learning = { reps: 1, interval: 1, ease: 2.5, due: 0, lapses: 0 };
+  assert.deepEqual(CA.trainOrder(['a', 'b', 'c'], { a: learning }, mastery, (id) => id !== 'c'), ['c', 'b', 'a']);
+});
