@@ -45,6 +45,15 @@ export function trainOrder(ids, cards, masteryFn, seenFn = (id) => !!cards[id], 
   return ids.map((id, i) => [id, key(id), i]).sort((a, b) => a[1] - b[1] || a[2] - b[2]).slice(0, limit).map((x) => x[0]);
 }
 
+// Questions jamais vues des blocs donnés, sans doublon, en alternant les blocs (une question de chaque bloc
+// à tour de rôle) : deux questions qui se suivent portent sur des notions différentes.
+export function unseenInterleaved(nodes, seenFn) {
+  const done = new Set(); const lists = nodes.map((n) => n.ids.filter((id) => !seenFn(id))).filter((l) => l.length);
+  const out = [];
+  for (let k = 0; lists.some((l) => k < l.length); k++) for (const l of lists) { const id = l[k]; if (id !== undefined && !done.has(id)) { done.add(id); out.push(id); } }
+  return out;
+}
+
 // État d'un nœud : vierge (aucune question vue), fragile (réussite < 60 % sur 3 réponses au moins),
 // en cours, solide (maîtrise moyenne ≥ 2/3 et réussite ≥ 80 %). masteryFn : srs.mastery (0 à 3).
 // seenFn : une question compte comme vue dès qu'une réponse est enregistrée, quel que soit le mode (session de
