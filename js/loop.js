@@ -15,3 +15,21 @@ export function requeue(queue, idx, item, gap = 4) {
   queue.splice(Math.min(queue.length, idx + 1 + gap), 0, item);
   return queue;
 }
+
+// Erreurs pas encore confirmées : ratées un jour, et pas encore réussies sur 3 jours distincts depuis (stats.q.recovered),
+// sauf celles déjà réussies aujourd'hui (une confirmation ne compte qu'un autre jour). Encore fausses d'abord,
+// puis les plus ratées, puis les moins confirmées.
+export function toConfirm(statsQ, today, keep = () => true) {
+  return Object.entries(statsQ || {})
+    .filter(([id, s]) => s && s.failed && !s.recovered && keep(id) && !(s.last === 'ok' && (s.recDays || []).includes(today)))
+    .sort(([, a], [, b]) => (a.last === 'ok') - (b.last === 'ok') || (b.ko || 0) - (a.ko || 0) || (a.recDays || []).length - (b.recDays || []).length)
+    .map(([id]) => id);
+}
+
+// Pièges : questions ratées au moins `min` fois, les plus ratées d'abord.
+export function pitfalls(statsQ, keep = () => true, min = 3) {
+  return Object.entries(statsQ || {})
+    .filter(([id, s]) => s && (s.ko || 0) >= min && keep(id))
+    .sort(([, a], [, b]) => b.ko - a.ko || b.ko / b.seen - a.ko / a.seen)
+    .map(([id]) => id);
+}

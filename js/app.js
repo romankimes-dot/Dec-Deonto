@@ -21,7 +21,7 @@ import { startMaquette, MAQUETTE_CSS } from './maquette.js';
 import { planHtml, PLAN_CSS } from './villeplan.js';
 import * as CA from './carte.js';
 import { nextOrder } from './choices.js';
-import { missedOrder, requeue } from './loop.js';
+import { missedOrder, requeue, toConfirm, pitfalls } from './loop.js';
 import * as CR from './career.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -939,6 +939,8 @@ views.train = () => {
     $('#f-mode').onchange = (e) => { t.mode = e.target.value; };
     $('#start').onclick = () => { t.queue = shuffle(filtered, Date.now()).slice(0, 20); t.idx = 0; t.ok = 0; t.n = 0; render(); };
     $('#weak').onclick = () => { t.queue = weakest(20); t.idx = 0; t.ok = 0; t.n = 0; if (!t.queue.length) { toast('Pas encore d’historique'); t.queue = null; } render(); };
+    $('#confirm').onclick = () => { const ids = toConfirm(state.progress.stats?.q, todayKey(), (id) => !!state.byId[id]); if (!ids.length) return toast('Rien à confirmer aujourd’hui'); trainOn(ids, 'À confirmer aujourd’hui', t.mode, { again: 4 }); };
+    $('#pieges').onclick = () => go('pieges');
     $('#loop').onclick = () => { const ids = missedOrder(state.progress.stats?.q, (id) => !!state.byId[id]); if (!ids.length) return toast('Aucune question ratée pour l’instant'); trainOn(ids, 'Ratées en boucle', t.mode, { again: 4 }); };
     $('#sure').onclick = () => { const ids = confidentErrors(state.progress.attempts); if (!ids.length) return toast('Aucune erreur commise avec certitude pour l’instant'); trainOn(ids.slice(-20), 'Mes erreurs « j’étais sûr »', t.mode); };
   }, 0);
@@ -950,7 +952,10 @@ views.train = () => {
     <label class="field">Format<select id="f-mode"><option value="qcm" ${t.mode === 'qcm' ? 'selected' : ''}>QCM</option><option value="qrc" ${t.mode === 'qrc' ? 'selected' : ''}>QRC (réponse courte)</option></select></label>
     <p class="muted">${filtered.length} question(s) correspondent. Série de 20 max, sans effet sur la répétition espacée.</p>
     <button class="btn primary" id="start" ${filtered.length ? '' : 'disabled'}>Lancer la série</button>
-    <div style="height:8px"></div><button class="btn primary" id="loop">${ic('repeat')} Mes ratées en boucle (${missedOrder(state.progress.stats?.q, (id) => !!state.byId[id]).length})</button>
+    <div style="height:8px"></div><button class="btn primary" id="confirm">${ic('check')} À confirmer aujourd’hui (${toConfirm(state.progress.stats?.q, todayKey(), (id) => !!state.byId[id]).length})</button>
+    <p class="muted" style="margin-top:6px">Les questions ratées puis réussies, mais pas encore revérifiées un autre jour : une correction faite juste après l’erreur s’oublie vite. Encore fausses d’abord ; une erreur revient 4 questions plus loin.</p>
+    <div style="height:8px"></div><button class="btn" id="pieges">${ic('library')} Mes pièges, à relire ou imprimer (${pitfalls(state.progress.stats?.q, (id) => !!state.byId[id]).length})</button>
+    <div style="height:8px"></div><button class="btn" id="loop">${ic('repeat')} Mes ratées en boucle (${missedOrder(state.progress.stats?.q, (id) => !!state.byId[id]).length})</button>
     <p class="muted" style="margin-top:6px">Toutes les questions déjà ratées, les plus ratées d’abord, au format choisi ci-dessus. Une erreur revient 4 questions plus loin, jusqu’à être réussie. Sans fin : arrêtez quand vous voulez.</p>
     <div style="height:8px"></div><button class="btn" id="weak">${ic('flame')} Mes 20 questions les plus ratées</button>
     <div style="height:8px"></div><button class="btn" id="sure">${ic('alert')} Mes erreurs « j’étais sûr » (${sure})</button>
@@ -965,6 +970,25 @@ function weakest(n) {
   for (const a of state.progress.attempts) { acc[a.id] = acc[a.id] || { ok: 0, n: 0 }; acc[a.id].n++; if (a.ok) acc[a.id].ok++; }
   return Object.entries(acc).filter(([, v]) => v.n - v.ok > 0).sort((a, b) => (a[1].ok / a[1].n) - (b[1].ok / b[1].n)).slice(0, n).map(([id]) => state.byId[id]).filter(Boolean);
 }
+
+// Mes pièges : les questions ratées au moins 3 fois, avec la bonne réponse et l'explication, par thème ; imprimable.
+views.pieges = () => {
+  const Q = state.progress.stats?.q || {};
+  const ids = pitfalls(Q, (id) => !!state.byId[id]);
+  setTimeout(() => { const b = $('#pg-print'); if (b) b.onclick = () => window.print(); }, 0);
+  const groups = {};
+  for (const id of ids) { const q = state.byId[id]; const k = `${q.profession} · ${THEMES[q.theme] || q.theme}`; (groups[k] ||= []).push(q); }
+  const item = (q) => { const s = Q[q.id] || {};
+    const good = q.qcm?.choices?.[q.qcm.answer];
+    return `<div class="pg-item"><div class="muted">DEC ${esc(q.sessionLabel || '')} · Q${q.n} · ratée ${s.ko} fois sur ${s.seen}${s.last === 'ok' ? '' : ' · <strong>encore fausse</strong>'}</div>
+      <div class="pg-q">${esc(q.qcm?.question || q.question)}</div>
+      ${good ? `<div class="pg-a">${ic('check')} ${esc(good)}</div>` : ''}
+      <div class="pg-m"><strong>Attendu :</strong> ${esc(q.qrc?.model_answer || '')}</div>
+      <div class="pg-e">${esc(q.explanation || '')}</div><div class="ref">Réf. : ${esc(q.reference || '')}</div></div>`; };
+  return `<div class="no-print row" style="gap:8px;margin-bottom:12px"><button class="btn sm" data-go="train">← Séries</button><button class="btn sm primary" id="pg-print">${ic('library')} Imprimer</button></div>
+    <div class="card"><h2>Mes pièges (${ids.length})</h2><p class="muted">Les questions ratées au moins 3 fois, avec la bonne réponse et l’explication, par thème. À relire au calme, sur papier si vous préférez.</p></div>
+    ${ids.length ? Object.entries(groups).map(([k, qs]) => `<div class="card pg-group"><h2>${esc(k)}</h2>${qs.map(item).join('')}</div>`).join('') : '<div class="card"><p class="muted">Aucune question ratée 3 fois : rien à relire ici.</p></div>'}`;
+};
 
 views.exam = () => {
   if (state.examResult) return renderExamResult();
@@ -2368,7 +2392,7 @@ const NAV_BILAN = [
   ['home', ic('home'), 'Accueil'], ['review', ic('repeat'), 'Réviser'], ['carriere', ic('trophy'), 'Carrière'], ['plus', ic('menu'), 'Plus'],
 ];
 // Vues rangées sous « Plus » (apparence bilan) : l'onglet reste allumé quand on y est.
-const PLUS_VIEWS = new Set(['plus', 'train', 'jeux', 'shorts', 'exam', 'fiches', 'ville', 'carte', 'stats', 'settings', 'glossaire', 'carnet', 'plan']);
+const PLUS_VIEWS = new Set(['plus', 'train', 'pieges', 'jeux', 'shorts', 'exam', 'fiches', 'ville', 'carte', 'stats', 'settings', 'glossaire', 'carnet', 'plan']);
 function buildNav() {
   const nav = $('nav.bottom'); if (!nav) return;
   const list = isBilan() ? NAV_BILAN : NAV;
@@ -2437,6 +2461,7 @@ function go(v, { pop = false } = {}) {
   const changed = v !== state.view;
   if (changed) { stopQTimer(); qTimer.ms = 0; }
   if (v === 'ville' && changed) { state.v3open = false; state.villeTab = 'hub'; }
+  document.body.classList.toggle('print-pieges', v === 'pieges');
   state.view = v; window.scrollTo(0, 0); render();
   if (!pop && changed) { try { history.pushState({ v }, ''); } catch { /* ignore */ } }
 }
