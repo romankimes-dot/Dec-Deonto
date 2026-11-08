@@ -2239,6 +2239,8 @@ function carteMosaique(g, states, prof) {
   }).join('');
 }
 // Gain à travailler un sous-thème : poids aux annales × ce qui reste à acquérir (fragile : une fois et demie)
+// Vue = une réponse enregistrée (tous modes) ou une carte de répétition.
+const carteSeen = (id) => (state.progress.stats?.q?.[id]?.seen || 0) > 0 || !!state.progress.cards[id];
 const carteGain = (n, s) => n.ids.length * (1 - s.score) * (s.level === 'fragile' ? 1.5 : 1);
 views.carte = () => {
   const { g, states } = carteData();
@@ -2247,7 +2249,9 @@ views.carte = () => {
   const prof = ['EC', 'CAC'].includes(state.carteProf) ? state.carteProf : state.carteProf === 'tout' ? null : 'EC';
   const inView = g.nodes.filter((n) => !prof || n.prof === prof);
   const count = (l) => inView.filter((n) => states[n.id].level === l).length;
+  const unseen = CA.unseenInterleaved(inView, carteSeen);
   setTimeout(() => {
+    const un = $('#carte-unseen'); if (un) un.onclick = () => trainOn(unseen, `Carte : jamais vues${prof ? ` (${prof})` : ''}`);
     document.querySelectorAll('[data-csort]').forEach((b) => { b.onclick = () => { state.carteSort = b.dataset.csort; render(); }; });
     document.querySelectorAll('[data-cprof]').forEach((b) => { b.onclick = () => { state.carteProf = b.dataset.cprof; state.carteSel = null; render(); }; });
     document.querySelectorAll('#main [data-cn]').forEach((b) => { b.onclick = () => carteDetail(g, states, b.dataset.cn); });
@@ -2260,7 +2264,8 @@ views.carte = () => {
     : carteMosaique(g, states, prof);
   return `<button class="btn sm" data-go="fiches" style="margin-bottom:12px">← Fiches</button>
     <div class="card"><h2>${ic('brain')} Carte des notions</h2><div class="cleg-row">${legend}</div><p class="muted" style="margin:6px 0 10px">Chiffre : questions des annales sur ce sous-thème. Barre : part déjà vue.</p>
-      <div class="ctools">${chips([['EC', 'EC'], ['CAC', 'CAC'], ['tout', 'Les deux']], prof || 'tout', 'cprof')}${chips(CARTE_SORTS, sort, 'csort')}</div></div>
+      <div class="ctools">${chips([['EC', 'EC'], ['CAC', 'CAC'], ['tout', 'Les deux']], prof || 'tout', 'cprof')}${chips(CARTE_SORTS, sort, 'csort')}</div>
+      <div class="btnrow" style="margin-top:10px">${unseen.length ? `<button class="btn primary" id="carte-unseen">${ic('play')} Jamais vues${prof ? ` ${prof}` : ''} (${unseen.length})</button><span class="muted">une notion différente à chaque question</span>` : `<span class="muted">${ic('check')} Toutes les questions${prof ? ` ${prof}` : ''} ont été vues.</span>`}</div></div>
     ${body}
     <div id="carte-panel" class="carte-panel" aria-live="polite" hidden></div>`;
 };
@@ -2270,17 +2275,18 @@ function carteDetail(g, states, id) {
   const panel = $('#carte-panel'); if (!panel) return;
   const n = id && g.nodes.find((x) => x.id === id);
   if (!n) { panel.hidden = true; state.carteSel = null; return; }
-  const s = states[id]; const nb = CA.neighbours(g, id);
+  const s = states[id]; const nb = CA.neighbours(g, id); const nUnseen = n.ids.filter((q) => !carteSeen(q));
   const name = (k) => { const x = g.nodes.find((y) => y.id === k); return x ? `${carteName(x)} (${x.prof})` : k; };
   const fiche = (() => { const sc = {}; for (const f of state.fiches) { if (f.kind !== 'visuel' || !f.questions) continue; const k = n.ids.filter((q) => f.questions.includes(q)).length; if (k) sc[f.file] = k; } return Object.entries(sc).sort((a, b) => b[1] - a[1])[0]?.[0]; })();
   panel.hidden = false;
   panel.innerHTML = `<div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:8px"><strong><span class="badge ${n.prof.toLowerCase()}">${n.prof}</span> ${esc(carteName(n))}</strong><button class="btn sm" id="cp-x" aria-label="Fermer">${ic('x')}</button></div>
     <div class="muted" style="margin:4px 0">${CA.LEVELS[s.level]} · ${s.seen}/${s.n} vues · réussite ${pctS(s.acc)}${s.answers ? ` (${s.answers} réponses)` : ''}</div>
     ${nb.twin || nb.links.length ? `<div class="cp-links" aria-label="Souvent posé avec">${nb.twin ? `<button class="chip" data-cp="${esc(nb.twin)}">⇄ ${esc(name(nb.twin))}</button>` : ''}${nb.links.slice(0, 4).map((l) => `<button class="chip" data-cp="${esc(l.id)}">${esc(name(l.id))}</button>`).join('')}</div>` : ''}
-    <div class="cp-act"><button class="btn sm primary" id="cp-train">${ic('target')} Réviser (${Math.min(20, n.ids.length)})</button>${fiche ? `<button class="btn sm" id="cp-fiche" title="${esc(shortTitle(fiche))}">${ic('chart')} Schéma</button>` : ''}</div>`;
+    <div class="cp-act"><button class="btn sm primary" id="cp-train">${ic('target')} Réviser (${Math.min(20, n.ids.length)})</button>${nUnseen.length ? `<button class="btn sm" id="cp-unseen">${ic('play')} Jamais vues (${nUnseen.length})</button>` : ''}${fiche ? `<button class="btn sm" id="cp-fiche" title="${esc(shortTitle(fiche))}">${ic('chart')} Schéma</button>` : ''}</div>`;
   $('#cp-x').onclick = () => carteDetail(g, states, null);
   // Les moins sûres d'abord : jamais vues et ratées en tête
   $('#cp-train').onclick = () => trainOn(CA.trainOrder(n.ids, state.progress.cards, mastery, (id) => (state.progress.stats?.q?.[id]?.seen || 0) > 0), `Carte : ${carteName(n)} (${n.prof})`);
+  if (nUnseen.length) $('#cp-unseen').onclick = () => trainOn(nUnseen, `Carte : ${carteName(n)} (${n.prof}), jamais vues`);
   if (fiche) $('#cp-fiche').onclick = () => openFiche(fiche);
   panel.querySelectorAll('[data-cp]').forEach((b) => { b.onclick = () => { carteDetail(g, states, b.dataset.cp); document.querySelector(`#main [data-cn="${CSS.escape(b.dataset.cp)}"]`)?.scrollIntoView({ block: 'center', behavior: 'smooth' }); }; });
 }

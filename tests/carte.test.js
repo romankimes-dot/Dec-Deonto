@@ -63,3 +63,10 @@ test('trainOrder : les jamais vues passent devant, même dans un bloc de plus de
   const learning = { reps: 1, interval: 1, ease: 2.5, due: 0, lapses: 0 };
   assert.deepEqual(CA.trainOrder(['a', 'b', 'c'], { a: learning }, mastery, (id) => id !== 'c'), ['c', 'b', 'a']);
 });
+
+test('unseenInterleaved : jamais vues seulement, sans doublon, en alternant les blocs', () => {
+  const nodes = [{ ids: ['a1', 'a2', 'a3', 'x'] }, { ids: ['b1', 'x'] }, { ids: ['c1'] }];
+  const seen = new Set(['a2', 'c1']);
+  assert.deepEqual(CA.unseenInterleaved(nodes, (id) => seen.has(id)), ['a1', 'b1', 'a3', 'x']);
+  assert.deepEqual(CA.unseenInterleaved(nodes, () => true), []);
+});
