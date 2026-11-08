@@ -33,6 +33,7 @@ export const defaultState = () => ({
   drills: {},         // jeux : id d'item -> boîte de Leitner (drill.js)
   games: { best: {} }, // jeux : meilleurs scores
   carnet: {},        // carnet d'erreurs : id (question ou « sht:<id> ») -> { on, last, note } (carnet.js)
+  choiceOrder: {},    // QCM : id -> dernier ordre des propositions montré (« 2031 »), jamais répété à la présentation suivante
   daily: null,        // plan du jour, figé à la première ouverture : { day, n, kind, steps, exam, game, target, weak }
 });
 

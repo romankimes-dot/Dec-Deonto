@@ -4,7 +4,7 @@
 // il ne change qu'avec un nouveau service worker, jamais module par module (un import manquant bloquerait
 // le démarrage). Les données (data/) : cache d'abord, rafraîchi en arrière-plan (stale-while-revalidate).
 // Toute modification du code impose d'incrémenter VERSION.
-const VERSION = 'dec1-v79';
+const VERSION = 'dec1-v80';
 const CORE = [
   './',
   './index.html',
@@ -36,6 +36,7 @@ const CORE = [
   './js/villeplan.js',
   './js/maquette.js',
   './js/carte.js',
+  './js/choices.js',
   './js/vendor/three.module.min.js',
   './fonts/bricolage-grotesque.woff2',
   './data/shorts/index.json',

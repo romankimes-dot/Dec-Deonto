@@ -20,6 +20,7 @@ import { compositionHtml, COMPO_CSS } from './ville3d.js';
 import { startMaquette, MAQUETTE_CSS } from './maquette.js';
 import { planHtml, PLAN_CSS } from './villeplan.js';
 import * as CA from './carte.js';
+import { nextOrder } from './choices.js';
 import * as CR from './career.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -339,8 +340,20 @@ const certRow = (mode, label) => `<div class="cert"><div class="muted">${label}<
 const hcAlert = () => '<div class="hc">' + ic('alert') + ' <strong>Erreur commise avec certitude.</strong> C’est celle qu’on retient le mieux une fois corrigée : lisez l’explication, la question revient dans la séance.</div>';
 // QCM. opts.hide : la question d'abord, les propositions sur demande (rappel avant reconnaissance).
 // onAnswered(ok, conf, pick) ; conf vaut null si la certitude n'est pas demandée ; pick : index d'origine choisi.
+// Ordre des propositions : nouveau tirage à chaque présentation, différent du dernier ordre montré pour la question
+// (mémorisé et synchronisé) ; gardé tel quel si la même question est redessinée sans avoir été quittée.
+const liveOrder = { id: null, order: null };
+function choiceOrder(id) {
+  if (liveOrder.id === id) return liveOrder.order;
+  const pr = state.progress; if (!pr.choiceOrder || typeof pr.choiceOrder !== 'object') pr.choiceOrder = {};
+  const order = nextOrder(pr.choiceOrder[id]);
+  pr.choiceOrder[id] = order.join('');
+  store.save(pr); // gardé même si la question est quittée sans réponse
+  liveOrder.id = id; liveOrder.order = order;
+  return order;
+}
 function renderQcm(q, container, onAnswered, { hide = false, askConf = false } = {}) {
-  const order = shuffle([0, 1, 2, 3], q.id);
+  const order = choiceOrder(q.id);
   const qt = q.qcm.question || q.question;
   container.innerHTML = `${qHeader(q, { timer: true })}<div class="q">${esc(qt)}</div>${hide ? '<div class="recall"><p class="muted">' + ic('brain') + ' Formulez votre réponse de tête, puis comparez-la aux propositions.</p><button class="btn primary show-choices">Afficher les propositions</button></div>' : ''}<div class="choices ${hide ? 'hidden' : ''}"></div><div class="pending"></div><div class="after"></div>`;
   const box = $('.choices', container);
@@ -1074,7 +1087,9 @@ function startExamTimer() {
 function mountExamQuestion(q) {
   const ex = state.exam; const box = $('#qcard');
   if (ex.mode === 'qcm') {
-    const order = shuffle([0, 1, 2, 3], q.id);
+    if (!ex.orders) ex.orders = {};
+    if (!ex.orders[q.id]) { ex.orders[q.id] = choiceOrder(q.id); persistExam(); }
+    const order = ex.orders[q.id];
     box.innerHTML = `<div class="muted">DEC ${esc(q.sessionLabel)} · Q${q.n}</div><div class="q">${esc(q.qcm.question || q.question)}</div><div class="choices"></div>`;
     const c = $('.choices', box);
     order.forEach((idx, i) => {
@@ -1113,7 +1128,7 @@ function endExam() {
   render(); window.scrollTo(0, 0); // la note /20 (ou l'auto-correction) en haut, pas le milieu du corrigé
 }
 function recordExam(res) {
-  const { rows, answers, ...summary } = res;
+  const { rows, answers, orders, ...summary } = res;
   if (res.inedit) releaseHeldOut(res.t); // ses questions rejoignent la révision (et les badges)
   state.progress.exams.push(summary);
   res.ids.forEach((id) => { state.progress.examSeen[id] = res.t; });
@@ -1126,8 +1141,8 @@ function recordExam(res) {
   checkBadges();
 }
 // Corrigé d'une question QCM : les 4 propositions dans l'ordre vu à l'examen, bonne réponse et choix.
-function qcmReview(q, chosen) {
-  const order = shuffle([0, 1, 2, 3], q.id);
+function qcmReview(q, chosen, seenOrder) {
+  const order = Array.isArray(seenOrder) && seenOrder.length === 4 ? seenOrder : shuffle([0, 1, 2, 3], q.id);
   return `<div class="choices review">${order.map((idx, i) => `<div class="choice ${idx === q.qcm.answer ? 'ok' : idx === chosen ? 'ko' : ''}"><span class="k">${LETTERS[i]}</span><span>${esc(q.qcm.choices[idx])}${idx === chosen ? ' <em>(votre réponse)</em>' : ''}${idx === q.qcm.answer ? ic('check') : ''}</span></div>`).join('')}${chosen === undefined ? '<div class="muted">Question laissée en blanc.</div>' : ''}</div>`;
 }
 function renderExamResult() {
@@ -1159,7 +1174,7 @@ function renderExamResult() {
     <div class="card"><h2>Par thème</h2><table><tbody>${Object.entries(r.byTheme).map(([k, v]) => `<tr><td>${THEMES[k]}</td><td>${v.points}/${v.max}</td></tr>`).join('')}</tbody></table></div>
     ${r.rows.map((row, i) => { const q = row.q; const ok = row.points >= row.max; return `<div class="card" style="border-left:4px solid ${ok ? 'var(--ok)' : row.points > 0 ? 'var(--warn)' : 'var(--ko)'}">${qHeader(q)}<div class="q" style="font-size:16px">${i + 1}. ${esc(r.mode === 'qcm' ? (q.qcm.question || q.question) : (q.qrc.question || q.question))}</div>
       ${r.mode === 'qcm'
-    ? `${qcmReview(q, r.answers[q.id])}<details ${ok ? '' : 'open'}><summary>Explication</summary>${qExplain(q)}</details>`
+    ? `${qcmReview(q, r.answers[q.id], r.orders?.[q.id])}<details ${ok ? '' : 'open'}><summary>Explication</summary>${qExplain(q)}</details>`
     : `<div class="muted">Votre réponse : ${esc(r.answers[q.id] || '—')}</div><div class="answer">${esc(q.qrc.model_answer)}</div><details><summary>Explication</summary>${qExplain(q)}</details>`}</div>`; }).join('')}
     ${nextStepBlock()}<button class="btn" id="close">Fermer le corrigé</button>`;
 }
