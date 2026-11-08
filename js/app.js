@@ -2265,7 +2265,7 @@ function carteDetail(g, states, id) {
     <div class="cp-act"><button class="btn sm primary" id="cp-train">${ic('target')} Réviser (${Math.min(20, n.ids.length)})</button>${fiche ? `<button class="btn sm" id="cp-fiche" title="${esc(shortTitle(fiche))}">${ic('chart')} Schéma</button>` : ''}</div>`;
   $('#cp-x').onclick = () => carteDetail(g, states, null);
   // Les moins sûres d'abord : jamais vues et ratées en tête
-  $('#cp-train').onclick = () => trainOn(n.ids.slice().sort((a, b) => mastery(state.progress.cards[a]) - mastery(state.progress.cards[b])).slice(0, 20), `Carte : ${carteName(n)} (${n.prof})`);
+  $('#cp-train').onclick = () => trainOn(CA.trainOrder(n.ids, state.progress.cards, mastery, (id) => (state.progress.stats?.q?.[id]?.seen || 0) > 0), `Carte : ${carteName(n)} (${n.prof})`);
   if (fiche) $('#cp-fiche').onclick = () => openFiche(fiche);
   panel.querySelectorAll('[data-cp]').forEach((b) => { b.onclick = () => { carteDetail(g, states, b.dataset.cp); document.querySelector(`#main [data-cn="${CSS.escape(b.dataset.cp)}"]`)?.scrollIntoView({ block: 'center', behavior: 'smooth' }); }; });
 }

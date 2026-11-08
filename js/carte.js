@@ -37,6 +37,14 @@ export function buildGraph(questions, { minLink = MIN_LINK } = {}) {
   return { nodes: [...nodes.values()].sort((a, b) => (a.id < b.id ? -1 : 1)), edges };
 }
 
+// Ordre de révision d'un bloc : jamais vues d'abord, puis les moins maîtrisées ; à égalité, l'ordre du bloc.
+// Sans cela, un bloc de plus de 20 questions dont les vues n'ont pas de carte (réponses en entraînement)
+// gardait ses dernières questions hors de portée.
+export function trainOrder(ids, cards, masteryFn, seenFn = (id) => !!cards[id], limit = 20) {
+  const key = (id) => (seenFn(id) || cards[id] ? 1 : 0) * 10 + masteryFn(cards[id]);
+  return ids.map((id, i) => [id, key(id), i]).sort((a, b) => a[1] - b[1] || a[2] - b[2]).slice(0, limit).map((x) => x[0]);
+}
+
 // État d'un nœud : vierge (aucune question vue), fragile (réussite < 60 % sur 3 réponses au moins),
 // en cours, solide (maîtrise moyenne ≥ 2/3 et réussite ≥ 80 %). masteryFn : srs.mastery (0 à 3).
 // seenFn : une question compte comme vue dès qu'une réponse est enregistrée, quel que soit le mode (session de
