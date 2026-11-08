@@ -21,6 +21,7 @@ import { startMaquette, MAQUETTE_CSS } from './maquette.js';
 import { planHtml, PLAN_CSS } from './villeplan.js';
 import * as CA from './carte.js';
 import { nextOrder } from './choices.js';
+import { missedOrder, requeue } from './loop.js';
 import * as CR from './career.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -224,10 +225,11 @@ function nextCelebration() {
   box.onkeydown = (e) => { if (e.key === 'Escape' || e.key === 'Enter') close(); };
   focusIn(box);
 }
-function trainOn(ids, title, mode = 'qcm') {
+// again : une question ratée revient `again` questions plus loin (série « ratées en boucle »).
+function trainOn(ids, title, mode = 'qcm', { again = 0 } = {}) {
   state.prevQ = null;
   const qs = ids.map((id) => state.byId[id]).filter(Boolean);
-  state.train = { prof: 'all', theme: 'all', tag: 'all', mode, queue: qs, idx: 0, ok: 0, n: 0, title };
+  state.train = { prof: 'all', theme: 'all', tag: 'all', mode, queue: qs, idx: 0, ok: 0, n: 0, title, again };
   go('train');
 }
 // Dialogues (fiche, célébration) : focus déplacé à l'ouverture, rendu à l'élément d'origine à la fermeture.
@@ -910,7 +912,7 @@ views.train = () => {
       const box = $('#qcard');
       const next = () => { $('#next').classList.remove('hidden'); };
       const set = state.progress.settings; let qconf = null;
-      if (t.mode === 'qcm') renderQcm(q, box, (ok, conf, pick) => { t.n++; if (ok) t.ok++; answer(q.id, ok, 'qcm', { conf, pick }); next(); }, { hide: set.hideChoices, askConf: set.confidence });
+      if (t.mode === 'qcm') renderQcm(q, box, (ok, conf, pick) => { t.n++; if (ok) t.ok++; else if (t.again) requeue(t.queue, t.idx, q, t.again); answer(q.id, ok, 'qcm', { conf, pick }); next(); }, { hide: set.hideChoices, askConf: set.confidence });
       else {
         renderQrc(q, box, (conf) => { qconf = conf; $('#selfgrade').classList.remove('hidden'); }, (ratio) => {
           $('#sg-ok').classList.toggle('primary', ratio >= 1); $('#sg-ko').classList.toggle('primary', ratio < 1);
@@ -918,7 +920,7 @@ views.train = () => {
       }
       $('#next').onclick = () => { state.prevQ = { id: q.id, mode: 'qcm' }; t.idx++; render(); };
       $('#sg-ok').onclick = () => { state.prevQ = { id: q.id, mode: 'qrc' }; t.n++; t.ok++; answer(q.id, true, 'qrc', { conf: qconf }); t.idx++; render(); };
-      $('#sg-ko').onclick = () => { state.prevQ = { id: q.id, mode: 'qrc' }; t.n++; answer(q.id, false, 'qrc', { conf: qconf }); if (confidentError(false, qconf)) toast('Erreur commise avec certitude : relisez l’explication', 'alert'); t.idx++; render(); };
+      $('#sg-ko').onclick = () => { state.prevQ = { id: q.id, mode: 'qrc' }; t.n++; if (t.again) requeue(t.queue, t.idx, q, t.again); answer(q.id, false, 'qrc', { conf: qconf }); if (confidentError(false, qconf)) toast('Erreur commise avec certitude : relisez l’explication', 'alert'); t.idx++; render(); };
       $('#stop').onclick = () => { t.queue = null; t.title = null; render(); };
       const pq = $('#prev-q'); if (pq) pq.onclick = prevQuestionSheet;
     }, 0);
@@ -937,6 +939,7 @@ views.train = () => {
     $('#f-mode').onchange = (e) => { t.mode = e.target.value; };
     $('#start').onclick = () => { t.queue = shuffle(filtered, Date.now()).slice(0, 20); t.idx = 0; t.ok = 0; t.n = 0; render(); };
     $('#weak').onclick = () => { t.queue = weakest(20); t.idx = 0; t.ok = 0; t.n = 0; if (!t.queue.length) { toast('Pas encore d’historique'); t.queue = null; } render(); };
+    $('#loop').onclick = () => { const ids = missedOrder(state.progress.stats?.q, (id) => !!state.byId[id]); if (!ids.length) return toast('Aucune question ratée pour l’instant'); trainOn(ids, 'Ratées en boucle', t.mode, { again: 4 }); };
     $('#sure').onclick = () => { const ids = confidentErrors(state.progress.attempts); if (!ids.length) return toast('Aucune erreur commise avec certitude pour l’instant'); trainOn(ids.slice(-20), 'Mes erreurs « j’étais sûr »', t.mode); };
   }, 0);
   const sure = confidentErrors(state.progress.attempts).length;
@@ -947,6 +950,8 @@ views.train = () => {
     <label class="field">Format<select id="f-mode"><option value="qcm" ${t.mode === 'qcm' ? 'selected' : ''}>QCM</option><option value="qrc" ${t.mode === 'qrc' ? 'selected' : ''}>QRC (réponse courte)</option></select></label>
     <p class="muted">${filtered.length} question(s) correspondent. Série de 20 max, sans effet sur la répétition espacée.</p>
     <button class="btn primary" id="start" ${filtered.length ? '' : 'disabled'}>Lancer la série</button>
+    <div style="height:8px"></div><button class="btn primary" id="loop">${ic('repeat')} Mes ratées en boucle (${missedOrder(state.progress.stats?.q, (id) => !!state.byId[id]).length})</button>
+    <p class="muted" style="margin-top:6px">Toutes les questions déjà ratées, les plus ratées d’abord, au format choisi ci-dessus. Une erreur revient 4 questions plus loin, jusqu’à être réussie. Sans fin : arrêtez quand vous voulez.</p>
     <div style="height:8px"></div><button class="btn" id="weak">${ic('flame')} Mes 20 questions les plus ratées</button>
     <div style="height:8px"></div><button class="btn" id="sure">${ic('alert')} Mes erreurs « j’étais sûr » (${sure})</button>
     <p class="muted" style="margin-top:8px">Une erreur faite avec certitude se corrige mieux qu’une autre, à condition d’y revenir : c’est la liste à reprendre en priorité.</p></div>`;
