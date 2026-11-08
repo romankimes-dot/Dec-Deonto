@@ -71,7 +71,7 @@ export function finishExam(exam, byId, now = Date.now()) {
     t: now, mode: exam.mode, note, ids: exam.ids, answered: answeredCount(exam),
     ...(exam.inedit ? { inedit: exam.inedit } : {}),
     byProf: agg('profession'), byTheme: agg('theme'),
-    rows, answers: exam.answers,
+    rows, answers: exam.answers, orders: exam.orders || {},
     // Temps de composition effectif (pauses déduites).
     durationMs: Math.min(EXAM_DURATION_MS, Math.max(0, EXAM_DURATION_MS - remainingMs(exam, exam.pausedAt || now))),
   };
