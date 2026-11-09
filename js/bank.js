@@ -6,9 +6,12 @@ export const THEMES = {
   responsabilite: 'Responsabilité',
 };
 
-// Sessions officielles « AAAA-MM » ; « transfert » : questions rédigées hors annales (data/bank/transfert.json).
+// Sessions officielles « AAAA-MM » ; « transfert » : questions rédigées hors annales (data/bank/transfert.json) ;
+// « inedit-a », « inedit-b »… : sujets complets rédigés hors annales, tenus à l'écart pour servir d'examens inédits.
 export const isAnnale = (q) => /^\d{4}-\d{2}$/.test(q.session);
+export const isInedit = (s) => /^inedit-[a-z]$/.test(s);
 export const SESSION_LABEL = (s) => {
+  if (isInedit(s)) return `sujet inédit ${s.slice(-1).toUpperCase()}`;
   if (!/^\d{4}-\d{2}$/.test(s)) return 'hors annales (transfert)';
   const [y, m] = s.split('-');
   return `${m === '05' ? 'mai' : 'nov.'} ${y}`;

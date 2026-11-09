@@ -105,6 +105,15 @@ test('examen inédit : la session la plus récente jamais vue', () => {
   assert.equal(pickHeldOut(bank, { stats: { q: { [id]: { seen: 1 } } } }), '2025-11');
   assert.equal(pickHeldOut(bank, { stats: { q: { [id]: { seen: 0 } } } }), '2026-05');
   assert.equal(pickHeldOut(bank, { examSeen: Object.fromEntries(bank.map((q) => [q.id, 1])) }), null, 'tout entamé : aucune');
+  // Toutes les annales entamées : les sujets inédits rédigés prennent le relais, A puis B ; `exclude` écarte un sujet déjà passé.
+  const annales = Object.fromEntries(bank.filter((q) => /^\d{4}-\d{2}$/.test(q.session)).map((q) => [q.id, 1]));
+  assert.equal(pickHeldOut(bank, { examSeen: annales }), 'inedit-a');
+  assert.equal(pickHeldOut(bank, { examSeen: annales, exclude: ['inedit-a'] }), 'inedit-b');
+  assert.equal(pickHeldOut(bank, { examSeen: annales, exclude: ['inedit-a', 'inedit-b'] }), null);
+  for (const s of ['inedit-a', 'inedit-b']) {
+    const qs = bank.filter((q) => q.session === s);
+    assert.equal(qs.filter((q) => q.profession === 'EC').length, 10, s); assert.equal(qs.filter((q) => q.profession === 'CAC').length, 10, s);
+  }
 });
 
 test('plan : schéma lu seulement après défilement jusqu’en bas ou temps minimal', () => {

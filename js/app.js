@@ -1,6 +1,6 @@
 import { newCard, review, buildQueue, mastery, DAY, spreadOf, suggestGrade, confidentError, qrcPoints, calibration, confidentErrors } from './srs.js';
 import * as store from './store.js';
-import { loadBank, loadFichesIndex, loadFiche, renderMarkdown as renderMarkdownRaw, inline as inlineRaw, THEMES } from './bank.js';
+import { loadBank, loadFichesIndex, loadFiche, renderMarkdown as renderMarkdownRaw, inline as inlineRaw, THEMES, isAnnale } from './bank.js';
 import { startExam, remainingMs, finishExam, pauseExam, resumePaused, answeredCount, isCounted } from './exam.js';
 import * as G from './gamify.js';
 import * as P from './plan.js';
@@ -1213,7 +1213,7 @@ views.exam = () => {
     }, 0);
     const hist = state.progress.exams.slice(-8);
     const ho = state.heldOut || [];
-    const inedit = ho.length ? `<div class="card plan-card"><h2>Examen inédit · DEC ${esc(ho[0].sessionLabel)}</h2><p class="muted">Un sujet complet jamais vu, comme le jour J : à passer une fois, la dernière semaine.</p><details class="muted"><summary>Pourquoi un examen inédit</summary><p>Ses 20 questions sont tenues à l’écart de la révision (séances, séries, jeux, examens blancs). Il mesure ce que vous savez faire sur des questions jamais vues ; son résultat compte davantage dans le niveau estimé. Ensuite, ses questions rejoignent la révision.</p></details>
+    const inedit = ho.length ? `<div class="card plan-card"><h2>Examen inédit · ${isAnnale(ho[0]) ? 'DEC ' : ''}${esc(ho[0].sessionLabel)}</h2><p class="muted">Un sujet complet jamais vu, comme le jour J : à passer une fois, la dernière semaine.</p><details class="muted"><summary>Pourquoi un examen inédit</summary><p>Ses 20 questions sont tenues à l’écart de la révision (séances, séries, jeux, examens blancs). Il mesure ce que vous savez faire sur des questions jamais vues ; son résultat compte davantage dans le niveau estimé. Ensuite, ses questions rejoignent la révision.</p></details>
       <div class="btnrow"><button class="btn primary" data-inedit="qcm">Examen inédit en QCM</button><button class="btn primary" data-inedit="qrc">Examen inédit en QRC</button></div></div>` : '';
     return `<div class="card"><h2>Examen blanc</h2><p class="muted">20 questions (10 EC puis 10 CAC), 60 minutes. Pause possible, abandon sans que cela compte.</p>
       <details class="muted"><summary>Comment les questions sont choisies et notées</summary><p>Jamais passées en examen d’abord ; une seule question par notion récurrente ; tous les thèmes représentés ; sans les questions dont la réponse est douteuse. QCM : 1 point par bonne réponse, sans point négatif. QRC : barème du sujet d’origine, auto-correction à la fin, note ramenée sur 20.</p></details>
@@ -1262,13 +1262,18 @@ function examById() {
   if (!state.heldOut?.length) return state.byId;
   return { ...state.byId, ...Object.fromEntries(state.heldOut.map((q) => [q.id, q])) };
 }
-// Examen inédit : une session entière tenue à l'écart de la révision (pickHeldOut, js/estimate.js), choisie une
-// fois pour toutes et gardée dans plan.heldOut. Ses questions sont retirées de state.bank.questions (séances,
-// séries, jeux, shorts, examens blancs, recoupements) jusqu'à ce que l'examen inédit soit rendu.
+// Examen inédit : une session entière tenue à l'écart de la révision (pickHeldOut, js/estimate.js), gardée dans
+// plan.heldOut. Ses questions sont retirées de state.bank.questions (séances, séries, jeux, shorts, examens blancs,
+// recoupements) jusqu'à ce que l'examen inédit soit rendu. Une fois rendu, le sujet suivant encore jamais vu (annale
+// la plus récente, puis sujets inédits A, B…) prend sa place ; plan.heldOutDone garde les sujets déjà passés.
 function setupHeldOut() {
   const pr = state.progress; const all = state.bank.all || state.bank.questions;
   state.bank.all = all;
-  if (!pr.plan.heldOut) { pr.plan.heldOut = { session: pickHeldOut(all, pr), t: Date.now() }; persist(); }
+  if (pr.plan.heldOut?.done && pr.plan.heldOut.session) {
+    pr.plan.heldOutDone = [...new Set([...(pr.plan.heldOutDone || []), pr.plan.heldOut.session])];
+    pr.plan.heldOut = null;
+  }
+  if (!pr.plan.heldOut) { pr.plan.heldOut = { session: pickHeldOut(all, { ...pr, exclude: pr.plan.heldOutDone || [] }), t: Date.now() }; persist(); }
   const s = pr.plan.heldOut.done ? null : pr.plan.heldOut.session;
   state.heldOut = s ? all.filter((q) => q.session === s) : [];
   state.bank.questions = s ? all.filter((q) => q.session !== s) : all;

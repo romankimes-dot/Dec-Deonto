@@ -59,7 +59,7 @@ test('crossProf : jamais sur un sujet QCM officiel, toujours un leurre', () => {
   const marked = bank.filter((q) => Number.isInteger(q.qcm.crossProf));
   assert.ok(marked.length >= 40, `${marked.length} QCM marqués`);
   for (const q of marked) {
-    assert.ok(q.origFormat === 'qrc' || q.origFormat === 'transfert', `${q.id} : sujet QCM officiel`);
+    assert.ok(['qrc', 'transfert', 'inedit'].includes(q.origFormat), `${q.id} : sujet QCM officiel`);
     assert.notEqual(q.qcm.crossProf, q.qcm.answer, q.id);
   }
 });
@@ -82,10 +82,11 @@ test('questions de transfert : marquées hors annales, jamais comptées comme po
   const tr = bank.filter((q) => !isAnnale(q));
   assert.ok(tr.length >= 15);
   for (const q of tr) {
-    assert.equal(q.session, 'transfert'); assert.equal(q.hors_annales, true, q.id);
+    assert.ok(q.session === 'transfert' || /^inedit-[a-z]$/.test(q.session), q.id); assert.equal(q.hors_annales, true, q.id);
     assert.ok(q.reference && q.confidence, q.id);
   }
   assert.equal(SESSION_LABEL('transfert'), 'hors annales (transfert)');
+  assert.equal(SESSION_LABEL('inedit-a'), 'sujet inédit A');
   assert.equal(SESSION_LABEL('2025-11'), 'nov. 2025');
   const { clusterOf } = buildClusters(bank);
   for (const q of tr) assert.equal(clusterOf[q.id], undefined, `${q.id} regroupée avec des annales`);

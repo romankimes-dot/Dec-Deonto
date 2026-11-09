@@ -1,0 +1,665 @@
+{
+  "session": "inedit-b",
+  "format": "inedit",
+  "note": "Sujet inédit B (novembre 2026) : 10 questions expertise comptable, 10 questions commissariat aux comptes, rédigées hors annales dans le format des sujets officiels (QRC à 2 points, QCM à 4 propositions), à partir des fiches de l'app et des textes en vigueur. Ce n'est pas un sujet officiel. Tenu à l'écart de la révision pour servir d'examen inédit.",
+  "questions": [
+    {
+      "id": "inedit-b-EC-01",
+      "n": 1,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": [
+        "ordre_organisation"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Pendant combien d'années consécutives au plus un expert-comptable peut-il présider le même conseil de l'Ordre ?",
+      "qcm": {
+        "choices": [
+          "Deux ans, renouvelables une fois",
+          "Quatre ans, puis deux ans d'interruption",
+          "Six ans, soit deux mandats",
+          "Sans limite, tant qu'il est réélu"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Présidence : quatre années consécutives au plus",
+          "Puis deux ans d'interruption avant une nouvelle présidence",
+          "Conseil national : présidents des CROEC de droit, autres membres élus au suffrage direct depuis 2020"
+        ],
+        "model_answer": "La présidence d'un même conseil de l'Ordre est limitée à quatre années consécutives, suivies d'une interruption de deux ans. Au Conseil national siègent de droit les présidents des conseils régionaux ; les autres membres sont élus au suffrage direct par les experts-comptables depuis 2020."
+      },
+      "explanation": "Le Conseil supérieur a été renommé Conseil national par la loi 2022-172, pas par la loi Pacte.",
+      "reference": "Ordonnance 45-2138 (organisation de l'Ordre) ; décret 2012-432",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-EC-02",
+      "n": 2,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": [
+        "inscription_tableau"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Le conseil régional refuse l'inscription d'un candidat au tableau. Quel recours lui est ouvert, et qui peut contester une inscription prononcée ?",
+      "qcm": {
+        "choices": [
+          "Le tribunal administratif, saisi par l'intéressé dans les deux mois de la notification du refus",
+          "Le comité national du tableau, saisi par l'intéressé (refus) ou le commissaire du gouvernement (inscription)",
+          "La chambre nationale de discipline, saisie par l'intéressé ou par le commissaire du gouvernement",
+          "Le Conseil national de l'Ordre, en appel de la décision du conseil régional, puis le Conseil d'État"
+        ],
+        "answer": 1,
+        "crossProf": 0
+      },
+      "qrc": {
+        "expected": [
+          "Recours devant le comité national du tableau",
+          "Saisi par l'intéressé contre un refus d'inscription",
+          "Saisi par le commissaire du gouvernement contre une inscription"
+        ],
+        "model_answer": "Les décisions d'inscription du conseil régional sont contestées devant le comité national du tableau : l'intéressé le saisit contre un refus, le commissaire du gouvernement contre une inscription qu'il estime irrégulière. Le recours devant la juridiction administrative est la voie prévue pour l'inscription des commissaires aux comptes sur la liste tenue par la H2A."
+      },
+      "explanation": "Le tableau est tenu par le CROEC ; la liste des CAC par la H2A, avec recours devant la juridiction administrative. La chambre nationale juge en appel disciplinaire, pas en matière d'inscription.",
+      "reference": "Ordonnance 45-2138, art. 42 s. (tableau, comité national du tableau)",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-EC-03",
+      "n": 3,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": [
+        "societes_ec_capital"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Dans une société d'expertise comptable, quatre associés experts-comptables détiennent ensemble 70 % des droits de vote et un investisseur non inscrit 30 %. L'un des experts-comptables peut-il céder 10 % à cet investisseur ?",
+      "qcm": {
+        "choices": [
+          "Oui : les experts-comptables conservent la majorité des droits de vote et la direction",
+          "Oui, à condition que l'investisseur ne devienne ni dirigeant ni membre de l'organe de gestion",
+          "Non : un non-inscrit ne peut détenir aucun droit de vote dans une société d'expertise comptable",
+          "Non : les experts-comptables tomberaient à 60 %, sous les deux tiers exigés"
+        ],
+        "answer": 3,
+        "crossProf": 0
+      },
+      "qrc": {
+        "expected": [
+          "Non",
+          "Plus des deux tiers des droits de vote doivent être détenus par des EC ou des sociétés inscrites",
+          "Après cession : 60 % < 66,7 %"
+        ],
+        "model_answer": "Non. Plus des deux tiers des droits de vote d'une société d'expertise comptable doivent être détenus par des experts-comptables ou des sociétés inscrites. Après la cession, les experts-comptables ne détiendraient plus que 60 %, en dessous des deux tiers. La simple majorité est la règle applicable aux sociétés de commissaires aux comptes."
+      },
+      "explanation": "La règle porte sur les droits de vote, pas sur le capital. Un non-inscrit peut être associé, mais sans faire passer les EC sous les deux tiers.",
+      "reference": "Ordonnance 45-2138, art. 7",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-EC-04",
+      "n": 4,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": [
+        "publicite_demarchage"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Un cabinet d'expertise comptable adresse à des entreprises non clientes un courriel : « 20 % moins cher que votre cabinet actuel, premier réseau de la région ». Qu'en penser ?",
+      "qcm": {
+        "choices": [
+          "Tout est interdit : le démarchage est prohibé à l'expert-comptable, seule la publicité est permise",
+          "Démarchage permis ; comparaison de prix et superlatif invérifiable interdits",
+          "Tout est permis depuis la loi Pacte, sous réserve de loyauté envers les confrères",
+          "Le démarchage n'est permis que par envoi postal nominatif précisant le mode de calcul des honoraires"
+        ],
+        "answer": 1,
+        "crossProf": 3
+      },
+      "qrc": {
+        "expected": [
+          "Démarchage permis, y compris par courriel auprès de non-clients",
+          "Interdits : publicité comparative, dénigrement, superlatifs invérifiables, mentions trompeuses",
+          "Références clients avec accord exprès"
+        ],
+        "model_answer": "Le démarchage est permis à l'expert-comptable, y compris par courriel auprès de non-clients. En revanche la publicité comparative (« 20 % moins cher ») et les superlatifs invérifiables (« premier réseau ») sont interdits, comme le dénigrement et les mentions trompeuses. La forme imposée (envoi postal ou courriel nominatif, honoraires précisés) est la règle du commissaire aux comptes."
+      },
+      "explanation": "Code de déontologie, art. 152 : actions de promotion permises si elles procurent une information utile, sans comparaison ni dénigrement.",
+      "reference": "Code de déontologie des EC, art. 152",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-EC-05",
+      "n": 5,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": [
+        "confraternite_reprise_dossier"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Un prospect conteste les honoraires de son ancien expert-comptable, qu'il n'a pas réglés, et vous demande de reprendre son dossier. Quelle démarche n'est pas exigée de vous ?",
+      "qcm": {
+        "choices": [
+          "Informer par écrit le prédécesseur de la reprise du dossier avant tout commencement d'exécution",
+          "Obtenir l'autorisation du président du conseil régional avant d'accepter",
+          "Vous assurer que le client ne cherche pas à éluder le paiement des honoraires dus",
+          "Suggérer par écrit au client la conciliation ou l'arbitrage du président du conseil régional"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Lettre écrite au prédécesseur (art. 163)",
+          "Vérifier que le client n'élude pas ses obligations ; s'efforcer d'obtenir la justification du paiement",
+          "Contestation : suggérer par écrit la conciliation ou l'arbitrage du président du CROEC",
+          "Ni autorisation ni indemnité"
+        ],
+        "model_answer": "Le successeur informe le prédécesseur par écrit, vérifie que le client ne cherche pas à éluder des règles ou le paiement d'honoraires, s'efforce d'obtenir la justification du paiement et, en cas de contestation, suggère par écrit au client la conciliation ou l'arbitrage du président du conseil régional. Il n'a besoin d'aucune autorisation et ne doit aucune indemnité au prédécesseur."
+      },
+      "explanation": "La mission peut être acceptée malgré la contestation ; le successeur en réfère au président du CROEC et fait des réserves auprès du client si les honoraires dus ne sont pas justifiés.",
+      "reference": "Code de déontologie des EC, art. 163",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-EC-06",
+      "n": 6,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": [
+        "devoir_conseil",
+        "lcb_ft"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Lors de la révision des comptes, l'expert-comptable constate que son client omet sciemment de déclarer une partie de ses recettes. Quelles sont ses obligations ?",
+      "qcm": {
+        "choices": [
+          "Révéler les faits au procureur de la République, sous peine de commettre un délit",
+          "Mettre en garde, refuser son concours ; soupçon de blanchiment : déclarer à Tracfin",
+          "Poursuivre la mission en mentionnant une réserve dans son attestation de présentation",
+          "Informer le président du conseil régional, qui saisit l'administration fiscale compétente"
+        ],
+        "answer": 1,
+        "crossProf": 0
+      },
+      "qrc": {
+        "expected": [
+          "Devoir de conseil : informer, mettre en garde (par écrit), exiger la régularisation",
+          "Refuser son concours, voire interrompre la mission",
+          "Pas de révélation au procureur",
+          "Fraude fiscale : infraction sous-jacente au blanchiment : déclaration de soupçon à Tracfin, sans en informer le client"
+        ],
+        "model_answer": "L'expert-comptable n'a pas d'obligation de révélation au procureur. Il exerce son devoir de conseil : informer et mettre en garde le client, de préférence par écrit, exiger la régularisation ; à défaut, refuser son concours et interrompre la mission. La fraude fiscale étant une infraction sous-jacente au blanchiment, il effectue une déclaration de soupçon à Tracfin, sans en informer le client."
+      },
+      "explanation": "La révélation au procureur est l'obligation du commissaire aux comptes. Le conseil régional n'a aucun rôle de transmission à l'administration fiscale.",
+      "reference": "Code de déontologie des EC, art. 155 ; CMF L.561-15 ; NPLAB",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-EC-07",
+      "n": 7,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": [
+        "delegation_signature"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Un chef de mission salarié, non inscrit à l'Ordre, peut-il signer l'attestation de présentation des comptes et accepter une nouvelle mission au nom du cabinet ?",
+      "qcm": {
+        "choices": [
+          "Oui, sur délégation écrite de l'expert-comptable responsable, consignée dans la lettre de mission",
+          "Oui pour signer l'attestation, non pour accepter une mission au nom du cabinet",
+          "Non : accepter une mission, signer un rapport, déclarer un soupçon sont réservés à l'EC inscrit",
+          "Non, sauf s'il est mémorialiste en fin de stage et sous la responsabilité de son maître de stage"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Non",
+          "Seul un EC inscrit accepte une mission et signe les rapports (signature sociale par un EC habilité en société)",
+          "Il ne peut pas non plus faire de déclaration de soupçon"
+        ],
+        "model_answer": "Non. L'acceptation d'une mission, la signature des rapports et attestations et la déclaration de soupçon relèvent de l'expert-comptable inscrit. En société, la signature sociale est apposée par un expert-comptable inscrit habilité à engager la société. Un collaborateur non inscrit, même expérimenté, ne peut ni accepter ni signer."
+      },
+      "explanation": "Le stagiaire n'a pas davantage ce pouvoir : la qualité d'expert-comptable inscrit est requise.",
+      "reference": "Ordonnance 45-2138, art. 2 et 12 ; code de déontologie, art. 145",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-EC-08",
+      "n": 8,
+      "profession": "EC",
+      "theme": "controle_qualite",
+      "tags": [
+        "controle_qualite"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Qui peut être contrôleur de qualité de l'Ordre, et pour combien de temps est-il désigné ?",
+      "qcm": {
+        "choices": [
+          "Des agents salariés du Conseil national, à durée indéterminée, formés au contrôle de la NPMQ",
+          "Des EC inscrits depuis cinq ans au moins, sans sanction, désignés pour trois ans par le CROEC",
+          "Des commissaires aux comptes contrôleurs désignés par la CNCC, par convention avec l'Ordre",
+          "Des magistrats et des fonctionnaires désignés par le commissaire du gouvernement pour trois ans"
+        ],
+        "answer": 1,
+        "crossProf": 2
+      },
+      "qrc": {
+        "expected": [
+          "EC candidats, désignés par le conseil régional pour trois ans",
+          "Inscrits depuis au moins cinq ans, sans sanction disciplinaire",
+          "Formés par l'Ordre ; contrôle de qualité subi sans nouveau contrôle à un an"
+        ],
+        "model_answer": "Les contrôleurs de qualité sont des experts-comptables volontaires, désignés par le conseil régional pour trois ans. Ils doivent être inscrits depuis au moins cinq ans, n'avoir fait l'objet d'aucune sanction, avoir suivi la formation de l'Ordre et avoir eux-mêmes subi un contrôle de qualité sans nouveau contrôle à un an."
+      },
+      "explanation": "Le contrôle de qualité est confraternel : il n'est confié ni à des salariés de l'Ordre, ni à des magistrats. Les CAC contrôleurs de la CNCC réalisent le contrôle d'activité des commissaires aux comptes.",
+      "reference": "Règlement intérieur de l'Ordre (contrôle de qualité)",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-EC-09",
+      "n": 9,
+      "profession": "EC",
+      "theme": "responsabilite",
+      "tags": [
+        "responsabilite_penale"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Un expert-comptable établit sciemment des comptes infidèles pour son client. Quelle qualification pénale encourt-il, et quelles autres responsabilités ?",
+      "qcm": {
+        "choices": [
+          "Auteur principal du délit de présentation de comptes infidèles, avec le dirigeant",
+          "Complice du délit du dirigeant ; responsabilités civile et disciplinaire possibles",
+          "Une faute disciplinaire seulement, sans infraction pénale faute de texte visant l'expert-comptable",
+          "Le délit propre d'informations mensongères, puni de cinq ans et de 75 000 €"
+        ],
+        "answer": 1,
+        "crossProf": 3
+      },
+      "qrc": {
+        "expected": [
+          "Complicité du délit de présentation de comptes infidèles (l'auteur est le dirigeant)",
+          "Responsabilité civile si préjudice",
+          "Responsabilité disciplinaire devant les chambres de l'Ordre"
+        ],
+        "model_answer": "Le délit de présentation ou publication de comptes infidèles est commis par le dirigeant ; l'expert-comptable qui y concourt sciemment en est complice. Il engage en outre sa responsabilité civile en cas de préjudice et sa responsabilité disciplinaire devant les chambres de discipline de l'Ordre."
+      },
+      "explanation": "Le délit d'informations mensongères est un délit propre au commissaire aux comptes (L.821-6). L'EC est auteur direct pour le secret, le faux, le blanchiment ou l'exercice illégal.",
+      "reference": "C. com. L.241-3, L.242-6 ; C. pén. 121-7 (complicité)",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-EC-10",
+      "n": 10,
+      "profession": "EC",
+      "theme": "responsabilite",
+      "tags": [
+        "discipline_sanctions"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Comment est composée la chambre nationale de discipline de l'Ordre, et quelle juridiction connaît du recours contre ses décisions ?",
+      "qcm": {
+        "choices": [
+          "Un magistrat de la Cour de cassation et quatre personnes qualifiées ; recours devant le Conseil d'État",
+          "Un magistrat de la cour d'appel de Paris, 2 fonctionnaires, 2 membres du Conseil national ; Conseil d'État",
+          "Le bureau du Conseil national, présidé par son président ; recours devant la Cour de cassation",
+          "Trois magistrats de l'ordre judiciaire désignés par le garde des Sceaux ; recours devant la Cour de cassation"
+        ],
+        "answer": 1,
+        "crossProf": 0
+      },
+      "qrc": {
+        "expected": [
+          "Chambre nationale : un magistrat (président de chambre à la cour d'appel de Paris), deux fonctionnaires, deux membres du Conseil national",
+          "Juge d'appel des chambres régionales",
+          "Cassation : Conseil d'État"
+        ],
+        "model_answer": "La chambre nationale de discipline, juge d'appel des chambres régionales, est présidée par un président de chambre de la cour d'appel de Paris et comprend deux fonctionnaires et deux membres du Conseil national. Ses décisions sont déférées au Conseil d'État par la voie de la cassation. La formation « un magistrat de la Cour de cassation et quatre personnes qualifiées » est la commission des sanctions de la H2A."
+      },
+      "explanation": "Juridiction ordinale à composition mixte : magistrat, représentants de l'État, élus de la profession. Le Conseil d'État est la juridiction de cassation des deux professions.",
+      "reference": "Ordonnance 45-2138, art. 50 ; décret 2012-432",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-CAC-01",
+      "n": 11,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": [
+        "nep",
+        "h2a_supervision"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Parmi les autorités suivantes, laquelle ne peut pas demander à la H2A l'élaboration d'une norme d'exercice professionnel ?",
+      "qcm": {
+        "choices": [
+          "L'Autorité des marchés financiers",
+          "La Compagnie nationale des commissaires aux comptes",
+          "Une compagnie régionale des commissaires aux comptes",
+          "L'Autorité de contrôle prudentiel et de résolution"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "NEP adoptées par la H2A, homologuées par arrêté du garde des Sceaux",
+          "Peuvent en demander l'élaboration : garde des Sceaux, AMF, ACPR, ANC, CNoCP, CNCC",
+          "Pas les CRCC"
+        ],
+        "model_answer": "Les normes d'exercice professionnel sont adoptées par la H2A et homologuées par arrêté du garde des Sceaux. Peuvent en demander l'élaboration le garde des Sceaux, l'AMF, l'ACPR, l'Autorité des normes comptables, le Conseil de normalisation des comptes publics et la CNCC ; une compagnie régionale n'a pas ce pouvoir."
+      },
+      "explanation": "Les normes de l'expert-comptable, elles, sont élaborées par le Conseil national de l'Ordre et agréées par arrêté du ministre de l'économie.",
+      "reference": "C. com. L.821-14 (normes d'exercice professionnel)",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-CAC-02",
+      "n": 12,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": [
+        "inscription_liste",
+        "cncc_crcc_organisation"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Devant qui le commissaire aux comptes nouvellement inscrit prête-t-il serment, et devant quel organe l'expert-comptable prête-t-il le sien ?",
+      "qcm": {
+        "choices": [
+          "Le commissaire devant le président de la CRCC ; l'expert-comptable devant le président du conseil régional",
+          "Le CAC devant le premier président de la cour d'appel ; l'EC devant le conseil régional de l'Ordre",
+          "Le commissaire devant le président de la H2A ; l'expert-comptable devant le commissaire du gouvernement",
+          "Tous deux devant le tribunal judiciaire de leur domicile professionnel, en audience publique"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "CAC : serment devant le premier président de la cour d'appel",
+          "EC : serment devant le conseil régional de l'Ordre",
+          "Liste des CAC tenue par la H2A ; tableau des EC par le CROEC"
+        ],
+        "model_answer": "Le commissaire aux comptes prête serment devant le premier président de la cour d'appel de son ressort ; l'expert-comptable prête le sien devant le conseil régional de l'Ordre. La liste des commissaires est tenue par la H2A, le tableau des experts-comptables par le conseil régional."
+      },
+      "explanation": "Le serment du CAC a un caractère judiciaire (cour d'appel) ; celui de l'EC est ordinal.",
+      "reference": "C. com. L.821-15, R.821-67 ; ordonnance 45-2138",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-CAC-03",
+      "n": 13,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": [
+        "co_commissariat"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Une société tenue d'établir des comptes consolidés : combien de commissaires aux comptes doit-elle nommer, sous quelles contraintes, et qui tranche un désaccord sur la répartition des travaux ?",
+      "qcm": {
+        "choices": [
+          "Un seul commissaire suffit si la société n'est pas une EIP et ne dépasse pas les seuils du petit groupe",
+          "Deux commissaires, qui peuvent appartenir au même réseau s'ils signent des rapports distincts",
+          "Deux commissaires de réseaux distincts, répartition équilibrée ; désaccord : président de la CRCC",
+          "Deux commissaires, la répartition des travaux étant fixée librement par l'assemblée qui les nomme"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Deux commissaires aux comptes (comptes consolidés)",
+          "Pas du même réseau ; répartition équilibrée (90/10 refusé)",
+          "Désaccord : président de la CRCC (ou de la compagnie de chacun si elles diffèrent)"
+        ],
+        "model_answer": "Les entités tenues d'établir des comptes consolidés nomment deux commissaires aux comptes, qui ne peuvent appartenir au même réseau et se répartissent les travaux de façon équilibrée : une répartition 90/10 est refusée. En cas de désaccord, le président de la CRCC tranche, ou le président de la compagnie de chacun si elles diffèrent."
+      },
+      "explanation": "L'obligation tient aux comptes consolidés, qu'il s'agisse ou non d'une EIP. Le co-commissariat allonge aussi la rotation du cabinet d'une EIP à 24 ans.",
+      "reference": "C. com. L.821-41, L.821-56 ; code de déontologie des CAC",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-CAC-04",
+      "n": 14,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": [
+        "eip",
+        "mandat_duree_cessation"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Après combien d'exercices l'associé signataire des comptes d'une EIP doit-il être remplacé, et pendant combien de temps ne peut-il pas revenir sur ce dossier ?",
+      "qcm": {
+        "choices": [
+          "Six exercices (sept ans au plus), puis trois ans de viduité",
+          "Dix ans, puis quatre ans d'attente avant un nouveau mandat",
+          "Trois exercices, puis deux ans de viduité avant de signer à nouveau",
+          "Aucune rotation du signataire n'est imposée, seule celle du cabinet l'est"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Rotation du signataire : six exercices, sept ans au plus",
+          "Viduité : trois ans",
+          "Concerne EIP, entités L.612-1, associations faisant appel à la générosité du public, filiales importantes d'EIP"
+        ],
+        "model_answer": "Le signataire des comptes d'une EIP ne peut certifier plus de six exercices consécutifs (sept ans au plus), puis doit s'abstenir pendant trois ans. Cette rotation vise aussi les entités de L.612-1, les associations faisant appel à la générosité du public et les filiales importantes d'EIP. La rotation du cabinet, distincte, est de dix ans (seize après appel d'offres, vingt-quatre en co-commissariat), suivie de quatre ans d'attente."
+      },
+      "explanation": "Ne pas confondre la rotation du signataire (personne physique) et celle du cabinet (règlement UE 537/2014, art. 17).",
+      "reference": "C. com. L.821-34 (rotation du signataire) ; règlement UE 537/2014, art. 17",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-CAC-05",
+      "n": 15,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": [
+        "incompatibilites_liens"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "L'ancien directeur financier d'une société, devenu commissaire aux comptes, peut-il accepter le mandat de cette société deux ans après son départ ? Et un commissaire peut-il devenir dirigeant de l'entité qu'il auditait ?",
+      "qcm": {
+        "choices": [
+          "Oui dans les deux cas, sous réserve de mesures de sauvegarde documentées dans le dossier",
+          "Non : un ancien dirigeant ou salarié attend cinq ans ; un ancien commissaire attend trois ans",
+          "Non : le délai est de trois ans dans les deux cas, à compter de la fin des fonctions ou du mandat",
+          "Oui pour devenir commissaire après deux ans ; devenir dirigeant est interdit sans limite de temps"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Ancien dirigeant ou salarié : pas CAC de l'entité moins de cinq ans après la fin de ses fonctions (L.821-33)",
+          "Ancien CAC : pas dirigeant, administrateur ni poste de direction moins de trois ans après la fin de sa mission (L.821-32)",
+          "Vise aussi les entités contrôlées ou contrôlantes"
+        ],
+        "model_answer": "Un ancien dirigeant ou salarié ne peut devenir commissaire aux comptes de la société moins de cinq ans après la cessation de ses fonctions : deux ans ne suffisent pas. À l'inverse, un commissaire ne peut devenir dirigeant, administrateur ou occuper un poste de direction de l'entité, de ses filiales ou de sa mère moins de trois ans après la fin de sa mission."
+      },
+      "explanation": "Deux délais asymétriques : cinq ans avant le mandat, trois ans après. L'entité qui recrute trop tôt un ancien commissaire encourt elle-même une sanction de la H2A.",
+      "reference": "C. com. L.821-32, L.821-33",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-CAC-06",
+      "n": 16,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": [
+        "honoraires_bareme",
+        "code_deontologie_structure"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Le dirigeant propose au commissaire aux comptes une prime si la certification sans réserve est délivrée avant la levée de fonds prévue. Que prévoit le code de déontologie et dans quelle partie ?",
+      "qcm": {
+        "choices": [
+          "Permis si le comité d'audit approuve la rémunération et si elle reste sous 70 % des honoraires d'audit",
+          "Interdit par le titre I (dispositions communes), applicable à toute mission et prestation",
+          "Interdit seulement pour les EIP, au titre II relatif au commissaire qui certifie les comptes",
+          "Permis pour les prestations hors certification, interdit pour la seule mission de certification"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Honoraires subordonnés au résultat : interdits",
+          "Art. 13, titre I : dispositions communes à tout CAC, toutes missions et prestations",
+          "Honoraires fixés d'avance, en fonction des diligences, non liés à la conclusion"
+        ],
+        "model_answer": "Les honoraires subordonnés au résultat sont interdits au commissaire aux comptes par l'article 13 du code de déontologie, dans le titre I, dispositions communes applicables à tout commissaire pour toutes ses missions et prestations. La rémunération dépend des diligences, jamais de la teneur de l'opinion. Une prime liée à une certification sans réserve est donc exclue."
+      },
+      "explanation": "Le titre II ne contient que les dispositions complémentaires propres au CAC qui certifie les comptes (indépendance, liens, réseau, services).",
+      "reference": "Code de déontologie des CAC (annexe 8-1), art. 13",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-CAC-07",
+      "n": 17,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": [
+        "non_immixtion"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Le dirigeant demande au commissaire aux comptes son avis sur l'opportunité d'un investissement important. Que répond le commissaire ?",
+      "qcm": {
+        "choices": [
+          "Il donne son avis, au titre du devoir de conseil qui s'impose à tout professionnel du chiffre",
+          "Il s'abstient : la non-immixtion lui interdit d'apprécier l'opportunité des décisions de gestion",
+          "Il donne son avis après accord du comité d'audit, consigné au procès-verbal de la réunion",
+          "Il sollicite l'avis préalable de la H2A, seule compétente pour l'autoriser à conseiller la direction"
+        ],
+        "answer": 1,
+        "crossProf": 0
+      },
+      "qrc": {
+        "expected": [
+          "Non-immixtion dans la gestion (L.821-54)",
+          "Pas d'appréciation de l'opportunité des décisions de gestion",
+          "Pas de devoir de conseil au sens de l'EC ; il peut éclairer sur les conséquences comptables de ses constats"
+        ],
+        "model_answer": "Le commissaire aux comptes ne s'immisce pas dans la gestion : il n'a pas à apprécier l'opportunité des décisions des dirigeants, et n'a pas de devoir de conseil comparable à celui de l'expert-comptable. Il se borne à ses constats et à leurs conséquences sur les comptes. Ni le comité d'audit ni la H2A ne peuvent l'autoriser à conseiller la gestion."
+      },
+      "explanation": "Le devoir de conseil est la marque de l'expert-comptable ; le CAC juge la régularité et la sincérité, pas l'opportunité.",
+      "reference": "C. com. L.821-54 (non-immixtion)",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-CAC-08",
+      "n": 18,
+      "profession": "CAC",
+      "theme": "controle_qualite",
+      "tags": [
+        "controle_activite"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Parmi les pouvoirs suivants, lequel ne relève pas des contrôleurs chargés du contrôle d'activité d'un commissaire aux comptes ?",
+      "qcm": {
+        "choices": [
+          "Obtenir tout document, dossiers de travail compris, et des informations de toute autre personne",
+          "Accéder aux locaux professionnels du commissaire, à l'exclusion de son domicile",
+          "Convoquer et entendre toute personne susceptible de fournir des informations",
+          "Recourir à des experts et interroger les membres du réseau du commissaire"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Contrôle d'activité : tout document, informations de toute autre personne, experts, locaux professionnels (pas le domicile), interrogation du réseau",
+          "Convoquer et entendre : pouvoir de l'enquête du rapporteur général (L.821-74)",
+          "Faire obstacle au contrôle est un manquement"
+        ],
+        "model_answer": "Les contrôleurs peuvent obtenir tout document, dossiers de travail compris, recueillir des informations de toute autre personne, recourir à des experts, accéder aux locaux professionnels (pas au domicile) et interroger le réseau. Convoquer et entendre une personne relève de l'enquête du rapporteur général, procédure distincte à visée disciplinaire. Faire obstacle au contrôle est un manquement sanctionnable."
+      },
+      "explanation": "Contrôle (périodique, occasionnel, thématique) et enquête sont deux procédures : la seconde seule peut déboucher sur la commission des sanctions après rapport et griefs.",
+      "reference": "C. com. L.821-23 s. (contrôles), L.821-74 (enquêtes)",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-CAC-09",
+      "n": 19,
+      "profession": "CAC",
+      "theme": "controle_qualite",
+      "tags": [
+        "lcb_ft"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Quels niveaux de vigilance la NEP 9605 prévoit-elle, qui déclare à Tracfin dans un cabinet de commissaires aux comptes, et que fait un contrôleur de la H2A qui découvre des faits de blanchiment ?",
+      "qcm": {
+        "choices": [
+          "Deux niveaux, standard et renforcée ; déclaration par le correspondant Tracfin ; le contrôleur saisit l'Ordre",
+          "Trois niveaux, simplifiée, standard, renforcée ; déclaration par le signataire ; le contrôleur informe Tracfin",
+          "Trois niveaux ; déclaration par la CNCC au nom du cabinet ; le contrôleur saisit le procureur de la République",
+          "Un niveau unique ; déclaration par le président de la CRCC ; le contrôleur informe la commission des sanctions"
+        ],
+        "answer": 1,
+        "crossProf": 0
+      },
+      "qrc": {
+        "expected": [
+          "NEP 9605 : vigilance simplifiée, standard, renforcée (CMF)",
+          "Déclaration de soupçon par le CAC signataire",
+          "Contrôleur de la H2A : informe lui-même Tracfin",
+          "NPLAB (EC) : deux niveaux seulement, l'Ordre informe Tracfin"
+        ],
+        "model_answer": "La NEP 9605 renvoie aux trois niveaux de vigilance du code monétaire et financier : simplifiée, standard et renforcée. La déclaration de soupçon est faite par le commissaire aux comptes signataire. Un contrôleur de la H2A qui découvre des faits de blanchiment en informe lui-même Tracfin. Chez l'expert-comptable, la NPLAB ne connaît que deux niveaux et c'est l'Ordre qui informe Tracfin."
+      },
+      "explanation": "Piège EC/CAC classique : nombre de niveaux de vigilance et circuit de l'information issue des contrôles.",
+      "reference": "NEP 9605 ; CMF L.561-9, L.561-10, L.561-15",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-b-CAC-10",
+      "n": 20,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": [
+        "responsabilite_civile"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Un tiers découvre en 2026 le préjudice causé par une certification fautive de l'exercice 2021, que le commissaire aux comptes avait dissimulée. Son action en responsabilité est-elle prescrite ?",
+      "qcm": {
+        "choices": [
+          "Oui : trois ans se sont écoulés depuis le fait dommageable de 2021, point de départ du délai",
+          "Non : en cas de dissimulation, le délai de trois ans court de la révélation du fait",
+          "Non : la prescription de droit commun de cinq ans s'applique au tiers, qui n'est pas partie au contrat",
+          "Oui, sauf si la lettre de mission a allongé le délai au profit des tiers, ce qui est permis"
+        ],
+        "answer": 1,
+        "crossProf": 2
+      },
+      "qrc": {
+        "expected": [
+          "Prescription : trois ans à compter du fait dommageable",
+          "Ou de sa révélation s'il a été dissimulé : ici 2026",
+          "Dix ans pour un crime ; délai non aménageable par contrat"
+        ],
+        "model_answer": "Non. L'action en responsabilité contre le commissaire aux comptes se prescrit par trois ans à compter du fait dommageable ou, s'il a été dissimulé, de sa révélation : le délai court ici de 2026. Il est porté à dix ans lorsque le fait est qualifié crime. Ce régime, propre à la mission légale, ne peut être aménagé par la lettre de mission."
+      },
+      "explanation": "La prescription de cinq ans, réductible par contrat, est celle de l'expert-comptable (C. civ. 2224).",
+      "reference": "C. com. L.821-61 et L.821-62 (prescription, renvoi à L.225-254)",
+      "confidence": "high"
+    }
+  ]
+}
