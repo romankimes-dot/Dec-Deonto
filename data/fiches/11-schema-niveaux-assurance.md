@@ -1,6 +1,6 @@
 ---
 type: visuel
-questions: EC:missions_assurance 2018-05-EC-01
+questions: EC:missions_assurance 2018-05-EC-01 2022-05-CAC-13 2024-11-CAC-16 2026-05-CAC-13
 ---
 # Niveaux d'assurance : quelle mission, quelle conclusion
 
@@ -21,7 +21,7 @@ Aucune | {EC} Procédures convenues (NP 4400), compilation (NP 4410), autres pre
 | Mission | Formes possibles |
 |---|---|
 | **Présentation** (NP 2300) | 1. Attestation **sans observation** · 2. **avec observation(s)** · 3. **refus d'attester** |
-| **Examen limité** (NP 2400) | 1. Sans réserve · 2. Sans réserve **avec observation** · 3. **Avec réserve(s)** · 4. **Défavorable** · 5. **Impossibilité** de conclure |
+| **Examen limité** (NP 2400) | 1. Favorable sans observation (« sans réserve ») · 2. Favorable **avec observation(s)** · 3. **Avec réserve(s)** · 4. **Défavorable** · 5. **Impossibilité** de conclure |
 | **Audit** (normes ISA) | Sans réserve · avec réserve · défavorable · impossibilité. Formulation **positive** |
 | **Certification CAC** | Certification sans réserve · avec réserve(s) · **refus de certifier** (désaccord, limitation ou incertitudes) |
 

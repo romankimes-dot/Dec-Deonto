@@ -22,16 +22,17 @@
       "qrc": {
         "question": "Dans un cabinet comptant plusieurs experts-comptables associés, qui établit la déclaration de soupçon, à qui est-elle adressée et comment est-elle conservée ?",
         "expected": [
-          "L'expert-comptable en charge de la mission, qui déclare personnellement (R.561-23 IV ; NPLAB § 47), et non le représentant légal du cabinet",
+          "L'EC en charge de la mission, qui déclare personnellement (R.561-23 I al. 2 ; NPLAB § 47), et non le représentant légal du cabinet",
           "Adressée à Tracfin uniquement, sans copie au conseil régional ni au procureur",
           "Confidentielle : conservée hors du dossier client, dans un lieu protégé, pendant cinq ans",
           "Interdiction de révéler au client l'existence de la déclaration"
         ],
-        "model_answer": "La déclaration est effectuée personnellement par l'expert-comptable en charge de la mission, quel que soit son mode d'exercice, et non obligatoirement par le représentant légal. Elle est adressée à Tracfin seul, sans copie au conseil régional, et conservée de façon confidentielle, en dehors du dossier du client, pendant cinq ans ; son existence ne doit jamais être portée à la connaissance du client."
+        "model_answer": "La déclaration est faite personnellement par l'EC en charge de la mission, quel que soit son mode d'exercice, et non par le représentant légal en tant que tel. Elle va à Tracfin seul, sans copie au conseil régional, et se conserve de façon confidentielle, hors du dossier client, pendant cinq ans ; le client n'en est jamais informé."
       },
-      "explanation": "Les trois propositions sont fausses : la déclaration est faite personnellement par l'expert-comptable en charge de la mission (pas par le dirigeant en tant que tel), elle est conservée hors du dossier client, accessible au client ou à des tiers, et aucune copie n'est adressée au président du conseil régional (la confidentialité ne cède qu'envers le comité LBC-FT de l'Ordre, autorité de contrôle). Le commissaire aux comptes déclare lui aussi personnellement à Tracfin, sans copie à la CRCC.",
-      "reference": "C. mon. fin. art. L.561-15 (déclaration), L.561-18 (confidentialité), R.561-23 IV ; NPLAB § 16, 47, 51a et A48",
-      "confidence": "medium"
+      "explanation": "Les trois propositions sont fausses : déclaration personnelle de l'EC en charge de la mission (pas du dirigeant comme tel), conservation hors du dossier client, aucune copie au président du conseil régional (la confidentialité ne cède qu'envers le comité LCB-FT de l'Ordre, autorité de contrôle). Le CAC déclare aussi personnellement (NEP 9605 § 61).",
+      "reference": "C. mon. fin. art. L.561-15 (déclaration), L.561-18 (confidentialité), R.561-23 I al. 2 ; NPLAB § 16, 47, 51a et A48 ; NEP 9605 § 61 (CAC)",
+      "confidence": "medium",
+      "review_note": "Référence harmonisée de « R.561-23 IV » vers « R.561-23 I al. 2 » (VERIFICATION.md, fiches 02 et 06) ; CMF non relu. NEP 9605 § 61 relue (miroir LEGI)."
     },
     {
       "id": "2019-11-EC-02",
@@ -54,13 +55,13 @@
         "question": "Quelles sont les règles applicables à la communication et au démarchage des experts-comptables ?",
         "expected": [
           "Publicité et démarchage (sollicitation personnalisée) autorisés, y compris par courrier électronique",
-          "Communication délivrée avec décence et retenue, sans porter atteinte à la dignité de la profession, à l'indépendance, au secret professionnel ou à la loyauté envers les confrères",
+          "Communication décente et mesurée, sans atteinte à la dignité, à l'indépendance, au secret ni à la loyauté envers les confrères",
           "Interdiction de tout élément comparatif",
           "Références clients possibles avec l'accord des clients (secret professionnel)"
         ],
-        "model_answer": "Depuis la levée de l'interdiction du démarchage, l'expert-comptable peut faire de la publicité et solliciter des prospects, y compris par e-mail. Sa communication doit rester décente et loyale, ne pas porter atteinte à la dignité de la profession ni au secret, et ne comporter aucun élément comparatif. L'annonce d'une ouverture de cabinet et la mention de références clients, avec leur accord, sont licites."
+        "model_answer": "Depuis la levée de l'interdiction du démarchage, l'EC peut faire de la publicité et solliciter des prospects, y compris par e-mail. Sa communication reste décente et loyale, respecte la dignité de la profession et le secret, et ne comporte aucun élément comparatif. Annoncer une ouverture ou citer des clients (avec leur accord) est licite."
       },
-      "explanation": "Le seul interdit absolu parmi les propositions est la publicité comparative. L'arrêt de la CJUE du 5 avril 2011 a condamné l'interdiction générale du démarchage, et le code de déontologie a été modifié en conséquence (décret n° 2014-912 du 18 août 2014, art. 152). Le commissaire aux comptes bénéficie d'une liberté de communication plus restreinte : publicité admise si elle procure une nécessaire information, publicité comparative prohibée, et sollicitation personnalisée limitée à l'envoi postal ou au courriel adressé à une personne déterminée (code de déontologie CAC art. 15 et 16), toute autre forme de démarchage restant interdite.",
+      "explanation": "Seul interdit absolu ici : la publicité comparative. L'arrêt de la CJUE du 5 avril 2011 a condamné l'interdiction générale du démarchage (code de déontologie modifié en 2014, art. 152). Le CAC est plus encadré : publicité si elle informe utilement, sollicitation personnalisée limitée au courrier ou au courriel (code CAC art. 15 et 16).",
       "reference": "Ord. 45-2138 art. 23 ; D. 2012-432 art. 152 (actions de promotion) ; CJUE 5 avril 2011, Société fiduciaire nationale d'expertise comptable",
       "confidence": "medium"
     },
@@ -85,12 +86,12 @@
         "question": "Un expert-comptable ou une société d'expertise comptable peut-il détenir des participations dans des entreprises non inscrites à l'Ordre ?",
         "expected": [
           "Oui, dans des entreprises de toute nature, y compris commerciales",
-          "Sous réserve que la participation ne porte pas atteinte à l'indépendance ni aux règles déontologiques (pas de mission chez une entité où l'intérêt financier compromettrait l'objectivité)",
+          "Sous réserve de ne compromettre ni l'indépendance ni la déontologie (pas de mission où l'intérêt financier nuirait à l'objectivité)",
           "La détention d'une participation n'est pas l'exercice d'une activité commerciale, qui reste interdite sauf accessoire"
         ],
-        "model_answer": "Oui : la détention de participations financières est libre, dans des entreprises inscrites ou non à l'Ordre et quelle que soit leur activité, car un investissement n'est pas l'exercice d'une activité commerciale. L'expert-comptable doit seulement veiller à ce que ces intérêts ne compromettent pas son indépendance, notamment s'il intervient professionnellement dans l'entité concernée."
+        "model_answer": "Oui : un expert-comptable peut détenir des participations dans des entreprises inscrites ou non à l'Ordre, quelle que soit leur activité, car investir n'est pas exercer une activité commerciale. Il veille seulement à ce que ces intérêts ne compromettent pas son indépendance, surtout s'il intervient dans l'entité."
       },
-      "explanation": "Le distracteur « activités non commerciales » transpose à tort la restriction qui s'appliquait aux mandats sociaux avant la loi du 23 juillet 2010 (mandats gratuits dans des structures à but non lucratif). Le règlement intérieur prévoit expressément que les experts-comptables et les sociétés d'expertise comptable « peuvent détenir des participations financières dans des entreprises de toute nature », sous réserve de ne pas se placer en conflit d'intérêts, avec une déclaration annuelle sur l'honneur et une liste tenue à jour pour les participations de plus de 10 %. Il faut distinguer l'activité commerciale, interdite sauf à titre accessoire, de la simple détention de titres, permise. Chez le commissaire aux comptes, au contraire, tout intérêt financier dans l'entité contrôlée ou son périmètre est une incompatibilité.",
+      "explanation": "Piège : la limite aux activités non commerciales visait les mandats sociaux avant la loi du 23 juillet 2010, pas les participations. Le RI (art. 601 à 606) admet les participations « dans des entreprises de toute nature », sans conflit d'intérêts (déclaration annuelle au-delà de 10 %). CAC : intérêts financiers dans l'entité en principe interdits.",
       "reference": "Ord. 45-2138 art. 22 ; règlement intérieur de l'Ordre (arrêté du 6 mars 2024) art. 601 à 606 (participations financières) ; D. 2012-432 art. 145 et 146 (indépendance)",
       "confidence": "medium"
     },
@@ -121,7 +122,7 @@
         ],
         "model_answer": "Le contrôle qualité de l'Ordre porte sur l'ensemble de l'activité du cabinet, quelles que soient les missions, à la seule exclusion des mandats de commissariat aux comptes, qui relèvent du contrôle d'activité de la Haute autorité de l'audit, et des expertises judiciaires, exercées sous l'autorité du juge."
       },
-      "explanation": "Le champ est large pour vérifier l'application de la NPMQ et de la déontologie à tout le cabinet ; les deux exclusions tiennent à l'existence d'un autre contrôle (H2A pour les mandats de commissaire aux comptes, juridictions pour les expertises judiciaires). Les distracteurs limitant le contrôle aux missions normées ou aux missions d'opinion sont des confusions avec le contrôle d'activité des commissaires aux comptes, centré sur les mandats de certification.",
+      "explanation": "Champ large : NPMQ et déontologie s'appliquent à tout le cabinet ; les deux exclusions tiennent à un autre contrôle (H2A pour les mandats de CAC, juge pour les expertises judiciaires). Piège : limiter le contrôle aux missions normées ou d'opinion, c'est le confondre avec le contrôle d'activité des CAC, centré sur la certification.",
       "reference": "Ord. 45-2138 art. 31 (attributions des conseils régionaux) ; règlement intérieur de l'Ordre (contrôle de qualité) ; NPMQ",
       "confidence": "high"
     },
@@ -130,7 +131,7 @@
       "n": 5,
       "profession": "EC",
       "theme": "exercice",
-      "tags": ["missions_legales", "loi_pacte"],
+      "tags": ["missions_legales", "incompatibilites_activites"],
       "points": 1,
       "question": "Depuis l'élargissement du périmètre des missions de l'expert-comptable apporté par la loi Macron de 2015, un expert-comptable peut réaliser :",
       "qcm": {
@@ -145,14 +146,14 @@
       "qrc": {
         "question": "Qu'a changé la loi Macron de 2015 dans le périmètre des missions de l'expert-comptable, et quelles limites subsistent ?",
         "expected": [
-          "Les travaux juridiques accessoires sont désormais possibles pour les clients ayant une mission comptable ou une mission d'accompagnement déclaratif et administratif de caractère permanent ou habituel (paie, déclarations)",
+          "Travaux juridiques accessoires ouverts aux clients en mission comptable ou d'accompagnement déclaratif et administratif habituel (paie, déclarations)",
           "La paie et les déclarations sont des missions propres de l'expert-comptable, sans condition de mission comptable préalable",
           "L'assistance déclarative des personnes physiques (déclaration de revenus du dirigeant) ne dépend pas d'une mission comptable avec sa société",
           "Reste interdit : un acte ou une consultation juridique isolé, sans mission comptable ou déclarative habituelle"
         ],
-        "model_answer": "La loi Macron a étendu l'accessoire juridique aux clients pour lesquels l'expert-comptable assure, de façon permanente ou habituelle, une mission d'accompagnement déclaratif et administratif, et non plus seulement une mission comptable. La paie et les déclarations restent des missions à part entière, accessibles sans mission comptable préalable ; en revanche, un contrat de travail ou des statuts rédigés isolément, sans aucune autre mission, demeurent hors périmètre."
+        "model_answer": "La loi Macron a étendu l'accessoire juridique aux clients pour lesquels l'EC assure une mission d'accompagnement déclaratif et administratif habituelle, et plus seulement une mission comptable. La paie reste une mission à part entière, sans mission comptable préalable ; un contrat de travail ou des statuts rédigés isolément restent hors périmètre."
       },
-      "explanation": "La paie est une prestation déclarative et administrative que l'expert-comptable peut toujours réaliser seule : c'est la bonne réponse. Le juridique (statuts, contrat de travail) doit rester l'accessoire d'une mission comptable ou déclarative habituelle, ou s'inscrire dans un accompagnement global de création ; isolé, il est interdit. La déclaration de revenus du dirigeant relève de l'assistance des personnes physiques et n'exige pas la tenue de la comptabilité de sa société.",
+      "explanation": "Bonne réponse : la paie, prestation que l'EC peut réaliser seule. Le juridique (statuts, contrat de travail) reste l'accessoire d'une mission comptable ou déclarative habituelle, ou d'un accompagnement global de création ; isolé, il est interdit. La déclaration de revenus du dirigeant n'exige pas de tenir les comptes de sa société.",
       "reference": "Ord. 45-2138 art. 2 et 22 (rédaction loi 2015-990) ; loi 71-1130 art. 59",
       "confidence": "medium"
     },
@@ -181,7 +182,7 @@
           "Missions sans assurance : compilation (NP 4410), procédures convenues (NP 4400)",
           "Autres prestations hors normes spécifiques"
         ],
-        "model_answer": "Le référentiel distingue les missions d'assurance sur comptes complets historiques (présentation, examen limité, audit), les autres missions d'assurance (attestations particulières, examen d'informations prévisionnelles) et les missions sans assurance. La compilation appartient à cette dernière catégorie, avec les procédures convenues : l'expert-comptable n'y exprime aucune assurance."
+        "model_answer": "Le référentiel distingue les missions d'assurance sur comptes complets historiques (présentation, examen limité, audit), les autres missions d'assurance (attestations particulières, prévisionnel) et les missions sans assurance. La compilation relève de ces dernières, avec les procédures convenues : aucune assurance n'est exprimée."
       },
       "explanation": "Le piège tient au fait que la compilation porte sur des comptes, comme la présentation ; mais elle se limite à une mise en forme sans diligences d'assurance. L'examen d'informations prévisionnelles, malgré l'incertitude de son objet, procure bien une assurance (modérée) sur les hypothèses et la préparation des informations.",
       "reference": "Cadre de référence des missions de l'OEC ; NP 4410 (compilation), NP 3100, NP 3400",
@@ -212,9 +213,9 @@
           "Trois issues : sans observation, avec observation(s), refus d'attester",
           "En présence d'un commissaire aux comptes : compte rendu de travaux au lieu de l'attestation, mais toujours un document"
         ],
-        "model_answer": "À l'issue de la mission de présentation, l'expert-comptable délivre une attestation exprimant une assurance modérée : il n'a pas relevé d'éléments remettant en cause la cohérence et la vraisemblance des comptes. Elle peut être sans observation, avec observations, ou remplacée par un refus d'attester ; si l'entité a un commissaire aux comptes, un compte rendu de travaux se substitue à l'attestation."
+        "model_answer": "L'EC délivre une attestation d'assurance modérée : il n'a pas relevé d'éléments remettant en cause la cohérence et la vraisemblance des comptes. Elle est sans observation, avec observation(s), ou remplacée par un refus d'attester ; si l'entité a un CAC, un compte rendu de travaux s'y substitue, sauf considérations particulières."
       },
-      "explanation": "La NP 2300 précise que l'objectif de la mission n'est pas de se prononcer sur la régularité, la sincérité et l'image fidèle des comptes : employer ces termes dans une attestation de présentation est une erreur de vocabulaire. L'existence d'un commissaire aux comptes modifie la forme du document de fin de mission (compte rendu de travaux, A10), pas son existence.",
+      "explanation": "La NP 2300 exclut de se prononcer sur la régularité, la sincérité et l'image fidèle : employer ces mots dans une attestation de présentation est une erreur. Piège : la présence d'un CAC change la forme du document de fin de mission (compte rendu de travaux, § A10), pas son existence.",
       "reference": "NP 2300 (mission de présentation des comptes)",
       "confidence": "high"
     },
@@ -238,17 +239,17 @@
       "qrc": {
         "question": "Que prévoit la NP 3100 quant aux types d'attestations particulières, à leur niveau d'assurance et à leur objet ?",
         "expected": [
-          "Deux types : attestation directe (l'expert-comptable a contribué à l'élaboration de l'information) et attestation indirecte (information élaborée par l'entité et vérifiée)",
+          "Deux types : directe (l'EC a contribué à élaborer l'information) et indirecte (information élaborée par l'entité, puis vérifiée)",
           "Niveau d'assurance modéré ou raisonnable selon la mission convenue, précisé dans l'attestation (§ 10)",
           "Objet : informations de nature comptable ou financière, juridique ou sociale, ou de toute autre nature (absentéisme, gaz à effet de serre…) (§ 9)",
           "Lettre de mission spécifique et formulation adaptée"
         ],
-        "model_answer": "La NP 3100 permet des attestations directes, lorsque l'expert-comptable a contribué à l'élaboration de l'information, ou indirectes, lorsqu'elle a été élaborée par l'entité et qu'il la vérifie. L'assurance peut être modérée ou raisonnable selon la mission convenue. L'objet n'est pas limité aux données comptables ou financières : il peut s'agir d'informations juridiques, sociales ou de toute autre nature."
+        "model_answer": "La NP 3100 admet des attestations directes, si l'EC a contribué à élaborer l'information, ou indirectes, si l'entité l'a élaborée et qu'il la vérifie. L'assurance est modérée ou raisonnable selon la mission. L'objet n'est pas limité au comptable ou au financier : informations juridiques, sociales ou de toute autre nature."
       },
       "explanation": "Chaque proposition contient une restriction que la norme n'impose pas : exclusivité des attestations indirectes, assurance toujours modérée, objet purement comptable ou financier. La réponse attendue est donc « aucune ». Les attestations particulières s'opposent aux comptes complets historiques par leur objet, non par leur nature.",
       "reference": "NP 3100 agréée par arrêté du 13 avril 2022 (annexe 2), § 9 et § 10",
       "confidence": "high",
-      "update_note": "Les trois restrictions sont contredites par la NP 3100 en vigueur (arrêté du 13 avril 2022) : attestations directes et indirectes (§ 9), assurance modérée ou raisonnable (§ 10), informations de toute nature (§ 9)."
+      "update_note": "NP 3100 révisée (arrêté du 13 avril 2022) : attestations directes et indirectes (§ 9), assurance modérée ou raisonnable (§ 10), informations de toute nature (§ 9)."
     },
     {
       "id": "2019-11-EC-09",
@@ -270,17 +271,19 @@
       "qrc": {
         "question": "Quelles sont les attributions du Conseil national de l'Ordre des experts-comptables, et qui édicte le code de déontologie de la profession ?",
         "expected": [
-          "Conseil national : préparation du code de déontologie (édicté par décret en Conseil d'État) et contrôle de son respect ; règlement intérieur (D. 2012-432 art. 29 1°)",
+          "Conseil national : prépare le code de déontologie (décret en Conseil d'État) et le fait respecter ; règlement intérieur (D. 2012-432 art. 29 1°)",
           "Élaboration des règles professionnelles, soumises à l'agrément du ministre chargé de l'économie (art. 29 3°)",
           "Faculté d'organiser la formation et le perfectionnement professionnel ; représentation de l'Ordre et coordination des conseils régionaux",
-          "Les cotisations des membres sont fixées et recouvrées par les seuls conseils régionaux (ord. art. 31 7°) ; le Conseil national ne fixe que des redevances imposées aux conseils régionaux"
+          "Cotisations des membres fixées et recouvrées par les seuls conseils régionaux (ord. art. 31 7°) ; le Conseil national ne fixe que des redevances"
         ],
-        "model_answer": "Le Conseil national prépare le code de déontologie, édicté par décret en Conseil d'État, et en fait respecter les prescriptions ; il élabore les normes professionnelles agréées par le ministre chargé de l'économie et peut organiser la formation. En revanche, la fixation et le recouvrement des cotisations des membres relèvent du seul conseil régional."
+        "model_answer": "Le Conseil national prépare le code de déontologie, édicté par décret en Conseil d'État, et en fait respecter les règles ; il élabore les normes professionnelles agréées par le ministre de l'économie et peut organiser la formation. Fixer et recouvrer les cotisations des membres relève en revanche des seuls conseils régionaux."
       },
-      "explanation": "Le piège porte sur le code de déontologie : le Conseil national ne l'édicte pas (décret en Conseil d'État) mais il le prépare et en assure le respect (D. 2012-432 art. 29 1°), ce qui correspond à la proposition b. La collecte des cotisations est au contraire une attribution exclusive des conseils régionaux (ord. art. 31 : le conseil régional « a seul qualité » pour les fixer et les recouvrer). Parallèle CAC : le code de déontologie est aussi un décret en Conseil d'État (L.821-36) et les normes sont adoptées par la H2A puis homologuées par arrêté.",
+      "explanation": "Piège : le Conseil national n'édicte pas le code de déontologie (décret en Conseil d'État) mais le prépare et le fait respecter (D. 2012-432 art. 29 1°). Les cotisations relèvent des seuls conseils régionaux (ord. art. 31 : le conseil régional « a seul qualité »). Côté CAC aussi, le code est un décret ; les normes sont adoptées par la H2A.",
       "reference": "Ord. 45-2138 art. 31 7° ; D. 2012-432 art. 27 et art. 29 (missions du Conseil national)",
       "confidence": "medium",
-      "update_note": "Le Conseil supérieur a été renommé Conseil national par la loi 2022-172 du 14 février 2022 (et non par la loi Pacte). Réponse modifiée de b en a sur le fondement des textes (art. 29 1° « préparer le code de déontologie », rédaction identique en 2019) ; corrigé officiel non consulté."
+      "update_note": "Le Conseil supérieur a été renommé Conseil national par la loi 2022-172 du 14 février 2022 (et non par la loi Pacte). La banque retient la collecte des cotisations, et non plus le code de déontologie.",
+      "review_note": "Réponse modifiée de b en a sur le fondement des textes (D. 2012-432 art. 29 1° « préparer le code de déontologie », rédaction identique en 2019) ; corrigé officiel non consulté.",
+      "answer_changed": true
     },
     {
       "id": "2019-11-EC-10",
@@ -308,7 +311,7 @@
         ],
         "model_answer": "Chaque expert-comptable peut avoir sous son autorité au maximum quinze comptables salariés. Dans une société, le plafond se calcule sur les experts-comptables qui y exercent effectivement, et dans une AGC sur l'ensemble des professionnels habilités, salariés autorisés compris. Le personnel non comptable n'entre pas dans le calcul."
       },
-      "explanation": "Le chiffre à retenir est quinze. Les distracteurs jouent sur le mode de calcul : les associés qui n'exercent pas dans le cabinet ne peuvent pas « encadrer », et les salariés autorisés des AGC sont assimilés aux experts-comptables pour cette règle. Il n'existe aucune règle d'encadrement équivalente en commissariat aux comptes.",
+      "explanation": "Le chiffre à retenir est quinze. Pièges sur le mode de calcul : les associés qui n'exercent pas dans le cabinet ne peuvent pas « encadrer », et les salariés autorisés des AGC sont assimilés aux experts-comptables pour cette règle. Aucune règle d'encadrement équivalente en commissariat aux comptes.",
       "reference": "Ord. 45-2138 art. 19 (nombre et proportions fixés par décret ; associés ou salariés exerçant de manière effective et régulière ; stagiaires exclus du calcul) et art. 83 ter et quater ; D. 2012-432 art. 132",
       "confidence": "medium"
     },
@@ -334,12 +337,12 @@
         "expected": [
           "Barème d'heures du code de commerce pour la certification : fourchette d'heures selon le total bilan + produits",
           "Taux horaire convenu d'un commun accord avec l'entité, avant la mission",
-          "Dérogation au barème : décision du président de la CRCC ; recours devant le président de la CNCC, puis le bureau de la H2A (puis tribunal administratif)",
-          "Prestations : honoraires hors barème fixés par lettre de mission ; pour les EIP, services non audit plafonnés à 70 % de la moyenne des honoraires d'audit des trois derniers exercices"
+          "Dérogation : président de la CRCC ; recours devant le président de la CNCC, puis le bureau de la H2A, puis le tribunal administratif",
+          "Prestations hors barème (lettre de mission) ; EIP : services non audit plafonnés à 70 % de la moyenne des honoraires d'audit sur 3 exercices"
         ],
-        "model_answer": "Pour la mission de certification, le code de commerce prévoit un barème d'heures par tranche de total bilan et produits, le taux horaire étant convenu avec l'entité. Les dérogations relèvent du président de la compagnie régionale, dont la décision peut être contestée devant le président de la CNCC puis devant le bureau de la Haute autorité de l'audit. Les prestations sont rémunérées hors barème ; pour les EIP, les services autres que d'audit sont plafonnés à 70 % de la moyenne des honoraires d'audit des trois derniers exercices."
+        "model_answer": "Pour la certification, un barème d'heures par tranche de total bilan et produits, le taux horaire étant convenu avec l'entité. Dérogation : président de la CRCC, recours devant le président de la CNCC puis le bureau de la H2A. Prestations hors barème ; pour les EIP, services autres que l'audit plafonnés à 70 % des honoraires d'audit."
       },
-      "explanation": "Le barème est un volume d'heures, non un tarif : ni « toujours libres » (règle de l'expert-comptable), ni « toujours barémés » (dérogations, prestations), ni « taux en euros ». Le jury note régulièrement la confusion avec les honoraires de l'expert-comptable, libres et sans barème.",
+      "explanation": "Le barème est un volume d'heures, non un tarif : ni « toujours libres » (règle de l'EC), ni « toujours barémés » (dérogations, prestations), ni « taux en euros ». Les rapports de jury relèvent à chaque session la confusion entre règles EC et CAC ; les honoraires (libres ou au barème) en sont un exemple classique.",
       "reference": "C. com. D.821-188 s. (barème d'heures, ex R.823-12 s.) ; règlement (UE) 537/2014 art. 4 (plafond des services non audit) ; code de déontologie des commissaires aux comptes (honoraires)",
       "confidence": "high",
       "update_note": "Barème recodifié au 1er janvier 2024 (ex R.823-12 devenu D.821-188) ; recours contre la décision du président de la CRCC devant le président de la CNCC, puis devant le bureau de la H2A (D.821-190)."
@@ -353,27 +356,30 @@
       "points": 1,
       "question": "Peut être élu membre d'un conseil régional d'une CRCC :",
       "qcm": {
+        "question": "Selon le droit en vigueur, peut être élu membre d'un conseil régional d'une CRCC :",
         "choices": [
           "Un cabinet inscrit auprès de cette CRCC dont au moins les ¾ des associés sont des commissaires aux comptes personnes physiques",
           "Une personne physique régulièrement inscrite auprès de cette CRCC et à jour de ses cotisations professionnelles",
           "Un cabinet inscrit auprès de cette CRCC si, et uniquement si, il se fait représenter par son dirigeant qui est lui-même commissaire aux comptes",
-          "Une personne physique inscrite auprès de cette CRCC, à jour de ses cotisations professionnelles, et exerçant des fonctions de commissaire aux comptes à la date du scrutin"
+          "Une personne physique inscrite auprès de cette CRCC, à jour de ses cotisations professionnelles et exerçant la profession de commissaire aux comptes au 30 juin de l'année d'expiration des mandats"
         ],
-        "answer": 1
+        "answer": 3
       },
       "qrc": {
         "question": "Quelles sont les conditions d'éligibilité au conseil régional d'une compagnie régionale des commissaires aux comptes ?",
         "expected": [
           "Être une personne physique (les sociétés ne sont ni électrices ni éligibles)",
           "Être à jour de ses cotisations professionnelles",
-          "Exercer la profession de commissaire aux comptes au 30 juin de l'année d'expiration des mandats ; pas de condition d'ancienneté, mission de certification exigée du seul président"
+          "Exercer la profession de CAC au 30 juin de l'année d'expiration des mandats ; pas d'ancienneté ; mission de certification exigée du seul président"
         ],
-        "model_answer": "Peuvent être élues au conseil régional les personnes physiques à jour de leurs cotisations professionnelles qui exercent la profession de commissaire aux comptes au 30 juin de l'année d'expiration des mandats. Seul le président doit exercer au moins une mission de certification ; les sociétés de commissaires aux comptes ne sont ni électrices ni éligibles."
+        "model_answer": "Sont éligibles les personnes physiques à jour de leurs cotisations qui exercent la profession de CAC au 30 juin de l'année d'expiration des mandats (D.821-31 II). Seul le président doit exercer une mission de certification ; les sociétés de CAC ne sont ni électrices ni éligibles."
       },
-      "explanation": "Les deux propositions relatives aux cabinets sont fausses : électorat et éligibilité sont réservés aux personnes physiques (D.821-31 II). La réponse officielle b correspond au texte de l'époque ; la rédaction actuelle ajoute l'exercice de la profession au 30 juin de l'année d'expiration des mandats (et non à la date du scrutin). Même principe pour les conseils de l'Ordre des experts-comptables, composés de membres personnes physiques élus.",
+      "explanation": "Électorat et éligibilité sont réservés aux personnes physiques (D.821-31 II) : les propositions sur les cabinets sont fausses. La clé de 2019 (inscrite et à jour de ses cotisations) est devenue incomplète : depuis le 1er février 2024, il faut aussi exercer la profession au 30 juin de l'année d'expiration des mandats, d'où la bonne réponse.",
       "reference": "C. com. art. D.821-29 à D.821-31 (D.821-31 II : électorat et éligibilité au conseil régional)",
       "confidence": "medium",
-      "update_note": "Rédaction en vigueur (D.821-31 II, décret 2023-1394) : sont éligibles les personnes physiques à jour de leurs cotisations exerçant la profession de CAC au 30 juin de l'année d'expiration des mandats ; la proposition b, conforme au texte de l'époque, est aujourd'hui incomplète."
+      "update_note": "Depuis le 1er février 2024 (D.821-31 II, décret 2023-1394), l'éligible doit aussi exercer la profession au 30 juin de l'année d'expiration des mandats : la clé de 2019 (inscription et cotisations) est incomplète. Une proposition a été réécrite selon ce texte.",
+      "review_note": "D.821-31 II relu dans le miroir LEGI (en vigueur au 1er février 2024). Clé avant correction : index 1. Ancien choices[3] : « Une personne physique inscrite auprès de cette CRCC, à jour de ses cotisations professionnelles, et exerçant des fonctions de commissaire aux comptes à la date du scrutin ».",
+      "answer_changed": true
     },
     {
       "id": "2019-11-CAC-13",
@@ -400,12 +406,14 @@
           "Élus au scrutin de liste par deux collèges de CAC personnes physiques à jour de leurs cotisations, et non plus délégués des conseils régionaux",
           "Le Conseil national élit le président de la CNCC"
         ],
-        "model_answer": "Le Conseil national compte soixante membres désignés pour quatre ans : tous les présidents de compagnies régionales et des commissaires aux comptes élus au scrutin de liste par deux collèges (CAC exerçant des missions EIP / CAC n'en exerçant pas), chaque collège disposant de trente sièges, présidents compris. Il n'est donc plus composé de délégués élus par les conseils régionaux."
+        "model_answer": "Le Conseil national compte soixante membres désignés pour quatre ans : tous les présidents de CRCC et des CAC élus au scrutin de liste par deux collèges (avec ou sans mission EIP), chacun disposant de trente sièges, présidents compris (D.821-14). Il n'est plus composé de délégués des conseils régionaux."
       },
-      "explanation": "À la date du sujet, le Conseil national était composé de délégués élus par les conseils régionaux parmi leurs membres (première proposition, alors exacte). La réforme de la gouvernance a instauré l'élection par deux collèges nationaux et la présence de droit des présidents de CRCC, inclus dans les soixante sièges. Côté expertise comptable, le Conseil national de l'Ordre comprend aussi les présidents des conseils régionaux et des membres élus au scrutin de liste (ord. art. 33).",
+      "explanation": "En 2019, le Conseil national était composé de délégués élus par les conseils régionaux (première proposition, alors exacte). Depuis, élection par deux collèges nationaux et présidents de CRCC membres de droit. Côté EC, le Conseil national de l'Ordre comprend aussi les présidents des conseils régionaux et des élus (ord. art. 33).",
       "reference": "C. com. D.821-14 (composition et élection du Conseil national), D.821-27 ; ord. 45-2138 art. 33 pour le parallèle EC",
       "confidence": "high",
-      "update_note": "Composition actuelle fixée par D.821-14 (partie réglementaire recodifiée au 1er janvier 2024) : les présidents de CRCC sont inclus dans les soixante membres. Réponse d'origine (2019) : délégués élus par les conseils régionaux."
+      "update_note": "Composition actuelle fixée par D.821-14 (partie réglementaire recodifiée au 1er janvier 2024) : les présidents de CRCC sont inclus dans les soixante membres. Réponse d'origine (2019) : délégués élus par les conseils régionaux.",
+      "review_note": "D.821-14 relu (miroir LEGI).",
+      "answer_changed": true
     },
     {
       "id": "2019-11-CAC-14",
@@ -433,7 +441,7 @@
         ],
         "model_answer": "Exercer ou conserver des fonctions de commissaire aux comptes malgré une incompatibilité légale est un délit puni de six mois d'emprisonnement et de 7 500 € d'amende, constitué sans qu'un dommage soit nécessaire et soumis à la prescription ordinaire des délits. Il s'accompagne généralement de poursuites disciplinaires."
       },
-      "explanation": "Le code de commerce érige en délits plusieurs manquements propres aux commissaires aux comptes : exercice malgré incompatibilité, informations mensongères et non-révélation, violation du secret (via le code pénal), ainsi que l'entrave commise par les dirigeants. L'existence d'un dommage n'est pas un élément constitutif ; l'imprescriptibilité n'existe pas en matière délictuelle. L'expert-comptable connaît pour sa part le délit d'exercice illégal, mais ses incompatibilités ne sont sanctionnées que disciplinairement.",
+      "explanation": "Le code de commerce érige en délits plusieurs manquements propres aux CAC : exercice malgré incompatibilité (L.821-8), informations mensongères et non-révélation (L.821-9), violation du secret (via le code pénal). Le dommage n'est pas requis ; aucun délit n'est imprescriptible. Côté EC, incompatibilités sanctionnées disciplinairement.",
       "reference": "C. com. L.821-8 (ex L.820-6, exercice nonobstant les incompatibilités) ; ex L.822-10 et L.822-11 (incompatibilités)",
       "confidence": "high",
       "update_note": "Article recodifié au 1er janvier 2024 (ordonnance 2023-1142) : L.820-6 est devenu L.821-8 (six mois d'emprisonnement, 7 500 €) ; incrimination inchangée."
@@ -462,12 +470,13 @@
           "Élément intentionnel : connaissance du caractère inexact des comptes",
           "Peine : cinq ans d'emprisonnement et 75 000 € d'amende ; responsabilités civile et disciplinaire cumulables"
         ],
-        "model_answer": "Il commet le délit de confirmation d'informations mensongères : le code de commerce punit le commissaire aux comptes qui, sciemment, donne ou confirme des informations mensongères sur la situation de l'entité. La certification sans réserve de comptes dont il connaît l'inexactitude en est l'illustration ; la peine encourue est de cinq ans d'emprisonnement et 75 000 € d'amende."
+        "model_answer": "Il commet le délit de confirmation d'informations mensongères : le code de commerce punit le CAC qui donne ou confirme, en connaissance de cause, des informations mensongères sur la situation de l'entité (L.821-9). Certifier sans réserve des comptes qu'il sait inexacts en est l'illustration ; peine : cinq ans et 75 000 €."
       },
-      "explanation": "Les trois distracteurs ne sont pas des qualifications pénales : la négligence et la faute professionnelle relèvent de la responsabilité civile ou disciplinaire, et le devoir de conseil est une notion propre à l'expert-comptable, le commissaire aux comptes étant au contraire tenu à la non-immixtion. Le délit suppose la connaissance du caractère mensonger ; une simple erreur d'appréciation n'est pas pénalement punissable.",
+      "explanation": "Pièges : négligence et faute professionnelle relèvent de la responsabilité civile ou disciplinaire, pas d'une qualification pénale ; le devoir de conseil est propre à l'EC, le CAC étant tenu à la non-immixtion. Le délit est intentionnel (C. pén. art. 121-3) : une simple erreur d'appréciation n'est pas punissable.",
       "reference": "C. com. L.821-9 (ex L.820-7, informations mensongères et non-révélation)",
       "confidence": "high",
-      "update_note": "Article recodifié au 1er janvier 2024 : L.820-7 est devenu L.821-9 ; incrimination inchangée."
+      "update_note": "Article recodifié au 1er janvier 2024 : L.820-7 est devenu L.821-9 ; incrimination inchangée.",
+      "review_note": "« sciemment » retiré : le mot ne figure pas dans L.821-9 (relu, miroir LEGI) ; délit intentionnel par l'effet de C. pén. 121-3."
     },
     {
       "id": "2019-11-CAC-16",
@@ -491,14 +500,15 @@
         "expected": [
           "L'assurance couvre les conséquences pécuniaires de la responsabilité civile : les dommages-intérêts dus aux victimes",
           "Elle ne couvre jamais l'amende pénale ni les sanctions disciplinaires, peines personnelles",
-          "Limite : exclusion légale de la faute intentionnelle ou dolosive (volonté de causer le dommage), appréciée strictement ; la sanction disciplinaire est sans effet sur la garantie"
+          "Limite : faute intentionnelle ou dolosive (volonté de causer le dommage), appréciée strictement ; la sanction disciplinaire est sans effet"
         ],
-        "model_answer": "L'assurance obligatoire garantit la réparation civile des préjudices causés par les fautes du commissaire aux comptes : les dommages-intérêts restent en principe couverts même si les faits sont aussi constitutifs d'un délit, seule l'amende pénale étant exclue. La garantie ne tomberait que si l'assureur établissait une faute intentionnelle au sens du droit des assurances, c'est-à-dire la volonté de provoquer le dommage lui-même ; l'existence d'une sanction disciplinaire est indifférente."
+        "model_answer": "L'assurance obligatoire garantit la réparation des préjudices causés par les fautes du CAC : les dommages-intérêts restent en principe couverts même si les faits sont aussi un délit ; seule l'amende est exclue. La garantie ne tomberait que pour une faute intentionnelle au sens du droit des assurances (volonté de causer le dommage)."
       },
-      "explanation": "Il faut distinguer la nature des condamnations : la réparation civile est assurable, la peine ne l'est pas. La notion d'intention du code pénal (révéler sciemment) ne se confond pas avec la faute intentionnelle du code des assurances (vouloir le dommage), d'où le maintien de la garantie en principe. La CNCC n'indemnise pas les victimes à la place de l'assureur.",
+      "explanation": "Distinguer réparation civile (assurable) et peine (inassurable). L'intention pénale (révéler en connaissance de cause) n'est pas la faute intentionnelle du code des assurances (vouloir le dommage, L.113-1), d'où le maintien de principe de la garantie. La CNCC n'indemnise pas les victimes à la place de l'assureur.",
       "reference": "C. com. L.821-37 (responsabilité civile), R.821-85 (assurance obligatoire, ex R.822-36), A.821-56 s. ; C. assur. art. L.113-1 ; C. pén. art. 226-13",
       "confidence": "medium",
-      "update_note": "Obligation d'assurance à l'article R.821-85 depuis la recodification de 2024. L.113-1 C. assur. n'exclut que la faute intentionnelle ou dolosive ; son application à une violation délibérée du secret relève de la jurisprudence et de la police (non vérifié)."
+      "update_note": "Obligation d'assurance à l'article R.821-85 depuis la recodification de 2024.",
+      "review_note": "L.113-1 C. assur. n'exclut que la faute intentionnelle ou dolosive ; son application à une violation délibérée du secret relève de la jurisprudence et de la police (non vérifié)."
     },
     {
       "id": "2019-11-CAC-17",
@@ -525,9 +535,9 @@
           "Le prédécesseur permet au successeur d'accéder à toutes les informations et à tous les documents pertinents concernant l'entité (L.821-44)",
           "Aucune autorisation de la CRCC n'est requise"
         ],
-        "model_answer": "Le commissaire aux comptes pressenti doit, avant d'accepter, s'assurer auprès de son prédécesseur que le non-renouvellement de son mandat n'est pas motivé par la volonté de l'entité de contourner les obligations légales. Le prédécesseur lui permet d'accéder à toutes les informations et à tous les documents pertinents concernant l'entité. Cette démarche ne requiert aucune autorisation de la compagnie régionale."
+        "model_answer": "Avant d'accepter, le CAC pressenti doit s'assurer auprès de son prédécesseur que le non-renouvellement ne vise pas à contourner les obligations légales (code art. 26). Le prédécesseur lui donne accès aux informations et documents pertinents sur l'entité (L.821-44). Aucune autorisation de la CRCC n'est requise."
       },
-      "explanation": "La prise de contact est une obligation du code de déontologie (art. 26), liée à l'acceptation de la mission, et non une simple faculté ; elle vaut aussi pour le suppléant qui succède de plein droit. Elle est complétée par l'accès du successeur aux informations du prédécesseur (L.821-44) et par la NEP 510, qui lui fait prendre connaissance du dossier de travail du prédécesseur. L'expert-comptable connaît une règle voisine : il informe le confrère qu'il remplace avant d'accepter et s'efforce d'obtenir la justification du paiement de ses honoraires (D. 2012-432 art. 163).",
+      "explanation": "La prise de contact est une obligation (art. 26), non une faculté, liée à l'acceptation ; elle vaut aussi pour le suppléant. Elle se double de l'accès aux informations du prédécesseur (L.821-44) et de la NEP 510. Côté EC, règle voisine : informer le confrère remplacé et s'assurer du paiement de ses honoraires (D. 2012-432 art. 163).",
       "reference": "Code de déontologie des commissaires aux comptes (annexe 8-1 C. com.) art. 26 ; C. com. L.821-44 (accès du successeur aux informations) ; NEP 510 (A.821-87 § 06) ; D. 2012-432 art. 163 pour le parallèle EC",
       "confidence": "high",
       "update_note": "Code refondu par le décret 2020-292 : obligation désormais à l'article 26 ; accès du successeur aux informations prévu par L.821-44 depuis la recodification de 2024."
@@ -552,11 +562,11 @@
       "qrc": {
         "question": "Le commissaire aux comptes peut-il limiter contractuellement sa responsabilité civile au titre de la mission légale ? Comparez avec l'expert-comptable.",
         "expected": [
-          "Non : la responsabilité du commissaire aux comptes à raison de sa mission légale est d'ordre public (régime légal, nature délictuelle) ; toute clause limitative est sans effet",
+          "Non : responsabilité légale et d'ordre public pour la mission légale (nature délictuelle) ; toute clause limitative est sans effet",
           "La lettre de mission fixe les termes de la mission, pas l'étendue de la responsabilité",
-          "L'expert-comptable, lié par un contrat, peut en revanche aménager sa responsabilité (plafond, prescription abrégée dans les limites légales), hors faute lourde et hors consommateurs"
+          "L'EC, lié par contrat, peut aménager sa responsabilité (plafond, prescription abrégée), sauf faute lourde et sauf envers un consommateur"
         ],
-        "model_answer": "Non. La responsabilité du commissaire aux comptes pour les fautes commises dans sa mission légale résulte de la loi et ne peut être aménagée par convention : un plafond inséré dans la lettre de mission serait inopposable, quel que soit l'accord de l'assureur ou de la compagnie régionale. À l'inverse, l'expert-comptable, dont la responsabilité est contractuelle, peut prévoir des clauses limitatives dans les limites du droit commun."
+        "model_answer": "Non. La responsabilité du CAC pour sa mission légale résulte de la loi et ne s'aménage pas par contrat : un plafond dans la lettre de mission serait inopposable, quel que soit l'accord de l'assureur ou de la CRCC. L'EC, dont la responsabilité est contractuelle, peut au contraire prévoir des clauses limitatives dans les limites du droit commun."
       },
       "explanation": "C'est l'une des distinctions EC/CAC les plus testées : mission légale et responsabilité d'ordre public pour le commissaire aux comptes ; mission contractuelle et aménagements possibles pour l'expert-comptable. Les propositions subordonnant la clause à des accords (assureur, CRCC) sont des leurres : aucun accord ne peut valider une clause interdite.",
       "reference": "C. com. L.821-37 (ex L.822-17, responsabilité civile du commissaire aux comptes) ; NEP 210 (lettre de mission) ; C. civ. art. 1231-3 pour l'expert-comptable",
@@ -587,9 +597,9 @@
           "Responsabilité disciplinaire possible (manquement aux normes)",
           "Pas de responsabilité pénale : aucune incrimination ne vise l'omission non intentionnelle ; le délit d'informations mensongères suppose l'intention"
         ],
-        "model_answer": "L'omission d'une convention réglementée dans le rapport spécial est une faute susceptible d'engager la responsabilité civile du commissaire aux comptes si elle cause un préjudice, et peut donner lieu à des poursuites disciplinaires. Elle n'engage pas sa responsabilité pénale : aucun texte n'incrimine cette omission commise par négligence, et le délit d'informations mensongères exige une intention."
+        "model_answer": "L'omission d'une convention réglementée dans le rapport spécial est une faute pouvant engager la responsabilité civile du CAC si elle cause un préjudice, et justifier des poursuites disciplinaires. Pas de responsabilité pénale : aucun texte n'incrimine cette omission par négligence, et le délit d'informations mensongères exige une intention."
       },
-      "explanation": "Le raisonnement en trois responsabilités est attendu : civile (faute, préjudice, lien de causalité), disciplinaire (manquement aux obligations professionnelles), pénale (uniquement en présence d'un texte d'incrimination et, ici, d'une intention). L'« oubli » exclut l'élément intentionnel. L'option « seule la responsabilité disciplinaire » méconnaît le droit des victimes à réparation.",
+      "explanation": "Raisonnement attendu en trois responsabilités : civile (faute, préjudice, lien de causalité), disciplinaire (manquement professionnel), pénale (texte d'incrimination et, ici, intention). L'« oubli » exclut l'intention. Piège : « seule la responsabilité disciplinaire » méconnaît le droit des victimes à réparation.",
       "reference": "C. com. art. L.225-40 (rapport spécial sur les conventions réglementées) ; L.821-37 (ex L.822-17, responsabilité civile) ; L.821-9 (ex L.820-7, délit intentionnel) ; C. pén. art. 121-3",
       "confidence": "medium",
       "update_note": "Articles du livre VIII recodifiés au 1er janvier 2024 (L.822-17 → L.821-37, L.820-7 → L.821-9) ; règles inchangées."
@@ -619,9 +629,9 @@
           "Pénale lorsque le manquement correspond aussi à une infraction (incompatibilités, violation du secret, informations mensongères, non-révélation)",
           "Les trois responsabilités sont cumulables"
         ],
-        "model_answer": "La violation du code de déontologie constitue toujours une faute disciplinaire, jugée par la commission des sanctions de la Haute autorité de l'audit. Elle engage en outre la responsabilité civile si elle cause un préjudice, et la responsabilité pénale lorsque le manquement correspond à une infraction, comme l'exercice en situation d'incompatibilité ou la violation du secret. Les trois responsabilités peuvent se cumuler."
+        "model_answer": "Violer le code de déontologie est toujours une faute disciplinaire, jugée par la commission des sanctions de la H2A. S'y ajoutent la responsabilité civile en cas de préjudice et la responsabilité pénale si le manquement est aussi une infraction (incompatibilité, secret). Les trois se cumulent."
       },
-      "explanation": "La question porte sur le mot « peut » : toutes les voies sont ouvertes, selon la nature du manquement. Le code de déontologie n'est pas en lui-même un texte pénal, mais plusieurs de ses règles (indépendance, secret) sont doublées d'incriminations dans le code de commerce ou le code pénal. Même architecture pour l'expert-comptable, avec les chambres de discipline de l'Ordre comme instance disciplinaire.",
+      "explanation": "Le mot « peut » est la clé : toutes les voies sont ouvertes selon le manquement. Le code de déontologie n'est pas un texte pénal, mais plusieurs de ses règles (indépendance, secret) sont doublées d'incriminations (code de commerce, code pénal). Même architecture pour l'EC, avec les chambres de discipline de l'Ordre.",
       "reference": "C. com. L.821-37 (responsabilité civile, ex L.822-17), L.821-70 et L.821-71 (discipline), L.821-8 et L.821-9 (délits) ; C. pén. art. 226-13 ; code de déontologie des CAC (annexe 8-1)",
       "confidence": "high",
       "update_note": "Instance disciplinaire : commission des sanctions de la H2A (L.820-2, L.821-79) depuis le 1er janvier 2024 ; articles recodifiés."

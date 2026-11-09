@@ -31,7 +31,7 @@ Conclusion | Par le **président du conseil régional** : **sans observation** �
 ## NPMQ : le système de qualité du cabinet
 
 ```arbre
-? **NPMQ** (management de la qualité, depuis le 01/01/2025) : toute structure, toute taille, toutes les missions
+? **NPMQ** (management de la qualité, depuis le 1er janvier 2025) : toute structure, toute taille, toutes les missions
   **Approche par les risques** : objectifs qualité, risques, réponses
   **8 composantes** (calquées sur ISQM 1)
     Évaluation des risques · gouvernance et leadership · éthique
@@ -54,5 +54,5 @@ Conclusion | Par le **président du conseil régional** : **sans observation** �
 
 - {!} L'**enquête** du rapporteur général est une procédure **distincte**, à visée disciplinaire : c'est elle, et non le contrôle, qui permet de **convoquer et entendre** (L.821-74).
 - {!} Faire **obstacle** au contrôle est un **manquement** sanctionnable.
-- {!} Contrôle **LCB-FT** de l'Ordre : c'est le **comité LBC-FT** qui conclut, et il peut saisir l'instance disciplinaire.
+- {!} Contrôle **LCB-FT** de l'Ordre : c'est le **comité LCB-FT** qui conclut, et il peut saisir l'instance disciplinaire.
 - {!} Blanchiment découvert par un contrôleur de la H2A : il **informe lui-même Tracfin**.

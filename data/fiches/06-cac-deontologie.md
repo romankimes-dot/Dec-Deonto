@@ -1,5 +1,13 @@
 # Déontologie du commissaire aux comptes
 
+## À retenir
+- **Sources** : code de déontologie (**annexe 8-1** du code de commerce) et **deux normes de déontologie** ; le **titre I** vaut pour toute mission ou prestation, le **titre II** pour la certification.
+- **Indépendance** en réalité et en apparence : identifier les **situations à risque**, appliquer **immédiatement** des **mesures de sauvegarde**, sinon refuser ou démissionner.
+- **Liens** : personnels (1er degré, conjoint) avec une **fonction sensible** ; financiers (**titres** interdits sauf OPC diversifiés) ; professionnels ; **3 ans** après le mandat, **5 ans** avant.
+- **Services interdits** : liste UE pour les **EIP** ; hors EIP, ni autorévision ni indépendance compromise sans sauvegarde (L.821-28 IV).
+- **Honoraires** en rapport avec les **diligences** ; honoraires **subordonnés au résultat** interdits pour toute mission ou prestation.
+- **Secret** d'ordre public, avec des levées propres au CAC (consolidation, petit groupe, H2A, président du tribunal dans l'alerte).
+
 ## 1. Sources et structure du code
 - **Code de déontologie de la profession de CAC** : **annexe 8-1** du livre VIII du code de commerce (**décret 2020-292 du 21 mars 2020**, modifié en dernier lieu par le **décret 2026-176 du 11 mars 2026**).
 - **Normes de déontologie** homologuées par arrêté et codifiées aux **A.821-54 s.** Il en existe **deux** :
@@ -70,7 +78,7 @@
   - **cession** de l'intérêt détenu ;
   - **refus** d'une prestation ;
   - **information** du comité d'audit.
-- **Doute sérieux** ou difficulté d'interprétation sur la pertinence des mesures : le CAC **saisit pour avis la H2A** (ex H3C).
+- **Doute sérieux** ou difficulté d'interprétation sur la pertinence des mesures : le CAC **saisit pour avis la H2A** (ex-H3C jusqu'au 31 décembre 2023).
 - **Mesures impossibles ou insuffisantes** : il **refuse** la mission, **renonce** à la prestation ou **démissionne**.
 - Depuis la loi Pacte, la **liste des services interdits** pour les **non-EIP** a été **supprimée**. Elle est **remplacée par l'approche risques / sauvegardes**.
 
@@ -87,9 +95,9 @@
 2. Tout **préposé** chargé de **tenir les comptes** ou d'**élaborer les états financiers**, les documents de gestion ou les informations de durabilité.
 3. Tout **cadre dirigeant** pouvant exercer une **influence** sur l'établissement de ces états et documents.
 
-### Liens financiers
-- **Interdiction de détenir des intérêts** (actions, prêts, garanties) dans l'entité contrôlée ou les entités liées.
-- L'interdiction concerne le **CAC**, les **associés**, les **membres de l'équipe** et les **personnes proches**.
+### Liens financiers (art. 33)
+- **Titres** de l'entité ou des entités de son groupe : interdits, directement ou indirectement, **sauf** via des **OPC diversifiés** ou des fonds sans pouvoir de gestion. **Dépôts à terme, prêts, assurance-vie, sûretés** : interdits s'ils ne sont **pas** conclus aux **conditions habituelles du marché**, et toujours s'ils naissent entre l'entité et le CAC **après sa nomination**.
+- **Personnes visées** : le **CAC**, sa **société**, les **associés** et **salariés** qui participent à la mission, et leurs **proches**. **Réseau** : incompatibilité si un **tiers objectif** conclurait que l'indépendance est compromise.
 
 ### Liens professionnels
 - **Interdiction** des relations d'affaires significatives, de l'**emploi** et des **mandats**.
@@ -111,7 +119,7 @@
   - des **outils techniques communs**, sauf dans une association technique ayant ce seul objet.
 - En cas de **doute** sur l'appartenance : le CAC **saisit la H2A** pour avis (art. 29, dernier alinéa).
 - **Conséquence** : les **services fournis par le réseau** à l'entité auditée sont **pris en compte** dans l'analyse de l'indépendance.
-  - Pour une **EIP** : l'interdiction s'étend au réseau et vise aussi les services **rendus avant le mandat**. Par exemple, la **mise en place de procédures de contrôle interne** par un membre du réseau pendant l'exercice qui précède la période auditée **empêche d'accepter** le mandat (règle de la **période de viduité**).
+  - Pour une **EIP** : l'interdiction s'étend au réseau et vise aussi les services **rendus avant le mandat**. Par exemple, la **mise en place de procédures de contrôle interne** par un membre du réseau pendant l'exercice qui précède la période auditée **empêche d'accepter** le mandat (interdiction portant sur l'**exercice précédant** le premier exercice certifié : L.821-28 I, code art. 22 II).
 
 ## 6. Services interdits
 
@@ -150,11 +158,10 @@
 - Pour une EIP, l'**évaluation** est de toute façon un **service interdit**.
 
 ## 7. Honoraires (titre I, art. 12 à 14 ; titre II, art. 36 et 37)
-- La rémunération est **en rapport avec l'importance des diligences**. Celle-ci s'apprécie selon :
-  - la **taille** et la **complexité** de l'entité ;
-  - la **nature et les risques** de la mission ;
-  - les **qualifications et l'expérience** requises ;
-  - les **diligences** nécessaires (temps).
+- La rémunération est **en rapport avec l'importance des diligences** (art. 12). Celle-ci s'apprécie selon :
+  - la **nature de la mission** ou de la prestation ;
+  - la **taille**, la **nature** et la **complexité** des activités de l'entité.
+- Le CAC **ne peut pas accepter** un niveau d'honoraires qui risque de **compromettre la qualité** de ses travaux ; une **disproportion** entre honoraires et diligences **affecte l'indépendance** et impose des **mesures de sauvegarde** (art. 12 al. 2 et 3).
 - **Interdits** : les honoraires **subordonnés au résultat** (conditionnels), les **avantages** autres que les honoraires, et les honoraires qui **compromettent l'indépendance** (dépendance financière).
 - **Barème d'heures** : voir la fiche « Exercice de la profession de commissaire aux comptes ».
 

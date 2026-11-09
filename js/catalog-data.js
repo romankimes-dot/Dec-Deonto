@@ -442,7 +442,7 @@ export const ANECDOTES = [
  {
   "id": "A36",
   "part": "installation",
-  "title": "Contrôle qualité LAB",
+  "title": "Contrôle qualité LCB-FT",
   "text": "Le contrôleur a ouvert le dossier du client PPE en premier.",
   "ids": [
    "2022-05-EC-02",

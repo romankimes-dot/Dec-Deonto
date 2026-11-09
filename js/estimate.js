@@ -15,6 +15,7 @@
 // directe du transfert, son résultat compte pour 60 % de la note du format passé (30 jours).
 import { buildRepeatIndex } from './cluster.js';
 import { isCounted } from './exam.js';
+import { pctInt } from './format.js';
 
 const BASE = 0.3; // question jamais vue, aucun historique : un peu plus que le hasard
 export const REPEAT_SHARE = 0.2; // part de quasi-reprises si elle ne peut être calculée
@@ -121,9 +122,10 @@ export function estimate({ questions, stats, cards, attempts, exams = [], now = 
     const sd = Math.sqrt(10 * pe * (1 - pe) + 10 * pc * (1 - pc)) || 1;
     out[mode] = {
       note: Math.round(note * 2) / 2, low: Math.max(0, Math.round((note - sd) * 2) / 2), high: Math.min(20, Math.round((note + sd) * 2) / 2),
-      ec: Math.round(pe * 100), cac: Math.round(pc * 100),
-      risk: Math.round(phi((5.5 - note) / sd) * 100), // note éliminatoire (< 6)
-      pass: Math.round((1 - phi((9.75 - note) / sd)) * 100), // 10 et plus
+      // Pourcentages entiers, arrondis comme partout (js/format.js) : chances par défaut, risque par excès.
+      ec: pctInt(pe * 100), cac: pctInt(pc * 100),
+      risk: pctInt(phi((5.5 - note) / sd) * 100, 'ceil'), // note éliminatoire (< 6)
+      pass: pctInt((1 - phi((9.75 - note) / sd)) * 100), // 10 et plus
       exams: recent.length, inedit: inedit ? inedit.note : null,
     };
   }

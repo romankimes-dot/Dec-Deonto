@@ -17,7 +17,8 @@ questions: CAC:nomination_seuils CAC:mandat_duree_cessation CAC:demission_revoca
         = Non : nomination **volontaire** possible, ou **en justice** à la demande d'associés (**tout associé** en SNC ; **10 % du capital** en SARL, SAS, SA, SCA)
 ```
 
-- Seuils du **décret 2024-152** (exercices ouverts à compter du 01/01/2024). Avant : 4 M€ et 8 M€.
+- Seuils du **décret 2024-152** (exercices ouverts à compter du 1er janvier 2024). Avant : 4 M€ et 8 M€.
+- **Mandats en cours** au 1er mars 2024 : ils vont **jusqu'à leur expiration**, même sous les nouveaux seuils (décret 2024-152, art. 4).
 
 ## La vie du mandat
 
@@ -27,8 +28,8 @@ Nomination | Par l'assemblée ; **suppléant** obligatoire si le titulaire est u
 30 jours | Délai pour demander en justice la **récusation**, pour juste motif
 Exercice de nomination | La mission porte sur les comptes de l'**exercice au cours duquel** le CAC est nommé
 6 exercices | Fin du mandat après l'assemblée qui statue sur les comptes du **6e exercice** (**3** en ALPE)
-EIP : signataire | **Rotation** après **6 ans**, puis **3 ans** de viduité
-EIP : cabinet | **10 ans**, jusqu'à **16 ans** après appel d'offres, **24 ans** en co-commissariat
+Signataire | **Rotation** après **6 exercices** (7 ans au plus), puis **3 ans** de viduité : EIP, entités de L.612-1, associations faisant appel à la générosité du public, filiales importantes d'EIP (L.821-34)
+EIP : cabinet | **10 ans**, jusqu'à **16 ans** après appel d'offres, **24 ans** en co-commissariat ; **2 ans** de plus sur autorisation de la H2A ; puis **4 ans** d'attente
 ```
 
 ## Sortir du mandat

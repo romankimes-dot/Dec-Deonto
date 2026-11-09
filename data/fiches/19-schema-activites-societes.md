@@ -8,7 +8,7 @@ questions: EC:incompatibilites_activites EC:societes_ec_capital EC:loi_pacte EC:
 
 ```arbre
 ? Quelle activité ?
-  ! **Emploi salarié** : interdit, sauf chez un EC, une société d'EC, une AGC ou un CAC
+  ! **Emploi salarié** : interdit, sauf chez un membre de l'Ordre, un CAC, une AGC, une succursale ou une société pluri-professionnelle d'exercice
   ! **Actes de commerce** à titre principal, **agent d'affaires**, intermédiaire (agent immobilier, courtier)
   ! **Représenter** un client devant les juridictions (réservé aux avocats)
   ! **Sous-traiter** la tenue comptable à un non-inscrit : participation à l'**exercice illégal**

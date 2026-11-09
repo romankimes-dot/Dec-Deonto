@@ -141,7 +141,6 @@
 - **Sanctions** : pour l'EC, réprimande, blâme, suspension, radiation, **sans amende** hors LCB-FT ; pour le CAC, avertissement, blâme, interdiction temporaire, radiation, **sanction pécuniaire**…
 - **Responsabilité administrative** : elle n'existe **pas** pour l'EC ; pour le CAC, les sanctions de la H2A sont de **nature administrative**.
 
-## À vérifier
-- **Prescription de l'action disciplinaire** contre un EC : aucun délai dans l'ord. 45-2138, le D. 2012-432 ni le règlement intérieur de l'Ordre (recueil réglementaire de l'Ordre, édition 2024, interrogé en octobre 2026). Un avocat spécialisé écrit qu'aucun texte n'en fixe ; aucune source officielle ne le confirme expressément.
-- **Montant minimal** de l'assurance RC obligatoire de l'EC.
-- **Sanctions fiscales** des conseils : texte de CGI 1740 A bis et 1750 lu en extrait seulement.
+## Points non tranchés
+- **Prescription disciplinaire** de l'EC : aucun délai dans l'ordonnance, le décret 2012-432 ni le règlement intérieur ; ne pas transposer les **6 ans** du CAC.
+- **Assurance RC** de l'EC : retenir qu'elle est **obligatoire** et justifiée auprès du CROEC, sans avancer de montant minimal.

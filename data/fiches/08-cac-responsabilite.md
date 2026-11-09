@@ -134,7 +134,7 @@
 - L'**emprisonnement** n'est **pas** une sanction disciplinaire.
 
 ### Sanctions : personnes morales (sociétés de CAC)
-- **Avertissement**, **blâme**, **interdiction temporaire d'exercer** (**3 ans au plus** depuis le 01/01/2024, 5 ans avant), **radiation**.
+- **Avertissement**, **blâme**, **interdiction temporaire d'exercer** (**3 ans au plus** depuis le 1er janvier 2024, 5 ans avant), **radiation**.
 - **Sanction pécuniaire** : le plus élevé de **1 M€** ou, pour une faute commise en mission de certification, de la **moyenne annuelle des honoraires** facturés à l'entité sur 3 exercices (L.821-71).
 - **Publication**.
 
@@ -164,5 +164,5 @@
 - **Responsabilité administrative** : elle n'existe **pas** pour l'EC ; elle **existe** pour le CAC (sanctions H2A).
 - **Révélation au procureur** : son omission est un **délit** pour le CAC ; il n'y a pas d'obligation équivalente pour l'EC.
 
-## À vérifier
-- **Couverture d'assurance** des dommages-intérêts en cas de violation du secret : « couverts » selon l'annale 2019-11 Q16 ; l'application de l'exclusion de la faute intentionnelle (C. assur. L.113-1) à une violation délibérée relève de la jurisprudence et de la police.
+## Points non tranchés
+- **Assurance** des dommages-intérêts dus pour violation du secret : « couverts » selon l'annale 2019-11 Q16 ; une violation délibérée peut toutefois tomber sous l'exclusion de la faute intentionnelle (C. assur. L.113-1).

@@ -1,6 +1,6 @@
 import { newCard, review, buildQueue, mastery, DAY, spreadOf, suggestGrade, confidentError, qrcPoints, calibration, confidentErrors } from './srs.js';
 import * as store from './store.js';
-import { loadBank, loadFichesIndex, loadFiche, renderMarkdown, inline, THEMES } from './bank.js';
+import { loadBank, loadFichesIndex, loadFiche, renderMarkdown as renderMarkdownRaw, inline as inlineRaw, THEMES } from './bank.js';
 import { startExam, remainingMs, finishExam, pauseExam, resumePaused, answeredCount, isCounted } from './exam.js';
 import * as G from './gamify.js';
 import * as P from './plan.js';
@@ -23,9 +23,29 @@ import * as CA from './carte.js';
 import { nextOrder } from './choices.js';
 import { missedOrder, requeue, toConfirm, pitfalls } from './loop.js';
 import * as CR from './career.js';
+import * as PDF from './pdf.js';
+import { fmtPct, fmtFrac, fmtShare, fmtRate, fmtNote, fmtScore, pctInt } from './format.js';
 
 const $ = (sel, root = document) => root.querySelector(sel);
-const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+// Typographie à l'affichage (revue 2026-11) : apostrophe courbe entre deux lettres, espace insécable avant « : » et
+// fine insécable avant ; ! ? » % €, après «, points de suspension. Les données (et les `src` des shorts, comparés au
+// texte des fiches) restent intactes : seules les chaînes affichées changent. Idempotente.
+// typo:start
+const NBSP = '\u00a0'; const NNBSP = '\u202f';
+const typo = (s) => String(s ?? '')
+  .replace(/(\p{L})'(?=\p{L})/gu, '$1’')
+  .replace(/\.\.\./g, '…')
+  .replace(/[ \u00a0\u202f]:/g, `${NBSP}:`)
+  .replace(/[ \u00a0]([;!?»%€])/g, `${NNBSP}$1`)
+  .replace(/«[ \u00a0]/g, `«${NNBSP}`);
+// Même chose sur du HTML déjà construit : seul le texte entre les balises est touché (jamais les attributs).
+const typoHtml = (html) => String(html ?? '').split(/(<[^>]*>)/).map((part, i) => (i % 2 ? part : typo(part))).join('');
+// typo:end
+const escA = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// Texte affiché : échappé puis mis en forme (typo). escA : valeurs saisies par l'utilisateur (champs), laissées telles quelles.
+const esc = (s) => typo(String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'));
+const inline = (s) => typoHtml(inlineRaw(s));
+const renderMarkdown = (src) => typoHtml(renderMarkdownRaw(src));
 const LETTERS = ['A', 'B', 'C', 'D'];
 const GRADES = [
   { g: 0, label: 'Encore', sub: '10 min' },
@@ -85,6 +105,7 @@ function examLabel() {
   return d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }) + hm;
 }
 const examDay = () => { const t = examAt(); return t ? new Date(t).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' }) : 'l’épreuve'; };
+const untilExam = () => (examDateSet() ? `jusqu’au ${examDay()}` : 'jusqu’à l’épreuve');
 // Avant l'épreuve, chaque carte revient au plus tard entre J-3 et J-1 (étalement selon l'identifiant).
 const reviewOpts = (id) => ({ examAt: examAt(), spread: spreadOf(id) });
 // Autres sessions où la même notion a été posée.
@@ -104,6 +125,9 @@ function persist() {
 // appliquée ici que hors activité en cours (séance, examen, jeu, shorts) ; elle est sinon reprise à la synchro suivante.
 const SYNC_DELAY = 60 * 1000;
 let syncTimer = null; let syncing = null;
+// Démarrage en cours : la synchro de démarrage s'applique sans affichage (le premier render() suit). Passé le délai
+// d'attente (3 s), une synchro de démarrage tardive suit la règle ordinaire (canApplySync, puis render()).
+let booting = true;
 function scheduleSync() {
   if (syncTimer || !SY.config()) return;
   syncTimer = setTimeout(() => { syncTimer = null; runSync(); }, SYNC_DELAY);
@@ -123,10 +147,11 @@ function runSync({ manual = false, boot = false, timeout = 15000 } = {}) {
     try {
       const r = await SY.syncOnce(cfg, state.progress, { timeout });
       SY.setStatus({ at: Date.now(), error: null });
-      if (r.changed && (boot || manual || canApplySync())) {
+      const atBoot = boot && booting;
+      if (r.changed && (atBoot || manual || canApplySync())) {
         applySynced(r.state);
-        if (!boot) render();
-        if (!manual && !boot) toast('Progression mise à jour depuis l’autre appareil');
+        if (!atBoot) render();
+        if (!manual && !atBoot) toast('Progression mise à jour depuis l’autre appareil');
       }
       if (manual) toast(r.changed ? 'Synchronisé : progression des autres appareils récupérée' : 'Synchronisé');
       if (!boot) await sendPont(cfg);
@@ -175,7 +200,7 @@ function checkBadges() {
   persist();
   // Mode concentration : badges et souvenirs s'annoncent par un message ; seuls les grades gardent leur animation.
   if (state.progress.settings.focus) {
-    if (fresh.badges.length) toast(fresh.badges.length === 1 ? fresh.badges[0].name : `${fresh.badges.length} badges débloqués`, 'medal');
+    if (fresh.badges.length) toast(fresh.badges.length === 1 ? `Badge gagné : ${fresh.badges[0].name} (Carrière › Collection)` : `${fresh.badges.length} badges gagnés (Carrière › Collection)`, 'medal');
     for (const g of fresh.grades) state.celebrations.push({ type: 'grade', g });
     if (state.celebrations.length) setTimeout(nextCelebration, 350);
     return;
@@ -188,7 +213,7 @@ function updateStreakBadge() {
   const el = $('#streak'); if (!el || !state.progress.stats) return;
   const s = state.progress.stats.streak;
   el.title = 'Bonnes réponses d’affilée : série en cours et record';
-  el.innerHTML = `<span>${ic('flame')} série ${s.cur}</span><span class="muted">record ${s.best}</span>`;
+  el.innerHTML = `<span>${ic('flame')} ${s.cur} d’affilée</span><span class="muted">record ${s.best}</span>`;
 }
 function badgeIcon(b, locked = false) {
   const col = G.RARITIES[b.rarity].color;
@@ -283,11 +308,18 @@ function intervalLabel(card, g, id) {
 
 // ---------- Rendu commun d'une question ----------
 function qHeader(q, { timer = false } = {}) {
-  const conf = q.confidence === 'low' ? '<span class="badge warn">à vérifier</span>' : q.confidence === 'medium' ? '<span class="badge">confiance moyenne</span>' : '';
+  // Badge de confiance « medium » masqué (près d'une question sur quatre : le signal ne voulait plus rien dire) ;
+  // seul « à vérifier » (confiance low) reste, si le réglage l'affiche. review_note (journal de relecture) n'est jamais affiché.
+  const conf = q.confidence === 'low' ? '<span class="badge warn">à vérifier</span>' : '';
   const sib = siblings(q.id).length;
+  // Avant même de répondre : le droit a changé depuis la session (update_note), et la bonne réponse retenue
+  // n'est plus celle de l'époque (answer_changed). Le détail vient avec la correction.
+  const upd = q.answer_changed ? '<span class="badge changed" title="La bonne réponse retenue n’est plus celle de l’époque : le droit a changé depuis la session.">' + ic('alert') + ' Réponse modifiée</span>'
+    : q.update_note ? '<span class="badge updated" title="Le droit a changé depuis cette session : la réponse attendue suit le droit en vigueur.">' + ic('refresh') + ' Droit mis à jour</span>' : '';
+  const showTimer = timer && state.progress.settings.qTimer !== false;
   return `<div class="row" style="justify-content:space-between">
-    <div class="row" style="gap:6px"><span class="badge ${q.profession.toLowerCase()}">${q.profession}</span><span class="badge">${esc(THEMES[q.theme])}</span>${sib ? `<span class="badge rec" title="Notion posée à plusieurs sessions">${ic('repeat')} posée ${sib + 1}×</span>` : ''}${state.progress.settings.showLowConfidence ? conf : ''}</div>
-    <span class="row" style="gap:6px;flex-wrap:nowrap"><span class="muted">DEC ${esc(q.sessionLabel)} · Q${q.n}</span>${timer ? '<span class="qtimer" aria-label="Temps restant sur la question">3:00</span>' : ''}</span></div>`;
+    <div class="row" style="gap:6px"><span class="badge ${q.profession.toLowerCase()}">${q.profession}</span><span class="badge">${esc(THEMES[q.theme])}</span>${sib ? `<span class="badge rec" title="Notion posée à plusieurs sessions">${ic('repeat')} posée ${sib + 1}×</span>` : ''}${upd}${state.progress.settings.showLowConfidence ? conf : ''}</div>
+    <span class="row" style="gap:6px;flex-wrap:nowrap"><span class="muted">DEC ${esc(q.sessionLabel)} · Q${q.n}</span>${showTimer ? '<span class="qtimer" aria-label="Temps restant sur la question (3 minutes, le rythme de l’épreuve)" title="3 minutes par question : le rythme de l’épreuve (20 questions en 1 heure). Désactivable dans Réglages.">3:00</span>' : ''}</span></div>${showTimer && !state.progress.settings.timerHelpSeen ? '<p class="muted qtimer-help">' + ic('timer') + ' Le chrono indique le rythme de l’épreuve (3 min par question). Il ne compte pas dans la note ; désactivable dans Réglages.</p>' : ''}`;
 }
 // Minuteur par question : 3 minutes, le budget de l'épreuve (20 questions en 1 h). Il démarre à l'affichage,
 // s'arrête à la réponse (QCM) ou à la correction (QRC) et affiche alors le temps mis ; le temps est gardé dans l'historique.
@@ -296,7 +328,8 @@ const qTimer = { t0: 0, iv: null, el: null, ms: 0 };
 const fmtQ = (ms) => { const s = Math.round(Math.abs(ms) / 1000); return `${ms < 0 ? "−" : ""}${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; };
 function startQTimer(container) {
   stopQTimer();
-  const el = $('.qtimer', container); if (!el) return;
+  const el = $('.qtimer', container);
+  if (!el) { qTimer.t0 = Date.now(); qTimer.ms = 0; qTimer.el = null; return; } // chrono masqué : le temps reste mesuré
   qTimer.el = el; qTimer.t0 = Date.now(); qTimer.ms = 0;
   const tick = () => {
     const left = Q_BUDGET - (Date.now() - qTimer.t0);
@@ -308,15 +341,19 @@ function startQTimer(container) {
 function stopQTimer() {
   if (qTimer.iv) { clearInterval(qTimer.iv); qTimer.iv = null; }
   if (!qTimer.t0) return;
+  if (!state.progress.settings.timerHelpSeen) { state.progress.settings.timerHelpSeen = true; document.querySelectorAll('.qtimer-help').forEach((x) => x.remove()); }
   qTimer.ms = Date.now() - qTimer.t0; qTimer.t0 = 0;
   const el = qTimer.el; qTimer.el = null;
-  if (el && el.isConnected) { el.classList.remove('warn'); el.classList.toggle('over', qTimer.ms > Q_BUDGET); el.classList.add('done'); el.textContent = `${qTimer.ms > Q_BUDGET ? 'Répondu en' : 'En'} ${fmtQ(qTimer.ms)}`; }
+  if (el?.isConnected) { el.classList.remove('warn'); el.classList.toggle('over', qTimer.ms > Q_BUDGET); el.classList.add('done'); el.textContent = `${qTimer.ms > Q_BUDGET ? 'Répondu en' : 'En'} ${fmtQ(qTimer.ms)}`; }
 }
 const takeQMs = () => { const ms = qTimer.ms; qTimer.ms = 0; return ms; };
-function qExplain(q) {
+// Correction courte : la note de mise à jour du droit en tête (fond coloré), l'explication dans « Pourquoi ? »
+// (ouvert seulement après une erreur), les références repliées, puis les actions (carnet, schéma, même notion).
+function qExplain(q, { open = false } = {}) {
   const sib = siblings(q.id);
-  return `<div class="explain"><strong>Explication.</strong> ${esc(q.explanation)}${q.update_note ? `<div class="muted" style="margin-top:6px">${ic('alert')} ${esc(q.update_note)}</div>` : ''}</div>
-    <div class="ref">Réf. : ${esc(q.reference)} · <em>réponse rédigée à partir des textes, non officielle</em></div>${carnetBtn(q.id)}${relatedFiches(q.id).map((f) => `<button class="btn sm related" data-open-fiche="${esc(f.file)}">${ic('chart')} Schéma : ${esc(f.title.replace(/^Schéma\s*\d+\s*[–-]\s*/, ''))}</button>`).join('')}${sib.length ? `<button class="btn sm related" data-variants="${esc(q.id)}">${ic('repeat')} Même notion : ${sib.map((id) => esc(state.byId[id]?.sessionLabel || '')).join(', ')}</button>` : ''}`;
+  return `${q.update_note ? `<div class="upd-note">${ic(q.answer_changed ? 'alert' : 'refresh')} <strong>${q.answer_changed ? 'Réponse modifiée' : 'Droit mis à jour'}.</strong> ${esc(q.update_note)}</div>` : ''}
+    <details class="explain why" ${open ? 'open' : ''}><summary>Pourquoi ?</summary><p>${esc(q.explanation)}</p></details>
+    <details class="ref refs"><summary>Références</summary>${esc(q.reference)} · <em>réponse rédigée à partir des textes, non officielle</em></details>${carnetBtn(q.id)}${relatedFiches(q.id).map((f) => `<button class="btn sm related" data-open-fiche="${esc(f.file)}">${ic('chart')} Schéma : ${esc(f.title.replace(/^Schéma\s*\d+\s*[–-]\s*/, ''))}</button>`).join('')}${sib.length ? `<button class="btn sm related" data-variants="${esc(q.id)}">${ic('repeat')} Même notion : ${sib.map((id) => esc(state.byId[id]?.sessionLabel || '')).join(', ')}</button>` : ''}`;
 }
 // ---------- Carnet d'erreurs ----------
 // Bouton présent sur chaque correction (questions et shorts) : on y range ce que l'on sait ne pas avoir retenu.
@@ -331,14 +368,24 @@ function toggleCarnet(id) {
   if (state.view === 'carnet') render();
 }
 document.addEventListener('click', (e) => { const b = e.target.closest('[data-carnet]'); if (b) toggleCarnet(b.dataset.carnet); });
+// La veille et le jour J : « Mes pièges » (questions ratées au moins 3 fois) sur l'accueil, à relire au calme.
+function piegesCard() {
+  const d = state.progress.daily; if (!d || !['veille', 'jour-j'].includes(d.kind)) return '';
+  const pg = pitfalls(state.progress.stats?.q, (id) => !!state.byId[id]).length; if (!pg) return '';
+  return `<div class="card carnet-card" data-go="pieges"><div class="row" style="justify-content:space-between"><div><strong>${ic('library')} Mes pièges</strong><div class="muted">${pg} question${pg > 1 ? 's' : ''} ratée${pg > 1 ? 's' : ''} plusieurs fois : à relire au calme</div></div><span class="muted">›</span></div></div>`;
+}
 function carnetCard() {
   const n = CN.entries(state.progress.carnet, state.byId).length;
   if (!n) return '';
   return `<div class="card carnet-card" data-go="carnet"><div class="row" style="justify-content:space-between"><div><strong>${ic('bookmark')} Carnet d’erreurs</strong><div class="muted">${n} élément${n > 1 ? 's' : ''} à repasser et à relire</div></div><span class="muted">›</span></div></div>`;
 }
 // Indice de certitude, demandé avant la correction (calibration, effet d'hypercorrection).
-const CERT = { qcm: [[2, 'Sûr'], [1, 'Hésitant'], [0, 'Au hasard']], qrc: [[2, 'Sûr'], [1, 'Hésitant'], [0, 'Je ne sais pas']] };
-const certRow = (mode, label) => `<div class="cert"><div class="muted">${label}</div><div class="btnrow3">${CERT[mode].map(([c, l]) => `<button class="btn" data-conf="${c}">${l}</button>`).join('')}</div></div>`;
+const CERT = { qcm: [[2, 'Sûr'], [1, 'Hésitant'], [0, 'Je devine']], qrc: [[2, 'Sûr'], [1, 'Hésitant'], [0, 'Je ne sais pas']] };
+// Première fois : une ligne dit à quoi sert la question (réglage « Indice de certitude », désactivé par défaut).
+const certRow = (mode, label) => {
+  const s = state.progress.settings; const first = !s.certHelpSeen; s.certHelpSeen = true;
+  return `<div class="cert"><div class="muted">${label}</div>${first ? '<p class="muted cert-help">Dites si vous étiez sûr : l’app fait revenir plus tôt les erreurs commises avec certitude, celles qu’on corrige le mieux.</p>' : ''}<div class="btnrow3">${CERT[mode].map(([c, l]) => `<button class="btn" data-conf="${c}">${l}</button>`).join('')}</div></div>`;
+};
 const hcAlert = () => '<div class="hc">' + ic('alert') + ' <strong>Erreur commise avec certitude.</strong> C’est celle qu’on retient le mieux une fois corrigée : lisez l’explication, la question revient dans la séance.</div>';
 // QCM. opts.hide : la question d'abord, les propositions sur demande (rappel avant reconnaissance).
 // onAnswered(ok, conf, pick) ; conf vaut null si la certitude n'est pas demandée ; pick : index d'origine choisi.
@@ -371,7 +418,9 @@ function renderQcm(q, container, onAnswered, { hide = false, askConf = false } =
       else if (j === chosen) c.classList.add('ko');
     });
     $('.pending', container).innerHTML = '';
-    $('.after', container).innerHTML = `${confidentError(ok, conf) ? hcAlert() : ''}<div class="answer"><strong>${ok ? ic('check') + ' Bonne réponse' : ic('x') + ' Mauvaise réponse'}.</strong> ${esc(q.qrc.model_answer)}</div>${qExplain(q)}`;
+    // QCM : la bonne proposition, en une ligne (la réponse type est celle du format QRC : elle n'est pas répétée ici).
+    const good = LETTERS[order.indexOf(q.qcm.answer)];
+    $('.after', container).innerHTML = `${confidentError(ok, conf) ? hcAlert() : ''}<div class="answer ${ok ? 'is-ok' : 'is-ko'}"><strong>${ok ? ic('check') + ' Juste.' : ic('x') + ' Faux.'}</strong> Bonne réponse : <strong>${good}</strong> · ${esc(q.qcm.choices[q.qcm.answer])}</div>${qExplain(q, { open: !ok })}`;
     onAnswered(ok, conf, order[chosen]);
     // La bonne proposition reste visible au-dessus de la correction.
     setTimeout(() => scrollToCorrection(box.children[Math.min(chosen, order.indexOf(q.qcm.answer))]), 30);
@@ -445,10 +494,11 @@ views.home = () => {
   const d = daysToExam();
   const lv = xpInfo();
   const nb = G.nextBadges(state.catalog, pr.stats, pr.badges, 3);
-  // Annales vues : questions de la banque déjà répondues (même mesure que la fiabilité du niveau estimé).
-  const cov = Math.round((qs.filter((q) => pr.stats.q[q.id]?.seen > 0).length / Math.max(1, qs.length)) * 100);
+  // Questions vues : part de la banque de révision déjà répondue (transfert compris, examen inédit exclu). Même
+  // mesure que la carrière et les conditions de grade (G.readiness), affichée par fmtPct (arrondi par défaut).
+  const cov = lv.readiness.cov;
   if (isBilan()) return homeBilan({ d, lv, nb, cov, lastExam });
-  return `${noticeCard()}
+  return `${noticeCard()}${examAskCard()}${resumeCard()}
   <div class="card hero">
     <div class="hero-top">
       <div><div class="muted">Épreuve n°1 · ${esc(examLabel())}</div><div class="big">${!examDateSet() ? 'Date à définir' : d > 0 ? `J-${d}` : d === 0 ? 'Jour J' : 'Passée'}</div>${examDateSet() ? '' : '<button class="btn sm" data-go="settings">' + ic('calendar') + ' Définir la date de l’examen</button>'}</div>
@@ -462,12 +512,12 @@ views.home = () => {
     ${CR.levelCardHtml(lv.info, { compact: true, conds: lv.conds })}
     <div class="muted" style="margin-top:8px;text-align:right">Ma carrière ›</div>
   </div>
-  ${carnetCard()}
+  ${piegesCard()}${carnetCard()}
   ${gamesCard()}
   ${backupCard()}
   ${!pr.settings.focus && nb.length ? `<div class="card"><h2>Presque débloqués</h2>${nb.map(({ b, p }) => `<div class="nb">${badgeIcon(b)}<div style="flex:1"><div><strong>${esc(b.name)}</strong></div><div class="progress"><div style="width:${Math.round((p.cur / p.max) * 100)}%"></div></div><div class="muted">${p.cur}/${p.max} · ${esc(b.cond)}</div></div></div>`).join('')}</div>` : ''}
-  ${lastExam ? `<div class="card"><h2>Dernier examen blanc</h2><div class="row"><span class="big" style="font-size:28px">${lastExam.note}/20</span><span class="muted">${lastExam.mode.toUpperCase()} · ${new Date(lastExam.t).toLocaleDateString('fr-FR')}</span></div>
-    <div class="muted">EC ${pct(lastExam.byProf.EC)} · CAC ${pct(lastExam.byProf.CAC)}</div></div>` : ''}
+  ${lastExam ? `<div class="card"><h2>Dernier examen blanc</h2><div class="row"><span class="big" style="font-size:28px">${fmtNote(lastExam.note)}/20</span><span class="muted">${lastExam.mode.toUpperCase()} · ${new Date(lastExam.t).toLocaleDateString('fr-FR')}</span></div>
+    <div class="muted">EC ${scoreOf(lastExam.byProf.EC)} · CAC ${scoreOf(lastExam.byProf.CAC)}</div></div>` : ''}
   <div class="card"><strong>Conseil du jury</strong><p class="muted" style="margin:4px 0 8px">La partie CAC est systématiquement moins bien réussie, et les candidats confondent les règles EC et CAC : pour chaque règle, demandez-vous « et pour l’autre profession ? »</p><details><summary>Tous les conseils</summary><ul class="muted" style="padding-left:18px;margin:8px 0 0">
     <li>La partie CAC est systématiquement moins bien réussie : travaillez-la en priorité.</li>
     <li>Les candidats confondent les règles EC et CAC : pour chaque règle, demandez-vous « et pour l’autre profession ? ».</li>
@@ -478,24 +528,25 @@ views.home = () => {
 const isBilan = () => (state.progress?.settings?.look || 'bilan') === 'bilan';
 // Accueil « bilan » : un seul objet en haut (le bilan du jour), le plan comme liste, le reste en tuiles.
 function homeBilan({ d, lv, nb, cov, lastExam }) {
-  const pr = state.progress; const has = pr.attempts.length > 0; const e = has ? currentEstimate() : null;
+  // Note estimée affichée à partir de 30 réponses : avant, elle bouge trop pour dire quelque chose (« – »).
+  const pr = state.progress; const has = pr.attempts.length >= ESTIMATE_MIN; const e = has ? currentEstimate() : null;
   const tile = (label, v, unit = '') => `<div class="bh-kpi"><span class="bh-kpi__l">${label}</span><span class="bh-kpi__v">${v}<small>${unit}</small></span></div>`;
   const hero = `<section class="bh">
     <div class="bh-top"><span class="bh-eyebrow">Épreuve n°1 · ${esc(examLabel())}</span><span class="bh-grade" data-go="carriere">Grade ${lv.info.n} · ${esc(CR.SHORT[lv.info.n])} ›</span></div>
     <div class="bh-big">${!examDateSet() ? 'Date à définir' : d > 0 ? `J-${d}` : d === 0 ? 'Jour J' : 'Passée'}</div>
-    <div class="bh-kpis">${tile('QCM estimé', has ? fr(e.qcm.note) : '–', '/20')}${tile('QRC estimé', has ? fr(e.qrc.note) : '–', '/20')}${tile('Annales vues', cov, ' %')}${tile('Réponses du jour', String(pr.stats.days?.[todayKey()] || 0), '')}</div>
+    <div class="bh-kpis">${tile('QCM estimé', has ? fr(e.qcm.note) : '–', '/20')}${tile('QRC estimé', has ? fr(e.qrc.note) : '–', '/20')}${tile('Questions vues', fmtPct(cov))}${tile('Réponses du jour', String(pr.stats.days?.[todayKey()] || 0), '')}</div>
     ${heroCta()}
-    ${has ? `<button class="bh-link" data-go="stats">Niveau estimé · risque &lt; 6 : ${e.qcm.risk} % (QCM) · ${e.reliable ? 'fiable' : 'indicatif'} ›</button>` : ''}
+    ${has ? `<button class="bh-link" data-go="stats">Niveau estimé${e.reliable ? '' : ' (indicatif)'} : le détail ›</button>` : pr.attempts.length ? `<span class="bh-link" style="cursor:default">Note estimée après ${ESTIMATE_MIN} réponses (encore ${ESTIMATE_MIN - pr.attempts.length})</span>` : ''}
     ${examDateSet() ? '' : `<button class="bh-link" data-go="settings">${ic('calendar')} Définir la date de l’examen ›</button>`}
   </section>`;
   const tiles = [
     ['carnet', ic('bookmark'), 'Carnet d’erreurs', `${CN.entries(pr.carnet).length} élément${CN.entries(pr.carnet).length > 1 ? 's' : ''}`],
     ['shorts', ic('clapper'), 'Shorts', state.shorts ? `${SH.shortsStats(state.shorts, pr.drills).due} à revoir` : '30 s par notion'],
     ['jeux', ic('dice'), 'Jeux express', '5 minutes'],
-    ['exam', ic('timer'), 'Examen blanc', lastExam ? `dernier : ${lastExam.note}/20` : 'pas encore passé'],
+    ['exam', ic('timer'), 'Examen blanc', lastExam ? `dernier : ${fmtNote(lastExam.note)}/20` : 'pas encore passé'],
     ['fiches', ic('library'), 'Fiches et schémas', `${state.fiches.filter((f) => P.isRead(pr.plan, f.file)).length} / ${state.fiches.length} vues`],
   ].map(([v, i, t, sub]) => `<button class="bh-tile" data-go="${v}"><span class="bh-tile__i">${i}</span><strong>${esc(t)}</strong><span>${esc(sub)}</span></button>`).join('');
-  return `<div class="home">${noticeCard()}${hero}${helpCard()}${dayCard()}
+  return `<div class="home">${noticeCard()}${examAskCard()}${resumeCard()}${hero}${helpCard()}${dayCard()}${piegesCard()}
   <section class="bh-tiles">${tiles}</section>
   ${!pr.settings.focus && nb.length ? `<div class="card"><h2>Presque débloqués</h2>${nb.map(({ b, p }) => `<div class="nb">${badgeIcon(b)}<div style="flex:1"><div><strong>${esc(b.name)}</strong></div><div class="progress"><div style="width:${Math.round((p.cur / p.max) * 100)}%"></div></div><div class="muted">${p.cur}/${p.max} · ${esc(b.cond)}</div></div></div>`).join('')}</div>` : ''}
   ${backupCard()}
@@ -506,6 +557,34 @@ function homeBilan({ d, lv, nb, cov, lastExam }) {
     <li>Références d’articles et quantum des sanctions ne sont pas exigés ; les chiffres (seuils, durées, délais) le sont.</li></ul></details>
     <div style="margin-top:10px"><button class="btn" data-go="stats">${ic('trending')} Statistiques détaillées</button></div></div></div>`;
 }
+// Premier lancement : la date de l'épreuve n'est plus imposée (store.js). On la demande une fois ; « Je ne sais pas
+// encore » garde le parcours générique de 4 semaines (modifiable ensuite dans Réglages).
+function examAskCard() {
+  const s = state.progress.settings;
+  if (examDateSet() || s.examAsked) return '';
+  setTimeout(() => {
+    const ok = $('#ask-ok'); const no = $('#ask-later'); const inp = $('#ask-date');
+    if (ok) ok.onclick = () => {
+      const v = inp.value; if (!v) return toast('Choisissez une date, ou « Je ne sais pas encore »');
+      const r = P.validateExamDate(`${v}T10:30`, G.dayKey(Date.now()));
+      if (!r.ok) return toast(r.reason === 'passee' ? 'La date de l’épreuve doit être à venir' : 'Date invalide');
+      s.examDate = `${v}T10:30:00`; s.examAsked = true; state.progress.settingsAt = Date.now();
+      refreshExamBadges(); G.applyOpen(state.progress.stats, Date.now(), state.gctx); state.progress.daily = null;
+      persist(); toast('Date enregistrée : le plan s’y adapte (heure modifiable dans Réglages)', 'calendar'); render();
+    };
+    if (no) no.onclick = () => { s.examAsked = true; state.progress.settingsAt = Date.now(); persist(); render(); };
+  }, 0);
+  return `<div class="card notice ask-date"><h2>${ic('calendar')} Quand est votre épreuve ?</h2><p class="muted" style="margin:0 0 8px">Le plan du jour et les révisions s’y adaptent.</p>
+    <label class="field">Date de l’épreuve<input type="date" id="ask-date"></label>
+    <div class="btnrow"><button class="btn primary" id="ask-ok">Enregistrer</button><button class="btn" id="ask-later">Je ne sais pas encore</button></div></div>`;
+}
+// Série ou examen laissé en cours : on le retrouve d'un toucher depuis l'accueil.
+function resumeCard() {
+  const ex = state.exam; const t = state.train;
+  if (ex) return `<button class="card resume" data-go="exam">${ic(ex.pausedAt ? 'pause' : 'timer')} <span><strong>Examen blanc ${ex.pausedAt ? 'en pause' : 'en cours'}</strong> · ${answeredCount(ex)}/${ex.ids.length} répondues</span><span class="muted">Reprendre ›</span></button>`;
+  if (t?.queue && t.idx > 0 && t.idx < t.queue.length) return `<button class="card resume" data-go="train">${ic('target')} <span><strong>Série en cours</strong> · question ${t.idx + 1}/${t.queue.length}</span><span class="muted">Reprendre ›</span></button>`;
+  return '';
+}
 function markExported() { state.progress.lastExportAt = Date.now(); persist(); }
 async function exportProgress() {
   const text = store.exportJSON(state.progress);
@@ -514,17 +593,28 @@ async function exportProgress() {
     const file = new File([text], name, { type: 'application/json' });
     if (navigator.canShare?.({ files: [file] })) { await navigator.share({ files: [file], title: name }); markExported(); render(); return; }
   } catch (e) { if (e && e.name === 'AbortError') return; }
-  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type: 'application/json' })); a.download = name; a.click();
+  // App installée : un lien de téléchargement ouvrirait le fichier en plein écran, sans retour. On copie le texte.
+  if (PDF.isStandalone()) {
+    try { await navigator.clipboard.writeText(text); markExported(); toast('Sauvegarde copiée : collez-la dans une note ou un message'); render(); } catch { toast('Export impossible ici : utilisez « Copier »'); }
+    return;
+  }
+  if (!PDF.saveFile(new Blob([text], { type: 'application/json' }), name)) return toast('Export impossible ici : utilisez « Copier »');
   markExported(); toast('Export lancé. Si rien ne se télécharge, utilisez « Copier ».'); render();
 }
+// Effacement, import, retour à l'état précédent : avec la synchro, l'opération vaut pour tous les appareils.
+// resetAt (js/sync.js, merge) fait remplacer la copie en ligne au lieu de la fusionner, et l'envoi part tout de suite
+// (après la synchro éventuellement en cours), sans attendre le délai d'une minute.
+const syncResetWarning = () => (SY.config() ? ' L’opération vaut sur tous les appareils synchronisés ; les réponses non synchronisées des autres appareils seront perdues.' : '');
+function markReset() { state.progress.resetAt = Date.now(); }
+function pushReset() { if (SY.config()) Promise.resolve(syncing).then(() => runSync({ manual: true })); }
 function applyImport(text) {
   let next;
   try { next = store.importJSON(text); } catch (err) { toast('Import impossible : ' + err.message); return; }
   const cur = Object.keys(state.progress.cards).length; const n = Object.keys(next.cards).length;
-  if (!confirm(`Remplacer la progression actuelle (${cur} cartes) par celle de la sauvegarde (${n} cartes) ? Une copie de l’état actuel est conservée pour annuler.`)) return;
+  if (!confirm(`Remplacer la progression actuelle (${cur} questions suivies) par celle de la sauvegarde (${n} questions suivies) ? Une copie de l’état actuel est conservée pour annuler.${syncResetWarning()}`)) return;
   store.snapshotPrev(state.progress);
   next.stats = next.stats || null;
-  state.progress = next; initGamify(); persist(); toast('Progression importée'); render();
+  state.progress = next; markReset(); initGamify(); persist(); toast('Progression importée'); render(); pushReset();
 }
 function noticeCard() {
   const n = state.notice; if (!n) return '';
@@ -568,51 +658,85 @@ function ensureDaily() {
   pr.daily = {
     day: k, n: d.n, kind: d.kind, steps: d.steps, exam: d.exam, merged: d.merged || [], revise: d.revise || [], late: lateSteps(k, d.steps), game, newDone: 0,
     target: P.newTarget(unseen, d.n, pr.settings.newPerDay, dueNow()),
-    weak: w && d.kind !== 'veille' ? { prof: w.prof, tag: w.tag, acc: Math.round(w.acc * 100) } : null,
+    weak: w && d.kind !== 'veille' ? { prof: w.prof, tag: w.tag, acc: pctInt(w.acc * 100), n: w.n } : null,
   };
   persist();
   return pr.daily;
 }
 // Tâches du jour et leur état (calculé d'après ce qui a été fait).
+// Une tâche sans objet (aucune question à revoir, aucune erreur « j'étais sûr ») n'est pas ajoutée : elle serait
+// cochée « faite » alors que rien n'a été fait. Délai court (J-4 ou moins) : plan de survie, l'essentiel d'abord
+// (3 schémas, la séance, un examen blanc QCM) ; le reste devient facultatif. Temps disponible choisi (15, 30,
+// 60 min) : au-delà, les tâches passent en « si vous avez le temps ».
+const SURVIVAL_READS = 3;
 function dayTasks() {
   const pr = state.progress; const d = ensureDaily(); const t0 = startOfDay();
+  const survival = d.n > 0 && (d.merged || []).length > 0; // délai court : étapes et examens regroupés sur aujourd'hui
   const tasks = [];
   const steps = d.steps.map((id) => P.stepById(id)).filter(Boolean);
   const files = [...new Set(steps.flatMap((st) => st.fiches))];
   if (files.length) {
-    const unread = files.find((f) => !P.isRead(pr.plan, f));
-    const readN = files.filter((f) => P.isRead(pr.plan, f)).length;
-    tasks.push({ id: 'read', icon: ic('chart'), title: files.length > 1 ? `Lire les ${files.length} schémas du jour` : 'Lire le schéma du jour', sub: `${steps.map((st) => st.title).join(' · ')} · 5 à 10 min chacun`, short: files.length > 1 ? `${readN} / ${files.length} lus · 5 à 10 min chacun` : '5 à 10 min', done: !unread, cta: `Lire : ${shortTitle(unread || files[0])}`, run: () => ficheSheet(unread || files[0]), html: files.map((f) => `<button class="btn sm ${P.isRead(pr.plan, f) ? '' : 'primary'}" data-open-fiche="${esc(f)}">${P.isRead(pr.plan, f) ? ic('check') : ic('chart')} ${esc(shortTitle(f))}</button>`).join('') });
+    // Survie : les schémas non lus au-delà des trois premiers (ordre du parcours) passent dans une tâche facultative.
+    const unreadAll = files.filter((f) => !P.isRead(pr.plan, f));
+    const extra = survival && unreadAll.length > SURVIVAL_READS ? unreadAll.slice(SURVIVAL_READS) : [];
+    const core = files.filter((f) => !extra.includes(f));
+    const unread = core.find((f) => !P.isRead(pr.plan, f));
+    const readN = core.filter((f) => P.isRead(pr.plan, f)).length;
+    const titles = steps.filter((st) => st.fiches.some((f) => core.includes(f))).map((st) => st.title);
+    tasks.push({ id: 'read', icon: ic('chart'), est: 10 * Math.max(1, core.length - readN), title: core.length > 1 ? `Lire les ${core.length} schémas ${extra.length ? 'essentiels' : 'du jour'}` : 'Lire le schéma du jour', sub: `${core.length > 1 ? `${readN} / ${core.length} lus · ` : ''}5 à 10 min chacun`, list: titles.length > 1 ? titles : null, short: core.length > 1 ? `${readN} / ${core.length} lus · 5 à 10 min chacun` : '5 à 10 min', done: !unread, cta: `Lire : ${shortTitle(unread || core[0])}`, run: () => ficheSheet(unread || core[0]), html: core.map((f) => `<button class="btn sm ${P.isRead(pr.plan, f) ? '' : 'primary'}" data-open-fiche="${esc(f)}">${P.isRead(pr.plan, f) ? ic('check') : ic('chart')} ${esc(shortTitle(f))}</button>`).join('') });
+    if (extra.length) {
+      const next = extra.find((f) => !P.isRead(pr.plan, f));
+      tasks.push({ id: 'read-more', icon: ic('chart'), optional: true, est: 10 * extra.length, title: `Les ${extra.length} autres schémas`, sub: 'Si vous avez le temps : l’essentiel passe avant', list: extra.map((f) => shortTitle(f)), done: !next, cta: `Lire : ${shortTitle(next || extra[0])}`, run: () => ficheSheet(next || extra[0]), html: extra.map((f) => `<button class="btn sm" data-open-fiche="${esc(f)}">${P.isRead(pr.plan, f) ? ic('check') : ic('chart')} ${esc(shortTitle(f))}</button>`).join('') });
+    }
   }
   if (state.shorts?.length) {
     const n = shortsToday(); const need = d.kind === 'veille' ? 5 : 10;
-    tasks.push({ id: 'shorts', icon: ic('clapper'), title: `Shorts du jour : ${need} notions, 30 s chacune`, sub: `${Math.min(n, need)}/${need} aujourd’hui · ${steps.length ? 'les schémas du jour d’abord, puis les shorts à revoir et vos points faibles' : 'les shorts à revoir et vos points faibles'}`, done: n >= need, cta: 'Shorts du jour', run: () => openFeed({ focus: d.steps, goal: need, base: Math.min(n, need) }) });
+    tasks.push({ id: 'shorts', icon: ic('clapper'), optional: survival && d.kind !== 'veille', est: Math.max(2, Math.ceil((need - Math.min(n, need)) * 0.6)), title: `Shorts du jour : ${need} notions, 30 s chacune`, sub: `${Math.min(n, need)}/${need} aujourd’hui · ${steps.length ? 'les schémas du jour d’abord, puis vos points faibles' : 'les shorts à revoir et vos points faibles'}`, done: n >= need, cta: 'Shorts du jour', run: () => openFeed({ focus: d.steps, goal: need, base: Math.min(n, need) }) });
   }
   const mergedExams = (d.merged || []).filter((m) => m.kind === 'blanc').map((m) => m.exam);
   const todayExams = pr.exams.filter((e) => e.t >= t0 && isCounted(e)).length; // copie rendue presque blanche : la tâche reste à faire
-  [...mergedExams, ...(d.exam ? [d.exam] : [])].forEach((ex, i) => tasks.push({ id: i ? `exam${i}` : 'exam', icon: ic('timer'), title: `Examen blanc ${ex.toUpperCase()}${i < mergedExams.length ? ' (regroupé : délai court)' : ''}`, sub: '20 questions, 60 minutes, en conditions réelles', done: todayExams > i, cta: `Examen blanc ${ex.toUpperCase()}`, run: () => go('exam') }));
+  // Survie : un seul examen blanc obligatoire (le QCM, format réel), les autres facultatifs.
+  const exams = [...mergedExams, ...(d.exam ? [d.exam] : [])].sort((a, b) => (survival ? (a === 'qcm' ? -1 : b === 'qcm' ? 1 : 0) : 0));
+  exams.forEach((ex, i) => tasks.push({ id: i ? `exam${i}` : 'exam', icon: ic('timer'), optional: survival && i > 0, est: 60, title: `Examen blanc ${ex.toUpperCase()} · 20 questions`, sub: i && survival ? 'Si vous avez le temps, sinon demain' : '60 minutes, en conditions réelles', done: todayExams > i, cta: `Examen blanc ${ex.toUpperCase()}`, run: () => go('exam') }));
   const reviseSteps = (d.revise || []).map((id) => P.stepById(id)).filter(Boolean);
   if (reviseSteps.length) {
     const rf = reviseSteps.flatMap((st) => st.fiches)[0];
-    tasks.push({ id: 'revise', icon: ic('book'), title: 'Relire pour fixer', sub: `Révision espacée : ${reviseSteps.map((st) => st.title).join(' · ')}`, done: !!pr.plan.revised?.[d.day], cta: `Relire : ${shortTitle(rf)}`, run: () => { pr.plan.revised = { ...(pr.plan.revised || {}), [d.day]: true }; persist(); ficheSheet(rf); } });
+    tasks.push({ id: 'revise', icon: ic('book'), est: 10, title: 'Relire pour fixer', sub: `Révision espacée : ${reviseSteps.map((st) => st.title).join(' · ')}`, done: !!pr.plan.revised?.[d.day], cta: `Relire : ${shortTitle(rf)}`, run: () => { pr.plan.revised = { ...(pr.plan.revised || {}), [d.day]: true }; persist(); ficheSheet(rf); } });
   }
   const due = dueNow(); const newLeft = Math.max(0, d.target - (d.newDone || 0));
-  tasks.push({ id: 'session', icon: ic('repeat'), title: d.target ? `Session : ${d.target} nouvelles questions et les cartes à revoir` : 'Session : les cartes à revoir uniquement', sub: `${d.newDone || 0}/${d.target} nouvelles · ${due} à revoir maintenant${steps.length ? ' · les questions des schémas du jour arrivent en premier' : ''}`, done: newLeft === 0 && due === 0, cta: `${d.newDone || state.session ? 'Continuer' : 'Commencer'} la session (${newLeft + due})`, run: () => go('review') });
+  // Séance : affichée s'il y a des questions à voir, ou si une séance a déjà été faite aujourd'hui (elle reste cochée).
+  if (d.target || due || (pr.lastSession || 0) >= t0) {
+    tasks.push({ id: 'session', icon: ic('repeat'), est: Math.max(5, Math.round((newLeft + due) * 0.8)), title: d.target ? `Séance : ${d.target} nouvelles questions et celles à revoir` : 'Séance : les questions à revoir', sub: `${d.newDone || 0}/${d.target} nouvelles · ${due} à revoir maintenant${steps.length ? ' · les questions des schémas du jour d’abord' : ''}`, done: newLeft === 0 && due === 0, cta: `${d.newDone || state.session ? 'Continuer' : 'Commencer'} la séance (${newLeft + due})`, run: () => go('review') });
+  }
   if (d.weak) {
     const ids = weakIds(d.weak); const today = pr.attempts.filter((a) => a.t >= t0 && ids.includes(a.id)).length; const need = Math.min(8, ids.length);
-    tasks.push({ id: 'weak', icon: ic('target'), title: `Point faible : ${tagLabel(d.weak.tag)} (${d.weak.prof})`, sub: `${d.weak.acc} % de réussite jusqu’ici · ${Math.min(today, need)}/${need} questions aujourd’hui`, done: today >= need, cta: `Point faible : ${tagLabel(d.weak.tag)}`, run: () => trainOn(shuffle(ids, Date.now()).slice(0, 10), `Point faible du jour : ${tagLabel(d.weak.tag)}`) });
+    if (need) tasks.push({ id: 'weak', icon: ic('target'), est: 10, title: `Point faible : ${tagLabel(d.weak.tag)} (${d.weak.prof})`, sub: `Réussite du sous-thème : ${fmtPct(d.weak.acc)}${d.weak.n ? ` · ${d.weak.n} rép.` : ''} · ${Math.min(today, need)}/${need} questions aujourd’hui`, done: today >= need, cta: `Point faible : ${tagLabel(d.weak.tag)}`, run: () => trainOn(shuffle(ids, Date.now()).slice(0, 10), `Point faible du jour : ${tagLabel(d.weak.tag)}`) });
   }
   if (d.kind === 'faibles' || (d.merged || []).some((m) => m.kind === 'faibles')) {
     const sure = confidentErrors(pr.attempts).length;
-    tasks.push({ id: 'sure', icon: ic('alert'), title: 'Reprendre les erreurs « j’étais sûr »', sub: `${sure} à reprendre`, done: sure === 0, cta: 'Mes erreurs « j’étais sûr »', run: () => trainOn(confidentErrors(pr.attempts).slice(-20), 'Mes erreurs « j’étais sûr »') });
+    // Compte du matin (d.sure0) : la tâche reste, cochée, une fois toutes ces erreurs reprises ; aucune ce matin-là : pas de tâche.
+    if (d.sure0 == null) d.sure0 = sure;
+    if (d.sure0 > 0) tasks.push({ id: 'sure', icon: ic('alert'), est: 10, title: 'Reprendre les erreurs « j’étais sûr »', sub: `${sure} à reprendre`, done: sure === 0, cta: 'Mes erreurs « j’étais sûr »', run: () => trainOn(confidentErrors(pr.attempts).slice(-20), 'Mes erreurs « j’étais sûr »') });
   }
   const g = GAMES[d.game];
   // Coché à la fin d'une partie (palais : une liste récitée jusqu'au bout), pas après quelques réponses.
   const played = d.game === 'palais' ? Object.entries(pr.drills).some(([id, m]) => id.startsWith(GAME_PREFIX.palais) && m.last >= t0) : !!pr.plan.gamesDone?.[d.day]?.includes(d.game);
-  tasks.push({ id: 'game', icon: g.icon, title: `Jeu du jour : ${g.name}`, sub: d.kind === 'veille' ? 'Réciter les listes, sans rien apprendre de nouveau' : '5 minutes · choisi parmi ceux où vous vous trompez le plus', done: played, cta: `Jeu du jour : ${g.name}`, run: () => startGame(d.game) });
-  // Étapes du jour terminées dès que le schéma est lu et la session faite : le lendemain prend la suite.
+  tasks.push({ id: 'game', icon: g.icon, optional: survival && d.kind !== 'veille', est: 5, title: `Jeu du jour : ${g.name}`, sub: d.kind === 'veille' ? 'Réciter les listes, sans rien apprendre de nouveau' : '5 minutes · choisi parmi ceux où vous vous trompez le plus', done: played, cta: `Jeu du jour : ${g.name}`, run: () => startGame(d.game) });
+  // Étapes du jour terminées dès que le schéma est lu et la séance faite : le lendemain prend la suite.
   const read = tasks.find((x) => x.id === 'read'); const sess = tasks.find((x) => x.id === 'session');
-  if (steps.length && read?.done && sess.done && steps.some((st) => !pr.plan.done[st.id])) { steps.forEach((st) => { pr.plan.done[st.id] = pr.plan.done[st.id] || Date.now(); }); persist(); }
+  if (steps.length && read?.done && (!sess || sess.done) && steps.some((st) => !pr.plan.done[st.id])) { steps.forEach((st) => { pr.plan.done[st.id] = pr.plan.done[st.id] || Date.now(); }); persist(); }
+  return budgetTasks(tasks, pr.settings.dayMinutes);
+}
+// Temps disponible : les tâches obligatoires restantes sont gardées dans l'ordre tant qu'elles tiennent dans le
+// budget (la première toujours) ; les suivantes deviennent facultatives (« si vous avez le temps »).
+function budgetTasks(tasks, minutes) {
+  if (!minutes) return tasks;
+  let left = minutes; let first = true;
+  for (const x of tasks) {
+    if (x.done || x.optional) continue;
+    if (first || (x.est || 10) <= left) { left -= x.est || 10; first = false; continue; }
+    x.optional = true; x.later = true;
+  }
   return tasks;
 }
 // Prochaine tâche obligatoire du plan (les tâches facultatives ne bloquent pas la journée).
@@ -625,25 +749,43 @@ function dayCardBilan({ d, tasks, req, n, cur, tomText }) {
   const weekday = new Date().toLocaleDateString('fr-FR', { weekday: 'long' });
   const late = [];
   if (d.late?.length) late.push(`Rattrapage : ${d.late.map((x) => P.stepById(x.id)?.title || x.id).join(', ')}`);
-  if (d.merged?.length) late.push(`Regroupé aujourd’hui : ${d.merged.map((m) => m.kind === 'blanc' ? `examen blanc ${m.exam.toUpperCase()}` : m.kind === 'faibles' ? 'points faibles' : 'veille').join(', ')}`);
-  const row = (x, i) => {
+  const num = taskNumbers(tasks);
+  const row = (x) => {
     const isCur = x === cur; const state = x.done ? 'done' : isCur ? 'cur' : '';
-    const inner = `<span class="tick">${x.done ? ic('check') : x.optional ? '+' : i + 1}</span>
+    const inner = `<span class="tick">${x.done ? ic('check') : x.optional ? '+' : num.get(x)}</span>
       <span class="tbody"><strong>${esc(x.title)}</strong>${isCur ? `<span class="muted">${esc(x.short || x.sub)}</span><span class="todo-go">${esc(x.cta)} ›</span>` : ''}</span>
-      <span class="tmeta">${x.done ? '' : x.optional && !isCur ? 'facultatif' : isCur ? '' : '›'}</span>`;
+      <span class="tmeta">${x.done ? '' : x.optional && !isCur ? (x.later ? 'si le temps' : 'facultatif') : isCur ? '' : '›'}</span>`;
     return `<li class="${state}">${x.done ? `<div class="todo-row">${inner}</div>` : `<button class="todo-row" data-task="${x.id}">${inner}</button>`}</li>`;
   };
   return `<div class="card plan-card bilan"><div class="plan-head"><h2>Plan du jour</h2><span class="plan-meta">${esc(weekday)} · ${esc(KIND_LABEL[d.kind].toLowerCase())} · <strong>${n}/${req.length}</strong></span></div>
     <div class="progress sm"><div style="width:${Math.round((n / Math.max(1, req.length)) * 100)}%"></div></div>
-    ${late.length ? `<p class="plan-late">${late.map(esc).join(' · ')}</p>` : ''}
+    ${calmLine(d)}${late.length ? `<p class="plan-late">${late.map(esc).join(' · ')}</p>` : ''}${timeChips()}
     <ol class="todo">${tasks.map(row).join('')}</ol>
     ${n === req.length ? `<div class="gfb ok">${ic('party')} Plan du jour terminé.</div>${nextCard(true)}` : ''}
-    <div class="plan-foot">${tomText ? `<span>Demain : ${esc(tomText)}</span>` : '<span></span>'}<button class="linkbtn" data-go="plan">Plan complet ›</button></div></div>`;
+    <div class="plan-foot">${tomText ? `<span>Demain : ${esc(tomText)}</span>` : '<span></span>'}<button class="btn sm" data-go="plan">Plan complet ›</button></div></div>`;
+}
+// Numérotation continue : seules les tâches obligatoires restantes sont numérotées (1, 2, 3…) ; faites : coche,
+// facultatives : « + ».
+function taskNumbers(tasks) {
+  const m = new Map(); let k = 0;
+  for (const x of tasks) if (!x.done && !x.optional) m.set(x, ++k);
+  return m;
+}
+// Délai court : une phrase qui rassure plutôt qu'une liste de retards.
+function calmLine(d) {
+  if (!(d.merged || []).length || d.n <= 0) return '';
+  return `<p class="plan-calm">${ic('clover')} Il reste ${d.n} jour${d.n > 1 ? 's' : ''} : voici l’essentiel. Le reste est facultatif, et rien n’est perdu.</p>`;
+}
+// Temps disponible aujourd'hui : le plan garde ce qui tient dans ce temps (budgetTasks).
+const DAY_MINUTES = [[15, '15 min'], [30, '30 min'], [60, '1 h'], [0, 'Libre']];
+function timeChips() {
+  const cur = state.progress.settings.dayMinutes || 0;
+  return `<div class="time-chips" role="group" aria-label="Temps disponible aujourd’hui"><span class="muted">Temps dispo :</span>${DAY_MINUTES.map(([m, l]) => `<button class="chip ${cur === m ? 'on' : ''}" data-daymin="${m}" aria-pressed="${cur === m}">${l}</button>`).join('')}</div>`;
 }
 function lateBanner(d) {
   const parts = [];
   if (d.late?.length) parts.push(`${ic('undo')} <strong>Rattrapage</strong> : ${d.late.map((x) => `${esc(P.stepById(x.id)?.title || x.id)} (prévue le ${new Date(`${x.was}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' })})`).join(' · ')}.`);
-  if (d.merged?.length) parts.push(`${ic('forward')} <strong>Délai court</strong> : ${d.merged.map((m) => m.kind === 'blanc' ? `examen blanc ${m.exam.toUpperCase()}` : m.kind === 'faibles' ? 'points faibles' : 'veille').join(', ')} regroupé${d.merged.length > 1 ? 's' : ''} aujourd’hui, rien n’est supprimé.`);
+
   return parts.length ? `<div class="gfb warn" style="margin:6px 0">${parts.join('<br>')}</div>` : '';
 }
 // Pont vers Ernest (app d'organisation) : le plan du jour, déposé sur le serveur à chaque synchro (sendPont), sans doublon côté Ernest.
@@ -673,11 +815,11 @@ function dayCard() {
   const tomText = tom ? [...tom.steps.map((id) => P.stepById(id)?.title), tom.exam ? `examen blanc ${tom.exam.toUpperCase()}` : '', tom.kind === 'faibles' ? 'points faibles' : '', tom.kind === 'veille' ? 'veille légère' : '', tom.kind === 'consolidation' ? 'consolidation' : ''].filter(Boolean).join(' · ') : '';
   if (isBilan()) return dayCardBilan({ d, tasks, req, n, cur, tomText });
   return `<div class="card plan-card"><div class="row" style="justify-content:space-between"><span class="badge warn">${esc(KIND_LABEL[d.kind])} · J-${d.n}</span><span class="muted">${n}/${req.length} fait</span></div>
-    <h2 style="margin:8px 0 2px">Mon plan du ${esc(date)}</h2>${lateBanner(d)}<div class="progress" style="margin:6px 0 10px"><div style="width:${Math.round((n / req.length) * 100)}%"></div></div>
-    <ol class="todo">${tasks.map((x, i) => `<li class="${x.done ? 'done' : x === cur ? 'cur' : ''}"><span class="tick">${x.done ? ic('check') : x.optional ? '+' : i + 1}</span><div class="tbody"><div><strong>${x.icon} ${esc(x.title)}</strong>${x === cur ? ' <span class="badge warn">maintenant</span>' : ''}${x.optional ? ' <span class="badge">facultatif</span>' : ''}</div><div class="muted">${esc(x.sub)}</div>${x.done ? '' : x.html || `<button class="btn sm ${x === cur ? 'primary' : ''}" data-task="${x.id}">${ic('play')} ${esc(x.cta)}</button>`}</div></li>`).join('')}</ol>
+    <h2 style="margin:8px 0 2px">Mon plan du ${esc(date)}</h2>${calmLine(d)}${lateBanner(d)}${timeChips()}<div class="progress" style="margin:6px 0 10px"><div style="width:${Math.round((n / Math.max(1, req.length)) * 100)}%"></div></div>
+    <ol class="todo">${(() => { const num = taskNumbers(tasks); return tasks.map((x) => `<li class="${x.done ? 'done' : x === cur ? 'cur' : ''}"><span class="tick">${x.done ? ic('check') : x.optional ? '+' : num.get(x)}</span><div class="tbody"><div><strong>${x.icon} ${esc(x.title)}</strong>${x === cur ? ' <span class="badge warn">maintenant</span>' : ''}${x.optional ? ` <span class="badge">${x.later ? 'si le temps' : 'facultatif'}</span>` : ''}</div><div class="muted">${esc(x.sub)}</div>${x.list ? `<details class="task-list"><summary>Voir la liste</summary>${esc(x.list.join(' · '))}</details>` : ''}${x.done ? '' : x.html || `<button class="btn sm ${x === cur ? 'primary' : ''}" data-task="${x.id}">${ic('play')} ${esc(x.cta)}</button>`}</div></li>`).join(''); })()}</ol>
     ${n === req.length ? `<div class="gfb ok">${ic('party')} Plan du jour terminé. Vous pouvez vous arrêter, ou continuer en boucle :</div>${nextCard(true)}` : ''}
     ${tomText ? `<p class="muted" style="margin:6px 0 10px">Demain : ${esc(tomText)}.</p>` : ''}
-    <button class="btn sm" data-go="plan">${ic('calendar')} Mon plan jusqu’au ${esc(examDay())}</button></div>`;
+    <button class="btn sm" data-go="plan">${ic('calendar')} Mon plan ${esc(untilExam())}</button></div>`;
 }
 // Le bouton principal de l'accueil : la prochaine chose à faire, sans réfléchir.
 function heroCta() {
@@ -691,7 +833,7 @@ function heroCta() {
 // En fin de séance, de série, de jeu ou d'examen : ce qui suit dans le plan.
 function nextStepBlock() {
   const cur = nextTask(dayTasks());
-  if (cur) return `<div class="card next"><div class="muted">Prochaine étape de votre plan du jour</div><strong>${cur.icon} ${esc(cur.title)}</strong><p class="muted" style="margin:4px 0 8px">${esc(cur.sub)}</p><button class="btn primary" data-task="${cur.id}">${ic('play')} ${esc(cur.cta)}</button></div>`;
+  if (cur) return `<div class="card next"><div class="muted">Prochaine étape de votre plan du jour</div><strong>${cur.icon} ${esc(cur.title)}</strong><p class="muted" style="margin:4px 0 8px">${esc(cur.sub)}</p>${cur.list ? `<details class="task-list"><summary>Voir la liste</summary>${esc(cur.list.join(' · '))}</details>` : ''}<button class="btn primary" data-task="${cur.id}">${ic('play')} ${esc(cur.cta)}</button></div>`;
   return `<div class="gfb ok">${ic('party')} Plan du jour terminé.</div>${nextCard()}`;
 }
 // Aide de départ : affichée tant qu'on ne l'a pas fermée.
@@ -699,24 +841,23 @@ function helpCard() {
   const s = state.progress.settings;
   if (s.helpSeen || (isBilan() && state.progress.attempts.length >= 20)) return '';
   setTimeout(() => { const b = $('#help-ok'); if (b) b.onclick = () => { s.helpSeen = true; persist(); render(); }; }, 0);
-  return `<div class="card help"><h2>Comment ça marche</h2><ol>
-    <li><strong>Suivez le plan du jour</strong>, juste en dessous : le gros bouton en couleur lance toujours la prochaine chose à faire.</li>
-    <li><strong>Une session</strong> mêle vos nouvelles questions et celles à revoir : notez honnêtement, l’app calcule quand chaque question reviendra (toujours avant le 10 novembre).</li>
-    <li><strong>Un lien vers un schéma</strong> s’ouvre par-dessus : « Fermer et reprendre » vous ramène où vous en étiez.</li>
-    <li>Plan fini ? <strong>« Et maintenant ? »</strong> propose la suite, autant que vous voulez. Le plan se recale chaque matin sur vos résultats.</li></ol>
-    <button class="btn" id="help-ok">J’ai compris</button></div>`;
+  return `<div class="card help"><p style="margin:0 0 8px"><strong>Suivez le plan du jour :</strong> le gros bouton lance toujours la prochaine chose à faire.</p><details><summary>Comment ça marche</summary><ol>
+    <li>Une séance mêle nouvelles questions et questions à revoir : l’app les fait revenir ${esc(examDateSet() ? `avant le ${examDay()}` : 'avant l’épreuve')}.</li>
+    <li>Un schéma s’ouvre par-dessus : « Fermer et reprendre » vous ramène où vous en étiez.</li>
+    <li>Le plan se recale chaque matin sur vos résultats.</li></ol></details>
+    <button class="btn" id="help-ok" style="margin-top:8px">J’ai compris</button></div>`;
 }
 // « Et maintenant ? » : la meilleure activité du moment, d'après l'état ; « Autre idée » fait tourner la liste.
 function nextActions() {
   const pr = state.progress; const out = []; const now = Date.now();
   const due = dueNow();
-  if (due) out.push({ icon: ic('repeat'), title: `${due} carte${due > 1 ? 's' : ''} à revoir maintenant`, why: 'Revues au bon moment, elles tiennent jusqu’à l’épreuve.', run: () => { state.session = null; go('review'); } });
+  if (due) out.push({ icon: ic('repeat'), title: `${due} question${due > 1 ? 's' : ''} à revoir maintenant`, why: 'Revues au bon moment, elles tiennent jusqu’à l’épreuve.', run: () => { state.session = null; go('review'); } });
   const sure = confidentErrors(pr.attempts);
   if (sure.length) out.push({ icon: ic('alert'), title: `${sure.length} erreur${sure.length > 1 ? 's' : ''} « j’étais sûr »`, why: 'Une erreur commise avec certitude se corrige le mieux si on y revient vite.', run: () => trainOn(sure.slice(-20), 'Mes erreurs « j’étais sûr »') });
   const shDue = state.shorts ? SH.shortsStats(state.shorts, pr.drills, now).due : 0;
   if (shDue) out.push({ icon: ic('clapper'), title: `Shorts : ${shDue} à revoir`, why: 'Les notions ratées dans le fil reviennent : 30 secondes chacune.', run: () => openFeed() });
   for (const w of P.tagStats(pr.attempts, state.byId).weak.slice(0, 3)) {
-    out.push({ icon: ic('target'), title: `Point faible : ${tagLabel(w.tag)} (${w.prof}, ${Math.round(w.acc * 100)} %)`, why: 'Votre sous-thème le moins réussi : une série ciblée de 10 questions.', run: () => trainOn(shuffle(weakIds(w), now).slice(0, 10), `Point faible : ${tagLabel(w.tag)}`) });
+    out.push({ icon: ic('target'), title: `Point faible : ${tagLabel(w.tag)} (${w.prof}, ${fmtRate(w.ok, w.n)})`, why: 'Votre sous-thème le moins réussi : une série ciblée de 10 questions.', run: () => trainOn(shuffle(weakIds(w), now).slice(0, 10), `Point faible : ${tagLabel(w.tag)}`) });
   }
   for (const [k, pre] of Object.entries(GAME_PREFIX)) {
     const n = Object.entries(pr.drills).filter(([id, m]) => id.startsWith(pre) && m.due <= now).length;
@@ -747,27 +888,34 @@ function currentEstimate() {
   const pr = state.progress;
   return estimate({ questions: state.bank.questions, stats: pr.stats, cards: pr.cards, attempts: pr.attempts, exams: pr.exams });
 }
-const fr = (x) => String(x).replace('.', ',');
-// Encart de l'accueil : trois chiffres alignés (QCM, QRC, annales vues).
+const fr = fmtNote; // notes : virgule décimale française (js/format.js)
+const ESTIMATE_MIN = 30; // réponses avant d'afficher une note estimée sur l'accueil
+// Encart de l'accueil : trois chiffres alignés (QCM, QRC, questions vues).
 function estimateLine(cov) {
-  const has = state.progress.attempts.length > 0;
+  const n = state.progress.attempts.length; const has = n >= ESTIMATE_MIN;
   const e = has ? currentEstimate() : null;
   const kpi = (label, v, unit, extra = '') => `<div class="kpi"><span class="kpi-l">${label}</span><span class="kpi-v">${v}<small>${unit}</small></span>${extra}</div>`;
-  const tiles = `<div class="kpis">${kpi('QCM', has ? fr(e.qcm.note) : '–', '/20')}${kpi('QRC', has ? fr(e.qrc.note) : '–', '/20')}${kpi('Annales vues', cov, ' %', `<div class="progress"><div style="width:${cov}%"></div></div>`)}</div>`;
-  const sub = has ? `Niveau estimé · risque &lt; 6 : ${e.qcm.risk} % (QCM) · ${e.reliable ? 'fiable' : 'indicatif'} ›` : 'Niveau estimé : répondez à quelques questions pour l’obtenir.';
+  const tiles = `<div class="kpis">${kpi('QCM', has ? fr(e.qcm.note) : '–', '/20')}${kpi('QRC', has ? fr(e.qrc.note) : '–', '/20')}${kpi('Questions vues', fmtPct(cov), '', `<div class="progress"><div style="width:${cov}%"></div></div>`)}</div>`;
+  const sub = has ? `Niveau estimé${e.reliable ? '' : ' (indicatif)'} : le détail ›` : `Note estimée après ${ESTIMATE_MIN} réponses${n ? ` (encore ${ESTIMATE_MIN - n})` : ''}.`;
   return has ? `<button class="estim" data-go="stats">${tiles}<span class="muted">${sub}</span></button>` : `<div class="estim">${tiles}<span class="muted">${sub}</span></div>`;
 }
 function estimateCard() {
   if (!state.progress.attempts.length) return '';
   const e = currentEstimate();
-  const row = (m, l) => `<tr><td>${l}</td><td><strong>${fr(e[m].note)}</strong> <span class="muted">(${fr(e[m].low)} à ${fr(e[m].high)})</span></td><td>${e[m].ec} %</td><td>${e[m].cac} %</td><td>${e[m].pass} %</td><td>${e[m].risk} %</td></tr>`;
+  const row = (m, l) => `<tr><td>${l}</td><td><strong>${fr(e[m].note)}</strong><br><span class="muted nowrap">${fr(e[m].low)} à ${fr(e[m].high)}</span></td><td>${fmtPct(e[m].ec)}</td><td>${fmtPct(e[m].cac)}</td><td>${fmtPct(e[m].pass)}</td><td>${fmtPct(e[m].risk, 'ceil')}</td></tr>`;
   const weaker = e.qcm.cac < e.qcm.ec ? 'CAC' : 'EC';
+  // Écart de moins de 5 points : pas de « partie la plus rentable » (« 60 % contre 60 % » n'a pas de sens).
+  const gap = Math.abs(e.qcm.ec - e.qcm.cac) >= 5;
   return `<div class="card"><h2>Estimation à l’épreuve</h2><table><thead><tr><th>Format</th><th>Note /20</th><th>EC</th><th>CAC</th><th>≥ 10</th><th>&lt; 6</th></tr></thead><tbody>${row('qcm', 'QCM')}${row('qrc', 'QRC')}</tbody></table>
-    <p class="muted">Le sujet sera inédit : seules ${Math.round(e.repeat * 20)} questions sur 20 environ reprennent presque une annale (moyenne des dernières sessions). La note mêle donc votre mémoire des questions de la banque (pour cette part) et, pour le reste, votre réussite au premier essai sur des questions encore jamais vues du même sous-thème. La fourchette couvre deux tirages sur trois. Les examens blancs des 14 derniers jours comptent pour 50 % (copies répondues à moins de moitié exclues), l’examen inédit pour 60 %${e.qcm.inedit != null || e.qrc.inedit != null ? '' : ' (pas encore passé : onglet ' + ic('timer') + ' Examen)'}. ${e.reliable ? '' : `<strong>Estimation indicative</strong> tant que moins de 60 % de la banque est vue (${Math.round(e.coverage * 100)} %).`} Les QCM rédigés par IA peuvent flatter la note QCM.</p>
-    <p class="muted">Le plus rentable : la partie <strong>${weaker}</strong> (${Math.min(e.qcm.ec, e.qcm.cac)} % contre ${Math.max(e.qcm.ec, e.qcm.cac)} %).</p></div>`;
+    <p class="muted">Note probable à l’épreuve, d’après vos réponses.${e.reliable ? '' : ` <strong>Indicative</strong> tant que moins de 60 % de la banque est vue (${fmtFrac(e.coverage)}).`}</p>
+    <details class="muted"><summary>Comment c’est calculé</summary><p>EC, CAC : chance de réussir une question de chaque partie du sujet. ≥ 10, &lt; 6 : probabilité d’avoir cette note. La fourchette couvre deux tirages sur trois.</p>
+    <p>Le sujet sera inédit : environ ${Math.round(e.repeat * 20)} questions sur 20 reprennent presque une annale. La note mêle votre mémoire de la banque (pour cette part) et votre réussite au premier essai sur des questions jamais vues du même sous-thème. Examens blancs des 14 derniers jours : 50 % (copies répondues à moins de moitié exclues) ; examen inédit : 60 %${e.qcm.inedit != null || e.qrc.inedit != null ? '' : ' (pas encore passé : onglet ' + ic('timer') + ' Examen)'}.</p>
+    <p>Aux sessions QRC, les 4 propositions des QCM ne sont pas officielles (rédigées pour l’app, longueurs égalisées) : la note QCM peut être un peu flatteuse.</p></details>
+    <p class="muted">${gap ? `Le plus rentable : la partie <strong>${weaker}</strong> (${fmtPct(Math.min(e.qcm.ec, e.qcm.cac))} contre ${fmtPct(Math.max(e.qcm.ec, e.qcm.cac))}).` : `EC et CAC sont au même niveau (${fmtPct(e.qcm.ec)} et ${fmtPct(e.qcm.cac)}) : travaillez les deux.`}</p></div>`;
 }
 
-function pct(a) { return a && a.max ? Math.round((a.points / a.max) * 100) + ' %' : '–'; }
+// Score d'une partie d'examen blanc : bonnes réponses (QCM) ou points (QRC) sur le total, « EC 3/10 ».
+function scoreOf(a) { return a && a.max ? fmtScore(a.points, a.max) : '–'; }
 
 const shortTitle = (file) => (state.fiches.find((f) => f.file === file)?.title || file).replace(/^(Schéma|Fiche)\s*\d+\s*[–-]\s*/, '');
 // Calendrier jusqu'à l'épreuve : aujourd'hui (figé) puis la projection des jours suivants sur ce qui reste.
@@ -786,7 +934,7 @@ views.plan = () => {
   const dayLabel = (day) => `${new Date(`${day.key}T12:00:00`).toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' })} · J-${day.n}`;
   setTimeout(() => {
     document.querySelectorAll('[data-step-done]').forEach((b) => { b.onclick = () => { const id = b.dataset.stepDone; if (pr.plan.done[id]) delete pr.plan.done[id]; else { pr.plan.done[id] = Date.now(); if (pr.plan.focus === id) delete pr.plan.focus; } persist(); render(); }; });
-    document.querySelectorAll('[data-step-focus]').forEach((b) => { b.onclick = () => { pr.plan.focus = b.dataset.stepFocus; persist(); toast('Cette étape passe en premier dans vos nouvelles cartes'); render(); }; });
+    document.querySelectorAll('[data-step-focus]').forEach((b) => { b.onclick = () => { pr.plan.focus = b.dataset.stepFocus; persist(); toast('Cette étape passe en premier dans vos nouvelles questions'); render(); }; });
   }, 0);
   const rows = P.STEPS.map((st, i) => {
     const done = !!pr.plan.done[st.id]; const isCur = i === cur;
@@ -806,16 +954,16 @@ views.plan = () => {
       ...day.steps.map((id) => `${ic('chart')} ${esc(P.stepById(id)?.title || id)}`),
       day.exam ? `${ic('timer')} Examen blanc ${day.exam.toUpperCase()}` : '',
       day.kind === 'faibles' ? ic('target') + ' Points faibles et erreurs « j’étais sûr »' : '',
-      day.kind === 'veille' ? ic('repeat') + ' Cartes à revoir uniquement, listes du palais, dormir' : '',
+      day.kind === 'veille' ? ic('repeat') + ' Questions à revoir uniquement, listes du palais, dormir' : '',
       day.kind === 'consolidation' ? ic('repeat') + ' Révisions, points faibles, jeux' : '',
-      ...(day.merged || []).map((m) => m.kind === 'blanc' ? `${ic('timer')} Examen blanc ${m.exam.toUpperCase()} (regroupé)` : m.kind === 'faibles' ? ic('target') + ' Points faibles (regroupé)' : ic('repeat') + ' Veille (regroupée)'),
+      ...(day.merged || []).map((m) => m.kind === 'blanc' ? `${ic('timer')} Examen blanc ${m.exam.toUpperCase()}` : m.kind === 'faibles' ? ic('target') + ' Points faibles' : ic('repeat') + ' Veille légère'),
       ...(day.revise || []).map((id) => `${ic('book')} Relire : ${esc(P.stepById(id)?.title || id)}`),
       ...(day.late || []).map((x) => `${ic('undo')} Rattrapage : ${esc(P.stepById(x.id)?.title || x.id)}`),
       day.today && day.target ? `${ic('plus')} ${day.target} nouvelles questions` : '',
     ].filter(Boolean);
     return `<li class="${day.today ? 'today' : ''}"><div class="row" style="justify-content:space-between"><strong>${esc(dayLabel(day))}</strong><span class="badge ${day.today ? 'warn' : ''}">${day.today ? 'aujourd’hui' : esc(KIND_LABEL[day.kind])}</span></div><div class="muted">${what.join('<br>') || ic('repeat') + ' Révisions'}</div></li>`;
   }).join('');
-  return `<div class="card"><h2>Mon plan jusqu’au ${esc(examDay())}</h2><p class="muted">Recalculé chaque matin d’après ce qui reste et vos résultats : une étape non finie est reportée, le nombre de nouvelles questions est recalé pour tout avoir vu à J-3, le point faible et le jeu du jour suivent vos erreurs. Les quatre derniers jours sont fixes ; si le délai est court, les étapes et examens manquants sont regroupés sur aujourd’hui, rien n’est supprimé.</p>
+  return `<div class="card"><h2>Mon plan ${esc(untilExam())}</h2><p class="muted">Recalculé chaque matin d’après ce qui reste et vos résultats.</p><details class="muted"><summary>Comment le plan est construit</summary><p>Une étape non finie est reportée ; le nombre de nouvelles questions est recalé pour tout avoir vu à J-3 ; le point faible et le jeu du jour suivent vos erreurs. Les quatre derniers jours sont fixes. Délai court : l’essentiel passe en premier, le reste devient facultatif.</p></details>
     <ol class="cal">${calRows}</ol><button class="btn primary" data-go="home">${ic('play')} Faire le plan du jour</button></div>
     <details class="card"><summary><strong>Les 15 étapes du parcours</strong> <span class="muted">(détail, schémas, marquer une étape)</span></summary><div style="margin-top:10px">${rows}</div></details>`;
 };
@@ -832,9 +980,19 @@ views.review = () => {
   if (!s.queue.length) {
     const again = Object.values(state.progress.cards).filter((c) => c.due <= Date.now()).length;
     state.session = null; ensureDaily().sess = null; persist();
-    return `<div class="card center"><h2>Session terminée ${ic('party')}</h2><p>${s.done} cartes revues, ${s.ok} réussies du premier coup.</p>
-      ${again ? `<p class="muted">${again} carte(s) « Encore » reviennent dans 10 min.</p>` : ''}</div>
-      ${nextStepBlock()}<button class="btn" data-go="home">${ic('home')} Voir mon plan du jour</button>`;
+    setTimeout(() => {
+      const b = $('#quick20'); if (b) b.onclick = () => trainOn(quickIds(20), '20 questions');
+    }, 0);
+    // Rien à revoir (premier lancement, ou tout est à jour) : jamais « Séance terminée, 0 question revue ».
+    if (!s.done) {
+      return `<div class="card center empty"><h2>Rien à réviser pour l’instant</h2><p class="muted">Aucune question n’attend d’être revue. Lancez-vous : les questions ratées reviendront ici au bon moment.</p>
+        <button class="btn primary" id="quick20">${ic('play')} Faire 20 questions</button>
+        <div style="height:8px"></div><button class="btn" data-go="home">${ic('calendar')} Voir mon plan</button>
+        ${state.shorts?.length ? `<div style="height:8px"></div><button class="btn" data-shorts-step="">${ic('clapper')} 5 minutes de shorts</button>` : ''}</div>`;
+    }
+    return `<div class="card center"><h2>Séance terminée ${ic('party')}</h2><p>${s.done} question${s.done > 1 ? 's' : ''} revue${s.done > 1 ? 's' : ''}, ${s.ok} réussie${s.ok > 1 ? 's' : ''} du premier coup.</p>
+      ${again ? `<p class="muted">${again} question${again > 1 ? 's' : ''} « Encore » revien${again > 1 ? 'nent' : 't'} dans 10 min.</p>` : ''}</div>
+      ${nextStepBlock()}<div class="btnrow"><button class="btn" id="quick20">${ic('play')} 20 questions de plus</button><button class="btn" data-go="home">${ic('home')} Mon plan du jour</button></div>`;
   }
   const q = s.queue[0];
   setTimeout(() => {
@@ -850,11 +1008,19 @@ views.review = () => {
   return `${sessionStrip()}<div class="row" style="justify-content:space-between;margin-bottom:6px;flex-wrap:nowrap"><span>${isNew ? '<span class="badge new">' + ic('sparkles') + ' Nouvelle</span>' : '<span class="badge">' + ic('repeat') + ' À revoir</span>'} <span class="muted">${s.done + 1} / ${s.total}</span></span><span class="muted">${s.queue.length - 1 > 0 ? `encore ${s.queue.length - 1}` : 'dernière'}</span></div>
     ${stepIds.has(q.id) ? `<div class="muted ctx">${ic('chart')} Étape du jour : ${esc(d.steps.map((id) => P.stepById(id)?.title).join(', '))}</div>` : ''}
     <div class="progress"><div style="width:${(s.done / Math.max(1, s.total)) * 100}%"></div></div>
-    ${s.done === 0 && s.queue.length > SHORT_SESSION + 5 ? `<div class="short-sess"><span class="muted">${s.queue.length} cartes dans cette séance.</span><button class="btn sm" id="short-sess">Faire ${SHORT_SESSION} seulement</button></div>` : ''}
+    ${s.done === 0 && s.queue.length > SHORT_SESSION + 5 ? `<div class="short-sess"><span class="muted">${s.queue.length} questions dans cette séance.</span><button class="btn sm" id="short-sess">Faire ${SHORT_SESSION} seulement</button></div>` : ''}
     <div class="card" id="qcard" style="margin-top:12px"></div><div id="grade-peek"></div><div id="grade"></div>`;
 };
-// Séance courte (première séance chargée) : les cartes restantes attendent la prochaine séance.
+// Séance courte (première séance chargée) : les questions restantes attendent la prochaine séance.
 const SHORT_SESSION = 10;
+// « Faire 20 questions » : jamais vues d'abord (CAC et EC alternés, la partie CAC en premier), puis les moins réussies.
+function quickIds(n) {
+  const pr = state.progress; const seen = (q) => (pr.stats?.q?.[q.id]?.seen || 0) > 0 || !!pr.cards[q.id];
+  const mix = (list) => { const ec = list.filter((q) => q.profession === 'EC'); const cac = list.filter((q) => q.profession === 'CAC'); const out = []; while (ec.length || cac.length) { if (cac.length) out.push(cac.shift()); if (ec.length) out.push(ec.shift()); } return out; };
+  const qs = state.bank.questions.filter((q) => q.confidence !== 'low');
+  const fresh = mix(shuffle(qs.filter((q) => !seen(q)), Date.now()));
+  return [...fresh, ...weakest(n)].map((q) => q.id).filter((id, i, a) => a.indexOf(id) === i).slice(0, n);
+}
 function mountReviewCard(q) {
   const box = $('#qcard'); if (!box) return;
   const mode = pickMode(q);
@@ -907,12 +1073,27 @@ views.train = () => {
   const t = state.train;
   if (t.queue) {
     const q = t.queue[t.idx];
-    if (!q) { const r = `<div class="card center"><h2>Série terminée</h2><p>${t.ok} / ${t.n} bonnes réponses${t.title ? ` · ${esc(t.title)}` : ''}</p></div>${nextStepBlock()}<div class="btnrow"><button class="btn" id="again">Autre série</button><button class="btn" data-go="home">${ic('home')} Plan du jour</button></div>`; setTimeout(() => { $('#again').onclick = () => { t.queue = null; t.title = null; render(); }; }, 0); return r; }
+    if (!q) {
+      // Série finie depuis plus d'une minute : on revient au lanceur plutôt qu'à l'écran de fin.
+      t.endedAt = t.endedAt || Date.now();
+      if (Date.now() - t.endedAt > 60 * 1000) { state.train = null; return views.train(); }
+      const missed = [...new Set(t.missed || [])].filter((id) => state.byId[id]);
+      setTimeout(() => {
+        $('#again').onclick = () => { t.queue = null; t.title = null; render(); };
+        const m = $('#redo-missed'); if (m) m.onclick = () => trainOn(missed, 'Mes erreurs de la série', t.mode);
+        const c = $('#carnet-missed'); if (c) c.onclick = () => { addAllToCarnet(missed); c.disabled = true; };
+        const ten = $('#ten-more'); if (ten) ten.onclick = () => trainOn(quickIds(10), 'Série de 10 questions', t.mode);
+      }, 0);
+      return `<div class="card center"><h2>${t.n >= 5 ? 'Bravo, ' : ''}${t.n} question${t.n > 1 ? 's' : ''} terminée${t.n > 1 ? 's' : ''}</h2><p>${t.ok} réussie${t.ok > 1 ? 's' : ''}${t.title ? ` · ${esc(t.title)}` : ''}.</p>
+        ${missed.length ? `<p class="muted">Vos ${missed.length} erreur${missed.length > 1 ? 's' : ''} reviendront aussi dans Réviser, au bon moment.</p><button class="btn primary" id="redo-missed">${ic('repeat')} Revoir mes ${missed.length} erreur${missed.length > 1 ? 's' : ''} (${Math.max(1, Math.round(missed.length * 0.5))} min)</button><div style="height:8px"></div><button class="btn" id="carnet-missed">${ic('bookmark')} Tout ajouter au carnet d’erreurs</button>` : `<p class="muted">Aucune erreur : bien joué.</p>`}</div>
+        <div class="btnrow"><button class="btn" id="ten-more">${ic('play')} Série de 10 questions</button><button class="btn" id="again">Autre série</button></div>
+        ${nextStepBlock()}<button class="btn" data-go="home">${ic('home')} Plan du jour</button>`;
+    }
     setTimeout(() => {
       const box = $('#qcard');
       const next = () => { $('#next').classList.remove('hidden'); };
       const set = state.progress.settings; let qconf = null;
-      if (t.mode === 'qcm') renderQcm(q, box, (ok, conf, pick) => { t.n++; if (ok) t.ok++; else if (t.again) requeue(t.queue, t.idx, q, t.again); answer(q.id, ok, 'qcm', { conf, pick }); next(); }, { hide: set.hideChoices, askConf: set.confidence });
+      if (t.mode === 'qcm') renderQcm(q, box, (ok, conf, pick) => { t.n++; if (ok) t.ok++; else { missedInTrain(t, q.id); if (t.again) requeue(t.queue, t.idx, q, t.again); } answer(q.id, ok, 'qcm', { conf, pick }); next(); }, { hide: set.hideChoices, askConf: set.confidence });
       else {
         renderQrc(q, box, (conf) => { qconf = conf; $('#selfgrade').classList.remove('hidden'); }, (ratio) => {
           $('#sg-ok').classList.toggle('primary', ratio >= 1); $('#sg-ko').classList.toggle('primary', ratio < 1);
@@ -920,14 +1101,14 @@ views.train = () => {
       }
       $('#next').onclick = () => { state.prevQ = { id: q.id, mode: 'qcm' }; t.idx++; render(); };
       $('#sg-ok').onclick = () => { state.prevQ = { id: q.id, mode: 'qrc' }; t.n++; t.ok++; answer(q.id, true, 'qrc', { conf: qconf }); t.idx++; render(); };
-      $('#sg-ko').onclick = () => { state.prevQ = { id: q.id, mode: 'qrc' }; t.n++; if (t.again) requeue(t.queue, t.idx, q, t.again); answer(q.id, false, 'qrc', { conf: qconf }); if (confidentError(false, qconf)) toast('Erreur commise avec certitude : relisez l’explication', 'alert'); t.idx++; render(); };
-      $('#stop').onclick = () => { t.queue = null; t.title = null; render(); };
+      $('#sg-ko').onclick = () => { state.prevQ = { id: q.id, mode: 'qrc' }; t.n++; missedInTrain(t, q.id); if (t.again) requeue(t.queue, t.idx, q, t.again); answer(q.id, false, 'qrc', { conf: qconf }); if (confidentError(false, qconf)) toast('Erreur commise avec certitude : relisez l’explication', 'alert'); t.idx++; render(); };
+      $('#stop').onclick = () => { if (t.n && !confirm('Quitter la série ? Vos réponses sont gardées.')) return; t.queue = null; t.title = null; render(); };
       const pq = $('#prev-q'); if (pq) pq.onclick = prevQuestionSheet;
     }, 0);
-    return `${sessionStrip()}${prevLink() ? `<div class="sess-line"><span></span>${prevLink()}</div>` : ''}${t.title ? `<div class="muted" style="margin-bottom:6px">${ic('target')} ${esc(t.title)}</div>` : ''}<div class="row" style="justify-content:space-between"><span class="muted">${t.idx + 1} / ${t.queue.length} · ${t.ok}/${t.n} ${ic('check')}</span><button class="btn sm" id="stop">Arrêter</button></div>
+    return `${sessionStrip()}${prevLink() ? `<div class="sess-line"><span></span>${prevLink()}</div>` : ''}${t.title ? `<div class="muted" style="margin-bottom:6px">${ic('target')} ${esc(t.title)}</div>` : ''}<div class="row" style="justify-content:space-between"><span class="muted">Question ${t.idx + 1} / ${t.queue.length}${t.n ? ` · bonnes : ${t.ok}/${t.n}` : ''}</span><button class="btn sm" id="stop">Quitter</button></div>
       <div class="card" id="qcard" style="margin-top:10px"></div>
       <div id="selfgrade" class="btnrow hidden"><button class="btn" id="sg-ko">${ic('x')} Je ne savais pas</button><button class="btn primary" id="sg-ok">${ic('check')} Je savais</button></div>
-      <button class="btn primary hidden" id="next">Question suivante →</button>`;
+      <button class="btn primary hidden sticky-next" id="next">Question suivante →</button>`;
   }
   const tags = {};
   state.bank.questions.forEach((q) => { if ((t.prof === 'all' || q.profession === t.prof)) q.tags.forEach((x) => { tags[x] = (tags[x] || 0) + 1; }); });
@@ -950,18 +1131,29 @@ views.train = () => {
     <label class="field">Thème<select id="f-theme"><option value="all">Tous</option>${Object.entries(THEMES).map(([k, v]) => `<option value="${k}" ${t.theme === k ? 'selected' : ''}>${v}</option>`).join('')}</select></label>
     <label class="field">Sujet précis<select id="f-tag"><option value="all">Tous</option>${Object.entries(tags).sort((a, b) => tagLabel(a[0]).localeCompare(tagLabel(b[0]), 'fr')).map(([k, n]) => `<option value="${k}" ${t.tag === k ? 'selected' : ''}>${esc(tagLabel(k))} (${n})</option>`).join('')}</select></label>
     <label class="field">Format<select id="f-mode"><option value="qcm" ${t.mode === 'qcm' ? 'selected' : ''}>QCM</option><option value="qrc" ${t.mode === 'qrc' ? 'selected' : ''}>QRC (réponse courte)</option></select></label>
-    <p class="muted">${filtered.length} question(s) correspondent. Série de 20 max, sans effet sur la répétition espacée.</p>
+    <p class="muted">${filtered.length} question${filtered.length > 1 ? 's' : ''} de révision correspond${filtered.length > 1 ? 'ent' : ''} · série de 20 au plus ; vos erreurs reviennent ensuite dans Réviser.</p>
     <button class="btn primary" id="start" ${filtered.length ? '' : 'disabled'}>Lancer la série</button>
     <div style="height:8px"></div><button class="btn primary" id="confirm">${ic('check')} À confirmer aujourd’hui (${toConfirm(state.progress.stats?.q, todayKey(), (id) => !!state.byId[id]).length})</button>
-    <p class="muted" style="margin-top:6px">Les questions ratées puis réussies, mais pas encore revérifiées un autre jour : une correction faite juste après l’erreur s’oublie vite. Encore fausses d’abord ; une erreur revient 4 questions plus loin.</p>
+    <details class="muted" style="margin-top:6px"><summary>Les questions ratées puis réussies, à revérifier un autre jour.</summary><p>Une correction faite juste après l’erreur s’oublie vite. Encore fausses d’abord ; une erreur revient 4 questions plus loin.</p></details>
     <div style="height:8px"></div><button class="btn" id="pieges">${ic('library')} Mes pièges, à relire ou imprimer (${pitfalls(state.progress.stats?.q, (id) => !!state.byId[id]).length})</button>
     <div style="height:8px"></div><button class="btn" id="loop">${ic('repeat')} Mes ratées en boucle (${missedOrder(state.progress.stats?.q, (id) => !!state.byId[id]).length})</button>
-    <p class="muted" style="margin-top:6px">Toutes les questions déjà ratées, les plus ratées d’abord, au format choisi ci-dessus. Une erreur revient 4 questions plus loin, jusqu’à être réussie. Sans fin : arrêtez quand vous voulez.</p>
+    <details class="muted" style="margin-top:6px"><summary>Toutes les questions déjà ratées, jusqu’à les réussir.</summary><p>Les plus ratées d’abord, au format choisi ci-dessus. Une erreur revient 4 questions plus loin. Sans fin : arrêtez quand vous voulez.</p></details>
     <div style="height:8px"></div><button class="btn" id="weak">${ic('flame')} Mes 20 questions les plus ratées</button>
     <div style="height:8px"></div><button class="btn" id="sure">${ic('alert')} Mes erreurs « j’étais sûr » (${sure})</button>
-    <p class="muted" style="margin-top:8px">Une erreur faite avec certitude se corrige mieux qu’une autre, à condition d’y revenir : c’est la liste à reprendre en priorité.</p></div>`;
+    <p class="muted" style="margin-top:8px">Les erreurs faites avec certitude : à reprendre en priorité.</p></div>`;
 };
 const trainTabs = (cur) => `<div class="tabs">${[['train', ic('target') + ' Séries'], ['jeux', ic('dice') + ' Jeux']].map(([k, l]) => `<button class="chip ${cur === k ? 'on' : ''}" data-go="${k}">${l}</button>`).join('')}</div>`;
+// Erreur en série : notée pour l'écran de fin, et la question entre dans la répétition espacée (due tout de suite)
+// pour revenir dans Réviser : sans cela, les erreurs des séries et des examens ne revenaient jamais seules.
+function missedInTrain(t, id) { (t.missed ||= []).push(id); queueMissed(id); }
+function queueMissed(id) {
+  const cards = state.progress.cards; const now = Date.now();
+  cards[id] = cards[id] ? { ...cards[id], due: Math.min(cards[id].due, now) } : newCard(now);
+}
+function addAllToCarnet(ids) {
+  let n = 0; for (const id of ids) if (!CN.has(state.progress.carnet, id)) { CN.toggle(state.progress.carnet, id, true); n++; }
+  persist(); toast(n ? `${n} question${n > 1 ? 's' : ''} ajoutée${n > 1 ? 's' : ''} au carnet d’erreurs` : 'Déjà dans le carnet', 'bookmark');
+}
 function filterQuestions(t) {
   return state.bank.questions.filter((q) => (t.prof === 'all' || q.profession === t.prof) && (t.theme === 'all' || q.theme === t.theme) && (t.tag === 'all' || q.tags.includes(t.tag)));
 }
@@ -975,7 +1167,7 @@ function weakest(n) {
 views.pieges = () => {
   const Q = state.progress.stats?.q || {};
   const ids = pitfalls(Q, (id) => !!state.byId[id]);
-  setTimeout(() => { const b = $('#pg-print'); if (b) b.onclick = () => window.print(); }, 0);
+  setTimeout(() => { const b = $('#pg-print'); if (b) b.onclick = () => printPieges(ids, Q); }, 0);
   const groups = {};
   for (const id of ids) { const q = state.byId[id]; const k = `${q.profession} · ${THEMES[q.theme] || q.theme}`; (groups[k] ||= []).push(q); }
   const item = (q) => { const s = Q[q.id] || {};
@@ -985,10 +1177,32 @@ views.pieges = () => {
       ${good ? `<div class="pg-a">${ic('check')} ${esc(good)}</div>` : ''}
       <div class="pg-m"><strong>Attendu :</strong> ${esc(q.qrc?.model_answer || '')}</div>
       <div class="pg-e">${esc(q.explanation || '')}</div><div class="ref">Réf. : ${esc(q.reference || '')}</div></div>`; };
-  return `<div class="no-print row" style="gap:8px;margin-bottom:12px"><button class="btn sm" data-go="train">← Séries</button><button class="btn sm primary" id="pg-print">${ic('library')} Imprimer</button></div>
+  return `<div class="no-print row" style="gap:8px;margin-bottom:12px"><button class="btn sm" data-go="train">← Séries</button>${ids.length ? `<button class="btn sm primary" id="pg-print">${PDF.isStandalone() ? `${ic('upload')} Partager` : `${ic('library')} Imprimer`}</button>` : ''}</div>
     <div class="card"><h2>Mes pièges (${ids.length})</h2><p class="muted">Les questions ratées au moins 3 fois, avec la bonne réponse et l’explication, par thème. À relire au calme, sur papier si vous préférez.</p></div>
-    ${ids.length ? Object.entries(groups).map(([k, qs]) => `<div class="card pg-group"><h2>${esc(k)}</h2>${qs.map(item).join('')}</div>`).join('') : '<div class="card"><p class="muted">Aucune question ratée 3 fois : rien à relire ici.</p></div>'}`;
+    ${ids.length ? Object.entries(groups).map(([k, qs]) => `<div class="card pg-group"><h2>${esc(k)}</h2>${qs.map(item).join('')}</div>`).join('') : '<div class="card empty"><p class="muted">Aucune question ratée 3 fois : rien à relire ici pour l’instant.</p><button class="btn" data-go="train">' + ic('target') + ' Faire une série</button></div>'}`;
 };
+
+// Mes pièges en texte : partagés (ou copiés) depuis l'app installée, où window.print() ne fait rien.
+function piegesText(ids, Q) {
+  const lines = [`Mes pièges · DEC épreuve 1 (${ids.length})`];
+  for (const id of ids) {
+    const q = state.byId[id]; if (!q) continue;
+    const s = Q[id] || {}, good = q.qcm?.choices?.[q.qcm.answer];
+    lines.push('', `${q.profession} · ${THEMES[q.theme] || q.theme} · DEC ${q.sessionLabel || ''} Q${q.n} (ratée ${s.ko || 0} fois sur ${s.seen || 0})`, q.qcm?.question || q.question || '');
+    if (good) lines.push(`Réponse : ${good}`);
+    if (q.qrc?.model_answer) lines.push(`Attendu : ${q.qrc.model_answer}`);
+    if (q.explanation) lines.push(q.explanation);
+  }
+  return lines.join('\n');
+}
+async function printPieges(ids, Q) {
+  if (!PDF.isStandalone()) { closeSheet(true); setTimeout(() => window.print(), 300); return; }
+  const text = piegesText(ids, Q);
+  try {
+    if (navigator.share) { await navigator.share({ title: 'Mes pièges', text }); return; }
+  } catch (e) { if (e?.name === 'AbortError') return; }
+  try { await navigator.clipboard.writeText(text); toast('Mes pièges copiés : collez-les dans une note'); } catch { toast('Partage indisponible sur cet appareil'); }
+}
 
 views.exam = () => {
   if (state.examResult) return renderExamResult();
@@ -1000,11 +1214,12 @@ views.exam = () => {
     }, 0);
     const hist = state.progress.exams.slice(-8);
     const ho = state.heldOut || [];
-    const inedit = ho.length ? `<div class="card plan-card"><h2>Examen inédit · DEC ${esc(ho[0].sessionLabel)}</h2><p class="muted">Ce sujet complet est tenu à l’écart de la révision (séances, séries, jeux, examens blancs) : ses 20 questions sont neuves pour vous, comme le jour J. Le passer mesure ce que vous savez faire sur des questions jamais vues ; son résultat compte davantage dans le niveau estimé. À garder pour la dernière semaine, une seule fois : ensuite, ses questions rejoignent la révision.</p>
+    const inedit = ho.length ? `<div class="card plan-card"><h2>Examen inédit · DEC ${esc(ho[0].sessionLabel)}</h2><p class="muted">Un sujet complet jamais vu, comme le jour J : à passer une fois, la dernière semaine.</p><details class="muted"><summary>Pourquoi un examen inédit</summary><p>Ses 20 questions sont tenues à l’écart de la révision (séances, séries, jeux, examens blancs). Il mesure ce que vous savez faire sur des questions jamais vues ; son résultat compte davantage dans le niveau estimé. Ensuite, ses questions rejoignent la révision.</p></details>
       <div class="btnrow"><button class="btn primary" data-inedit="qcm">Examen inédit en QCM</button><button class="btn primary" data-inedit="qrc">Examen inédit en QRC</button></div></div>` : '';
-    return `<div class="card"><h2>Examen blanc</h2><p class="muted">20 questions tirées au sort (10 EC puis 10 CAC), 60 minutes, questions jamais passées en examen en priorité. QCM : 1 point par bonne réponse. QRC : barème du sujet d’origine, auto-correction à la fin, note ramenée sur 20. Vous pouvez mettre l’examen en pause (chrono arrêté) ou l’abandonner sans qu’il compte.</p>
-      <div class="btnrow"><button class="btn primary" id="ex-qcm">QCM</button><button class="btn primary" id="ex-qrc">QRC</button></div></div>${inedit}
-      ${hist.length ? `<div class="card"><h2>Historique</h2>${chart(hist)}<table><thead><tr><th>Date</th><th>Format</th><th>Note</th><th>EC</th><th>CAC</th></tr></thead><tbody>${hist.slice().reverse().map((e) => `<tr><td>${new Date(e.t).toLocaleDateString('fr-FR')}${e.inedit ? ' · inédit' : ''}</td><td>${e.mode.toUpperCase()}</td><td><strong>${e.note}</strong>${isCounted(e) ? '' : ' <span class="muted">(incomplète, non comptée)</span>'}</td><td>${pct(e.byProf.EC)}</td><td>${pct(e.byProf.CAC)}</td></tr>`).join('')}</tbody></table></div>` : ''}`;
+    return `<div class="card"><h2>Examen blanc</h2><p class="muted">20 questions (10 EC puis 10 CAC), 60 minutes. Pause possible, abandon sans que cela compte.</p>
+      <details class="muted"><summary>Comment les questions sont choisies et notées</summary><p>Jamais passées en examen d’abord ; une seule question par notion récurrente ; tous les thèmes représentés ; sans les questions dont la réponse est douteuse. QCM : 1 point par bonne réponse, sans point négatif. QRC : barème du sujet d’origine, auto-correction à la fin, note ramenée sur 20.</p></details>
+      <button class="btn primary" id="ex-qcm">${ic('timer')} QCM · format réel de l’épreuve</button><div style="height:8px"></div><button class="btn" id="ex-qrc">QRC · réponses courtes à rédiger</button></div>${inedit}
+      ${hist.length ? `<div class="card"><h2>Historique</h2>${chart(hist)}<table><thead><tr><th>Date</th><th>Format</th><th>Note</th><th>EC</th><th>CAC</th></tr></thead><tbody>${hist.slice().reverse().map((e) => `<tr><td>${new Date(e.t).toLocaleDateString('fr-FR')}${e.inedit ? ' · inédit' : ''}</td><td>${e.mode.toUpperCase()}</td><td><strong>${fmtNote(e.note)}</strong>${isCounted(e) ? '' : ' <span class="muted">(incomplète, non comptée)</span>'}</td><td>${scoreOf(e.byProf.EC)}</td><td>${scoreOf(e.byProf.CAC)}</td></tr>`).join('')}</tbody></table></div>` : ''}`;
   }
   const ex = state.exam;
   const n = ex.ids.length; const answered = answeredCount(ex); const blank = n - answered;
@@ -1031,8 +1246,7 @@ views.exam = () => {
       <div class="card" style="margin-top:10px"><h2>${blank ? `${blank} question${blank > 1 ? 's' : ''} sans réponse` : 'Toutes les questions ont une réponse'}</h2>
       <p class="muted">${answered}/${n} répondues.${blank ? ' Une question sans réponse vaut 0.' : ''}${answered < n / 2 ? ' <strong>Moins de la moitié est répondue</strong> : la copie sera corrigée mais ne comptera ni dans le niveau estimé, ni dans les badges, ni dans le plan.' : ''}</p>
       ${blank ? `<div class="chips exam-grid">${ex.ids.map((id, i) => hasAnswer(ex, id) ? '' : `<span class="chip muted">${i + 1}</span>`).join('')}</div>` : ''}
-      <div class="btnrow" style="margin-top:12px">${blank ? '<button class="btn primary" id="ex-first-blank">Répondre aux questions manquantes</button>' : ''}<button class="btn ${blank ? '' : 'primary'}" id="ex-confirm">Rendre la copie${blank ? ' quand même' : ''}</button></div>
-      <div class="btnrow" style="margin-top:8px"><button class="btn" id="ex-back">← Continuer l’examen</button><button class="btn" id="ex-abandon">Abandonner (non compté)</button></div></div>`;
+      <div class="stack" style="margin-top:12px">${blank ? '<button class="btn primary" id="ex-first-blank">Répondre aux questions manquantes</button>' : ''}<button class="btn ${blank ? '' : 'primary'}" id="ex-confirm">Rendre la copie${blank ? ' quand même' : ''}</button><button class="btn" id="ex-back">← Continuer l’examen</button><button class="btn" id="ex-abandon">Abandonner (non compté)</button></div></div>`;
   }
   const q = examById()[ex.ids[ex.current]];
   setTimeout(() => mountExamQuestion(q), 0);
@@ -1075,7 +1289,7 @@ function persistExam() {
 }
 function beginExam(mode, { inedit = false } = {}) {
   const fixed = inedit && state.heldOut?.length ? [...state.heldOut].sort((a, b) => (a.profession === b.profession ? a.n - b.n : a.profession === 'EC' ? -1 : 1)) : null;
-  state.exam = startExam(state.bank.questions, state.progress.examSeen, mode, Date.now(), fixed);
+  state.exam = startExam(state.bank.questions, state.progress.examSeen, mode, Date.now(), fixed, { clusterOf: state.clusters.clusterOf });
   if (fixed) state.exam.inedit = fixed[0].session;
   state.examConfirm = false;
   persistExam();
@@ -1128,7 +1342,7 @@ function mountExamQuestion(q) {
       c.appendChild(b);
     });
   } else {
-    box.innerHTML = `<div class="muted">DEC ${esc(q.sessionLabel)} · Q${q.n} · ${q.points} pt${q.points > 1 ? 's' : ''}</div><div class="q">${esc(q.qrc.question || q.question)}</div><textarea id="ans" placeholder="Réponse courte…">${esc(ex.answers[q.id] || '')}</textarea>`;
+    box.innerHTML = `<div class="muted">DEC ${esc(q.sessionLabel)} · Q${q.n} · ${q.points} pt${q.points > 1 ? 's' : ''}</div><div class="q">${esc(q.qrc.question || q.question)}</div><textarea id="ans" placeholder="Réponse courte…">${escA(ex.answers[q.id] || '')}</textarea>`;
     $('#ans', box).oninput = (e) => { ex.answers[q.id] = e.target.value; persistExam(); refreshGrid(); };
   }
   const last = ex.ids.length - 1;
@@ -1163,7 +1377,11 @@ function recordExam(res) {
   res.ids.forEach((id) => { state.progress.examSeen[id] = res.t; });
   // Copie complète : chaque question compte (blanc = raté). Copie répondue à moins de 50 % : seules les réponses données.
   const counted = isCounted(summary);
-  rows.forEach((r) => { if (counted || hasAnswer({ answers }, r.id)) answer(r.id, r.points >= r.max / 2, res.mode, { defer: true, t: res.t }); });
+  rows.forEach((r) => {
+    if (!(counted || hasAnswer({ answers }, r.id))) return;
+    answer(r.id, r.points >= r.max / 2, res.mode, { defer: true, t: res.t });
+    if (r.points < r.max / 2 && state.byId[r.id]) queueMissed(r.id); // l'erreur revient dans Réviser
+  });
   G.applyExam(state.progress.stats, summary);
   state.examResult = { res };
   store.saveExam(null);
@@ -1196,16 +1414,41 @@ function renderExamResult() {
       <button class="btn primary" id="validate">Valider la note</button>`;
   }
   const r = er.res;
-  setTimeout(() => { $('#close').onclick = () => { state.examResult = null; render(); }; }, 0);
+  // Corrigé : bandeau collant « Erreurs / Toutes » (erreurs par défaut), « Refaire mes erreurs », « Tout ajouter au
+  // carnet » ; chaque corrigé est replié, sauf la réponse (bonne et choisie) en QCM.
+  const wrong = r.rows.filter((row) => row.points < row.max);
+  const filter = er.filter || (wrong.length ? 'ko' : 'all');
+  const shown = filter === 'ko' ? wrong : r.rows;
+  setTimeout(() => {
+    document.querySelectorAll('#close, #close2').forEach((b) => { b.onclick = () => { state.examResult = null; render(); }; });
+    document.querySelectorAll('[data-exf]').forEach((b) => { b.onclick = () => { er.filter = b.dataset.exf; render(); }; });
+    const redo = $('#ex-redo'); if (redo) redo.onclick = () => { state.examResult = null; trainOn(wrong.map((x) => x.id).filter((id) => state.byId[id]), 'Mes erreurs de l’examen blanc', r.mode); };
+    const all = $('#ex-carnet'); if (all) all.onclick = () => { addAllToCarnet(wrong.map((x) => x.id).filter((id) => state.byId[id])); all.disabled = true; };
+  }, 0);
   const full = isCounted(r);
-  return `<div class="card center"><div class="muted">Examen blanc ${r.mode.toUpperCase()}${r.inedit ? ' inédit' : ''}</div><div class="big">${r.note}/20</div>
-      <div class="muted">${!full ? `Copie incomplète (${r.answered}/${r.ids.length} répondues) : non comptée dans le niveau estimé ni les badges` : r.note < 6 ? 'Éliminatoire (< 6)' : r.note < 10 ? 'Sous la moyenne' : r.note < 14 ? 'Validé' : 'Très bon'} · EC ${pct(r.byProf.EC)} · CAC ${pct(r.byProf.CAC)}</div>${r.answered != null && full && r.answered < r.ids.length ? `<div class="muted">${r.ids.length - r.answered} question${r.ids.length - r.answered > 1 ? 's' : ''} sans réponse</div>` : ''}</div>
-    <div class="card"><h2>Par thème</h2><table><tbody>${Object.entries(r.byTheme).map(([k, v]) => `<tr><td>${THEMES[k]}</td><td>${v.points}/${v.max}</td></tr>`).join('')}</tbody></table></div>
-    ${r.rows.map((row, i) => { const q = row.q; const ok = row.points >= row.max; return `<div class="card" style="border-left:4px solid ${ok ? 'var(--ok)' : row.points > 0 ? 'var(--warn)' : 'var(--ko)'}">${qHeader(q)}<div class="q" style="font-size:16px">${i + 1}. ${esc(r.mode === 'qcm' ? (q.qcm.question || q.question) : (q.qrc.question || q.question))}</div>
+  const okN = r.rows.filter((row) => row.points >= row.max).length;
+  const answered = r.answered ?? r.ids.length; const blank = r.ids.length - answered;
+  // Une phrase d'interprétation, sans mur de chiffres : ce qui a été fait, ce qui reste à gagner.
+  const verdict = !full ? `Copie incomplète (${answered}/${r.ids.length} répondues) : elle ne compte ni dans le niveau estimé ni dans les badges.`
+    : r.note < 6 ? 'Sous 6, la note serait éliminatoire le jour J : c’est un entraînement : reprenez vos erreurs, une à une, c’est là que les points se gagnent.'
+      : r.note < 10 ? 'Sous la moyenne pour l’instant : vos erreurs sont la meilleure révision.' : r.note < 14 ? 'Validé : continuez sur vos erreurs pour assurer.' : 'Très bon résultat.';
+  const sentence = r.mode === 'qcm'
+    ? `${answered} question${answered > 1 ? 's' : ''} répondue${answered > 1 ? 's' : ''}, ${okN} juste${okN > 1 ? 's' : ''}${blank ? ` ; ${blank} laissée${blank > 1 ? 's' : ''} sans réponse (aucune pénalité en cas d’erreur : répondez à tout le jour J)` : ''}.`
+    : `${okN} question${okN > 1 ? 's' : ''} sur ${r.ids.length} avec tous les points.`;
+  return `<div class="card center"><div class="muted">Examen blanc ${r.mode.toUpperCase()}${r.inedit ? ' inédit' : ''}</div><div class="big">${fmtNote(r.note)}/20</div>
+      <div class="muted">EC ${scoreOf(r.byProf.EC)} · CAC ${scoreOf(r.byProf.CAC)}</div>
+      <p style="margin:10px 0 4px">${esc(sentence)}</p><p class="muted" style="margin:0">${esc(verdict)}</p>
+      ${wrong.length ? `<button class="btn primary" id="ex-redo" style="margin-top:12px">${ic('repeat')} Refaire ${wrong.length > 1 ? `les ${wrong.length} questions ratées` : 'la question ratée'}${blank ? ' ou laissées en blanc' : ''}</button><div style="height:8px"></div><button class="btn" id="ex-carnet">${ic('bookmark')} Tout ajouter au carnet d’erreurs</button>` : ''}
+      <div style="height:8px"></div><button class="btn" id="close">Fermer le corrigé</button></div>
+    <details class="card"><summary><strong>Par thème</strong></summary><table><tbody>${Object.entries(r.byTheme).map(([k, v]) => `<tr><td>${THEMES[k]}</td><td class="nowrap">${fmtScore(v.points, v.max)}</td></tr>`).join('')}</tbody></table></details>
+    <div class="ex-filter" role="group" aria-label="Corrigés affichés"><button class="chip ${filter === 'ko' ? 'on' : ''}" data-exf="ko" aria-pressed="${filter === 'ko'}">Erreurs (${wrong.length})</button><button class="chip ${filter === 'all' ? 'on' : ''}" data-exf="all" aria-pressed="${filter === 'all'}">Toutes (${r.rows.length})</button></div>
+    ${shown.length ? '' : `<div class="card"><p class="muted">${ic('check')} Aucune erreur : rien à reprendre.</p></div>`}
+    ${shown.map((row) => { const i = r.rows.indexOf(row); const q = row.q; const ok = row.points >= row.max; const blankQ = !hasAnswer(r, q.id); const mark = ok ? `${ic('check')} juste` : blankQ ? 'sans réponse' : `${ic('x')} ${row.points > 0 ? 'en partie' : 'faux'}`;
+      return `<details class="card ex-row" style="border-left:4px solid ${ok ? 'var(--ok)' : row.points > 0 ? 'var(--warn)' : 'var(--ko)'}"><summary><span class="ex-mark">${i + 1}. ${mark}</span> <span class="ex-q">${esc(r.mode === 'qcm' ? (q.qcm.question || q.question) : (q.qrc.question || q.question))}</span></summary>${qHeader(q)}
       ${r.mode === 'qcm'
-    ? `${qcmReview(q, r.answers[q.id], r.orders?.[q.id])}<details ${ok ? '' : 'open'}><summary>Explication</summary>${qExplain(q)}</details>`
-    : `<div class="muted">Votre réponse : ${esc(r.answers[q.id] || '—')}</div><div class="answer">${esc(q.qrc.model_answer)}</div><details><summary>Explication</summary>${qExplain(q)}</details>`}</div>`; }).join('')}
-    ${nextStepBlock()}<button class="btn" id="close">Fermer le corrigé</button>`;
+    ? `${qcmReview(q, r.answers[q.id], r.orders?.[q.id])}${qExplain(q)}`
+    : `<div class="muted">Votre réponse : ${esc(r.answers[q.id] || '—')}</div><div class="answer">${esc(q.qrc.model_answer)}</div>${qExplain(q)}`}</details>`; }).join('')}
+    ${nextStepBlock()}<button class="btn" id="close2">Fermer le corrigé</button>`;
 }
 
 views.fiches = () => {
@@ -1219,7 +1462,7 @@ views.fiches = () => {
       const file = state.ficheOpen;
       try { $('#fiche').innerHTML = renderMarkdown(await loadFiche(file)); addToc($('#fiche')); trackRead(file, () => (state.view === 'fiches' && state.ficheOpen === file && !$('#sheet')?.classList.contains('show') ? window : null)); } catch { $('#fiche').textContent = 'Fiche indisponible hors ligne (ouvrez-la une fois en ligne).'; }
     }, 0);
-    return `<div class="row" style="gap:8px"><button class="btn sm" id="back">← Fiches</button>${seenBtn(state.ficheOpen)}${villeBtn(state.ficheOpen)}</div>${n ? `<div style="margin-top:10px">${trainBtn('fiche-train')}</div>` : ''}<div class="card fiche" id="fiche" style="margin-top:10px">Chargement…</div>${trainBtn('fiche-train2')}`;
+    return `${glHint()}<div class="row" style="gap:8px"><button class="btn sm" id="back">← Fiches</button>${seenBtn(state.ficheOpen)}${villeBtn(state.ficheOpen)}</div>${n ? `<div style="margin-top:10px">${trainBtn('fiche-train')}</div>` : ''}<div class="card fiche" id="fiche" style="margin-top:10px">Chargement…</div>${trainBtn('fiche-train2')}`;
   }
   setTimeout(() => { document.querySelectorAll('[data-fiche]').forEach((b) => { b.onclick = () => openFiche(b.dataset.fiche); }); }, 0);
   if (!state.fiches.length) return `<div class="card"><h2>Fiches</h2><p class="muted">Aucune fiche disponible pour l’instant.</p></div>`;
@@ -1230,7 +1473,7 @@ views.fiches = () => {
   const synth = state.fiches.filter((f) => f.kind !== 'visuel');
   const ec = synth.filter((f) => /-ec-/.test(f.file)); const cac = synth.filter((f) => /-cac-/.test(f.file));
   const seenCount = state.fiches.filter((f) => P.isRead(state.progress.plan, f.file)).length;
-  return `${villeEntry()}${carteEntry()}<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Les schémas sont rangés dans l’ordre du parcours : lisez-les dans cet ordre. Les fiches de référence donnent le détail, à consulter au besoin. ${ic('check')} = vue (bouton « Vu » dans chaque fiche, décochable).</p><p style="margin:0 0 8px"><strong>${seenCount} / ${state.fiches.length}</strong> fiches vues</p><div class="btnrow"><button class="btn primary" data-go="plan">${ic('compass')} Ouvrir le parcours</button><button class="btn" data-go="glossaire">${ic('book')} Glossaire</button><a class="btn" href="./data/fiches-a-imprimer.pdf" target="_blank" rel="noopener">${ic('library')} PDF à imprimer (A4, noir et blanc)</a><a class="btn" href="./data/fiches-a-imprimer-2-par-feuille.pdf" target="_blank" rel="noopener">${ic('library')} PDF livret à relier (2 pages par feuille, recto verso)</a></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
+  return `${villeEntry()}${carteEntry()}<div class="card plan-card"><strong>Par où commencer ?</strong><p class="muted" style="margin:4px 0 8px">Lisez les schémas dans l’ordre ; les fiches de référence donnent le détail. ${ic('check')} = vue.</p><p style="margin:0 0 8px"><strong>${seenCount} / ${state.fiches.length}</strong> fiches vues</p><div class="btnrow"><button class="btn primary" data-go="plan">${ic('compass')} Ouvrir le parcours</button><button class="btn" data-go="glossaire">${ic('book')} Glossaire</button><button class="btn" data-pdf="./data/fiches-a-imprimer.pdf" data-pdf-title="Fiches PDF (A4)">${ic('library')} Fiches PDF (A4)</button><button class="btn" data-pdf="./data/fiches-a-imprimer-2-par-feuille.pdf" data-pdf-title="Livret PDF (recto verso)">${ic('library')} Livret PDF (recto verso)</button></div></div>${visuels.length ? `<div class="card"><h2>Schémas, dans l’ordre du parcours</h2><p class="muted">Une page pour plusieurs questions : comparatifs EC / CAC, échelles, frises, arbres de décision.</p><div class="list">${visuels.map(({ f, n }) => item(f, n < 99 ? `Étape ${n}` : '')).join('')}</div></div>` : ''}
     <div class="card"><h2>Fiches de référence</h2><h3>Expert-comptable</h3><div class="list">${ec.map((f) => item(f)).join('')}</div><h3>Commissaire aux comptes</h3><div class="list">${cac.map((f) => item(f)).join('')}</div></div>`;
 };
 // Sommaire déroulant en tête des fiches longues.
@@ -1241,6 +1484,12 @@ function addToc(root) {
   toc.innerHTML = `<summary>Sommaire · ${hs.length} parties</summary>${hs.map((h, i) => `<button class="btn sm" data-toc="${i}">${esc(h.textContent)}</button>`).join('')}`;
   root.insertBefore(toc, root.children[1] || null);
   toc.querySelectorAll('[data-toc]').forEach((b) => { b.onclick = () => { toc.open = false; hs[Number(b.dataset.toc)].scrollIntoView({ behavior: 'smooth', block: 'start' }); }; });
+}
+// Première fiche ouverte : une ligne invite à toucher les mots soulignés (glossaire).
+function glHint() {
+  const s = state.progress.settings; if (s.glHintSeen || s.glossary === false || !state.gloss.length) return '';
+  s.glHintSeen = true; store.save(state.progress);
+  return `<p class="muted gl-hint">${ic('book')} Touchez les mots soulignés en pointillé : leur définition s’affiche, en clair.</p>`;
 }
 function openFiche(file) { state.ficheOpen = file; go('fiches'); }
 // Fiches qui ont leur quartier dans la ville des institutions : bouton vers la vue 3D.
@@ -1306,7 +1555,7 @@ function trackRead(file, scroller) {
 // Bouton « Vu » : coche ou décoche la fiche dans la progression (liste des fiches, parcours, tâches du jour).
 function seenBtn(file) {
   const on = P.isRead(state.progress.plan, file);
-  return `<button class="btn sm seen ${on ? 'on' : ''}" data-seen="${esc(file)}" aria-pressed="${on}">${on ? ic('check') : ic('eye')} Vu</button>`;
+  return `<button class="btn sm seen ${on ? 'on' : ''}" data-seen="${esc(file)}" aria-pressed="${on}">${on ? `${ic('check')} Lue` : `${ic('eye')} J’ai lu : marquer comme vue`}</button>`;
 }
 function refreshSeen(file) { document.querySelectorAll(`[data-seen="${CSS.escape(file)}"]`).forEach((b) => { b.outerHTML = seenBtn(file); }); }
 function toggleSeen(file) {
@@ -1320,7 +1569,7 @@ async function ficheSheet(file) {
   const meta = state.fiches.find((f) => f.file === file) || {};
   const n = (meta.questions || []).length;
   const step = P.STEPS.find((st) => st.fiches?.includes(file));
-  sheet(`<div class="row" style="gap:8px;margin-bottom:10px">${seenBtn(file)}${VILLE_FICHES.includes(file) && !inActivity() ? `<button class="btn sm" id="sheet-ville">${ic('landmark')} La ville des institutions</button>` : ''}</div><div class="card fiche" id="sheet-fiche">Chargement…</div>${n && !inActivity() ? `<button class="btn primary" id="sheet-train">${ic('target')} S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : ''}${step && !inActivity() ? `<div style="margin-top:10px">${shortsBtn(step.id)}</div>` : ''}`);
+  sheet(`${glHint()}<div class="row" style="gap:8px;margin-bottom:10px">${seenBtn(file)}${VILLE_FICHES.includes(file) && !inActivity() ? `<button class="btn sm" id="sheet-ville">${ic('landmark')} La ville des institutions</button>` : ''}</div><div class="card fiche" id="sheet-fiche">Chargement…</div>${n && !inActivity() ? `<button class="btn primary" id="sheet-train">${ic('target')} S’entraîner sur ce schéma (${Math.min(20, n)} questions)</button>` : ''}${step && !inActivity() ? `<div style="margin-top:10px">${shortsBtn(step.id)}</div>` : ''}`);
   const tb = $('#sheet-train'); if (tb) tb.onclick = () => { closeSheet(true); trainOn(shuffle(meta.questions, Date.now()).slice(0, 20), meta.title); };
   const vb = $('#sheet-ville'); if (vb) vb.onclick = () => { closeSheet(true); go('ville'); };
   try {
@@ -1348,34 +1597,43 @@ views.stats = () => {
     rows.push({ p, t, n: sub.length, m });
   }
   const last = state.progress.attempts.slice(-50);
-  const acc = last.length ? Math.round((last.filter((a) => a.ok).length / last.length) * 100) : null;
-  const tagAcc = {};
-  for (const a of state.progress.attempts) { const q = state.byId[a.id]; if (!q) continue; for (const tg of q.tags) { tagAcc[tg] = tagAcc[tg] || { ok: 0, n: 0 }; tagAcc[tg].n++; if (a.ok) tagAcc[tg].ok++; } }
-  const weakTags = Object.entries(tagAcc).filter(([, v]) => v.n >= 3).sort((a, b) => a[1].ok / a[1].n - b[1].ok / b[1].n).slice(0, 8);
+  const lastOk = last.filter((a) => a.ok).length;
+  // Points faibles par profession et sous-thème (EC et CAC séparés : la confusion entre les deux se voit).
+  const weakTags = P.tagStats(state.progress.attempts, state.byId).rows.filter((r) => r.n >= 3).sort((a, b) => a.acc - b.acc || b.n - a.n).slice(0, 8);
+  const seenN = qs.filter((q) => state.progress.stats.q[q.id]?.seen > 0).length;
+  const knownN = rows.reduce((a, r) => a + r.m[3], 0);
   const due7 = Object.values(cards).filter((c) => c.due <= Date.now() + 7 * DAY).length;
-  return `<div class="row" style="gap:8px;margin-bottom:12px"><button class="btn sm" data-go="home">← Accueil</button><button class="btn sm" data-go="carte">${ic('brain')} Carte des notions</button></div><div class="grid2"><div class="stat"><div class="n">${acc === null ? '–' : acc + ' %'}</div><div class="l">réussite (50 dernières)</div></div><div class="stat"><div class="n">${due7}</div><div class="l">à revoir sous 7 jours</div></div></div>
-    <div class="card"><h2>Maîtrise par thème</h2><div class="muted" style="margin-bottom:8px"><i class="m3" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> acquise <i class="m2" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> en cours <i class="m1" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> apprentissage · gris = jamais vue · chiffre : questions de la barre (couleurs) / total, ${ic('check')} = acquises</div>
+  if (!state.progress.attempts.length) return `<div class="card empty"><h2>Statistiques</h2><p class="muted">Rien à mesurer pour l’instant : répondez à quelques questions, vos chiffres apparaîtront ici.</p><button class="btn primary" data-go="review">${ic('play')} Commencer une séance</button></div>`;
+  return `<div class="row" style="gap:8px;margin-bottom:12px"><button class="btn sm" data-go="carte">${ic('brain')} Carte des notions</button></div><div class="grid2"><div class="stat"><div class="n">${fmtShare(lastOk, last.length)}</div><div class="l">réussite récente${last.length ? ` (${last.length} dernière${last.length > 1 ? 's' : ''} réponse${last.length > 1 ? 's' : ''})` : ''}</div></div><div class="stat"><div class="n">${due7}</div><div class="l">à revoir sous 7 jours</div></div></div>
+    <div class="card"><h2>Maîtrise par thème</h2><p class="muted" style="margin:0 0 6px">Questions vues : <strong>${seenN}/${qs.length}</strong> (${fmtShare(seenN, qs.length)}) · acquises : ${fmtShare(knownN, qs.length)}</p><div class="muted" style="margin-bottom:8px"><i class="m3" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> acquise <i class="m2" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> en cours <i class="m1" style="display:inline-block;width:10px;height:10px;border-radius:2px"></i> apprentissage · gris : jamais vue · chiffre : vues / total</div>
       ${rows.map((r) => `<div class="mastery" style="margin:6px 0"><div><span class="badge ${r.p.toLowerCase()}">${r.p}</span> ${THEMES[r.t]}</div><div class="bar">${[3, 2, 1].map((k) => `<i class="m${k}" style="width:${(r.m[k] / Math.max(1, r.n)) * 100}%"></i>`).join('')}</div><div class="muted" title="${r.m[3]} acquise(s)">${r.n - r.m[0]}/${r.n}${r.m[3] ? ` <span class="m3t">(${r.m[3]} ${ic('check')})</span>` : ''}</div></div>`).join('')}</div>
     ${estimateCard()}
     ${calibrationCard()}
     ${confusionCard()}
     ${recurringCard()}
-    ${weakTags.length ? `<div class="card"><h2>Points faibles</h2><table><tbody>${weakTags.map(([k, v]) => `<tr><td>${esc(tagLabel(k))}</td><td>${Math.round((v.ok / v.n) * 100)} % (${v.n})</td></tr>`).join('')}</tbody></table></div>` : ''}
+    ${weakTags.length ? `<div class="card"><h2>Points faibles</h2><table><tbody>${weakTags.map((r) => `<tr><td>${esc(tagLabel(r.tag))} (${r.prof})</td><td>${fmtRate(r.ok, r.n)}</td></tr>`).join('')}</tbody></table></div>` : ''}
     ${state.progress.exams.length ? `<div class="card"><h2>Examens blancs</h2>${chart(state.progress.exams.slice(-12))}</div>` : ''}
-    <div class="card"><h2>Banque</h2><div class="muted">${qs.length} questions · ${state.bank.sessions.length} sessions (${state.bank.sessions[0].session} → ${state.bank.sessions[state.bank.sessions.length - 1].session})<br>Confiance : ${['high', 'medium', 'low'].map((c) => `${c} ${qs.filter((q) => q.confidence === c).length}`).join(' · ')}</div></div>`;
+    <div class="card"><h2>Banque</h2><div class="muted">${bankLabel()} · ${state.bank.sessions.length} sessions (${esc(SESSION_NAME(state.bank.sessions[0].session))} à ${esc(SESSION_NAME(state.bank.sessions[state.bank.sessions.length - 1].session))})<br>Fiabilité des corrigés : ${[['high', 'sûre'], ['medium', 'à confirmer'], ['low', 'douteuse']].map(([c, l]) => `${l} ${qs.filter((q) => q.confidence === c).length}`).join(' · ')}</div></div>`;
 };
+// Effectifs de la banque, libellé unique (Réglages, Statistiques) : « 341 questions (dont 20 réservées à l'examen
+// inédit) », puis « 321 questions de révision » ailleurs (séries, plan, carte).
+const SESSION_NAME = (s) => { const m = /^(\d{4})-(\d{2})$/.exec(s); return m ? `${m[2] === '05' ? 'mai' : 'novembre'} ${m[1]}` : s; };
+function bankLabel() {
+  const total = state.bank.count ?? (state.bank.all || state.bank.questions).length; const held = state.heldOut?.length || 0;
+  return held ? `${total} questions (dont ${held} réservées à l’examen inédit) · ${state.bank.questions.length} questions de révision` : `${total} questions de révision`;
+}
 // Calibration : la certitude annoncée correspond-elle à la réussite ?
 function calibrationCard() {
   const c = calibration(state.progress.attempts);
   const total = c[0].n + c[1].n + c[2].n;
   if (!total) return '';
-  const p = (x) => (x.n ? Math.round((x.ok / x.n) * 100) : null);
+  const p = (x) => (x.n ? pctInt((100 * x.ok) / x.n) : null);
   const sure = p(c[2]), guess = p(c[0]);
   const tips = [];
   if (sure !== null && c[2].n >= 10 && sure < 85) tips.push('Excès de confiance : « sûr » devrait viser 90 % et plus. Reprenez « Mes erreurs « j’étais sûr » ».');
-  if (guess !== null && c[0].n >= 10 && guess > 50) tips.push('Vous en savez plus que vous ne le pensez : au hasard, on n’aurait que 25 % en QCM.');
+  if (guess !== null && c[0].n >= 10 && guess > 50) tips.push('Vous en savez plus que vous ne le pensez : en devinant au hasard, on n’aurait que 25 % en QCM.');
   if (!tips.length && c[2].n >= 10) tips.push('Bonne calibration : votre certitude est un indicateur fiable.');
-  return `<div class="card"><h2>Calibration</h2><table><thead><tr><th>Certitude annoncée</th><th>Réussite</th><th>Réponses</th></tr></thead><tbody>${[[2, 'Sûr'], [1, 'Hésitant'], [0, 'Au hasard / je ne sais pas']].map(([k, l]) => `<tr><td>${l}</td><td><strong>${p(c[k]) === null ? '–' : p(c[k]) + ' %'}</strong></td><td>${c[k].n}</td></tr>`).join('')}</tbody></table>${tips.map((t) => `<p class="muted">${esc(t)}</p>`).join('')}</div>`;
+  return `<div class="card"><h2>Calibration</h2><table><thead><tr><th>Certitude annoncée</th><th>Réussite</th><th>Réponses</th></tr></thead><tbody>${[[2, 'Sûr'], [1, 'Hésitant'], [0, 'Je devine / je ne sais pas']].map(([k, l]) => `<tr><td>${l}</td><td><strong>${fmtPct(p(c[k]))}</strong></td><td>${c[k].n}</td></tr>`).join('')}</tbody></table>${tips.map((t) => `<p class="muted">${esc(t)}</p>`).join('')}</div>`;
 }
 // Confusion EC / CAC : choix du leurre « règle de l'autre profession » (QCM marqués qcm.crossProf) et intrus de même nature.
 // Le jury le relève à chaque session : les candidats appliquent au CAC la règle de l'EC, et inversement.
@@ -1384,7 +1642,7 @@ function confusionCard() {
   const marked = state.bank.questions.filter((q) => Number.isInteger(q.qcm?.crossProf)).length;
   const it = state.gameData ? GM.intrusCrossStats(state.gameData.intrus || [], state.progress.drills) : { n: 0 };
   if (!c.n && !it.n) return `<div class="card"><h2>Confusion EC / CAC</h2><p class="muted">${marked} QCM ont un leurre qui est la règle de l’autre profession. Répondez à quelques QCM : la part de vos réponses qui le choisissent s’affichera ici.</p></div>`;
-  const pc = (x) => (x === null || x === undefined ? '–' : `${Math.round(x * 100)} %`);
+  const pc = (x) => fmtFrac(x, 'ceil'); // part d'erreurs : arrondie par excès (js/format.js)
   const row = (k) => { const v = c.byProf[k]; return `<tr><td>${k === 'EC' ? 'Questions EC' : 'Questions CAC'}</td><td><strong>${v.n ? pc(v.cross / v.n) : '–'}</strong></td><td>${v.n}</td></tr>`; };
   const tip = c.n >= 8 && c.rate >= 0.15 ? '<p class="muted">Confusion fréquente : jouez au Duel EC / CAC et à « Trouvez l’intrus », qui opposent les règles voisines des deux professions.</p>' : '';
   return `<div class="card"><h2>Confusion EC / CAC</h2><p class="muted">Part des réponses QCM qui choisissent le leurre « règle de l’autre profession » (${marked} QCM en ont un).</p>
@@ -1408,7 +1666,7 @@ function recurringCard() {
 function chart(exams) {
   const w = 320, h = 110, pad = 18; const n = exams.length; const bw = (w - pad * 2) / Math.max(n, 1);
   return `<svg class="chart" viewBox="0 0 ${w} ${h}">${[6, 10, 14].map((y) => `<line x1="${pad}" x2="${w - pad}" y1="${h - 10 - (y / 20) * (h - 20)}" y2="${h - 10 - (y / 20) * (h - 20)}" stroke="var(--line)" stroke-dasharray="3 3"/><text x="0" y="${h - 8 - (y / 20) * (h - 20)}" font-size="9" fill="var(--muted)">${y}</text>`).join('')}
-    ${exams.map((e, i) => { const bh = (e.note / 20) * (h - 20); return `<rect x="${pad + i * bw + 3}" y="${h - 10 - bh}" width="${Math.max(4, bw - 6)}" height="${bh}" rx="3" fill="${e.note < 6 ? 'var(--ko)' : e.note < 10 ? 'var(--warn)' : 'var(--primary)'}"/><text x="${pad + i * bw + bw / 2}" y="${h - 12 - bh}" font-size="9" text-anchor="middle" fill="var(--text)">${e.note}</text>`; }).join('')}</svg>`;
+    ${exams.map((e, i) => { const bh = (e.note / 20) * (h - 20); return `<rect x="${pad + i * bw + 3}" y="${h - 10 - bh}" width="${Math.max(4, bw - 6)}" height="${bh}" rx="3" fill="${e.note < 6 ? 'var(--ko)' : e.note < 10 ? 'var(--warn)' : 'var(--primary)'}"/><text x="${pad + i * bw + bw / 2}" y="${h - 12 - bh}" font-size="9" text-anchor="middle" fill="var(--text)">${fmtNote(e.note)}</text>`; }).join('')}</svg>`;
 }
 
 views.settings = () => {
@@ -1431,6 +1689,7 @@ views.settings = () => {
     $('#s-low').onchange = (e) => { s.showLowConfidence = e.target.checked; persistS(); };
     $('#s-conf').onchange = (e) => { s.confidence = e.target.checked; persistS(); };
     $('#s-hide').onchange = (e) => { s.hideChoices = e.target.checked; persistS(); };
+    $('#s-qtimer').onchange = (e) => { s.qTimer = e.target.checked; persistS(); };
     $('#s-focus').onchange = (e) => { s.focus = e.target.checked; persistS(); };
     $('#s-gl').onchange = (e) => { s.glossary = e.target.checked; persistS(); };
     $('#s-timer').onchange = (e) => { s.gameTimer = e.target.value; persistS(); };
@@ -1444,14 +1703,14 @@ views.settings = () => {
     $('#import').onchange = async (e) => { const f = e.target.files[0]; if (f) applyImport(await f.text()); e.target.value = ''; };
     $('#paste-go').onclick = () => { const t = $('#paste').value.trim(); if (t) applyImport(t); else toast('Collez d’abord le texte de la sauvegarde'); };
     $('#reset').onclick = () => {
-      if (!confirm('Effacer toute la progression ? Une copie de l’état actuel est conservée pour annuler.')) return;
-      state.progress = store.reset(state.progress); initGamify(); persist(); toast('Progression effacée'); render();
+      if (!confirm(`Effacer toute la progression ? Une copie de l’état actuel est conservée pour annuler.${syncResetWarning()}`)) return;
+      state.progress = store.reset(state.progress); markReset(); initGamify(); persist(); toast('Progression effacée'); render(); pushReset();
     };
     const undo = $('#undo');
     if (undo) undo.onclick = () => {
       const prev = store.restorePrev(); if (!prev) return toast('Aucun état précédent');
-      if (!confirm('Revenir à l’état précédent ? L’état actuel sera conservé à son tour.')) return;
-      store.snapshotPrev(state.progress); state.progress = prev; initGamify(); persist(); toast('État précédent restauré'); render();
+      if (!confirm(`Revenir à l’état précédent ? L’état actuel sera conservé à son tour.${syncResetWarning()}`)) return;
+      store.snapshotPrev(state.progress); state.progress = prev; markReset(); initGamify(); persist(); toast('État précédent restauré'); render(); pushReset();
     };
     $('#help-again').onclick = () => { s.helpSeen = false; persist(); go('home'); };
     const sc = $('#sync-connect');
@@ -1470,42 +1729,49 @@ views.settings = () => {
     };
     $('#update').onclick = () => refreshApp();
   }, 0);
-  return `<div class="card"><h2>Réglages</h2>
-    <label class="field">Date de l’examen (le plan et les révisions s’y adaptent ; vide = parcours générique de 4 semaines)<input type="datetime-local" id="s-exam" value="${esc((s.examDate || '').slice(0, 16))}"></label>
-    <label class="field">Nouvelles cartes par jour, au minimum (le plan en demande plus s’il le faut pour tout voir à J-3)<input type="number" id="s-new" min="0" max="100" value="${s.newPerDay}"></label>
+  const ios = /iP(hone|ad|od)/.test(navigator.userAgent || '') || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const chk = (id, on, label, help = '') => `<label class="field check"><input type="checkbox" id="${id}" ${on ? 'checked' : ''}><span>${label}${help ? `<small class="muted">${help}</small>` : ''}</span></label>`;
+  const prev = store.prevInfo();
+  return `<div class="card settings"><h2>Réglages</h2>
+    <label class="field">Date de l’épreuve <small class="muted">vide : parcours générique de 4 semaines</small><input type="datetime-local" id="s-exam" value="${escA((s.examDate || '').slice(0, 16))}"></label>
     <label class="field">Format de révision<select id="s-mode"><option value="mixte" ${s.mode === 'mixte' ? 'selected' : ''}>Mixte (QCM pour découvrir, puis QRC)</option><option value="qcm" ${s.mode === 'qcm' ? 'selected' : ''}>QCM uniquement</option><option value="qrc" ${s.mode === 'qrc' ? 'selected' : ''}>QRC uniquement</option></select></label>
-    <label class="field"><input type="checkbox" id="s-low" ${s.showLowConfidence ? 'checked' : ''}> Afficher le badge « à vérifier » sur les réponses de confiance faible</label>
-    <label class="field"><input type="checkbox" id="s-conf" ${s.confidence ? 'checked' : ''}> Indice de certitude avant la correction (sûr / hésitant / au hasard)</label>
-    <label class="field"><input type="checkbox" id="s-hide" ${s.hideChoices ? 'checked' : ''}> QCM : réfléchir avant d’afficher les propositions</label>
-    <label class="field"><input type="checkbox" id="s-focus" ${s.focus ? 'checked' : ''}> Mode concentration : badges annoncés sans animation, accueil épuré</label>
-    <label class="field"><input type="checkbox" id="s-gl" ${s.glossary !== false ? 'checked' : ''}> Glossaire : définition au toucher des termes clés (soulignés en pointillé), hors examen blanc et jeux</label>
+    ${chk('s-qtimer', s.qTimer !== false, 'Chrono de 3 minutes par question', 'Le rythme de l’épreuve (20 questions en 1 h) ; il ne compte pas dans la note.')}
+    <label class="field">Thème<select id="s-theme"><option value="">Automatique</option><option value="light" ${document.documentElement.dataset.theme === 'light' ? 'selected' : ''}>Clair</option><option value="dark" ${document.documentElement.dataset.theme === 'dark' ? 'selected' : ''}>Sombre</option></select></label>
+    <details class="adv"><summary>Réglages avancés</summary>
+    <label class="field">Nouvelles questions par jour, au minimum <small class="muted">le plan en demande plus s’il le faut pour tout voir à J-3</small><input type="number" id="s-new" min="0" max="100" value="${s.newPerDay}"></label>
+    ${chk('s-conf', s.confidence, 'Indice de certitude avant la correction', 'Sûr, hésitant ou « je devine » : les erreurs commises avec certitude reviennent plus tôt.')}
+    ${chk('s-hide', s.hideChoices, 'QCM : réfléchir avant d’afficher les propositions')}
+    ${chk('s-low', s.showLowConfidence, 'Signaler les réponses à vérifier', 'Badge « à vérifier » sur les quelques questions dont la réponse reste douteuse.')}
+    ${chk('s-gl', s.glossary !== false, 'Glossaire au toucher', 'Les termes soulignés en pointillé s’ouvrent d’un toucher (hors examen blanc et jeux).')}
+    ${chk('s-focus', s.focus, 'Mode concentration', 'Badges annoncés par un simple message, sans animation.')}
     <label class="field">Chrono des jeux (Vrai / Faux, Sprint chiffres)<select id="s-timer">${[['normal', 'Normal'], ['large', 'Large'], ['off', 'Sans chrono']].map(([k, l]) => `<option value="${k}" ${s.gameTimer === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
     <label class="field">Shorts : pause proposée après<select id="s-shorts">${[[10, '10 shorts'], [15, '15 shorts'], [20, '20 shorts'], [30, '30 shorts'], [0, 'Sans limite']].map(([k, l]) => `<option value="${k}" ${(s.shortsLimit ?? 15) === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
-    <label class="field">Apparence<select id="s-look"><option value="bilan" ${(s.look || 'bilan') === 'bilan' ? 'selected' : ''}>Bilan (orange signature, grands chiffres)</option><option value="classique" ${s.look === 'classique' ? 'selected' : ''}>Classique (bleu, interface d’origine)</option></select></label>
-    <label class="field">Thème<select id="s-theme"><option value="">Automatique</option><option value="light" ${document.documentElement.dataset.theme === 'light' ? 'selected' : ''}>Clair</option><option value="dark" ${document.documentElement.dataset.theme === 'dark' ? 'selected' : ''}>Sombre</option></select></label></div>
-    ${syncCard()}
-    <div class="card"><h2>Données</h2><p class="muted">${SY.config() ? 'La progression est stockée sur cet appareil et synchronisée en ligne.' : 'La progression est stockée uniquement sur ce téléphone.'} ${s.lastExportAt ? `Dernier export : ${new Date(s.lastExportAt).toLocaleString('fr-FR')}.` : '<strong>Aucun export pour l’instant.</strong>'}</p>
+    <label class="field">Apparence<select id="s-look"><option value="bilan" ${(s.look || 'bilan') === 'bilan' ? 'selected' : ''}>Bilan (orange signature, grands chiffres)</option><option value="classique" ${s.look === 'classique' ? 'selected' : ''}>Classique (bleu, interface d’origine)</option></select></label></details></div>
+    <div class="card"><h2>Données</h2><p class="muted">${SY.config() ? 'Progression stockée sur cet appareil et synchronisée en ligne.' : 'Progression stockée uniquement sur cet appareil.'} ${s.lastExportAt ? `Dernier export : ${new Date(s.lastExportAt).toLocaleString('fr-FR')}.` : '<strong>Aucun export pour l’instant.</strong>'}</p>
       <div class="btnrow"><button class="btn" id="export">${ic('download')} Exporter</button><button class="btn" id="copy">${ic('clipboard')} Copier</button></div>
-      <div class="btnrow" style="margin-top:8px"><label class="btn" style="cursor:pointer">${ic('upload')} Importer un fichier<input type="file" id="import" accept="application/json,.json" class="hidden"></label></div>
+      <div style="margin-top:8px"><label class="btn file-btn">${ic('upload')} Importer un fichier<input type="file" id="import" accept="application/json,.json" class="hidden"></label></div>
       <details style="margin-top:10px"><summary>Importer un texte collé</summary><textarea id="paste" placeholder="Collez ici le texte de la sauvegarde"></textarea><button class="btn" id="paste-go" style="margin-top:8px">Importer ce texte</button></details>
-      ${store.prevInfo() ? `<div style="height:8px"></div><button class="btn" id="undo">${ic('undo')} Revenir à l’état précédent (${store.prevInfo().cards} cartes, ${new Date(store.prevInfo().t).toLocaleString('fr-FR')})</button>` : ''}
-      <div style="height:8px"></div><button class="btn" id="reset">Effacer la progression</button>
-      <p class="muted" style="margin-top:10px">Protection : ${state.persisted === true ? 'le navigateur a accepté de conserver ces données.' : state.persisted === false ? 'le navigateur peut effacer ces données s’il manque de place.' : 'état de protection inconnu.'} Sur iPhone, <strong>installez l’application sur l’écran d’accueil avant de commencer</strong> : Safari efface les données d’un site resté 7 jours sans visite, pas celles d’une application installée. Une copie automatique est faite toutes les 3 heures.</p></div>
-    <div class="card"><h2>Application</h2><p class="muted">Version ${esc(state.bank.generatedAt || '')} · ${state.bank.count} questions. Fonctionne hors ligne une fois chargée.</p><button class="btn" id="update">Vérifier les mises à jour</button><div style="height:8px"></div><button class="btn" id="help-again">${ic('help')} Revoir l’aide de départ</button></div>`;
+      ${prev ? `<div style="height:8px"></div><button class="btn" id="undo">${ic('undo')} Revenir à l’état précédent (${prev.cards} questions, ${new Date(prev.t).toLocaleString('fr-FR')})</button>` : ''}
+      <div style="height:8px"></div><button class="btn danger" id="reset">Effacer la progression…</button>
+      <details class="muted" style="margin-top:10px"><summary>Protection des données</summary><p>${state.persisted === true ? 'Le navigateur a accepté de conserver ces données.' : state.persisted === false ? 'Le navigateur peut effacer ces données s’il manque de place : exportez régulièrement.' : 'État de protection inconnu.'} Une copie automatique est faite toutes les 3 heures.${ios ? ' Sur iPhone, <strong>installez l’application sur l’écran d’accueil</strong> : Safari efface les données d’un site resté 7 jours sans visite, pas celles d’une application installée.' : ''}</p></details></div>
+    ${syncCard()}
+    <div class="card"><h2>Application</h2><p class="muted">${state.bank.generatedAt ? `Version du ${esc(fmtBuildDate(state.bank.generatedAt))} · ` : ''}${bankLabel()}. Fonctionne hors ligne une fois chargée.</p><button class="btn" id="update">Vérifier les mises à jour</button><div style="height:8px"></div><button class="btn" id="help-again">${ic('help')} Revoir l’aide de départ</button></div>`;
 };
+// Date de génération de la banque (scripts/build_bank.py, AAAA-MM-JJ) en toutes lettres.
+const fmtBuildDate = (v) => { const t = Date.parse(`${String(v).slice(0, 10)}T12:00:00`); return Number.isFinite(t) ? new Date(t).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }) : String(v); };
 
 function syncCard() {
   const cfg = SY.config(); const st = SY.status();
   if (!cfg) {
-    return `<div class="card"><h2>Synchronisation en ligne</h2><p class="muted">Retrouvez la même progression sur le téléphone et l’ordinateur, et gardez-en une copie en ligne. Il faut votre propre Worker Cloudflare (gratuit) : mode d’emploi dans <code>cloudflare/README.md</code> du dépôt.</p>
-      <label class="field">Adresse du Worker<input type="url" id="sync-url" placeholder="https://dec-deonto.….workers.dev" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+    return `<details class="card"><summary><strong>Synchronisation en ligne</strong> <span class="muted">(option avancée)</span></summary><p class="muted">Retrouvez la même progression sur plusieurs appareils. Demande un petit service en ligne gratuit à installer soi-même (instructions : cloudflare/README.md).</p>
+      <label class="field">Adresse du service<input type="url" id="sync-url" placeholder="https://dec-deonto.….workers.dev" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
       <label class="field">Code secret<input type="password" id="sync-token" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
-      <button class="btn primary" id="sync-connect">Connecter et synchroniser</button></div>`;
+      <button class="btn primary" id="sync-connect">Connecter et synchroniser</button></details>`;
   }
   const when = st.at ? new Date(st.at).toLocaleString('fr-FR') : 'jamais';
   return `<div class="card"><h2>Synchronisation en ligne</h2><p class="muted">Connecté à <strong>${esc(new URL(cfg.url).host)}</strong>. Dernière synchronisation réussie : ${when}.${st.error ? `<br><strong>Dernier essai : ${esc(st.error)}.</strong>` : ''}</p>
     <p class="muted">Plan du jour pour Ernest : ${st.pontAt ? `envoyé le ${new Date(st.pontAt).toLocaleString('fr-FR')}` : 'pas encore envoyé'}.</p>
-    <p class="muted">Envoi automatique pendant le travail (au plus une fois par minute) et à la fermeture de l’application ; récupération à l’ouverture. Les progressions des appareils sont fusionnées : rien n’est perdu.</p>
+    <details class="muted"><summary>Comment ça marche</summary><p>Envoi automatique pendant le travail (au plus une fois par minute) et à la fermeture de l’application ; récupération à l’ouverture. Les progressions des appareils sont fusionnées.</p></details>
     <div class="btnrow"><button class="btn" id="sync-now">${ic('refresh')} Synchroniser maintenant</button><button class="btn" id="sync-off">Déconnecter cet appareil</button></div></div>`;
 }
 
@@ -1552,10 +1818,10 @@ views.carnet = () => {
       ans = `<strong>Réponse.</strong> ${esc(q.qrc.model_answer)}`;
     }
     return `<li class="carnet-item"><div>${head}</div><details><summary>Voir la réponse</summary><div class="muted" style="margin-top:4px">${ans}</div></details>
-      <input class="carnet-note" data-carnet-note="${esc(x.id)}" maxlength="200" value="${esc(x.note)}" placeholder="L’élément manqué, en une ligne (ex. : 6 exercices, pas 3)">
+      <input class="carnet-note" data-carnet-note="${esc(x.id)}" maxlength="200" value="${escA(x.note)}" placeholder="L’élément manqué, en une ligne (ex. : 6 exercices, pas 3)">
       <button class="btn sm" data-carnet="${esc(x.id)}">${ic('check')} Retenu : retirer</button></li>`;
   };
-  if (!list.length) return `<div class="card"><h2>${ic('bookmark')} Carnet d’erreurs</h2><p class="muted">Vide pour l’instant. Sur chaque correction (questions et shorts), « Ajouter au carnet » y range ce que vous savez ne pas avoir retenu.</p></div>`;
+  if (!list.length) return `<div class="card empty"><h2>${ic('bookmark')} Carnet d’erreurs</h2><p class="muted">Vide pour l’instant. Il garde ce que vous voulez relire : « Ajouter au carnet » sur une correction, ou « Tout ajouter au carnet » en fin de série et d’examen. Les erreurs, elles, reviennent toutes seules dans Réviser.</p><button class="btn primary" data-go="train">${ic('target')} Faire une série</button></div>`;
   setTimeout(() => document.querySelectorAll('[data-carnet-note]').forEach((el) => { el.onchange = () => { CN.setNote(pr.carnet, el.dataset.carnetNote, el.value.trim()); persist(); toast('Note enregistrée', 'check'); }; }), 0);
   setTimeout(() => {
     const tq = $('#carnet-q'); if (tq) tq.onclick = () => trainOn(qs.map((x) => x.id), 'Carnet d’erreurs', 'qrc');
@@ -2078,7 +2344,7 @@ views.carriere = () => {
     const main = $('#main'); bindProps(main);
   }, 0);
   const total = state.catalog.length, got = Object.keys(state.progress.badges).length;
-  const tabs = `<div class="tabs">${[['carriere', 'Ma carrière'], ['palais', ic('landmark') + ' Palais'], ['collection', `Collection ${got}/${total}`], ['souvenirs', 'Souvenirs']].map(([k, l]) => `<button class="chip ${tab === k ? 'on' : ''}" data-ctab="${k}">${l}</button>`).join('')}</div>`;
+  const tabs = `<div class="tabs">${[['carriere', 'Carrière'], ['palais', 'Palais'], ['collection', `Collection ${got}/${total}`], ['souvenirs', 'Souvenirs']].map(([k, l]) => `<button class="chip ${tab === k ? 'on' : ''}" data-ctab="${k}">${l}</button>`).join('')}</div>`;
   return tabs + (tab === 'collection' ? collectionView() : tab === 'souvenirs' ? souvenirsView() : tab === 'palais' ? palaisView() : careerView());
 };
 // Bandeau de grade au-dessus des questions (sans points : le grade ne dépend que des résultats).
@@ -2105,17 +2371,18 @@ function weekCard() {
   const atts = pr.attempts.filter((a) => G.dayKey(a.t) === sel.k); const ok = atts.filter((a) => a.ok).length;
   const exams = st.exams.filter((e) => G.dayKey(e.t) === sel.k);
   const detail = `<div class="week-detail"><strong>${esc(sel.full)}</strong>
-    <span>${sel.n ? `${sel.n} réponse${sel.n > 1 ? 's' : ''}${atts.length ? ` · ${Math.round((ok / atts.length) * 100)} % de réussite` : ''}` : 'Pas de réponse ce jour-là'}</span>
-    ${exams.length ? `<span>${exams.map((e) => `Examen blanc ${e.mode.toUpperCase()} : ${e.note}/20`).join(' · ')}</span>` : ''}
+    <span>${sel.n ? `${sel.n} réponse${sel.n > 1 ? 's' : ''}${atts.length ? ` · réussite du jour : ${atts.length === sel.n ? fmtShare(ok, atts.length) : fmtRate(ok, atts.length)}` : ''}` : 'Pas de réponse ce jour-là'}</span>
+    ${exams.length ? `<span>${exams.map((e) => `Examen blanc ${e.mode.toUpperCase()} : ${fmtNote(e.note)}/20`).join(' · ')}</span>` : ''}
     ${sel.n && !atts.length ? '<span class="muted">Réussite non conservée (historique limité aux 400 dernières réponses).</span>' : ''}</div>`;
   setTimeout(() => {
     document.querySelectorAll('[data-week]').forEach((b) => { b.onclick = () => { state.weekDay = b.dataset.week; render(); }; });
-    const b = $('#week-share'); if (b) b.onclick = async () => { const text = `DEC épreuve 1 · ma semaine : ${total} réponses sur ${active} jour${active > 1 ? 's' : ''}${weekExams.length ? `, ${weekExams.length} examen${weekExams.length > 1 ? 's' : ''} blanc${weekExams.length > 1 ? 's' : ''} (meilleur : ${best}/20)` : ''}.`; try { if (navigator.share) await navigator.share({ text }); else { await navigator.clipboard.writeText(text); toast('Bilan copié'); } } catch { /* annulé */ } };
+    const b = $('#week-share'); if (b) b.onclick = async () => { const text = `DEC épreuve 1 · ma semaine : ${total} réponses sur ${active} jour${active > 1 ? 's' : ''}${weekExams.length ? `, ${weekExams.length} examen${weekExams.length > 1 ? 's' : ''} blanc${weekExams.length > 1 ? 's' : ''} (meilleur : ${fmtNote(best)}/20)` : ''}.`; try { if (navigator.share) await navigator.share({ text }); else { await navigator.clipboard.writeText(text); toast('Bilan copié'); } } catch { /* annulé */ } };
   }, 0);
+  if (!total) return `<div class="card week empty"><h2>Ma semaine</h2><p class="muted">Aucune réponse ces 7 derniers jours : lancez une séance, le bilan de la semaine apparaîtra ici.</p><button class="btn primary" data-go="review">${ic('play')} Commencer une séance</button></div>`;
   return `<div class="card week"><h2>Ma semaine</h2>
     <div class="week-bars">${days.map((d) => `<button class="week-day" data-week="${d.k}" ${d.k === sel.k ? 'data-on' : ''} aria-label="${esc(d.full)} : ${d.n} réponses"><i style="height:${Math.round((d.n / max) * 100)}%"></i><span>${esc(d.label)}</span></button>`).join('')}</div>
     ${detail}
-    <div class="g-stats week-stats"><span><b>${total}</b>réponses</span><span><b>${active}</b>jour${active > 1 ? 's' : ''} actif${active > 1 ? 's' : ''}</span><span><b>${weekExams.length ? `${best}` : '—'}</b>meilleur examen</span></div>
+    <div class="g-stats week-stats"><span><b>${total}</b>réponses</span><span><b>${active}</b>jour${active > 1 ? 's' : ''} actif${active > 1 ? 's' : ''}</span><span><b>${weekExams.length ? `${fmtNote(best)}/20` : '–'}</b>meilleur examen</span></div>
     <button class="btn sm" id="week-share">${ic('external')} Partager</button></div>`;
 }
 function careerView() {
@@ -2124,10 +2391,10 @@ function careerView() {
   return `<div class="card g-hero-card">${CR.heroHtml(lv.info, lv.readiness)}</div>
     ${weekCard()}
     <div class="card">${CR.levelCardHtml(lv.info, { conds: lv.conds })}</div>
-    <div class="card"><h2>Comment on avance</h2><p class="muted" style="margin:4px 0 0"><strong>Le grade suit vos résultats</strong> : annales vues, examens blancs, taux de réussite. La barre montre où vous en êtes des conditions du grade suivant.</p></div>
+    <div class="card"><h2>Comment on avance</h2><p class="muted" style="margin:4px 0 0"><strong>Le grade suit vos résultats</strong> : questions vues, examens blancs, réussite globale (toutes vos réponses). La barre montre où vous en êtes des conditions du grade suivant.</p></div>
     <div class="card"><h2>Le parcours</h2>${CR.timelineHtml(lv.info, pr.grades, lv.readiness)}</div>
     <div class="card"><h2>Vitrine · ${vitrine.length}</h2><p class="muted" style="margin:4px 0 10px">Les objets gagnés avec les badges. Touchez-en un pour voir le badge.</p>
-      ${vitrine.length ? `<div class="vitrine">${vitrine.map((b) => `<button class="vit" data-badge-card="${b.id}" title="${esc(b.name)}">${badgeIcon(b)}<span>${esc(b.name)}</span></button>`).join('')}</div>` : '<p class="muted">Encore vide : le premier badge y posera son objet.</p>'}</div>`;
+      ${vitrine.length ? `<div class="vitrine">${vitrine.map((b) => `<button class="vit" data-badge-card="${b.id}" title="${esc(b.name)}">${badgeIcon(b)}<span>${esc(b.name)}</span></button>`).join('')}</div>` : '<p class="muted">Encore vide : le premier badge y posera son objet.</p><button class="btn sm" data-go="review">' + ic('play') + ' Commencer une séance</button>'}</div>`;
 }
 function badgeCard(b) {
   const pr = state.progress; const got = pr.badges[b.id]; const p = G.progressOf(b, pr.stats);
@@ -2227,7 +2494,7 @@ views.glossaire = () => {
   }, 0);
   if (!state.gloss.length) return '<div class="card"><h2>' + ic('book') + ' Glossaire</h2><p class="muted">Glossaire indisponible hors ligne : ouvrez l’application une fois en ligne.</p></div>';
   return `<div class="card"><h2>${ic('book')} Glossaire</h2><p class="muted" style="margin-top:0">${state.gloss.length} définitions clés. Partout dans l’application, les termes <span class="gl" style="cursor:default">soulignés en pointillé</span> s’ouvrent d’un toucher.</p>
-    <input type="search" id="gl-q" placeholder="Rechercher : H2A, rotation, Tracfin…" value="${esc(state.glQuery)}" autocomplete="off" enterkeyhint="search">
+    <input type="search" id="gl-q" placeholder="Rechercher : H2A, rotation, Tracfin…" value="${escA(state.glQuery)}" autocomplete="off" enterkeyhint="search">
     <div class="chips" style="margin-top:10px">${GL_FILTERS.map(([k, l]) => `<button class="chip ${state.glFilter === k ? 'on' : ''}" data-gl-filter="${k}">${l}</button>`).join('')}</div>
     <div class="muted" id="gl-count" style="margin-top:8px;font-size:13px"></div></div><div id="gl-list" data-no-gl></div>`;
 };
@@ -2251,7 +2518,7 @@ function carteData() {
   return { g: state.carte, states };
 }
 const carteName = (n) => tagLabel(n.tag);
-const pctS = (x) => (x === null ? '–' : `${Math.round(x * 100)} %`);
+const pctS = (x) => fmtFrac(x); // réussite : arrondi par défaut, comme partout (js/format.js)
 // Tuile : nom, nombre de questions, part vue (barre), couleur de l'état
 function carteTile(n, s, { prof = false, rank = 0 } = {}) {
   return `<button class="ctile ${s.level}" data-cn="${esc(n.id)}" aria-label="${esc(`${rank ? `${rank}. ` : ''}${carteName(n)} (${n.prof}) : ${CA.LEVELS[s.level]}, ${s.seen} questions vues sur ${s.n}`)}">
@@ -2309,7 +2576,7 @@ function carteDetail(g, states, id) {
   const fiche = (() => { const sc = {}; for (const f of state.fiches) { if (f.kind !== 'visuel' || !f.questions) continue; const k = n.ids.filter((q) => f.questions.includes(q)).length; if (k) sc[f.file] = k; } return Object.entries(sc).sort((a, b) => b[1] - a[1])[0]?.[0]; })();
   panel.hidden = false;
   panel.innerHTML = `<div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:8px"><strong><span class="badge ${n.prof.toLowerCase()}">${n.prof}</span> ${esc(carteName(n))}</strong><button class="btn sm" id="cp-x" aria-label="Fermer">${ic('x')}</button></div>
-    <div class="muted" style="margin:4px 0">${CA.LEVELS[s.level]} · ${s.seen}/${s.n} vues · réussite ${pctS(s.acc)}${s.answers ? ` (${s.answers} réponses)` : ''}</div>
+    <div class="muted" style="margin:4px 0">${CA.LEVELS[s.level]} · ${s.seen}/${s.n} vues · réussite du sous-thème ${pctS(s.acc)}${s.answers ? ` · ${s.answers} rép.` : ''}</div>
     ${nb.twin || nb.links.length ? `<div class="cp-links" aria-label="Souvent posé avec">${nb.twin ? `<button class="chip" data-cp="${esc(nb.twin)}">⇄ ${esc(name(nb.twin))}</button>` : ''}${nb.links.slice(0, 4).map((l) => `<button class="chip" data-cp="${esc(l.id)}">${esc(name(l.id))}</button>`).join('')}</div>` : ''}
     <div class="cp-act"><button class="btn sm primary" id="cp-train">${ic('target')} Réviser (${Math.min(20, n.ids.length)})</button>${nUnseen.length ? `<button class="btn sm" id="cp-unseen">${ic('play')} Jamais vues (${nUnseen.length})</button>` : ''}${fiche ? `<button class="btn sm" id="cp-fiche" title="${esc(shortTitle(fiche))}">${ic('chart')} Schéma</button>` : ''}</div>`;
   $('#cp-x').onclick = () => carteDetail(g, states, null);
@@ -2374,13 +2641,13 @@ views.ville = () => {
       <div class="bh-kpis vh-kpis"><div class="bh-kpi"><span class="bh-kpi__l">Rive gauche</span><span class="bh-kpi__v">EC</span></div><div class="bh-kpi"><span class="bh-kpi__l">Rive droite</span><span class="bh-kpi__v">CAC</span></div><div class="bh-kpi"><span class="bh-kpi__l">Au fond</span><span class="bh-kpi__v">Commun</span></div></div>
       <button class="btn primary big-btn" data-ville-tab="3d"><span class="cta-k">Le plus parlant</span><span>${ic('landmark')} Visiter la maquette 3D</span></button></section>
     <h3 class="section-title plus-h">Lire et imprimer</h3>
-    <div class="plus">${choix.slice(1).map(([id, i, t, d]) => `<button class="plus-row" data-ville-tab="${id}"><span class="plus-row__i">${i}</span><span class="plus-row__t"><strong>${esc(t)}</strong><span>${esc(d)}</span></span><span class="plus-row__c">›</span></button>`).join('')}</div>
-    <button class="linkbtn vh-back" data-go="plus">← Plus</button></div>`;
+    <div class="plus">${choix.slice(1).map(([id, i, t, d]) => `<button class="plus-row" data-ville-tab="${id}"><span class="plus-row__i">${i}</span><span class="plus-row__t"><strong>${esc(t)}</strong><span>${esc(d)}</span></span><span class="plus-row__c">›</span></button>`).join('')}</div></div>`;
   if (tab === 'hub') return `<div class="no-print"><button class="btn sm" data-go="fiches">← Fiches</button>
     <div class="card" style="margin-top:10px"><h2>${ic('landmark')} La ville des institutions</h2><p class="muted" style="margin:4px 0 0">Un palais mental des institutions de l’expert-comptable et du commissaire aux comptes.</p></div>
     <div class="list">${choix.map(([id, i, t, d]) => `<button class="card pc-entry" data-ville-tab="${id}" style="text-align:left;width:100%;display:block;cursor:pointer"><strong>${i} ${t}</strong><div class="muted">${d}</div></button>`).join('')}</div></div>`;
   const pdf = tab === 'plan' ? './data/ville-plan.pdf' : './data/ville-compositions.pdf';
-  return `<div class="no-print ville-bar"><button class="btn sm" data-ville-tab="hub">← Retour</button><button class="btn sm primary" id="ville-print" data-pdf="${pdf}">${ic('files')} Imprimer</button><button class="btn sm" id="ville-pdf" data-pdf="${pdf}">${ic('download')} PDF</button>${tab === 'plan' ? '' : `<button class="btn sm" data-ville-tab="plan">${ic('library')} Plan</button>`}${tab === 'compo' ? '' : `<button class="btn sm" data-ville-tab="compo">${ic('clipboard')} Compositions</button>`}</div>
+  const pdfTitle = tab === 'plan' ? 'Plan de la ville' : 'Compositions des institutions';
+  return `<div class="no-print ville-bar"><button class="btn sm" data-ville-tab="hub">← Retour</button><button class="btn sm primary" id="ville-print" data-pdf="${pdf}" data-pdf-print="1" data-pdf-title="${pdfTitle}">${ic('files')} Imprimer</button><button class="btn sm" id="ville-pdf" data-pdf="${pdf}" data-pdf-title="${pdfTitle}">${ic('download')} PDF</button>${tab === 'plan' ? '' : `<button class="btn sm" data-ville-tab="plan">${ic('library')} Plan</button>`}${tab === 'compo' ? '' : `<button class="btn sm" data-ville-tab="compo">${ic('clipboard')} Compositions</button>`}</div>
     <p class="muted no-print" style="margin:6px 0">${tab === 'compo' ? 'Touchez une institution pour l’ouvrir dans la maquette.' : 'Touchez une tuile pour l’ouvrir dans la maquette.'}</p>
     <div id="ville"></div>`;
 };
@@ -2412,20 +2679,47 @@ views.plus = () => {
     ]],
     ['S’entraîner', [
       ['train', ic('target'), 'Séries ciblées', 'Par profession, thème ou sujet précis'],
-      ['exam', ic('timer'), 'Examen blanc', lastExam ? `dernier : ${lastExam.note}/20` : '20 questions, 60 minutes'],
+      ['exam', ic('timer'), 'Examen blanc', state.exam ? `${state.exam.pausedAt ? 'en pause' : 'en cours'} : ${answeredCount(state.exam)}/${state.exam.ids.length} répondues` : lastExam ? `dernier : ${fmtNote(lastExam.note)}/20` : '20 questions, 60 minutes'],
       ['jeux', ic('dice'), 'Jeux express', 'Duel, vrai / faux, chiffres, arbres, intrus'],
       ['carnet', ic('bookmark'), 'Carnet d’erreurs', `${CN.entries(pr.carnet).length} à repasser`],
     ]],
     ['Mesurer', [
       ['stats', ic('trending'), 'Statistiques', 'Niveau estimé, réussite par thème'],
-      ['plan', ic('calendar'), 'Plan jusqu’à l’examen', `Jour par jour, jusqu’au ${examDay()}`],
+      ['plan', ic('calendar'), 'Plan jusqu’à l’examen', `Jour par jour, ${untilExam()}`],
+    ]],
+    ['Outils', [
+      ['glossaire', ic('book'), 'Glossaire', `${state.gloss.length} définitions, en clair`],
+      ['settings', ic('settings'), 'Réglages', 'Date de l’épreuve, chrono, sauvegarde'],
     ]],
   ];
   return groups.map(([title, rows]) => `<h3 class="section-title plus-h">${esc(title)}</h3><div class="plus">${rows.map(([v, i, t, sub]) => `<button class="plus-row" data-go="${v}"><span class="plus-row__i">${i}</span><span class="plus-row__t"><strong>${esc(t)}</strong><span>${esc(sub)}</span></span><span class="plus-row__c">›</span></button>`).join('')}</div>`).join('');
 };
+// Une vue qui lève une exception affiche une carte d'erreur au lieu de laisser l'écran figé (ou « Chargement… »).
 function render() {
   const main = $('#main');
-  main.innerHTML = views[state.view]();
+  try { renderView(main); } catch (e) {
+    console.error(e);
+    const home = state.view === 'home'; // erreur sur l'accueil : « Retour à l'accueil » bouclerait
+    main.innerHTML = `<div class="card"><h2>Affichage impossible</h2><p class="muted">${esc(e?.message || 'erreur inconnue')}</p>${home ? '<button class="btn primary" id="render-reload">Recharger</button>' : '<button class="btn primary" data-go="home">Retour à l’accueil</button>'}</div>`;
+    main.querySelectorAll('[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
+    const rl = $('#render-reload'); if (rl) rl.onclick = () => location.reload();
+  }
+}
+// « ← Plus » en tête de chaque vue rangée sous Plus (apparence bilan) : un seul retour, toujours au même endroit.
+// Ouverte depuis l'accueil (Statistiques, Réglages, Glossaire…), la vue ramène à l'accueil (state.from).
+// Pas pendant une activité (séance, série, examen, jeu) : ils ont leurs propres boutons.
+const OWN_BACK = new Set(['plus', 'carte', 'pieges']);
+const CLASSIC_BACK = new Set(['stats', 'plan', 'carnet', 'glossaire', 'settings']); // classique : vues hors barre d'onglets
+function backBar() {
+  if (!isBilan()) return CLASSIC_BACK.has(state.view) ? `<button class="btn sm back-plus no-print" data-go="${state.from && state.from !== state.view && views[state.from] ? state.from : 'home'}">← Retour</button>` : '';
+  if (!PLUS_VIEWS.has(state.view) || OWN_BACK.has(state.view) || inActivity()) return '';
+  if (state.view === 'fiches' && state.ficheOpen) return '';
+  if (state.view === 'ville' && ['plan', 'compo', '3d'].includes(state.villeTab)) return '';
+  const home = state.from === 'home';
+  return `<button class="btn sm back-plus no-print" data-go="${home ? 'home' : 'plus'}">← ${home ? 'Accueil' : 'Plus'}</button>`;
+}
+function renderView(main) {
+  main.innerHTML = backBar() + views[state.view]();
   document.querySelectorAll('nav.bottom button').forEach((b) => b.classList.toggle('active', b.dataset.view === state.view || (state.view === 'plan' && b.dataset.view === 'home') || (state.view === 'jeux' && b.dataset.view === 'train') || ((state.view === 'ville' || state.view === 'carte') && b.dataset.view === 'fiches') || (b.dataset.view === 'plus' && PLUS_VIEWS.has(state.view))));
   // Transition d'écran (apparence bilan) : le contenu arrive en fondu, relancé à chaque rendu
   main.classList.remove('g-page'); void main.offsetWidth; main.classList.add('g-page');
@@ -2433,21 +2727,11 @@ function render() {
   main.querySelectorAll('[data-go]').forEach((b) => { b.onclick = () => go(b.dataset.go); });
   main.querySelectorAll('[data-ville-tab]').forEach((b) => { b.onclick = () => { state.villeTab = b.dataset.villeTab; state.v3open = state.villeTab === '3d'; window.scrollTo(0, 0); render(); }; });
   main.querySelectorAll('[data-ville-open]').forEach((b) => { b.onclick = () => { state.v3open = true; render(); }; });
-  main.querySelectorAll('[data-ville-rive]').forEach((b) => { b.onclick = () => { state.villeRive = b.dataset.villeRive; render(); }; });
-  // Imprimer, PDF : dans l'app installée sur iPhone, ni window.print() ni les téléchargements ne marchent. On ouvre donc la
-  // feuille de partage avec le PDF (elle propose Imprimer et Enregistrer dans Fichiers). Le fichier est chargé dès
-  // l'ouverture de la page, pour que le partage parte directement du toucher. Ailleurs : impression du navigateur, téléchargement.
-  const vp = $('#ville-print'), vd = $('#ville-pdf');
-  if (vp || vd) {
-    const url = (vp || vd).dataset.pdf, name = url.split('/').pop(); let file = null;
-    fetch(url).then((r) => (r.ok ? r.blob() : null)).then((b) => { if (b) file = new File([b], name, { type: 'application/pdf' }); }).catch(() => {});
-    const share = () => { if (file && navigator.canShare?.({ files: [file] })) { navigator.share({ files: [file], title: name }).catch(() => {}); return true; } return false; };
-    const download = () => { const a = document.createElement('a'); a.href = file ? URL.createObjectURL(file) : url; a.download = name; document.body.appendChild(a); a.click(); a.remove(); };
-    const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
-    if (vp) vp.onclick = () => { if (standalone && share()) return; window.print(); };
-    if (vd) vd.onclick = () => { if (share()) return; download(); };
-  }
+  // Boutons PDF (fiches, livret, ville ; js/pdf.js) : fichier chargé à l'avance, une seule fois par URL, pour que le
+  // partage parte directement du toucher (le clic passe par le délégué de #main, dans init).
+  main.querySelectorAll('[data-pdf]').forEach((b) => { PDF.preloadPdf(b.dataset.pdf); });
 }
+const pdfUi = { sheet: (html) => sheet(html), closeSheet: () => closeSheet(), toast: (m, i) => toast(m, i), esc: (x) => esc(x) };
 // pop : navigation venue du bouton Retour du téléphone (pas de nouvelle entrée d'historique).
 function go(v, { pop = false } = {}) {
   // Quitter l'onglet pendant un examen : mis en pause (chrono arrêté), repris depuis l'onglet Examen.
@@ -2462,6 +2746,7 @@ function go(v, { pop = false } = {}) {
   if (changed) { stopQTimer(); qTimer.ms = 0; }
   if (v === 'ville' && changed) { state.v3open = false; state.villeTab = 'hub'; }
   document.body.classList.toggle('print-pieges', v === 'pieges');
+  if (changed) state.from = state.view; // retour « ← Accueil » ou « ← Plus » (backBar)
   state.view = v; window.scrollTo(0, 0); render();
   if (!pop && changed) { try { history.pushState({ v }, ''); } catch { /* ignore */ } }
 }
@@ -2523,13 +2808,23 @@ async function refreshApp() {
     if (reg) {
       await reg.update();
       const sw = reg.installing || reg.waiting;
-      if (sw) await new Promise((res) => { const t = setTimeout(res, 3000); sw.addEventListener('statechange', () => { if (sw.state === 'activated') { clearTimeout(t); res(); } }); });
+      // Le nouveau service worker précache près de 5 Mo : on attend qu'il prenne la main (15 s au plus).
+      if (sw && 'serviceWorker' in navigator) {
+        toast('Mise à jour en cours…', 'rotate-cw');
+        await new Promise((res) => {
+          const t = setTimeout(res, 15000);
+          navigator.serviceWorker.addEventListener('controllerchange', () => { clearTimeout(t); res(); }, { once: true });
+          reg.waiting?.postMessage('skipWaiting');
+        });
+      }
     }
   } catch { /* hors ligne : on recharge quand même */ }
   setTimeout(() => location.reload(), 300);
 }
 
 const STORE_EXPECTED = 4;
+// Fichiers de l'app listés dans le CORE de sw.js (tests/store.test.js vérifie qu'on y trouve chaque module de js/).
+const coreFiles = (src) => { const m = /const CORE = \[([\s\S]*?)\];/.exec(src || ''); return m ? [...m[1].matchAll(/'(\.\/[^']*)'/g)].map((x) => x[1]) : []; };
 // Mélange de versions (cache hors ligne d'une ancienne version + code neuf) : on vide les caches, on force
 // le rechargement des fichiers puis on relance, une seule fois par session.
 async function recoverFromStaleCache() {
@@ -2538,14 +2833,18 @@ async function recoverFromStaleCache() {
     const regs = (await navigator.serviceWorker?.getRegistrations()) || [];
     await Promise.all(regs.map((r) => r.unregister()));
     await Promise.all((await caches.keys()).map((k) => caches.delete(k)));
-    await Promise.all(['./', './index.html', './css/app.css', './js/app.js', './js/store.js', './js/bank.js', './js/srs.js', './js/plan.js', './js/exam.js', './js/gamify.js', './js/catalog-data.js', './js/cluster.js', './js/drill.js', './js/games.js', './js/palais.js', './js/estimate.js', './js/carnet.js', './js/shorts.js', './js/career.js', './js/icons.js', './js/carte.js', './js/scenes.js', './js/glossaire.js', './js/qrc.js', './js/sync.js', './js/ville.js', './js/ville3d.js', './js/villeplan.js', './js/maquette.js', './js/vendor/three.module.min.js', './sw.js']
-      .map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
+    // Liste unique : le CORE de sw.js, relu sur le réseau (un module ajouté au précache est aussi rechargé ici).
+    const sw = await fetch('./sw.js', { cache: 'reload' }).then((r) => (r.ok ? r.text() : '')).catch(() => '');
+    await Promise.all(coreFiles(sw).map((u) => fetch(u, { cache: 'reload' }).catch(() => null)));
   } catch { /* on relance quand même */ }
   location.reload();
   return true;
 }
 
 async function init() {
+  window.__dec1Started = true; // modules chargés : le secours d'index.html ne vide plus les caches
+  window.addEventListener('error', (e) => { console.error(e.error || e.message); if (e.error) toast('Erreur : ' + (e.error.message || 'inconnue'), 'alert'); });
+  window.addEventListener('unhandledrejection', (e) => { if (e.reason?.name === 'AbortError') return; console.error(e.reason); toast('Erreur : ' + (e.reason?.message || 'inconnue'), 'alert'); });
   if (store.STORE_VERSION !== STORE_EXPECTED && await recoverFromStaleCache()) return;
   try { const th = localStorage.getItem('dec1.theme'); if (th) document.documentElement.dataset.theme = th; } catch { /* ignore */ }
   document.documentElement.dataset.look = 'bilan';
@@ -2561,11 +2860,13 @@ async function init() {
     const f = e.target.closest('[data-shorts-step]'); if (f) { closeSheet(true); openFeed({ focus: [f.dataset.shortsStep] }); }
   });
   $('#main').addEventListener('click', (e) => {
+    const pd = e.target.closest('[data-pdf]'); if (pd) return PDF.openPdf(pd.dataset.pdf, { title: pd.dataset.pdfTitle, print: pd.dataset.pdfPrint === '1', ui: pdfUi });
     const b = e.target.closest('[data-open-fiche]'); if (b) return ficheSheet(b.dataset.openFiche);
     const v = e.target.closest('[data-variants]'); if (v) return variantsSheet(v.dataset.variants);
     const tk = e.target.closest('[data-task]'); if (tk) return dayTasks().find((x) => x.id === tk.dataset.task)?.run();
     const nx = e.target.closest('[data-next]'); if (nx) return state.nextList[Number(nx.dataset.next)]?.run();
     const other = e.target.closest('[data-next-other]'); if (other) { state.nextIdx++; return render(); }
+    const dm = e.target.closest('[data-daymin]'); if (dm) { state.progress.settings.dayMinutes = Number(dm.dataset.daymin) || 0; state.progress.settingsAt = Date.now(); persist(); return render(); }
     const g = e.target.closest('[data-game]'); if (g) return startGame(g.dataset.game);
     const f = e.target.closest('[data-shorts-step]'); if (f) return openFeed({ focus: f.dataset.shortsStep ? [f.dataset.shortsStep] : [] });
     const pl = e.target.closest('[data-shorts-pool]'); if (pl && !pl.disabled) return openPool(pl.dataset.shortsPool);
@@ -2582,7 +2883,9 @@ async function init() {
     state.glById = Object.fromEntries(state.gloss.map((e) => [e.id, e]));
     state.glMatcher = GL.buildMatcher(state.gloss);
     glObserve();
-    if (SY.config()) await runSync({ boot: true, timeout: 4000 }); // copie en ligne récupérée avant le plan du jour
+    // Copie en ligne récupérée avant le plan du jour, sans retarder le premier affichage de plus de 3 s
+    if (SY.config()) await Promise.race([runSync({ boot: true, timeout: 2500 }), new Promise((r) => setTimeout(r, 3000))]);
+    booting = false;
     initGamify();
     state.notice = store.notices[0] || null;
     const savedExam = store.loadExam();

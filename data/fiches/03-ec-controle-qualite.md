@@ -136,8 +136,8 @@ Le **président du conseil régional** conclut, au vu du rapport du contrôleur 
 | **Avec simples observations** | Éventuelle **convocation** par le président |
 | **Avec observations et nouveau contrôle** | **Nouveau contrôle sur place à un an**, **formation** spécifique possible ; en cas de nouveaux manquements, saisine de la **chambre de discipline** |
 
-- **LCB-FT** : c'est le **comité LBC-FT** de l'Ordre qui conclut le contrôle (sans observation ; simples observations ; observations avec nouveau contrôle à un an et formation LCB-FT possible). Selon la gravité, il peut **saisir l'instance disciplinaire**.
-- Si le contrôleur relève des **éléments de nature à justifier une déclaration de soupçon** : il en informe par **courrier confidentiel** le **comité LBC-FT** de l'Ordre (RI art. 406). L'Ordre, autorité de contrôle, informe **Tracfin** (C. mon. fin. L.561-28 II).
+- **LCB-FT** : c'est le **comité LCB-FT** de l'Ordre qui conclut le contrôle (sans observation ; simples observations ; observations avec nouveau contrôle à un an et formation LCB-FT possible). Selon la gravité, il peut **saisir l'instance disciplinaire**.
+- Si le contrôleur relève des **éléments de nature à justifier une déclaration de soupçon** : il en informe par **courrier confidentiel** le **comité LCB-FT** de l'Ordre (RI art. 406). L'Ordre, autorité de contrôle, informe **Tracfin** (C. mon. fin. L.561-28 II).
 
 ## 4. Formation continue et compétence
 - L'**obligation de compétence** est portée par le code de déontologie et la NPMQ.
@@ -161,8 +161,8 @@ Le **président du conseil régional** conclut, au vu du rapport du contrôleur 
 - **Périodicité** : environ **6 ans** pour l'EC ; pour le CAC, **3 ans** pour les CAC des EIP visées au i) de l'art. 26 § 2 du règlement 537/2014, **6 ans** au plus pour les autres (R.820-49).
 - **Revue indépendante** : pour l'EC, elle est prévue par la **NPMQ** pour certaines missions ; pour le CAC, elle est **légale pour les EIP** (règlement UE 537/2014 art. 8) et est réalisée par un **autre contrôleur légal** non impliqué.
 - **Champ** : en pratique, le contrôle de qualité de l'Ordre ne porte pas sur les missions de CAC, qui relèvent du contrôle d'activité de la H2A (aucun texte lu ne formule cette exclusion).
-- **Blanchiment découvert pendant un contrôle** : chez l'EC, le contrôleur informe le **comité LBC-FT** de l'Ordre (RI art. 406), et l'**Ordre** informe Tracfin ; chez le CAC, ce sont **les contrôleurs** qui informent Tracfin (L.820-18).
+- **Blanchiment découvert pendant un contrôle** : chez l'EC, le contrôleur informe le **comité LCB-FT** de l'Ordre (RI art. 406), et l'**Ordre** informe Tracfin ; chez le CAC, ce sont **les contrôleurs** qui informent Tracfin (L.820-18).
 
-## À vérifier
-- **Périodicité réglementaire** du contrôle de qualité de l'Ordre.
-- **Quantum de formation continue** des EC : 120 h sur 3 ans, dont 20 h par an, recommandation de l'Ordre sans texte réglementaire ; texte de la recommandation non lu (annale 2018-11 Q10).
+## Points non tranchés
+- **Périodicité** du contrôle de qualité de l'Ordre : retenir un cycle d'**environ 6 ans**, sans chiffre réglementaire.
+- **Formation continue EC** : obligatoire, mais les **120 h sur 3 ans**, dont 20 h par an, ne sont qu'une **recommandation de l'Ordre** (annale 2018-11 Q10) ; pour le CAC, le quantum est fixé par arrêté (A.821-45).

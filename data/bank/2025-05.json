@@ -27,9 +27,9 @@
           "Radiation du tableau comportant interdiction définitive d'exercer",
           "Accessoires : privation du droit d'être élu aux conseils (10 ans max) ; sanctions LCB-FT (pécuniaires…)"
         ],
-        "model_answer": "En dehors de l'avertissement délivré dans le cabinet du président de la chambre, les peines disciplinaires sont la réprimande, le blâme avec inscription au dossier, la suspension pour une durée déterminée avec ou sans sursis et la radiation du tableau comportant interdiction définitive d'exercer. Elles peuvent s'accompagner de la privation du droit de faire partie des conseils de l'Ordre pendant dix ans au plus."
+        "model_answer": "Hors l'avertissement dans le cabinet du président de la chambre, les peines sont : réprimande, blâme avec inscription au dossier, suspension pour une durée déterminée avec ou sans sursis, radiation du tableau comportant interdiction définitive d'exercer. S'y ajoute la privation du droit de faire partie des conseils de l'Ordre (dix ans au plus)."
       },
-      "explanation": "Liste de l'article 53 de l'ordonnance, prononcée par la chambre régionale de discipline (appel devant la chambre nationale, puis cassation devant le Conseil d'État). Le distracteur reprend la liste des sanctions des CAC (L.821-71), source classique de confusion. La responsabilité civile ou pénale peut se cumuler avec la sanction disciplinaire.",
+      "explanation": "Ord. art. 53 : peines prononcées par la chambre régionale de discipline (appel devant la chambre nationale, cassation devant le Conseil d'État). Piège : la liste des sanctions des CAC (L.821-71), source classique de confusion. La responsabilité civile ou pénale peut se cumuler avec la sanction disciplinaire.",
       "reference": "Ord. 45-2138 art. 49, 50 et 53 ; D. 2012-432 art. 174 s.",
       "confidence": "high"
     },
@@ -57,9 +57,9 @@
           "Autres missions d'assurance (attestations particulières NP 3100, informations prévisionnelles NP 3400)",
           "Missions sans assurance (procédures convenues NP 4400, compilation NP 4410, missions légales sans assurance)"
         ],
-        "model_answer": "Le cadre de référence distingue les missions d'assurance sur des comptes complets historiques (audit, examen limité, présentation), les autres missions d'assurance (attestations particulières, examen d'informations prévisionnelles) et les missions sans assurance (procédures convenues, compilation, missions particulières prévues par un texte). Les autres prestations (conseil, social, juridique…) relèvent d'un ensemble distinct."
+        "model_answer": "Missions d'assurance sur comptes complets historiques (audit, examen limité, présentation) ; autres missions d'assurance (attestations particulières, informations prévisionnelles) ; missions sans assurance (procédures convenues, compilation, missions prévues par un texte). Les autres prestations (conseil, social, juridique…) sont à part."
       },
-      "explanation": "Le cadre de référence est agréé par arrêté ; les textes applicables à toutes les missions sont le code de déontologie, la NPMQ et la NPLAB. Le distracteur « certification / durabilité / SACC » reprend la typologie CAC.",
+      "explanation": "Le cadre de référence est agréé par arrêté ; s'appliquent à toutes les missions le code de déontologie, la NPMQ et la NPLAB. Piège : « certification / durabilité / SACC » est la typologie du CAC.",
       "reference": "Référentiel normatif OEC : cadre de référence des missions",
       "confidence": "high"
     },
@@ -88,9 +88,10 @@
         ],
         "model_answer": "Oui, à condition d'avoir obtenu l'accord préalable de chaque client concerné, l'existence de la relation professionnelle relevant du secret et du devoir de discrétion. La présentation doit rester une information utile, décente et exempte de tout élément comparatif."
       },
-      "explanation": "La communication est permise (art. 152), mais le professionnel ne peut révéler les informations couvertes par le secret (ord. art. 21). L'accord du client ne délie pas en général l'EC de son secret pénal, mais il permet ici la seule mention de la relation, que le client rend lui-même publique. Point de doctrine ordinale à vérifier.",
+      "explanation": "La communication est permise (art. 152), mais l'EC ne peut révéler les informations couvertes par le secret (ord. art. 21). L'accord du client ne délie pas en général l'EC de son secret pénal, mais il permet ici la seule mention de la relation, que le client rend lui-même publique.",
       "reference": "Ord. 45-2138 art. 21 et 23 ; D. 2012-432 art. 147 et 152",
-      "confidence": "medium"
+      "confidence": "medium",
+      "review_note": "Point de doctrine ordinale non vérifié (mention des clients sur le site avec leur accord) : confiance moyenne."
     },
     {
       "id": "2025-05-EC-04",
@@ -117,7 +118,7 @@
         ],
         "model_answer": "La mission de présentation (NP 2300) est une mission d'assurance de niveau modéré : l'expert-comptable atteste de la cohérence et de la vraisemblance des comptes pris dans leur ensemble. Il ne se prononce ni sur leur régularité ni sur leur sincérité ou leur image fidèle."
       },
-      "explanation": "Régularité, sincérité et image fidèle relèvent de la certification du CAC (assurance raisonnable, C. com. L.821-53) ; l'audit d'états financiers de l'expert-comptable (normes ISA, NP 2910) donne aussi une assurance raisonnable. L'examen limité (NP 2400) donne une assurance modérée sur la conformité au référentiel. L'attestation de présentation peut être sans observation, avec observation(s) ou se traduire par un refus d'attester.",
+      "explanation": "Régularité, sincérité et image fidèle relèvent de la certification du CAC (assurance raisonnable, L.821-53) ; l'audit par l'EC (normes ISA, NP 2910) donne aussi une assurance raisonnable, l'examen limité (NP 2400) une assurance modérée sur la conformité au référentiel. Présentation : attestation sans ou avec observation(s), ou refus d'attester.",
       "reference": "NP 2300 (arrêté du 1er sept. 2016) ; cadre de référence",
       "confidence": "high"
     },
@@ -145,11 +146,12 @@
           "Mandat de recevoir et détenir des fonds pour autrui interdit",
           "L'exception des activités commerciales accessoires ne couvre pas une activité exercée à titre de profession, de nature à compromettre l'indépendance"
         ],
-        "model_answer": "Non. L'agent immobilier exerce une activité commerciale d'intermédiaire et détient des fonds pour le compte de ses mandants, ce que l'article 22 de l'ordonnance interdit à l'expert-comptable. La dérogation pour activités commerciales accessoires ne s'applique pas à une activité exercée à titre professionnel et de nature à compromettre son indépendance."
+        "model_answer": "Non. L'agent immobilier exerce une activité commerciale d'intermédiaire et détient des fonds pour ses mandants, ce que l'art. 22 de l'ordonnance interdit à l'EC. La dérogation pour activités commerciales accessoires ne couvre pas une activité exercée à titre professionnel et de nature à compromettre son indépendance."
       },
-      "explanation": "Depuis la loi du 23 juillet 2010, l'EC peut exercer des activités commerciales et actes d'intermédiaire à titre accessoire, sans mettre en péril l'indépendance, dans les limites de la norme professionnelle agréée le 12 mars 2021, qui maintient l'interdiction de l'activité d'agent d'affaires. L'activité d'agent immobilier (carte professionnelle, maniement de fonds, rémunération au succès) dépasse ce cadre. Point d'appréciation : le jury attend « non ».",
+      "explanation": "Depuis la loi du 23 juillet 2010, l'EC peut exercer des activités commerciales et actes d'intermédiaire à titre accessoire, sans péril pour son indépendance, dans les limites de la norme agréée le 12 mars 2021, qui maintient l'interdiction de l'agent d'affaires. L'agent immobilier (carte, maniement de fonds) dépasse ce cadre.",
       "reference": "Ord. 45-2138 art. 22 ; norme professionnelle relative aux activités commerciales et aux actes d'intermédiaire (arrêté du 12 mars 2021)",
-      "confidence": "medium"
+      "confidence": "medium",
+      "review_note": "Point d'appréciation : réponse « non » retenue par la banque (aucun corrigé officiel disponible) ; l'ancienne explication prêtait cette attente au jury sans source."
     },
     {
       "id": "2025-05-EC-06",
@@ -205,7 +207,7 @@
           "Changement de professionnel motivé par la volonté d'éluder les lois ou les devoirs professionnels",
           "LCB-FT : impossibilité d'identifier le client ou le bénéficiaire effectif, ou d'obtenir les informations sur la relation d'affaires"
         ],
-        "model_answer": "L'expert-comptable doit refuser la mission s'il ne peut l'exécuter conformément aux textes et aux normes (compétence, disponibilité, moyens), s'il se trouve en conflit d'intérêts ou si son indépendance est menacée, si la mission est incompatible avec son statut, si le client cherche à éluder la loi ou ses devoirs professionnels en changeant de professionnel, et lorsqu'il ne peut pas identifier le client et son bénéficiaire effectif ou connaître l'objet de la relation d'affaires (LCB-FT)."
+        "model_answer": "Il doit refuser s'il ne peut exécuter la mission conformément aux textes et aux normes (compétence, moyens), en cas de conflit d'intérêts ou d'indépendance menacée, si la mission est incompatible avec son statut, si le changement de professionnel vise à éluder la loi, et s'il ne peut identifier le client et son bénéficiaire effectif (LCB-FT)."
       },
       "explanation": "Fondements : art. 145, 150, 157 et 163 du code de déontologie ; art. 22 de l'ordonnance ; L.561-8 CMF (interdiction de nouer la relation d'affaires en l'absence de vigilance possible). La forme des honoraires n'est jamais un motif obligatoire de refus.",
       "reference": "D. 2012-432 art. 145, 150, 157, 163 ; Ord. 45-2138 art. 22 ; CMF L.561-8 ; NPLAB",
@@ -242,7 +244,8 @@
       },
       "explanation": "Le « refus d'attester » est propre à la mission de présentation (NP 2300). Le vocabulaire « certification avec réserve / refus de certifier » est celui du CAC.",
       "reference": "NP 2400, § 22",
-      "confidence": "high"
+      "confidence": "medium",
+      "review_note": "Terminologie à trancher sur la NP 2400 § 22 (texte agréé non lu) : la banque dit « favorable sans / avec observation(s) », les fiches 01 et 11 et le short cadre-11 disent « sans réserve ». Aligner l'ensemble après lecture du texte."
     },
     {
       "id": "2025-05-EC-09",
@@ -264,14 +267,14 @@
       "qrc": {
         "expected": [
           "Informer le président du conseil régional de l'Ordre",
-          "Les conseils de l'Ordre peuvent saisir le tribunal par citation directe ; seul le Conseil national peut se constituer partie civile (art. 20 et 31 ord.)"
+          "Les conseils de l'Ordre peuvent agir par citation directe ; seul le Conseil national peut se constituer partie civile (ord. art. 20 et 31)"
         ],
         "model_answer": "Il doit en informer le conseil régional de l'Ordre (son président), chargé de surveiller l'exercice de la profession dans sa circonscription, qui pourra saisir le tribunal correctionnel par citation directe ; la constitution de partie civile est réservée au Conseil national."
       },
       "explanation": "L'exercice illégal de l'expertise comptable est un délit (ord. art. 20) ; les conseils de l'Ordre peuvent agir par citation directe. Le devoir envers l'Ordre et la défense de la profession justifient le signalement. Piège : l'EC n'a pas l'obligation de révélation au procureur propre au CAC.",
       "reference": "Ord. 45-2138 art. 20 et 31 ; D. 2012-432 (devoirs envers l'Ordre)",
       "confidence": "medium",
-      "update_note": "Relecture : corrigé — l'art. 31 de l'ordonnance interdit au conseil régional de se constituer partie civile, ce droit étant réservé au Conseil national (art. 20)."
+      "review_note": "Corrigé lors d'une relecture antérieure : l'art. 31 de l'ordonnance interdit au conseil régional de se constituer partie civile, ce droit étant réservé au Conseil national (art. 20). Articles non relus sur Légifrance (inaccessible)."
     },
     {
       "id": "2025-05-EC-10",
@@ -297,12 +300,12 @@
           "Même niveau de diligences et de qualité ; indépendance préservée",
           "Précaution : lettre de mission mentionnant la gratuité (et couverture d'assurance RC)"
         ],
-        "model_answer": "C'est possible, les honoraires étant libres, à condition que la gratuité ne serve pas à capter la clientèle (concurrence déloyale, manquement à la confraternité) et ne conduise pas à réduire les diligences ou à compromettre l'indépendance. Précaution : formaliser la mission par une lettre de mission précisant son caractère gracieux, sa nature et ses limites, la responsabilité restant entière."
+        "model_answer": "Possible, les honoraires étant libres, si la gratuité ne sert pas à capter la clientèle (concurrence déloyale, confraternité) et ne réduit ni les diligences ni l'indépendance. Précaution : une lettre de mission précisant le caractère gracieux, la nature et les limites de la mission ; la responsabilité reste entière."
       },
-      "explanation": "La lettre de mission est obligatoire pour toute mission (art. 151), même gratuite ; la gratuité ne réduit pas la responsabilité civile. Le remplacement provisoire d'un confrère (art. 166) est par principe une mission de confraternité gratuite. Réponse fondée sur la doctrine ordinale ; à vérifier.",
+      "explanation": "La lettre de mission est obligatoire pour toute mission (art. 151), même gratuite ; la gratuité ne réduit pas la responsabilité civile. Le remplacement provisoire d'un confrère (art. 166) est par principe une mission de confraternité gratuite.",
       "reference": "Ord. 45-2138 art. 24 ; D. 2012-432 art. 151, 152, 158, 166",
       "confidence": "low",
-      "update_note": "Relecture : aucun texte ni avis ordinal propre à la mission gracieuse n'a été trouvé ; réponse cohérente avec les art. 151 (contrat écrit pour toute mission), 158 (honoraires libres) et 166 (remplacement gratuit) du code, maintenue sous réserve."
+      "review_note": "Aucun texte ni avis ordinal propre à la mission gracieuse n'a été trouvé ; réponse fondée sur la doctrine ordinale, cohérente avec les art. 151 (contrat écrit pour toute mission), 158 (honoraires libres) et 166 (remplacement gratuit), maintenue sous réserve (confidence low)."
     },
     {
       "id": "2025-05-CAC-11",
@@ -323,13 +326,13 @@
       },
       "qrc": {
         "expected": [
-          "Total du bilan : 5 000 000 € (au lieu de 4 M€)",
-          "Chiffre d'affaires HT : 10 000 000 € (au lieu de 8 M€)",
+          "Total du bilan : 5 M€ (au lieu de 4 M€)",
+          "Chiffre d'affaires HT : 10 M€ (au lieu de 8 M€)",
           "Effectif inchangé : 50 salariés ; 2 critères sur 3"
         ],
         "model_answer": "Le total du bilan passe de 4 à 5 millions d'euros et le chiffre d'affaires hors taxes de 8 à 10 millions d'euros ; le seuil de 50 salariés est inchangé (deux critères sur trois, exercices ouverts à compter du 1er janvier 2024)."
       },
-      "explanation": "Les mêmes seuils s'appliquent aux mères de petits groupes (cumulés) ; ceux des filiales importantes sont de 2,5 M€ / 5 M€ / 25 salariés. Le distracteur 4 M€ / 8 M€ correspond aux seuils de la loi Pacte (2019).",
+      "explanation": "Piège : 4 M€ / 8 M€ étaient les seuils de la loi Pacte (2019). Les mêmes seuils s'appliquent aux têtes de petits groupes (cumulés) ; ceux des filiales importantes sont de 2,5 M€ / 5 M€ / 25 salariés.",
       "reference": "D. 2024-152 ; C. com. D.221-5, D.821-171, D.821-172",
       "confidence": "high"
     },
@@ -357,7 +360,7 @@
           "Titre de CAC suivi de la compagnie régionale ; pas d'expression compromettant la dignité",
           "Interdiction de tout élément comparatif"
         ],
-        "model_answer": "La publicité est permise dans la mesure où elle procure au public une information nécessaire, sans porter atteinte à l'indépendance, à la dignité et à l'honneur de la profession, au secret professionnel et à la loyauté envers les clients et confrères. Le CAC utilise son titre suivi de sa compagnie régionale, n'adopte aucune expression compromettant la dignité de sa fonction, et la publicité est exempte de tout élément comparatif."
+        "model_answer": "Permise si elle procure au public une information nécessaire, sans atteinte à l'indépendance, à la dignité, à l'honneur, au secret ni à la loyauté envers clients et confrères. Le CAC utilise son titre suivi de sa compagnie régionale, n'adopte aucune expression indigne, et la publicité est exempte de tout élément comparatif."
       },
       "explanation": "Article 15 du code de déontologie (titre I). La sollicitation personnalisée (art. 16) obéit à des règles complémentaires : information sincère, envoi postal ou courriel, honoraires précisés, démarchage physique ou téléphonique exclu.",
       "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 15 et 16",
@@ -387,9 +390,9 @@
           "Secret professionnel : il ne peut communiquer à un tiers les informations obtenues dans sa mission (le dirigeant ne peut l'en délier)",
           "Atteinte à l'impartialité et à l'indépendance ; risques liés aux fusions/acquisitions (code art. 20) sans sauvegarde possible"
         ],
-        "model_answer": "Non. En évaluant la société qu'il certifie pour le compte de l'acquéreur, le CAC se placerait en conflit d'intérêts et compromettrait son impartialité et son indépendance. Il exploiterait au profit d'un tiers des informations couvertes par son secret professionnel, dont l'entité ne peut le délier. Aucune mesure de sauvegarde ne permet de remédier à cette situation."
+        "model_answer": "Non. En évaluant pour l'acquéreur la société qu'il certifie, le CAC serait en conflit d'intérêts, compromettrait son impartialité et son indépendance, et exploiterait au profit d'un tiers des informations couvertes par son secret, dont l'entité ne peut le délier. Aucune mesure de sauvegarde n'y remédie."
       },
-      "explanation": "Le code de déontologie (art. 5 et 20) impose d'identifier les risques liés aux opérations de fusion ou d'acquisition intéressant l'entité certifiée. Même hors EIP (où l'évaluation fait partie des services interdits), le conflit d'intérêts et le secret (L.821-35) font obstacle. Ne pas confondre avec le commissariat aux apports ou à la fusion, missions distinctes soumises à leurs propres incompatibilités.",
+      "explanation": "Code de déontologie art. 5 et 20 : identifier les risques liés aux opérations de fusion ou d'acquisition intéressant l'entité certifiée. Même hors EIP (où l'évaluation est un service interdit), conflit d'intérêts et secret (L.821-35) font obstacle. Ne pas confondre avec le commissariat aux apports ou à la fusion, missions distinctes.",
       "reference": "C. com. L.821-28 II, L.821-31, L.821-35 ; règl. (UE) 537/2014 art. 5 § 1 f ; code de déontologie CAC art. 4, 5, 9 et 20",
       "confidence": "medium",
       "update_note": "Pour une EIP, les services d'évaluation figurent parmi les services interdits (règl. 537/2014 art. 5 § 1 f ; L.821-28 II)."
@@ -477,10 +480,10 @@
         ],
         "model_answer": "Intégrité ; impartialité ; indépendance et prévention des conflits d'intérêts ; esprit critique ; compétence et diligence ; confraternité ; relations réciproques entre professionnels chargés de l'audit des informations en matière de durabilité (art. 8-1, depuis mars 2026) ; secret professionnel et discrétion."
       },
-      "explanation": "Articles 3 à 9 du code de déontologie, complétés par l'article 8-1 (relations réciproques entre professionnels chargés de l'audit des informations en matière de durabilité) issu du décret 2026-176. La liste « intégrité, objectivité, compétence et diligence professionnelle, confidentialité, comportement professionnel… » reprend pour l'essentiel les principes du code IESBA ; « probité, conscience professionnelle, indépendance d'esprit… » renvoie au code des EC (D. 2012-432 art. 145).",
+      "explanation": "Art. 3 à 9 du code, complétés par l'art. 8-1 (décret 2026-176). Pièges : « intégrité, objectivité, compétence et diligence professionnelle, confidentialité, comportement professionnel » reprend le code IESBA ; « probité, conscience professionnelle, indépendance d'esprit… » renvoie au code des EC (D. 2012-432 art. 145).",
       "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 3 à 9",
       "confidence": "high",
-      "update_note": "Les normes de déontologie homologuées (A.821-54 s.) précisent l'application de ces principes. Le décret 2026-176 (en vigueur le 14 mars 2026) a inséré dans la section 1 un article 8-1 (relations réciproques entre CAC, OTI et auditeurs de durabilité) et étendu l'intégrité (art. 3) à l'auditeur de durabilité."
+      "update_note": "Décret 2026-176 (en vigueur le 14 mars 2026) : art. 8-1 inséré (relations réciproques entre CAC, OTI et auditeurs de durabilité) et intégrité (art. 3) étendue à l'auditeur de durabilité ; normes de déontologie homologuées (A.821-54 s.)."
     },
     {
       "id": "2025-05-CAC-17",
@@ -537,10 +540,10 @@
         ],
         "model_answer": "Oui. Selon l'article L.821-10, le commissaire aux comptes révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou de sa prestation. L'obligation s'applique donc aussi à une prestation réalisée hors mandat de certification. Le non-respect de cette obligation est pénalement sanctionné."
       },
-      "explanation": "L'article L.821-10, alinéa 2, dispose que le CAC « révèle au procureur de la République les faits délictueux dont il a eu connaissance à l'occasion de sa mission ou prestation » ; la profession comprenant désormais missions et prestations (L.821-2 et L.821-3), l'obligation ne se limite plus à la certification. L.821-9 punit de 5 ans et 75 000 € toute personne exerçant la profession de CAC qui ne révèle pas ces faits. Piège : ne pas confondre avec la déclaration de soupçon à Tracfin (LCB-FT), obligation distincte qui s'applique elle aussi à toutes les missions et prestations du CAC (CMF L.561-2 12° bis ; NEP 9605) ; l'expert-comptable n'a aucune obligation de révélation au procureur.",
+      "explanation": "L.821-10 al. 2 : le CAC révèle les faits délictueux connus « à l'occasion de sa mission ou prestation » ; l'obligation dépasse donc la certification. L.821-9 punit la non-révélation de 5 ans et 75 000 €. Piège : la déclaration de soupçon à Tracfin est une obligation distincte ; l'EC ne révèle pas au procureur.",
       "reference": "C. com. L.821-10 (ex-L.823-12), L.821-9 (ex-L.820-7)",
       "confidence": "high",
-      "update_note": "Relecture : point tranché par le texte de L.821-10 (brochure CNCC « Code de commerce, partie législative », sept. 2024) : « à l'occasion de sa mission ou prestation ». L'idée d'une révélation limitée à la certification est donc erronée."
+      "review_note": "Point tranché par le texte de L.821-10 al. 2 (relu dans le miroir LEGI ; brochure CNCC sept. 2024) : « à l'occasion de sa mission ou prestation »."
     },
     {
       "id": "2025-05-CAC-19",
@@ -552,7 +555,7 @@
       "question": "Outre la H2A, qui peut demander l'élaboration d'une norme d'exercice professionnel ?",
       "qcm": {
         "choices": [
-          "Le garde des sceaux, l'AMF, l'ACPR, l'ANC, le CNoCP et la CNCC",
+          "Le garde des Sceaux, l'AMF, l'ACPR, l'ANC, le CNoCP et la CNCC",
           "Les compagnies régionales et le Conseil national de l'Ordre des experts-comptables",
           "Le ministre de l'économie, la Cour des comptes et le Conseil d'État",
           "La CNCC, après avis des compagnies régionales"
@@ -561,14 +564,14 @@
       },
       "qrc": {
         "expected": [
-          "Le garde des sceaux, ministre de la justice",
+          "Le garde des Sceaux, ministre de la Justice",
           "L'Autorité des marchés financiers et l'Autorité de contrôle prudentiel et de résolution",
           "L'Autorité des normes comptables et le Conseil de normalisation des comptes publics",
           "La Compagnie nationale des commissaires aux comptes"
         ],
-        "model_answer": "La H2A établit son plan d'orientation et son programme de travail en fonction de ses besoins et des demandes du garde des sceaux, de l'AMF, de l'ACPR, de l'Autorité des normes comptables, du Conseil de normalisation des comptes publics et de la CNCC."
+        "model_answer": "La H2A établit son plan d'orientation et son programme de travail en fonction de ses besoins et des demandes du garde des Sceaux, de l'AMF, de l'ACPR, de l'Autorité des normes comptables, du Conseil de normalisation des comptes publics et de la CNCC."
       },
-      "explanation": "Les projets de normes sont élaborés par les deux commissions de normalisation placées auprès de la H2A, adoptés par le collège après avis de la CNCC, puis homologués par arrêté du garde des sceaux. Les CRCC ne figurent pas parmi les demandeurs.",
+      "explanation": "Les projets de normes sont élaborés par les deux commissions de normalisation placées auprès de la H2A, adoptés par le collège après avis de la CNCC, puis homologués par arrêté du garde des Sceaux. Les CRCC ne figurent pas parmi les demandeurs.",
       "reference": "C. com. L.820-4, L.820-23 ; R.820-52 ; D.820-53",
       "confidence": "high",
       "update_note": "Les commissions de normalisation remplacent la commission paritaire du H3C depuis 2024."
@@ -599,9 +602,9 @@
           "Deux personnes qualifiées en matière juridique, économique ou financière",
           "Nommés par décret pour 6 ans renouvelable une fois ; incompatibilité avec le collège"
         ],
-        "model_answer": "La commission des sanctions comprend cinq membres : un magistrat de la Cour de cassation, qui la préside, et quatre personnes qualifiées (une ayant exercé la profession de CAC, une qualifiée en certification de durabilité, deux qualifiées en matière juridique, économique ou financière). Ils sont nommés par décret pour six ans renouvelables une fois et ne peuvent siéger au collège."
+        "model_answer": "Cinq membres : un magistrat de la Cour de cassation, président, et quatre personnes qualifiées (une ayant exercé la profession de CAC, une en certification de durabilité, deux en matière juridique, économique ou financière). Nommés par décret pour six ans renouvelables une fois, ils ne peuvent siéger au collège."
       },
-      "explanation": "Composition fixée par L.820-2 V ; la commission succède à la formation restreinte du H3C (la séparation entre poursuite et jugement existait depuis 2016) et intègre désormais une compétence en durabilité. Le distracteur « président de chambre de la cour d'appel de Paris, deux fonctionnaires, deux membres du Conseil national » décrit la chambre nationale de discipline des EC (ord. art. 50) ; celui avec l'AMF, l'ACPR et le Trésor reprend les membres de droit du collège (L.820-2 II 4°), auxquels il ajoute à tort le président de la CNCC, qui ne siège dans aucune formation de la H2A.",
+      "explanation": "L.820-2 V ; la commission succède à la formation restreinte du H3C et intègre une compétence en durabilité. Pièges : « président de chambre de la cour d'appel, deux fonctionnaires, deux membres du Conseil national » décrit la chambre nationale de discipline des EC ; AMF, ACPR et Trésor siègent au collège, jamais le président de la CNCC.",
       "reference": "C. com. L.820-2 V",
       "confidence": "high",
       "update_note": "Instance créée au 1er janvier 2024 (H2A) ; auparavant formation restreinte du H3C."

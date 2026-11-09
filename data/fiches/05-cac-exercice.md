@@ -1,5 +1,13 @@
 # Exercice de la profession de commissaire aux comptes
 
+## À retenir
+- **Institutions** : la **H2A** inscrit, contrôle et sanctionne ; la **CNCC** et les **CRCC** représentent la profession et suivent la formation par délégation.
+- **Nomination** : 2 seuils sur 3 dépassés (**5 M€** de bilan, **10 M€** de CA HT, **50** salariés) ; mandat de **6 exercices** (**3** en ALPE).
+- **Honoraires** : **barème d'heures** en certification, taux horaire libre ; dérogation demandée au **président de la CRCC**.
+- **Obligations propres** : **révélation** des faits délictueux au procureur (mission et prestation), **procédure d'alerte**, **non-immixtion**, délit d'**entrave** commis contre lui.
+- **EIP** : rotation du cabinet (**10 ans**) et du signataire (**6 exercices**, puis 3 ans), services interdits, plafond des SACC (**70 %**), comité d'audit.
+- **Formation** : **120 h sur 3 ans**, dont 20 h par an (A.821-45), déclarées au plus tard le 31 mars.
+
 ## 1. Textes
 
 | Texte | Contenu |
@@ -22,7 +30,7 @@
 
 ## 2. Organisation de la profession
 
-### Haute autorité de l'audit (H2A), qui remplace le H3C depuis le 01/01/2024
+### Haute autorité de l'audit (H2A, ex-H3C jusqu'au 31 décembre 2023)
 - C'est une **autorité publique indépendante** dotée de la **personnalité morale**.
 - **Missions** :
   - **inscription** des CAC et **tenue de la liste** ;
@@ -34,7 +42,7 @@
   - **supervision des auditeurs de durabilité**.
 - **Délégations actuelles à la CNCC** :
   - le **suivi de la formation continue** ;
-  - les **contrôles d'activité des CAC non-EIP**, **délégués** par des **conventions homologuées par arrêté** (2017, 19/05/2023, nouvelle convention homologuée par arrêté du **2 juillet 2026**).
+  - les **contrôles d'activité des CAC non-EIP**, **délégués** par des **conventions homologuées par arrêté** (2017, 19 mai 2023, nouvelle convention homologuée par arrêté du **2 juillet 2026**).
 - La H2A garde la **supervision**.
 - L'**inscription et la tenue de la liste** sont assurées par la **H2A elle-même**. Elles avaient été déléguées à la CNCC de **2017 à novembre 2020**.
 - La H2A **n'adopte pas** la déontologie des EC et n'est **pas** une instance d'appel des « commissions régionales de discipline », qui n'existent plus.
@@ -85,7 +93,7 @@
 
 ## 4. Nomination : seuils et cas
 
-### Sociétés commerciales (décret **2024-152** du 28 février 2024, **D.221-5**, exercices ouverts à compter du **01/01/2024**)
+### Sociétés commerciales (décret **2024-152** du 28 février 2024, **D.221-5**, exercices ouverts à compter du **1er janvier 2024**)
 | Critère | Seuil de nomination | Ancien seuil (Pacte) |
 |---|---|---|
 | **Total bilan** | **5 M€** | 4 M€ |
@@ -94,6 +102,7 @@
 
 - La nomination est obligatoire dès que **2 critères sur 3** sont **dépassés** à la clôture d'un exercice.
 - Les **2 seuils modifiés en 2024** sont le **bilan (5 M€)** et le **CA (10 M€)**.
+- **Mandats en cours** au 1er mars 2024 : ils se **poursuivent jusqu'à leur expiration**, même si l'entité passe sous les nouveaux seuils (décret 2024-152, art. 4). L'obligation cesse ensuite si 2 des 3 seuils n'ont pas été dépassés pendant les **2 exercices** précédant l'expiration du mandat (D.221-5 al. 2).
 
 ### Petits groupes
 - La **tête de groupe**, qui **contrôle** des sociétés sans être une EIP et sans y être contrainte par ses propres comptes, nomme un CAC si l'**ensemble** qu'elle forme avec ses filiales **dépasse 2 des 3 seuils** ci-dessus.
@@ -115,13 +124,13 @@
 |---|---|
 | **Associations** recevant des **subventions publiques** | **> 153 000 €** par an (montant global). Nomination pour l'**exercice même** de la perception, pas pour l'exercice suivant |
 | **Associations exerçant une activité économique** | 2 sur 3 : **50 salariés**, **3,1 M€** de CA ou ressources, **1,55 M€** de bilan |
-| **Organismes faisant appel public à la générosité (AGP)** | **Dons > 153 000 €**. Le CAC **vérifie le compte d'emploi annuel des ressources (CER)** et l'**affectation des ressources** collectées |
+| **Organismes faisant appel public à la générosité (APG)** | **Dons > 153 000 €**. Le CAC **vérifie le compte d'emploi annuel des ressources (CER)** et l'**affectation des ressources** collectées |
 | **Syndicats professionnels** (de salariés ou d'employeurs) | **Ressources > 230 000 €** (C. trav. L.2135-6) |
 | **Organismes de formation** de droit privé | 2 sur 3 : **3 salariés**, **153 000 €** de CA HT ou ressources, **230 000 €** de bilan. Nomination d'un **titulaire et d'un suppléant** |
 | **CSE** | Selon leurs ressources (à vérifier) |
 | **Fonds de dotation** | Ressources > **10 000 €** (à vérifier) |
 
-- **Publicité des comptes** des associations subventionnées ou des AGP : le CAC **vérifie la publication** (site de la **DILA**) et la **conformité** des comptes publiés avec ceux de son rapport. Il **ne publie pas lui-même** les comptes en cas de carence.
+- **Publicité des comptes** des associations subventionnées ou des APG : le CAC **vérifie la publication** (site de la **DILA**) et la **conformité** des comptes publiés avec ceux de son rapport. Il **ne publie pas lui-même** les comptes en cas de carence.
 
 ### Nomination judiciaire
 - En dessous des seuils, les associés peuvent demander **en justice** la nomination d'un CAC :
@@ -229,6 +238,13 @@
 - **Non-révélation** : délit puni de **5 ans d'emprisonnement et 75 000 € d'amende**.
 - La révélation de **bonne foi** n'engage **pas** la responsabilité du CAC.
 
+### Procédure d'alerte (L.234-1 et L.234-2)
+- **Déclencheur** : des faits de nature à compromettre la **continuité de l'exploitation**, relevés à l'occasion de la mission.
+- **SA** (L.234-1) : 1) information du **président du CA ou du directoire** ; 2) sans réponse sous **15 jours** ou réponse insuffisante, demande écrite de **délibération du conseil**, avec copie au **président du tribunal** ; 3) continuité toujours compromise : **rapport spécial** à l'**assemblée** ; 4) décisions insuffisantes : information du **président du tribunal**.
+- **Autres sociétés** (L.234-2) : **explications** demandées au dirigeant, qui répond sous **15 jours**, puis **information du président du tribunal** ; si la continuité reste compromise, **rapport spécial** et **assemblée**, puis de nouveau le président du tribunal.
+- **Reprise** possible dans les **6 mois**, en cas d'urgence, au point où le CAC s'était arrêté. **Pas d'alerte** si une **conciliation** ou une **sauvegarde** est engagée (L.234-4).
+- **Secret levé** envers le **président du tribunal** (L.821-35 al. 1) ; heures majorables d'**un tiers** au plus (D.821-189) ; pas de démission pour s'y soustraire.
+
 ### Assistance par des collaborateurs et des experts (ex L.823-13)
 - Le CAC peut se faire **assister ou représenter** par des **collaborateurs** ou des **experts** de son choix.
 - Il les **fait connaître nommément** à l'entité.
@@ -251,8 +267,8 @@
 
 | Règle | Contenu |
 |---|---|
-| **Rotation du cabinet** | **10 ans**. Prolongation jusqu'à **16 ans** après **appel d'offres**, ou **24 ans** en **co-commissariat** |
-| **Rotation du signataire** | **6 ans**, puis **délai de viduité de 3 ans** |
+| **Rotation du cabinet** | **10 ans**. Prolongation jusqu'à **16 ans** après **appel d'offres**, ou **24 ans** en **co-commissariat** ; **2 ans** de plus au maximum, à titre exceptionnel, sur autorisation de la **H2A** ; puis **4 ans** d'attente (L.821-45) |
+| **Rotation du signataire** | **6 exercices** consécutifs, dans la limite de **7 ans**, puis **délai de viduité de 3 ans** (L.821-34). Vaut aussi hors EIP : entités de **L.612-1**, **associations faisant appel à la générosité du public**, **filiales importantes** d'une EIP ayant le même CAC |
 | **Services interdits** | Liste du **règlement UE 537/2014 art. 5** (voir la fiche « Déontologie du commissaire aux comptes ») |
 | **Plafond des services autres que la certification (SACC)** | **70 %** de la moyenne des honoraires de certification sur **3 ans** |
 | **Revue indépendante** | Obligatoire **avant la signature du rapport** (voir la fiche « Supervision publique et contrôle d'activité du commissaire aux comptes ») |
@@ -280,13 +296,13 @@
 
 ## 12. Formation continue (CAC)
 - **120 heures sur 3 années consécutives**, avec au moins **20 heures par an**. Elle s'impose à **tout CAC inscrit** qui exerce.
-- **6 actions éligibles** :
-  1. **formations suivies** (CNCC, CRCC, organismes) ;
-  2. **colloques**, conférences et séminaires ;
-  3. **formation à distance** (e-learning) ;
-  4. **formations dispensées** et enseignement ;
-  5. **publications** et travaux d'ordre technique ;
-  6. **participation à des groupes de travail** ou commissions techniques.
+- **6 actions éligibles** (A.821-46) :
+  1. **séminaires** de formation, **autoformation encadrée**, formations ou enseignements **à distance** ;
+  2. **colloques** et conférences : **45 h** au plus sur 3 ans ;
+  3. **conception ou animation** de formations, colloques ou enseignements : **20 h** au plus par an ;
+  4. **rédaction et publication** de travaux techniques : **30 h** au plus sur 3 ans ;
+  5. **participation à des travaux techniques** : **20 h** au plus par an ;
+  6. **programme de formation continue particulière** (L.821-24 II).
 - **Déclaration annuelle** des heures, au plus tard le **31 mars**, sur le portail de la **CNCC**, à qui la H2A délègue le suivi de la formation continue.
 - **Formation particulière** : obligatoire pour un CAC qui **n'a pas exercé pendant 3 ans** et n'a pas respecté l'obligation : **40 heures**, accomplies dans les **18 mois qui précèdent l'acceptation** d'une mission (R.821-71).
 
@@ -306,9 +322,9 @@
 - **Conciliation** : chez l'EC, par le **président du CROEC** (honoraires, confrères) ; chez le CAC, par le **président de la CRCC** (co-commissaires, honoraires, barème).
 - **Révélation des faits délictueux** : obligation du **CAC seul**, en **mission comme en prestation** ; l'EC n'y est pas tenu.
 - **Durée** : la mission de l'EC dépend de la lettre de mission ; le mandat du CAC dure **6 exercices** (**3** en ALPE).
-- **Salariat** : l'EC peut être salarié chez un EC, une AGC ou un CAC ; le CAC chez un **CAC ou un EC**.
+- **Salariat** : l'EC peut être salarié chez un membre de l'Ordre, un CAC, une AGC, une succursale ou une société pluri-professionnelle d'exercice ; le CAC chez un **CAC ou un EC**.
 
-## À vérifier
-- **Seuils des CSE, des fonds de dotation et des partis politiques**.
-- **Augmentation de capital avec suppression du DPS** sans CAC : la désignation d'un CAC « à cet effet » est prévue par L.225-136 1° et L.225-138 II ; l'impossibilité d'y renoncer n'est pas écrite (annale 2024-11 Q15).
-- **Transposition de la directive Omnibus I** (2026/470) : texte français et nouveaux seuils d'application de la CSRD (sans effet sur les seuils de nomination d'un CAC), attendus au plus tard le 19 mars 2027.
+## Points non tranchés
+- **Seuils des CSE, des fonds de dotation et des partis politiques** : ne pas les avancer sans certitude.
+- **Augmentation de capital avec suppression du DPS** sans CAC : un CAC est désigné « à cet effet » (L.225-136 1°, L.225-138 II) ; l'impossibilité d'y renoncer n'est écrite nulle part (annale 2024-11 Q15).
+- **Directive Omnibus I** (2026/470) : transposition attendue au plus tard le 19 mars 2027, sans effet sur les seuils de nomination d'un CAC.

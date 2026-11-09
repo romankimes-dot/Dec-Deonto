@@ -13,7 +13,7 @@
 | Thèmes (programme officiel) | exercice · déontologie · contrôle de qualité · responsabilité |
 | Sous-thèmes | les 46 tags du vocabulaire fermé utilisés dans la banque (`data/SCHEMA.md`) |
 | Distinction EC / CAC | 10 + 10 par session, toujours |
-| Transversal | pas de champ dédié. Deux notions existent des deux côtés : **LAB** (tag `lcb_ft`, 24 questions EC + CAC) et **secret professionnel** (tag `secret_professionnel`, 17 questions), soit 38 questions transversales |
+| Transversal | pas de champ dédié. Deux notions existent des deux côtés : **LCB-FT** (tag `lcb_ft`, 24 questions EC + CAC) et **secret professionnel** (tag `secret_professionnel`, 17 questions), soit 38 questions transversales |
 | Difficulté | pas de champ dédié. Proxy proposé : question « chiffrée » (liste en famille 6), réponse de confiance `low`, ou taux d'échec personnel ≥ 50 % |
 
 Répartition (320 questions) :
@@ -23,7 +23,7 @@ Répartition (320 questions) :
 | EC | 79 | 43 | 16 | 22 |
 | CAC | 75 | 48 | 11 | 26 |
 
-Sous-thèmes les plus fréquents : référentiel normatif (40), H2A (31), discipline (31), missions d'assurance (27), Ordre (25), indépendance et situations à risque (25), LAB (24), structure du code de déontologie CAC (24), CNCC/CRCC (23), lettre de mission (19).
+Sous-thèmes les plus fréquents : référentiel normatif (40), H2A (31), discipline (31), missions d'assurance (27), Ordre (25), indépendance et situations à risque (25), LCB-FT (24), structure du code de déontologie CAC (24), CNCC/CRCC (23), lettre de mission (19).
 
 ### Historique des réponses disponible
 
@@ -37,7 +37,7 @@ Conséquence : plusieurs badges (« réussie 2 fois lors de sessions différente
 
 ### Notions clés couvertes (et où)
 
-Lettre de mission · honoraires · secret professionnel · LAB · indépendance · inscription au tableau · serment EC · inscription sur la liste H2A · serment CAC · contrôle qualité OEC · contrôle d'activité H2A · discipline EC et CAC · référentiel normatif et niveaux d'assurance · devoir de conseil · reprise de dossier · publicité · sociétés d'expertise comptable · nomination et seuils CAC · mandat, démission, fusion · barème d'heures · co-commissariat · révélation au procureur · délit d'entrave · EIP et services interdits · réseau · formation continue · déclaration d'activité CRCC · durabilité (CSRD).
+Lettre de mission · honoraires · secret professionnel · LCB-FT · indépendance · inscription au tableau · serment EC · inscription sur la liste H2A · serment CAC · contrôle qualité OEC · contrôle d'activité H2A · discipline EC et CAC · référentiel normatif et niveaux d'assurance · devoir de conseil · reprise de dossier · publicité · sociétés d'expertise comptable · nomination et seuils CAC · mandat, démission, fusion · barème d'heures · co-commissariat · révélation au procureur · délit d'entrave · EIP et services interdits · réseau · formation continue · déclaration d'activité CRCC · durabilité (CSRD).
 
 ### Parcours réel utilisé pour les anecdotes (sources vérifiées)
 
@@ -68,7 +68,7 @@ Lettre de mission · honoraires · secret professionnel · LAB · indépendance 
 | Session | une **journée calendaire** (heure locale du téléphone). « Deux sessions différentes » = deux jours différents |
 | Question vue | au moins une réponse enregistrée, quel que soit le mode |
 | Passage complet | toutes les questions de la banque vues au moins N fois |
-| Thème | l'un des 8 couples profession × thème du programme, plus le bloc **transversal** (LAB + secret) |
+| Thème | l'un des 8 couples profession × thème du programme, plus le bloc **transversal** (LCB-FT + secret) |
 | Question difficile | question de la liste « chiffrée » (famille 6) ou réponse de confiance `low` ou question ratée au moins 2 fois |
 | Rareté | **commun** (s'obtient en quelques jours), **rare** (une à deux semaines d'effort), **épique** (maîtrise réelle), **légendaire** (excellence ou exploit) |
 
@@ -123,7 +123,7 @@ La **plante verte** du bureau grandit avec le record : pousse (3), plante (10), 
 | **Maîtrise — Déontologie CAC** | Tiers objectif, raisonnable et informé : c'est vous. | CAC × déontologie | épique | Bouclier « Indépendance » |
 | **Maîtrise — Contrôle d'activité CAC** | Le contrôleur H2A repart avec le sourire. | CAC × contrôle qualité | épique | Lampe de bureau verte |
 | **Maîtrise — Responsabilité CAC** | La commission des sanctions ne vous connaît pas. | CAC × responsabilité | épique | Cadenas fermé |
-| **Maîtrise — Transversal** | LAB et secret professionnel, des deux côtés. | bloc transversal maîtrisé | épique | Coffre-fort ouvert, rangé |
+| **Maîtrise — Transversal** | LCB-FT et secret professionnel, des deux côtés. | bloc transversal maîtrisé | épique | Coffre-fort ouvert, rangé |
 | **Bloc EC maîtrisé** | Prêt pour les questions 1 à 10. | les 4 thèmes EC maîtrisés | légendaire | Grand diplôme « Expert-comptable » |
 | **Bloc CAC maîtrisé** | Prêt pour les questions 11 à 20, celles qui font chuter la moyenne. | les 4 thèmes CAC maîtrisés | légendaire | Carte professionnelle CAC encadrée |
 | **Maîtrise totale** | 20/20 n'est plus une hypothèse d'école. | les 9 badges de maîtrise | légendaire | Le mur entier s'illumine |
@@ -192,7 +192,7 @@ Chaque anecdote se débloque quand **toutes** les questions listées sont réuss
 | A33 | **Premier stagiaire encadré** | « Un expert-comptable pour quinze collaborateurs. Mon premier stagiaire arrive lundi. » | 2019-11-EC-10, 2023-05-EC-10 | rare |
 | A34 | **Premier sous-traitant** | « Pour la tenue, il faut un professionnel inscrit. Le titulaire du DSCG sera salarié. » | 2024-05-EC-06 | commun |
 | A35 | **Premier contrôle qualité réussi** | « Examen de l'organisation, puis revue des dossiers. Conclusion : sans observation. » | 2019-11-EC-04, 2020-11-EC-03, 2023-05-EC-02, 2022-11-EC-06, 2024-05-EC-02 | épique |
-| A36 | **Contrôle qualité LAB** | « Le contrôleur a ouvert le dossier du client PPE en premier. » | 2022-05-EC-02, 2021-11-EC-09 | rare |
+| A36 | **Contrôle qualité LCB-FT** | « Le contrôleur a ouvert le dossier du client PPE en premier. » | 2022-05-EC-02, 2021-11-EC-09 | rare |
 | A37 | **Devenu contrôleur qualité** | « Candidature acceptée. À mon tour de poser les questions. » | 2024-05-EC-01 | épique |
 | A38 | **Convocation devant la chambre régionale** | « Classement sans suite. Mais je connais maintenant la composition par cœur. » | 2021-05-EC-06, 2024-05-EC-05, 2021-11-EC-06, 2025-05-EC-06, 2024-11-EC-04 | rare |
 | A39 | **Secret professionnel tenu** | « Le client voulait que je parle à son banquier. Il ne peut pas me délier. » | 2021-11-EC-07, 2025-11-EC-04, 2022-05-EC-04 | rare |
@@ -291,7 +291,7 @@ La carrière avance **aux points**, calculés à tout moment depuis l'ensemble d
 | # | Grade | Score indicatif (sans effet) | Résultats exigés (seuls comptés) | Décor |
 |---|---|---|---|---|
 | 1 | **Expert-comptable stagiaire, 1re année** | départ | — | Open space, poste partagé |
-| 2 | **Stagiaire, 2e année** | 200 pts | 15 % des annales vues | Open space, poste attitré |
+| 2 | **Stagiaire, 2e année** | 200 pts | 15 % des questions vues (banque de révision) | Open space, poste attitré |
 | 3 | **Stagiaire, 3e année** | 500 pts | 30 % vues | Bureau partagé à deux |
 | 4 | **Mémorialiste, candidat au DEC** | 900 pts | 50 % vues, un examen blanc terminé | Tableau blanc couvert de schémas |
 | 5 | **Diplômé d'expertise comptable** | 1 400 pts | 65 % vues, un examen blanc ≥ 10 | Bureau personnel, fenêtre |

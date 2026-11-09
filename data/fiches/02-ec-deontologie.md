@@ -25,11 +25,11 @@
 - **Levées** (non opposabilité) :
   - **contrôle de qualité** de l'Ordre ;
   - contrôles et enquêtes de l'**AMF** ;
-  - **audition ou témoignage** en matière pénale {?} : la clé de l'annale 2025-11 Q4 le traite comme une levée ; un corrigé publié (Revue française de comptabilité) soutient au contraire que le secret reste **opposable** au témoin (CPP art. 109, qui réserve les art. 226-13 et 226-14 ; ord. art. 21 al. 4, qui ne délie l'EC que lorsqu'une information est ouverte ou des poursuites engagées **contre lui**) ;
   - **Tracfin** (déclaration de soupçon, droit de communication) ;
   - **administration fiscale** au titre de son droit de communication, dans les limites prévues ;
-  - **défense** de l'EC poursuivi (procédure disciplinaire ou instance qui le met en cause).
-- **CNIL** {?} : la clé de l'annale 2025-11 Q4 retient que le secret lui est **opposable** ; mais la loi 78-17 (art. 19 III) ne permet d'opposer aux agents de la CNIL que trois secrets (avocat-client, sources des journalistes, secret médical), ce qui ne comprend pas celui de l'EC. Au QCM, connaître la réponse de la clé ; en rédaction, citer l'art. 19 III.
+  - **CNIL** : seuls les secrets de l'avocat, des sources des journalistes et le secret médical sont opposables à ses agents (loi 78-17 art. 19 III), pas celui de l'EC ;
+  - **défense** de l'EC mis en cause (instance disciplinaire, information ouverte ou poursuites engagées **contre lui** : ord. art. 21 al. 4).
+- **Opposable** au **témoin** en matière pénale : l'EC entendu comme témoin dépose **sous réserve des art. 226-13 et 226-14 C. pén.** (CPP art. 109). Annale 2025-11 Q4 : le secret est opposable lors de l'**audition pénale**, non lors du contrôle de la CNIL.
 - **Reprise de dossier** : l'EC sortant **n'est pas délié** du secret à l'égard de son successeur. Il doit en revanche **restituer les documents** du client.
 - **Déclaration de soupçon** : il est **interdit de la révéler**, y compris au client et au confrère successeur. La violation est un délit (C. mon. fin. **L.561-18** et **L.574-1**).
 
@@ -186,7 +186,7 @@
 
 ### Contrôle par l'Ordre
 - Le **contrôle de qualité LCB-FT** est réalisé par l'Ordre, autorité de contrôle désignée par le C. mon. fin.
-- Le **contrôleur** qui relève des éléments de nature à justifier une déclaration de soupçon **en informe par courrier confidentiel le comité LBC-FT** de l'Ordre (RI art. 406). L'**Ordre**, autorité de contrôle, **informe Tracfin** (C. mon. fin. L.561-28 II).
+- Le **contrôleur** qui relève des éléments de nature à justifier une déclaration de soupçon **en informe par courrier confidentiel le comité LCB-FT** de l'Ordre (RI art. 406). L'**Ordre**, autorité de contrôle, **informe Tracfin** (C. mon. fin. L.561-28 II).
 - Le contrôleur **ne fait pas** lui-même de déclaration au nom du contrôlé.
 
 ### Sanctions spécifiques LCB-FT (en plus des peines disciplinaires)
@@ -206,7 +206,7 @@
 - **Successeur** : l'EC envoie une **lettre d'information** à son prédécesseur et s'efforce d'obtenir le paiement de ses honoraires ; le CAC successeur **doit s'assurer auprès de son prédécesseur**, avant d'accepter, que le non-renouvellement ne vise pas à contourner la loi (code de déontologie CAC art. 26) ; le prédécesseur lui **donne accès** aux informations et documents pertinents (**L.821-44**). L.821-35 ne prévoit **aucune levée du secret** au profit du successeur.
 - **Honoraires au succès** : pour l'EC, ils sont interdits pour le monopole et pour les missions qui participent à la détermination de l'**assiette fiscale ou sociale** (ord. art. 24) ; pour le **CAC**, les honoraires **subordonnés au résultat** sont **interdits** pour toute mission ou prestation (code de déontologie CAC **art. 13**, titre I).
 
-## À vérifier
-- **Liste exacte des levées du secret** de l'EC : audition pénale comme témoin ou suspect libre et contrôle de la CNIL. La clé de l'annale 2025-11 Q4 (CNIL opposable) et les textes (CPP art. 109, ord. art. 21 al. 4, loi 78-17 art. 19 III) ne vont pas dans le même sens : voir la section 3. Textes lus en extrait seulement (vérification du 3 novembre 2026).
-- **Cas où la lettre de l'art. 163 n'est pas obligatoire** (annale 2024-11 Q7).
-- **Référencement par une société commerciale non inscrite, notation par les clients, parrainage** : quelle pratique est interdite (annale 2025-11 Q2) ? La fiche retient le **comparatif** (« premier réseau »).
+## Points non tranchés
+- **Lettre de l'art. 163 non obligatoire** (annale 2024-11 Q7) : retenir la mission **différente ou complémentaire** ; le cas du prédécesseur décédé ou radié n'est écrit nulle part.
+- **Responsable de mission non EC** (salarié autorisé d'une AGC) : la banque (annale 2018-11 Q9) admet la déclaration de soupçon par un autre EC ; retenir le principe : l'**EC en charge de la mission** déclare personnellement.
+- **Référencement, notation par les clients, parrainage** (annale 2025-11 Q2) : la pratique interdite est le **comparatif** (« premier réseau »).

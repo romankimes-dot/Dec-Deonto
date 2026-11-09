@@ -3,6 +3,7 @@
 // la couleur et la typographie viennent des variables CSS --g-* (thème « bilan » ou « classique »).
 // Le grade ne dépend que des résultats ; aucun point n'est affiché.
 import { GRADES, GATES, gateConditions } from './gamify.js';
+import { fmtPct, fmtNote, pctInt } from './format.js';
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const fmtDate = (t) => new Date(t).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
@@ -12,9 +13,9 @@ const pad2 = (n) => String(n).padStart(2, '0');
 export const SHORT = ['', '1re année', '2e année', '3e année', 'Mémorialiste', 'Diplômé d’EC', 'Inscrit au tableau', 'Commissaire aux comptes', 'Installé'];
 
 // Condition courte d'un grade (frise).
-export const gateSummary = (n) => { const g = GATES[n]; if (!g) return ''; const p = [`${g.cov} % vues`]; if (g.exams) p.push('un examen blanc'); if (g.exam) p.push(`examen ≥ ${g.exam}`); if (g.acc) p.push(`réussite ≥ ${g.acc} %`); return p.join(' · '); };
+export const gateSummary = (n) => { const g = GATES[n]; if (!g) return ''; const p = [`${fmtPct(g.cov)} des questions vues`]; if (g.exams) p.push('un examen blanc'); if (g.exam) p.push(`examen ≥ ${g.exam}/20`); if (g.acc) p.push(`réussite globale ≥ ${fmtPct(g.acc)}`); return p.join(' · '); };
 
-const bar = (pct, cls = '') => `<div class="g-bar ${cls}" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(pct * 100)}"><div style="width:${Math.round(pct * 100)}%"></div></div>`;
+const bar = (pct, cls = '') => `<div class="g-bar ${cls}" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pctInt(pct * 100)}"><div style="width:${Math.round(pct * 100)}%"></div></div>`;
 const condList = (conds, cls = 'g-conds') => `<ul class="${cls}">${conds.map((c) => `<li class="${c.ok ? 'ok' : ''}"><span>${c.ok ? '✓' : '○'}</span> ${esc(c.label)}</li>`).join('')}</ul>`;
 const condsLine = (info) => `${info.met} / ${info.total} condition${info.total > 1 ? 's' : ''}`;
 
@@ -45,9 +46,9 @@ export function heroHtml(info, readiness) {
     <span class="g-big">${pad2(info.n)}</span>
     <span class="g-hero__name">${esc(g.name)}</span>
     <div class="g-stats">
-      <span><b>${Math.floor(readiness.cov)} %</b>annales vues</span>
-      <span><b>${readiness.best ? readiness.best : '—'}</b>meilleur examen</span>
-      <span><b>${Math.round(readiness.acc)} %</b>réussite</span>
+      <span><b>${fmtPct(readiness.cov)}</b>questions vues</span>
+      <span><b>${readiness.best ? `${fmtNote(readiness.best)}/20` : '–'}</b>meilleur examen</span>
+      <span><b>${readiness.answers === 0 ? '–' : fmtPct(readiness.acc)}</b>réussite globale${readiness.answers ? ` · ${readiness.answers} rép.` : ''}</span>
     </div>
     ${next ? `<div class="g-next"><span class="g-next__k">Prochain · ${esc(next.name)}</span><span class="g-next__v">${condsLine(info)}</span>${bar(info.pct, 'g-bar--light')}</div>` : '<div class="g-next"><span class="g-next__k">Les huit grades sont atteints.</span></div>'}
   </div>`;
@@ -83,7 +84,7 @@ export function levelUpHtml(n, readiness = null) {
     <span class="g-kicker">Nouveau grade</span>
     <span class="g-big">${pad2(n)}</span>
     <span class="g-hero__name">${esc(g.name)}</span>
-    ${readiness ? `<div class="g-stats"><span><b>${Math.floor(readiness.cov)} %</b>annales vues</span><span><b>${readiness.best || '—'}</b>meilleur examen</span></div>` : ''}
+    ${readiness ? `<div class="g-stats"><span><b>${fmtPct(readiness.cov)}</b>questions vues</span><span><b>${readiness.best ? `${fmtNote(readiness.best)}/20` : '–'}</b>meilleur examen</span></div>` : ''}
     ${next ? `<div class="g-next"><span class="g-next__k">Prochain · ${esc(next.name)}</span><span class="g-next__v">${esc(gateSummary(n + 1))}</span></div>` : ''}
     <p class="cel-hint">Touchez pour continuer</p>
   </div>`;

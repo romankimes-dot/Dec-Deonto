@@ -4,8 +4,9 @@ import { drawExam, scoreExam } from './srs.js';
 export const EXAM_DURATION_MS = 60 * 60 * 1000;
 
 // `fixed` : questions imposées (examen inédit : une session entière, dans l'ordre du sujet).
-export function startExam(questions, seen, mode, now = Date.now(), fixed = null) {
-  const qs = fixed || drawExam(questions, seen);
+// `draw` : options du tirage (drawExam, js/srs.js), dont `clusterOf` pour écarter les variantes d'une même notion.
+export function startExam(questions, seen, mode, now = Date.now(), fixed = null, draw = {}) {
+  const qs = fixed || drawExam(questions, seen, Math.random, draw);
   return {
     mode,                     // 'qcm' | 'qrc'
     startedAt: now,

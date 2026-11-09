@@ -2,7 +2,8 @@
 // Le serveur garde une seule copie ; chaque appareil la lit, la fusionne avec la sienne et renvoie le résultat.
 // La fusion ne perd rien de ce qui a été appris d'un côté ou de l'autre : pour chaque carte et chaque item de jeu,
 // la révision la plus récente l'emporte ; réponses, examens, badges et schémas lus sont réunis. Réglages : ceux
-// modifiés en dernier (settingsAt). L'adresse et le code secret restent sur l'appareil, hors de l'export.
+// modifiés en dernier (settingsAt). Exception : après un effacement, un import ou un retour à l'état précédent
+// (resetAt), cet état remplace l'autre en entier. L'adresse et le code secret restent sur l'appareil, hors de l'export.
 import { importJSON } from './store.js';
 import { mergeStats } from './gamify.js';
 
@@ -63,9 +64,17 @@ function unionList(a, b, key, limit = Infinity) {
 }
 
 // Fusionne deux progressions. `local` l'emporte à égalité ; ni l'une ni l'autre n'est modifiée.
+// Effacement, import ou retour à l'état précédent (resetAt différent) : l'état qui porte la date la plus récente
+// remplace l'autre en entier, sinon l'union réinjecterait la progression effacée. Les réponses de l'autre appareil
+// données depuis sa dernière synchro sont alors perdues (l'utilisateur en est averti avant de confirmer).
 export function merge(local, remote) {
   if (!isObj(remote)) return local;
   if (!isObj(local)) return remote;
+  const ra = num(local.resetAt); const rb = num(remote.resetAt);
+  if (ra !== rb) {
+    const w = ra > rb ? local : remote;
+    return { ...w, updatedAt: Math.max(num(local.updatedAt), num(remote.updatedAt)) };
+  }
   // n : la plus récemment modifiée ; o : l'autre
   const [n, o] = num(remote.updatedAt) > num(local.updatedAt) ? [remote, local] : [local, remote];
   // Réglages : ceux modifiés en dernier ; jamais modifiés des deux côtés : ceux de l'appareil le plus avancé
@@ -122,26 +131,34 @@ async function call(f, url, opts, timeout) {
 function fail(res) {
   if (res.status === 401) return new Error('code secret refusé');
   if (res.status === 404) return new Error('adresse incorrecte (Worker introuvable)');
+  if (res.status === 412) return new Error('copie en ligne modifiée au même moment par un autre appareil : réessayez');
   return new Error(`erreur du serveur (${res.status})`);
 }
 
 // Lit la copie en ligne, la fusionne avec `local`, renvoie le résultat au serveur s'il diffère.
+// Le PUT porte la révision lue (If-Match, vide si le casier était vide) : si un autre appareil a écrit entre-temps,
+// le Worker répond 412 et l'on recommence lecture et fusion (2 nouvelles tentatives au plus), au lieu d'écraser son envoi.
 // → { state (fusion), changed (diffère de local), pushed }
-export async function syncOnce(cfg, local, { fetch: f = globalThis.fetch, timeout = 15000 } = {}) {
+export async function syncOnce(cfg, local, { fetch: f = globalThis.fetch, timeout = 15000, retry = 0 } = {}) {
   const url = `${cfg.url}/progress`;
   const headers = { Authorization: `Bearer ${cfg.token}` };
   const res = await call(f, url, { headers }, timeout);
   let remote = null;
+  let rev = null; // null : révision inconnue (Worker ancien), PUT sans If-Match
   if (res.status === 200) {
+    rev = res.headers.get('X-Rev');
     const text = await res.text();
     try { remote = importJSON(text); } catch (e) { throw new Error(`copie en ligne illisible (${e.message}) : rien n’a été écrasé`); }
   } else if (res.status === 204 || (res.status === 404 && res.headers.get('X-Dec1-Empty') === '1')) {
-    remote = null; // serveur vide : premier envoi
+    remote = null; rev = ''; // serveur vide : premier envoi
   } else throw fail(res);
   const merged = remote ? merge(local, remote) : local;
   let pushed = false;
   if (!remote || !same(merged, remote)) {
-    const put = await call(f, url, { method: 'PUT', headers: { ...headers, 'Content-Type': 'application/json' }, body: JSON.stringify(merged) }, timeout);
+    const h = { ...headers, 'Content-Type': 'application/json' };
+    if (rev !== null) h['If-Match'] = rev;
+    const put = await call(f, url, { method: 'PUT', headers: h, body: JSON.stringify(merged) }, timeout);
+    if (put.status === 412 && retry < 2) return syncOnce(cfg, local, { fetch: f, timeout, retry: retry + 1 });
     if (!put.ok) throw fail(put);
     pushed = true;
   }

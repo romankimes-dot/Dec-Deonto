@@ -49,8 +49,8 @@
 
  { "id": "responsabilites-08", "type": "cas", "prof": "CAC", "tags": ["responsabilite_penale"], "fiche": "21-schema-responsabilites.md",
    "title": "Comptes sciemment faussés", 
-   "situation": "Un CAC certifie sans réserve des comptes qu'il sait sciemment faussés.",
-   "quiz": { "q": "Quelles responsabilités sont engagées ?", "choices": ["Civile seulement", "Disciplinaire seulement", "Civile, pénale et disciplinaire"], "answer": 2, "why": "Les **trois**. Pénalement, c'est le délit d'**informations mensongères**. Le mot « sciemment » est décisif : le délit suppose que le CAC **sache** les comptes faussés." },
+   "situation": "Un CAC certifie sans réserve des comptes qu'il sait faussés.",
+   "quiz": { "q": "Quelles responsabilités sont engagées ?", "choices": ["Civile seulement", "Disciplinaire seulement", "Civile, pénale et disciplinaire"], "answer": 2, "why": "Les **trois**. Pénalement, c'est le délit d'**informations mensongères**. Le délit est **intentionnel** : il suppose que le CAC **sache** les comptes faussés." },
    "src": ["Certification sans réserve de comptes sciemment faussés", "Informations mensongères"] },
 
  { "id": "responsabilites-09", "type": "cas", "prof": "CAC", "tags": ["responsabilite_civile", "responsabilite_penale"], "fiche": "21-schema-responsabilites.md",
@@ -77,7 +77,7 @@
    "ec": { "main": "**Auteur ou complice**", "det": "**Auteur** : secret, faux, blanchiment, escroquerie, exercice illégal. **Complice** : comptes infidèles, ABS, fraude fiscale." },
    "cac": { "main": "**Délits propres**", "det": "Non-révélation, informations mensongères, exercice malgré incompatibilité, usage du titre. Et complicité." },
    "trap": "Le CAC peut aussi être complice : ses délits propres s'ajoutent.",
-   "quiz": { "q": "Omettre sciemment de révéler des faits délictueux au procureur est un délit…", "choices": ["Pour l'EC et le CAC", "Propre au CAC", "Propre à l'EC"], "answer": 1, "why": "C'est un délit **propre au CAC**. Il n'existe pas d'obligation équivalente pour l'expert-comptable." },
+   "quiz": { "q": "Ne pas révéler au procureur des faits délictueux connus est un délit…", "choices": ["Pour l'EC et le CAC", "Propre au CAC", "Propre à l'EC"], "answer": 1, "why": "C'est un délit **propre au CAC**. Il n'existe pas d'obligation équivalente pour l'expert-comptable." },
    "src": ["Auteur (secret, faux, blanchiment, escroquerie, exercice illégal) ou complice (comptes infidèles, ABS, fraude fiscale)", "Délits propres : non-révélation, informations mensongères, exercice malgré une incompatibilité, usage du titre ; et complicité"] },
 
  {"id": "responsabilites-13", "type": "chiffre", "prof": "CAC", "tags": ["responsabilite_penale"], "fiche": "08-cac-responsabilite.md", "title": "Peine de la non-révélation", "big": "5 ans · 75 000 €", "label": "Peine de la non-révélation et des informations mensongères", "det": "Les deux délits sont punis de la même peine.", "trap": "1 an et 15 000 € : secret ou usage du titre. 6 mois et 7 500 € : incompatibilité.", "quiz": {"q": "Quelle est la peine de la non-révélation de faits délictueux par le CAC ?", "choices": ["1 an et 15 000 €", "6 mois et 7 500 €", "5 ans et 75 000 €"], "answer": 2, "why": "**5 ans et 75 000 €**, comme pour les informations mensongères. Les chiffres voisins sont ceux du secret et de l'usurpation du titre, ou de l'incompatibilité."}, "src": ["Ne pas révéler au procureur les faits délictueux connus", "5 ans et 75 000 €", "6 mois et 7 500 €"]},

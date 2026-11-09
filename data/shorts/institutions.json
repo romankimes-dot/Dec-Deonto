@@ -10,10 +10,10 @@
  { "id": "institutions-02", "type": "duel", "prof": "EC+CAC", "tags": ["h2a_supervision", "ordre_organisation"], "fiche": "12-schema-institutions-ec-cac.md",
    "title": "Supervision publique", "q": "Qui supervise la profession ?",
    "ec": { "main": "**L'Ordre lui-même**", "det": "Aucune autorité indépendante : c'est l'**Ordre** qui contrôle." },
-   "cac": { "main": "**La H2A**", "det": "Autorité publique indépendante, ex-H3C, depuis le 01/01/2024." },
+   "cac": { "main": "**La H2A**", "det": "Autorité publique indépendante, ex-H3C, depuis le 1er janvier 2024." },
    "trap": "H3C est l'ancien nom : il ne faut plus répondre H3C.",
    "quiz": { "q": "Quelle autorité publique indépendante supervise aujourd'hui les CAC ?", "choices": ["Le H3C", "La CNCC", "La H2A", "Le Conseil national de l'Ordre"], "answer": 2, "why": "La **H2A** (ex-H3C) est l'autorité publique indépendante des CAC. Chez l'EC, aucune autorité indépendante : l'Ordre contrôle." },
-   "src": ["Aucune autorité indépendante : c'est l'Ordre qui contrôle", "H2A (ex-H3C), autorité publique indépendante"] },
+   "src": ["Aucune autorité indépendante : c'est l'Ordre qui contrôle", "H2A (ex-H3C jusqu'au 31 décembre 2023), autorité publique indépendante"] },
 
  { "id": "institutions-03", "type": "duel", "prof": "EC+CAC", "tags": ["inscription_tableau", "inscription_liste"], "fiche": "12-schema-institutions-ec-cac.md",
    "title": "Tableau ou liste", "q": "Où et par qui est-on inscrit ?",
@@ -230,7 +230,7 @@
    "cac": { "main": "**CNCC**", "det": "**Établissement d'utilité publique**." },
    "trap": "La H2A, autorité publique indépendante, assure la supervision publique des CAC : ce n'est pas l'instance nationale.",
    "quiz": { "q": "Quelle est l'instance nationale des commissaires aux comptes ?", "choices": ["La CRCC", "Le Conseil national de l'Ordre", "La CNCC"], "answer": 2, "why": "La **CNCC**, établissement d'utilité publique. Le Conseil national de l'Ordre est l'instance nationale des EC ; la CRCC est l'instance régionale du CAC." },
-   "src": ["Conseil national de l'Ordre (ex-Conseil supérieur, renommé par la loi 2022-172)", "CNCC, établissement d'utilité publique", "H2A (ex-H3C), autorité publique indépendante", "CRCC, dans le ressort des cours d'appel"] },
+   "src": ["Conseil national de l'Ordre (ex-Conseil supérieur, renommé par la loi 2022-172)", "CNCC, établissement d'utilité publique", "H2A (ex-H3C jusqu'au 31 décembre 2023), autorité publique indépendante", "CRCC, dans le ressort des cours d'appel"] },
 
  { "id": "institutions-37", "type": "duel", "prof": "EC+CAC", "tags": ["ordre_organisation", "cncc_crcc_organisation"], "fiche": "12-schema-institutions-ec-cac.md",
    "title": "Instance régionale", "q": "Quelle est l'instance régionale ?",

@@ -4,7 +4,7 @@ questions: CAC:nomination_seuils CAC:agp_associations EC:societes_ec_capital CAC
 ---
 # Les chiffres à connaître par cœur
 
-Le jury n'exige ni les numéros d'articles ni le quantum des sanctions. Les **seuils**, **durées** et **majorités** restent, eux, des réponses de QCM.
+Les rapports de jury relèvent surtout la **confusion entre règles EC et CAC**. Les **seuils**, **durées**, **majorités** et **plafonds de sanctions** sont des réponses de QCM, et les sujets citent parfois l'article (2026-05 Q15 et Q18).
 
 ## Durées
 
@@ -13,7 +13,7 @@ Le jury n'exige ni les numéros d'articles ni le quantum des sanctions. Les **se
 | **6 exercices** | Durée du mandat de CAC | {CAC} |
 | **3 exercices** | Mandat ALPE (petites entreprises, petits groupes) | {CAC} |
 | **10 / 16 / 24 ans** | Rotation du cabinet d'une EIP (base / appel d'offres / co-commissariat) | {CAC} |
-| **6 ans + 3 ans** | Rotation du signataire d'une EIP, puis viduité | {CAC} |
+| **6 ans + 3 ans** | Rotation du signataire (EIP, entités L.612-1, APG, filiales importantes d'EIP), puis viduité | {CAC} |
 | **3 ans / 6 ans** | Contrôle d'activité : CAC des grandes EIP / autres CAC | {CAC} |
 | **≈ 6 ans** | Cycle du contrôle de qualité de l'Ordre | {EC} |
 | **30 jours** | Délai pour demander la récusation d'un CAC | {CAC} |

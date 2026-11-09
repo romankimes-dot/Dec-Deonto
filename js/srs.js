@@ -117,14 +117,42 @@ function alternate(list, limit) {
 
 // Tirage d'un examen blanc : 10 EC + 10 CAC, en privilégiant les questions jamais vues en examen
 // puis les moins récemment vues. `seen` : map id -> timestamp de dernière apparition en examen.
-export function drawExam(questions, seen = {}, rnd = Math.random) {
+// Une copie équilibrée et sans doublon :
+// - une seule question par notion récurrente (`clusterOf` : id -> n° de groupe, js/cluster.js) : deux variantes
+//   d'une même question gonfleraient la note ;
+// - par profession, au moins 2 questions en exercice, déontologie et responsabilité, et au moins 1 en contrôle qualité
+//   (dans la limite des questions disponibles) ;
+// - sans les questions de confiance « low » (clé douteuse), sauf si elles manquent pour compléter la copie.
+export const EXAM_QUOTAS = { exercice: 2, deontologie: 2, responsabilite: 2, controle_qualite: 1 };
+export function drawExam(questions, seen = {}, rnd = Math.random, { clusterOf = {}, perProf = 10, quotas = EXAM_QUOTAS } = {}) {
+  const used = new Set(); // groupes déjà présents dans la copie (les deux professions)
+  const groupOf = (q) => (clusterOf[q.id] === undefined || clusterOf[q.id] === null ? null : clusterOf[q.id]);
   const pick = (prof) => {
-    const pool = questions.filter((q) => q.profession === prof);
-    const shuffled = pool
+    const all = questions.filter((q) => q.profession === prof);
+    const order = (list) => list
       .map((q) => ({ q, r: rnd() }))
       .sort((a, b) => (seen[a.q.id] || 0) - (seen[b.q.id] || 0) || a.r - b.r)
       .map((x) => x.q);
-    return shuffled.slice(0, 10);
+    // Confiance « low » en dernier recours seulement.
+    const ranked = [...order(all.filter((q) => q.confidence !== 'low')), ...order(all.filter((q) => q.confidence === 'low'))];
+    const sure = ranked.filter((q) => q.confidence !== 'low');
+    const out = [];
+    const take = (q) => { out.push(q); const g = groupOf(q); if (g !== null) used.add(g); };
+    const free = (q) => !out.includes(q) && (groupOf(q) === null || !used.has(groupOf(q)));
+    // 1. Quotas par thème, sur les questions sûres.
+    for (const [theme, min] of Object.entries(quotas)) {
+      for (const q of sure) {
+        if (out.filter((x) => x.theme === theme).length >= min || out.length >= perProf) break;
+        if (q.theme === theme && free(q)) take(q);
+      }
+    }
+    // 2. Complément dans l'ordre (jamais vues d'abord), toujours une question par notion.
+    for (const q of sure) { if (out.length >= perProf) break; if (free(q)) take(q); }
+    // 3. Banque trop petite : questions « low », puis variantes d'une notion déjà tirée.
+    for (const q of ranked) { if (out.length >= perProf) break; if (free(q)) take(q); }
+    for (const q of ranked) { if (out.length >= perProf) break; if (!out.includes(q)) take(q); }
+    // Ordre de passage : celui du tri (jamais vues d'abord), quel que soit l'ordre de sélection.
+    return ranked.filter((q) => out.includes(q));
   };
   return [...pick('EC'), ...pick('CAC')];
 }

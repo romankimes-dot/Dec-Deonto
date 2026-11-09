@@ -26,9 +26,9 @@
           "L'EC doit respecter le monopole des autres professions",
           "Activités accessoires possibles (gestion de patrimoine accessoire, tiers payant d'un député européen, assistance)"
         ],
-        "model_answer": "Non. La représentation des parties devant les juridictions relève du monopole des avocats, que l'expert-comptable doit respecter. Il peut en revanche exercer certaines activités accessoires autorisées, comme le conseil en gestion de patrimoine à titre accessoire ou la fonction de tiers payant d'un député européen, et assister son client."
+        "model_answer": "La représentation des parties en justice relève du monopole des avocats : l'expert-comptable ne peut pas l'assumer. Il peut en revanche assister son client et exercer des activités accessoires autorisées (conseil en gestion de patrimoine à titre accessoire, tiers payant d'un député européen)."
       },
-      "explanation": "L'article 22 de l'ordonnance interdit expressément aux membres de l'Ordre « d'assumer une mission de représentation devant les tribunaux de l'ordre judiciaire ou administratif ». Il autorise, depuis la loi du 23 juillet 2010, des activités commerciales et actes d'intermédiaire accessoires dans les limites d'une norme professionnelle ; le tiers payant d'un député européen est prévu par les textes. La représentation en justice est un monopole de l'avocat (loi 71-1130). Nuance : l'assistance devant certaines juridictions est admise par la doctrine ordinale ; la frontière assistance / représentation est le cœur de la question.",
+      "explanation": "Ord. art. 22 : interdiction d'« assumer une mission de représentation devant les tribunaux de l'ordre judiciaire ou administratif » (monopole de l'avocat, loi 71-1130). Activités commerciales accessoires admises depuis la loi du 23 juillet 2010. Piège : l'assistance devant certaines juridictions reste admise ; seule la représentation est interdite.",
       "reference": "Ord. 45-2138 art. 2 et 22 ; loi n° 71-1130 du 31 déc. 1971 art. 4",
       "confidence": "high"
     },
@@ -56,9 +56,9 @@
           "La communication doit être décente, empreinte de retenue, exacte, non trompeuse et exempte de tout élément comparatif",
           "Le référencement sur des plateformes (même commerciales, même avec avis clients) et le parrainage sont admis sous conditions"
         ],
-        "model_answer": "Non. L'article 152 du code de déontologie impose une communication décente, empreinte de retenue, exacte et exempte de tout élément comparatif : se dire membre du « premier réseau » introduit une comparaison avec les confrères. Le référencement sur des plateformes, même commerciales ou avec avis clients, et le parrainage restent possibles s'ils respectent ces principes et le secret."
+        "model_answer": "Interdit : se dire membre du « premier réseau » introduit une comparaison avec les confrères, contraire à l'art. 152 (communication décente, empreinte de retenue, exacte, sans élément comparatif). Le référencement sur des plateformes, même commerciales ou avec avis clients, et le parrainage restent possibles dans ces limites."
       },
-      "explanation": "Depuis 2014, la sollicitation est permise aux EC, y compris via des plateformes de mise en relation : le guide ordinal des plateformes encadre le recueil des avis clients et interdit seulement le classement des experts-comptables lié à leur rémunération. La mention de l'appartenance à un réseau est autorisée (art. 154 8°), mais pas le superlatif comparatif.",
+      "explanation": "Depuis 2014, la sollicitation est permise, y compris via des plateformes : le guide ordinal encadre les avis clients et n'interdit que le classement des experts-comptables lié à leur rémunération. Mentionner l'appartenance à un réseau est permis (art. 154 8°) ; le superlatif comparatif ne l'est pas.",
       "reference": "D. 2012-432 art. 152 et 154 ; guide ordinal de bonnes pratiques des plateformes en ligne",
       "confidence": "medium"
     },
@@ -107,22 +107,22 @@
           "Lors d'un contrôle ou d'une enquête de l'Autorité des Marchés Financiers (AMF).",
           "Lors d'un contrôle de la Commission Nationale de l'Informatique et des Libertés (CNIL)."
         ],
-        "answer": 3
+        "answer": 0
       },
       "qrc": {
         "question": "Citez des situations dans lesquelles le secret professionnel de l'expert-comptable est levé, et une situation où il reste opposable.",
         "expected": [
-          "Levée : témoignage / audition dans le cadre d'une procédure pénale",
+          "Opposable : audition comme témoin (CPP art. 109) ; levée seulement si une information ou des poursuites visent l'EC (ord. art. 21)",
           "Levée : contrôle de qualité de l'Ordre",
           "Levée : enquêtes et contrôles de l'AMF ; déclaration de soupçon à Tracfin",
-          "Opposable : contrôle de la CNIL (aucun texte de levée) ; le client ne peut pas délier"
+          "Non opposable à la CNIL (loi 78-17 art. 19 III) ; le client ne peut pas délier"
         ],
-        "model_answer": "Le secret de l'expert-comptable est levé notamment lors d'une audition ou d'un témoignage en matière pénale, lors du contrôle de qualité de l'Ordre et à l'égard de l'AMF ainsi que de Tracfin. Il reste opposable aux agents de la CNIL, faute de texte le levant."
+        "model_answer": "Le secret reste opposable lors d'une audition comme témoin : le témoin dépose sous réserve des art. 226-13 et 226-14 C. pén. (CPP art. 109). L'EC n'en est délié que si une information ou des poursuites le visent (ord. art. 21). Il est levé pour le contrôle de qualité, envers l'AMF et Tracfin, et ne peut être opposé à la CNIL."
       },
-      "explanation": "Le secret (ord. art. 21, C. pén. 226-13) ne cède que devant une disposition législative contraire. Le CMF lève le secret à l'égard de l'AMF ; les contrôleurs qualité sont eux-mêmes tenus au secret. Pour la CNIL, la clé officielle retient que le secret est opposable. Attention : l'article 19 III de la loi Informatique et libertés ne réserve, face aux agents de la CNIL, que le secret avocat-client, le secret des sources journalistiques et le secret médical ; la justification de cette clé est donc incertaine (à vérifier).",
-      "reference": "Ord. 45-2138 art. 21 ; C. pén. 226-13 et 226-14 ; CMF L.621-9-3 ; loi 78-17 art. 18 et 19",
+      "explanation": "Le témoin dépose sous réserve du secret (CPP art. 109 ; C. pén. 226-13) : le secret est opposable en audition. Il est levé pour le contrôle qualité et l'AMF ; face à la CNIL, seuls les secrets avocat-client, des sources et médical sont opposables (loi 78-17 art. 19 III). La clé d) retenue jusqu'ici par la banque est abandonnée.",
+      "reference": "Ord. 45-2138 art. 21 ; C. pén. 226-13 et 226-14 ; CPP art. 109 ; CMF L.621-9-3 ; loi 78-17 art. 18 et 19 III",
       "confidence": "low",
-      "update_note": "Relecture : la justification CNIL est nuancée. L'art. 18 de la loi 78-17 dispense de fournir les renseignements demandés les personnes interrogées astreintes au secret professionnel, mais l'art. 19 III précise que, lors des contrôles, le secret ne peut être opposé aux agents de la CNIL sauf secret avocat-client, secret des sources et secret médical. La réponse d) reste celle du sujet officiel au regard des levées classiques (audition pénale, contrôle qualité, AMF)."
+      "review_note": "Clé corrigée (revue de novembre 2026) : la banque retenait d) (CNIL) et la présentait à tort comme « clé officielle » ; le sujet ne contient aucun corrigé, et la seule correction publiée connue (RFC) retient a). CPP 109 al. 1 vérifié par sources secondaires ; loi 78-17 art. 19 III et ord. art. 21 non relus sur Légifrance (inaccessible) : confidence low maintenue, question à exclure des examens blancs."
     },
     {
       "id": "2025-11-EC-05",
@@ -149,7 +149,7 @@
           "Exclus : missions participant à la détermination de l'assiette fiscale ou sociale du client",
           "Ne doivent pas compromettre l'indépendance ni créer de conflit d'intérêts"
         ],
-        "model_answer": "Les honoraires complémentaires de résultat sont interdits pour les missions comptables relevant du monopole (deux premiers alinéas de l'article 2) et pour celles participant à la détermination de l'assiette fiscale ou sociale du client, comme une mission d'optimisation des coûts fiscaux. Ils restent possibles pour d'autres missions (financement, cession, recouvrement) s'ils ne compromettent pas l'indépendance."
+        "model_answer": "Ils sont exclus pour les missions comptables des deux premiers alinéas de l'art. 2 et pour celles qui participent à la détermination de l'assiette fiscale ou sociale du client, comme l'optimisation des coûts fiscaux. Ils restent possibles pour d'autres missions (financement, cession, recouvrement) sans atteinte à l'indépendance."
       },
       "explanation": "Article 24 de l'ordonnance, modifié par la loi Pacte : des honoraires complémentaires « au succès », s'ajoutant aux honoraires de diligence, sont admis sauf exceptions. Ne pas confondre avec le CAC, à qui toute rémunération proportionnelle ou conditionnelle est interdite (code de déontologie CAC art. 13).",
       "reference": "Ord. 45-2138 art. 2 et 24",
@@ -181,7 +181,7 @@
         ],
         "model_answer": "L'attestation particulière (NP 3100) est une autre mission d'assurance : selon la lettre de mission et les diligences, l'expert-comptable exprime une assurance de niveau raisonnable ou de niveau modéré sur l'information visée, au regard de critères applicables."
       },
-      "explanation": "La NP 3100 couvre des informations autres que des comptes complets historiques (attestations directes ou indirectes). À l'inverse, la présentation (NP 2300) et l'examen limité (NP 2400) ne donnent qu'une assurance modérée, l'audit (NP 2100) une assurance raisonnable.",
+      "explanation": "La NP 3100 vise des informations autres que des comptes complets historiques (attestations directes ou indirectes). À l'inverse, la présentation (NP 2300) et l'examen limité (NP 2400) ne donnent qu'une assurance modérée ; l'audit (normes ISA ; NP 2910 pour une petite entité) donne une assurance raisonnable.",
       "reference": "NP 3100 (arrêté du 13 avr. 2022) § 3 ; cadre de référence",
       "confidence": "high"
     },
@@ -211,10 +211,10 @@
         ],
         "model_answer": "Le contrôle de qualité est réalisé par des experts-comptables en exercice, volontaires, ayant fait acte de candidature pour être contrôleurs, puis formés et missionnés dans le cadre organisé par l'Ordre. Ils examinent l'organisation du cabinet et, par sondages, les dossiers de travail, et sont tenus au secret professionnel."
       },
-      "explanation": "Règlement intérieur de l'Ordre : les professionnels « font acte de candidature » auprès du conseil régional ou de la commission nationale d'inscription (art. 411), qui choisissent les contrôleurs au vu des candidatures et dressent des listes pour trois ans (art. 412) ; conditions : aucune sanction disciplinaire, stage de formation, inscription au tableau depuis au moins cinq ans (art. 413), d'où la fausseté de c). La proposition a) n'est que partiellement exacte (la désignation suit la candidature et peut émaner de la commission nationale d'inscription) ; b) est la réponse la plus complète. Côté CAC, les contrôles d'activité sont réalisés par des contrôleurs de la H2A (ou de la CNCC par délégation pour les non-EIP).",
+      "explanation": "Règlement intérieur de l'Ordre : les professionnels « font acte de candidature » (art. 411) ; les contrôleurs sont choisis parmi eux (art. 412). Conditions : cinq ans d'inscription au moins, aucune sanction disciplinaire, stage de formation (art. 413), d'où la fausseté de c). a) est incomplète : la désignation suit la candidature.",
       "reference": "Règlement intérieur de l'Ordre des experts-comptables art. 410 à 416 (agréé par arrêté)",
       "confidence": "medium",
-      "update_note": "Relecture : réponse b) confirmée par l'art. 411 du règlement intérieur (« font acte de candidature ») ; a) reste partiellement exacte (art. 412 : les conseils régionaux choisissent et désignent les contrôleurs parmi les candidats), d'où une confiance moyenne."
+      "review_note": "Réponse b) confirmée par RI art. 411 (« font acte de candidature ») ; a) reste partiellement exacte (art. 412 : les conseils régionaux ou la commission nationale d'inscription choisissent et désignent les contrôleurs parmi les candidats), d'où la confiance moyenne."
     },
     {
       "id": "2025-11-EC-08",
@@ -266,9 +266,9 @@
           "Jamais sur les documents remis par le client",
           "Information préalable du président du conseil régional de tout litige conduisant à envisager la rétention"
         ],
-        "model_answer": "Non. Le droit de rétention ne garantit que le paiement des honoraires correspondant aux travaux réalisés et ne porte que sur ces travaux, jamais sur les documents remis par le client. Une indemnité de rupture n'est pas la contrepartie de travaux et ne peut justifier une rétention. L'expert-comptable doit en outre informer le président du conseil régional avant toute rétention."
+        "model_answer": "Non. La rétention ne garantit que les honoraires des travaux réalisés et ne porte que sur ces travaux, jamais sur les documents remis par le client ; une indemnité de rupture ne rémunère aucun travail. L'expert-comptable informe en outre le président du conseil régional avant toute rétention."
       },
-      "explanation": "La rétention n'est admise que sur les travaux effectués, faute de paiement des honoraires correspondants (code de déontologie art. 168, qui impose d'informer préalablement le président du conseil régional). Une indemnité de rupture n'est pas un honoraire rémunérant un travail fourni (ord. art. 24) : elle se recouvre par la conciliation ou l'arbitrage du président du conseil régional, ou devant le juge.",
+      "explanation": "Rétention admise sur les seuls travaux effectués, faute de paiement des honoraires correspondants, après information du président du conseil régional (art. 168). Une indemnité de rupture ne rémunère aucun travail (ord. art. 24) : elle se recouvre par la conciliation ou l'arbitrage du président du conseil régional, ou devant le juge.",
       "reference": "Ord. 45-2138 art. 24 ; D. 2012-432 art. 159, 160 et 168",
       "confidence": "high"
     },
@@ -329,7 +329,7 @@
           "Section 4 : publicité, sollicitation personnalisée et services en ligne",
           "Section 5 : monopoles des autres professions"
         ],
-        "model_answer": "Le titre I, applicable à toutes les missions et prestations, traite des principes fondamentaux de comportement, de la conduite de la mission (recours à des collaborateurs et experts), des honoraires, de la publicité et de la sollicitation, et du respect des monopoles des autres professions. Il interdit les honoraires proportionnels ou conditionnels."
+        "model_answer": "Le titre I, applicable à toutes les missions et prestations, traite des principes fondamentaux de comportement, de la conduite de la mission (collaborateurs et experts), des honoraires, de la publicité et de la sollicitation, et des monopoles des autres professions. Il interdit les honoraires proportionnels ou conditionnels."
       },
       "explanation": "L'article 13 du code interdit toute rémunération proportionnelle ou conditionnelle. Confusion EC/CAC : l'expert-comptable peut, depuis la loi Pacte, percevoir des honoraires complémentaires de résultat pour certaines missions.",
       "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 3 à 17, notamment art. 10, 13, 17",
@@ -392,9 +392,9 @@
           "Puis recours dans le mois devant le bureau de la H2A (puis tribunal administratif)",
           "Pas de procédure si les parties sont d'accord ; majoration d'un tiers au plus en cas d'alerte"
         ],
-        "model_answer": "La partie la plus diligente saisit, avant la mission, le président de la CRCC, qui statue dans les quinze jours. Sa décision peut être contestée dans les dix jours devant le président de la CNCC, puis dans le mois devant le bureau de la H2A. La procédure n'est pas requise si les parties s'accordent ; en cas d'alerte, les heures peuvent être majorées d'un tiers au plus."
+        "model_answer": "La partie la plus diligente saisit le président de la CRCC avant la mission ; il statue sous quinze jours. Recours dans les dix jours devant le président de la CNCC, puis dans le mois devant le bureau de la H2A. Pas de procédure si les parties s'accordent ; en cas d'alerte, heures majorées d'un tiers au plus."
       },
-      "explanation": "Proposition b) erronée dans la rédaction actuelle de D.821-190 : le recours contre la décision du président de la CRCC est d'abord porté devant le président de la CNCC, le bureau de la H2A n'intervenant qu'en second recours. L.820-2 III mentionne la compétence du bureau, mais D.821-190 organise un recours préalable devant le président de la CNCC (confirmé par la fiche CNCC de mai 2025). Les autres propositions sont exactes : saisine par la partie la plus diligente (D.821-190), majoration d'un tiers au plus en cas d'alerte (D.821-189), vacation horaire fixée d'un commun accord (R.821-192).",
+      "explanation": "b) est erronée : selon D.821-190, la décision du président de la CRCC se conteste d'abord devant le président de la CNCC ; le bureau de la H2A n'intervient qu'en second recours. Exactes : saisine par la partie la plus diligente (D.821-190), majoration d'un tiers au plus en cas d'alerte (D.821-189), vacation fixée d'un commun accord (R.821-192).",
       "reference": "C. com. L.820-2 III, D.821-188 à D.821-191, R.821-192",
       "confidence": "high",
       "update_note": "Procédure recodifiée en 2024 (ex-R.823-12 à R.823-15) ; l'ancien recours devant la chambre régionale de discipline a disparu."
@@ -422,10 +422,10 @@
           "Information sincère sur la nature des missions et prestations",
           "Respect de la dignité, de la confraternité, de la loyauté",
           "Aucun élément comparatif ou dénigrant",
-          "Uniquement par envoi postal ou courriel à un destinataire déterminé ; démarchage physique, téléphonique et SMS exclus",
+          "Uniquement par envoi postal ou courriel à un destinataire déterminé ; toute autre forme de démarchage (physique, téléphone…) interdite",
           "Précision des modalités de détermination des honoraires"
         ],
-        "model_answer": "La sollicitation personnalisée doit procurer une information sincère, respecter la dignité, la confraternité et la loyauté, exclure tout élément comparatif ou dénigrant et préciser les modalités de détermination des honoraires. Elle ne peut prendre que la forme d'un envoi postal ou d'un courriel adressé à un destinataire déterminé : démarchage physique, appels téléphoniques et SMS sont exclus."
+        "model_answer": "Information sincère ; respect de la dignité, de la confraternité et de la loyauté ; aucun élément comparatif ou dénigrant ; modalités de détermination des honoraires précisées. Forme : envoi postal ou courriel adressé à un destinataire déterminé ; toute autre forme de démarchage (physique, téléphonique…) est interdite."
       },
       "explanation": "Article 16 du code de déontologie CAC. Différence avec l'EC, pour qui le code (art. 152) ne prohibe pas en tant que tel le démarchage téléphonique, sous réserve de discrétion.",
       "reference": "Code de déontologie CAC (C. com. annexe 8-1) art. 16",
@@ -450,14 +450,14 @@
           "Avertissement ; blâme",
           "Interdiction d'exercer tout ou partie des missions pour 3 ans au plus",
           "Radiation de la liste ; retrait de l'honorariat",
-          "Complémentaires : publication d'une déclaration sur le rapport, interdiction (3 ans max) de fonctions de direction dans une société de CAC ou une EIP, sanction pécuniaire (250 000 € personne physique ; 1 M€ ou plus personne morale)"
+          "Complémentaires : déclaration publique, interdiction de direction (3 ans max), sanction pécuniaire (250 000 € ; 1 M€ ou plus en personne morale)"
         ],
-        "model_answer": "L'avertissement, le blâme, l'interdiction d'exercer tout ou partie des missions pour trois ans au plus, la radiation de la liste et le retrait de l'honorariat, ainsi que, cumulativement, une déclaration publique sur le rapport, l'interdiction temporaire de fonctions de direction et une sanction pécuniaire. L'emprisonnement est une peine pénale, prononcée par le juge pénal."
+        "model_answer": "Avertissement, blâme, interdiction d'exercer tout ou partie des missions (trois ans au plus), radiation de la liste, retrait de l'honorariat ; en complément, publication d'une déclaration, interdiction temporaire de fonctions de direction et sanction pécuniaire. L'emprisonnement est une peine pénale, prononcée par le juge pénal."
       },
       "explanation": "L.821-71. L'emprisonnement relève de la responsabilité pénale (ex. non-révélation de faits délictueux, informations mensongères : 5 ans et 75 000 €). Confusion EC/CAC : les EC encourent réprimande, blâme avec inscription au dossier, suspension, radiation.",
       "reference": "C. com. L.821-71 (ex-L.824-2), L.821-9",
       "confidence": "high",
-      "update_note": "Relecture : durée maximale de 3 ans confirmée (L.821-71 I 3° et II 2°, brochure CNCC sept. 2024 ; conforme à l'art. 30 bis de la directive 2006/43/CE) ; une durée de 5 ans serait erronée (le délai de 5 ans de L.821-71 concerne la réitération pour la sanction pécuniaire)."
+      "review_note": "Durée maximale de 3 ans relue dans le miroir LEGI (L.821-71 I 3° et II 2°) ; conforme à la directive 2006/43/CE art. 30 bis. Le délai de 5 ans de L.821-71 concerne la réitération et le sursis, pas la durée de l'interdiction."
     },
     {
       "id": "2025-11-CAC-16",
@@ -484,7 +484,7 @@
           "EIP et leurs dirigeants et organes (dont comité spécialisé) pour les manquements sur services, désignation, durée, honoraires",
           "Entités et dirigeants faisant obstacle aux contrôles ; contrôleurs de pays tiers inscrits ; auditeurs de durabilité"
         ],
-        "model_answer": "La commission des sanctions juge les commissaires aux comptes, mais aussi leurs associés, salariés et proches pour les liens incompatibles, les EIP et leurs dirigeants et organes pour les règles d'indépendance et de désignation, les personnes faisant obstacle aux contrôles, les contrôleurs de pays tiers et les auditeurs de durabilité. L'expert-comptable relève, en tant que tel, des chambres de discipline de l'Ordre."
+        "model_answer": "Outre les CAC : leurs associés, salariés et proches (liens incompatibles), les EIP et leurs dirigeants et organes (indépendance, désignation), les personnes faisant obstacle aux contrôles, les contrôleurs de pays tiers et les auditeurs de durabilité. L'expert-comptable relève, en tant que tel, des chambres de discipline de l'Ordre."
       },
       "explanation": "Un EC qui est aussi CAC relève de la H2A pour son activité de CAC et de l'Ordre pour son activité d'EC. Les membres des comités spécialisés relèvent de la H2A au titre des manquements des EIP (approbation des SACC, sélection du CAC…).",
       "reference": "C. com. L.820-2 V, L.821-19 IV, L.821-70, L.821-72, L.821-79",
@@ -533,10 +533,10 @@
         "expected": [
           "Procédure ordinaire devant la commission des sanctions (L.821-79, L.821-80)",
           "Procédure simplifiée de sanction (L.821-81)",
-          "Composition administrative (L.821-78)",
+          "Composition administrative, une fois les griefs arrêtés (L.821-78)",
           "Possible suspension provisoire en cas d'urgence (L.821-76)"
         ],
-        "model_answer": "Après enquête du rapporteur général et notification des griefs par le collège, la H2A peut recourir à la procédure ordinaire devant la commission des sanctions, à la procédure simplifiée de sanction pour certains manquements (formation, obligations déclaratives…) ou proposer une composition administrative. La comparution immédiate est une procédure pénale."
+        "model_answer": "Après l'enquête du rapporteur général, le code prévoit la procédure ordinaire devant la commission des sanctions, la procédure simplifiée pour certains manquements (formation continue, obligations déclaratives) et la composition administrative, proposée une fois les griefs arrêtés. La comparution immédiate est une procédure pénale."
       },
       "explanation": "Composition administrative et procédure simplifiée sont des nouveautés de l'ordonnance 2023-1142. Recours contre les décisions : Conseil d'État.",
       "reference": "C. com. L.821-76 à L.821-85",
@@ -570,7 +570,7 @@
         ],
         "model_answer": "Le Conseil national compte soixante membres désignés pour quatre ans, comprenant les présidents des dix-sept compagnies régionales et des commissaires aux comptes élus, répartis à parité entre un collège EIP et un collège non-EIP."
       },
-      "explanation": "D.821-14 (ex-R.821-37) : 60 membres désignés pour 4 ans, comprenant l'ensemble des présidents de compagnies régionales (17 compagnies régionales depuis les regroupements opérés par les arrêtés des 31 janvier et 18 juin 2020) et des CAC élus, 30 sièges par collège, présidents de CRCC compris : chaque collège élit 30 CAC moins le nombre de présidents de sa catégorie. Le chiffre « 22 » concerne le conseil régional (22 membres lorsque la compagnie compte au moins 900 membres personnes physiques, D.821-29), non le conseil national.",
+      "explanation": "D.821-14 : 60 membres pour 4 ans, dont les présidents des 17 compagnies régionales (regroupements de 2020) et des CAC élus, 30 sièges par collège EIP et non-EIP, présidents compris. Le chiffre « 22 » vise le conseil régional (22 membres si la compagnie compte au moins 900 membres personnes physiques, D.821-29).",
       "reference": "C. com. L.821-12, D.821-13, D.821-14 et D.821-29 ; décret 2020-667",
       "confidence": "high"
     },
@@ -593,10 +593,10 @@
       },
       "qrc": {
         "question": "Qui peut demander à la H2A l'élaboration d'une norme d'exercice professionnel ?",
-        "expected": ["Le garde des sceaux", "L'AMF et l'ACPR", "L'ANC et le CNoCP", "La CNCC"],
-        "model_answer": "Le garde des sceaux, l'AMF, l'ACPR, l'Autorité des normes comptables, le Conseil de normalisation des comptes publics et la CNCC. Les compagnies régionales n'en font pas partie."
+        "expected": ["Le garde des Sceaux", "L'AMF et l'ACPR", "L'ANC et le CNoCP", "La CNCC"],
+        "model_answer": "Le garde des Sceaux, l'AMF, l'ACPR, l'Autorité des normes comptables, le Conseil de normalisation des comptes publics et la CNCC. Les compagnies régionales n'en font pas partie."
       },
-      "explanation": "L.820-23 : la H2A adopte son plan d'orientation et son programme de travail selon ses besoins et ces demandes ; les normes sont homologuées par arrêté du garde des sceaux.",
+      "explanation": "L.820-23 : la H2A adopte son plan d'orientation et son programme de travail selon ses besoins et ces demandes ; les normes sont homologuées par arrêté du garde des Sceaux.",
       "reference": "C. com. L.820-4, L.820-23",
       "confidence": "high"
     }

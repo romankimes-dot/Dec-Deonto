@@ -9,11 +9,11 @@ Le jury le répète : les candidats **confondent les règles EC et CAC**. Ce com
 ## Qui fait quoi
 
 ```vs
-Texte de base | **Ordonnance 45-2138** du 19/09/1945 et **décret 2012-432** (code de déontologie, art. 141 à 169) | **Code de commerce, livre VIII** (recodifié au 01/01/2024) et code de déontologie (**annexe 8-1**)
+Texte de base | **Ordonnance 45-2138** du 19/09/1945 et **décret 2012-432** (code de déontologie, art. 141 à 169) | **Code de commerce, livre VIII** (recodifié au 1er janvier 2024) et code de déontologie (**annexe 8-1**)
 Tutelle | **Ministre chargé de l'économie**, représenté par un **commissaire du gouvernement** auprès de chaque conseil | **Garde des Sceaux** (ministre de la Justice) ; supervision publique par la **H2A**
 Instance nationale | **Conseil national de l'Ordre** (ex-Conseil supérieur, renommé par la **loi 2022-172**) | **CNCC**, établissement d'utilité publique ; Conseil national de **60 membres** pour 4 ans, **présidents des CRCC compris**
 Instance régionale | **CROEC** : tient le tableau, inscrit, appelle les cotisations, contrôle la qualité | **CRCC**, dans le ressort des cours d'appel
-Supervision publique | Aucune autorité indépendante : c'est l'**Ordre** qui contrôle | **H2A** (ex-H3C), autorité publique indépendante
+Supervision publique | Aucune autorité indépendante : c'est l'**Ordre** qui contrôle | **H2A** (ex-H3C jusqu'au 31 décembre 2023), autorité publique indépendante
 Inscription | **Tableau** tenu par le **CROEC** : 3 sections suivies de 11 listes | **Liste** tenue par la **H2A** elle-même (déléguée à la CNCC de 2017 à 2020)
 Recours contre l'inscription ou le refus | **Comité national du tableau** : saisi par le **commissaire du gouvernement** contre une inscription, par l'**intéressé** contre un refus | **Juridiction administrative** (R.821-68) : tribunal administratif selon la banque de questions, Conseil d'État en premier ressort selon d'autres sources {?}
 Serment | Devant le **conseil régional de l'Ordre** | Devant le **premier président de la cour d'appel**
@@ -27,7 +27,7 @@ Doute déontologique | Consulter le **CROEC** | Saisir la **H2A** pour avis
 ## Les missions de la H2A, et ce qu'elle délègue
 
 ```arbre
-? **H2A** : autorité publique indépendante (depuis le 01/01/2024)
+? **H2A** : autorité publique indépendante (depuis le 1er janvier 2024)
   Inscription et **tenue de la liste**
     = Assurées par la H2A elle-même ; recours devant le **tribunal administratif**
   Adoption des **normes** (NEP, déontologie, contrôle interne de qualité)

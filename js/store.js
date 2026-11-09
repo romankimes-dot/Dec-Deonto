@@ -14,11 +14,17 @@ export const STORE_VERSION = 4;
 
 export const defaultState = () => ({
   version: 1,
-  // confidence : indice de certitude avant la correction ; hideChoices : QCM, réfléchir avant de voir les propositions ;
+  // examDate : vide à l'installation (parcours générique de 4 semaines) ; l'accueil demande « Quand est votre épreuve ? »
+  //   tant qu'elle n'est pas saisie et que la question n'a pas été écartée (examAsked).
+  // confidence : indice de certitude avant la correction ; hideChoices : QCM, réfléchir avant de voir les propositions.
+  //   Désactivés par défaut : un QCM se fait en deux touchers (la proposition, puis « Question suivante ») ; on les
+  //   active dans Réglages (avancés).
+  // qTimer : chrono de 3 minutes par question (le rythme de l'épreuve), désactivable ;
+  // dayMinutes : temps disponible aujourd'hui pour le plan du jour (15, 30, 60 ; 0 = libre)
   // focus : mode concentration (les badges s'annoncent par un simple message, sans animation)
   // gameTimer : chrono des jeux rapides, 'normal' | 'large' | 'off'
   // shortsLimit : pause proposée dans le fil de shorts après ce nombre de réponses (0 = sans limite)
-  settings: { newPerDay: 20, mode: 'mixte', showLowConfidence: true, examDate: '2026-11-10T10:30:00', confidence: true, hideChoices: true, focus: true, gameTimer: 'normal', shortsLimit: 15, glossary: true },
+  settings: { newPerDay: 20, mode: 'mixte', showLowConfidence: true, examDate: '', examAsked: false, confidence: false, hideChoices: false, qTimer: true, dayMinutes: 0, focus: true, gameTimer: 'normal', shortsLimit: 15, glossary: true },
   cards: {},          // id -> carte SRS
   attempts: [],       // { id, ok, mode, t, conf? }  (400 derniers ; conf : 2 sûr, 1 hésitant, 0 au hasard)
   examSeen: {},       // id -> timestamp
@@ -35,6 +41,8 @@ export const defaultState = () => ({
   carnet: {},        // carnet d'erreurs : id (question ou « sht:<id> ») -> { on, last, note } (carnet.js)
   choiceOrder: {},    // QCM : id -> dernier ordre des propositions montré (« 2031 »), jamais répété à la présentation suivante
   daily: null,        // plan du jour, figé à la première ouverture : { day, n, kind, steps, exam, game, target, weak }
+  resetAt: 0,         // date du dernier effacement, import ou retour à l'état précédent (js/app.js) : à la synchro,
+                      // l'état qui porte la date la plus récente remplace l'autre en entier, sans fusion (js/sync.js)
 });
 
 const get = (k) => { try { return localStorage.getItem(k); } catch { return null; } };
