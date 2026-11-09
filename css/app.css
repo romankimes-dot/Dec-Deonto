@@ -985,10 +985,9 @@ button.btn.danger { color: var(--ko); border-color: var(--ko); }
 /* Correction courte : bonne réponse en une ligne, « Pourquoi ? » et références repliés */
 .answer.is-ko { border-left-color: var(--ko); background: var(--ko-bg); }
 details.why { padding: 0; }
-details.why > summary, details.refs > summary { display: list-item; padding: 11px 12px; } /* marqueur ▸ gardé, 44 px de haut */
+details.why > summary { display: list-item; padding: 11px 12px; } /* marqueur ▸ gardé, 44 px de haut */
 details.why > p { margin: 0 12px 10px; }
-details.refs { border: 0; margin-top: 4px; }
-details.refs > summary { padding: 11px 0; font-weight: 600; color: var(--muted); }
+details.why > .ref { margin: 0 12px 10px; }
 .upd-note { margin-top: 10px; padding: 8px 12px; border-radius: 8px; border-left: 4px solid var(--warn); background: var(--warn-bg); font-size: 15px; }
 .upd-note .ic { color: var(--warn); }
 .badge.updated { color: var(--primary); border-color: currentColor; }
