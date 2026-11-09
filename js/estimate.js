@@ -87,10 +87,14 @@ export function qrcRatio(attempts) {
 // Session tenue à l'écart de la révision pour l'examen inédit : la plus récente dont aucune question n'a encore
 // été vue (carte, réponse, examen). Le sujet le plus récent ressemble le plus au prochain ; si l'utilisateur
 // n'a rien vu, c'est la dernière session (2026-05). null si toutes les sessions ont déjà été entamées.
-export function pickHeldOut(questions, { cards = {}, stats = {}, attempts = [], examSeen = {} } = {}) {
+// Candidates : les annales, de la plus récente à la plus ancienne, puis les sujets inédits rédigés (A, B…) ; `exclude` :
+// sessions déjà passées en examen inédit.
+export function pickHeldOut(questions, { cards = {}, stats = {}, attempts = [], examSeen = {}, exclude = [] } = {}) {
   const touched = new Set([...Object.keys(cards), ...Object.keys(examSeen), ...attempts.map((a) => a.id),
     ...Object.entries(stats?.q || {}).filter(([, s]) => s && s.seen > 0).map(([id]) => id)]);
-  const sessions = [...new Set(questions.map((q) => q.session).filter(Boolean))].sort().reverse();
+  const all = [...new Set(questions.map((q) => q.session).filter(Boolean))].filter((s) => !exclude.includes(s));
+  const annale = (s) => /^\d{4}-\d{2}$/.test(s);
+  const sessions = [...all.filter(annale).sort().reverse(), ...all.filter((s) => /^inedit-/.test(s)).sort()];
   for (const s of sessions) {
     const qs = questions.filter((q) => q.session === s);
     if (qs.filter((q) => q.profession === 'EC').length >= 10 && qs.filter((q) => q.profession === 'CAC').length >= 10 && !qs.some((q) => touched.has(q.id))) return s;

@@ -8,7 +8,7 @@
 // VERSION est calculée par scripts/build_bank.py (empreinte du contenu servi et de ce fichier) : relancer
 // « npm run build » après toute modification du code ou des données ; « npm run check » vérifie qu'elle est à jour.
 // CORE est aussi la liste unique des fichiers que app.js recharge après un cache incohérent (recoverFromStaleCache).
-const VERSION = 'dec1-f558064fc3';
+const VERSION = 'dec1-5b4eec6a40';
 const CORE = [
   './',
   './index.html',

@@ -31,9 +31,11 @@ prestations_declaration_activite agp_associations delit_entrave code_deontologie
 alpe_petites_entreprises
 """.split())
 
-# Fichier des questions de transfert, rédigées hors annales (data/bank/transfert.json) ; les autres fichiers sont
-# des sessions officielles (AAAA-MM).
+# Fichier des questions de transfert, rédigées hors annales (data/bank/transfert.json) ; sujets inédits complets rédigés
+# hors annales (inedit-a.json, inedit-b.json…) ; les autres fichiers sont des sessions officielles (AAAA-MM).
 TRANSFERT = "transfert"
+INEDIT = re.compile(r"inedit-[a-z]")
+OFFICIAL = re.compile(r"\d{4}-\d{2}")
 
 errors: list[str] = []
 warnings: list[str] = []
@@ -105,8 +107,10 @@ def check_question(q: dict, session: str) -> None:
         elif any(len(x) > 100 for x in items + [it["leurre"]]):
             err(pre + "intrus : 100 caractères au plus par élément")
     # Questions de transfert (hors annales) : rédigées pour combler un sujet peu couvert, jamais des sujets officiels.
-    if session == TRANSFERT and not q.get("hors_annales"):
-        err(pre + "question de transfert sans le marqueur hors_annales")
+    if (session == TRANSFERT or INEDIT.fullmatch(session)) and not q.get("hors_annales"):
+        err(pre + "question hors annales (transfert ou sujet inédit) sans le marqueur hors_annales")
+    if INEDIT.fullmatch(session) and q.get("points") != 2:
+        err(pre + "sujet inédit : 2 points par question, comme les sujets QRC officiels")
     # update_note : évolution du droit, affichée ; review_note : journal de relecture, jamais affiché ;
     # answer_changed : la bonne réponse retenue diffère de la clé de l'époque (pastille dans l'app).
     for k in ("update_note", "review_note"):
@@ -269,7 +273,7 @@ def main() -> int:
             if share > MAX_LONGEST_SHARE:
                 warnings.append(f"{f.name}: la bonne réponse est la proposition la plus longue dans {round(share * 100)} % des QCM "
                                 f"(au-delà de {round(MAX_LONGEST_SHARE * 100)} %) : équilibrer la longueur des leurres")
-        if session != TRANSFERT:
+        if OFFICIAL.fullmatch(session):
             sessions.append({"session": session, "format": d.get("format"), "count": len(d.get("questions", []))})
         for q in d.get("questions", []):
             check_question(q, session)
@@ -287,6 +291,12 @@ def main() -> int:
         for t in sorted(THEMES):
             if cov.get((p, t), 0) == 0:
                 warnings.append(f"aucune question pour {p} × {t}")
+    # Sujets inédits : 10 questions EC puis 10 questions CAC, comme un sujet officiel.
+    for f in files:
+        if INEDIT.fullmatch(f.stem):
+            qs = [q for q in questions if q.get("session") == f.stem]
+            if [q.get("profession") for q in qs] != ["EC"] * 10 + ["CAC"] * 10:
+                err(f"{f.name}: un sujet inédit compte 10 questions EC (1-10) puis 10 questions CAC (11-20)")
 
     fiches = []
     if FICHES.exists():

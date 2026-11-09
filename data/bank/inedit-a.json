@@ -1,0 +1,666 @@
+{
+  "session": "inedit-a",
+  "format": "inedit",
+  "note": "Sujet inédit A (novembre 2026) : 10 questions expertise comptable, 10 questions commissariat aux comptes, rédigées hors annales dans le format des sujets officiels (QRC à 2 points, QCM à 4 propositions), à partir des fiches de l'app et des textes en vigueur. Ce n'est pas un sujet officiel. Tenu à l'écart de la révision pour servir d'examen inédit.",
+  "questions": [
+    {
+      "id": "inedit-a-EC-01",
+      "n": 1,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": [
+        "missions_assurance",
+        "referentiel_normatif"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Un bailleur exige de votre client une attestation sur le montant de son chiffre d'affaires annuel. Quelle norme professionnelle s'applique et quel niveau d'assurance l'expert-comptable délivre-t-il ?",
+      "qcm": {
+        "choices": [
+          "La NP 4400 (procédures convenues) : aucune assurance, un simple rapport de constats",
+          "La NP 2300 (présentation) : assurance modérée sur la cohérence et la vraisemblance des comptes",
+          "La NP 3100 (attestations particulières) : assurance raisonnable ou modérée",
+          "La NP 3400 (informations prévisionnelles) : assurance modérée sur les hypothèses retenues"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "NP 3100, attestations particulières",
+          "Mission d'assurance : niveau raisonnable ou modéré selon le cas",
+          "Peut porter sur une information non financière"
+        ],
+        "model_answer": "C'est une attestation particulière, régie par la NP 3100 : mission d'assurance dont le niveau, raisonnable ou modéré, dépend de l'étendue des travaux convenus. Elle peut aussi porter sur des informations non financières."
+      },
+      "explanation": "Les attestations particulières relèvent de la NP 3100, autre mission d'assurance du cadre de référence. Les procédures convenues (NP 4400) ne donnent aucune assurance ; la NP 2300 vise les comptes complets ; la NP 3400 les informations prévisionnelles.",
+      "reference": "Cadre de référence des missions de l'Ordre ; NP 3100",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-EC-02",
+      "n": 2,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": [
+        "lettre_mission"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Parmi les événements suivants, lequel n'impose pas la mise à jour de la lettre de mission ?",
+      "qcm": {
+        "choices": [
+          "Le changement de dirigeant de l'entreprise cliente, même sans changement d'activité",
+          "La désignation par le conseil régional d'un contrôleur de qualité",
+          "La modification du montant des honoraires convenus avec le client",
+          "Le changement de l'expert-comptable responsable de la mission au sein du cabinet"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Mise à jour : changement de nature ou d'étendue de la mission, des honoraires",
+          "Changement de dirigeant, de forme ou d'activité du client",
+          "Changement de l'EC responsable ; évolution réglementaire"
+        ],
+        "model_answer": "La lettre de mission est mise à jour quand la nature ou l'étendue de la mission change, quand les honoraires changent, en cas de changement de dirigeant, de forme ou d'activité du client, de changement de l'expert-comptable responsable, ou après une évolution réglementaire. Le contrôle de qualité du cabinet ne concerne pas la relation contractuelle."
+      },
+      "explanation": "Le contrôle de qualité concerne le cabinet et l'Ordre, pas le contrat avec le client. Les autres cas touchent les parties, l'objet ou le prix de la mission, et appellent une mise à jour (code de déontologie, art. 151).",
+      "reference": "Code de déontologie des EC (D. 2012-432), art. 151",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-EC-03",
+      "n": 3,
+      "profession": "EC",
+      "theme": "exercice",
+      "tags": [
+        "honoraires"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Un expert-comptable propose de tenir la comptabilité d'une société contre un pourcentage de l'économie d'impôt qu'il lui fera réaliser. Est-ce permis ?",
+      "qcm": {
+        "choices": [
+          "Oui : les honoraires de l'expert-comptable sont libres et fixés par la lettre de mission",
+          "Oui, si la lettre de mission le prévoit expressément et si le client est une personne physique",
+          "Non : tout honoraire subordonné au résultat est interdit à l'expert-comptable, quelle que soit la mission",
+          "Non : interdit pour la tenue de comptabilité et les missions touchant à l'assiette fiscale"
+        ],
+        "answer": 3,
+        "crossProf": 2
+      },
+      "qrc": {
+        "expected": [
+          "Non",
+          "Honoraires au succès interdits pour les missions du monopole (comptabilité)",
+          "Et pour celles qui participent à la détermination de l'assiette fiscale ou sociale",
+          "Possibles pour les autres missions"
+        ],
+        "model_answer": "Non. Les honoraires au succès sont interdits pour les missions relevant du monopole (tenue, révision des comptes) et pour celles qui participent à la détermination de l'assiette fiscale ou sociale. Ils restent possibles pour les autres missions (conseil, par exemple), contrairement au CAC pour qui ils sont toujours interdits."
+      },
+      "explanation": "Chez l'EC, les honoraires sont libres mais ne peuvent dépendre du résultat pour les missions du monopole et celles qui touchent à l'assiette fiscale ou sociale. L'interdiction générale est la règle du CAC (code de déontologie des CAC, art. 13).",
+      "reference": "Code de déontologie des EC, art. 158 ; ordonnance 45-2138, art. 24",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-EC-04",
+      "n": 4,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": [
+        "incompatibilites_activites"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Parmi ces activités, laquelle est interdite à l'expert-comptable inscrit ?",
+      "qcm": {
+        "choices": [
+          "Exercer un mandat social dans une société commerciale non inscrite, déclaré au conseil régional",
+          "Représenter un client devant le tribunal de commerce",
+          "Procéder au recouvrement amiable de créances pour le compte d'un client (loi Pacte)",
+          "Exercer une activité commerciale à titre accessoire sans compromettre son indépendance"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Représentation en justice interdite : réservée aux avocats",
+          "Interdits aussi : actes de commerce à titre principal, agent d'affaires, intermédiaire",
+          "Emploi salarié hors cas autorisés (EC, CAC, AGC)"
+        ],
+        "model_answer": "La représentation d'un client devant une juridiction est réservée aux avocats. L'EC ne peut pas non plus accomplir d'actes de commerce à titre principal ni être agent d'affaires ou intermédiaire, ni être salarié hors d'un cabinet d'EC, de CAC ou d'une AGC. Mandats sociaux déclarés, recouvrement amiable (loi Pacte) et activités commerciales accessoires sont permis."
+      },
+      "explanation": "La loi Pacte a ouvert le recouvrement amiable et le paiement de dettes pour le compte des clients ; la loi 2010-853 permet les activités commerciales accessoires. La plaidoirie et la représentation en justice restent le monopole des avocats.",
+      "reference": "Ordonnance 45-2138, art. 22 ; loi 71-1130 (avocats)",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-EC-05",
+      "n": 5,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": [
+        "secret_professionnel",
+        "confraternite_reprise_dossier"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Un client autorise par écrit son ancien expert-comptable à transmettre l'intégralité de son dossier au nouveau cabinet. L'ancien cabinet peut-il communiquer ses dossiers de travail ?",
+      "qcm": {
+        "choices": [
+          "Oui : l'autorisation écrite du client lève le secret professionnel, qui est institué dans son intérêt",
+          "Oui, comme entre un commissaire aux comptes et son successeur, qui accède aux documents du prédécesseur",
+          "Non : le secret est d'ordre public ; il restitue les documents du client, pas ses dossiers de travail",
+          "Non, sauf autorisation expresse du président du conseil régional de l'Ordre, saisi par le successeur"
+        ],
+        "answer": 2,
+        "crossProf": 1
+      },
+      "qrc": {
+        "expected": [
+          "Non : le secret de l'EC est d'ordre public, le client ne peut en délier",
+          "Restitution des documents appartenant au client",
+          "Dossiers de travail non communiqués ; secret non levé envers le successeur"
+        ],
+        "model_answer": "Non. Le secret professionnel de l'expert-comptable est d'ordre public : le client ne peut pas en délier son conseil. L'ancien cabinet restitue les documents qui appartiennent au client ; ses dossiers de travail ne sont pas communiqués au successeur. Chez le CAC, au contraire, le successeur accède aux documents du prédécesseur (L.821-44)."
+      },
+      "explanation": "Ord. art. 21 : le secret s'impose à l'EC et n'est pas levé envers un confrère successeur. Le successeur n'obtient que les documents du client. La levée entre prédécesseur et successeur est une règle du commissariat aux comptes.",
+      "reference": "Ordonnance 45-2138, art. 21 ; C. pén. 226-13 ; code de déontologie, art. 163",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-EC-06",
+      "n": 6,
+      "profession": "EC",
+      "theme": "deontologie",
+      "tags": [
+        "lcb_ft"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Dans un cabinet d'expertise comptable, qui effectue la déclaration de soupçon et à qui est-elle adressée ?",
+      "qcm": {
+        "choices": [
+          "Le correspondant Tracfin du cabinet, avec copie au conseil régional de l'Ordre pour information",
+          "L'expert-comptable signataire des comptes, après avoir recueilli les explications écrites du client",
+          "Le président du conseil régional, saisi par l'expert-comptable, qui transmet à Tracfin",
+          "L'expert-comptable en charge de la mission, personnellement, à Tracfin, sans en informer le client"
+        ],
+        "answer": 3
+      },
+      "qrc": {
+        "expected": [
+          "L'EC en charge de la mission, personnellement",
+          "Adressée à Tracfin, si possible avant l'opération",
+          "Pas de copie au CROEC ; le correspondant Tracfin ne déclare pas",
+          "Interdiction d'en informer le client"
+        ],
+        "model_answer": "La déclaration de soupçon est faite personnellement par l'expert-comptable en charge de la mission, directement à Tracfin, si possible avant l'exécution de l'opération. Le correspondant Tracfin du cabinet assure la liaison mais ne déclare pas ; aucune copie n'est adressée au conseil régional ; le client ne doit pas être informé."
+      },
+      "explanation": "NPLAB : la déclaration relève de l'EC responsable de la mission, pas d'un collaborateur ni du correspondant. Informer le client ou un tiers de la déclaration est interdit (CMF L.561-18).",
+      "reference": "CMF L.561-15 à L.561-18 ; NPLAB",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-EC-07",
+      "n": 7,
+      "profession": "EC",
+      "theme": "controle_qualite",
+      "tags": [
+        "controle_qualite"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Parmi ces suites d'un contrôle de qualité de l'Ordre, laquelle n'existe pas ?",
+      "qcm": {
+        "choices": [
+          "Une conclusion avec observations et un nouveau contrôle à un an, assorti d'une formation",
+          "Une sanction pécuniaire prononcée par le président du conseil régional",
+          "La saisine de la chambre régionale de discipline en cas de nouveaux manquements constatés",
+          "Une conclusion avec de simples observations, sans nouveau contrôle anticipé"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Conclusions du président du conseil régional : sans observation, simples observations, observations avec nouveau contrôle à un an",
+          "Nouveaux manquements : chambre régionale de discipline",
+          "Le contrôle ne sanctionne pas"
+        ],
+        "model_answer": "Le président du conseil régional conclut sans observation, avec de simples observations, ou avec observations et nouveau contrôle à un an (formation possible). En cas de nouveaux manquements, la chambre régionale de discipline peut être saisie. Le contrôle de qualité n'est pas une procédure de sanction : aucune amende n'y est prononcée."
+      },
+      "explanation": "Le contrôle de qualité est pédagogique ; seule la chambre de discipline sanctionne, et l'EC n'encourt pas de sanction pécuniaire disciplinaire hors LCB-FT.",
+      "reference": "Règlement intérieur de l'Ordre (contrôle de qualité) ; ordonnance 45-2138, art. 49 s.",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-EC-08",
+      "n": 8,
+      "profession": "EC",
+      "theme": "controle_qualite",
+      "tags": [
+        "controle_qualite",
+        "referentiel_normatif"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Depuis le 1er janvier 2025, quelle norme organise la qualité au sein d'un cabinet d'expertise comptable, et selon quelle approche ?",
+      "qcm": {
+        "choices": [
+          "La norme de maîtrise de la qualité (2011), organisée en six éléments, dont la direction et l'éthique",
+          "La NPMQ (management de la qualité) : approche par les risques, huit composantes",
+          "La NEP 9605, homologuée par arrêté du garde des Sceaux, applicable à toutes les missions",
+          "La norme ISQM 1 appliquée directement, sous le contrôle de la H2A et de ses contrôleurs"
+        ],
+        "answer": 1,
+        "crossProf": 3
+      },
+      "qrc": {
+        "expected": [
+          "NPMQ (management de la qualité), depuis le 1er janvier 2025",
+          "Approche par les risques : objectifs, risques, réponses",
+          "8 composantes calquées sur ISQM 1",
+          "Toute structure, toute taille, toutes les missions"
+        ],
+        "model_answer": "La NPMQ, norme professionnelle de management de la qualité, remplace depuis le 1er janvier 2025 la norme de maîtrise de la qualité. Elle adopte une approche par les risques (objectifs qualité, risques, réponses) en huit composantes calquées sur ISQM 1, et s'applique à toutes les missions de toute structure."
+      },
+      "explanation": "La norme de maîtrise de la qualité (six éléments) est l'ancien texte, en vigueur de 2011 à 2024. La NEP 9605 et la H2A relèvent du commissariat aux comptes.",
+      "reference": "NPMQ (arrêté du 30 mai 2024) ; référentiel normatif de l'Ordre",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-EC-09",
+      "n": 9,
+      "profession": "EC",
+      "theme": "responsabilite",
+      "tags": [
+        "responsabilite_civile"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Une lettre de mission prévoit que toute action en responsabilité contre l'expert-comptable se prescrit par huit mois et que l'indemnité est plafonnée à une année d'honoraires. Ces clauses sont-elles valables ?",
+      "qcm": {
+        "choices": [
+          "Les deux clauses sont valables au nom de la liberté contractuelle, le client étant un professionnel",
+          "Les deux sont nulles : la responsabilité de l'expert-comptable est d'ordre public et ne s'aménage pas",
+          "La clause de prescription est valable ; le plafond est nul, la réparation devant être intégrale",
+          "Prescription de huit mois nulle (un an au minimum) ; plafond valable, hors faute lourde ou dolosive"
+        ],
+        "answer": 3,
+        "crossProf": 1
+      },
+      "qrc": {
+        "expected": [
+          "Prescription de droit commun : 5 ans, réductible par contrat mais jamais sous 1 an : 8 mois nuls",
+          "Plafonnement possible",
+          "Sans effet en cas de faute lourde ou dolosive, et inopposable aux tiers"
+        ],
+        "model_answer": "La prescription de droit commun (5 ans) peut être réduite par contrat, mais pas en dessous d'un an : une clause de huit mois est nulle. Le plafonnement de l'indemnité est valable envers le client, mais reste sans effet en cas de faute lourde ou dolosive et n'est pas opposable aux tiers. Chez le CAC, mission légale, aucun aménagement n'est possible."
+      },
+      "explanation": "C. civ. 2224 et 2254 : délai réductible jusqu'à un an. La responsabilité contractuelle de l'EC peut être plafonnée, à l'inverse de celle du CAC (3 ans, non aménageable).",
+      "reference": "C. civ. 2224, 2254 ; C. assur. L.113-1",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-EC-10",
+      "n": 10,
+      "profession": "EC",
+      "theme": "responsabilite",
+      "tags": [
+        "discipline_sanctions"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Qui peut saisir la chambre régionale de discipline d'une plainte contre un expert-comptable, et quelle condition préalable s'applique entre confrères ?",
+      "qcm": {
+        "choices": [
+          "Seuls le conseil régional et le commissaire du gouvernement, après une enquête du rapporteur",
+          "Le procureur général et le président de la H2A, par saisine du rapporteur général",
+          "Toute personne ayant intérêt à agir ; entre confrères, conciliation préalable obligatoire",
+          "Le client uniquement, après avis du président du conseil régional et tentative de conciliation"
+        ],
+        "answer": 2,
+        "crossProf": 1
+      },
+      "qrc": {
+        "expected": [
+          "Toute personne ayant intérêt à agir : client, tiers, conseil régional, commissaire du gouvernement",
+          "Plainte adressée à la chambre régionale",
+          "Entre confrères : conciliation préalable obligatoire (depuis le 12 juin 2025)"
+        ],
+        "model_answer": "La plainte est adressée à la chambre régionale de discipline par toute personne ayant intérêt à agir : client, tiers, conseil régional, commissaire du gouvernement. Entre confrères, une conciliation préalable est obligatoire depuis le 12 juin 2025. Le magistrat chargé des poursuites classe ou désigne un rapporteur."
+      },
+      "explanation": "Le procureur général et le président de la H2A saisissent le rapporteur général de la H2A, pour les commissaires aux comptes : c'est le circuit CAC.",
+      "reference": "Ordonnance 45-2138, art. 49 s. ; décret 2012-432 (discipline)",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-CAC-01",
+      "n": 11,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": [
+        "nomination_seuils"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Une SAS clôture l'exercice 2025 avec un total de bilan de 5,4 M€, un chiffre d'affaires HT de 9,2 M€ et 38 salariés. Doit-elle nommer un commissaire aux comptes ?",
+      "qcm": {
+        "choices": [
+          "Oui : le total de bilan dépasse 5 M€, ce qui suffit pour une société par actions",
+          "Oui : deux seuils sont dépassés au regard des anciens seuils de 4 M€ et 8 M€, toujours applicables",
+          "Non : un seul des trois seuils est dépassé",
+          "Non : seules les SA et les SCA sont tenues de nommer un commissaire aux comptes sans seuil"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Non",
+          "Seuils (décret 2024-152) : 5 M€ de bilan, 10 M€ de CA HT, 50 salariés, 2 sur 3",
+          "Ici seul le bilan dépasse",
+          "Nomination volontaire ou judiciaire (10 % du capital) possible"
+        ],
+        "model_answer": "Non. La nomination est obligatoire quand deux des trois seuils sont dépassés : 5 M€ de total de bilan, 10 M€ de chiffre d'affaires HT, 50 salariés (décret 2024-152, exercices ouverts depuis le 1er janvier 2024). Ici seul le total de bilan dépasse. Une nomination volontaire, ou judiciaire à la demande d'associés détenant 10 % du capital, reste possible."
+      },
+      "explanation": "Les anciens seuils (4 M€ et 8 M€) ne s'appliquent plus aux exercices ouverts depuis 2024. La forme sociale n'a pas d'incidence : les seuils valent pour toutes les sociétés commerciales.",
+      "reference": "C. com. L.821-40, D.821-171 ; décret 2024-152",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-CAC-02",
+      "n": 12,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": [
+        "mandat_duree_cessation"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Un commissaire aux comptes est nommé par l'assemblée du 15 juin 2025 d'une société qui clôture au 31 décembre. Sur quels exercices porte sa mission et quand prend fin son mandat ?",
+      "qcm": {
+        "choices": [
+          "Les exercices 2025 à 2030 ; fin après l'assemblée statuant sur les comptes 2030",
+          "Les exercices 2026 à 2031 ; le mandat expire après l'assemblée de 2032 statuant sur 2031",
+          "Les exercices 2025 à 2027, le mandat étant de trois exercices pour une société de cette taille",
+          "Les exercices 2024 à 2029, l'exercice clos avant la nomination étant inclus dans la mission"
+        ],
+        "answer": 0
+      },
+      "qrc": {
+        "expected": [
+          "Mission à compter de l'exercice en cours lors de la nomination : 2025",
+          "Six exercices : 2025 à 2030",
+          "Fin après l'assemblée statuant sur les comptes du sixième exercice (en 2031)"
+        ],
+        "model_answer": "La mission porte sur les comptes de l'exercice au cours duquel le commissaire est nommé, donc 2025, puis sur les cinq suivants : six exercices, 2025 à 2030. Le mandat prend fin après l'assemblée qui statue sur les comptes du sixième exercice, en 2031. Trois exercices ne valent que pour l'option ALPE."
+      },
+      "explanation": "Le mandat de six exercices court de l'exercice de nomination, et non du suivant ; il ne remonte pas à l'exercice clos avant l'assemblée.",
+      "reference": "C. com. L.821-44 (durée du mandat), L.821-45",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-CAC-03",
+      "n": 13,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": [
+        "demission_revocation"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Mécontents des réserves émises, les associés d'une SARL veulent mettre fin au mandat du commissaire aux comptes en assemblée. Est-ce possible et par quelle voie ?",
+      "qcm": {
+        "choices": [
+          "Oui, par décision de l'assemblée prise à la majorité ordinaire, avec un préavis raisonnable",
+          "Non : seul le juge peut le relever, pour faute ou empêchement, notamment à la demande d'associés à 5 %",
+          "Oui, avec l'accord préalable de la H2A, qui vérifie que la révocation ne sanctionne pas l'opinion émise",
+          "Non, sauf à saisir le président de la CRCC, qui statue sur la révocation après conciliation"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Pas de révocation ad nutum par l'assemblée",
+          "Relèvement par décision de justice, pour faute ou empêchement",
+          "Demandeurs : direction, associés (5 %), CSE, ministère public, AMF (cotées) ; pas la H2A"
+        ],
+        "model_answer": "Non. Le commissaire aux comptes ne peut pas être révoqué par l'assemblée : il ne peut être relevé de ses fonctions que par décision de justice, en cas de faute ou d'empêchement, à la demande de la direction, d'associés représentant 5 % du capital, du comité social et économique, du ministère public ou de l'AMF pour les sociétés cotées. La H2A n'a pas ce pouvoir."
+      },
+      "explanation": "Garantie d'indépendance : le désaccord sur l'opinion n'est pas une faute. Le président de la CRCC n'intervient que pour les honoraires et la conciliation.",
+      "reference": "C. com. L.821-47 (relèvement)",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-CAC-04",
+      "n": 14,
+      "profession": "CAC",
+      "theme": "exercice",
+      "tags": [
+        "honoraires_bareme"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Le dirigeant estime excessif le nombre d'heures prévu par le barème pour la certification. Qui est saisi en premier d'une demande de dérogation ?",
+      "qcm": {
+        "choices": [
+          "Le président de la CRCC",
+          "Le bureau de la H2A",
+          "Le président du conseil régional de l'Ordre",
+          "Le tribunal de commerce"
+        ],
+        "answer": 0,
+        "crossProf": 2
+      },
+      "qrc": {
+        "expected": [
+          "Dérogation au barème : président de la CRCC",
+          "Puis président de la CNCC, puis bureau de la H2A, puis tribunal administratif",
+          "Litige sur le montant : conciliation du président de la CRCC (3 mois), puis le juge"
+        ],
+        "model_answer": "La dérogation au nombre d'heures du barème est demandée au président de la CRCC ; viennent ensuite le président de la CNCC, le bureau de la H2A, puis le tribunal administratif. Un litige sur le montant des honoraires relève d'abord d'une conciliation du président de la CRCC dans les trois mois, puis du juge."
+      },
+      "explanation": "Le barème ne fixe que des heures ; le taux horaire est libre. Le président du CROEC concilie pour les experts-comptables, pas pour les commissaires aux comptes.",
+      "reference": "C. com. R.821-139 s. (barème d'heures, dérogations)",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-CAC-05",
+      "n": 15,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": [
+        "incompatibilites_liens",
+        "independance_situations_risque"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "L'épouse de l'associé signataire est nommée directrice financière de l'entité auditée. Que doit faire le commissaire aux comptes ?",
+      "qcm": {
+        "choices": [
+          "Rien : seul un lien personnel du commissaire lui-même avec le dirigeant de l'entité est visé",
+          "Informer le comité d'audit, ce qui suffit à lever la difficulté pour la durée du mandat",
+          "Appliquer aussitôt une sauvegarde (changer de signataire) ou, à défaut, démissionner",
+          "Demander l'autorisation du président de la CRCC de poursuivre le mandat en l'état"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Lien personnel (conjoint) avec une personne en fonction sensible : situation interdite",
+          "Mesure de sauvegarde immédiate et documentée : changement de signataire ou d'équipe",
+          "À défaut, démission ; doute sérieux : avis de la H2A"
+        ],
+        "model_answer": "Le conjoint du signataire occupe une fonction sensible : c'est un lien personnel prohibé par le code de déontologie. Le commissaire doit appliquer sans délai une mesure de sauvegarde, typiquement le changement de signataire ou d'équipe, et la documenter ; si aucune mesure ne suffit, il démissionne. En cas de doute sérieux, il peut saisir la H2A pour avis."
+      },
+      "explanation": "Les liens personnels visent le CAC, les dirigeants de la société de CAC et les membres de l'équipe : conjoint, partenaire de PACS, concubin, parents et enfants, frères et sœurs. Le président de la CRCC ne délivre aucune autorisation en la matière.",
+      "reference": "Code de déontologie des CAC (annexe 8-1), art. 30 s. ; C. com. L.821-28",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-CAC-06",
+      "n": 16,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": [
+        "services_interdits_eip",
+        "reseau"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Un cabinet d'avocats membre du réseau du commissaire aux comptes conseille l'EIP auditée sur une restructuration fiscale. Qu'en est-il ?",
+      "qcm": {
+        "choices": [
+          "Permis : l'interdiction des services ne vise que le commissaire aux comptes lui-même",
+          "Permis si le comité d'audit l'approuve et si le plafond de 70 % des honoraires d'audit est respecté",
+          "Interdit : pour une EIP, la liste des services interdits s'étend au réseau",
+          "Interdit seulement si le commissaire certifie aussi les comptes consolidés du groupe"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "EIP : liste de services interdits du règlement UE 537/2014, art. 5 (fiscalité, juridique…)",
+          "Interdiction étendue aux membres du réseau",
+          "Refus de la prestation ou démission"
+        ],
+        "model_answer": "Pour une entité d'intérêt public, les services fiscaux et juridiques figurent sur la liste des services interdits du règlement UE 537/2014 (art. 5), et l'interdiction s'étend aux membres du réseau du commissaire aux comptes. Le réseau doit renoncer à la prestation, sinon le commissaire démissionne. Le plafond de 70 % ne concerne que les services autorisés."
+      },
+      "explanation": "Pour une entité non EIP, il n'y a plus de liste depuis la loi Pacte : les services du réseau sont analysés sous l'angle du risque d'autorévision et d'indépendance.",
+      "reference": "Règlement UE 537/2014, art. 5 ; C. com. L.821-28 ; code de déontologie des CAC, art. 29",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-CAC-07",
+      "n": 17,
+      "profession": "CAC",
+      "theme": "deontologie",
+      "tags": [
+        "revelation_procureur",
+        "secret_professionnel"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Au cours d'une prestation réalisée chez une entité dont il n'est pas le commissaire aux comptes, un commissaire découvre un détournement commis par le dirigeant. Doit-il le révéler ?",
+      "qcm": {
+        "choices": [
+          "Non : la révélation ne concerne que les entités dont il certifie les comptes",
+          "Oui : l'obligation vise les faits découverts à l'occasion d'une mission ou d'une prestation",
+          "Non : il exerce un devoir de conseil et refuse son concours, comme l'expert-comptable",
+          "Oui, mais seulement si les faits n'ont pas été régularisés avant la fin de la prestation"
+        ],
+        "answer": 1,
+        "crossProf": 2
+      },
+      "qrc": {
+        "expected": [
+          "Oui : L.821-10 vise les faits découverts à l'occasion d'une mission ou d'une prestation",
+          "Révélation au procureur de la République, même si le fait est régularisé",
+          "Non-révélation : délit (5 ans, 75 000 €) ; bonne foi exonératoire"
+        ],
+        "model_answer": "Oui. L'obligation de révéler au procureur de la République les faits délictueux vise ceux dont le commissaire a connaissance à l'occasion de sa mission ou d'une prestation, y compris chez une entité dont il n'est pas le commissaire. La régularisation ne dispense pas. Ne pas révéler est un délit (cinq ans, 75 000 €) ; la révélation de bonne foi n'engage pas sa responsabilité."
+      },
+      "explanation": "L'absence de révélation et le simple devoir de conseil sont le régime de l'expert-comptable, qui n'a aucune obligation envers le procureur.",
+      "reference": "C. com. L.821-10, L.821-9 (sanction pénale)",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-CAC-08",
+      "n": 18,
+      "profession": "CAC",
+      "theme": "controle_qualite",
+      "tags": [
+        "controle_activite"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Qui réalise le contrôle d'activité d'un commissaire aux comptes qui ne détient aucun mandat d'EIP, et à quelle périodicité ?",
+      "qcm": {
+        "choices": [
+          "La H2A par ses propres contrôleurs, tous les trois ans, comme pour les EIP",
+          "La CNCC, par délégation de la H2A, au plus tous les six ans",
+          "Le conseil régional de l'Ordre, environ tous les six ans, dans le cadre du contrôle de qualité",
+          "La CRCC de son ressort, tous les trois ans, par des contrôleurs qu'elle désigne"
+        ],
+        "answer": 1,
+        "crossProf": 2
+      },
+      "qrc": {
+        "expected": [
+          "H2A, autorité compétente ; délégation à la CNCC pour les CAC sans mandat d'EIP (convention homologuée)",
+          "Contrôleurs : commissaires aux comptes",
+          "Périodicité : six ans au plus (trois ans pour les grandes EIP)"
+        ],
+        "model_answer": "Le contrôle d'activité relève de la H2A, qui le délègue à la CNCC pour les commissaires sans mandat d'EIP, par convention homologuée par arrêté ; il est réalisé par des commissaires aux comptes contrôleurs, au plus tous les six ans. Les commissaires de grandes EIP sont contrôlés par les agents de la H2A tous les trois ans."
+      },
+      "explanation": "Le contrôle de qualité du conseil régional vise l'expert-comptable. La CRCC fournit des contrôleurs mais n'est pas l'autorité compétente.",
+      "reference": "C. com. L.821-2, L.821-23 s. (contrôles d'activité) ; convention H2A-CNCC",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-CAC-09",
+      "n": 19,
+      "profession": "CAC",
+      "theme": "controle_qualite",
+      "tags": [
+        "formation"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Un commissaire aux comptes inscrit n'a exercé aucune mission de certification depuis quatre ans ; on lui propose un mandat. Quelle obligation particulière doit-il respecter avant d'accepter ?",
+      "qcm": {
+        "choices": [
+          "Aucune : l'obligation générale de 120 heures de formation sur trois ans suffit",
+          "Obtenir l'autorisation préalable du président de la CRCC, qui vérifie sa compétence",
+          "Suivre une formation particulière de 40 heures dans les 18 mois précédents",
+          "Accomplir à nouveau le stage professionnel de trois ans auprès d'un maître de stage"
+        ],
+        "answer": 2
+      },
+      "qrc": {
+        "expected": [
+          "Pas de mission de certification depuis 3 ans : formation particulière avant d'accepter",
+          "40 heures sur 18 mois",
+          "Obligation générale : 120 heures sur 3 ans, 20 heures au moins par an"
+        ],
+        "model_answer": "Le commissaire qui n'a pas exercé de mission de certification pendant trois ans doit suivre, avant d'accepter un mandat, une formation particulière de 40 heures dans les 18 mois qui précèdent. Elle s'ajoute à l'obligation générale de 120 heures sur trois ans, dont 20 heures au moins par an."
+      },
+      "explanation": "Aucune autorisation ni nouveau stage n'est prévu : la formation particulière, dont le suivi est assuré par la CNCC par délégation de la H2A, suffit.",
+      "reference": "C. com. L.821-22, A.821-45 s. (formation continue)",
+      "confidence": "high"
+    },
+    {
+      "id": "inedit-a-CAC-10",
+      "n": 20,
+      "profession": "CAC",
+      "theme": "responsabilite",
+      "tags": [
+        "discipline_sanctions",
+        "prestations_declaration_activite"
+      ],
+      "points": 2,
+      "hors_annales": true,
+      "question": "Un commissaire aux comptes n'a pas déposé sa déclaration annuelle d'activité depuis trois ans malgré les relances. Quelle procédure et quelle sanction encourt-il ?",
+      "qcm": {
+        "choices": [
+          "La procédure ordinaire devant la commission des sanctions, pouvant aboutir à une interdiction temporaire",
+          "La procédure simplifiée : 15 000 € au plus, prononcés par le président de la commission sans débat",
+          "Une composition administrative obligatoire, validée par le collège puis homologuée par la commission",
+          "La radiation d'office de la liste par la H2A, après mise en demeure restée sans effet"
+        ],
+        "answer": 1
+      },
+      "qrc": {
+        "expected": [
+          "Manquements répétés, simples et établis aux obligations déclaratives : procédure simplifiée",
+          "Président de la commission des sanctions, seul et sans débat",
+          "Sanction pécuniaire seulement, 15 000 € au plus ; opposition dans les 30 jours"
+        ],
+        "model_answer": "Les manquements répétés, simples et établis aux obligations déclaratives ou de formation continue relèvent de la procédure simplifiée : le président de la commission des sanctions statue seul, sans débat, et ne peut prononcer qu'une sanction pécuniaire de 15 000 € au plus. L'intéressé peut former opposition dans les 30 jours, ce qui ouvre une audience."
+      },
+      "explanation": "La procédure simplifiée ne permet ni interdiction ni radiation ; la composition administrative suppose l'accord de l'intéressé ; la H2A ne radie pas d'office pour un défaut de déclaration.",
+      "reference": "C. com. L.821-81 (procédure simplifiée)",
+      "confidence": "high"
+    }
+  ]
+}
