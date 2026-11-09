@@ -348,12 +348,11 @@ function stopQTimer() {
 }
 const takeQMs = () => { const ms = qTimer.ms; qTimer.ms = 0; return ms; };
 // Correction courte : la note de mise à jour du droit en tête (fond coloré), l'explication dans « Pourquoi ? »
-// (ouvert seulement après une erreur), les références repliées, puis les actions (carnet, schéma, même notion).
+// (ouvert seulement après une erreur) avec les références en ligne discrète à sa fin, puis les actions (carnet, schéma, même notion).
 function qExplain(q, { open = false } = {}) {
   const sib = siblings(q.id);
   return `${q.update_note ? `<div class="upd-note">${ic(q.answer_changed ? 'alert' : 'refresh')} <strong>${q.answer_changed ? 'Réponse modifiée' : 'Droit mis à jour'}.</strong> ${esc(q.update_note)}</div>` : ''}
-    <details class="explain why" ${open ? 'open' : ''}><summary>Pourquoi ?</summary><p>${esc(q.explanation)}</p></details>
-    <details class="ref refs"><summary>Références</summary>${esc(q.reference)} · <em>réponse rédigée à partir des textes, non officielle</em></details>${carnetBtn(q.id)}${relatedFiches(q.id).map((f) => `<button class="btn sm related" data-open-fiche="${esc(f.file)}">${ic('chart')} Schéma : ${esc(f.title.replace(/^Schéma\s*\d+\s*[–-]\s*/, ''))}</button>`).join('')}${sib.length ? `<button class="btn sm related" data-variants="${esc(q.id)}">${ic('repeat')} Même notion : ${sib.map((id) => esc(state.byId[id]?.sessionLabel || '')).join(', ')}</button>` : ''}`;
+    <details class="explain why" ${open ? 'open' : ''}><summary>Pourquoi ?</summary><p>${esc(q.explanation)}</p><div class="ref">${esc(q.reference)} · <em>réponse rédigée à partir des textes, non officielle</em></div></details>${carnetBtn(q.id)}${relatedFiches(q.id).map((f) => `<button class="btn sm related" data-open-fiche="${esc(f.file)}">${ic('chart')} Schéma : ${esc(f.title.replace(/^Schéma\s*\d+\s*[–-]\s*/, ''))}</button>`).join('')}${sib.length ? `<button class="btn sm related" data-variants="${esc(q.id)}">${ic('repeat')} Même notion : ${sib.map((id) => esc(state.byId[id]?.sessionLabel || '')).join(', ')}</button>` : ''}`;
 }
 // ---------- Carnet d'erreurs ----------
 // Bouton présent sur chaque correction (questions et shorts) : on y range ce que l'on sait ne pas avoir retenu.

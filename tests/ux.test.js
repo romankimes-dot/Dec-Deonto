@@ -35,14 +35,15 @@ test('typoHtml : le texte change, jamais les attributs', () => {
   assert.match(app, /<textarea id="ans"[^>]*>\$\{escA\(ex\.answers/);
 });
 
-test('correction QCM courte : « Bonne réponse », « Pourquoi ? » ouvert après une erreur, références repliées', () => {
+test('correction QCM courte : « Bonne réponse », « Pourquoi ? » ouvert après une erreur, références dans le même bloc', () => {
   const qcm = fnBody(app, 'function renderQcm(');
   assert.ok(!/model_answer/.test(qcm), 'la réponse type (format QRC) n’est plus affichée après un QCM');
   assert.match(qcm, /Bonne réponse : <strong>\$\{good\}<\/strong>/);
   assert.match(qcm, /qExplain\(q, \{ open: !ok \}\)/);
   const ex = fnBody(app, 'function qExplain(');
   assert.match(ex, /<details class="explain why" \$\{open \? 'open' : ''\}><summary>Pourquoi \?<\/summary>/);
-  assert.match(ex, /<details class="ref refs"><summary>Références<\/summary>/);
+  assert.match(ex, /<div class="ref">\$\{esc\(q\.reference\)\}/);
+  assert.ok(!/<summary>Références<\/summary>/.test(ex), 'plus de bloc « Références » séparé : redite avec « Pourquoi ? »');
   assert.match(fnBody(app, 'function renderQrc('), /model_answer/, 'la réponse type reste en QRC');
   assert.match(app, /sticky-next" id="next">Question suivante/);
   assert.match(css, /\.sticky-next \{ position: sticky;/);
