@@ -44,7 +44,7 @@ Nature | Disciplinaire (juridictions ordinales) | Sanctions **administratives** 
 
 - {!} « **Remontrance** », « **avertissement** » ou « **amende** » ne figurent **pas** dans la liste de l'ord. art. 53 (EC) ; l'avertissement dans le cabinet du président existe, mais **hors** des peines.
 - {!} « **Réprimande** » et « **suspension** » ne figurent **pas** dans la liste CAC.
-- {!} Interdiction temporaire du CAC : **3 ans au plus** depuis le 01/01/2024. Les **5 ans** sont l'ancien régime H3C.
+- {!} Interdiction temporaire du CAC : **3 ans au plus** depuis le 1er janvier 2024. Les **5 ans** sont l'ancien régime H3C.
 - {!} L'**emprisonnement** n'est jamais une sanction disciplinaire.
 - {!} Un **stagiaire** EC **peut** être sanctionné.
 - {!} Cotisations impayées (Ordre, CAVEC) **2 ans sur 10** : **radiation d'office** du tableau par le conseil régional, ce n'est pas une sanction disciplinaire.

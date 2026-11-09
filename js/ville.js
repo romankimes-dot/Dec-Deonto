@@ -40,7 +40,7 @@ export const VILLE = {
         { qui: 'Trésorerie', fait: 'Gère les ressources de l’Ordre, mais **ne collecte pas lui-même les cotisations** : elles sont appelées par les **CROEC** et reversées en partie.' },
         { qui: 'Passerelle vers la chambre nationale de discipline', fait: 'La **chambre nationale de discipline** siège **auprès du Conseil national** : c’est le bâtiment voisin (appel des décisions des chambres régionales).' },
         { qui: 'Comité national du tableau', fait: 'Reçoit le recours contre une décision du conseil régional sur le tableau : du **commissaire du gouvernement** contre une **inscription**, de l’**intéressé** contre un **refus**.' },
-        { qui: 'Comité LBC-FT', fait: 'Conclut les contrôles **LCB-FT** ; reçoit par **courrier confidentiel** les soupçons relevés en contrôle ; l’Ordre informe ensuite **Tracfin**.' },
+        { qui: 'Comité LCB-FT', fait: 'Conclut les contrôles **LCB-FT** ; reçoit par **courrier confidentiel** les soupçons relevés en contrôle ; l’Ordre informe ensuite **Tracfin**.' },
       ],
       pieges: ['Il **ne collecte pas** les cotisations.', 'Le CAC n’a **pas** de chambre nationale d’appel : c’est la **commission des sanctions** de la H2A (sans appel), puis le Conseil d’État.'],
     },
@@ -86,7 +86,7 @@ export const VILLE = {
     },
     {
       id: 'h2a', rive: 'cac', nom: 'Haute autorité de l’audit', court: 'H2A', type: 'Supervision publique',
-      role: 'Autorité publique indépendante (ex-H3C) : liste, normes, contrôles, enquêtes, sanctions.',
+      role: 'Autorité publique indépendante, ex-H3C jusqu’au 31 décembre 2023 : liste, normes, contrôles, enquêtes, sanctions.',
       x: 66, y: 42, w: 70, d: 70, h: 120, style: 'tour', jumeau: 'terrain', fiche: '07-cac-controle-activite.md',
       chiffres: ['depuis le 1er janvier 2024', 'commission : 1 magistrat + 4 qualifiés', 'nommés 6 ans, renouvelables 1 fois', 'prescription 6 ans'],
       pancartes: [
@@ -98,7 +98,7 @@ export const VILLE = {
         { qui: 'Passerelle vers la commission des sanctions', fait: 'La **commission des sanctions** est **séparée du collège** : nul ne siège dans les deux. C’est le bâtiment voisin, relié à la tour par une passerelle : le collège **poursuit**, la commission **juge**.' },
         { qui: 'Annexe : formation continue', fait: 'Le **suivi** de la formation continue est **délégué à la CNCC**.' },
       ],
-      pieges: ['La H2A **n’adopte pas** la déontologie des EC et ne juge **jamais** un expert-comptable pour son activité d’EC.', 'Interdiction temporaire **3 ans** au plus : les **5 ans** sont l’ancien régime H3C.', '**Réprimande** et **suspension** sont des peines d’EC, pas de CAC.'],
+      pieges: ['La H2A **n’adopte pas** la déontologie des EC et ne juge **jamais** un expert-comptable pour son activité d’EC.', 'Interdiction temporaire **3 ans** au plus : les **5 ans** sont l’ancien régime du H3C, devenu H2A le 1er janvier 2024.', '**Réprimande** et **suspension** sont des peines d’EC, pas de CAC.'],
     },
     {
       id: 'terrain', rive: 'ec', nom: 'Pas de H2A (aucun superviseur public)', court: 'Pas de H2A', type: 'Supervision publique',
@@ -274,7 +274,7 @@ export const VILLE = {
       x: 47, y: 84, w: 54, d: 40, h: 44, style: 'palais', jumeau: 'tracfin', fiche: '17-schema-secret-signalements.md',
       chiffres: ['CAC : révélation obligatoire', 'EC : devoir de conseil, pas de révélation'],
       pancartes: [
-        { qui: 'Guichet CAC : la révélation', fait: 'Faits délictueux découverts **à l’occasion de sa mission ou prestation** (L.821-10) : **révéler au procureur**, **même régularisés** (un vol remboursé reste à révéler), même chez une entité dont il n’est pas CAC. Ne pas révéler sciemment : **délit** (5 ans, 75 000 €). La révélation de bonne foi n’engage pas sa responsabilité. Le **délit d’entrave** se révèle aussi.' },
+        { qui: 'Guichet CAC : la révélation', fait: 'Faits délictueux découverts **à l’occasion de sa mission ou prestation** (L.821-10) : **révéler au procureur**, **même régularisés** (un vol remboursé reste à révéler), même chez une entité dont il n’est pas CAC. Ne pas révéler : **délit** intentionnel (5 ans, 75 000 €, L.821-9 ; C. pén. 121-3). La révélation de bonne foi n’engage pas sa responsabilité. Le **délit d’entrave** se révèle aussi.' },
         { qui: 'Guichet EC : porte fermée', fait: '**Pas d’obligation de révélation** : l’EC exerce son **devoir de conseil** (informer, mettre en garde, exiger), **refuse son concours** ou **interrompt** la mission. Le secret n’est pas opposable en cas d’audition en matière pénale ni pour sa propre défense.' },
         { qui: 'Le procureur général (H2A)', fait: 'Le **procureur général** près la cour d’appel compte parmi ceux qui **saisissent le rapporteur général** de la H2A. Le **ministère public** peut aussi demander le **relèvement** d’un CAC.' },
       ],
@@ -316,7 +316,7 @@ export const VILLE = {
       chiffres: ['EC : NPLAB', 'CAC : NEP 9605', 'documents conservés 5 ans'],
       pancartes: [
         { qui: 'Guichet des déclarations', fait: '**Déclaration de soupçon**, si possible **avant l’opération**. Chez l’**EC** : par l’EC **en charge de la mission**, personnellement, **sans copie au CROEC** ; le **correspondant Tracfin** du cabinet (pas forcément EC) **ne déclare pas**. Chez le **CAC** : par le **CAC signataire** (NEP 9605). **Interdit** d’en informer le client ou le confrère successeur ; le CAC **ne démissionne pas** pour éviter la déclaration.' },
-        { qui: 'Guichet des contrôleurs', fait: 'Blanchiment découvert pendant un contrôle : chez l’**EC**, le contrôleur informe le **comité LBC-FT de l’Ordre**, et **l’Ordre informe Tracfin** ; chez le **CAC**, **les contrôleurs** de la H2A (ou de la CNCC) **informent eux-mêmes Tracfin**. Le secret professionnel ne lui est **pas opposable** (déclaration, droit de communication).' },
+        { qui: 'Guichet des contrôleurs', fait: 'Blanchiment découvert pendant un contrôle : chez l’**EC**, le contrôleur informe le **comité LCB-FT de l’Ordre**, et **l’Ordre informe Tracfin** ; chez le **CAC**, **les contrôleurs** de la H2A (ou de la CNCC) **informent eux-mêmes Tracfin**. Le secret professionnel ne lui est **pas opposable** (déclaration, droit de communication).' },
         { qui: 'Les autres administrations', fait: 'Secret **non opposable** à l’**administration fiscale** (droit de communication, dans ses limites, EC) et aux autorités de marché (**AMF** ; **ACPR** pour le CAC). **Opposable à la CNIL** selon l’annale 2025-11 (à vérifier). Le client **ne peut pas délier** du secret, d’ordre public.' },
       ],
       pieges: ['Le **correspondant Tracfin** ne déclare pas ; le **déclarant** est l’EC en charge ou le CAC signataire.', 'Vigilance : **deux niveaux** chez l’EC (NPLAB), **trois** chez le CAC (NEP 9605).'],

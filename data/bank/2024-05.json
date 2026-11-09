@@ -21,18 +21,18 @@
       },
       "qrc": {
         "expected": [
-          "Candidature auprès du conseil régional (commission nationale d'inscription pour les contrôles d'AGC) ; désignation pour trois ans renouvelables (RI art. 411 et 412)",
+          "Candidature auprès du conseil régional (commission nationale pour les contrôles d'AGC) ; désignation pour trois ans renouvelables (RI art. 411 et 412)",
           "Aucune sanction disciplinaire (art. 413)",
-          "Avoir bénéficié d'un contrôle de qualité n'ayant pas entraîné un nouveau contrôle sur place à un an ; se soumettre à un contrôle de qualité avant la désignation (art. 413 et 417)",
+          "Avoir eu un contrôle de qualité sans nouveau contrôle sur place à un an ; se soumettre à un contrôle avant la désignation (art. 413 et 417)",
           "Avoir suivi le stage de formation organisé par l'Ordre ; être inscrit au tableau comme membre depuis au moins cinq ans (art. 413)",
           "Engagements : au moins 50 heures de contrôle par an (200 au plus), indépendance, secret (art. 415 à 417)"
         ],
-        "model_answer": "Le candidat, membre de l'Ordre inscrit au tableau depuis au moins cinq ans, ne doit avoir fait l'objet d'aucune sanction disciplinaire, doit avoir bénéficié d'un contrôle de qualité n'ayant pas entraîné de nouveau contrôle sur place à un an et avoir suivi le stage de formation de l'Ordre. Il fait acte de candidature auprès du conseil régional, qui le désigne pour trois ans renouvelables ; il s'engage à consacrer au moins 50 heures par an aux contrôles, à rester indépendant et à respecter le secret."
+        "model_answer": "Le candidat, inscrit au tableau depuis au moins cinq ans, ne doit avoir subi aucune sanction disciplinaire, doit avoir eu un contrôle de qualité sans nouveau contrôle sur place à un an et avoir suivi le stage de formation de l'Ordre. Désigné par le conseil régional pour trois ans renouvelables, il consacre au moins 50 heures par an aux contrôles."
       },
-      "explanation": "Le contrôle de qualité est un contrôle par les pairs organisé par le titre IV du règlement intérieur : les contrôleurs sont des confrères formés et eux-mêmes contrôlés ; des directeurs et cadres d'AGC peuvent compléter le collège pour les contrôles structurels. À la différence du contrôle d'activité des CAC, réalisé par des contrôleurs de la H2A (ou de la CNCC par délégation) désignés de façon à éviter tout conflit d'intérêts (C. com. L.820-16, R.820-44).",
+      "explanation": "Contrôle par les pairs (RI, titre IV) : les contrôleurs sont des confrères formés et eux-mêmes contrôlés ; des cadres d'AGC peuvent compléter le collège pour les contrôles structurels. Piège : ni magistrats ni salariés du Conseil national. CAC : contrôleurs de la H2A (ou de la CNCC par délégation), désignés sans conflit d'intérêts (L.820-16).",
       "reference": "Règlement intérieur de l'Ordre (arrêté du 6 mars 2024), art. 411 à 417 ; C. com. L.820-16, R.820-44",
       "confidence": "high",
-      "update_note": "Conditions vérifiées dans le RI agréé par arrêté du 6 mars 2024 (art. 413 : ancienneté de cinq ans, absence de sanction, contrôle de qualité sans nouveau contrôle à un an, stage de formation)."
+      "review_note": "Conditions vérifiées dans le RI agréé par arrêté du 6 mars 2024 (art. 413 : ancienneté de cinq ans, absence de sanction, contrôle de qualité sans nouveau contrôle à un an, stage de formation)."
     },
     {
       "id": "2024-05-EC-02",
@@ -53,13 +53,13 @@
       },
       "qrc": {
         "expected": [
-          "Contrôle structurel : analyse de l'organisation, des modalités de fonctionnement, des systèmes et procédures de la structure d'exercice (respect des obligations : inscription, assurance, formation, déontologie, NPMQ, LCB-FT)",
-          "Contrôle technique : appréciation, par sondage sur des dossiers de missions sélectionnées, de l'application des normes professionnelles et des diligences",
+          "Contrôle structurel : organisation, fonctionnement et procédures de la structure (inscription, assurance, formation, déontologie, NPMQ, LCB-FT)",
+          "Contrôle technique : application des normes et des diligences, par sondage sur des dossiers de missions sélectionnées",
           "Ces deux phases se complètent et donnent lieu à un rapport du contrôleur"
         ],
-        "model_answer": "Le contrôle de qualité comporte un contrôle structurel, qui porte sur l'organisation et le fonctionnement de la structure d'exercice (procédures, respect des obligations professionnelles, dispositif de qualité et de LCB-FT), et un contrôle technique, qui apprécie par sondage sur des dossiers sélectionnés l'application des normes et des diligences professionnelles."
+        "model_answer": "Le contrôle de qualité comporte un contrôle structurel, sur l'organisation et le fonctionnement de la structure (procédures, obligations professionnelles, dispositif qualité et LCB-FT), et un contrôle technique, qui apprécie par sondage sur des dossiers sélectionnés l'application des normes et des diligences."
       },
-      "explanation": "Le contrôle structurel s'adresse au responsable de la structure, le contrôle technique à chaque professionnel contrôlé. Un échange sur l'amélioration de la performance peut s'y ajouter mais ne constitue pas une phase de contrôle. Cette architecture ressemble à celle du contrôle d'activité des CAC, qui porte à la fois sur le système de contrôle qualité interne et sur des missions sélectionnées (C. com. R.820-45).",
+      "explanation": "Le contrôle structurel vise le responsable de la structure, le contrôle technique chaque professionnel ; un échange sur l'amélioration de la performance peut s'y ajouter, sans être une phase. Piège : revue indépendante et supervision sont internes au cabinet. CAC : le contrôle d'activité vise aussi le système qualité et des missions (R.820-45).",
       "reference": "Règlement intérieur de l'Ordre art. 404 à 406 ; C. com. R.820-45 pour le parallèle CAC",
       "confidence": "high"
     },
@@ -82,13 +82,13 @@
       },
       "qrc": {
         "expected": [
-          "Non pour les missions de prérogative d'exercice (révision, appréciation, attestation, tenue des comptabilités) ni pour les missions participant à la détermination de l'assiette fiscale ou sociale",
-          "Honoraires complémentaires liés à un objectif possibles pour les autres missions (loi Pacte), sans compromettre l'indépendance ni créer de conflit d'intérêts",
+          "Exclus pour les missions de prérogative d'exercice (révision, attestation, tenue des comptabilités) et celles touchant l'assiette fiscale ou sociale",
+          "Honoraires liés à un objectif possibles pour les autres missions (loi Pacte), sans atteinte à l'indépendance ni conflit d'intérêts",
           "Principe : honoraires équitables, convenus par écrit, exclusifs de toute rémunération d'un tiers"
         ],
-        "model_answer": "Non. L'article 24 de l'ordonnance, modifié par la loi Pacte, n'autorise des honoraires complémentaires liés à la réalisation d'un objectif que pour les missions autres que celles visées aux deux premiers alinéas de l'article 2 (prérogative d'exercice : révision, attestation, tenue et surveillance des comptabilités) et autres que celles participant à la détermination de l'assiette fiscale ou sociale du client. Les success fees restent donc interdits pour les missions comptables."
+        "model_answer": "Les honoraires de succès sont exclus pour ces missions. L'art. 24 de l'ordonnance (loi Pacte) ne les admet que pour les missions autres que celles de prérogative d'exercice (deux premiers alinéas de l'art. 2 : révision, attestation, tenue et surveillance des comptabilités) et autres que celles participant à l'assiette fiscale ou sociale du client."
       },
-      "explanation": "La loi Pacte a ouvert les honoraires de succès aux experts-comptables pour les missions de conseil, à condition de ne pas compromettre l'indépendance ni de placer le professionnel en conflit d'intérêts, mais elle a maintenu l'interdiction pour le cœur du monopole et les travaux à incidence fiscale ou sociale. Le commissaire aux comptes, lui, ne peut accepter aucune rémunération proportionnelle ou conditionnelle, quelle que soit la mission ou prestation (code de déontologie art. 13).",
+      "explanation": "La loi Pacte a ouvert les honoraires de succès aux EC pour le conseil, sans atteinte à l'indépendance ni conflit d'intérêts, mais les maintient interdits pour le cœur du monopole et les travaux à incidence fiscale ou sociale. Piège (d) : le CAC n'accepte aucune rémunération subordonnée au résultat (code de déontologie art. 13).",
       "reference": "Ord. 45-2138 art. 2 et 24 ; D. 2012-432 art. 157 s. ; code de déontologie CAC art. 13 pour le parallèle",
       "confidence": "high"
     },
@@ -113,12 +113,12 @@
         "expected": [
           "Avant cession : EC = 90 % des droits de vote ; après cession à E : A 25 % + C 30 % = 55 % seulement",
           "Violation de l'article 7 de l'ordonnance : les experts-comptables doivent détenir plus des deux tiers des droits de vote",
-          "Conséquence : injonction du conseil de l'Ordre de se mettre en conformité dans un délai maximal de deux ans, puis radiation du tableau à défaut",
-          "Solutions : céder à un expert-comptable (A, C ou un tiers inscrit), ou aménager les droits de vote (actions sans droit de vote ou droits de vote limités) pour rester au-dessus des deux tiers"
+          "Sanction : injonction de régularisation dans un délai maximal de deux ans, puis radiation du tableau à défaut",
+          "Solutions : céder à un EC inscrit, ou réduire les droits de vote attachés aux actions cédées pour rester au-delà des deux tiers"
         ],
-        "model_answer": "Le projet n'est pas conforme en l'état : après la cession des 35 % de madame B à une non-professionnelle, les experts-comptables inscrits (A et C) ne détiendraient plus que 55 % des droits de vote, alors que l'article 7 de l'ordonnance exige qu'ils en détiennent plus des deux tiers. La société s'exposerait à une injonction de régularisation dans un délai maximal de deux ans, puis à la radiation. Madame B doit céder à un expert-comptable, ou la cession à madame E doit être limitée (ou assortie d'actions à droits de vote réduits) pour préserver la majorité qualifiée des professionnels."
+        "model_answer": "La cession est impossible en l'état : B cédant ses 35 % à une non-professionnelle, les EC inscrits (A et C) n'auraient plus que 55 % des droits de vote, au lieu des plus de deux tiers exigés (ord. art. 7). Risque : injonction de régularisation (deux ans au plus), puis radiation. B doit céder à un EC ou limiter les droits de vote cédés."
       },
-      "explanation": "La règle porte sur les droits de vote, détenus directement ou par une société inscrite à l'Ordre, et vise à préserver l'indépendance de la société d'expertise comptable. La forme de SAS est admise (elle ne confère pas la qualité de commerçant), mais ne permet pas d'échapper à la condition des deux tiers. Le parallèle CAC retient une simple majorité des droits de vote (C. com. L.821-16), source de confusion.",
+      "explanation": "La règle porte sur les droits de vote, détenus directement ou par une société inscrite, pour préserver l'indépendance. La SAS est admise (elle ne confère pas la qualité de commerçant), mais n'échappe pas aux deux tiers. Pièges : la règle ne vise pas le capital ; un stagiaire n'est pas inscrit. CAC : simple majorité des droits de vote (L.821-16).",
       "reference": "Ord. 45-2138 art. 7 I et III ; C. com. L.821-16 pour le parallèle CAC",
       "confidence": "high"
     },
@@ -133,7 +133,7 @@
       "qcm": {
         "choices": [
           "Un président magistrat de la Cour de cassation désigné par le premier président de cette Cour et quatre personnes qualifiées, dont un ancien commissaire aux comptes",
-          "Un président magistrat désigné par le garde des sceaux (cour d'appel de Paris), deux fonctionnaires désignés par le ministre de l'économie et deux membres élus du Conseil national",
+          "Un président magistrat désigné par le garde des Sceaux (cour d'appel de Paris), deux fonctionnaires désignés par le ministre de l'économie et deux membres élus du Conseil national",
           "Le président du Conseil national de l'Ordre, quatre présidents de conseils régionaux élus par leurs pairs et le commissaire du gouvernement près l'Ordre, désignés pour trois ans renouvelables",
           "Un conseiller d'État président, deux experts-comptables élus par le Conseil national et deux commissaires aux comptes désignés par la CNCC"
         ],
@@ -141,14 +141,14 @@
       },
       "qrc": {
         "expected": [
-          "Un président : magistrat désigné par le garde des sceaux parmi les présidents de chambre de la cour d'appel de Paris, en activité ou honoraires",
+          "Président : magistrat désigné par le garde des Sceaux parmi les présidents de chambre de la cour d'appel de Paris, en activité ou honoraires",
           "Deux fonctionnaires désignés par le ministre chargé de l'économie et des finances",
-          "Deux membres du Conseil national de l'Ordre élus par celui-ci (l'un remplacé par un représentant des AGC lorsqu'elle statue en appel de la commission nationale de discipline des AGC)",
+          "Deux membres du Conseil national élus par lui (l'un remplacé par un représentant des AGC en appel de la commission nationale de discipline des AGC)",
           "Un magistrat chargé des poursuites rattaché à la chambre, qui nomme un rapporteur ; président et membres suppléants désignés dans les mêmes conditions"
         ],
-        "model_answer": "La chambre nationale de discipline, instituée auprès du Conseil national de l'Ordre, comprend un président magistrat désigné par le garde des sceaux parmi les présidents de chambre de la cour d'appel de Paris (en activité ou honoraires), deux fonctionnaires désignés par le ministre chargé de l'économie et deux membres du Conseil national élus par lui. Un magistrat chargé des poursuites, qui nomme un rapporteur, lui est rattaché ; des suppléants sont désignés dans les mêmes conditions. Ses décisions peuvent faire l'objet d'un recours devant le Conseil d'État."
+        "model_answer": "La chambre nationale de discipline comprend un président magistrat désigné par le garde des Sceaux parmi les présidents de chambre de la cour d'appel de Paris, deux fonctionnaires désignés par le ministre chargé de l'économie et deux membres du Conseil national élus par lui. Un magistrat chargé des poursuites lui est rattaché."
       },
-      "explanation": "La loi 2022-172 du 14 février 2022 a réformé les instances disciplinaires de l'Ordre à la suite d'une décision du Conseil constitutionnel : séparation des fonctions de poursuite et de jugement (magistrat chargé des poursuites, rapporteur), composition de la chambre nationale précisée (deux fonctionnaires au lieu d'un conseiller référendaire à la Cour des comptes et d'un fonctionnaire). La chambre régionale est, elle, composée d'un président magistrat de la cour d'appel et de deux membres élus du conseil régional. Chez les CAC, la commission des sanctions de la H2A est présidée par un magistrat de la Cour de cassation avec quatre personnes qualifiées ; le commissaire du Gouvernement auprès de la H2A n'assiste pas à ses délibérations (L.820-9).",
+      "explanation": "La loi 2022-172 du 14 février 2022 a séparé poursuites (magistrat, rapporteur) et jugement ; la chambre nationale compte deux fonctionnaires. Chambre régionale : président magistrat et deux membres élus ; recours final devant le Conseil d'État. Piège (a) : la commission des sanctions de la H2A (Cour de cassation, quatre personnes qualifiées).",
       "reference": "Ord. 45-2138 art. 49, 49 bis, 50 et 53 (modifiés par la loi 2022-172) ; C. com. L.820-2 V pour le parallèle CAC",
       "confidence": "high",
       "update_note": "Le Conseil supérieur est devenu le Conseil national de l'Ordre et la composition a été modifiée par la loi 2022-172 du 14 février 2022 (deux fonctionnaires ; magistrat chargé des poursuites)."
@@ -173,13 +173,13 @@
       "qrc": {
         "expected": [
           "Non",
-          "Tenir, centraliser, surveiller des comptabilités pour des tiers de façon habituelle relève de la prérogative d'exercice (ord. art. 2) réservée aux personnes inscrites au tableau",
-          "Un titulaire du DSCG non inscrit qui le ferait en son nom commettrait un exercice illégal (art. 20) ; l'expert-comptable donneur d'ordre serait complice et manquerait à sa déontologie",
-          "Seule une sous-traitance entre professionnels inscrits (confrère, société d'expertise comptable) est admise ; sinon embauche comme salarié ou stagiaire sous la responsabilité de l'expert-comptable"
+          "Tenue, centralisation, surveillance habituelle de comptabilités pour des tiers : prérogative d'exercice réservée aux inscrits au tableau (ord. art. 2)",
+          "Le titulaire du DSCG non inscrit qui le ferait en son nom commettrait un exercice illégal (art. 20) ; l'EC donneur d'ordre en serait complice",
+          "Sous-traitance admise seulement entre inscrits (confrère, société d'EC) ; sinon embauche comme salarié sous la responsabilité de l'EC"
         ],
-        "model_answer": "Non. La tenue de comptabilité pour le compte de tiers est une mission de prérogative d'exercice réservée aux personnes inscrites au tableau de l'Ordre ; le titulaire du DSCG non inscrit qui l'exercerait en son nom propre en qualité de sous-traitant se rendrait coupable d'exercice illégal et l'expert-comptable donneur d'ordre en serait complice, en violation de sa déontologie. La sous-traitance n'est possible qu'avec un confrère inscrit ; cette personne ne peut intervenir que comme salariée du cabinet, sous la responsabilité et le contrôle de l'expert-comptable."
+        "model_answer": "C'est impossible : tenir des comptabilités pour des tiers est une prérogative d'exercice réservée aux inscrits au tableau. Le titulaire du DSCG non inscrit qui le ferait comme sous-traitant commettrait un exercice illégal, dont l'EC donneur d'ordre serait complice. La sous-traitance n'est permise qu'à un confrère ; sinon, il faut l'embaucher."
       },
-      "explanation": "Le monopole de l'article 2 s'apprécie en fonction de la nature des travaux et de la personne qui les exécute de façon habituelle en son nom : le diplôme (DSCG) n'y change rien, seule l'inscription au tableau compte. L'expert-comptable peut déléguer des travaux à ses salariés (dans la limite du taux d'encadrement) mais pas à un prestataire extérieur non inscrit. Les mêmes règles rendent impossible, chez les CAC, la sous-traitance d'une mission légale à un non-inscrit.",
+      "explanation": "Le monopole de l'art. 2 tient à la nature des travaux et à la personne qui les exécute en son nom : seule compte l'inscription au tableau, pas le diplôme (DSCG). L'EC peut confier des travaux à ses salariés, dans la limite du taux d'encadrement, pas à un prestataire non inscrit. Piège : ni l'assurance ni la lettre de mission ne régularisent.",
       "reference": "Ord. 45-2138 art. 2, 3, 12, 19 et 20 ; D. 2012-432 art. 141 s. (code de déontologie) ; C. pén. art. 433-17",
       "confidence": "high"
     },
@@ -207,11 +207,12 @@
           "Attestation avec observation(s)",
           "Refus d'attester (notamment lorsque les limitations ou désaccords sont tels que l'expert-comptable ne peut exprimer d'assurance)"
         ],
-        "model_answer": "À l'issue de la mission de présentation, l'expert-comptable délivre une attestation exprimant une assurance modérée sur la cohérence et la vraisemblance des comptes, qui peut être sans observation, avec observation(s), ou se traduire par un refus d'attester lorsque les anomalies ou limitations rencontrées ne permettent pas d'exprimer cette assurance."
+        "model_answer": "L'attestation de présentation exprime une assurance modérée sur la cohérence et la vraisemblance des comptes. Elle est sans observation, avec observation(s), ou se traduit par un refus d'attester lorsque les anomalies ou limitations rencontrées ne permettent pas d'exprimer cette assurance."
       },
-      "explanation": "La NP 2300 encadre strictement la forme de l'attestation ; les observations attirent l'attention sans remettre en cause la conclusion, le refus intervient en cas de désaccord ou de limitation significatifs non résolus. Le vocabulaire diffère de celui de la certification du CAC (sans réserve, avec réserve, refus, impossibilité de certifier, C. com. R.821-180) et de celui de l'examen limité (favorable sans observation, favorable avec observation(s), avec réserve(s), défavorable, impossibilité de conclure : NP 2400 § 22).",
+      "explanation": "La NP 2300 encadre la forme de l'attestation : les observations attirent l'attention sans remettre en cause la conclusion ; le refus sanctionne un désaccord ou une limitation significatifs non résolus. Pièges : « certification avec ou sans réserve » est l'opinion du CAC (R.821-180) ; l'examen limité a ses propres conclusions (NP 2400 § 22).",
       "reference": "NP 2300 § 18 à 21 ; NP 2400 § 22 ; C. com. R.821-180 pour le parallèle CAC",
-      "confidence": "high"
+      "confidence": "high",
+      "review_note": "Formulation des conclusions de l'examen limité (NP 2400 § 22 : « favorable » ou « sans réserve ») non tranchée, texte agréé non lu : retirée de l'explication."
     },
     {
       "id": "2024-05-EC-08",
@@ -233,15 +234,17 @@
       "qrc": {
         "expected": [
           "Non",
-          "Mission d'assurance sur comptes complets historiques (présentation, examen limité, audit contractuel) = prérogative d'exercice : engagement, travaux et rapports doivent porter la signature personnelle d'un expert-comptable inscrit avec le visa social",
+          "Prérogative d'exercice : lettre de mission signée, au titre de la signature sociale, par un EC inscrit habilité ; signature personnelle des travaux",
           "Les représentants légaux d'une société d'expertise comptable doivent être des professionnels inscrits membres de la société (ord. art. 7 I 4°)",
           "Un dirigeant non expert-comptable ne peut donc ni représenter valablement la société pour cette mission ni en assumer la responsabilité"
         ],
-        "model_answer": "Non. Une mission d'assurance sur des comptes complets historiques relève de la prérogative d'exercice : la lettre de mission qui l'engage, comme les travaux et le rapport, doit être signée par un expert-comptable inscrit exerçant au sein de la société, avec le visa ou la signature sociale, car seul un membre de l'Ordre en assume la responsabilité. Au surplus, l'ordonnance exige que les représentants légaux d'une société d'expertise comptable soient des professionnels inscrits, de sorte qu'un dirigeant non expert-comptable ne peut valablement engager la société pour cette mission."
+        "model_answer": "Un dirigeant non expert-comptable ne le peut pas : la mission relève de la prérogative d'exercice et sa lettre de mission est signée, au titre de la signature sociale, par un EC inscrit exerçant dans la société et habilité à l'engager. Les représentants légaux d'une société d'expertise comptable doivent d'ailleurs être des inscrits."
       },
-      "explanation": "Le piège consiste à raisonner en pur droit des sociétés (pouvoir du représentant légal) alors que la réglementation professionnelle impose que l'exercice de la profession, y compris l'engagement contractuel sur une mission de prérogative, soit le fait d'un inscrit (ord. art. 3, 7 et 12). Les sociétés de commissaires aux comptes connaissent une règle comparable : dirigeants obligatoirement CAC inscrits et missions exercées au nom de la société par des CAC personnes physiques (C. com. L.821-16 et L.821-25).",
+      "explanation": "Piège : raisonner en pur droit des sociétés (pouvoir du représentant légal), alors que l'engagement sur une mission de prérogative est le fait d'un inscrit (ord. art. 3 et 7) ; la signature personnelle avec visa social (art. 12) vise les travaux et rapports. CAC : dirigeants CAC, missions signées par des CAC personnes physiques (L.821-16 et 25).",
       "reference": "Ord. 45-2138 art. 3, 7 I 4°, 12 ; D. 2012-432 art. 151 ; C. com. L.821-16 et L.821-25 pour le parallèle CAC",
-      "confidence": "medium"
+      "confidence": "medium",
+      "update_note": "Aucun texte ne tranche expressément : la banque retient la signature sociale apposée par un expert-comptable inscrit habilité, la signature personnelle de l'art. 12 visant les travaux.",
+      "review_note": "Ord. 45-2138 art. 7 et 12 non relus (à vérifier). Règle commune retenue pour 2018-11-EC-07, 2022-11-EC-01 et 2024-05-EC-08 ; l'ancienne rédaction étendait la signature personnelle de l'art. 12 à l'engagement. L.821-16 et L.821-25 relus (miroir LEGI)."
     },
     {
       "id": "2024-05-EC-09",
@@ -263,16 +266,19 @@
       },
       "qrc": {
         "expected": [
-          "S'informer : prendre connaissance de la situation et des besoins du client",
-          "Informer : renseigner le client sur ses obligations et les options qui s'offrent à lui",
-          "Mettre en garde : alerter sur les risques et conséquences, de préférence par écrit",
-          "Exiger et refuser : exiger les justificatifs et le respect des règles, refuser de participer à des opérations irrégulières, au besoin démissionner"
+          "S'informer sur la situation et les besoins du client (préalable)",
+          "Informer le client de ses obligations et des options",
+          "Mettre en garde contre les risques, par écrit",
+          "Exiger les justificatifs et le respect des obligations légales",
+          "Refuser son concours à une opération irrégulière, voire interrompre la mission",
+          "Se ménager la preuve : formaliser par écrit, la charge pèse sur l'EC"
         ],
-        "model_answer": "Le devoir de conseil se déploie en plusieurs étapes : s'informer sur la situation du client, l'informer de ses obligations et des solutions possibles, le mettre en garde contre les risques (de préférence par écrit), exiger de lui les justificatifs et le respect des règles, et enfin refuser de prêter son concours à des opérations irrégulières, en se retirant de la mission si nécessaire."
+        "model_answer": "Le devoir de conseil se déploie en étapes : s'informer sur la situation du client ; l'informer de ses obligations et des solutions ; le mettre en garde contre les risques ; exiger les justificatifs et le respect des règles ; refuser son concours à une opération irrégulière, au besoin en se retirant ; et se ménager la preuve, par écrit."
       },
-      "explanation": "Le devoir de conseil est inhérent à toute mission de l'expert-comptable et s'apprécie en fonction des compétences attendues d'un professionnel ; sa preuve repose sur la documentation (courriers de mise en garde). Il engage la responsabilité contractuelle sur cinq ans. Le CAC n'y est pas tenu dans les mêmes termes : il informe les organes de l'entité (C. com. L.821-63) mais ne conseille pas, sous peine d'immixtion dans la gestion.",
+      "explanation": "Le devoir de conseil, inhérent à toute mission de l'EC, s'apprécie au regard des compétences attendues d'un professionnel ; la preuve pèse sur lui, d'où les mises en garde écrites. La déclinaison en quatre verbes (informer, mettre en garde, exiger, refuser) est celle que reprend le QCM de mai 2023. CAC : pas de conseil, sinon immixtion (L.821-54).",
       "reference": "D. 2012-432 art. 155 ; jurisprudence sur le devoir de conseil (Cass. com.) ; C. com. L.821-54 et L.821-63 pour le parallèle CAC",
-      "confidence": "medium"
+      "confidence": "medium",
+      "review_note": "Grille commune avec 2022-05-EC-03 et 2023-05-EC-03 (revue 2026-11) ; aucune grille officielle. Charge de la preuve : jurisprudence de la Cour de cassation, non relue."
     },
     {
       "id": "2024-05-EC-10",
@@ -295,12 +301,12 @@
         "expected": [
           "Vérifier que le client a notifié au prédécesseur sa décision de changer de professionnel (rupture régulière de la lettre de mission)",
           "Informer le confrère prédécesseur avant d'accepter la mission (obligation de l'art. 163)",
-          "S'assurer que le changement n'a pas pour but d'éluder les lois et règlements ou les devoirs professionnels ; s'efforcer d'obtenir la justification du paiement des honoraires dus, à défaut en référer au président du conseil régional et faire des réserves",
+          "Vérifier que le changement n'élude pas la loi ; chercher la preuve du paiement des honoraires, sinon saisir le président du conseil régional",
           "Organiser la transmission du dossier, que le prédécesseur favorise avec l'accord du client"
         ],
-        "model_answer": "Avant d'accepter, l'expert-comptable pressenti s'assure que le client a informé son prédécesseur de son intention de changer de professionnel, puis informe lui-même par écrit ce confrère de la demande dont il est saisi. Il lui demande si des honoraires restent dus et s'enquiert des circonstances du changement afin de vérifier que celui-ci n'a pas pour objet d'éluder des obligations légales ; il organise enfin avec lui la transmission des documents et informations utiles. Le prédécesseur doit répondre et ne peut ni s'opposer au changement ni retenir les documents appartenant au client."
+        "model_answer": "Avant d'accepter, l'EC pressenti vérifie que le client a prévenu son prédécesseur, puis informe ce confrère par écrit. Il s'enquiert des honoraires dus et des motifs du changement, pour s'assurer qu'il n'élude pas la loi, et organise la transmission du dossier. Le prédécesseur ne peut ni s'opposer au changement ni retenir les documents du client."
       },
-      "explanation": "La reprise d'un dossier est régie par l'article 163 du code de déontologie : information préalable du confrère, vérification que le changement ne vise pas à éluder la loi, effort pour obtenir la justification du paiement des honoraires conventionnels (à défaut, référé au président du conseil régional et réserves auprès du client) et suggestion écrite de conciliation si le client les conteste. Le non-paiement n'interdit donc pas d'accepter, mais impose ces diligences. Le parallèle CAC est la succession entre confrères (code de déontologie CAC art. 26) : le successeur s'assure que le non-renouvellement n'a pas pour but de contourner les obligations légales.",
+      "explanation": "Reprise d'un dossier (D. 2012-432 art. 163) : information préalable du confrère, vérification que le changement n'élude pas la loi, preuve du paiement des honoraires recherchée (sinon président du conseil régional et réserves), conciliation suggérée s'ils sont contestés. Piège : l'impayé n'interdit pas d'accepter. CAC : succession (art. 26).",
       "reference": "D. 2012-432 art. 163 (remplacement d'un confrère), 159 et 160 (conciliation, arbitrage), 161 et 164 (confraternité, liberté de choix du client) ; code de déontologie CAC art. 26 pour le parallèle",
       "confidence": "medium"
     },
@@ -325,11 +331,11 @@
         "expected": [
           "Mission de certification des comptes (contrôle légal) et missions qui s'y rattachent",
           "Mission de certification des informations en matière de durabilité (CSRD)",
-          "Toute autre mission confiée au CAC par la loi ou le règlement, y compris auprès d'entités dont il ne certifie pas les comptes (commissariat aux apports, à la fusion, à la transformation, attestations légales)"
+          "Toute autre mission légale ou réglementaire, même auprès d'une entité non certifiée (commissariat aux apports, à la fusion, à la transformation)"
         ],
-        "model_answer": "Au sens de l'article L.821-2 III, le terme « mission » désigne la mission de certification des comptes, la mission de certification des informations en matière de durabilité et toute autre mission confiée au commissaire aux comptes par la loi ou le règlement, qu'elle soit exercée auprès d'une entité dont il certifie les comptes ou non (par exemple le commissariat aux apports, à la fusion ou à la transformation)."
+        "model_answer": "Au sens de L.821-2 III, la « mission » désigne la certification des comptes, la certification des informations en matière de durabilité et toute autre mission confiée au CAC par la loi ou le règlement, auprès d'une entité dont il certifie les comptes ou non (commissariat aux apports, à la fusion, à la transformation)."
       },
-      "explanation": "La loi Pacte a défini la profession de CAC comme l'exercice de missions et la fourniture de prestations (aujourd'hui C. com. L.821-3). La distinction commande le régime applicable : titre II du code de déontologie et barème d'heures pour la certification ; lettre de mission obligatoire pour les autres missions et pour les prestations (R.821-195), hors barème. En revanche, le signalement des irrégularités et la révélation des faits délictueux s'appliquent aux missions comme aux prestations (L.821-10). L'ordonnance de 2023 a ajouté la certification de durabilité parmi les missions.",
+      "explanation": "La loi Pacte définit la profession par des missions et des prestations (L.821-3). Certification : titre II du code et barème d'heures ; autres missions et prestations : lettre de mission (R.821-195). Piège : la révélation des faits délictueux vaut pour les missions comme pour les prestations (L.821-10). L'ordonnance de 2023 a ajouté la durabilité.",
       "reference": "C. com. art. L.821-2 III (ex L.820-1-1 et R.820-1-1) et L.821-3 ; code de déontologie CAC art. 1 III",
       "confidence": "high",
       "update_note": "Définition issue de la loi Pacte (ex L.820-1-1), recodifiée à L.821-2 en 2024 et étendue à la certification des informations en matière de durabilité."
@@ -354,12 +360,12 @@
       "qrc": {
         "expected": [
           "À tout commissaire aux comptes inscrit sur la liste",
-          "Intervenant ès qualités de commissaire aux comptes (mission ou prestation réalisée en cette qualité : base légale, mention du titre, référence aux normes ou à la doctrine CNCC, papier à en-tête)",
+          "Intervention ès qualités : base légale, mention du titre, référence aux normes ou à la doctrine CNCC, papier à en-tête",
           "Quelle que soit la mission ou la prestation, personne physique en nom propre ou société"
         ],
-        "model_answer": "Les deux normes de déontologie (application des principes fondamentaux de comportement ; mise en œuvre de l'approche risques et sauvegardes) s'appliquent à tout commissaire aux comptes inscrit qui intervient ès qualités, quelle que soit la mission qu'il exerce ou la prestation qu'il fournit, qu'il s'agisse d'une personne physique exerçant en nom propre ou au sein d'une société, ou d'une société de commissaires aux comptes."
+        "model_answer": "Les deux normes de déontologie (principes fondamentaux ; approche risques et sauvegardes) s'appliquent à tout CAC inscrit intervenant ès qualités, pour toute mission ou prestation, qu'il exerce en nom propre ou au sein d'une société, ou qu'il s'agisse d'une société de CAC."
       },
-      "explanation": "Ces normes, adoptées par le H3C en mars 2023 et homologuées par arrêté du garde des sceaux, sont codifiées aux articles A.821-54 et A.821-55 du code de commerce. L'intervention ès qualités résulte des textes fondant la mission, de la mention du titre dans les documents de restitution, de la référence aux normes ou à la doctrine de la CNCC, ou d'un faisceau d'indices (papier à en-tête). Elles ne concernent pas l'expert-comptable, soumis à son propre code de déontologie.",
+      "explanation": "Adoptées par le H3C (devenu H2A) en mars 2023 et homologuées par arrêté du garde des Sceaux, elles sont codifiées à A.821-54 et A.821-55. L'intervention ès qualités résulte de la base légale, de la mention du titre, de la référence aux normes ou à la doctrine CNCC, ou d'un faisceau d'indices. Piège : elles ne visent pas l'EC, qui a son propre code.",
       "reference": "C. com. art. A.821-54 § 01 et 07, A.821-55 § 01 et 06 (ex A.822-28-11 et A.822-28-12) ; arrêté du 22 mars 2023",
       "confidence": "high",
       "update_note": "Codification initiale aux articles A.822-28-11 et A.822-28-12 (arrêté du 22 mars 2023), renumérotés A.821-54 et A.821-55 lors de la recodification de 2024."
@@ -387,11 +393,12 @@
           "Prise en considération en toute circonstance, y compris hors mission ou prestation",
           "Dans sa vie personnelle, le CAC s'abstient de tout agissement contraire à l'honneur ou à la probité (lien avec le serment)"
         ],
-        "model_answer": "Les principes fondamentaux de comportement s'appliquent expressément dans l'exercice de la profession, c'est-à-dire pour toute mission ou prestation ; mais le commissaire aux comptes les prend également en considération en toute circonstance, y compris lorsqu'il n'exerce aucune mission ni prestation, afin de s'abstenir, même dans sa vie personnelle, de tout agissement contraire à l'honneur ou à la probité, conformément à son serment."
+        "model_answer": "Les principes s'appliquent expressément dans l'exercice de la profession, pour toute mission ou prestation ; mais le CAC les prend aussi en considération en toute circonstance, hors mission comprise, et s'abstient, même dans sa vie personnelle, de tout agissement contraire à l'honneur ou à la probité, conformément à son serment."
       },
-      "explanation": "La norme (§ 04 et 05) rappelle que le statut de CAC et son serment engagent la personne au-delà de son activité : un fait contraire à la probité commis hors mission constitue une faute disciplinaire (C. com. L.821-70 I : tout fait contraire à la probité ou à l'honneur). Le même raisonnement vaut pour l'expert-comptable, qui doit s'abstenir « en toutes circonstances » d'agissements contraires à la probité, à l'honneur et à la dignité (D. 2012-432 art. 145).",
+      "explanation": "La norme (§ 04 et 05) rappelle que le statut et le serment engagent au-delà de l'activité : un fait contraire à la probité commis hors mission est une faute disciplinaire (L.821-70 I). Piège : la vie personnelle n'est pas hors champ. L'EC doit aussi s'abstenir « en toutes circonstances » d'agissements contraires à la probité (D. 2012-432 art. 145).",
       "reference": "C. com. art. A.821-54 § 02 à 05 ; L.821-70 I ; L.821-23 (serment)",
-      "confidence": "high"
+      "confidence": "high",
+      "review_note": "L.821-70 I relu (miroir LEGI)."
     },
     {
       "id": "2024-05-CAC-14",
@@ -414,11 +421,11 @@
         "expected": [
           "Fourniture de services et d'attestations qui ne relèvent pas d'une mission légale ou réglementaire",
           "Au profit d'une entité pour laquelle le CAC exerce ou non la certification des comptes",
-          "Exemples : audit contractuel, revue de conformité, attestations contractuelles ; soumises au titre I du code de déontologie, à une lettre de mission et aux règles d'indépendance (services interdits pour les EIP)"
+          "Exemples : audit contractuel, revue de conformité, attestations ; titre I du code, lettre de mission, indépendance (services interdits en EIP)"
         ],
-        "model_answer": "Le terme « prestation » désigne la fourniture de services et d'attestations qui ne relèvent pas d'une mission confiée par la loi ou le règlement, par exemple un audit financier contractuel ou une revue de conformité à un référentiel, que le commissaire aux comptes intervienne auprès d'une entité dont il certifie les comptes ou auprès d'une autre entité."
+        "model_answer": "Le terme « prestation » désigne la fourniture de services et d'attestations qui ne relèvent pas d'une mission légale ou réglementaire (audit contractuel, revue de conformité à un référentiel), que le CAC intervienne auprès d'une entité dont il certifie les comptes ou d'une autre entité."
       },
-      "explanation": "Les prestations, consacrées par la loi Pacte, sont régies par le titre I du code de déontologie, requièrent une lettre de mission (R.821-195) et restent soumises aux règles d'indépendance : interdiction des services de l'article 5 du règlement UE 537/2014 auprès des EIP contrôlées, approche risques et sauvegardes ailleurs, et approbation du comité d'audit pour les services autorisés aux EIP (L.821-30).",
+      "explanation": "Les prestations, consacrées par la loi Pacte, relèvent du titre I du code, d'une lettre de mission (R.821-195) et des règles d'indépendance : services interdits de l'art. 5 du règlement 537/2014 auprès des EIP contrôlées, approche risques et sauvegardes ailleurs, approbation du comité d'audit pour les services autorisés en EIP (L.821-30).",
       "reference": "C. com. art. L.821-2 IV, L.821-3, L.821-28, L.821-30, R.821-195 ; A.821-54 § 09",
       "confidence": "high",
       "update_note": "Ex L.820-1-1 et R.820-1-1 (loi Pacte, décret 2020-292), recodifiés à L.821-2 en 2024."
@@ -444,11 +451,11 @@
         "expected": [
           "Personne extérieure à la situation, sans intérêt personnel, mais qui s'y intéresse",
           "Dotée de connaissances suffisantes pour apprécier les faits et circonstances caractérisant la situation",
-          "Capable d'apprécier si ces faits et circonstances sont objectivement de nature à faire naître un doute raisonnable sur le respect des principes d'impartialité, d'indépendance et de prévention des conflits d'intérêts"
+          "Apte à juger si ces faits font objectivement naître un doute raisonnable sur l'impartialité, l'indépendance ou la prévention des conflits d'intérêts"
         ],
-        "model_answer": "Le tiers objectif, raisonnable et informé est une personne qui, bien qu'extérieure à la situation et sans intérêt personnel, s'y intéresse ; qui possède les connaissances suffisantes pour apprécier les faits et circonstances ; et qui est en mesure de juger si ces faits sont objectivement de nature à faire naître chez elle un doute raisonnable sur le respect par le commissaire aux comptes de l'impartialité, de l'indépendance et de la prévention des conflits d'intérêts."
+        "model_answer": "C'est une personne extérieure à la situation et sans intérêt personnel, mais qui s'y intéresse ; qui connaît suffisamment les faits et circonstances ; et qui peut juger s'ils font objectivement naître un doute raisonnable sur l'impartialité, l'indépendance ou la prévention des conflits d'intérêts du CAC."
       },
-      "explanation": "Le tiers objectif, raisonnable et informé est l'étalon de l'appréciation de l'indépendance et de l'impartialité « en apparence » : le CAC doit non seulement être indépendant en réalité, mais aussi être perçu comme tel. La notion irrigue le code de déontologie (liens personnels, financiers et professionnels, art. 32 à 34) et les normes de déontologie. Elle n'a pas d'équivalent formalisé dans le code de déontologie des experts-comptables.",
+      "explanation": "Le tiers objectif, raisonnable et informé est l'étalon de l'indépendance « en apparence » : le CAC doit être indépendant et perçu comme tel. La notion irrigue le code (liens personnels, financiers et professionnels, art. 32 à 34) et les normes de déontologie. Piège : le code des EC ne la formalise pas.",
       "reference": "C. com. art. A.821-54 § 11, 16, 18 et 22 ; A.821-55 § 11 ; code de déontologie CAC art. 5 II, 32 III, 33 III, 34 III",
       "confidence": "high"
     },
@@ -472,13 +479,13 @@
       "qrc": {
         "expected": [
           "Rapports de respect mutuel, fondés sur l'appartenance à une profession réglementée et sur le serment",
-          "Abstention de tout propos déloyal, attitude ou manœuvre malveillante, acte motivé par l'intention de nuire : pas de jugement déloyal sur les travaux d'un confrère en co-intervention ou en cas de succession",
-          "Résolution amiable des différends et, si nécessaire, conciliation par le président de la compagnie régionale (ou les présidents des compagnies respectives)",
-          "Abstention de tout acte ou propos susceptible de discréditer la profession, notamment par le non-respect des règles de publicité et de sollicitation personnalisée"
+          "Ni propos déloyal, ni manœuvre malveillante, ni acte visant à nuire : pas de jugement déloyal sur un confrère en co-intervention ou succession",
+          "Règlement amiable des différends, sinon conciliation du président de la CRCC (ou des présidents des compagnies respectives)",
+          "Aucun acte ou propos discréditant la profession, notamment en matière de publicité et de sollicitation personnalisée"
         ],
-        "model_answer": "La confraternité (code de déontologie art. 8, précisé par la norme) implique un respect mutuel entre commissaires aux comptes : s'abstenir de tout propos déloyal, de toute manœuvre malveillante ou de tout acte destiné à nuire à un confrère, en particulier lorsqu'on intervient concomitamment avec lui ou qu'on lui succède ; s'efforcer de régler à l'amiable les différends professionnels et, à défaut, recourir à la conciliation du président de la compagnie régionale ; et éviter tout acte ou propos susceptible de discréditer la profession, notamment en matière de publicité et de sollicitation personnalisée."
+        "model_answer": "Respect mutuel entre CAC : ni propos déloyal ni acte visant à nuire (co-intervention, succession) ; règlement amiable des différends, sinon conciliation du président de la CRCC (art. 8). Le CAC s'abstient aussi de tout acte ou propos discréditant la profession, notamment en matière de publicité et de sollicitation."
       },
-      "explanation": "La confraternité n'est pas un simple usage : elle est un principe fondamental du titre I du code (art. 8), sanctionnable disciplinairement, et elle sert de fondement à la conciliation des co-commissaires sur leurs contributions respectives (art. 24). Le code de déontologie des experts-comptables comporte des devoirs comparables envers les confrères (information du prédécesseur, loyauté, interdiction du dénigrement), mais la conciliation y relève du conseil régional de l'Ordre (ord. art. 31 4°).",
+      "explanation": "La confraternité est un principe fondamental du titre I (art. 8), sanctionnable ; elle fonde la conciliation des co-commissaires sur leurs contributions (art. 24). Pièges : ni partage d'honoraires, ni accord préalable du confrère, ni adhésion à un réseau. EC : devoirs comparables, mais conciliation par le conseil régional de l'Ordre (ord. art. 31).",
       "reference": "C. com. art. A.821-54 § 38 à 41 ; code de déontologie CAC art. 8, 15, 16 et 24 ; Ord. 45-2138 art. 31 pour le parallèle EC",
       "confidence": "high"
     },
@@ -504,11 +511,11 @@
           "Attitude imposée par l'article 6 du code de déontologie dans l'exercice de la profession",
           "Considérer la source des informations collectées et apprécier leur pertinence au regard de la mission ou de la prestation",
           "Garder un esprit ouvert et réceptif aux informations, avis et arguments contraires, quitte à effectuer d'autres travaux et à revoir ses conclusions",
-          "Apprécier le caractère suffisant, approprié et cohérent des informations pour établir ses conclusions ; exercé tout au long de la mission, en s'appuyant sur la connaissance de l'entité, il conforte le jugement professionnel"
+          "Apprécier si les informations sont suffisantes, appropriées et cohérentes pour conclure ; exercé tout au long de la mission, il conforte le jugement"
         ],
-        "model_answer": "L'esprit critique, principe posé par l'article 6 du code de déontologie, conduit le commissaire aux comptes à considérer la source des informations qu'il collecte et à apprécier leur pertinence, à rester ouvert et réceptif aux informations, avis ou arguments qui pourraient contredire ces informations et l'amener à réaliser d'autres travaux ou à revoir ses conclusions, et à apprécier le caractère suffisant, approprié et cohérent des éléments recueillis. Il l'exerce tout au long de la mission, en s'appuyant sur sa connaissance de l'entité et de son environnement ; renforcé par les autres principes, il conforte son jugement professionnel."
+        "model_answer": "L'esprit critique (art. 6) consiste à apprécier la source et la pertinence des informations, à rester ouvert aux éléments contraires (quitte à refaire des travaux ou revoir ses conclusions) et à juger si les éléments recueillis suffisent à conclure. Exercé tout au long de la mission, il conforte le jugement professionnel."
       },
-      "explanation": "L'esprit critique a été érigé en principe fondamental de comportement par le code de 2020 ; il prolonge l'attitude requise par la NEP 200 (A.821-63 § 06 : esprit critique tout au long de l'audit) et par la NEP 240 face au risque de fraude, ainsi que par le code lui-même, qui impose une évaluation critique des éléments probants (art. 23). Il ne signifie ni défiance systématique ni immixtion dans la gestion. L'expert-comptable applique un principe voisin de prudence et de jugement professionnel, sans formulation normative équivalente.",
+      "explanation": "Principe fondamental depuis le code de 2020 (art. 6), l'esprit critique prolonge la NEP 200 (tout au long de l'audit), la NEP 240 (fraude) et l'évaluation critique des éléments probants (art. 23). Pièges : ni défiance systématique, ni réserves hâtives, ni immixtion dans la gestion. L'EC exerce un jugement voisin, sans norme équivalente.",
       "reference": "C. com. art. A.821-54 § 24 à 26 ; code de déontologie CAC art. 6 et 23 ; NEP 200 (A.821-63) et NEP 240 (A.821-80)",
       "confidence": "high"
     },
@@ -532,12 +539,12 @@
       "qrc": {
         "expected": [
           "Risque pour le CAC de ne pas pouvoir réaliser la mission ou la prestation de façon indépendante et impartiale",
-          "Cause et effets variables selon les faits et circonstances (liens personnels ou professionnels, autorévision, dépendance financière, conflit d'intérêts)",
-          "Impose la recherche de mesures de sauvegarde appropriées, à défaut desquelles la mission ou la prestation est refusée ou interrompue"
+          "Cause et effets variables selon les faits (liens personnels ou professionnels, autorévision, dépendance financière, conflit d'intérêts)",
+          "Recherche de mesures de sauvegarde appropriées ; à défaut, mission ou prestation refusée ou interrompue"
         ],
-        "model_answer": "Une situation à risque est le fait, pour le commissaire aux comptes, d'être placé en risque de ne pas pouvoir réaliser la mission ou la prestation de façon indépendante et impartiale ; sa cause et ses effets varient selon les faits et circonstances. Elle déclenche la démarche « risques et sauvegardes » : le CAC recherche une mesure de sauvegarde appropriée et, à défaut, n'accepte pas la mission ou y met fin."
+        "model_answer": "Une situation à risque est le fait, pour le CAC, d'être exposé au risque de ne pas pouvoir réaliser la mission ou la prestation de façon indépendante et impartiale ; cause et effets varient selon les circonstances. Elle impose de rechercher une mesure de sauvegarde appropriée ; à défaut, le CAC refuse la mission ou y met fin."
       },
-      "explanation": "La notion est définie par les normes de déontologie (A.821-54 § 10 et A.821-55 § 09) et par le code (art. 5 III et 19). Elle se distingue du risque d'audit (anomalies significatives dans les comptes), qui relève des NEP, et de la situation interdite ou incompatible, qui ne laisse aucune place aux mesures de sauvegarde. Le dispositif est propre aux CAC ; l'expert-comptable raisonne en termes d'indépendance et de conflits d'intérêts selon son propre code.",
+      "explanation": "Notion définie par les normes de déontologie (A.821-54 § 10, A.821-55 § 09) et le code (art. 5 III et 19). Pièges : le risque d'audit (anomalies significatives) relève des NEP ; la situation interdite ne laisse aucune place aux sauvegardes. Dispositif propre aux CAC ; l'EC raisonne selon son code en indépendance et conflits d'intérêts.",
       "reference": "C. com. art. A.821-54 § 10 ; A.821-55 § 09, 10 et 27 à 30 ; code de déontologie CAC art. 5 III et 19",
       "confidence": "high"
     },
@@ -562,16 +569,17 @@
       "qrc": {
         "expected": [
           "Risques d'atteinte à l'intégrité, à l'impartialité et à l'indépendance ; risques de conflits d'intérêts",
-          "Risques d'autorévision (se prononcer sur des éléments résultant de prestations fournies par le CAC, sa société, son réseau ou toute personne pouvant influer sur la mission)",
+          "Autorévision : se prononcer sur des éléments issus de prestations du CAC, de sa société, de son réseau ou d'une personne influant sur la mission",
           "Risques résultant de liens personnels, professionnels ou financiers, y compris ceux des associés, salariés et membres du réseau",
-          "Risques et contraintes liés à l'appartenance à un réseau ; dépendance financière (part significative des honoraires) ; fusions ou acquisitions intéressant l'entité"
+          "Appartenance à un réseau ; dépendance financière (part significative des honoraires) ; fusions ou acquisitions intéressant l'entité"
         ],
-        "model_answer": "Le code de déontologie impose au commissaire aux comptes d'identifier les risques de nature à affecter la formation ou l'expression de son opinion : atteintes à l'intégrité, à l'impartialité et à l'indépendance, conflits d'intérêts, autorévision, liens personnels, professionnels ou financiers, risques et contraintes résultant de l'appartenance à un réseau (notamment la fourniture de services par le réseau), dépendance financière liée aux honoraires, ainsi que les risques nés d'une fusion ou acquisition intéressant l'entité. Il prend alors les mesures de sauvegarde appropriées ou renonce à la mission."
+        "model_answer": "Le CAC identifie les risques pesant sur son opinion : atteintes à l'intégrité, à l'impartialité, à l'indépendance, conflits d'intérêts, autorévision, liens personnels, professionnels ou financiers, réseau, dépendance financière liée aux honoraires, fusions ou acquisitions intéressant l'entité. Il prend des sauvegardes ou renonce à la mission."
       },
-      "explanation": "L'approche par les risques (art. 19) a remplacé la liste des services interdits pour les entités non EIP ; elle est complétée par les articles sur la dépendance financière (art. 36) et les fusions-acquisitions (art. 20). Les liens personnels, financiers et professionnels font en outre l'objet d'incompatibilités absolues (art. 32 à 34) lorsqu'ils concernent le CAC lui-même ou la direction de sa société, et d'une appréciation au regard du tiers objectif, raisonnable et informé pour les autres intervenants.",
+      "explanation": "L'approche par les risques (art. 19) a remplacé la liste des services interdits hors EIP ; s'y ajoutent dépendance financière (art. 36) et fusions (art. 20). Les liens personnels, financiers et professionnels (art. 32 à 34) sont incompatibles d'office pour le CAC et sa direction ; sinon, test du tiers objectif. Piège : le risque d'audit.",
       "reference": "Code de déontologie CAC art. 5, 19, 20, 29, 30, 32 à 36 ; C. com. L.821-28 IV et L.821-31 ; A.821-55 § 28",
       "confidence": "high",
-      "update_note": "Numérotation issue du décret 2020-292 (art. 19 : identification et traitement des risques) ; rédaction en vigueur modifiée en dernier lieu par le décret 2026-176, qui l'étend aux organismes tiers indépendants et aux auditeurs de durabilité."
+      "update_note": "Numérotation issue du décret 2020-292 (art. 19 : identification et traitement des risques) ; rédaction en vigueur modifiée en dernier lieu par le décret 2026-176, qui l'étend aux organismes tiers indépendants et aux auditeurs de durabilité.",
+      "review_note": "Code de déontologie (annexe 8-1) art. 32 à 34 relus (miroir LEGI) : incompatibilités directes pour le CAC et la direction ; test du tiers objectif pour les autres intervenants et le réseau ; exceptions de l'art. 33 (OPC diversifiés, opérations aux conditions du marché)."
     },
     {
       "id": "2024-05-CAC-20",
@@ -593,16 +601,17 @@
       "qrc": {
         "expected": [
           "Non",
-          "La profession de CAC est exercée par des personnes physiques ou par des sociétés inscrites sur la liste (C. com. L.821-13), sous quelque forme sociale que ce soit, y compris les sociétés pluri-professionnelles d'exercice",
-          "L'association, qui n'est pas une société, ne remplit pas les conditions d'inscription (détention de la majorité des droits de vote par des CAC, dirigeants CAC)",
+          "Profession exercée par des personnes physiques ou des sociétés inscrites sur la liste (L.821-13), de toute forme sociale, SPE comprises",
+          "L'association n'est pas une société : ni majorité des droits de vote détenue par des CAC, ni dirigeants CAC (L.821-16)",
           "Différence avec l'expertise comptable, qui peut être exercée au sein d'associations de gestion et de comptabilité"
         ],
-        "model_answer": "Non. Le code de commerce réserve l'exercice de la profession de commissaire aux comptes aux personnes physiques et aux sociétés inscrites sur la liste tenue par la Haute autorité de l'audit, quelle que soit leur forme sociale (y compris les sociétés pluri-professionnelles d'exercice). Une association n'est pas une société et ne peut satisfaire aux conditions d'inscription relatives aux droits de vote et aux dirigeants ; elle ne peut donc pas être commissaire aux comptes. À l'inverse, l'activité d'expertise comptable peut être exercée au sein d'associations de gestion et de comptabilité."
+        "model_answer": "Une association ne peut pas être CAC : la profession est réservée aux personnes physiques et aux sociétés inscrites sur la liste tenue par la H2A, de toute forme sociale (SPE comprises). L'association n'est pas une société et ne remplit pas les conditions de droits de vote et de dirigeants. L'expertise comptable, elle, peut s'exercer en AGC."
       },
-      "explanation": "Les conditions d'inscription des sociétés de CAC (L.821-16) supposent une majorité des droits de vote détenue par des CAC et des dirigeants CAC, notions sans objet pour une association de la loi de 1901. La confusion vient de l'expertise comptable, où la loi de 2004 a admis les AGC, non membres de l'Ordre mais inscrites au tableau (ord. art. 7 ter). Un CAC peut en revanche exercer en nom propre, en société (SARL, SAS, SA, SCP, SEL...) ou en SPE.",
+      "explanation": "Les conditions d'inscription des sociétés de CAC (L.821-16 : majorité des droits de vote et dirigeants CAC) sont sans objet pour une association de 1901. Piège (c) : l'AGC relève de l'expertise comptable (ord. art. 7 ter), où elle exerce sans être membre de l'Ordre. Le CAC peut exercer en nom propre, en société (SARL, SAS, SA, SEL…) ou en SPE.",
       "reference": "C. com. art. L.821-13, L.821-16, L.821-25 ; Ord. 45-2138 art. 7 ter pour le parallèle EC",
       "confidence": "high",
-      "update_note": "Recodification 2024 : ex L.822-1 et L.822-1-3 devenus L.821-13 et L.821-16."
+      "update_note": "Recodification 2024 : ex L.822-1 et L.822-1-3 devenus L.821-13 et L.821-16.",
+      "review_note": "L.821-16 relu (miroir LEGI)."
     }
   ]
 }

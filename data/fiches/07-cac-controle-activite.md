@@ -15,7 +15,7 @@
   - **coopération** (CEAOB européen, autorités de pays tiers).
 - **Délégations actuelles à la CNCC**, sous la supervision de la H2A :
   - suivi de la **formation continue** ;
-  - **contrôles d'activité des CAC qui n'ont pas de mandat d'EIP**, par **conventions de délégation homologuées par arrêté** (2017, 19/05/2023, nouvelle convention homologuée par arrêté du **2 juillet 2026**).
+  - **contrôles d'activité des CAC qui n'ont pas de mandat d'EIP**, par **conventions de délégation homologuées par arrêté** (2017, 19 mai 2023, nouvelle convention homologuée par arrêté du **2 juillet 2026**).
 - L'**inscription et la tenue de la liste** restent assurées par la **H2A elle-même**.
 - **Services internes** : direction des contrôles (**contrôleurs salariés** de la H2A) ; **rapporteur général** et **service des enquêtes** ; commission des sanctions (fiche « Responsabilité du commissaire aux comptes »).
 
@@ -67,6 +67,7 @@
    - **recommandations** et **suivi** ;
    - **transmission au rapporteur général**, qui peut ouvrir une **enquête**, puis **saisine du collège** et **poursuites** devant la **commission des sanctions**.
 - Si les contrôleurs constatent des **faits susceptibles de blanchiment** : ils en **informent eux-mêmes Tracfin** (L.820-18).
+- **Pas d'injonction** après un contrôle : seule la **recommandation** assortie d'un délai est prévue (L.820-1 I 5°, R.820-47) ; l'injonction relève de la **commission des sanctions** (L.821-80) ou du régime LCB-FT (L.821-71 V).
 
 ## 3. Revue indépendante (EIP)
 - Elle est imposée par le **règlement UE 537/2014 art. 8**. Les travaux de **certification des comptes d'une EIP** font l'objet d'une **revue indépendante avant la signature du rapport**.
@@ -113,9 +114,7 @@
 - **Champ** : en pratique, le contrôle de qualité de l'Ordre ne porte pas sur l'activité de CAC (aucun texte lu ne l'écrit) ; le contrôle H2A ne vise **que l'activité de CAC** (et de durabilité).
 - **Revue indépendante** : pour l'EC, c'est une **règle interne de la NPMQ** ; pour le CAC, une **obligation légale** pour les EIP (règlement UE).
 - **Suites** : chez l'EC, transmission au **président du CROEC**, puis éventuelle **chambre régionale de discipline** ; chez le CAC, transmission au **rapporteur général**, puis au **collège**, puis à la **commission des sanctions**.
-- **Blanchiment découvert pendant un contrôle** : chez le CAC, ce sont **les contrôleurs** qui informent Tracfin ; chez l'EC, le contrôleur informe le **comité LBC-FT** de l'Ordre (RI art. 406), qui en tire les suites, l'Ordre informant Tracfin.
+- **Blanchiment découvert pendant un contrôle** : chez le CAC, ce sont **les contrôleurs** qui informent Tracfin ; chez l'EC, le contrôleur informe le **comité LCB-FT** de l'Ordre (RI art. 406), qui en tire les suites, l'Ordre informant Tracfin.
 
-## À vérifier
-- **Les quatre modalités** du contrôle d'activité (annale 2023-11 Q15) : la fiche retient périodique, occasionnel, thématique et suivi, typologie qu'aucun texte lu ne formule. Lecture possible fondée sur L.820-14 : contrôleurs de la H2A pour les EIP, contrôleurs de la H2A pour les non-EIP, délégation à la CNCC, concours de l'AMF ou de l'ACPR.
-- **Mesures post-contrôle** : tranché. Seule la **recommandation** assortie d'un délai est prévue après un contrôle (L.820-1 I 5°, R.820-47) ; l'**injonction** relève de la commission des sanctions (L.821-80) ou du régime LCB-FT (L.821-71 V).
-- **Normes de qualité applicables** (ISQM 1 / 2 homologuées ?).
+## Points non tranchés
+- **Les quatre modalités** du contrôle d'activité (annale 2023-11 Q15) : aucun texte ne les énumère. Retenir périodique, occasionnel, thématique et suivi ; une autre lecture part de L.820-14 (H2A pour les EIP, H2A pour les autres, délégation à la CNCC, concours de l'AMF ou de l'ACPR).

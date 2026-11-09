@@ -50,7 +50,7 @@ Douze shorts reposaient sur ces passages : ils sont mis à jour, et `node script
 - **Secret de l'EC, annale 2025-11 Q4.**
   - La clé retenue par la banque donne le secret **opposable à la CNIL**. Or la loi 78-17 (art. 19 III) ne réserve, face à la CNIL, que les secrets de l'avocat, des journalistes et le secret médical.
   - Un corrigé de la Revue française de comptabilité retient au contraire l'**audition pénale** (CPP art. 109 ; ord. art. 21 al. 4).
-  - Les fiches 02 et 17 présentent les deux lectures. La réponse de la banque n'a pas été modifiée.
+  - Mise à jour du 8 novembre 2026 : la banque retient désormais l'**audition pénale** (clé a), en confiance *low* tant que l'art. 19 III et l'art. 21 de l'ordonnance n'ont pas été relus ; voir la section suivante.
 - **Recours contre une décision d'inscription de la H2A**, et contre la dérogation au barème. La banque retient le tribunal administratif, la H2A ne figurant pas, selon elle, dans CJA R.311-1. Deux relectures, sur sources secondaires, penchent pour le Conseil d'État. CJA non lu : point marqué {?} dans la fiche 12.
 - **Chambre nationale de discipline.** Un extrait de l'art. 50 issu de la loi 2022-172 donne deux fonctionnaires, ce que retient la fiche. Des décisions anciennes citent un conseiller référendaire et un fonctionnaire.
 - **Nouvelle NPMQ.** Les intitulés français des 8 composantes, le régime de la revue indépendante et la confirmation annuelle d'indépendance sont à confirmer sur le texte.
@@ -61,3 +61,22 @@ Douze shorts reposaient sur ces passages : ils sont mis à jour, et `node script
 - **Points de détail non vérifiés** : RI art. 406 dans le règlement intérieur de 2024 ; L.561-28 ou L.561-30 pour l'information de Tracfin par l'Ordre ; ratio d'un EC pour quinze salariés en AGC ; numéros d'articles du code de déontologie CAC après le décret 2026-176.
 
 Pour lire ces textes en entier, autorisez legifrance.gouv.fr, h2a-france.org, cncc.fr et experts-comptables.fr dans les réglages réseau de l'environnement.
+
+## Revue du 8 novembre 2026
+Revue globale (`revue/REVUE-2026-11.md`, 83 constats ; détail dans `revue/constats-bruts.json`), appliquée le 9 novembre 2026 par lots, puis intégrée. Mêmes limites que ci-dessus : Légifrance et Pappers inaccessibles, seul le code de commerce relu dans le miroir LEGI.
+
+**Corrigé**
+- **Clés fausses en droit actuel** : 2018-11-CAC-15 et 2019-11-CAC-12 (éligibilité au conseil régional de la CRCC, D.821-31 II relu : exercer la profession au 30 juin de l'année d'expiration des mandats) ; 2025-11-EC-04 (secret de l'EC : audition pénale, et non la CNIL). Huit questions portent `answer_changed`.
+- **Banque** (349 questions, dont les questions de transfert) : journaux de relecture déplacés dans `review_note` (jamais affiché), `update_note` limité à l'évolution du droit, explications et corrigés raccourcis (≤ 350 caractères), NPMQ de **management** (arrêté du 30 mai 2024) pour les questions datées, sigles harmonisés (LCB-FT, H2A, Tracfin, garde des Sceaux), longueurs des leurres rééquilibrées dans les QCM rédigés. Confiance : 249 *high*, 95 *medium*, 5 *low*.
+- **Fiches, shorts, glossaire, ville** : fiches et shorts alignés sur la banque (encadrés « À retenir », points non tranchés signalés) ; glossaire porté de 93 à 178 entrées ; « H2A (ex-H3C jusqu'au 31 décembre 2023) » et « Comité LCB-FT » dans la ville. PDF des fiches et de la ville régénérés.
+- **Technique** : navigation vers les PDF servie comme fichier (plus la page de l'app), PDF précachés, données en réseau d'abord (2,5 s), VERSION de `sw.js` désormais **calculée** par `scripts/build_bank.py` (empreinte du contenu servi) et vérifiée par `npm run check` et un test ; synchronisation protégée par `If-Match` (412) ; un seul format pour les pourcentages, notes et compteurs ; examen blanc sans jumeaux, avec quotas par thème, les questions *low* en dernier recours seulement ; textes d'aide raccourcis, nom « DEC Épreuve 1 ».
+
+**Reste à vérifier** (incertitude notée en `review_note`, en confiance *medium* ou *low*, ou en « Points non tranchés » des fiches)
+- **CMF** R.561-23 (I al. 2 ou IV) et **NPLAB** § 47 / A47 : déclarant de substitution en AGC.
+- **Ordonnance 45-2138** : art. 2 ou 22 pour la présomption de mandat ; attribution Macron, Pacte ou loi 2010-853 ; art. 7 et 12 (signature de la lettre de mission) ; art. 21 et 22 (secret, exceptions au salariat).
+- **Loi 78-17** art. 19 III et **CPP** art. 109 (2025-11-EC-04, confiance *low*).
+- **Décret 2012-432** art. 125, 145 et 161, **décret 2025-506** (délais de la conciliation préalable, date d'effet du 12 juin 2025), quantum de formation de l'EC (recommandation de l'Ordre, RI art. 607 à 612).
+- **NPMQ de 2024** : confirmation annuelle d'indépendance, revue des audits d'entités cotées, critères d'affectation, supervision. **NP 2400** § 22 : conclusion « favorable » ou « sans réserve ». **NEP 9605** : numéros de paragraphe et correspondant Tracfin côté CAC.
+- Questions en confiance *low* : 2023-05-CAC-17 (doctrine CNCC sur la mission complémentaire), 2023-11-CAC-15 (modalités du contrôle d'activité), 2025-05-EC-10, 2025-11-EC-04, 2026-05-CAC-16.
+- Détails : sigles ARPEC et SIEC, numéro de NEP de la lettre d'affirmation, loi 88-227 art. 11-7, montants des seuils D.221-5, seuil de 10 000 € des fonds de dotation (fiche 05).
+- **Non fait** : sections longues des fiches repliées (`renderMarkdown` échappe le HTML), propositions officielles de plus de 170 caractères (reprises telles quelles, `data/SCHEMA.md`), ouverture des PDF sur un vrai iPhone ou Android, course résiduelle du KV Cloudflare entre lecture et écriture.

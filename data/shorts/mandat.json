@@ -8,7 +8,7 @@
      { "k": "50 salariés", "v": "Le seul seuil resté inchangé" } ],
    "trap": "Avant 2024 : 4 M€ de bilan et 8 M€ de CA. Les salariés n'ont pas bougé.",
    "quiz": { "q": "Quels seuils le décret de 2024 a-t-il relevés ?", "choices": ["Le CA et les salariés", "Le bilan et le CA", "Le bilan et les salariés", "Les trois seuils"], "answer": 1, "why": "Le bilan passe de **4 à 5 M€** et le CA de **8 à 10 M€**. Les **50 salariés** restent. Il faut dépasser **2 critères sur 3**." },
-   "src": ["5 M€ de total bilan · 10 M€ de CA HT · 50 salariés", "Seuils du décret 2024-152 (exercices ouverts à compter du 01/01/2024). Avant : 4 M€ et 8 M€."] },
+   "src": ["5 M€ de total bilan · 10 M€ de CA HT · 50 salariés", "Seuils du décret 2024-152 (exercices ouverts à compter du 1er janvier 2024). Avant : 4 M€ et 8 M€."] },
 
  { "id": "mandat-02", "type": "cas", "prof": "CAC", "tags": ["prestations_declaration_activite", "revelation_procureur"], "fiche": "05-cac-exercice.md",
    "title": "Révélation en prestation", "situation": "Un CAC réalise une simple prestation pour une société dont il n'est pas CAC. Il y découvre un fait délictueux.",

@@ -66,7 +66,7 @@ Seul le gras `**…**` est autorisé dans les textes. Longueurs maximales : ques
 - **Rien hors des fiches.** Chaque affirmation vient de la fiche citée (droit à jour au 1er novembre 2026) ; `src` le prouve.
 - **Priorité aux notions les plus posées** (sous-thèmes fréquents de la banque) et aux pièges que la fiche signale (`{!}`, « Pièges qui reviennent »).
 - **Distracteurs** tirés des confusions réelles : règle de l'autre profession, ancien régime (H3C, 5 ans), chiffre voisin.
-- Un short = une idée. Phrases courtes, sans références d'articles (le jury ne les exige pas), sauf si le numéro est lui-même la réponse.
+- Un short = une idée. Phrases courtes, sans références d'articles, sauf si le numéro est lui-même la réponse.
 
 ## Exactitude (ce que la vérification ligne à ligne a corrigé)
 
@@ -74,4 +74,5 @@ Seul le gras `**…**` est autorisé dans les textes. Longueurs maximales : ques
 - **Les mots de la fiche** : « élabore » n'est pas « adopte », « statue sur » n'est pas « approuve », « exercer » n'est pas « détenir », « ≈ 6 ans » n'est pas « 6 ans ».
 - **Un exemple n'est pas une définition** ; une liste incomplète est annoncée comme un extrait (« Quatre activités interdites », pas « Les quatre interdits »).
 - **Quiz** : une seule proposition juste selon la fiche, chaque distracteur nettement faux selon la fiche, jamais vrai dans certains cas (« 10 ans » est vrai pour un crime ; le tiers du capital atteint le seuil du dixième).
-- **Rien de ce que la fiche marque {?} ou « à vérifier »**, ni dans la leçon, ni dans `why`.
+- **Rien de ce que la fiche marque {?}, « à vérifier » ou range dans « Points non tranchés »**, ni dans la leçon, ni dans `why`.
+- **Vocabulaire commun** (voir `data/SCHEMA.md`) : **LCB-FT**, **H2A**, **APG**, **Tracfin**, dates en toutes lettres. Si une fiche change, modifier `src` en même temps et relancer `node scripts/check_shorts.mjs`.

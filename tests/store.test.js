@@ -118,12 +118,36 @@ test('le service worker précharge tous les modules importés par l’applicatio
   for (const f of readdirSync(new URL('../js/', import.meta.url)).filter((n) => n.endsWith('.js'))) assert.ok(sw.includes(`'./js/${f}'`), `${f} absent du précache`);
 });
 
+test('recoverFromStaleCache recharge la liste unique (CORE de sw.js), qui contient chaque module de js/', async () => {
+  const { readFileSync, readdirSync } = await import('node:fs');
+  const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
+  const app = readFileSync(new URL('../js/app.js', import.meta.url), 'utf8');
+  const def = /^const coreFiles = (.+);$/m.exec(app);
+  assert.ok(def, 'coreFiles absent de app.js');
+  const coreFiles = new Function(`return ${def[1]}`)();
+  const list = coreFiles(sw);
+  for (const f of readdirSync(new URL('../js/', import.meta.url)).filter((n) => n.endsWith('.js'))) assert.ok(list.includes(`./js/${f}`), `${f} absent de la liste rechargée`);
+  for (const f of ['./', './index.html', './css/app.css', './js/pdf.js', './js/choices.js', './js/loop.js', './js/vendor/three.module.min.js']) assert.ok(list.includes(f), `${f} absent`);
+  assert.ok(list.every((u) => u.startsWith('./')));
+  assert.deepEqual(coreFiles(''), []);
+  // Plus de liste écrite en dur dans la fonction : tout passe par coreFiles(sw.js)
+  const fn = app.slice(app.indexOf('async function recoverFromStaleCache()'), app.indexOf('async function init()'));
+  assert.ok(!fn.includes("'./js/"), 'liste de modules écrite en dur dans recoverFromStaleCache');
+  assert.match(fn, /fetch\('\.\/sw\.js', \{ cache: 'reload' \}\)/);
+  assert.match(fn, /coreFiles\(sw\)/);
+});
+
 test('jeux : état par défaut, conservé au rechargement, validé à l’import', () => {
   fresh();
   const s = store.defaultState();
   assert.deepEqual(s.drills, {});
   assert.deepEqual(s.games, { best: {} });
-  assert.equal(s.settings.confidence, true);
+  // Revue 2026-11 : certitude, propositions masquées et date d'épreuve désactivées par défaut (deux touchers par QCM,
+  // pas de « J-2 » imposé à une installation neuve) ; le chrono par question reste proposé.
+  assert.equal(s.settings.confidence, false);
+  assert.equal(s.settings.hideChoices, false);
+  assert.equal(s.settings.examDate, '');
+  assert.equal(s.settings.qTimer, true);
   s.drills['duel:x'] = { box: 2, due: 1, ok: 2, n: 2, last: 1 };
   store.save(s);
   assert.equal(store.load().drills['duel:x'].box, 2);

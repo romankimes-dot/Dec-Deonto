@@ -2,6 +2,7 @@
 // Logique pure (aucun accès au DOM), importable dans les tests Node.
 import { ANECDOTES, QBADGES } from './catalog-data.js';
 import { isCounted } from './exam.js';
+import { fmtPct, fmtNote } from './format.js';
 
 export const STATS_VERSION = 1;
 // Jour de l'épreuve par défaut (tests, ou contexte construit sans date) : 10 novembre 2026, 10 h 30.
@@ -70,7 +71,7 @@ export function buildContext(bank, exam = examInfo()) {
   const ids = (f) => qs.filter(f).map((q) => q.id);
   const themes = {};
   for (const [p, t, label] of THEME_KEYS) themes[`${p}:${t}`] = { label, prof: p, ids: ids((q) => q.profession === p && q.theme === t) };
-  themes.transversal = { label: 'Transversal (LAB et secret)', prof: 'X', ids: ids((q) => q.tags.some((x) => TRANSVERSAL_TAGS.includes(x))) };
+  themes.transversal = { label: 'Transversal (LCB-FT et secret)', prof: 'X', ids: ids((q) => q.tags.some((x) => TRANSVERSAL_TAGS.includes(x))) };
   const tags = {};
   for (const q of qs) for (const tg of q.tags) (tags[tg] = tags[tg] || []).push(q.id);
   const known = new Set(qs.map((q) => q.id));
@@ -224,7 +225,7 @@ export function buildCatalog(ctx) {
   add({ id: 'cov-100', family: 'couverture', rarity: 'epique', name: 'J’ai tout vu', desc: 'Plus aucune question ne vous surprend. Enfin, presque.', cond: '100 % de la banque vue', prop: 'shelfFull', check: pct(100) });
   add({ id: 'cov-ec', family: 'couverture', rarity: 'rare', name: 'Tout le Tableau', desc: 'Toutes les questions d’expertise comptable sont passées entre vos mains.', cond: '100 % des questions EC vues', prop: 'binderOec', check: (st) => all(ctx.ec, (id) => seen(st, id)) });
   add({ id: 'cov-cac', family: 'couverture', rarity: 'rare', name: 'Toute la Liste', desc: 'Toutes les questions CAC, H2A comprise.', cond: '100 % des questions CAC vues', prop: 'codeRouge', check: (st) => all(ctx.cac, (id) => seen(st, id)) });
-  add({ id: 'cov-lab', family: 'couverture', rarity: 'rare', name: 'Tracfin n’a qu’à bien se tenir', desc: 'Toutes les questions de lutte anti-blanchiment, EC et CAC.', cond: '100 % des questions LAB vues', prop: 'loupe', check: (st) => all(ctx.tags.lcb_ft || [], (id) => seen(st, id)) });
+  add({ id: 'cov-lab', family: 'couverture', rarity: 'rare', name: 'Tracfin n’a qu’à bien se tenir', desc: 'Toutes les questions de lutte anti-blanchiment, EC et CAC.', cond: '100 % des questions LCB-FT vues', prop: 'loupe', check: (st) => all(ctx.tags.lcb_ft || [], (id) => seen(st, id)) });
   add({ id: 'cov-secret', family: 'couverture', rarity: 'rare', name: 'Coffre-fort', desc: 'Toutes les questions de secret professionnel.', cond: '100 % des questions de secret professionnel vues', prop: 'coffre', check: (st) => all(ctx.tags.secret_professionnel || [], (id) => seen(st, id)) });
   for (const [p, t, label] of THEME_KEYS) {
     const k = `${p}:${t}`;
@@ -256,7 +257,7 @@ export function buildCatalog(ctx) {
     'CAC:deontologie': ['Tiers objectif, raisonnable et informé : c’est vous.', 'bouclier'],
     'CAC:controle_qualite': ['Le contrôleur H2A repart avec le sourire.', 'lampe'],
     'CAC:responsabilite': ['La commission des sanctions ne vous connaît pas.', 'cadenas'],
-    transversal: ['LAB et secret professionnel, des deux côtés.', 'coffreOuvert'],
+    transversal: ['LCB-FT et secret professionnel, des deux côtés.', 'coffreOuvert'],
   };
   for (const [k, th] of Object.entries(ctx.themes)) {
     add({ id: `mast-${k.replace(':', '-')}`, family: 'maitrise', rarity: 'epique', name: `Maîtrise — ${th.label}`, desc: MAST[k][0], cond: '≥ 90 % de réussite et chaque question réussie 2 fois, 2 jours différents', prop: MAST[k][1], theme: k, check: (st) => themeMastery(st, th.ids) });
@@ -368,12 +369,13 @@ export const GATES = {
   2: { cov: 15 }, 3: { cov: 30 }, 4: { cov: 50, exams: 1 }, 5: { cov: 65, exam: 10 },
   6: { cov: 80, exam: 12, acc: 65 }, 7: { cov: 90, exam: 14, acc: 70 }, 8: { cov: 100, exam: 16, acc: 80 },
 };
-// Où en sont les résultats : couverture des annales (%), réussite sur l'ensemble des réponses (%), examens blancs comptés, meilleure note.
+// Où en sont les résultats : questions vues (% de la banque de révision, transfert compris), réussite globale sur
+// l'ensemble des réponses (%), examens blancs comptés, meilleure note ; answers : nombre de réponses (0 : réussite sans objet).
 export function readiness(stats, ctx) {
   let seenN = 0, ok = 0, n = 0;
   for (const id of ctx.all) { const q = stats.q[id]; if (q && q.seen > 0) { seenN++; ok += q.ok || 0; n += q.seen || 0; } }
   const best = (stats.exams || []).reduce((m, e) => Math.max(m, e.note || 0), 0);
-  return { cov: (100 * seenN) / Math.max(1, ctx.all.length), acc: n ? (100 * ok) / n : 0, exams: (stats.exams || []).length, best };
+  return { cov: (100 * seenN) / Math.max(1, ctx.all.length), acc: n ? (100 * ok) / n : 0, answers: n, exams: (stats.exams || []).length, best };
 }
 // Tolérance sur la réussite pour un grade déjà détenu : une réponse fausse ne fait pas perdre un grade.
 export const ACC_SLACK = 3;
@@ -381,10 +383,11 @@ export function gateConditions(n, r, { held = false } = {}) {
   const g = GATES[n]; if (!g) return [];
   // ratio : avancement vers la condition (0 à 1), pour la barre du grade
   const C = (label, cur, need) => ({ label, ok: cur >= need, ratio: Math.max(0, Math.min(1, need > 0 ? cur / need : 1)) });
-  const out = [C(`${g.cov} % des annales vues (${Math.floor(r.cov)} %)`, r.cov, g.cov)];
+  // Libellés arrondis comme partout (js/format.js, par défaut) : 49,6 % s'affiche « 49 % » et la condition « 50 % » reste ouverte.
+  const out = [C(`${fmtPct(g.cov)} des questions vues (${fmtPct(r.cov)})`, r.cov, g.cov)];
   if (g.exams) out.push(C('un examen blanc terminé', r.exams, g.exams));
-  if (g.exam) out.push(C(`un examen blanc ≥ ${g.exam} (meilleur : ${r.best})`, r.best, g.exam));
-  if (g.acc) out.push(C(`${g.acc} % de réussite sur l’ensemble (${Math.floor(r.acc)} %)`, r.acc, held ? g.acc - ACC_SLACK : g.acc));
+  if (g.exam) out.push(C(`un examen blanc ≥ ${g.exam}/20 (meilleur : ${r.best ? `${fmtNote(r.best)}/20` : 'aucun'})`, r.best, g.exam));
+  if (g.acc) out.push(C(`${fmtPct(g.acc)} de réussite globale (${r.answers === 0 ? 'aucune réponse' : fmtPct(r.acc)})`, r.acc, held ? g.acc - ACC_SLACK : g.acc));
   return out;
 }
 // held : grade actuellement détenu (ses paliers profitent de la tolérance sur la réussite).
@@ -397,7 +400,7 @@ export function gateLevel(r, held = 0) {
 export function heldGrade(progress) {
   let n = 0; for (const g of GRADES) if (progress?.grades?.[g.n]) n = g.n; return n;
 }
-// État de carrière : le grade ne dépend que des résultats (annales vues, examens blancs, réussite) ; la barre est
+// État de carrière : le grade ne dépend que des résultats (questions vues, examens blancs, réussite) ; la barre est
 // l'avancement moyen vers les conditions du grade suivant ; les points sont un score d'effort, affiché mais sans effet
 // sur le grade (revu le 8 novembre 2026 : un score élevé ne doit jamais promettre un grade que les résultats refusent).
 export function careerState(stats, ctx, drills = {}, held = 0) {

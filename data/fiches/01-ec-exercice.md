@@ -1,5 +1,13 @@
 # Exercice de la profession d'expert-comptable
 
+## À retenir
+- **Ordre** : le **Conseil national** élabore les normes et le code de déontologie ; les **CROEC** tiennent le **tableau**, appellent les cotisations et concilient ; un **commissaire du gouvernement** siège auprès de chacun.
+- **Accès** : inscription au tableau du CROEC, **serment devant le conseil régional** dans les 6 mois ; **aucune condition de nationalité**.
+- **Société d'EC** : **plus des 2/3 des droits de vote** aux EC ; aucune forme qui confère la qualité de commerçant (SNC, SCS, SCA).
+- **Interdits** : emploi salarié hors exceptions, commerce à titre principal, représentation en justice. **Permis** : commerce accessoire, mandats sociaux **déclarés au CROEC**.
+- **Lettre de mission** obligatoire ; honoraires **libres, sans barème** ; honoraires au succès interdits pour le monopole et l'assiette fiscale ou sociale.
+- **Faits délictueux** : pas de révélation au procureur, mais **devoir de conseil** (informer, mettre en garde, exiger, refuser) et **déclaration de soupçon à Tracfin** en cas de blanchiment.
+
 ## 1. Textes de référence
 
 | Texte | Contenu à retenir |
@@ -73,7 +81,7 @@
 | **SEL** (SELARL, SELAS, SELAFA, SELCA) | Possible |
 | **SPE / SPFPL** | Holdings de participations dans des sociétés d'EC |
 | **AGC** (association de gestion et de comptabilité) | Inscrite à l'Ordre ; tenue de comptabilité pour ses adhérents ; dirigée sous la responsabilité d'EC |
-| **Salariat** | Chez un **EC**, une **société d'EC**, une **AGC** ou un **CAC** uniquement |
+| **Salariat** | Chez un **membre de l'Ordre** (EC ou société d'EC), un **CAC**, une **AGC**, une **succursale** ou une **société pluri-professionnelle d'exercice** uniquement (ord. art. 22) |
 
 ### Capital et droits de vote d'une société d'EC (ord. art. 7)
 - Les experts-comptables (personnes physiques ou sociétés inscrites, y compris les professionnels de l'UE/EEE) doivent détenir **plus de 2/3 des droits de vote**.
@@ -85,7 +93,7 @@
 ## 5. Activités interdites et compatibles (ord. art. 22)
 
 ### Interdites
-- Tout **emploi salarié**, sauf chez un membre de l'Ordre, une AGC ou un CAC.
+- Tout **emploi salarié**, sauf chez un membre de l'Ordre, un CAC, une AGC, une succursale ou une société pluri-professionnelle d'exercice.
 - Les **actes de commerce** et l'**intermédiaire** à titre principal (**agent immobilier**, courtier).
 - L'activité d'**agent d'affaires**.
 - La **détention de fonds** pour le compte des clients, sauf dans les cas autorisés (recouvrement amiable de créances et paiement de dettes depuis la loi Pacte).
@@ -122,7 +130,7 @@
 ### Sous-traitance
 - La tenue de comptabilité est **réservée** aux membres de l'Ordre (monopole, art. 2).
 - La sous-traiter à un titulaire du DSCG non inscrit est **interdit** : ce serait de l'exercice illégal, auquel l'EC participerait (complicité).
-- En cas de **suspicion d'exercice illégal**, l'EC le **signale au conseil régional**, qui peut porter plainte et se constituer partie civile.
+- En cas de **suspicion d'exercice illégal**, l'EC le **signale au président du conseil régional**, qui peut saisir le tribunal correctionnel par **citation directe** ; la **constitution de partie civile** est réservée au **Conseil national** (ord. art. 20 et 31).
 
 ## 6. Taux d'encadrement
 - **1 expert-comptable pour 15 salariés** exerçant des **fonctions comptables**, et non 15 collaborateurs toutes fonctions confondues.
@@ -146,7 +154,7 @@
 | Situation | Signataires |
 |---|---|
 | EC individuel | **EC** et **client** |
-| Société d'EC | **Signature sociale** de la structure et **client** ; signature personnelle de l'**EC responsable de la mission** en plus {?} |
+| Société d'EC | **Signature sociale** de la structure, apposée par un **EC inscrit** habilité à l'engager, et **client** |
 | Rapport ou attestation (ex. présentation) en société | **Signature sociale** et **signature technique** de l'EC responsable |
 
 ### Résiliation et indemnité
@@ -179,7 +187,7 @@
 - Il distingue les **missions** des **activités**. Les activités commerciales et actes d'intermédiaire relèvent du **cadre des activités**.
 - **Textes applicables à toutes les missions** :
   1. le **code de déontologie** ;
-  2. la **NPMQ** (maîtrise de la qualité) ;
+  2. la **NPMQ** (management de la qualité depuis le 1er janvier 2025 ; « maîtrise » avant) ;
   3. la **NPLAB** (lutte anti-blanchiment).
 - Les **normes de portée générale** sont donc la **NPMQ** et la **NPLAB**, auxquelles s'ajoute le code de déontologie.
 
@@ -209,8 +217,8 @@
 - **Recommandations** à la direction : elles sont communiquées dans un **document distinct** de l'attestation (lettre de recommandations ou note de synthèse), ou **oralement**. Elles ne figurent **jamais** dans l'attestation normée.
 
 ### Examen limité (NP 2400) : 5 conclusions
-1. Sans réserve.
-2. Sans réserve avec observation.
+1. Favorable sans observation (dite aussi « sans réserve »).
+2. Favorable avec observation(s).
 3. Avec réserve(s).
 4. Défavorable.
 5. Impossibilité de formuler une conclusion.
@@ -284,6 +292,7 @@
 - **Missions d'assurance** : l'audit contractuel de l'EC (normes ISA) donne une assurance **raisonnable**, comme la certification du CAC, mais ce n'est **pas** une mission légale de certification.
 - **Activités commerciales accessoires** : elles sont ouvertes à l'**EC** ; un CAC qui n'est pas EC n'y a pas accès.
 
-## À vérifier
-- **Signatures de la lettre de mission en société** : faut-il, outre la signature sociale, celle de l'EC responsable ? L'art. 12 de l'ordonnance exige la signature personnelle de l'EC et le visa ou la signature sociale pour les **travaux** ; l'art. 151 du décret 2012-432 ne dit pas qui signe le contrat. Les annales 2018-11 Q7 et 2022-11 Q1 ne retiennent pas la même réponse.
-- **Formation continue EC** : le quantum de 120 h sur 3 ans, dont 20 h par an, est donné par les conseils régionaux comme une recommandation de l'Ordre inspirée de la norme IES 7 de l'IFAC ; il ne figure ni dans le décret 2012-432, ni dans le règlement intérieur de 2024, ni dans la NPMQ, ni dans le référentiel normatif 2022. Texte de la recommandation non lu.
+## Points non tranchés
+- **Lettre de mission en société** : retenir la **signature sociale**, apposée par un EC inscrit habilité à engager la société. La signature personnelle de l'EC (ord. art. 12) vise les **travaux** (rapports, attestations). Les annales 2018-11 Q7 et 2022-11 Q1 ne vont pas dans le même sens, et aucun corrigé officiel ne tranche.
+- **Formation continue EC** : obligatoire (D. 2012-432 art. 145), mais les **120 h sur 3 ans** ne sont qu'une **recommandation de l'Ordre** ; pour le CAC, le quantum est réglementaire (A.821-45).
+- **Examen limité** : la banque emploie « conclusion **favorable** sans observation / avec observation(s) » ; certaines sources disent « sans réserve ». Citer « favorable » et savoir que les deux désignent la même conclusion.

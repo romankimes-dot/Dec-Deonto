@@ -70,8 +70,8 @@
 
  { "id": "cadre-11", "type": "cas", "prof": "EC", "tags": ["missions_assurance"], "fiche": "11-schema-niveaux-assurance.md",
    "title": "Examen limité : cinq conclusions", "situation": "Au terme d'un examen limité, l'EC n'a pas obtenu les éléments qui lui permettraient de conclure sur les comptes.",
-   "quiz": { "q": "Quelle forme de conclusion retient-il ?", "choices": ["Refus d'attester", "Impossibilité de conclure", "Conclusion défavorable", "Sans réserve avec observation"], "answer": 1, "why": "L'examen limité compte **cinq** formes : sans réserve, sans réserve avec observation, avec réserve(s), défavorable, **impossibilité de conclure**. « Refus d'attester » est une forme de la présentation." },
-   "src": ["1. Sans réserve · 2. Sans réserve avec observation · 3. Avec réserve(s) · 4. Défavorable · 5. Impossibilité de conclure"] },
+   "quiz": { "q": "Quelle forme de conclusion retient-il ?", "choices": ["Refus d'attester", "Impossibilité de conclure", "Conclusion défavorable", "Favorable avec observation(s)"], "answer": 1, "why": "L'examen limité compte **cinq** formes : favorable sans observation, favorable avec observation(s), avec réserve(s), défavorable, **impossibilité de conclure**. « Refus d'attester » est une forme de la présentation." },
+   "src": ["1. Favorable sans observation (« sans réserve ») · 2. Favorable avec observation(s) · 3. Avec réserve(s) · 4. Défavorable · 5. Impossibilité de conclure"] },
 
  {"id": "cadre-12", "type": "vf", "prof": "EC", "tags": ["missions_assurance"], "fiche": "11-schema-niveaux-assurance.md", "title": "Présentation et CAC en place", "statement": "Pour une entité dotée d'un commissaire aux comptes, l'EC délivre l'attestation de présentation habituelle.", "verdict": false, "why": "L'EC **n'a pas à délivrer**, sauf considérations particulières, d'attestation de présentation : il remet en principe un **compte rendu de travaux** (NP 2300 § A10).", "src": ["Entité dotée d'un CAC : l'EC n'a pas à délivrer, sauf considérations particulières, d'attestation de présentation ; il remet en principe un compte rendu de travaux"]},
 

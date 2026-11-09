@@ -48,7 +48,7 @@
 
  { "id": "controle-08", "type": "cas", "prof": "CAC", "tags": ["controle_activite"], "fiche": "20-schema-controle-qualite.md",
    "title": "Suites d'un contrôle d'activité", "situation": "Un contrôle d'activité révèle chez un CAC des manquements qui dépassent de simples recommandations.",
-   "quiz": { "q": "Vers qui le dossier est-il d'abord transmis ?", "choices": ["Le comité LBC-FT", "Le rapporteur général", "Le président du CROEC", "La commission des sanctions"], "answer": 1, "why": "Au **rapporteur général**, puis au **collège**, puis à la **commission des sanctions**. Chambre de discipline et CROEC sont la voie de l'EC." },
+   "quiz": { "q": "Vers qui le dossier est-il d'abord transmis ?", "choices": ["Le comité LCB-FT", "Le rapporteur général", "Le président du CROEC", "La commission des sanctions"], "answer": 1, "why": "Au **rapporteur général**, puis au **collège**, puis à la **commission des sanctions**. Chambre de discipline et CROEC sont la voie de l'EC." },
    "src": ["Recommandations et suivi ; transmission au rapporteur général, puis collège, puis commission des sanctions"] },
 
  { "id": "controle-09", "type": "vf", "prof": "CAC", "tags": ["controle_activite"], "fiche": "20-schema-controle-qualite.md",
@@ -60,8 +60,8 @@
 
  { "id": "controle-11", "type": "cas", "prof": "CAC", "tags": ["controle_activite"], "fiche": "20-schema-controle-qualite.md",
    "title": "Blanchiment découvert en contrôle", "situation": "Lors d'un contrôle d'activité, un contrôleur de la H2A découvre chez un CAC des faits qui relèvent du blanchiment.",
-   "quiz": { "q": "Que fait le contrôleur ?", "choices": ["Il informe le comité LBC-FT de l'Ordre", "Il attend la fin du contrôle pour le signaler", "Il informe lui-même Tracfin"], "answer": 2, "why": "Il **informe lui-même Tracfin**. Côté EC, c'est le **comité LBC-FT** de l'Ordre qui conclut le contrôle LCB-FT et peut saisir l'instance disciplinaire." },
-   "src": ["Blanchiment découvert par un contrôleur de la H2A : il informe lui-même Tracfin.", "c'est le comité LBC-FT qui conclut, et il peut saisir l'instance disciplinaire"] },
+   "quiz": { "q": "Que fait le contrôleur ?", "choices": ["Il informe le comité LCB-FT de l'Ordre", "Il attend la fin du contrôle pour le signaler", "Il informe lui-même Tracfin"], "answer": 2, "why": "Il **informe lui-même Tracfin**. Côté EC, c'est le **comité LCB-FT** de l'Ordre qui conclut le contrôle LCB-FT et peut saisir l'instance disciplinaire." },
+   "src": ["Blanchiment découvert par un contrôleur de la H2A : il informe lui-même Tracfin.", "c'est le comité LCB-FT qui conclut, et il peut saisir l'instance disciplinaire"] },
 
  { "id": "controle-12", "type": "duel", "prof": "EC+CAC", "tags": ["controle_qualite", "controle_activite"], "fiche": "20-schema-controle-qualite.md",
    "title": "Revue indépendante", "q": "La revue indépendante est-elle obligatoire ?",

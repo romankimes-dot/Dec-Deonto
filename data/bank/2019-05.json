@@ -29,7 +29,7 @@
         ],
         "model_answer": "L'audit procure une assurance raisonnable, c'est-à-dire élevée mais non absolue. L'expert-comptable exprime une opinion sur la régularité et la sincérité des comptes et sur l'image fidèle qu'ils donnent du patrimoine, de la situation financière et du résultat de l'entité."
       },
-      "explanation": "Les trois concepts sont ceux de l'article L.123-14 du code de commerce : conformité aux règles (régularité), application de bonne foi (sincérité) et représentation fidèle de la réalité économique (image fidèle). La présentation ne porte que sur la cohérence et la vraisemblance ; l'examen limité procure une assurance modérée sur la conformité des comptes au référentiel comptable applicable (NP 2400). L'assurance absolue n'existe pas, en raison notamment du sondage et du jugement professionnel.",
+      "explanation": "Régularité (conformité aux règles), sincérité (application de bonne foi) et image fidèle : concepts de L.123-14 C. com. Pièges : la présentation ne porte que sur la cohérence et la vraisemblance ; l'examen limité donne une assurance modérée sur la conformité au référentiel (NP 2400). L'assurance absolue n'existe pas (sondages, jugement).",
       "reference": "Cadre de référence des missions de l'OEC (mission d'audit d'états financiers : assurance raisonnable, normes ISA) ; NP 2400 pour l'examen limité ; C. com. art. L.123-14",
       "confidence": "medium"
     },
@@ -58,9 +58,9 @@
           "Dix mois est donc inférieur au plancher légal : la clause est irrégulière",
           "Pas de réduction conventionnelle possible à l'égard d'un consommateur"
         ],
-        "model_answer": "L'erreur porte sur la durée : la responsabilité civile se prescrit par cinq ans à compter du jour où le client a connu ou aurait dû connaître les faits, et si les parties peuvent abréger ce délai par convention, elles ne peuvent le réduire à moins d'un an. Un délai de dix mois est donc illicite ; en outre, une telle réduction serait inopposable à un client consommateur."
+        "model_answer": "L'erreur porte sur la durée : la responsabilité civile se prescrit par cinq ans à compter du jour où le client a connu ou aurait dû connaître les faits ; un contrat peut abréger ce délai, mais pas en dessous d'un an. Dix mois est donc illicite, et une réduction serait de toute façon inopposable à un client consommateur."
       },
-      "explanation": "Les conditions générales des cabinets contiennent souvent une clause de prescription abrégée, valable dans les limites du code civil (entre un et dix ans). Le point de départ cité (connaissance des faits) est correct ; seule la durée est fautive. Distinction avec le commissaire aux comptes, dont la responsabilité à raison de la mission légale se prescrit par trois ans (dix ans en cas de crime) et ne peut être aménagée contractuellement.",
+      "explanation": "Clause de prescription abrégée : valable entre un et dix ans (C. civ. art. 2254). Le point de départ (connaissance des faits) est correct ; seule la durée est fautive. Contraste : la responsabilité du CAC liée à sa mission légale se prescrit par trois ans (dix ans en cas de crime) et ne s'aménage pas par contrat.",
       "reference": "C. civ. art. 2224 (prescription quinquennale) et 2254 (aménagement conventionnel) ; pour comparaison, C. com. L.821-38 renvoyant à L.225-254 (prescription triennale du commissaire aux comptes, ex L.822-18)",
       "confidence": "high",
       "update_note": "Recodification du livre VIII au 1er janvier 2024 : l'ancien art. L.822-18 est devenu l'art. L.821-38 du code de commerce."
@@ -116,11 +116,11 @@
       "qrc": {
         "expected": [
           "Un compte rendu de travaux",
-          "Pas d'attestation, pour éviter toute confusion avec la certification du commissaire aux comptes"
+          "Pas d'attestation, sauf considérations particulières (NP 2300 § A10), pour éviter toute confusion avec la certification du CAC"
         ],
-        "model_answer": "Lorsque l'entité est dotée d'un commissaire aux comptes, l'expert-comptable n'émet pas d'attestation à l'issue de sa mission de présentation mais remet un compte rendu de travaux, qui décrit la mission effectuée sans exprimer d'assurance susceptible d'être confondue avec la certification."
+        "model_answer": "Lorsque l'entité a un CAC, l'expert-comptable n'a pas à délivrer d'attestation de présentation, sauf considérations particulières : il remet un compte rendu de travaux, qui décrit la mission sans exprimer d'assurance susceptible d'être confondue avec la certification."
       },
-      "explanation": "Selon la NP 2300 (modalité d'application A10), dans une entité soumise au commissariat aux comptes, l'expert-comptable n'a pas à délivrer, sauf considérations particulières, d'attestation de présentation, puisque le commissaire aux comptes exprimera une assurance de degré supérieur. Dans le cas général, il délivre un compte rendu de travaux ne comportant pas la formulation de l'assurance (exemple E4 de la norme). Piège : « aucun document » est faux, un écrit de fin de mission reste remis.",
+      "explanation": "NP 2300 § A10 : dans une entité dotée d'un CAC, l'EC n'a pas à délivrer d'attestation de présentation, sauf considérations particulières, le CAC exprimant une assurance supérieure. Il remet un compte rendu de travaux, sans formulation d'assurance (exemple E4). Piège : « aucun document » est faux.",
       "reference": "NP 2300, § A10 (cas particulier des entités soumises au commissariat aux comptes) et annexe E4 (compte rendu de travaux)",
       "confidence": "medium"
     },
@@ -144,16 +144,17 @@
       },
       "qrc": {
         "expected": [
-          "Déclarant : l'expert-comptable en charge de la mission, qui s'acquitte personnellement de la déclaration de soupçon (R.561-23 IV ; NPLAB § 47)",
-          "Correspondant : désigné par la structure, interlocuteur de Tracfin ; répond à ses demandes (hors celles portant sur une déclaration ou un droit de communication) et diffuse ses informations en interne",
-          "Identité du correspondant communiquée à Tracfin au plus tard avec la première déclaration ; à défaut de désignation, le représentant légal assume la fonction",
+          "Déclarant : l'EC en charge de la mission, qui fait personnellement la déclaration de soupçon (R.561-23 I al. 2 ; NPLAB § 47)",
+          "Correspondant : désigné par la structure, interlocuteur de Tracfin ; répond à ses demandes (hors déclarations et droit de communication)",
+          "Identité du correspondant transmise à Tracfin au plus tard avec la 1re déclaration ; à défaut, le représentant légal assume la fonction",
           "Le correspondant n'est pas obligatoirement expert-comptable (dirigeant, préposé ou responsable du contrôle interne)"
         ],
-        "model_answer": "Le déclarant est l'expert-comptable en charge de la mission, qui effectue personnellement la déclaration de soupçon à Tracfin. Le correspondant, désigné par la structure (à défaut, le représentant légal), est l'interlocuteur de Tracfin : il répond à ses demandes, hors celles portant sur une déclaration ou un droit de communication, et diffuse en interne ses informations. Son identité est communiquée à Tracfin au plus tard avec la première déclaration ; il n'est pas nécessairement expert-comptable."
+        "model_answer": "Le déclarant est l'EC en charge de la mission, qui fait personnellement la déclaration de soupçon. Le correspondant, désigné par la structure (à défaut, le représentant légal), est l'interlocuteur de Tracfin : il répond à ses demandes et diffuse ses informations en interne ; il n'est pas forcément expert-comptable."
       },
-      "explanation": "Le code monétaire et financier distingue le déclarant (R.561-23) du correspondant (R.561-24) ; pour les experts-comptables, l'obligation de déclaration est remplie personnellement, quel que soit le mode d'exercice (R.561-23 IV), par l'expert-comptable en charge de la mission (NPLAB § 47). Les distracteurs reprennent deux erreurs fréquentes : la copie au procureur ou à l'Ordre (la déclaration est confidentielle, adressée à Tracfin seul) et l'intervention du conseil régional dans la désignation. Chez les commissaires aux comptes, la déclaration est aussi faite personnellement par le commissaire aux comptes (R.561-23 IV).",
-      "reference": "C. mon. fin. art. R.561-23 (déclarant, IV) et R.561-24 (correspondant) ; NPLAB § 12, 13, 47 et A12",
-      "confidence": "high"
+      "explanation": "Le CMF distingue le déclarant (R.561-23) du correspondant (R.561-24). L'EC déclare personnellement, quel que soit son mode d'exercice (R.561-23 I al. 2 ; NPLAB § 47). Pièges : pas de copie au procureur ni à l'Ordre (déclaration confidentielle, à Tracfin seul), pas de rôle du conseil régional. CAC : déclaration personnelle (NEP 9605 § 61).",
+      "reference": "C. mon. fin. art. R.561-23 I al. 2 (déclarant) et R.561-24 (correspondant) ; NPLAB § 12, 13, 47 et A12 ; NEP 9605 § 61 (CAC)",
+      "confidence": "high",
+      "review_note": "Référence harmonisée de « R.561-23 IV » vers « R.561-23 I al. 2 » (VERIFICATION.md, fiches 02 et 06) ; CMF non relu (Légifrance et Pappers inaccessibles). NEP 9605 § 61 relue (arrêtés du code de commerce, miroir LEGI)."
     },
     {
       "id": "2019-05-EC-06",
@@ -182,7 +183,7 @@
         ],
         "model_answer": "Trois éléments cumulatifs sont requis : une faute de l'expert-comptable (inexécution ou mauvaise exécution de sa mission, manquement au devoir de conseil), un préjudice certain subi par le client ou un tiers, et un lien de causalité direct entre cette faute et ce préjudice."
       },
-      "explanation": "La responsabilité est contractuelle à l'égard du client (obligation de moyens, lettre de mission comme référence) et délictuelle à l'égard des tiers. La faute n'est pas présumée : le demandeur doit la prouver, sauf pour les obligations de résultat (respect des délais déclaratifs par exemple). Mêmes conditions pour le commissaire aux comptes, dont la responsabilité est toutefois toujours délictuelle à raison de la mission légale.",
+      "explanation": "Responsabilité contractuelle envers le client (obligation de moyens, lettre de mission en référence), délictuelle envers les tiers. La faute n'est pas présumée, sauf obligation de résultat (délais déclaratifs). Mêmes conditions pour le CAC, dont la responsabilité liée à la mission légale est toujours délictuelle.",
       "reference": "C. civ. art. 1231-1 (responsabilité contractuelle) et 1240 (responsabilité délictuelle) ; pour comparaison C. com. L.821-37 (ex L.822-17)",
       "confidence": "high",
       "update_note": "Recodification du livre VIII au 1er janvier 2024 : l'ancien art. L.822-17 est devenu l'art. L.821-37 du code de commerce."
@@ -198,7 +199,7 @@
       "qcm": {
         "question": "À quelles conditions un expert-comptable peut-il exercer un mandat social dans une société non inscrite à l'Ordre ?",
         "choices": [
-          "Absence d'atteinte à l'indépendance, déclaration au conseil régional et absence de mission d'expertise comptable dans la même entité",
+          "Absence d'atteinte à l'indépendance ni de conflit d'intérêts, sous le contrôle du conseil régional (RI art. 607 à 612)",
           "Le mandat est possible uniquement dans les sociétés civiles et les associations",
           "Le mandat est libre dès lors qu'il n'est pas rémunéré et que la société n'est pas cliente du cabinet ni de ses associés",
           "Le mandat requiert l'autorisation préalable de la chambre régionale de discipline et une assurance spécifique de responsabilité"
@@ -207,17 +208,18 @@
       },
       "qrc": {
         "expected": [
-          "Tout mandat social est possible, dans toute société, groupement ou association (plus de restriction aux mandats gratuits dans des structures à but non lucratif depuis la loi du 23 juillet 2010)",
+          "Tout mandat social possible, dans toute structure (fin de la limite aux mandats gratuits non lucratifs : loi du 23 juillet 2010)",
           "Le mandat ne doit pas être de nature à porter atteinte à l'indépendance de l'expert-comptable",
           "Exercice sous le contrôle du conseil régional de l'Ordre : déclaration annuelle sur l'honneur et liste des mandats tenue à jour (RI art. 607 à 612)",
-          "Pas de situation de conflit d'intérêts (ex. tenir les comptes de l'entité dirigée) ; respect des autres incompatibilités (agent d'affaires, maniement de fonds)"
+          "Pas de conflit d'intérêts (ex. tenir les comptes de l'entité dirigée) ; respect des autres incompatibilités (agent d'affaires, fonds)"
         ],
-        "model_answer": "Depuis la loi du 23 juillet 2010, l'expert-comptable peut accepter tout mandat social, y compris dans une société commerciale, à trois conditions : le mandat ne doit pas porter atteinte à son indépendance ; il s'exerce sous le contrôle du conseil régional de l'Ordre, auquel l'expert-comptable déclare chaque année sur l'honneur ses mandats, dont il tient la liste à jour, selon le règlement intérieur ; le mandat ne doit pas le placer en conflit d'intérêts, ce qui exclut d'être à la fois dirigeant et professionnel chargé des comptes de l'entité, et il doit respecter les autres incompatibilités de l'article 22."
+        "model_answer": "Depuis la loi du 23 juillet 2010, tout mandat social est possible s'il ne porte pas atteinte à l'indépendance ni ne crée de conflit d'intérêts, et s'il s'exerce sous le contrôle du conseil régional (déclaration annuelle sur l'honneur, liste des mandats : RI art. 607 à 612)."
       },
-      "explanation": "Avant la loi du 23 juillet 2010, seuls des mandats gratuits d'administrateur dans des associations ou sociétés à but non lucratif étaient admis : c'est le distracteur historique. L'ouverture s'accompagne d'un contrôle ordinal (règlement intérieur art. 607 à 612) et d'une exigence d'indépendance et d'absence de conflit d'intérêts, qui exclut d'établir ou d'attester les comptes de la société que l'on dirige. Pour le commissaire aux comptes, aucun mandat de dirigeant n'est possible dans une entité qu'il certifie ou qui est dans son périmètre.",
+      "explanation": "Piège historique : avant la loi du 23 juillet 2010, seuls des mandats gratuits dans des structures non lucratives étaient admis. L'ouverture s'accompagne d'un contrôle ordinal (RI art. 607 à 612) et de l'absence de conflit d'intérêts : pas question d'établir les comptes de la société dirigée. CAC : aucun mandat de dirigeant dans l'entité certifiée.",
       "reference": "Ord. 45-2138 art. 22 (rédaction loi 2010-853) ; règlement intérieur de l'Ordre (arrêté du 6 mars 2024) art. 607 à 612",
       "confidence": "medium",
-      "update_note": "Les modalités de déclaration figurent aux articles 607 à 612 du règlement intérieur en vigueur ; Conseil supérieur devenu Conseil national (loi n° 2022-172 du 21 février 2022)."
+      "update_note": "Conseil supérieur devenu Conseil national (loi n° 2022-172 du 14 février 2022) ; modalités de déclaration aux art. 607 à 612 du règlement intérieur en vigueur.",
+      "review_note": "choices[0] corrigé : l'ancienne condition « absence de mission d'expertise comptable dans la même entité » n'avait pas de texte. RI art. 607 à 612 non relus."
     },
     {
       "id": "2019-05-EC-08",
@@ -228,7 +230,7 @@
       "points": 2,
       "question": "La norme professionnelle relative à la maîtrise de la qualité impose une revue indépendante pour une catégorie de mission. Laquelle ?",
       "qcm": {
-        "question": "Pour quelle catégorie de missions la norme de maîtrise de la qualité (NPMQ) impose-t-elle une revue indépendante ?",
+        "question": "Pour quelle catégorie de missions la norme de management de la qualité (NPMQ) impose-t-elle une revue indépendante ?",
         "choices": [
           "Les missions d'audit d'états financiers d'entités cotées",
           "Les missions de présentation des comptes",
@@ -245,9 +247,11 @@
         ],
         "model_answer": "La NPMQ rend la revue indépendante obligatoire pour tous les audits d'états financiers d'entités cotées : une personne n'ayant pas participé à la mission évalue, avant la date du rapport, les jugements importants et les conclusions. Pour les autres missions, le cabinet définit lui-même les critères rendant une telle revue obligatoire."
       },
-      "explanation": "La revue indépendante (« revue de contrôle qualité de la mission » de l'ISQC 1) est imposée par la NPMQ pour les audits d'états financiers d'entités cotées, où l'enjeu d'une opinion erronée est le plus fort ; pour les autres missions, la structure fixe des critères (nature de la mission, risques inhabituels, exigence légale). En commissariat aux comptes, un examen de contrôle qualité de la mission est obligatoire avant la publication du rapport sur les comptes d'une EIP (règl. 537/2014 art. 8).",
-      "reference": "NPMQ par. 35 à 37 et A41 ; ISQC 1 ; pour comparaison règl. (UE) 537/2014 art. 8 (EIP)",
-      "confidence": "medium"
+      "explanation": "La NPMQ de 2011 (ISQC 1) imposait la revue indépendante pour les audits d'entités cotées ; pour les autres missions, la structure fixe ses critères (risques, exigence légale). La norme de management applicable depuis 2025 (ISQM 1) garde ce principe. Côté CAC : revue indépendante obligatoire avant le rapport sur les comptes d'une EIP (R.821-84).",
+      "reference": "NPMQ de 2011 par. 35 à 37 et A41 (ISQC 1) ; NPMQ de management de la qualité (arrêté du 30 mai 2024) ; pour comparaison C. com. R.821-84 et règl. (UE) 537/2014 art. 8 (EIP)",
+      "confidence": "medium",
+      "update_note": "Depuis le 1er janvier 2025, NPMQ de management de la qualité (agréée par arrêté du 30 mai 2024, JO du 17 juillet 2024 ; inspirée d'ISQM 1, 8 composantes) ; les paragraphes cités sont ceux de la norme de 2011.",
+      "review_note": "Texte de la NPMQ 2024 non lu : maintien de la revue obligatoire pour les audits d'entités cotées à confirmer (ISQM 1 § 34 f la prévoit). R.821-84 relu (miroir LEGI)."
     },
     {
       "id": "2019-05-EC-09",
@@ -275,9 +279,9 @@
           "Ou exercice, par tout autre moyen, d'un pouvoir de contrôle sur les organes de gestion, d'administration ou de direction ou sur l'assemblée générale",
           "À défaut d'identification, le représentant légal"
         ],
-        "model_answer": "Le bénéficiaire effectif est la personne physique qui, en dernier lieu, détient directement ou indirectement plus de 25 % du capital ou des droits de vote de la société, ou qui exerce par tout autre moyen un pouvoir de contrôle sur ses organes de gestion ou sur l'assemblée générale. Si aucune personne ne répond à ces critères, le représentant légal est retenu comme bénéficiaire effectif."
+        "model_answer": "Le bénéficiaire effectif est la personne physique qui détient, directement ou indirectement, plus de 25 % du capital ou des droits de vote, ou qui exerce par tout autre moyen un pouvoir de contrôle sur les organes de gestion ou l'assemblée. À défaut, le représentant légal est retenu."
       },
-      "explanation": "Le seuil est de « plus de 25 % », pas 25 % ni 50 %, et le bénéficiaire effectif est toujours une personne physique, ce qui impose de remonter les chaînes de détention. Le contrôle par d'autres moyens (pacte, droit de nommer les dirigeants) complète le critère capitalistique. L'identification du bénéficiaire effectif est une obligation commune aux experts-comptables et aux commissaires aux comptes.",
+      "explanation": "Seuil : « plus de 25 % », ni 25 % ni 50 %, et toujours une personne physique, d'où l'obligation de remonter les chaînes de détention. Le contrôle par d'autres moyens (pacte, droit de nommer les dirigeants) complète le critère du capital. Identification commune à l'EC et au CAC.",
       "reference": "C. mon. fin. art. L.561-2-2 et R.561-1 ; NPLAB",
       "confidence": "high"
     },
@@ -307,7 +311,7 @@
         ],
         "model_answer": "Faute d'avoir pu identifier et vérifier l'identité du bénéficiaire effectif, l'expert-comptable ne peut ni nouer la relation d'affaires ni réaliser d'opération ; si la relation est déjà engagée, il doit y mettre un terme. Il doit en outre apprécier si cette impossibilité justifie une déclaration de soupçon à Tracfin."
       },
-      "explanation": "L'identification du client et du bénéficiaire effectif précède l'entrée en relation ; l'impossibilité de la mener à bien bloque la mission, sans qu'une vigilance renforcée puisse y suppléer. La déclaration de soupçon n'est pas automatique : elle s'impose seulement si les circonstances font naître un soupçon. L'Ordre n'intervient pas dans cette décision et le procureur n'est pas destinataire des informations LCB-FT, réservées à Tracfin.",
+      "explanation": "L'identification du client et du bénéficiaire effectif précède l'entrée en relation ; à défaut, la mission est bloquée, et une vigilance renforcée n'y supplée pas. La déclaration de soupçon n'est pas automatique : seulement en cas de soupçon. Ni l'Ordre ni le procureur n'interviennent : les informations LCB-FT vont à Tracfin.",
       "reference": "C. mon. fin. art. L.561-8 (conséquences du défaut d'identification) et L.561-15 (déclaration de soupçon) ; NPLAB",
       "confidence": "high"
     },
@@ -325,7 +329,7 @@
           "Une commission de normalisation placée auprès de la H2A, présidée par un membre du collège et composée de deux CAC proposés par la CNCC et d'une personnalité qualifiée",
           "Le Conseil national de la CNCC, dont les projets de normes sont ensuite homologués par arrêté du garde des Sceaux, après avis de l'autorité de supervision",
           "Une commission mixte réunissant le Conseil national de l'Ordre des experts-comptables et la CNCC, présidée alternativement par chacun d'eux",
-          "Le garde des sceaux lui-même, après avis de l'Autorité des normes comptables, du Conseil d'État et de la Cour des comptes"
+          "Le garde des Sceaux lui-même, après avis de l'Autorité des normes comptables, du Conseil d'État et de la Cour des comptes"
         ],
         "answer": 0
       },
@@ -333,13 +337,13 @@
         "expected": [
           "Commission de normalisation placée auprès de la Haute autorité de l'audit (L.820-4 I 2°)",
           "Présidée par un membre du collège de la H2A, élu par le collège",
-          "Composée en outre de deux commissaires aux comptes, désignés sur proposition de la CNCC, et d'une personnalité qualifiée en matière économique et financière",
+          "Composée en outre de deux CAC, désignés sur proposition de la CNCC, et d'une personnalité qualifiée en matière économique et financière",
           "Membres désignés par le collège pour trois ans, renouvelables une fois",
-          "Projet adopté par la formation plénière du collège après avis de la CNCC, puis homologué par arrêté du garde des sceaux (L.820-23)"
+          "Projet adopté par le collège après avis de la CNCC, puis homologué par arrêté du garde des Sceaux (L.820-23)"
         ],
-        "model_answer": "Les projets sont élaborés par une commission de normalisation placée auprès de la H2A, présidée par un membre du collège et composée de deux commissaires aux comptes désignés sur proposition de la CNCC et d'une personnalité qualifiée en matière économique et financière, nommés pour trois ans renouvelables une fois. Le collège adopte la norme après avis de la CNCC et la transmet pour homologation au garde des sceaux."
+        "model_answer": "Une commission de normalisation placée auprès de la H2A, présidée par un membre du collège et composée de deux CAC proposés par la CNCC et d'une personnalité qualifiée en matière économique et financière, nommés pour trois ans renouvelables une fois. Le collège adopte la norme, homologuée ensuite par arrêté."
       },
-      "explanation": "La réforme de 2016 avait créé une commission paritaire auprès du H3C. Depuis l'ordonnance 2023-1142 et la loi 2025-391, deux commissions de normalisation, de même président, sont placées auprès de la H2A : l'une pour la durabilité, l'autre pour la déontologie, le contrôle interne de qualité, l'exercice des autres missions et les prestations. Piège EC/CAC : les normes de l'EC sont élaborées par le Conseil national de l'Ordre et agréées par le ministre chargé de l'économie ; l'Ordre n'intervient pas dans les normes de commissariat aux comptes.",
+      "explanation": "En 2016, une commission paritaire avait été créée auprès du H3C. Depuis 2024 et la loi 2025-391, deux commissions de normalisation siègent auprès de la H2A : l'une pour la durabilité, l'autre pour les autres missions. Piège EC/CAC : les normes de l'EC sont élaborées par le Conseil national de l'Ordre et agréées par arrêté.",
       "reference": "C. com. L.820-1 I 2°, L.820-4 (rédaction loi 2025-391), L.820-23 ; normes homologuées A.821-54 s.",
       "confidence": "high",
       "update_note": "H3C → H2A au 1er janvier 2024 ; la commission paritaire (ancien L.821-14) est remplacée par deux commissions de normalisation (L.820-4, modifié par la loi 2025-391 du 30 avril 2025)."
@@ -365,15 +369,17 @@
       "qrc": {
         "expected": [
           "Déléguée à la CNCC : le suivi du respect des obligations de formation continue (convention homologuée par arrêté du 19 mai 2023)",
-          "Déléguée à la CNCC : la réalisation des contrôles d'activité des CAC sans mission EIP (arrêté du 19 mai 2023, puis convention du 6 mai 2026 homologuée par arrêté du 2 juillet 2026)",
-          "Non déléguée aujourd'hui : l'inscription et la tenue de la liste, déléguées de 2017 à novembre 2020 puis reprises par le H3C ; les contrôles des CAC d'EIP ne sont jamais délégables (L.820-14)"
+          "Déléguée à la CNCC : les contrôles d'activité des CAC sans mandat EIP (arrêté du 19 mai 2023, puis convention homologuée le 2 juillet 2026)",
+          "Non déléguée aujourd'hui : l'inscription (déléguée de 2017 à novembre 2020) ; les contrôles des CAC d'EIP ne se délèguent pas (L.820-14)"
         ],
-        "model_answer": "Aujourd'hui, deux missions sont déléguées à la CNCC par conventions homologuées par arrêté : le suivi du respect de la formation continue et la réalisation des contrôles d'activité des commissaires aux comptes non EIP. L'inscription et la tenue de la liste, déléguées entre 2017 et novembre 2020, sont de nouveau assurées directement par l'autorité ; les contrôles des CAC d'EIP relèvent toujours de ses propres contrôleurs."
+        "model_answer": "Deux missions sont aujourd'hui déléguées à la CNCC par conventions homologuées : le suivi de la formation continue et les contrôles d'activité des CAC non EIP. L'inscription et la tenue de la liste, déléguées de 2017 à novembre 2020, sont de nouveau assurées par l'autorité ; les contrôles des CAC d'EIP restent à ses contrôleurs."
       },
-      "explanation": "La délégation est une faculté (L.820-1 II), exercée par convention homologuée par arrêté du garde des sceaux. À la date du sujet (2019), les trois missions étaient déléguées ; le H3C a résilié la délégation de l'inscription à compter du 5 novembre 2020. Les contrôles des cabinets ayant des mandats EIP ne peuvent pas être délégués (L.820-14). Rien de comparable chez les experts-comptables, où l'Ordre organise lui-même le contrôle de qualité.",
+      "explanation": "La délégation est une faculté (L.820-1 II), par convention homologuée par arrêté du garde des Sceaux. En 2019, les trois missions étaient déléguées ; le H3C a repris l'inscription le 5 novembre 2020. Les contrôles des cabinets ayant des mandats EIP ne se délèguent pas (L.820-14). Chez les EC, l'Ordre organise lui-même le contrôle de qualité.",
       "reference": "C. com. L.820-1 II, L.820-14 ; arrêtés du 19 mai 2023 (JO 26 mai 2023) homologuant les conventions de délégation (contrôles non-EIP ; formation continue) ; arrêté du 2 juillet 2026 homologuant la convention du 6 mai 2026 (contrôles non-EIP) ; communiqué du H3C du 5 mai 2020 (fin de la délégation de l'inscription)",
       "confidence": "medium",
-      "update_note": "Délégation de l'inscription résiliée par le H3C au 5 novembre 2020 (réponse à la date du sujet : les trois missions). Nouvelle convention H2A-CNCC sur les contrôles non-EIP homologuée par arrêté du 2 juillet 2026 (et non du 6 juillet)."
+      "update_note": "Délégation de l'inscription résiliée par le H3C au 5 novembre 2020 (à la date du sujet, les trois missions étaient déléguées). Nouvelle convention H2A-CNCC sur les contrôles non-EIP homologuée par arrêté du 2 juillet 2026.",
+      "review_note": "Date de l'arrêté d'homologation corrigée : 2 juillet 2026 (et non 6 juillet). L.820-1 II relu (miroir LEGI).",
+      "answer_changed": true
     },
     {
       "id": "2019-05-CAC-13",
@@ -398,10 +404,10 @@
           "Identifier l'entité et vérifier son identité sur documents probants (extrait Kbis, statuts)",
           "Identifier le ou les bénéficiaires effectifs et vérifier leur identité (registre des bénéficiaires effectifs, pièces)",
           "Recueillir des informations sur l'objet et la nature de la relation d'affaires et sur les dirigeants (personnes politiquement exposées)",
-          "Évaluer le risque de blanchiment et déterminer le niveau de vigilance (standard, renforcée, ou simplifiée lorsque le risque est faible au sens du C. mon. fin.)",
+          "Évaluer le risque et fixer la vigilance : standard, renforcée, ou simplifiée si le risque est faible au sens du C. mon. fin.",
           "En cas d'impossibilité d'identification : ne pas accepter la mission (et examiner une déclaration de soupçon)"
         ],
-        "model_answer": "Avant d'accepter, le commissaire aux comptes identifie l'entité et vérifie son identité sur documents probants, identifie ses bénéficiaires effectifs et vérifie leur identité, recueille des informations sur l'objet de la relation et sur les dirigeants, puis évalue le risque de blanchiment pour fixer le niveau de vigilance applicable. Si l'identification ne peut être menée à bien, il doit refuser le mandat et, le cas échéant, déclarer ses soupçons à Tracfin."
+        "model_answer": "Avant d'accepter, le CAC identifie l'entité et ses bénéficiaires effectifs et vérifie leur identité sur pièces probantes, s'informe sur l'objet de la relation et les dirigeants (PPE), puis évalue le risque pour fixer la vigilance. Si l'identification échoue, il refuse le mandat et, s'il y a soupçon, déclare à Tracfin."
       },
       "explanation": "Ces diligences, communes aux professions du chiffre, précèdent l'entrée en relation et s'ajoutent aux vérifications d'indépendance et de compétence de l'acceptation de mission. La déclaration de soupçon n'est jamais « préventive » et ne se fonde que sur un soupçon ; ni le prédécesseur ni la CRCC n'ont de rôle dans l'identification.",
       "reference": "C. mon. fin. art. L.561-5, L.561-5-1, L.561-8 ; NEP 9605 (obligations du commissaire aux comptes relatives à la lutte contre le blanchiment)",
@@ -428,13 +434,13 @@
       "qrc": {
         "expected": [
           "La société absorbante poursuit les mandats de l'absorbée jusqu'à leur date d'expiration (L.821-48 al. 1)",
-          "Par dérogation, l'assemblée ou l'organe compétent de l'entité peut, lors de sa première réunion postérieure à l'absorption, délibérer sur le maintien du mandat",
+          "Par dérogation, l'organe compétent de l'entité peut, à sa première réunion après l'absorption, délibérer sur le maintien du mandat",
           "Le commissaire aux comptes est préalablement entendu",
           "L'absorbante doit être inscrite et vérifier l'absence d'incompatibilité"
         ],
-        "model_answer": "Les mandats ne prennent pas fin : la société absorbante les poursuit jusqu'à leur date d'expiration. Toutefois, par dérogation aux règles de durée du mandat, l'assemblée générale ou l'organe compétent de chaque entité contrôlée peut, lors de sa première réunion qui suit l'absorption, délibérer sur le maintien du mandat après avoir entendu le commissaire aux comptes."
+        "model_answer": "Les mandats ne prennent pas fin : l'absorbante les poursuit jusqu'à leur expiration (L.821-48). Par dérogation, l'assemblée ou l'organe compétent de chaque entité peut, à sa première réunion après l'absorption, délibérer sur le maintien du mandat après avoir entendu le CAC."
       },
-      "explanation": "La loi règle expressément la question (L.821-48) : continuité des mandats au profit de l'absorbante, sans nouvelle nomination, mais faculté pour l'entité de remettre en cause le mandat à la première réunion de son organe compétent. Le fondement est cette disposition spéciale, non la seule transmission universelle du patrimoine. Question reposée en mai 2026 (Q11).",
+      "explanation": "L.821-48 règle la question : continuité des mandats au profit de l'absorbante, sans nouvelle nomination, mais faculté pour l'entité de remettre en cause le mandat à la première réunion de son organe compétent. Le fondement est ce texte spécial, non la seule transmission universelle du patrimoine. Question reposée en mai 2026 (Q11).",
       "reference": "C. com. L.821-48 ; L.821-44 (durée du mandat)",
       "confidence": "high",
       "update_note": "Règle légale figurant à L.821-48 depuis la recodification du 1er janvier 2024."
@@ -459,13 +465,13 @@
       },
       "qrc": {
         "expected": [
-          "Premier exercice certifié : mention, à la fin de l'introduction du rapport, que les comptes de l'exercice précédent n'ont pas fait l'objet d'une certification (NEP 510 § 15)",
+          "Premier exercice certifié : mention, à la fin de l'introduction, que les comptes de l'exercice précédent n'ont pas été certifiés (NEP 510 § 15)",
           "Procédures spécifiques sur le bilan d'ouverture (NEP 510 § 09 à 11)",
           "Réserve seulement si les procédures sont impossibles et l'incidence significative (§ 12 à 14)"
         ],
-        "model_answer": "S'agissant d'un premier audit, le commissaire aux comptes indique, à la fin de l'introduction de son rapport, que les comptes de l'exercice précédent n'ont pas fait l'objet d'une certification par un commissaire aux comptes. Cette mention ne vaut pas réserve : il met en œuvre des procédures sur le bilan d'ouverture et n'apprécie l'incidence sur son opinion que s'il ne peut obtenir d'éléments suffisants sur un point significatif."
+        "model_answer": "S'agissant d'un premier audit, le CAC indique, à la fin de l'introduction de son rapport, que les comptes de l'exercice précédent n'ont pas été certifiés. Ce n'est pas une réserve : il applique des procédures au bilan d'ouverture et ne modifie son opinion que s'il ne peut obtenir d'éléments suffisants sur un point significatif."
       },
-      "explanation": "La nomination en cours d'exercice ne fait pas obstacle à la certification de l'exercice entier ; la question porte sur l'information du lecteur quant au caractère non audité des comparatifs. Le distracteur relatif au prédécesseur est exclu par l'énoncé (aucun commissaire aux comptes antérieur). Sur les seuils de nomination, se référer aux chiffres applicables depuis 2024.",
+      "explanation": "La nomination en cours d'exercice n'empêche pas de certifier l'exercice entier ; la question porte sur l'information du lecteur : les comparatifs ne sont pas audités. Piège : la mention d'un prédécesseur est exclue par l'énoncé (aucun CAC antérieur).",
       "reference": "NEP 510 (C. com. A.821-87) § 09 à 15 ; NEP 710 (A.821-88) ; NEP 700 (A.821-92)",
       "confidence": "high"
     },
@@ -494,9 +500,9 @@
           "Demander des explications et pièces à la direction de la filiale",
           "Refus de la mère = obstacle aux vérifications (délit d'entrave) et incidence possible sur l'opinion"
         ],
-        "model_answer": "Il peut mener directement ses investigations auprès de la société mère, la loi l'autorisant à enquêter auprès des personnes qui contrôlent l'entité dont il certifie les comptes, et obtenir conventions, clés de répartition et justificatifs. Il peut aussi interroger les commissaires aux comptes de la mère, libérés du secret à son égard puisque la filiale est consolidée. Un refus de la mère constituerait une entrave."
+        "model_answer": "Il peut enquêter directement auprès de la société mère, qui contrôle l'entité qu'il certifie (L.821-61), et obtenir conventions, clés de répartition et justificatifs. Il peut aussi interroger les CAC de la mère, libérés du secret à son égard puisque la filiale est consolidée. Un refus de la mère serait une entrave."
       },
-      "explanation": "Deux instruments se combinent : l'extension légale du droit d'investigation aux sociétés contrôlantes et contrôlées, et la levée réciproque du secret entre commissaires aux comptes du périmètre de consolidation. Cette levée n'existe pas pour une filiale non consolidée (sauf dans un petit groupe, L.821-35 al. 5), et elle ne donne pas accès aux dossiers de travail du confrère, seulement aux informations.",
+      "explanation": "Deux outils : le droit d'investigation étendu aux sociétés contrôlantes et contrôlées, et la levée réciproque du secret entre CAC du périmètre de consolidation. Cette levée n'existe pas pour une filiale non consolidée (sauf petit groupe, L.821-35) et ne donne accès qu'aux informations, pas aux dossiers de travail du confrère.",
       "reference": "C. com. L.821-61 (ex L.823-14, investigations auprès des sociétés mères et filiales), L.821-35 (ex L.822-15, levée du secret dans le groupe consolidé), L.821-6 3° (ex L.820-4, entrave) ; NEP 600",
       "confidence": "medium",
       "update_note": "Articles recodifiés au 1er janvier 2024 (ordonnance 2023-1142) : L.823-14 → L.821-61, L.822-15 → L.821-35, L.820-4 → L.821-6 ; règles de fond inchangées."
@@ -521,14 +527,14 @@
       },
       "qrc": {
         "expected": [
-          "Objectif : évaluer, avant signature, si l'opinion et les conclusions retenues par le signataire sont raisonnablement fondées (jugements significatifs, éléments collectés, projet de rapport)",
+          "Objectif : vérifier, avant signature, que le signataire pouvait raisonnablement parvenir aux conclusions des projets de rapport (R.821-84)",
           "Réalisée par une personne qualifiée n'ayant pas participé à la mission",
           "Commissaire aux comptes exerçant seul : revue confiée à un autre commissaire aux comptes inscrit, extérieur à la mission",
           "Documentation de la revue dans le dossier"
         ],
-        "model_answer": "La revue indépendante consiste à faire vérifier, par un commissaire aux comptes inscrit qui n'a pas pris part à la mission, que le signataire pouvait raisonnablement parvenir aux conclusions figurant dans les projets de rapport, avant leur signature. Lorsque le commissaire aux comptes exerce à titre individuel, la revue est confiée à un commissaire aux comptes extérieur à sa structure d'exercice."
+        "model_answer": "La revue indépendante fait vérifier, avant signature, par un CAC inscrit étranger à la mission, que le signataire pouvait raisonnablement parvenir aux conclusions des projets de rapport (R.821-84). Si le CAC exerce à titre individuel, la revue est confiée à un CAC extérieur à sa structure."
       },
-      "explanation": "Issue du règlement européen sur les EIP (art. 8, examen de contrôle qualité de la mission), cette revue est une mesure de contrôle qualité interne à la mission, distincte du contrôle d'activité mené par la H2A. Le code de commerce ne l'impose que pour les EIP ; le réviseur consigne et évalue les éléments prévus aux § 4 et 5 de l'article 8 du règlement et reste tenu au secret (L.821-35). Le comité d'audit et le président de la CRCC n'ont aucun rôle dans cette revue.",
+      "explanation": "Issue du règlement 537/2014 (art. 8, examen de contrôle qualité de la mission), cette revue est un contrôle qualité interne à la mission, distinct du contrôle d'activité de la H2A. Elle n'est imposée que pour les EIP ; le réviseur est tenu au secret (L.821-35). Ni le comité d'audit ni le président de la CRCC n'y interviennent.",
       "reference": "C. com. R.821-84 ; L.821-35 ; règlement (UE) 537/2014 art. 8",
       "confidence": "high",
       "update_note": "Revue indépendante désormais prévue à l'article R.821-84 (recodification du 1er janvier 2024) ; dispositif inchangé."
@@ -560,9 +566,9 @@
           "Honoraires perçus par le commissaire aux comptes",
           "En outre (hors missions sélectionnées) : système de contrôle de qualité interne et autres missions ou prestations fournies aux entités certifiées"
         ],
-        "model_answer": "Sur les missions sélectionnées, le contrôleur vérifie notamment le respect des règles d'indépendance, la conformité aux normes d'exercice professionnel, l'adéquation des ressources affectées à la mission et les honoraires perçus. Le contrôle porte en outre sur le système de contrôle de qualité interne du cabinet et sur les autres missions et prestations fournies aux entités certifiées. Il ne refait pas l'audit et ne se substitue pas au commissaire aux comptes dans son opinion."
+        "model_answer": "Sur les missions sélectionnées, le contrôleur vérifie le respect des règles d'indépendance, la conformité aux NEP, l'adéquation des ressources affectées et les honoraires perçus. Il examine aussi le système de contrôle qualité interne et les autres prestations fournies aux entités certifiées. Il ne refait pas l'audit."
       },
-      "explanation": "Ces axes, issus de la directive audit, distinguent le contrôle d'activité d'un contre-audit : le contrôleur apprécie la démarche, les moyens et la documentation, pas la justesse des comptes. Le contrôle a lieu au moins tous les six ans, délai ramené à trois ans pour les CAC des EIP visées au i du § 2 de l'article 26 du règlement 537/2014 (R.820-49). Hors EIP, les contrôles peuvent être délégués à la CNCC par convention homologuée (L.820-14).",
+      "explanation": "Issus de la directive audit, ces axes distinguent le contrôle d'activité d'un contre-audit : on apprécie la démarche, les moyens et la documentation, pas la justesse des comptes. Contrôle au moins tous les six ans, tous les trois ans pour les CAC de certaines EIP (R.820-49) ; hors EIP, délégation possible à la CNCC (L.820-14).",
       "reference": "C. com. L.820-14, R.820-45 I et R.820-49 (ex L.821-9 s. et R.821-x) ; directive 2006/43/CE art. 29",
       "confidence": "high",
       "update_note": "Contrôles désormais conduits par la H2A (ex-H3C) ; articles recodifiés au 1er janvier 2024."
@@ -592,9 +598,9 @@
           "Pas d'autorisation préalable ; déclaration renouvelée en cas de transfert hors du ressort",
           "Mission reprise ensuite dans la déclaration annuelle d'activité (D.821-186 VI)"
         ],
-        "model_answer": "Il doit notifier sa nomination au conseil régional de la compagnie dont il est membre dans un délai de huit jours, par lettre recommandée avec demande d'avis de réception ou par voie électronique ; le conseil régional en informe le Conseil national. Il ne s'agit pas d'une autorisation. Le mandat figure ensuite dans la déclaration annuelle d'activité adressée à la compagnie régionale."
+        "model_answer": "Il notifie sa nomination au conseil régional de sa compagnie dans les huit jours, par lettre recommandée avec avis de réception ou par voie électronique ; le conseil régional en informe le Conseil national. Ce n'est pas une autorisation. Le mandat figure ensuite dans la déclaration annuelle d'activité."
       },
-      "explanation": "La notification dans les huit jours (D.821-173) permet à la profession et à la H2A de suivre les mandats, de programmer les contrôles et de vérifier l'indépendance ; elle s'ajoute à la déclaration annuelle d'activité (D.821-186 VI). Ce n'est pas une autorisation : l'acceptation relève de la seule responsabilité du commissaire aux comptes, qui tient lui-même la liste de ses mandats (D.821-186 I).",
+      "explanation": "La notification (D.821-173) permet de suivre les mandats, de programmer les contrôles et de vérifier l'indépendance ; elle s'ajoute à la déclaration annuelle d'activité (D.821-186 VI). Piège : ce n'est pas une autorisation ; l'acceptation relève du seul CAC, qui tient lui-même la liste de ses mandats (D.821-186 I).",
       "reference": "C. com. D.821-173 (notification de la nomination) ; D.821-186 I et VI (liste des mandats, déclaration d'activité)",
       "confidence": "high",
       "update_note": "Partie réglementaire recodifiée au 1er janvier 2024 : notification des nominations à l'article D.821-173."
@@ -619,14 +625,14 @@
       },
       "qrc": {
         "expected": [
-          "La conception et la mise en place de procédures de contrôle interne liées à l'information financière sont un service interdit par le règlement européen pour les EIP",
-          "L'interdiction s'étend à l'exercice précédant immédiatement le premier exercice audité (ici 2018) ; la prestation date de 2017, donc hors de la période d'interdiction",
+          "Concevoir et mettre en place des procédures de contrôle interne liées à l'information financière : service interdit au CAC d'EIP (règl. 537/2014)",
+          "Interdiction étendue à l'exercice précédant le premier exercice audité (ici 2018) : la prestation de 2017 est hors période",
           "Les services rendus par le réseau sont pris en compte",
-          "Marianne peut accepter en principe, mais doit évaluer le risque d'autorévision (procédures toujours appliquées aux ristournes) et prendre des mesures de sauvegarde ; refuser si le risque ne peut être ramené à un niveau acceptable"
+          "Acceptation possible en principe, après analyse du risque d'autorévision (procédures toujours appliquées) et sauvegardes ; sinon refus"
         ],
-        "model_answer": "La conception de procédures de contrôle interne relatives à l'information financière est un service interdit aux commissaires aux comptes d'EIP et à leur réseau, l'interdiction couvrant aussi l'exercice précédant immédiatement le premier exercice certifié, soit 2018. La prestation ayant été rendue en 2017, l'interdiction légale ne s'oppose pas à la nomination de Marianne. Elle doit toutefois identifier le risque d'autorévision lié à des procédures encore utilisées et mettre en place des mesures de sauvegarde ; à défaut de pouvoir ramener le risque à un niveau acceptable, elle doit refuser."
+        "model_answer": "La conception de procédures de contrôle interne financier est interdite au CAC d'EIP et à son réseau, y compris pendant l'exercice précédant le premier exercice certifié (2018). La prestation datant de 2017, rien n'interdit la nomination ; Marianne doit toutefois traiter le risque d'autorévision par des sauvegardes, ou refuser."
       },
-      "explanation": "Le cas combine trois règles : la liste des services interdits aux EIP, la période de « refroidissement » d'un exercice qui précède le mandat pour certains services (conception de contrôle interne, systèmes financiers), et l'imputation au commissaire aux comptes des prestations de son réseau. Même hors interdiction formelle, le code de déontologie impose l'analyse des situations à risque et les mesures de sauvegarde. Pour une entité non EIP, seul ce second raisonnement s'appliquerait.",
+      "explanation": "Trois règles : liste des services interdits aux EIP, « refroidissement » d'un exercice avant le mandat pour certains services (contrôle interne, systèmes financiers : L.821-28 I), et prise en compte des prestations du réseau. Hors interdiction, le code impose l'analyse des risques et les sauvegardes, seul raisonnement hors EIP.",
       "reference": "Règlement (UE) 537/2014 art. 5 §1, point e) ; C. com. L.821-28 I et II (ex L.822-11) ; code de déontologie des commissaires aux comptes art. 22 (prestations antérieures, risque d'autorévision) et 19",
       "confidence": "high",
       "update_note": "Articles recodifiés au 1er janvier 2024 ; le règlement européen est inchangé."

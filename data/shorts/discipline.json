@@ -43,9 +43,9 @@
 
  { "id": "discipline-06", "type": "chiffre", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
    "title": "Interdiction temporaire du CAC", "big": "3 ans", "label": "Durée maximale de l'interdiction temporaire d'exercer d'un CAC",
-   "det": "Plafond en vigueur depuis le 01/01/2024.", "trap": "Les 5 ans sont l'ancien régime H3C.",
-   "quiz": { "q": "Quelle est la durée maximale de l'interdiction temporaire du CAC depuis 2024 ?", "choices": ["3 ans", "5 ans", "1 an"], "answer": 0, "why": "**3 ans** au plus depuis le 01/01/2024. Les 5 ans relevaient de l'ancien régime du H3C." },
-   "src": ["Interdiction temporaire du CAC : 3 ans au plus depuis le 01/01/2024. Les 5 ans sont l'ancien régime H3C"] },
+   "det": "Plafond en vigueur depuis le 1er janvier 2024.", "trap": "Les 5 ans sont l'ancien régime H3C.",
+   "quiz": { "q": "Quelle est la durée maximale de l'interdiction temporaire du CAC depuis 2024 ?", "choices": ["3 ans", "5 ans", "1 an"], "answer": 0, "why": "**3 ans** au plus depuis le 1er janvier 2024. Les 5 ans relevaient de l'ancien régime du H3C." },
+   "src": ["Interdiction temporaire du CAC : 3 ans au plus depuis le 1er janvier 2024. Les 5 ans sont l'ancien régime H3C"] },
 
  { "id": "discipline-07", "type": "chiffre", "prof": "CAC", "tags": ["discipline_sanctions"], "fiche": "13-schema-discipline.md",
    "title": "Prescription CAC", "big": "6 ans", "label": "Prescription disciplinaire du CAC, à compter des faits",

@@ -102,3 +102,38 @@ test('scoreExam : QCM = 1 point par bonne réponse ; QRC = total/max * 20', () =
   const qrc = [{ points: 2, max: 2 }, { points: 1, max: 3 }, { points: 0, max: 1 }];
   assert.equal(scoreExam(qrc, 'qrc'), 10);
 });
+
+test('drawExam : une question par notion, thèmes répartis, sans les questions « low » (banque réelle)', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { buildClusters } = await import('../js/cluster.js');
+  const bank = JSON.parse(readFileSync(new URL('../data/questions.json', import.meta.url), 'utf8')).questions;
+  const { clusterOf } = buildClusters(bank);
+  let seed = 7; const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+  for (let run = 0; run < 40; run++) {
+    const exam = drawExam(bank, {}, rnd, { clusterOf });
+    assert.equal(exam.length, 20);
+    assert.equal(new Set(exam.map((q) => q.id)).size, 20, 'sans doublon');
+    const groups = exam.map((q) => clusterOf[q.id]).filter((g) => g !== undefined);
+    assert.equal(new Set(groups).size, groups.length, 'deux variantes d’une même notion');
+    assert.ok(exam.every((q) => q.confidence !== 'low'), 'question de confiance low tirée');
+    for (const prof of ['EC', 'CAC']) {
+      const part = exam.filter((q) => q.profession === prof);
+      assert.equal(part.length, 10);
+      const n = (t) => part.filter((q) => q.theme === t).length;
+      assert.ok(n('exercice') >= 2 && n('deontologie') >= 2 && n('responsabilite') >= 2, `${prof} : thèmes mal répartis`);
+      assert.ok(n('controle_qualite') >= 1, `${prof} : aucun contrôle qualité`);
+    }
+  }
+});
+
+test('drawExam : jumeaux écartés et « low » en dernier recours', () => {
+  const qs = [];
+  for (let i = 0; i < 12; i++) qs.push({ id: `ec${i}`, profession: 'EC', theme: 'exercice', confidence: i === 0 ? 'low' : 'high' });
+  for (let i = 0; i < 10; i++) qs.push({ id: `cac${i}`, profession: 'CAC', theme: 'exercice', confidence: 'high' });
+  const clusterOf = { ec1: 0, ec2: 0, ec3: 0 };
+  const exam = drawExam(qs, {}, () => 0.5, { clusterOf });
+  const ec = exam.filter((q) => q.profession === 'EC').map((q) => q.id);
+  assert.equal(ec.length, 10);
+  assert.equal(ec.filter((id) => ['ec1', 'ec2', 'ec3'].includes(id)).length, 1, 'une seule variante');
+  assert.ok(ec.includes('ec0'), 'la question low complète une banque trop petite');
+});

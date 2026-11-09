@@ -153,3 +153,73 @@ test('synchro : une fiche décochée sur un appareil reste décochée après fus
   const c = { ...base, plan: { done: {}, read: { 'x.md': 300 } } };
   assert.equal(P.isRead(SY.merge(b, c).plan, 'x.md'), true, 'recochée plus tard ailleurs');
 });
+
+test('fusion : un effacement, un import ou un retour en arrière (resetAt) remplace l’autre état au lieu d’être annulé', () => {
+  const remote = st({ updatedAt: 100, cards: { a: card(10) }, attempts: [{ id: 'a', ok: true, mode: 'qcm', t: 10 }], badges: { b1: 10 } });
+  const local = store.reset(remote); local.resetAt = 500; local.updatedAt = 500;
+  for (const m of [SY.merge(local, remote), SY.merge(remote, local)]) {
+    assert.deepEqual(m.cards, {}); assert.deepEqual(m.attempts, []); assert.deepEqual(m.badges, {});
+    assert.equal(m.resetAt, 500); assert.equal(m.updatedAt, 500);
+  }
+  // l'état effacé, même modifié avant (updatedAt plus grand ailleurs), l'emporte ; updatedAt reste le plus grand
+  const later = { ...remote, updatedAt: 900 };
+  const m2 = SY.merge(later, local);
+  assert.deepEqual(m2.cards, {}); assert.equal(m2.updatedAt, 900);
+  // ensuite, même resetAt des deux côtés : fusion ordinaire
+  const after = { ...local, cards: { c: card(600) }, updatedAt: 700 };
+  assert.deepEqual(Object.keys(SY.merge(local, after).cards), ['c']);
+  // import : l'état importé l'emporte sur l'état en ligne plus fourni
+  const imported = store.importJSON(store.exportJSON(st({ cards: { z: card(1) } }))); imported.resetAt = 800;
+  assert.deepEqual(Object.keys(SY.merge(imported, remote).cards), ['z']);
+});
+
+test('synchro : la progression effacée sur un appareil ne revient pas, et disparaît sur l’autre', async () => {
+  const { kv, f } = server();
+  const phone = st({ updatedAt: 100, cards: { q1: card(10) } });
+  await SY.syncOnce(cfg, phone, { fetch: f });
+  const laptop = (await SY.syncOnce(cfg, st({ updatedAt: 150, cards: { q2: card(20) } }), { fetch: f })).state;
+  const cleared = store.reset(phone); cleared.resetAt = 1000; cleared.updatedAt = 1000;
+  const r1 = await SY.syncOnce(cfg, cleared, { fetch: f });
+  assert.deepEqual(r1.state.cards, {}); assert.equal(r1.changed, false); assert.equal(r1.pushed, true);
+  assert.deepEqual(JSON.parse(kv.get('progress')).cards, {});
+  const r2 = await SY.syncOnce(cfg, laptop, { fetch: f });
+  assert.deepEqual(r2.state.cards, {}); assert.equal(r2.changed, true);
+  // l'autre appareil reprend ensuite normalement
+  const next = { ...r2.state, cards: { q3: card(2000) }, updatedAt: 2000 };
+  const r3 = await SY.syncOnce(cfg, next, { fetch: f });
+  assert.deepEqual(Object.keys(r3.state.cards), ['q3']);
+});
+
+test('synchro : PUT avec If-Match ; sur 412 (écriture concurrente), relecture et nouvelle fusion', async () => {
+  const { kv, f } = server();
+  await SY.syncOnce(cfg, st({ updatedAt: 100, cards: { q1: card(10) } }), { fetch: f });
+  const log = []; let raced = false;
+  const spy = async (url, opts = {}) => {
+    const m = opts.method || 'GET'; log.push(`${m}${opts.headers?.['If-Match'] !== undefined ? ' if-match' : ''}`);
+    if (m === 'PUT' && !raced) { // un autre appareil écrit juste avant
+      raced = true;
+      await SY.syncOnce(cfg, st({ updatedAt: 120, cards: { q9: card(30) } }), { fetch: f });
+    }
+    return f(url, opts);
+  };
+  const r = await SY.syncOnce(cfg, st({ updatedAt: 150, cards: { q2: card(20) } }), { fetch: spy });
+  assert.deepEqual(log, ['GET', 'PUT if-match', 'GET', 'PUT if-match']);
+  assert.equal(r.pushed, true);
+  assert.deepEqual(Object.keys(JSON.parse(kv.get('progress')).cards).sort(), ['q1', 'q2', 'q9'], 'rien d’écrasé');
+});
+
+test('synchro : 412 répété, deux nouvelles tentatives au plus puis erreur explicite', async () => {
+  const { f } = server();
+  let puts = 0;
+  const spy = async (url, opts = {}) => {
+    if (opts.method === 'PUT') { puts++; return new Response('{"error":"modifié entre-temps"}', { status: 412 }); }
+    return f(url, opts);
+  };
+  await assert.rejects(SY.syncOnce(cfg, st({ cards: { q1: card(1) } }), { fetch: spy }), /autre appareil/);
+  assert.equal(puts, 3);
+  // casier vide : If-Match vide, refusé si un autre appareil a écrit entre-temps
+  const { f: g } = server();
+  const H = { Authorization: 'Bearer secret', 'If-Match': '' };
+  await SY.syncOnce(cfg, st({ cards: { q1: card(1) } }), { fetch: g });
+  assert.equal((await g(`${cfg.url}/progress`, { method: 'PUT', headers: H, body: '{"cards":{}}' })).status, 412);
+});

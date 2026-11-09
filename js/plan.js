@@ -10,7 +10,7 @@ export const STEPS = [
   { id: 'lettre', kind: 'schema', title: 'Lettre de mission, honoraires, reprise de dossier', who: 'EC + CAC', when: 'J-15', fiches: ['18-schema-lettre-mission-honoraires.md'], deep: ['01-ec-exercice.md'] },
   { id: 'mandat', kind: 'schema', title: 'Le mandat du commissaire aux comptes', who: 'CAC', when: 'J-14 à J-13', fiches: ['14-schema-mandat-cac.md'], deep: ['05-cac-exercice.md'] },
   { id: 'independance', kind: 'schema', title: 'L’indépendance du CAC', who: 'CAC', when: 'J-12 à J-11', fiches: ['16-schema-independance-cac.md'], deep: ['06-cac-deontologie.md'] },
-  { id: 'secret', kind: 'schema', title: 'Secret professionnel et signalements', who: 'EC + CAC', when: 'J-10', fiches: ['17-schema-secret-signalements.md'], deep: ['02-ec-deontologie.md', '06-cac-deontologie.md'] },
+  { id: 'secret', kind: 'schema', title: 'Secret professionnel, révélation et LCB-FT (Tracfin)', who: 'EC + CAC', when: 'J-10', fiches: ['17-schema-secret-signalements.md'], deep: ['02-ec-deontologie.md', '06-cac-deontologie.md'] },
   { id: 'discipline', kind: 'schema', title: 'Discipline et sanctions', who: 'EC + CAC', when: 'J-9', fiches: ['13-schema-discipline.md', '22-schema-sanctions-h2a.md'], deep: ['04-ec-responsabilite.md', '08-cac-responsabilite.md'] },
   { id: 'controle', kind: 'schema', title: 'Contrôle de qualité et contrôle d’activité', who: 'EC + CAC', when: 'J-8', fiches: ['20-schema-controle-qualite.md'], deep: ['03-ec-controle-qualite.md', '07-cac-controle-activite.md'] },
   { id: 'responsabilites', kind: 'schema', title: 'Les quatre responsabilités', who: 'EC + CAC', when: 'J-7', fiches: ['21-schema-responsabilites.md'], deep: ['04-ec-responsabilite.md', '08-cac-responsabilite.md'] },

@@ -1,6 +1,7 @@
 {
   "session": "2018-11",
   "format": "qcm",
+  "note": "Sujet officiel à cinq propositions (A à E) ; la banque en garde quatre par question. Proposition retirée : E (le plus souvent « Aucune des propositions précédentes »), sauf Q7 (C retirée), Q10 (B), Q11 (D), Q12 (A, « 1 an »), Q15 (B), Q16 (C) et Q19 (D) ; Q18 reformulée.",
   "questions": [
     {
       "id": "2018-11-EC-01",
@@ -22,14 +23,14 @@
       "qrc": {
         "question": "Avec quelles activités l'exercice de la profession d'expert-comptable est-il incompatible, et quelle est l'exception admise en matière d'emploi salarié ?",
         "expected": [
-          "Incompatibilité avec tout emploi salarié, sauf chez un autre membre de l'Ordre, un commissaire aux comptes, une AGC, une succursale ou une société pluri-professionnelle d'exercice",
+          "Tout emploi salarié incompatible, sauf chez un membre de l'Ordre, un CAC, une AGC, une succursale ou une société pluri-professionnelle d'exercice",
           "Interdiction des activités commerciales et actes d'intermédiaire (sauf à titre accessoire, admis depuis la loi du 23 juillet 2010)",
           "Interdiction d'agir comme agent d'affaires",
           "Interdiction de recevoir, conserver ou délivrer des fonds ou valeurs pour le compte des clients"
         ],
-        "model_answer": "L'activité d'expertise comptable est incompatible avec toute occupation de nature à porter atteinte à l'indépendance : tout emploi salarié (sauf chez un autre expert-comptable, dans une AGC ou chez un commissaire aux comptes), toute activité commerciale ou d'intermédiaire non accessoire, la qualité d'agent d'affaires et tout mandat de recevoir, conserver ou délivrer des fonds ou valeurs."
+        "model_answer": "Sont incompatibles avec l'expertise comptable : tout emploi salarié (sauf chez un membre de l'Ordre, un CAC, une AGC, une succursale ou une SPE), toute activité commerciale ou d'intermédiaire non accessoire, la qualité d'agent d'affaires et le maniement des fonds ou valeurs des clients (ord. art. 22)."
       },
-      "explanation": "L'article 22 de l'ordonnance fixe les incompatibilités de l'expert-comptable. L'exception salariale vise plusieurs employeurs : un membre de l'Ordre, un commissaire aux comptes, une AGC, une succursale ou une société pluri-professionnelle d'exercice ; limiter l'exception au seul membre de l'Ordre est donc faux. Depuis la loi du 23 juillet 2010, une activité commerciale accessoire est admise si elle ne met pas en péril l'indépendance ni l'exercice de la profession, mais l'activité d'agent d'affaires reste prohibée et le maniement de fonds n'est permis que dans les limites étroites ouvertes par la loi Pacte (paiements et recouvrements par le compte du client). Pour le commissaire aux comptes, l'incompatibilité avec tout emploi salarié ne connaît d'exception que chez un commissaire aux comptes ou un expert-comptable.",
+      "explanation": "Piège : l'exception salariale ne se limite pas au membre de l'Ordre (CAC, AGC, succursale, SPE). Depuis la loi du 23 juillet 2010, une activité commerciale accessoire est admise ; l'agent d'affaires reste interdit et le maniement de fonds n'est permis que dans les limites de la loi Pacte. CAC : salariat admis seulement chez un CAC ou un EC.",
       "reference": "Ord. 45-2138 art. 22 (activités commerciales accessoires : loi 2010-853 ; maniement de fonds : loi 2019-486) ; C. com. L.821-27",
       "confidence": "high"
     },
@@ -58,9 +59,9 @@
           "SCP non ouverte à la profession (absence de décret d'application)",
           "Plus des deux tiers des droits de vote détenus par des experts-comptables ou sociétés inscrites"
         ],
-        "model_answer": "Les sociétés d'expertise comptable peuvent prendre toute forme, sauf celles qui confèrent à leurs associés la qualité de commerçant (SNC, commandite) ; les sociétés d'exercice libéral sont admises. La SCP n'est pas accessible faute de décret d'application. Dans tous les cas, les experts-comptables (ou sociétés inscrites) doivent détenir plus des deux tiers des droits de vote."
+        "model_answer": "Toute forme sociale est permise, sauf celles qui confèrent la qualité de commerçant (SNC, commandite) ; les sociétés d'exercice libéral sont admises, la SCP non, faute de décret d'application. Les experts-comptables (ou sociétés inscrites) doivent détenir plus des deux tiers des droits de vote."
       },
-      "explanation": "Le piège porte sur la quotité : la règle est « plus des deux tiers des droits de vote » entre les mains de professionnels inscrits, et non une majorité simple ni une minorité. La SNC est exclue car elle confère la qualité de commerçant, incompatible avec la profession. Pour les sociétés de commissaires aux comptes, aucune forme n'est exclue et la condition porte sur la majorité des droits de vote : ne pas transposer une règle à l'autre profession.",
+      "explanation": "Piège de la quotité : plus des deux tiers des droits de vote aux professionnels inscrits, ni simple majorité ni minorité. La SNC est exclue car elle confère la qualité de commerçant. Société de CAC : aucune forme exclue et majorité des droits de vote ; ne pas transposer une règle à l'autre profession.",
       "reference": "Ord. 45-2138 art. 7 (sociétés d'expertise comptable) ; ord. 2023-77 du 8 février 2023 (exercice en société des professions libérales réglementées : SEL, SPE) ; loi 66-879 (SCP)",
       "confidence": "medium",
       "update_note": "Depuis le 1er septembre 2024, le régime des sociétés d'exercice libéral relève de l'ordonnance 2023-77 du 8 février 2023, à laquelle renvoient désormais les articles 14 et 22 de l'ordonnance de 1945 (et non plus la loi 90-1258)."
@@ -86,13 +87,13 @@
         "question": "À quelles conditions un expert-comptable peut-il réaliser des travaux d'ordre juridique (consultation, rédaction d'actes) pour un client ?",
         "expected": [
           "Travaux juridiques possibles seulement à titre accessoire, sans en faire l'objet principal de l'activité",
-          "Au profit d'entreprises où le cabinet assure une mission comptable ou d'accompagnement déclaratif et administratif de caractère permanent ou habituel, ou si les travaux sont directement liés aux travaux comptables",
+          "Au profit d'entreprises où l'EC assure une mission comptable ou d'accompagnement déclaratif et administratif habituelle, ou travaux liés aux comptes",
           "Accompagnement global de la création d'entreprise admis (statuts)",
           "Interdiction d'une consultation juridique isolée pour un prospect sans mission"
         ],
-        "model_answer": "L'expert-comptable ne peut donner de consultations ou rédiger des actes juridiques qu'à titre accessoire, pour les entreprises dans lesquelles il assure une mission comptable ou d'accompagnement déclaratif et administratif permanente ou habituelle, ou lorsque ces travaux sont directement liés à ses travaux comptables. Une consultation juridique isolée pour un prospect, sans aucune mission, lui est interdite."
+        "model_answer": "Les travaux juridiques ne sont permis qu'à titre accessoire, pour les entreprises où l'EC assure une mission comptable ou d'accompagnement déclaratif et administratif permanente ou habituelle, ou s'ils sont directement liés à ses travaux comptables. Une consultation isolée pour un prospect, sans mission, est interdite."
       },
-      "explanation": "La paie et les déclarations relèvent de l'activité propre de l'expert-comptable et ne supposent aucune mission comptable préalable ; elles ouvrent en outre, depuis la loi Macron, la possibilité de travaux juridiques accessoires (contrat de travail). L'accompagnement global du créateur permet la rédaction des statuts. Seule la consultation juridique « sèche » pour un prospect sort du périmètre.",
+      "explanation": "La paie et les déclarations relèvent de l'activité propre de l'EC, sans mission comptable préalable ; depuis la loi Macron, elles ouvrent les travaux juridiques accessoires (contrat de travail). L'accompagnement global du créateur permet de rédiger les statuts. Seule la consultation juridique « sèche » pour un prospect sort du périmètre.",
       "reference": "Ord. 45-2138 art. 2 et 22 (rédaction loi 2015-990) ; loi 71-1130 art. 59",
       "confidence": "high"
     },
@@ -114,7 +115,7 @@
         "answer": 2
       },
       "qrc": {
-        "question": "Quelles obligations la norme de maîtrise de la qualité (NPMQ) impose-t-elle au cabinet en matière de documentation des procédures et d'indépendance du personnel ?",
+        "question": "Quelles obligations la norme de management de la qualité (NPMQ) impose-t-elle au cabinet en matière de documentation des procédures et d'indépendance du personnel ?",
         "expected": [
           "Politiques et procédures documentées, proportionnées à la taille du cabinet mais obligatoires quelle que soit sa taille",
           "Champ : toutes les missions et prestations du cabinet (y compris paie, social)",
@@ -123,9 +124,11 @@
         ],
         "model_answer": "La NPMQ s'applique à toutes les missions du cabinet et impose des politiques et procédures écrites, adaptées à sa taille mais jamais facultatives, couvrant notamment les règles de déontologie. En matière d'indépendance, le cabinet doit obtenir de son personnel, au moins une fois par an, une confirmation écrite du respect des règles applicables."
       },
-      "explanation": "La NPMQ, transposition de l'ISQC 1 à l'expertise comptable, s'articule autour de six domaines : responsabilité de l'équipe dirigeante, règles de déontologie, acceptation et maintien des missions, ressources humaines, réalisation des missions, surveillance (par. 16). La structure rédige ses propres règles et procédures quelle que soit sa taille (par. 17) et obtient au moins une fois par an de tout son personnel technique une confirmation écrite du respect des règles internes d'indépendance (par. 24). Côté CAC, aucune NEP homologuée ne porte sur la maîtrise de la qualité du cabinet ; le CAC d'une EIP remet chaque année une déclaration d'indépendance au comité spécialisé (L.821-63).",
-      "reference": "NPMQ (référentiel normatif OEC) par. 16, 17 et 24 ; ISQC 1 ; C. com. L.821-63 pour le parallèle CAC",
-      "confidence": "high"
+      "explanation": "La NPMQ de 2011 (ISQC 1) avait six éléments ; celle de management, applicable depuis 2025 (ISQM 1), a 8 composantes. Dans les deux, procédures écrites quelle que soit la taille, déontologie comprise, et confirmation écrite annuelle d'indépendance du personnel. Côté CAC d'EIP : déclaration d'indépendance annuelle au comité d'audit (L.821-63).",
+      "reference": "NPMQ de 2011 par. 16, 17 et 24 (ISQC 1) ; NPMQ de management de la qualité (arrêté du 30 mai 2024) ; C. com. L.821-63 II pour le parallèle CAC",
+      "confidence": "medium",
+      "update_note": "Depuis le 1er janvier 2025, NPMQ de management de la qualité (agréée par arrêté du 30 mai 2024, JO du 17 juillet 2024 ; inspirée d'ISQM 1, 8 composantes) ; les paragraphes cités sont ceux de la norme de 2011.",
+      "review_note": "Texte de la NPMQ 2024 non lu : maintien de la confirmation écrite annuelle d'indépendance à confirmer (ISQM 1 § 34 e la prévoit). L.821-63 II relu (miroir LEGI)."
     },
     {
       "id": "2018-11-EC-05",
@@ -152,9 +155,9 @@
           "Information préalable du client",
           "Information du président du conseil régional de l'Ordre"
         ],
-        "model_answer": "Le droit de rétention ne peut être exercé qu'à l'appui d'une créance d'honoraires certaine, liquide et exigible, et seulement sur les documents que l'expert-comptable a lui-même établis, jamais sur les pièces appartenant au client. Il doit en informer le client et en aviser le président de son conseil régional, qui peut jouer un rôle de conciliation."
+        "model_answer": "Le droit de rétention suppose une créance d'honoraires certaine, liquide et exigible et ne porte que sur les documents établis par l'EC, jamais sur les pièces du client. L'EC en informe le client et en avise le président du conseil régional, qui peut concilier."
       },
-      "explanation": "Le droit de rétention est un moyen de pression exceptionnel, encadré par l'article 168 du code de déontologie : il ne vise que les travaux effectués par le professionnel, faute de paiement des honoraires (et non un désaccord technique), ne porte jamais sur les documents du client et suppose l'information préalable du président du conseil régional. Retenir les pièces comptables d'un client pourrait d'ailleurs l'empêcher de satisfaire à ses obligations légales et engagerait la responsabilité du professionnel.",
+      "explanation": "Moyen de pression exceptionnel encadré par l'art. 168 du code de déontologie : seulement les travaux du professionnel, seulement pour impayé (pas pour un désaccord technique), jamais les documents du client, après information du président du conseil régional. Retenir les pièces comptables du client engagerait sa responsabilité.",
       "reference": "D. 2012-432 art. 168 (droit de rétention) ; art. 159 et 160 (conciliation et arbitrage)",
       "confidence": "medium"
     },
@@ -178,18 +181,18 @@
       "qrc": {
         "question": "Comment l'expert-comptable détermine-t-il le niveau de vigilance applicable à un dossier au titre de la lutte contre le blanchiment, et quelles sont les erreurs à éviter ?",
         "expected": [
-          "Approche par les risques : classification des risques du cabinet et évaluation du risque de chaque client (nature du client, de la mission, zone géographique, PPE…)",
+          "Approche par les risques : classification des risques du cabinet et évaluation de chaque client (client, mission, zone géographique, PPE…)",
           "Niveaux de vigilance prévus par la NPLAB : standard ou renforcée",
           "La norme s'applique à toutes les missions et prestations, pas seulement aux missions comptables",
           "Identification et vérification de l'identité du client (et du bénéficiaire effectif) avant d'entrer en relation d'affaires",
           "La déclaration de soupçon est adressée à Tracfin seul, sans copie au président du conseil régional"
         ],
-        "model_answer": "La norme anti-blanchiment (NPLAB) repose sur une approche par les risques : le cabinet classe ses risques et évalue chaque relation d'affaires pour fixer le niveau de vigilance (standard ou renforcée). Elle s'applique à toutes les missions, impose d'identifier le client et son bénéficiaire effectif avant d'entrer en relation, et réserve la déclaration de soupçon à Tracfin, sans copie au conseil régional de l'Ordre."
+        "model_answer": "La NPLAB repose sur une approche par les risques : le cabinet classe ses risques et évalue chaque relation d'affaires pour fixer la vigilance (standard ou renforcée). Elle vise toutes les missions, impose d'identifier le client et le bénéficiaire effectif avant d'entrer en relation, et la déclaration de soupçon va à Tracfin seul."
       },
-      "explanation": "Les trois distracteurs correspondent à des erreurs fréquentes : champ limité aux missions comptables (faux : toutes les prestations sont visées), début des travaux avant identification (faux : l'identification précède l'entrée en relation, sauf cas de vérification différée strictement encadrés), information de l'Ordre (faux : la déclaration de soupçon est confidentielle et le président du conseil régional n'en est pas destinataire). La règle de confidentialité est identique pour le commissaire aux comptes vis-à-vis de la CRCC.",
+      "explanation": "Pièges : la norme ne vise pas que les missions comptables, mais toutes les prestations ; l'identification précède l'entrée en relation (sauf vérification différée encadrée) ; la déclaration de soupçon est confidentielle, le président du conseil régional n'en est pas destinataire. Même confidentialité pour le CAC à l'égard de la CRCC.",
       "reference": "C. mon. fin. art. L.561-4-1 s. (approche par les risques), L.561-5 s. (identification), L.561-15 s. (déclaration) ; NPLAB (norme anti-blanchiment de l'OEC)",
       "confidence": "high",
-      "update_note": "Relecture : la NPLAB en vigueur ne retient que deux niveaux de vigilance (standard et renforcée) ; la mention d'une vigilance « allégée » a été supprimée."
+      "review_note": "Relecture : la NPLAB en vigueur ne retient que deux niveaux de vigilance (standard et renforcée) ; la mention d'une vigilance « allégée » a été supprimée."
     },
     {
       "id": "2018-11-EC-07",
@@ -212,15 +215,17 @@
         "question": "Qui signe la lettre de mission lorsqu'une mission de présentation est confiée à une société d'expertise comptable comptant plusieurs associés ?",
         "expected": [
           "La lettre de mission est un contrat entre la société d'expertise comptable (structure d'exercice) et le client",
-          "Signature sociale : représentant légal de la société ou associé expert-comptable ayant reçu délégation",
+          "Signature sociale, apposée par un expert-comptable inscrit habilité à engager la société (représentant légal ou associé délégataire)",
           "Signature du client",
           "L'expert-comptable responsable de la mission n'a pas à signer en son nom propre ; le collaborateur jamais"
         ],
-        "model_answer": "La lettre de mission lie la société d'expertise comptable et son client : elle porte la signature sociale de la structure (par son représentant légal ou un associé expert-comptable délégataire) et celle du client. L'expert-comptable responsable du dossier y est désigné mais n'a pas à signer à titre personnel, et un collaborateur non inscrit ne peut jamais engager le cabinet."
+        "model_answer": "La lettre de mission lie la société d'expertise comptable et son client : elle porte la signature sociale de la structure, apposée par un expert-comptable inscrit habilité à l'engager, et celle du client. L'EC responsable du dossier y est désigné sans signer en son nom propre ; un collaborateur ne peut jamais engager le cabinet."
       },
-      "explanation": "Le contrat écrit est obligatoire pour toute mission ; lorsque l'exercice se fait en société, c'est la personne morale inscrite qui est partie au contrat et qui est responsable, d'où la signature sociale. Le nom de l'expert-comptable responsable de la mission figure dans la lettre pour identifier l'interlocuteur et le signataire des travaux, sans en faire une partie au contrat. Même logique en commissariat aux comptes : le mandat est donné à la société, qui désigne un signataire personne physique.",
-      "reference": "D. 2012-432 art. 151 (contrat écrit / lettre de mission) ; NP 2300 ; NPMQ",
-      "confidence": "medium"
+      "explanation": "En société, c'est la personne morale inscrite qui contracte et répond de la mission, d'où la signature sociale. L'EC responsable est nommé dans la lettre pour identifier l'interlocuteur et le signataire des travaux (ord. art. 12, qui vise les travaux), sans être partie au contrat. Côté CAC : mandat à la société, signataire désigné.",
+      "reference": "D. 2012-432 art. 151 (contrat écrit / lettre de mission) ; ord. 45-2138 art. 7 et 12 ; NP 2300",
+      "confidence": "medium",
+      "update_note": "Sujet officiel à cinq propositions : la C (signature de l'EC, du collaborateur en charge du dossier et du client) a été retirée. Réponse A du sujet retenue par la banque, corrigé officiel non disponible.",
+      "review_note": "Ord. 45-2138 art. 7 et 12 non relus (à vérifier). Règle commune retenue pour 2018-11-EC-07, 2022-11-EC-01 et 2024-05-EC-08 : signature sociale apposée par un EC inscrit habilité ; l'art. 12 (signature personnelle) vise les travaux."
     },
     {
       "id": "2018-11-EC-08",
@@ -246,11 +251,12 @@
           "Le dirigeant est un client distinct de la société : lettre de mission spécifique conclue avec lui",
           "Aucune mission comptable avec la société n'est requise"
         ],
-        "model_answer": "Oui. L'ordonnance autorise l'expert-comptable à accompagner les personnes physiques dans leurs démarches déclaratives fiscales, sociales et administratives. Le dirigeant étant une personne distincte de la SARL, la prestation doit faire l'objet d'une lettre de mission propre, conclue avec lui ; elle ne dépend pas de l'existence d'une mission comptable avec la société."
+        "model_answer": "Oui. L'ordonnance permet à l'EC d'assister les personnes physiques dans leurs démarches déclaratives fiscales, sociales et administratives. Le dirigeant étant distinct de la SARL, la prestation exige une lettre de mission propre, conclue avec lui ; aucune mission comptable avec la société n'est requise."
       },
-      "explanation": "Depuis 2010, l'article 2 de l'ordonnance ouvre expressément aux experts-comptables l'accompagnement déclaratif des personnes physiques. Le piège est contractuel : chaque client, même lié à une société cliente, doit avoir sa propre lettre de mission, et la mission conclue avec la société ne peut pas couvrir les déclarations personnelles du dirigeant. Il n'existe aucun monopole des avocats sur les déclarations fiscales.",
+      "explanation": "L'art. 2 de l'ordonnance ouvre expressément aux EC l'accompagnement déclaratif des personnes physiques. Piège contractuel : chaque client, même dirigeant d'une société cliente, a sa propre lettre de mission ; celle de la société ne couvre pas ses déclarations personnelles. Aucun monopole des avocats sur les déclarations fiscales.",
       "reference": "Ord. 45-2138 art. 2 (assistance des personnes physiques dans leurs démarches déclaratives) ; D. 2012-432 art. 151 (lettre de mission)",
-      "confidence": "high"
+      "confidence": "high",
+      "review_note": "Origine de la mention « personnes physiques » à l'art. 2 (loi 2010-853 ou loi Macron 2015-990) à vérifier sur les versions successives de l'ordonnance ; la mention « depuis 2010 » a été retirée de l'explication."
     },
     {
       "id": "2018-11-EC-09",
@@ -275,14 +281,15 @@
           "Délégable : la réalisation et la supervision technique d'une partie des travaux, sous la responsabilité de l'expert-comptable",
           "Réservé : l'acceptation (et le maintien) de la mission",
           "Réservé : la signature des rapports et attestations (signature personnelle de l'expert-comptable, ord. art. 12)",
-          "Réservé : la déclaration de soupçon à Tracfin (expert-comptable en charge de la mission, ou autre expert-comptable désigné)",
+          "Réservé : déclaration de soupçon faite personnellement par l'EC en charge de la mission (NPLAB § 47)",
           "La délégation ne décharge jamais l'expert-comptable de sa responsabilité"
         ],
-        "model_answer": "L'expert-comptable peut confier à un chef de mission non inscrit l'exécution et la supervision technique d'une partie des travaux, qu'il revoit et dont il reste responsable. Il ne peut en revanche déléguer ni la décision d'accepter une mission, ni la signature des rapports et attestations, ni la déclaration de soupçon, qui relèvent du professionnel inscrit."
+        "model_answer": "L'EC peut confier à un chef de mission non inscrit l'exécution et la supervision technique d'une partie des travaux, qu'il revoit et dont il reste responsable. Il ne peut déléguer ni l'acceptation de la mission, ni la signature des rapports et attestations, ni la déclaration de soupçon, réservées au professionnel inscrit."
       },
-      "explanation": "Les travaux doivent être assortis de la signature personnelle de l'expert-comptable (ord. art. 12) ; la NPLAB confie au responsable de la mission la décision d'accepter la mission et la NPMQ (§ 26) en fait une procédure de la structure ; la déclaration de soupçon est effectuée personnellement par l'expert-comptable en charge de la mission ou, s'il n'est pas expert-comptable, par un autre expert-comptable désigné (R.561-23 IV ; NPLAB § 47 et A47). Le commissaire aux comptes connaît la même limite : le signataire du rapport est nécessairement un commissaire aux comptes inscrit.",
-      "reference": "Ord. 45-2138 art. 2, 12 et 20 (exercice illégal) ; NPMQ § 26 ; NPLAB § 11, 47 et A47 ; C. mon. fin. art. R.561-23 IV",
-      "confidence": "medium"
+      "explanation": "Les travaux portent la signature personnelle de l'EC (ord. art. 12) ; l'acceptation de la mission relève de l'EC responsable (NPLAB, NPMQ). La déclaration de soupçon est faite personnellement par l'EC en charge de la mission (C. mon. fin. R.561-23 I al. 2 ; NPLAB § 47), jamais par un collaborateur. CAC : le signataire est toujours un CAC inscrit.",
+      "reference": "Ord. 45-2138 art. 2, 12 et 20 (exercice illégal) ; NPMQ § 26 (norme de 2011) ; NPLAB § 11 et 47 ; C. mon. fin. art. R.561-23 I al. 2",
+      "confidence": "medium",
+      "review_note": "CMF R.561-23 et NPLAB § 47 / A47 non relus (Légifrance et Pappers inaccessibles). Ancienne rédaction : « ou, s'il n'est pas expert-comptable, par un autre expert-comptable désigné (R.561-23 IV ; NPLAB § 47 et A47) ». Si A47 vise le responsable non EC d'une AGC (salarié 83 ter ou quater), rétablir ce cas. Référence harmonisée sur R.561-23 I al. 2 (VERIFICATION.md, fiches 02 et 06)."
     },
     {
       "id": "2018-11-EC-10",
@@ -305,16 +312,17 @@
         "question": "Quelles obligations la réglementation professionnelle impose-t-elle à l'expert-comptable pour maintenir la compétence du cabinet et la sienne ?",
         "expected": [
           "NPMQ : politiques de ressources humaines incluant l'évaluation périodique des performances et compétences du personnel",
-          "Obligation de formation continue de l'expert-comptable (D. 2012-432 art. 145 1°), appréciée lors du contrôle de qualité ; quantum recommandé par l'Ordre : 120 heures sur 3 ans, dont 20 heures par an (aucun texte ne le fixe, à vérifier)",
-          "Actions de formation variées admises (formations suivies ou dispensées, colloques, publications, travaux de recherche…), pas seulement les formations attestées",
+          "Formation continue obligatoire de l'EC (D. 2012-432 art. 145 1°) ; 120 h sur 3 ans, dont 20 h par an : simple recommandation de l'Ordre",
+          "Actions variées admises (formations suivies ou dispensées, colloques, publications, recherche…), pas seulement les formations attestées",
           "Pas d'obligation chiffrée légale pour les collaborateurs, mais obligation du cabinet de maintenir leurs compétences"
         ],
-        "model_answer": "La NPMQ impose au cabinet des procédures de ressources humaines comprenant l'évaluation périodique des compétences et des performances du personnel. L'expert-comptable est en outre personnellement tenu à une formation continue (l'Ordre recommande 120 heures sur trois ans, dont au moins 20 par an), satisfaite par des actions diverses et pas uniquement par des formations attestées ; il n'existe pas de quantum légal propre aux collaborateurs."
+        "model_answer": "La NPMQ impose des procédures de ressources humaines, dont l'évaluation périodique des compétences du personnel. L'EC doit en outre se former en continu (l'Ordre recommande 120 h sur trois ans, dont 20 h par an), par des actions variées et pas seulement des formations attestées ; aucun quantum légal ne vise les collaborateurs."
       },
-      "explanation": "La proposition sur l'évaluation du personnel découle directement de la composante « ressources humaines » de la NPMQ. Les autres sont fausses : aucun texte ne fixe 20 heures par an aux collaborateurs, et la formation prise en compte ne se limite pas aux formations attestées (enseignement, publications, groupes de travail comptent). Attention : pour l'expert-comptable, le quantum de 120 h sur 3 ans, dont 20 h par an, est une recommandation de l'Ordre qu'aucun texte ne fixe (à vérifier) ; pour le commissaire aux comptes, il est réglementaire (A.821-45).",
-      "reference": "NPMQ § 29 et A24 (ressources humaines : évaluation périodique du personnel) ; D. 2012-432 art. 145 1° ; pour comparaison, C. com. L.821-24, R.821-70, A.821-45 et A.821-46 (formation des commissaires aux comptes)",
+      "explanation": "L'évaluation du personnel découle du volet « ressources » de la NPMQ. Pièges : aucun texte n'impose 20 h par an aux collaborateurs, et la formation retenue ne se limite pas aux stages attestés. EC : formation obligatoire, mais 120 h sur 3 ans n'est qu'une recommandation de l'Ordre ; CAC : quantum réglementaire (A.821-45).",
+      "reference": "NPMQ de 2011 § 29 et A24 (ressources humaines : évaluation périodique du personnel) ; NPMQ de management de la qualité (2024) ; D. 2012-432 art. 145 1° ; pour comparaison, C. com. L.821-24, R.821-70, A.821-45 et A.821-46",
       "confidence": "medium",
-      "update_note": "Le sujet d'origine comportait une proposition « 120 heures sur 3 ans incluant les heures CAC », supprimée ici : ce quantum, recommandé par l'Ordre, n'est fixé ni par le décret 2012-432, ni par le règlement intérieur de 2024, ni par la NPMQ (texte de la recommandation à vérifier)."
+      "update_note": "Le sujet d'origine comportait une proposition « 120 heures sur 3 ans incluant les heures CAC », retirée ici. Depuis le 1er janvier 2025, NPMQ de management de la qualité (agréée par arrêté du 30 mai 2024, JO du 17 juillet 2024 ; inspirée d'ISQM 1, 8 composantes) ; les paragraphes cités sont ceux de la norme de 2011.",
+      "review_note": "Quantum de 120 h : recommandation de l'Ordre, fixée ni par le décret 2012-432, ni par le règlement intérieur de 2024, ni par la NPMQ (texte de la recommandation non lu). A.821-45 relu (miroir LEGI)."
     },
     {
       "id": "2018-11-CAC-11",
@@ -342,9 +350,9 @@
           "Suivi de la formation continue, veille au respect de la déontologie et de l'indépendance",
           "Pouvoir disciplinaire : enquêtes (rapporteur général) et sanctions (commission des sanctions) ; coopération internationale"
         ],
-        "model_answer": "Autorité publique indépendante, la Haute autorité de l'audit inscrit les commissaires aux comptes et tient la liste, adopte les normes de déontologie, de contrôle interne de qualité et d'exercice professionnel, définit et supervise les contrôles d'activité, veille à la formation continue et à l'indépendance, et exerce le pouvoir disciplinaire par sa commission des sanctions. Elle ne supervise pas les experts-comptables."
+        "model_answer": "Autorité publique indépendante, la H2A inscrit les CAC et tient la liste, adopte les normes de déontologie, de contrôle interne de qualité et d'exercice professionnel, encadre les contrôles d'activité, veille à la formation continue et à l'indépendance, enquête et sanctionne. Elle ne supervise pas les experts-comptables."
       },
-      "explanation": "Depuis la réforme de 2016, l'autorité de supervision « adopte » les normes, élaborées par des commissions associant des commissaires aux comptes, avant homologation par le garde des sceaux (L.820-1 I 2°, L.820-4, L.820-23). Les distracteurs exploitent deux confusions : l'extension de sa compétence aux experts-comptables (faux, ceux-ci relèvent de l'Ordre et de leurs instances disciplinaires) et l'existence d'un double degré disciplinaire régional/national (faux : les chambres régionales de discipline des commissaires aux comptes ont disparu en 2016 ; le recours contre les décisions de sanction est porté devant le Conseil d'État, L.821-85). La formule « surveillance avec le concours de la CNCC » ne figure pas dans l'article L.820-1 actuel.",
+      "explanation": "La H2A adopte les normes de déontologie, de contrôle interne de qualité et d'exercice professionnel (L.820-1 I 2°), homologuées par arrêté ; le code de déontologie est un décret (annexe 8-1). Pièges : elle ne supervise pas les EC ; il n'y a plus de double degré régional-national : recours contre les sanctions devant le Conseil d'État (L.821-85).",
       "reference": "C. com. L.820-1 (missions de la Haute autorité de l'audit, ex L.821-1), L.820-4 et L.820-23 (élaboration des normes), L.821-85 (recours devant le Conseil d'État)",
       "confidence": "medium",
       "update_note": "Depuis le 1er janvier 2024, le H3C est remplacé par la Haute autorité de l'audit (H2A), dont les missions sont fixées à l'article L.820-1 du code de commerce ; la question est posée pour l'autorité actuelle."
@@ -373,9 +381,9 @@
           "Enquête par le rapporteur général de la H2A, jugement par la commission des sanctions",
           "Recours de pleine juridiction devant le Conseil d'État"
         ],
-        "model_answer": "Les faits remontant à plus de six ans ne peuvent plus être sanctionnés si aucun acte tendant à leur recherche, à leur constatation ou à leur sanction n'a été accompli pendant ce délai. L'action est instruite par le rapporteur général de la Haute autorité de l'audit et jugée par sa commission des sanctions, dont les décisions peuvent être contestées devant le Conseil d'État."
+        "model_answer": "Les faits de plus de six ans ne peuvent plus être sanctionnés si aucun acte tendant à leur recherche, constatation ou sanction n'a été accompli dans ce délai (L.821-73). Le rapporteur général de la H2A instruit, la commission des sanctions juge, et ses décisions sont contestées devant le Conseil d'État."
       },
-      "explanation": "Le délai de six ans est propre à la discipline des commissaires aux comptes ; il ne faut le confondre ni avec la prescription civile de droit commun (cinq ans) ni avec la prescription des délits (six ans également, mais en matière pénale). Côté experts-comptables, la procédure disciplinaire relève des chambres régionales puis de la chambre nationale de discipline, sans délai de prescription explicite dans l'ordonnance.",
+      "explanation": "Six ans : délai propre à la discipline des CAC, à ne pas confondre avec la prescription civile de droit commun (cinq ans) ni avec celle des délits (six ans aussi, mais au pénal). Côté EC : chambres régionales puis chambre nationale de discipline, sans délai de prescription explicite dans l'ordonnance.",
       "reference": "C. com. L.821-73 dernier alinéa (prescription de six ans, ex L.824-4) ; L.820-2 V (commission des sanctions) ; L.821-85 (recours)",
       "confidence": "high",
       "update_note": "La commission des sanctions relève désormais de la H2A ; la prescription de six ans figure à L.821-73 (ex L.824-4) depuis le 1er janvier 2024."
@@ -400,14 +408,14 @@
       "qrc": {
         "question": "Comment sont déterminés les honoraires du commissaire aux comptes ?",
         "expected": [
-          "Barème d'heures fixé par le code de commerce pour la mission de certification : nombre d'heures normal selon des tranches de total bilan + produits",
+          "Barème d'heures pour la certification (D.821-188) : nombre d'heures selon des tranches de total du bilan augmenté des produits",
           "Montant horaire librement convenu avec l'entité",
-          "Dérogation au barème : décision du président de la CRCC saisi par la partie la plus diligente ; recours devant le président de la CNCC puis le bureau de la H2A",
+          "Dérogation : président de la CRCC saisi par la partie la plus diligente ; recours devant le président de la CNCC puis le bureau de la H2A",
           "Prestations et entités exclues du barème : honoraires hors barème, convenus par lettre de mission"
         ],
-        "model_answer": "Pour la certification, le code de commerce prévoit un barème d'heures : à chaque tranche de total du bilan augmenté des produits correspond une fourchette d'heures de travail, le taux horaire restant libre. Il peut y être dérogé sur décision du président de la compagnie régionale (recours devant le président de la CNCC puis le bureau de la H2A), et les prestations comme les entités exclues du barème relèvent d'honoraires convenus. Les honoraires ne sont donc ni totalement libres ni intégralement tarifés."
+        "model_answer": "Pour la certification, le code de commerce fixe un barème d'heures selon le total du bilan et des produits ; le taux horaire reste libre. Le président de la CRCC peut accorder une dérogation (recours : président de la CNCC, puis bureau de la H2A) ; prestations et entités hors barème relèvent d'honoraires convenus."
       },
-      "explanation": "Le barème porte sur un volume d'heures, pas sur des taux en euros : c'est le piège de la dernière proposition. « Toujours libres » est la règle de l'expert-comptable ; « toujours tarifés » ignore les dérogations, les entités exclues du barème (R.821-193 et R.821-194) et les prestations hors certification. Le jury signale régulièrement cette confusion entre honoraires libres (EC) et honoraires encadrés (CAC).",
+      "explanation": "Le barème porte sur des heures, pas sur des taux en euros. « Toujours libres » est la règle de l'EC ; « toujours tarifés » ignore les dérogations, les entités exclues et les prestations. Les rapports de jury relèvent à chaque session la confusion entre règles EC et CAC ; les honoraires en sont un exemple classique.",
       "reference": "C. com. D.821-188 à D.821-191 (barème d'heures et dérogation, ex R.823-12 s.) ; R.821-192 à R.821-195 ; code de déontologie des commissaires aux comptes art. 12",
       "confidence": "high",
       "update_note": "Barème recodifié au 1er janvier 2024 (ex R.823-12 devenu D.821-188) ; le principe est inchangé."
@@ -433,17 +441,17 @@
         "question": "Quels services le commissaire aux comptes ne peut-il pas fournir à l'entité dont il certifie les comptes (hors EIP), et dans quel périmètre ?",
         "expected": [
           "Hors EIP, plus de liste de services interdits depuis la loi Pacte",
-          "Interdiction d'accepter ou de poursuivre la mission en cas de risque d'autorévision ou d'indépendance compromise sans mesure de sauvegarde appropriée (L.821-28 IV)",
+          "Acceptation ou poursuite interdite en cas de risque d'autorévision ou d'indépendance compromise sans sauvegarde appropriée (L.821-28 IV)",
           "Interdiction de toute immixtion dans la gestion (L.821-54)",
           "Prise en compte des services fournis par le réseau et aux entités contrôlantes ou contrôlées (code de déontologie art. 19 et 22)",
-          "Filiale intégrée globalement : autorévision lors de l'audit des comptes consolidés ; filiale non consolidée : prestation envisageable après analyse des risques et sauvegardes"
+          "Filiale intégrée globalement : autorévision lors de l'audit des comptes consolidés ; filiale non consolidée : possible après analyse et sauvegardes"
         ],
-        "model_answer": "Depuis la loi Pacte, il n'existe plus de liste de services interdits pour les entités non EIP : le CAC ne peut accepter ou poursuivre sa mission s'il existe un risque d'autorévision ou si son indépendance est compromise sans mesure de sauvegarde appropriée (L.821-28 IV), et toute immixtion dans la gestion lui est interdite (L.821-54). Présenter les comptes d'une filiale intégrée globalement le conduirait à auditer, dans les comptes consolidés, des comptes qu'il a lui-même établis ; chez une filiale non consolidée, la prestation reste envisageable après analyse des risques et mise en place de sauvegardes."
+        "model_answer": "Hors EIP, plus de liste de services interdits depuis la loi Pacte : le CAC ne peut accepter ou poursuivre la mission en cas d'autorévision ou d'indépendance compromise sans sauvegarde appropriée (L.821-28 IV), ni s'immiscer dans la gestion (L.821-54). Présenter les comptes d'une filiale intégrée l'amènerait à auditer son propre travail."
       },
-      "explanation": "Avoir « envisagé » des mesures de sauvegarde ne suffit pas : elles doivent être appropriées, c'est-à-dire éliminer la cause du risque ou en réduire les effets à un niveau suffisamment faible (art. 5 III du code ; A.821-55 § 10), et L.821-28 IV vise expressément le risque d'autorévision. Les actes de gestion sont tous interdits (non-immixtion, L.821-54). La présentation des comptes d'une filiale consolidée aboutirait à auditer, dans les comptes consolidés, des comptes que le commissaire aux comptes a lui-même établis. Pour une EIP, la liste du règlement européen s'applique en plus (art. 5 du règlement, L.821-28 II).",
+      "explanation": "Pièges : « envisager » des sauvegardes ne suffit pas, elles doivent être appropriées (code art. 5 III) ; tout acte de gestion est interdit (L.821-54). Présenter les comptes d'une filiale consolidée reviendrait à auditer, dans les comptes consolidés, des comptes établis par le CAC. Pour une EIP s'ajoute la liste du règlement 537/2014 (L.821-28 II).",
       "reference": "C. com. L.821-28 II et IV (ex L.822-11), L.821-54 (non-immixtion, ex L.823-10) ; code de déontologie des commissaires aux comptes (annexe 8-1) art. 5, 19 et 22 ; règlement (UE) 537/2014 art. 5 pour les EIP",
       "confidence": "medium",
-      "update_note": "Depuis la loi Pacte (2019), la liste de services interdits ne vise plus que les EIP ; pour les autres entités, interdiction en cas d'autorévision ou d'indépendance compromise sans sauvegarde (aujourd'hui L.821-28 IV) et non-immixtion (L.821-54). Articles recodifiés en 2024."
+      "update_note": "Depuis la loi Pacte (2019), la liste des services interdits ne vise plus que les EIP ; pour les autres entités : autorévision et sauvegardes (aujourd'hui L.821-28 IV) et non-immixtion (L.821-54)."
     },
     {
       "id": "2018-11-CAC-15",
@@ -454,13 +462,14 @@
       "points": 1,
       "question": "À condition d'être à jour de ses cotisations professionnelles, peut être élu membre d'un conseil régional d'une CRCC :",
       "qcm": {
+        "question": "Selon le droit en vigueur, qui peut être élu au conseil régional d'une CRCC ?",
         "choices": [
           "Une société de commissariat aux comptes inscrite auprès de cette CRCC et ayant des mandats au nom du cabinet à la date du scrutin",
-          "Une personne physique inscrite auprès de cette CRCC et exerçant des fonctions de commissaire aux comptes à la date du scrutin",
+          "Une personne physique, à jour de ses cotisations, exerçant la profession de commissaire aux comptes au 30 juin de l'année d'expiration des mandats",
           "Une personne physique régulièrement inscrite auprès de cette CRCC à la date du scrutin",
           "Une personne physique régulièrement inscrite auprès de cette CRCC à la date du scrutin depuis au moins deux années"
         ],
-        "answer": 2
+        "answer": 1
       },
       "qrc": {
         "question": "Qui peut être élu membre du conseil régional d'une compagnie régionale des commissaires aux comptes ?",
@@ -470,12 +479,14 @@
           "Exerçant la profession de commissaire aux comptes au 30 juin de l'année d'expiration des mandats",
           "Aucune ancienneté minimale ; seul le président doit exercer au moins une mission de certification"
         ],
-        "model_answer": "Sont éligibles au conseil régional les personnes physiques à jour de leurs cotisations professionnelles qui exercent la profession de commissaire aux comptes au 30 juin de l'année d'expiration des mandats. Aucune ancienneté minimale d'inscription n'est exigée et seul le président doit exercer au moins une mission de certification. Les sociétés de commissaires aux comptes ne sont ni électrices ni éligibles."
+        "model_answer": "Sont éligibles les personnes physiques à jour de leurs cotisations qui exercent la profession de CAC au 30 juin de l'année d'expiration des mandats (D.821-31 II). Aucune ancienneté n'est exigée ; seul le président doit exercer une mission de certification. Les sociétés ne sont ni électrices ni éligibles."
       },
-      "explanation": "Le conseil régional est élu par et parmi les personnes physiques : sont électrices les personnes physiques membres de la compagnie à jour de leurs cotisations, et éligibles celles qui exercent en outre la profession au 30 juin de l'année d'expiration des mandats (D.821-31 II). Les sociétés inscrites ne votent pas et ne siègent pas. Les distracteurs ajoutent des conditions inexistantes (mandats au nom du cabinet, deux ans d'ancienneté). Même principe à l'Ordre des experts-comptables, où seuls les membres personnes physiques sont élus aux conseils.",
+      "explanation": "Le conseil régional est élu par et parmi les personnes physiques : électrices si à jour de leurs cotisations, éligibles si elles exercent aussi la profession au 30 juin de l'année d'expiration des mandats (D.821-31 II). La simple inscription, clé de 2018, ne suffit plus ; les autres propositions visent une société ou ajoutent une ancienneté.",
       "reference": "C. com. art. D.821-29 à D.821-31 (D.821-31 II : électorat et éligibilité au conseil régional)",
       "confidence": "medium",
-      "update_note": "Rédaction en vigueur (D.821-31 II, décret 2023-1394) : l'éligibilité suppose d'exercer la profession de commissaire aux comptes au 30 juin de l'année d'expiration des mandats. La réponse officielle c (simple inscription) reflète le texte de l'époque ; aujourd'hui, la proposition b s'en rapproche sans coïncider (date du 30 juin et non du scrutin)."
+      "update_note": "Depuis le 1er février 2024 (D.821-31 II, décret 2023-1394), l'éligible doit aussi exercer la profession au 30 juin de l'année d'expiration des mandats : la simple inscription, clé de 2018, ne suffit plus. Une proposition a été réécrite selon ce texte.",
+      "review_note": "D.821-31 II relu dans le miroir LEGI (en vigueur au 1er février 2024, décret 2023-1394 modifié par le décret 2024-60). Clé avant correction : index 2 (simple inscription, D du sujet officiel). Ancien choices[1] : « Une personne physique inscrite auprès de cette CRCC et exerçant des fonctions de commissaire aux comptes à la date du scrutin ».",
+      "answer_changed": true
     },
     {
       "id": "2018-11-CAC-16",
@@ -502,12 +513,13 @@
           "Dont vingt heures de programme spécifique CNCC/CRCC ; déclaration préalable à la compagnie régionale (R.821-72)",
           "Obligation de droit commun : 120 heures sur trois ans consécutifs, au moins 20 heures par an (A.821-45)"
         ],
-        "model_answer": "Le commissaire aux comptes qui n'a pas exercé pendant trois ans et n'a pas satisfait à son obligation de formation continue doit, avant d'accepter une nouvelle mission de certification, suivre une formation particulière de quarante heures, accomplie dans les dix-huit mois qui précèdent l'acceptation, et en déclarer les conditions à sa compagnie régionale."
+        "model_answer": "Avant d'accepter une nouvelle mission de certification, le CAC qui n'a ni exercé ni respecté la formation continue pendant trois ans suit une formation particulière de quarante heures, dans les dix-huit mois qui précèdent l'acceptation, et en informe sa compagnie régionale."
       },
-      "explanation": "La logique du texte est préventive : la remise à niveau précède la reprise d'activité, ce qui élimine les propositions « suivent ». L'obligation ordinaire est de 120 heures sur trois années consécutives, avec un minimum annuel de 20 heures ; elle est désormais commune aux experts-comptables, mais la formation particulière de reprise est propre aux commissaires aux comptes.",
+      "explanation": "La remise à niveau précède la reprise : les propositions « suivent » sont fausses. CAC : 120 h sur 3 ans, dont 20 h par an (A.821-45). L'EC est aussi tenu à la formation continue (D. 2012-432 art. 145 1°), mais ce quantum n'est pour lui qu'une recommandation de l'Ordre. La formation de reprise est propre au CAC.",
       "reference": "C. com. L.821-24 II (ex L.822-4 II) ; R.821-71 et R.821-72 ; A.821-45",
       "confidence": "high",
-      "update_note": "Articles recodifiés au 1er janvier 2024. Délai de dix-huit mois et durée de quarante heures vérifiés (R.821-71) ; suivi de la formation délégué à la CNCC (convention homologuée par arrêté du 19 mai 2023)."
+      "update_note": "Articles recodifiés au 1er janvier 2024 (ex L.822-4 II devenu L.821-24 II) ; suivi de la formation délégué à la CNCC (convention homologuée par arrêté du 19 mai 2023).",
+      "review_note": "Relecture : délai de dix-huit mois et durée de quarante heures vérifiés (R.821-71) ; A.821-45 relu (miroir LEGI). Côté EC, D. 2012-432 art. 145 et recommandation de l'Ordre non relus."
     },
     {
       "id": "2018-11-CAC-17",
@@ -531,12 +543,12 @@
         "expected": [
           "Délit intentionnel : révélation consciente et volontaire d'une information à caractère secret à un tiers",
           "Une divulgation par négligence n'est pas le délit (mais peut engager la responsabilité civile et disciplinaire)",
-          "Communications légalement autorisées : successeur, commissaires aux comptes du périmètre de consolidation, H2A, AMF, Tracfin, juge",
+          "Communications légalement autorisées : successeur (L.821-44), CAC du périmètre de consolidation, H2A, AMF, Tracfin, juge",
           "Peine du code pénal : un an d'emprisonnement et 15 000 € d'amende"
         ],
-        "model_answer": "Le délit suppose la révélation volontaire, en connaissance de cause, d'une information couverte par le secret à une personne non autorisée à la recevoir. Une divulgation par maladresse ne constitue pas l'infraction pénale, même si elle peut être fautive civilement ou disciplinairement. Les échanges avec le successeur, les commissaires aux comptes du périmètre de consolidation, l'autorité de supervision, l'AMF, Tracfin ou le juge sont des levées légales du secret."
+        "model_answer": "Le délit suppose de révéler volontairement, en connaissance de cause, une information secrète à une personne non autorisée. Une divulgation par maladresse n'est pas le délit, mais peut être une faute civile ou disciplinaire. Les échanges avec le successeur, les CAC de la consolidation, la H2A, l'AMF, Tracfin ou le juge sont autorisés."
       },
-      "explanation": "L'élément intentionnel est au cœur de la question : l'article 226-13 du code pénal, rendu applicable aux CAC par L.821-7, punit la révélation d'une information secrète, et il n'y a pas de délit sans intention de le commettre (C. pén. art. 121-3). Les propositions sur le successeur et la filiale consolidée décrivent des dérogations prévues par le code de commerce (L.821-44 et L.821-35). Même raisonnement pour l'expert-comptable, dont le secret (ordonnance art. 21) est sanctionné par le même article du code pénal.",
+      "explanation": "L'élément intentionnel est central : l'art. 226-13 C. pén., applicable aux CAC (L.821-7), punit la révélation d'une information secrète, et il n'y a pas de délit sans intention (art. 121-3). Successeur et filiale consolidée : communications autorisées (L.821-44 et L.821-35). Même raisonnement pour le secret de l'EC (ord. art. 21).",
       "reference": "C. pén. art. 226-13 et 121-3 ; C. com. L.821-7 dernier alinéa, L.821-35 (ex L.822-15, secret et dérogations), L.821-44 (accès du successeur)",
       "confidence": "high",
       "update_note": "Code de commerce recodifié au 1er janvier 2024 : L.822-15 est devenu L.821-35 ; règle de fond inchangée."
@@ -550,7 +562,7 @@
       "points": 1,
       "question": "Dans les non-EIP autres que les APG (associations faisant appel public à la générosité) et autres que les filiales importantes d'EIP, lorsque l'EIP et sa filiale ont désigné le même commissaire aux comptes :",
       "qcm": {
-        "question": "Dans une entité non EIP (autre qu'une association faisant appel public à la générosité ou une filiale importante d'EIP) ayant le même commissaire aux comptes que l'EIP qui la contrôle, quelle affirmation est exacte ?",
+        "question": "Dans une société commerciale non EIP, qui n'est pas une filiale importante de l'EIP qui la contrôle et a le même commissaire aux comptes, quelle affirmation est exacte ?",
         "choices": [
           "Le cabinet titulaire du mandat, le signataire au nom du cabinet et le commissaire aux comptes personne physique titulaire peuvent tous exercer plus de six exercices consécutifs",
           "Le cabinet peut conserver le mandat au-delà de six exercices, mais le signataire doit changer tous les six exercices",
@@ -562,16 +574,18 @@
       "qrc": {
         "question": "Quelles règles de rotation s'appliquent au commissaire aux comptes d'une entité non EIP, et à quelles entités s'étend la rotation du signataire ?",
         "expected": [
-          "Société commerciale non EIP : aucune rotation obligatoire, ni du cabinet ni du signataire ; mandat de six exercices renouvelable sans limite",
-          "Rotation du signataire (six exercices dans la limite de sept ans, viduité de trois ans) : EIP, personnes morales non commerçantes ayant une activité économique (L.612-1), associations de L.612-4 faisant appel à la générosité du public, filiales importantes d'EIP ayant le même CAC",
+          "Société commerciale non EIP : aucune rotation, ni du cabinet ni du signataire ; mandat de six exercices renouvelable sans limite",
+          "Rotation du signataire (6 exercices dans la limite de 7 ans, puis 3 ans de viduité) : EIP, entités de L.612-1, APG (L.612-4)",
+          "Rotation du signataire étendue aux filiales importantes d'EIP ayant le même CAC (L.821-34 III)",
           "Rotation du cabinet (dix ans, prolongeable) : EIP uniquement"
         ],
-        "model_answer": "Dans une société commerciale non EIP, le mandat de six exercices est renouvelable sans limitation : ni le cabinet, ni le signataire, ni le commissaire aux comptes personne physique ne sont soumis à rotation. La rotation du signataire (six exercices consécutifs dans la limite de sept ans, puis trois ans de viduité) vise les EIP, les personnes morales non commerçantes ayant une activité économique (L.612-1), les associations de L.612-4 faisant appel à la générosité du public et les filiales importantes d'EIP ayant le même CAC ; la rotation du cabinet ne concerne que les EIP."
+        "model_answer": "Dans une société commerciale non EIP, le mandat de six exercices est renouvelable sans limite : ni le cabinet, ni le signataire, ni le CAC personne physique ne sont soumis à rotation. La rotation du signataire vise les EIP, les entités de L.612-1, les APG (L.612-4) et les filiales importantes d'EIP au même CAC ; celle du cabinet, les seules EIP."
       },
-      "explanation": "Le sujet d'origine faisait valider les trois affirmations ensemble ; la question a été reformulée pour isoler la bonne réponse. Le piège consiste à étendre aux filiales ordinaires les règles des EIP : seule une filiale « importante » d'EIP, auditée par le même commissaire aux comptes, se voit appliquer la rotation du signataire (L.821-34 III). Attention : cette rotation vise aussi les personnes morales de droit privé non commerçantes ayant une activité économique (L.612-1), de sorte que la bonne réponse vaut pour une société commerciale. Aucune règle de rotation n'existe en expertise comptable.",
+      "explanation": "Le sujet faisait valider trois affirmations ensemble : la question est reformulée pour isoler la bonne réponse. Piège : étendre aux filiales ordinaires les règles des EIP ; seule une filiale importante d'EIP au même CAC subit la rotation du signataire (L.821-34 III), comme les entités de L.612-1 et les APG. Aucune rotation en expertise comptable.",
       "reference": "C. com. L.821-45 (rotation du cabinet, EIP, ex L.823-3-1) et L.821-34 (rotation du signataire, ex L.822-14) ; règlement (UE) 537/2014 art. 17",
       "confidence": "medium",
-      "update_note": "Articles recodifiés au 1er janvier 2024 (ordonnance 2023-1142) : L.821-34 (signataire) et L.821-45 (cabinet EIP) ; L.821-34 I vise aussi les entités de L.612-1."
+      "update_note": "Articles recodifiés au 1er janvier 2024 (ordonnance 2023-1142) : L.821-34 (signataire) et L.821-45 (cabinet EIP) ; L.821-34 I vise aussi les entités de L.612-1.",
+      "review_note": "qcm.question resserrée sur une société commerciale : pour une entité de L.612-1 (personne morale non commerçante ayant une activité économique), la rotation du signataire s'applique et la réponse a serait fausse. L.821-34 relu (miroir LEGI)."
     },
     {
       "id": "2018-11-CAC-19",
@@ -593,14 +607,14 @@
       "qrc": {
         "question": "Quels services autres que la certification le commissaire aux comptes peut-il rendre à l'entité qu'il audite, et lesquels lui sont interdits ?",
         "expected": [
-          "Interdits car autorévision : établissement des déclarations fiscales et des comptes, conception ou mise en place de procédures de contrôle interne, fonction d'audit interne",
+          "Interdits (autorévision) : déclarations fiscales et comptes, conception ou mise en place du contrôle interne, audit interne",
           "Interdite : toute immixtion dans la gestion",
-          "Possibles : prestations sans incidence sur l'information financière auditée (formation du personnel, attestations, diligences directement liées à la mission), après analyse des risques et mesures de sauvegarde",
+          "Possibles après analyse des risques et sauvegardes : prestations sans incidence sur l'information auditée (formation du personnel, attestations…)",
           "Pour une EIP : liste noire du règlement européen et plafond d'honoraires de 70 %"
         ],
-        "model_answer": "Le commissaire aux comptes ne peut rendre que des services qui ne le placent pas en situation d'autorévision ni d'immixtion : sont donc exclus l'établissement des déclarations fiscales, la conception de procédures de contrôle interne et l'audit interne, qu'il serait ensuite amené à apprécier. Une formation comptable destinée à des salariés sans rôle dans l'information financière est admissible, sous réserve de l'analyse des risques. Pour les EIP, la liste des services interdits du règlement européen s'ajoute à ces principes."
+        "model_answer": "Le CAC ne rend que des services qui ne le placent ni en autorévision ni en immixtion : il ne peut établir les déclarations fiscales, concevoir le contrôle interne ni assurer l'audit interne, qu'il apprécierait ensuite. Former des salariés sans rôle dans l'information financière reste possible après analyse des risques ; EIP : liste européenne."
       },
-      "explanation": "Le raisonnement passe par l'autorévision : déclarations fiscales (bases de l'impôt audité), procédures de contrôle interne (évaluées par l'auditeur), audit interne (sur lequel l'auditeur s'appuie) sont incompatibles. Le distracteur « déclarations fiscales » illustre la confusion EC/CAC : prestation ordinaire pour l'expert-comptable, interdite pour le commissaire aux comptes de l'entité.",
+      "explanation": "Raisonnement par l'autorévision : déclarations fiscales (bases de l'impôt audité), procédures de contrôle interne (évaluées par l'auditeur), audit interne (sur lequel il s'appuie). Piège EC/CAC : établir les déclarations fiscales est une prestation ordinaire pour l'expert-comptable, mais interdite au CAC de l'entité.",
       "reference": "C. com. L.821-28 (II : EIP ; IV : non-EIP), L.821-30 ; code de déontologie des CAC art. 5 II, 19 et 22 ; règl. (UE) 537/2014 art. 4 § 2 (plafond de 70 %) et art. 5 § 1 (a i, e, h)",
       "confidence": "medium",
       "update_note": "Depuis la loi Pacte, plus de liste de services interdits pour les non-EIP : raisonnement par l'autorévision et les sauvegardes (L.821-28 IV). Pour une EIP, les trois premières propositions figurent parmi les services interdits (art. 5 § 1 a i, e et h)."
@@ -630,9 +644,9 @@
           "En cas de doute sérieux ou de difficulté d'interprétation : saisir pour avis l'autorité de supervision (H3C, désormais H2A)",
           "Documenter l'analyse et les mesures dans le dossier"
         ],
-        "model_answer": "Le commissaire aux comptes identifie les risques pesant sur son indépendance et son opinion, prend sans délai les mesures de sauvegarde propres à en supprimer la cause ou à en réduire les effets, et documente sa démarche. Si un doute sérieux ou une difficulté d'interprétation subsiste, il saisit pour avis l'autorité de supervision, la Haute autorité de l'audit depuis 2024."
+        "model_answer": "Le CAC identifie les risques pesant sur son indépendance et son opinion, prend sans délai des mesures de sauvegarde pour en supprimer la cause ou en réduire les effets, et documente sa démarche. En cas de doute sérieux ou de difficulté d'interprétation, il saisit pour avis la H2A (code art. 19 II)."
       },
-      "explanation": "Les distracteurs renvoient à des interlocuteurs plausibles mais inexacts : le président de la CRCC intervient pour la conciliation, les dérogations au barème ou la répartition entre co-commissaires, pas pour les avis déontologiques ; mentionner le doute dans le rapport n'est pas une réponse déontologique. L'expert-comptable, lui, consulte son conseil régional.",
+      "explanation": "Pièges : le président de la CRCC intervient pour la conciliation, les dérogations au barème ou la répartition entre co-commissaires, pas pour les avis déontologiques ; mentionner le doute dans le rapport n'est pas une réponse déontologique. L'expert-comptable, lui, consulte son conseil régional.",
       "reference": "Code de déontologie des CAC (annexe 8-1), art. 19 I et II, art. 5 III ; ex-art. 11 (version 2010-2017)",
       "confidence": "high",
       "update_note": "Code refondu (décret 2020-292, modifié par le décret 2026-176) : identification des risques à l'art. 19 I 1°, saisine pour avis de la H2A à l'art. 19 II ; H3C remplacé par la H2A au 1er janvier 2024."
